@@ -4,3 +4,4 @@ sdk.generated.ts
 .bundle
 *.tgz
 cdk.out
+stats.html
