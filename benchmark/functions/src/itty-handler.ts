@@ -12,7 +12,7 @@ export async function handler() {
         S: "pk",
       },
       prop: {
-        S: "value",
+        S: "Value",
       },
     },
   });

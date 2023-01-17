@@ -1,8 +1,10 @@
-import { DynamoDB } from "aws-sdk";
+import DynamoDB from "aws-sdk/clients/dynamodb.js";
 
 const client = new DynamoDB();
 
 const TableName = process.env.TABLE_NAME!;
+
+//
 
 export async function handler() {
   await client
@@ -13,7 +15,7 @@ export async function handler() {
           S: "pk",
         },
         prop: {
-          S: "value",
+          S: "Value",
         },
       },
     })
