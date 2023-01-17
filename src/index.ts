@@ -11,7 +11,7 @@ interface SDKProps {
 }
 
 export const AWS: SDK = new Proxy({} as any, {
-  get: (_, className: string) => {
+  get: (_, className: keyof SDK) => {
     const region = process.env.AWS_REGION!;
     if (!region) {
       throw new Error(`Could not determine AWS_REGION`);
@@ -32,10 +32,6 @@ export const AWS: SDK = new Proxy({} as any, {
 
                 // See: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html
 
-                const xAmzTarget = `${className}_${resolveVersion(
-                  service
-                ).replaceAll("-", "")}.${resolveAction(methodName)}`;
-
                 const request = new HttpRequest({
                   hostname: url.hostname,
                   path: url.pathname,
@@ -46,8 +42,9 @@ export const AWS: SDK = new Proxy({} as any, {
                     // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
                     host: url.host,
                     "Accept-Encoding": "identity",
-                    "Content-Type": "application/x-amz-json-1.0",
-                    "X-Amz-Target": xAmzTarget,
+                    "Content-Type": resolveContentType(className, methodName),
+                    "X-Amz-Target": resolveXAmzTarget(className, methodName),
+                    "User-Agent": "itty-aws",
                   },
                 });
 
@@ -66,13 +63,19 @@ export const AWS: SDK = new Proxy({} as any, {
                   method: signedRequest.method,
                 });
 
+                const isJson = response.headers
+                  .get("content-type")
+                  ?.startsWith("application/x-amz-json");
+
                 if (response.status === 200) {
-                  return response.json();
+                  return isJson ? response.json() : response.text();
                 } else {
                   // see: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
                   // for now we'll just throw the error as a json object
                   // TODO: throw something that is easy to branch on and check instanceof - this may increase bundle size though
-                  throw await response.json();
+                  throw isJson
+                    ? await response.json()
+                    : new Error(await response.text());
                 }
               };
             },
@@ -82,6 +85,29 @@ export const AWS: SDK = new Proxy({} as any, {
     };
   },
 });
+
+const contentTypeMap: Partial<Record<keyof SDK, string>> = {
+  DynamoDB: "application/x-amz-json-1.0",
+  SSM: "application/x-amz-json-1.1",
+};
+
+function resolveContentType(className: keyof SDK, methodName: string) {
+  return contentTypeMap[className] ?? "application/x-amz-json-1.0";
+}
+
+function resolveXAmzTarget(className: keyof SDK, methodName: string) {
+  const action = resolveAction(methodName);
+  if (className === "SSM") {
+    return `AmazonSSM.${action}`;
+  } else if (className === "DynamoDB") {
+    return `${className}_${resolveVersion(className).replaceAll(
+      "-",
+      ""
+    )}.${action}`;
+  } else {
+    throw new Error(`unsupported service: ${className}`);
+  }
+}
 
 // see: https://docs.aws.amazon.com/general/latest/gr/ddb.html
 function resolveEndpoint(serviceName: string, region: string) {
@@ -95,11 +121,14 @@ function resolveAction(methodName: string) {
   return `${methodName.charAt(0).toUpperCase()}${methodName.substring(1)}`;
 }
 
+const versionMap: Partial<Record<keyof SDK, string>> = {
+  DynamoDB: "2012-08-10",
+  SSM: "2014-11-06",
+};
+
 // see: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html for an example of where this can be found
-function resolveVersion(service: string) {
-  if (service === "dynamodb") {
-    return "2012-08-10";
-  } else {
-    throw new Error(`Unsupported service: ${service}`);
-  }
-}
+const resolveVersion = (className: keyof SDK): string =>
+  versionMap[className] ??
+  (() => {
+    throw new Error(`Unsupported service: ${className}`);
+  })();
