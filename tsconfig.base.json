@@ -4,6 +4,7 @@
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
+    "moduleResolution": "NodeNext",
     "module": "esnext",
     "lib": ["ES2022"],
     "types": ["@types/node", "@types/jest"]

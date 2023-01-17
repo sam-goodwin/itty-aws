@@ -1,0 +1,10 @@
+{
+  "name": "@benchmark/functions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "itty-aws": "workspace:^",
+    "@aws-sdk/client-dynamodb": "^3.245.0"
+  }
+}
