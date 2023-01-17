@@ -6,7 +6,7 @@ This is a teeny-tiny AWS SDK implementation for TypeScript using [Proxies](https
 
 ## Why?
 
-We want a lightweight AWS SDK that has no impact on Lambda cold starts and a standard API design. The AWS SDK v3 traded off usability to save on bundle size with the introduction of `client.send(Command)` and still didn't achieve a lightweight experience. None of this should not be necessary - we can have our cake and eat it to!
+We want a lightweight AWS SDK that has no impact on Lambda cold starts and a standard API design. The AWS SDK v3 traded off usability to save on bundle size with the introduction of `client.send(Command)` and still didn't achieve a lightweight experience. None of this should be necessary - we can have our cake and eat it to!
 
 ## Problems with AWS SDK v3
 
