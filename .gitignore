@@ -1,0 +1,4 @@
+lib/
+node_modules/
+sdk.generated.ts
+.bundle

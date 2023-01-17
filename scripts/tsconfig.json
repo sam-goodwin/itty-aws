@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": ".",
+    "types": ["@types/node"],
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "module": "ESNext"
+  },
+  "include": ["*.ts", "gen-sdk-types.mts"]
+}
