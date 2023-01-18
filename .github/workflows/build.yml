@@ -1,7 +1,12 @@
 name: build
 on:
   pull_request: {}
-  workflow_call: {}
+  workflow_call:
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
