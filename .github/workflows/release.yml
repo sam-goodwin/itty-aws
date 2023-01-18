@@ -32,23 +32,15 @@ jobs:
         run: |-
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > ~/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: create and publish versions
-        uses: changesets/action@v1
-        with:
-          version: pnpm ci:version
-          commit: "chore: update version"
-          title: "chore: update version"
-          publish: pnpm ci:publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Version packages
-        run: pnpm changeset version
+      - name: bump versions
+        run: |-
+          pnpm standard-version
+          git push
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
