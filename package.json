@@ -15,7 +15,9 @@
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
     "bench:synth": "pnpm -r --filter @benchmark/infra synth",
     "bench:deploy": "pnpm -r --filter @benchmark/infra run deploy",
-    "bench:hotswap": "pnpm -r --filter @benchmark/infra run hotswap"
+    "bench:hotswap": "pnpm -r --filter @benchmark/infra run hotswap",
+    "ci:version": "changeset version",
+    "ci:publish": "pnpm publish -r"
   },
   "dependencies": {
     "aws-sdk": "2.1295.0"
@@ -35,6 +37,7 @@
     "@aws-sdk/protocol-http": "3.226.0",
     "@aws-sdk/signature-v4": "3.226.0",
     "@aws-sdk/types": "3.226.0",
+    "@changesets/cli": "^2.26.0",
     "@tsconfig/node16": "^1",
     "@types/jest": "^29",
     "@types/node": "^16",

@@ -1,0 +1,55 @@
+name: release
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  release:
+    needs: [build]
+    concurrency: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      CI: "true"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/build
+
+      - name: Set git identity
+        run: |-
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: create and publish versions
+        uses: changesets/action@v1
+        with:
+          version: pnpm ci:version
+          commit: "chore: update version"
+          title: "chore: update version"
+          publish: pnpm ci:publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Version packages
+        run: pnpm changeset version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish packages
+        run: pnpm -r publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
