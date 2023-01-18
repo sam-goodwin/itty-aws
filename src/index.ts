@@ -87,7 +87,7 @@ export const AWS: SDK = new Proxy({} as any, {
 });
 
 export class AWSError extends Error {
-  readonly type: string;
+  readonly type?: string;
   constructor(error: any) {
     super(typeof error?.message === "string" ? error.message : error.__type);
     this.type = error.__type;

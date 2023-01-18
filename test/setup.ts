@@ -22,7 +22,11 @@ async function createTable() {
       await create();
     }
   } catch (err: any) {
-    if (err.__type.endsWith("ResourceNotFoundException")) {
+    console.error(err);
+    if (
+      err instanceof AWSError &&
+      err.type?.endsWith("ResourceNotFoundException")
+    ) {
       await create();
     } else {
       throw err;

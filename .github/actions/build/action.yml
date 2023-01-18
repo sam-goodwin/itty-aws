@@ -1,0 +1,36 @@
+name: Setup
+description: "Setup Project"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 6.32.9
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+        cache: "pnpm"
+
+    - uses: pnpm/action-setup@v2.2.4
+      with:
+        version: 7.13.5
+
+    - run: pnpm install --frozen-lockfile
+      shell: bash
+
+    - name: Ensure no changes
+      run: git diff --exit-code
+      shell: bash
+
+    - name: "Generate"
+      run: pnpm gen
+      shell: bash
+
+    - name: Build
+      run: pnpm build
+      env:
+        NODE_OPTIONS: --max-old-space-size=6144
+      shell: bash
