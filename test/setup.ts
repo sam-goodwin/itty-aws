@@ -1,4 +1,4 @@
-import { AWS } from "../src/index.js";
+import { AWS, AWSError } from "../src/index.js";
 import { SsmParameterName, SsmParameterValue, TableName } from "./constants.js";
 
 const dynamo = new AWS.DynamoDB();
@@ -50,9 +50,16 @@ async function createTable() {
 }
 
 async function createParameter() {
-  await ssm.putParameter({
-    Name: SsmParameterName,
-    Value: SsmParameterValue,
-    Type: "String",
-  });
+  try {
+    await ssm.putParameter({
+      Name: SsmParameterName,
+      Value: SsmParameterValue,
+      Type: "String",
+      Overwrite: true,
+    });
+  } catch (err) {
+    if (!(err instanceof AWSError) || err.type !== "ParameterAlreadyExists") {
+      throw err;
+    }
+  }
 }
