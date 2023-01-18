@@ -1,10 +1,7 @@
 import { AWS } from "../src";
-
-process.env.AWS_REGION = "us-west-2";
+import { TableName } from "./constants";
 
 const ddb = new AWS.DynamoDB();
-
-const TableName = "MY_TABLE";
 
 test("DynamoDB PutItem and GetItem should work", async () => {
   const Item = {

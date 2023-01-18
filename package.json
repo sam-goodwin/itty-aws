@@ -1,6 +1,6 @@
 {
   "name": "itty-aws",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "lib"
   ],
@@ -10,7 +10,7 @@
   "scripts": {
     "gen": "ts-node-esm ./scripts/gen-sdk-types.mts",
     "build": "tsc -b",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
     "watch": "tsc -b -w",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
     "bench:synth": "pnpm -r --filter @benchmark/infra synth",

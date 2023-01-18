@@ -74,7 +74,7 @@ export const AWS: SDK = new Proxy({} as any, {
                   // for now we'll just throw the error as a json object
                   // TODO: throw something that is easy to branch on and check instanceof - this may increase bundle size though
                   throw isJson
-                    ? await response.json()
+                    ? new AWSError(await response.json())
                     : new Error(await response.text());
                 }
               };
@@ -85,6 +85,14 @@ export const AWS: SDK = new Proxy({} as any, {
     };
   },
 });
+
+export class AWSError extends Error {
+  readonly type: string;
+  constructor(error: any) {
+    super(typeof error?.message === "string" ? error.message : error.__type);
+    this.type = error.__type;
+  }
+}
 
 const contentTypeMap: Partial<Record<keyof SDK, string>> = {
   DynamoDB: "application/x-amz-json-1.0",
