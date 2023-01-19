@@ -18,11 +18,11 @@ export const AWS: SDK = new Proxy({} as any, {
     if (!region) {
       throw new Error(`Could not determine AWS_REGION`);
     }
-    const service = className.toLowerCase();
 
     return class {
       constructor(options?: ClientOptions) {
-        const endpoint = options?.endpoint ?? resolveEndpoint(service, region);
+        const endpoint =
+          options?.endpoint ?? resolveEndpoint(className, region);
         // TODO: support other types of credential providers
         const credentials = options?.credentials ?? fromEnv();
         return new Proxy(
@@ -52,7 +52,7 @@ export const AWS: SDK = new Proxy({} as any, {
 
                 const signer = new SignatureV4({
                   credentials,
-                  service,
+                  service: resolveService(className),
                   region,
                   sha256: Sha256,
                 });
@@ -96,9 +96,12 @@ export class AWSError extends Error {
   }
 }
 
+const j1 = "application/x-amz-json-1.0";
+const j1_1 = "application/x-amz-json-1.1";
 const contentTypeMap: Partial<Record<keyof SDK, string>> = {
-  DynamoDB: "application/x-amz-json-1.0",
-  SSM: "application/x-amz-json-1.1",
+  DynamoDB: j1,
+  SSM: j1_1,
+  EventBridge: j1_1,
 };
 
 function resolveContentType(className: keyof SDK, methodName: string) {
@@ -109,6 +112,8 @@ function resolveXAmzTarget(className: keyof SDK, methodName: string) {
   const action = resolveAction(methodName);
   if (className === "SSM") {
     return `AmazonSSM.${action}`;
+  } else if (className === "EventBridge") {
+    return `AWSEvents.${action}`;
   } else if (className === "DynamoDB") {
     return `${className}_${resolveVersion(className).replaceAll(
       "-",
@@ -119,10 +124,21 @@ function resolveXAmzTarget(className: keyof SDK, methodName: string) {
   }
 }
 
+const serviceMappings: Partial<Record<keyof SDK, string>> = {
+  EventBridge: "events",
+};
+
+function resolveService(className: keyof SDK): string {
+  return serviceMappings[className] ?? className.toLocaleLowerCase();
+}
+
 // see: https://docs.aws.amazon.com/general/latest/gr/ddb.html
-function resolveEndpoint(serviceName: string, region: string) {
+function resolveEndpoint(serviceName: keyof SDK, region: string) {
   // TODO: this doesn't work in all cases ...
-  return `${serviceName.toLocaleLowerCase()}.${region}.amazonaws.com`;
+
+  return `${resolveService(
+    serviceName
+  ).toLocaleLowerCase()}.${region}.amazonaws.com`;
 }
 
 // see: https://stackoverflow.com/questions/36490756/aws-rest-api-without-sdk
@@ -133,6 +149,7 @@ function resolveAction(methodName: string) {
 
 const versionMap: Partial<Record<keyof SDK, string>> = {
   DynamoDB: "2012-08-10",
+  EventBridge: "2015-10-07",
   SSM: "2014-11-06",
 };
 

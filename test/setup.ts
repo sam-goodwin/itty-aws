@@ -1,20 +1,23 @@
 import { AWS, AWSError } from "../src/index.js";
-import { SsmParameterName, SsmParameterValue, TableName } from "./constants.js";
-
-const dynamo = new AWS.DynamoDB();
-
-const ssm = new AWS.SSM();
+import {
+  EventBusName,
+  SsmParameterName,
+  SsmParameterValue,
+  TableName,
+} from "./constants.js";
 
 try {
-  await Promise.all([createTable(), createParameter()]);
+  await Promise.all([createTable(), createParameter(), createEventBus()]);
 } catch (err) {
   console.error(err);
   process.exit(1);
 }
 
 async function createTable() {
+  const client = new AWS.DynamoDB();
+
   try {
-    const response = await dynamo.describeTable({
+    const response = await client.describeTable({
       TableName: TableName,
     });
 
@@ -34,7 +37,7 @@ async function createTable() {
   }
 
   async function create() {
-    await dynamo.createTable({
+    await client.createTable({
       TableName: TableName,
       KeySchema: [
         {
@@ -54,8 +57,10 @@ async function createTable() {
 }
 
 async function createParameter() {
+  const client = new AWS.SSM();
+
   try {
-    await ssm.putParameter({
+    await client.putParameter({
       Name: SsmParameterName,
       Value: SsmParameterValue,
       Type: "String",
@@ -63,6 +68,23 @@ async function createParameter() {
     });
   } catch (err) {
     if (!(err instanceof AWSError) || err.type !== "ParameterAlreadyExists") {
+      throw err;
+    }
+  }
+}
+
+async function createEventBus() {
+  const client = new AWS.EventBridge();
+  try {
+    await client.createEventBus({
+      Name: EventBusName,
+    });
+  } catch (err) {
+    if (
+      !(err instanceof AWSError) ||
+      err.type !== "ResourceAlreadyExistsException"
+    ) {
+      console.error(err);
       throw err;
     }
   }
