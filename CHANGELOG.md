@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.7 (2023-01-19)
+
+
+### Features
+
+* support EventBridge ([#16](https://github.com/sam-goodwin/itty-aws/issues/16)) ([bd2cd1b](https://github.com/sam-goodwin/itty-aws/commit/bd2cd1b7aa1da6dc3a4471d73b9f16a4a73a2f60))
+
 ### 0.0.6 (2023-01-19)
 
 
