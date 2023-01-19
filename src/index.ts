@@ -1,14 +1,16 @@
-import type { SDK } from "./sdk.generated.js";
+import { Sha256 } from "@aws-crypto/sha256-js";
 import { fromEnv } from "@aws-sdk/credential-provider-env";
 import { HttpRequest } from "@aws-sdk/protocol-http";
 import { SignatureV4 } from "@aws-sdk/signature-v4";
-import { Sha256 } from "@aws-crypto/sha256-js";
+import type { AwsCredentialIdentity, Provider } from "@aws-sdk/types";
+import type { SDK } from "./sdk.generated.js";
+
+export interface ClientOptions {
+  endpoint?: string;
+  credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
+}
 
 declare const fetch: typeof import("node-fetch").default;
-
-interface SDKProps {
-  endpoint?: string;
-}
 
 export const AWS: SDK = new Proxy({} as any, {
   get: (_, className: keyof SDK) => {
@@ -19,10 +21,10 @@ export const AWS: SDK = new Proxy({} as any, {
     const service = className.toLowerCase();
 
     return class {
-      constructor(options?: SDKProps) {
+      constructor(options?: ClientOptions) {
         const endpoint = options?.endpoint ?? resolveEndpoint(service, region);
         // TODO: support other types of credential providers
-        const credentials = fromEnv();
+        const credentials = options?.credentials ?? fromEnv();
         return new Proxy(
           {},
           {
