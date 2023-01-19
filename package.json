@@ -23,7 +23,6 @@
   "peerDependencies": {
     "@aws-crypto/sha256-js": "^3",
     "@aws-sdk/credential-providers": "^3",
-    "@aws-sdk/middleware-signing": "3",
     "@aws-sdk/protocol-http": "^3",
     "@aws-sdk/signature-v4": "^3",
     "@aws-sdk/types": "^3"
@@ -31,7 +30,6 @@
   "devDependencies": {
     "@aws-crypto/sha256-js": "3.0.0",
     "@aws-sdk/credential-provider-env": "3.226.0",
-    "@aws-sdk/middleware-signing": "3.226.0",
     "@aws-sdk/protocol-http": "3.226.0",
     "@aws-sdk/signature-v4": "3.226.0",
     "@aws-sdk/types": "3.226.0",

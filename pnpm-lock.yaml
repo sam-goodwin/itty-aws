@@ -6,7 +6,6 @@ importers:
     specifiers:
       '@aws-crypto/sha256-js': 3.0.0
       '@aws-sdk/credential-provider-env': 3.226.0
-      '@aws-sdk/middleware-signing': 3.226.0
       '@aws-sdk/protocol-http': 3.226.0
       '@aws-sdk/signature-v4': 3.226.0
       '@aws-sdk/types': 3.226.0
@@ -29,7 +28,6 @@ importers:
     devDependencies:
       '@aws-crypto/sha256-js': 3.0.0
       '@aws-sdk/credential-provider-env': 3.226.0
-      '@aws-sdk/middleware-signing': 3.226.0
       '@aws-sdk/protocol-http': 3.226.0
       '@aws-sdk/signature-v4': 3.226.0
       '@aws-sdk/types': 3.226.0
@@ -576,6 +574,7 @@ packages:
       '@aws-sdk/types': 3.226.0
       '@aws-sdk/util-middleware': 3.226.0
       tslib: 2.4.1
+    dev: false
 
   /@aws-sdk/middleware-stack/3.226.0:
     resolution: {integrity: sha512-85wF29LvPvpoed60fZGDYLwv1Zpd/cM0C22WSSFPw1SSJeqO4gtFYyCg2squfT3KI6kF43IIkOCJ+L7GtryPug==}
