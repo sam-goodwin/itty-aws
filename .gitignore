@@ -5,3 +5,4 @@ sdk.generated.ts
 *.tgz
 cdk.out
 stats.html
+src/mappings.ts
