@@ -1,6 +1,7 @@
 import { AWS, AWSError } from "../src";
 import {
-  EventBusName, S3BucketName,
+  EventBusName,
+  S3BucketName,
   SsmParameterName,
   SsmParameterValue,
   TableName,
