@@ -5,6 +5,7 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
     "target": "ES2022",
     "module": "esnext",
     "lib": ["ES2022"],

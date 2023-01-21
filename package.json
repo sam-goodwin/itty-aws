@@ -8,7 +8,10 @@
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "gen": "ts-node-esm ./scripts/gen-sdk-types.mts",
+    "download:models": "bash ./scripts/download-smithy-models.sh",
+    "generate": "pnpm generate:types && pnpm generate:mappings",
+    "generate:types": "ts-node-esm ./scripts/gen-sdk-types.mts",
+    "generate:mappings": "ts-node-esm ./scripts/gen-sdk-mappings.mts",
     "build": "tsc -b",
     "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
     "watch": "tsc -b -w",

@@ -5,6 +5,8 @@ import { SignatureV4 } from "@aws-sdk/signature-v4";
 import type { AwsCredentialIdentity, Provider } from "@aws-sdk/types";
 import type { SDK } from "./sdk.generated.js";
 
+import { mappings } from "./mappings.js";
+
 export interface ClientOptions {
   endpoint?: string;
   credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
@@ -44,7 +46,7 @@ export const AWS: SDK = new Proxy({} as any, {
                     // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
                     host: url.host,
                     "Accept-Encoding": "identity",
-                    "Content-Type": resolveContentType(className, methodName),
+                    "Content-Type": resolveContentType(className),
                     "X-Amz-Target": resolveXAmzTarget(className, methodName),
                     "User-Agent": "itty-aws",
                   },
@@ -96,29 +98,15 @@ export class AWSError extends Error {
   }
 }
 
-const j1 = "application/x-amz-json-1.0";
-const j1_1 = "application/x-amz-json-1.1";
-const contentTypeMap: Partial<Record<keyof SDK, string>> = {
-  DynamoDB: j1,
-  SSM: j1_1,
-  EventBridge: j1_1,
-};
-
-function resolveContentType(className: keyof SDK, methodName: string) {
-  return contentTypeMap[className] ?? "application/x-amz-json-1.0";
+function resolveContentType(className: keyof SDK) {
+  const j = ((mappings as any)[className] as any)?.[2];
+  return `application/x-amz-json-${j === 1 ? "1.0" : "1.1"}`;
 }
 
 function resolveXAmzTarget(className: keyof SDK, methodName: string) {
-  const action = resolveAction(methodName);
-  if (className === "SSM") {
-    return `AmazonSSM.${action}`;
-  } else if (className === "EventBridge") {
-    return `AWSEvents.${action}`;
-  } else if (className === "DynamoDB") {
-    return `${className}_${resolveVersion(className).replaceAll(
-      "-",
-      ""
-    )}.${action}`;
+  const serviceName = (mappings as any)[className]?.[0];
+  if (serviceName) {
+    return `${serviceName}.${resolveAction(methodName)}`;
   } else {
     throw new Error(`unsupported service: ${className}`);
   }
@@ -146,16 +134,3 @@ function resolveEndpoint(serviceName: keyof SDK, region: string) {
 function resolveAction(methodName: string) {
   return `${methodName.charAt(0).toUpperCase()}${methodName.substring(1)}`;
 }
-
-const versionMap: Partial<Record<keyof SDK, string>> = {
-  DynamoDB: "2012-08-10",
-  EventBridge: "2015-10-07",
-  SSM: "2014-11-06",
-};
-
-// see: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html for an example of where this can be found
-const resolveVersion = (className: keyof SDK): string =>
-  versionMap[className] ??
-  (() => {
-    throw new Error(`Unsupported service: ${className}`);
-  })();

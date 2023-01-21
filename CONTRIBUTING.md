@@ -15,7 +15,7 @@ Thanks for your interest in contributing to `itty-aws` - a teeny-tiny community 
 Before you get started developing, run the following script to generate the types:
 
 ```
-pnpm gen
+pnpm generate:types
 ```
 
 This will generate a file, `./src/sdk.generated.ts` containing all the type definitions. Note that this file is in `.gitignore` and is not meant to be checked in to source.
