@@ -1,10 +1,10 @@
-import { AWS, AWSError } from "../src/index.js";
+import { AWS, AWSError } from '../src';
 import {
-  EventBusName,
+  EventBusName, S3BucketName,
   SsmParameterName,
   SsmParameterValue,
   TableName,
-} from "./constants.js";
+} from './constants.js';
 
 try {
   await Promise.all([createTable(), createParameter(), createEventBus()]);
@@ -78,6 +78,23 @@ async function createEventBus() {
   try {
     await client.createEventBus({
       Name: EventBusName,
+    });
+  } catch (err) {
+    if (
+      !(err instanceof AWSError) ||
+      err.type !== "ResourceAlreadyExistsException"
+    ) {
+      console.error(err);
+      throw err;
+    }
+  }
+}
+
+async function createS3Bucket() {
+  const client = new AWS.S3();
+  try {
+    await client.createBucket({
+      Bucket: S3BucketName,
     });
   } catch (err) {
     if (
