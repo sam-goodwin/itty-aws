@@ -1,10 +1,10 @@
-import { AWS, AWSError } from '../src';
+import { AWS, AWSError } from "../src";
 import {
   EventBusName, S3BucketName,
   SsmParameterName,
   SsmParameterValue,
   TableName,
-} from './constants.js';
+} from "./constants.js";
 
 try {
   await Promise.all([createTable(), createParameter(), createEventBus()]);
