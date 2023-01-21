@@ -21,6 +21,7 @@
     "bench:hotswap": "pnpm -r --filter @benchmark/infra run hotswap"
   },
   "dependencies": {
+    "@rgrove/parse-xml": "^4.0.1",
     "aws-sdk": "2.1295.0"
   },
   "peerDependencies": {
@@ -42,8 +43,8 @@
     "@types/prettier": "^2.7.2",
     "esbuild": "0.17.2",
     "esbuild-visualizer": "^0.4.0",
-    "node-fetch": "^3.3.0",
     "jest": "^29",
+    "node-fetch": "^3.3.0",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
     "ts-jest": "^29",

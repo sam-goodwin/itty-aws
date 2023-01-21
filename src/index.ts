@@ -6,6 +6,7 @@ import type { AwsCredentialIdentity, Provider } from "@aws-sdk/types";
 import type { SDK } from "./sdk.generated.js";
 
 import { mappings } from "./mappings.js";
+import { parseXml, XmlElement } from '@rgrove/parse-xml';
 
 export interface ClientOptions {
   endpoint?: string;
@@ -81,6 +82,21 @@ export const AWS: SDK = new Proxy({} as any, {
                   // see: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
                   // for now we'll just throw the error as a json object
                   // TODO: throw something that is easy to branch on and check instanceof - this may increase bundle size though
+
+                 if(isXml) {
+                   const responseText = await response.text()
+                   const parsedXml = parseXml(responseText);
+
+                   const errorXmlObject = (parsedXml.children[0] as XmlElement).children as XmlElement[];
+                   const errorCode = (errorXmlObject.find((child) => child.name === 'Code')?.children[0] as XmlElement).text;
+                   const errorMessage = (errorXmlObject.find((child) => child.name === 'Message')?.children[0] as XmlElement).text;
+
+                    return {
+                      code: errorCode,
+                      message: errorMessage
+                    }
+                 }
+
                   throw isJson
                     ? new AWSError(await response.json())
                     : new Error(await response.text());

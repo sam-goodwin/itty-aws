@@ -9,6 +9,7 @@ importers:
       '@aws-sdk/protocol-http': 3.226.0
       '@aws-sdk/signature-v4': 3.226.0
       '@aws-sdk/types': 3.226.0
+      '@rgrove/parse-xml': ^4.0.1
       '@tsconfig/node16': ^1
       '@types/jest': ^29
       '@types/node': ^16
@@ -24,6 +25,7 @@ importers:
       ts-node: ^10.9.1
       typescript: ^4.9.4
     dependencies:
+      '@rgrove/parse-xml': 4.0.1
       aws-sdk: 2.1295.0
     devDependencies:
       '@aws-crypto/sha256-js': 3.0.0
@@ -1666,6 +1668,11 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@rgrove/parse-xml/4.0.1:
+    resolution: {integrity: sha512-ZjEohvhVVzr7cvwc7UqdqWShDlh2y79N1o6wlEIDLX7cpKVrLI9zTqT8etArqumnaGrxgyAE2/11KF8cozHsrA==}
+    engines: {node: '>=14.0.0'}
+    dev: false
 
   /@sinclair/typebox/0.24.51:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
