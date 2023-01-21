@@ -9,6 +9,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "download:models": "bash ./scripts/download-smithy-models.sh",
+    "generate": "pnpm generate:types && pnpm generate:mappings",
     "generate:types": "ts-node-esm ./scripts/gen-sdk-types.mts",
     "generate:mappings": "ts-node-esm ./scripts/gen-sdk-mappings.mts",
     "build": "tsc -b",
