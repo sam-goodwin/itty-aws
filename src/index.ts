@@ -71,6 +71,10 @@ export const AWS: SDK = new Proxy({} as any, {
                   .get("content-type")
                   ?.startsWith("application/x-amz-json");
 
+                const isXml = response.headers
+                  .get("content-type")
+                  ?.startsWith("application/xml");
+
                 if (response.status === 200) {
                   return isJson ? response.json() : response.text();
                 } else {

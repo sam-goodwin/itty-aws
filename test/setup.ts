@@ -8,7 +8,7 @@ import {
 } from "./constants.js";
 
 try {
-  await Promise.all([createTable(), createParameter(), createEventBus()]);
+  await Promise.all([createTable(), createParameter(), createEventBus(), createS3Bucket()]);
 } catch (err) {
   console.error(err);
   process.exit(1);
