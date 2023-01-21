@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.8 (2023-01-21)
+
+
+### Features
+
+* generate mappings for amz-target and json type from smithy ([#18](https://github.com/sam-goodwin/itty-aws/issues/18)) ([1552566](https://github.com/sam-goodwin/itty-aws/commit/1552566e3dec064abadf16bc1ebd2e0197bd5714))
+
 ### 0.0.7 (2023-01-19)
 
 
