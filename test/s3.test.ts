@@ -7,13 +7,13 @@ test("S3 PutObject and GetObject should work", async () => {
   const Body = "test-body";
 
   await S3.putObject({
-    Bucket: "naor-python",
+    Bucket: "itty-aws",
     Key,
     Body,
   });
 
   const response = await S3.getObject({
-    Bucket: "naor-python",
+    Bucket: "itty-aws",
     Key,
   });
 

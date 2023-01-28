@@ -1,4 +1,4 @@
-import { AWS, AWSError } from "../src";
+import { AWS, AWSError } from "../src/index.js";
 import {
   EventBusName,
   S3BucketName,

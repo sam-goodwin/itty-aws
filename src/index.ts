@@ -68,6 +68,7 @@ export const AWS: SDK = new Proxy({} as any, {
                   method: signedRequest.method,
                 });
 
+
                 const isJson = response.headers
                   .get("content-type")
                   ?.startsWith("application/x-amz-json");
