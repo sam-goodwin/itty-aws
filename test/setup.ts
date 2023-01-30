@@ -8,7 +8,12 @@ import {
 } from "./constants.js";
 
 try {
-  await Promise.all([createTable(), createParameter(), createEventBus(), createS3Bucket()]);
+  await Promise.all([
+    createTable(),
+    createParameter(),
+    createEventBus(),
+    createS3Bucket(),
+  ]);
 } catch (err) {
   console.error(err);
   process.exit(1);
@@ -100,7 +105,8 @@ async function createS3Bucket() {
   } catch (err) {
     if (
       !(err instanceof AWSError) ||
-      err.type !== "ResourceAlreadyExistsException"
+      (err.type !== "ResourceAlreadyExistsException" &&
+        err.type !== "BucketAlreadyOwnedByYou")
     ) {
       console.error(err);
       throw err;
