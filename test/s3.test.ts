@@ -1,3 +1,4 @@
+import { ReadableStream } from "stream/web";
 import { AWS } from "../src";
 
 import { S3BucketName } from "./constants.js";

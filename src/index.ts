@@ -19,7 +19,10 @@ export interface ClientOptions {
   credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
 }
 
-declare const fetch: typeof import("node-fetch").default;
+declare var fetch: typeof import("node-fetch").default;
+
+var https: typeof import("https");
+let httpAgent: import("https").Agent;
 
 export const AWS: SDK = new Proxy({} as any, {
   get: (_, className: keyof SDK) => {
@@ -55,7 +58,7 @@ export const AWS: SDK = new Proxy({} as any, {
               body: JSON.stringify(input),
               headers: {
                 // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
-                host: url.host,
+                Host: url.host,
                 "Accept-Encoding": "identity",
                 "Content-Type": resolveContentType(className),
                 "X-Amz-Target": resolveXAmzTarget(className, methodName),
@@ -63,9 +66,10 @@ export const AWS: SDK = new Proxy({} as any, {
               },
             });
 
-            const isJson = response.headers
-              .get("content-type")
-              ?.startsWith("application/x-amz-json");
+            const isJson = getHeader(
+              response.headers,
+              "Content-Type"
+            )?.startsWith("application/x-amz-json");
 
             if (response.status === 200) {
               return isJson ? response.json() : response.text();
@@ -113,7 +117,7 @@ export const AWS: SDK = new Proxy({} as any, {
                 "Content-Type": "application/xml",
                 "User-Agent": "itty-aws",
                 "Accept-Encoding": "identity",
-                host: url.host,
+                Host: url.host,
               },
               method,
               body:
@@ -150,20 +154,29 @@ export const AWS: SDK = new Proxy({} as any, {
                 throw new AWSError(errorMessage, errorCode);
               }
             } else {
-              const output =
-                xmlToJson(
-                  (parsedXml?.children[0] as XmlDocument | undefined)?.children
-                ) ?? {};
+              const c = (parsedXml?.children[0] as XmlDocument | undefined)
+                ?.children;
+              const output = c ? xmlToJson(c) : {} ?? {};
               if (methodName === "getObject") {
                 output.Body = responseText;
               }
-              response.headers.forEach((value, key) => {
+              if (typeof response.headers.forEach === "function") {
+                response.headers.forEach((value, key) =>
+                  reverseHeaders(key, value)
+                );
+              } else {
+                Object.entries(response.headers).forEach(([key, value]) =>
+                  reverseHeaders(key, value)
+                );
+              }
+              return output;
+
+              function reverseHeaders(key: string, value: string) {
                 const k = s3ReverseHeaderMappings[key];
                 if (k) {
                   output[k] = value;
                 }
-              });
-              return output;
+              }
             }
 
             type Xml = XmlDocument | XmlElement | XmlComment | XmlText;
@@ -260,6 +273,15 @@ export const AWS: SDK = new Proxy({} as any, {
             path: url.pathname,
             protocol: url.protocol,
             ...init,
+            headers: {
+              ...init.headers,
+              ...(typeof fetch === "undefined"
+                ? {
+                    // fetch automatically puts the Content-Length header, https does not
+                    "Content-Length": init.body?.length.toString(10) ?? "0",
+                  }
+                : {}),
+            },
           });
 
           const signer = new SignatureV4({
@@ -271,16 +293,87 @@ export const AWS: SDK = new Proxy({} as any, {
 
           const signedRequest = await signer.sign(request);
 
-          return fetch(url.toString(), {
-            headers: signedRequest.headers,
-            body: signedRequest.body,
-            method: signedRequest.method,
-          });
+          if (typeof fetch !== "undefined") {
+            // we're probably
+            return fetch(url.toString(), {
+              headers: signedRequest.headers,
+              body: signedRequest.body,
+              method: signedRequest.method,
+            });
+          } else {
+            const http = (https ??= await import("https"));
+            const agent = (httpAgent ??= new http.Agent({
+              keepAlive: true,
+            }));
+
+            return new Promise<HttpResponse>((resolve, reject) => {
+              const request = http.request(
+                url,
+                {
+                  headers: signedRequest.headers,
+                  method: signedRequest.method,
+                  agent,
+                },
+                (msg) => {
+                  const chunks: Buffer[] | string[] = [];
+                  let isBuffer: boolean;
+                  msg.on("data", (chunk) => {
+                    chunks.push(chunk);
+                    if (Buffer.isBuffer(chunk)) {
+                      isBuffer = true;
+                    } else {
+                      isBuffer = false;
+                    }
+                  });
+                  msg.on("error", (err) => {
+                    reject(err);
+                  });
+                  msg.on("close", () => {
+                    const body = isBuffer
+                      ? Buffer.concat(chunks as Buffer[])
+                      : chunks.join("");
+                    const text = () =>
+                      typeof body === "string" ? body : body.toString("utf8");
+                    resolve({
+                      status: msg.statusCode!,
+                      headers: msg.headers,
+                      text: () => Promise.resolve(text()),
+                      json: async () => JSON.parse(text()),
+                    });
+                  });
+                }
+              );
+
+              if (signedRequest.body) {
+                request.write(signedRequest.body);
+              }
+              request.end();
+            });
+          }
         }
       }
     };
   },
 });
+
+function isStream(a: any): a is ReadableStream {
+  return a && typeof a.pipe === "function";
+}
+
+function getHeader(headers: any, key: string): string | undefined {
+  if (typeof headers.get === "function") {
+    return headers.get(key);
+  } else {
+    return headers[key] ?? headers[key.toLocaleLowerCase()];
+  }
+}
+
+interface HttpResponse {
+  status: number;
+  headers: Record<string, string | string[] | undefined>;
+  text(): Promise<string>;
+  json(): Promise<any>;
+}
 
 const s3NumberFields = new Set(["ObjectSize", "Size", "MaxKeys", "KeyCount"]);
 
