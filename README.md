@@ -1,8 +1,20 @@
 # itty-aws
 
-This is a teeny-tiny AWS SDK implementation for TypeScript using [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that fits everything into `~14 KB`, including all Services and APIs. The name is an homage to the awesome [itty-router](https://github.com/kwhitley/itty-router).
+This is a teeny-tiny AWS SDK implementation for TypeScript using [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that fits everything into `~49 KB`, including all Services and APIs. The name is an homage to the awesome [itty-router](https://github.com/kwhitley/itty-router).
 
 > 🛠 This is a highly experimental API, do not use for anything serious.
+
+## Supported APIs
+
+Known to work:
+
+- ✅ Any modern API using plain JSON protocol should work out of the box.
+- ✅ DynamoDB
+- ✅ EventBridge
+- ✅ S3 `CreateBucket`, `GetObject`, `HeadObject`, `PutObject`, `DeleteObject`, `ListObjectsV2`
+- ⛔️ S3 the remaining S3 APis likely don't work due to inconsistencies in the XML API.
+- ⛔️ SQS (see: [#1](https://github.com/sam-goodwin/itty-aws/issues/1))
+- ⛔️ SNS (see: [#2](https://github.com/sam-goodwin/itty-aws/issues/2))
 
 ## Why?
 
@@ -21,8 +33,8 @@ This project aims to eliminate the following issues with the official AWS SDK:
 
 The entire AWS SDK (including all Services and APIs) fits in to a
 
-- Minified bundle size of: `14.6 KB`.
-- Un-minified bundle size of: `26.4 KB`.
+- Minified bundle size of: `49 KB`.
+- Un-minified bundle size of: `95 KB`.
 
 > 💪 It is possible to reduce this even further.
 
@@ -31,10 +43,6 @@ The entire AWS SDK (including all Services and APIs) fits in to a
 ```ts
 npm install itty-aws
 ```
-
-## Pre-requisites
-
-- Node 18+ - we use the internal `fetch` API which is only available in Node 18.
 
 ## Usage
 
@@ -63,7 +71,5 @@ Instead of generating heavy classes and functions for the SDK like AWS does, we 
 
 ## Known Issues
 
-- It only works with Node 18+ because we use Node Fetch APIs. You can polyfill to work around this, but we should do better in the library to automatically handle older node versions while still maintaining a minimal bundle size.
-- It has only been tested with some AWS DynamoDB APIs. More thorough testing and enumeration of APIs is required.
-- Performance has not been tested - it's possible that our use of Fetch is slower than whatever magic the AWS SDK is doing.
+- Performance has not been tested - it's possible that our use of `https` or `fetch` is slower than whatever magic the AWS SDK is doing.
 - We're still importing some heavy code from the AWS SDK for signing requests - including tslib (for whatever reason). We should investigate hand-rolling replacements that don't have these dependencies or at least minimize them.

@@ -103,6 +103,10 @@ export const AWS: SDK = new Proxy({} as any, {
                 ? "GET"
                 : methodName.startsWith("put")
                 ? "PUT"
+                : methodName.startsWith("head")
+                ? "HEAD"
+                : methodName.startsWith("delete")
+                ? "DELETE"
                 : "POST";
 
             const url = new URL(
@@ -156,7 +160,7 @@ export const AWS: SDK = new Proxy({} as any, {
             } else {
               const c = (parsedXml?.children[0] as XmlDocument | undefined)
                 ?.children;
-              const output = c ? xmlToJson(c) : {} ?? {};
+              let output = c ? xmlToJson(c) : {} ?? {};
               if (methodName === "getObject") {
                 output.Body = responseText;
               }
@@ -169,6 +173,12 @@ export const AWS: SDK = new Proxy({} as any, {
                   reverseHeaders(key, value)
                 );
               }
+              output = Object.fromEntries(
+                Object.entries(output).map(([k, v]) => [
+                  k,
+                  s3NumberFields.has(k) ? parseNumber(v as string) : v,
+                ])
+              );
               return output;
 
               function reverseHeaders(key: string, value: string) {
@@ -215,14 +225,7 @@ export const AWS: SDK = new Proxy({} as any, {
                 ];
               } else if (xml instanceof XmlText) {
                 if (name && s3NumberFields.has(name)) {
-                  let i = parseInt(xml.text, 10);
-                  if (isNaN(i)) {
-                    i = parseFloat(xml.text);
-                  }
-                  if (isNaN(i)) {
-                    return xml.text;
-                  }
-                  return i;
+                  return parseNumber(xml.text);
                 }
                 if (xml.text.startsWith('"') && xml.text.startsWith('"')) {
                   // ETag is coming back quoted, wtf?
@@ -356,8 +359,15 @@ export const AWS: SDK = new Proxy({} as any, {
   },
 });
 
-function isStream(a: any): a is ReadableStream {
-  return a && typeof a.pipe === "function";
+function parseNumber(num: string) {
+  let i = parseInt(num, 10);
+  if (isNaN(i)) {
+    i = parseFloat(num);
+  }
+  if (isNaN(i)) {
+    return num;
+  }
+  return i;
 }
 
 function getHeader(headers: any, key: string): string | undefined {
@@ -375,7 +385,13 @@ interface HttpResponse {
   json(): Promise<any>;
 }
 
-const s3NumberFields = new Set(["ObjectSize", "Size", "MaxKeys", "KeyCount"]);
+const s3NumberFields = new Set([
+  "ObjectSize",
+  "Size",
+  "MaxKeys",
+  "KeyCount",
+  "ContentLength",
+]);
 
 const s3ArrayFields = new Set([
   "Contents",
@@ -428,12 +444,16 @@ const s3HeaderMappings: {
   ContentEncoding: "Content-Encoding",
   CacheControl: "Cache-Control",
   ContentLanguage: "Content-Language",
+  ContentLength: "Content-Length",
   ContentType: "Content-Type",
   ACL: "x-amz-acl",
 };
 
 const s3ReverseHeaderMappings = Object.fromEntries(
-  Object.entries(s3HeaderMappings).map(([k, v]) => [v, k])
+  Object.entries(s3HeaderMappings).flatMap(([k, v]) => [
+    [v, k],
+    [v.toLocaleLowerCase(), k],
+  ])
 );
 
 function toKebabCase(pascal: string) {

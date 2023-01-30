@@ -9,7 +9,7 @@ const Key = "test-key";
 const Body = "test-body";
 
 describe("s3", () => {
-  test("S3 PutObject and GetObject should work", async () => {
+  test("S3 PutObject, GetObject, HeadObject", async () => {
     await S3.putObject({
       Bucket: S3BucketName,
       Key,
@@ -22,10 +22,34 @@ describe("s3", () => {
     });
 
     expect(response?.Body?.toString()).toEqual(Body);
+
+    const head = await S3.headObject({
+      Bucket: S3BucketName,
+      Key,
+    });
+
+    expect(head.ContentLength).toEqual(9);
+
+    await S3.deleteObject({
+      Bucket: S3BucketName,
+      Key,
+    });
   });
 
   test("listObjectsV2", async () => {
-    const response = await S3.listObjectsV2({
+    let response = await S3.listObjectsV2({
+      Bucket: S3BucketName,
+    });
+
+    expect(response.Contents).toBe(undefined);
+
+    await S3.putObject({
+      Bucket: S3BucketName,
+      Key,
+      Body,
+    });
+
+    response = await S3.listObjectsV2({
       Bucket: S3BucketName,
     });
 
