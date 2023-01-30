@@ -5,6 +5,8 @@
   "compilerOptions": {
     "outDir": "lib",
     "module": "ESNext",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "types": ["@types/node"],
+    "typeRoots": ["node_modules/@types"]
   }
 }

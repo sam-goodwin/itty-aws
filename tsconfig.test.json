@@ -4,7 +4,6 @@
   "exclude": ["lib", "node_modules", "src/package.json"],
   "compilerOptions": {
     "moduleResolution": "Node",
-    "types": ["@types/jest"],
     "noEmit": true
   }
 }
