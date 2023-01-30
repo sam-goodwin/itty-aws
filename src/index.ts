@@ -6,6 +6,13 @@ import type { AwsCredentialIdentity, Provider } from "@aws-sdk/types";
 import type { SDK } from "./sdk.generated.js";
 
 import { mappings } from "./mappings.js";
+import {
+  parseXml,
+  XmlComment,
+  XmlDocument,
+  XmlElement,
+  XmlText,
+} from "@rgrove/parse-xml";
 
 export interface ClientOptions {
   endpoint?: string;
@@ -31,70 +38,364 @@ export const AWS: SDK = new Proxy({} as any, {
           {},
           {
             get: (_target, methodName: string) => {
-              return async (input: any) => {
-                const url = new URL(`https://${endpoint}`);
-
-                // See: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html
-
-                const request = new HttpRequest({
-                  hostname: url.hostname,
-                  path: url.pathname,
-                  protocol: url.protocol,
-                  method: "POST",
-                  body: JSON.stringify(input),
-                  headers: {
-                    // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
-                    host: url.host,
-                    "Accept-Encoding": "identity",
-                    "Content-Type": resolveContentType(className),
-                    "X-Amz-Target": resolveXAmzTarget(className, methodName),
-                    "User-Agent": "itty-aws",
-                  },
-                });
-
-                const signer = new SignatureV4({
-                  credentials,
-                  service: resolveService(className),
-                  region,
-                  sha256: Sha256,
-                });
-
-                const signedRequest = await signer.sign(request);
-
-                const response = await fetch(url.toString(), {
-                  headers: signedRequest.headers,
-                  body: signedRequest.body,
-                  method: signedRequest.method,
-                });
-
-                const isJson = response.headers
-                  .get("content-type")
-                  ?.startsWith("application/x-amz-json");
-
-                if (response.status === 200) {
-                  return isJson ? response.json() : response.text();
-                } else {
-                  // see: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
-                  // for now we'll just throw the error as a json object
-                  // TODO: throw something that is easy to branch on and check instanceof - this may increase bundle size though
-                  throw isJson
-                    ? new AWSError(await response.json())
-                    : new Error(await response.text());
-                }
-              };
+              if (className === "S3") {
+                return createS3Handler(methodName as any);
+              }
+              return createDefaultHandler(methodName);
             },
           }
         );
+
+        function createDefaultHandler(methodName: string) {
+          return async (input: any) => {
+            const url = new URL(`https://${endpoint}`);
+
+            const response = await sendRequest(url, {
+              method: "POST",
+              body: JSON.stringify(input),
+              headers: {
+                // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
+                host: url.host,
+                "Accept-Encoding": "identity",
+                "Content-Type": resolveContentType(className),
+                "X-Amz-Target": resolveXAmzTarget(className, methodName),
+                "User-Agent": "itty-aws",
+              },
+            });
+
+            const isJson = response.headers
+              .get("content-type")
+              ?.startsWith("application/x-amz-json");
+
+            if (response.status === 200) {
+              return isJson ? response.json() : response.text();
+            } else {
+              // see: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+              // for now we'll just throw the error as a json object
+              // TODO: throw something that is easy to branch on and check instanceof - this may increase bundle size though
+
+              throw isJson
+                ? new AWSError(await response.json())
+                : new Error(await response.text());
+            }
+          };
+        }
+
+        function createS3Handler(methodName: SDKMethods<"S3">) {
+          return async function (input: SDKInputProperties<"S3">) {
+            const bucket = input.Bucket;
+            const key = input.Key;
+
+            const headers = Object.fromEntries(
+              (Object.keys(input) as (keyof typeof input)[]).flatMap((k) =>
+                k in mappings ? [[s3HeaderMappings[k], input[k]]] : []
+              )
+            );
+
+            const method =
+              methodName === "createBucket"
+                ? "PUT"
+                : methodName.startsWith("get") || methodName.startsWith("list")
+                ? "GET"
+                : methodName.startsWith("put")
+                ? "PUT"
+                : "POST";
+
+            const url = new URL(
+              `https://${bucket ? `${bucket}.` : ""}${endpoint}${
+                typeof key === "string" ? `/${key}` : ""
+              }${method === "GET" ? toQueryString() : ""}`
+            );
+
+            const response = await sendRequest(url, {
+              headers: {
+                ...headers,
+                "Content-Type": "application/xml",
+                "User-Agent": "itty-aws",
+                "Accept-Encoding": "identity",
+                host: url.host,
+              },
+              method,
+              body:
+                methodName === "createBucket"
+                  ? `<?xml version="1.0" encoding="UTF-8"?><CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LocationConstraint>${process.env.AWS_REGION}</LocationConstraint></CreateBucketConfiguration>`
+                  : methodName === "putObject"
+                  ? typeof input.Body === "string"
+                    ? input.Body
+                    : Buffer.isBuffer(input.Body)
+                    ? input.Body
+                    : undefined
+                  : undefined,
+            });
+
+            const responseText = await response.text();
+
+            const parsedXml =
+              responseText !== "" ? parseXml(responseText) : undefined;
+            if (response.status < 200 || response.status >= 300) {
+              const errorXmlObject = (parsedXml?.children[0] as XmlElement)
+                .children as XmlElement[];
+              const errorCode = (
+                errorXmlObject.find((child) => child.name === "Code")
+                  ?.children[0] as XmlElement
+              ).text;
+              const errorMessage = (
+                errorXmlObject.find((child) => child.name === "Message")
+                  ?.children[0] as XmlElement
+              ).text;
+
+              if (errorCode) {
+                throw new AWSError(errorMessage, errorCode);
+              }
+            } else {
+              const output =
+                xmlToJson(
+                  (parsedXml?.children[0] as XmlDocument | undefined)?.children
+                ) ?? {};
+              if (methodName === "getObject") {
+                output.Body = responseText;
+              }
+              response.headers.forEach((value, key) => {
+                const k = s3ReverseHeaderMappings[key];
+                if (k) {
+                  output[k] = value;
+                }
+              });
+              return output;
+            }
+
+            type Xml = XmlDocument | XmlElement | XmlComment | XmlText;
+            function xmlToJson(
+              xml: Xml[] | Xml | undefined,
+              name?: string
+            ): any {
+              if (xml === undefined) {
+                return [];
+              } else if (xml instanceof XmlDocument) {
+                return xml.document.children.flatMap((x) => xmlToJson(x, name));
+              } else if (Array.isArray(xml)) {
+                return xml
+                  .flatMap((x) =>
+                    x instanceof XmlElement ? [xmlToJson(x)] : []
+                  )
+                  .reduce(
+                    (a, [k, v]) => ({
+                      ...a,
+                      [k]: s3ArrayFields.has(k)
+                        ? k in a
+                          ? [...a[k], v]
+                          : [v]
+                        : v,
+                    }),
+                    {}
+                  );
+              } else if (xml instanceof XmlElement) {
+                return [
+                  xml.name,
+                  xml.children.length === 0
+                    ? undefined
+                    : xml.children.length === 1
+                    ? xmlToJson(xml.children[0], xml.name)
+                    : xmlToJson(xml.children, xml.name),
+                ];
+              } else if (xml instanceof XmlText) {
+                if (name && s3NumberFields.has(name)) {
+                  let i = parseInt(xml.text, 10);
+                  if (isNaN(i)) {
+                    i = parseFloat(xml.text);
+                  }
+                  if (isNaN(i)) {
+                    return xml.text;
+                  }
+                  return i;
+                }
+                if (xml.text.startsWith('"') && xml.text.startsWith('"')) {
+                  // ETag is coming back quoted, wtf?
+                  return xml.text.slice(1, xml.text.length - 1);
+                }
+                return xml.text === "true"
+                  ? true
+                  : xml.text === "false"
+                  ? false
+                  : xml.text;
+              }
+              return [];
+            }
+
+            function toQueryString() {
+              const q = Object.entries(input)
+                .flatMap(([k, v]) => {
+                  if (k in s3HeaderMappings || k === "Bucket" || k === "Key") {
+                    return [];
+                  } else {
+                    return [
+                      [
+                        `${
+                          s3QueryStringMappings[
+                            k as keyof typeof s3QueryStringMappings
+                          ] ?? toKebabCase(k)
+                        }=${v}`,
+                      ],
+                    ];
+                  }
+                })
+                .join("&");
+              return q ? `?${q}` : "";
+            }
+          };
+        }
+
+        async function sendRequest(
+          url: URL,
+          init: {
+            method: string;
+            body?: string | Buffer;
+            headers: Record<string, string>;
+          }
+        ) {
+          const request = new HttpRequest({
+            hostname: url.hostname,
+            path: url.pathname,
+            protocol: url.protocol,
+            ...init,
+          });
+
+          const signer = new SignatureV4({
+            credentials,
+            service: resolveService(className),
+            region,
+            sha256: Sha256,
+          });
+
+          const signedRequest = await signer.sign(request);
+
+          return fetch(url.toString(), {
+            headers: signedRequest.headers,
+            body: signedRequest.body,
+            method: signedRequest.method,
+          });
+        }
       }
     };
   },
 });
 
+const s3NumberFields = new Set(["ObjectSize", "Size", "MaxKeys", "KeyCount"]);
+
+const s3ArrayFields = new Set([
+  "Contents",
+] satisfies (keyof SDKOutputProperties<"S3">)[]);
+
+const s3QueryStringMappings: {
+  [k in keyof SDKInputProperties<"S3">]?: string;
+} = {
+  PartNumber: "partNumber",
+};
+
+// todo: handle generally
+const s3HeaderMappings: {
+  [k in keyof SDKInputProperties<"S3">]?: string;
+} = {
+  BucketKeyEnabled: sse("bucket-key-enabled"),
+  BypassGovernanceRetention: amz("bypass-governance-retention"),
+  ChecksumCRC32: amz("checksum-crc32"),
+  ChecksumCRC32C: amz("checksum-crc32c"),
+  ChecksumSHA1: amz("checksum-sha1"),
+  ChecksumSHA256: amz("checksum-sha256"),
+  CopySource: copy("source"),
+  CopySourceIfMatch: copy("source-if-match"),
+  CopySourceIfModifiedSince: copy("source-if-modified-since"),
+  CopySourceIfNoneMatch: copy("source-if-none-match"),
+  CopySourceIfUnmodifiedSince: copy("source-if-unmodified-since"),
+  ExpectedBucketOwner: amz("expected-bucket-owner"),
+  Expires: "Expires",
+  GrantFullControl: amz("grant-full-control"),
+  GrantRead: amz("grant-read"),
+  GrantReadACP: amz("grant-read-acp"),
+  GrantWrite: amz("grant-write"),
+  GrantWriteACP: amz("grant-write-acp"),
+  MFA: amz("mfa"),
+  ObjectLockLegalHoldStatus: amz("object-lock-legal-hold"),
+  ObjectLockMode: amz("object-lock-mode"),
+  ObjectLockRetainUntilDate: amz("object-lock-retain-until-date"),
+  RequestPayer: amz("request-payer"),
+  ServerSideEncryption: amz("sever-side-encryption"),
+  SSECustomerAlgorithm: sse("customer-algorithm"),
+  SSECustomerKey: sse("customer-key"),
+  SSECustomerKeyMD5: sse("customer-key-MD5"),
+  SSEKMSEncryptionContext: sse("context"),
+  StorageClass: amz("storage-class"),
+  Tagging: amz("tagging"),
+  WebsiteRedirectLocation: amz("website-redirect-location"),
+  ObjectLockEnabledForBucket: amz("bucket-object-lock-enabled"),
+  ObjectOwnership: amz("object-ownership"),
+  ContentDisposition: "Content-Disposition",
+  ContentEncoding: "Content-Encoding",
+  CacheControl: "Cache-Control",
+  ContentLanguage: "Content-Language",
+  ContentType: "Content-Type",
+  ACL: "x-amz-acl",
+};
+
+const s3ReverseHeaderMappings = Object.fromEntries(
+  Object.entries(s3HeaderMappings).map(([k, v]) => [v, k])
+);
+
+function toKebabCase(pascal: string) {
+  return pascal.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase()).slice(1);
+}
+
+function sse(s: string) {
+  return `x-amz-server-side-encryption-${s}`;
+}
+
+function amz(s: string) {
+  return `x-amz-${s}`;
+}
+
+function copy(s: string) {
+  return `x-amz-copy-${s}`;
+}
+
+type SDKMethods<Service extends keyof SDK> = keyof InstanceType<SDK[Service]>;
+
+type SDKInputProperties<Service extends keyof SDK> = UnionToIntersection<
+  {
+    [k in keyof InstanceType<SDK[Service]>]: InstanceType<
+      SDK[Service]
+    >[k] extends {
+      (input: infer I): any;
+    }
+      ? I // Exclude<I, (...args: any[]) => any>
+      : never;
+  }[keyof InstanceType<SDK[Service]>]
+>;
+
+type SDKOutputProperties<Service extends keyof SDK> = UnionToIntersection<
+  {
+    [k in keyof InstanceType<SDK[Service]>]: InstanceType<
+      SDK[Service]
+    >[k] extends {
+      (input: any): Promise<infer I>;
+    }
+      ? I // Exclude<I, (...args: any[]) => any>
+      : never;
+  }[keyof InstanceType<SDK[Service]>]
+>;
+
+type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (
+  x: infer R
+) => any
+  ? R
+  : never;
+
 export class AWSError extends Error {
   readonly type?: string;
-  constructor(error: any) {
-    super(typeof error?.message === "string" ? error.message : error.__type);
-    this.type = error.__type;
+  constructor(error: any, type?: string) {
+    super(
+      typeof error?.message === "string" ? error.message : type ?? error.__type
+    );
+    this.type = type ?? error.__type;
   }
 }
 

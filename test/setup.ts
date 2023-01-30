@@ -1,13 +1,19 @@
 import { AWS, AWSError } from "../src/index.js";
 import {
   EventBusName,
+  S3BucketName,
   SsmParameterName,
   SsmParameterValue,
   TableName,
 } from "./constants.js";
 
 try {
-  await Promise.all([createTable(), createParameter(), createEventBus()]);
+  await Promise.all([
+    createTable(),
+    createParameter(),
+    createEventBus(),
+    createS3Bucket(),
+  ]);
 } catch (err) {
   console.error(err);
   process.exit(1);
@@ -83,6 +89,24 @@ async function createEventBus() {
     if (
       !(err instanceof AWSError) ||
       err.type !== "ResourceAlreadyExistsException"
+    ) {
+      console.error(err);
+      throw err;
+    }
+  }
+}
+
+async function createS3Bucket() {
+  const client = new AWS.S3();
+  try {
+    await client.createBucket({
+      Bucket: S3BucketName,
+    });
+  } catch (err) {
+    if (
+      !(err instanceof AWSError) ||
+      (err.type !== "ResourceAlreadyExistsException" &&
+        err.type !== "BucketAlreadyOwnedByYou")
     ) {
       console.error(err);
       throw err;
