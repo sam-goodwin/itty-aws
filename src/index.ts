@@ -131,7 +131,9 @@ export const AWS: SDK = new Proxy({} as any, {
             const responseText = await response.text();
 
             const parsedXml =
-              responseText !== "" ? parseXml(responseText) : undefined;
+              responseText !== "" && methodName !== "getObject"
+                ? parseXml(responseText)
+                : undefined;
             if (response.status < 200 || response.status >= 300) {
               const errorXmlObject = (parsedXml?.children[0] as XmlElement)
                 .children as XmlElement[];

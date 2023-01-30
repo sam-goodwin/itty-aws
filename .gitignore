@@ -6,3 +6,4 @@ sdk.generated.ts
 cdk.out
 stats.html
 src/mappings.ts
+*.tsbuildinfo
