@@ -6,6 +6,7 @@
   ],
   "type": "module",
   "module": "./lib/index.js",
+  "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "download:models": "bash ./scripts/download-smithy-models.sh",
