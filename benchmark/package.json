@@ -1,20 +1,24 @@
 {
-  "name": "@benchmark/infra",
+  "name": "@benchmark/stack",
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "bootstrap": "cdk bootstrap",
     "synth": "cdk synth",
     "deploy": "cdk deploy",
     "hotswap": "cdk deploy --hotswap"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.60.0",
-    "@benchmark/functions": "workspace:^"
+    "@aws-sdk/client-dynamodb": "^3.245.0",
+    "aws-sdk": "2.1295.0",
+    "itty-aws": "workspace:^",
+    "aws-cdk-lib": "^2.60.0"
   },
   "devDependencies": {
     "@types/node": "^16",
     "aws-cdk": "^2.60.0",
     "constructs": "^10",
+    "esbuild": "0.17.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   }
