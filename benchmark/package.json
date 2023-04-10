@@ -1,5 +1,5 @@
 {
-  "name": "@benchmark/stack",
+  "name": "@itty-aws/benchmark",
   "version": "0.0.0",
   "private": true,
   "scripts": {

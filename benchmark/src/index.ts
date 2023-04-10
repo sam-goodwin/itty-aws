@@ -39,7 +39,7 @@ let FN_NAME: string;
 let fn: NodejsFunction;
 
 // benchmark setup
-FN_NAME = `${FUNCTION_PREFIX}.benchmark-setup`;
+FN_NAME = `${FUNCTION_PREFIX}_setup`;
 fn = new NodejsFunction(stack, FN_NAME, {
   functionName: FN_NAME,
   runtime: aws_lambda.Runtime.NODEJS_16_X,
@@ -50,7 +50,7 @@ fn = new NodejsFunction(stack, FN_NAME, {
 table.grantWriteData(fn);
 
 // Node.js 16.x, runtime aws-sdk v2
-FN_NAME = `${FUNCTION_PREFIX}.n16-sdk2-rntm`;
+FN_NAME = `${FUNCTION_PREFIX}_n16-sdk2-rntm`;
 fn = new NodejsFunction(stack, FN_NAME, {
   functionName: FN_NAME,
   runtime: aws_lambda.Runtime.NODEJS_16_X,
@@ -65,7 +65,7 @@ fn = new NodejsFunction(stack, FN_NAME, {
 table.grantReadData(fn);
 
 // Node.js 16.x, bundled aws-sdk v2
-FN_NAME = `${FUNCTION_PREFIX}.n16-sdk2-bndl`;
+FN_NAME = `${FUNCTION_PREFIX}_n16-sdk2-bndl`;
 fn = new NodejsFunction(stack, FN_NAME, {
   functionName: FN_NAME,
   runtime: aws_lambda.Runtime.NODEJS_16_X,
