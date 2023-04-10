@@ -5,20 +5,22 @@
     "lib"
   ],
   "type": "module",
-  "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./lib/src/index.js",
+  "module": "./lib/src/index.js",
+  "types": "./lib/src/index.d.ts",
   "scripts": {
     "download:models": "bash ./scripts/download-smithy-models.sh",
     "generate": "pnpm generate:types && pnpm generate:mappings",
     "generate:types": "ts-node-esm ./scripts/gen-sdk-types.mts",
     "generate:mappings": "ts-node-esm ./scripts/gen-sdk-mappings.mts",
-    "build": "tsc -b",
+    "build": "tsc --build tsconfig.build.json",
     "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
-    "watch": "tsc -b -w",
+    "watch": "tsc --build --watch tsconfig.build.json",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
-    "bench:synth": "pnpm -r --filter @benchmark/infra synth",
-    "bench:deploy": "pnpm -r --filter @benchmark/infra run deploy",
-    "bench:hotswap": "pnpm -r --filter @benchmark/infra run hotswap"
+    "bench:bootstrap": "pnpm -r --filter @benchmark/stack bootstrap",
+    "bench:synth": "pnpm -r --filter @benchmark/stack synth",
+    "bench:deploy": "pnpm -r --filter @benchmark/stack run deploy",
+    "bench:hotswap": "pnpm -r --filter @benchmark/stack run hotswap"
   },
   "dependencies": {
     "@rgrove/parse-xml": "^4.0.1",
@@ -39,7 +41,7 @@
     "@aws-sdk/types": "3.226.0",
     "@tsconfig/node16": "^1",
     "@types/jest": "^29",
-    "@types/node": "^16",
+    "@types/node": "^16.0.0",
     "@types/prettier": "^2.7.2",
     "esbuild": "0.17.2",
     "esbuild-visualizer": "^0.4.0",

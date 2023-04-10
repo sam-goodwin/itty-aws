@@ -4,7 +4,7 @@ import { HttpRequest } from "@aws-sdk/protocol-http";
 import { SignatureV4 } from "@aws-sdk/signature-v4";
 import type { AwsCredentialIdentity, Provider } from "@aws-sdk/types";
 import type { SDK } from "./sdk.generated.js";
-
+import { URL } from "node:url";
 import { mappings } from "./mappings.js";
 import {
   parseXml,

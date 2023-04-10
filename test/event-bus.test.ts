@@ -13,7 +13,11 @@ test("should PutEvents", async () => {
       if (attempts > 10) {
         fail("failed to put events");
       }
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(null);
+        }, 1000);
+      });
     } else {
       break;
     }

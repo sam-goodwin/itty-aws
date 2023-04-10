@@ -3,7 +3,6 @@
   "references": [
     { "path": "./tsconfig.esm.json" },
     { "path": "./tsconfig.test.json" },
-    { "path": "./benchmark/functions/tsconfig.json" },
-    { "path": "./benchmark/stack/tsconfig.json" }
+    { "path": "./benchmark/tsconfig.json" }
   ]
 }
