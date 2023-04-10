@@ -17,10 +17,10 @@
     "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
     "watch": "tsc --build --watch tsconfig.build.json",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
-    "bench:bootstrap": "pnpm -r --filter @benchmark/stack bootstrap",
-    "bench:synth": "pnpm -r --filter @benchmark/stack synth",
-    "bench:deploy": "pnpm -r --filter @benchmark/stack run deploy",
-    "bench:hotswap": "pnpm -r --filter @benchmark/stack run hotswap"
+    "bench:bootstrap": "pnpm -r --filter @itty-aws/benchmark bootstrap",
+    "bench:synth": "pnpm -r --filter @itty-aws/benchmark synth",
+    "bench:deploy": "pnpm -r --filter @itty-aws/benchmark run deploy",
+    "bench:hotswap": "pnpm -r --filter @itty-aws/benchmark run hotswap"
   },
   "dependencies": {
     "@rgrove/parse-xml": "^4.0.1",

@@ -1,3 +1,2 @@
 workspaces:
-  - /*
-  - benchmark/*
+  - benchmark
