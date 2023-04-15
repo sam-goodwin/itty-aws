@@ -1,16 +1,14 @@
-import { App, Stack, Duration, aws_dynamodb, aws_lambda } from "aws-cdk-lib";
-import { NodejsFunction, LogLevel } from "aws-cdk-lib/aws-lambda-nodejs";
-import { RetentionDays } from "aws-cdk-lib/aws-logs";
+import { App, Stack, aws_dynamodb, aws_lambda } from "aws-cdk-lib";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+import { CONFIG, IFunction } from "../benchmarkConfig";
 
-const STACK = `benchmark`;
-const TABLE_NAME = `${STACK}-table`;
-const FUNCTION_PREFIX = `${STACK}-fn`;
+const STACK_NAME = `benchmark`;
 
 const app = new App();
 
-const stack = new Stack(app, STACK);
+const stack = new Stack(app, STACK_NAME);
 
-const table = new aws_dynamodb.Table(stack, TABLE_NAME, {
+const table = new aws_dynamodb.Table(stack, STACK_NAME, {
   partitionKey: {
     name: "pk",
     type: aws_dynamodb.AttributeType.STRING,
@@ -18,63 +16,74 @@ const table = new aws_dynamodb.Table(stack, TABLE_NAME, {
   billingMode: aws_dynamodb.BillingMode.PAY_PER_REQUEST,
 });
 
-const props = {
-  environment: {
-    TABLE_NAME: table.tableName,
-    NODE_OPTIONS: "--enable-source-maps",
-  },
-  memorySize: 512,
-  bundling: {
-    target: "ES2022",
-    keepNames: true,
-    logLevel: LogLevel.INFO,
-    sourceMap: true,
-    minify: true,
-  },
-  timeout: Duration.seconds(5),
-  logRetention: RetentionDays.ONE_DAY,
-};
+function createNodejsFunction(props: IFunction) {
+  const {
+    functionName,
+    entryPath,
+    runtimeName = "NODEJS_16_X",
+    useItty = false,
+    useBundle: bundle = false,
+  } = props;
 
-let FN_NAME: string;
-let fn: NodejsFunction;
+  let runtime: aws_lambda.Runtime = aws_lambda.Runtime.NODEJS_16_X;
+  if (runtimeName === "NODEJS_18_X") runtime = aws_lambda.Runtime.NODEJS_16_X;
 
-// benchmark setup
-FN_NAME = `${FUNCTION_PREFIX}_setup`;
-fn = new NodejsFunction(stack, FN_NAME, {
-  functionName: FN_NAME,
-  runtime: aws_lambda.Runtime.NODEJS_16_X,
-  entry: require.resolve("./functions/benchmark-setup-handler"),
-  handler: "handler",
-  ...props,
+  let externalModules: string[] = ["aws-sdk"];
+  switch (true) {
+    case bundle:
+      externalModules = [];
+      break;
+    case !bundle && runtimeName === "NODEJS_18_X":
+      externalModules = ["@aws-sdk/*"];
+      break;
+  }
+
+  let METADATA_SDK: string = "AWS-SDK v2";
+  switch (true) {
+    case useItty:
+      METADATA_SDK = "Itty-AWS";
+      break;
+    case !useItty && runtimeName === "NODEJS_18_X":
+      METADATA_SDK = "AWS-SDK v3";
+      break;
+  }
+
+  const handler = new NodejsFunction(stack, functionName, {
+    functionName,
+    runtime,
+    entry: require.resolve(entryPath),
+    handler: "handler",
+    environment: {
+      TABLE_NAME: table.tableName,
+      NODE_OPTIONS: "--enable-source-maps",
+      METADATA_FN_NAME: functionName,
+      METADATA_RUNTIME: runtimeName,
+      METADATA_SDK,
+      METADATA_SDK_SOURCE: bundle ? "bundle" : "runtime",
+    },
+    awsSdkConnectionReuse: true,
+    memorySize: 512,
+    bundling: {
+      target: "ES2022",
+      externalModules,
+    },
+  });
+  table.grantReadWriteData(handler);
+}
+
+// Dynamodb setup function
+createNodejsFunction({
+  functionName: "ddb-setup",
+  entryPath: "./functions/ddb-setup_handler",
 });
-table.grantWriteData(fn);
 
-// Node.js 16.x, runtime aws-sdk v2
-FN_NAME = `${FUNCTION_PREFIX}_n16-sdk2-rntm`;
-fn = new NodejsFunction(stack, FN_NAME, {
-  functionName: FN_NAME,
-  runtime: aws_lambda.Runtime.NODEJS_16_X,
-  entry: require.resolve("./functions/n16-sdk2-handler"),
-  handler: "handler",
-  ...props,
-  bundling: {
-    ...props.bundling,
-    externalModules: ["aws-sdk"],
-  },
+// Create `CONFIG.runs` instances of the functions declared in `CONFIG.functions`
+CONFIG.functions.forEach((fn: IFunction) => {
+  for (let i = 1; i <= CONFIG.runs; i++) {
+    const functionName = `${fn.functionName}-${i}`;
+    createNodejsFunction({
+      functionName,
+      entryPath: fn.entryPath,
+    });
+  }
 });
-table.grantReadData(fn);
-
-// Node.js 16.x, bundled aws-sdk v2
-FN_NAME = `${FUNCTION_PREFIX}_n16-sdk2-bndl`;
-fn = new NodejsFunction(stack, FN_NAME, {
-  functionName: FN_NAME,
-  runtime: aws_lambda.Runtime.NODEJS_16_X,
-  entry: require.resolve("./functions/n16-sdk2-handler"),
-  handler: "handler",
-  ...props,
-  bundling: {
-    ...props.bundling,
-    externalModules: [],
-  },
-});
-table.grantReadData(fn);

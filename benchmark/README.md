@@ -31,14 +31,14 @@ A super simple performance benchmarking stack is deployed on the AWS Cloud:
 - 1x lambda to put a 10KB DynamoDB item
 - 10x lambdas of each test configuration described in the following table:
 
-| Name          | Runtime          | SDK       | SDK source |
-| ------------- | ---------------- | --------- | ---------- |
-| n16-sdk2-rntm | AWS Node.js 16.x | AWS-SDKv2 | runtime    |
-| n16-sdk2-bndl | AWS Node.js 16.x | AWS-SDKv2 | bundled    |
-| n16-itty-bndl | AWS Node.js 16.x | Itty-AWS  | bundled    |
-| n18-sdk3-rntm | AWS Node.js 18.x | AWS-SDKv3 | runtime    |
-| n18-sdk3-bndl | AWS Node.js 18.x | AWS-SDKv3 | bundled    |
-| n18-itty-bndl | AWS Node.js 18.x | Itty-AWS  | bundled    |
+| Name          | Runtime          | SDK               |
+| ------------- | ---------------- | ----------------- |
+| n16-sdk2-rntm | AWS Node.js 16.x | runtime AWS-SDKv2 |
+| n16-sdk2-bndl | AWS Node.js 16.x | bundle AWS-SDKv2  |
+| n16-itty-bndl | AWS Node.js 16.x | Itty-AWS          |
+| n18-sdk3-rntm | AWS Node.js 18.x | runtime AWS-SDKv3 |
+| n18-sdk3-bndl | AWS Node.js 18.x | bundle AWS-SDKv3  |
+| n18-itty-bndl | AWS Node.js 18.x | Itty-AWS          |
 
 The lambdas code is pretty simple. They perform a single read on DynamoDB with the target SDK and log the result.
 

@@ -6,17 +6,22 @@
     "bootstrap": "cdk bootstrap",
     "synth": "cdk synth",
     "deploy": "cdk deploy",
-    "hotswap": "cdk deploy --hotswap"
+    "hotswap": "cdk deploy --hotswap",
+    "start": "ts-node scripts/run.ts",
+    "analyse": "ts-node scripts/analyze.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "^3.312.0",
     "@aws-sdk/client-dynamodb": "^3.245.0",
+    "@aws-sdk/client-lambda": "^3.314.0",
+    "aws-cdk-lib": "^2.60.0",
     "aws-sdk": "2.1295.0",
-    "itty-aws": "workspace:^",
-    "aws-cdk-lib": "^2.60.0"
+    "itty-aws": "workspace:^"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.114",
     "@types/node": "^16",
-    "aws-cdk": "^2.60.0",
+    "aws-cdk": "^2.74.0",
     "constructs": "^10",
     "esbuild": "0.17.2",
     "ts-node": "^10.9.1",

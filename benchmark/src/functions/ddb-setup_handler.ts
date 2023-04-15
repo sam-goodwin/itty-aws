@@ -21,10 +21,7 @@ const putDoc = (name: string, size: number) =>
 
 export async function handler() {
   try {
-    await Promise.allSettled([
-      putDoc("1KB", 1024), // 1KB doc
-      putDoc("10KB", 10240), // 10KB doc
-    ]);
+    await putDoc("10KB", 10240); // 10KB doc
     return { status: 200 };
   } catch (error) {
     console.error({ error });

@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["src"],
+  "include": ["src", "scripts", "benchmarkConfig.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "module": "CommonJS",
