@@ -8,7 +8,7 @@
     "deploy": "cdk deploy",
     "hotswap": "cdk deploy --hotswap",
     "start": "ts-node scripts/run.ts",
-    "analyse": "ts-node scripts/analyze.ts"
+    "consolidate": "ts-node scripts/consolidate.ts"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.312.0",

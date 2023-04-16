@@ -44,17 +44,19 @@ export async function handler(_: unknown, context: Context) {
 
     //benchmarking
     await dynamodb.send(getItemParams);
-    console.log({
-      context: {
-        name: process.env.METADATA_FN_NAME!,
-        runtime: process.env.METADATA_RUNTIME!,
-        sdk: {
-          name: process.env.METADATA_SDK!,
-          source: process.env.METADATA_SDK_SOURCE!,
+    console.log(
+      JSON.stringify({
+        context: {
+          name: process.env.METADATA_FN_NAME!,
+          runtime: process.env.METADATA_RUNTIME!,
+          sdk: {
+            name: process.env.METADATA_SDK!,
+            source: process.env.METADATA_SDK_SOURCE!,
+          },
         },
-      },
-      latency: { httpRequest, apiCall },
-    });
+        latency: { httpRequest, apiCall },
+      })
+    );
     return { status: 200 };
   } catch (error) {
     console.error({ error });

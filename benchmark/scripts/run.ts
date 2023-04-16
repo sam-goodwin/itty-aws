@@ -45,7 +45,7 @@ async function main() {
   const filePath = path.join(
     __dirname,
     CONFIG.logs.outputFolder,
-    `${gitBranch}.raw.json`
+    `${gitBranch}/raw.json`
   );
   const rawResult: IResult = {
     git: {
@@ -159,9 +159,8 @@ async function main() {
     }
   }
   // Save the results
-  console.log(`\n- Write results`);
+  console.log(`\n- Write raw data to '${filePath}'`);
   rawResult.log = [...eventsLog];
-  console.log(`  - Raw data`);
   rawResult.time.end = new Date().toISOString();
   await fsPromises.writeFile(filePath, JSON.stringify(rawResult, null, "  "));
 

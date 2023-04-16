@@ -24,21 +24,17 @@ export async function handler(_: unknown, context: Context) {
     const apiCall = round(performance.now() - start);
     //benchmarking
     console.log(
-      JSON.stringify(
-        {
-          context: {
-            name: process.env.METADATA_FN_NAME!,
-            runtime: process.env.METADATA_RUNTIME!,
-            sdk: {
-              name: process.env.METADATA_SDK!,
-              source: process.env.METADATA_SDK_SOURCE!,
-            },
+      JSON.stringify({
+        context: {
+          name: process.env.METADATA_FN_NAME!,
+          runtime: process.env.METADATA_RUNTIME!,
+          sdk: {
+            name: process.env.METADATA_SDK!,
+            source: process.env.METADATA_SDK_SOURCE!,
           },
-          latency: { httpRequest: undefined, apiCall },
         },
-        null,
-        "  "
-      )
+        latency: { httpRequest: undefined, apiCall },
+      })
     );
     return { status: 200 };
   } catch (error) {
