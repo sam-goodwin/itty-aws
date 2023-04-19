@@ -22,7 +22,8 @@
     "bench:deploy": "pnpm -r --filter @itty-aws/benchmark run deploy",
     "bench:hotswap": "pnpm -r --filter @itty-aws/benchmark run hotswap",
     "bench:run": "pnpm -r --filter @itty-aws/benchmark start",
-    "bench:consolidate": "pnpm -r --filter @itty-aws/benchmark consolidate"
+    "bench:consolidate": "pnpm -r --filter @itty-aws/benchmark consolidate",
+    "bench:report": "pnpm -r --filter @itty-aws/benchmark report"
   },
   "dependencies": {
     "@rgrove/parse-xml": "^4.0.1",

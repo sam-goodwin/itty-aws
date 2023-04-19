@@ -8,7 +8,8 @@
     "deploy": "cdk deploy",
     "hotswap": "cdk deploy --hotswap",
     "start": "ts-node scripts/run.ts",
-    "consolidate": "ts-node scripts/consolidate.ts"
+    "consolidate": "ts-node scripts/consolidate.ts",
+    "report": "ts-node scripts/report.ts"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.312.0",
@@ -16,6 +17,8 @@
     "@aws-sdk/client-lambda": "^3.314.0",
     "aws-cdk-lib": "^2.60.0",
     "aws-sdk": "2.1295.0",
+    "chart.js": "^3.9.1",
+    "chartjs-node-canvas": "^4.1.6",
     "itty-aws": "workspace:^"
   },
   "devDependencies": {
