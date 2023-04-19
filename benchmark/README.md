@@ -1,8 +1,8 @@
 [🏠 Home](../README.md)
 
-# ⚡ Itty-AWS benchmarking
+# ⚡ itty-aws benchmarking
 
-We compare Itty-AWS in various runtime environments and against AWS-SDK v2 and v3 to ensure it performs at least as well as the native tools provided by AWS.
+We compare itty-aws in various runtime environments and against AWS-SDK v2 and v3 to ensure it performs at least as well as the native tools provided by AWS.
 
 ## Browse the reports
 

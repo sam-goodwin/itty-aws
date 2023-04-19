@@ -31,10 +31,10 @@ A super simple performance benchmarking stack is deployed on the AWS Cloud:
 | ------------- | ---------------- | ----------------- |
 | n16-sdk2-rntm | AWS Node.js 16.x | runtime AWS-SDKv2 |
 | n16-sdk2-bndl | AWS Node.js 16.x | bundle AWS-SDKv2  |
-| n16-itty-bndl | AWS Node.js 16.x | Itty-AWS          |
+| n16-itty-bndl | AWS Node.js 16.x | itty-aws          |
 | n18-sdk3-rntm | AWS Node.js 18.x | runtime AWS-SDKv3 |
 | n18-sdk3-bndl | AWS Node.js 18.x | bundle AWS-SDKv3  |
-| n18-itty-bndl | AWS Node.js 18.x | Itty-AWS          |
+| n18-itty-bndl | AWS Node.js 18.x | itty-aws          |
 
 The lambdas code is pretty simple. They perform a single read on DynamoDB with the target SDK and log the result.
 

@@ -41,7 +41,7 @@ function createNodejsFunction(props: IFunction) {
   let METADATA_SDK: string = "AWS-SDK v2";
   switch (true) {
     case useItty:
-      METADATA_SDK = "Itty-AWS";
+      METADATA_SDK = "itty-aws";
       break;
     case !useItty && runtimeName === "NODEJS_18_X":
       METADATA_SDK = "AWS-SDK v3";
