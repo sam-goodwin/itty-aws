@@ -4,7 +4,7 @@ import path from "path";
 import { CONFIG } from "../benchmarkConfig";
 import { performance } from "perf_hooks";
 
-interface IResult {
+export interface IResult {
   git: {
     branch: string;
     tag?: string;
@@ -14,6 +14,7 @@ interface IResult {
     coldStarts: {
       initDuration: Record<string, any>;
       duration: Record<string, any>;
+      totalDuration: Record<string, any>;
       maxMemory: Record<string, any>;
       httpRequestLatency: Record<string, any>;
       apiCallLatency: Record<string, any>;
@@ -102,9 +103,10 @@ async function main() {
     time: { ...raw.time },
     datasets: {
       coldStarts: {
-        duration: {},
-        maxMemory: {},
         initDuration: {},
+        duration: {},
+        totalDuration: {},
+        maxMemory: {},
         httpRequestLatency: {},
         apiCallLatency: {},
       },
@@ -172,12 +174,19 @@ async function main() {
     const label = entry.name.substring(0, entry.name.lastIndexOf("-"));
     const targetDataset = entry.isColdStart ? "coldStarts" : "warmStarts";
 
-    // initDuration
     if (entry.isColdStart) {
+      // initDuration
       if (!result.datasets.coldStarts.initDuration[label]) {
         datasetPointers.push(`datasets.${targetDataset}.initDuration.${label}`);
+        result.datasets.coldStarts.initDuration["title"] =
+          "Cold start: init duration";
         result.datasets.coldStarts.initDuration[label] = {
           label: label,
+          order: CONFIG.functions.reduce(
+            (prev, curr) =>
+              curr.functionName === label ? curr.chart.order : prev,
+            0
+          ),
           data: [entry.function.initDuration],
         };
       } else {
@@ -185,13 +194,43 @@ async function main() {
           entry.function.initDuration
         );
       }
+
+      // Total duration
+      if (!result.datasets.coldStarts.totalDuration[label]) {
+        datasetPointers.push(
+          `datasets.${targetDataset}.totalDuration.${label}`
+        );
+        result.datasets.coldStarts.totalDuration["title"] =
+          "Cold start: total duration";
+        result.datasets.coldStarts.totalDuration[label] = {
+          label: label,
+          order: CONFIG.functions.reduce(
+            (prev, curr) =>
+              curr.functionName === label ? curr.chart.order : prev,
+            0
+          ),
+          data: [entry.function.initDuration + entry.function.duration],
+        };
+      } else {
+        result.datasets.coldStarts.totalDuration[label].data.push(
+          entry.function.initDuration + entry.function.duration
+        );
+      }
     }
 
     // duration
     if (!result.datasets[targetDataset].duration[label]) {
       datasetPointers.push(`datasets.${targetDataset}.duration.${label}`);
+      result.datasets[targetDataset].duration["title"] = `${
+        entry.isColdStart ? "Cold" : "Warm"
+      } start: duration`;
       result.datasets[targetDataset].duration[label] = {
         label: label,
+        order: CONFIG.functions.reduce(
+          (prev, curr) =>
+            curr.functionName === label ? curr.chart.order : prev,
+          0
+        ),
         data: [entry.function.duration],
       };
     } else {
@@ -203,8 +242,16 @@ async function main() {
     // maxMemory
     if (!result.datasets[targetDataset].maxMemory[label]) {
       datasetPointers.push(`datasets.${targetDataset}.maxMemory.${label}`);
+      result.datasets[targetDataset].maxMemory["title"] = `${
+        entry.isColdStart ? "Cold" : "Warm"
+      } start: max memory`;
       result.datasets[targetDataset].maxMemory[label] = {
         label: label,
+        order: CONFIG.functions.reduce(
+          (prev, curr) =>
+            curr.functionName === label ? curr.chart.order : prev,
+          0
+        ),
         data: [entry.function.maxMemory],
       };
     } else {
@@ -219,8 +266,16 @@ async function main() {
         datasetPointers.push(
           `datasets.${targetDataset}.httpRequestLatency.${label}`
         );
+        result.datasets[targetDataset].httpRequestLatency["title"] = `${
+          entry.isColdStart ? "Cold" : "Warm"
+        } start: http request latency`;
         result.datasets[targetDataset].httpRequestLatency[label] = {
           label: label,
+          order: CONFIG.functions.reduce(
+            (prev, curr) =>
+              curr.functionName === label ? curr.chart.order : prev,
+            0
+          ),
           data: [entry.latency.httpRequest],
         };
       } else {
@@ -233,8 +288,16 @@ async function main() {
     // apiCall
     if (!result.datasets[targetDataset].apiCallLatency[label]) {
       datasetPointers.push(`datasets.${targetDataset}.apiCallLatency.${label}`);
+      result.datasets[targetDataset].apiCallLatency["title"] = `${
+        entry.isColdStart ? "Cold" : "Warm"
+      } start: API call latency`;
       result.datasets[targetDataset].apiCallLatency[label] = {
         label: label,
+        order: CONFIG.functions.reduce(
+          (prev, curr) =>
+            curr.functionName === label ? curr.chart.order : prev,
+          0
+        ),
         data: [entry.latency.apiCall],
       };
     } else {

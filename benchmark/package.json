@@ -19,6 +19,7 @@
     "aws-sdk": "2.1295.0",
     "chart.js": "^3.9.1",
     "chartjs-node-canvas": "^4.1.6",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "itty-aws": "workspace:^"
   },
   "devDependencies": {

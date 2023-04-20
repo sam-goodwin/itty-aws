@@ -8,285 +8,11 @@
   },
   "datasets": {
     "coldStarts": {
-      "duration": {
-        "aws16-sdk2-runtime": {
-          "label": "aws16-sdk2-runtime",
-          "data": [
-            164.82,
-            146.11,
-            147.85,
-            151.99,
-            159.77,
-            132.4,
-            148.47,
-            155.82,
-            142.63,
-            136.17
-          ],
-          "mean": 148.6,
-          "standardDeviation": 9.54
-        },
-        "aws16-sdk2-bundle": {
-          "label": "aws16-sdk2-bundle",
-          "data": [
-            141.6,
-            161.89,
-            159.06,
-            164.89,
-            128.43,
-            140.84,
-            141.62,
-            149.57,
-            146.15,
-            149.44
-          ],
-          "mean": 148.35,
-          "standardDeviation": 10.6
-        },
-        "aws16-itty-runtime": {
-          "label": "aws16-itty-runtime",
-          "data": [
-            169.94,
-            179.25,
-            183.8,
-            187.45,
-            185.99,
-            184.27,
-            186.94,
-            171.65,
-            168.41,
-            172.7
-          ],
-          "mean": 179.04,
-          "standardDeviation": 7.23
-        },
-        "aws16-itty-bundle": {
-          "label": "aws16-itty-bundle",
-          "data": [
-            177.04,
-            176.97,
-            177.91,
-            181.59,
-            177.75,
-            182.28,
-            172.97,
-            173.64,
-            190.33,
-            176.02
-          ],
-          "mean": 178.65,
-          "standardDeviation": 4.79
-        },
-        "aws18-sdk3-runtime": {
-          "label": "aws18-sdk3-runtime",
-          "data": [
-            112.36,
-            122.44,
-            109.77,
-            115.03,
-            113.4,
-            119.64,
-            125.22,
-            112.77,
-            149.96,
-            112.48
-          ],
-          "mean": 119.31,
-          "standardDeviation": 11.25
-        },
-        "aws18-sdk3-bundle": {
-          "label": "aws18-sdk3-bundle",
-          "data": [
-            110.55,
-            109.31,
-            123.02,
-            119.68,
-            115.56,
-            126.48,
-            117.4,
-            123.38,
-            105.79,
-            138.45
-          ],
-          "mean": 118.96,
-          "standardDeviation": 9.08
-        },
-        "aws18-itty-runtime": {
-          "label": "aws18-itty-runtime",
-          "data": [
-            184.88,
-            168.69,
-            180.7,
-            174.57,
-            183.94,
-            167.39,
-            177.24,
-            157.29,
-            184.5,
-            206.81
-          ],
-          "mean": 178.6,
-          "standardDeviation": 12.65
-        },
-        "aws18-itty-bundle": {
-          "label": "aws18-itty-bundle",
-          "data": [
-            176.8,
-            172.48,
-            171.53,
-            184.25,
-            182.87,
-            183.16,
-            181.7,
-            186.03,
-            170.46,
-            166.99
-          ],
-          "mean": 177.63,
-          "standardDeviation": 6.47
-        }
-      },
-      "maxMemory": {
-        "aws16-sdk2-runtime": {
-          "label": "aws16-sdk2-runtime",
-          "data": [
-            74,
-            73,
-            73,
-            74,
-            74,
-            74,
-            73,
-            73,
-            73,
-            73
-          ],
-          "mean": 73.4,
-          "standardDeviation": 0.49
-        },
-        "aws16-sdk2-bundle": {
-          "label": "aws16-sdk2-bundle",
-          "data": [
-            73,
-            74,
-            74,
-            73,
-            73,
-            73,
-            74,
-            73,
-            74,
-            73
-          ],
-          "mean": 73.4,
-          "standardDeviation": 0.49
-        },
-        "aws16-itty-runtime": {
-          "label": "aws16-itty-runtime",
-          "data": [
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67
-          ],
-          "mean": 67,
-          "standardDeviation": 0
-        },
-        "aws16-itty-bundle": {
-          "label": "aws16-itty-bundle",
-          "data": [
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67
-          ],
-          "mean": 67,
-          "standardDeviation": 0
-        },
-        "aws18-sdk3-runtime": {
-          "label": "aws18-sdk3-runtime",
-          "data": [
-            73,
-            72,
-            73,
-            72,
-            73,
-            73,
-            72,
-            73,
-            72,
-            72
-          ],
-          "mean": 72.5,
-          "standardDeviation": 0.5
-        },
-        "aws18-sdk3-bundle": {
-          "label": "aws18-sdk3-bundle",
-          "data": [
-            73,
-            73,
-            72,
-            72,
-            72,
-            73,
-            72,
-            73,
-            72,
-            72
-          ],
-          "mean": 72.4,
-          "standardDeviation": 0.49
-        },
-        "aws18-itty-runtime": {
-          "label": "aws18-itty-runtime",
-          "data": [
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67
-          ],
-          "mean": 67,
-          "standardDeviation": 0
-        },
-        "aws18-itty-bundle": {
-          "label": "aws18-itty-bundle",
-          "data": [
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67,
-            67
-          ],
-          "mean": 67,
-          "standardDeviation": 0
-        }
-      },
       "initDuration": {
+        "title": "Cold start: init duration",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             265.87,
             257.92,
@@ -304,6 +30,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             257.07,
             261.15,
@@ -321,6 +48,7 @@
         },
         "aws16-itty-runtime": {
           "label": "aws16-itty-runtime",
+          "order": 2,
           "data": [
             156.32,
             160.73,
@@ -338,6 +66,7 @@
         },
         "aws16-itty-bundle": {
           "label": "aws16-itty-bundle",
+          "order": 4,
           "data": [
             159.5,
             157.64,
@@ -355,6 +84,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             272.35,
             267.1,
@@ -372,6 +102,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             269.39,
             271.62,
@@ -389,6 +120,7 @@
         },
         "aws18-itty-runtime": {
           "label": "aws18-itty-runtime",
+          "order": 6,
           "data": [
             157.31,
             159.79,
@@ -406,6 +138,7 @@
         },
         "aws18-itty-bundle": {
           "label": "aws18-itty-bundle",
+          "order": 8,
           "data": [
             154.02,
             158.29,
@@ -422,9 +155,452 @@
           "standardDeviation": 2.43
         }
       },
-      "httpRequestLatency": {
+      "duration": {
+        "title": "Cold start: duration",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
+          "data": [
+            164.82,
+            146.11,
+            147.85,
+            151.99,
+            159.77,
+            132.4,
+            148.47,
+            155.82,
+            142.63,
+            136.17
+          ],
+          "mean": 148.6,
+          "standardDeviation": 9.54
+        },
+        "aws16-sdk2-bundle": {
+          "label": "aws16-sdk2-bundle",
+          "order": 3,
+          "data": [
+            141.6,
+            161.89,
+            159.06,
+            164.89,
+            128.43,
+            140.84,
+            141.62,
+            149.57,
+            146.15,
+            149.44
+          ],
+          "mean": 148.35,
+          "standardDeviation": 10.6
+        },
+        "aws16-itty-runtime": {
+          "label": "aws16-itty-runtime",
+          "order": 2,
+          "data": [
+            169.94,
+            179.25,
+            183.8,
+            187.45,
+            185.99,
+            184.27,
+            186.94,
+            171.65,
+            168.41,
+            172.7
+          ],
+          "mean": 179.04,
+          "standardDeviation": 7.23
+        },
+        "aws16-itty-bundle": {
+          "label": "aws16-itty-bundle",
+          "order": 4,
+          "data": [
+            177.04,
+            176.97,
+            177.91,
+            181.59,
+            177.75,
+            182.28,
+            172.97,
+            173.64,
+            190.33,
+            176.02
+          ],
+          "mean": 178.65,
+          "standardDeviation": 4.79
+        },
+        "aws18-sdk3-runtime": {
+          "label": "aws18-sdk3-runtime",
+          "order": 5,
+          "data": [
+            112.36,
+            122.44,
+            109.77,
+            115.03,
+            113.4,
+            119.64,
+            125.22,
+            112.77,
+            149.96,
+            112.48
+          ],
+          "mean": 119.31,
+          "standardDeviation": 11.25
+        },
+        "aws18-sdk3-bundle": {
+          "label": "aws18-sdk3-bundle",
+          "order": 7,
+          "data": [
+            110.55,
+            109.31,
+            123.02,
+            119.68,
+            115.56,
+            126.48,
+            117.4,
+            123.38,
+            105.79,
+            138.45
+          ],
+          "mean": 118.96,
+          "standardDeviation": 9.08
+        },
+        "aws18-itty-runtime": {
+          "label": "aws18-itty-runtime",
+          "order": 6,
+          "data": [
+            184.88,
+            168.69,
+            180.7,
+            174.57,
+            183.94,
+            167.39,
+            177.24,
+            157.29,
+            184.5,
+            206.81
+          ],
+          "mean": 178.6,
+          "standardDeviation": 12.65
+        },
+        "aws18-itty-bundle": {
+          "label": "aws18-itty-bundle",
+          "order": 8,
+          "data": [
+            176.8,
+            172.48,
+            171.53,
+            184.25,
+            182.87,
+            183.16,
+            181.7,
+            186.03,
+            170.46,
+            166.99
+          ],
+          "mean": 177.63,
+          "standardDeviation": 6.47
+        }
+      },
+      "totalDuration": {
+        "title": "Cold start: total duration",
+        "aws16-sdk2-runtime": {
+          "label": "aws16-sdk2-runtime",
+          "order": 1,
+          "data": [
+            430.69,
+            404.03000000000003,
+            403.53999999999996,
+            404.84000000000003,
+            412.89,
+            395.74,
+            411.05999999999995,
+            415.78,
+            401.98,
+            389.89
+          ],
+          "mean": 407.04,
+          "standardDeviation": 10.77
+        },
+        "aws16-sdk2-bundle": {
+          "label": "aws16-sdk2-bundle",
+          "order": 3,
+          "data": [
+            398.66999999999996,
+            423.03999999999996,
+            431.87,
+            427.44,
+            388.24,
+            398.53,
+            400.72,
+            405.38,
+            404.09000000000003,
+            410.73
+          ],
+          "mean": 408.87,
+          "standardDeviation": 13.48
+        },
+        "aws16-itty-runtime": {
+          "label": "aws16-itty-runtime",
+          "order": 2,
+          "data": [
+            326.26,
+            339.98,
+            341.67,
+            347.02,
+            342.67,
+            343.48,
+            346.84000000000003,
+            327.38,
+            324.82,
+            332.48
+          ],
+          "mean": 337.26,
+          "standardDeviation": 8.23
+        },
+        "aws16-itty-bundle": {
+          "label": "aws16-itty-bundle",
+          "order": 4,
+          "data": [
+            336.53999999999996,
+            334.61,
+            339.02,
+            345.52,
+            331.64,
+            338.94,
+            330.74,
+            331.83,
+            352.58000000000004,
+            333.20000000000005
+          ],
+          "mean": 337.46,
+          "standardDeviation": 6.6
+        },
+        "aws18-sdk3-runtime": {
+          "label": "aws18-sdk3-runtime",
+          "order": 5,
+          "data": [
+            384.71000000000004,
+            389.54,
+            396.95,
+            385.11,
+            387.13,
+            387.76,
+            394.98,
+            385.46,
+            422.98,
+            406.55
+          ],
+          "mean": 394.12,
+          "standardDeviation": 11.62
+        },
+        "aws18-sdk3-bundle": {
+          "label": "aws18-sdk3-bundle",
+          "order": 7,
+          "data": [
+            379.94,
+            380.93,
+            403.19,
+            395.25,
+            382.79,
+            400.99,
+            388.96000000000004,
+            397.12,
+            366.52000000000004,
+            419.95
+          ],
+          "mean": 391.56,
+          "standardDeviation": 14.26
+        },
+        "aws18-itty-runtime": {
+          "label": "aws18-itty-runtime",
+          "order": 6,
+          "data": [
+            342.19,
+            328.48,
+            342.58,
+            348.21,
+            343.57,
+            318.14,
+            334.5,
+            309.08,
+            347.78,
+            372.18
+          ],
+          "mean": 338.67,
+          "standardDeviation": 16.63
+        },
+        "aws18-itty-bundle": {
+          "label": "aws18-itty-bundle",
+          "order": 8,
+          "data": [
+            330.82000000000005,
+            330.77,
+            331.5,
+            344.09000000000003,
+            338.90999999999997,
+            337.49,
+            341.82,
+            347.5,
+            327.35,
+            323.93
+          ],
+          "mean": 335.42,
+          "standardDeviation": 7.31
+        }
+      },
+      "maxMemory": {
+        "title": "Cold start: max memory",
+        "aws16-sdk2-runtime": {
+          "label": "aws16-sdk2-runtime",
+          "order": 1,
+          "data": [
+            74,
+            73,
+            73,
+            74,
+            74,
+            74,
+            73,
+            73,
+            73,
+            73
+          ],
+          "mean": 73.4,
+          "standardDeviation": 0.49
+        },
+        "aws16-sdk2-bundle": {
+          "label": "aws16-sdk2-bundle",
+          "order": 3,
+          "data": [
+            73,
+            74,
+            74,
+            73,
+            73,
+            73,
+            74,
+            73,
+            74,
+            73
+          ],
+          "mean": 73.4,
+          "standardDeviation": 0.49
+        },
+        "aws16-itty-runtime": {
+          "label": "aws16-itty-runtime",
+          "order": 2,
+          "data": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "mean": 67,
+          "standardDeviation": 0
+        },
+        "aws16-itty-bundle": {
+          "label": "aws16-itty-bundle",
+          "order": 4,
+          "data": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "mean": 67,
+          "standardDeviation": 0
+        },
+        "aws18-sdk3-runtime": {
+          "label": "aws18-sdk3-runtime",
+          "order": 5,
+          "data": [
+            73,
+            72,
+            73,
+            72,
+            73,
+            73,
+            72,
+            73,
+            72,
+            72
+          ],
+          "mean": 72.5,
+          "standardDeviation": 0.5
+        },
+        "aws18-sdk3-bundle": {
+          "label": "aws18-sdk3-bundle",
+          "order": 7,
+          "data": [
+            73,
+            73,
+            72,
+            72,
+            72,
+            73,
+            72,
+            73,
+            72,
+            72
+          ],
+          "mean": 72.4,
+          "standardDeviation": 0.49
+        },
+        "aws18-itty-runtime": {
+          "label": "aws18-itty-runtime",
+          "order": 6,
+          "data": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "mean": 67,
+          "standardDeviation": 0
+        },
+        "aws18-itty-bundle": {
+          "label": "aws18-itty-bundle",
+          "order": 8,
+          "data": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "mean": 67,
+          "standardDeviation": 0
+        }
+      },
+      "httpRequestLatency": {
+        "title": "Cold start: http request latency",
+        "aws16-sdk2-runtime": {
+          "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             122.68,
             115.53,
@@ -442,6 +618,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             112.71,
             120.76,
@@ -459,6 +636,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             84.64,
             78.16,
@@ -476,6 +654,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             78.74,
             81.05,
@@ -493,8 +672,10 @@
         }
       },
       "apiCallLatency": {
+        "title": "Cold start: API call latency",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             125.1,
             117.88,
@@ -512,6 +693,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             115.1,
             123.15,
@@ -529,6 +711,7 @@
         },
         "aws16-itty-runtime": {
           "label": "aws16-itty-runtime",
+          "order": 2,
           "data": [
             166.62,
             174.64,
@@ -546,6 +729,7 @@
         },
         "aws16-itty-bundle": {
           "label": "aws16-itty-bundle",
+          "order": 4,
           "data": [
             173.57,
             172.19,
@@ -563,6 +747,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             84.74,
             78.22,
@@ -580,6 +765,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             78.8,
             81.12,
@@ -597,6 +783,7 @@
         },
         "aws18-itty-runtime": {
           "label": "aws18-itty-runtime",
+          "order": 6,
           "data": [
             181.42,
             165.25,
@@ -614,6 +801,7 @@
         },
         "aws18-itty-bundle": {
           "label": "aws18-itty-bundle",
+          "order": 8,
           "data": [
             170.29,
             161.37,
@@ -633,8 +821,10 @@
     },
     "warmStarts": {
       "duration": {
+        "title": "Warm start: duration",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             16.91,
             9.28,
@@ -732,6 +922,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             14.95,
             22.46,
@@ -829,6 +1020,7 @@
         },
         "aws16-itty-runtime": {
           "label": "aws16-itty-runtime",
+          "order": 2,
           "data": [
             6.4,
             6.41,
@@ -926,6 +1118,7 @@
         },
         "aws16-itty-bundle": {
           "label": "aws16-itty-bundle",
+          "order": 4,
           "data": [
             6.61,
             6.91,
@@ -1023,6 +1216,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             10.63,
             7.23,
@@ -1120,6 +1314,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             21.68,
             6.27,
@@ -1217,6 +1412,7 @@
         },
         "aws18-itty-runtime": {
           "label": "aws18-itty-runtime",
+          "order": 6,
           "data": [
             7.9,
             7.33,
@@ -1314,6 +1510,7 @@
         },
         "aws18-itty-bundle": {
           "label": "aws18-itty-bundle",
+          "order": 8,
           "data": [
             6.87,
             6.97,
@@ -1411,8 +1608,10 @@
         }
       },
       "maxMemory": {
+        "title": "Warm start: max memory",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             74,
             74,
@@ -1510,6 +1709,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             74,
             74,
@@ -1607,6 +1807,7 @@
         },
         "aws16-itty-runtime": {
           "label": "aws16-itty-runtime",
+          "order": 2,
           "data": [
             67,
             68,
@@ -1704,6 +1905,7 @@
         },
         "aws16-itty-bundle": {
           "label": "aws16-itty-bundle",
+          "order": 4,
           "data": [
             67,
             68,
@@ -1801,6 +2003,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             74,
             74,
@@ -1898,6 +2101,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             74,
             74,
@@ -1995,6 +2199,7 @@
         },
         "aws18-itty-runtime": {
           "label": "aws18-itty-runtime",
+          "order": 6,
           "data": [
             67,
             68,
@@ -2092,6 +2297,7 @@
         },
         "aws18-itty-bundle": {
           "label": "aws18-itty-bundle",
+          "order": 8,
           "data": [
             67,
             68,
@@ -2189,8 +2395,10 @@
         }
       },
       "httpRequestLatency": {
+        "title": "Warm start: http request latency",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             4.94,
             4.85,
@@ -2288,6 +2496,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             4.79,
             4.66,
@@ -2385,6 +2594,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             5,
             3.23,
@@ -2482,6 +2692,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             3.06,
             2.4,
@@ -2579,8 +2790,10 @@
         }
       },
       "apiCallLatency": {
+        "title": "Warm start: API call latency",
         "aws16-sdk2-runtime": {
           "label": "aws16-sdk2-runtime",
+          "order": 1,
           "data": [
             5.59,
             5.54,
@@ -2678,6 +2891,7 @@
         },
         "aws16-sdk2-bundle": {
           "label": "aws16-sdk2-bundle",
+          "order": 3,
           "data": [
             5.51,
             5.39,
@@ -2775,6 +2989,7 @@
         },
         "aws16-itty-runtime": {
           "label": "aws16-itty-runtime",
+          "order": 2,
           "data": [
             4.91,
             4.95,
@@ -2872,6 +3087,7 @@
         },
         "aws16-itty-bundle": {
           "label": "aws16-itty-bundle",
+          "order": 4,
           "data": [
             5.07,
             5.34,
@@ -2969,6 +3185,7 @@
         },
         "aws18-sdk3-runtime": {
           "label": "aws18-sdk3-runtime",
+          "order": 5,
           "data": [
             5.1,
             3.24,
@@ -3066,6 +3283,7 @@
         },
         "aws18-sdk3-bundle": {
           "label": "aws18-sdk3-bundle",
+          "order": 7,
           "data": [
             3.14,
             2.4,
@@ -3163,6 +3381,7 @@
         },
         "aws18-itty-runtime": {
           "label": "aws18-itty-runtime",
+          "order": 6,
           "data": [
             5.67,
             5.94,
@@ -3260,6 +3479,7 @@
         },
         "aws18-itty-bundle": {
           "label": "aws18-itty-bundle",
+          "order": 8,
           "data": [
             5.4,
             5.68,
