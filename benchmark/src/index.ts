@@ -2,6 +2,8 @@ import { App, Stack, aws_dynamodb, aws_lambda } from "aws-cdk-lib";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { CONFIG, IFunction } from "../benchmarkConfig";
 
+interface ILambdaFunction extends Omit<IFunction, "chart"> {}
+
 const STACK_NAME = `benchmark`;
 
 const app = new App();
@@ -16,7 +18,7 @@ const table = new aws_dynamodb.Table(stack, STACK_NAME, {
   billingMode: aws_dynamodb.BillingMode.PAY_PER_REQUEST,
 });
 
-function createNodejsFunction(props: IFunction) {
+function createNodejsFunction(props: ILambdaFunction) {
   const {
     functionName,
     entryPath,

@@ -77,5 +77,4 @@ Browse the results in [/benchmark](/benchmark/README.md)
 
 ## Known Issues
 
-- Performance has not been tested - it's possible that our use of `https` or `fetch` is slower than whatever magic the AWS SDK is doing.
 - We're still importing some heavy code from the AWS SDK for signing requests - including tslib (for whatever reason). We should investigate hand-rolling replacements that don't have these dependencies or at least minimize them.

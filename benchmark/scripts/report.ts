@@ -116,7 +116,7 @@ const createChart = async (props: {
   const backgroundColour = "white";
   const chartCallback: ChartCallback = (ChartJS) => {
     ChartJS.defaults.color = "rgba(31, 35, 40)";
-    ChartJS.defaults.font.size = 16;
+    ChartJS.defaults.font.size = 12;
     ChartJS.defaults.responsive = false;
     ChartJS.defaults.maintainAspectRatio = false;
   };
@@ -261,10 +261,14 @@ async function main() {
 
   console.log(`\nGenerate README.md`);
   const content = `
+[🏠 Home](../../../README.md) | [⬅️ Reports index](../../README.md)
+
+
 # Benchmark report
 
-- Branch: ${gitBranch}${gitTag ? ` (v${gitTag})` : ""}
-- Date: ${new Date(time.end).toLocaleString()}
+> **Branch: \`${gitBranch}${
+    gitTag ? ` (v${gitTag})` : ""
+  }\`<br />Date: \`${new Date(time.end).toUTCString()}\`**
 
 ## Cold starts
 

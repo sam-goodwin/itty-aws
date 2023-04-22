@@ -8,4 +8,4 @@ stats.html
 src/mappings.ts
 *.tsbuildinfo
 *.code-workspace
-benchmark_legacy/
+*.drawio.*
