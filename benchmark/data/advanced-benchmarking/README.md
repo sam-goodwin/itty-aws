@@ -6,10 +6,10 @@
 
 ## TL;DR
 
-- `itty-aws` improves cold boot initialization time by 50% and overall cold boot time by 25%.
+- `itty-aws` improves cold start function init duration by 50% and cold start function global duration by 25%.
 - On warm starts, `itty-aws` is comparable to AWS SDKs.
 - In most metrics, `itty-aws` is more stable and consistent across invocations and runtimes.
-- The latency of `itty-aws` API calls is longer than its alternatives, which has a negative impact on the duration of the function, especially during cold starts.
+- During cold starts, the latency of `itty-aws` API calls is longer than its alternatives, which has a negative impact on the duration of the function. It seems that it is related to the time needed to establish the TCP connexion during HTTP requests, but it needs to be confirmed.
 
 ## Cold starts
 
