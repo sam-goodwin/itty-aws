@@ -1,8 +1,8 @@
 import DynamoDB from "aws-sdk/clients/dynamodb.js";
 import { performance } from "perf_hooks";
 import { Context } from "aws-lambda";
+import { roundToTwoDecimalPlaces } from "../../utils/roundToTwoDecimalPlaces";
 
-const round = (input: number): number => Math.round(input * 100) / 100;
 const TableName = process.env.TABLE_NAME!;
 const dynamodb = new DynamoDB();
 
@@ -23,11 +23,11 @@ export async function handler(_: unknown, context: Context) {
       })
       .on("httpHeaders", function () {
         if (!httpRequest) {
-          httpRequest = round(performance.now() - start);
+          httpRequest = roundToTwoDecimalPlaces(performance.now() - start);
         }
       })
       .on("httpDone", function () {
-        apiCall = round(performance.now() - start);
+        apiCall = roundToTwoDecimalPlaces(performance.now() - start);
       })
       .promise();
 

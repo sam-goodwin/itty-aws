@@ -1,8 +1,8 @@
 import { performance } from "perf_hooks";
 import { AWS } from "itty-aws";
 import { Context } from "aws-lambda";
+import { roundToTwoDecimalPlaces } from "../../utils/roundToTwoDecimalPlaces";
 
-const round = (input: number): number => Math.round(input * 100) / 100;
 const TableName = process.env.TABLE_NAME!;
 const client = new AWS.DynamoDB();
 
@@ -21,7 +21,7 @@ export async function handler(_: unknown, context: Context) {
         },
       },
     });
-    const apiCall = round(performance.now() - start);
+    const apiCall = roundToTwoDecimalPlaces(performance.now() - start);
     //benchmarking
     console.log(
       JSON.stringify({

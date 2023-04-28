@@ -1,8 +1,9 @@
-import { execSync } from "child_process";
 import { promises as fsPromises } from "fs";
 import path from "path";
 import { CONFIG } from "../benchmarkConfig";
 import { performance } from "perf_hooks";
+import { roundToTwoDecimalPlaces } from "../utils/roundToTwoDecimalPlaces";
+import { getGitBranch, getGitTag } from "../utils/filesystem";
 
 export interface IResult {
   git: {
@@ -29,8 +30,6 @@ export interface IResult {
   log: Record<string, any>[];
 }
 
-const round = (input: number): number => Math.round(input * 100) / 100;
-
 // Utils to extract values from log messages
 const isoDateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/;
 const requestIdRegex = /RequestId: (\S+)/;
@@ -41,34 +40,89 @@ function extract(regex: RegExp, message: string): string | undefined {
   const match = regex.exec(message);
   return match && match[1] ? match[1] : undefined;
 }
-const parseNumber = (value?: string) => (value ? parseFloat(value) : undefined);
-const getJson = (value: string) => {
-  const jsonStartIndex = value.indexOf("{");
-  const jsonEndIndex = value.lastIndexOf("}") + 1;
-  const jsonStr = value.slice(jsonStartIndex, jsonEndIndex);
+const parseNumber = (num?: string) => (num ? parseFloat(num) : 0);
+
+/**
+ * Extracts a valid JSON object from a string that contains a JSON object.
+ *
+ * @param {string} str - The input string that contains JSON data.
+ * @returns {object} - The extracted JSON object.
+ * @throws {SyntaxError} If the input string is not a valid JSON object.
+ */
+function extractJsonFromString(str: string): Record<string, any> {
+  const start = str.indexOf("{");
+  const end = str.lastIndexOf("}") + 1;
+  const jsonStr = str.slice(start, end);
   const json = JSON.parse(jsonStr);
   return json;
-};
+}
 
-// Accessing nested objects by string path
-// https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-and-arrays-by-string-path
-const setPath = (object: any, path: string, value: any) =>
-  path
+/**
+ * Sets the value of a nested property at the given path on an object.
+ * If the path does not exist, it will be created.
+ * Source: https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-and-arrays-by-string-path
+ *
+ * @param {T} object - The object to set the property on.
+ * @param {string} path - The path to the nested property, separated by periods.
+ * @param {U} value - The value to set the property to.
+ */
+function setPropertyByPath<T extends Record<string, any>, U>(props: {
+  target: T;
+  path: string;
+  value: U;
+}) {
+  return props.path
     .split(".")
     .reduce(
-      (o, p, i) => (o[p] = path.split(".").length === ++i ? value : o[p] || {}),
-      object
+      (o, p, i) =>
+        (o[p as keyof typeof props.target] =
+          props.path.split(".").length === ++i ? props.value : o[p] || {}),
+      props.target
     );
-const resolvePath = (object: any, path: string, defaultValue: any) =>
-  path.split(".").reduce((o, p) => (o ? o[p] : defaultValue), object);
+}
+
+/**
+ * Returns the value at the given path in the given object, or a default value
+ * if the path is not found. The path must be specified as a dot-separated
+ * string of property names.
+ *
+ * @template T The type of the input object.
+ * @template U The type of the default value.
+ *
+ * @param props An object containing the input object, the path, and an optional
+ * default value.
+ * @param props.object The input object to traverse.
+ * @param props.path The path to the desired property, as a dot-separated string.
+ * @param props.defaultValue An optional default value to return if the path is
+ * not found. Defaults to undefined.
+ *
+ * @returns The value at the specified path, or the default value if the path is
+ * not found.
+ */
+function getPropertyByPath<T, U>(props: {
+  target: T;
+  path: string;
+  defaultValue?: U;
+}) {
+  return props.path
+    .split(".")
+    .reduce(
+      (o: any, p: string) => (o ? o[p] : props.defaultValue),
+      props.target
+    );
+}
 
 async function main() {
-  const start = performance.now();
+  const scriptStats = {
+    functionCalls: 0,
+    logEntries: 0,
+    start: performance.now(),
+  };
+
   // Setup
-  const gitBranch = execSync("git rev-parse --abbrev-ref HEAD 2>/dev/null", {
-    encoding: "utf-8",
-  }).trim();
-  let gitTag: string | undefined;
+  const gitBranch = await getGitBranch();
+  const gitTag = await getGitTag();
+
   const rawFilePath = path.join(
     __dirname,
     CONFIG.logs.outputFolder,
@@ -98,7 +152,7 @@ async function main() {
   const raw: IResult = JSON.parse(
     await fsPromises.readFile(rawFilePath, "utf8")
   );
-  let result: IResult = {
+  const result: IResult = {
     git: { ...raw.git },
     time: { ...raw.time },
     datasets: {
@@ -120,18 +174,18 @@ async function main() {
     log: [],
   };
 
-  console.log(`- Parse the log`);
-  let count = { functionCalls: 0, logEntries: 0 };
+  // Parse log
+  console.log(`- Parse log`);
   let consolidatedEntry: Record<string, any> = {};
   let requestId: string | undefined;
   for (const entry of raw.log) {
     const { message } = entry;
     switch (true) {
       case message.startsWith("START"):
-        count.functionCalls += 1;
-        count.logEntries += 1;
+        scriptStats.functionCalls += 1;
+        scriptStats.logEntries += 1;
         requestId = extract(requestIdRegex, message);
-        // console.log(`  - Process requestId: ${requestId}`);
+        // Process requestId
         consolidatedEntry = {
           requestId: requestId ?? "",
           isColdStart: false,
@@ -140,8 +194,8 @@ async function main() {
         break;
 
       case isoDateRegex.test(message):
-        // console.log(`    - extract API call data`);
-        const apiData = getJson(message);
+        // extract API call data
+        const apiData = extractJsonFromString(message);
         consolidatedEntry.name = apiData.context.name;
         consolidatedEntry.runtime = apiData.context.runtime;
         consolidatedEntry.sdk = apiData.context.sdk;
@@ -149,7 +203,7 @@ async function main() {
         break;
 
       case message.startsWith("REPORT"):
-        // console.log(`    - extract function call data`);
+        // extract function call data
         consolidatedEntry.function.duration = parseNumber(
           extract(durationRegex, message)
         );
@@ -163,7 +217,7 @@ async function main() {
         break;
 
       default:
-        count.logEntries += 1;
+        scriptStats.logEntries += 1;
         break;
     }
   }
@@ -309,29 +363,36 @@ async function main() {
 
   console.log(`- Calculate statistics`);
   for (const datasetPointer of datasetPointers) {
-    const data = resolvePath(result, `${datasetPointer}.data`, undefined);
+    const data = getPropertyByPath({
+      target: result,
+      path: `${datasetPointer}.data`,
+    });
     const sum = data.reduce((acc: number, val: number) => acc + val, 0);
     const n = data.length;
     const mean = sum / n;
     const variance =
       data.reduce((acc: number, val: number) => acc + (val - mean) ** 2, 0) / n;
     const standardDeviation = Math.sqrt(variance);
-    setPath(result, `${datasetPointer}.mean`, round(mean));
-    setPath(
-      result,
-      `${datasetPointer}.standardDeviation`,
-      round(standardDeviation)
-    );
+    setPropertyByPath({
+      target: result,
+      path: `${datasetPointer}.mean`,
+      value: roundToTwoDecimalPlaces(mean),
+    });
+    setPropertyByPath({
+      target: result,
+      path: `${datasetPointer}.standardDeviation`,
+      value: roundToTwoDecimalPlaces(standardDeviation),
+    });
   }
 
   console.log(
-    `- Write ${count.functionCalls} functions calls consolidated from ${count.logEntries} log entries to '${filePath}'`
+    `- Write ${scriptStats.functionCalls} functions calls consolidated from ${scriptStats.logEntries} log entries to '${filePath}'`
   );
   await fsPromises.writeFile(filePath, JSON.stringify(result, null, "  "));
 
-  const duration = performance.now() - start;
+  const duration = performance.now() - scriptStats.start;
 
-  console.log(`\nDone in ${round(duration)}ms.`);
+  console.log(`\nDone in ${roundToTwoDecimalPlaces(duration)}ms.`);
 }
 
 main();

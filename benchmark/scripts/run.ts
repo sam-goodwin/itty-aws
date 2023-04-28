@@ -7,47 +7,38 @@ import {
   OutputLogEvent,
 } from "@aws-sdk/client-cloudwatch-logs";
 import { InvokeCommand, LambdaClient } from "@aws-sdk/client-lambda";
-import { execSync } from "child_process";
 import { promises as fsPromises } from "fs";
 import path from "path";
 import { CONFIG } from "../benchmarkConfig";
+import { wait } from "../utils/wait";
+import { getGitBranch, getGitTag } from "../utils/filesystem";
 
-interface IResult {
+interface IBenckmarkResult {
   git: {
     branch: string;
     tag?: string;
   };
   time: { start: string; end: string };
-  log: Record<string, any>[];
+  log: OutputLogEvent[];
 }
 
-function wait(ms: number) {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-}
-
-async function main() {
+/**
+ * Generates logs for a series of AWS Lambda function invocations based on the given configuration.
+ * Logs are collected from CloudWatch and written to a file.
+ * @async
+ * @function main
+ * @returns {Promise<void>}
+ */
+async function main(): Promise<void> {
   // Setup
-  const gitBranch = execSync("git rev-parse --abbrev-ref HEAD 2>/dev/null", {
-    encoding: "utf-8",
-  }).trim();
-  let gitTag: string | undefined;
-  try {
-    gitTag = execSync("git describe --tags --abbrev=0 2>/dev/null", {
-      encoding: "utf-8",
-    }).trim();
-  } catch {
-    gitTag = undefined;
-  }
+  const gitBranch = await getGitBranch();
+  const gitTag = await getGitTag();
   const filePath = path.join(
     __dirname,
     CONFIG.logs.outputFolder,
     `${gitBranch}/raw.json`
   );
-  const rawResult: IResult = {
+  const rawResult: IBenckmarkResult = {
     git: {
       branch: gitBranch,
       tag: gitTag,
@@ -60,8 +51,8 @@ async function main() {
     `Generate logs for branch '${gitBranch}' ${gitTag ? `(${gitTag})` : ""}`
   );
 
-  console.log("\n- Delete previous artifacts if they exist");
   // Delete if exist
+  console.log("\n- Delete previous artifacts if they exist");
   // - previous results files
   try {
     console.log(`  - Previous result file: '${filePath}'`);
@@ -76,6 +67,7 @@ async function main() {
       const command = new DeleteLogGroupCommand({ logGroupName });
       console.log(`  - log group '${logGroupName}'`);
       try {
+        // Use a fresh client to avoid timeouts
         const cloudwatchClient = new CloudWatchLogsClient({});
         await cloudwatchClient.send(command);
         cloudwatchClient.destroy();
@@ -85,8 +77,8 @@ async function main() {
     }
   }
 
-  console.log("\n- Init database");
   // Init database
+  console.log("\n- Init database");
   try {
     const command = new InvokeCommand({
       FunctionName: "ddb-setup",
@@ -97,9 +89,9 @@ async function main() {
     null;
   }
 
-  console.log("\n- Invoke");
   // Invoke each function instance `CONFIG.runs` times
-  // The invocations are run sequentially to avoid race conditions with the dynamodb
+  // The invocations are run sequentially to avoid race conditions with the dynamodb table
+  console.log("\n- Invoke");
   for (const fn of CONFIG.functions) {
     for (let i = 1; i <= CONFIG.runs; i++) {
       const FunctionName = `${fn.functionName}-${i}`;
@@ -119,8 +111,8 @@ async function main() {
   console.log("\n- Wait for 3 seconds, to let CloudWatch process the logs");
   await wait(3000);
 
-  console.log("\n- Collect logs");
   // Collect logs
+  console.log("\n- Collect logs");
   let eventsLog: OutputLogEvent[] = [];
   for (const fn of CONFIG.functions) {
     for (let i = 1; i <= CONFIG.runs; i++) {
@@ -158,7 +150,8 @@ async function main() {
       }
     }
   }
-  // Save the results
+
+  // Write logs
   console.log(`\n- Write raw data to '${filePath}'`);
   rawResult.log = [...eventsLog];
   rawResult.time.end = new Date().toISOString();
@@ -166,5 +159,4 @@ async function main() {
 
   console.log(`\nBenchmark done.`);
 }
-
 main();

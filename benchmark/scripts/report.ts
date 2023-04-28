@@ -1,19 +1,33 @@
 import { ChartJSNodeCanvas, ChartCallback } from "chartjs-node-canvas";
 import { ChartConfiguration } from "chart.js";
-import { execSync } from "child_process";
 import { promises as fsPromises } from "fs";
 import path from "path";
 import { CONFIG } from "../benchmarkConfig";
 import { performance } from "perf_hooks";
 import { IResult } from "../scripts/consolidate";
-import { Chart } from "chart.js";
-import ChartDataLabels, { Context } from "chartjs-plugin-datalabels";
+import { Context } from "chartjs-plugin-datalabels";
+import { roundToTwoDecimalPlaces } from "../utils/roundToTwoDecimalPlaces";
+import { getGitBranch, getGitTag } from "../utils/filesystem";
 
-Chart.register(ChartDataLabels);
-
-const round = (input: number): number => Math.round(input * 100) / 100;
-
-const createChart = async (props: {
+/**
+ * Generates a chart and saves it as a PNG file in a specific location.
+ * @async
+ * @param {IChartProps} props - An object containing chart properties.
+ * @param {string} props.gitBranch - The name of the Git branch.
+ * @param {string} props.datasetType - The type of dataset.
+ * @param {string} props.datasetName - The name of the dataset.
+ * @param {number} props.max - The maximum value for the x-axis.
+ * @param {number} props.min - The minimum value for the x-axis.
+ * @param {string} props.unit - The unit for the x-axis.
+ * @param {string[]} props.labels - An array of labels for the y-axis.
+ * @param {number[]} props.offsetData - An array of numbers for the "offset" dataset.
+ * @param {number[]} props.leftData - An array of numbers for the "left" dataset.
+ * @param {number[]} props.rightData - An array of numbers for the "right" dataset.
+ * @param {string[]} props.backgroundColors - An array of background colors for the "left" and "right" datasets.
+ * @param {string[]} props.borderColors - An array of border colors for the "left" dataset.
+ * @param {string[]} props.datalabels - An array of data labels for the "left" dataset.
+ */
+async function createChart(props: {
   backgroundColors: string[];
   borderColors: string[];
   datasetName: string;
@@ -27,12 +41,17 @@ const createChart = async (props: {
   rightData: number[];
   unit: string;
   datalabels: string[];
-}) => {
+}): Promise<void> {
   const filePath = path.join(
     __dirname,
     CONFIG.logs.outputFolder,
     `${props.gitBranch}/${props.datasetType}-${props.datasetName}.png`
   );
+
+  // Chart configuration
+  const width = 800;
+  const height = 600;
+  const backgroundColour = "white";
   const options: ChartConfiguration["options"] = {
     indexAxis: "y",
     scales: {
@@ -65,7 +84,6 @@ const createChart = async (props: {
       },
     },
   };
-
   const data: ChartConfiguration["data"] = {
     labels: props.labels,
     datasets: [
@@ -109,17 +127,14 @@ const createChart = async (props: {
       },
     ],
   };
-
-  // Create a new Chart.js instance
-  const width = 800;
-  const height = 600;
-  const backgroundColour = "white";
   const chartCallback: ChartCallback = (ChartJS) => {
     ChartJS.defaults.color = "rgba(31, 35, 40)";
     ChartJS.defaults.font.size = 12;
     ChartJS.defaults.responsive = false;
     ChartJS.defaults.maintainAspectRatio = false;
   };
+
+  // Render the chart and save to png file
   const chartJSNodeCanvas = new ChartJSNodeCanvas({
     width,
     height,
@@ -135,8 +150,15 @@ const createChart = async (props: {
     options,
   });
   await fsPromises.writeFile(filePath, buffer, "base64");
-};
+}
 
+/**
+ * Generates charts for given datasets.
+ *
+ * @param {string} datasetType - Type of dataset
+ * @param {Object.<string, Object.<string, any>>} datasets - The datasets to generate charts for
+ * @param {string} gitBranch - The git branch to use for generating charts
+ */
 function generateCharts(
   datasetType: string,
   datasets: Record<string, Record<string, any>>,
@@ -153,13 +175,18 @@ function generateCharts(
     let max = 0;
     let min = Infinity;
     console.log(`  - ${datasetType} : ${key}`);
+
+    // Sort the dataset
     const dataset = Object.fromEntries(
       Object.entries(datasets[key as keyof typeof datasets]).sort(
         (a, b) => a[1].order - b[1].order
       )
     );
+
+    // For each non empty series in the dataset
     for (const key in dataset) {
       if (dataset[key].data) {
+        // Get the current series mean and standard deviation for the chart
         const { label, mean, standardDeviation } = dataset[key];
         labels.push(label);
         datalabels.push(`${mean}±${standardDeviation}`);
@@ -202,20 +229,19 @@ function generateCharts(
   }
 }
 
-async function main() {
+/**
+ * Generates a report for the current Git branch and tag (if any).
+ * Deletes previous report artifacts, reads raw data from a JSON file,
+ * generates several charts based on that data, and writes a README.md file
+ * with the report content.
+ */
+async function main(): Promise<void> {
   const start = performance.now();
-  // Setup
-  const gitBranch = execSync("git rev-parse --abbrev-ref HEAD 2>/dev/null", {
-    encoding: "utf-8",
-  }).trim();
-  let gitTag: string | undefined;
-  try {
-    gitTag = execSync("git describe --tags --abbrev=0 2>/dev/null", {
-      encoding: "utf-8",
-    }).trim();
-  } catch {
-    gitTag = undefined;
-  }
+
+  // setup
+  const gitBranch = await getGitBranch();
+  const gitTag = await getGitTag();
+
   const folderPath = path.join(
     __dirname,
     CONFIG.logs.outputFolder,
@@ -308,7 +334,6 @@ async function main() {
 `;
   await fsPromises.writeFile(reportFilePath, content, "utf-8");
   const duration = performance.now() - start;
-  console.log(`\nDone in ${round(duration)}ms.`);
+  console.log(`\nDone in ${roundToTwoDecimalPlaces(duration)}ms.`);
 }
-
 main();

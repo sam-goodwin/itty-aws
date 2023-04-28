@@ -1,8 +1,8 @@
 import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { performance } from "perf_hooks";
 import { Context } from "aws-lambda";
+import { roundToTwoDecimalPlaces } from "../../utils/roundToTwoDecimalPlaces";
 
-const round = (input: number): number => Math.round(input * 100) / 100;
 const TableName = process.env.TABLE_NAME!;
 const dynamodb = new DynamoDBClient({});
 
@@ -18,7 +18,7 @@ export async function handler(_: unknown, context: Context) {
       (next) => async (args) => {
         const start = performance.now();
         const res = await next(args);
-        apiCall = round(performance.now() - start);
+        apiCall = roundToTwoDecimalPlaces(performance.now() - start);
         return res;
       },
       { step: "deserialize", priority: "low", tags: ["ROUND_TRIP"] }
@@ -28,7 +28,7 @@ export async function handler(_: unknown, context: Context) {
       (next) => async (args) => {
         const start = performance.now();
         const res = await next(args);
-        httpRequest = round(performance.now() - start);
+        httpRequest = roundToTwoDecimalPlaces(performance.now() - start);
         return res;
       },
       { step: "deserialize", priority: "low", tags: ["ROUND_TRIP"] }
