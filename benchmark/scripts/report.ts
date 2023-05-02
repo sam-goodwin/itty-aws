@@ -1,13 +1,122 @@
-import { ChartJSNodeCanvas, ChartCallback } from "chartjs-node-canvas";
 import { ChartConfiguration } from "chart.js";
-import { promises as fsPromises } from "fs";
-import path from "path";
-import { CONFIG } from "../benchmarkConfig";
-import { performance } from "perf_hooks";
-import { IResult } from "../scripts/consolidate";
+import { ChartCallback, ChartJSNodeCanvas } from "chartjs-node-canvas";
 import { Context } from "chartjs-plugin-datalabels";
-import { roundToTwoDecimalPlaces } from "../utils/roundToTwoDecimalPlaces";
-import { getGitBranch, getGitTag } from "../utils/filesystem";
+import { promises as fsPromises } from "node:fs";
+import path from "node:path";
+import { performance } from "node:perf_hooks";
+import { benchmarkConfig } from "../benchmarkConfig";
+import { IResult } from "../scripts/consolidate";
+import { getGitBranch, getGitTag } from "../utils/files";
+import { roundToTwoDecimalPlaces } from "../utils/format";
+
+/**
+ * Generates a report for the current Git branch and tag (if any).
+ * Deletes previous report artifacts, reads raw data from a JSON file,
+ * generates several charts based on that data, and writes a README.md file
+ * with the report content.
+ */
+async function main(): Promise<void> {
+  const start = performance.now();
+
+  // setup
+  const gitBranch = await getGitBranch();
+  const gitTag = await getGitTag();
+
+  const folderPath = path.join(
+    __dirname,
+    benchmarkConfig.logs.outputDirPath,
+    `${gitBranch}`
+  );
+  const consolidatedFilePath = path.join(
+    __dirname,
+    benchmarkConfig.logs.outputDirPath,
+    `${gitBranch}/consolidated.json`
+  );
+  const reportFilePath = path.join(
+    __dirname,
+    benchmarkConfig.logs.outputDirPath,
+    `${gitBranch}/README.md`
+  );
+  console.log(
+    `Generate report for branch '${gitBranch}' ${gitTag ? `(${gitTag})` : ""}`
+  );
+
+  console.log("\n- Delete previous artifacts if they exist");
+  try {
+    const files = await fsPromises.readdir(folderPath);
+    for (const file of files) {
+      if (path.extname(file) === ".png" || path.extname(file) === ".md") {
+        await fsPromises.unlink(path.join(folderPath, file));
+      }
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  console.log(`- Read raw data`);
+  let {
+    time,
+    datasets: { coldStarts, warmStarts },
+  }: IResult = JSON.parse(
+    await fsPromises.readFile(consolidatedFilePath, "utf8")
+  );
+
+  console.log(`- Generate the charts for`);
+  generateCharts("coldStarts", coldStarts, gitBranch);
+  generateCharts("warmStarts", warmStarts, gitBranch);
+
+  console.log(`\nGenerate README.md`);
+  const content = `
+[🏠 Home](../../../README.md) | [⬅️ Reports index](../../README.md)
+
+
+# Benchmark report
+
+> **Branch: \`${gitBranch}${
+    gitTag ? ` (v${gitTag})` : ""
+  }\`<br />Date: \`${new Date(time.end).toUTCString()}\`**
+
+## Cold starts
+
+### Cold starts total duration
+![coldStarts-totalDuration](./coldStarts-totalDuration.png)
+
+### Cold starts init duration
+![coldStarts-initDuration](./coldStarts-initDuration.png)
+
+### Cold starts duration
+![coldStarts-duration](./coldStarts-duration.png)
+
+### Cold starts API call latency
+![coldStarts-apiCallLatency](./coldStarts-apiCallLatency.png)
+
+### Cold starts HTTP Request latency
+![coldStarts-httpRequestLatency](./coldStarts-httpRequestLatency.png)
+
+### Cold starts max memory
+![coldStarts-maxMemory](./coldStarts-maxMemory.png)
+
+## Warm starts
+
+### Warm starts duration
+![warmStarts-duration](./warmStarts-duration.png)
+
+### Warm starts API call latency
+![warmStarts-apiCallLatency](./warmStarts-apiCallLatency.png)
+
+
+### Warm starts HTTP request latency
+![warmStarts-httpRequestLatency](./warmStarts-httpRequestLatency.png)
+
+### Warm starts max memory
+![warmStarts-maxMemory](./warmStarts-maxMemory.png)
+
+`;
+  await fsPromises.writeFile(reportFilePath, content, "utf-8");
+  const duration = performance.now() - start;
+  console.log(`\nDone in ${roundToTwoDecimalPlaces(duration)}ms.`);
+}
+main();
 
 /**
  * Generates a chart and saves it as a PNG file in a specific location.
@@ -44,7 +153,7 @@ async function createChart(props: {
 }): Promise<void> {
   const filePath = path.join(
     __dirname,
-    CONFIG.logs.outputFolder,
+    benchmarkConfig.logs.outputDirPath,
     `${props.gitBranch}/${props.datasetType}-${props.datasetName}.png`
   );
 
@@ -191,14 +300,14 @@ function generateCharts(
         labels.push(label);
         datalabels.push(`${mean}±${standardDeviation}`);
         backgroundColors.push(
-          CONFIG.functions.reduce(
+          benchmarkConfig.functions.reduce(
             (prev, curr) =>
               curr.functionName === key ? curr.chart.backgroundColor : prev,
             ""
           )
         );
         borderColors.push(
-          CONFIG.functions.reduce(
+          benchmarkConfig.functions.reduce(
             (prev, curr) =>
               curr.functionName === key ? curr.chart.borderColor : prev,
             ""
@@ -228,112 +337,3 @@ function generateCharts(
     });
   }
 }
-
-/**
- * Generates a report for the current Git branch and tag (if any).
- * Deletes previous report artifacts, reads raw data from a JSON file,
- * generates several charts based on that data, and writes a README.md file
- * with the report content.
- */
-async function main(): Promise<void> {
-  const start = performance.now();
-
-  // setup
-  const gitBranch = await getGitBranch();
-  const gitTag = await getGitTag();
-
-  const folderPath = path.join(
-    __dirname,
-    CONFIG.logs.outputFolder,
-    `${gitBranch}`
-  );
-  const consolidatedFilePath = path.join(
-    __dirname,
-    CONFIG.logs.outputFolder,
-    `${gitBranch}/consolidated.json`
-  );
-  const reportFilePath = path.join(
-    __dirname,
-    CONFIG.logs.outputFolder,
-    `${gitBranch}/README.md`
-  );
-  console.log(
-    `Generate report for branch '${gitBranch}' ${gitTag ? `(${gitTag})` : ""}`
-  );
-
-  console.log("\n- Delete previous artifacts if they exist");
-  try {
-    const files = await fsPromises.readdir(folderPath);
-    for (const file of files) {
-      if (path.extname(file) === ".png" || path.extname(file) === ".md") {
-        await fsPromises.unlink(path.join(folderPath, file));
-      }
-    }
-  } catch (err) {
-    console.error(err);
-  }
-
-  console.log(`- Read raw data`);
-  let {
-    time,
-    datasets: { coldStarts, warmStarts },
-  }: IResult = JSON.parse(
-    await fsPromises.readFile(consolidatedFilePath, "utf8")
-  );
-
-  console.log(`- Generate the charts for`);
-  generateCharts("coldStarts", coldStarts, gitBranch);
-  generateCharts("warmStarts", warmStarts, gitBranch);
-
-  console.log(`\nGenerate README.md`);
-  const content = `
-[🏠 Home](../../../README.md) | [⬅️ Reports index](../../README.md)
-
-
-# Benchmark report
-
-> **Branch: \`${gitBranch}${
-    gitTag ? ` (v${gitTag})` : ""
-  }\`<br />Date: \`${new Date(time.end).toUTCString()}\`**
-
-## Cold starts
-
-### Cold starts total duration
-![coldStarts-totalDuration](./coldStarts-totalDuration.png)
-
-### Cold starts init duration
-![coldStarts-initDuration](./coldStarts-initDuration.png)
-
-### Cold starts duration
-![coldStarts-duration](./coldStarts-duration.png)
-
-### Cold starts API call latency
-![coldStarts-apiCallLatency](./coldStarts-apiCallLatency.png)
-
-### Cold starts HTTP Request latency
-![coldStarts-httpRequestLatency](./coldStarts-httpRequestLatency.png)
-
-### Cold starts max memory
-![coldStarts-maxMemory](./coldStarts-maxMemory.png)
-
-## Warm starts
-
-### Warm starts duration
-![warmStarts-duration](./warmStarts-duration.png)
-
-### Warm starts API call latency
-![warmStarts-apiCallLatency](./warmStarts-apiCallLatency.png)
-
-
-### Warm starts HTTP request latency
-![warmStarts-httpRequestLatency](./warmStarts-httpRequestLatency.png)
-
-### Warm starts max memory
-![warmStarts-maxMemory](./warmStarts-maxMemory.png)
-
-`;
-  await fsPromises.writeFile(reportFilePath, content, "utf-8");
-  const duration = performance.now() - start;
-  console.log(`\nDone in ${roundToTwoDecimalPlaces(duration)}ms.`);
-}
-main();

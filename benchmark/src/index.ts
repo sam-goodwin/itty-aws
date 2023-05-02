@@ -1,6 +1,6 @@
 import { App, Stack, aws_dynamodb, aws_lambda } from "aws-cdk-lib";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import { CONFIG, IFunction } from "../benchmarkConfig";
+import { benchmarkConfig, IFunction } from "../benchmarkConfig";
 
 interface ILambdaFunction extends Omit<IFunction, "chart"> {}
 
@@ -80,8 +80,8 @@ createNodejsFunction({
 });
 
 // Create `CONFIG.runs` instances of the functions declared in `CONFIG.functions`
-CONFIG.functions.forEach((fn: IFunction) => {
-  for (let i = 1; i <= CONFIG.runs; i++) {
+benchmarkConfig.functions.forEach((fn: IFunction) => {
+  for (let i = 1; i <= benchmarkConfig.runs; i++) {
     const functionName = `${fn.functionName}-${i}`;
     createNodejsFunction({
       functionName,

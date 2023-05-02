@@ -3,18 +3,19 @@
   "include": [
     "src",
     "scripts",
-    "benchmarkConfig.ts",
+    "utils",
     "data",
-    "utils/wait.ts",
-    "utils/roundToTwoDecimalPlaces.ts",
-    "utils/getGitBranch.ts",
-    "utils/filesystem.ts"
+    "benchmarkConfig.ts",
+    "types.d.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "docs"],
   "compilerOptions": {
     "strict": true,
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "target": "ESNext"
+    "moduleResolution": "node",
+    "target": "esnext"
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }

@@ -1,7 +1,7 @@
 import { performance } from "perf_hooks";
 import { AWS } from "itty-aws";
 import { Context } from "aws-lambda";
-import { roundToTwoDecimalPlaces } from "../../utils/roundToTwoDecimalPlaces";
+import { roundToTwoDecimalPlaces } from "../../utils/format";
 
 const TableName = process.env.TABLE_NAME!;
 const client = new AWS.DynamoDB();

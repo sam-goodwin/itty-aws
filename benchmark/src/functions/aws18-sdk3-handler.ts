@@ -1,7 +1,7 @@
 import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { performance } from "perf_hooks";
 import { Context } from "aws-lambda";
-import { roundToTwoDecimalPlaces } from "../../utils/roundToTwoDecimalPlaces";
+import { roundToTwoDecimalPlaces } from "../../utils/format";
 
 const TableName = process.env.TABLE_NAME!;
 const dynamodb = new DynamoDBClient({});

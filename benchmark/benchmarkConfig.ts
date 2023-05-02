@@ -1,28 +1,17 @@
-export interface IFunction {
-  functionName: string;
-  entryPath: string;
-  runtimeName?: "NODEJS_16_X" | "NODEJS_18_X";
-  useItty?: boolean;
-  useBundle?: boolean;
-  chart: {
-    order: number;
-    backgroundColor: string;
-    borderColor: string;
-  };
-}
+import { join } from "node:path";
+import { BenchmarkConfig } from "./types";
+import { getGitBranch, getRootDirname } from "./utils/files";
 
-interface IConfig {
-  runs: number;
-  logs: {
-    outputFolder: string; // relative to scripts dir
-  };
-  functions: IFunction[];
-}
+const gitBranch = await getGitBranch();
+const outputDirPath = join(getRootDirname(), `/data/${gitBranch}`);
+const outputLogFilePath = join(outputDirPath, "raw.json");
 
-export const CONFIG: IConfig = {
+export const benchmarkConfig: BenchmarkConfig = {
   runs: 10,
   logs: {
-    outputFolder: "../data",
+    gitBranch,
+    outputDirPath,
+    outputLogFilePath,
   },
   functions: [
     // Node.js 16.x, aws-sdk v2, runtime

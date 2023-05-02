@@ -1,9 +1,9 @@
 import { promises as fsPromises } from "fs";
 import path from "path";
-import { CONFIG } from "../benchmarkConfig";
+import { benchmarkConfig } from "../benchmarkConfig";
 import { performance } from "perf_hooks";
-import { roundToTwoDecimalPlaces } from "../utils/roundToTwoDecimalPlaces";
-import { getGitBranch, getGitTag } from "../utils/filesystem";
+import { roundToTwoDecimalPlaces } from "../utils/format";
+import { getGitBranch, getGitTag } from "../utils/files";
 
 export interface IResult {
   git: {
@@ -58,13 +58,15 @@ function extractJsonFromString(str: string): Record<string, any> {
 }
 
 /**
- * Sets the value of a nested property at the given path on an object.
- * If the path does not exist, it will be created.
- * Source: https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-and-arrays-by-string-path
+ * Sets the value of a property in a nested object by providing the path as a dot-separated string.
  *
- * @param {T} object - The object to set the property on.
- * @param {string} path - The path to the nested property, separated by periods.
- * @param {U} value - The value to set the property to.
+ * @template T - The type of the target object.
+ * @template U - The type of the value to set.
+ * @param {object} props - An object containing the target object, the path to the property, and the value to set.
+ * @param {T} props.target - The target object to modify.
+ * @param {string} props.path - The path to the property to set, using dots as separators to indicate nested objects.
+ * @param {U} props.value - The value to set.
+ * @returns {T} - The modified target object.
  */
 function setPropertyByPath<T extends Record<string, any>, U>(props: {
   target: T;
@@ -125,12 +127,12 @@ async function main() {
 
   const rawFilePath = path.join(
     __dirname,
-    CONFIG.logs.outputFolder,
+    benchmarkConfig.logs.outputDirPath,
     `${gitBranch}/raw.json`
   );
   const filePath = path.join(
     __dirname,
-    CONFIG.logs.outputFolder,
+    benchmarkConfig.logs.outputDirPath,
     `${gitBranch}/consolidated.json`
   );
 
@@ -236,7 +238,7 @@ async function main() {
           "Cold start: init duration";
         result.datasets.coldStarts.initDuration[label] = {
           label: label,
-          order: CONFIG.functions.reduce(
+          order: benchmarkConfig.functions.reduce(
             (prev, curr) =>
               curr.functionName === label ? curr.chart.order : prev,
             0
@@ -258,7 +260,7 @@ async function main() {
           "Cold start: total duration";
         result.datasets.coldStarts.totalDuration[label] = {
           label: label,
-          order: CONFIG.functions.reduce(
+          order: benchmarkConfig.functions.reduce(
             (prev, curr) =>
               curr.functionName === label ? curr.chart.order : prev,
             0
@@ -280,7 +282,7 @@ async function main() {
       } start: duration`;
       result.datasets[targetDataset].duration[label] = {
         label: label,
-        order: CONFIG.functions.reduce(
+        order: benchmarkConfig.functions.reduce(
           (prev, curr) =>
             curr.functionName === label ? curr.chart.order : prev,
           0
@@ -301,7 +303,7 @@ async function main() {
       } start: max memory`;
       result.datasets[targetDataset].maxMemory[label] = {
         label: label,
-        order: CONFIG.functions.reduce(
+        order: benchmarkConfig.functions.reduce(
           (prev, curr) =>
             curr.functionName === label ? curr.chart.order : prev,
           0
@@ -325,7 +327,7 @@ async function main() {
         } start: http request latency`;
         result.datasets[targetDataset].httpRequestLatency[label] = {
           label: label,
-          order: CONFIG.functions.reduce(
+          order: benchmarkConfig.functions.reduce(
             (prev, curr) =>
               curr.functionName === label ? curr.chart.order : prev,
             0
@@ -347,7 +349,7 @@ async function main() {
       } start: API call latency`;
       result.datasets[targetDataset].apiCallLatency[label] = {
         label: label,
-        order: CONFIG.functions.reduce(
+        order: benchmarkConfig.functions.reduce(
           (prev, curr) =>
             curr.functionName === label ? curr.chart.order : prev,
           0
