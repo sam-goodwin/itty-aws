@@ -300,14 +300,14 @@ function generateCharts(
         labels.push(label);
         datalabels.push(`${mean}±${standardDeviation}`);
         backgroundColors.push(
-          benchmarkConfig.functions.reduce(
+          benchmarkConfig.benchmarkFunctions.reduce(
             (prev, curr) =>
               curr.functionName === key ? curr.chart.backgroundColor : prev,
             ""
           )
         );
         borderColors.push(
-          benchmarkConfig.functions.reduce(
+          benchmarkConfig.benchmarkFunctions.reduce(
             (prev, curr) =>
               curr.functionName === key ? curr.chart.borderColor : prev,
             ""

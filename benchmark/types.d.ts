@@ -1,13 +1,15 @@
 import { OutputLogEvent } from "@aws-sdk/client-cloudwatch-logs";
 
 export interface BenchmarkConfig {
+  stackName: string;
   runs: number;
   logs: {
     gitBranch: string;
     outputDirPath: string;
     outputLogFilePath: string;
   };
-  functions: FunctionParameters[];
+  setupFunction: Pick<FunctionParameters, "functionName" | "entryPath">;
+  benchmarkFunctions: FunctionParameters[];
 }
 
 export interface FunctionParameters {
@@ -21,6 +23,15 @@ export interface FunctionParameters {
     backgroundColor: string;
     borderColor: string;
   };
+}
+
+export interface BenchmarkResult {
+  functionName: string;
+  runtime: string;
+  sdkName: string;
+  sdkSource: string;
+  apiCallLatency: number;
+  httpRequestLatency?: number;
 }
 
 export type OutputLog = OutputLogEvent[];

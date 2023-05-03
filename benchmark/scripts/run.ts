@@ -1,9 +1,11 @@
 import {
   CloudWatchLogsClient,
   DeleteLogGroupCommand,
+  DescribeLogGroupsCommand,
   DescribeLogStreamsCommand,
   GetLogEventsCommand,
   GetLogEventsCommandInput,
+  LogGroup,
 } from "@aws-sdk/client-cloudwatch-logs";
 import { InvokeCommand, LambdaClient } from "@aws-sdk/client-lambda";
 import { constants, promises as fsPromises } from "node:fs";
@@ -21,50 +23,46 @@ import { wait } from "../utils/wait";
  */
 (async function main(): Promise<void> {
   // Setup
+  console.log(`Generate logs for branch '${benchmarkConfig.logs.gitBranch}'`);
   const scriptStatistics = {
     startTime: performance.now(),
   };
+  const expectedNumberOfLogGroups =
+    benchmarkConfig.benchmarkFunctions.length * benchmarkConfig.runs + 1; // +1 for the setup function
   const retryConfig = {
     retryMode: "adaptative",
     maxAttempts: 10,
   };
-  const cloudwatchClient = new CloudWatchLogsClient({ ...retryConfig });
+  const cloudWatchLogsClient = new CloudWatchLogsClient({ ...retryConfig });
   const lambdaClient = new LambdaClient({ ...retryConfig });
-  const logGroupClient = new CloudWatchLogsClient({ ...retryConfig });
-
-  // Generate logs
-  console.log(`Generate logs for branch '${benchmarkConfig.logs.gitBranch}'`);
 
   // Delete output folder
-  console.log(
-    `\n- Delete output log file : '${benchmarkConfig.logs.outputLogFilePath}'`
-  );
   await deleteFile({
     path: benchmarkConfig.logs.outputLogFilePath,
   }); // Does not exist
 
   // Delete previous cloudwatch log groups if they exist to prevent collecting logs from previous executions.
-  console.log("\n- Delete previous cloudwatch log groups if they exist");
-  await deleteLogGroups({ cloudwatchClient, benchmarkConfig });
+  await deleteLogGroups({ cloudWatchLogsClient, benchmarkConfig });
 
   // Init database
-  console.log("\n- Init database");
   await initDatabase({ lambdaClient });
 
-  console.log("\n- Invoke the benchmark functions");
+  // Invoke functions
   await invokeBenchmarkFunctions({
     lambdaClient,
     benchmarkConfig,
   });
 
-  process.stdout.write("\n- Wait until the last log has been published ");
-  await waitForCloudwatch({ logGroupClient, benchmarkConfig });
+  // wait until cloudwatch logs are created
+  await waitForCloudwatch({
+    cloudWatchLogsClient,
+    expectedNumberOfLogGroups,
+    benchmarkConfig,
+  });
 
   // Collect logs
-  console.log("\n- Collect logs");
   let outputLog: OutputLog = await collectLogs({
-    logGroupClient,
-    cloudwatchClient,
+    cloudWatchLogsClient,
   });
 
   // Write logs
@@ -75,9 +73,8 @@ import { wait } from "../utils/wait";
   });
 
   // Cleanup
-  cloudwatchClient.destroy();
+  cloudWatchLogsClient.destroy();
   lambdaClient.destroy();
-  logGroupClient.destroy();
 
   // Report
   const duration = performance.now() - scriptStatistics.startTime;
@@ -95,6 +92,9 @@ import { wait } from "../utils/wait";
  * @returns {Promise<void>} Resolves when the folder is deleted successfully.
  */
 async function deleteFile({ path }: { path: string }): Promise<void> {
+  console.log(
+    `\n- Delete output log file : '${benchmarkConfig.logs.outputLogFilePath}'`
+  );
   try {
     await fsPromises.access(path, constants.F_OK);
     await fsPromises.unlink(path);
@@ -104,36 +104,42 @@ async function deleteFile({ path }: { path: string }): Promise<void> {
 }
 
 /**
- * Deletes all CloudWatch Logs log groups for the functions specified in the
- * `CONFIG.functions` array. Each function will have `CONFIG.runs` log groups,
- * named `/aws/lambda/{functionName}-{runNumber}`.
+ * Delete CloudWatch log groups for all functions in a benchmark configuration.
  *
- * @param cloudwatchClient The AWS SDK client for CloudWatch Logs.
+ * @async
+ * @function
+ * @param {Object} options - The options object.
+ * @param {CloudWatchLogsClient} options.cloudwatchClient - The AWS SDK client for CloudWatch Logs.
+ * @param {BenchmarkConfig} options.benchmarkConfig - The benchmark configuration.
+ * @returns {Promise<void>} Resolves when all log groups have been deleted, or rejects if any error occurs.
  */
 async function deleteLogGroups({
-  cloudwatchClient,
+  cloudWatchLogsClient,
   benchmarkConfig,
 }: {
-  cloudwatchClient: CloudWatchLogsClient;
+  cloudWatchLogsClient: CloudWatchLogsClient;
   benchmarkConfig: BenchmarkConfig;
 }): Promise<void> {
-  for (const fn of benchmarkConfig.functions) {
-    for (let i = 1; i <= benchmarkConfig.runs; i++) {
-      try {
-        const logGroupName = `/aws/lambda/${fn.functionName}-${i}`;
-        const command = new DeleteLogGroupCommand({ logGroupName });
-        console.log(`  - log group '${logGroupName}'`);
-        // Use a fresh client to avoid timeouts
-        await cloudwatchClient.send(command);
-      } catch {
-        // do nothing : the group does not exist
-      }
+  console.log("\n- Delete previous cloudwatch log groups if they exist");
+  const logGroups = await getBenchmarklogGroups({
+    cloudWatchLogsClient,
+    benchmarkConfig,
+  });
+  for (const logGroup of logGroups) {
+    try {
+      const logGroupName = logGroup.logGroupName;
+      const command = new DeleteLogGroupCommand({ logGroupName });
+      console.log(`  - log group '${logGroupName}'`);
+      // Use a fresh client to avoid timeouts
+      await cloudWatchLogsClient.send(command);
+    } catch {
+      // do nothing : the group does not exist
     }
   }
 }
 
 /**
- * Initializes the database by invoking the 'ddb-setup' Lambda function using the provided
+ * Initializes the database by invoking the setup Lambda function using the provided
  * Lambda client.
  *
  * @param props - An object containing the Lambda client.
@@ -144,9 +150,10 @@ async function initDatabase({
 }: {
   lambdaClient: LambdaClient;
 }): Promise<void> {
+  console.log("\n- Init database");
   try {
     const command = new InvokeCommand({
-      FunctionName: "ddb-setup",
+      FunctionName: `${benchmarkConfig.stackName}-${benchmarkConfig.setupFunction.functionName}`,
     });
     await lambdaClient.send(command);
   } catch {
@@ -173,9 +180,10 @@ async function invokeBenchmarkFunctions({
   lambdaClient: LambdaClient;
   benchmarkConfig: BenchmarkConfig;
 }): Promise<void> {
-  for (const fn of benchmarkConfig.functions) {
+  console.log("\n- Invoke the benchmark functions");
+  for (const fn of benchmarkConfig.benchmarkFunctions) {
     for (let i = 1; i <= benchmarkConfig.runs; i++) {
-      const FunctionName = `${fn.functionName}-${i}`;
+      const FunctionName = `${benchmarkConfig.stackName}-${fn.functionName}-${i}`;
       console.log(`  - function '${FunctionName}'`);
       const command = new InvokeCommand({
         FunctionName,
@@ -194,32 +202,35 @@ async function invokeBenchmarkFunctions({
  * @async
  * @function
  * @param {Object} options - The options object.
- * @param {CloudWatchLogsClient} options.logGroupClient - The client for accessing Cloudwatch logs.
+ * @param {CloudWatchLogsClient} options.cloudWatchLogsClient - The client for accessing Cloudwatch logs.
  * @param {BenchmarkConfig} options.benchmarkConfig - The benchmark configuration object.
  * @returns {Promise<void>} - A Promise that resolves when Cloudwatch is ready.
  */
 async function waitForCloudwatch({
-  logGroupClient,
+  cloudWatchLogsClient,
   benchmarkConfig,
+  expectedNumberOfLogGroups,
 }: {
-  logGroupClient: CloudWatchLogsClient;
+  cloudWatchLogsClient: CloudWatchLogsClient;
   benchmarkConfig: BenchmarkConfig;
+  expectedNumberOfLogGroups: number;
 }): Promise<void> {
-  const lastFunctionName =
-    benchmarkConfig.functions[benchmarkConfig.functions.length - 1]
-      .functionName;
+  process.stdout.write("\n- Wait until cloudwatch logs are created ");
   while (true) {
-    await wait(2000);
+    await wait(3000);
     try {
-      const command = new DescribeLogStreamsCommand({
-        logGroupName: `/aws/lambda/${lastFunctionName}-${benchmarkConfig.runs}`,
+      const logGroups = await getBenchmarklogGroups({
+        cloudWatchLogsClient,
+        benchmarkConfig,
       });
-      await logGroupClient.send(command);
-      process.stdout.write("\n");
-      break;
-    } catch {
+      if (expectedNumberOfLogGroups === logGroups.length) {
+        process.stdout.write("\n");
+        break;
+      }
       // Log is not ready yet
       process.stdout.write(".");
+    } catch {
+      // Do nothing
     }
   }
   return;
@@ -235,19 +246,18 @@ async function waitForCloudwatch({
  * @returns {Promise<OutputLog>} - A promise that resolves to an array of log events.
  */
 async function collectLogs({
-  logGroupClient,
-  cloudwatchClient,
+  cloudWatchLogsClient,
 }: {
-  logGroupClient: CloudWatchLogsClient;
-  cloudwatchClient: CloudWatchLogsClient;
+  cloudWatchLogsClient: CloudWatchLogsClient;
 }): Promise<OutputLog> {
+  console.log("\n- Collect logs");
   let outputLog: OutputLog = [];
-  for (const fn of benchmarkConfig.functions) {
+  for (const fn of benchmarkConfig.benchmarkFunctions) {
     for (let i = 1; i <= benchmarkConfig.runs; i++) {
-      const logGroupName = `/aws/lambda/${fn.functionName}-${i}`;
+      const logGroupName = `/aws/lambda/${benchmarkConfig.stackName}-${fn.functionName}-${i}`;
       console.log(`  - logGroup '${logGroupName}'`);
       const command = new DescribeLogStreamsCommand({ logGroupName });
-      const { logStreams } = await logGroupClient.send(command);
+      const { logStreams } = await cloudWatchLogsClient.send(command);
       if (logStreams) {
         const logStream = logStreams[0];
         let nextToken: string | undefined;
@@ -259,7 +269,7 @@ async function collectLogs({
             nextToken,
           };
           const command = new GetLogEventsCommand({ ...params });
-          const { events, nextForwardToken } = await cloudwatchClient.send(
+          const { events, nextForwardToken } = await cloudWatchLogsClient.send(
             command
           );
           outputLog.push(...(events ?? []));
@@ -273,4 +283,42 @@ async function collectLogs({
     }
   }
   return outputLog;
+}
+
+/**
+ * Returns an array of log groups for a given CloudWatchLogsClient and BenchmarkConfig.
+ *
+ * @param {object} params - An object containing the logGroupClient and benchmarkConfig.
+ * @param {CloudWatchLogsClient} params.cloudWatchLogsClient - The CloudWatchLogsClient used to retrieve log groups.
+ * @param {BenchmarkConfig} params.benchmarkConfig - The BenchmarkConfig used to construct the log group name pattern.
+ * @returns {Promise<LogGroup[]>} - An array of log groups.
+ */
+async function getBenchmarklogGroups({
+  cloudWatchLogsClient,
+  benchmarkConfig,
+}: {
+  cloudWatchLogsClient: CloudWatchLogsClient;
+  benchmarkConfig: BenchmarkConfig;
+}): Promise<LogGroup[]> {
+  const logGroupNamePattern = `/aws/lambda/${benchmarkConfig.stackName}`;
+  const logGroups: LogGroup[] = [];
+  let nextToken: string | undefined;
+
+  do {
+    const command = new DescribeLogGroupsCommand({
+      logGroupNamePrefix: logGroupNamePattern,
+      nextToken,
+    });
+    const { logGroups: logGroupsPage, nextToken: newNextToken } =
+      await cloudWatchLogsClient.send(command);
+
+    logGroups.push(...(logGroupsPage ?? []));
+    if (nextToken === newNextToken) {
+      nextToken = undefined;
+    } else {
+      nextToken = newNextToken;
+    }
+  } while (nextToken);
+
+  return logGroups;
 }

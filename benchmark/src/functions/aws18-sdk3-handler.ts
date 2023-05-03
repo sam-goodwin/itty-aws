@@ -2,15 +2,26 @@ import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { performance } from "perf_hooks";
 import { Context } from "aws-lambda";
 import { roundToTwoDecimalPlaces } from "../../utils/format";
+import { BenchmarkResult } from "../../types";
 
 const TableName = process.env.TABLE_NAME!;
 const dynamodb = new DynamoDBClient({});
 
-export async function handler(_: unknown, context: Context) {
+/**
+ * Handles an AWS Lambda event.
+ *
+ * @param _ - The event data.
+ * @param context - The AWS Lambda context object.
+ * @returns An object containing the HTTP status code.
+ */
+export async function handler(
+  _: unknown,
+  context: Context
+): Promise<{ status: number }> {
   context.callbackWaitsForEmptyEventLoop = false;
   try {
-    let httpRequest: number | undefined;
-    let apiCall: number | undefined;
+    let httpRequestLatency: number = 0;
+    let apiCallLatency: number = 0;
     // Middleware (mark start and end of each HTTP requests including retry)
     // source: https://aws.amazon.com/fr/blogs/developer/middleware-stack-modular-aws-sdk-js/
     // API call round trip latency
@@ -18,7 +29,7 @@ export async function handler(_: unknown, context: Context) {
       (next) => async (args) => {
         const start = performance.now();
         const res = await next(args);
-        apiCall = roundToTwoDecimalPlaces(performance.now() - start);
+        apiCallLatency = roundToTwoDecimalPlaces(performance.now() - start);
         return res;
       },
       { step: "deserialize", priority: "low", tags: ["ROUND_TRIP"] }
@@ -28,7 +39,7 @@ export async function handler(_: unknown, context: Context) {
       (next) => async (args) => {
         const start = performance.now();
         const res = await next(args);
-        httpRequest = roundToTwoDecimalPlaces(performance.now() - start);
+        httpRequestLatency = roundToTwoDecimalPlaces(performance.now() - start);
         return res;
       },
       { step: "deserialize", priority: "low", tags: ["ROUND_TRIP"] }
@@ -44,19 +55,15 @@ export async function handler(_: unknown, context: Context) {
 
     //benchmarking
     await dynamodb.send(getItemParams);
-    console.log(
-      JSON.stringify({
-        context: {
-          name: process.env.METADATA_FN_NAME!,
-          runtime: process.env.METADATA_RUNTIME!,
-          sdk: {
-            name: process.env.METADATA_SDK!,
-            source: process.env.METADATA_SDK_SOURCE!,
-          },
-        },
-        latency: { httpRequest, apiCall },
-      })
-    );
+    const benchmarkResult: BenchmarkResult = {
+      functionName: process.env.METADATA_FN_NAME!,
+      runtime: process.env.METADATA_RUNTIME!,
+      sdkName: process.env.METADATA_SDK!,
+      sdkSource: process.env.METADATA_SDK_SOURCE!,
+      httpRequestLatency,
+      apiCallLatency,
+    };
+    console.log(JSON.stringify(benchmarkResult));
     return { status: 200 };
   } catch (error) {
     console.error({ error });

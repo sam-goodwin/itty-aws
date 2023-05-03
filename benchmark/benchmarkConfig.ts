@@ -7,13 +7,18 @@ const outputDirPath = join(getRootDirname(), `/data/${gitBranch}`);
 const outputLogFilePath = join(outputDirPath, "raw.json");
 
 export const benchmarkConfig: BenchmarkConfig = {
+  stackName: "benchmark",
   runs: 10,
   logs: {
     gitBranch,
     outputDirPath,
     outputLogFilePath,
   },
-  functions: [
+  setupFunction: {
+    functionName: "setup",
+    entryPath: "./functions/setup_handler",
+  },
+  benchmarkFunctions: [
     // Node.js 16.x, aws-sdk v2, runtime
     {
       functionName: "aws16-sdk2-runtime",

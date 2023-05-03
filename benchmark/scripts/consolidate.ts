@@ -238,7 +238,7 @@ async function main() {
           "Cold start: init duration";
         result.datasets.coldStarts.initDuration[label] = {
           label: label,
-          order: benchmarkConfig.functions.reduce(
+          order: benchmarkConfig.benchmarkFunctions.reduce(
             (prev, curr) =>
               curr.functionName === label ? curr.chart.order : prev,
             0
@@ -260,7 +260,7 @@ async function main() {
           "Cold start: total duration";
         result.datasets.coldStarts.totalDuration[label] = {
           label: label,
-          order: benchmarkConfig.functions.reduce(
+          order: benchmarkConfig.benchmarkFunctions.reduce(
             (prev, curr) =>
               curr.functionName === label ? curr.chart.order : prev,
             0
@@ -282,7 +282,7 @@ async function main() {
       } start: duration`;
       result.datasets[targetDataset].duration[label] = {
         label: label,
-        order: benchmarkConfig.functions.reduce(
+        order: benchmarkConfig.benchmarkFunctions.reduce(
           (prev, curr) =>
             curr.functionName === label ? curr.chart.order : prev,
           0
@@ -303,7 +303,7 @@ async function main() {
       } start: max memory`;
       result.datasets[targetDataset].maxMemory[label] = {
         label: label,
-        order: benchmarkConfig.functions.reduce(
+        order: benchmarkConfig.benchmarkFunctions.reduce(
           (prev, curr) =>
             curr.functionName === label ? curr.chart.order : prev,
           0
@@ -327,7 +327,7 @@ async function main() {
         } start: http request latency`;
         result.datasets[targetDataset].httpRequestLatency[label] = {
           label: label,
-          order: benchmarkConfig.functions.reduce(
+          order: benchmarkConfig.benchmarkFunctions.reduce(
             (prev, curr) =>
               curr.functionName === label ? curr.chart.order : prev,
             0
@@ -349,7 +349,7 @@ async function main() {
       } start: API call latency`;
       result.datasets[targetDataset].apiCallLatency[label] = {
         label: label,
-        order: benchmarkConfig.functions.reduce(
+        order: benchmarkConfig.benchmarkFunctions.reduce(
           (prev, curr) =>
             curr.functionName === label ? curr.chart.order : prev,
           0

@@ -1,16 +1,18 @@
 import { App, Stack, aws_dynamodb, aws_lambda } from "aws-cdk-lib";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import { benchmarkConfig, IFunction } from "../benchmarkConfig";
+import { FunctionParameters } from "../types";
+import { benchmarkConfig } from "../benchmarkConfig";
+import { createRequire } from "node:module";
 
-interface ILambdaFunction extends Omit<IFunction, "chart"> {}
-
-const STACK_NAME = `benchmark`;
+interface ILambdaFunction extends Omit<FunctionParameters, "chart"> {}
 
 const app = new App();
 
-const stack = new Stack(app, STACK_NAME);
+const stack = new Stack(app, benchmarkConfig.stackName);
 
-const table = new aws_dynamodb.Table(stack, STACK_NAME, {
+const tableName = `${benchmarkConfig.stackName}-table`;
+const table = new aws_dynamodb.Table(stack, tableName, {
+  tableName,
   partitionKey: {
     name: "pk",
     type: aws_dynamodb.AttributeType.STRING,
@@ -18,7 +20,40 @@ const table = new aws_dynamodb.Table(stack, STACK_NAME, {
   billingMode: aws_dynamodb.BillingMode.PAY_PER_REQUEST,
 });
 
-function createNodejsFunction(props: ILambdaFunction) {
+/**
+ * Entry point of the program.
+ * The main function is immediately invoked.
+ * @returns {void}
+ */
+(function main(): void {
+  // Benchmark setup function
+  createNodejsFunction({
+    ...benchmarkConfig.setupFunction,
+  });
+
+  // Create `CONFIG.runs` instances of the functions declared in `CONFIG.functions`
+  benchmarkConfig.benchmarkFunctions.forEach((fn: FunctionParameters) => {
+    for (let i = 1; i <= benchmarkConfig.runs; i++) {
+      const functionName = `${fn.functionName}-${i}`;
+      createNodejsFunction({
+        functionName,
+        entryPath: fn.entryPath,
+      });
+    }
+  });
+})();
+
+/**
+ * Creates a new Node.js serverless function with the given properties.
+ * @param props - The properties of the function.
+ * @param props.functionName - The name of the function.
+ * @param props.entryPath - The path to the entry point of the function.
+ * @param props.runtimeName - The name of the runtime. Defaults to "NODEJS_16_X".
+ * @param props.useItty - Whether to use the itty-aws library. Defaults to false.
+ * @param props.useBundle - Whether to bundle the external modules. Defaults to false.
+ * @returns A new Node.js serverless function.
+ */
+function createNodejsFunction(props: ILambdaFunction): void {
   const {
     functionName,
     entryPath,
@@ -49,11 +84,13 @@ function createNodejsFunction(props: ILambdaFunction) {
       METADATA_SDK = "AWS-SDK v3";
       break;
   }
-
-  const handler = new NodejsFunction(stack, functionName, {
-    functionName,
+  const require = createRequire(import.meta.url);
+  const entry = require.resolve(entryPath);
+  const cfnName = `${benchmarkConfig.stackName}-${functionName}`;
+  const handler = new NodejsFunction(stack, cfnName, {
+    functionName: cfnName,
     runtime,
-    entry: require.resolve(entryPath),
+    entry,
     handler: "handler",
     environment: {
       TABLE_NAME: table.tableName,
@@ -72,20 +109,3 @@ function createNodejsFunction(props: ILambdaFunction) {
   });
   table.grantReadWriteData(handler);
 }
-
-// Dynamodb setup function
-createNodejsFunction({
-  functionName: "ddb-setup",
-  entryPath: "./functions/ddb-setup_handler",
-});
-
-// Create `CONFIG.runs` instances of the functions declared in `CONFIG.functions`
-benchmarkConfig.functions.forEach((fn: IFunction) => {
-  for (let i = 1; i <= benchmarkConfig.runs; i++) {
-    const functionName = `${fn.functionName}-${i}`;
-    createNodejsFunction({
-      functionName,
-      entryPath: fn.entryPath,
-    });
-  }
-});
