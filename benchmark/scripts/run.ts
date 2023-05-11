@@ -18,7 +18,7 @@ import { wait } from "../utils/wait";
 
 /**
  * Entry point of the program.
- * The main function is immediately invoked.
+ * This function is immediately invoked.
  * @returns {Promise<void>}
  */
 (async function main(): Promise<void> {
@@ -28,7 +28,7 @@ import { wait } from "../utils/wait";
     startTime: performance.now(),
   };
   const expectedNumberOfLogGroups =
-    benchmarkConfig.benchmarkFunctions.length * benchmarkConfig.runs + 1; // +1 for the setup function
+    benchmarkConfig.benchmarkFunctions.length * benchmarkConfig.runs + 1; // +1 is to take the setup function into account
   const retryConfig = {
     retryMode: "adaptative",
     maxAttempts: 10,
@@ -36,36 +36,26 @@ import { wait } from "../utils/wait";
   const cloudWatchLogsClient = new CloudWatchLogsClient({ ...retryConfig });
   const lambdaClient = new LambdaClient({ ...retryConfig });
 
-  // Delete output folder
+  // Init
   await deleteFile({
     path: benchmarkConfig.logs.outputLogFilePath,
-  }); // Does not exist
-
-  // Delete previous cloudwatch log groups if they exist to prevent collecting logs from previous executions.
+  });
   await deleteLogGroups({ cloudWatchLogsClient, benchmarkConfig });
-
-  // Init database
   await initDatabase({ lambdaClient });
 
-  // Invoke functions
+  // Benchmark
   await invokeBenchmarkFunctions({
     lambdaClient,
     benchmarkConfig,
   });
-
-  // wait until cloudwatch logs are created
   await waitForCloudwatch({
     cloudWatchLogsClient,
     expectedNumberOfLogGroups,
     benchmarkConfig,
   });
-
-  // Collect logs
   let outputLog: OutputLog = await collectLogs({
     cloudWatchLogsClient,
   });
-
-  // Write logs
   console.log(`\n- Write raw data to '${benchmarkConfig.logs.outputDirPath}'`);
   await writeOutput({
     outputFilePath: benchmarkConfig.logs.outputLogFilePath,
@@ -75,8 +65,6 @@ import { wait } from "../utils/wait";
   // Cleanup
   cloudWatchLogsClient.destroy();
   lambdaClient.destroy();
-
-  // Report
   const duration = performance.now() - scriptStatistics.startTime;
   console.log(`\nDone in ${roundToTwoDecimalPlaces(duration)} ms.`);
 })();
@@ -88,7 +76,6 @@ import { wait } from "../utils/wait";
  * @function
  * @param {Object} options - The options object.
  * @param {string} options.outputFolder - The path to the output folder.
- * @throws {Error} If there was an error deleting the folder.
  * @returns {Promise<void>} Resolves when the folder is deleted successfully.
  */
 async function deleteFile({ path }: { path: string }): Promise<void> {
@@ -99,7 +86,7 @@ async function deleteFile({ path }: { path: string }): Promise<void> {
     await fsPromises.access(path, constants.F_OK);
     await fsPromises.unlink(path);
   } catch {
-    // Do nothing: the file does not exist
+    // Do nothing: the file probably does not exist
   }
 }
 
@@ -109,9 +96,9 @@ async function deleteFile({ path }: { path: string }): Promise<void> {
  * @async
  * @function
  * @param {Object} options - The options object.
- * @param {CloudWatchLogsClient} options.cloudwatchClient - The AWS SDK client for CloudWatch Logs.
+ * @param {CloudWatchLogsClient} options.cloudWatchLogsClient - The AWS SDK client for CloudWatch Logs.
  * @param {BenchmarkConfig} options.benchmarkConfig - The benchmark configuration.
- * @returns {Promise<void>} Resolves when all log groups have been deleted, or rejects if any error occurs.
+ * @returns {Promise<void>} Resolves when all log groups deletions have been settled.
  */
 async function deleteLogGroups({
   cloudWatchLogsClient,
@@ -157,7 +144,7 @@ async function initDatabase({
     });
     await lambdaClient.send(command);
   } catch {
-    // do nothing : the database is initialized
+    // do nothing : the database has already been initialized
   }
 }
 
@@ -165,8 +152,7 @@ async function initDatabase({
  * Invoke the benchmark functions specified in the BenchmarkConfig object using the
  * given Lambda client. The function names are obtained by appending the run
  * number to the base function name. Each function is invoked `BenchmarkConfig.runs`
- * times, and the invocation is logged to the console. The invocations are run
- * sequentially to avoid race conditions with the dynamodb table
+ * times. The invocations are run sequentially to avoid race conditions with the dynamodb table.
  *
  * @param {Object} props - The input object.
  * @param {lambdaClient} props.lambdaClient - The Lambda client to use for invocation.
@@ -215,7 +201,7 @@ async function waitForCloudwatch({
   benchmarkConfig: BenchmarkConfig;
   expectedNumberOfLogGroups: number;
 }): Promise<void> {
-  process.stdout.write("\n- Wait until cloudwatch logs are created ");
+  process.stdout.write("\n- Wait until cloudwatch logs are created "); // `process.stdout.write` is used to write to the on the same console line
   while (true) {
     await wait(3000);
     try {
@@ -237,11 +223,9 @@ async function waitForCloudwatch({
 }
 
 /**
- * Collects logs for the given benchmarkConfig functions and runs, using
- * logGroupClient and cloudwatchClient.
+ * Collects logs for the given benchmarkConfig functions and runs using cloudWatchLogsClient.
  *
- * @param {Object} params - An object containing logGroupClient and cloudwatchClient
- * @param {CloudWatchLogsClient} params.logGroupClient - The client used to interact with the log group.
+ * @param {Object} params - An object containing cloudWatchLogsClient
  * @param {CloudWatchLogsClient} params.cloudwatchClient - The client used to interact with CloudWatch.
  * @returns {Promise<OutputLog>} - A promise that resolves to an array of log events.
  */
