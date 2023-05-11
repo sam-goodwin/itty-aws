@@ -10,7 +10,7 @@ We compare itty-aws in various runtime environments and against AWS-SDK v2 and v
 <details open>
 <summary><span class="collapsible">Latest benchmark</span></summary>
 
-- [2023-04-16: advanced-benchmarking](./data/advanced-benchmarking/README.md)
+- [2023-04-16: advanced-benchmarking](./data/advanced-benchmarking-1/README.md)
 
 </details>
 <!-- LATEST REPORT END -->
