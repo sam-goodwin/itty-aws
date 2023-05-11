@@ -5,7 +5,7 @@ import { promises as fsPromises } from "node:fs";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { benchmarkConfig } from "../benchmarkConfig";
-import { IResult } from "../scripts/consolidate";
+import { IResult } from "../scripts/consolidate.old";
 import { getGitBranch, getGitTag } from "../utils/files";
 import { roundToTwoDecimalPlaces } from "../utils/format";
 
@@ -24,17 +24,17 @@ async function main(): Promise<void> {
 
   const folderPath = path.join(
     __dirname,
-    benchmarkConfig.logs.outputDirPath,
+    benchmarkConfig.logs.cloudWatchLogDirPath,
     `${gitBranch}`
   );
   const consolidatedFilePath = path.join(
     __dirname,
-    benchmarkConfig.logs.outputDirPath,
+    benchmarkConfig.logs.cloudWatchLogDirPath,
     `${gitBranch}/consolidated.json`
   );
   const reportFilePath = path.join(
     __dirname,
-    benchmarkConfig.logs.outputDirPath,
+    benchmarkConfig.logs.cloudWatchLogDirPath,
     `${gitBranch}/README.md`
   );
   console.log(
@@ -153,7 +153,7 @@ async function createChart(props: {
 }): Promise<void> {
   const filePath = path.join(
     __dirname,
-    benchmarkConfig.logs.outputDirPath,
+    benchmarkConfig.logs.cloudWatchLogDirPath,
     `${props.gitBranch}/${props.datasetType}-${props.datasetName}.png`
   );
 

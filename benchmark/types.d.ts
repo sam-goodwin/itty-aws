@@ -5,8 +5,8 @@ export interface BenchmarkConfig {
   runs: number;
   logs: {
     gitBranch: string;
-    outputDirPath: string;
-    outputLogFilePath: string;
+    cloudWatchLogDirPath: string;
+    cloudWatchLogFilePath: string;
   };
   setupFunction: Pick<FunctionParameters, "functionName" | "entryPath">;
   benchmarkFunctions: FunctionParameters[];
@@ -25,7 +25,9 @@ export interface FunctionParameters {
   };
 }
 
-export interface BenchmarkResult {
+type CloudWatchLog = OutputLogEvent[];
+
+export interface ApiCallExecution {
   functionName: string;
   runtime: string;
   sdkName: string;
@@ -34,4 +36,10 @@ export interface BenchmarkResult {
   httpRequestLatency?: number;
 }
 
-export type OutputLog = OutputLogEvent[];
+interface FunctionExecution extends ApiCallExecution {
+  requestId: string;
+  isColdStart: boolean;
+  initDuration?: number;
+  executionDuration: number;
+  maxMemory: number;
+}

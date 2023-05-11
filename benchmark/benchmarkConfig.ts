@@ -3,16 +3,16 @@ import { BenchmarkConfig } from "./types";
 import { getGitBranch, getRootDirname } from "./utils/files";
 
 const gitBranch = await getGitBranch();
-const outputDirPath = join(getRootDirname(), `/data/${gitBranch}`);
-const outputLogFilePath = join(outputDirPath, "raw.json");
+const cloudWatchLogDirPath = join(getRootDirname(), `/data/${gitBranch}`);
+const cloudWatchLogFilePath = join(cloudWatchLogDirPath, "cloudWatchLog.json");
 
 export const benchmarkConfig: BenchmarkConfig = {
   stackName: "benchmark",
   runs: 10,
   logs: {
     gitBranch,
-    outputDirPath,
-    outputLogFilePath,
+    cloudWatchLogDirPath,
+    cloudWatchLogFilePath,
   },
   setupFunction: {
     functionName: "setup",

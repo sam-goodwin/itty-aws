@@ -11,7 +11,7 @@ import { InvokeCommand, LambdaClient } from "@aws-sdk/client-lambda";
 import { constants, promises as fsPromises } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { benchmarkConfig } from "../benchmarkConfig";
-import { BenchmarkConfig, OutputLog } from "../types";
+import { BenchmarkConfig, CloudWatchLog } from "../types";
 import { writeOutput } from "../utils/files";
 import { roundToTwoDecimalPlaces } from "../utils/format";
 import { wait } from "../utils/wait";
@@ -24,9 +24,7 @@ import { wait } from "../utils/wait";
 (async function main(): Promise<void> {
   // Setup
   console.log(`Generate logs for branch '${benchmarkConfig.logs.gitBranch}'`);
-  const scriptStatistics = {
-    startTime: performance.now(),
-  };
+  const scriptStartTime = performance.now();
   const expectedNumberOfLogGroups =
     benchmarkConfig.benchmarkFunctions.length * benchmarkConfig.runs + 1; // +1 is to take the setup function into account
   const retryConfig = {
@@ -38,7 +36,7 @@ import { wait } from "../utils/wait";
 
   // Init
   await deleteFile({
-    path: benchmarkConfig.logs.outputLogFilePath,
+    path: benchmarkConfig.logs.cloudWatchLogFilePath,
   });
   await deleteLogGroups({ cloudWatchLogsClient, benchmarkConfig });
   await initDatabase({ lambdaClient });
@@ -53,19 +51,21 @@ import { wait } from "../utils/wait";
     expectedNumberOfLogGroups,
     benchmarkConfig,
   });
-  let outputLog: OutputLog = await collectLogs({
+  let cloudWatchLog: CloudWatchLog = await collectLogs({
     cloudWatchLogsClient,
   });
-  console.log(`\n- Write raw data to '${benchmarkConfig.logs.outputDirPath}'`);
+  console.log(
+    `\n- Write raw data to '${benchmarkConfig.logs.cloudWatchLogDirPath}'`
+  );
   await writeOutput({
-    outputFilePath: benchmarkConfig.logs.outputLogFilePath,
-    outputData: JSON.stringify(outputLog, null, 2),
+    outputFilePath: benchmarkConfig.logs.cloudWatchLogFilePath,
+    outputData: JSON.stringify(cloudWatchLog, null, 2),
   });
 
   // Cleanup
   cloudWatchLogsClient.destroy();
   lambdaClient.destroy();
-  const duration = performance.now() - scriptStatistics.startTime;
+  const duration = performance.now() - scriptStartTime;
   console.log(`\nDone in ${roundToTwoDecimalPlaces(duration)} ms.`);
 })();
 
@@ -80,7 +80,7 @@ import { wait } from "../utils/wait";
  */
 async function deleteFile({ path }: { path: string }): Promise<void> {
   console.log(
-    `\n- Delete output log file : '${benchmarkConfig.logs.outputLogFilePath}'`
+    `\n- Delete output log file : '${benchmarkConfig.logs.cloudWatchLogFilePath}'`
   );
   try {
     await fsPromises.access(path, constants.F_OK);
@@ -227,15 +227,15 @@ async function waitForCloudwatch({
  *
  * @param {Object} params - An object containing cloudWatchLogsClient
  * @param {CloudWatchLogsClient} params.cloudwatchClient - The client used to interact with CloudWatch.
- * @returns {Promise<OutputLog>} - A promise that resolves to an array of log events.
+ * @returns {Promise<CloudWatchLog>} - A promise that resolves to an array of log events.
  */
 async function collectLogs({
   cloudWatchLogsClient,
 }: {
   cloudWatchLogsClient: CloudWatchLogsClient;
-}): Promise<OutputLog> {
+}): Promise<CloudWatchLog> {
   console.log("\n- Collect logs");
-  let outputLog: OutputLog = [];
+  let cloudWatchLog: CloudWatchLog = [];
   for (const fn of benchmarkConfig.benchmarkFunctions) {
     for (let i = 1; i <= benchmarkConfig.runs; i++) {
       const logGroupName = `/aws/lambda/${benchmarkConfig.stackName}-${fn.functionName}-${i}`;
@@ -256,7 +256,7 @@ async function collectLogs({
           const { events, nextForwardToken } = await cloudWatchLogsClient.send(
             command
           );
-          outputLog.push(...(events ?? []));
+          cloudWatchLog.push(...(events ?? []));
           if (nextToken === nextForwardToken) {
             nextToken = undefined;
           } else {
@@ -266,7 +266,7 @@ async function collectLogs({
       }
     }
   }
-  return outputLog;
+  return cloudWatchLog;
 }
 
 /**
