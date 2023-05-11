@@ -17,8 +17,8 @@ import { roundToTwoDecimalPlaces } from "../utils/format";
 import { wait } from "../utils/wait";
 
 /**
- * Entry point of the program.
- * This function is immediately invoked.
+ * The script initializes the benchmark, runs it and collects the logs.
+ * This function is the entrypoint of the script. It is immediately invoked.
  * @returns {Promise<void>}
  */
 (async function main(): Promise<void> {
