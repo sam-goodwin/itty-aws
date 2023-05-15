@@ -1,8 +1,10 @@
-import { performance } from "perf_hooks";
-import { roundToTwoDecimalPlaces } from "../utils/format";
 import { constants, promises as fsPromises } from "node:fs";
-import { benchmarkConfig } from "../benchmarkConfig";
 import { dirname } from "node:path";
+import { performance } from "perf_hooks";
+import { benchmarkConfig } from "../benchmarkConfig";
+import { CloudWatchLog } from "../types";
+import { roundToTwoDecimalPlaces } from "../utils/format";
+import { createFunctionExecutionsList } from "./steps/createFunctionExecutionsList";
 import { runBenchmark } from "./steps/runBenchmark";
 
 /**
@@ -11,25 +13,27 @@ import { runBenchmark } from "./steps/runBenchmark";
  * @returns {Promise<void>}
  */
 (async function main(): Promise<void> {
-  // Setup
   const scriptStartTime = performance.now();
   console.log(`# Benchmark branch '${benchmarkConfig.gitBranch}'`);
 
-  // Init
   await deleteFile({
     path: benchmarkConfig.output.jsonFilePath,
   });
 
-  // Run the benchmark
   const cloudWatchLog = await runBenchmark({ benchmarkConfig });
+  const functionExecutionsList = await createFunctionExecutionsList({
+    cloudWatchLog,
+  });
+  // const functionExecutionsList: FunctionExecutionsList = await readFile({
+  //   path: benchmarkConfig.output.jsonFilePath,
+  // });
 
-  // Write the results
   await writeFile({
     path: benchmarkConfig.output.jsonFilePath,
-    data: JSON.stringify(cloudWatchLog, null, 2),
+    data: JSON.stringify(functionExecutionsList, null, 2),
   });
+  // console.log(functionExecutionsList);
 
-  // Cleanup
   const duration = performance.now() - scriptStartTime;
   console.log(`\nBenchmark: done in ${roundToTwoDecimalPlaces(duration)} ms.`);
 })();
@@ -69,5 +73,28 @@ export async function writeFile(props: {
     await fsPromises.writeFile(props.path, props.data);
   } catch (error) {
     console.error(error);
+  }
+}
+
+/**
+ * Returns a CloudWatchLog object parsed from a JSON file specified by the given path.
+ *
+ * @async
+ * @function
+ * @param {Object} props - An object containing a path property that specifies the path of the file to be read.
+ * @param {string} props.path - A string representing the path of the file to be read.
+ * @returns {Promise<CloudWatchLog>} - A Promise that resolves to a CloudWatchLog object.
+ * @throws {Error} - If an error occurs while reading the file.
+ */
+export async function readFile(props: {
+  path: string;
+}): Promise<CloudWatchLog> {
+  try {
+    const res = await fsPromises.readFile(props.path);
+    const cloudWatchLog: CloudWatchLog = JSON.parse(res.toString());
+    return cloudWatchLog;
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 }

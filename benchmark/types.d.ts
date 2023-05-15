@@ -26,7 +26,7 @@ export interface FunctionParameters {
   };
 }
 
-type CloudWatchLog = OutputLogEvent[];
+export type CloudWatchLog = OutputLogEvent[];
 
 export interface ApiCallExecution {
   functionName: string;
@@ -37,10 +37,14 @@ export interface ApiCallExecution {
   httpRequestLatency?: number;
 }
 
-interface FunctionExecution extends ApiCallExecution {
-  requestId: string;
+export interface FunctionExecution {
   isColdStart: boolean;
-  initDuration?: number;
+  initDuration: number;
   executionDuration: number;
   maxMemory: number;
 }
+
+export type FunctionExecutionsList = Record<
+  string,
+  RecordFunctionExecution & ApiCallExecution
+>;

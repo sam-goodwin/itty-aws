@@ -1,27 +1,29 @@
 import {
   CloudWatchLogsClient,
+  CloudWatchLogsClientConfig,
   DeleteLogGroupCommand,
   DescribeLogGroupsCommand,
   DescribeLogStreamsCommand,
   GetLogEventsCommand,
   GetLogEventsCommandInput,
   LogGroup,
-  CloudWatchLogsClientConfig,
 } from "@aws-sdk/client-cloudwatch-logs";
 import {
   InvokeCommand,
   LambdaClient,
   LambdaClientConfig,
 } from "@aws-sdk/client-lambda";
-import { performance } from "node:perf_hooks";
-import { BenchmarkConfig, CloudWatchLog } from "../../types";
-import { roundToTwoDecimalPlaces } from "../../utils/format";
-import { wait } from "../../utils/wait";
-import { Agent } from "node:https";
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
+import { Agent } from "node:https";
+import { BenchmarkConfig, CloudWatchLog } from "../../types";
+import { wait } from "../../utils/wait";
 
 /**
  * This function initializes the cloud, runs the benchmark functions and collects the logs.
+ * @async
+ * @function
+ * @param {Object} options - The options object.
+ * @param {BenchmarkConfig} options.benchmarkConfig - The benchmark configuration.
  * @returns {Promise<CloudWatchLog>}
  */
 export async function runBenchmark({
@@ -29,8 +31,6 @@ export async function runBenchmark({
 }: {
   benchmarkConfig: BenchmarkConfig;
 }): Promise<CloudWatchLog> {
-  // Setup
-  const functionStartTime = performance.now();
   console.log("\n## Run the Benchmark functions");
   // Custom requestHandler for our clients. It fixes AWS SDK v3 causing unexpected/unexplained freezes.
   // source: https://github.com/aws/aws-sdk-js-v3/issues/3560#issuecomment-1484140333
@@ -47,11 +47,9 @@ export async function runBenchmark({
   const cloudWatchLogsClient = new CloudWatchLogsClient(clientConfig);
   const lambdaClient = new LambdaClient(clientConfig);
 
-  // Init
   await deleteLogGroups({ cloudWatchLogsClient, benchmarkConfig });
   await initDatabase({ lambdaClient, benchmarkConfig });
 
-  // Run
   await invokeBenchmarkFunctions({
     lambdaClient,
     benchmarkConfig,
@@ -68,12 +66,6 @@ export async function runBenchmark({
   // Cleanup
   cloudWatchLogsClient.destroy();
   lambdaClient.destroy();
-  const duration = performance.now() - functionStartTime;
-  console.log(
-    `\nRun the benchmark functions: done in ${roundToTwoDecimalPlaces(
-      duration
-    )} ms.`
-  );
 
   return cloudWatchLog;
 }
