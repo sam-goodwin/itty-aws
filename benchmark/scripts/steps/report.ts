@@ -4,10 +4,10 @@ import { Context } from "chartjs-plugin-datalabels";
 import { promises as fsPromises } from "node:fs";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
-import { benchmarkConfig } from "../benchmarkConfig";
-import { IResult } from "../scripts/consolidate.old";
-import { getGitBranch, getGitTag } from "../utils/files";
-import { roundToTwoDecimalPlaces } from "../utils/format";
+import { benchmarkConfig } from "../../benchmarkConfig";
+import { IResult } from "../../scripts/consolidate.old";
+import { getGitBranch, getGitTag } from "../../utils/files";
+import { roundToTwoDecimalPlaces } from "../../utils/format";
 
 /**
  * Generates a report for the current Git branch and tag (if any).

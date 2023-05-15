@@ -32,16 +32,15 @@ Prerequesite : AWS CLI credentials are correctly configured, `itty-aws` has been
    `pnpm bench:bootstrap`
 1. Deploy the benchmarking stack  
    `pnpm bench:deploy`
+   - The benchmark lambdas use a unique `DEPLOYMENT_UUID`. You can re-deploy them to flush existing lambda instances and be sure to trigger cold starts effectively.
 1. Run the benchmark  
    `pnpm bench:run`
-1. Collect and consolidate the benchmark results  
-   `pnpm bench:consolidate`
-1. Generate the report and update the index  
-   `pnpm bench:report`
+   - Collects and consolidate the benchmark results
+   - Generates the report
 1. Manual finishes
    1. Analyze and comment the report in `/benchmark/data/my-branch/README.md`as needed
-   1. Update the reports index in `/benchmark/data/README.md`
-   1. Commit and push the result
+   1. Update the table of content in `/benchmark/data/README.md`
+   1. Commit and push
 
 ## Benchmarking architecture and methodology
 

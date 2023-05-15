@@ -3,6 +3,9 @@ import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { FunctionParameters } from "../types";
 import { benchmarkConfig } from "../benchmarkConfig";
 import { createRequire } from "node:module";
+import { randomUUID } from "node:crypto";
+
+const DEPLOYMENT_UUID = randomUUID(); // unique identifier used to force re-deployment and cold starts triggering
 
 interface ILambdaFunction extends Omit<FunctionParameters, "chart"> {}
 
@@ -33,7 +36,7 @@ const table = new aws_dynamodb.Table(stack, tableName, {
 
   // Create `CONFIG.runs` instances of the functions declared in `CONFIG.functions`
   benchmarkConfig.benchmarkFunctions.forEach((fn: FunctionParameters) => {
-    for (let i = 1; i <= benchmarkConfig.runs; i++) {
+    for (let i = 1; i <= benchmarkConfig.functionInstances; i++) {
       const functionName = `${fn.functionName}-${i}`;
       createNodejsFunction({
         functionName,
@@ -99,6 +102,7 @@ function createNodejsFunction(props: ILambdaFunction): void {
       METADATA_RUNTIME: runtimeName,
       METADATA_SDK,
       METADATA_SDK_SOURCE: bundle ? "bundle" : "runtime",
+      DEPLOYMENT_UUID,
     },
     awsSdkConnectionReuse: true,
     memorySize: 512,

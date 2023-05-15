@@ -1,0 +1,202 @@
+[
+  {
+    "ingestionTime": 1684139935532,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139929631
+  },
+  {
+    "ingestionTime": 1684139935532,
+    "message": "START RequestId: 3c0d422a-25d2-43c1-bda8-37ece3ad642b Version: $LATEST\n",
+    "timestamp": 1684139929902
+  },
+  {
+    "ingestionTime": 1684139935532,
+    "message": "2023-05-15T08:38:50.038Z\t3c0d422a-25d2-43c1-bda8-37ece3ad642b\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"httpRequestLatency\":125.61,\"apiCallLatency\":128.27}\n",
+    "timestamp": 1684139930038
+  },
+  {
+    "ingestionTime": 1684139935532,
+    "message": "END RequestId: 3c0d422a-25d2-43c1-bda8-37ece3ad642b\n",
+    "timestamp": 1684139930056
+  },
+  {
+    "ingestionTime": 1684139935532,
+    "message": "REPORT RequestId: 3c0d422a-25d2-43c1-bda8-37ece3ad642b\tDuration: 154.56 ms\tBilled Duration: 155 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 269.80 ms\t\n",
+    "timestamp": 1684139930056
+  },
+  {
+    "ingestionTime": 1684139935684,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139930213
+  },
+  {
+    "ingestionTime": 1684139935684,
+    "message": "START RequestId: 8f3607ef-94f6-446d-a32b-2ec2f380b0e9 Version: $LATEST\n",
+    "timestamp": 1684139930373
+  },
+  {
+    "ingestionTime": 1684139935684,
+    "message": "2023-05-15T08:38:50.556Z\t8f3607ef-94f6-446d-a32b-2ec2f380b0e9\tINFO\t{\"functionName\":\"aws16-itty-runtime-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"apiCallLatency\":181.41}\n",
+    "timestamp": 1684139930556
+  },
+  {
+    "ingestionTime": 1684139935684,
+    "message": "END RequestId: 8f3607ef-94f6-446d-a32b-2ec2f380b0e9\n",
+    "timestamp": 1684139930558
+  },
+  {
+    "ingestionTime": 1684139935684,
+    "message": "REPORT RequestId: 8f3607ef-94f6-446d-a32b-2ec2f380b0e9\tDuration: 184.96 ms\tBilled Duration: 185 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 159.33 ms\t\n",
+    "timestamp": 1684139930558
+  },
+  {
+    "ingestionTime": 1684139933461,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139930751
+  },
+  {
+    "ingestionTime": 1684139933461,
+    "message": "START RequestId: 959f01c5-baba-4f48-91bc-4a262c041d88 Version: $LATEST\n",
+    "timestamp": 1684139931017
+  },
+  {
+    "ingestionTime": 1684139933461,
+    "message": "2023-05-15T08:38:51.168Z\t959f01c5-baba-4f48-91bc-4a262c041d88\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"httpRequestLatency\":110.4,\"apiCallLatency\":113.01}\n",
+    "timestamp": 1684139931168
+  },
+  {
+    "ingestionTime": 1684139933461,
+    "message": "END RequestId: 959f01c5-baba-4f48-91bc-4a262c041d88\n",
+    "timestamp": 1684139931169
+  },
+  {
+    "ingestionTime": 1684139933461,
+    "message": "REPORT RequestId: 959f01c5-baba-4f48-91bc-4a262c041d88\tDuration: 152.28 ms\tBilled Duration: 153 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 265.35 ms\t\n",
+    "timestamp": 1684139931169
+  },
+  {
+    "ingestionTime": 1684139940201,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139931358
+  },
+  {
+    "ingestionTime": 1684139940201,
+    "message": "START RequestId: b86574d4-8b6e-4497-aaec-74eb151baac5 Version: $LATEST\n",
+    "timestamp": 1684139931525
+  },
+  {
+    "ingestionTime": 1684139940201,
+    "message": "2023-05-15T08:38:51.719Z\tb86574d4-8b6e-4497-aaec-74eb151baac5\tINFO\t{\"functionName\":\"aws16-itty-bundle-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"apiCallLatency\":192.43}\n",
+    "timestamp": 1684139931719
+  },
+  {
+    "ingestionTime": 1684139940201,
+    "message": "END RequestId: b86574d4-8b6e-4497-aaec-74eb151baac5\n",
+    "timestamp": 1684139931721
+  },
+  {
+    "ingestionTime": 1684139940201,
+    "message": "REPORT RequestId: b86574d4-8b6e-4497-aaec-74eb151baac5\tDuration: 195.98 ms\tBilled Duration: 196 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 166.16 ms\t\n",
+    "timestamp": 1684139931721
+  },
+  {
+    "ingestionTime": 1684139938706,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139931946
+  },
+  {
+    "ingestionTime": 1684139938706,
+    "message": "START RequestId: 5d0cc49a-cae4-4901-b149-36be92e28848 Version: $LATEST\n",
+    "timestamp": 1684139932223
+  },
+  {
+    "ingestionTime": 1684139938706,
+    "message": "2023-05-15T08:38:52.340Z\t5d0cc49a-cae4-4901-b149-36be92e28848\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"httpRequestLatency\":87.44,\"apiCallLatency\":87.51}\n",
+    "timestamp": 1684139932340
+  },
+  {
+    "ingestionTime": 1684139938706,
+    "message": "END RequestId: 5d0cc49a-cae4-4901-b149-36be92e28848\n",
+    "timestamp": 1684139932342
+  },
+  {
+    "ingestionTime": 1684139938706,
+    "message": "REPORT RequestId: 5d0cc49a-cae4-4901-b149-36be92e28848\tDuration: 118.20 ms\tBilled Duration: 119 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 277.18 ms\t\n",
+    "timestamp": 1684139932342
+  },
+  {
+    "ingestionTime": 1684139939874,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139932494
+  },
+  {
+    "ingestionTime": 1684139939874,
+    "message": "START RequestId: 5ca0e796-0d8a-416e-adbb-86d37a198548 Version: $LATEST\n",
+    "timestamp": 1684139932671
+  },
+  {
+    "ingestionTime": 1684139939874,
+    "message": "2023-05-15T08:38:52.850Z\t5ca0e796-0d8a-416e-adbb-86d37a198548\tINFO\t{\"functionName\":\"aws18-itty-runtime-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"apiCallLatency\":177.14}\n",
+    "timestamp": 1684139932850
+  },
+  {
+    "ingestionTime": 1684139939874,
+    "message": "END RequestId: 5ca0e796-0d8a-416e-adbb-86d37a198548\n",
+    "timestamp": 1684139932852
+  },
+  {
+    "ingestionTime": 1684139939874,
+    "message": "REPORT RequestId: 5ca0e796-0d8a-416e-adbb-86d37a198548\tDuration: 180.75 ms\tBilled Duration: 181 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 176.67 ms\t\n",
+    "timestamp": 1684139932852
+  },
+  {
+    "ingestionTime": 1684139935423,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139933051
+  },
+  {
+    "ingestionTime": 1684139935423,
+    "message": "START RequestId: 1959b91c-9bea-48e2-95fd-aeaf529e9f06 Version: $LATEST\n",
+    "timestamp": 1684139933320
+  },
+  {
+    "ingestionTime": 1684139935423,
+    "message": "2023-05-15T08:38:53.413Z\t1959b91c-9bea-48e2-95fd-aeaf529e9f06\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"httpRequestLatency\":76.65,\"apiCallLatency\":76.73}\n",
+    "timestamp": 1684139933413
+  },
+  {
+    "ingestionTime": 1684139935423,
+    "message": "END RequestId: 1959b91c-9bea-48e2-95fd-aeaf529e9f06\n",
+    "timestamp": 1684139933428
+  },
+  {
+    "ingestionTime": 1684139935423,
+    "message": "REPORT RequestId: 1959b91c-9bea-48e2-95fd-aeaf529e9f06\tDuration: 108.42 ms\tBilled Duration: 109 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 267.51 ms\t\n",
+    "timestamp": 1684139933428
+  },
+  {
+    "ingestionTime": 1684139937930,
+    "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
+    "timestamp": 1684139933657
+  },
+  {
+    "ingestionTime": 1684139937930,
+    "message": "START RequestId: bb3dcd54-2ed2-46a7-8adf-b5aa014e24f5 Version: $LATEST\n",
+    "timestamp": 1684139933821
+  },
+  {
+    "ingestionTime": 1684139937930,
+    "message": "2023-05-15T08:38:53.992Z\tbb3dcd54-2ed2-46a7-8adf-b5aa014e24f5\tINFO\t{\"functionName\":\"aws18-itty-bundle-1\",\"runtime\":\"NODEJS_16_X\",\"sdkName\":\"AWS-SDK v2\",\"sdkSource\":\"runtime\",\"apiCallLatency\":169.51}\n",
+    "timestamp": 1684139933992
+  },
+  {
+    "ingestionTime": 1684139937930,
+    "message": "END RequestId: bb3dcd54-2ed2-46a7-8adf-b5aa014e24f5\n",
+    "timestamp": 1684139933993
+  },
+  {
+    "ingestionTime": 1684139937930,
+    "message": "REPORT RequestId: bb3dcd54-2ed2-46a7-8adf-b5aa014e24f5\tDuration: 172.74 ms\tBilled Duration: 173 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 163.04 ms\t\n",
+    "timestamp": 1684139933993
+  }
+]

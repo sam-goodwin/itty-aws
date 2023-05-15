@@ -9,14 +9,13 @@
     "synth": "cdk synth",
     "deploy": "cdk deploy",
     "hotswap": "cdk deploy --hotswap",
-    "start": "ts-node --esm scripts/run.ts",
-    "consolidate": "ts-node --esm scripts/consolidate.ts",
-    "report": "ts-node --esm scripts/report.ts"
+    "start": "ts-node --esm scripts/benchmark.ts"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.312.0",
     "@aws-sdk/client-dynamodb": "^3.245.0",
     "@aws-sdk/client-lambda": "^3.314.0",
+    "@aws-sdk/node-http-handler": "^3.329.0",
     "aws-cdk-lib": "^2.60.0",
     "aws-sdk": "2.1295.0",
     "chart.js": "^3.9.1",

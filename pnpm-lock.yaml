@@ -80,6 +80,9 @@ importers:
       '@aws-sdk/client-lambda':
         specifier: ^3.314.0
         version: 3.314.0
+      '@aws-sdk/node-http-handler':
+        specifier: ^3.329.0
+        version: 3.329.0
       aws-cdk-lib:
         specifier: ^2.60.0
         version: 2.60.0(constructs@10.0.0)
@@ -292,6 +295,14 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.310.0
+      tslib: 2.5.0
+    dev: false
+
+  /@aws-sdk/abort-controller@3.329.0:
+    resolution: {integrity: sha512-hzrjPNQcJoSPe0oS20V5i98oiEZSM3mKNiR6P3xHTHTPI/F23lyjGZ+/CSkCmJbSWfGZ5sHZZcU6AWuS7xBdTw==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/types': 3.329.0
       tslib: 2.5.0
     dev: false
 
@@ -1740,6 +1751,17 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@aws-sdk/node-http-handler@3.329.0:
+    resolution: {integrity: sha512-OrjaHjU2ZTPfoHa5DruRvTIbeHH/cc0wvh4ml+FwDpWaPaBpOhLiluhZ3anqX1l5QjrXNiQnL8FxSM5OV/zVCA==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/abort-controller': 3.329.0
+      '@aws-sdk/protocol-http': 3.329.0
+      '@aws-sdk/querystring-builder': 3.329.0
+      '@aws-sdk/types': 3.329.0
+      tslib: 2.5.0
+    dev: false
+
   /@aws-sdk/property-provider@3.226.0:
     resolution: {integrity: sha512-TsljjG+Sg0LmdgfiAlWohluWKnxB/k8xenjeozZfzOr5bHmNHtdbWv6BtNvD/R83hw7SFXxbJHlD5H4u9p2NFg==}
     engines: {node: '>=14.0.0'}
@@ -1794,6 +1816,14 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@aws-sdk/protocol-http@3.329.0:
+    resolution: {integrity: sha512-0rLEHY6QTHTUUcVxzGbPUSmCKlXWplxT/fcYRh0bcc5MBK4naKfcQft1O6Ajp8uqs/9YPZ7XCVCn90pDeJfeaw==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/types': 3.329.0
+      tslib: 2.5.0
+    dev: false
+
   /@aws-sdk/querystring-builder@3.226.0:
     resolution: {integrity: sha512-LVurypuNeotO4lmirKXRC4NYrZRAyMJXuwO0f2a5ZAUJCjauwYrifKue6yCfU7bls7gut7nfcR6B99WBYpHs3g==}
     engines: {node: '>=14.0.0'}
@@ -1817,6 +1847,15 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.310.0
+      '@aws-sdk/util-uri-escape': 3.310.0
+      tslib: 2.5.0
+    dev: false
+
+  /@aws-sdk/querystring-builder@3.329.0:
+    resolution: {integrity: sha512-UWgMKkS5trliaDJG4nPv3onu8Y0aBuwRo7RdIgggguOiU8pU6pq1I113nH2FBNWy+Me1bwf+bcviJh0pCo6bEg==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@aws-sdk/types': 3.329.0
       '@aws-sdk/util-uri-escape': 3.310.0
       tslib: 2.5.0
     dev: false
@@ -1993,6 +2032,13 @@ packages:
 
   /@aws-sdk/types@3.310.0:
     resolution: {integrity: sha512-j8eamQJ7YcIhw7fneUfs8LYl3t01k4uHi4ZDmNRgtbmbmTTG3FZc2MotStZnp3nZB6vLiPF1o5aoJxWVvkzS6A==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@aws-sdk/types@3.329.0:
+    resolution: {integrity: sha512-wFBW4yciDfzQBSFmWNaEvHShnSGLMxSu9Lls6EUf6xDMavxSB36bsrVRX6CyAo/W0NeIIyEOW1LclGPgJV1okg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       tslib: 2.5.0

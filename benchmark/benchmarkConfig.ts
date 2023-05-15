@@ -1,18 +1,23 @@
-import { join } from "node:path";
+import { exec } from "node:child_process";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import util from "node:util";
 import { BenchmarkConfig } from "./types";
-import { getGitBranch, getRootDirname } from "./utils/files";
+
+const execAsync = util.promisify(exec);
 
 const gitBranch = await getGitBranch();
-const cloudWatchLogDirPath = join(getRootDirname(), `/data/${gitBranch}`);
-const cloudWatchLogFilePath = join(cloudWatchLogDirPath, "cloudWatchLog.json");
+const dirPath = join(getRootDirname(), `/benchmark/data/${gitBranch}`);
+const jsonFilePath = join(dirPath, "benchmark-results.json");
 
 export const benchmarkConfig: BenchmarkConfig = {
   stackName: "benchmark",
-  runs: 10,
-  logs: {
-    gitBranch,
-    cloudWatchLogDirPath,
-    cloudWatchLogFilePath,
+  functionInstances: 1,
+  functionRuns: 1,
+  gitBranch,
+  output: {
+    dirPath,
+    jsonFilePath,
   },
   setupFunction: {
     functionName: "setup",
@@ -120,3 +125,45 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
   ],
 };
+
+/**
+ * Returns the name of the root folder of the project.
+ *
+ * @returns The name of the root folder of the project.
+ */
+export function getRootDirname(): string {
+  const __filename = fileURLToPath(import.meta.url);
+  // our function lives in /utils, so we return the parent folder name
+  return dirname(dirname(__filename));
+}
+
+/**
+ * Get the current Git branch name of the repository in the current directory.
+ * @returns {Promise<string>} A Promise that resolves to the Git branch name as a string, or an empty string if not found.
+ */
+export async function getGitBranch(): Promise<string> {
+  try {
+    const res = await execAsync("git rev-parse --abbrev-ref HEAD 2>/dev/null", {
+      encoding: "utf-8",
+    });
+    return res?.stdout.trim() ?? "";
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Retrieves the latest Git tag using `git describe`.
+ *
+ * @returns A Promise that resolves to a string representing the latest Git tag.
+ */
+export async function getGitTag(): Promise<string> {
+  try {
+    const res = await execAsync("git describe --tags --abbrev=0 2>/dev/null", {
+      encoding: "utf-8",
+    });
+    return res?.stdout.trim() ?? "";
+  } catch {
+    return "";
+  }
+}

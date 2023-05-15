@@ -2,11 +2,12 @@ import { OutputLogEvent } from "@aws-sdk/client-cloudwatch-logs";
 
 export interface BenchmarkConfig {
   stackName: string;
-  runs: number;
-  logs: {
-    gitBranch: string;
-    cloudWatchLogDirPath: string;
-    cloudWatchLogFilePath: string;
+  functionInstances: number;
+  functionRuns: number;
+  gitBranch: string;
+  output: {
+    dirPath: string;
+    jsonFilePath: string;
   };
   setupFunction: Pick<FunctionParameters, "functionName" | "entryPath">;
   benchmarkFunctions: FunctionParameters[];
