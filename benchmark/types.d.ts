@@ -28,7 +28,7 @@ export interface FunctionParameters {
 
 export type CloudWatchLog = OutputLogEvent[];
 
-export interface ApiCallExecution {
+export interface ApiCall {
   functionName: string;
   runtime: string;
   sdkName: string;
@@ -37,14 +37,14 @@ export interface ApiCallExecution {
   httpRequestLatency?: number;
 }
 
-export interface FunctionExecution {
+export interface LambdaReport {
   isColdStart: boolean;
   initDuration: number;
   executionDuration: number;
   maxMemory: number;
 }
 
-export type FunctionExecutionsList = Record<
+export type LambdaExecutionLog = Record<
   string,
-  RecordFunctionExecution & ApiCallExecution
+  RecordFunctionExecution & ApiCall
 >;

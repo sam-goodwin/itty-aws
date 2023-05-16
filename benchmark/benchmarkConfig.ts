@@ -12,8 +12,8 @@ const jsonFilePath = join(dirPath, "benchmark-results.json");
 
 export const benchmarkConfig: BenchmarkConfig = {
   stackName: "benchmark",
-  functionInstances: 1,
-  functionRuns: 1,
+  functionInstances: 2,
+  functionRuns: 2,
   gitBranch,
   output: {
     dirPath,

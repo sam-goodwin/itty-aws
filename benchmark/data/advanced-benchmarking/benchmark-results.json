@@ -1,94 +1,357 @@
 {
-  "29af6c61-108b-413c-8c8e-90ac7bd0abcc": {
+  "e9e1095f-167b-4991-934b-71f9fd71422e": {
     "functionName": "aws16-sdk2-runtime-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "httpRequestLatency": 112.23,
-    "apiCallLatency": 114.79,
-    "executionDuration": 156.07,
+    "httpRequestLatency": 115.73,
+    "apiCallLatency": 118.35,
+    "executionDuration": 160,
     "maxMemory": 74,
-    "initDuration": 264.1,
+    "initDuration": 277.62,
     "isColdStart": true
   },
-  "af4b1120-a36b-46e6-9c2b-685d4460a63a": {
+  "3e002607-348d-4477-956a-d131b0f8bcb8": {
+    "functionName": "aws16-sdk2-runtime-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 4.24,
+    "apiCallLatency": 4.98,
+    "executionDuration": 16.7,
+    "maxMemory": 75
+  },
+  "8cd806b8-9b47-40d2-88aa-48826cad59e9": {
+    "functionName": "aws16-sdk2-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 106.42,
+    "apiCallLatency": 108.94,
+    "executionDuration": 147.75,
+    "maxMemory": 74,
+    "initDuration": 275.45,
+    "isColdStart": true
+  },
+  "df1ff3c2-1bb2-479b-b4ba-b30a90bdd2a9": {
+    "functionName": "aws16-sdk2-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 4.46,
+    "apiCallLatency": 5.21,
+    "executionDuration": 26.36,
+    "maxMemory": 75
+  },
+  "e8bb1a08-0519-4a7e-8a88-f7a40382756f": {
     "functionName": "aws16-itty-runtime-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "apiCallLatency": 180.46,
-    "executionDuration": 192.31,
+    "apiCallLatency": 175.09,
+    "executionDuration": 178.68,
     "maxMemory": 67,
-    "initDuration": 170.6,
+    "initDuration": 158.51,
     "isColdStart": true
   },
-  "9951509c-32e4-4d95-ad5a-19e726154dde": {
+  "ca1244ba-9876-4d90-acd8-da8aff5d873e": {
+    "functionName": "aws16-itty-runtime-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 7.16,
+    "executionDuration": 8.71,
+    "maxMemory": 68
+  },
+  "3fc5de7e-b88c-49e7-9544-598dff50b4ae": {
+    "functionName": "aws16-itty-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 169.46,
+    "executionDuration": 173.18,
+    "maxMemory": 67,
+    "initDuration": 163.29,
+    "isColdStart": true
+  },
+  "759a0533-88cc-4865-b44e-1044a868cddd": {
+    "functionName": "aws16-itty-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 5.65,
+    "executionDuration": 7.22,
+    "maxMemory": 68
+  },
+  "f73d58cd-0ca9-4d1f-bfe8-1bcac45a619b": {
     "functionName": "aws16-sdk2-bundle-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "httpRequestLatency": 110.32,
-    "apiCallLatency": 112.87,
-    "executionDuration": 149.66,
+    "httpRequestLatency": 106.42,
+    "apiCallLatency": 109,
+    "executionDuration": 149.73,
     "maxMemory": 74,
-    "initDuration": 264.65,
+    "initDuration": 275.65,
     "isColdStart": true
   },
-  "16ba81dd-5338-4604-a462-ae3509f8a5ae": {
+  "c62d9131-6fa3-417b-9002-93d7dd8e8a06": {
+    "functionName": "aws16-sdk2-bundle-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 4.59,
+    "apiCallLatency": 5.35,
+    "executionDuration": 19.98,
+    "maxMemory": 74
+  },
+  "ecbdb926-ca24-4b90-b82f-fb29b97cbc51": {
+    "functionName": "aws16-sdk2-bundle-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 6.3,
+    "apiCallLatency": 6.97,
+    "executionDuration": 10.74,
+    "maxMemory": 75
+  },
+  "afcdf46e-3dc4-4d50-9b24-aaec214bd07b": {
+    "functionName": "aws16-sdk2-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 124.62,
+    "apiCallLatency": 127.16,
+    "executionDuration": 167.47,
+    "maxMemory": 74,
+    "initDuration": 267.95,
+    "isColdStart": true
+  },
+  "fe9de307-20cb-4378-9c62-82a598a37754": {
+    "functionName": "aws16-sdk2-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 4.5,
+    "apiCallLatency": 5.28,
+    "executionDuration": 23.09,
+    "maxMemory": 74
+  },
+  "18b93d6b-0aeb-465b-a624-80defff2e455": {
     "functionName": "aws16-itty-bundle-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "apiCallLatency": 189.11,
-    "executionDuration": 192.53,
+    "apiCallLatency": 177.89,
+    "executionDuration": 181.16,
     "maxMemory": 67,
-    "initDuration": 180.29,
+    "initDuration": 165.63,
     "isColdStart": true
   },
-  "d1b29dea-5a32-41d0-84d0-63d200ab8994": {
+  "2f1de9e1-6fdd-468e-9ecc-354b3fc91360": {
+    "functionName": "aws16-itty-bundle-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 4.45,
+    "executionDuration": 6.03,
+    "maxMemory": 68
+  },
+  "95ab699e-93f4-4048-ac08-bbaebcc82c77": {
+    "functionName": "aws16-itty-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 170.96,
+    "executionDuration": 174.15,
+    "maxMemory": 67,
+    "initDuration": 164.32,
+    "isColdStart": true
+  },
+  "5f3b2bc5-a62c-48d8-a63c-89cc14f7e6ea": {
+    "functionName": "aws16-itty-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 8.26,
+    "executionDuration": 9.89,
+    "maxMemory": 68
+  },
+  "551f56f9-859c-457c-a7df-29f4da9ea2e2": {
     "functionName": "aws18-sdk3-runtime-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "httpRequestLatency": 92.66,
-    "apiCallLatency": 92.73,
-    "executionDuration": 141.44,
+    "httpRequestLatency": 81.45,
+    "apiCallLatency": 81.51,
+    "executionDuration": 112.24,
     "maxMemory": 72,
-    "initDuration": 275.7,
+    "initDuration": 282.02,
     "isColdStart": true
   },
-  "5d866680-3410-4bd7-b5f0-261189b4ff0d": {
+  "4b68192a-adc9-4e1a-bc2f-955aa3bf5584": {
+    "functionName": "aws18-sdk3-runtime-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 17.01,
+    "apiCallLatency": 17.12,
+    "executionDuration": 23.56,
+    "maxMemory": 74
+  },
+  "496341e6-85d4-4c5c-801c-3f39f1d72ddb": {
+    "functionName": "aws18-sdk3-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 85.4,
+    "apiCallLatency": 85.45,
+    "executionDuration": 112.25,
+    "maxMemory": 72,
+    "initDuration": 277.54,
+    "isColdStart": true
+  },
+  "d64c1824-557c-4b1f-b522-59d215566b90": {
+    "functionName": "aws18-sdk3-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 4.73,
+    "apiCallLatency": 4.82,
+    "executionDuration": 9.12,
+    "maxMemory": 73
+  },
+  "c36ca5e9-c84c-452b-b479-612bd4800ae5": {
     "functionName": "aws18-itty-runtime-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "apiCallLatency": 184.2,
-    "executionDuration": 192.02,
+    "apiCallLatency": 164.85,
+    "executionDuration": 168.22,
     "maxMemory": 67,
-    "initDuration": 164.33,
+    "initDuration": 163.39,
     "isColdStart": true
   },
-  "ef3c6878-e538-418c-9004-4a2a2d1c1f3b": {
+  "86219896-7644-4a71-b89c-c3317da5045c": {
+    "functionName": "aws18-itty-runtime-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 5.03,
+    "executionDuration": 7.72,
+    "maxMemory": 68
+  },
+  "b6d834f5-0663-4a65-b9ec-652d624cc89b": {
+    "functionName": "aws18-itty-runtime-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 5.41,
+    "executionDuration": 6.85,
+    "maxMemory": 68
+  },
+  "5b038908-66f4-46ba-8e39-9340ab2f4c03": {
+    "functionName": "aws18-itty-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 178.47,
+    "executionDuration": 181.63,
+    "maxMemory": 67,
+    "initDuration": 160.24,
+    "isColdStart": true
+  },
+  "908995cc-f1b3-4a19-b0b9-3bd5c02fbe9a": {
+    "functionName": "aws18-itty-runtime-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 7.17,
+    "executionDuration": 10.63,
+    "maxMemory": 68
+  },
+  "6e5156ae-114e-4a35-8eea-4a78de07b925": {
     "functionName": "aws18-sdk3-bundle-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "httpRequestLatency": 77.36,
-    "apiCallLatency": 77.42,
-    "executionDuration": 111.99,
+    "httpRequestLatency": 91.2,
+    "apiCallLatency": 91.26,
+    "executionDuration": 136.75,
     "maxMemory": 72,
-    "initDuration": 259.11,
+    "initDuration": 290.93,
     "isColdStart": true
   },
-  "f69c96c3-b585-4854-b636-6769e295ff52": {
+  "3a29a7b7-2948-4eaa-9fc3-3cb5925d5ddd": {
+    "functionName": "aws18-sdk3-bundle-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 4.25,
+    "apiCallLatency": 4.33,
+    "executionDuration": 16.89,
+    "maxMemory": 73
+  },
+  "4178b24d-010b-4fb6-8148-86a9607414b9": {
+    "functionName": "aws18-sdk3-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 75.94,
+    "apiCallLatency": 76.09,
+    "executionDuration": 106.69,
+    "maxMemory": 72,
+    "initDuration": 270.43,
+    "isColdStart": true
+  },
+  "4c9a2743-af15-40ba-9ecb-98737e7e91aa": {
+    "functionName": "aws18-sdk3-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "httpRequestLatency": 3.93,
+    "apiCallLatency": 4.02,
+    "executionDuration": 18.49,
+    "maxMemory": 74
+  },
+  "08dd0498-0edc-415c-b243-cbaa845951d7": {
     "functionName": "aws18-itty-bundle-1",
     "runtime": "NODEJS_16_X",
     "sdkName": "AWS-SDK v2",
     "sdkSource": "runtime",
-    "apiCallLatency": 183.52,
-    "executionDuration": 186.86,
+    "apiCallLatency": 182.97,
+    "executionDuration": 186.5,
     "maxMemory": 67,
-    "initDuration": 167.13,
+    "initDuration": 166.76,
     "isColdStart": true
+  },
+  "eedd6738-9e3d-44a7-bb51-18b74b89878b": {
+    "functionName": "aws18-itty-bundle-1",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 6.64,
+    "executionDuration": 9.38,
+    "maxMemory": 68
+  },
+  "758b2345-5e41-4d8b-8060-881a6dab14fd": {
+    "functionName": "aws18-itty-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 183.1,
+    "executionDuration": 186.26,
+    "maxMemory": 67,
+    "initDuration": 163.97,
+    "isColdStart": true
+  },
+  "f2e03d26-c009-42e6-909f-6304fd663ad8": {
+    "functionName": "aws18-itty-bundle-2",
+    "runtime": "NODEJS_16_X",
+    "sdkName": "AWS-SDK v2",
+    "sdkSource": "runtime",
+    "apiCallLatency": 4.44,
+    "executionDuration": 6.66,
+    "maxMemory": 68
   }
 }

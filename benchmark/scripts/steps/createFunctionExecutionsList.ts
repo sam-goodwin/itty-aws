@@ -1,25 +1,21 @@
-import {
-  ApiCallExecution,
-  CloudWatchLog,
-  FunctionExecutionsList,
-} from "../../types";
+import { ApiCall, CloudWatchLog, LambdaExecutionLog } from "../../types";
 
 /**
  * The script consolidates cloudWatch raw logs into function executions.
- * @returns {Promise<FunctionExecutionsList>}
+ * @returns {Promise<LambdaExecutionLog>}
  */
-export async function createFunctionExecutionsList({
+export async function createLambdaExecutionLog({
   cloudWatchLog,
 }: {
   cloudWatchLog: CloudWatchLog;
-}): Promise<FunctionExecutionsList> {
+}): Promise<LambdaExecutionLog> {
   console.log("\n ## Consolidate logs");
 
-  const functionExecutionsList: FunctionExecutionsList = parseCloudWatchLog({
+  const lambdaExecutionLog: LambdaExecutionLog = parseCloudWatchLog({
     cloudWatchLog,
   });
 
-  return functionExecutionsList;
+  return lambdaExecutionLog;
 }
 
 /**
@@ -27,28 +23,28 @@ export async function createFunctionExecutionsList({
  *
  * @param {object} param - An object containing the CloudWatchLog to parse.
  * @param {CloudWatchLog} param.cloudWatchLog - The CloudWatchLog to parse.
- * @return {FunctionExecutionsList} An object containing information about function executions and API calls.
+ * @return {LambdaExecutionLog} An object containing information about function executions and API calls.
  */
 function parseCloudWatchLog({
   cloudWatchLog,
 }: {
   cloudWatchLog: CloudWatchLog;
-}): FunctionExecutionsList {
-  let functionExecutionsList: FunctionExecutionsList = {};
+}): LambdaExecutionLog {
+  let lambdaExecutionLog: LambdaExecutionLog = {};
   for (const logEvent of cloudWatchLog) {
     const { message } = logEvent;
     if (message) {
-      functionExecutionsList = extractFunctionExecutionData({
+      lambdaExecutionLog = extractLambdaReport({
         message,
-        functionExecutionsList,
+        lambdaExecutionLog,
       });
-      functionExecutionsList = extractApiCallExecutionData({
+      lambdaExecutionLog = extractApiCall({
         message,
-        functionExecutionsList,
+        lambdaExecutionLog,
       });
     }
   }
-  return functionExecutionsList;
+  return lambdaExecutionLog;
 }
 
 /**
@@ -57,25 +53,25 @@ function parseCloudWatchLog({
  *
  * @param {Object} params - The parameters object.
  * @param {string} params.message - The log event message to extract data from.
- * @param {FunctionExecutionsList} params.functionExecutionsList - The list of function
+ * @param {LambdaExecutionLog} params.lambdaExecutionLog - The list of function
  * executions to add the extracted data to.
  *
- * @return {FunctionExecutionsList} The updated list of function executions.
+ * @return {LambdaExecutionLog} The updated list of function executions.
  */
-function extractApiCallExecutionData({
+function extractApiCall({
   message,
-  functionExecutionsList,
+  lambdaExecutionLog,
 }: {
   message: string;
-  functionExecutionsList: FunctionExecutionsList;
-}): FunctionExecutionsList {
-  const res = functionExecutionsList;
+  lambdaExecutionLog: LambdaExecutionLog;
+}): LambdaExecutionLog {
+  const res = lambdaExecutionLog;
   const apiCallLogRegex =
     /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\t([a-f\d]{8}(?:-[a-f\d]{4}){3}-[a-f\d]{12})\t(INFO)/;
   const apiCallLogMatch = apiCallLogRegex.exec(message);
   if (apiCallLogMatch) {
     const requestId = apiCallLogMatch[2];
-    const apiCallExecution: ApiCallExecution = extractJsonFromLogEvent({
+    const apiCallExecution: ApiCall = extractJsonFromLogEvent({
       message,
     });
     res[requestId] = {
@@ -89,20 +85,20 @@ function extractApiCallExecutionData({
 /**
  * Parses a report event log to extract metrics and store them in a function executions list.
  *
- * @param {{ message: string; functionExecutionsList: FunctionExecutionsList; }} param -
+ * @param {{ message: string; functionExecutionsList: LambdaExecutionLog; }} param -
  * An object containing the report event log message and a function executions list.
  * @param {string} param.message - The report event log message.
- * @param {FunctionExecutionsList} param.functionExecutionsList - The function executions list to store the extracted metrics.
- * @returns {FunctionExecutionsList} The updated function executions list.
+ * @param {LambdaExecutionLog} param.lambdaExecutionLog - The function executions list to store the extracted metrics.
+ * @returns {LambdaExecutionLog} The updated function executions list.
  */
-function extractFunctionExecutionData({
+function extractLambdaReport({
   message,
-  functionExecutionsList,
+  lambdaExecutionLog,
 }: {
   message: string;
-  functionExecutionsList: FunctionExecutionsList;
-}): FunctionExecutionsList {
-  const res = functionExecutionsList;
+  lambdaExecutionLog: LambdaExecutionLog;
+}): LambdaExecutionLog {
+  const res = lambdaExecutionLog;
   const isReportLogEvent = message.startsWith("REPORT");
   if (isReportLogEvent) {
     const requestId = extractMetricFromLogEvent({

@@ -4,7 +4,7 @@ import { performance } from "perf_hooks";
 import { benchmarkConfig } from "../benchmarkConfig";
 import { CloudWatchLog } from "../types";
 import { roundToTwoDecimalPlaces } from "../utils/format";
-import { createFunctionExecutionsList } from "./steps/createFunctionExecutionsList";
+import { createLambdaExecutionLog } from "./steps/createFunctionExecutionsList";
 import { runBenchmark } from "./steps/runBenchmark";
 
 /**
@@ -21,7 +21,7 @@ import { runBenchmark } from "./steps/runBenchmark";
   });
 
   const cloudWatchLog = await runBenchmark({ benchmarkConfig });
-  const functionExecutionsList = await createFunctionExecutionsList({
+  const lambdaExecutionLog = await createLambdaExecutionLog({
     cloudWatchLog,
   });
   // const functionExecutionsList: FunctionExecutionsList = await readFile({
@@ -30,7 +30,7 @@ import { runBenchmark } from "./steps/runBenchmark";
 
   await writeFile({
     path: benchmarkConfig.output.jsonFilePath,
-    data: JSON.stringify(functionExecutionsList, null, 2),
+    data: JSON.stringify(lambdaExecutionLog, null, 2),
   });
   // console.log(functionExecutionsList);
 

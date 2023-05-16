@@ -2,7 +2,7 @@ import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { performance } from "perf_hooks";
 import { Context } from "aws-lambda";
 import { roundToTwoDecimalPlaces } from "../../utils/format";
-import { ApiCallExecution } from "../../types";
+import { ApiCall } from "../../types";
 
 const TableName = process.env.TABLE_NAME!;
 const dynamodb = new DynamoDBClient({});
@@ -55,7 +55,7 @@ export async function handler(
 
     //benchmarking
     await dynamodb.send(getItemParams);
-    const benchmarkResult: ApiCallExecution = {
+    const benchmarkResult: ApiCall = {
       functionName: process.env.METADATA_FN_NAME!,
       runtime: process.env.METADATA_RUNTIME!,
       sdkName: process.env.METADATA_SDK!,
