@@ -16,7 +16,6 @@ import {
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
 import { Agent } from "node:https";
 import { BenchmarkConfig, CloudWatchLog } from "../../types";
-import { wait } from "../../utils/wait";
 
 /**
  * This function initializes the cloud, runs the benchmark functions and collects the logs.
@@ -292,4 +291,18 @@ async function getBenchmarklogGroups({
   } while (nextToken);
 
   return logGroups;
+}
+
+/**
+ * Wait for a given amount of time before resolving a Promise.
+ *
+ * @param ms - The number of milliseconds to wait.
+ * @returns A Promise that resolves when the time has elapsed.
+ */
+export function wait(ms: number): Promise<void> {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
 }
