@@ -57,9 +57,6 @@ export async function handler(
     await dynamodb.send(getItemParams);
     const benchmarkResult: ApiCall = {
       functionName: process.env.METADATA_FN_NAME!,
-      runtime: process.env.METADATA_RUNTIME!,
-      sdkName: process.env.METADATA_SDK!,
-      sdkSource: process.env.METADATA_SDK_SOURCE!,
       httpRequestLatency,
       apiCallLatency,
     };

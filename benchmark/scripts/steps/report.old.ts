@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ChartConfiguration } from "chart.js";
 import { ChartCallback, ChartJSNodeCanvas } from "chartjs-node-canvas";
 import { Context } from "chartjs-plugin-datalabels";

@@ -25,7 +25,7 @@ import { BenchmarkConfig, CloudWatchLog } from "../../types";
  * @param {BenchmarkConfig} options.benchmarkConfig - The benchmark configuration.
  * @returns {Promise<CloudWatchLog>}
  */
-export async function runBenchmark({
+export async function runLambdaFunctions({
   benchmarkConfig,
 }: {
   benchmarkConfig: BenchmarkConfig;
@@ -49,7 +49,7 @@ export async function runBenchmark({
   await deleteLogGroups({ cloudWatchLogsClient, benchmarkConfig });
   await initDatabase({ lambdaClient, benchmarkConfig });
 
-  await invokeBenchmarkFunctions({
+  await invokeLambdaFunctions({
     lambdaClient,
     benchmarkConfig,
   });
@@ -122,7 +122,7 @@ async function initDatabase({
 }): Promise<void> {
   process.stdout.write("\n- Init database");
   const command = new InvokeCommand({
-    FunctionName: `${benchmarkConfig.stackName}-${benchmarkConfig.setupFunction.functionName}`,
+    FunctionName: `${benchmarkConfig.stackName}-setup`,
   });
   const res = await lambdaClient.send(command);
   process.stdout.write(` (status: ${res.$metadata.httpStatusCode})\n`);
@@ -139,20 +139,20 @@ async function initDatabase({
  * @param {benchmarkConfig} props.BenchmarkConfig - The benchmark configuration object.
  * @returns {Promise<void>} A promise that resolves when all invocations are complete.
  */
-async function invokeBenchmarkFunctions({
+async function invokeLambdaFunctions({
   lambdaClient,
   benchmarkConfig,
 }: {
   lambdaClient: LambdaClient;
   benchmarkConfig: BenchmarkConfig;
 }): Promise<void> {
-  console.log("\n- Invoke the benchmark functions");
-  for (let i = 0; i < benchmarkConfig.benchmarkFunctions.length; i++) {
+  console.log("\n- Invoke the lambda functions");
+  for (const functionName in benchmarkConfig.benchmarkFunctions) {
     for (let j = 1; j <= benchmarkConfig.functionInstances; j++) {
-      const FunctionName = `${benchmarkConfig.stackName}-${benchmarkConfig.benchmarkFunctions[i].functionName}-${j}`;
-      console.log(`  - function '${FunctionName}'`);
+      const functionInstanceName = `${benchmarkConfig.stackName}-${functionName}-${j}`;
+      console.log(`  - function '${functionInstanceName}'`);
       const command = new InvokeCommand({
-        FunctionName,
+        FunctionName: functionInstanceName,
       });
       for (let k = 1; k <= benchmarkConfig.functionRuns; k++) {
         process.stdout.write(`    - run #${k}`);
@@ -182,7 +182,7 @@ async function waitForCloudwatch({
 }): Promise<void> {
   process.stdout.write("\n- Wait until cloudwatch logs are created "); // `process.stdout.write` is used to write to the on the same console line
   const expectedNumberOfLogGroups =
-    benchmarkConfig.benchmarkFunctions.length *
+    Object.keys(benchmarkConfig.benchmarkFunctions).length *
       benchmarkConfig.functionInstances +
     1; // +1 is to take the setup function into account
   while (true) {
@@ -222,9 +222,9 @@ async function collectLogs({
 }): Promise<CloudWatchLog> {
   console.log("\n- Collect logs");
   let cloudWatchLog: CloudWatchLog = [];
-  for (const fn of benchmarkConfig.benchmarkFunctions) {
+  for (const functionName in benchmarkConfig.benchmarkFunctions) {
     for (let i = 1; i <= benchmarkConfig.functionInstances; i++) {
-      const logGroupName = `/aws/lambda/${benchmarkConfig.stackName}-${fn.functionName}-${i}`;
+      const logGroupName = `/aws/lambda/${benchmarkConfig.stackName}-${functionName}-${i}`;
       console.log(`  - logGroup '${logGroupName}'`);
       const command = new DescribeLogStreamsCommand({ logGroupName });
       const { logStreams } = await cloudWatchLogsClient.send(command);

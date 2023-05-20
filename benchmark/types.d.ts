@@ -1,5 +1,7 @@
 import { OutputLogEvent } from "@aws-sdk/client-cloudwatch-logs";
 
+export type CloudWatchLog = OutputLogEvent[];
+
 export interface BenchmarkConfig {
   stackName: string;
   functionInstances: number;
@@ -9,12 +11,17 @@ export interface BenchmarkConfig {
     dirPath: string;
     jsonFilePath: string;
   };
-  setupFunction: Pick<FunctionParameters, "functionName" | "entryPath">;
-  benchmarkFunctions: FunctionParameters[];
+  setupFunction: {
+    entryPath: string;
+  };
+  benchmarkFunctions: Record<string, FunctionParameters>;
+  charts: {
+    coldStarts: Record<string, ChartTemplate>;
+    warmStarts: Record<string, ChartTemplate>;
+  };
 }
 
 export interface FunctionParameters {
-  functionName: string;
   entryPath: string;
   runtimeName?: "NODEJS_16_X" | "NODEJS_18_X";
   useItty?: boolean;
@@ -26,25 +33,39 @@ export interface FunctionParameters {
   };
 }
 
-export type CloudWatchLog = OutputLogEvent[];
+interface ChartTemplate {
+  title: string;
+}
 
 export interface ApiCall {
   functionName: string;
-  runtime: string;
-  sdkName: string;
-  sdkSource: string;
   apiCallLatency: number;
   httpRequestLatency?: number;
 }
 
 export interface LambdaReport {
-  isColdStart: boolean;
   initDuration: number;
   executionDuration: number;
   maxMemory: number;
 }
 
-export type LambdaExecutionLog = Record<
-  string,
-  RecordFunctionExecution & ApiCall
->;
+export type LambdaExecutionLog = Record<string, LambdaExecution>;
+
+export type LambdaExecution = LambdaReport & ApiCall;
+
+export interface ChartsDatasets {
+  coldStarts: Record<string, Datasets>;
+  warmStarts: Record<string, Datasets>;
+}
+
+interface Datasets {
+  title: string;
+  datasets: Record<string, Series>;
+}
+
+interface Series {
+  order: number;
+  data: number[];
+  mean: number;
+  standardDeviation: number;
+}

@@ -16,7 +16,7 @@
     "@aws-sdk/client-dynamodb": "^3.245.0",
     "@aws-sdk/client-lambda": "^3.314.0",
     "@aws-sdk/node-http-handler": "^3.329.0",
-    "aws-cdk-lib": "^2.60.0",
+    "aws-cdk-lib": "^2.80.0",
     "aws-sdk": "2.1295.0",
     "chart.js": "^3.9.1",
     "chartjs-node-canvas": "^4.1.6",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "^16",
-    "aws-cdk": "^2.74.0",
+    "aws-cdk": "^2.80.0",
     "constructs": "^10",
     "esbuild": "0.17.2",
     "ts-node": "^10.9.1",

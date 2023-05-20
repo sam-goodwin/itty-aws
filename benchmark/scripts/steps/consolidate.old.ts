@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { promises as fsPromises } from "fs";
 import path from "path";
 import { benchmarkConfig } from "../benchmarkConfig";

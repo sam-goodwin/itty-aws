@@ -12,21 +12,19 @@ const jsonFilePath = join(dirPath, "benchmark-results.json");
 
 export const benchmarkConfig: BenchmarkConfig = {
   stackName: "benchmark",
-  functionInstances: 2,
-  functionRuns: 2,
+  functionInstances: 3,
+  functionRuns: 3,
   gitBranch,
   output: {
     dirPath,
     jsonFilePath,
   },
   setupFunction: {
-    functionName: "setup",
     entryPath: "./functions/setup_handler",
   },
-  benchmarkFunctions: [
+  benchmarkFunctions: {
     // Node.js 16.x, aws-sdk v2, runtime
-    {
-      functionName: "aws16-sdk2-runtime",
+    "aws16-sdk2-runtime": {
       entryPath: "./functions/aws16-sdk2-handler",
       chart: {
         order: 1,
@@ -36,8 +34,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 16.x, itty-aws, runtime
-    {
-      functionName: "aws16-itty-runtime",
+    "aws16-itty-runtime": {
       entryPath: "./functions/aws-itty-handler",
       useItty: true,
       chart: {
@@ -48,8 +45,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 16.x, aws-sdk v2, bundle
-    {
-      functionName: "aws16-sdk2-bundle",
+    "aws16-sdk2-bundle": {
       entryPath: "./functions/aws16-sdk2-handler",
       useBundle: true,
       chart: {
@@ -60,8 +56,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 16.x, itty-aws, bundle
-    {
-      functionName: "aws16-itty-bundle",
+    "aws16-itty-bundle": {
       entryPath: "./functions/aws-itty-handler",
       useItty: true,
       useBundle: true,
@@ -73,8 +68,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 18.x, aws-sdk v3, runtime
-    {
-      functionName: "aws18-sdk3-runtime",
+    "aws18-sdk3-runtime": {
       entryPath: "./functions/aws18-sdk3-handler",
       runtimeName: "NODEJS_18_X",
       chart: {
@@ -85,8 +79,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 18.x, itty-aws, runtime
-    {
-      functionName: "aws18-itty-runtime",
+    "aws18-itty-runtime": {
       entryPath: "./functions/aws-itty-handler",
       runtimeName: "NODEJS_18_X",
       useItty: true,
@@ -98,8 +91,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 18.x, aws-sdk v3, bundle
-    {
-      functionName: "aws18-sdk3-bundle",
+    "aws18-sdk3-bundle": {
       entryPath: "./functions/aws18-sdk3-handler",
       runtimeName: "NODEJS_18_X",
       useBundle: true,
@@ -111,8 +103,7 @@ export const benchmarkConfig: BenchmarkConfig = {
     },
 
     // Node.js 18.x, itty-aws, bundle
-    {
-      functionName: "aws18-itty-bundle",
+    "aws18-itty-bundle": {
       entryPath: "./functions/aws-itty-handler",
       runtimeName: "NODEJS_18_X",
       useItty: true,
@@ -123,7 +114,43 @@ export const benchmarkConfig: BenchmarkConfig = {
         borderColor: "rgba(54, 162, 235)",
       },
     },
-  ],
+  },
+  charts: {
+    coldStarts: {
+      initDuration: {
+        title: "Cold start : init duration",
+      },
+      duration: {
+        title: "Cold start : duration",
+      },
+      totalDuration: {
+        title: "Cold start : total duration",
+      },
+      maxMemory: {
+        title: "Cold start : max memory",
+      },
+      httpRequestLatency: {
+        title: "Cold start : http request latency",
+      },
+      apiCallLatency: {
+        title: "Cold start : API call latency",
+      },
+    },
+    warmStarts: {
+      duration: {
+        title: "Warm start : duration",
+      },
+      maxMemory: {
+        title: "Warm start : max memory",
+      },
+      httpRequestLatency: {
+        title: "Warm start : http request latency",
+      },
+      apiCallLatency: {
+        title: "Warm start : API call latency",
+      },
+    },
+  },
 };
 
 /**

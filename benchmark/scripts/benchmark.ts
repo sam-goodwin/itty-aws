@@ -2,10 +2,11 @@ import { constants, promises as fsPromises } from "node:fs";
 import { dirname } from "node:path";
 import { performance } from "perf_hooks";
 import { benchmarkConfig } from "../benchmarkConfig";
-import { CloudWatchLog } from "../types";
+import { CloudWatchLog, LambdaExecutionLog } from "../types";
 import { roundToTwoDecimalPlaces } from "../utils/format";
 import { createLambdaExecutionLog } from "./steps/createFunctionExecutionsList";
-import { runBenchmark } from "./steps/runBenchmark";
+import { runLambdaFunctions } from "./steps/runLambdaFunctions";
+import { buildChartsDatasets } from "./steps/buildChartsDatasets";
 
 /**
  *
@@ -15,24 +16,35 @@ import { runBenchmark } from "./steps/runBenchmark";
 (async function main(): Promise<void> {
   const scriptStartTime = performance.now();
   console.log(`# Benchmark branch '${benchmarkConfig.gitBranch}'`);
-
-  await deleteFile({
-    path: benchmarkConfig.output.jsonFilePath,
-  });
-
-  const cloudWatchLog = await runBenchmark({ benchmarkConfig });
-  const lambdaExecutionLog = await createLambdaExecutionLog({
-    cloudWatchLog,
-  });
-  // const functionExecutionsList: FunctionExecutionsList = await readFile({
+  // await deleteFile({
   //   path: benchmarkConfig.output.jsonFilePath,
   // });
 
+  const cloudWatchLog = await runLambdaFunctions({ benchmarkConfig });
   await writeFile({
-    path: benchmarkConfig.output.jsonFilePath,
+    path: `${benchmarkConfig.output.dirPath}/cloudWatchLog.json`,
+    data: JSON.stringify(cloudWatchLog, null, 2),
+  });
+  // const cloudWatchLog: CloudWatchLog = await readFile({
+  //   path: `${benchmarkConfig.output.dirPath}/cloudWatchLog.json`,
+  // });
+
+  const lambdaExecutionLog = createLambdaExecutionLog({
+    cloudWatchLog,
+  });
+  await writeFile({
+    path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
     data: JSON.stringify(lambdaExecutionLog, null, 2),
   });
-  // console.log(functionExecutionsList);
+
+  // const lambdaExecutionLog: LambdaExecutionLog = await readFile({
+  //   path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
+  // });
+  const datasets = buildChartsDatasets({ lambdaExecutionLog, benchmarkConfig });
+  await writeFile({
+    path: `${benchmarkConfig.output.dirPath}/datasets.json`,
+    data: JSON.stringify(datasets, null, 2),
+  });
 
   const duration = performance.now() - scriptStartTime;
   console.log(`\nBenchmark: done in ${roundToTwoDecimalPlaces(duration)} ms.`);

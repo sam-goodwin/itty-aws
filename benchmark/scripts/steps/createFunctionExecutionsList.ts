@@ -1,104 +1,65 @@
+import { LambdaExecution, LambdaReport } from "../../types";
 import { ApiCall, CloudWatchLog, LambdaExecutionLog } from "../../types";
 
 /**
- * The script consolidates cloudWatch raw logs into function executions.
- * @returns {Promise<LambdaExecutionLog>}
- */
-export async function createLambdaExecutionLog({
-  cloudWatchLog,
-}: {
-  cloudWatchLog: CloudWatchLog;
-}): Promise<LambdaExecutionLog> {
-  console.log("\n ## Consolidate logs");
-
-  const lambdaExecutionLog: LambdaExecutionLog = parseCloudWatchLog({
-    cloudWatchLog,
-  });
-
-  return lambdaExecutionLog;
-}
-
-/**
- * Parses a given CloudWatch log to extract information about function executions and API calls.
+ * Creates a new lambda execution log from a CloudWatchLog object.
  *
- * @param {object} param - An object containing the CloudWatchLog to parse.
- * @param {CloudWatchLog} param.cloudWatchLog - The CloudWatchLog to parse.
- * @return {LambdaExecutionLog} An object containing information about function executions and API calls.
+ * @param {Object} param - an object containing a CloudWatchLog.
+ * @param {CloudWatchLog} param.cloudWatchLog - a CloudWatchLog object to extract logs from.
+ * @return {LambdaExecutionLog} - an object containing a new lambda execution log.
  */
-function parseCloudWatchLog({
+export function createLambdaExecutionLog({
   cloudWatchLog,
 }: {
   cloudWatchLog: CloudWatchLog;
 }): LambdaExecutionLog {
+  console.log("\n ## Create lambda execution log");
   let lambdaExecutionLog: LambdaExecutionLog = {};
   for (const logEvent of cloudWatchLog) {
     const { message } = logEvent;
     if (message) {
-      lambdaExecutionLog = extractLambdaReport({
+      const lambdaReportExtraction = extractLambdaReport({
         message,
         lambdaExecutionLog,
       });
-      lambdaExecutionLog = extractApiCall({
+      if (lambdaReportExtraction) {
+        lambdaExecutionLog[lambdaReportExtraction.requestId] =
+          lambdaReportExtraction.lambdaExecution;
+      }
+
+      const ApiCallExtraction = extractApiCall({
         message,
         lambdaExecutionLog,
       });
+      if (ApiCallExtraction) {
+        lambdaExecutionLog[ApiCallExtraction.requestId] =
+          ApiCallExtraction.lambdaExecution;
+      }
     }
   }
   return lambdaExecutionLog;
 }
 
 /**
- * Extracts the execution data of an API call from a log event message and adds it to
- * the list of function executions.
+ * Extracts a lambda report from the provided log and message.
  *
- * @param {Object} params - The parameters object.
- * @param {string} params.message - The log event message to extract data from.
- * @param {LambdaExecutionLog} params.lambdaExecutionLog - The list of function
- * executions to add the extracted data to.
- *
- * @return {LambdaExecutionLog} The updated list of function executions.
+ * @param {Object} param - An object containing the message and lambda execution log.
+ *   @param {string} param.message - The message to extract the report from.
+ *   @param {LambdaExecutionLog} param.lambdaExecutionLog - The log containing the lambda execution data.
+ * @return {LambdaReportExtraction | undefined} An object containing the request ID and extracted lambda report,
+ *   or undefined if the request ID could not be found in the log.
  */
-function extractApiCall({
-  message,
-  lambdaExecutionLog,
-}: {
-  message: string;
-  lambdaExecutionLog: LambdaExecutionLog;
-}): LambdaExecutionLog {
-  const res = lambdaExecutionLog;
-  const apiCallLogRegex =
-    /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\t([a-f\d]{8}(?:-[a-f\d]{4}){3}-[a-f\d]{12})\t(INFO)/;
-  const apiCallLogMatch = apiCallLogRegex.exec(message);
-  if (apiCallLogMatch) {
-    const requestId = apiCallLogMatch[2];
-    const apiCallExecution: ApiCall = extractJsonFromLogEvent({
-      message,
-    });
-    res[requestId] = {
-      ...res[requestId],
-      ...apiCallExecution,
-    };
-  }
-  return res;
+interface LambdaReportExtraction {
+  requestId: string;
+  lambdaExecution: LambdaExecution;
 }
-
-/**
- * Parses a report event log to extract metrics and store them in a function executions list.
- *
- * @param {{ message: string; functionExecutionsList: LambdaExecutionLog; }} param -
- * An object containing the report event log message and a function executions list.
- * @param {string} param.message - The report event log message.
- * @param {LambdaExecutionLog} param.lambdaExecutionLog - The function executions list to store the extracted metrics.
- * @returns {LambdaExecutionLog} The updated function executions list.
- */
 function extractLambdaReport({
   message,
   lambdaExecutionLog,
 }: {
   message: string;
   lambdaExecutionLog: LambdaExecutionLog;
-}): LambdaExecutionLog {
-  const res = lambdaExecutionLog;
+}): LambdaReportExtraction | undefined {
   const isReportLogEvent = message.startsWith("REPORT");
   if (isReportLogEvent) {
     const requestId = extractMetricFromLogEvent({
@@ -106,12 +67,14 @@ function extractLambdaReport({
       message,
     });
     if (requestId) {
+      let lambdaExecution: LambdaExecution =
+        lambdaExecutionLog[requestId] ?? {};
       const executionDuration = extractMetricFromLogEvent({
         metricType: "executionDuration",
         message,
       });
       if (executionDuration) {
-        res[requestId]["executionDuration"] = parseNumber({
+        lambdaExecution["executionDuration"] = parseNumber({
           num: executionDuration,
         });
       }
@@ -121,7 +84,7 @@ function extractLambdaReport({
         message,
       });
       if (maxMemory) {
-        res[requestId]["maxMemory"] = parseNumber({
+        lambdaExecution["maxMemory"] = parseNumber({
           num: maxMemory,
         });
       }
@@ -131,14 +94,48 @@ function extractLambdaReport({
         message,
       });
       if (initDuration) {
-        res[requestId]["initDuration"] = parseNumber({
+        lambdaExecution["initDuration"] = parseNumber({
           num: initDuration,
         });
-        res[requestId]["isColdStart"] = true;
       }
+      return { requestId, lambdaExecution };
     }
   }
-  return res;
+}
+
+/**
+ * Extracts an API call from a Lambda execution log.
+ *
+ * @param {object} input - An object containing a message and a Lambda execution log.
+ * @param {string} input.message - The message to extract the API call from.
+ * @param {LambdaExecutionLog} input.lambdaExecutionLog - The Lambda execution log.
+ * @return {ApiCallExtraction | undefined} - The extracted API call or undefined if no match was found.
+ */
+interface ApiCallExtraction {
+  requestId: string;
+  lambdaExecution: LambdaExecution;
+}
+function extractApiCall({
+  message,
+  lambdaExecutionLog,
+}: {
+  message: string;
+  lambdaExecutionLog: LambdaExecutionLog;
+}): ApiCallExtraction | undefined {
+  const apiCallLogRegex =
+    /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)\t([a-f\d]{8}(?:-[a-f\d]{4}){3}-[a-f\d]{12})\t(INFO)/;
+  const apiCallLogMatch = apiCallLogRegex.exec(message);
+  if (apiCallLogMatch) {
+    const requestId = apiCallLogMatch[2];
+    const apiCall: ApiCall = extractJsonFromLogEvent({
+      message,
+    });
+    const lambdaExecution = {
+      ...lambdaExecutionLog[requestId],
+      ...apiCall,
+    };
+    return { requestId, lambdaExecution };
+  }
 }
 
 /**

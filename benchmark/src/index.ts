@@ -7,7 +7,9 @@ import { randomUUID } from "node:crypto";
 
 const DEPLOYMENT_UUID = randomUUID(); // unique identifier used to force re-deployment and cold starts triggering
 
-interface ILambdaFunction extends Omit<FunctionParameters, "chart"> {}
+interface ILambdaFunction extends Omit<FunctionParameters, "chart"> {
+  functionInstanceName: string;
+}
 
 const app = new App();
 
@@ -31,25 +33,26 @@ const table = new aws_dynamodb.Table(stack, tableName, {
 (function main(): void {
   // Benchmark setup function
   createNodejsFunction({
+    functionInstanceName: "setup",
     ...benchmarkConfig.setupFunction,
   });
 
   // Create `CONFIG.runs` instances of the functions declared in `CONFIG.functions`
-  benchmarkConfig.benchmarkFunctions.forEach((fn: FunctionParameters) => {
+  for (const functionName in benchmarkConfig.benchmarkFunctions) {
     for (let i = 1; i <= benchmarkConfig.functionInstances; i++) {
-      const functionName = `${fn.functionName}-${i}`;
+      const functionInstanceName = `${functionName}-${i}`;
       createNodejsFunction({
-        functionName,
-        entryPath: fn.entryPath,
+        ...benchmarkConfig.benchmarkFunctions[functionName],
+        functionInstanceName,
       });
     }
-  });
+  }
 })();
 
 /**
  * Creates a new Node.js serverless function with the given properties.
  * @param props - The properties of the function.
- * @param props.functionName - The name of the function.
+ * @param props.functionInstanceName - The name of the function instance.
  * @param props.entryPath - The path to the entry point of the function.
  * @param props.runtimeName - The name of the runtime. Defaults to "NODEJS_16_X".
  * @param props.useItty - Whether to use the itty-aws library. Defaults to false.
@@ -58,7 +61,7 @@ const table = new aws_dynamodb.Table(stack, tableName, {
  */
 function createNodejsFunction(props: ILambdaFunction): void {
   const {
-    functionName,
+    functionInstanceName,
     entryPath,
     runtimeName = "NODEJS_16_X",
     useItty = false,
@@ -66,7 +69,7 @@ function createNodejsFunction(props: ILambdaFunction): void {
   } = props;
 
   let runtime: aws_lambda.Runtime = aws_lambda.Runtime.NODEJS_16_X;
-  if (runtimeName === "NODEJS_18_X") runtime = aws_lambda.Runtime.NODEJS_16_X;
+  if (runtimeName === "NODEJS_18_X") runtime = aws_lambda.Runtime.NODEJS_18_X;
 
   let externalModules: string[] = ["aws-sdk"];
   switch (true) {
@@ -89,7 +92,7 @@ function createNodejsFunction(props: ILambdaFunction): void {
   }
   const require = createRequire(import.meta.url);
   const entry = require.resolve(entryPath);
-  const cfnName = `${benchmarkConfig.stackName}-${functionName}`;
+  const cfnName = `${benchmarkConfig.stackName}-${functionInstanceName}`;
   const handler = new NodejsFunction(stack, cfnName, {
     functionName: cfnName,
     runtime,
@@ -98,7 +101,7 @@ function createNodejsFunction(props: ILambdaFunction): void {
     environment: {
       TABLE_NAME: table.tableName,
       NODE_OPTIONS: "--enable-source-maps",
-      METADATA_FN_NAME: functionName,
+      METADATA_FN_NAME: functionInstanceName,
       METADATA_RUNTIME: runtimeName,
       METADATA_SDK,
       METADATA_SDK_SOURCE: bundle ? "bundle" : "runtime",
