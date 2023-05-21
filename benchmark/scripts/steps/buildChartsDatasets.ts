@@ -32,9 +32,9 @@ export function buildChartsDatasets({
   for (const [_, lambdaExecution] of Object.entries(lambdaExecutionLog)) {
     const { functionName } = lambdaExecution;
     const { initDuration } = lambdaExecution as LambdaExecution;
-    const functionType = !!initDuration ? "coldStarts" : "warmStarts";
+    const startType = !!initDuration ? "coldStarts" : "warmStarts";
     for (const indicatorName of Object.keys(
-      benchmarkConfig.chartsTemplates[functionType]
+      benchmarkConfig.chartsTemplates[startType]
     )) {
       let indicatorValue: LambdaExecution[keyof LambdaExecution];
       if (indicatorName === "totalDuration") {
@@ -45,28 +45,32 @@ export function buildChartsDatasets({
           lambdaExecution[indicatorName as keyof LambdaExecution];
       }
       if (typeof indicatorValue === "number") {
-        chartsDatasets[functionType][indicatorName][functionName].data.push(
+        chartsDatasets[startType][indicatorName][functionName].data.push(
           indicatorValue
         );
       }
     }
   }
 
-  // Calculate means and standard deviations
-  for (const indicatorName of Object.keys(chartsDatasets.coldStarts)) {
-    for (const functionName of Object.keys(
-      chartsDatasets.coldStarts[indicatorName]
-    )) {
-      const { mean, standardDeviation } = calculateStatistics({
-        chartsDatasets,
-        indicatorName,
-        functionName,
-      });
-      chartsDatasets.coldStarts[indicatorName][functionName] = {
-        ...chartsDatasets.coldStarts[indicatorName][functionName],
-        mean,
-        standardDeviation,
-      };
+  // Calculate means and standard deviations for each series of each indicator of each lambda start types
+  for (const startType of Object.keys(chartsDatasets) as Array<
+    keyof ChartsDatasets
+  >) {
+    for (const indicatorName of Object.keys(chartsDatasets[startType])) {
+      for (const series of Object.keys(
+        chartsDatasets[startType][indicatorName]
+      )) {
+        const { mean, standardDeviation } = calculateStatistics({
+          chartsDatasets,
+          indicatorName,
+          functionName: series,
+        });
+        chartsDatasets[startType][indicatorName][series] = {
+          ...chartsDatasets[startType][indicatorName][series],
+          mean,
+          standardDeviation,
+        };
+      }
     }
   }
 

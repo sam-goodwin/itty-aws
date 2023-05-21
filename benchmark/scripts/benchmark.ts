@@ -36,18 +36,18 @@ import { buildChartsDatasets } from "./steps/buildChartsDatasets";
   //   path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
   //   data: JSON.stringify(lambdaExecutionLog, null, 2),
   // });
-  // const lambdaExecutionLog: LambdaExecutionLog = await readFile({
-  //   path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
-  // });
-
-  // const datasets = buildChartsDatasets({ lambdaExecutionLog, benchmarkConfig });
-  // await writeFile({
-  //   path: `${benchmarkConfig.output.dirPath}/datasets.json`,
-  //   data: JSON.stringify(datasets, null, 2),
-  // });
-  const datasets: LambdaExecutionLog = await readFile({
-    path: `${benchmarkConfig.output.dirPath}/datasets.json`,
+  const lambdaExecutionLog: LambdaExecutionLog = await readFile({
+    path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
   });
+
+  const datasets = buildChartsDatasets({ lambdaExecutionLog, benchmarkConfig });
+  await writeFile({
+    path: `${benchmarkConfig.output.dirPath}/datasets.json`,
+    data: JSON.stringify(datasets, null, 2),
+  });
+  // const datasets: LambdaExecutionLog = await readFile({
+  //   path: `${benchmarkConfig.output.dirPath}/datasets.json`,
+  // });
 
   const duration = performance.now() - scriptStartTime;
   console.log(`\nBenchmark: done in ${roundToTwoDecimalPlaces(duration)} ms.`);

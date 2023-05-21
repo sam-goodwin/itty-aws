@@ -440,8 +440,8 @@
           26.15,
           8.03
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 154.8,
+        "standardDeviation": 2.26
       },
       "aws16-itty-runtime": {
         "data": [
@@ -453,8 +453,8 @@
           7.8,
           12.38
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 175.41,
+        "standardDeviation": 10.46
       },
       "aws16-sdk2-bundle": {
         "data": [
@@ -466,8 +466,8 @@
           9.06,
           7.31
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 166.3,
+        "standardDeviation": 7.19
       },
       "aws16-itty-bundle": {
         "data": [
@@ -478,8 +478,8 @@
           8.41,
           8.45
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 178.36,
+        "standardDeviation": 6.61
       },
       "aws18-sdk3-runtime": {
         "data": [
@@ -491,8 +491,8 @@
           9.23,
           8.18
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 113.83,
+        "standardDeviation": 1.26
       },
       "aws18-itty-runtime": {
         "data": [
@@ -504,8 +504,8 @@
           35.05,
           79.26
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 363.11,
+        "standardDeviation": 12.48
       },
       "aws18-sdk3-bundle": {
         "data": [
@@ -516,8 +516,8 @@
           8.49,
           9.46
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 125.11,
+        "standardDeviation": 10.13
       },
       "aws18-itty-bundle": {
         "data": [
@@ -529,8 +529,8 @@
           91.84,
           29.66
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 367.35,
+        "standardDeviation": 8.33
       }
     },
     "maxMemory": {
@@ -543,7 +543,7 @@
           75,
           75
         ],
-        "mean": 0,
+        "mean": 74,
         "standardDeviation": 0
       },
       "aws16-itty-runtime": {
@@ -556,7 +556,7 @@
           67,
           68
         ],
-        "mean": 0,
+        "mean": 67,
         "standardDeviation": 0
       },
       "aws16-sdk2-bundle": {
@@ -569,7 +569,7 @@
           73,
           73
         ],
-        "mean": 0,
+        "mean": 72,
         "standardDeviation": 0
       },
       "aws16-itty-bundle": {
@@ -581,7 +581,7 @@
           68,
           68
         ],
-        "mean": 0,
+        "mean": 67,
         "standardDeviation": 0
       },
       "aws18-sdk3-runtime": {
@@ -594,7 +594,7 @@
           97,
           97
         ],
-        "mean": 0,
+        "mean": 96,
         "standardDeviation": 0
       },
       "aws18-itty-runtime": {
@@ -607,8 +607,8 @@
           96,
           101
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 89,
+        "standardDeviation": 2.16
       },
       "aws18-sdk3-bundle": {
         "data": [
@@ -619,7 +619,7 @@
           80,
           81
         ],
-        "mean": 0,
+        "mean": 80,
         "standardDeviation": 0
       },
       "aws18-itty-bundle": {
@@ -632,8 +632,8 @@
           95,
           97
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 87.33,
+        "standardDeviation": 1.25
       }
     },
     "httpRequestLatency": {
@@ -646,13 +646,13 @@
           5.69,
           3.85
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 114.23,
+        "standardDeviation": 3.05
       },
       "aws16-itty-runtime": {
         "data": [],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": null,
+        "standardDeviation": null
       },
       "aws16-sdk2-bundle": {
         "data": [
@@ -664,13 +664,13 @@
           4.72,
           4.7
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 116.33,
+        "standardDeviation": 4.5
       },
       "aws16-itty-bundle": {
         "data": [],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": null,
+        "standardDeviation": null
       },
       "aws18-sdk3-runtime": {
         "data": [
@@ -682,13 +682,13 @@
           5.16,
           4.75
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 82.75,
+        "standardDeviation": 6.35
       },
       "aws18-itty-runtime": {
         "data": [],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": null,
+        "standardDeviation": null
       },
       "aws18-sdk3-bundle": {
         "data": [
@@ -699,13 +699,13 @@
           3.92,
           3.65
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 88.22,
+        "standardDeviation": 6.04
       },
       "aws18-itty-bundle": {
         "data": [],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": null,
+        "standardDeviation": null
       }
     },
     "apiCallLatency": {
@@ -718,8 +718,8 @@
           6.45,
           4.51
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 116.8,
+        "standardDeviation": 3.04
       },
       "aws16-itty-runtime": {
         "data": [
@@ -731,8 +731,8 @@
           5.29,
           9.81
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 172.1,
+        "standardDeviation": 10.33
       },
       "aws16-sdk2-bundle": {
         "data": [
@@ -744,8 +744,8 @@
           5.45,
           5.34
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 125.6,
+        "standardDeviation": 5.72
       },
       "aws16-itty-bundle": {
         "data": [
@@ -756,8 +756,8 @@
           6.55,
           6.94
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 173.98,
+        "standardDeviation": 8.06
       },
       "aws18-sdk3-runtime": {
         "data": [
@@ -769,8 +769,8 @@
           5.17,
           4.75
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 82.81,
+        "standardDeviation": 6.34
       },
       "aws18-itty-runtime": {
         "data": [
@@ -782,8 +782,8 @@
           31.29,
           61.24
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 341.74,
+        "standardDeviation": 11.94
       },
       "aws18-sdk3-bundle": {
         "data": [
@@ -794,8 +794,8 @@
           3.93,
           3.67
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 88.28,
+        "standardDeviation": 6.04
       },
       "aws18-itty-bundle": {
         "data": [
@@ -807,8 +807,8 @@
           90.04,
           9.36
         ],
-        "mean": 0,
-        "standardDeviation": 0
+        "mean": 344.63,
+        "standardDeviation": 10.56
       }
     }
   }
