@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.base.json",
+  "include": [
+    "src",
+    "scripts",
+    "utils",
+    "data",
+    "benchmarkConfig.ts",
+    "types.d.ts"
+  ],
+  "exclude": ["node_modules", "docs"],
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "node",
+    "target": "esnext"
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@itty-aws/benchmark",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "bootstrap": "cdk bootstrap",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy",
+    "hotswap": "cdk deploy --hotswap",
+    "start": "ts-node --esm scripts/benchmark.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "^3.312.0",
+    "@aws-sdk/client-dynamodb": "^3.245.0",
+    "@aws-sdk/client-lambda": "^3.314.0",
+    "@aws-sdk/node-http-handler": "^3.329.0",
+    "aws-cdk-lib": "^2.80.0",
+    "aws-sdk": "2.1295.0",
+    "chart.js": "^3.9.1",
+    "chartjs-node-canvas": "^4.1.6",
+    "chartjs-plugin-datalabels": "^2.2.0",
+    "itty-aws": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.114",
+    "@types/node": "^16",
+    "aws-cdk": "^2.80.0",
+    "constructs": "^10",
+    "esbuild": "0.17.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

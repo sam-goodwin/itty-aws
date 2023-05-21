@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.base.json",
-  "include": ["src"],
-  "exclude": ["lib", "node_modules"],
-  "compilerOptions": {
-    "outDir": "lib"
-  },
-  "references": [{ "path": "../../tsconfig.esm.json" }]
-}

@@ -7,3 +7,5 @@ cdk.out
 stats.html
 src/mappings.ts
 *.tsbuildinfo
+*.code-workspace
+*.drawio.*

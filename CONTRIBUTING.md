@@ -4,7 +4,7 @@ Thanks for your interest in contributing to `itty-aws` - a teeny-tiny community 
 
 ## Pre-requisites
 
-- Install [Node 18](https://nodejs.org/en/) - usually best to do this with [Node Verson Manage (NVM)](https://github.com/nvm-sh/nvm).
+- Install [Node 18](https://nodejs.org/en/) - usually best to do this with [Node Version Manage (NVM)](https://github.com/nvm-sh/nvm).
 - Create an [AWS](https://aws.amazon.com) account.
 - Install [pnpm](https://pnpm.io/).
 
@@ -52,9 +52,6 @@ The test procedure is as follows:
 
 ## Benchmark
 
-There are 2 NPM packages in the [./benchmark/](./benchmark/) folder, [functions](./benchmark/functions/) and [infra](./benchmark/infra/).
+There is an NPM package in the [./benchmark/](./benchmark/) folder.
 
-- `functions` contains implementations of Lambda Functions with identical functionality but using different AWS SDK configurations, e.g itty-aws, AWS SDK V2, AWS SDK v3 bundled, AWS SDK v3 excluded from the bundle, etc. AWS SDK v3 .send vs mono-client.
-- `infra` is an AWS CDK application that deploys ech of the Functions to AWS.
-
-TODO: implement a script that will make requests against the Functions to analyze the performance.
+Browse to see the previous results, learn how to run the benchmark against your own branch or about the benchmarking architecture and methodology.
