@@ -17,6 +17,7 @@
     "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
     "watch": "tsc --build --watch tsconfig.build.json",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
+    "bench:tsc": "pnpm -r --filter @itty-aws/benchmark typecheck",
     "bench:bootstrap": "pnpm -r --filter @itty-aws/benchmark bootstrap",
     "bench:synth": "pnpm -r --filter @itty-aws/benchmark synth",
     "bench:deploy": "pnpm -r --filter @itty-aws/benchmark run deploy",
