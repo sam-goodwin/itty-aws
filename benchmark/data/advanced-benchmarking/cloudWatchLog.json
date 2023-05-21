@@ -1,1662 +1,1662 @@
 [
   {
-    "ingestionTime": 1684590343105,
+    "ingestionTime": 1684594272773,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590334182
+    "timestamp": 1684594263955
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "START RequestId: 316efb1e-5ff7-4b7f-a53e-e7e875bcb2cc Version: $LATEST\n",
-    "timestamp": 1684590334451
+    "ingestionTime": 1684594272773,
+    "message": "START RequestId: 58e2b90a-8fe6-45ee-8700-6d22c3fcd84b Version: $LATEST\n",
+    "timestamp": 1684594264233
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "2023-05-20T13:45:34.602Z\t316efb1e-5ff7-4b7f-a53e-e7e875bcb2cc\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-1\",\"httpRequestLatency\":111.88,\"apiCallLatency\":114.43}\n",
-    "timestamp": 1684590334602
+    "ingestionTime": 1684594272773,
+    "message": "2023-05-20T14:51:04.370Z\t58e2b90a-8fe6-45ee-8700-6d22c3fcd84b\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":110.33,\"apiCallLatency\":112.9}\n",
+    "timestamp": 1684594264370
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "END RequestId: 316efb1e-5ff7-4b7f-a53e-e7e875bcb2cc\n",
-    "timestamp": 1684590334604
+    "ingestionTime": 1684594272773,
+    "message": "END RequestId: 58e2b90a-8fe6-45ee-8700-6d22c3fcd84b\n",
+    "timestamp": 1684594264388
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "REPORT RequestId: 316efb1e-5ff7-4b7f-a53e-e7e875bcb2cc\tDuration: 153.31 ms\tBilled Duration: 154 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 267.88 ms\t\n",
-    "timestamp": 1684590334604
+    "ingestionTime": 1684594272773,
+    "message": "REPORT RequestId: 58e2b90a-8fe6-45ee-8700-6d22c3fcd84b\tDuration: 155.35 ms\tBilled Duration: 156 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 276.52 ms\t\n",
+    "timestamp": 1684594264388
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "START RequestId: 3243889a-c426-44ee-8ea6-940ea98ddae1 Version: $LATEST\n",
-    "timestamp": 1684590334653
+    "ingestionTime": 1684594272773,
+    "message": "START RequestId: 7d01f499-453f-4dd9-9f10-df6eccb1aea6 Version: $LATEST\n",
+    "timestamp": 1684594264438
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "2023-05-20T13:45:34.663Z\t3243889a-c426-44ee-8ea6-940ea98ddae1\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-1\",\"httpRequestLatency\":5.89,\"apiCallLatency\":6.65}\n",
-    "timestamp": 1684590334663
+    "ingestionTime": 1684594272773,
+    "message": "2023-05-20T14:51:04.447Z\t7d01f499-453f-4dd9-9f10-df6eccb1aea6\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":4.91,\"apiCallLatency\":5.73}\n",
+    "timestamp": 1684594264447
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "END RequestId: 3243889a-c426-44ee-8ea6-940ea98ddae1\n",
-    "timestamp": 1684590334665
+    "ingestionTime": 1684594272773,
+    "message": "END RequestId: 7d01f499-453f-4dd9-9f10-df6eccb1aea6\n",
+    "timestamp": 1684594264448
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "REPORT RequestId: 3243889a-c426-44ee-8ea6-940ea98ddae1\tDuration: 11.67 ms\tBilled Duration: 12 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\t\n",
-    "timestamp": 1684590334665
+    "ingestionTime": 1684594272773,
+    "message": "REPORT RequestId: 7d01f499-453f-4dd9-9f10-df6eccb1aea6\tDuration: 10.32 ms\tBilled Duration: 11 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\t\n",
+    "timestamp": 1684594264448
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "START RequestId: 811fd79b-68ad-4140-acd6-f0c8cf42e92b Version: $LATEST\n",
-    "timestamp": 1684590334707
+    "ingestionTime": 1684594272773,
+    "message": "START RequestId: e2706c9b-126f-4c1c-8a51-6f356dea79b9 Version: $LATEST\n",
+    "timestamp": 1684594264475
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "2023-05-20T13:45:34.722Z\t811fd79b-68ad-4140-acd6-f0c8cf42e92b\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-1\",\"httpRequestLatency\":7.35,\"apiCallLatency\":8.01}\n",
-    "timestamp": 1684590334722
+    "ingestionTime": 1684594272773,
+    "message": "2023-05-20T14:51:04.488Z\te2706c9b-126f-4c1c-8a51-6f356dea79b9\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":8.06,\"apiCallLatency\":8.75}\n",
+    "timestamp": 1684594264488
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "END RequestId: 811fd79b-68ad-4140-acd6-f0c8cf42e92b\n",
-    "timestamp": 1684590334723
+    "ingestionTime": 1684594272773,
+    "message": "END RequestId: e2706c9b-126f-4c1c-8a51-6f356dea79b9\n",
+    "timestamp": 1684594264490
   },
   {
-    "ingestionTime": 1684590343105,
-    "message": "REPORT RequestId: 811fd79b-68ad-4140-acd6-f0c8cf42e92b\tDuration: 15.75 ms\tBilled Duration: 16 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
-    "timestamp": 1684590334723
+    "ingestionTime": 1684594272773,
+    "message": "REPORT RequestId: e2706c9b-126f-4c1c-8a51-6f356dea79b9\tDuration: 14.80 ms\tBilled Duration: 15 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
+    "timestamp": 1684594264490
   },
   {
-    "ingestionTime": 1684590340688,
+    "ingestionTime": 1684594272804,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590334877
+    "timestamp": 1684594264639
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "START RequestId: 08feacfd-679a-4c10-a541-4e5b256cf500 Version: $LATEST\n",
-    "timestamp": 1684590335142
+    "ingestionTime": 1684594272804,
+    "message": "START RequestId: 9fe8ef59-926a-468e-9b91-69b5c1bb1ee0 Version: $LATEST\n",
+    "timestamp": 1684594264911
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "2023-05-20T13:45:35.269Z\t08feacfd-679a-4c10-a541-4e5b256cf500\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-2\",\"httpRequestLatency\":99.64,\"apiCallLatency\":102.34}\n",
-    "timestamp": 1684590335269
+    "ingestionTime": 1684594272804,
+    "message": "2023-05-20T14:51:05.044Z\t9fe8ef59-926a-468e-9b91-69b5c1bb1ee0\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":114.6,\"apiCallLatency\":117.17}\n",
+    "timestamp": 1684594265044
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "END RequestId: 08feacfd-679a-4c10-a541-4e5b256cf500\n",
-    "timestamp": 1684590335285
+    "ingestionTime": 1684594272804,
+    "message": "END RequestId: 9fe8ef59-926a-468e-9b91-69b5c1bb1ee0\n",
+    "timestamp": 1684594265063
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "REPORT RequestId: 08feacfd-679a-4c10-a541-4e5b256cf500\tDuration: 142.64 ms\tBilled Duration: 143 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 264.10 ms\t\n",
-    "timestamp": 1684590335285
+    "ingestionTime": 1684594272804,
+    "message": "REPORT RequestId: 9fe8ef59-926a-468e-9b91-69b5c1bb1ee0\tDuration: 151.80 ms\tBilled Duration: 152 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 271.28 ms\t\n",
+    "timestamp": 1684594265063
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "START RequestId: b443caf0-c7e0-4968-830c-1e71b73e3737 Version: $LATEST\n",
-    "timestamp": 1684590335305
+    "ingestionTime": 1684594272804,
+    "message": "START RequestId: 28d79b18-30e3-4610-a9cb-f00e546d3e8a Version: $LATEST\n",
+    "timestamp": 1684594265081
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "2023-05-20T13:45:35.328Z\tb443caf0-c7e0-4968-830c-1e71b73e3737\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-2\",\"httpRequestLatency\":3.98,\"apiCallLatency\":4.71}\n",
-    "timestamp": 1684590335328
+    "ingestionTime": 1684594272804,
+    "message": "2023-05-20T14:51:05.091Z\t28d79b18-30e3-4610-a9cb-f00e546d3e8a\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":6.16,\"apiCallLatency\":6.95}\n",
+    "timestamp": 1684594265091
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "END RequestId: b443caf0-c7e0-4968-830c-1e71b73e3737\n",
-    "timestamp": 1684590335329
+    "ingestionTime": 1684594272804,
+    "message": "END RequestId: 28d79b18-30e3-4610-a9cb-f00e546d3e8a\n",
+    "timestamp": 1684594265092
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "REPORT RequestId: b443caf0-c7e0-4968-830c-1e71b73e3737\tDuration: 24.22 ms\tBilled Duration: 25 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
-    "timestamp": 1684590335329
+    "ingestionTime": 1684594272804,
+    "message": "REPORT RequestId: 28d79b18-30e3-4610-a9cb-f00e546d3e8a\tDuration: 11.58 ms\tBilled Duration: 12 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\t\n",
+    "timestamp": 1684594265092
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "START RequestId: 1715d38c-2986-4360-bade-7b1a782c5b23 Version: $LATEST\n",
-    "timestamp": 1684590335358
+    "ingestionTime": 1684594272804,
+    "message": "START RequestId: b626fa46-818d-4f13-98f4-534b1ca8310f Version: $LATEST\n",
+    "timestamp": 1684594265122
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "2023-05-20T13:45:35.365Z\t1715d38c-2986-4360-bade-7b1a782c5b23\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-2\",\"httpRequestLatency\":3.41,\"apiCallLatency\":4.02}\n",
-    "timestamp": 1684590335365
+    "ingestionTime": 1684594272804,
+    "message": "2023-05-20T14:51:05.133Z\tb626fa46-818d-4f13-98f4-534b1ca8310f\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":7.79,\"apiCallLatency\":8.48}\n",
+    "timestamp": 1684594265133
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "END RequestId: 1715d38c-2986-4360-bade-7b1a782c5b23\n",
-    "timestamp": 1684590335366
+    "ingestionTime": 1684594272804,
+    "message": "END RequestId: b626fa46-818d-4f13-98f4-534b1ca8310f\n",
+    "timestamp": 1684594265143
   },
   {
-    "ingestionTime": 1684590340688,
-    "message": "REPORT RequestId: 1715d38c-2986-4360-bade-7b1a782c5b23\tDuration: 7.39 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
-    "timestamp": 1684590335366
+    "ingestionTime": 1684594272804,
+    "message": "REPORT RequestId: b626fa46-818d-4f13-98f4-534b1ca8310f\tDuration: 20.80 ms\tBilled Duration: 21 ms\tMemory Size: 512 MB\tMax Memory Used: 76 MB\t\n",
+    "timestamp": 1684594265143
   },
   {
-    "ingestionTime": 1684590343467,
+    "ingestionTime": 1684594268672,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590335518
+    "timestamp": 1684594265278
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "START RequestId: f3a6452e-7eb7-4354-ad9a-e789c6ebaa50 Version: $LATEST\n",
-    "timestamp": 1684590335788
+    "ingestionTime": 1684594268672,
+    "message": "START RequestId: 8d623506-4590-4aa9-857b-78f23d326934 Version: $LATEST\n",
+    "timestamp": 1684594265553
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "2023-05-20T13:45:35.925Z\tf3a6452e-7eb7-4354-ad9a-e789c6ebaa50\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-3\",\"httpRequestLatency\":113.81,\"apiCallLatency\":116.44}\n",
-    "timestamp": 1684590335925
+    "ingestionTime": 1684594268672,
+    "message": "2023-05-20T14:51:05.694Z\t8d623506-4590-4aa9-857b-78f23d326934\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":117.77,\"apiCallLatency\":120.32}\n",
+    "timestamp": 1684594265694
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "END RequestId: f3a6452e-7eb7-4354-ad9a-e789c6ebaa50\n",
-    "timestamp": 1684590335945
+    "ingestionTime": 1684594268672,
+    "message": "END RequestId: 8d623506-4590-4aa9-857b-78f23d326934\n",
+    "timestamp": 1684594265710
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "REPORT RequestId: f3a6452e-7eb7-4354-ad9a-e789c6ebaa50\tDuration: 157.00 ms\tBilled Duration: 158 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\tInit Duration: 269.73 ms\t\n",
-    "timestamp": 1684590335945
+    "ingestionTime": 1684594268672,
+    "message": "REPORT RequestId: 8d623506-4590-4aa9-857b-78f23d326934\tDuration: 157.24 ms\tBilled Duration: 158 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\tInit Duration: 273.82 ms\t\n",
+    "timestamp": 1684594265710
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "START RequestId: a3e2d2a5-b08e-4048-b6b6-b47e298d13f0 Version: $LATEST\n",
-    "timestamp": 1684590335965
+    "ingestionTime": 1684594268672,
+    "message": "START RequestId: 65b8710a-85fc-4c1b-9cdb-064790c4a4a4 Version: $LATEST\n",
+    "timestamp": 1684594265724
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "2023-05-20T13:45:35.973Z\ta3e2d2a5-b08e-4048-b6b6-b47e298d13f0\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-3\",\"httpRequestLatency\":4.1,\"apiCallLatency\":4.84}\n",
-    "timestamp": 1684590335973
+    "ingestionTime": 1684594268672,
+    "message": "2023-05-20T14:51:05.735Z\t65b8710a-85fc-4c1b-9cdb-064790c4a4a4\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":5.69,\"apiCallLatency\":6.45}\n",
+    "timestamp": 1684594265735
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "END RequestId: a3e2d2a5-b08e-4048-b6b6-b47e298d13f0\n",
-    "timestamp": 1684590335985
+    "ingestionTime": 1684594268672,
+    "message": "END RequestId: 65b8710a-85fc-4c1b-9cdb-064790c4a4a4\n",
+    "timestamp": 1684594265750
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "REPORT RequestId: a3e2d2a5-b08e-4048-b6b6-b47e298d13f0\tDuration: 20.20 ms\tBilled Duration: 21 ms\tMemory Size: 512 MB\tMax Memory Used: 74 MB\t\n",
-    "timestamp": 1684590335985
+    "ingestionTime": 1684594268672,
+    "message": "REPORT RequestId: 65b8710a-85fc-4c1b-9cdb-064790c4a4a4\tDuration: 26.15 ms\tBilled Duration: 27 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
+    "timestamp": 1684594265750
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "START RequestId: 43922955-0b79-4780-a749-ad96c8aa5fbb Version: $LATEST\n",
-    "timestamp": 1684590336007
+    "ingestionTime": 1684594268672,
+    "message": "START RequestId: b0e941a1-3632-41fe-9822-d9cb27066d2a Version: $LATEST\n",
+    "timestamp": 1684594265764
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "2023-05-20T13:45:36.026Z\t43922955-0b79-4780-a749-ad96c8aa5fbb\tINFO\t{\"functionName\":\"aws16-sdk2-runtime-3\",\"httpRequestLatency\":6.65,\"apiCallLatency\":7.33}\n",
-    "timestamp": 1684590336026
+    "ingestionTime": 1684594268672,
+    "message": "2023-05-20T14:51:05.771Z\tb0e941a1-3632-41fe-9822-d9cb27066d2a\tINFO\t{\"functionName\":\"aws16-sdk2-runtime\",\"httpRequestLatency\":3.85,\"apiCallLatency\":4.51}\n",
+    "timestamp": 1684594265771
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "END RequestId: 43922955-0b79-4780-a749-ad96c8aa5fbb\n",
-    "timestamp": 1684590336027
+    "ingestionTime": 1684594268672,
+    "message": "END RequestId: b0e941a1-3632-41fe-9822-d9cb27066d2a\n",
+    "timestamp": 1684594265772
   },
   {
-    "ingestionTime": 1684590343467,
-    "message": "REPORT RequestId: 43922955-0b79-4780-a749-ad96c8aa5fbb\tDuration: 20.19 ms\tBilled Duration: 21 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
-    "timestamp": 1684590336027
+    "ingestionTime": 1684594268672,
+    "message": "REPORT RequestId: b0e941a1-3632-41fe-9822-d9cb27066d2a\tDuration: 8.03 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 75 MB\t\n",
+    "timestamp": 1684594265772
   },
   {
-    "ingestionTime": 1684590338832,
+    "ingestionTime": 1684594273441,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590336206
+    "timestamp": 1684594265931
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "START RequestId: 30c78ada-4d77-436b-95f3-ccaac7efd2df Version: $LATEST\n",
-    "timestamp": 1684590336377
+    "ingestionTime": 1684594273441,
+    "message": "START RequestId: e8ba5a22-91c4-4bf1-a58d-991997c9c32d Version: $LATEST\n",
+    "timestamp": 1684594266108
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "2023-05-20T13:45:36.559Z\t30c78ada-4d77-436b-95f3-ccaac7efd2df\tINFO\t{\"functionName\":\"aws16-itty-runtime-1\",\"apiCallLatency\":180.49}\n",
-    "timestamp": 1684590336559
+    "ingestionTime": 1684594273441,
+    "message": "2023-05-20T14:51:06.290Z\te8ba5a22-91c4-4bf1-a58d-991997c9c32d\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":180.06}\n",
+    "timestamp": 1684594266290
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "END RequestId: 30c78ada-4d77-436b-95f3-ccaac7efd2df\n",
-    "timestamp": 1684590336563
+    "ingestionTime": 1684594273441,
+    "message": "END RequestId: e8ba5a22-91c4-4bf1-a58d-991997c9c32d\n",
+    "timestamp": 1684594266292
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "REPORT RequestId: 30c78ada-4d77-436b-95f3-ccaac7efd2df\tDuration: 186.07 ms\tBilled Duration: 187 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 169.78 ms\t\n",
-    "timestamp": 1684590336563
+    "ingestionTime": 1684594273441,
+    "message": "REPORT RequestId: e8ba5a22-91c4-4bf1-a58d-991997c9c32d\tDuration: 183.43 ms\tBilled Duration: 184 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 176.18 ms\t\n",
+    "timestamp": 1684594266292
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "START RequestId: 9b93e3af-78f8-4f72-8c1b-1452b9fc72ea Version: $LATEST\n",
-    "timestamp": 1684590336593
+    "ingestionTime": 1684594273441,
+    "message": "START RequestId: 8d5923a9-1460-4a80-bdf6-be99bb133e67 Version: $LATEST\n",
+    "timestamp": 1684594266324
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "2023-05-20T13:45:36.598Z\t9b93e3af-78f8-4f72-8c1b-1452b9fc72ea\tINFO\t{\"functionName\":\"aws16-itty-runtime-1\",\"apiCallLatency\":4.98}\n",
-    "timestamp": 1684590336598
+    "ingestionTime": 1684594273441,
+    "message": "2023-05-20T14:51:06.330Z\t8d5923a9-1460-4a80-bdf6-be99bb133e67\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":4.94}\n",
+    "timestamp": 1684594266330
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "END RequestId: 9b93e3af-78f8-4f72-8c1b-1452b9fc72ea\n",
-    "timestamp": 1684590336599
+    "ingestionTime": 1684594273441,
+    "message": "END RequestId: 8d5923a9-1460-4a80-bdf6-be99bb133e67\n",
+    "timestamp": 1684594266331
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "REPORT RequestId: 9b93e3af-78f8-4f72-8c1b-1452b9fc72ea\tDuration: 6.42 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\t\n",
-    "timestamp": 1684590336599
+    "ingestionTime": 1684594273441,
+    "message": "REPORT RequestId: 8d5923a9-1460-4a80-bdf6-be99bb133e67\tDuration: 7.15 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594266331
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "START RequestId: 18149501-9406-44b6-bab1-da8ffe8f48b3 Version: $LATEST\n",
-    "timestamp": 1684590336628
+    "ingestionTime": 1684594273441,
+    "message": "START RequestId: 6cc5dbbe-34b3-4fbf-b46d-b41a069032f1 Version: $LATEST\n",
+    "timestamp": 1684594266359
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "2023-05-20T13:45:36.634Z\t18149501-9406-44b6-bab1-da8ffe8f48b3\tINFO\t{\"functionName\":\"aws16-itty-runtime-1\",\"apiCallLatency\":5.12}\n",
-    "timestamp": 1684590336634
+    "ingestionTime": 1684594273441,
+    "message": "2023-05-20T14:51:06.365Z\t6cc5dbbe-34b3-4fbf-b46d-b41a069032f1\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":4.89}\n",
+    "timestamp": 1684594266365
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "END RequestId: 18149501-9406-44b6-bab1-da8ffe8f48b3\n",
-    "timestamp": 1684590336635
+    "ingestionTime": 1684594273441,
+    "message": "END RequestId: 6cc5dbbe-34b3-4fbf-b46d-b41a069032f1\n",
+    "timestamp": 1684594266366
   },
   {
-    "ingestionTime": 1684590338832,
-    "message": "REPORT RequestId: 18149501-9406-44b6-bab1-da8ffe8f48b3\tDuration: 6.49 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590336635
+    "ingestionTime": 1684594273441,
+    "message": "REPORT RequestId: 6cc5dbbe-34b3-4fbf-b46d-b41a069032f1\tDuration: 6.48 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594266366
   },
   {
-    "ingestionTime": 1684590343484,
+    "ingestionTime": 1684594273441,
+    "message": "START RequestId: 25fe7151-2e3a-40e7-a52e-bdae5fe208aa Version: $LATEST\n",
+    "timestamp": 1684594271489
+  },
+  {
+    "ingestionTime": 1684594273441,
+    "message": "2023-05-20T14:51:11.493Z\t25fe7151-2e3a-40e7-a52e-bdae5fe208aa\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":3.65}\n",
+    "timestamp": 1684594271493
+  },
+  {
+    "ingestionTime": 1684594273441,
+    "message": "END RequestId: 25fe7151-2e3a-40e7-a52e-bdae5fe208aa\n",
+    "timestamp": 1684594271493
+  },
+  {
+    "ingestionTime": 1684594273441,
+    "message": "REPORT RequestId: 25fe7151-2e3a-40e7-a52e-bdae5fe208aa\tDuration: 4.86 ms\tBilled Duration: 5 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594271494
+  },
+  {
+    "ingestionTime": 1684594280069,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590336759
+    "timestamp": 1684594271638
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "START RequestId: 822d6918-38c3-4535-aeec-6c20acd415b6 Version: $LATEST\n",
-    "timestamp": 1684590336927
+    "ingestionTime": 1684594280069,
+    "message": "START RequestId: bebe34b3-69b9-48af-b841-fd137e1271f1 Version: $LATEST\n",
+    "timestamp": 1684594271790
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "2023-05-20T13:45:37.095Z\t822d6918-38c3-4535-aeec-6c20acd415b6\tINFO\t{\"functionName\":\"aws16-itty-runtime-2\",\"apiCallLatency\":166.22}\n",
-    "timestamp": 1684590337095
+    "ingestionTime": 1684594280069,
+    "message": "2023-05-20T14:51:11.949Z\tbebe34b3-69b9-48af-b841-fd137e1271f1\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":157.52}\n",
+    "timestamp": 1684594271949
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "END RequestId: 822d6918-38c3-4535-aeec-6c20acd415b6\n",
-    "timestamp": 1684590337097
+    "ingestionTime": 1684594280069,
+    "message": "END RequestId: bebe34b3-69b9-48af-b841-fd137e1271f1\n",
+    "timestamp": 1684594271951
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "REPORT RequestId: 822d6918-38c3-4535-aeec-6c20acd415b6\tDuration: 169.75 ms\tBilled Duration: 170 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 167.26 ms\t\n",
-    "timestamp": 1684590337097
+    "ingestionTime": 1684594280069,
+    "message": "REPORT RequestId: bebe34b3-69b9-48af-b841-fd137e1271f1\tDuration: 160.63 ms\tBilled Duration: 161 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 151.02 ms\t\n",
+    "timestamp": 1684594271951
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "START RequestId: 05071642-ee63-4912-aa1f-554c0932f19f Version: $LATEST\n",
-    "timestamp": 1684590337129
+    "ingestionTime": 1684594280069,
+    "message": "START RequestId: 124674ff-b0c0-40ee-9b70-12b84b27628b Version: $LATEST\n",
+    "timestamp": 1684594271990
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "2023-05-20T13:45:37.136Z\t05071642-ee63-4912-aa1f-554c0932f19f\tINFO\t{\"functionName\":\"aws16-itty-runtime-2\",\"apiCallLatency\":6.16}\n",
-    "timestamp": 1684590337136
+    "ingestionTime": 1684594280069,
+    "message": "2023-05-20T14:51:11.997Z\t124674ff-b0c0-40ee-9b70-12b84b27628b\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":6.46}\n",
+    "timestamp": 1684594271997
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "END RequestId: 05071642-ee63-4912-aa1f-554c0932f19f\n",
-    "timestamp": 1684590337137
+    "ingestionTime": 1684594280069,
+    "message": "END RequestId: 124674ff-b0c0-40ee-9b70-12b84b27628b\n",
+    "timestamp": 1684594271999
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "REPORT RequestId: 05071642-ee63-4912-aa1f-554c0932f19f\tDuration: 8.54 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590337137
+    "ingestionTime": 1684594280069,
+    "message": "REPORT RequestId: 124674ff-b0c0-40ee-9b70-12b84b27628b\tDuration: 8.26 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\t\n",
+    "timestamp": 1684594271999
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "START RequestId: e4ececbe-7a1d-467a-8ad0-b17f990902ff Version: $LATEST\n",
-    "timestamp": 1684590342278
+    "ingestionTime": 1684594280069,
+    "message": "START RequestId: 11cfbb21-6287-46fb-ad3d-f3e7b2a567b9 Version: $LATEST\n",
+    "timestamp": 1684594272027
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "2023-05-20T13:45:42.283Z\te4ececbe-7a1d-467a-8ad0-b17f990902ff\tINFO\t{\"functionName\":\"aws16-itty-runtime-2\",\"apiCallLatency\":4.66}\n",
-    "timestamp": 1684590342283
+    "ingestionTime": 1684594280069,
+    "message": "2023-05-20T14:51:12.035Z\t11cfbb21-6287-46fb-ad3d-f3e7b2a567b9\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":7.4}\n",
+    "timestamp": 1684594272035
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "END RequestId: e4ececbe-7a1d-467a-8ad0-b17f990902ff\n",
-    "timestamp": 1684590342284
+    "ingestionTime": 1684594280069,
+    "message": "END RequestId: 11cfbb21-6287-46fb-ad3d-f3e7b2a567b9\n",
+    "timestamp": 1684594272042
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "REPORT RequestId: e4ececbe-7a1d-467a-8ad0-b17f990902ff\tDuration: 6.13 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590342284
+    "ingestionTime": 1684594280069,
+    "message": "REPORT RequestId: 11cfbb21-6287-46fb-ad3d-f3e7b2a567b9\tDuration: 14.81 ms\tBilled Duration: 15 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594272042
   },
   {
-    "ingestionTime": 1684590343484,
-    "message": "START RequestId: 371473c6-b013-433d-9963-d073d79a02d8 Version: $LATEST\n",
-    "timestamp": 1684590342336
-  },
-  {
-    "ingestionTime": 1684590343484,
-    "message": "2023-05-20T13:45:42.340Z\t371473c6-b013-433d-9963-d073d79a02d8\tINFO\t{\"functionName\":\"aws16-itty-runtime-2\",\"apiCallLatency\":3.96}\n",
-    "timestamp": 1684590342340
-  },
-  {
-    "ingestionTime": 1684590343484,
-    "message": "END RequestId: 371473c6-b013-433d-9963-d073d79a02d8\n",
-    "timestamp": 1684590342341
-  },
-  {
-    "ingestionTime": 1684590343484,
-    "message": "REPORT RequestId: 371473c6-b013-433d-9963-d073d79a02d8\tDuration: 5.34 ms\tBilled Duration: 6 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590342341
-  },
-  {
-    "ingestionTime": 1684590345014,
+    "ingestionTime": 1684594280356,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590342481
+    "timestamp": 1684594272176
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "START RequestId: aa16338f-19ae-4a28-9dd4-7d2c4d167e4c Version: $LATEST\n",
-    "timestamp": 1684590342642
+    "ingestionTime": 1684594280356,
+    "message": "START RequestId: a23b8904-da89-4b7d-b551-3aacfd90017e Version: $LATEST\n",
+    "timestamp": 1684594272339
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "2023-05-20T13:45:42.821Z\taa16338f-19ae-4a28-9dd4-7d2c4d167e4c\tINFO\t{\"functionName\":\"aws16-itty-runtime-3\",\"apiCallLatency\":176.79}\n",
-    "timestamp": 1684590342821
+    "ingestionTime": 1684594280356,
+    "message": "2023-05-20T14:51:12.519Z\ta23b8904-da89-4b7d-b551-3aacfd90017e\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":178.73}\n",
+    "timestamp": 1684594272519
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "END RequestId: aa16338f-19ae-4a28-9dd4-7d2c4d167e4c\n",
-    "timestamp": 1684590342822
+    "ingestionTime": 1684594280356,
+    "message": "END RequestId: a23b8904-da89-4b7d-b551-3aacfd90017e\n",
+    "timestamp": 1684594272521
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "REPORT RequestId: aa16338f-19ae-4a28-9dd4-7d2c4d167e4c\tDuration: 180.21 ms\tBilled Duration: 181 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 160.70 ms\t\n",
-    "timestamp": 1684590342822
+    "ingestionTime": 1684594280356,
+    "message": "REPORT RequestId: a23b8904-da89-4b7d-b551-3aacfd90017e\tDuration: 182.16 ms\tBilled Duration: 183 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 162.12 ms\t\n",
+    "timestamp": 1684594272521
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "START RequestId: f90ca893-e6bd-49dc-877f-fd3268366644 Version: $LATEST\n",
-    "timestamp": 1684590342852
+    "ingestionTime": 1684594280356,
+    "message": "START RequestId: d7e05330-86ea-4d8b-885f-d3535969a5ad Version: $LATEST\n",
+    "timestamp": 1684594272552
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "2023-05-20T13:45:42.857Z\tf90ca893-e6bd-49dc-877f-fd3268366644\tINFO\t{\"functionName\":\"aws16-itty-runtime-3\",\"apiCallLatency\":4.99}\n",
-    "timestamp": 1684590342857
+    "ingestionTime": 1684594280356,
+    "message": "2023-05-20T14:51:12.558Z\td7e05330-86ea-4d8b-885f-d3535969a5ad\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":5.29}\n",
+    "timestamp": 1684594272558
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "END RequestId: f90ca893-e6bd-49dc-877f-fd3268366644\n",
-    "timestamp": 1684590342858
+    "ingestionTime": 1684594280356,
+    "message": "END RequestId: d7e05330-86ea-4d8b-885f-d3535969a5ad\n",
+    "timestamp": 1684594272560
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "REPORT RequestId: f90ca893-e6bd-49dc-877f-fd3268366644\tDuration: 6.78 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590342858
+    "ingestionTime": 1684594280356,
+    "message": "REPORT RequestId: d7e05330-86ea-4d8b-885f-d3535969a5ad\tDuration: 7.80 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\t\n",
+    "timestamp": 1684594272560
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "START RequestId: 0bdea506-500e-476c-8245-1db033c3e48b Version: $LATEST\n",
-    "timestamp": 1684590342890
+    "ingestionTime": 1684594280356,
+    "message": "START RequestId: 27ab3472-a1bc-46d0-8924-92d45a599783 Version: $LATEST\n",
+    "timestamp": 1684594272588
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "2023-05-20T13:45:42.895Z\t0bdea506-500e-476c-8245-1db033c3e48b\tINFO\t{\"functionName\":\"aws16-itty-runtime-3\",\"apiCallLatency\":5.06}\n",
-    "timestamp": 1684590342895
+    "ingestionTime": 1684594280356,
+    "message": "2023-05-20T14:51:12.600Z\t27ab3472-a1bc-46d0-8924-92d45a599783\tINFO\t{\"functionName\":\"aws16-itty-runtime\",\"apiCallLatency\":9.81}\n",
+    "timestamp": 1684594272600
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "END RequestId: 0bdea506-500e-476c-8245-1db033c3e48b\n",
-    "timestamp": 1684590342897
+    "ingestionTime": 1684594280356,
+    "message": "END RequestId: 27ab3472-a1bc-46d0-8924-92d45a599783\n",
+    "timestamp": 1684594272601
   },
   {
-    "ingestionTime": 1684590345014,
-    "message": "REPORT RequestId: 0bdea506-500e-476c-8245-1db033c3e48b\tDuration: 6.99 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590342897
+    "ingestionTime": 1684594280356,
+    "message": "REPORT RequestId: 27ab3472-a1bc-46d0-8924-92d45a599783\tDuration: 12.38 ms\tBilled Duration: 13 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594272601
   },
   {
-    "ingestionTime": 1684590351234,
+    "ingestionTime": 1684594273916,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590343076
+    "timestamp": 1684594272784
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "START RequestId: 807aa7c8-abac-49a3-bb21-cb69253fb8a7 Version: $LATEST\n",
-    "timestamp": 1684590343294
+    "ingestionTime": 1684594273916,
+    "message": "START RequestId: 5dfa5532-d88d-4212-9954-673ceef534f7 Version: $LATEST\n",
+    "timestamp": 1684594273002
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "2023-05-20T13:45:43.445Z\t807aa7c8-abac-49a3-bb21-cb69253fb8a7\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-1\",\"httpRequestLatency\":104.26,\"apiCallLatency\":106.78}\n",
-    "timestamp": 1684590343445
+    "ingestionTime": 1684594273916,
+    "message": "2023-05-20T14:51:13.166Z\t5dfa5532-d88d-4212-9954-673ceef534f7\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":121.53,\"apiCallLatency\":124.05}\n",
+    "timestamp": 1684594273166
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "END RequestId: 807aa7c8-abac-49a3-bb21-cb69253fb8a7\n",
-    "timestamp": 1684590343447
+    "ingestionTime": 1684594273916,
+    "message": "END RequestId: 5dfa5532-d88d-4212-9954-673ceef534f7\n",
+    "timestamp": 1684594273168
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "REPORT RequestId: 807aa7c8-abac-49a3-bb21-cb69253fb8a7\tDuration: 153.01 ms\tBilled Duration: 154 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 217.07 ms\t\n",
-    "timestamp": 1684590343447
+    "ingestionTime": 1684594273916,
+    "message": "REPORT RequestId: 5dfa5532-d88d-4212-9954-673ceef534f7\tDuration: 165.83 ms\tBilled Duration: 166 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 217.72 ms\t\n",
+    "timestamp": 1684594273168
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "START RequestId: 9c9cdfdd-4420-4b27-b458-78fc37509719 Version: $LATEST\n",
-    "timestamp": 1684590343476
+    "ingestionTime": 1684594273916,
+    "message": "START RequestId: 82d3ee28-8579-4795-b446-63da8ae698be Version: $LATEST\n",
+    "timestamp": 1684594273198
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "2023-05-20T13:45:43.485Z\t9c9cdfdd-4420-4b27-b458-78fc37509719\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-1\",\"httpRequestLatency\":4.5,\"apiCallLatency\":5.24}\n",
-    "timestamp": 1684590343485
+    "ingestionTime": 1684594273916,
+    "message": "2023-05-20T14:51:13.209Z\t82d3ee28-8579-4795-b446-63da8ae698be\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":6.42,\"apiCallLatency\":7.21}\n",
+    "timestamp": 1684594273209
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "END RequestId: 9c9cdfdd-4420-4b27-b458-78fc37509719\n",
-    "timestamp": 1684590343486
+    "ingestionTime": 1684594273916,
+    "message": "END RequestId: 82d3ee28-8579-4795-b446-63da8ae698be\n",
+    "timestamp": 1684594273210
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "REPORT RequestId: 9c9cdfdd-4420-4b27-b458-78fc37509719\tDuration: 9.96 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\t\n",
-    "timestamp": 1684590343486
+    "ingestionTime": 1684594273916,
+    "message": "REPORT RequestId: 82d3ee28-8579-4795-b446-63da8ae698be\tDuration: 12.20 ms\tBilled Duration: 13 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\t\n",
+    "timestamp": 1684594273210
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "START RequestId: 8aa664cd-f6b2-4e92-b3e0-162d807f1dbe Version: $LATEST\n",
-    "timestamp": 1684590343518
+    "ingestionTime": 1684594273916,
+    "message": "START RequestId: 3876f64f-64ab-4cf0-bbc1-9897176e8a48 Version: $LATEST\n",
+    "timestamp": 1684594273239
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "2023-05-20T13:45:43.526Z\t8aa664cd-f6b2-4e92-b3e0-162d807f1dbe\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-1\",\"httpRequestLatency\":5.33,\"apiCallLatency\":6.03}\n",
-    "timestamp": 1684590343526
+    "ingestionTime": 1684594273916,
+    "message": "2023-05-20T14:51:13.250Z\t3876f64f-64ab-4cf0-bbc1-9897176e8a48\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":7.29,\"apiCallLatency\":8}\n",
+    "timestamp": 1684594273250
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "END RequestId: 8aa664cd-f6b2-4e92-b3e0-162d807f1dbe\n",
-    "timestamp": 1684590343527
+    "ingestionTime": 1684594273916,
+    "message": "END RequestId: 3876f64f-64ab-4cf0-bbc1-9897176e8a48\n",
+    "timestamp": 1684594273251
   },
   {
-    "ingestionTime": 1684590351234,
-    "message": "REPORT RequestId: 8aa664cd-f6b2-4e92-b3e0-162d807f1dbe\tDuration: 9.97 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
-    "timestamp": 1684590343527
+    "ingestionTime": 1684594273916,
+    "message": "REPORT RequestId: 3876f64f-64ab-4cf0-bbc1-9897176e8a48\tDuration: 11.62 ms\tBilled Duration: 12 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
+    "timestamp": 1684594273251
   },
   {
-    "ingestionTime": 1684590348623,
+    "ingestionTime": 1684594274815,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590343674
+    "timestamp": 1684594273399
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "START RequestId: 981e522e-1c42-47c9-bf7b-861b0fa4dca4 Version: $LATEST\n",
-    "timestamp": 1684590343893
+    "ingestionTime": 1684594274815,
+    "message": "START RequestId: c608691b-26da-4b52-b581-bc8c2000a8f0 Version: $LATEST\n",
+    "timestamp": 1684594273623
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "2023-05-20T13:45:44.044Z\t981e522e-1c42-47c9-bf7b-861b0fa4dca4\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-2\",\"httpRequestLatency\":122.36,\"apiCallLatency\":124.91}\n",
-    "timestamp": 1684590344044
+    "ingestionTime": 1684594274815,
+    "message": "2023-05-20T14:51:13.779Z\tc608691b-26da-4b52-b581-bc8c2000a8f0\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":116.9,\"apiCallLatency\":119.5}\n",
+    "timestamp": 1684594273779
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "END RequestId: 981e522e-1c42-47c9-bf7b-861b0fa4dca4\n",
-    "timestamp": 1684590344058
+    "ingestionTime": 1684594274815,
+    "message": "END RequestId: c608691b-26da-4b52-b581-bc8c2000a8f0\n",
+    "timestamp": 1684594273781
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "REPORT RequestId: 981e522e-1c42-47c9-bf7b-861b0fa4dca4\tDuration: 165.21 ms\tBilled Duration: 166 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 217.95 ms\t\n",
-    "timestamp": 1684590344058
+    "ingestionTime": 1684594274815,
+    "message": "REPORT RequestId: c608691b-26da-4b52-b581-bc8c2000a8f0\tDuration: 157.73 ms\tBilled Duration: 158 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 222.78 ms\t\n",
+    "timestamp": 1684594273781
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "START RequestId: 2fa9ea9a-a1d8-4305-b48f-e705b1e17fae Version: $LATEST\n",
-    "timestamp": 1684590344081
+    "ingestionTime": 1684594274815,
+    "message": "START RequestId: e0b78bd1-4594-4ac6-a329-86d402630f67 Version: $LATEST\n",
+    "timestamp": 1684594273810
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "2023-05-20T13:45:44.098Z\t2fa9ea9a-a1d8-4305-b48f-e705b1e17fae\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-2\",\"httpRequestLatency\":4.49,\"apiCallLatency\":5.25}\n",
-    "timestamp": 1684590344098
+    "ingestionTime": 1684594274815,
+    "message": "2023-05-20T14:51:13.820Z\te0b78bd1-4594-4ac6-a329-86d402630f67\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":5.41,\"apiCallLatency\":6.17}\n",
+    "timestamp": 1684594273820
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "END RequestId: 2fa9ea9a-a1d8-4305-b48f-e705b1e17fae\n",
-    "timestamp": 1684590344099
+    "ingestionTime": 1684594274815,
+    "message": "END RequestId: e0b78bd1-4594-4ac6-a329-86d402630f67\n",
+    "timestamp": 1684594273822
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "REPORT RequestId: 2fa9ea9a-a1d8-4305-b48f-e705b1e17fae\tDuration: 18.00 ms\tBilled Duration: 18 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\t\n",
-    "timestamp": 1684590344099
+    "ingestionTime": 1684594274815,
+    "message": "REPORT RequestId: e0b78bd1-4594-4ac6-a329-86d402630f67\tDuration: 12.05 ms\tBilled Duration: 13 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
+    "timestamp": 1684594273822
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "START RequestId: 16e837dd-3a93-44f4-80a6-21de62f31a57 Version: $LATEST\n",
-    "timestamp": 1684590344126
+    "ingestionTime": 1684594274815,
+    "message": "START RequestId: 87760550-a446-4f0d-b0a0-b556986df0b2 Version: $LATEST\n",
+    "timestamp": 1684594273851
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "2023-05-20T13:45:44.135Z\t16e837dd-3a93-44f4-80a6-21de62f31a57\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-2\",\"httpRequestLatency\":5.54,\"apiCallLatency\":6.21}\n",
-    "timestamp": 1684590344135
+    "ingestionTime": 1684594274815,
+    "message": "2023-05-20T14:51:13.861Z\t87760550-a446-4f0d-b0a0-b556986df0b2\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":7.13,\"apiCallLatency\":7.79}\n",
+    "timestamp": 1684594273861
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "END RequestId: 16e837dd-3a93-44f4-80a6-21de62f31a57\n",
-    "timestamp": 1684590344138
+    "ingestionTime": 1684594274815,
+    "message": "END RequestId: 87760550-a446-4f0d-b0a0-b556986df0b2\n",
+    "timestamp": 1684594273862
   },
   {
-    "ingestionTime": 1684590348623,
-    "message": "REPORT RequestId: 16e837dd-3a93-44f4-80a6-21de62f31a57\tDuration: 11.65 ms\tBilled Duration: 12 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
-    "timestamp": 1684590344138
+    "ingestionTime": 1684594274815,
+    "message": "REPORT RequestId: 87760550-a446-4f0d-b0a0-b556986df0b2\tDuration: 11.49 ms\tBilled Duration: 12 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
+    "timestamp": 1684594273862
   },
   {
-    "ingestionTime": 1684590349049,
+    "ingestionTime": 1684594276487,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590344309
+    "timestamp": 1684594274063
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "START RequestId: d4f3ccff-5914-4003-b294-f758d03f962e Version: $LATEST\n",
-    "timestamp": 1684590344536
+    "ingestionTime": 1684594276487,
+    "message": "START RequestId: 01b8b5b9-f28d-460d-a07f-8a3d0a8bbfd8 Version: $LATEST\n",
+    "timestamp": 1684594274284
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "2023-05-20T13:45:44.693Z\td4f3ccff-5914-4003-b294-f758d03f962e\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-3\",\"httpRequestLatency\":126.44,\"apiCallLatency\":129.09}\n",
-    "timestamp": 1684590344693
+    "ingestionTime": 1684594276487,
+    "message": "2023-05-20T14:51:14.444Z\t01b8b5b9-f28d-460d-a07f-8a3d0a8bbfd8\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":110.55,\"apiCallLatency\":133.25}\n",
+    "timestamp": 1684594274444
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "END RequestId: d4f3ccff-5914-4003-b294-f758d03f962e\n",
-    "timestamp": 1684590344695
+    "ingestionTime": 1684594276487,
+    "message": "END RequestId: 01b8b5b9-f28d-460d-a07f-8a3d0a8bbfd8\n",
+    "timestamp": 1684594274459
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "REPORT RequestId: d4f3ccff-5914-4003-b294-f758d03f962e\tDuration: 158.80 ms\tBilled Duration: 159 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 226.05 ms\t\n",
-    "timestamp": 1684590344695
+    "ingestionTime": 1684594276487,
+    "message": "REPORT RequestId: 01b8b5b9-f28d-460d-a07f-8a3d0a8bbfd8\tDuration: 175.33 ms\tBilled Duration: 176 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\tInit Duration: 220.49 ms\t\n",
+    "timestamp": 1684594274459
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "START RequestId: 428cd3b4-7657-4bfe-8093-97f5c36467c2 Version: $LATEST\n",
-    "timestamp": 1684590344726
+    "ingestionTime": 1684594276487,
+    "message": "START RequestId: 41339d41-8611-4085-b150-a544f7093dcb Version: $LATEST\n",
+    "timestamp": 1684594274498
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "2023-05-20T13:45:44.736Z\t428cd3b4-7657-4bfe-8093-97f5c36467c2\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-3\",\"httpRequestLatency\":5.98,\"apiCallLatency\":6.73}\n",
-    "timestamp": 1684590344736
+    "ingestionTime": 1684594276487,
+    "message": "2023-05-20T14:51:14.539Z\t41339d41-8611-4085-b150-a544f7093dcb\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":4.8,\"apiCallLatency\":5.55}\n",
+    "timestamp": 1684594274539
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "END RequestId: 428cd3b4-7657-4bfe-8093-97f5c36467c2\n",
-    "timestamp": 1684590344738
+    "ingestionTime": 1684594276487,
+    "message": "END RequestId: 41339d41-8611-4085-b150-a544f7093dcb\n",
+    "timestamp": 1684594274540
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "REPORT RequestId: 428cd3b4-7657-4bfe-8093-97f5c36467c2\tDuration: 11.58 ms\tBilled Duration: 12 ms\tMemory Size: 512 MB\tMax Memory Used: 72 MB\t\n",
-    "timestamp": 1684590344738
+    "ingestionTime": 1684594276487,
+    "message": "REPORT RequestId: 41339d41-8611-4085-b150-a544f7093dcb\tDuration: 43.10 ms\tBilled Duration: 44 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
+    "timestamp": 1684594274541
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "START RequestId: 25a3c0e9-981f-483f-8268-3704da924012 Version: $LATEST\n",
-    "timestamp": 1684590344770
+    "ingestionTime": 1684594288644,
+    "message": "START RequestId: 3c3a472b-a943-406b-a3bb-5040581c4f94 Version: $LATEST\n",
+    "timestamp": 1684594279614
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "2023-05-20T13:45:44.794Z\t25a3c0e9-981f-483f-8268-3704da924012\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-3\",\"httpRequestLatency\":7.53,\"apiCallLatency\":8.17}\n",
-    "timestamp": 1684590344794
+    "ingestionTime": 1684594288644,
+    "message": "2023-05-20T14:51:19.622Z\t3c3a472b-a943-406b-a3bb-5040581c4f94\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":4.72,\"apiCallLatency\":5.45}\n",
+    "timestamp": 1684594279622
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "END RequestId: 25a3c0e9-981f-483f-8268-3704da924012\n",
-    "timestamp": 1684590344795
+    "ingestionTime": 1684594288644,
+    "message": "END RequestId: 3c3a472b-a943-406b-a3bb-5040581c4f94\n",
+    "timestamp": 1684594279623
   },
   {
-    "ingestionTime": 1684590349049,
-    "message": "REPORT RequestId: 25a3c0e9-981f-483f-8268-3704da924012\tDuration: 25.13 ms\tBilled Duration: 26 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
-    "timestamp": 1684590344795
+    "ingestionTime": 1684594288644,
+    "message": "REPORT RequestId: 3c3a472b-a943-406b-a3bb-5040581c4f94\tDuration: 9.06 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
+    "timestamp": 1684594279623
   },
   {
-    "ingestionTime": 1684590358891,
-    "message": "START RequestId: 30ac852e-2c05-4155-aa17-836eff6f9668 Version: $LATEST\n",
-    "timestamp": 1684590349865
+    "ingestionTime": 1684594288644,
+    "message": "START RequestId: dba84393-e39c-448a-b93a-5d26f6e0c6c1 Version: $LATEST\n",
+    "timestamp": 1684594279651
   },
   {
-    "ingestionTime": 1684590358891,
-    "message": "2023-05-20T13:45:49.872Z\t30ac852e-2c05-4155-aa17-836eff6f9668\tINFO\t{\"functionName\":\"aws16-sdk2-bundle-3\",\"httpRequestLatency\":5.01,\"apiCallLatency\":6.12}\n",
-    "timestamp": 1684590349872
+    "ingestionTime": 1684594288644,
+    "message": "2023-05-20T14:51:19.658Z\tdba84393-e39c-448a-b93a-5d26f6e0c6c1\tINFO\t{\"functionName\":\"aws16-sdk2-bundle\",\"httpRequestLatency\":4.7,\"apiCallLatency\":5.34}\n",
+    "timestamp": 1684594279658
   },
   {
-    "ingestionTime": 1684590358891,
-    "message": "END RequestId: 30ac852e-2c05-4155-aa17-836eff6f9668\n",
-    "timestamp": 1684590349873
+    "ingestionTime": 1684594288644,
+    "message": "END RequestId: dba84393-e39c-448a-b93a-5d26f6e0c6c1\n",
+    "timestamp": 1684594279659
   },
   {
-    "ingestionTime": 1684590358891,
-    "message": "REPORT RequestId: 30ac852e-2c05-4155-aa17-836eff6f9668\tDuration: 8.26 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
-    "timestamp": 1684590349873
+    "ingestionTime": 1684594288644,
+    "message": "REPORT RequestId: dba84393-e39c-448a-b93a-5d26f6e0c6c1\tDuration: 7.31 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 73 MB\t\n",
+    "timestamp": 1684594279659
   },
   {
-    "ingestionTime": 1684590357706,
+    "ingestionTime": 1684594281213,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590350027
+    "timestamp": 1684594279808
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "START RequestId: fe02d3bb-2a87-4b78-8441-b15b39a014b6 Version: $LATEST\n",
-    "timestamp": 1684590350184
+    "ingestionTime": 1684594281213,
+    "message": "START RequestId: cad00cac-e0d3-4b5f-9ef6-e567911eec1b Version: $LATEST\n",
+    "timestamp": 1684594279969
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "2023-05-20T13:45:50.363Z\tfe02d3bb-2a87-4b78-8441-b15b39a014b6\tINFO\t{\"functionName\":\"aws16-itty-bundle-1\",\"apiCallLatency\":177.41}\n",
-    "timestamp": 1684590350363
+    "ingestionTime": 1684594281213,
+    "message": "2023-05-20T14:51:20.150Z\tcad00cac-e0d3-4b5f-9ef6-e567911eec1b\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":179.51}\n",
+    "timestamp": 1684594280150
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "END RequestId: fe02d3bb-2a87-4b78-8441-b15b39a014b6\n",
-    "timestamp": 1684590350364
+    "ingestionTime": 1684594281213,
+    "message": "END RequestId: cad00cac-e0d3-4b5f-9ef6-e567911eec1b\n",
+    "timestamp": 1684594280152
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "REPORT RequestId: fe02d3bb-2a87-4b78-8441-b15b39a014b6\tDuration: 180.60 ms\tBilled Duration: 181 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 156.31 ms\t\n",
-    "timestamp": 1684590350364
+    "ingestionTime": 1684594281213,
+    "message": "REPORT RequestId: cad00cac-e0d3-4b5f-9ef6-e567911eec1b\tDuration: 182.78 ms\tBilled Duration: 183 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 160.26 ms\t\n",
+    "timestamp": 1684594280152
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "START RequestId: f9a8fa12-a911-4561-a105-25685114d3e2 Version: $LATEST\n",
-    "timestamp": 1684590350404
+    "ingestionTime": 1684594281213,
+    "message": "START RequestId: 4a3741f9-e261-4334-95ad-05dd5a5bfe4c Version: $LATEST\n",
+    "timestamp": 1684594280183
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "2023-05-20T13:45:50.410Z\tf9a8fa12-a911-4561-a105-25685114d3e2\tINFO\t{\"functionName\":\"aws16-itty-bundle-1\",\"apiCallLatency\":4.81}\n",
-    "timestamp": 1684590350410
+    "ingestionTime": 1684594281213,
+    "message": "2023-05-20T14:51:20.192Z\t4a3741f9-e261-4334-95ad-05dd5a5bfe4c\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":7.87}\n",
+    "timestamp": 1684594280192
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "END RequestId: f9a8fa12-a911-4561-a105-25685114d3e2\n",
-    "timestamp": 1684590350411
+    "ingestionTime": 1684594281213,
+    "message": "END RequestId: 4a3741f9-e261-4334-95ad-05dd5a5bfe4c\n",
+    "timestamp": 1684594280193
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "REPORT RequestId: f9a8fa12-a911-4561-a105-25685114d3e2\tDuration: 8.28 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590350411
+    "ingestionTime": 1684594281213,
+    "message": "REPORT RequestId: 4a3741f9-e261-4334-95ad-05dd5a5bfe4c\tDuration: 10.15 ms\tBilled Duration: 11 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\t\n",
+    "timestamp": 1684594280193
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "START RequestId: e9b12d4e-f0c0-4afa-840e-76dfdb24bbdf Version: $LATEST\n",
-    "timestamp": 1684590350439
+    "ingestionTime": 1684594281213,
+    "message": "START RequestId: 245095ae-5546-4ebc-a4be-31e3ce983afd Version: $LATEST\n",
+    "timestamp": 1684594280223
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "2023-05-20T13:45:50.444Z\te9b12d4e-f0c0-4afa-840e-76dfdb24bbdf\tINFO\t{\"functionName\":\"aws16-itty-bundle-1\",\"apiCallLatency\":4.91}\n",
-    "timestamp": 1684590350444
+    "ingestionTime": 1684594281213,
+    "message": "2023-05-20T14:51:20.228Z\t245095ae-5546-4ebc-a4be-31e3ce983afd\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":4.53}\n",
+    "timestamp": 1684594280228
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "END RequestId: e9b12d4e-f0c0-4afa-840e-76dfdb24bbdf\n",
-    "timestamp": 1684590350445
+    "ingestionTime": 1684594281213,
+    "message": "END RequestId: 245095ae-5546-4ebc-a4be-31e3ce983afd\n",
+    "timestamp": 1684594280229
   },
   {
-    "ingestionTime": 1684590357706,
-    "message": "REPORT RequestId: e9b12d4e-f0c0-4afa-840e-76dfdb24bbdf\tDuration: 6.27 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590350445
+    "ingestionTime": 1684594281213,
+    "message": "REPORT RequestId: 245095ae-5546-4ebc-a4be-31e3ce983afd\tDuration: 5.85 ms\tBilled Duration: 6 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594280229
   },
   {
-    "ingestionTime": 1684590356247,
+    "ingestionTime": 1684594282256,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590350584
+    "timestamp": 1684594280364
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "START RequestId: 5f193ebf-b660-4747-b8be-31e19d9d4d61 Version: $LATEST\n",
-    "timestamp": 1684590350744
+    "ingestionTime": 1684594282256,
+    "message": "START RequestId: d9fa8282-7acc-49c9-8eb1-59059c96a8db Version: $LATEST\n",
+    "timestamp": 1684594280531
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "2023-05-20T13:45:50.927Z\t5f193ebf-b660-4747-b8be-31e19d9d4d61\tINFO\t{\"functionName\":\"aws16-itty-bundle-2\",\"apiCallLatency\":182.21}\n",
-    "timestamp": 1684590350927
+    "ingestionTime": 1684594282256,
+    "message": "2023-05-20T14:51:20.712Z\td9fa8282-7acc-49c9-8eb1-59059c96a8db\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":179.84}\n",
+    "timestamp": 1684594280712
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "END RequestId: 5f193ebf-b660-4747-b8be-31e19d9d4d61\n",
-    "timestamp": 1684590350929
+    "ingestionTime": 1684594282256,
+    "message": "END RequestId: d9fa8282-7acc-49c9-8eb1-59059c96a8db\n",
+    "timestamp": 1684594280714
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "REPORT RequestId: 5f193ebf-b660-4747-b8be-31e19d9d4d61\tDuration: 185.95 ms\tBilled Duration: 186 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 158.74 ms\t\n",
-    "timestamp": 1684590350929
+    "ingestionTime": 1684594282256,
+    "message": "REPORT RequestId: d9fa8282-7acc-49c9-8eb1-59059c96a8db\tDuration: 183.29 ms\tBilled Duration: 184 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 165.63 ms\t\n",
+    "timestamp": 1684594280714
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "START RequestId: 29d77629-e542-465b-8868-a6cefd1e3cb7 Version: $LATEST\n",
-    "timestamp": 1684590350961
+    "ingestionTime": 1684594282256,
+    "message": "START RequestId: 7837c90d-cce5-43b8-b087-5afebd790cf3 Version: $LATEST\n",
+    "timestamp": 1684594280744
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "2023-05-20T13:45:50.966Z\t29d77629-e542-465b-8868-a6cefd1e3cb7\tINFO\t{\"functionName\":\"aws16-itty-bundle-2\",\"apiCallLatency\":4.42}\n",
-    "timestamp": 1684590350966
+    "ingestionTime": 1684594282256,
+    "message": "2023-05-20T14:51:20.751Z\t7837c90d-cce5-43b8-b087-5afebd790cf3\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":6.6}\n",
+    "timestamp": 1684594280751
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "END RequestId: 29d77629-e542-465b-8868-a6cefd1e3cb7\n",
-    "timestamp": 1684590350967
+    "ingestionTime": 1684594282256,
+    "message": "END RequestId: 7837c90d-cce5-43b8-b087-5afebd790cf3\n",
+    "timestamp": 1684594280756
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "REPORT RequestId: 29d77629-e542-465b-8868-a6cefd1e3cb7\tDuration: 6.04 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\t\n",
-    "timestamp": 1684590350967
+    "ingestionTime": 1684594282256,
+    "message": "REPORT RequestId: 7837c90d-cce5-43b8-b087-5afebd790cf3\tDuration: 12.08 ms\tBilled Duration: 13 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594280756
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "START RequestId: b932f5da-9929-4007-a29e-436bcb17404f Version: $LATEST\n",
-    "timestamp": 1684590350995
+    "ingestionTime": 1684594282256,
+    "message": "START RequestId: 24bde78a-a927-46d3-95d8-368ecf4597cc Version: $LATEST\n",
+    "timestamp": 1684594280788
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "2023-05-20T13:45:51.000Z\tb932f5da-9929-4007-a29e-436bcb17404f\tINFO\t{\"functionName\":\"aws16-itty-bundle-2\",\"apiCallLatency\":4.53}\n",
-    "timestamp": 1684590351000
+    "ingestionTime": 1684594282256,
+    "message": "2023-05-20T14:51:20.793Z\t24bde78a-a927-46d3-95d8-368ecf4597cc\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":5.21}\n",
+    "timestamp": 1684594280793
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "END RequestId: b932f5da-9929-4007-a29e-436bcb17404f\n",
-    "timestamp": 1684590351001
+    "ingestionTime": 1684594282256,
+    "message": "END RequestId: 24bde78a-a927-46d3-95d8-368ecf4597cc\n",
+    "timestamp": 1684594280794
   },
   {
-    "ingestionTime": 1684590356247,
-    "message": "REPORT RequestId: b932f5da-9929-4007-a29e-436bcb17404f\tDuration: 5.82 ms\tBilled Duration: 6 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590351001
+    "ingestionTime": 1684594282256,
+    "message": "REPORT RequestId: 24bde78a-a927-46d3-95d8-368ecf4597cc\tDuration: 6.67 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594280794
   },
   {
-    "ingestionTime": 1684590352179,
+    "ingestionTime": 1684594287317,
     "message": "INIT_START Runtime Version: nodejs:16.v13\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a071073b1da9f709b2fc2e18948f6415fceadbd37ea568079d610b67bddfaef9\n",
-    "timestamp": 1684590351168
+    "timestamp": 1684594280925
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "START RequestId: 0bc7401f-51ac-4d01-b5e1-2915e7c93945 Version: $LATEST\n",
-    "timestamp": 1684590351329
+    "ingestionTime": 1684594287317,
+    "message": "START RequestId: f7e4191c-be3c-4db7-98cc-97fb85275b68 Version: $LATEST\n",
+    "timestamp": 1684594281088
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "2023-05-20T13:45:51.514Z\t0bc7401f-51ac-4d01-b5e1-2915e7c93945\tINFO\t{\"functionName\":\"aws16-itty-bundle-3\",\"apiCallLatency\":183.58}\n",
-    "timestamp": 1684590351514
+    "ingestionTime": 1684594287317,
+    "message": "2023-05-20T14:51:21.252Z\tf7e4191c-be3c-4db7-98cc-97fb85275b68\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":162.59}\n",
+    "timestamp": 1684594281252
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "END RequestId: 0bc7401f-51ac-4d01-b5e1-2915e7c93945\n",
-    "timestamp": 1684590351516
+    "ingestionTime": 1684594287317,
+    "message": "END RequestId: f7e4191c-be3c-4db7-98cc-97fb85275b68\n",
+    "timestamp": 1684594281257
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "REPORT RequestId: 0bc7401f-51ac-4d01-b5e1-2915e7c93945\tDuration: 186.98 ms\tBilled Duration: 187 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 160.74 ms\t\n",
-    "timestamp": 1684590351516
+    "ingestionTime": 1684594287317,
+    "message": "REPORT RequestId: f7e4191c-be3c-4db7-98cc-97fb85275b68\tDuration: 169.01 ms\tBilled Duration: 170 ms\tMemory Size: 512 MB\tMax Memory Used: 67 MB\tInit Duration: 162.20 ms\t\n",
+    "timestamp": 1684594281257
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "START RequestId: 1b31d7d9-7574-443c-ba6e-d1c3d6cf3ab9 Version: $LATEST\n",
-    "timestamp": 1684590351546
+    "ingestionTime": 1684594287317,
+    "message": "START RequestId: 6f3bffc4-05e8-4947-ac0f-9838141790c8 Version: $LATEST\n",
+    "timestamp": 1684594281288
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "2023-05-20T13:45:51.551Z\t1b31d7d9-7574-443c-ba6e-d1c3d6cf3ab9\tINFO\t{\"functionName\":\"aws16-itty-bundle-3\",\"apiCallLatency\":5.18}\n",
-    "timestamp": 1684590351551
+    "ingestionTime": 1684594287317,
+    "message": "2023-05-20T14:51:21.295Z\t6f3bffc4-05e8-4947-ac0f-9838141790c8\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":6.55}\n",
+    "timestamp": 1684594281295
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "END RequestId: 1b31d7d9-7574-443c-ba6e-d1c3d6cf3ab9\n",
-    "timestamp": 1684590351552
+    "ingestionTime": 1684594287317,
+    "message": "END RequestId: 6f3bffc4-05e8-4947-ac0f-9838141790c8\n",
+    "timestamp": 1684594281297
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "REPORT RequestId: 1b31d7d9-7574-443c-ba6e-d1c3d6cf3ab9\tDuration: 6.53 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590351552
+    "ingestionTime": 1684594287317,
+    "message": "REPORT RequestId: 6f3bffc4-05e8-4947-ac0f-9838141790c8\tDuration: 8.41 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594281297
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "START RequestId: 51ee6734-ab55-4099-b1a6-4a9cce803ecb Version: $LATEST\n",
-    "timestamp": 1684590351574
+    "ingestionTime": 1684594287317,
+    "message": "START RequestId: 08bc0fff-32ea-453a-836e-5ef568c607da Version: $LATEST\n",
+    "timestamp": 1684594281327
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "2023-05-20T13:45:51.579Z\t51ee6734-ab55-4099-b1a6-4a9cce803ecb\tINFO\t{\"functionName\":\"aws16-itty-bundle-3\",\"apiCallLatency\":4.48}\n",
-    "timestamp": 1684590351579
+    "ingestionTime": 1684594287317,
+    "message": "2023-05-20T14:51:21.335Z\t08bc0fff-32ea-453a-836e-5ef568c607da\tINFO\t{\"functionName\":\"aws16-itty-bundle\",\"apiCallLatency\":6.94}\n",
+    "timestamp": 1684594281335
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "END RequestId: 51ee6734-ab55-4099-b1a6-4a9cce803ecb\n",
-    "timestamp": 1684590351580
+    "ingestionTime": 1684594287317,
+    "message": "END RequestId: 08bc0fff-32ea-453a-836e-5ef568c607da\n",
+    "timestamp": 1684594281336
   },
   {
-    "ingestionTime": 1684590352179,
-    "message": "REPORT RequestId: 51ee6734-ab55-4099-b1a6-4a9cce803ecb\tDuration: 5.86 ms\tBilled Duration: 6 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
-    "timestamp": 1684590351580
+    "ingestionTime": 1684594287317,
+    "message": "REPORT RequestId: 08bc0fff-32ea-453a-836e-5ef568c607da\tDuration: 8.45 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 68 MB\t\n",
+    "timestamp": 1684594281336
   },
   {
-    "ingestionTime": 1684590359154,
+    "ingestionTime": 1684594281611,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590351736
+    "timestamp": 1684594281475
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "START RequestId: 0904bb4f-643c-402d-92dc-3c7d28f52f46 Version: $LATEST\n",
-    "timestamp": 1684590352195
+    "ingestionTime": 1684594290957,
+    "message": "START RequestId: fb09368f-981c-45f6-8a24-2381ff3f43ab Version: $LATEST\n",
+    "timestamp": 1684594281932
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "2023-05-20T13:45:52.306Z\t0904bb4f-643c-402d-92dc-3c7d28f52f46\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-1\",\"httpRequestLatency\":82.87,\"apiCallLatency\":82.93}\n",
-    "timestamp": 1684590352306
+    "ingestionTime": 1684594290957,
+    "message": "2023-05-20T14:51:22.033Z\tfb09368f-981c-45f6-8a24-2381ff3f43ab\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":77.62,\"apiCallLatency\":77.69}\n",
+    "timestamp": 1684594282033
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "END RequestId: 0904bb4f-643c-402d-92dc-3c7d28f52f46\n",
-    "timestamp": 1684590352308
+    "ingestionTime": 1684594290957,
+    "message": "END RequestId: fb09368f-981c-45f6-8a24-2381ff3f43ab\n",
+    "timestamp": 1684594282047
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "REPORT RequestId: 0904bb4f-643c-402d-92dc-3c7d28f52f46\tDuration: 113.67 ms\tBilled Duration: 114 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\tInit Duration: 457.50 ms\t\n",
-    "timestamp": 1684590352308
+    "ingestionTime": 1684594290957,
+    "message": "REPORT RequestId: fb09368f-981c-45f6-8a24-2381ff3f43ab\tDuration: 115.34 ms\tBilled Duration: 116 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\tInit Duration: 455.80 ms\t\n",
+    "timestamp": 1684594282047
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "START RequestId: e4cbf58f-02f6-49a4-a6df-76a42270cc80 Version: $LATEST\n",
-    "timestamp": 1684590352339
+    "ingestionTime": 1684594290957,
+    "message": "START RequestId: 8a30b330-3855-4f0d-b05d-6a8db08fa1ce Version: $LATEST\n",
+    "timestamp": 1684594282062
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "2023-05-20T13:45:52.345Z\te4cbf58f-02f6-49a4-a6df-76a42270cc80\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-1\",\"httpRequestLatency\":2.94,\"apiCallLatency\":2.95}\n",
-    "timestamp": 1684590352345
+    "ingestionTime": 1684594290957,
+    "message": "2023-05-20T14:51:22.068Z\t8a30b330-3855-4f0d-b05d-6a8db08fa1ce\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":2.83,\"apiCallLatency\":2.84}\n",
+    "timestamp": 1684594282068
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "END RequestId: e4cbf58f-02f6-49a4-a6df-76a42270cc80\n",
-    "timestamp": 1684590352346
+    "ingestionTime": 1684594290957,
+    "message": "END RequestId: 8a30b330-3855-4f0d-b05d-6a8db08fa1ce\n",
+    "timestamp": 1684594282070
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "REPORT RequestId: e4cbf58f-02f6-49a4-a6df-76a42270cc80\tDuration: 7.10 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\t\n",
-    "timestamp": 1684590352346
+    "ingestionTime": 1684594290957,
+    "message": "REPORT RequestId: 8a30b330-3855-4f0d-b05d-6a8db08fa1ce\tDuration: 8.18 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594282070
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "START RequestId: 3a952dc7-7815-41e4-a169-2e879a1bc05a Version: $LATEST\n",
-    "timestamp": 1684590352372
+    "ingestionTime": 1684594290957,
+    "message": "START RequestId: 8e904738-9ab4-4e5d-8312-ba4992a289af Version: $LATEST\n",
+    "timestamp": 1684594282099
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "2023-05-20T13:45:52.377Z\t3a952dc7-7815-41e4-a169-2e879a1bc05a\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-1\",\"httpRequestLatency\":2.66,\"apiCallLatency\":2.67}\n",
-    "timestamp": 1684590352377
+    "ingestionTime": 1684594290957,
+    "message": "2023-05-20T14:51:22.105Z\t8e904738-9ab4-4e5d-8312-ba4992a289af\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":3.53,\"apiCallLatency\":3.54}\n",
+    "timestamp": 1684594282105
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "END RequestId: 3a952dc7-7815-41e4-a169-2e879a1bc05a\n",
-    "timestamp": 1684590352378
+    "ingestionTime": 1684594290957,
+    "message": "END RequestId: 8e904738-9ab4-4e5d-8312-ba4992a289af\n",
+    "timestamp": 1684594282106
   },
   {
-    "ingestionTime": 1684590359154,
-    "message": "REPORT RequestId: 3a952dc7-7815-41e4-a169-2e879a1bc05a\tDuration: 6.00 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590352378
+    "ingestionTime": 1684594290957,
+    "message": "REPORT RequestId: 8e904738-9ab4-4e5d-8312-ba4992a289af\tDuration: 7.02 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594282106
   },
   {
-    "ingestionTime": 1684590353330,
+    "ingestionTime": 1684594283997,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590352523
+    "timestamp": 1684594282232
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "START RequestId: 581d358c-92f7-440d-a504-46c9e24b46fe Version: $LATEST\n",
-    "timestamp": 1684590352975
+    "ingestionTime": 1684594283997,
+    "message": "START RequestId: df416f43-b547-4266-9496-f9faa69a91c7 Version: $LATEST\n",
+    "timestamp": 1684594282684
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "2023-05-20T13:45:53.084Z\t581d358c-92f7-440d-a504-46c9e24b46fe\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-2\",\"httpRequestLatency\":86.42,\"apiCallLatency\":86.48}\n",
-    "timestamp": 1684590353084
+    "ingestionTime": 1684594283997,
+    "message": "2023-05-20T14:51:22.781Z\tdf416f43-b547-4266-9496-f9faa69a91c7\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":78.93,\"apiCallLatency\":78.99}\n",
+    "timestamp": 1684594282781
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "END RequestId: 581d358c-92f7-440d-a504-46c9e24b46fe\n",
-    "timestamp": 1684590353091
+    "ingestionTime": 1684594283997,
+    "message": "END RequestId: df416f43-b547-4266-9496-f9faa69a91c7\n",
+    "timestamp": 1684594282796
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "REPORT RequestId: 581d358c-92f7-440d-a504-46c9e24b46fe\tDuration: 116.36 ms\tBilled Duration: 117 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\tInit Duration: 450.62 ms\t\n",
-    "timestamp": 1684590353091
+    "ingestionTime": 1684594283997,
+    "message": "REPORT RequestId: df416f43-b547-4266-9496-f9faa69a91c7\tDuration: 112.25 ms\tBilled Duration: 113 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\tInit Duration: 451.15 ms\t\n",
+    "timestamp": 1684594282796
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "START RequestId: d8db38b3-974f-480b-94bb-ec14c327097e Version: $LATEST\n",
-    "timestamp": 1684590353115
+    "ingestionTime": 1684594283997,
+    "message": "START RequestId: 2f5cf241-8aee-46e8-9040-c8b76a738608 Version: $LATEST\n",
+    "timestamp": 1684594282816
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "2023-05-20T13:45:53.122Z\td8db38b3-974f-480b-94bb-ec14c327097e\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-2\",\"httpRequestLatency\":3.81,\"apiCallLatency\":3.83}\n",
-    "timestamp": 1684590353122
+    "ingestionTime": 1684594283997,
+    "message": "2023-05-20T14:51:22.824Z\t2f5cf241-8aee-46e8-9040-c8b76a738608\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":3.7,\"apiCallLatency\":3.72}\n",
+    "timestamp": 1684594282824
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "END RequestId: d8db38b3-974f-480b-94bb-ec14c327097e\n",
-    "timestamp": 1684590353124
+    "ingestionTime": 1684594283997,
+    "message": "END RequestId: 2f5cf241-8aee-46e8-9040-c8b76a738608\n",
+    "timestamp": 1684594282825
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "REPORT RequestId: d8db38b3-974f-480b-94bb-ec14c327097e\tDuration: 8.35 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590353124
+    "ingestionTime": 1684594283997,
+    "message": "REPORT RequestId: 2f5cf241-8aee-46e8-9040-c8b76a738608\tDuration: 8.67 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594282825
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "START RequestId: d62d0d4e-c506-4292-aead-340e54b1dc63 Version: $LATEST\n",
-    "timestamp": 1684590353152
+    "ingestionTime": 1684594283997,
+    "message": "START RequestId: 15d634c9-6dc3-4b0b-9dac-5df95ea5e545 Version: $LATEST\n",
+    "timestamp": 1684594282852
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "2023-05-20T13:45:53.159Z\td62d0d4e-c506-4292-aead-340e54b1dc63\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-2\",\"httpRequestLatency\":3.63,\"apiCallLatency\":3.64}\n",
-    "timestamp": 1684590353159
+    "ingestionTime": 1684594283997,
+    "message": "2023-05-20T14:51:22.857Z\t15d634c9-6dc3-4b0b-9dac-5df95ea5e545\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":2.76,\"apiCallLatency\":2.77}\n",
+    "timestamp": 1684594282857
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "END RequestId: d62d0d4e-c506-4292-aead-340e54b1dc63\n",
-    "timestamp": 1684590353160
+    "ingestionTime": 1684594283997,
+    "message": "END RequestId: 15d634c9-6dc3-4b0b-9dac-5df95ea5e545\n",
+    "timestamp": 1684594282858
   },
   {
-    "ingestionTime": 1684590353330,
-    "message": "REPORT RequestId: d62d0d4e-c506-4292-aead-340e54b1dc63\tDuration: 7.29 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590353160
+    "ingestionTime": 1684594283997,
+    "message": "REPORT RequestId: 15d634c9-6dc3-4b0b-9dac-5df95ea5e545\tDuration: 6.25 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594282858
   },
   {
-    "ingestionTime": 1684590367273,
-    "message": "START RequestId: bb7f168b-174e-4cc4-993a-c59c741cd6f7 Version: $LATEST\n",
-    "timestamp": 1684590358250
+    "ingestionTime": 1684594297063,
+    "message": "START RequestId: 74773686-2b2f-4db3-8852-0c7e418f294a Version: $LATEST\n",
+    "timestamp": 1684594288037
   },
   {
-    "ingestionTime": 1684590367273,
-    "message": "2023-05-20T13:45:58.256Z\tbb7f168b-174e-4cc4-993a-c59c741cd6f7\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-2\",\"httpRequestLatency\":3.72,\"apiCallLatency\":3.72}\n",
-    "timestamp": 1684590358256
+    "ingestionTime": 1684594297063,
+    "message": "2023-05-20T14:51:28.100Z\t74773686-2b2f-4db3-8852-0c7e418f294a\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":60.65,\"apiCallLatency\":60.66}\n",
+    "timestamp": 1684594288100
   },
   {
-    "ingestionTime": 1684590367273,
-    "message": "END RequestId: bb7f168b-174e-4cc4-993a-c59c741cd6f7\n",
-    "timestamp": 1684590358257
+    "ingestionTime": 1684594297063,
+    "message": "END RequestId: 74773686-2b2f-4db3-8852-0c7e418f294a\n",
+    "timestamp": 1684594288116
   },
   {
-    "ingestionTime": 1684590367273,
-    "message": "REPORT RequestId: bb7f168b-174e-4cc4-993a-c59c741cd6f7\tDuration: 7.26 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590358257
+    "ingestionTime": 1684594297063,
+    "message": "REPORT RequestId: 74773686-2b2f-4db3-8852-0c7e418f294a\tDuration: 79.00 ms\tBilled Duration: 79 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594288116
   },
   {
-    "ingestionTime": 1684590363982,
+    "ingestionTime": 1684594296195,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590358402
+    "timestamp": 1684594288247
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "START RequestId: e9b59742-7ea7-4f0f-ab6b-0d1a54a707b1 Version: $LATEST\n",
-    "timestamp": 1684590358843
+    "ingestionTime": 1684594296195,
+    "message": "START RequestId: d72ffb01-22d4-452e-b7ad-17c84d18f2d3 Version: $LATEST\n",
+    "timestamp": 1684594288691
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "2023-05-20T13:45:58.952Z\te9b59742-7ea7-4f0f-ab6b-0d1a54a707b1\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-3\",\"httpRequestLatency\":81.1,\"apiCallLatency\":81.16}\n",
-    "timestamp": 1684590358952
+    "ingestionTime": 1684594296195,
+    "message": "2023-05-20T14:51:28.803Z\td72ffb01-22d4-452e-b7ad-17c84d18f2d3\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":91.7,\"apiCallLatency\":91.75}\n",
+    "timestamp": 1684594288803
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "END RequestId: e9b59742-7ea7-4f0f-ab6b-0d1a54a707b1\n",
-    "timestamp": 1684590358966
+    "ingestionTime": 1684594296195,
+    "message": "END RequestId: d72ffb01-22d4-452e-b7ad-17c84d18f2d3\n",
+    "timestamp": 1684594288805
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "REPORT RequestId: e9b59742-7ea7-4f0f-ab6b-0d1a54a707b1\tDuration: 122.79 ms\tBilled Duration: 123 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\tInit Duration: 440.38 ms\t\n",
-    "timestamp": 1684590358966
+    "ingestionTime": 1684594296195,
+    "message": "REPORT RequestId: d72ffb01-22d4-452e-b7ad-17c84d18f2d3\tDuration: 113.91 ms\tBilled Duration: 114 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\tInit Duration: 443.59 ms\t\n",
+    "timestamp": 1684594288805
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "START RequestId: 2153ba7d-a943-46fa-8511-1cbfee971241 Version: $LATEST\n",
-    "timestamp": 1684590358986
+    "ingestionTime": 1684594296195,
+    "message": "START RequestId: cbddef17-f992-4d81-a571-b0e61a2bdb25 Version: $LATEST\n",
+    "timestamp": 1684594288836
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "2023-05-20T13:45:58.993Z\t2153ba7d-a943-46fa-8511-1cbfee971241\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-3\",\"httpRequestLatency\":4.03,\"apiCallLatency\":4.04}\n",
-    "timestamp": 1684590358993
+    "ingestionTime": 1684594296195,
+    "message": "2023-05-20T14:51:28.844Z\tcbddef17-f992-4d81-a571-b0e61a2bdb25\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":5.16,\"apiCallLatency\":5.17}\n",
+    "timestamp": 1684594288844
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "END RequestId: 2153ba7d-a943-46fa-8511-1cbfee971241\n",
-    "timestamp": 1684590358995
+    "ingestionTime": 1684594296195,
+    "message": "END RequestId: cbddef17-f992-4d81-a571-b0e61a2bdb25\n",
+    "timestamp": 1684594288845
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "REPORT RequestId: 2153ba7d-a943-46fa-8511-1cbfee971241\tDuration: 9.18 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590358995
+    "ingestionTime": 1684594296195,
+    "message": "REPORT RequestId: cbddef17-f992-4d81-a571-b0e61a2bdb25\tDuration: 9.23 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594288845
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "START RequestId: 4d87d4f6-f20d-431f-8bbf-24471d57e56d Version: $LATEST\n",
-    "timestamp": 1684590359027
+    "ingestionTime": 1684594296195,
+    "message": "START RequestId: 05666c29-5d29-432e-b841-9ae9e877e935 Version: $LATEST\n",
+    "timestamp": 1684594288873
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "2023-05-20T13:45:59.034Z\t4d87d4f6-f20d-431f-8bbf-24471d57e56d\tINFO\t{\"functionName\":\"aws18-sdk3-runtime-3\",\"httpRequestLatency\":4.16,\"apiCallLatency\":4.17}\n",
-    "timestamp": 1684590359034
+    "ingestionTime": 1684594296195,
+    "message": "2023-05-20T14:51:28.881Z\t05666c29-5d29-432e-b841-9ae9e877e935\tINFO\t{\"functionName\":\"aws18-sdk3-runtime\",\"httpRequestLatency\":4.75,\"apiCallLatency\":4.75}\n",
+    "timestamp": 1684594288881
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "END RequestId: 4d87d4f6-f20d-431f-8bbf-24471d57e56d\n",
-    "timestamp": 1684590359035
+    "ingestionTime": 1684594296195,
+    "message": "END RequestId: 05666c29-5d29-432e-b841-9ae9e877e935\n",
+    "timestamp": 1684594288882
   },
   {
-    "ingestionTime": 1684590363982,
-    "message": "REPORT RequestId: 4d87d4f6-f20d-431f-8bbf-24471d57e56d\tDuration: 7.97 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590359035
+    "ingestionTime": 1684594296195,
+    "message": "REPORT RequestId: 05666c29-5d29-432e-b841-9ae9e877e935\tDuration: 8.18 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594288882
   },
   {
-    "ingestionTime": 1684590361962,
+    "ingestionTime": 1684594298140,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590359166
+    "timestamp": 1684594289056
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "START RequestId: ef72cbb0-8b19-401c-b18a-5e3c70755d39 Version: $LATEST\n",
-    "timestamp": 1684590359379
+    "ingestionTime": 1684594298140,
+    "message": "START RequestId: bed029cf-8186-4f35-a499-4c86ffe7c02c Version: $LATEST\n",
+    "timestamp": 1684594289260
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "2023-05-20T13:45:59.737Z\tef72cbb0-8b19-401c-b18a-5e3c70755d39\tINFO\t{\"functionName\":\"aws18-itty-runtime-1\",\"apiCallLatency\":357.2}\n",
-    "timestamp": 1684590359737
+    "ingestionTime": 1684594298140,
+    "message": "2023-05-20T14:51:29.615Z\tbed029cf-8186-4f35-a499-4c86ffe7c02c\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":354.28}\n",
+    "timestamp": 1684594289615
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "END RequestId: ef72cbb0-8b19-401c-b18a-5e3c70755d39\n",
-    "timestamp": 1684590359758
+    "ingestionTime": 1684594298140,
+    "message": "END RequestId: bed029cf-8186-4f35-a499-4c86ffe7c02c\n",
+    "timestamp": 1684594289636
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "REPORT RequestId: ef72cbb0-8b19-401c-b18a-5e3c70755d39\tDuration: 378.69 ms\tBilled Duration: 379 ms\tMemory Size: 512 MB\tMax Memory Used: 90 MB\tInit Duration: 212.86 ms\t\n",
-    "timestamp": 1684590359758
+    "ingestionTime": 1684594298140,
+    "message": "REPORT RequestId: bed029cf-8186-4f35-a499-4c86ffe7c02c\tDuration: 376.59 ms\tBilled Duration: 377 ms\tMemory Size: 512 MB\tMax Memory Used: 92 MB\tInit Duration: 202.77 ms\t\n",
+    "timestamp": 1684594289636
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "START RequestId: b34519c8-d3ac-4b76-b9b7-6f24e262ae31 Version: $LATEST\n",
-    "timestamp": 1684590359772
+    "ingestionTime": 1684594298140,
+    "message": "START RequestId: 81e9094d-6ece-4f27-b4fe-24060ed6f403 Version: $LATEST\n",
+    "timestamp": 1684594289664
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "2023-05-20T13:45:59.819Z\tb34519c8-d3ac-4b76-b9b7-6f24e262ae31\tINFO\t{\"functionName\":\"aws18-itty-runtime-1\",\"apiCallLatency\":41.95}\n",
-    "timestamp": 1684590359819
+    "ingestionTime": 1684594298140,
+    "message": "2023-05-20T14:51:29.697Z\t81e9094d-6ece-4f27-b4fe-24060ed6f403\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":32.16}\n",
+    "timestamp": 1684594289697
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "END RequestId: b34519c8-d3ac-4b76-b9b7-6f24e262ae31\n",
-    "timestamp": 1684590359838
+    "ingestionTime": 1684594298140,
+    "message": "END RequestId: 81e9094d-6ece-4f27-b4fe-24060ed6f403\n",
+    "timestamp": 1684594289698
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "REPORT RequestId: b34519c8-d3ac-4b76-b9b7-6f24e262ae31\tDuration: 67.13 ms\tBilled Duration: 68 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\t\n",
-    "timestamp": 1684590359838
+    "ingestionTime": 1684594298140,
+    "message": "REPORT RequestId: 81e9094d-6ece-4f27-b4fe-24060ed6f403\tDuration: 33.88 ms\tBilled Duration: 34 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\t\n",
+    "timestamp": 1684594289698
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "START RequestId: 2b995819-53d6-4746-b690-38ff1ca232c0 Version: $LATEST\n",
-    "timestamp": 1684590359865
+    "ingestionTime": 1684594298140,
+    "message": "START RequestId: 3d1610a9-18ce-47f6-a73f-3914b5911f8d Version: $LATEST\n",
+    "timestamp": 1684594289729
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "2023-05-20T13:45:59.898Z\t2b995819-53d6-4746-b690-38ff1ca232c0\tINFO\t{\"functionName\":\"aws18-itty-runtime-1\",\"apiCallLatency\":31.54}\n",
-    "timestamp": 1684590359898
+    "ingestionTime": 1684594298140,
+    "message": "2023-05-20T14:51:29.757Z\t3d1610a9-18ce-47f6-a73f-3914b5911f8d\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":27.72}\n",
+    "timestamp": 1684594289757
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "END RequestId: 2b995819-53d6-4746-b690-38ff1ca232c0\n",
-    "timestamp": 1684590359899
+    "ingestionTime": 1684594298140,
+    "message": "END RequestId: 3d1610a9-18ce-47f6-a73f-3914b5911f8d\n",
+    "timestamp": 1684594289775
   },
   {
-    "ingestionTime": 1684590361962,
-    "message": "REPORT RequestId: 2b995819-53d6-4746-b690-38ff1ca232c0\tDuration: 33.56 ms\tBilled Duration: 34 ms\tMemory Size: 512 MB\tMax Memory Used: 98 MB\t\n",
-    "timestamp": 1684590359899
+    "ingestionTime": 1684594298140,
+    "message": "REPORT RequestId: 3d1610a9-18ce-47f6-a73f-3914b5911f8d\tDuration: 45.86 ms\tBilled Duration: 46 ms\tMemory Size: 512 MB\tMax Memory Used: 99 MB\t\n",
+    "timestamp": 1684594289775
   },
   {
-    "ingestionTime": 1684590364265,
+    "ingestionTime": 1684594292904,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590360063
+    "timestamp": 1684594289927
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "START RequestId: debb3107-e4b6-4175-813e-2223c890e9a6 Version: $LATEST\n",
-    "timestamp": 1684590360267
+    "ingestionTime": 1684594292904,
+    "message": "START RequestId: c2c402c9-9130-43c4-9c9e-b347a83e7c46 Version: $LATEST\n",
+    "timestamp": 1684594290136
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "2023-05-20T13:46:00.577Z\tdebb3107-e4b6-4175-813e-2223c890e9a6\tINFO\t{\"functionName\":\"aws18-itty-runtime-2\",\"apiCallLatency\":309.01}\n",
-    "timestamp": 1684590360577
+    "ingestionTime": 1684594292904,
+    "message": "2023-05-20T14:51:30.483Z\tc2c402c9-9130-43c4-9c9e-b347a83e7c46\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":345.26}\n",
+    "timestamp": 1684594290483
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "END RequestId: debb3107-e4b6-4175-813e-2223c890e9a6\n",
-    "timestamp": 1684590360596
+    "ingestionTime": 1684594292904,
+    "message": "END RequestId: c2c402c9-9130-43c4-9c9e-b347a83e7c46\n",
+    "timestamp": 1684594290502
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "REPORT RequestId: debb3107-e4b6-4175-813e-2223c890e9a6\tDuration: 329.39 ms\tBilled Duration: 330 ms\tMemory Size: 512 MB\tMax Memory Used: 88 MB\tInit Duration: 203.16 ms\t\n",
-    "timestamp": 1684590360597
+    "ingestionTime": 1684594292904,
+    "message": "REPORT RequestId: c2c402c9-9130-43c4-9c9e-b347a83e7c46\tDuration: 366.22 ms\tBilled Duration: 367 ms\tMemory Size: 512 MB\tMax Memory Used: 88 MB\tInit Duration: 208.40 ms\t\n",
+    "timestamp": 1684594290502
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "START RequestId: 4582b7f3-6c2b-4c57-87d0-206d661d1340 Version: $LATEST\n",
-    "timestamp": 1684590360627
+    "ingestionTime": 1684594292904,
+    "message": "START RequestId: c7a0dd8d-a630-4592-834c-d623a0758438 Version: $LATEST\n",
+    "timestamp": 1684594290517
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "2023-05-20T13:46:00.656Z\t4582b7f3-6c2b-4c57-87d0-206d661d1340\tINFO\t{\"functionName\":\"aws18-itty-runtime-2\",\"apiCallLatency\":28.87}\n",
-    "timestamp": 1684590360656
+    "ingestionTime": 1684594292904,
+    "message": "2023-05-20T14:51:30.544Z\tc7a0dd8d-a630-4592-834c-d623a0758438\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":26.33}\n",
+    "timestamp": 1684594290544
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "END RequestId: 4582b7f3-6c2b-4c57-87d0-206d661d1340\n",
-    "timestamp": 1684590360675
+    "ingestionTime": 1684594292904,
+    "message": "END RequestId: c7a0dd8d-a630-4592-834c-d623a0758438\n",
+    "timestamp": 1684594290562
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "REPORT RequestId: 4582b7f3-6c2b-4c57-87d0-206d661d1340\tDuration: 49.06 ms\tBilled Duration: 50 ms\tMemory Size: 512 MB\tMax Memory Used: 95 MB\t\n",
-    "timestamp": 1684590360676
+    "ingestionTime": 1684594292904,
+    "message": "REPORT RequestId: c7a0dd8d-a630-4592-834c-d623a0758438\tDuration: 45.70 ms\tBilled Duration: 46 ms\tMemory Size: 512 MB\tMax Memory Used: 92 MB\t\n",
+    "timestamp": 1684594290562
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "START RequestId: 2f88139b-6591-4b17-81a7-3c935a1ce429 Version: $LATEST\n",
-    "timestamp": 1684590360715
+    "ingestionTime": 1684594292904,
+    "message": "START RequestId: c649b790-a843-4f35-a4ae-a7af1d007202 Version: $LATEST\n",
+    "timestamp": 1684594290574
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "2023-05-20T13:46:00.741Z\t2f88139b-6591-4b17-81a7-3c935a1ce429\tINFO\t{\"functionName\":\"aws18-itty-runtime-2\",\"apiCallLatency\":25.19}\n",
-    "timestamp": 1684590360741
+    "ingestionTime": 1684594292904,
+    "message": "2023-05-20T14:51:30.624Z\tc649b790-a843-4f35-a4ae-a7af1d007202\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":41.52}\n",
+    "timestamp": 1684594290624
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "END RequestId: 2f88139b-6591-4b17-81a7-3c935a1ce429\n",
-    "timestamp": 1684590360755
+    "ingestionTime": 1684594292904,
+    "message": "END RequestId: c649b790-a843-4f35-a4ae-a7af1d007202\n",
+    "timestamp": 1684594290646
   },
   {
-    "ingestionTime": 1684590364265,
-    "message": "REPORT RequestId: 2f88139b-6591-4b17-81a7-3c935a1ce429\tDuration: 40.06 ms\tBilled Duration: 41 ms\tMemory Size: 512 MB\tMax Memory Used: 99 MB\t\n",
-    "timestamp": 1684590360755
+    "ingestionTime": 1684594292904,
+    "message": "REPORT RequestId: c649b790-a843-4f35-a4ae-a7af1d007202\tDuration: 71.64 ms\tBilled Duration: 72 ms\tMemory Size: 512 MB\tMax Memory Used: 98 MB\t\n",
+    "timestamp": 1684594290646
   },
   {
-    "ingestionTime": 1684590367527,
+    "ingestionTime": 1684594299938,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590360896
+    "timestamp": 1684594290821
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "START RequestId: d608a229-c553-45d1-8bbb-86ccacb04954 Version: $LATEST\n",
-    "timestamp": 1684590361100
+    "ingestionTime": 1684594299938,
+    "message": "START RequestId: 1f4494b0-3dad-4a77-b698-8ba3c40851a0 Version: $LATEST\n",
+    "timestamp": 1684594291026
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "2023-05-20T13:46:01.428Z\td608a229-c553-45d1-8bbb-86ccacb04954\tINFO\t{\"functionName\":\"aws18-itty-runtime-3\",\"apiCallLatency\":326.54}\n",
-    "timestamp": 1684590361428
+    "ingestionTime": 1684594299938,
+    "message": "2023-05-20T14:51:31.353Z\t1f4494b0-3dad-4a77-b698-8ba3c40851a0\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":325.67}\n",
+    "timestamp": 1684594291353
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "END RequestId: d608a229-c553-45d1-8bbb-86ccacb04954\n",
-    "timestamp": 1684590361447
+    "ingestionTime": 1684594299938,
+    "message": "END RequestId: 1f4494b0-3dad-4a77-b698-8ba3c40851a0\n",
+    "timestamp": 1684594291372
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "REPORT RequestId: d608a229-c553-45d1-8bbb-86ccacb04954\tDuration: 347.19 ms\tBilled Duration: 348 ms\tMemory Size: 512 MB\tMax Memory Used: 87 MB\tInit Duration: 203.39 ms\t\n",
-    "timestamp": 1684590361447
+    "ingestionTime": 1684594299938,
+    "message": "REPORT RequestId: 1f4494b0-3dad-4a77-b698-8ba3c40851a0\tDuration: 346.51 ms\tBilled Duration: 347 ms\tMemory Size: 512 MB\tMax Memory Used: 87 MB\tInit Duration: 204.34 ms\t\n",
+    "timestamp": 1684594291372
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "START RequestId: 43264d51-8809-48f3-ac3c-071c883c2cf0 Version: $LATEST\n",
-    "timestamp": 1684590361468
+    "ingestionTime": 1684594299938,
+    "message": "START RequestId: 84fbcffa-541f-4254-8933-17823bded0ed Version: $LATEST\n",
+    "timestamp": 1684594291389
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "2023-05-20T13:46:01.528Z\t43264d51-8809-48f3-ac3c-071c883c2cf0\tINFO\t{\"functionName\":\"aws18-itty-runtime-3\",\"apiCallLatency\":60.16}\n",
-    "timestamp": 1684590361528
+    "ingestionTime": 1684594299938,
+    "message": "2023-05-20T14:51:31.415Z\t84fbcffa-541f-4254-8933-17823bded0ed\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":25.96}\n",
+    "timestamp": 1684594291415
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "END RequestId: 43264d51-8809-48f3-ac3c-071c883c2cf0\n",
-    "timestamp": 1684590361530
+    "ingestionTime": 1684594299938,
+    "message": "END RequestId: 84fbcffa-541f-4254-8933-17823bded0ed\n",
+    "timestamp": 1684594291433
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "REPORT RequestId: 43264d51-8809-48f3-ac3c-071c883c2cf0\tDuration: 62.02 ms\tBilled Duration: 63 ms\tMemory Size: 512 MB\tMax Memory Used: 93 MB\t\n",
-    "timestamp": 1684590361530
+    "ingestionTime": 1684594299938,
+    "message": "REPORT RequestId: 84fbcffa-541f-4254-8933-17823bded0ed\tDuration: 44.23 ms\tBilled Duration: 45 ms\tMemory Size: 512 MB\tMax Memory Used: 92 MB\t\n",
+    "timestamp": 1684594291433
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "START RequestId: 754d9606-1be8-40c3-ab92-9e50d60a9476 Version: $LATEST\n",
-    "timestamp": 1684590361560
+    "ingestionTime": 1684594299938,
+    "message": "START RequestId: 291052c0-7501-4780-9741-b65bbb47792b Version: $LATEST\n",
+    "timestamp": 1684594291461
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "2023-05-20T13:46:01.568Z\t754d9606-1be8-40c3-ab92-9e50d60a9476\tINFO\t{\"functionName\":\"aws18-itty-runtime-3\",\"apiCallLatency\":7.4}\n",
-    "timestamp": 1684590361568
+    "ingestionTime": 1684594299938,
+    "message": "2023-05-20T14:51:31.493Z\t291052c0-7501-4780-9741-b65bbb47792b\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":31.29}\n",
+    "timestamp": 1684594291493
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "END RequestId: 754d9606-1be8-40c3-ab92-9e50d60a9476\n",
-    "timestamp": 1684590361593
+    "ingestionTime": 1684594299938,
+    "message": "END RequestId: 291052c0-7501-4780-9741-b65bbb47792b\n",
+    "timestamp": 1684594291496
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "REPORT RequestId: 754d9606-1be8-40c3-ab92-9e50d60a9476\tDuration: 32.70 ms\tBilled Duration: 33 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
-    "timestamp": 1684590361593
+    "ingestionTime": 1684594299938,
+    "message": "REPORT RequestId: 291052c0-7501-4780-9741-b65bbb47792b\tDuration: 35.05 ms\tBilled Duration: 36 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\t\n",
+    "timestamp": 1684594291496
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "START RequestId: 37af9906-b91c-4b98-bd64-e1cbaa27b80c Version: $LATEST\n",
-    "timestamp": 1684590366704
+    "ingestionTime": 1684594299938,
+    "message": "START RequestId: b72404fb-7347-433a-a3b2-938851dd75da Version: $LATEST\n",
+    "timestamp": 1684594296595
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "2023-05-20T13:46:06.768Z\t37af9906-b91c-4b98-bd64-e1cbaa27b80c\tINFO\t{\"functionName\":\"aws18-itty-runtime-3\",\"apiCallLatency\":64.08}\n",
-    "timestamp": 1684590366768
+    "ingestionTime": 1684594299938,
+    "message": "2023-05-20T14:51:36.673Z\tb72404fb-7347-433a-a3b2-938851dd75da\tINFO\t{\"functionName\":\"aws18-itty-runtime\",\"apiCallLatency\":61.24}\n",
+    "timestamp": 1684594296673
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "END RequestId: 37af9906-b91c-4b98-bd64-e1cbaa27b80c\n",
-    "timestamp": 1684590366807
+    "ingestionTime": 1684594299938,
+    "message": "END RequestId: b72404fb-7347-433a-a3b2-938851dd75da\n",
+    "timestamp": 1684594296674
   },
   {
-    "ingestionTime": 1684590367527,
-    "message": "REPORT RequestId: 37af9906-b91c-4b98-bd64-e1cbaa27b80c\tDuration: 103.50 ms\tBilled Duration: 104 ms\tMemory Size: 512 MB\tMax Memory Used: 101 MB\t\n",
-    "timestamp": 1684590366807
+    "ingestionTime": 1684594299938,
+    "message": "REPORT RequestId: b72404fb-7347-433a-a3b2-938851dd75da\tDuration: 79.26 ms\tBilled Duration: 80 ms\tMemory Size: 512 MB\tMax Memory Used: 101 MB\t\n",
+    "timestamp": 1684594296674
   },
   {
-    "ingestionTime": 1684590373855,
+    "ingestionTime": 1684594301647,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590366950
+    "timestamp": 1684594296827
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "START RequestId: de5b0ecf-4791-44cd-ac9c-81c899f1c2a6 Version: $LATEST\n",
-    "timestamp": 1684590367229
+    "ingestionTime": 1684594301647,
+    "message": "START RequestId: 27d74f6e-bb2f-4d0d-8ada-2faa20511a4c Version: $LATEST\n",
+    "timestamp": 1684594297132
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "2023-05-20T13:46:07.336Z\tde5b0ecf-4791-44cd-ac9c-81c899f1c2a6\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-1\",\"httpRequestLatency\":78.14,\"apiCallLatency\":78.2}\n",
-    "timestamp": 1684590367336
+    "ingestionTime": 1684594301647,
+    "message": "2023-05-20T14:51:37.248Z\t27d74f6e-bb2f-4d0d-8ada-2faa20511a4c\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":91.34,\"apiCallLatency\":91.4}\n",
+    "timestamp": 1684594297248
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "END RequestId: de5b0ecf-4791-44cd-ac9c-81c899f1c2a6\n",
-    "timestamp": 1684590367338
+    "ingestionTime": 1684594301647,
+    "message": "END RequestId: 27d74f6e-bb2f-4d0d-8ada-2faa20511a4c\n",
+    "timestamp": 1684594297267
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "REPORT RequestId: de5b0ecf-4791-44cd-ac9c-81c899f1c2a6\tDuration: 108.88 ms\tBilled Duration: 109 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\tInit Duration: 278.78 ms\t\n",
-    "timestamp": 1684590367338
+    "ingestionTime": 1684594301647,
+    "message": "REPORT RequestId: 27d74f6e-bb2f-4d0d-8ada-2faa20511a4c\tDuration: 134.46 ms\tBilled Duration: 135 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\tInit Duration: 304.92 ms\t\n",
+    "timestamp": 1684594297267
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "START RequestId: f3adf072-e710-436c-a72d-b031ef679106 Version: $LATEST\n",
-    "timestamp": 1684590367373
+    "ingestionTime": 1684594301647,
+    "message": "START RequestId: ac240f84-a95d-42ce-a8bf-ce9bac10f000 Version: $LATEST\n",
+    "timestamp": 1684594297277
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "2023-05-20T13:46:07.394Z\tf3adf072-e710-436c-a72d-b031ef679106\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-1\",\"httpRequestLatency\":18.13,\"apiCallLatency\":18.15}\n",
-    "timestamp": 1684590367394
+    "ingestionTime": 1684594301647,
+    "message": "2023-05-20T14:51:37.284Z\tac240f84-a95d-42ce-a8bf-ce9bac10f000\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":3.67,\"apiCallLatency\":3.68}\n",
+    "timestamp": 1684594297284
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "END RequestId: f3adf072-e710-436c-a72d-b031ef679106\n",
-    "timestamp": 1684590367397
+    "ingestionTime": 1684594301647,
+    "message": "END RequestId: ac240f84-a95d-42ce-a8bf-ce9bac10f000\n",
+    "timestamp": 1684594297287
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "REPORT RequestId: f3adf072-e710-436c-a72d-b031ef679106\tDuration: 23.85 ms\tBilled Duration: 24 ms\tMemory Size: 512 MB\tMax Memory Used: 82 MB\t\n",
-    "timestamp": 1684590367397
+    "ingestionTime": 1684594301647,
+    "message": "REPORT RequestId: ac240f84-a95d-42ce-a8bf-ce9bac10f000\tDuration: 9.70 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 81 MB\t\n",
+    "timestamp": 1684594297287
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "START RequestId: 397bace1-2ad0-4150-a520-49a0874ff682 Version: $LATEST\n",
-    "timestamp": 1684590367428
+    "ingestionTime": 1684594301647,
+    "message": "START RequestId: e927c11e-2c01-4320-aef2-33c5cdb47675 Version: $LATEST\n",
+    "timestamp": 1684594297314
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "2023-05-20T13:46:07.433Z\t397bace1-2ad0-4150-a520-49a0874ff682\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-1\",\"httpRequestLatency\":2.67,\"apiCallLatency\":2.67}\n",
-    "timestamp": 1684590367433
+    "ingestionTime": 1684594301647,
+    "message": "2023-05-20T14:51:37.320Z\te927c11e-2c01-4320-aef2-33c5cdb47675\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":3.12,\"apiCallLatency\":3.13}\n",
+    "timestamp": 1684594297320
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "END RequestId: 397bace1-2ad0-4150-a520-49a0874ff682\n",
-    "timestamp": 1684590367434
+    "ingestionTime": 1684594301647,
+    "message": "END RequestId: e927c11e-2c01-4320-aef2-33c5cdb47675\n",
+    "timestamp": 1684594297320
   },
   {
-    "ingestionTime": 1684590373855,
-    "message": "REPORT RequestId: 397bace1-2ad0-4150-a520-49a0874ff682\tDuration: 6.67 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 82 MB\t\n",
-    "timestamp": 1684590367434
+    "ingestionTime": 1684594301647,
+    "message": "REPORT RequestId: e927c11e-2c01-4320-aef2-33c5cdb47675\tDuration: 6.89 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 81 MB\t\n",
+    "timestamp": 1684594297320
   },
   {
-    "ingestionTime": 1684590376253,
+    "ingestionTime": 1684594306146,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590367635
+    "timestamp": 1684594297510
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "START RequestId: 4898e875-d761-46a5-bf4a-00ca0d7b6422 Version: $LATEST\n",
-    "timestamp": 1684590367930
+    "ingestionTime": 1684594306146,
+    "message": "START RequestId: baa4aa3c-888b-46e9-aac2-952c0121ea28 Version: $LATEST\n",
+    "timestamp": 1684594297783
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "2023-05-20T13:46:08.046Z\t4898e875-d761-46a5-bf4a-00ca0d7b6422\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-2\",\"httpRequestLatency\":92.62,\"apiCallLatency\":92.69}\n",
-    "timestamp": 1684590368046
+    "ingestionTime": 1684594306146,
+    "message": "2023-05-20T14:51:37.883Z\tbaa4aa3c-888b-46e9-aac2-952c0121ea28\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":79.77,\"apiCallLatency\":79.83}\n",
+    "timestamp": 1684594297883
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "END RequestId: 4898e875-d761-46a5-bf4a-00ca0d7b6422\n",
-    "timestamp": 1684590368063
+    "ingestionTime": 1684594306146,
+    "message": "END RequestId: baa4aa3c-888b-46e9-aac2-952c0121ea28\n",
+    "timestamp": 1684594297894
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "REPORT RequestId: 4898e875-d761-46a5-bf4a-00ca0d7b6422\tDuration: 133.08 ms\tBilled Duration: 134 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\tInit Duration: 294.00 ms\t\n",
-    "timestamp": 1684590368063
+    "ingestionTime": 1684594306146,
+    "message": "REPORT RequestId: baa4aa3c-888b-46e9-aac2-952c0121ea28\tDuration: 111.04 ms\tBilled Duration: 112 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\tInit Duration: 272.07 ms\t\n",
+    "timestamp": 1684594297894
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "START RequestId: 648df3ea-9f8a-400b-80d4-5eea9b8defbf Version: $LATEST\n",
-    "timestamp": 1684590368087
+    "ingestionTime": 1684594306146,
+    "message": "START RequestId: 25ee1479-0b24-4a65-86be-ab7d4bbef484 Version: $LATEST\n",
+    "timestamp": 1684594297919
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "2023-05-20T13:46:08.106Z\t648df3ea-9f8a-400b-80d4-5eea9b8defbf\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-2\",\"httpRequestLatency\":15.1,\"apiCallLatency\":15.12}\n",
-    "timestamp": 1684590368106
+    "ingestionTime": 1684594306146,
+    "message": "2023-05-20T14:51:37.935Z\t25ee1479-0b24-4a65-86be-ab7d4bbef484\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":13.1,\"apiCallLatency\":13.11}\n",
+    "timestamp": 1684594297935
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "END RequestId: 648df3ea-9f8a-400b-80d4-5eea9b8defbf\n",
-    "timestamp": 1684590368107
+    "ingestionTime": 1684594306146,
+    "message": "END RequestId: 25ee1479-0b24-4a65-86be-ab7d4bbef484\n",
+    "timestamp": 1684594297935
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "REPORT RequestId: 648df3ea-9f8a-400b-80d4-5eea9b8defbf\tDuration: 19.82 ms\tBilled Duration: 20 ms\tMemory Size: 512 MB\tMax Memory Used: 81 MB\t\n",
-    "timestamp": 1684590368107
+    "ingestionTime": 1684594306146,
+    "message": "REPORT RequestId: 25ee1479-0b24-4a65-86be-ab7d4bbef484\tDuration: 17.02 ms\tBilled Duration: 18 ms\tMemory Size: 512 MB\tMax Memory Used: 82 MB\t\n",
+    "timestamp": 1684594297935
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "START RequestId: a077328f-c963-469c-a51f-aa9012b64e4d Version: $LATEST\n",
-    "timestamp": 1684590368136
+    "ingestionTime": 1684594306146,
+    "message": "START RequestId: db0b6c3b-6b69-4168-a0ae-b7e723722adb Version: $LATEST\n",
+    "timestamp": 1684594297965
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "2023-05-20T13:46:08.142Z\ta077328f-c963-469c-a51f-aa9012b64e4d\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-2\",\"httpRequestLatency\":2.6,\"apiCallLatency\":2.61}\n",
-    "timestamp": 1684590368142
+    "ingestionTime": 1684594306146,
+    "message": "2023-05-20T14:51:37.972Z\tdb0b6c3b-6b69-4168-a0ae-b7e723722adb\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":4.75,\"apiCallLatency\":4.76}\n",
+    "timestamp": 1684594297972
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "END RequestId: a077328f-c963-469c-a51f-aa9012b64e4d\n",
-    "timestamp": 1684590368143
+    "ingestionTime": 1684594306146,
+    "message": "END RequestId: db0b6c3b-6b69-4168-a0ae-b7e723722adb\n",
+    "timestamp": 1684594297973
   },
   {
-    "ingestionTime": 1684590376253,
-    "message": "REPORT RequestId: a077328f-c963-469c-a51f-aa9012b64e4d\tDuration: 7.21 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 81 MB\t\n",
-    "timestamp": 1684590368143
+    "ingestionTime": 1684594306146,
+    "message": "REPORT RequestId: db0b6c3b-6b69-4168-a0ae-b7e723722adb\tDuration: 7.94 ms\tBilled Duration: 8 ms\tMemory Size: 512 MB\tMax Memory Used: 82 MB\t\n",
+    "timestamp": 1684594297973
   },
   {
-    "ingestionTime": 1684590369681,
+    "ingestionTime": 1684594300051,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590368321
+    "timestamp": 1684594298105
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "START RequestId: d12c7cba-69b3-4c8a-88ef-69fc57d490fb Version: $LATEST\n",
-    "timestamp": 1684590368605
+    "ingestionTime": 1684594300051,
+    "message": "START RequestId: cd66e04a-5b78-4fe8-bf7f-afa3751aeb0f Version: $LATEST\n",
+    "timestamp": 1684594298399
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "2023-05-20T13:46:08.719Z\td12c7cba-69b3-4c8a-88ef-69fc57d490fb\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-3\",\"httpRequestLatency\":92.04,\"apiCallLatency\":92.1}\n",
-    "timestamp": 1684590368719
+    "ingestionTime": 1684594300051,
+    "message": "2023-05-20T14:51:38.513Z\tcd66e04a-5b78-4fe8-bf7f-afa3751aeb0f\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":93.54,\"apiCallLatency\":93.6}\n",
+    "timestamp": 1684594298513
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "END RequestId: d12c7cba-69b3-4c8a-88ef-69fc57d490fb\n",
-    "timestamp": 1684590368737
+    "ingestionTime": 1684594300051,
+    "message": "END RequestId: cd66e04a-5b78-4fe8-bf7f-afa3751aeb0f\n",
+    "timestamp": 1684594298529
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "REPORT RequestId: d12c7cba-69b3-4c8a-88ef-69fc57d490fb\tDuration: 132.00 ms\tBilled Duration: 132 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\tInit Duration: 282.34 ms\t\n",
-    "timestamp": 1684590368737
+    "ingestionTime": 1684594300051,
+    "message": "REPORT RequestId: cd66e04a-5b78-4fe8-bf7f-afa3751aeb0f\tDuration: 129.82 ms\tBilled Duration: 130 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\tInit Duration: 293.30 ms\t\n",
+    "timestamp": 1684594298529
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "START RequestId: c18936a5-60c0-4b2b-aaed-72a1801c41c1 Version: $LATEST\n",
-    "timestamp": 1684590368756
+    "ingestionTime": 1684594300051,
+    "message": "START RequestId: 8cc7755e-7369-45fb-b3c9-beed7210da5f Version: $LATEST\n",
+    "timestamp": 1684594298543
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "2023-05-20T13:46:08.778Z\tc18936a5-60c0-4b2b-aaed-72a1801c41c1\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-3\",\"httpRequestLatency\":18.36,\"apiCallLatency\":18.37}\n",
-    "timestamp": 1684590368778
+    "ingestionTime": 1684594300051,
+    "message": "2023-05-20T14:51:38.550Z\t8cc7755e-7369-45fb-b3c9-beed7210da5f\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":3.92,\"apiCallLatency\":3.93}\n",
+    "timestamp": 1684594298550
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "END RequestId: c18936a5-60c0-4b2b-aaed-72a1801c41c1\n",
-    "timestamp": 1684590368779
+    "ingestionTime": 1684594300051,
+    "message": "END RequestId: 8cc7755e-7369-45fb-b3c9-beed7210da5f\n",
+    "timestamp": 1684594298551
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "REPORT RequestId: c18936a5-60c0-4b2b-aaed-72a1801c41c1\tDuration: 22.75 ms\tBilled Duration: 23 ms\tMemory Size: 512 MB\tMax Memory Used: 81 MB\t\n",
-    "timestamp": 1684590368779
+    "ingestionTime": 1684594300051,
+    "message": "REPORT RequestId: 8cc7755e-7369-45fb-b3c9-beed7210da5f\tDuration: 8.49 ms\tBilled Duration: 9 ms\tMemory Size: 512 MB\tMax Memory Used: 80 MB\t\n",
+    "timestamp": 1684594298551
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "START RequestId: 31e1acd4-dac1-4b95-9929-00738cb20eb8 Version: $LATEST\n",
-    "timestamp": 1684590368806
+    "ingestionTime": 1684594300051,
+    "message": "START RequestId: e08572e1-6bc9-445d-8a3e-0aec84e87e42 Version: $LATEST\n",
+    "timestamp": 1684594298582
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "2023-05-20T13:46:08.812Z\t31e1acd4-dac1-4b95-9929-00738cb20eb8\tINFO\t{\"functionName\":\"aws18-sdk3-bundle-3\",\"httpRequestLatency\":2.87,\"apiCallLatency\":2.88}\n",
-    "timestamp": 1684590368812
+    "ingestionTime": 1684594300051,
+    "message": "2023-05-20T14:51:38.590Z\te08572e1-6bc9-445d-8a3e-0aec84e87e42\tINFO\t{\"functionName\":\"aws18-sdk3-bundle\",\"httpRequestLatency\":3.65,\"apiCallLatency\":3.67}\n",
+    "timestamp": 1684594298590
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "END RequestId: 31e1acd4-dac1-4b95-9929-00738cb20eb8\n",
-    "timestamp": 1684590368813
+    "ingestionTime": 1684594300051,
+    "message": "END RequestId: e08572e1-6bc9-445d-8a3e-0aec84e87e42\n",
+    "timestamp": 1684594298591
   },
   {
-    "ingestionTime": 1684590369681,
-    "message": "REPORT RequestId: 31e1acd4-dac1-4b95-9929-00738cb20eb8\tDuration: 6.82 ms\tBilled Duration: 7 ms\tMemory Size: 512 MB\tMax Memory Used: 82 MB\t\n",
-    "timestamp": 1684590368813
+    "ingestionTime": 1684594300051,
+    "message": "REPORT RequestId: e08572e1-6bc9-445d-8a3e-0aec84e87e42\tDuration: 9.46 ms\tBilled Duration: 10 ms\tMemory Size: 512 MB\tMax Memory Used: 81 MB\t\n",
+    "timestamp": 1684594298591
   },
   {
-    "ingestionTime": 1684590372172,
+    "ingestionTime": 1684594302271,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590368955
+    "timestamp": 1684594298731
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "START RequestId: fa112d40-7a43-493e-9bab-d5d5c865e38c Version: $LATEST\n",
-    "timestamp": 1684590369136
+    "ingestionTime": 1684594302271,
+    "message": "START RequestId: 6bfd0cc0-a17b-4b6b-b362-809b9a27700c Version: $LATEST\n",
+    "timestamp": 1684594298908
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "2023-05-20T13:46:09.519Z\tfa112d40-7a43-493e-9bab-d5d5c865e38c\tINFO\t{\"functionName\":\"aws18-itty-bundle-1\",\"apiCallLatency\":381.92}\n",
-    "timestamp": 1684590369519
+    "ingestionTime": 1684594302271,
+    "message": "2023-05-20T14:51:39.238Z\t6bfd0cc0-a17b-4b6b-b362-809b9a27700c\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":329.69}\n",
+    "timestamp": 1684594299238
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "END RequestId: fa112d40-7a43-493e-9bab-d5d5c865e38c\n",
-    "timestamp": 1684590369522
+    "ingestionTime": 1684594302271,
+    "message": "END RequestId: 6bfd0cc0-a17b-4b6b-b362-809b9a27700c\n",
+    "timestamp": 1684594299263
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "REPORT RequestId: fa112d40-7a43-493e-9bab-d5d5c865e38c\tDuration: 385.61 ms\tBilled Duration: 386 ms\tMemory Size: 512 MB\tMax Memory Used: 89 MB\tInit Duration: 180.93 ms\t\n",
-    "timestamp": 1684590369522
+    "ingestionTime": 1684594302271,
+    "message": "REPORT RequestId: 6bfd0cc0-a17b-4b6b-b362-809b9a27700c\tDuration: 355.59 ms\tBilled Duration: 356 ms\tMemory Size: 512 MB\tMax Memory Used: 89 MB\tInit Duration: 176.45 ms\t\n",
+    "timestamp": 1684594299263
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "START RequestId: d3fcd4aa-59eb-4096-8d86-4591f564756e Version: $LATEST\n",
-    "timestamp": 1684590369556
+    "ingestionTime": 1684594302271,
+    "message": "START RequestId: 7ea6bee4-e2d9-4a44-ae2b-ac2199752ae8 Version: $LATEST\n",
+    "timestamp": 1684594299278
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "2023-05-20T13:46:09.605Z\td3fcd4aa-59eb-4096-8d86-4591f564756e\tINFO\t{\"functionName\":\"aws18-itty-bundle-1\",\"apiCallLatency\":49.26}\n",
-    "timestamp": 1684590369605
+    "ingestionTime": 1684594302271,
+    "message": "2023-05-20T14:51:39.323Z\t7ea6bee4-e2d9-4a44-ae2b-ac2199752ae8\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":44.49}\n",
+    "timestamp": 1684594299323
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "END RequestId: d3fcd4aa-59eb-4096-8d86-4591f564756e\n",
-    "timestamp": 1684590369619
+    "ingestionTime": 1684594302271,
+    "message": "END RequestId: 7ea6bee4-e2d9-4a44-ae2b-ac2199752ae8\n",
+    "timestamp": 1684594299338
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "REPORT RequestId: d3fcd4aa-59eb-4096-8d86-4591f564756e\tDuration: 63.35 ms\tBilled Duration: 64 ms\tMemory Size: 512 MB\tMax Memory Used: 94 MB\t\n",
-    "timestamp": 1684590369619
+    "ingestionTime": 1684594302271,
+    "message": "REPORT RequestId: 7ea6bee4-e2d9-4a44-ae2b-ac2199752ae8\tDuration: 60.68 ms\tBilled Duration: 61 ms\tMemory Size: 512 MB\tMax Memory Used: 93 MB\t\n",
+    "timestamp": 1684594299338
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "START RequestId: e599d494-86e3-42a1-81b0-2d7bca626ef9 Version: $LATEST\n",
-    "timestamp": 1684590369644
+    "ingestionTime": 1684594302271,
+    "message": "START RequestId: 0e745da7-4a86-4366-b36b-5387a2815622 Version: $LATEST\n",
+    "timestamp": 1684594299353
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "2023-05-20T13:46:09.719Z\te599d494-86e3-42a1-81b0-2d7bca626ef9\tINFO\t{\"functionName\":\"aws18-itty-bundle-1\",\"apiCallLatency\":74.44}\n",
-    "timestamp": 1684590369719
+    "ingestionTime": 1684594302271,
+    "message": "2023-05-20T14:51:39.364Z\t0e745da7-4a86-4366-b36b-5387a2815622\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":9.68}\n",
+    "timestamp": 1684594299364
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "END RequestId: e599d494-86e3-42a1-81b0-2d7bca626ef9\n",
-    "timestamp": 1684590369739
+    "ingestionTime": 1684594302271,
+    "message": "END RequestId: 0e745da7-4a86-4366-b36b-5387a2815622\n",
+    "timestamp": 1684594299378
   },
   {
-    "ingestionTime": 1684590372172,
-    "message": "REPORT RequestId: e599d494-86e3-42a1-81b0-2d7bca626ef9\tDuration: 95.16 ms\tBilled Duration: 96 ms\tMemory Size: 512 MB\tMax Memory Used: 98 MB\t\n",
-    "timestamp": 1684590369739
+    "ingestionTime": 1684594302271,
+    "message": "REPORT RequestId: 0e745da7-4a86-4366-b36b-5387a2815622\tDuration: 25.16 ms\tBilled Duration: 26 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\t\n",
+    "timestamp": 1684594299378
   },
   {
-    "ingestionTime": 1684590372893,
+    "ingestionTime": 1684594307084,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590369838
+    "timestamp": 1684594299505
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "START RequestId: 2db8614d-73fb-4c3a-a5a1-2e7280067929 Version: $LATEST\n",
-    "timestamp": 1684590370015
+    "ingestionTime": 1684594307084,
+    "message": "START RequestId: c8715bed-60d3-4226-8a54-50c229c9ecca Version: $LATEST\n",
+    "timestamp": 1684594299684
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "2023-05-20T13:46:10.366Z\t2db8614d-73fb-4c3a-a5a1-2e7280067929\tINFO\t{\"functionName\":\"aws18-itty-bundle-2\",\"apiCallLatency\":349.64}\n",
-    "timestamp": 1684590370366
+    "ingestionTime": 1684594307084,
+    "message": "2023-05-20T14:51:40.037Z\tc8715bed-60d3-4226-8a54-50c229c9ecca\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":352.29}\n",
+    "timestamp": 1684594300037
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "END RequestId: 2db8614d-73fb-4c3a-a5a1-2e7280067929\n",
-    "timestamp": 1684590370368
+    "ingestionTime": 1684594307084,
+    "message": "END RequestId: c8715bed-60d3-4226-8a54-50c229c9ecca\n",
+    "timestamp": 1684594300057
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "REPORT RequestId: 2db8614d-73fb-4c3a-a5a1-2e7280067929\tDuration: 353.23 ms\tBilled Duration: 354 ms\tMemory Size: 512 MB\tMax Memory Used: 87 MB\tInit Duration: 175.68 ms\t\n",
-    "timestamp": 1684590370368
+    "ingestionTime": 1684594307084,
+    "message": "REPORT RequestId: c8715bed-60d3-4226-8a54-50c229c9ecca\tDuration: 373.83 ms\tBilled Duration: 374 ms\tMemory Size: 512 MB\tMax Memory Used: 87 MB\tInit Duration: 178.07 ms\t\n",
+    "timestamp": 1684594300058
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "START RequestId: f87cc0c8-29b9-4396-ae42-d2c0555db444 Version: $LATEST\n",
-    "timestamp": 1684590370394
+    "ingestionTime": 1684594307084,
+    "message": "START RequestId: 6feefc68-c0f0-431d-b4f5-0caee88b1922 Version: $LATEST\n",
+    "timestamp": 1684594300084
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "2023-05-20T13:46:10.447Z\tf87cc0c8-29b9-4396-ae42-d2c0555db444\tINFO\t{\"functionName\":\"aws18-itty-bundle-2\",\"apiCallLatency\":53.11}\n",
-    "timestamp": 1684590370447
+    "ingestionTime": 1684594307084,
+    "message": "2023-05-20T14:51:40.123Z\t6feefc68-c0f0-431d-b4f5-0caee88b1922\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":39.09}\n",
+    "timestamp": 1684594300123
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "END RequestId: f87cc0c8-29b9-4396-ae42-d2c0555db444\n",
-    "timestamp": 1684590370466
+    "ingestionTime": 1684594307084,
+    "message": "END RequestId: 6feefc68-c0f0-431d-b4f5-0caee88b1922\n",
+    "timestamp": 1684594300137
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "REPORT RequestId: f87cc0c8-29b9-4396-ae42-d2c0555db444\tDuration: 72.38 ms\tBilled Duration: 73 ms\tMemory Size: 512 MB\tMax Memory Used: 93 MB\t\n",
-    "timestamp": 1684590370466
+    "ingestionTime": 1684594307084,
+    "message": "REPORT RequestId: 6feefc68-c0f0-431d-b4f5-0caee88b1922\tDuration: 53.20 ms\tBilled Duration: 54 ms\tMemory Size: 512 MB\tMax Memory Used: 95 MB\t\n",
+    "timestamp": 1684594300137
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "START RequestId: 23b35c90-976a-4050-8e59-014b4f69767a Version: $LATEST\n",
-    "timestamp": 1684590370480
+    "ingestionTime": 1684594307084,
+    "message": "START RequestId: db86eac8-caa8-4fce-82c3-feb9a8314e87 Version: $LATEST\n",
+    "timestamp": 1684594300160
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "2023-05-20T13:46:10.507Z\t23b35c90-976a-4050-8e59-014b4f69767a\tINFO\t{\"functionName\":\"aws18-itty-bundle-2\",\"apiCallLatency\":26.6}\n",
-    "timestamp": 1684590370507
+    "ingestionTime": 1684594307084,
+    "message": "2023-05-20T14:51:40.198Z\tdb86eac8-caa8-4fce-82c3-feb9a8314e87\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":37.47}\n",
+    "timestamp": 1684594300198
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "END RequestId: 23b35c90-976a-4050-8e59-014b4f69767a\n",
-    "timestamp": 1684590370525
+    "ingestionTime": 1684594307084,
+    "message": "END RequestId: db86eac8-caa8-4fce-82c3-feb9a8314e87\n",
+    "timestamp": 1684594300199
   },
   {
-    "ingestionTime": 1684590372893,
-    "message": "REPORT RequestId: 23b35c90-976a-4050-8e59-014b4f69767a\tDuration: 45.85 ms\tBilled Duration: 46 ms\tMemory Size: 512 MB\tMax Memory Used: 96 MB\t\n",
-    "timestamp": 1684590370525
+    "ingestionTime": 1684594307084,
+    "message": "REPORT RequestId: db86eac8-caa8-4fce-82c3-feb9a8314e87\tDuration: 39.44 ms\tBilled Duration: 40 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594300199
   },
   {
-    "ingestionTime": 1684590384653,
-    "message": "START RequestId: b9ace8b7-e952-46aa-ba0d-c93fdc373354 Version: $LATEST\n",
-    "timestamp": 1684590375630
+    "ingestionTime": 1684594307084,
+    "message": "START RequestId: 137b41b9-10b0-4557-bb27-a018ee5c215b Version: $LATEST\n",
+    "timestamp": 1684594305325
   },
   {
-    "ingestionTime": 1684590384653,
-    "message": "2023-05-20T13:46:15.728Z\tb9ace8b7-e952-46aa-ba0d-c93fdc373354\tINFO\t{\"functionName\":\"aws18-itty-bundle-2\",\"apiCallLatency\":96.54}\n",
-    "timestamp": 1684590375728
+    "ingestionTime": 1684594307084,
+    "message": "2023-05-20T14:51:45.413Z\t137b41b9-10b0-4557-bb27-a018ee5c215b\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":87.66}\n",
+    "timestamp": 1684594305413
   },
   {
-    "ingestionTime": 1684590384653,
-    "message": "END RequestId: b9ace8b7-e952-46aa-ba0d-c93fdc373354\n",
-    "timestamp": 1684590375749
+    "ingestionTime": 1684594307084,
+    "message": "END RequestId: 137b41b9-10b0-4557-bb27-a018ee5c215b\n",
+    "timestamp": 1684594305436
   },
   {
-    "ingestionTime": 1684590384653,
-    "message": "REPORT RequestId: b9ace8b7-e952-46aa-ba0d-c93fdc373354\tDuration: 119.39 ms\tBilled Duration: 120 ms\tMemory Size: 512 MB\tMax Memory Used: 100 MB\t\n",
-    "timestamp": 1684590375749
+    "ingestionTime": 1684594307084,
+    "message": "REPORT RequestId: 137b41b9-10b0-4557-bb27-a018ee5c215b\tDuration: 111.40 ms\tBilled Duration: 112 ms\tMemory Size: 512 MB\tMax Memory Used: 99 MB\t\n",
+    "timestamp": 1684594305436
   },
   {
-    "ingestionTime": 1684590384731,
+    "ingestionTime": 1684594313008,
     "message": "INIT_START Runtime Version: nodejs:18.v6\tRuntime Version ARN: arn:aws:lambda:eu-west-3::runtime:a19cefba18c0aa228bfe71e81d95cc5aab18e4570e899b3cfd9f759f022c7f8c\n",
-    "timestamp": 1684590375930
+    "timestamp": 1684594305559
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "START RequestId: 12fed289-d742-49b6-a2cd-c44a209f74cb Version: $LATEST\n",
-    "timestamp": 1684590376110
+    "ingestionTime": 1684594313008,
+    "message": "START RequestId: 787d4aaf-d93c-4379-b873-51a5b01d7c95 Version: $LATEST\n",
+    "timestamp": 1684594305738
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "2023-05-20T13:46:16.473Z\t12fed289-d742-49b6-a2cd-c44a209f74cb\tINFO\t{\"functionName\":\"aws18-itty-bundle-3\",\"apiCallLatency\":362.27}\n",
-    "timestamp": 1684590376473
+    "ingestionTime": 1684594313008,
+    "message": "2023-05-20T14:51:46.092Z\t787d4aaf-d93c-4379-b873-51a5b01d7c95\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":351.9}\n",
+    "timestamp": 1684594306092
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "END RequestId: 12fed289-d742-49b6-a2cd-c44a209f74cb\n",
-    "timestamp": 1684590376498
+    "ingestionTime": 1684594313008,
+    "message": "END RequestId: 787d4aaf-d93c-4379-b873-51a5b01d7c95\n",
+    "timestamp": 1684594306111
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "REPORT RequestId: 12fed289-d742-49b6-a2cd-c44a209f74cb\tDuration: 387.57 ms\tBilled Duration: 388 ms\tMemory Size: 512 MB\tMax Memory Used: 89 MB\tInit Duration: 179.85 ms\t\n",
-    "timestamp": 1684590376498
+    "ingestionTime": 1684594313008,
+    "message": "REPORT RequestId: 787d4aaf-d93c-4379-b873-51a5b01d7c95\tDuration: 372.62 ms\tBilled Duration: 373 ms\tMemory Size: 512 MB\tMax Memory Used: 86 MB\tInit Duration: 178.40 ms\t\n",
+    "timestamp": 1684594306111
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "START RequestId: 00609948-6c39-49e5-8623-e0da6a014d27 Version: $LATEST\n",
-    "timestamp": 1684590376526
+    "ingestionTime": 1684594313008,
+    "message": "START RequestId: 96013a42-ec52-425f-aa93-cf47a15f6527 Version: $LATEST\n",
+    "timestamp": 1684594306121
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "2023-05-20T13:46:16.576Z\t00609948-6c39-49e5-8623-e0da6a014d27\tINFO\t{\"functionName\":\"aws18-itty-bundle-3\",\"apiCallLatency\":49.51}\n",
-    "timestamp": 1684590376576
+    "ingestionTime": 1684594313008,
+    "message": "2023-05-20T14:51:46.212Z\t96013a42-ec52-425f-aa93-cf47a15f6527\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":90.04}\n",
+    "timestamp": 1684594306212
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "END RequestId: 00609948-6c39-49e5-8623-e0da6a014d27\n",
-    "timestamp": 1684590376593
+    "ingestionTime": 1684594313008,
+    "message": "END RequestId: 96013a42-ec52-425f-aa93-cf47a15f6527\n",
+    "timestamp": 1684594306213
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "REPORT RequestId: 00609948-6c39-49e5-8623-e0da6a014d27\tDuration: 67.46 ms\tBilled Duration: 68 ms\tMemory Size: 512 MB\tMax Memory Used: 95 MB\t\n",
-    "timestamp": 1684590376593
+    "ingestionTime": 1684594313008,
+    "message": "REPORT RequestId: 96013a42-ec52-425f-aa93-cf47a15f6527\tDuration: 91.84 ms\tBilled Duration: 92 ms\tMemory Size: 512 MB\tMax Memory Used: 95 MB\t\n",
+    "timestamp": 1684594306213
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "START RequestId: c5773675-a0b5-4733-b78d-cd3de0f3e5c1 Version: $LATEST\n",
-    "timestamp": 1684590376611
+    "ingestionTime": 1684594313008,
+    "message": "START RequestId: fbbec6d6-798b-44ab-a89b-c9bea80035c8 Version: $LATEST\n",
+    "timestamp": 1684594306242
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "2023-05-20T13:46:16.638Z\tc5773675-a0b5-4733-b78d-cd3de0f3e5c1\tINFO\t{\"functionName\":\"aws18-itty-bundle-3\",\"apiCallLatency\":25.7}\n",
-    "timestamp": 1684590376638
+    "ingestionTime": 1684594313008,
+    "message": "2023-05-20T14:51:46.252Z\tfbbec6d6-798b-44ab-a89b-c9bea80035c8\tINFO\t{\"functionName\":\"aws18-itty-bundle\",\"apiCallLatency\":9.36}\n",
+    "timestamp": 1684594306252
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "END RequestId: c5773675-a0b5-4733-b78d-cd3de0f3e5c1\n",
-    "timestamp": 1684590376693
+    "ingestionTime": 1684594313008,
+    "message": "END RequestId: fbbec6d6-798b-44ab-a89b-c9bea80035c8\n",
+    "timestamp": 1684594306271
   },
   {
-    "ingestionTime": 1684590384731,
-    "message": "REPORT RequestId: c5773675-a0b5-4733-b78d-cd3de0f3e5c1\tDuration: 81.29 ms\tBilled Duration: 82 ms\tMemory Size: 512 MB\tMax Memory Used: 99 MB\t\n",
-    "timestamp": 1684590376693
+    "ingestionTime": 1684594313008,
+    "message": "REPORT RequestId: fbbec6d6-798b-44ab-a89b-c9bea80035c8\tDuration: 29.66 ms\tBilled Duration: 30 ms\tMemory Size: 512 MB\tMax Memory Used: 97 MB\t\n",
+    "timestamp": 1684594306271
   }
 ]

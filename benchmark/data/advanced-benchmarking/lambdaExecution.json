@@ -1,526 +1,526 @@
 {
-  "316efb1e-5ff7-4b7f-a53e-e7e875bcb2cc": {
-    "functionName": "aws16-sdk2-runtime-1",
-    "httpRequestLatency": 111.88,
-    "apiCallLatency": 114.43,
-    "executionDuration": 153.31,
+  "58e2b90a-8fe6-45ee-8700-6d22c3fcd84b": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 110.33,
+    "apiCallLatency": 112.9,
+    "executionDuration": 155.35,
     "maxMemory": 74,
-    "initDuration": 267.88
+    "initDuration": 276.52
   },
-  "3243889a-c426-44ee-8ea6-940ea98ddae1": {
-    "functionName": "aws16-sdk2-runtime-1",
-    "httpRequestLatency": 5.89,
-    "apiCallLatency": 6.65,
-    "executionDuration": 11.67,
+  "7d01f499-453f-4dd9-9f10-df6eccb1aea6": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 4.91,
+    "apiCallLatency": 5.73,
+    "executionDuration": 10.32,
     "maxMemory": 74
   },
-  "811fd79b-68ad-4140-acd6-f0c8cf42e92b": {
-    "functionName": "aws16-sdk2-runtime-1",
-    "httpRequestLatency": 7.35,
-    "apiCallLatency": 8.01,
-    "executionDuration": 15.75,
+  "e2706c9b-126f-4c1c-8a51-6f356dea79b9": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 8.06,
+    "apiCallLatency": 8.75,
+    "executionDuration": 14.8,
     "maxMemory": 75
   },
-  "08feacfd-679a-4c10-a541-4e5b256cf500": {
-    "functionName": "aws16-sdk2-runtime-2",
-    "httpRequestLatency": 99.64,
-    "apiCallLatency": 102.34,
-    "executionDuration": 142.64,
+  "9fe8ef59-926a-468e-9b91-69b5c1bb1ee0": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 114.6,
+    "apiCallLatency": 117.17,
+    "executionDuration": 151.8,
     "maxMemory": 74,
-    "initDuration": 264.1
+    "initDuration": 271.28
   },
-  "b443caf0-c7e0-4968-830c-1e71b73e3737": {
-    "functionName": "aws16-sdk2-runtime-2",
-    "httpRequestLatency": 3.98,
-    "apiCallLatency": 4.71,
-    "executionDuration": 24.22,
-    "maxMemory": 75
-  },
-  "1715d38c-2986-4360-bade-7b1a782c5b23": {
-    "functionName": "aws16-sdk2-runtime-2",
-    "httpRequestLatency": 3.41,
-    "apiCallLatency": 4.02,
-    "executionDuration": 7.39,
-    "maxMemory": 75
-  },
-  "f3a6452e-7eb7-4354-ad9a-e789c6ebaa50": {
-    "functionName": "aws16-sdk2-runtime-3",
-    "httpRequestLatency": 113.81,
-    "apiCallLatency": 116.44,
-    "executionDuration": 157,
-    "maxMemory": 73,
-    "initDuration": 269.73
-  },
-  "a3e2d2a5-b08e-4048-b6b6-b47e298d13f0": {
-    "functionName": "aws16-sdk2-runtime-3",
-    "httpRequestLatency": 4.1,
-    "apiCallLatency": 4.84,
-    "executionDuration": 20.2,
-    "maxMemory": 74
-  },
-  "43922955-0b79-4780-a749-ad96c8aa5fbb": {
-    "functionName": "aws16-sdk2-runtime-3",
-    "httpRequestLatency": 6.65,
-    "apiCallLatency": 7.33,
-    "executionDuration": 20.19,
-    "maxMemory": 75
-  },
-  "30c78ada-4d77-436b-95f3-ccaac7efd2df": {
-    "functionName": "aws16-itty-runtime-1",
-    "apiCallLatency": 180.49,
-    "executionDuration": 186.07,
-    "maxMemory": 67,
-    "initDuration": 169.78
-  },
-  "9b93e3af-78f8-4f72-8c1b-1452b9fc72ea": {
-    "functionName": "aws16-itty-runtime-1",
-    "apiCallLatency": 4.98,
-    "executionDuration": 6.42,
-    "maxMemory": 67
-  },
-  "18149501-9406-44b6-bab1-da8ffe8f48b3": {
-    "functionName": "aws16-itty-runtime-1",
-    "apiCallLatency": 5.12,
-    "executionDuration": 6.49,
-    "maxMemory": 68
-  },
-  "822d6918-38c3-4535-aeec-6c20acd415b6": {
-    "functionName": "aws16-itty-runtime-2",
-    "apiCallLatency": 166.22,
-    "executionDuration": 169.75,
-    "maxMemory": 67,
-    "initDuration": 167.26
-  },
-  "05071642-ee63-4912-aa1f-554c0932f19f": {
-    "functionName": "aws16-itty-runtime-2",
-    "apiCallLatency": 6.16,
-    "executionDuration": 8.54,
-    "maxMemory": 68
-  },
-  "e4ececbe-7a1d-467a-8ad0-b17f990902ff": {
-    "functionName": "aws16-itty-runtime-2",
-    "apiCallLatency": 4.66,
-    "executionDuration": 6.13,
-    "maxMemory": 68
-  },
-  "371473c6-b013-433d-9963-d073d79a02d8": {
-    "functionName": "aws16-itty-runtime-2",
-    "apiCallLatency": 3.96,
-    "executionDuration": 5.34,
-    "maxMemory": 68
-  },
-  "aa16338f-19ae-4a28-9dd4-7d2c4d167e4c": {
-    "functionName": "aws16-itty-runtime-3",
-    "apiCallLatency": 176.79,
-    "executionDuration": 180.21,
-    "maxMemory": 67,
-    "initDuration": 160.7
-  },
-  "f90ca893-e6bd-49dc-877f-fd3268366644": {
-    "functionName": "aws16-itty-runtime-3",
-    "apiCallLatency": 4.99,
-    "executionDuration": 6.78,
-    "maxMemory": 68
-  },
-  "0bdea506-500e-476c-8245-1db033c3e48b": {
-    "functionName": "aws16-itty-runtime-3",
-    "apiCallLatency": 5.06,
-    "executionDuration": 6.99,
-    "maxMemory": 68
-  },
-  "807aa7c8-abac-49a3-bb21-cb69253fb8a7": {
-    "functionName": "aws16-sdk2-bundle-1",
-    "httpRequestLatency": 104.26,
-    "apiCallLatency": 106.78,
-    "executionDuration": 153.01,
-    "maxMemory": 72,
-    "initDuration": 217.07
-  },
-  "9c9cdfdd-4420-4b27-b458-78fc37509719": {
-    "functionName": "aws16-sdk2-bundle-1",
-    "httpRequestLatency": 4.5,
-    "apiCallLatency": 5.24,
-    "executionDuration": 9.96,
-    "maxMemory": 72
-  },
-  "8aa664cd-f6b2-4e92-b3e0-162d807f1dbe": {
-    "functionName": "aws16-sdk2-bundle-1",
-    "httpRequestLatency": 5.33,
-    "apiCallLatency": 6.03,
-    "executionDuration": 9.97,
-    "maxMemory": 73
-  },
-  "981e522e-1c42-47c9-bf7b-861b0fa4dca4": {
-    "functionName": "aws16-sdk2-bundle-2",
-    "httpRequestLatency": 122.36,
-    "apiCallLatency": 124.91,
-    "executionDuration": 165.21,
-    "maxMemory": 72,
-    "initDuration": 217.95
-  },
-  "2fa9ea9a-a1d8-4305-b48f-e705b1e17fae": {
-    "functionName": "aws16-sdk2-bundle-2",
-    "httpRequestLatency": 4.49,
-    "apiCallLatency": 5.25,
-    "executionDuration": 18,
-    "maxMemory": 72
-  },
-  "16e837dd-3a93-44f4-80a6-21de62f31a57": {
-    "functionName": "aws16-sdk2-bundle-2",
-    "httpRequestLatency": 5.54,
-    "apiCallLatency": 6.21,
-    "executionDuration": 11.65,
-    "maxMemory": 73
-  },
-  "d4f3ccff-5914-4003-b294-f758d03f962e": {
-    "functionName": "aws16-sdk2-bundle-3",
-    "httpRequestLatency": 126.44,
-    "apiCallLatency": 129.09,
-    "executionDuration": 158.8,
-    "maxMemory": 72,
-    "initDuration": 226.05
-  },
-  "428cd3b4-7657-4bfe-8093-97f5c36467c2": {
-    "functionName": "aws16-sdk2-bundle-3",
-    "httpRequestLatency": 5.98,
-    "apiCallLatency": 6.73,
+  "28d79b18-30e3-4610-a9cb-f00e546d3e8a": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 6.16,
+    "apiCallLatency": 6.95,
     "executionDuration": 11.58,
-    "maxMemory": 72
+    "maxMemory": 74
   },
-  "25a3c0e9-981f-483f-8268-3704da924012": {
-    "functionName": "aws16-sdk2-bundle-3",
-    "httpRequestLatency": 7.53,
-    "apiCallLatency": 8.17,
-    "executionDuration": 25.13,
-    "maxMemory": 73
+  "b626fa46-818d-4f13-98f4-534b1ca8310f": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 7.79,
+    "apiCallLatency": 8.48,
+    "executionDuration": 20.8,
+    "maxMemory": 76
   },
-  "30ac852e-2c05-4155-aa17-836eff6f9668": {
-    "functionName": "aws16-sdk2-bundle-3",
-    "httpRequestLatency": 5.01,
-    "apiCallLatency": 6.12,
+  "8d623506-4590-4aa9-857b-78f23d326934": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 117.77,
+    "apiCallLatency": 120.32,
+    "executionDuration": 157.24,
+    "maxMemory": 74,
+    "initDuration": 273.82
+  },
+  "65b8710a-85fc-4c1b-9cdb-064790c4a4a4": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 5.69,
+    "apiCallLatency": 6.45,
+    "executionDuration": 26.15,
+    "maxMemory": 75
+  },
+  "b0e941a1-3632-41fe-9822-d9cb27066d2a": {
+    "functionName": "aws16-sdk2-runtime",
+    "httpRequestLatency": 3.85,
+    "apiCallLatency": 4.51,
+    "executionDuration": 8.03,
+    "maxMemory": 75
+  },
+  "e8ba5a22-91c4-4bf1-a58d-991997c9c32d": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 180.06,
+    "executionDuration": 183.43,
+    "maxMemory": 67,
+    "initDuration": 176.18
+  },
+  "8d5923a9-1460-4a80-bdf6-be99bb133e67": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 4.94,
+    "executionDuration": 7.15,
+    "maxMemory": 68
+  },
+  "6cc5dbbe-34b3-4fbf-b46d-b41a069032f1": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 4.89,
+    "executionDuration": 6.48,
+    "maxMemory": 68
+  },
+  "25fe7151-2e3a-40e7-a52e-bdae5fe208aa": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 3.65,
+    "executionDuration": 4.86,
+    "maxMemory": 68
+  },
+  "bebe34b3-69b9-48af-b841-fd137e1271f1": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 157.52,
+    "executionDuration": 160.63,
+    "maxMemory": 67,
+    "initDuration": 151.02
+  },
+  "124674ff-b0c0-40ee-9b70-12b84b27628b": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 6.46,
     "executionDuration": 8.26,
-    "maxMemory": 73
-  },
-  "fe02d3bb-2a87-4b78-8441-b15b39a014b6": {
-    "functionName": "aws16-itty-bundle-1",
-    "apiCallLatency": 177.41,
-    "executionDuration": 180.6,
-    "maxMemory": 67,
-    "initDuration": 156.31
-  },
-  "f9a8fa12-a911-4561-a105-25685114d3e2": {
-    "functionName": "aws16-itty-bundle-1",
-    "apiCallLatency": 4.81,
-    "executionDuration": 8.28,
-    "maxMemory": 68
-  },
-  "e9b12d4e-f0c0-4afa-840e-76dfdb24bbdf": {
-    "functionName": "aws16-itty-bundle-1",
-    "apiCallLatency": 4.91,
-    "executionDuration": 6.27,
-    "maxMemory": 68
-  },
-  "5f193ebf-b660-4747-b8be-31e19d9d4d61": {
-    "functionName": "aws16-itty-bundle-2",
-    "apiCallLatency": 182.21,
-    "executionDuration": 185.95,
-    "maxMemory": 67,
-    "initDuration": 158.74
-  },
-  "29d77629-e542-465b-8868-a6cefd1e3cb7": {
-    "functionName": "aws16-itty-bundle-2",
-    "apiCallLatency": 4.42,
-    "executionDuration": 6.04,
     "maxMemory": 67
   },
-  "b932f5da-9929-4007-a29e-436bcb17404f": {
-    "functionName": "aws16-itty-bundle-2",
-    "apiCallLatency": 4.53,
-    "executionDuration": 5.82,
+  "11cfbb21-6287-46fb-ad3d-f3e7b2a567b9": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 7.4,
+    "executionDuration": 14.81,
     "maxMemory": 68
   },
-  "0bc7401f-51ac-4d01-b5e1-2915e7c93945": {
-    "functionName": "aws16-itty-bundle-3",
-    "apiCallLatency": 183.58,
-    "executionDuration": 186.98,
+  "a23b8904-da89-4b7d-b551-3aacfd90017e": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 178.73,
+    "executionDuration": 182.16,
     "maxMemory": 67,
-    "initDuration": 160.74
+    "initDuration": 162.12
   },
-  "1b31d7d9-7574-443c-ba6e-d1c3d6cf3ab9": {
-    "functionName": "aws16-itty-bundle-3",
-    "apiCallLatency": 5.18,
-    "executionDuration": 6.53,
+  "d7e05330-86ea-4d8b-885f-d3535969a5ad": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 5.29,
+    "executionDuration": 7.8,
+    "maxMemory": 67
+  },
+  "27ab3472-a1bc-46d0-8924-92d45a599783": {
+    "functionName": "aws16-itty-runtime",
+    "apiCallLatency": 9.81,
+    "executionDuration": 12.38,
     "maxMemory": 68
   },
-  "51ee6734-ab55-4099-b1a6-4a9cce803ecb": {
-    "functionName": "aws16-itty-bundle-3",
-    "apiCallLatency": 4.48,
-    "executionDuration": 5.86,
+  "5dfa5532-d88d-4212-9954-673ceef534f7": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 121.53,
+    "apiCallLatency": 124.05,
+    "executionDuration": 165.83,
+    "maxMemory": 72,
+    "initDuration": 217.72
+  },
+  "82d3ee28-8579-4795-b446-63da8ae698be": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 6.42,
+    "apiCallLatency": 7.21,
+    "executionDuration": 12.2,
+    "maxMemory": 72
+  },
+  "3876f64f-64ab-4cf0-bbc1-9897176e8a48": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 7.29,
+    "apiCallLatency": 8,
+    "executionDuration": 11.62,
+    "maxMemory": 73
+  },
+  "c608691b-26da-4b52-b581-bc8c2000a8f0": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 116.9,
+    "apiCallLatency": 119.5,
+    "executionDuration": 157.73,
+    "maxMemory": 72,
+    "initDuration": 222.78
+  },
+  "e0b78bd1-4594-4ac6-a329-86d402630f67": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 5.41,
+    "apiCallLatency": 6.17,
+    "executionDuration": 12.05,
+    "maxMemory": 73
+  },
+  "87760550-a446-4f0d-b0a0-b556986df0b2": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 7.13,
+    "apiCallLatency": 7.79,
+    "executionDuration": 11.49,
+    "maxMemory": 73
+  },
+  "01b8b5b9-f28d-460d-a07f-8a3d0a8bbfd8": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 110.55,
+    "apiCallLatency": 133.25,
+    "executionDuration": 175.33,
+    "maxMemory": 72,
+    "initDuration": 220.49
+  },
+  "41339d41-8611-4085-b150-a544f7093dcb": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 4.8,
+    "apiCallLatency": 5.55,
+    "executionDuration": 43.1,
+    "maxMemory": 73
+  },
+  "3c3a472b-a943-406b-a3bb-5040581c4f94": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 4.72,
+    "apiCallLatency": 5.45,
+    "executionDuration": 9.06,
+    "maxMemory": 73
+  },
+  "dba84393-e39c-448a-b93a-5d26f6e0c6c1": {
+    "functionName": "aws16-sdk2-bundle",
+    "httpRequestLatency": 4.7,
+    "apiCallLatency": 5.34,
+    "executionDuration": 7.31,
+    "maxMemory": 73
+  },
+  "cad00cac-e0d3-4b5f-9ef6-e567911eec1b": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 179.51,
+    "executionDuration": 182.78,
+    "maxMemory": 67,
+    "initDuration": 160.26
+  },
+  "4a3741f9-e261-4334-95ad-05dd5a5bfe4c": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 7.87,
+    "executionDuration": 10.15,
+    "maxMemory": 67
+  },
+  "245095ae-5546-4ebc-a4be-31e3ce983afd": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 4.53,
+    "executionDuration": 5.85,
     "maxMemory": 68
   },
-  "0904bb4f-643c-402d-92dc-3c7d28f52f46": {
-    "functionName": "aws18-sdk3-runtime-1",
-    "httpRequestLatency": 82.87,
-    "apiCallLatency": 82.93,
-    "executionDuration": 113.67,
+  "d9fa8282-7acc-49c9-8eb1-59059c96a8db": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 179.84,
+    "executionDuration": 183.29,
+    "maxMemory": 67,
+    "initDuration": 165.63
+  },
+  "7837c90d-cce5-43b8-b087-5afebd790cf3": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 6.6,
+    "executionDuration": 12.08,
+    "maxMemory": 68
+  },
+  "24bde78a-a927-46d3-95d8-368ecf4597cc": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 5.21,
+    "executionDuration": 6.67,
+    "maxMemory": 68
+  },
+  "f7e4191c-be3c-4db7-98cc-97fb85275b68": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 162.59,
+    "executionDuration": 169.01,
+    "maxMemory": 67,
+    "initDuration": 162.2
+  },
+  "6f3bffc4-05e8-4947-ac0f-9838141790c8": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 6.55,
+    "executionDuration": 8.41,
+    "maxMemory": 68
+  },
+  "08bc0fff-32ea-453a-836e-5ef568c607da": {
+    "functionName": "aws16-itty-bundle",
+    "apiCallLatency": 6.94,
+    "executionDuration": 8.45,
+    "maxMemory": 68
+  },
+  "fb09368f-981c-45f6-8a24-2381ff3f43ab": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 77.62,
+    "apiCallLatency": 77.69,
+    "executionDuration": 115.34,
     "maxMemory": 96,
-    "initDuration": 457.5
+    "initDuration": 455.8
   },
-  "e4cbf58f-02f6-49a4-a6df-76a42270cc80": {
-    "functionName": "aws18-sdk3-runtime-1",
-    "httpRequestLatency": 2.94,
-    "apiCallLatency": 2.95,
-    "executionDuration": 7.1,
-    "maxMemory": 96
-  },
-  "3a952dc7-7815-41e4-a169-2e879a1bc05a": {
-    "functionName": "aws18-sdk3-runtime-1",
-    "httpRequestLatency": 2.66,
-    "apiCallLatency": 2.67,
-    "executionDuration": 6,
+  "8a30b330-3855-4f0d-b05d-6a8db08fa1ce": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 2.83,
+    "apiCallLatency": 2.84,
+    "executionDuration": 8.18,
     "maxMemory": 97
   },
-  "581d358c-92f7-440d-a504-46c9e24b46fe": {
-    "functionName": "aws18-sdk3-runtime-2",
-    "httpRequestLatency": 86.42,
-    "apiCallLatency": 86.48,
-    "executionDuration": 116.36,
+  "8e904738-9ab4-4e5d-8312-ba4992a289af": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 3.53,
+    "apiCallLatency": 3.54,
+    "executionDuration": 7.02,
+    "maxMemory": 97
+  },
+  "df416f43-b547-4266-9496-f9faa69a91c7": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 78.93,
+    "apiCallLatency": 78.99,
+    "executionDuration": 112.25,
     "maxMemory": 96,
-    "initDuration": 450.62
+    "initDuration": 451.15
   },
-  "d8db38b3-974f-480b-94bb-ec14c327097e": {
-    "functionName": "aws18-sdk3-runtime-2",
-    "httpRequestLatency": 3.81,
-    "apiCallLatency": 3.83,
-    "executionDuration": 8.35,
-    "maxMemory": 97
-  },
-  "d62d0d4e-c506-4292-aead-340e54b1dc63": {
-    "functionName": "aws18-sdk3-runtime-2",
-    "httpRequestLatency": 3.63,
-    "apiCallLatency": 3.64,
-    "executionDuration": 7.29,
-    "maxMemory": 97
-  },
-  "bb7f168b-174e-4cc4-993a-c59c741cd6f7": {
-    "functionName": "aws18-sdk3-runtime-2",
-    "httpRequestLatency": 3.72,
+  "2f5cf241-8aee-46e8-9040-c8b76a738608": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 3.7,
     "apiCallLatency": 3.72,
-    "executionDuration": 7.26,
+    "executionDuration": 8.67,
     "maxMemory": 97
   },
-  "e9b59742-7ea7-4f0f-ab6b-0d1a54a707b1": {
-    "functionName": "aws18-sdk3-runtime-3",
-    "httpRequestLatency": 81.1,
-    "apiCallLatency": 81.16,
-    "executionDuration": 122.79,
+  "15d634c9-6dc3-4b0b-9dac-5df95ea5e545": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 2.76,
+    "apiCallLatency": 2.77,
+    "executionDuration": 6.25,
+    "maxMemory": 97
+  },
+  "74773686-2b2f-4db3-8852-0c7e418f294a": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 60.65,
+    "apiCallLatency": 60.66,
+    "executionDuration": 79,
+    "maxMemory": 97
+  },
+  "d72ffb01-22d4-452e-b7ad-17c84d18f2d3": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 91.7,
+    "apiCallLatency": 91.75,
+    "executionDuration": 113.91,
     "maxMemory": 96,
-    "initDuration": 440.38
+    "initDuration": 443.59
   },
-  "2153ba7d-a943-46fa-8511-1cbfee971241": {
-    "functionName": "aws18-sdk3-runtime-3",
-    "httpRequestLatency": 4.03,
-    "apiCallLatency": 4.04,
-    "executionDuration": 9.18,
+  "cbddef17-f992-4d81-a571-b0e61a2bdb25": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 5.16,
+    "apiCallLatency": 5.17,
+    "executionDuration": 9.23,
     "maxMemory": 97
   },
-  "4d87d4f6-f20d-431f-8bbf-24471d57e56d": {
-    "functionName": "aws18-sdk3-runtime-3",
-    "httpRequestLatency": 4.16,
-    "apiCallLatency": 4.17,
-    "executionDuration": 7.97,
+  "05666c29-5d29-432e-b841-9ae9e877e935": {
+    "functionName": "aws18-sdk3-runtime",
+    "httpRequestLatency": 4.75,
+    "apiCallLatency": 4.75,
+    "executionDuration": 8.18,
     "maxMemory": 97
   },
-  "ef72cbb0-8b19-401c-b18a-5e3c70755d39": {
-    "functionName": "aws18-itty-runtime-1",
-    "apiCallLatency": 357.2,
-    "executionDuration": 378.69,
-    "maxMemory": 90,
-    "initDuration": 212.86
+  "bed029cf-8186-4f35-a499-4c86ffe7c02c": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 354.28,
+    "executionDuration": 376.59,
+    "maxMemory": 92,
+    "initDuration": 202.77
   },
-  "b34519c8-d3ac-4b76-b9b7-6f24e262ae31": {
-    "functionName": "aws18-itty-runtime-1",
-    "apiCallLatency": 41.95,
-    "executionDuration": 67.13,
+  "81e9094d-6ece-4f27-b4fe-24060ed6f403": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 32.16,
+    "executionDuration": 33.88,
     "maxMemory": 96
   },
-  "2b995819-53d6-4746-b690-38ff1ca232c0": {
-    "functionName": "aws18-itty-runtime-1",
-    "apiCallLatency": 31.54,
-    "executionDuration": 33.56,
-    "maxMemory": 98
-  },
-  "debb3107-e4b6-4175-813e-2223c890e9a6": {
-    "functionName": "aws18-itty-runtime-2",
-    "apiCallLatency": 309.01,
-    "executionDuration": 329.39,
-    "maxMemory": 88,
-    "initDuration": 203.16
-  },
-  "4582b7f3-6c2b-4c57-87d0-206d661d1340": {
-    "functionName": "aws18-itty-runtime-2",
-    "apiCallLatency": 28.87,
-    "executionDuration": 49.06,
-    "maxMemory": 95
-  },
-  "2f88139b-6591-4b17-81a7-3c935a1ce429": {
-    "functionName": "aws18-itty-runtime-2",
-    "apiCallLatency": 25.19,
-    "executionDuration": 40.06,
+  "3d1610a9-18ce-47f6-a73f-3914b5911f8d": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 27.72,
+    "executionDuration": 45.86,
     "maxMemory": 99
   },
-  "d608a229-c553-45d1-8bbb-86ccacb04954": {
-    "functionName": "aws18-itty-runtime-3",
-    "apiCallLatency": 326.54,
-    "executionDuration": 347.19,
+  "c2c402c9-9130-43c4-9c9e-b347a83e7c46": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 345.26,
+    "executionDuration": 366.22,
+    "maxMemory": 88,
+    "initDuration": 208.4
+  },
+  "c7a0dd8d-a630-4592-834c-d623a0758438": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 26.33,
+    "executionDuration": 45.7,
+    "maxMemory": 92
+  },
+  "c649b790-a843-4f35-a4ae-a7af1d007202": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 41.52,
+    "executionDuration": 71.64,
+    "maxMemory": 98
+  },
+  "1f4494b0-3dad-4a77-b698-8ba3c40851a0": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 325.67,
+    "executionDuration": 346.51,
     "maxMemory": 87,
-    "initDuration": 203.39
+    "initDuration": 204.34
   },
-  "43264d51-8809-48f3-ac3c-071c883c2cf0": {
-    "functionName": "aws18-itty-runtime-3",
-    "apiCallLatency": 60.16,
-    "executionDuration": 62.02,
-    "maxMemory": 93
+  "84fbcffa-541f-4254-8933-17823bded0ed": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 25.96,
+    "executionDuration": 44.23,
+    "maxMemory": 92
   },
-  "754d9606-1be8-40c3-ab92-9e50d60a9476": {
-    "functionName": "aws18-itty-runtime-3",
-    "apiCallLatency": 7.4,
-    "executionDuration": 32.7,
-    "maxMemory": 97
+  "291052c0-7501-4780-9741-b65bbb47792b": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 31.29,
+    "executionDuration": 35.05,
+    "maxMemory": 96
   },
-  "37af9906-b91c-4b98-bd64-e1cbaa27b80c": {
-    "functionName": "aws18-itty-runtime-3",
-    "apiCallLatency": 64.08,
-    "executionDuration": 103.5,
+  "b72404fb-7347-433a-a3b2-938851dd75da": {
+    "functionName": "aws18-itty-runtime",
+    "apiCallLatency": 61.24,
+    "executionDuration": 79.26,
     "maxMemory": 101
   },
-  "de5b0ecf-4791-44cd-ac9c-81c899f1c2a6": {
-    "functionName": "aws18-sdk3-bundle-1",
-    "httpRequestLatency": 78.14,
-    "apiCallLatency": 78.2,
-    "executionDuration": 108.88,
+  "27d74f6e-bb2f-4d0d-8ada-2faa20511a4c": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 91.34,
+    "apiCallLatency": 91.4,
+    "executionDuration": 134.46,
     "maxMemory": 80,
-    "initDuration": 278.78
+    "initDuration": 304.92
   },
-  "f3adf072-e710-436c-a72d-b031ef679106": {
-    "functionName": "aws18-sdk3-bundle-1",
-    "httpRequestLatency": 18.13,
-    "apiCallLatency": 18.15,
-    "executionDuration": 23.85,
-    "maxMemory": 82
-  },
-  "397bace1-2ad0-4150-a520-49a0874ff682": {
-    "functionName": "aws18-sdk3-bundle-1",
-    "httpRequestLatency": 2.67,
-    "apiCallLatency": 2.67,
-    "executionDuration": 6.67,
-    "maxMemory": 82
-  },
-  "4898e875-d761-46a5-bf4a-00ca0d7b6422": {
-    "functionName": "aws18-sdk3-bundle-2",
-    "httpRequestLatency": 92.62,
-    "apiCallLatency": 92.69,
-    "executionDuration": 133.08,
-    "maxMemory": 80,
-    "initDuration": 294
-  },
-  "648df3ea-9f8a-400b-80d4-5eea9b8defbf": {
-    "functionName": "aws18-sdk3-bundle-2",
-    "httpRequestLatency": 15.1,
-    "apiCallLatency": 15.12,
-    "executionDuration": 19.82,
+  "ac240f84-a95d-42ce-a8bf-ce9bac10f000": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 3.67,
+    "apiCallLatency": 3.68,
+    "executionDuration": 9.7,
     "maxMemory": 81
   },
-  "a077328f-c963-469c-a51f-aa9012b64e4d": {
-    "functionName": "aws18-sdk3-bundle-2",
-    "httpRequestLatency": 2.6,
-    "apiCallLatency": 2.61,
-    "executionDuration": 7.21,
+  "e927c11e-2c01-4320-aef2-33c5cdb47675": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 3.12,
+    "apiCallLatency": 3.13,
+    "executionDuration": 6.89,
     "maxMemory": 81
   },
-  "d12c7cba-69b3-4c8a-88ef-69fc57d490fb": {
-    "functionName": "aws18-sdk3-bundle-3",
-    "httpRequestLatency": 92.04,
-    "apiCallLatency": 92.1,
-    "executionDuration": 132,
+  "baa4aa3c-888b-46e9-aac2-952c0121ea28": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 79.77,
+    "apiCallLatency": 79.83,
+    "executionDuration": 111.04,
     "maxMemory": 80,
-    "initDuration": 282.34
+    "initDuration": 272.07
   },
-  "c18936a5-60c0-4b2b-aaed-72a1801c41c1": {
-    "functionName": "aws18-sdk3-bundle-3",
-    "httpRequestLatency": 18.36,
-    "apiCallLatency": 18.37,
-    "executionDuration": 22.75,
-    "maxMemory": 81
-  },
-  "31e1acd4-dac1-4b95-9929-00738cb20eb8": {
-    "functionName": "aws18-sdk3-bundle-3",
-    "httpRequestLatency": 2.87,
-    "apiCallLatency": 2.88,
-    "executionDuration": 6.82,
+  "25ee1479-0b24-4a65-86be-ab7d4bbef484": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 13.1,
+    "apiCallLatency": 13.11,
+    "executionDuration": 17.02,
     "maxMemory": 82
   },
-  "fa112d40-7a43-493e-9bab-d5d5c865e38c": {
-    "functionName": "aws18-itty-bundle-1",
-    "apiCallLatency": 381.92,
-    "executionDuration": 385.61,
+  "db0b6c3b-6b69-4168-a0ae-b7e723722adb": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 4.75,
+    "apiCallLatency": 4.76,
+    "executionDuration": 7.94,
+    "maxMemory": 82
+  },
+  "cd66e04a-5b78-4fe8-bf7f-afa3751aeb0f": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 93.54,
+    "apiCallLatency": 93.6,
+    "executionDuration": 129.82,
+    "maxMemory": 80,
+    "initDuration": 293.3
+  },
+  "8cc7755e-7369-45fb-b3c9-beed7210da5f": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 3.92,
+    "apiCallLatency": 3.93,
+    "executionDuration": 8.49,
+    "maxMemory": 80
+  },
+  "e08572e1-6bc9-445d-8a3e-0aec84e87e42": {
+    "functionName": "aws18-sdk3-bundle",
+    "httpRequestLatency": 3.65,
+    "apiCallLatency": 3.67,
+    "executionDuration": 9.46,
+    "maxMemory": 81
+  },
+  "6bfd0cc0-a17b-4b6b-b362-809b9a27700c": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 329.69,
+    "executionDuration": 355.59,
     "maxMemory": 89,
-    "initDuration": 180.93
+    "initDuration": 176.45
   },
-  "d3fcd4aa-59eb-4096-8d86-4591f564756e": {
-    "functionName": "aws18-itty-bundle-1",
-    "apiCallLatency": 49.26,
-    "executionDuration": 63.35,
-    "maxMemory": 94
-  },
-  "e599d494-86e3-42a1-81b0-2d7bca626ef9": {
-    "functionName": "aws18-itty-bundle-1",
-    "apiCallLatency": 74.44,
-    "executionDuration": 95.16,
-    "maxMemory": 98
-  },
-  "2db8614d-73fb-4c3a-a5a1-2e7280067929": {
-    "functionName": "aws18-itty-bundle-2",
-    "apiCallLatency": 349.64,
-    "executionDuration": 353.23,
-    "maxMemory": 87,
-    "initDuration": 175.68
-  },
-  "f87cc0c8-29b9-4396-ae42-d2c0555db444": {
-    "functionName": "aws18-itty-bundle-2",
-    "apiCallLatency": 53.11,
-    "executionDuration": 72.38,
+  "7ea6bee4-e2d9-4a44-ae2b-ac2199752ae8": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 44.49,
+    "executionDuration": 60.68,
     "maxMemory": 93
   },
-  "23b35c90-976a-4050-8e59-014b4f69767a": {
-    "functionName": "aws18-itty-bundle-2",
-    "apiCallLatency": 26.6,
-    "executionDuration": 45.85,
+  "0e745da7-4a86-4366-b36b-5387a2815622": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 9.68,
+    "executionDuration": 25.16,
     "maxMemory": 96
   },
-  "b9ace8b7-e952-46aa-ba0d-c93fdc373354": {
-    "functionName": "aws18-itty-bundle-2",
-    "apiCallLatency": 96.54,
-    "executionDuration": 119.39,
-    "maxMemory": 100
+  "c8715bed-60d3-4226-8a54-50c229c9ecca": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 352.29,
+    "executionDuration": 373.83,
+    "maxMemory": 87,
+    "initDuration": 178.07
   },
-  "12fed289-d742-49b6-a2cd-c44a209f74cb": {
-    "functionName": "aws18-itty-bundle-3",
-    "apiCallLatency": 362.27,
-    "executionDuration": 387.57,
-    "maxMemory": 89,
-    "initDuration": 179.85
-  },
-  "00609948-6c39-49e5-8623-e0da6a014d27": {
-    "functionName": "aws18-itty-bundle-3",
-    "apiCallLatency": 49.51,
-    "executionDuration": 67.46,
+  "6feefc68-c0f0-431d-b4f5-0caee88b1922": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 39.09,
+    "executionDuration": 53.2,
     "maxMemory": 95
   },
-  "c5773675-a0b5-4733-b78d-cd3de0f3e5c1": {
-    "functionName": "aws18-itty-bundle-3",
-    "apiCallLatency": 25.7,
-    "executionDuration": 81.29,
+  "db86eac8-caa8-4fce-82c3-feb9a8314e87": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 37.47,
+    "executionDuration": 39.44,
+    "maxMemory": 97
+  },
+  "137b41b9-10b0-4557-bb27-a018ee5c215b": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 87.66,
+    "executionDuration": 111.4,
     "maxMemory": 99
+  },
+  "787d4aaf-d93c-4379-b873-51a5b01d7c95": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 351.9,
+    "executionDuration": 372.62,
+    "maxMemory": 86,
+    "initDuration": 178.4
+  },
+  "96013a42-ec52-425f-aa93-cf47a15f6527": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 90.04,
+    "executionDuration": 91.84,
+    "maxMemory": 95
+  },
+  "fbbec6d6-798b-44ab-a89b-c9bea80035c8": {
+    "functionName": "aws18-itty-bundle",
+    "apiCallLatency": 9.36,
+    "executionDuration": 29.66,
+    "maxMemory": 97
   }
 }

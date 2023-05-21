@@ -20,30 +20,33 @@ import { buildChartsDatasets } from "./steps/buildChartsDatasets";
   //   path: benchmarkConfig.output.jsonFilePath,
   // });
 
-  const cloudWatchLog = await runLambdaFunctions({ benchmarkConfig });
-  await writeFile({
-    path: `${benchmarkConfig.output.dirPath}/cloudWatchLog.json`,
-    data: JSON.stringify(cloudWatchLog, null, 2),
-  });
+  // const cloudWatchLog = await runLambdaFunctions({ benchmarkConfig });
+  // await writeFile({
+  //   path: `${benchmarkConfig.output.dirPath}/cloudWatchLog.json`,
+  //   data: JSON.stringify(cloudWatchLog, null, 2),
+  // });
   // const cloudWatchLog: CloudWatchLog = await readFile({
   //   path: `${benchmarkConfig.output.dirPath}/cloudWatchLog.json`,
   // });
 
-  const lambdaExecutionLog = createLambdaExecutionLog({
-    cloudWatchLog,
-  });
-  await writeFile({
-    path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
-    data: JSON.stringify(lambdaExecutionLog, null, 2),
-  });
-
+  // const lambdaExecutionLog = createLambdaExecutionLog({
+  //   cloudWatchLog,
+  // });
+  // await writeFile({
+  //   path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
+  //   data: JSON.stringify(lambdaExecutionLog, null, 2),
+  // });
   // const lambdaExecutionLog: LambdaExecutionLog = await readFile({
   //   path: `${benchmarkConfig.output.dirPath}/lambdaExecution.json`,
   // });
-  const datasets = buildChartsDatasets({ lambdaExecutionLog, benchmarkConfig });
-  await writeFile({
+
+  // const datasets = buildChartsDatasets({ lambdaExecutionLog, benchmarkConfig });
+  // await writeFile({
+  //   path: `${benchmarkConfig.output.dirPath}/datasets.json`,
+  //   data: JSON.stringify(datasets, null, 2),
+  // });
+  const datasets: LambdaExecutionLog = await readFile({
     path: `${benchmarkConfig.output.dirPath}/datasets.json`,
-    data: JSON.stringify(datasets, null, 2),
   });
 
   const duration = performance.now() - scriptStartTime;
@@ -98,15 +101,12 @@ export async function writeFile(props: {
  * @returns {Promise<CloudWatchLog>} - A Promise that resolves to a CloudWatchLog object.
  * @throws {Error} - If an error occurs while reading the file.
  */
-export async function readFile(props: {
-  path: string;
-}): Promise<CloudWatchLog> {
+export async function readFile<T>(props: { path: string }): Promise<T> {
   try {
     const res = await fsPromises.readFile(props.path);
-    const cloudWatchLog: CloudWatchLog = JSON.parse(res.toString());
-    return cloudWatchLog;
+    return JSON.parse(res.toString()) as T;
   } catch (error) {
     console.error(error);
-    return [];
+    return [] as T;
   }
 }

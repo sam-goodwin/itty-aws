@@ -15,9 +15,9 @@ export interface BenchmarkConfig {
     entryPath: string;
   };
   benchmarkFunctions: Record<string, FunctionParameters>;
-  charts: {
-    coldStarts: Record<string, ChartTemplate>;
-    warmStarts: Record<string, ChartTemplate>;
+  chartsTemplates: {
+    coldStarts: Record<string, { title: string }>;
+    warmStarts: Record<string, { title: string }>;
   };
 }
 
@@ -31,10 +31,6 @@ export interface FunctionParameters {
     backgroundColor: string;
     borderColor: string;
   };
-}
-
-interface ChartTemplate {
-  title: string;
 }
 
 export interface ApiCall {
@@ -58,13 +54,9 @@ export interface ChartsDatasets {
   warmStarts: Record<string, Datasets>;
 }
 
-interface Datasets {
-  title: string;
-  datasets: Record<string, Series>;
-}
+type Datasets = Record<string, Series>;
 
 interface Series {
-  order: number;
   data: number[];
   mean: number;
   standardDeviation: number;

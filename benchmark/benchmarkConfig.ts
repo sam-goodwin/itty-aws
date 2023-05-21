@@ -115,13 +115,13 @@ export const benchmarkConfig: BenchmarkConfig = {
       },
     },
   },
-  charts: {
+  chartsTemplates: {
     coldStarts: {
       initDuration: {
         title: "Cold start : init duration",
       },
-      duration: {
-        title: "Cold start : duration",
+      executionDuration: {
+        title: "Cold start : execution duration",
       },
       totalDuration: {
         title: "Cold start : total duration",
@@ -137,8 +137,8 @@ export const benchmarkConfig: BenchmarkConfig = {
       },
     },
     warmStarts: {
-      duration: {
-        title: "Warm start : duration",
+      executionDuration: {
+        title: "Warm start : execution duration",
       },
       maxMemory: {
         title: "Warm start : max memory",

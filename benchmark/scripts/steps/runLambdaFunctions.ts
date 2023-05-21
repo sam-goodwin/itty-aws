@@ -122,7 +122,7 @@ async function initDatabase({
 }): Promise<void> {
   process.stdout.write("\n- Init database");
   const command = new InvokeCommand({
-    FunctionName: `${benchmarkConfig.stackName}-setup`,
+    FunctionName: `${benchmarkConfig.stackName}-setup-1`,
   });
   const res = await lambdaClient.send(command);
   process.stdout.write(` (status: ${res.$metadata.httpStatusCode})\n`);

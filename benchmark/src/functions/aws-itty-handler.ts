@@ -34,7 +34,7 @@ export async function handler(
     });
     const apiCallLatency = roundToTwoDecimalPlaces(performance.now() - start);
     const benchmarkResult: ApiCall = {
-      functionName: process.env.METADATA_FN_NAME!,
+      functionName: process.env.BENCHMARK_FUNCTION_NAME!,
       apiCallLatency,
       httpRequestLatency: undefined,
     };
