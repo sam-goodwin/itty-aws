@@ -15,6 +15,7 @@ import {
 } from "@rgrove/parse-xml";
 
 export interface ClientOptions {
+  region?: string;
   endpoint?: string;
   credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
 }
@@ -26,13 +27,12 @@ let httpAgent: import("https").Agent;
 
 export const AWS: SDK = new Proxy({} as any, {
   get: (_, className: keyof SDK) => {
-    const region = process.env.AWS_REGION!;
-    if (!region) {
-      throw new Error(`Could not determine AWS_REGION`);
-    }
-
     return class {
       constructor(options?: ClientOptions) {
+        const region = options?.region ?? process.env["AWS_REGION"];
+        if (!region) {
+          throw new Error(`Could not determine AWS_REGION`);
+        }
         const endpoint =
           options?.endpoint ?? resolveEndpoint(className, region);
         // TODO: support other types of credential providers
@@ -126,7 +126,7 @@ export const AWS: SDK = new Proxy({} as any, {
               method,
               body:
                 methodName === "createBucket"
-                  ? `<?xml version="1.0" encoding="UTF-8"?><CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LocationConstraint>${process.env.AWS_REGION}</LocationConstraint></CreateBucketConfiguration>`
+                  ? `<?xml version="1.0" encoding="UTF-8"?><CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LocationConstraint>${region}</LocationConstraint></CreateBucketConfiguration>`
                   : methodName === "putObject"
                   ? typeof input.Body === "string"
                     ? input.Body
@@ -290,7 +290,8 @@ export const AWS: SDK = new Proxy({} as any, {
           const signer = new SignatureV4({
             credentials,
             service: resolveService(className),
-            region,
+            // TODO: Why ts thinks region may be undefined?
+            region: region!,
             sha256: Sha256,
           });
 
