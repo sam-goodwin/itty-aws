@@ -10,8 +10,8 @@
   "scripts": {
     "download:models": "bash ./scripts/download-smithy-models.sh",
     "generate": "pnpm generate:types && pnpm generate:mappings",
-    "generate:types": "ts-node-esm ./scripts/gen-sdk-types.mts",
-    "generate:mappings": "ts-node-esm ./scripts/gen-sdk-mappings.mts",
+    "generate:types": "tsx ./scripts/gen-sdk-types.mts",
+    "generate:mappings": "tsx ./scripts/gen-sdk-mappings.mts",
     "build": "tsc -b",
     "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
     "watch": "tsc -b -w",
@@ -49,6 +49,7 @@
     "standard-version": "^9.5.0",
     "ts-jest": "^29",
     "ts-node": "^10.9.1",
+    "tsx": "^4.6.0",
     "typescript": "^4.9.4"
   },
   "jest": {
