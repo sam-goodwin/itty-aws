@@ -29,10 +29,11 @@ export const AWS: SDK = new Proxy({} as any, {
   get: (_, className: keyof SDK) => {
     return class {
       constructor(options?: ClientOptions) {
-        const region = options?.region ?? process.env["AWS_REGION"];
-        if (!region) {
-          throw new Error(`Could not determine AWS_REGION`);
-        }
+        // const region = options?.region ?? process.env["AWS_REGION"];
+        // if (!region) {
+        //   throw new Error(`Could not determine AWS_REGION`);
+        // }
+        const region = getRegion(options);
         const endpoint =
           options?.endpoint ?? resolveEndpoint(className, region);
         // TODO: support other types of credential providers
@@ -290,8 +291,7 @@ export const AWS: SDK = new Proxy({} as any, {
           const signer = new SignatureV4({
             credentials,
             service: resolveService(className),
-            // TODO: Why ts thinks region may be undefined?
-            region: region!,
+            region,
             sha256: Sha256,
           });
 
@@ -359,6 +359,14 @@ export const AWS: SDK = new Proxy({} as any, {
     };
   },
 });
+
+function getRegion(options?: ClientOptions) {
+  const region = options?.region ?? process.env["AWS_REGION"];
+  if (!region) {
+    throw new Error(`Could not determine AWS_REGION`);
+  }
+  return region;
+}
 
 function parseNumber(num: string) {
   let i = parseInt(num, 10);
