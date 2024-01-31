@@ -14,7 +14,7 @@
     "generate:mappings": "tsx ./scripts/gen-sdk-mappings.mts",
     "build": "tsup src/index.ts --format esm --target esnext --dts",
     "test": "vitest",
-    "watch": "tsc -b -w",
+    "watch": "tsup src/index.ts --format esm --target esnext --dts --watch",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
     "bench:synth": "pnpm -r --filter @benchmark/infra synth",
     "bench:deploy": "pnpm -r --filter @benchmark/infra run deploy",
