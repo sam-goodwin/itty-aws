@@ -80,7 +80,7 @@ const v3ExcludedMonoFunc = new aws_lambda_nodejs.NodejsFunction(
   {
     functionName: "benchmark-v3-mono-excluded",
     runtime: aws_lambda.Runtime.NODEJS_18_X,
-    entry: require.resolve("@benchmark/functions/dist/v3-mono-lambda"),
+    entry: require.resolve("@benchmark/functions/dist/v3-mono-handler"),
     bundling: {
       externalModules: ["@aws-sdk/*"],
     },
@@ -95,7 +95,7 @@ const v3BundledMonoFunc = new aws_lambda_nodejs.NodejsFunction(
   {
     functionName: "benchmark-v3-mono-bundled",
     runtime: aws_lambda.Runtime.NODEJS_18_X,
-    entry: require.resolve("@benchmark/functions/dist/v3-mono-lambda"),
+    entry: require.resolve("@benchmark/functions/dist/v3-mono-handler"),
     bundling: {
       externalModules: [],
     },
