@@ -1,3 +1,4 @@
+import { beforeAll } from "vitest";
 import { AWS, AWSError } from "../src/index.js";
 import {
   EventBusName,
@@ -7,17 +8,14 @@ import {
   TableName,
 } from "./constants.js";
 
-try {
+beforeAll(async () => {
   await Promise.all([
     createTable(),
     createParameter(),
     createEventBus(),
     createS3Bucket(),
   ]);
-} catch (err) {
-  console.error(err);
-  process.exit(1);
-}
+});
 
 async function createTable() {
   const client = new AWS.DynamoDB();

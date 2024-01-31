@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { AWS } from "../src";
 import { TableName } from "./constants";
 

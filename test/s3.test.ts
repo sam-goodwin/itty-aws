@@ -1,4 +1,4 @@
-import { ReadableStream } from "stream/web";
+import { describe, expect, test } from "vitest";
 import { AWS } from "../src";
 
 import { S3BucketName } from "./constants.js";

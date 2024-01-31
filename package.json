@@ -13,7 +13,7 @@
     "generate:types": "tsx ./scripts/gen-sdk-types.mts",
     "generate:mappings": "tsx ./scripts/gen-sdk-mappings.mts",
     "build": "tsup src/index.ts --format esm --target esnext --dts",
-    "test": "ts-node-esm --project ./tsconfig.esm.json ./test/setup.ts && NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "vitest",
     "watch": "tsc -b -w",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
     "bench:synth": "pnpm -r --filter @benchmark/infra synth",
@@ -37,37 +37,16 @@
     "@aws-sdk/protocol-http": "3.226.0",
     "@aws-sdk/signature-v4": "3.226.0",
     "@aws-sdk/types": "3.226.0",
-    "@tsconfig/node16": "^1",
-    "@types/jest": "^29",
     "@types/node": "^16",
     "@types/prettier": "^2.7.2",
     "esbuild": "0.17.2",
     "esbuild-visualizer": "^0.4.0",
-    "jest": "^29",
     "node-fetch": "^3.3.0",
     "prettier": "^2.8.3",
     "standard-version": "^9.5.0",
-    "ts-jest": "^29",
-    "ts-node": "^10.9.1",
     "tsup": "^8.0.1",
     "tsx": "^4.6.0",
-    "typescript": "^5.3.2"
-  },
-  "jest": {
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ],
-    "moduleNameMapper": {
-      "^(\\.{1,2}/.*)\\.js$": "$1"
-    },
-    "transform": {
-      "^.+\\.(t|j)sx?$": [
-        "ts-jest",
-        {
-          "tsconfig": "tsconfig.test.json",
-          "useESM": true
-        }
-      ]
-    }
+    "typescript": "^5.3.2",
+    "vitest": "^1.2.2"
   }
 }
