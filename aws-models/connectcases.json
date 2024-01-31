@@ -59,8 +59,22 @@
           "name": "cases"
         },
         "aws.protocols#restJson1": {},
-        "smithy.api#cors": {},
-        "smithy.api#documentation": "<p>Welcome to the Amazon Connect Cases API Reference. This guide provides information about the\n      Amazon Connect Cases API, which you can use to create, update, get, and list Cases domains,\n      fields, field options, layouts, templates, cases, related items, and tags.</p>\n\n         <p>For more information about Amazon Connect Cases, see <a href=\"https://docs.aws.amazon.com/connect/latest/adminguide/cases.html\">Amazon Connect Cases</a> in the\n          <i>Amazon Connect Administrator Guide</i>. </p>",
+        "smithy.api#cors": {
+          "additionalAllowedHeaders": [
+            "*",
+            "Authorization",
+            "Date",
+            "X-Amz-Date",
+            "X-Amz-Security-Token",
+            "X-Amz-Target",
+            "content-type",
+            "x-amz-content-sha256",
+            "x-amz-user-agent",
+            "x-amzn-platform-id",
+            "x-amzn-trace-id"
+          ]
+        },
+        "smithy.api#documentation": "<p>With Amazon Connect Cases, your agents can track and manage customer issues that require\n      multiple interactions, follow-up tasks, and teams in your contact center. A case represents a\n      customer issue. It records the issue, the steps and interactions taken to resolve the issue,\n      and the outcome. For more information, see <a href=\"https://docs.aws.amazon.com/connect/latest/adminguide/cases.html\">Amazon Connect Cases</a> in the\n          <i>Amazon Connect Administrator Guide</i>.</p>",
         "smithy.api#title": "Amazon Connect Cases",
         "smithy.rules#endpointRuleSet": {
           "version": "1.0",
@@ -96,38 +110,32 @@
             {
               "conditions": [
                 {
-                  "fn": "aws.partition",
+                  "fn": "isSet",
                   "argv": [
                     {
-                      "ref": "Region"
+                      "ref": "Endpoint"
                     }
-                  ],
-                  "assign": "PartitionResult"
+                  ]
                 }
               ],
-              "type": "tree",
               "rules": [
                 {
                   "conditions": [
                     {
-                      "fn": "isSet",
+                      "fn": "booleanEquals",
                       "argv": [
                         {
-                          "ref": "Endpoint"
-                        }
+                          "ref": "UseFIPS"
+                        },
+                        true
                       ]
-                    },
-                    {
-                      "fn": "parseURL",
-                      "argv": [
-                        {
-                          "ref": "Endpoint"
-                        }
-                      ],
-                      "assign": "url"
                     }
                   ],
-                  "type": "tree",
+                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                  "type": "error"
+                },
+                {
+                  "conditions": [],
                   "rules": [
                     {
                       "conditions": [
@@ -135,19 +143,200 @@
                           "fn": "booleanEquals",
                           "argv": [
                             {
-                              "ref": "UseFIPS"
+                              "ref": "UseDualStack"
                             },
                             true
                           ]
                         }
                       ],
-                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
                       "type": "error"
                     },
                     {
                       "conditions": [],
-                      "type": "tree",
+                      "endpoint": {
+                        "url": {
+                          "ref": "Endpoint"
+                        },
+                        "properties": {},
+                        "headers": {}
+                      },
+                      "type": "endpoint"
+                    }
+                  ],
+                  "type": "tree"
+                }
+              ],
+              "type": "tree"
+            },
+            {
+              "conditions": [],
+              "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Region"
+                        }
+                      ]
+                    }
+                  ],
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "aws.partition",
+                          "argv": [
+                            {
+                              "ref": "Region"
+                            }
+                          ],
+                          "assign": "PartitionResult"
+                        }
+                      ],
                       "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseFIPS"
+                                },
+                                true
+                              ]
+                            },
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "rules": [
+                            {
+                              "conditions": [
+                                {
+                                  "fn": "booleanEquals",
+                                  "argv": [
+                                    true,
+                                    {
+                                      "fn": "getAttr",
+                                      "argv": [
+                                        {
+                                          "ref": "PartitionResult"
+                                        },
+                                        "supportsFIPS"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "fn": "booleanEquals",
+                                  "argv": [
+                                    true,
+                                    {
+                                      "fn": "getAttr",
+                                      "argv": [
+                                        {
+                                          "ref": "PartitionResult"
+                                        },
+                                        "supportsDualStack"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "rules": [
+                                {
+                                  "conditions": [],
+                                  "rules": [
+                                    {
+                                      "conditions": [],
+                                      "endpoint": {
+                                        "url": "https://cases-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                                        "properties": {},
+                                        "headers": {}
+                                      },
+                                      "type": "endpoint"
+                                    }
+                                  ],
+                                  "type": "tree"
+                                }
+                              ],
+                              "type": "tree"
+                            },
+                            {
+                              "conditions": [],
+                              "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                              "type": "error"
+                            }
+                          ],
+                          "type": "tree"
+                        },
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseFIPS"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "rules": [
+                            {
+                              "conditions": [
+                                {
+                                  "fn": "booleanEquals",
+                                  "argv": [
+                                    {
+                                      "fn": "getAttr",
+                                      "argv": [
+                                        {
+                                          "ref": "PartitionResult"
+                                        },
+                                        "supportsFIPS"
+                                      ]
+                                    },
+                                    true
+                                  ]
+                                }
+                              ],
+                              "rules": [
+                                {
+                                  "conditions": [],
+                                  "rules": [
+                                    {
+                                      "conditions": [],
+                                      "endpoint": {
+                                        "url": "https://cases-fips.{Region}.{PartitionResult#dnsSuffix}",
+                                        "properties": {},
+                                        "headers": {}
+                                      },
+                                      "type": "endpoint"
+                                    }
+                                  ],
+                                  "type": "tree"
+                                }
+                              ],
+                              "type": "tree"
+                            },
+                            {
+                              "conditions": [],
+                              "error": "FIPS is enabled but this partition does not support FIPS",
+                              "type": "error"
+                            }
+                          ],
+                          "type": "tree"
+                        },
                         {
                           "conditions": [
                             {
@@ -160,371 +349,85 @@
                               ]
                             }
                           ],
-                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                          "type": "error"
-                        },
-                        {
-                          "conditions": [],
-                          "endpoint": {
-                            "url": {
-                              "ref": "Endpoint"
+                          "rules": [
+                            {
+                              "conditions": [
+                                {
+                                  "fn": "booleanEquals",
+                                  "argv": [
+                                    true,
+                                    {
+                                      "fn": "getAttr",
+                                      "argv": [
+                                        {
+                                          "ref": "PartitionResult"
+                                        },
+                                        "supportsDualStack"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "rules": [
+                                {
+                                  "conditions": [],
+                                  "rules": [
+                                    {
+                                      "conditions": [],
+                                      "endpoint": {
+                                        "url": "https://cases.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                                        "properties": {},
+                                        "headers": {}
+                                      },
+                                      "type": "endpoint"
+                                    }
+                                  ],
+                                  "type": "tree"
+                                }
+                              ],
+                              "type": "tree"
                             },
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseFIPS"
-                        },
-                        true
-                      ]
-                    },
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseDualStack"
-                        },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsFIPS"
-                              ]
+                              "conditions": [],
+                              "error": "DualStack is enabled but this partition does not support DualStack",
+                              "type": "error"
                             }
-                          ]
+                          ],
+                          "type": "tree"
                         },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
-                            {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsDualStack"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
                         {
                           "conditions": [],
-                          "endpoint": {
-                            "url": "https://cases-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseFIPS"
-                        },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
+                          "rules": [
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsFIPS"
-                              ]
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cases.{Region}.{PartitionResult#dnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
                             }
-                          ]
+                          ],
+                          "type": "tree"
                         }
                       ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [],
-                          "endpoint": {
-                            "url": "https://cases-fips.{Region}.{PartitionResult#dnsSuffix}",
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "FIPS is enabled but this partition does not support FIPS",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseDualStack"
-                        },
-                        true
-                      ]
+                      "type": "tree"
                     }
                   ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
-                            {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsDualStack"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [],
-                          "endpoint": {
-                            "url": "https://cases.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "DualStack is enabled but this partition does not support DualStack",
-                      "type": "error"
-                    }
-                  ]
+                  "type": "tree"
                 },
                 {
                   "conditions": [],
-                  "endpoint": {
-                    "url": "https://cases.{Region}.{PartitionResult#dnsSuffix}",
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
+                  "error": "Invalid Configuration: Missing Region",
+                  "type": "error"
                 }
-              ]
+              ],
+              "type": "tree"
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases-fips.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "UseDualStack": true,
-                "UseFIPS": true,
-                "Region": "us-gov-east-1"
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases-fips.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseDualStack": false,
-                "UseFIPS": true,
-                "Region": "us-gov-east-1"
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "UseDualStack": true,
-                "UseFIPS": false,
-                "Region": "us-gov-east-1"
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseDualStack": false,
-                "UseFIPS": false,
-                "Region": "us-gov-east-1"
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases-fips.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "UseDualStack": true,
-                "UseFIPS": true,
-                "Region": "cn-north-1"
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "UseDualStack": false,
-                "UseFIPS": true,
-                "Region": "cn-north-1"
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "UseDualStack": true,
-                "UseFIPS": false,
-                "Region": "cn-north-1"
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "UseDualStack": false,
-                "UseFIPS": false,
-                "Region": "cn-north-1"
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "UseDualStack": true,
-                "UseFIPS": true,
-                "Region": "us-iso-east-1"
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "UseDualStack": false,
-                "UseFIPS": true,
-                "Region": "us-iso-east-1"
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "UseDualStack": true,
-                "UseFIPS": false,
-                "Region": "us-iso-east-1"
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cases.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "UseDualStack": false,
-                "UseFIPS": false,
-                "Region": "us-iso-east-1"
-              }
-            },
             {
               "documentation": "For region us-east-1 with FIPS enabled and DualStack enabled",
               "expect": {
@@ -533,9 +436,9 @@
                 }
               },
               "params": {
-                "UseDualStack": true,
+                "Region": "us-east-1",
                 "UseFIPS": true,
-                "Region": "us-east-1"
+                "UseDualStack": true
               }
             },
             {
@@ -546,9 +449,9 @@
                 }
               },
               "params": {
-                "UseDualStack": false,
+                "Region": "us-east-1",
                 "UseFIPS": true,
-                "Region": "us-east-1"
+                "UseDualStack": false
               }
             },
             {
@@ -559,9 +462,9 @@
                 }
               },
               "params": {
-                "UseDualStack": true,
+                "Region": "us-east-1",
                 "UseFIPS": false,
-                "Region": "us-east-1"
+                "UseDualStack": true
               }
             },
             {
@@ -572,9 +475,161 @@
                 }
               },
               "params": {
-                "UseDualStack": false,
+                "Region": "us-east-1",
                 "UseFIPS": false,
-                "Region": "us-east-1"
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases-fips.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases-fips.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases-fips.us-gov-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases-fips.us-gov-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases.us-gov-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases.us-gov-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases-fips.us-iso-east-1.c2s.ic.gov"
+                }
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "error": "DualStack is enabled but this partition does not support DualStack"
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://cases.us-iso-east-1.c2s.ic.gov"
+                }
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
               }
             },
             {
@@ -583,9 +638,9 @@
                 "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
               },
               "params": {
-                "UseDualStack": true,
+                "Region": "us-isob-east-1",
                 "UseFIPS": true,
-                "Region": "us-isob-east-1"
+                "UseDualStack": true
               }
             },
             {
@@ -596,9 +651,9 @@
                 }
               },
               "params": {
-                "UseDualStack": false,
+                "Region": "us-isob-east-1",
                 "UseFIPS": true,
-                "Region": "us-isob-east-1"
+                "UseDualStack": false
               }
             },
             {
@@ -607,9 +662,9 @@
                 "error": "DualStack is enabled but this partition does not support DualStack"
               },
               "params": {
-                "UseDualStack": true,
+                "Region": "us-isob-east-1",
                 "UseFIPS": false,
-                "Region": "us-isob-east-1"
+                "UseDualStack": true
               }
             },
             {
@@ -620,22 +675,35 @@
                 }
               },
               "params": {
-                "UseDualStack": false,
+                "Region": "us-isob-east-1",
                 "UseFIPS": false,
-                "Region": "us-isob-east-1"
+                "UseDualStack": false
               }
             },
             {
-              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
                 }
               },
               "params": {
-                "UseDualStack": false,
-                "UseFIPS": false,
                 "Region": "us-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false,
+                "Endpoint": "https://example.com"
+              }
+            },
+            {
+              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://example.com"
+                }
+              },
+              "params": {
+                "UseFIPS": false,
+                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -645,9 +713,9 @@
                 "error": "Invalid Configuration: FIPS and custom endpoint are not supported"
               },
               "params": {
-                "UseDualStack": false,
-                "UseFIPS": true,
                 "Region": "us-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -657,10 +725,16 @@
                 "error": "Invalid Configuration: Dualstack and custom endpoint are not supported"
               },
               "params": {
-                "UseDualStack": true,
-                "UseFIPS": false,
                 "Region": "us-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true,
                 "Endpoint": "https://example.com"
+              }
+            },
+            {
+              "documentation": "Missing region",
+              "expect": {
+                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -681,6 +755,199 @@
       "type": "timestamp",
       "traits": {
         "smithy.api#timestampFormat": "date-time"
+      }
+    },
+    "com.amazonaws.connectcases#AuditEvent": {
+      "type": "structure",
+      "members": {
+        "eventId": {
+          "target": "com.amazonaws.connectcases#AuditEventId",
+          "traits": {
+            "smithy.api#documentation": "<p>Unique identifier of a case audit history event.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.amazonaws.connectcases#AuditEventType",
+          "traits": {
+            "smithy.api#documentation": "<p>The Type of an audit history event.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "relatedItemType": {
+          "target": "com.amazonaws.connectcases#RelatedItemType",
+          "traits": {
+            "smithy.api#documentation": "<p>The Type of the related item.</p>"
+          }
+        },
+        "performedTime": {
+          "target": "com.amazonaws.connectcases#AuditEventDateTime",
+          "traits": {
+            "smithy.api#documentation": "<p>Time at which an Audit History event took place.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "fields": {
+          "target": "com.amazonaws.connectcases#AuditEventFieldList",
+          "traits": {
+            "smithy.api#documentation": "<p>A list of Case Audit History event fields.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "performedBy": {
+          "target": "com.amazonaws.connectcases#AuditEventPerformedBy",
+          "traits": {
+            "smithy.api#documentation": "<p>Information of the user which performed the audit.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Represents the content of a particular audit event.</p>"
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventDateTime": {
+      "type": "timestamp",
+      "traits": {
+        "smithy.api#timestampFormat": "date-time"
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventField": {
+      "type": "structure",
+      "members": {
+        "eventFieldId": {
+          "target": "com.amazonaws.connectcases#AuditEventFieldId",
+          "traits": {
+            "smithy.api#documentation": "<p>Unique identifier of field in an Audit History entry.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "oldValue": {
+          "target": "com.amazonaws.connectcases#AuditEventFieldValueUnion",
+          "traits": {
+            "smithy.api#documentation": "<p>Union of potential field value types.</p>"
+          }
+        },
+        "newValue": {
+          "target": "com.amazonaws.connectcases#AuditEventFieldValueUnion",
+          "traits": {
+            "smithy.api#documentation": "<p>Union of potential field value types.</p>",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Fields for audit event.</p>"
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventFieldId": {
+      "type": "string",
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 500
+        }
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventFieldList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.connectcases#AuditEventField"
+      },
+      "traits": {
+        "smithy.api#sparse": {}
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventFieldValueUnion": {
+      "type": "union",
+      "members": {
+        "stringValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>Can be either null, or have a String value type. Only one value can be provided.</p>",
+            "smithy.api#length": {
+              "max": 500
+            }
+          }
+        },
+        "doubleValue": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "<p>Can be either null, or have a Double value type. Only one value can be provided.</p>"
+          }
+        },
+        "booleanValue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<p>Can be either null, or have a Boolean value type. Only one value can be provided.</p>"
+          }
+        },
+        "emptyValue": {
+          "target": "com.amazonaws.connectcases#EmptyFieldValue"
+        },
+        "userArnValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>Can be either null, or have a String value type formatted as an ARN. Only one value can be\n      provided.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Object to store union of Field values.</p>\n         <important>\n            <p>This data type is a UNION, so only one of the following members can be specified when\n        used or returned.</p>\n         </important>"
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventId": {
+      "type": "string",
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 500
+        }
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventPerformedBy": {
+      "type": "structure",
+      "members": {
+        "user": {
+          "target": "com.amazonaws.connectcases#UserUnion"
+        },
+        "iamPrincipalArn": {
+          "target": "com.amazonaws.connectcases#IamPrincipalArn",
+          "traits": {
+            "smithy.api#documentation": "<p>Unique identifier of an IAM role.</p>",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Information of the user which performed the audit.</p>"
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventType": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "Case.Created",
+            "name": "CASE_CREATED"
+          },
+          {
+            "value": "Case.Updated",
+            "name": "CASE_UPDATED"
+          },
+          {
+            "value": "RelatedItem.Created",
+            "name": "RELATED_ITEM_CREATED"
+          }
+        ]
+      }
+    },
+    "com.amazonaws.connectcases#AuditEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.connectcases#AuditEvent"
+      },
+      "traits": {
+        "smithy.api#sparse": {}
       }
     },
     "com.amazonaws.connectcases#BasicLayout": {
@@ -907,6 +1174,11 @@
       "update": {
         "target": "com.amazonaws.connectcases#UpdateCase"
       },
+      "operations": [
+        {
+          "target": "com.amazonaws.connectcases#GetCaseAuditEvents"
+        }
+      ],
       "collectionOperations": [
         {
           "target": "com.amazonaws.connectcases#ListCasesForContact"
@@ -943,7 +1215,7 @@
           "traits": {
             "smithy.api#documentation": "<p>List of field identifiers.</p>",
             "smithy.api#length": {
-              "max": 50
+              "max": 200
             },
             "smithy.api#required": {}
           }
@@ -969,6 +1241,15 @@
           "target": "com.amazonaws.connectcases#CaseFilterList",
           "traits": {
             "smithy.api#documentation": "<p>Provides \"and all\" filtering.</p>",
+            "smithy.api#length": {
+              "max": 10
+            }
+          }
+        },
+        "orAll": {
+          "target": "com.amazonaws.connectcases#CaseFilterList",
+          "traits": {
+            "smithy.api#documentation": "<p>Provides \"or all\" filtering.</p>",
             "smithy.api#length": {
               "max": 10
             }
@@ -1042,7 +1323,7 @@
       "traits": {
         "smithy.api#length": {
           "min": 1,
-          "max": 1000
+          "max": 3000
         }
       }
     },
@@ -1213,7 +1494,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Creates a case in the specified Cases domain. Case system and custom fields are taken\n      as an array id/value pairs with a declared data types.</p>\n         <note>\n            <p>\n               <code>customer_id</code> is a required field when creating a case.</p>\n         </note>",
+        "smithy.api#documentation": "<note>\n            <p>If you provide a value for <code>PerformedBy.UserArn</code> you must also have <a href=\"https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html\">connect:DescribeUser</a> permission on the User ARN resource that you provide</p>\n         </note>\n\n         <p>Creates a case in the specified Cases domain. Case system and custom fields are taken\n      as an array id/value pairs with a declared data types.</p>\n         <p>The following fields are required when creating a case:</p>\n    \n         <ul>\n            <li>\n               <p>\n                  <code>customer_id</code> - You must provide the full customer profile ARN in this format:\n            <code>arn:aws:profile:your_AWS_Region:your_AWS_account\n            ID:domains/your_profiles_domain_name/profiles/profile_ID</code>\n               </p>\n            </li>\n            <li>\n               <p>\n                  <code>title</code>\n               </p>\n            </li>\n         </ul>",
         "smithy.api#http": {
           "uri": "/domains/{domainId}/cases",
           "method": "POST"
@@ -1258,6 +1539,9 @@
               "max": 64
             }
           }
+        },
+        "performedBy": {
+          "target": "com.amazonaws.connectcases#UserUnion"
         }
       }
     },
@@ -1309,7 +1593,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Creates a domain, which is a container for all case data, such as cases, fields, templates\n      and layouts. Each Amazon Connect instance can be associated with only one Cases\n      domain.</p>\n         <important>\n            <p>This will not associate your connect instance to Cases domain. Instead, use the\n          Amazon Connect\n        <a href=\"https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html\">CreateIntegrationAssociation</a> API.</p>\n         </important>",
+        "smithy.api#documentation": "<p>Creates a domain, which is a container for all case data, such as cases, fields, templates\n      and layouts. Each Amazon Connect instance can be associated with only one Cases\n      domain.</p>\n         <important>\n            <p>This will not associate your connect instance to Cases domain. Instead, use the\n          Amazon Connect\n        <a href=\"https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html\">CreateIntegrationAssociation</a> API. You need specific IAM\n        permissions to successfully associate the Cases domain. For more information, see\n          <a href=\"https://docs.aws.amazon.com/connect/latest/adminguide/required-permissions-iam-cases.html#onboard-cases-iam\">Onboard to Cases</a>.</p>\n      \n         </important>",
         "smithy.api#http": {
           "uri": "/domains",
           "method": "POST"
@@ -1561,7 +1845,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Creates a related item (comments, tasks, and contacts) and associates it with a\n      case.</p>\n         <note>\n            <p>A Related Item is a resource that is associated with a case. It may or may not have an\n        external identifier linking it to an external resource (for example, a\n          <code>contactArn</code>). All Related Items have their own internal identifier, the\n          <code>relatedItemArn</code>. Examples of related items include <code>comments</code> and\n          <code>contacts</code>.</p>\n         </note>",
+        "smithy.api#documentation": "<p>Creates a related item (comments, tasks, and contacts) and associates it with a\n      case.</p>\n         <note>\n            <ul>\n               <li>\n                  <p>A Related Item is a resource that is associated with a case. It may or may not have\n            an external identifier linking it to an external resource (for example, a\n              <code>contactArn</code>). All Related Items have their own internal identifier, the\n              <code>relatedItemArn</code>. Examples of related items include <code>comments</code>\n            and <code>contacts</code>.</p>\n               </li>\n               <li>\n                  <p>If you provide a value for <code>performedBy.userArn</code> you must also have\n              <a href=\"https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html\">DescribeUser</a> permission on the ARN of the user that you provide.</p>\n               </li>\n            </ul>\n\n         </note>",
         "smithy.api#http": {
           "uri": "/domains/{domainId}/cases/{caseId}/related-items/",
           "method": "POST"
@@ -1600,6 +1884,12 @@
           "traits": {
             "smithy.api#documentation": "<p>The content of a related item to be created.</p>",
             "smithy.api#required": {}
+          }
+        },
+        "performedBy": {
+          "target": "com.amazonaws.connectcases#UserUnion",
+          "traits": {
+            "smithy.api#documentation": "<p>Represents the creator of the related item.</p>"
           }
         }
       }
@@ -1732,6 +2022,60 @@
         "smithy.api#timestampFormat": "date-time"
       }
     },
+    "com.amazonaws.connectcases#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#DeleteDomainRequest"
+      },
+      "output": {
+        "target": "com.amazonaws.connectcases#DeleteDomainResponse"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ConflictException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ],
+      "traits": {
+        "smithy.api#documentation": "<p>Deletes a Cases domain.</p>\n    \n\n         <note>\n            <p>After deleting your domain you must disassociate the deleted domain from your Amazon Connect instance with another API call before being able to use Cases again with this\n          Amazon Connect instance. See <a href=\"https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html\">DeleteIntegrationAssociation</a>.</p>\n         </note>",
+        "smithy.api#http": {
+          "uri": "/domains/{domainId}",
+          "method": "DELETE"
+        },
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.amazonaws.connectcases#DeleteDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "com.amazonaws.connectcases#DomainId",
+          "traits": {
+            "smithy.api#documentation": "<p>The unique identifier of the Cases domain. </p>",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.amazonaws.connectcases#DeleteDomainResponse": {
+      "type": "structure",
+      "members": {}
+    },
     "com.amazonaws.connectcases#Domain": {
       "type": "resource",
       "identifiers": {
@@ -1744,6 +2088,9 @@
       },
       "read": {
         "target": "com.amazonaws.connectcases#GetDomain"
+      },
+      "delete": {
+        "target": "com.amazonaws.connectcases#DeleteDomain"
       },
       "list": {
         "target": "com.amazonaws.connectcases#ListDomains"
@@ -1842,6 +2189,13 @@
       "type": "list",
       "member": {
         "target": "com.amazonaws.connectcases#DomainSummary"
+      }
+    },
+    "com.amazonaws.connectcases#EmptyFieldValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "<p>An empty value. You cannot set <code>EmptyFieldValue</code> on a field that is required on\n      a case template.</p>\n         <p>This structure will never have any data members. It signifies an empty value on a case\n      field.</p>"
       }
     },
     "com.amazonaws.connectcases#EventBridgeConfiguration": {
@@ -2277,6 +2631,14 @@
           {
             "value": "SingleSelect",
             "name": "SINGLE_SELECT"
+          },
+          {
+            "value": "Url",
+            "name": "URL"
+          },
+          {
+            "value": "User",
+            "name": "USER"
           }
         ]
       }
@@ -2317,7 +2679,7 @@
           "traits": {
             "smithy.api#documentation": "<p>String value type.</p>",
             "smithy.api#length": {
-              "max": 500
+              "max": 1500
             }
           }
         },
@@ -2332,10 +2694,22 @@
           "traits": {
             "smithy.api#documentation": "<p>Can be either null, or have a Boolean value type. Only one value can be provided.</p>"
           }
+        },
+        "emptyValue": {
+          "target": "com.amazonaws.connectcases#EmptyFieldValue",
+          "traits": {
+            "smithy.api#documentation": "<p>An empty value.</p>"
+          }
+        },
+        "userArnValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>Represents the user that performed the audit.</p>"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Object to store union of Field values.</p>"
+        "smithy.api#documentation": "<p>Object to store union of Field values.</p>\n         <note>\n            <p>The <code>Summary</code> system field accepts 1500 characters while all other fields\n        accept 500 characters.</p>\n         </note>"
       }
     },
     "com.amazonaws.connectcases#GetCase": {
@@ -2374,6 +2748,110 @@
           "outputToken": "nextToken"
         },
         "smithy.api#readonly": {}
+      }
+    },
+    "com.amazonaws.connectcases#GetCaseAuditEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.connectcases#GetCaseAuditEventsRequest"
+      },
+      "output": {
+        "target": "com.amazonaws.connectcases#GetCaseAuditEventsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.connectcases#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.connectcases#ValidationException"
+        }
+      ],
+      "traits": {
+        "smithy.api#documentation": "<p>Returns the audit history about a specific case if it exists.</p>",
+        "smithy.api#http": {
+          "uri": "/domains/{domainId}/cases/{caseId}/audit-history",
+          "method": "POST"
+        },
+        "smithy.api#paginated": {
+          "inputToken": "nextToken",
+          "outputToken": "nextToken",
+          "pageSize": "maxResults"
+        },
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.amazonaws.connectcases#GetCaseAuditEventsRequest": {
+      "type": "structure",
+      "members": {
+        "caseId": {
+          "target": "com.amazonaws.connectcases#CaseId",
+          "traits": {
+            "smithy.api#documentation": "<p>A unique identifier of the case.</p>",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "domainId": {
+          "target": "com.amazonaws.connectcases#DomainId",
+          "traits": {
+            "smithy.api#documentation": "<p>The unique identifier of the Cases domain.</p>",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "maxResults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#default": null,
+            "smithy.api#documentation": "<p>The maximum number of audit events to return. The current maximum supported value is 25.\n      This is also the default when no other value is provided.</p>",
+            "smithy.api#range": {
+              "min": 1,
+              "max": 25
+            }
+          }
+        },
+        "nextToken": {
+          "target": "com.amazonaws.connectcases#NextToken",
+          "traits": {
+            "smithy.api#documentation": "<p>The token for the next set of results. Use the value returned in the previous response in\n      the next request to retrieve the next set of results.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.amazonaws.connectcases#GetCaseAuditEventsResponse": {
+      "type": "structure",
+      "members": {
+        "nextToken": {
+          "target": "com.amazonaws.connectcases#NextToken",
+          "traits": {
+            "smithy.api#documentation": "<p>The token for the next set of results. This is null if there are no more results to\n      return.</p>"
+          }
+        },
+        "auditEvents": {
+          "target": "com.amazonaws.connectcases#AuditEventsList",
+          "traits": {
+            "smithy.api#documentation": "<p>A list of case audits where each represents a particular edit of the case.</p>",
+            "smithy.api#length": {
+              "max": 25
+            },
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.connectcases#GetCaseEventConfiguration": {
@@ -2858,6 +3336,15 @@
             "smithy.api#documentation": "<p>The status of the template.</p>",
             "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.amazonaws.connectcases#IamPrincipalArn": {
+      "type": "string",
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 500
         }
       }
     },
@@ -3670,7 +4157,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>API for adding case event publishing configuration</p>",
+        "smithy.api#documentation": "<p>Adds case event publishing configuration. For a complete list of fields you can add to the\n      event message, see <a href=\"https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html\">Create case fields</a> in the\n          <i>Amazon Connect Administrator Guide</i>\n         </p>",
         "smithy.api#http": {
           "uri": "/domains/{domainId}/case-event-configuration",
           "method": "PUT"
@@ -3922,7 +4409,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Searches for cases within their associated Cases domain. Search results are returned\n      as a paginated list of abridged case documents.</p>",
+        "smithy.api#documentation": "<p>Searches for cases within their associated Cases domain. Search results are returned\n      as a paginated list of abridged case documents.</p>\n         <note>\n            <p>For <code>customer_id</code> you must provide the full customer profile ARN in this\n        format: <code> arn:aws:profile:your AWS Region:your AWS account ID:domains/profiles domain\n          name/profiles/profile ID</code>. </p>\n         </note>",
         "smithy.api#http": {
           "uri": "/domains/{domainId}/cases-search",
           "method": "POST"
@@ -4215,6 +4702,12 @@
           "traits": {
             "smithy.api#documentation": "<p>A map of of key-value pairs that represent tags on a resource. Tags are used to organize, track, or control access for this resource.</p>"
           }
+        },
+        "performedBy": {
+          "target": "com.amazonaws.connectcases#UserUnion",
+          "traits": {
+            "smithy.api#documentation": "<p>Represents the creator of the related item.</p>"
+          }
         }
       },
       "traits": {
@@ -4298,9 +4791,6 @@
       "type": "list",
       "member": {
         "target": "com.amazonaws.connectcases#Sort"
-      },
-      "traits": {
-        "smithy.api#documentation": "/@documentation(\"The templateId\")"
       }
     },
     "com.amazonaws.connectcases#TagKey": {
@@ -4458,7 +4948,6 @@
     "com.amazonaws.connectcases#TemplateStatus": {
       "type": "string",
       "traits": {
-        "smithy.api#documentation": "Status of a template",
         "smithy.api#enum": [
           {
             "value": "Active",
@@ -4477,7 +4966,6 @@
         "target": "com.amazonaws.connectcases#TemplateStatus"
       },
       "traits": {
-        "smithy.api#documentation": "List of filters used on the ListTemplates result set",
         "smithy.api#length": {
           "min": 1,
           "max": 2
@@ -4625,7 +5113,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Updates the values of fields on a case. Fields to be updated are received as an array of\n      id/value pairs identical to the <code>CreateCase</code> input .</p>\n         <p>If the action is successful, the service sends back an HTTP 200 response with an empty\n      HTTP body.</p>",
+        "smithy.api#documentation": "<note>\n            <p>If you provide a value for <code>PerformedBy.UserArn</code> you must also have <a href=\"https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html\">connect:DescribeUser</a> permission on the User ARN resource that you provide</p>\n         </note>\n\n         <p>Updates the values of fields on a case. Fields to be updated are received as an array of\n      id/value pairs identical to the <code>CreateCase</code> input .</p>\n         <p>If the action is successful, the service sends back an HTTP 200 response with an empty\n      HTTP body.</p>",
         "smithy.api#http": {
           "uri": "/domains/{domainId}/cases/{caseId}",
           "method": "PUT"
@@ -4660,6 +5148,9 @@
             },
             "smithy.api#required": {}
           }
+        },
+        "performedBy": {
+          "target": "com.amazonaws.connectcases#UserUnion"
         }
       }
     },
@@ -4809,7 +5300,7 @@
         "content": {
           "target": "com.amazonaws.connectcases#LayoutContent",
           "traits": {
-            "smithy.api#documentation": "<p>Information about which fields will be present in the layout, the order of the fields, and\n      a read-only attribute of the field. </p>"
+            "smithy.api#documentation": "<p>Information about which fields will be present in the layout, the order of the\n      fields.</p>"
           }
         }
       }
@@ -4909,6 +5400,29 @@
     "com.amazonaws.connectcases#UpdateTemplateResponse": {
       "type": "structure",
       "members": {}
+    },
+    "com.amazonaws.connectcases#UserArn": {
+      "type": "string",
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 500
+        }
+      }
+    },
+    "com.amazonaws.connectcases#UserUnion": {
+      "type": "union",
+      "members": {
+        "userArn": {
+          "target": "com.amazonaws.connectcases#UserArn",
+          "traits": {
+            "smithy.api#documentation": "<p>Represents the Amazon Connect ARN of the user.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Represents the identity of the person who performed the action.</p>"
+      }
     },
     "com.amazonaws.connectcases#ValidationException": {
       "type": "structure",

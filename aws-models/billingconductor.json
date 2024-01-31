@@ -6,6 +6,9 @@
       "version": "2021-07-30",
       "operations": [
         {
+          "target": "com.amazonaws.billingconductor#GetBillingGroupCostReport"
+        },
+        {
           "target": "com.amazonaws.billingconductor#ListAccountAssociations"
         },
         {
@@ -64,14 +67,14 @@
         "smithy.api#cors": {
           "additionalAllowedHeaders": ["X-Api-Key"]
         },
-        "smithy.api#documentation": "<p>Amazon Web Services Billing Conductor is a fully managed service that you can use\n      to customize a <a href=\"https://docs.aws.amazon.com/billingconductor/latest/userguide/understanding-eb.html#eb-other-definitions\">pro forma</a> version of your billing data each month, to accurately show or chargeback\n      your end customers. Amazon Web Services Billing Conductor doesn't change the way\n      you're billed by Amazon Web Services each month by design. Instead, it provides you with a\n      mechanism to configure, generate, and display rates to certain customers over a given billing\n      period. You can also analyze the difference between the rates you apply to your accounting\n      groupings relative to your actual rates from Amazon Web Services. As a result of your Amazon Web Services Billing Conductor configuration, the payer account can also see the\n      custom rate applied on the billing details page of the <a href=\"https://console.aws.amazon.com/billing\">Amazon Web Services Billing console</a>, or configure a cost and usage report per\n      billing group.</p>\n         <p>This documentation shows how you can configure Amazon Web Services Billing Conductor using its\n      API. For more information about using the <a href=\"https://console.aws.amazon.com/billingconductor/\">Amazon Web Services\n        Billing Conductor</a> user interface, see the <a href=\"https://docs.aws.amazon.com/billingconductor/latest/userguide/what-is-billingconductor.html\"> Amazon Web Services Billing Conductor User Guide</a>.</p>",
+        "smithy.api#documentation": "<p>Amazon Web Services Billing Conductor is a fully managed service that you can use to\n      customize a <a href=\"https://docs.aws.amazon.com/billingconductor/latest/userguide/understanding-eb.html#eb-other-definitions\">proforma</a> version of your billing data each month, to accurately show or chargeback\n      your end customers. Amazon Web Services Billing Conductor doesn't change the way you're billed\n      by Amazon Web Services each month by design. Instead, it provides you with a mechanism to\n      configure, generate, and display rates to certain customers over a given billing period. You\n      can also analyze the difference between the rates you apply to your accounting groupings\n      relative to your actual rates from Amazon Web Services. As a result of your Amazon Web Services\n      Billing Conductor configuration, the payer account can also see the custom rate applied on the\n      billing details page of the <a href=\"https://console.aws.amazon.com/billing\">Amazon Web Services Billing\n        console</a>, or configure a cost and usage report per billing group.</p>\n         <p>This documentation shows how you can configure Amazon Web Services Billing Conductor using its\n      API. For more information about using the <a href=\"https://console.aws.amazon.com/billingconductor/\">Amazon Web Services\n        Billing Conductor</a> user interface, see the <a href=\"https://docs.aws.amazon.com/billingconductor/latest/userguide/what-is-billingconductor.html\"> Amazon Web Services Billing Conductor User Guide</a>.</p>",
         "smithy.api#title": "AWSBillingConductor",
         "smithy.rules#endpointRuleSet": {
           "version": "1.0",
           "parameters": {
             "Region": {
               "builtIn": "AWS::Region",
-              "required": true,
+              "required": false,
               "documentation": "The AWS region used to dispatch the request.",
               "type": "String"
             },
@@ -100,298 +103,15 @@
             {
               "conditions": [
                 {
-                  "fn": "aws.partition",
+                  "fn": "isSet",
                   "argv": [
                     {
-                      "ref": "Region"
+                      "ref": "Endpoint"
                     }
-                  ],
-                  "assign": "PartitionResult"
+                  ]
                 }
               ],
-              "type": "tree",
               "rules": [
-                {
-                  "conditions": [
-                    {
-                      "fn": "isSet",
-                      "argv": [
-                        {
-                          "ref": "Endpoint"
-                        }
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                      "type": "error"
-                    },
-                    {
-                      "conditions": [],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "ref": "UseDualStack"
-                                },
-                                true
-                              ]
-                            }
-                          ],
-                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                          "type": "error"
-                        },
-                        {
-                          "conditions": [],
-                          "endpoint": {
-                            "url": {
-                              "ref": "Endpoint"
-                            },
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "stringEquals",
-                      "argv": [
-                        {
-                          "fn": "getAttr",
-                          "argv": [
-                            {
-                              "ref": "PartitionResult"
-                            },
-                            "name"
-                          ]
-                        },
-                        "aws"
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "type": "tree",
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://billingconductor-fips.{Region}.api.aws",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ]
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                          "type": "error"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "type": "tree",
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://billingconductor-fips.{Region}.amazonaws.com",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ]
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS is enabled but this partition does not support FIPS",
-                          "type": "error"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "type": "tree",
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://billingconductor.{Region}.api.aws",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ]
-                        },
-                        {
-                          "conditions": [],
-                          "error": "DualStack is enabled but this partition does not support DualStack",
-                          "type": "error"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "endpoint": {
-                        "url": "https://billingconductor.us-east-1.amazonaws.com",
-                        "properties": {
-                          "authSchemes": [
-                            {
-                              "name": "sigv4",
-                              "signingRegion": "us-east-1",
-                              "signingName": "billingconductor"
-                            }
-                          ]
-                        },
-                        "headers": {}
-                      },
-                      "type": "endpoint"
-                    }
-                  ]
-                },
                 {
                   "conditions": [
                     {
@@ -402,7 +122,13 @@
                         },
                         true
                       ]
-                    },
+                    }
+                  ],
+                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                  "type": "error"
+                },
+                {
+                  "conditions": [
                     {
                       "fn": "booleanEquals",
                       "argv": [
@@ -413,46 +139,154 @@
                       ]
                     }
                   ],
-                  "type": "tree",
+                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                  "type": "error"
+                },
+                {
+                  "conditions": [],
+                  "endpoint": {
+                    "url": {
+                      "ref": "Endpoint"
+                    },
+                    "properties": {},
+                    "headers": {}
+                  },
+                  "type": "endpoint"
+                }
+              ],
+              "type": "tree"
+            },
+            {
+              "conditions": [
+                {
+                  "fn": "isSet",
+                  "argv": [
+                    {
+                      "ref": "Region"
+                    }
+                  ]
+                }
+              ],
+              "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "aws.partition",
+                      "argv": [
+                        {
+                          "ref": "Region"
+                        }
+                      ],
+                      "assign": "PartitionResult"
+                    }
+                  ],
                   "rules": [
                     {
                       "conditions": [
                         {
-                          "fn": "booleanEquals",
+                          "fn": "stringEquals",
                           "argv": [
-                            true,
                             {
                               "fn": "getAttr",
                               "argv": [
                                 {
                                   "ref": "PartitionResult"
                                 },
-                                "supportsFIPS"
+                                "name"
                               ]
-                            }
+                            },
+                            "aws"
                           ]
                         },
                         {
                           "fn": "booleanEquals",
                           "argv": [
-                            true,
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsDualStack"
-                              ]
-                            }
+                              "ref": "UseFIPS"
+                            },
+                            false
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            false
                           ]
                         }
                       ],
-                      "type": "tree",
+                      "endpoint": {
+                        "url": "https://billingconductor.us-east-1.amazonaws.com",
+                        "properties": {
+                          "authSchemes": [
+                            {
+                              "name": "sigv4",
+                              "signingName": "billingconductor",
+                              "signingRegion": "us-east-1"
+                            }
+                          ]
+                        },
+                        "headers": {}
+                      },
+                      "type": "endpoint"
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            true
+                          ]
+                        }
+                      ],
                       "rules": [
                         {
-                          "conditions": [],
-                          "type": "tree",
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
                           "rules": [
                             {
                               "conditions": [],
@@ -463,54 +297,48 @@
                               },
                               "type": "endpoint"
                             }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseFIPS"
+                          ],
+                          "type": "tree"
                         },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
+                        {
+                          "conditions": [],
+                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                          "type": "error"
+                        }
+                      ],
+                      "type": "tree"
+                    },
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
-                            true,
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsFIPS"
-                              ]
-                            }
+                              "ref": "UseFIPS"
+                            },
+                            true
                           ]
                         }
                       ],
-                      "type": "tree",
                       "rules": [
                         {
-                          "conditions": [],
-                          "type": "tree",
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                },
+                                true
+                              ]
+                            }
+                          ],
                           "rules": [
                             {
                               "conditions": [],
@@ -521,54 +349,48 @@
                               },
                               "type": "endpoint"
                             }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "FIPS is enabled but this partition does not support FIPS",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseDualStack"
+                          ],
+                          "type": "tree"
                         },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
+                        {
+                          "conditions": [],
+                          "error": "FIPS is enabled but this partition does not support FIPS",
+                          "type": "error"
+                        }
+                      ],
+                      "type": "tree"
+                    },
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
-                            true,
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsDualStack"
-                              ]
-                            }
+                              "ref": "UseDualStack"
+                            },
+                            true
                           ]
                         }
                       ],
-                      "type": "tree",
                       "rules": [
                         {
-                          "conditions": [],
-                          "type": "tree",
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
                           "rules": [
                             {
                               "conditions": [],
@@ -579,47 +401,16 @@
                               },
                               "type": "endpoint"
                             }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "DualStack is enabled but this partition does not support DualStack",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
+                          ],
+                          "type": "tree"
+                        },
                         {
-                          "fn": "stringEquals",
-                          "argv": [
-                            {
-                              "ref": "Region"
-                            },
-                            "aws-global"
-                          ]
+                          "conditions": [],
+                          "error": "DualStack is enabled but this partition does not support DualStack",
+                          "type": "error"
                         }
                       ],
-                      "endpoint": {
-                        "url": "https://billingconductor.us-east-1.amazonaws.com",
-                        "properties": {
-                          "authSchemes": [
-                            {
-                              "name": "sigv4",
-                              "signingRegion": "us-east-1",
-                              "signingName": "billingconductor"
-                            }
-                          ]
-                        },
-                        "headers": {}
-                      },
-                      "type": "endpoint"
+                      "type": "tree"
                     },
                     {
                       "conditions": [],
@@ -630,92 +421,21 @@
                       },
                       "type": "endpoint"
                     }
-                  ]
+                  ],
+                  "type": "tree"
                 }
-              ]
+              ],
+              "type": "tree"
+            },
+            {
+              "conditions": [],
+              "error": "Invalid Configuration: Missing Region",
+              "type": "error"
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://billingconductor-fips.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseDualStack": true,
-                "UseFIPS": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://billingconductor-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseDualStack": false,
-                "UseFIPS": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://billingconductor.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseDualStack": true,
-                "UseFIPS": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://billingconductor.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseDualStack": false,
-                "UseFIPS": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://billingconductor-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseDualStack": false,
-                "UseFIPS": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://billingconductor.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseDualStack": false,
-                "UseFIPS": false
-              }
-            },
             {
               "documentation": "For region aws-global with FIPS disabled and DualStack disabled",
               "expect": {
@@ -734,8 +454,8 @@
               },
               "params": {
                 "Region": "aws-global",
-                "UseDualStack": false,
-                "UseFIPS": false
+                "UseFIPS": false,
+                "UseDualStack": false
               }
             },
             {
@@ -747,8 +467,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": true,
-                "UseFIPS": true
+                "UseFIPS": true,
+                "UseDualStack": true
               }
             },
             {
@@ -760,8 +480,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": false,
-                "UseFIPS": true
+                "UseFIPS": true,
+                "UseDualStack": false
               }
             },
             {
@@ -773,8 +493,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": true,
-                "UseFIPS": false
+                "UseFIPS": false,
+                "UseDualStack": true
               }
             },
             {
@@ -795,8 +515,60 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": false,
-                "UseFIPS": false
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://billingconductor-fips.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://billingconductor-fips.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://billingconductor.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://billingconductor.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": false,
+                "UseDualStack": false
               }
             },
             {
@@ -808,8 +580,8 @@
               },
               "params": {
                 "Region": "us-gov-east-1",
-                "UseDualStack": true,
-                "UseFIPS": true
+                "UseFIPS": true,
+                "UseDualStack": true
               }
             },
             {
@@ -821,8 +593,8 @@
               },
               "params": {
                 "Region": "us-gov-east-1",
-                "UseDualStack": false,
-                "UseFIPS": true
+                "UseFIPS": true,
+                "UseDualStack": false
               }
             },
             {
@@ -834,8 +606,8 @@
               },
               "params": {
                 "Region": "us-gov-east-1",
-                "UseDualStack": true,
-                "UseFIPS": false
+                "UseFIPS": false,
+                "UseDualStack": true
               }
             },
             {
@@ -847,8 +619,67 @@
               },
               "params": {
                 "Region": "us-gov-east-1",
-                "UseDualStack": false,
-                "UseFIPS": false
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://billingconductor-fips.us-iso-east-1.c2s.ic.gov"
+                }
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "error": "DualStack is enabled but this partition does not support DualStack"
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://billingconductor.us-iso-east-1.c2s.ic.gov"
+                }
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
+              },
+              "params": {
+                "Region": "us-isob-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
               }
             },
             {
@@ -860,8 +691,19 @@
               },
               "params": {
                 "Region": "us-isob-east-1",
-                "UseDualStack": false,
-                "UseFIPS": true
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "error": "DualStack is enabled but this partition does not support DualStack"
+              },
+              "params": {
+                "Region": "us-isob-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
               }
             },
             {
@@ -873,12 +715,12 @@
               },
               "params": {
                 "Region": "us-isob-east-1",
-                "UseDualStack": false,
-                "UseFIPS": false
+                "UseFIPS": false,
+                "UseDualStack": false
               }
             },
             {
-              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
@@ -886,8 +728,21 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": false,
                 "UseFIPS": false,
+                "UseDualStack": false,
+                "Endpoint": "https://example.com"
+              }
+            },
+            {
+              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://example.com"
+                }
+              },
+              "params": {
+                "UseFIPS": false,
+                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -898,8 +753,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": false,
                 "UseFIPS": true,
+                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -910,9 +765,15 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseDualStack": true,
                 "UseFIPS": false,
+                "UseDualStack": true,
                 "Endpoint": "https://example.com"
+              }
+            },
+            {
+              "documentation": "Missing region",
+              "expect": {
+                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -951,30 +812,30 @@
         "AccountId": {
           "target": "com.amazonaws.billingconductor#AccountId",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The associating array of account IDs.\n    </p>"
+            "smithy.api#documentation": "<p>The associating array of account IDs.</p>"
           }
         },
         "BillingGroupArn": {
           "target": "com.amazonaws.billingconductor#BillingGroupArn",
           "traits": {
-            "smithy.api#documentation": "<p> The Billing Group Arn that the linked account is associated to. </p>"
+            "smithy.api#documentation": "<p>The Billing Group Arn that the linked account is associated to.</p>"
           }
         },
         "AccountName": {
           "target": "com.amazonaws.billingconductor#AccountName",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The Amazon Web Services account name.\n    </p>"
+            "smithy.api#documentation": "<p>The Amazon Web Services account name.</p>"
           }
         },
         "AccountEmail": {
           "target": "com.amazonaws.billingconductor#AccountEmail",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The Amazon Web Services account email. \n    </p>"
+            "smithy.api#documentation": "<p>The Amazon Web Services account email.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p> A representation of a linked account. </p>"
+        "smithy.api#documentation": "<p>A representation of a linked account.</p>"
       }
     },
     "com.amazonaws.billingconductor#AccountEmail": {
@@ -989,19 +850,37 @@
         "LinkedAccountIds": {
           "target": "com.amazonaws.billingconductor#AccountIdList",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The account IDs that make up the billing group. Account IDs must be a part of the consolidated billing family, and not associated with another billing group.\n    </p>",
+            "smithy.api#documentation": "<p>The account IDs that make up the billing group. Account IDs must be a part of the consolidated billing family, and not associated with another billing group.</p>",
             "smithy.api#required": {}
+          }
+        },
+        "AutoAssociate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if this billing group will automatically associate newly added\nAmazon Web Services accounts that join your consolidated billing family.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n     The set of accounts that will be under the billing group. The set of accounts resemble the linked accounts in a consolidated family.\n    </p>"
+        "smithy.api#documentation": "<p>The set of accounts that will be under the billing group. The set of accounts resemble the linked accounts in a consolidated billing family.</p>"
       }
     },
     "com.amazonaws.billingconductor#AccountId": {
       "type": "string",
       "traits": {
         "smithy.api#pattern": "^[0-9]{12}$"
+      }
+    },
+    "com.amazonaws.billingconductor#AccountIdFilterList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#AccountId"
+      },
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 30
+        }
       }
     },
     "com.amazonaws.billingconductor#AccountIdList": {
@@ -1180,18 +1059,18 @@
         "Message": {
           "target": "com.amazonaws.billingconductor#String",
           "traits": {
-            "smithy.api#documentation": "<p> The reason why the resource association failed. </p>"
+            "smithy.api#documentation": "<p>The reason why the resource association failed.</p>"
           }
         },
         "Reason": {
           "target": "com.amazonaws.billingconductor#AssociateResourceErrorReason",
           "traits": {
-            "smithy.api#documentation": "<p> A static error code that's used to classify the type of failure. </p>"
+            "smithy.api#documentation": "<p>A static error code that's used to classify the type of failure.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A representation of a resource association error.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of a resource association error.</p>"
       }
     },
     "com.amazonaws.billingconductor#AssociateResourceErrorReason": {
@@ -1227,18 +1106,18 @@
         "Arn": {
           "target": "com.amazonaws.billingconductor#CustomLineItemAssociationElement",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The resource ARN that was associated to the custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>The resource ARN that was associated to the custom line item.</p>"
           }
         },
         "Error": {
           "target": "com.amazonaws.billingconductor#AssociateResourceError",
           "traits": {
-            "smithy.api#documentation": "<p>\n      An <code>AssociateResourceError</code> that will populate if the resource association fails.\n    </p>"
+            "smithy.api#documentation": "<p>An <code>AssociateResourceError</code> that will populate if the resource association fails.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A resource association result for a percentage custom line item.\n    </p>"
+        "smithy.api#documentation": "<p>A resource association result for a percentage custom line item.</p>"
       }
     },
     "com.amazonaws.billingconductor#AssociateResourcesResponseList": {
@@ -1251,6 +1130,32 @@
       "type": "string",
       "traits": {
         "smithy.api#pattern": "^((arn:aws(-cn)?:billingconductor::[0-9]{12}:billinggroup/)?[0-9]{12}|MONITORED|UNMONITORED)$"
+      }
+    },
+    "com.amazonaws.billingconductor#Attribute": {
+      "type": "structure",
+      "members": {
+        "Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>The key in a key-value pair that describes the margin summary.</p>"
+          }
+        },
+        "Value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>The value in a key-value pair that describes the margin summary.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>The key-value pair that represents the attribute by which the\n                <code>BillingGroupCostReportResults</code> are grouped. For example, if you want a\n            service-level breakdown for Amazon Simple Storage Service (Amazon S3) of the billing group, the attribute will be a key-value pair\n            of <code>\"PRODUCT_NAME\"</code> and <code>\"S3\"</code>.</p>"
+      }
+    },
+    "com.amazonaws.billingconductor#AttributesList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#Attribute"
       }
     },
     "com.amazonaws.billingconductor#BatchAssociateResourcesToCustomLineItem": {
@@ -1446,7 +1351,6 @@
         }
       ],
       "traits": {
-        "aws.cloudformation#cfnResource": {},
         "aws.iam#conditionKeys": ["aws:ResourceTag/${TagKey}"],
         "aws.iam#disableConditionKeyInference": {},
         "smithy.api#documentation": "A billing group is a set of linked account which belong to the same end customer.\nIt can be seen as a virtual consolidated billing family.\n"
@@ -1476,48 +1380,104 @@
         "Arn": {
           "target": "com.amazonaws.billingconductor#BillingGroupArn",
           "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of a billing group. </p>"
+            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of a billing group.</p>"
           }
         },
         "AWSCost": {
           "target": "com.amazonaws.billingconductor#AWSCost",
           "traits": {
-            "smithy.api#documentation": "<p>The actual Amazon Web Services charges for the billing group.\n    </p>"
+            "smithy.api#documentation": "<p>The actual Amazon Web Services charges for the billing group.</p>"
           }
         },
         "ProformaCost": {
           "target": "com.amazonaws.billingconductor#ProformaCost",
           "traits": {
-            "smithy.api#documentation": "<p>The hypothetical Amazon Web Services charges based on the associated pricing plan of a billing group.\n    </p>"
+            "smithy.api#documentation": "<p>The hypothetical Amazon Web Services charges based on the associated pricing plan of a billing group.</p>"
           }
         },
         "Margin": {
           "target": "com.amazonaws.billingconductor#Margin",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The billing group margin.\n    </p>"
+            "smithy.api#documentation": "<p>The billing group margin.</p>"
           }
         },
         "MarginPercentage": {
           "target": "com.amazonaws.billingconductor#MarginPercentage",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The percentage of billing group margin.\n    </p>"
+            "smithy.api#documentation": "<p>The percentage of billing group margin.</p>"
           }
         },
         "Currency": {
           "target": "com.amazonaws.billingconductor#Currency",
           "traits": {
-            "smithy.api#documentation": "<p>The displayed currency.\n    </p>"
+            "smithy.api#documentation": "<p>The displayed currency.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A summary report of actual Amazon Web Services charges and calculated Amazon Web Services charges, based on the associated pricing plan of a billing group.\n    </p>"
+        "smithy.api#documentation": "<p>A summary report of actual Amazon Web Services charges and calculated Amazon Web Services charges, based on the associated pricing plan of a billing group.</p>"
       }
     },
     "com.amazonaws.billingconductor#BillingGroupCostReportList": {
       "type": "list",
       "member": {
         "target": "com.amazonaws.billingconductor#BillingGroupCostReportElement"
+      }
+    },
+    "com.amazonaws.billingconductor#BillingGroupCostReportResultElement": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "target": "com.amazonaws.billingconductor#BillingGroupArn",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Resource Number (ARN) that uniquely identifies the billing group.</p>"
+          }
+        },
+        "AWSCost": {
+          "target": "com.amazonaws.billingconductor#AWSCost",
+          "traits": {
+            "smithy.api#documentation": "<p>The actual Amazon Web Services charges for the billing group.</p>"
+          }
+        },
+        "ProformaCost": {
+          "target": "com.amazonaws.billingconductor#ProformaCost",
+          "traits": {
+            "smithy.api#documentation": "<p>The hypothetical Amazon Web Services charges based on the associated pricing plan of a billing group.</p>"
+          }
+        },
+        "Margin": {
+          "target": "com.amazonaws.billingconductor#Margin",
+          "traits": {
+            "smithy.api#documentation": "<p>The billing group margin.</p>"
+          }
+        },
+        "MarginPercentage": {
+          "target": "com.amazonaws.billingconductor#MarginPercentage",
+          "traits": {
+            "smithy.api#documentation": "<p>The percentage of the billing group margin.</p>"
+          }
+        },
+        "Currency": {
+          "target": "com.amazonaws.billingconductor#Currency",
+          "traits": {
+            "smithy.api#documentation": "<p>The displayed currency.</p>"
+          }
+        },
+        "Attributes": {
+          "target": "com.amazonaws.billingconductor#AttributesList",
+          "traits": {
+            "smithy.api#documentation": "<p>The list of key-value pairs that represent the attributes by which the\n                <code>BillingGroupCostReportResults</code> are grouped. For example, if you want the\n                Amazon S3 service-level breakdown of a billing group for November 2023, the\n            attributes list will contain a key-value pair of <code>\"PRODUCT_NAME\"</code> and\n                <code>\"S3\"</code> and a key-value pair of <code>\"BILLING_PERIOD\"</code> and\n                <code>\"Nov 2023\"</code>.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>A paginated call to retrieve a list of summary reports of actual Amazon Web Services charges and the\n            calculated Amazon Web Services charges, broken down by attributes.</p>"
+      }
+    },
+    "com.amazonaws.billingconductor#BillingGroupCostReportResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#BillingGroupCostReportResultElement"
       }
     },
     "com.amazonaws.billingconductor#BillingGroupDescription": {
@@ -1548,25 +1508,25 @@
         "Name": {
           "target": "com.amazonaws.billingconductor#BillingGroupName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the billing group. </p>"
+            "smithy.api#documentation": "<p>The name of the billing group.</p>"
           }
         },
         "Arn": {
           "target": "com.amazonaws.billingconductor#BillingGroupArn",
           "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Number (ARN) that can be used to uniquely identify the billing group.\n    </p>"
+            "smithy.api#documentation": "<p>The Amazon Resource Number (ARN) that can be used to uniquely identify the billing group.</p>"
           }
         },
         "Description": {
           "target": "com.amazonaws.billingconductor#BillingGroupDescription",
           "traits": {
-            "smithy.api#documentation": "<p>The description of the billing group. </p>"
+            "smithy.api#documentation": "<p>The description of the billing group.</p>"
           }
         },
         "PrimaryAccountId": {
           "target": "com.amazonaws.billingconductor#AccountId",
           "traits": {
-            "smithy.api#documentation": "<p>The account ID that serves as the main account in a billing group. </p>"
+            "smithy.api#documentation": "<p>The account ID that serves as the main account in a billing group.</p>"
           }
         },
         "ComputationPreference": {
@@ -1576,38 +1536,44 @@
           "target": "com.amazonaws.billingconductor#NumberOfAccounts",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>The number of accounts in the particular billing group.\n    </p>"
+            "smithy.api#documentation": "<p>The number of accounts in the particular billing group.</p>"
           }
         },
         "CreationTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n      The time when the billing group was created.\n    </p>"
+            "smithy.api#documentation": "<p>The time when the billing group was created.</p>"
           }
         },
         "LastModifiedTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p> The most recent time when the billing group was modified. </p>"
+            "smithy.api#documentation": "<p>The most recent time when the billing group was modified.</p>"
           }
         },
         "Status": {
           "target": "com.amazonaws.billingconductor#BillingGroupStatus",
           "traits": {
-            "smithy.api#documentation": "<p>The billing group status. Only one of the valid values can be used.\n    </p>"
+            "smithy.api#documentation": "<p>The billing group status. Only one of the valid values can be used.</p>"
           }
         },
         "StatusReason": {
           "target": "com.amazonaws.billingconductor#BillingGroupStatusReason",
           "traits": {
-            "smithy.api#documentation": "<p>The reason why the billing group is in its current status.\n    </p>"
+            "smithy.api#documentation": "<p>The reason why the billing group is in its current status.</p>"
+          }
+        },
+        "AccountGrouping": {
+          "target": "com.amazonaws.billingconductor#ListBillingGroupAccountGrouping",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if the billing group has automatic account\nassociation (<code>AutoAssociate</code>) enabled.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A representation of a billing group.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of a billing group.</p>"
       }
     },
     "com.amazonaws.billingconductor#BillingGroupName": {
@@ -1636,6 +1602,18 @@
         ]
       }
     },
+    "com.amazonaws.billingconductor#BillingGroupStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#BillingGroupStatus"
+      },
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 2
+        }
+      }
+    },
     "com.amazonaws.billingconductor#BillingGroupStatusReason": {
       "type": "string"
     },
@@ -1643,6 +1621,28 @@
       "type": "string",
       "traits": {
         "smithy.api#pattern": "^\\d{4}-(0?[1-9]|1[012])$"
+      }
+    },
+    "com.amazonaws.billingconductor#BillingPeriodRange": {
+      "type": "structure",
+      "members": {
+        "InclusiveStartBillingPeriod": {
+          "target": "com.amazonaws.billingconductor#BillingPeriod",
+          "traits": {
+            "smithy.api#documentation": "<p>The inclusive start billing period that defines a billing period range for the margin summary.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "ExclusiveEndBillingPeriod": {
+          "target": "com.amazonaws.billingconductor#BillingPeriod",
+          "traits": {
+            "smithy.api#documentation": "<p>The exclusive end billing period that defines a billing period range for the margin summary. For example, if you choose a billing period that starts in October 2023 and ends in December 2023, the margin summary will only include data from October 2023 and November 2023.</p>",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>A time range for which the margin summary is effective. The time range can be up to 12 months.</p>"
       }
     },
     "com.amazonaws.billingconductor#ClientToken": {
@@ -1667,7 +1667,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      The preferences and settings that will be used to compute the Amazon Web Services charges for a billing group.\n    </p>"
+        "smithy.api#documentation": "<p>The preferences and settings that will be used to compute the Amazon Web Services charges for a billing group.</p>"
       }
     },
     "com.amazonaws.billingconductor#ConflictException": {
@@ -1793,7 +1793,7 @@
         "AccountGrouping": {
           "target": "com.amazonaws.billingconductor#AccountGrouping",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The set of accounts that will be under the billing group. The set of accounts resemble the linked accounts in a consolidated family.\n    </p>",
+            "smithy.api#documentation": "<p>\n      The set of accounts that will be under the billing group. The set of accounts resemble the linked accounts in a consolidated billing family.\n    </p>",
             "smithy.api#required": {}
           }
         },
@@ -1865,7 +1865,7 @@
       ],
       "traits": {
         "aws.iam#conditionKeys": ["aws:TagKeys", "aws:RequestTag/${TagKey}"],
-        "smithy.api#documentation": "<p>\n      Creates a custom line item that can be used to create a one-time fixed charge that can be applied to a single billing group for the current or previous billing period. The one-time fixed charge is either a fee or discount. \n    </p>",
+        "smithy.api#documentation": "<p>Creates a custom line item that can be used to create a one-time fixed charge that can be\n      applied to a single billing group for the current or previous billing period. The one-time\n      fixed charge is either a fee or discount. </p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/create-custom-line-item",
@@ -1922,6 +1922,12 @@
           "traits": {
             "smithy.api#documentation": "<p>\n      A <code>CustomLineItemChargeDetails</code> that describes the charge details for a custom line item.\n    </p>",
             "smithy.api#required": {}
+          }
+        },
+        "AccountId": {
+          "target": "com.amazonaws.billingconductor#AccountId",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Web Services account in which this custom line item will be applied to.</p>"
           }
         }
       },
@@ -2324,19 +2330,19 @@
         "InclusiveStartBillingPeriod": {
           "target": "com.amazonaws.billingconductor#BillingPeriod",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The inclusive start billing period that defines a billing period range where a custom line is applied.\n    </p>",
+            "smithy.api#documentation": "<p>The inclusive start billing period that defines a billing period range where a custom line is applied.</p>",
             "smithy.api#required": {}
           }
         },
         "ExclusiveEndBillingPeriod": {
           "target": "com.amazonaws.billingconductor#BillingPeriod",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The inclusive end billing period that defines a billing period range where a custom line is applied.\n    </p>"
+            "smithy.api#documentation": "<p>The inclusive end billing period that defines a billing period range where a custom line is applied.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      The billing period range in which the custom line item request will be applied.\n    </p>"
+        "smithy.api#documentation": "<p>The billing period range in which the custom line item request will be applied.</p>"
       }
     },
     "com.amazonaws.billingconductor#CustomLineItemChargeDetails": {
@@ -2345,25 +2351,31 @@
         "Flat": {
           "target": "com.amazonaws.billingconductor#CustomLineItemFlatChargeDetails",
           "traits": {
-            "smithy.api#documentation": "<p>\n      A <code>CustomLineItemFlatChargeDetails</code> that describes the charge details of a flat custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>A <code>CustomLineItemFlatChargeDetails</code> that describes the charge details of a flat\n        custom line item.</p>"
           }
         },
         "Percentage": {
           "target": "com.amazonaws.billingconductor#CustomLineItemPercentageChargeDetails",
           "traits": {
-            "smithy.api#documentation": "<p>\n      A <code>CustomLineItemPercentageChargeDetails</code> that describes the charge details of a percentage custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>A <code>CustomLineItemPercentageChargeDetails</code> that describes the charge details of a percentage custom line item.</p>"
           }
         },
         "Type": {
           "target": "com.amazonaws.billingconductor#CustomLineItemType",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The type of the custom line item that indicates whether the charge is a fee or credit.\n    </p>",
+            "smithy.api#documentation": "<p>The type of the custom line item that indicates whether the charge is a fee or credit.</p>",
             "smithy.api#required": {}
+          }
+        },
+        "LineItemFilters": {
+          "target": "com.amazonaws.billingconductor#LineItemFiltersList",
+          "traits": {
+            "smithy.api#documentation": "<p>A representation of the line item filter.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      The charge details of a custom line item. It should contain only one of <code>Flat</code> or <code>Percentage</code>.\n    </p>"
+        "smithy.api#documentation": "<p>The charge details of a custom line item. It should contain only one of <code>Flat</code> or <code>Percentage</code>.</p>"
       }
     },
     "com.amazonaws.billingconductor#CustomLineItemChargeValue": {
@@ -2391,13 +2403,13 @@
         "ChargeValue": {
           "target": "com.amazonaws.billingconductor#CustomLineItemChargeValue",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The custom line item's fixed charge value in USD.\n    </p>",
+            "smithy.api#documentation": "<p>The custom line item's fixed charge value in USD.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A representation of the charge details that are associated with a flat custom line item.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of the charge details that are associated with a flat custom line item.</p>"
       }
     },
     "com.amazonaws.billingconductor#CustomLineItemList": {
@@ -2412,69 +2424,75 @@
         "Arn": {
           "target": "com.amazonaws.billingconductor#CustomLineItemArn",
           "traits": {
-            "smithy.api#documentation": "<p> The Amazon Resource Names (ARNs) for custom line items. </p>"
+            "smithy.api#documentation": "<p>The Amazon Resource Names (ARNs) for custom line items.</p>"
           }
         },
         "Name": {
           "target": "com.amazonaws.billingconductor#CustomLineItemName",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The custom line item's name.\n    </p>"
+            "smithy.api#documentation": "<p>The custom line item's name.</p>"
           }
         },
         "ChargeDetails": {
           "target": "com.amazonaws.billingconductor#ListCustomLineItemChargeDetails",
           "traits": {
-            "smithy.api#documentation": "<p>\n      A <code>ListCustomLineItemChargeDetails</code> that describes the charge details of a custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>A <code>ListCustomLineItemChargeDetails</code> that describes the charge details of a custom line item.</p>"
           }
         },
         "CurrencyCode": {
           "target": "com.amazonaws.billingconductor#CurrencyCode",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The custom line item's charge value currency. Only one of the valid values can be used.\n    </p>"
+            "smithy.api#documentation": "<p>The custom line item's charge value currency. Only one of the valid values can be used.</p>"
           }
         },
         "Description": {
           "target": "com.amazonaws.billingconductor#CustomLineItemDescription",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The custom line item's description. This is shown on the Bills page in association with the charge value.\n    </p>"
+            "smithy.api#documentation": "<p>The custom line item's description. This is shown on the Bills page in association with the charge value.</p>"
           }
         },
         "ProductCode": {
           "target": "com.amazonaws.billingconductor#CustomLineItemProductCode",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The product code that's associated with the custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>The product code that's associated with the custom line item.</p>"
           }
         },
         "BillingGroupArn": {
           "target": "com.amazonaws.billingconductor#BillingGroupArn",
           "traits": {
-            "smithy.api#documentation": "<p> The Amazon Resource Name (ARN) that references the billing group where the custom line\n      item applies to. </p>"
+            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) that references the billing group where the custom line item applies to.</p>"
           }
         },
         "CreationTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n      The time created.\n    </p>"
+            "smithy.api#documentation": "<p>The time created.</p>"
           }
         },
         "LastModifiedTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p> The most recent time when the custom line item was modified. </p>"
+            "smithy.api#documentation": "<p>The most recent time when the custom line item was modified.</p>"
           }
         },
         "AssociationSize": {
           "target": "com.amazonaws.billingconductor#NumberOfAssociations",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n      The number of resources that are associated to the custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>The number of resources that are associated to the custom line item.</p>"
+          }
+        },
+        "AccountId": {
+          "target": "com.amazonaws.billingconductor#AccountId",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Web Services account in which this custom line item will be applied to.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A representation of a custom line item.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of a custom line item.</p>"
       }
     },
     "com.amazonaws.billingconductor#CustomLineItemName": {
@@ -2506,19 +2524,19 @@
         "PercentageValue": {
           "target": "com.amazonaws.billingconductor#CustomLineItemPercentageChargeValue",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The custom line item's percentage value. This will be multiplied against the combined value of its associated resources to determine its charge value.\n    </p>",
+            "smithy.api#documentation": "<p>The custom line item's percentage value. This will be multiplied against the combined\n        value of its associated resources to determine its charge value. </p>",
             "smithy.api#required": {}
           }
         },
         "AssociatedValues": {
           "target": "com.amazonaws.billingconductor#CustomLineItemAssociationsList",
           "traits": {
-            "smithy.api#documentation": "<p>\n      A list of resource ARNs to associate to the percentage custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>A list of resource ARNs to associate to the percentage custom line item.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A representation of the charge details that are associated with a percentage custom line item.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of the charge details that are associated with a percentage custom line item.</p>"
       }
     },
     "com.amazonaws.billingconductor#CustomLineItemPercentageChargeValue": {
@@ -2643,6 +2661,25 @@
           "traits": {
             "smithy.api#documentation": "<p>The end billing period of the custom line item version.</p>"
           }
+        },
+        "Arn": {
+          "target": "com.amazonaws.billingconductor#CustomLineItemArn",
+          "traits": {
+            "smithy.api#documentation": "<p>\n      A list of custom line item Amazon Resource Names (ARNs) to retrieve information.\n    </p>"
+          }
+        },
+        "StartTime": {
+          "target": "com.amazonaws.billingconductor#Instant",
+          "traits": {
+            "smithy.api#default": 0,
+            "smithy.api#documentation": "<p>\n      The inclusive start time.\n    </p>"
+          }
+        },
+        "AccountId": {
+          "target": "com.amazonaws.billingconductor#AccountId",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Web Services account in which this custom line item will be applied to.</p>"
+          }
         }
       },
       "traits": {
@@ -2760,7 +2797,7 @@
         "Arn": {
           "target": "com.amazonaws.billingconductor#CustomLineItemArn",
           "traits": {
-            "smithy.api#documentation": "<p>\n      Then ARN of the deleted custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>The ARN of the deleted custom line item. </p>"
           }
         }
       }
@@ -3023,7 +3060,7 @@
         "Arn": {
           "target": "com.amazonaws.billingconductor#CustomLineItemAssociationElement",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The resource ARN that was disassociated from the custom line item.\n    </p>"
+            "smithy.api#documentation": "<p>The resource ARN that was disassociated from the custom line item.\n    </p>"
           }
         },
         "Error": {
@@ -3034,7 +3071,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A resource disassociation result for a percentage custom line item.\n    </p>"
+        "smithy.api#documentation": "<p>A resource disassociation result for a percentage custom line item.</p>"
       }
     },
     "com.amazonaws.billingconductor#DisassociateResourcesResponseList": {
@@ -3056,6 +3093,127 @@
       },
       "traits": {
         "smithy.api#documentation": "<p>\n      The possible Amazon Web Services Free Tier configurations.\n    </p>"
+      }
+    },
+    "com.amazonaws.billingconductor#GetBillingGroupCostReport": {
+      "type": "operation",
+      "input": {
+        "target": "com.amazonaws.billingconductor#GetBillingGroupCostReportInput"
+      },
+      "output": {
+        "target": "com.amazonaws.billingconductor#GetBillingGroupCostReportOutput"
+      },
+      "errors": [
+        {
+          "target": "com.amazonaws.billingconductor#AccessDeniedException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#InternalServerException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ResourceNotFoundException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ThrottlingException"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ValidationException"
+        }
+      ],
+      "traits": {
+        "smithy.api#documentation": "<p>Retrieves the margin summary report, which includes the Amazon Web Services cost and charged \n      amount (pro forma cost) by Amazon Web Service for a specific billing group.</p>",
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/get-billing-group-cost-report",
+          "code": 200
+        },
+        "smithy.api#paginated": {
+          "inputToken": "NextToken",
+          "outputToken": "NextToken",
+          "pageSize": "MaxResults",
+          "items": "BillingGroupCostReportResults"
+        },
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.amazonaws.billingconductor#GetBillingGroupCostReportInput": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "target": "com.amazonaws.billingconductor#BillingGroupArn",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Resource Number (ARN) that uniquely identifies the billing group.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "BillingPeriodRange": {
+          "target": "com.amazonaws.billingconductor#BillingPeriodRange",
+          "traits": {
+            "smithy.api#documentation": "<p>A time range for which the margin summary is effective. You can specify up to 12 months.</p>"
+          }
+        },
+        "GroupBy": {
+          "target": "com.amazonaws.billingconductor#GroupByAttributesList",
+          "traits": {
+            "smithy.api#documentation": "<p>A list of strings that specify the attributes that are used to break down costs in the\n      margin summary reports for the billing group. For example, you can view your costs by the\n      Amazon Web Service name or the billing period.</p>"
+          }
+        },
+        "MaxResults": {
+          "target": "com.amazonaws.billingconductor#MaxBillingGroupCostReportResults",
+          "traits": {
+            "smithy.api#documentation": "<p>The maximum number of margin summary reports to retrieve.</p>"
+          }
+        },
+        "NextToken": {
+          "target": "com.amazonaws.billingconductor#Token",
+          "traits": {
+            "smithy.api#documentation": "<p>The pagination token used on subsequent calls to get reports.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.amazonaws.billingconductor#GetBillingGroupCostReportOutput": {
+      "type": "structure",
+      "members": {
+        "BillingGroupCostReportResults": {
+          "target": "com.amazonaws.billingconductor#BillingGroupCostReportResultsList",
+          "traits": {
+            "smithy.api#documentation": "<p>The list of margin summary reports.</p>"
+          }
+        },
+        "NextToken": {
+          "target": "com.amazonaws.billingconductor#Token",
+          "traits": {
+            "smithy.api#documentation": "<p>The pagination token used on subsequent calls to get reports.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.amazonaws.billingconductor#GroupByAttributeName": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "PRODUCT_NAME",
+            "name": "PRODUCT_NAME"
+          },
+          {
+            "value": "BILLING_PERIOD",
+            "name": "BILLING_PERIOD"
+          }
+        ]
+      }
+    },
+    "com.amazonaws.billingconductor#GroupByAttributesList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#GroupByAttributeName"
       }
     },
     "com.amazonaws.billingconductor#Instant": {
@@ -3086,6 +3244,81 @@
         "smithy.api#documentation": "<p>An unexpected error occurred while processing a request.\n    </p>",
         "smithy.api#error": "server",
         "smithy.api#httpError": 500
+      }
+    },
+    "com.amazonaws.billingconductor#LineItemFilter": {
+      "type": "structure",
+      "members": {
+        "Attribute": {
+          "target": "com.amazonaws.billingconductor#LineItemFilterAttributeName",
+          "traits": {
+            "smithy.api#documentation": "<p>The attribute of the line item filter. This specifies what attribute that you can filter\n      on.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "MatchOption": {
+          "target": "com.amazonaws.billingconductor#MatchOption",
+          "traits": {
+            "smithy.api#documentation": "<p>The match criteria of the line item filter. This parameter specifies whether not to include the resource value from the billing group total cost.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "Values": {
+          "target": "com.amazonaws.billingconductor#LineItemFilterValuesList",
+          "traits": {
+            "smithy.api#documentation": "<p>The values of the line item filter. This specifies the values to filter on. Currently, you can only exclude Savings Plan discounts.</p>",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>A representation of the line item filter for your custom line item. You can use line item filters to include or exclude specific resource values from the billing group's total cost. \n      For example, if you create a custom line item and you want to filter out a value, such as\n      Savings Plan discounts, you can update <code>LineItemFilter</code> to exclude it.</p>"
+      }
+    },
+    "com.amazonaws.billingconductor#LineItemFilterAttributeName": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "LINE_ITEM_TYPE",
+            "name": "LINE_ITEM_TYPE"
+          }
+        ]
+      }
+    },
+    "com.amazonaws.billingconductor#LineItemFilterValue": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "SAVINGS_PLAN_NEGATION",
+            "name": "SAVINGS_PLAN_NEGATION"
+          }
+        ]
+      }
+    },
+    "com.amazonaws.billingconductor#LineItemFilterValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#LineItemFilterValue"
+      },
+      "traits": {
+        "smithy.api#length": {
+          "min": 1,
+          "max": 1
+        }
+      }
+    },
+    "com.amazonaws.billingconductor#LineItemFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.amazonaws.billingconductor#LineItemFilter"
+      },
+      "traits": {
+        "smithy.api#length": {
+          "min": 0,
+          "max": 1
+        }
       }
     },
     "com.amazonaws.billingconductor#ListAccountAssociations": {
@@ -3134,18 +3367,24 @@
         "Association": {
           "target": "com.amazonaws.billingconductor#Association",
           "traits": {
-            "smithy.api#documentation": "<p>\n            <code>MONITORED</code>: linked accounts that are associated to billing groups.</p>\n         <p>\n            <code>UNMONITORED</code>: linked accounts that are not associated to billing\n      groups.</p>\n         <p>\n            <code>Billing Group Arn</code>: linked accounts that are associated to the provided\n      Billing Group Arn. </p>"
+            "smithy.api#documentation": "<p>\n            <code>MONITORED</code>: linked accounts that are associated to billing groups.</p>\n         <p>\n            <code>UNMONITORED</code>: linked accounts that are not associated to billing groups.</p>\n         <p>\n            <code>Billing Group Arn</code>: linked accounts that are associated to the provided Billing Group Arn.</p>"
           }
         },
         "AccountId": {
           "target": "com.amazonaws.billingconductor#AccountId",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The Amazon Web Services account ID to filter on.\n    </p>"
+            "smithy.api#documentation": "<p>The Amazon Web Services account ID to filter on.</p>"
+          }
+        },
+        "AccountIds": {
+          "target": "com.amazonaws.billingconductor#AccountIdFilterList",
+          "traits": {
+            "smithy.api#documentation": "<p>\n      The list of Amazon Web Services IDs to retrieve their associated billing group for a given time range.\n    </p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The filter on the account ID of the linked account, or any of the following:</p>\n         <p>\n            <code>MONITORED</code>: linked accounts that are associated to billing groups.</p>\n         <p>\n            <code>UNMONITORED</code>: linked accounts that are not associated to billing\n      groups.</p>\n         <p>\n            <code>Billing Group Arn</code>: linked accounts that are associated to the provided\n      Billing Group Arn. </p>"
+        "smithy.api#documentation": "<p>The filter on the account ID of the linked account, or any of the following:</p>\n         <p>\n            <code>MONITORED</code>: linked accounts that are associated to billing groups.</p>\n         <p>\n            <code>UNMONITORED</code>: linked accounts that are not associated to billing groups.</p>\n         <p>\n            <code>Billing Group Arn</code>: linked accounts that are associated to the provided Billing Group Arn.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListAccountAssociationsInput": {
@@ -3186,6 +3425,20 @@
             "smithy.api#documentation": "<p>\n      The pagination token that's used on subsequent calls to get accounts.\n    </p>"
           }
         }
+      }
+    },
+    "com.amazonaws.billingconductor#ListBillingGroupAccountGrouping": {
+      "type": "structure",
+      "members": {
+        "AutoAssociate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if this billing group will automatically associate newly added\nAmazon Web Services accounts that join your consolidated billing family.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Specifies if the billing group has the following\nfeatures enabled.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListBillingGroupCostReports": {
@@ -3235,12 +3488,12 @@
         "BillingGroupArns": {
           "target": "com.amazonaws.billingconductor#BillingGroupArnList",
           "traits": {
-            "smithy.api#documentation": "<p>The list of Amazon Resource Names (ARNs) used to filter billing groups to retrieve\n      reports. </p>"
+            "smithy.api#documentation": "<p>The list of Amazon Resource Names (ARNs) used to filter billing groups to retrieve reports. </p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The filter used to retrieve specific <code>BillingGroupCostReportElements</code>.\n    </p>"
+        "smithy.api#documentation": "<p>The filter used to retrieve specific <code>BillingGroupCostReportElements</code>.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListBillingGroupCostReportsInput": {
@@ -3336,18 +3589,30 @@
         "Arns": {
           "target": "com.amazonaws.billingconductor#BillingGroupArnList",
           "traits": {
-            "smithy.api#documentation": "<p>The list of billing group Amazon Resource Names (ARNs) to retrieve information. </p>"
+            "smithy.api#documentation": "<p>The list of billing group Amazon Resource Names (ARNs) to retrieve information.</p>"
           }
         },
         "PricingPlan": {
           "target": "com.amazonaws.billingconductor#PricingPlanFullArn",
           "traits": {
-            "smithy.api#documentation": "<p>The pricing plan Amazon Resource Names (ARNs) to retrieve information. </p>"
+            "smithy.api#documentation": "<p>The pricing plan Amazon Resource Names (ARNs) to retrieve information.</p>"
+          }
+        },
+        "Statuses": {
+          "target": "com.amazonaws.billingconductor#BillingGroupStatusList",
+          "traits": {
+            "smithy.api#documentation": "<p>\n      A list of billing groups to retrieve their current status for a specific time range\n    </p>"
+          }
+        },
+        "AutoAssociate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if this billing group will automatically associate newly added\nAmazon Web Services accounts that join your consolidated billing family.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The filter that specifies the billing groups and pricing plans to retrieve billing group information.\n    </p>"
+        "smithy.api#documentation": "<p>The filter that specifies the billing groups and pricing plans to retrieve billing group information.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListBillingGroupsInput": {
@@ -3416,6 +3681,12 @@
           "traits": {
             "smithy.api#documentation": "<p>\n      The type of the custom line item that indicates whether the charge is a <code>fee</code> or <code>credit</code>.\n    </p>",
             "smithy.api#required": {}
+          }
+        },
+        "LineItemFilters": {
+          "target": "com.amazonaws.billingconductor#LineItemFiltersList",
+          "traits": {
+            "smithy.api#documentation": "<p>A representation of the line item filter.</p>"
           }
         }
       },
@@ -3619,24 +3890,30 @@
         "Names": {
           "target": "com.amazonaws.billingconductor#CustomLineItemNameList",
           "traits": {
-            "smithy.api#documentation": "<p>\n      A list of custom line items to retrieve information.\n    </p>"
+            "smithy.api#documentation": "<p>A list of custom line items to retrieve information.</p>"
           }
         },
         "BillingGroups": {
           "target": "com.amazonaws.billingconductor#BillingGroupArnList",
           "traits": {
-            "smithy.api#documentation": "<p> The billing group Amazon Resource Names (ARNs) to retrieve information. </p>"
+            "smithy.api#documentation": "<p>The billing group Amazon Resource Names (ARNs) to retrieve information.</p>"
           }
         },
         "Arns": {
           "target": "com.amazonaws.billingconductor#CustomLineItemArns",
           "traits": {
-            "smithy.api#documentation": "<p>\n     A list of custom line item ARNs to retrieve information.\n    </p>"
+            "smithy.api#documentation": "<p>A list of custom line item ARNs to retrieve information.</p>"
+          }
+        },
+        "AccountIds": {
+          "target": "com.amazonaws.billingconductor#AccountIdList",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Web Services accounts in which this custom line item will be applied to.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A filter that specifies the custom line items and billing groups to retrieve FFLI information.\n    </p>"
+        "smithy.api#documentation": "<p>A filter that specifies the custom line items and billing groups to retrieve FFLI information.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListCustomLineItemsInput": {
@@ -3829,12 +4106,12 @@
         "Arns": {
           "target": "com.amazonaws.billingconductor#PricingPlanArns",
           "traits": {
-            "smithy.api#documentation": "<p>A list of pricing plan Amazon Resource Names (ARNs) to retrieve information. </p>"
+            "smithy.api#documentation": "<p>A list of pricing plan Amazon Resource Names (ARNs) to retrieve information.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The filter that specifies the Amazon Resource Names (ARNs) of pricing plans, to retrieve\n      pricing plan information. </p>"
+        "smithy.api#documentation": "<p>The filter that specifies the Amazon Resource Names (ARNs) of pricing plans, to retrieve\n          pricing plan information.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListPricingPlansInput": {
@@ -4033,12 +4310,12 @@
         "Arns": {
           "target": "com.amazonaws.billingconductor#PricingRuleArns",
           "traits": {
-            "smithy.api#documentation": "<p> A list containing the pricing rule Amazon Resource Names (ARNs) to include in the API\n      response. </p>"
+            "smithy.api#documentation": "<p>A list containing the pricing rule Amazon Resource Names (ARNs) to include in the API response.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p> The filter that specifies criteria that the pricing rules returned by the\n        <code>ListPricingRules</code> API will adhere to. </p>"
+        "smithy.api#documentation": "<p> The filter that specifies criteria that the pricing rules returned by the <code>ListPricingRules</code> API will adhere to.</p>"
       }
     },
     "com.amazonaws.billingconductor#ListPricingRulesInput": {
@@ -4332,6 +4609,26 @@
     "com.amazonaws.billingconductor#MarginPercentage": {
       "type": "string"
     },
+    "com.amazonaws.billingconductor#MatchOption": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "NOT_EQUAL",
+            "name": "NOT_EQUAL"
+          }
+        ]
+      }
+    },
+    "com.amazonaws.billingconductor#MaxBillingGroupCostReportResults": {
+      "type": "integer",
+      "traits": {
+        "smithy.api#range": {
+          "min": 200,
+          "max": 300
+        }
+      }
+    },
     "com.amazonaws.billingconductor#MaxBillingGroupResults": {
       "type": "integer",
       "traits": {
@@ -4507,45 +4804,45 @@
         "Name": {
           "target": "com.amazonaws.billingconductor#PricingPlanName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of a pricing plan.\n    </p>"
+            "smithy.api#documentation": "<p>The name of a pricing plan.</p>"
           }
         },
         "Arn": {
           "target": "com.amazonaws.billingconductor#PricingPlanArn",
           "traits": {
-            "smithy.api#documentation": "<p>The pricing plan Amazon Resource Names (ARN). This can be used to uniquely identify a\n      pricing plan. </p>"
+            "smithy.api#documentation": "<p>The pricing plan Amazon Resource Names (ARN). This can be used to uniquely identify a pricing plan.</p>"
           }
         },
         "Description": {
           "target": "com.amazonaws.billingconductor#PricingPlanDescription",
           "traits": {
-            "smithy.api#documentation": "<p>The pricing plan description.\n    </p>"
+            "smithy.api#documentation": "<p>The pricing plan description.</p>"
           }
         },
         "Size": {
           "target": "com.amazonaws.billingconductor#NumberOfAssociatedPricingRules",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n    The pricing rules count that's currently associated with this pricing plan list element.\n    </p>"
+            "smithy.api#documentation": "<p>The pricing rules count that's currently associated with this pricing plan list element.</p>"
           }
         },
         "CreationTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n      The time when the pricing plan was created.\n    </p>"
+            "smithy.api#documentation": "<p>The time when the pricing plan was created.</p>"
           }
         },
         "LastModifiedTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p> The most recent time when the pricing plan was modified. </p>"
+            "smithy.api#documentation": "<p>The most recent time when the pricing plan was modified.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A representation of a pricing plan.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of a pricing plan.</p>"
       }
     },
     "com.amazonaws.billingconductor#PricingPlanName": {
@@ -4653,64 +4950,64 @@
         "Name": {
           "target": "com.amazonaws.billingconductor#PricingRuleName",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The name of a pricing rule.\n    </p>"
+            "smithy.api#documentation": "<p>The name of a pricing rule.</p>"
           }
         },
         "Arn": {
           "target": "com.amazonaws.billingconductor#PricingRuleArn",
           "traits": {
-            "smithy.api#documentation": "<p> The Amazon Resource Name (ARN) used to uniquely identify a pricing rule. </p>"
+            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) used to uniquely identify a pricing rule.</p>"
           }
         },
         "Description": {
           "target": "com.amazonaws.billingconductor#PricingRuleDescription",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The pricing rule description.\n    </p>"
+            "smithy.api#documentation": "<p>The pricing rule description.</p>"
           }
         },
         "Scope": {
           "target": "com.amazonaws.billingconductor#PricingRuleScope",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The scope of pricing rule that indicates if it is globally applicable, or if it is service-specific.\n    </p>"
+            "smithy.api#documentation": "<p>The scope of pricing rule that indicates if it is globally applicable, or if it is service-specific.</p>"
           }
         },
         "Type": {
           "target": "com.amazonaws.billingconductor#PricingRuleType",
           "traits": {
-            "smithy.api#documentation": "<p>\n      The type of pricing rule.\n    </p>"
+            "smithy.api#documentation": "<p>The type of pricing rule.</p>"
           }
         },
         "ModifierPercentage": {
           "target": "com.amazonaws.billingconductor#ModifierPercentage",
           "traits": {
-            "smithy.api#documentation": "<p>\n      A percentage modifier applied on the public pricing rates.\n    </p>"
+            "smithy.api#documentation": "<p>A percentage modifier applied on the public pricing rates.</p>"
           }
         },
         "Service": {
           "target": "com.amazonaws.billingconductor#Service",
           "traits": {
-            "smithy.api#documentation": "<p>\n      If the <code>Scope</code> attribute is <code>SERVICE</code>, this attribute indicates which service the <code>PricingRule</code> is applicable for.\n    </p>"
+            "smithy.api#documentation": "<p>If the <code>Scope</code> attribute is <code>SERVICE</code>, this attribute indicates which service the <code>PricingRule</code> is applicable for.</p>"
           }
         },
         "AssociatedPricingPlanCount": {
           "target": "com.amazonaws.billingconductor#NumberOfPricingPlansAssociatedWith",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n      The pricing plans count that this pricing rule is associated with.\n    </p>"
+            "smithy.api#documentation": "<p>The pricing plans count that this pricing rule is associated with.</p>"
           }
         },
         "CreationTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>\n      The time when the pricing rule was created.\n    </p>"
+            "smithy.api#documentation": "<p>The time when the pricing rule was created.</p>"
           }
         },
         "LastModifiedTime": {
           "target": "com.amazonaws.billingconductor#Instant",
           "traits": {
             "smithy.api#default": 0,
-            "smithy.api#documentation": "<p> The most recent time when the pricing rule was modified. </p>"
+            "smithy.api#documentation": "<p> The most recent time when the pricing rule was modified.</p>"
           }
         },
         "BillingEntity": {
@@ -4724,10 +5021,22 @@
           "traits": {
             "smithy.api#documentation": "<p>\n      The set of tiering configurations for the pricing rule.\n    </p>"
           }
+        },
+        "UsageType": {
+          "target": "com.amazonaws.billingconductor#UsageType",
+          "traits": {
+            "smithy.api#documentation": "<p>\n      Usage type is the unit that each service uses to measure the usage of a specific type of resource.</p>\n         <p>If the <code>Scope</code> attribute is set to <code>SKU</code>, this attribute indicates which usage type the <code>PricingRule</code> is modifying. For example, <code>USW2-BoxUsage:m2.2xlarge</code> describes an<code> M2 High Memory Double Extra Large</code> instance in the US West (Oregon) Region. \n      \n    </p>"
+          }
+        },
+        "Operation": {
+          "target": "com.amazonaws.billingconductor#Operation",
+          "traits": {
+            "smithy.api#documentation": "<p>\n      Operation is the specific Amazon Web Services action covered by this line item. This describes the specific usage of the line item.</p>\n         <p>\n        If the <code>Scope</code> attribute is set to <code>SKU</code>, this attribute indicates which operation the <code>PricingRule</code> is modifying. For example, a value of <code>RunInstances:0202</code> indicates the operation of running an Amazon EC2 instance.</p>"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>\n      A representation of a pricing rule.\n    </p>"
+        "smithy.api#documentation": "<p>A representation of a pricing rule.</p>"
       }
     },
     "com.amazonaws.billingconductor#PricingRuleName": {
@@ -4756,6 +5065,10 @@
           {
             "value": "BILLING_ENTITY",
             "name": "BILLING_ENTITY"
+          },
+          {
+            "value": "SKU",
+            "name": "SKU"
           }
         ]
       }
@@ -5178,6 +5491,20 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.amazonaws.billingconductor#UpdateBillingGroupAccountGrouping": {
+      "type": "structure",
+      "members": {
+        "AutoAssociate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if this billing group will automatically associate newly added\nAmazon Web Services accounts that join your consolidated billing family.</p>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "<p>Specifies if the billing group has the following\nfeatures enabled.</p>"
+      }
+    },
     "com.amazonaws.billingconductor#UpdateBillingGroupInput": {
       "type": "structure",
       "members": {
@@ -5210,6 +5537,12 @@
           "target": "com.amazonaws.billingconductor#BillingGroupDescription",
           "traits": {
             "smithy.api#documentation": "<p>A description of the billing group. \n    </p>"
+          }
+        },
+        "AccountGrouping": {
+          "target": "com.amazonaws.billingconductor#UpdateBillingGroupAccountGrouping",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if the billing group has automatic account\nassociation (<code>AutoAssociate</code>) enabled.</p>"
           }
         }
       }
@@ -5272,6 +5605,12 @@
           "traits": {
             "smithy.api#documentation": "<p>\n      The reason why the billing group is in its current status.\n    </p>"
           }
+        },
+        "AccountGrouping": {
+          "target": "com.amazonaws.billingconductor#UpdateBillingGroupAccountGrouping",
+          "traits": {
+            "smithy.api#documentation": "<p>Specifies if the billing group has automatic account\nassociation (<code>AutoAssociate</code>) enabled.</p>"
+          }
         }
       }
     },
@@ -5323,6 +5662,12 @@
           "target": "com.amazonaws.billingconductor#UpdateCustomLineItemPercentageChargeDetails",
           "traits": {
             "smithy.api#documentation": "<p>\n      An <code>UpdateCustomLineItemPercentageChargeDetails</code> that describes the new charge details of a percentage custom line item.\n    </p>"
+          }
+        },
+        "LineItemFilters": {
+          "target": "com.amazonaws.billingconductor#LineItemFiltersList",
+          "traits": {
+            "smithy.api#documentation": "<p>A representation of the line item filter.</p>"
           }
         }
       },
@@ -5769,7 +6114,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input doesn't match with the constraints specified by Amazon Web Services services.</p>",
+        "smithy.api#documentation": "<p>The input doesn't match with the constraints specified by Amazon Web Services.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 400
       }
@@ -5780,20 +6125,20 @@
         "Name": {
           "target": "com.amazonaws.billingconductor#String",
           "traits": {
-            "smithy.api#documentation": "<p>The field name.\n    </p>",
+            "smithy.api#documentation": "<p>The field name.</p>",
             "smithy.api#required": {}
           }
         },
         "Message": {
           "target": "com.amazonaws.billingconductor#String",
           "traits": {
-            "smithy.api#documentation": "<p>The message describing why the field failed validation.\n    </p>",
+            "smithy.api#documentation": "<p>The message describing why the field failed validation.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The field's information of a request that resulted in an exception.\n    </p>"
+        "smithy.api#documentation": "<p>The field's information of a request that resulted in an exception.</p>"
       }
     },
     "com.amazonaws.billingconductor#ValidationExceptionFieldList": {
@@ -6017,6 +6362,34 @@
           {
             "value": "ILLEGAL_TIERING_INPUT",
             "name": "ILLEGAL_TIERING_INPUT"
+          },
+          {
+            "value": "ILLEGAL_OPERATION",
+            "name": "ILLEGAL_OPERATION"
+          },
+          {
+            "value": "ILLEGAL_USAGE_TYPE",
+            "name": "ILLEGAL_USAGE_TYPE"
+          },
+          {
+            "value": "INVALID_SKU_COMBO",
+            "name": "INVALID_SKU_COMBO"
+          },
+          {
+            "value": "INVALID_FILTER",
+            "name": "INVALID_FILTER"
+          },
+          {
+            "value": "TOO_MANY_AUTO_ASSOCIATE_BILLING_GROUPS",
+            "name": "TOO_MANY_AUTO_ASSOCIATE_BILLING_GROUPS"
+          },
+          {
+            "value": "CANNOT_DELETE_AUTO_ASSOCIATE_BILLING_GROUP",
+            "name": "CANNOT_DELETE_AUTO_ASSOCIATE_BILLING_GROUP"
+          },
+          {
+            "value": "ILLEGAL_ACCOUNT_ID",
+            "name": "ILLEGAL_ACCOUNT_ID"
           }
         ]
       }

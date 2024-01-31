@@ -38,6 +38,23 @@
         }
       }
     },
+    "com.amazonaws.iotdeviceadvisor#AuthenticationMethod": {
+      "type": "enum",
+      "members": {
+        "X509ClientCertificate": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X509ClientCertificate"
+          }
+        },
+        "SignatureVersion4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SignatureVersion4"
+          }
+        }
+      }
+    },
     "com.amazonaws.iotdeviceadvisor#ConflictException": {
       "type": "structure",
       "members": {
@@ -85,6 +102,7 @@
         "suiteDefinitionConfiguration": {
           "target": "com.amazonaws.iotdeviceadvisor#SuiteDefinitionConfiguration",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Creates a Device Advisor test suite with suite definition configuration.</p>",
             "smithy.api#required": {}
           }
@@ -95,6 +113,9 @@
             "smithy.api#documentation": "<p>The tags to be attached to the suite definition.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#CreateSuiteDefinitionResponse": {
@@ -124,6 +145,9 @@
             "smithy.api#documentation": "<p>The timestamp of when the test suite was created.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinition": {
@@ -162,11 +186,17 @@
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinitionResponse": {
       "type": "structure",
-      "members": {}
+      "members": {},
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.amazonaws.iotdeviceadvisor#DeviceUnderTest": {
       "type": "structure",
@@ -174,18 +204,24 @@
         "thingArn": {
           "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
           "traits": {
-            "smithy.api#documentation": "<p>Lists devices thing ARN.</p>"
+            "smithy.api#documentation": "<p>Lists device's thing ARN.</p>"
           }
         },
         "certificateArn": {
           "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
           "traits": {
-            "smithy.api#documentation": "<p>Lists devices certificate ARN.</p>"
+            "smithy.api#documentation": "<p>Lists device's certificate ARN.</p>"
+          }
+        },
+        "deviceRoleArn": {
+          "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
+          "traits": {
+            "smithy.api#documentation": "<p>Lists device's role ARN.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Information of a test device. A thing ARN or a certificate ARN is required.</p>"
+        "smithy.api#documentation": "<p>Information of a test device. A thing ARN, certificate ARN \n            or device role ARN is required.</p>"
       }
     },
     "com.amazonaws.iotdeviceadvisor#DeviceUnderTestList": {
@@ -259,7 +295,24 @@
             "smithy.api#documentation": "<p>The certificate ARN of the device. This is an optional parameter.</p>",
             "smithy.api#httpQuery": "certificateArn"
           }
+        },
+        "deviceRoleArn": {
+          "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
+          "traits": {
+            "smithy.api#documentation": "<p>The device role ARN of the device. This is an optional parameter.</p>",
+            "smithy.api#httpQuery": "deviceRoleArn"
+          }
+        },
+        "authenticationMethod": {
+          "target": "com.amazonaws.iotdeviceadvisor#AuthenticationMethod",
+          "traits": {
+            "smithy.api#documentation": "<p>The authentication method used during the device connection.</p>",
+            "smithy.api#httpQuery": "authenticationMethod"
+          }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetEndpointResponse": {
@@ -271,6 +324,9 @@
             "smithy.api#documentation": "<p>The response of an Device Advisor endpoint.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetSuiteDefinition": {
@@ -319,6 +375,9 @@
             "smithy.api#httpQuery": "suiteDefinitionVersion"
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetSuiteDefinitionResponse": {
@@ -372,6 +431,9 @@
             "smithy.api#documentation": "<p>Tags attached to the suite definition.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetSuiteRun": {
@@ -449,6 +511,9 @@
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetSuiteRunReportResponse": {
@@ -460,6 +525,9 @@
             "smithy.api#documentation": "<p>Download URL of the qualification report.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetSuiteRunRequest": {
@@ -481,6 +549,9 @@
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GetSuiteRunResponse": {
@@ -552,6 +623,9 @@
             "smithy.api#documentation": "<p>The tags attached to the suite run.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#GroupName": {
@@ -593,10 +667,7 @@
       }
     },
     "com.amazonaws.iotdeviceadvisor#IntendedForQualificationBoolean": {
-      "type": "boolean",
-      "traits": {
-        "smithy.api#default": false
-      }
+      "type": "boolean"
     },
     "com.amazonaws.iotdeviceadvisor#InternalServerException": {
       "type": "structure",
@@ -680,7 +751,7 @@
           "parameters": {
             "Region": {
               "builtIn": "AWS::Region",
-              "required": true,
+              "required": false,
               "documentation": "The AWS region used to dispatch the request.",
               "type": "String"
             },
@@ -709,30 +780,160 @@
             {
               "conditions": [
                 {
-                  "fn": "aws.partition",
+                  "fn": "isSet",
                   "argv": [
                     {
-                      "ref": "Region"
+                      "ref": "Endpoint"
                     }
-                  ],
-                  "assign": "PartitionResult"
+                  ]
                 }
               ],
-              "type": "tree",
               "rules": [
                 {
                   "conditions": [
                     {
-                      "fn": "isSet",
+                      "fn": "booleanEquals",
                       "argv": [
                         {
-                          "ref": "Endpoint"
-                        }
+                          "ref": "UseFIPS"
+                        },
+                        true
                       ]
                     }
                   ],
-                  "type": "tree",
+                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                  "type": "error"
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                  "type": "error"
+                },
+                {
+                  "conditions": [],
+                  "endpoint": {
+                    "url": {
+                      "ref": "Endpoint"
+                    },
+                    "properties": {},
+                    "headers": {}
+                  },
+                  "type": "endpoint"
+                }
+              ],
+              "type": "tree"
+            },
+            {
+              "conditions": [
+                {
+                  "fn": "isSet",
+                  "argv": [
+                    {
+                      "ref": "Region"
+                    }
+                  ]
+                }
+              ],
+              "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "aws.partition",
+                      "argv": [
+                        {
+                          "ref": "Region"
+                        }
+                      ],
+                      "assign": "PartitionResult"
+                    }
+                  ],
                   "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://api.iotdeviceadvisor-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ],
+                          "type": "tree"
+                        },
+                        {
+                          "conditions": [],
+                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                          "type": "error"
+                        }
+                      ],
+                      "type": "tree"
+                    },
                     {
                       "conditions": [
                         {
@@ -745,12 +946,6 @@
                           ]
                         }
                       ],
-                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                      "type": "error"
-                    },
-                    {
-                      "conditions": [],
-                      "type": "tree",
                       "rules": [
                         {
                           "conditions": [
@@ -758,143 +953,18 @@
                               "fn": "booleanEquals",
                               "argv": [
                                 {
-                                  "ref": "UseDualStack"
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
                                 },
                                 true
                               ]
                             }
                           ],
-                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                          "type": "error"
-                        },
-                        {
-                          "conditions": [],
-                          "endpoint": {
-                            "url": {
-                              "ref": "Endpoint"
-                            },
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseFIPS"
-                        },
-                        true
-                      ]
-                    },
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseDualStack"
-                        },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
-                            {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsFIPS"
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
-                            {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsDualStack"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [],
-                          "endpoint": {
-                            "url": "https://api.iotdeviceadvisor-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseFIPS"
-                        },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            true,
-                            {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsFIPS"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "type": "tree",
-                      "rules": [
-                        {
-                          "conditions": [],
-                          "type": "tree",
                           "rules": [
                             {
                               "conditions": [],
@@ -905,173 +975,104 @@
                               },
                               "type": "endpoint"
                             }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "conditions": [],
-                      "error": "FIPS is enabled but this partition does not support FIPS",
-                      "type": "error"
-                    }
-                  ]
-                },
-                {
-                  "conditions": [
-                    {
-                      "fn": "booleanEquals",
-                      "argv": [
-                        {
-                          "ref": "UseDualStack"
+                          ],
+                          "type": "tree"
                         },
-                        true
-                      ]
-                    }
-                  ],
-                  "type": "tree",
-                  "rules": [
+                        {
+                          "conditions": [],
+                          "error": "FIPS is enabled but this partition does not support FIPS",
+                          "type": "error"
+                        }
+                      ],
+                      "type": "tree"
+                    },
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
-                            true,
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "supportsDualStack"
-                              ]
-                            }
+                              "ref": "UseDualStack"
+                            },
+                            true
                           ]
                         }
                       ],
-                      "type": "tree",
                       "rules": [
                         {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://api.iotdeviceadvisor.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ],
+                          "type": "tree"
+                        },
+                        {
                           "conditions": [],
-                          "endpoint": {
-                            "url": "https://api.iotdeviceadvisor.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                            "properties": {},
-                            "headers": {}
-                          },
-                          "type": "endpoint"
+                          "error": "DualStack is enabled but this partition does not support DualStack",
+                          "type": "error"
                         }
-                      ]
+                      ],
+                      "type": "tree"
                     },
                     {
                       "conditions": [],
-                      "error": "DualStack is enabled but this partition does not support DualStack",
-                      "type": "error"
+                      "endpoint": {
+                        "url": "https://api.iotdeviceadvisor.{Region}.{PartitionResult#dnsSuffix}",
+                        "properties": {},
+                        "headers": {}
+                      },
+                      "type": "endpoint"
                     }
-                  ]
-                },
-                {
-                  "conditions": [],
-                  "endpoint": {
-                    "url": "https://api.iotdeviceadvisor.{Region}.{PartitionResult#dnsSuffix}",
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
+                  ],
+                  "type": "tree"
                 }
-              ]
+              ],
+              "type": "tree"
+            },
+            {
+              "conditions": [],
+              "error": "Invalid Configuration: Missing Region",
+              "type": "error"
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
             {
-              "documentation": "For region us-west-2 with FIPS enabled and DualStack enabled",
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://api.iotdeviceadvisor-fips.us-west-2.api.aws"
+                  "url": "https://api.iotdeviceadvisor.ap-northeast-1.amazonaws.com"
                 }
               },
               "params": {
-                "UseFIPS": true,
-                "Region": "us-west-2",
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-west-2 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor-fips.us-west-2.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseFIPS": true,
-                "Region": "us-west-2",
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-west-2 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor.us-west-2.api.aws"
-                }
-              },
-              "params": {
+                "Region": "ap-northeast-1",
                 "UseFIPS": false,
-                "Region": "us-west-2",
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-west-2 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor.us-west-2.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseFIPS": false,
-                "Region": "us-west-2",
                 "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region eu-west-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor-fips.eu-west-1.api.aws"
-                }
-              },
-              "params": {
-                "UseFIPS": true,
-                "Region": "eu-west-1",
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region eu-west-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor-fips.eu-west-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseFIPS": true,
-                "Region": "eu-west-1",
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region eu-west-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor.eu-west-1.api.aws"
-                }
-              },
-              "params": {
-                "UseFIPS": false,
-                "Region": "eu-west-1",
-                "UseDualStack": true
               }
             },
             {
@@ -1082,60 +1083,34 @@
                 }
               },
               "params": {
-                "UseFIPS": false,
                 "Region": "eu-west-1",
+                "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack enabled",
+              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://api.iotdeviceadvisor-fips.ap-northeast-1.api.aws"
+                  "url": "https://api.iotdeviceadvisor.us-east-1.amazonaws.com"
                 }
               },
               "params": {
-                "UseFIPS": true,
-                "Region": "ap-northeast-1",
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor-fips.ap-northeast-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseFIPS": true,
-                "Region": "ap-northeast-1",
+                "Region": "us-east-1",
+                "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack enabled",
+              "documentation": "For region us-west-2 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://api.iotdeviceadvisor.ap-northeast-1.api.aws"
+                  "url": "https://api.iotdeviceadvisor.us-west-2.amazonaws.com"
                 }
               },
               "params": {
+                "Region": "us-west-2",
                 "UseFIPS": false,
-                "Region": "ap-northeast-1",
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://api.iotdeviceadvisor.ap-northeast-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "UseFIPS": false,
-                "Region": "ap-northeast-1",
                 "UseDualStack": false
               }
             },
@@ -1147,8 +1122,8 @@
                 }
               },
               "params": {
-                "UseFIPS": true,
                 "Region": "us-east-1",
+                "UseFIPS": true,
                 "UseDualStack": true
               }
             },
@@ -1160,8 +1135,8 @@
                 }
               },
               "params": {
-                "UseFIPS": true,
                 "Region": "us-east-1",
+                "UseFIPS": true,
                 "UseDualStack": false
               }
             },
@@ -1173,26 +1148,227 @@
                 }
               },
               "params": {
-                "UseFIPS": false,
                 "Region": "us-east-1",
+                "UseFIPS": false,
                 "UseDualStack": true
               }
             },
             {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://api.iotdeviceadvisor.us-east-1.amazonaws.com"
+                  "url": "https://api.iotdeviceadvisor-fips.cn-north-1.api.amazonwebservices.com.cn"
                 }
               },
               "params": {
-                "UseFIPS": false,
-                "Region": "us-east-1",
+                "Region": "cn-north-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor-fips.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": true,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "Region": "cn-north-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor-fips.us-gov-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor-fips.us-gov-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor.us-gov-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor.us-gov-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-gov-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor-fips.us-iso-east-1.c2s.ic.gov"
+                }
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "error": "DualStack is enabled but this partition does not support DualStack"
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor.us-iso-east-1.c2s.ic.gov"
+                }
+              },
+              "params": {
+                "Region": "us-iso-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
+              },
+              "params": {
+                "Region": "us-isob-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor-fips.us-isob-east-1.sc2s.sgov.gov"
+                }
+              },
+              "params": {
+                "Region": "us-isob-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "error": "DualStack is enabled but this partition does not support DualStack"
+              },
+              "params": {
+                "Region": "us-isob-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://api.iotdeviceadvisor.us-isob-east-1.sc2s.sgov.gov"
+                }
+              },
+              "params": {
+                "Region": "us-isob-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://example.com"
+                }
+              },
+              "params": {
+                "Region": "us-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false,
+                "Endpoint": "https://example.com"
+              }
+            },
+            {
+              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
@@ -1200,7 +1376,6 @@
               },
               "params": {
                 "UseFIPS": false,
-                "Region": "us-east-1",
                 "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
@@ -1211,8 +1386,8 @@
                 "error": "Invalid Configuration: FIPS and custom endpoint are not supported"
               },
               "params": {
-                "UseFIPS": true,
                 "Region": "us-east-1",
+                "UseFIPS": true,
                 "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
@@ -1223,10 +1398,16 @@
                 "error": "Invalid Configuration: Dualstack and custom endpoint are not supported"
               },
               "params": {
-                "UseFIPS": false,
                 "Region": "us-east-1",
+                "UseFIPS": false,
                 "UseDualStack": true,
                 "Endpoint": "https://example.com"
+              }
+            },
+            {
+              "documentation": "Missing region",
+              "expect": {
+                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -1235,10 +1416,7 @@
       }
     },
     "com.amazonaws.iotdeviceadvisor#IsLongDurationTestBoolean": {
-      "type": "boolean",
-      "traits": {
-        "smithy.api#default": false
-      }
+      "type": "boolean"
     },
     "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitions": {
       "type": "operation",
@@ -1276,7 +1454,6 @@
         "maxResults": {
           "target": "com.amazonaws.iotdeviceadvisor#MaxResults",
           "traits": {
-            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The maximum number of results to return at once.</p>",
             "smithy.api#httpQuery": "maxResults"
           }
@@ -1288,6 +1465,9 @@
             "smithy.api#httpQuery": "nextToken"
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitionsResponse": {
@@ -1305,6 +1485,9 @@
             "smithy.api#documentation": "<p>A token used to get the next set of results.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#ListSuiteRuns": {
@@ -1357,7 +1540,6 @@
         "maxResults": {
           "target": "com.amazonaws.iotdeviceadvisor#MaxResults",
           "traits": {
-            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The maximum number of results to return at once.</p>",
             "smithy.api#httpQuery": "maxResults"
           }
@@ -1369,6 +1551,9 @@
             "smithy.api#httpQuery": "nextToken"
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#ListSuiteRunsResponse": {
@@ -1386,6 +1571,9 @@
             "smithy.api#documentation": "<p>A token to retrieve the next set of results.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#ListTagsForResource": {
@@ -1422,11 +1610,14 @@
         "resourceArn": {
           "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
           "traits": {
-            "smithy.api#documentation": "<p>The resource ARN of the IoT Device Advisor resource.\n        This can be SuiteDefinition ARN or SuiteRun ARN.</p>",
+            "smithy.api#documentation": "<p>The resource ARN of the IoT Device Advisor resource. This can be SuiteDefinition ARN or\n            SuiteRun ARN.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#ListTagsForResourceResponse": {
@@ -1438,6 +1629,9 @@
             "smithy.api#documentation": "<p>The tags attached to the IoT Device Advisor resource.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#LogUrl": {
@@ -1446,7 +1640,6 @@
     "com.amazonaws.iotdeviceadvisor#MaxResults": {
       "type": "integer",
       "traits": {
-        "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 1,
           "max": 50
@@ -1463,10 +1656,7 @@
       }
     },
     "com.amazonaws.iotdeviceadvisor#ParallelRun": {
-      "type": "boolean",
-      "traits": {
-        "smithy.api#default": false
-      }
+      "type": "boolean"
     },
     "com.amazonaws.iotdeviceadvisor#Protocol": {
       "type": "enum",
@@ -1481,6 +1671,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "MqttV5"
+          }
+        },
+        "MqttV3_1_1_OverWebSocket": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MqttV3_1_1_OverWebSocket"
+          }
+        },
+        "MqttV5_OverWebSocket": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MqttV5_OverWebSocket"
           }
         }
       }
@@ -1508,7 +1710,7 @@
       "type": "string",
       "traits": {
         "smithy.api#length": {
-          "min": 1,
+          "min": 0,
           "max": 2048
         }
       }
@@ -1573,6 +1775,7 @@
         "suiteRunConfiguration": {
           "target": "com.amazonaws.iotdeviceadvisor#SuiteRunConfiguration",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Suite run configuration.</p>",
             "smithy.api#required": {}
           }
@@ -1583,6 +1786,9 @@
             "smithy.api#documentation": "<p>The tags to be attached to the suite run.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#StartSuiteRunResponse": {
@@ -1612,6 +1818,9 @@
             "smithy.api#documentation": "<p>The response of an Device Advisor test endpoint.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#Status": {
@@ -1720,11 +1929,17 @@
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#StopSuiteRunResponse": {
       "type": "structure",
-      "members": {}
+      "members": {},
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.amazonaws.iotdeviceadvisor#String128": {
       "type": "string",
@@ -1750,6 +1965,7 @@
         "suiteDefinitionName": {
           "target": "com.amazonaws.iotdeviceadvisor#SuiteDefinitionName",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Gets the suite definition name. This is a required parameter.</p>",
             "smithy.api#required": {}
           }
@@ -1763,27 +1979,27 @@
         "intendedForQualification": {
           "target": "com.amazonaws.iotdeviceadvisor#IntendedForQualificationBoolean",
           "traits": {
-            "smithy.api#default": false,
             "smithy.api#documentation": "<p>Gets the tests intended for qualification in a suite.</p>"
           }
         },
         "isLongDurationTest": {
           "target": "com.amazonaws.iotdeviceadvisor#IsLongDurationTestBoolean",
           "traits": {
-            "smithy.api#default": false,
             "smithy.api#documentation": "<p>Verifies if the test suite is a long duration test.</p>"
           }
         },
         "rootGroup": {
           "target": "com.amazonaws.iotdeviceadvisor#RootGroup",
           "traits": {
-            "smithy.api#documentation": "<p>Gets the test suite root group. This is a required parameter.</p>",
+            "smithy.api#clientOptional": {},
+            "smithy.api#documentation": "<p>Gets the test suite root group. This is a required parameter.\n            For updating or creating the latest qualification suite, \n            if <code>intendedForQualification</code> is set to true, \n            <code>rootGroup</code> can be an empty string. If <code>intendedForQualification</code> is false, \n            <code>rootGroup</code> cannot be an empty string.\n            If <code>rootGroup</code> is empty, and \n            <code>intendedForQualification</code> is set to true, \n            all the qualification tests are included, and the configuration is default.</p>\n         <p>\n            For a qualification suite, the minimum length is 0, and the maximum is 2048.  For a \n            non-qualification suite, the minimum length is 1, and the maximum is 2048.\n        </p>",
             "smithy.api#required": {}
           }
         },
         "devicePermissionRoleArn": {
           "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Gets the device permission ARN. This is a required parameter.</p>",
             "smithy.api#required": {}
           }
@@ -1823,14 +2039,12 @@
         "intendedForQualification": {
           "target": "com.amazonaws.iotdeviceadvisor#IntendedForQualificationBoolean",
           "traits": {
-            "smithy.api#default": false,
             "smithy.api#documentation": "<p>Specifies if the test suite is intended for qualification.</p>"
           }
         },
         "isLongDurationTest": {
           "target": "com.amazonaws.iotdeviceadvisor#IsLongDurationTestBoolean",
           "traits": {
-            "smithy.api#default": false,
             "smithy.api#documentation": "<p>Verifies if the test suite is a long duration test.</p>"
           }
         },
@@ -1881,7 +2095,8 @@
         "primaryDevice": {
           "target": "com.amazonaws.iotdeviceadvisor#DeviceUnderTest",
           "traits": {
-            "smithy.api#documentation": "<p>Sets the primary device for the test suite run. This requires\n        a thing ARN or a certificate ARN.</p>",
+            "smithy.api#clientOptional": {},
+            "smithy.api#documentation": "<p>Sets the primary device for the test suite run. This requires a thing ARN or a\n            certificate ARN.</p>",
             "smithy.api#required": {}
           }
         },
@@ -1894,7 +2109,6 @@
         "parallelRun": {
           "target": "com.amazonaws.iotdeviceadvisor#ParallelRun",
           "traits": {
-            "smithy.api#default": false,
             "smithy.api#documentation": "<p>TRUE if multiple test suites run in parallel.</p>"
           }
         }
@@ -1957,14 +2171,12 @@
         "passed": {
           "target": "com.amazonaws.iotdeviceadvisor#SuiteRunResultCount",
           "traits": {
-            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Number of test cases that passed in the suite run.</p>"
           }
         },
         "failed": {
           "target": "com.amazonaws.iotdeviceadvisor#SuiteRunResultCount",
           "traits": {
-            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Number of test cases that failed in the suite run.</p>"
           }
         }
@@ -1976,7 +2188,6 @@
     "com.amazonaws.iotdeviceadvisor#SuiteRunResultCount": {
       "type": "integer",
       "traits": {
-        "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 0,
           "max": 500
@@ -2112,7 +2323,7 @@
         "resourceArn": {
           "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
           "traits": {
-            "smithy.api#documentation": "<p>The resource ARN of an IoT Device Advisor resource. \n            This can be SuiteDefinition ARN or SuiteRun ARN.</p>",
+            "smithy.api#documentation": "<p>The resource ARN of an IoT Device Advisor resource. This can be SuiteDefinition ARN or\n            SuiteRun ARN.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2120,15 +2331,22 @@
         "tags": {
           "target": "com.amazonaws.iotdeviceadvisor#TagMap",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The tags to be attached to the IoT Device Advisor resource.</p>",
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#TagResourceResponse": {
       "type": "structure",
-      "members": {}
+      "members": {},
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.amazonaws.iotdeviceadvisor#TestCaseDefinitionName": {
       "type": "string"
@@ -2240,7 +2458,7 @@
         "systemMessage": {
           "target": "com.amazonaws.iotdeviceadvisor#SystemMessage",
           "traits": {
-            "smithy.api#documentation": "<p>\n        </p>"
+            "smithy.api#documentation": "<p>Provides test case scenario system messages if any.</p>"
           }
         }
       },
@@ -2402,7 +2620,7 @@
         "resourceArn": {
           "target": "com.amazonaws.iotdeviceadvisor#AmazonResourceName",
           "traits": {
-            "smithy.api#documentation": "<p>The resource ARN of an IoT Device Advisor resource.\n            This can be SuiteDefinition ARN or SuiteRun ARN.</p>",
+            "smithy.api#documentation": "<p>The resource ARN of an IoT Device Advisor resource. This can be SuiteDefinition ARN or\n            SuiteRun ARN.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2410,16 +2628,23 @@
         "tagKeys": {
           "target": "com.amazonaws.iotdeviceadvisor#TagKeyList",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>List of tag keys to remove from the IoT Device Advisor resource.</p>",
             "smithy.api#httpQuery": "tagKeys",
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#UntagResourceResponse": {
       "type": "structure",
-      "members": {}
+      "members": {},
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinition": {
       "type": "operation",
@@ -2460,10 +2685,14 @@
         "suiteDefinitionConfiguration": {
           "target": "com.amazonaws.iotdeviceadvisor#SuiteDefinitionConfiguration",
           "traits": {
+            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Updates a Device Advisor test suite with suite definition configuration.</p>",
             "smithy.api#required": {}
           }
         }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinitionResponse": {
@@ -2505,6 +2734,9 @@
             "smithy.api#documentation": "<p>Timestamp of when the test suite was updated.</p>"
           }
         }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotdeviceadvisor#ValidationException": {
