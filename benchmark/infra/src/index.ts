@@ -29,7 +29,7 @@ const props = {
 const ittyFunc = new aws_lambda_nodejs.NodejsFunction(stack, "IttyFunc", {
   functionName: "benchmark-itty",
   runtime: aws_lambda.Runtime.NODEJS_18_X,
-  entry: require.resolve("@benchmark/functions/lib/itty-handler"),
+  entry: require.resolve("@benchmark/functions/dist/itty-handler"),
   bundling: {
     externalModules: ["@aws-sdk/*"],
   },
@@ -40,7 +40,7 @@ const ittyFunc = new aws_lambda_nodejs.NodejsFunction(stack, "IttyFunc", {
 const v2Func = new aws_lambda_nodejs.NodejsFunction(stack, "V2", {
   functionName: "benchmark-v2",
   runtime: aws_lambda.Runtime.NODEJS_16_X,
-  entry: require.resolve("@benchmark/functions/lib/v2-handler"),
+  entry: require.resolve("@benchmark/functions/dist/v2-handler"),
   bundling: {
     externalModules: ["aws-sdk"],
   },
@@ -51,7 +51,7 @@ const v2Func = new aws_lambda_nodejs.NodejsFunction(stack, "V2", {
 const v3BundledFunc = new aws_lambda_nodejs.NodejsFunction(stack, "V3Bundled", {
   functionName: "benchmark-v3-bundled",
   runtime: aws_lambda.Runtime.NODEJS_18_X,
-  entry: require.resolve("@benchmark/functions/lib/v3-handler"),
+  entry: require.resolve("@benchmark/functions/dist/v3-handler"),
   bundling: {
     externalModules: [],
   },
@@ -65,7 +65,7 @@ const v3ExcludedFunc = new aws_lambda_nodejs.NodejsFunction(
   {
     functionName: "benchmark-v3-excluded",
     runtime: aws_lambda.Runtime.NODEJS_18_X,
-    entry: require.resolve("@benchmark/functions/lib/v3-handler"),
+    entry: require.resolve("@benchmark/functions/dist/v3-handler"),
     bundling: {
       externalModules: ["@aws-sdk/*"],
     },
@@ -80,7 +80,7 @@ const v3ExcludedMonoFunc = new aws_lambda_nodejs.NodejsFunction(
   {
     functionName: "benchmark-v3-mono-excluded",
     runtime: aws_lambda.Runtime.NODEJS_18_X,
-    entry: require.resolve("@benchmark/functions/lib/v3-mono-lambda"),
+    entry: require.resolve("@benchmark/functions/dist/v3-mono-lambda"),
     bundling: {
       externalModules: ["@aws-sdk/*"],
     },
@@ -95,7 +95,7 @@ const v3BundledMonoFunc = new aws_lambda_nodejs.NodejsFunction(
   {
     functionName: "benchmark-v3-mono-bundled",
     runtime: aws_lambda.Runtime.NODEJS_18_X,
-    entry: require.resolve("@benchmark/functions/lib/v3-mono-lambda"),
+    entry: require.resolve("@benchmark/functions/dist/v3-mono-lambda"),
     bundling: {
       externalModules: [],
     },
