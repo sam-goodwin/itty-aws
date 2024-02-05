@@ -11,10 +11,10 @@ Known to work:
 - ✅ Any modern API using plain JSON protocol should work out of the box.
 - ✅ DynamoDB
 - ✅ EventBridge
+- ✅ SQS
+- ✅ SNS
 - ✅ S3 `CreateBucket`, `GetObject`, `HeadObject`, `PutObject`, `DeleteObject`, `ListObjectsV2`
 - ⛔️ S3 the remaining S3 APis likely don't work due to inconsistencies in the XML API.
-- ⛔️ SQS (see: [#1](https://github.com/sam-goodwin/itty-aws/issues/1))
-- ⛔️ SNS (see: [#2](https://github.com/sam-goodwin/itty-aws/issues/2))
 
 ## Why?
 
