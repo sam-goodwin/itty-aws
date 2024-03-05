@@ -1,9 +1,11 @@
 import { expect, test } from "vitest";
 import { AWS } from "../src/index.js";
-import { EventBusName } from "./constants.js";
+import { endpoint, EventBusName } from "./constants.js";
 import { fail } from "assert";
 
-const client = new AWS.EventBridge();
+const client = new AWS.EventBridge({
+  endpoint,
+});
 
 test("should PutEvents", async () => {
   let response;

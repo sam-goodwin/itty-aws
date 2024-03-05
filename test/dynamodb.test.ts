@@ -1,10 +1,12 @@
 import { expect, test } from "vitest";
 import { AWS } from "../src";
-import { TableName } from "./constants";
+import { endpoint, TableName } from "./constants";
 
-const ddb = new AWS.DynamoDB();
+const ddb = new AWS.DynamoDB({
+  endpoint,
+});
 
-test("DynamoDB PutItem and GetItem should work", async () => {
+test.only("DynamoDB PutItem and GetItem should work", async () => {
   const Item = {
     pk: {
       S: "pk",

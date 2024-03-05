@@ -161,7 +161,7 @@ export const AWS: SDK = new Proxy({} as any, {
             } else {
               const c = (parsedXml?.children[0] as XmlDocument | undefined)
                 ?.children;
-              let output = c ? xmlToJson(c) : {} ?? {};
+              let output = (c ? xmlToJson(c) : {}) ?? {};
               if (methodName === "getObject") {
                 output.Body = responseText;
               }

@@ -1,9 +1,11 @@
 import { describe, expect, test } from "vitest";
 import { AWS } from "../src";
 
-import { S3BucketName } from "./constants.js";
+import { endpoint, S3BucketName } from "./constants.js";
 
-const S3 = new AWS.S3();
+const S3 = new AWS.S3({
+  endpoint,
+});
 
 const Key = "test-key";
 const Body = "test-body";

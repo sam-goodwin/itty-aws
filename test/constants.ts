@@ -8,4 +8,11 @@ export const EventBusName = "itty-event-bus";
 
 export const S3BucketName = "itty-s3-bucket";
 
-process.env.AWS_REGION = "us-west-2";
+export const SqsQueueName = "itty-sqs-queue";
+
+process.env.AWS_ACCESS_KEY_ID = "test";
+process.env.AWS_SECRET_ACCESS_KEY = "test";
+process.env.AWS_REGION = "us-east-1";
+process.env.AWS_DEFAULT_REGION = "us-east-1";
+
+export const endpoint = "http://localhost:4566";

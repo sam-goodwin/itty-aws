@@ -1,8 +1,10 @@
 import { expect, test } from "vitest";
 import { AWS } from "../src";
-import { SsmParameterName, SsmParameterValue } from "./constants";
+import { endpoint, SsmParameterName, SsmParameterValue } from "./constants";
 
-const client = new AWS.SSM();
+const client = new AWS.SSM({
+  endpoint,
+});
 
 test("get parameter", async () => {
   const response = await client.getParameter({

@@ -3,22 +3,25 @@ import { AWS, AWSError } from "../src/index.js";
 import {
   EventBusName,
   S3BucketName,
+  SqsQueueName,
   SsmParameterName,
   SsmParameterValue,
   TableName,
+  endpoint,
 } from "./constants.js";
 
 beforeAll(async () => {
   await Promise.all([
     createTable(),
-    createParameter(),
-    createEventBus(),
-    createS3Bucket(),
+    // createParameter(),
+    // createEventBus(),
+    // createS3Bucket(),
+    // createSQSQueue(),
   ]);
 });
 
 async function createTable() {
-  const client = new AWS.DynamoDB();
+  const client = new AWS.DynamoDB({ endpoint });
 
   try {
     const response = await client.describeTable({
@@ -61,7 +64,7 @@ async function createTable() {
 }
 
 async function createParameter() {
-  const client = new AWS.SSM();
+  const client = new AWS.SSM({ endpoint });
 
   try {
     await client.putParameter({
@@ -78,7 +81,7 @@ async function createParameter() {
 }
 
 async function createEventBus() {
-  const client = new AWS.EventBridge();
+  const client = new AWS.EventBridge({ endpoint });
   try {
     await client.createEventBus({
       Name: EventBusName,
@@ -95,7 +98,7 @@ async function createEventBus() {
 }
 
 async function createS3Bucket() {
-  const client = new AWS.S3();
+  const client = new AWS.S3({ endpoint });
   try {
     await client.createBucket({
       Bucket: S3BucketName,
@@ -109,5 +112,24 @@ async function createS3Bucket() {
       console.error(err);
       throw err;
     }
+  }
+}
+
+async function createSQSQueue() {
+  const client = new AWS.SQS({ endpoint });
+  try {
+    await client.createQueue({
+      QueueName: SqsQueueName,
+    });
+  } catch (err) {
+    throw err;
+    //   if (
+    //   !(err instanceof AWSError) ||
+    //   (err.type !== "ResourceAlreadyExistsException" &&
+    //     err.type !== "BucketAlreadyOwnedByYou")
+    // ) {
+    //   console.error(err);
+    //   throw err;
+    // }
   }
 }
