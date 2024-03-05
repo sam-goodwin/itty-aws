@@ -48,9 +48,7 @@ export const AWS: SDK = new Proxy({} as any, {
 
         function createDefaultHandler(methodName: string) {
           return async (input: any) => {
-            // const url = new URL(`https://${endpoint}`);
-            const url = new URL(`http://${endpoint}`);
-            // const url = new URL(endpoint);
+            const url = new URL(endpoint);
 
             const response = await sendRequest(url, {
               method: "POST",
@@ -108,31 +106,13 @@ export const AWS: SDK = new Proxy({} as any, {
                         ? "DELETE"
                         : "POST";
 
-            // const url = new URL(
-            //   `https://${bucket ? `${bucket}.` : ""}${endpoint}${
-            //     typeof key === "string" ? `/${key}` : ""
-            //   }${method === "GET" ? toQueryString() : ""}`,
-            // );
-            // const url = new URL(
-            //   `http://${bucket ? `${bucket}.` : ""}${endpoint}${
-            //     typeof key === "string" ? `/${key}` : ""
-            //   }${method === "GET" ? toQueryString() : ""}`,
-            // );
-            // http://<bucket-name>.s3.localhost.localstack.cloud:4566/<key-name>
-            // const url = new URL(
-            //   `http://${bucket}.s3.localhost.localstack.cloud:4566/${key}
-            //   }${method === "GET" ? toQueryString() : ""}`,
-            // );
-            // const url = new URL(
-            //   `http://${bucket ? `${bucket}.` : ""}s3.${region}.localhost.localstack.cloud:4566/${typeof key === "string" ? `/${key}` : ""}${method === "GET" ? toQueryString() : ""}`,
-            // );
             const url = new URL(
-              // `http://${bucket ? `${bucket}.` : ""}s3.localhost.localstack.cloud:4566/${typeof key === "string" ? `/${key}` : ""}${method === "GET" ? toQueryString() : ""}`,
-              `http://${bucket ? `${bucket}.` : ""}s3.localhost.localstack.cloud:4566${method === "GET" ? toQueryString() : ""}`,
+              `${endpoint}${method === "GET" ? toQueryString() : ""}`,
             );
+            if (bucket) {
+              url.hostname = `${bucket}.${url.hostname}`;
+            }
             url.pathname = typeof key === "string" ? key : "";
-            // const url = new URL(`http://${endpoint}`);
-            // console.log(url.toString(), { key, pathname: url.pathname });
 
             const response = await sendRequest(url, {
               headers: {
@@ -261,6 +241,7 @@ export const AWS: SDK = new Proxy({} as any, {
             }
 
             function toQueryString() {
+              console.log({ input });
               const q = Object.entries(input)
                 .flatMap(([k, v]) => {
                   if (k in s3HeaderMappings || k === "Bucket" || k === "Key") {

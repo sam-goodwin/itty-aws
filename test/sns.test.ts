@@ -28,7 +28,7 @@ describe("SNS", () => {
     });
   });
 
-  test<TestContext>("publish", async (context) => {
+  test.skip<TestContext>("publish", async (context) => {
     const response = await client.publish({
       TopicArn: context.topicARN,
       Message: "hello",

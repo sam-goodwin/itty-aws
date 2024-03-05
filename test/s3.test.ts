@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { AWS } from "../src";
 
-import { endpoint } from "./constants.js";
+import { s3Endpoint } from "./constants.js";
 
 const client = new AWS.S3({
-  endpoint,
+  endpoint: s3Endpoint,
 });
 
 interface TestContext {
