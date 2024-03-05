@@ -47,12 +47,14 @@ export const AWS: SDK = new Proxy({} as any, {
               }
               return createDefaultHandler(methodName);
             },
-          }
+          },
         );
 
         function createDefaultHandler(methodName: string) {
           return async (input: any) => {
-            const url = new URL(`https://${endpoint}`);
+            // const url = new URL(`https://${endpoint}`);
+            const url = new URL(`http://${endpoint}`);
+            // const url = new URL(endpoint);
 
             const response = await sendRequest(url, {
               method: "POST",
@@ -67,10 +69,10 @@ export const AWS: SDK = new Proxy({} as any, {
               },
             });
 
-            const isJson = getHeader(
-              response.headers,
-              "Content-Type"
-            )?.startsWith("application/x-amz-json");
+            const contentType = getHeader(response.headers, "Content-Type");
+            const isJson =
+              contentType?.startsWith("application/x-amz-json") ||
+              contentType === "application/json";
 
             if (response.status === 200) {
               return isJson ? response.json() : response.text();
@@ -93,28 +95,48 @@ export const AWS: SDK = new Proxy({} as any, {
 
             const headers = Object.fromEntries(
               (Object.keys(input) as (keyof typeof input)[]).flatMap((k) =>
-                k in mappings ? [[s3HeaderMappings[k], input[k]]] : []
-              )
+                k in mappings ? [[s3HeaderMappings[k], input[k]]] : [],
+              ),
             );
 
             const method =
               methodName === "createBucket"
                 ? "PUT"
                 : methodName.startsWith("get") || methodName.startsWith("list")
-                ? "GET"
-                : methodName.startsWith("put")
-                ? "PUT"
-                : methodName.startsWith("head")
-                ? "HEAD"
-                : methodName.startsWith("delete")
-                ? "DELETE"
-                : "POST";
+                  ? "GET"
+                  : methodName.startsWith("put")
+                    ? "PUT"
+                    : methodName.startsWith("head")
+                      ? "HEAD"
+                      : methodName.startsWith("delete")
+                        ? "DELETE"
+                        : "POST";
 
+            // const url = new URL(
+            //   `https://${bucket ? `${bucket}.` : ""}${endpoint}${
+            //     typeof key === "string" ? `/${key}` : ""
+            //   }${method === "GET" ? toQueryString() : ""}`,
+            // );
+            // const url = new URL(
+            //   `http://${bucket ? `${bucket}.` : ""}${endpoint}${
+            //     typeof key === "string" ? `/${key}` : ""
+            //   }${method === "GET" ? toQueryString() : ""}`,
+            // );
+            // http://<bucket-name>.s3.localhost.localstack.cloud:4566/<key-name>
+            // const url = new URL(
+            //   `http://${bucket}.s3.localhost.localstack.cloud:4566/${key}
+            //   }${method === "GET" ? toQueryString() : ""}`,
+            // );
+            // const url = new URL(
+            //   `http://${bucket ? `${bucket}.` : ""}s3.${region}.localhost.localstack.cloud:4566/${typeof key === "string" ? `/${key}` : ""}${method === "GET" ? toQueryString() : ""}`,
+            // );
             const url = new URL(
-              `https://${bucket ? `${bucket}.` : ""}${endpoint}${
-                typeof key === "string" ? `/${key}` : ""
-              }${method === "GET" ? toQueryString() : ""}`
+              // `http://${bucket ? `${bucket}.` : ""}s3.localhost.localstack.cloud:4566/${typeof key === "string" ? `/${key}` : ""}${method === "GET" ? toQueryString() : ""}`,
+              `http://${bucket ? `${bucket}.` : ""}s3.localhost.localstack.cloud:4566${method === "GET" ? toQueryString() : ""}`,
             );
+            url.pathname = typeof key === "string" ? key : "";
+            // const url = new URL(`http://${endpoint}`);
+            // console.log(url.toString(), { key, pathname: url.pathname });
 
             const response = await sendRequest(url, {
               headers: {
@@ -129,12 +151,12 @@ export const AWS: SDK = new Proxy({} as any, {
                 methodName === "createBucket"
                   ? `<?xml version="1.0" encoding="UTF-8"?><CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><LocationConstraint>${region}</LocationConstraint></CreateBucketConfiguration>`
                   : methodName === "putObject"
-                  ? typeof input.Body === "string"
-                    ? input.Body
-                    : Buffer.isBuffer(input.Body)
-                    ? input.Body
-                    : undefined
-                  : undefined,
+                    ? typeof input.Body === "string"
+                      ? input.Body
+                      : Buffer.isBuffer(input.Body)
+                        ? input.Body
+                        : undefined
+                    : undefined,
             });
 
             const responseText = await response.text();
@@ -156,6 +178,7 @@ export const AWS: SDK = new Proxy({} as any, {
               ).text;
 
               if (errorCode) {
+                console.log({ errorCode, errorMessage });
                 throw new AWSError(errorMessage, errorCode);
               }
             } else {
@@ -167,18 +190,18 @@ export const AWS: SDK = new Proxy({} as any, {
               }
               if (typeof response.headers.forEach === "function") {
                 response.headers.forEach((value, key) =>
-                  reverseHeaders(key, value)
+                  reverseHeaders(key, value),
                 );
               } else {
                 Object.entries(response.headers).forEach(([key, value]) =>
-                  reverseHeaders(key, value)
+                  reverseHeaders(key, value),
                 );
               }
               output = Object.fromEntries(
                 Object.entries(output).map(([k, v]) => [
                   k,
                   s3NumberFields.has(k) ? parseNumber(v as string) : v,
-                ])
+                ]),
               );
               return output;
 
@@ -193,7 +216,7 @@ export const AWS: SDK = new Proxy({} as any, {
             type Xml = XmlDocument | XmlElement | XmlComment | XmlText;
             function xmlToJson(
               xml: Xml[] | Xml | undefined,
-              name?: string
+              name?: string,
             ): any {
               if (xml === undefined) {
                 return [];
@@ -202,7 +225,7 @@ export const AWS: SDK = new Proxy({} as any, {
               } else if (Array.isArray(xml)) {
                 return xml
                   .flatMap((x) =>
-                    x instanceof XmlElement ? [xmlToJson(x)] : []
+                    x instanceof XmlElement ? [xmlToJson(x)] : [],
                   )
                   .reduce(
                     (a, [k, v]) => ({
@@ -213,7 +236,7 @@ export const AWS: SDK = new Proxy({} as any, {
                           : [v]
                         : v,
                     }),
-                    {}
+                    {},
                   );
               } else if (xml instanceof XmlElement) {
                 return [
@@ -221,8 +244,8 @@ export const AWS: SDK = new Proxy({} as any, {
                   xml.children.length === 0
                     ? undefined
                     : xml.children.length === 1
-                    ? xmlToJson(xml.children[0], xml.name)
-                    : xmlToJson(xml.children, xml.name),
+                      ? xmlToJson(xml.children[0], xml.name)
+                      : xmlToJson(xml.children, xml.name),
                 ];
               } else if (xml instanceof XmlText) {
                 if (name && s3NumberFields.has(name)) {
@@ -235,8 +258,8 @@ export const AWS: SDK = new Proxy({} as any, {
                 return xml.text === "true"
                   ? true
                   : xml.text === "false"
-                  ? false
-                  : xml.text;
+                    ? false
+                    : xml.text;
               }
               return [];
             }
@@ -270,7 +293,7 @@ export const AWS: SDK = new Proxy({} as any, {
             method: string;
             body?: string | Buffer;
             headers: Record<string, string>;
-          }
+          },
         ) {
           const request = new HttpRequest({
             hostname: url.hostname,
@@ -345,7 +368,7 @@ export const AWS: SDK = new Proxy({} as any, {
                       json: async () => JSON.parse(text()),
                     });
                   });
-                }
+                },
               );
 
               if (signedRequest.body) {
@@ -462,7 +485,7 @@ const s3ReverseHeaderMappings = Object.fromEntries(
   Object.entries(s3HeaderMappings).flatMap(([k, v]) => [
     [v, k],
     [v.toLocaleLowerCase(), k],
-  ])
+  ]),
 );
 
 function toKebabCase(pascal: string) {
@@ -508,7 +531,7 @@ type SDKOutputProperties<Service extends keyof SDK> = UnionToIntersection<
 >;
 
 type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (
-  x: infer R
+  x: infer R,
 ) => any
   ? R
   : never;
@@ -517,7 +540,7 @@ export class AWSError extends Error {
   readonly type?: string;
   constructor(error: any, type?: string) {
     super(
-      typeof error?.message === "string" ? error.message : type ?? error.__type
+      typeof error?.message === "string" ? error.message : type ?? error.__type,
     );
     this.type = type ?? error.__type;
   }
@@ -550,7 +573,7 @@ function resolveEndpoint(serviceName: keyof SDK, region: string) {
   // TODO: this doesn't work in all cases ...
 
   return `${resolveService(
-    serviceName
+    serviceName,
   ).toLocaleLowerCase()}.${region}.amazonaws.com`;
 }
 
