@@ -29,10 +29,6 @@ export const AWS: SDK = new Proxy({} as any, {
   get: (_, className: keyof SDK) => {
     return class {
       constructor(options?: ClientOptions) {
-        // const region = options?.region ?? process.env["AWS_REGION"];
-        // if (!region) {
-        //   throw new Error(`Could not determine AWS_REGION`);
-        // }
         const region = getRegion(options);
         const endpoint =
           options?.endpoint ?? resolveEndpoint(className, region);
