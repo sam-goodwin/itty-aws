@@ -549,7 +549,7 @@ function resolveService(className: keyof SDK): string {
 function resolveEndpoint(serviceName: keyof SDK, region: string) {
   // TODO: this doesn't work in all cases ...
 
-  return `${resolveService(
+  return `https://${resolveService(
     serviceName,
   ).toLocaleLowerCase()}.${region}.amazonaws.com`;
 }
