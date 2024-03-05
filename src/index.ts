@@ -241,7 +241,6 @@ export const AWS: SDK = new Proxy({} as any, {
             }
 
             function toQueryString() {
-              console.log({ input });
               const q = Object.entries(input)
                 .flatMap(([k, v]) => {
                   if (k in s3HeaderMappings || k === "Bucket" || k === "Key") {
