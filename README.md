@@ -12,9 +12,10 @@ Known to work:
 - ✅ DynamoDB
 - ✅ EventBridge
 - ✅ SQS
+- ✅ SNS `CreateTopic`, `DeleteTopic`, `Publish`
+- ⛔️ SNS the remaining SNS APis may not work due to inconsistencies in the XML API.
 - ✅ S3 `CreateBucket`, `GetObject`, `HeadObject`, `PutObject`, `DeleteObject`, `ListObjectsV2`
 - ⛔️ S3 the remaining S3 APis likely don't work due to inconsistencies in the XML API.
-- ⛔️ SNS (see: [#2](https://github.com/sam-goodwin/itty-aws/issues/2))
 
 ## Why?
 
