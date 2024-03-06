@@ -9,10 +9,13 @@ jobs:
       CI: "true"
     steps:
       - uses: actions/checkout@v3
+
       - uses: ./.github/actions/build
+
       - name: Start LocalStack
-        uses: LocalStack/setup-localstack@v0.1.3
+        uses: LocalStack/setup-localstack@v0.1.2
         with:
           image-tag: "latest"
+
       - name: Run tests
         run: pnpm test
