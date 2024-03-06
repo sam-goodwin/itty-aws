@@ -394,16 +394,6 @@
         }
       }
     },
-    "com.amazonaws.dataexchange#ClientToken": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 1,
-          "max": 64
-        },
-        "smithy.api#pattern": "^[\\x21-\\x7E]{1,64}$"
-      }
-    },
     "com.amazonaws.dataexchange#Code": {
       "type": "string",
       "traits": {
@@ -1075,9 +1065,6 @@
           "target": "com.amazonaws.dataexchange#SendApiAsset"
         },
         {
-          "target": "com.amazonaws.dataexchange#SendDataSetNotification"
-        },
-        {
           "target": "com.amazonaws.dataexchange#StartJob"
         },
         {
@@ -1117,7 +1104,7 @@
           "parameters": {
             "Region": {
               "builtIn": "AWS::Region",
-              "required": false,
+              "required": true,
               "documentation": "The AWS region used to dispatch the request.",
               "type": "String"
             },
@@ -1146,15 +1133,164 @@
             {
               "conditions": [
                 {
-                  "fn": "isSet",
+                  "fn": "aws.partition",
                   "argv": [
                     {
-                      "ref": "Endpoint"
+                      "ref": "Region"
                     }
-                  ]
+                  ],
+                  "assign": "PartitionResult"
                 }
               ],
+              "type": "tree",
               "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "fn": "parseURL",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ],
+                      "assign": "url"
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "type": "error"
+                    },
+                    {
+                      "conditions": [],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                          "type": "error"
+                        },
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": {
+                              "ref": "Endpoint"
+                            },
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseFIPS"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://dataexchange-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      "type": "error"
+                    }
+                  ]
+                },
                 {
                   "conditions": [
                     {
@@ -1167,8 +1303,51 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                  "type": "error"
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://dataexchange-fips.{Region}.{PartitionResult#dnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS is enabled but this partition does not support FIPS",
+                      "type": "error"
+                    }
+                  ]
                 },
                 {
                   "conditions": [
@@ -1182,302 +1361,98 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                  "type": "error"
-                },
-                {
-                  "conditions": [],
-                  "endpoint": {
-                    "url": {
-                      "ref": "Endpoint"
-                    },
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
-                }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [
-                {
-                  "fn": "isSet",
-                  "argv": [
-                    {
-                      "ref": "Region"
-                    }
-                  ]
-                }
-              ],
-              "rules": [
-                {
-                  "conditions": [
-                    {
-                      "fn": "aws.partition",
-                      "argv": [
-                        {
-                          "ref": "Region"
-                        }
-                      ],
-                      "assign": "PartitionResult"
-                    }
-                  ],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
+                            true,
                             {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://dataexchange-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
+                              "fn": "getAttr",
                               "argv": [
                                 {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
+                                  "ref": "PartitionResult"
                                 },
-                                true
+                                "supportsDualStack"
                               ]
                             }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://dataexchange-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS is enabled but this partition does not support FIPS",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
                           ]
                         }
                       ],
+                      "type": "tree",
                       "rules": [
                         {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://dataexchange.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
                           "conditions": [],
-                          "error": "DualStack is enabled but this partition does not support DualStack",
-                          "type": "error"
+                          "endpoint": {
+                            "url": "https://dataexchange.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
                         }
-                      ],
-                      "type": "tree"
+                      ]
                     },
                     {
                       "conditions": [],
-                      "endpoint": {
-                        "url": "https://dataexchange.{Region}.{PartitionResult#dnsSuffix}",
-                        "properties": {},
-                        "headers": {}
-                      },
-                      "type": "endpoint"
+                      "error": "DualStack is enabled but this partition does not support DualStack",
+                      "type": "error"
                     }
-                  ],
-                  "type": "tree"
+                  ]
+                },
+                {
+                  "conditions": [],
+                  "endpoint": {
+                    "url": "https://dataexchange.{Region}.{PartitionResult#dnsSuffix}",
+                    "properties": {},
+                    "headers": {}
+                  },
+                  "type": "endpoint"
                 }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [],
-              "error": "Invalid Configuration: Missing Region",
-              "type": "error"
+              ]
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
             {
-              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.ap-northeast-1.amazonaws.com"
+                  "url": "https://dataexchange-fips.eu-central-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-northeast-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true,
+                "Region": "eu-central-1",
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS enabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.ap-northeast-2.amazonaws.com"
+                  "url": "https://dataexchange-fips.eu-central-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "ap-northeast-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": false,
+                "Region": "eu-central-1",
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region ap-southeast-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.ap-southeast-1.amazonaws.com"
+                  "url": "https://dataexchange.eu-central-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-southeast-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange.ap-southeast-2.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "ap-southeast-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true,
+                "Region": "eu-central-1",
+                "UseFIPS": false
               }
             },
             {
@@ -1488,61 +1463,48 @@
                 }
               },
               "params": {
+                "UseDualStack": false,
                 "Region": "eu-central-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region eu-west-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-west-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.eu-west-1.amazonaws.com"
+                  "url": "https://dataexchange-fips.us-west-1.api.aws"
                 }
               },
               "params": {
-                "Region": "eu-west-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true,
+                "Region": "us-west-1",
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region eu-west-2 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-west-1 with FIPS enabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.eu-west-2.amazonaws.com"
+                  "url": "https://dataexchange-fips.us-west-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "eu-west-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": false,
+                "Region": "us-west-1",
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-west-1 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.us-east-1.amazonaws.com"
+                  "url": "https://dataexchange.us-west-1.api.aws"
                 }
               },
               "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-2 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange.us-east-2.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true,
+                "Region": "us-west-1",
+                "UseFIPS": false
               }
             },
             {
@@ -1553,9 +1515,48 @@
                 }
               },
               "params": {
+                "UseDualStack": false,
                 "Region": "us-west-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.us-west-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "us-west-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.us-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "us-west-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.us-west-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "us-west-2",
+                "UseFIPS": false
               }
             },
             {
@@ -1566,9 +1567,321 @@
                 }
               },
               "params": {
+                "UseDualStack": false,
                 "Region": "us-west-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.eu-west-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "eu-west-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.eu-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "eu-west-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.eu-west-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "eu-west-2",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.eu-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "eu-west-2",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.eu-west-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "eu-west-1",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.eu-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "eu-west-1",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.eu-west-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "eu-west-1",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.eu-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "eu-west-1",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-northeast-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-northeast-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-northeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-northeast-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-northeast-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-northeast-2",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-northeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-northeast-2",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-northeast-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-northeast-1",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-northeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-northeast-1",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-northeast-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-northeast-1",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-northeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-northeast-1",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-southeast-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-southeast-1",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-southeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-southeast-1",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-southeast-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-southeast-1",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-southeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-southeast-1",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-southeast-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-southeast-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange-fips.ap-southeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-southeast-2",
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-southeast-2.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "Region": "ap-southeast-2",
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://dataexchange.ap-southeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "Region": "ap-southeast-2",
+                "UseFIPS": false
               }
             },
             {
@@ -1579,9 +1892,9 @@
                 }
               },
               "params": {
+                "UseDualStack": true,
                 "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
+                "UseFIPS": true
               }
             },
             {
@@ -1592,9 +1905,9 @@
                 }
               },
               "params": {
+                "UseDualStack": false,
                 "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
+                "UseFIPS": true
               }
             },
             {
@@ -1605,235 +1918,87 @@
                 }
               },
               "params": {
+                "UseDualStack": true,
                 "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
+              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange-fips.cn-north-1.api.amazonwebservices.com.cn"
+                  "url": "https://dataexchange.us-east-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": true
+                "UseDualStack": false,
+                "Region": "us-east-1",
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
+              "documentation": "For region us-east-2 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange-fips.cn-north-1.amazonaws.com.cn"
+                  "url": "https://dataexchange-fips.us-east-2.api.aws"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": false
+                "UseDualStack": true,
+                "Region": "us-east-2",
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
+              "documentation": "For region us-east-2 with FIPS enabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.cn-north-1.api.amazonwebservices.com.cn"
+                  "url": "https://dataexchange-fips.us-east-2.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": true
+                "UseDualStack": false,
+                "Region": "us-east-2",
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-east-2 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange.cn-north-1.amazonaws.com.cn"
+                  "url": "https://dataexchange.us-east-2.api.aws"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true,
+                "Region": "us-east-2",
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
+              "documentation": "For region us-east-2 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://dataexchange-fips.us-gov-east-1.api.aws"
+                  "url": "https://dataexchange.us-east-2.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
+                "UseDualStack": false,
+                "Region": "us-east-2",
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange-fips.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange-fips.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://dataexchange.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
                 }
               },
               "params": {
+                "UseDualStack": false,
                 "Region": "us-east-1",
                 "UseFIPS": false,
-                "UseDualStack": false,
-                "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://example.com"
-                }
-              },
-              "params": {
-                "UseFIPS": false,
-                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -1843,9 +2008,9 @@
                 "error": "Invalid Configuration: FIPS and custom endpoint are not supported"
               },
               "params": {
+                "UseDualStack": false,
                 "Region": "us-east-1",
                 "UseFIPS": true,
-                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -1855,16 +2020,10 @@
                 "error": "Invalid Configuration: Dualstack and custom endpoint are not supported"
               },
               "params": {
+                "UseDualStack": true,
                 "Region": "us-east-1",
                 "UseFIPS": false,
-                "UseDualStack": true,
                 "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "Missing region",
-              "expect": {
-                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -1946,20 +2105,6 @@
       },
       "traits": {
         "smithy.api#documentation": "<p>A data set is an AWS resource with one or more revisions.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#DataUpdateRequestDetails": {
-      "type": "structure",
-      "members": {
-        "DataUpdatedAt": {
-          "target": "com.amazonaws.dataexchange#Timestamp",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         datetime in the past when the data was updated. This typically means that the underlying\n         resource supporting the data set was updated.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to a data update type notification.</p>"
       }
     },
     "com.amazonaws.dataexchange#DatabaseLFTagPolicy": {
@@ -2226,21 +2371,6 @@
             "smithy.api#required": {}
           }
         }
-      }
-    },
-    "com.amazonaws.dataexchange#DeprecationRequestDetails": {
-      "type": "structure",
-      "members": {
-        "DeprecationAt": {
-          "target": "com.amazonaws.dataexchange#Timestamp",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         datetime in the future when the data set will be deprecated.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to a deprecation type notification.</p>"
       }
     },
     "com.amazonaws.dataexchange#Description": {
@@ -3770,30 +3900,6 @@
         ]
       }
     },
-    "com.amazonaws.dataexchange#KmsKeyArn": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 1,
-          "max": 2048
-        }
-      }
-    },
-    "com.amazonaws.dataexchange#KmsKeyToGrant": {
-      "type": "structure",
-      "members": {
-        "KmsKeyArn": {
-          "target": "com.amazonaws.dataexchange#KmsKeyArn",
-          "traits": {
-            "smithy.api#documentation": "<p>The AWS KMS CMK (Key Management System Customer Managed Key) used to encrypt S3 objects\n         in the shared S3 Bucket. AWS Data exchange will create a KMS grant for each subscriber to\n         allow them to access and decrypt their entitled data that is encrypted using this KMS key\n         specified.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the AWS KMS key used to encrypt the shared S3\n         objects.</p>"
-      }
-    },
     "com.amazonaws.dataexchange#LFPermission": {
       "type": "string",
       "traits": {
@@ -3953,26 +4059,6 @@
             "name": "LFTagPolicy"
           }
         ]
-      }
-    },
-    "com.amazonaws.dataexchange#LakeFormationTagPolicyDetails": {
-      "type": "structure",
-      "members": {
-        "Database": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>The\n         underlying Glue database that the notification is referring to.</p>"
-          }
-        },
-        "Table": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>The\n         underlying Glue table that the notification is referring to.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to the affected scope in\n         this LF data set.</p>"
       }
     },
     "com.amazonaws.dataexchange#LimitName": {
@@ -4478,19 +4564,6 @@
         "target": "com.amazonaws.dataexchange#JobError"
       }
     },
-    "com.amazonaws.dataexchange#ListOfKmsKeysToGrant": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.dataexchange#KmsKeyToGrant"
-      },
-      "traits": {
-        "smithy.api#length": {
-          "min": 1,
-          "max": 10
-        },
-        "smithy.api#uniqueItems": {}
-      }
-    },
     "com.amazonaws.dataexchange#ListOfLFPermissions": {
       "type": "list",
       "member": {
@@ -4509,22 +4582,10 @@
         "target": "com.amazonaws.dataexchange#LFTag"
       }
     },
-    "com.amazonaws.dataexchange#ListOfLakeFormationTagPolicies": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.dataexchange#LakeFormationTagPolicyDetails"
-      }
-    },
     "com.amazonaws.dataexchange#ListOfRedshiftDataShareAssetSourceEntry": {
       "type": "list",
       "member": {
         "target": "com.amazonaws.dataexchange#RedshiftDataShareAssetSourceEntry"
-      }
-    },
-    "com.amazonaws.dataexchange#ListOfRedshiftDataShares": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.dataexchange#RedshiftDataShareDetails"
       }
     },
     "com.amazonaws.dataexchange#ListOfRevisionDestinationEntry": {
@@ -4537,18 +4598,6 @@
       "type": "list",
       "member": {
         "target": "com.amazonaws.dataexchange#RevisionEntry"
-      }
-    },
-    "com.amazonaws.dataexchange#ListOfS3DataAccesses": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.dataexchange#S3DataAccessDetails"
-      }
-    },
-    "com.amazonaws.dataexchange#ListOfSchemaChangeDetails": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.dataexchange#SchemaChangeDetails"
       }
     },
     "com.amazonaws.dataexchange#ListOfTableTagPolicyLFPermissions": {
@@ -4712,7 +4761,7 @@
         "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 1,
-          "max": 200
+          "max": 25
         }
       }
     },
@@ -4721,55 +4770,6 @@
     },
     "com.amazonaws.dataexchange#NextToken": {
       "type": "string"
-    },
-    "com.amazonaws.dataexchange#NotificationDetails": {
-      "type": "structure",
-      "members": {
-        "DataUpdate": {
-          "target": "com.amazonaws.dataexchange#DataUpdateRequestDetails",
-          "traits": {
-            "smithy.api#documentation": "<p>Extra\n         details specific to a data update type notification.</p>"
-          }
-        },
-        "Deprecation": {
-          "target": "com.amazonaws.dataexchange#DeprecationRequestDetails",
-          "traits": {
-            "smithy.api#documentation": "<p>Extra\n         details specific to a deprecation type notification.</p>"
-          }
-        },
-        "SchemaChange": {
-          "target": "com.amazonaws.dataexchange#SchemaChangeRequestDetails",
-          "traits": {
-            "smithy.api#documentation": "<p>Extra\n         details specific to a schema change type notification.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to this notification.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#NotificationType": {
-      "type": "string",
-      "traits": {
-        "smithy.api#enum": [
-          {
-            "value": "DATA_DELAY",
-            "name": "DATA_DELAY"
-          },
-          {
-            "value": "DATA_UPDATE",
-            "name": "DATA_UPDATE"
-          },
-          {
-            "value": "DEPRECATION",
-            "name": "DEPRECATION"
-          },
-          {
-            "value": "SCHEMA_CHANGE",
-            "name": "SCHEMA_CHANGE"
-          }
-        ]
-      }
     },
     "com.amazonaws.dataexchange#Origin": {
       "type": "string",
@@ -4792,7 +4792,8 @@
         "ProductId": {
           "target": "com.amazonaws.dataexchange#__string",
           "traits": {
-            "smithy.api#documentation": "<p>The product ID of the origin of the data set.</p>"
+            "smithy.api#documentation": "<p>The product ID of the origin of the data set.</p>",
+            "smithy.api#required": {}
           }
         }
       },
@@ -4839,52 +4840,6 @@
       },
       "traits": {
         "smithy.api#documentation": "<p>The source of the Amazon Redshift datashare asset.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#RedshiftDataShareDetails": {
-      "type": "structure",
-      "members": {
-        "Arn": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>The\n         ARN of the underlying Redshift data share that is being affected by this\n         notification.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Database": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>The\n         database name in the Redshift data share that is being affected by this\n         notification.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Function": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         function name in the Redshift database that is being affected by this notification.</p>"
-          }
-        },
-        "Table": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         table name in the Redshift database that is being affected by this notification.</p>"
-          }
-        },
-        "Schema": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         schema name in the Redshift database that is being affected by this notification.</p>"
-          }
-        },
-        "View": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         view name in the Redshift database that is being affected by this notification.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to the affected scope\n         in this Redshift data set.</p>"
       }
     },
     "com.amazonaws.dataexchange#RequestDetails": {
@@ -5368,12 +5323,6 @@
           "traits": {
             "smithy.api#documentation": "<p>The ARN for your Amazon S3 Access Point. Customers can also access their entitled data using the S3 Access Point ARN.</p>"
           }
-        },
-        "KmsKeysToGrant": {
-          "target": "com.amazonaws.dataexchange#ListOfKmsKeysToGrant",
-          "traits": {
-            "smithy.api#documentation": "<p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs used to\n         encrypt S3 objects being shared in this S3 Data Access asset. Providers must include all\n         AWS KMS keys used to encrypt these shared S3 objects.</p>"
-          }
         }
       },
       "traits": {
@@ -5401,36 +5350,10 @@
           "traits": {
             "smithy.api#documentation": "<p>The keys used to create the Amazon S3 data access.</p>"
           }
-        },
-        "KmsKeysToGrant": {
-          "target": "com.amazonaws.dataexchange#ListOfKmsKeysToGrant",
-          "traits": {
-            "smithy.api#documentation": "<p>List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs used to\n         encrypt S3 objects being shared in this S3 Data Access asset.</p>"
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "<p>Source details for an Amazon S3 data access asset.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#S3DataAccessDetails": {
-      "type": "structure",
-      "members": {
-        "KeyPrefixes": {
-          "target": "com.amazonaws.dataexchange#ListOf__string",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         list of the key prefixes affected by this\n         notification. This\n         can have up to 50 entries.</p>"
-          }
-        },
-        "Keys": {
-          "target": "com.amazonaws.dataexchange#ListOf__string",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         list of the keys affected by this\n         notification. This\n         can have up to 50 entries.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to the affected scope in this S3 Data \n         Access data set.</p>"
       }
     },
     "com.amazonaws.dataexchange#S3SnapshotAsset": {
@@ -5447,100 +5370,6 @@
       },
       "traits": {
         "smithy.api#documentation": "<p>The Amazon S3 object that is the asset.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#SchemaChangeDetails": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>Name\n         of the changing\n         field. This value\n         can be up to 255 characters long.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Type": {
-          "target": "com.amazonaws.dataexchange#SchemaChangeType",
-          "traits": {
-            "smithy.api#documentation": "<p>Is\n         the field being added, removed, or modified?</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Description": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>Description\n         of what's changing about this\n         field. This value\n         can be up to 512 characters long.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Object encompassing information about a schema change to a single, particular field, \n         a notification can have up to 100 of these.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#SchemaChangeRequestDetails": {
-      "type": "structure",
-      "members": {
-        "Changes": {
-          "target": "com.amazonaws.dataexchange#ListOfSchemaChangeDetails",
-          "traits": {
-            "smithy.api#documentation": "<p>List\n         of schema changes happening in the scope of this\n         notification. This\n         can have up to 100 entries.</p>"
-          }
-        },
-        "SchemaChangeAt": {
-          "target": "com.amazonaws.dataexchange#Timestamp",
-          "traits": {
-            "smithy.api#documentation": "<p>A\n         date in the future when the schema change is taking effect.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Extra details specific to this schema change type notification.</p>"
-      }
-    },
-    "com.amazonaws.dataexchange#SchemaChangeType": {
-      "type": "string",
-      "traits": {
-        "smithy.api#enum": [
-          {
-            "value": "ADD",
-            "name": "ADD"
-          },
-          {
-            "value": "REMOVE",
-            "name": "REMOVE"
-          },
-          {
-            "value": "MODIFY",
-            "name": "MODIFY"
-          }
-        ]
-      }
-    },
-    "com.amazonaws.dataexchange#ScopeDetails": {
-      "type": "structure",
-      "members": {
-        "LakeFormationTagPolicies": {
-          "target": "com.amazonaws.dataexchange#ListOfLakeFormationTagPolicies",
-          "traits": {
-            "smithy.api#documentation": "<p>Underlying\n         LF resources that will be affected by this notification.</p>"
-          }
-        },
-        "RedshiftDataShares": {
-          "target": "com.amazonaws.dataexchange#ListOfRedshiftDataShares",
-          "traits": {
-            "smithy.api#documentation": "<p>Underlying\n         Redshift resources that will be affected by this notification.</p>"
-          }
-        },
-        "S3DataAccesses": {
-          "target": "com.amazonaws.dataexchange#ListOfS3DataAccesses",
-          "traits": {
-            "smithy.api#documentation": "<p>Underlying\n         S3 resources that will be affected by this notification.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Details about the scope of the notifications such as the affected resources.</p>"
       }
     },
     "com.amazonaws.dataexchange#SendApiAsset": {
@@ -5661,98 +5490,6 @@
             "smithy.api#httpPrefixHeaders": ""
           }
         }
-      }
-    },
-    "com.amazonaws.dataexchange#SendDataSetNotification": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.dataexchange#SendDataSetNotificationRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.dataexchange#SendDataSetNotificationResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.dataexchange#AccessDeniedException"
-        },
-        {
-          "target": "com.amazonaws.dataexchange#ConflictException"
-        },
-        {
-          "target": "com.amazonaws.dataexchange#InternalServerException"
-        },
-        {
-          "target": "com.amazonaws.dataexchange#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.dataexchange#ThrottlingException"
-        },
-        {
-          "target": "com.amazonaws.dataexchange#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>The type of event associated with the data set.</p>",
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/v1/data-sets/{DataSetId}/notification",
-          "code": 202
-        }
-      }
-    },
-    "com.amazonaws.dataexchange#SendDataSetNotificationRequest": {
-      "type": "structure",
-      "members": {
-        "Scope": {
-          "target": "com.amazonaws.dataexchange#ScopeDetails",
-          "traits": {
-            "smithy.api#documentation": "<p>Affected\n         scope of this notification such as the underlying resources affected by the notification\n         event.</p>"
-          }
-        },
-        "ClientToken": {
-          "target": "com.amazonaws.dataexchange#ClientToken",
-          "traits": {
-            "smithy.api#documentation": "<p>Idempotency\n         key for the notification, this key allows us to deduplicate notifications that are sent in\n         quick succession erroneously.</p>",
-            "smithy.api#idempotencyToken": {}
-          }
-        },
-        "Comment": {
-          "target": "com.amazonaws.dataexchange#__stringMin0Max4096",
-          "traits": {
-            "smithy.api#documentation": "<p>Free-form\n         text field for providers to add information about their notifications.</p>"
-          }
-        },
-        "DataSetId": {
-          "target": "com.amazonaws.dataexchange#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>Affected\n         data set of the notification.</p>",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "Details": {
-          "target": "com.amazonaws.dataexchange#NotificationDetails",
-          "traits": {
-            "smithy.api#documentation": "<p>Extra\n         details specific to this notification type.</p>"
-          }
-        },
-        "Type": {
-          "target": "com.amazonaws.dataexchange#NotificationType",
-          "traits": {
-            "smithy.api#documentation": "<p>The\n         type of the notification. Describing the kind of event the notification is alerting you\n         to.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.dataexchange#SendDataSetNotificationResponse": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.dataexchange#ServerSideEncryptionTypes": {
@@ -6630,15 +6367,6 @@
         "smithy.api#length": {
           "min": 0,
           "max": 16384
-        }
-      }
-    },
-    "com.amazonaws.dataexchange#__stringMin0Max4096": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 4096
         }
       }
     },

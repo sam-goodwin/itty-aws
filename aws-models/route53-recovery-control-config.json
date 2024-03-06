@@ -35,7 +35,6 @@
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -53,7 +52,6 @@
         "AssertedControls": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The routing controls that are part of transactions that are evaluated to determine if a request to change a routing control state is allowed. For example, you might include three routing controls, one for each of three Amazon Web Services Regions.</p>",
             "smithy.api#required": {}
           }
@@ -61,7 +59,6 @@
         "ControlPanelArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -69,7 +66,6 @@
         "Name": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Name of the assertion rule. You can use any non-white space character in the name.</p>",
             "smithy.api#required": {}
           }
@@ -77,7 +73,6 @@
         "RuleConfig": {
           "target": "com.amazonaws.route53recoverycontrolconfig#RuleConfig",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The criteria that you set for specific assertion routing controls (AssertedControls) that designate how many routing control states must be ON as the result of a transaction. For example, if you have three assertion routing controls, you might specify ATLEAST 2 for your rule configuration. This means that at least two assertion routing control states must be ON, so that at least two Amazon Web Services Regions have traffic flowing to them.</p>",
             "smithy.api#required": {}
           }
@@ -85,7 +80,6 @@
         "SafetyRuleArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the assertion rule.</p>",
             "smithy.api#required": {}
           }
@@ -93,7 +87,6 @@
         "Status": {
           "target": "com.amazonaws.route53recoverycontrolconfig#Status",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The deployment status of an assertion rule. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.</p>",
             "smithy.api#required": {}
           }
@@ -101,15 +94,9 @@
         "WaitPeriodMs": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent \"flapping\" of state. The wait period is 5000 ms by default, but you can choose a custom value.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "Owner": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin12Max12PatternD12",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Web Services account ID of the assertion rule owner.</p>"
           }
         }
       },
@@ -123,7 +110,6 @@
         "Name": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the assertion rule. You can use any non-white space character in the name.</p>",
             "smithy.api#required": {}
           }
@@ -131,7 +117,6 @@
         "SafetyRuleArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the assertion rule.</p>",
             "smithy.api#required": {}
           }
@@ -139,7 +124,7 @@
         "WaitPeriodMs": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent \"flapping\" of state. The wait period is 5000 ms by default, but you can choose a custom value.</p>",
             "smithy.api#required": {}
           }
@@ -175,12 +160,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Deployment status of a resource. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.</p>"
           }
-        },
-        "Owner": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin12Max12PatternD12",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Web Services account ID of the cluster owner.</p>"
-          }
         }
       },
       "traits": {
@@ -213,7 +192,6 @@
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -243,6 +221,7 @@
         "DefaultControlPanel": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__boolean",
           "traits": {
+            "smithy.api#default": false,
             "smithy.api#documentation": "<p>A flag that Amazon Route 53 Application Recovery Controller sets to true to designate the default control panel for a cluster. When you create a cluster, Amazon Route 53 Application Recovery Controller creates a control panel, and sets this flag for that control panel. If you create a control panel yourself, this flag is set to false.</p>"
           }
         },
@@ -255,6 +234,7 @@
         "RoutingControlCount": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The number of routing controls in the control panel.</p>"
           }
         },
@@ -262,12 +242,6 @@
           "target": "com.amazonaws.route53recoverycontrolconfig#Status",
           "traits": {
             "smithy.api#documentation": "<p>The deployment status of control panel. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.</p>"
-          }
-        },
-        "Owner": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin12Max12PatternD12",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Web Services account ID of the control panel owner.</p>"
           }
         }
       },
@@ -328,7 +302,6 @@
         "ClusterName": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the cluster.</p>",
             "smithy.api#required": {}
           }
@@ -341,8 +314,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Creates a cluster.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>Creates a cluster.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateClusterResponse": {
@@ -354,9 +326,6 @@
             "smithy.api#documentation": "<p>The cluster that was created.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateControlPanel": {
@@ -412,7 +381,6 @@
         "ClusterArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the cluster for the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -420,7 +388,6 @@
         "ControlPanelName": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -433,8 +400,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The details of the control panel that you're creating.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The details of the control panel that you're creating.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateControlPanelResponse": {
@@ -446,9 +412,6 @@
             "smithy.api#documentation": "<p>Information about a control panel.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateRoutingControl": {
@@ -504,7 +467,6 @@
         "ClusterArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the cluster that includes the routing control.</p>",
             "smithy.api#required": {}
           }
@@ -518,15 +480,13 @@
         "RoutingControlName": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the routing control.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The details of the routing control that you're creating.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The details of the routing control that you're creating.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateRoutingControlResponse": {
@@ -538,9 +498,6 @@
             "smithy.api#documentation": "<p>The routing control that is created.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateSafetyRule": {
@@ -598,8 +555,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request body that you include when you create a safety rule.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request body that you include when you create a safety rule.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#CreateSafetyRuleResponse": {
@@ -617,9 +573,6 @@
             "smithy.api#documentation": "<p>The gating rule created.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteCluster": {
@@ -670,17 +623,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteClusterResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteControlPanel": {
       "type": "operation",
@@ -730,17 +677,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteControlPanelResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteRoutingControl": {
       "type": "operation",
@@ -790,17 +731,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteRoutingControlResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteSafetyRule": {
       "type": "operation",
@@ -841,17 +776,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DeleteSafetyRuleResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeCluster": {
       "type": "operation",
@@ -963,9 +892,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeClusterResponse": {
@@ -977,9 +903,6 @@
             "smithy.api#documentation": "<p>The cluster for the DescribeCluster request.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeControlPanel": {
@@ -1092,9 +1015,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeControlPanelResponse": {
@@ -1106,9 +1026,6 @@
             "smithy.api#documentation": "<p>Information about the control panel.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeRoutingControl": {
@@ -1221,9 +1138,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeRoutingControlResponse": {
@@ -1235,9 +1149,6 @@
             "smithy.api#documentation": "<p>Information about the routing control.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeSafetyRule": {
@@ -1276,9 +1187,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#DescribeSafetyRuleResponse": {
@@ -1296,9 +1204,6 @@
             "smithy.api#documentation": "<p>The gating rule in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#GatingRule": {
@@ -1307,7 +1212,6 @@
         "ControlPanelArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -1315,7 +1219,6 @@
         "GatingControls": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>An array of gating routing control Amazon Resource Names (ARNs). For a simple \"on/off\" switch, specify the ARN for one routing control. The gating routing controls are evaluated by the rule configuration that you specify to determine if the target routing control states can be changed.</p>",
             "smithy.api#required": {}
           }
@@ -1323,7 +1226,6 @@
         "Name": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name for the gating rule. You can use any non-white space character in the name.</p>",
             "smithy.api#required": {}
           }
@@ -1331,7 +1233,6 @@
         "RuleConfig": {
           "target": "com.amazonaws.route53recoverycontrolconfig#RuleConfig",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The criteria that you set for gating routing controls that designate how many of the routing control states must be ON to allow you to update target routing control states.</p>",
             "smithy.api#required": {}
           }
@@ -1339,7 +1240,6 @@
         "SafetyRuleArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the gating rule.</p>",
             "smithy.api#required": {}
           }
@@ -1347,7 +1247,6 @@
         "Status": {
           "target": "com.amazonaws.route53recoverycontrolconfig#Status",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The deployment status of a gating rule. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.</p>",
             "smithy.api#required": {}
           }
@@ -1355,7 +1254,6 @@
         "TargetControls": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>An array of target routing control Amazon Resource Names (ARNs) for which the states can only be updated if the rule configuration that you specify evaluates to true for the gating routing control. As a simple example, if you have a single gating control, it acts as an overall \"on/off\" switch for a set of target routing controls. You can use this to manually override automated failover, for example.</p>",
             "smithy.api#required": {}
           }
@@ -1363,15 +1261,9 @@
         "WaitPeriodMs": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent \"flapping\" of state. The wait period is 5000 ms by default, but you can choose a custom value.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "Owner": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin12Max12PatternD12",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Web Services account ID of the gating rule owner.</p>"
           }
         }
       },
@@ -1385,7 +1277,6 @@
         "Name": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name for the gating rule. You can use any non-white space character in the name.</p>",
             "smithy.api#required": {}
           }
@@ -1393,7 +1284,6 @@
         "SafetyRuleArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the gating rule.</p>",
             "smithy.api#required": {}
           }
@@ -1401,7 +1291,7 @@
         "WaitPeriodMs": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent \"flapping\" of state. The wait period is 5000 ms by default, but you can choose a custom value.</p>",
             "smithy.api#required": {}
           }
@@ -1411,68 +1301,12 @@
         "smithy.api#documentation": "<p>Update to a gating rule. You can update the name or the evaluation period (wait period). If you don't specify one of the items to update, the item is unchanged.</p>"
       }
     },
-    "com.amazonaws.route53recoverycontrolconfig#GetResourcePolicy": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.route53recoverycontrolconfig#GetResourcePolicyRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.route53recoverycontrolconfig#GetResourcePolicyResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.route53recoverycontrolconfig#InternalServerException"
-        },
-        {
-          "target": "com.amazonaws.route53recoverycontrolconfig#ResourceNotFoundException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Get information about the resource policy for a cluster.</p>",
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/resourcePolicy/{ResourceArn}",
-          "code": 200
-        }
-      }
-    },
-    "com.amazonaws.route53recoverycontrolconfig#GetResourcePolicyRequest": {
-      "type": "structure",
-      "members": {
-        "ResourceArn": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__string",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the resource.</p>",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.route53recoverycontrolconfig#GetResourcePolicyResponse": {
-      "type": "structure",
-      "members": {
-        "Policy": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__policy",
-          "traits": {
-            "smithy.api#documentation": "<p>The resource policy.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
     "com.amazonaws.route53recoverycontrolconfig#InternalServerException": {
       "type": "structure",
       "members": {
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -1524,6 +1358,7 @@
         "MaxResults": {
           "target": "com.amazonaws.route53recoverycontrolconfig#MaxResults",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The number of objects that you want to return with this call.</p>",
             "smithy.api#httpQuery": "MaxResults"
           }
@@ -1543,9 +1378,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListAssociatedRoute53HealthChecksResponse": {
@@ -1563,9 +1395,6 @@
             "smithy.api#documentation": "<p>Next token for listing health checks.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListClusters": {
@@ -1614,6 +1443,7 @@
         "MaxResults": {
           "target": "com.amazonaws.route53recoverycontrolconfig#MaxResults",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The number of objects that you want to return with this call.</p>",
             "smithy.api#httpQuery": "MaxResults"
           }
@@ -1625,9 +1455,6 @@
             "smithy.api#httpQuery": "NextToken"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListClustersResponse": {
@@ -1645,9 +1472,6 @@
             "smithy.api#documentation": "<p>The token that identifies which batch of results you want to see.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListControlPanels": {
@@ -1703,6 +1527,7 @@
         "MaxResults": {
           "target": "com.amazonaws.route53recoverycontrolconfig#MaxResults",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The number of objects that you want to return with this call.</p>",
             "smithy.api#httpQuery": "MaxResults"
           }
@@ -1714,9 +1539,6 @@
             "smithy.api#httpQuery": "NextToken"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListControlPanelsResponse": {
@@ -1734,9 +1556,6 @@
             "smithy.api#documentation": "<p>The token that identifies which batch of results you want to see.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListRoutingControls": {
@@ -1793,6 +1612,7 @@
         "MaxResults": {
           "target": "com.amazonaws.route53recoverycontrolconfig#MaxResults",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The number of objects that you want to return with this call.</p>",
             "smithy.api#httpQuery": "MaxResults"
           }
@@ -1804,9 +1624,6 @@
             "smithy.api#httpQuery": "NextToken"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListRoutingControlsResponse": {
@@ -1824,9 +1641,6 @@
             "smithy.api#documentation": "<p>An array of routing controls.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListSafetyRules": {
@@ -1883,6 +1697,7 @@
         "MaxResults": {
           "target": "com.amazonaws.route53recoverycontrolconfig#MaxResults",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The number of objects that you want to return with this call.</p>",
             "smithy.api#httpQuery": "MaxResults"
           }
@@ -1894,9 +1709,6 @@
             "smithy.api#httpQuery": "NextToken"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListSafetyRulesResponse": {
@@ -1914,9 +1726,6 @@
             "smithy.api#documentation": "<p>The list of safety rules in a control panel.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListTagsForResource": {
@@ -1958,9 +1767,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ListTagsForResourceResponse": {
@@ -1972,14 +1778,12 @@
             "smithy.api#documentation": "<p>The tags associated with the resource.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#MaxResults": {
       "type": "integer",
       "traits": {
+        "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 1,
           "max": 1000
@@ -1992,7 +1796,6 @@
         "AssertedControls": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The routing controls that are part of transactions that are evaluated to determine if a request to change a routing control state is allowed. For example, you might include three routing controls, one for each of three Amazon Web Services Regions.</p>",
             "smithy.api#required": {}
           }
@@ -2000,7 +1803,6 @@
         "ControlPanelArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) for the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -2008,7 +1810,6 @@
         "Name": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the assertion rule. You can use any non-white space character in the name.</p>",
             "smithy.api#required": {}
           }
@@ -2016,7 +1817,6 @@
         "RuleConfig": {
           "target": "com.amazonaws.route53recoverycontrolconfig#RuleConfig",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The criteria that you set for specific assertion controls (routing controls) that designate how many control states must be ON as the result of a transaction. For example, if you have three assertion controls, you might specify ATLEAST 2 for your rule configuration. This means that at least two assertion controls must be ON, so that at least two Amazon Web Services Regions have traffic flowing to them.</p>",
             "smithy.api#required": {}
           }
@@ -2024,7 +1824,7 @@
         "WaitPeriodMs": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent \"flapping\" of state. The wait period is 5000 ms by default, but you can choose a custom value.</p>",
             "smithy.api#required": {}
           }
@@ -2040,7 +1840,6 @@
         "ControlPanelArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -2048,7 +1847,6 @@
         "GatingControls": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The gating controls for the new gating rule. That is, routing controls that are evaluated by the rule configuration that you specify.</p>",
             "smithy.api#required": {}
           }
@@ -2056,7 +1854,6 @@
         "Name": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name for the new gating rule.</p>",
             "smithy.api#required": {}
           }
@@ -2064,7 +1861,6 @@
         "RuleConfig": {
           "target": "com.amazonaws.route53recoverycontrolconfig#RuleConfig",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The criteria that you set for specific gating controls (routing controls) that designate how many control states must be ON to allow you to change (set or unset) the target control states.</p>",
             "smithy.api#required": {}
           }
@@ -2072,7 +1868,6 @@
         "TargetControls": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Routing controls that can only be set or unset if the specified RuleConfig evaluates to true for the specified GatingControls. For example, say you have three gating controls, one for each of three Amazon Web Services Regions. Now you specify ATLEAST 2 as your RuleConfig. With these settings, you can only change (set or unset) the routing controls that you have specified as TargetControls if that rule evaluates to true.</p> <p>In other words, your ability to change the routing controls that you have specified as TargetControls is gated by the rule that you set for the routing controls in GatingControls.</p>",
             "smithy.api#required": {}
           }
@@ -2080,7 +1875,7 @@
         "WaitPeriodMs": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent \"flapping\" of state. The wait period is 5000 ms by default, but you can choose a custom value.</p>",
             "smithy.api#required": {}
           }
@@ -2096,7 +1891,6 @@
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -2147,9 +1941,6 @@
         },
         {
           "target": "com.amazonaws.route53recoverycontrolconfig#DescribeSafetyRule"
-        },
-        {
-          "target": "com.amazonaws.route53recoverycontrolconfig#GetResourcePolicy"
         },
         {
           "target": "com.amazonaws.route53recoverycontrolconfig#ListAssociatedRoute53HealthChecks"
@@ -2204,7 +1995,7 @@
           "parameters": {
             "Region": {
               "builtIn": "AWS::Region",
-              "required": false,
+              "required": true,
               "documentation": "The AWS region used to dispatch the request.",
               "type": "String"
             },
@@ -2233,15 +2024,155 @@
             {
               "conditions": [
                 {
-                  "fn": "isSet",
+                  "fn": "aws.partition",
                   "argv": [
                     {
-                      "ref": "Endpoint"
+                      "ref": "Region"
                     }
-                  ]
+                  ],
+                  "assign": "PartitionResult"
                 }
               ],
+              "type": "tree",
               "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "type": "error"
+                    },
+                    {
+                      "conditions": [],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                          "type": "error"
+                        },
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": {
+                              "ref": "Endpoint"
+                            },
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseFIPS"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://route53-recovery-control-config-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      "type": "error"
+                    }
+                  ]
+                },
                 {
                   "conditions": [
                     {
@@ -2254,8 +2185,51 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                  "type": "error"
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://route53-recovery-control-config-fips.{Region}.{PartitionResult#dnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS is enabled but this partition does not support FIPS",
+                      "type": "error"
+                    }
+                  ]
                 },
                 {
                   "conditions": [
@@ -2269,228 +2243,50 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                  "type": "error"
-                },
-                {
-                  "conditions": [],
-                  "endpoint": {
-                    "url": {
-                      "ref": "Endpoint"
-                    },
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
-                }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [
-                {
-                  "fn": "isSet",
-                  "argv": [
-                    {
-                      "ref": "Region"
-                    }
-                  ]
-                }
-              ],
-              "rules": [
-                {
-                  "conditions": [
-                    {
-                      "fn": "aws.partition",
-                      "argv": [
-                        {
-                          "ref": "Region"
-                        }
-                      ],
-                      "assign": "PartitionResult"
-                    }
-                  ],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
+                            true,
                             {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://route53-recovery-control-config-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
+                              "fn": "getAttr",
                               "argv": [
                                 {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
+                                  "ref": "PartitionResult"
                                 },
-                                true
+                                "supportsDualStack"
                               ]
                             }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://route53-recovery-control-config-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS is enabled but this partition does not support FIPS",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
                           ]
                         }
                       ],
+                      "type": "tree",
                       "rules": [
                         {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://route53-recovery-control-config.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
                           "conditions": [],
-                          "error": "DualStack is enabled but this partition does not support DualStack",
-                          "type": "error"
+                          "endpoint": {
+                            "url": "https://route53-recovery-control-config.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
                         }
-                      ],
-                      "type": "tree"
+                      ]
                     },
+                    {
+                      "conditions": [],
+                      "error": "DualStack is enabled but this partition does not support DualStack",
+                      "type": "error"
+                    }
+                  ]
+                },
+                {
+                  "conditions": [],
+                  "type": "tree",
+                  "rules": [
                     {
                       "conditions": [
                         {
@@ -2509,8 +2305,8 @@
                           "authSchemes": [
                             {
                               "name": "sigv4",
-                              "signingName": "route53-recovery-control-config",
-                              "signingRegion": "us-west-2"
+                              "signingRegion": "us-west-2",
+                              "signingName": "route53-recovery-control-config"
                             }
                           ]
                         },
@@ -2527,16 +2323,9 @@
                       },
                       "type": "endpoint"
                     }
-                  ],
-                  "type": "tree"
+                  ]
                 }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [],
-              "error": "Invalid Configuration: Missing Region",
-              "type": "error"
+              ]
             }
           ]
         },
@@ -2549,9 +2338,9 @@
                   "properties": {
                     "authSchemes": [
                       {
+                        "signingRegion": "us-west-2",
                         "name": "sigv4",
-                        "signingName": "route53-recovery-control-config",
-                        "signingRegion": "us-west-2"
+                        "signingName": "route53-recovery-control-config"
                       }
                     ]
                   },
@@ -2559,279 +2348,13 @@
                 }
               },
               "params": {
-                "Region": "aws-global",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.us-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.us-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.us-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.us-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config-fips.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://route53-recovery-control-config.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://example.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
                 "UseFIPS": false,
                 "UseDualStack": false,
-                "Endpoint": "https://example.com"
+                "Region": "aws-global"
               }
             },
             {
-              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
@@ -2840,6 +2363,7 @@
               "params": {
                 "UseFIPS": false,
                 "UseDualStack": false,
+                "Region": "us-east-1",
                 "Endpoint": "https://example.com"
               }
             },
@@ -2849,9 +2373,9 @@
                 "error": "Invalid Configuration: FIPS and custom endpoint are not supported"
               },
               "params": {
-                "Region": "us-east-1",
                 "UseFIPS": true,
                 "UseDualStack": false,
+                "Region": "us-east-1",
                 "Endpoint": "https://example.com"
               }
             },
@@ -2861,16 +2385,10 @@
                 "error": "Invalid Configuration: Dualstack and custom endpoint are not supported"
               },
               "params": {
-                "Region": "us-east-1",
                 "UseFIPS": false,
                 "UseDualStack": true,
+                "Region": "us-east-1",
                 "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "Missing region",
-              "expect": {
-                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -2904,12 +2422,6 @@
           "traits": {
             "smithy.api#documentation": "<p>The deployment status of a routing control. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.</p>"
           }
-        },
-        "Owner": {
-          "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin12Max12PatternD12",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Web Services account ID of the routing control owner.</p>"
-          }
         }
       },
       "traits": {
@@ -2942,7 +2454,7 @@
         "Inverted": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__boolean",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": false,
             "smithy.api#documentation": "<p>Logical negation of the rule. If the rule would usually evaluate true, it's evaluated as false, and vice versa.</p>",
             "smithy.api#required": {}
           }
@@ -2950,7 +2462,7 @@
         "Threshold": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__integer",
           "traits": {
-            "smithy.api#clientOptional": {},
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>The value of N, when you specify an ATLEAST rule type. That is, Threshold is the number of controls that must be set when you specify an ATLEAST type.</p>",
             "smithy.api#required": {}
           }
@@ -2958,7 +2470,6 @@
         "Type": {
           "target": "com.amazonaws.route53recoverycontrolconfig#RuleType",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>A rule can be one of the following: ATLEAST, AND, or OR.</p>",
             "smithy.api#required": {}
           }
@@ -3000,7 +2511,6 @@
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -3080,23 +2590,18 @@
         "Tags": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__mapOf__stringMin0Max256PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The tags associated with the resource.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Request of adding tag to the resource</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>Request of adding tag to the resource</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#TagResourceResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.route53recoverycontrolconfig#ThrottlingException": {
       "type": "structure",
@@ -3104,7 +2609,6 @@
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -3158,23 +2662,16 @@
         "TagKeys": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__listOf__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>Keys for the tags to be removed.</p>",
             "smithy.api#httpQuery": "TagKeys",
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#UntagResourceResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.route53recoverycontrolconfig#UpdateControlPanel": {
       "type": "operation",
@@ -3219,7 +2716,6 @@
         "ControlPanelArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the control panel.</p>",
             "smithy.api#required": {}
           }
@@ -3227,15 +2723,13 @@
         "ControlPanelName": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the control panel.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The details of the control panel that you're updating.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The details of the control panel that you're updating.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#UpdateControlPanelResponse": {
@@ -3247,9 +2741,6 @@
             "smithy.api#documentation": "<p>The control panel to update.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#UpdateRoutingControl": {
@@ -3295,7 +2786,6 @@
         "RoutingControlArn": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max256PatternAZaZ09",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the routing control.</p>",
             "smithy.api#required": {}
           }
@@ -3303,15 +2793,13 @@
         "RoutingControlName": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max64PatternS",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#documentation": "<p>The name of the routing control.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The details of the routing control that you're updating.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The details of the routing control that you're updating.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#UpdateRoutingControlResponse": {
@@ -3323,9 +2811,6 @@
             "smithy.api#documentation": "<p>The routing control that was updated.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#UpdateSafetyRule": {
@@ -3373,8 +2858,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A rule that you add to Application Recovery Controller to ensure that recovery actions don't accidentally impair your application's availability.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>A rule that you add to Application Recovery Controller to ensure that recovery actions don't accidentally impair your application's availability.</p>"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#UpdateSafetyRuleResponse": {
@@ -3392,9 +2876,6 @@
             "smithy.api#documentation": "<p>The gating rule updated.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#ValidationException": {
@@ -3403,7 +2884,6 @@
         "Message": {
           "target": "com.amazonaws.route53recoverycontrolconfig#__string",
           "traits": {
-            "smithy.api#clientOptional": {},
             "smithy.api#jsonName": "message",
             "smithy.api#required": {}
           }
@@ -3416,10 +2896,16 @@
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#__boolean": {
-      "type": "boolean"
+      "type": "boolean",
+      "traits": {
+        "smithy.api#default": false
+      }
     },
     "com.amazonaws.route53recoverycontrolconfig#__integer": {
-      "type": "integer"
+      "type": "integer",
+      "traits": {
+        "smithy.api#default": 0
+      }
     },
     "com.amazonaws.route53recoverycontrolconfig#__listOfCluster": {
       "type": "list",
@@ -3478,16 +2964,6 @@
         "target": "com.amazonaws.route53recoverycontrolconfig#__stringMin0Max256PatternS"
       }
     },
-    "com.amazonaws.route53recoverycontrolconfig#__policy": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 2,
-          "max": 10240
-        },
-        "smithy.api#pattern": "^[\\u0009\\u000A\\u000D\\u0020-\\u007E\\u00A1-\\u00FF]+$"
-      }
-    },
     "com.amazonaws.route53recoverycontrolconfig#__string": {
       "type": "string"
     },
@@ -3509,16 +2985,6 @@
           "max": 256
         },
         "smithy.api#pattern": "^\\S+$"
-      }
-    },
-    "com.amazonaws.route53recoverycontrolconfig#__stringMin12Max12PatternD12": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 12,
-          "max": 12
-        },
-        "smithy.api#pattern": "^\\d{12}$"
       }
     },
     "com.amazonaws.route53recoverycontrolconfig#__stringMin1Max128PatternAZaZ09": {

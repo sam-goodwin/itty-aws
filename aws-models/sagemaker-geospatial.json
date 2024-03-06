@@ -189,12 +189,12 @@
         "AreaOfInterestGeometry": {
           "target": "com.amazonaws.sagemakergeospatial#AreaOfInterestGeometry",
           "traits": {
-            "smithy.api#documentation": "<p>A GeoJSON object representing the geographic extent in the coordinate space.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The geographic extent of the Earth Observation job.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#AreaOfInterestGeometry": {
@@ -203,18 +203,18 @@
         "PolygonGeometry": {
           "target": "com.amazonaws.sagemakergeospatial#PolygonGeometryInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing Polygon Geometry.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "MultiPolygonGeometry": {
           "target": "com.amazonaws.sagemakergeospatial#MultiPolygonGeometryInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing the MultiPolygon Geometry.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A GeoJSON object representing the geographic extent in the coordinate space.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#Arn": {
@@ -232,12 +232,12 @@
         "Href": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>Link to the asset object.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure containing the asset properties.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#AssetsMap": {
@@ -255,18 +255,18 @@
         "PredefinedIndices": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>One or many of the supported predefined indices to compute. \n      Allowed values: <code>NDVI</code>, <code>EVI2</code>, <code>MSAVI</code>, \n      <code>NDWI</code>, <code>NDMI</code>, <code>NDSI</code>, and <code>WDRVI</code>.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "CustomIndices": {
           "target": "com.amazonaws.sagemakergeospatial#CustomIndicesInput",
           "traits": {
-            "smithy.api#documentation": "<p>CustomIndices that are computed.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Input structure for the BandMath operation type. \n      Defines Predefined and CustomIndices to be computed using BandMath.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#BinaryFile": {
@@ -280,7 +280,7 @@
       "type": "structure",
       "members": {},
       "traits": {
-        "smithy.api#documentation": "<p>Input structure for CloudMasking operation type.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#CloudRemovalConfigInput": {
@@ -301,12 +301,12 @@
         "TargetBands": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>TargetBands to be returned in the output of CloudRemoval operation.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Input structure for Cloud Removal Operation type</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ComparisonOperator": {
@@ -343,12 +343,13 @@
         "ResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>Identifier of the resource affected.</p>"
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Updating or deleting a resource can cause an inconsistent state.</p>",
+        "smithy.api#documentation": "<p/>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 409
       }
@@ -359,12 +360,12 @@
         "Operations": {
           "target": "com.amazonaws.sagemakergeospatial#OperationsListInput",
           "traits": {
-            "smithy.api#documentation": "<p>A list of BandMath indices to compute.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Input object defining the custom BandMath indices to compute.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#DataCollectionArn": {
@@ -572,13 +573,13 @@
         "Type": {
           "target": "com.amazonaws.sagemakergeospatial#EarthObservationJobErrorType",
           "traits": {
-            "smithy.api#documentation": "<p>The type of error in an Earth Observation job.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "Message": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>A detailed message describing the error in an Earth Observation job.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -690,30 +691,34 @@
         "LowerBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>Lower bound for EoCloudCover.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "UpperBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>Upper bound for EoCloudCover.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing the EoCloudCover filter.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
-    "com.amazonaws.sagemakergeospatial#ExecutionRoleArn": {
-      "type": "string",
+    "com.amazonaws.sagemakergeospatial#EojDataSourceConfigInput": {
+      "type": "union",
+      "members": {
+        "S3Data": {
+          "target": "com.amazonaws.sagemakergeospatial#S3DataInput",
+          "traits": {
+            "smithy.api#documentation": "<p/>"
+          }
+        }
+      },
       "traits": {
-        "smithy.api#length": {
-          "min": 20,
-          "max": 2048
-        },
-        "smithy.api#pattern": "^arn:(aws[a-z-]*):iam::([0-9]{12}):role/[a-zA-Z0-9+=,.@_/-]+$"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ExportEarthObservationJob": {
@@ -748,7 +753,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Use this operation to export results of an Earth Observation job and optionally source images used as input to the EOJ to an Amazon S3 location.</p>",
+        "smithy.api#documentation": "<p>Use this operation to export results of an Earth Observation job and optionally source images used as input to the EOJ to an S3 location.</p>",
         "smithy.api#http": {
           "code": 200,
           "method": "POST",
@@ -766,19 +771,8 @@
             "smithy.api#required": {}
           }
         },
-        "ClientToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "<p>A unique token that guarantees that the call to this API is idempotent.</p>",
-            "smithy.api#idempotencyToken": {},
-            "smithy.api#length": {
-              "min": 36,
-              "max": 64
-            }
-          }
-        },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
             "smithy.api#required": {}
@@ -813,8 +807,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "ExportStatus": {
@@ -825,7 +818,7 @@
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
             "smithy.api#required": {}
@@ -852,13 +845,13 @@
         "ExportResults": {
           "target": "com.amazonaws.sagemakergeospatial#ExportErrorDetailsOutput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure for returning the export error details while exporting results of an Earth Observation job.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ExportSourceImages": {
           "target": "com.amazonaws.sagemakergeospatial#ExportErrorDetailsOutput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure for returning the export error details \n      while exporting the source images of an Earth Observation job.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -872,18 +865,18 @@
         "Type": {
           "target": "com.amazonaws.sagemakergeospatial#ExportErrorType",
           "traits": {
-            "smithy.api#documentation": "<p>The type of error in an export EarthObservationJob operation.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "Message": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>A detailed message describing the error in an export EarthObservationJob operation.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing the errors in an export EarthObservationJob operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ExportErrorType": {
@@ -907,21 +900,21 @@
       "type": "structure",
       "members": {
         "S3Uri": {
-          "target": "com.amazonaws.sagemakergeospatial#S3Uri",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The URL to the Amazon S3 data input.</p>",
             "smithy.api#required": {}
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure containing the Amazon S3 path to export the Earth Observation job output.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ExportVectorEnrichmentJob": {
@@ -956,7 +949,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Use this operation to copy results of a Vector Enrichment job to an Amazon S3 location.</p>",
+        "smithy.api#documentation": "<p>Use this operation to copy results of a Vector Enrichment job to an S3 location.</p>",
         "smithy.api#http": {
           "code": 200,
           "method": "POST",
@@ -975,19 +968,8 @@
             "smithy.api#required": {}
           }
         },
-        "ClientToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "<p>A unique token that guarantees that the call to this API is idempotent.</p>",
-            "smithy.api#idempotencyToken": {},
-            "smithy.api#length": {
-              "min": 36,
-              "max": 64
-            }
-          }
-        },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM rolewith permission to upload to the location in OutputConfig.</p>",
             "smithy.api#required": {}
@@ -1019,12 +1001,11 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to the location in OutputConfig.</p>",
             "smithy.api#required": {}
@@ -1055,7 +1036,7 @@
         "S3Data": {
           "target": "com.amazonaws.sagemakergeospatial#VectorEnrichmentJobS3Data",
           "traits": {
-            "smithy.api#documentation": "<p>The input structure for Amazon S3 data; representing the Amazon S3 location of the input data objects.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
@@ -1130,20 +1111,20 @@
         "Type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>GeoJson Geometry types like Polygon and MultiPolygon.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "Coordinates": {
           "target": "com.amazonaws.sagemakergeospatial#LinearRings",
           "traits": {
-            "smithy.api#documentation": "<p>The coordinates of the GeoJson Geometry.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing a Geometry in \n      terms of Type and Coordinates as per GeoJson spec.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#GetEarthObservationJob": {
@@ -1218,8 +1199,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time of the initiated Earth Observation job.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "DurationInSeconds": {
@@ -1237,9 +1217,9 @@
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         },
         "InputConfig": {
@@ -1259,11 +1239,11 @@
         "OutputBands": {
           "target": "com.amazonaws.sagemakergeospatial#EarthObservationJobOutputBands",
           "traits": {
-            "smithy.api#documentation": "<p>Bands available in the output of an operation.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>"
           }
@@ -1393,7 +1373,7 @@
         "ImageSourceBands": {
           "target": "com.amazonaws.sagemakergeospatial#ImageSourceBandList",
           "traits": {
-            "smithy.api#documentation": "<p>The list of image source bands in the raster data collection.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -1525,13 +1505,6 @@
             "smithy.api#documentation": "<p>The output data type of the tile operation.</p>",
             "smithy.api#httpQuery": "OutputDataType"
           }
-        },
-        "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specify.</p>",
-            "smithy.api#httpQuery": "ExecutionRoleArn"
-          }
         }
       },
       "traits": {
@@ -1633,8 +1606,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "DurationInSeconds": {
@@ -1652,9 +1624,9 @@
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         },
         "InputConfig": {
@@ -1672,7 +1644,7 @@
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
             "smithy.api#required": {}
@@ -1734,15 +1706,21 @@
       "type": "structure",
       "members": {
         "PreviousEarthObservationJobArn": {
-          "target": "com.amazonaws.sagemakergeospatial#EarthObservationJobArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>"
+          }
+        },
+        "DataSourceConfig": {
+          "target": "com.amazonaws.sagemakergeospatial#EojDataSourceConfigInput",
+          "traits": {
+            "smithy.api#documentation": "<p>The location of the input data.&gt;</p>"
           }
         },
         "RasterDataCollectionQuery": {
           "target": "com.amazonaws.sagemakergeospatial#RasterDataCollectionQueryInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing the RasterDataCollection Query consisting of \n      the Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -1754,15 +1732,21 @@
       "type": "structure",
       "members": {
         "PreviousEarthObservationJobArn": {
-          "target": "com.amazonaws.sagemakergeospatial#EarthObservationJobArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>"
+          }
+        },
+        "DataSourceConfig": {
+          "target": "com.amazonaws.sagemakergeospatial#EojDataSourceConfigInput",
+          "traits": {
+            "smithy.api#documentation": "<p>The location of the input data.</p>"
           }
         },
         "RasterDataCollectionQuery": {
           "target": "com.amazonaws.sagemakergeospatial#RasterDataCollectionQueryOutput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing the RasterDataCollection Query consisting of the Area of Interest, \n      RasterDataCollectionArn, RasterDataCollectionName, TimeRange, and Property Filters.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -1782,7 +1766,8 @@
         "ResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p/>"
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
           }
         }
       },
@@ -1805,32 +1790,32 @@
         "Geometry": {
           "target": "com.amazonaws.sagemakergeospatial#Geometry",
           "traits": {
-            "smithy.api#documentation": "<p>The item Geometry in GeoJson format.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "Assets": {
           "target": "com.amazonaws.sagemakergeospatial#AssetsMap",
           "traits": {
-            "smithy.api#documentation": "<p>This is a dictionary of Asset Objects data associated with the Item that \n      can be downloaded or streamed, each with a unique key.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "DateTime": {
           "target": "smithy.api#Timestamp",
           "traits": {
-            "smithy.api#documentation": "<p>The searchable date and time of the item, in UTC.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "Properties": {
           "target": "com.amazonaws.sagemakergeospatial#Properties",
           "traits": {
-            "smithy.api#documentation": "<p>This field contains additional properties of the item.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing the items in the response for SearchRasterDataCollection.</p>"
+        "smithy.api#documentation": "<p>Structure representing the items in the response for SearchRasterDataCollection.</p>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ItemSourceList": {
@@ -1845,7 +1830,7 @@
         "BandMathConfig": {
           "target": "com.amazonaws.sagemakergeospatial#BandMathConfigInput",
           "traits": {
-            "smithy.api#documentation": "<p>An object containing information about the job configuration for BandMath.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ResamplingConfig": {
@@ -1881,7 +1866,7 @@
         "StackConfig": {
           "target": "com.amazonaws.sagemakergeospatial#StackConfigInput",
           "traits": {
-            "smithy.api#documentation": "<p>An object containing information about the job configuration for a Stacking Earth Observation job.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "CloudMaskingConfig": {
@@ -1901,20 +1886,11 @@
         "smithy.api#documentation": "<p>The input structure for the JobConfig in an EarthObservationJob.</p>"
       }
     },
-    "com.amazonaws.sagemakergeospatial#KmsKey": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 2048
-        }
-      }
-    },
     "com.amazonaws.sagemakergeospatial#LandCoverSegmentationConfigInput": {
       "type": "structure",
       "members": {},
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for Land Cover Operation type.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#LandsatCloudCoverLandInput": {
@@ -1923,20 +1899,20 @@
         "LowerBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The minimum value for Land Cloud Cover property filter. This will filter items \n      having Land Cloud Cover greater than or equal to this value.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "UpperBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The maximum value for Land Cloud Cover property filter. \n      This will filter items having Land Cloud Cover less than or equal to this value.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing Land Cloud Cover property for Landsat data collection.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#LinearRing": {
@@ -2048,8 +2024,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "DurationInSeconds": {
@@ -2069,7 +2044,7 @@
         "OperationType": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The operation type for an Earth Observation job.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -2348,8 +2323,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "DurationInSeconds": {
@@ -2435,7 +2409,7 @@
         "IdAttributeName": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The field name for the data that describes the identifier representing a collection of GPS points belonging to an individual trace.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -2462,7 +2436,19 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for Map Matching operation type.</p>"
+        "smithy.api#documentation": "<p/>"
+      }
+    },
+    "com.amazonaws.sagemakergeospatial#MetadataProvider": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "PLANET_ORDER",
+            "name": "PLANET_ORDER",
+            "documentation": "PLANET_ORDER"
+          }
+        ]
       }
     },
     "com.amazonaws.sagemakergeospatial#MultiPolygonGeometryInput": {
@@ -2477,7 +2463,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing Polygon Geometry based on the <a href=\"https://www.rfc-editor.org/rfc/rfc7946#section-3.1.6\">GeoJson spec</a>.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#NextToken": {
@@ -2502,7 +2488,7 @@
         "Equation": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>Textual representation of the math operation; Equation used to compute the spectral index.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -2514,7 +2500,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Represents an arithmetic operation to compute spectral index.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#OperationsListInput": {
@@ -2571,13 +2557,13 @@
         "UserDefined": {
           "target": "com.amazonaws.sagemakergeospatial#UserDefined",
           "traits": {
-            "smithy.api#documentation": "<p>User Defined Resolution for the output \n      of Resampling operation defined by value and unit.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>OutputResolution Configuration indicating \n      the target resolution for the output of Resampling operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#OutputResolutionStackInput": {
@@ -2586,18 +2572,18 @@
         "Predefined": {
           "target": "com.amazonaws.sagemakergeospatial#PredefinedResolution",
           "traits": {
-            "smithy.api#documentation": "<p>A string value representing Predefined Output Resolution for a stacking operation. Allowed values are <code>HIGHEST</code>, <code>LOWEST</code>, and <code>AVERAGE</code>.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "UserDefined": {
           "target": "com.amazonaws.sagemakergeospatial#UserDefined",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing User Output Resolution for a Stacking operation defined as a value and unit.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure representing Output Resolution for Stacking Operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#OutputType": {
@@ -2645,12 +2631,12 @@
         "ComparisonOperator": {
           "target": "com.amazonaws.sagemakergeospatial#ComparisonOperator",
           "traits": {
-            "smithy.api#documentation": "<p>The ComparisonOperator to use with PlatformInput.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for specifying Platform. \n      Platform refers to the unique name of the specific platform the \n      instrument is attached to. For satellites it is the name of the satellite, eg. landsat-8 (Landsat-8), sentinel-2a.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#PolygonGeometryInput": {
@@ -2659,13 +2645,13 @@
         "Coordinates": {
           "target": "com.amazonaws.sagemakergeospatial#LinearRings",
           "traits": {
-            "smithy.api#documentation": "<p>Coordinates representing a Polygon based on the <a href=\"https://www.rfc-editor.org/rfc/rfc7946#section-3.1.6\">GeoJson spec</a>.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing Polygon Geometry based on the <a href=\"https://www.rfc-editor.org/rfc/rfc7946#section-3.1.6\">GeoJson spec</a>.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#Position": {
@@ -2712,42 +2698,42 @@
         "EoCloudCover": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>Estimate of cloud cover.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ViewOffNadir": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The angle from the sensor between nadir (straight down) and the scene center. Measured in degrees (0-90).</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ViewSunAzimuth": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The sun azimuth angle. From the scene center point on the ground, this is the angle between truth north and the sun. \n      Measured clockwise in degrees (0-360).</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ViewSunElevation": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The sun elevation angle. The angle from the tangent of the scene center point to the sun. Measured from the horizon in degrees (-90-90).\n      Negative values indicate the sun is below the horizon, e.g. sun elevation of -10° means the data was captured during <a href=\"https://www.timeanddate.com/astronomy/different-types-twilight.html\">nautical twilight</a>.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "Platform": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>Platform property. Platform refers to the unique name \n      of the specific platform the instrument is attached to. \n      For satellites it is the name of \n      the satellite, eg. landsat-8 (Landsat-8), sentinel-2a.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "LandsatCloudCoverLand": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>Land cloud cover for Landsat Data Collection.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Properties associated with the Item.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#Property": {
@@ -2756,42 +2742,42 @@
         "EoCloudCover": {
           "target": "com.amazonaws.sagemakergeospatial#EoCloudCoverInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing EoCloudCover property filter containing a lower bound and upper bound.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ViewOffNadir": {
           "target": "com.amazonaws.sagemakergeospatial#ViewOffNadirInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing ViewOffNadir property filter containing a lower bound and upper bound.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ViewSunAzimuth": {
           "target": "com.amazonaws.sagemakergeospatial#ViewSunAzimuthInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing ViewSunAzimuth property filter containing a lower bound and upper bound.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "ViewSunElevation": {
           "target": "com.amazonaws.sagemakergeospatial#ViewSunElevationInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing ViewSunElevation property filter containing a lower bound and upper bound.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "Platform": {
           "target": "com.amazonaws.sagemakergeospatial#PlatformInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing Platform property filter consisting of value and comparison operator.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "LandsatCloudCoverLand": {
           "target": "com.amazonaws.sagemakergeospatial#LandsatCloudCoverLandInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing Land Cloud Cover property filter \n      for Landsat collection containing a lower bound and upper bound.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Represents a single searchable property to search on.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#PropertyFilter": {
@@ -2800,13 +2786,13 @@
         "Property": {
           "target": "com.amazonaws.sagemakergeospatial#Property",
           "traits": {
-            "smithy.api#documentation": "<p>Represents a single property to match with when searching a raster data collection.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing a single PropertyFilter.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#PropertyFilters": {
@@ -2815,18 +2801,18 @@
         "Properties": {
           "target": "com.amazonaws.sagemakergeospatial#PropertyFiltersList",
           "traits": {
-            "smithy.api#documentation": "<p>A list of Property Filters.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "LogicalOperator": {
           "target": "com.amazonaws.sagemakergeospatial#LogicalOperator",
           "traits": {
-            "smithy.api#documentation": "<p>The Logical Operator used to combine the Property Filters.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A list of PropertyFilter objects.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#PropertyFiltersList": {
@@ -2900,7 +2886,7 @@
         "SupportedFilters": {
           "target": "com.amazonaws.sagemakergeospatial#FilterList",
           "traits": {
-            "smithy.api#documentation": "<p>The list of filters supported by the raster data collection.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -2919,7 +2905,7 @@
       "type": "structure",
       "members": {
         "RasterDataCollectionArn": {
-          "target": "com.amazonaws.sagemakergeospatial#DataCollectionArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the raster data collection.</p>",
             "smithy.api#required": {}
@@ -2928,7 +2914,7 @@
         "TimeRangeFilter": {
           "target": "com.amazonaws.sagemakergeospatial#TimeRangeFilterInput",
           "traits": {
-            "smithy.api#documentation": "<p>The TimeRange Filter used in the RasterDataCollection Query.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -2941,21 +2927,21 @@
         "PropertyFilters": {
           "target": "com.amazonaws.sagemakergeospatial#PropertyFilters",
           "traits": {
-            "smithy.api#documentation": "<p>The list of Property filters used in the Raster Data Collection Query.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for Raster Data Collection Query containing the Area of Interest, TimeRange Filters, and Property Filters.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#RasterDataCollectionQueryOutput": {
       "type": "structure",
       "members": {
         "RasterDataCollectionArn": {
-          "target": "com.amazonaws.sagemakergeospatial#DataCollectionArn",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The ARN of the Raster Data Collection against which the search is done.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -2967,27 +2953,27 @@
           }
         },
         "TimeRangeFilter": {
-          "target": "com.amazonaws.sagemakergeospatial#TimeRangeFilterOutput",
+          "target": "com.amazonaws.sagemakergeospatial#TimeRangeFilterInput",
           "traits": {
-            "smithy.api#documentation": "<p>The TimeRange filter used in the search.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "AreaOfInterest": {
           "target": "com.amazonaws.sagemakergeospatial#AreaOfInterest",
           "traits": {
-            "smithy.api#documentation": "<p>The Area of Interest used in the search.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "PropertyFilters": {
           "target": "com.amazonaws.sagemakergeospatial#PropertyFilters",
           "traits": {
-            "smithy.api#documentation": "<p>Property filters used in the search.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The output structure contains the Raster Data Collection Query \n      input along with some additional metadata.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#RasterDataCollectionQueryWithBandFilterInput": {
@@ -2996,26 +2982,26 @@
         "TimeRangeFilter": {
           "target": "com.amazonaws.sagemakergeospatial#TimeRangeFilterInput",
           "traits": {
-            "smithy.api#documentation": "<p>The TimeRange Filter used in the search query.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "AreaOfInterest": {
           "target": "com.amazonaws.sagemakergeospatial#AreaOfInterest",
           "traits": {
-            "smithy.api#documentation": "<p>The Area of interest to be used in the search query.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "PropertyFilters": {
           "target": "com.amazonaws.sagemakergeospatial#PropertyFilters",
           "traits": {
-            "smithy.api#documentation": "<p>The Property Filters used in the search query.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "BandFilter": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>The list of Bands to be displayed in the result for each item.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -3029,7 +3015,7 @@
         "OutputResolution": {
           "target": "com.amazonaws.sagemakergeospatial#OutputResolutionResamplingInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing output \n      resolution (in target georeferenced units) of the result of resampling operation.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -3042,12 +3028,12 @@
         "TargetBands": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>Bands used in the operation. If no target bands are specified, it uses all bands available in the input.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing input for resampling operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ResourceNotFoundException": {
@@ -3062,12 +3048,13 @@
         "ResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>Identifier of the resource that was not found.</p>"
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request references a resource which does not exist.</p>",
+        "smithy.api#documentation": "<p/>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 404
       }
@@ -3078,26 +3065,48 @@
         "YAttributeName": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The field name for the data that describes y-axis coordinate, eg. latitude of a point.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "XAttributeName": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The field name for the data that describes x-axis coordinate, eg. longitude of a point.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for Reverse Geocoding operation type.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
-    "com.amazonaws.sagemakergeospatial#S3Uri": {
-      "type": "string",
+    "com.amazonaws.sagemakergeospatial#S3DataInput": {
+      "type": "structure",
+      "members": {
+        "S3Uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>The URL to the Amazon S3 input.</p>",
+            "smithy.api#required": {}
+          }
+        },
+        "MetadataProvider": {
+          "target": "com.amazonaws.sagemakergeospatial#MetadataProvider",
+          "traits": {
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
+          }
+        },
+        "KmsKeyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
+          }
+        }
+      },
       "traits": {
-        "smithy.api#pattern": "^s3://([^/]+)/?(.*)$"
+        "smithy.api#documentation": "<p>Path to Amazon S3 storage location for input data.</p>"
       }
     },
     "com.amazonaws.sagemakergeospatial#SageMakerGeospatial": {
@@ -3154,7 +3163,7 @@
           "parameters": {
             "Region": {
               "builtIn": "AWS::Region",
-              "required": false,
+              "required": true,
               "documentation": "The AWS region used to dispatch the request.",
               "type": "String"
             },
@@ -3183,15 +3192,164 @@
             {
               "conditions": [
                 {
-                  "fn": "isSet",
+                  "fn": "aws.partition",
                   "argv": [
                     {
-                      "ref": "Endpoint"
+                      "ref": "Region"
                     }
-                  ]
+                  ],
+                  "assign": "PartitionResult"
                 }
               ],
+              "type": "tree",
               "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "fn": "parseURL",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ],
+                      "assign": "url"
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "type": "error"
+                    },
+                    {
+                      "conditions": [],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                          "type": "error"
+                        },
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": {
+                              "ref": "Endpoint"
+                            },
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseFIPS"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://sagemaker-geospatial-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      "type": "error"
+                    }
+                  ]
+                },
                 {
                   "conditions": [
                     {
@@ -3204,407 +3362,113 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                  "type": "error"
-                },
-                {
-                  "conditions": [],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
+                            true,
                             {
-                              "ref": "UseDualStack"
-                            },
-                            true
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
                           ]
                         }
                       ],
-                      "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                      "type": "error"
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://sagemaker-geospatial-fips.{Region}.{PartitionResult#dnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
                     },
                     {
                       "conditions": [],
-                      "endpoint": {
-                        "url": {
-                          "ref": "Endpoint"
-                        },
-                        "properties": {},
-                        "headers": {}
-                      },
-                      "type": "endpoint"
+                      "error": "FIPS is enabled but this partition does not support FIPS",
+                      "type": "error"
                     }
-                  ],
-                  "type": "tree"
-                }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [],
-              "rules": [
+                  ]
+                },
                 {
                   "conditions": [
                     {
-                      "fn": "isSet",
+                      "fn": "booleanEquals",
                       "argv": [
                         {
-                          "ref": "Region"
-                        }
+                          "ref": "UseDualStack"
+                        },
+                        true
                       ]
                     }
                   ],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
                         {
-                          "fn": "aws.partition",
+                          "fn": "booleanEquals",
                           "argv": [
+                            true,
                             {
-                              "ref": "Region"
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
                             }
-                          ],
-                          "assign": "PartitionResult"
+                          ]
                         }
                       ],
+                      "type": "tree",
                       "rules": [
                         {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "ref": "UseFIPS"
-                                },
-                                true
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "ref": "UseDualStack"
-                                },
-                                true
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [
-                                {
-                                  "fn": "booleanEquals",
-                                  "argv": [
-                                    true,
-                                    {
-                                      "fn": "getAttr",
-                                      "argv": [
-                                        {
-                                          "ref": "PartitionResult"
-                                        },
-                                        "supportsFIPS"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "fn": "booleanEquals",
-                                  "argv": [
-                                    true,
-                                    {
-                                      "fn": "getAttr",
-                                      "argv": [
-                                        {
-                                          "ref": "PartitionResult"
-                                        },
-                                        "supportsDualStack"
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ],
-                              "rules": [
-                                {
-                                  "conditions": [],
-                                  "rules": [
-                                    {
-                                      "conditions": [],
-                                      "endpoint": {
-                                        "url": "https://sagemaker-geospatial-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                        "properties": {},
-                                        "headers": {}
-                                      },
-                                      "type": "endpoint"
-                                    }
-                                  ],
-                                  "type": "tree"
-                                }
-                              ],
-                              "type": "tree"
-                            },
-                            {
-                              "conditions": [],
-                              "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                              "type": "error"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "ref": "UseFIPS"
-                                },
-                                true
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [
-                                {
-                                  "fn": "booleanEquals",
-                                  "argv": [
-                                    {
-                                      "fn": "getAttr",
-                                      "argv": [
-                                        {
-                                          "ref": "PartitionResult"
-                                        },
-                                        "supportsFIPS"
-                                      ]
-                                    },
-                                    true
-                                  ]
-                                }
-                              ],
-                              "rules": [
-                                {
-                                  "conditions": [],
-                                  "rules": [
-                                    {
-                                      "conditions": [],
-                                      "endpoint": {
-                                        "url": "https://sagemaker-geospatial-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                        "properties": {},
-                                        "headers": {}
-                                      },
-                                      "type": "endpoint"
-                                    }
-                                  ],
-                                  "type": "tree"
-                                }
-                              ],
-                              "type": "tree"
-                            },
-                            {
-                              "conditions": [],
-                              "error": "FIPS is enabled but this partition does not support FIPS",
-                              "type": "error"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "ref": "UseDualStack"
-                                },
-                                true
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [
-                                {
-                                  "fn": "booleanEquals",
-                                  "argv": [
-                                    true,
-                                    {
-                                      "fn": "getAttr",
-                                      "argv": [
-                                        {
-                                          "ref": "PartitionResult"
-                                        },
-                                        "supportsDualStack"
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ],
-                              "rules": [
-                                {
-                                  "conditions": [],
-                                  "rules": [
-                                    {
-                                      "conditions": [],
-                                      "endpoint": {
-                                        "url": "https://sagemaker-geospatial.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                        "properties": {},
-                                        "headers": {}
-                                      },
-                                      "type": "endpoint"
-                                    }
-                                  ],
-                                  "type": "tree"
-                                }
-                              ],
-                              "type": "tree"
-                            },
-                            {
-                              "conditions": [],
-                              "error": "DualStack is enabled but this partition does not support DualStack",
-                              "type": "error"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
                           "conditions": [],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://sagemaker-geospatial.{Region}.{PartitionResult#dnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
+                          "endpoint": {
+                            "url": "https://sagemaker-geospatial.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
                         }
-                      ],
-                      "type": "tree"
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "DualStack is enabled but this partition does not support DualStack",
+                      "type": "error"
                     }
-                  ],
-                  "type": "tree"
+                  ]
                 },
                 {
                   "conditions": [],
-                  "error": "Invalid Configuration: Missing Region",
-                  "type": "error"
+                  "endpoint": {
+                    "url": "https://sagemaker-geospatial.{Region}.{PartitionResult#dnsSuffix}",
+                    "properties": {},
+                    "headers": {}
+                  },
+                  "type": "endpoint"
                 }
-              ],
-              "type": "tree"
+              ]
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
-            {
-              "documentation": "For region us-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial-fips.us-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial-fips.us-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial.us-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial.us-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial-fips.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://sagemaker-geospatial.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
             {
               "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
               "expect": {
@@ -3613,9 +3477,9 @@
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "UseDualStack": true,
                 "UseFIPS": true,
-                "UseDualStack": true
+                "Region": "us-gov-east-1"
               }
             },
             {
@@ -3626,9 +3490,9 @@
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "UseDualStack": false,
                 "UseFIPS": true,
-                "UseDualStack": false
+                "Region": "us-gov-east-1"
               }
             },
             {
@@ -3639,9 +3503,9 @@
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "UseDualStack": true,
                 "UseFIPS": false,
-                "UseDualStack": true
+                "Region": "us-gov-east-1"
               }
             },
             {
@@ -3652,9 +3516,61 @@
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "UseDualStack": false,
                 "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "us-gov-east-1"
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial-fips.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "UseFIPS": true,
+                "Region": "cn-north-1"
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial-fips.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "UseFIPS": true,
+                "Region": "cn-north-1"
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial.cn-north-1.api.amazonwebservices.com.cn"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "UseFIPS": false,
+                "Region": "cn-north-1"
+              }
+            },
+            {
+              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial.cn-north-1.amazonaws.com.cn"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "UseFIPS": false,
+                "Region": "cn-north-1"
               }
             },
             {
@@ -3663,9 +3579,9 @@
                 "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
               },
               "params": {
-                "Region": "us-iso-east-1",
+                "UseDualStack": true,
                 "UseFIPS": true,
-                "UseDualStack": true
+                "Region": "us-iso-east-1"
               }
             },
             {
@@ -3676,9 +3592,9 @@
                 }
               },
               "params": {
-                "Region": "us-iso-east-1",
+                "UseDualStack": false,
                 "UseFIPS": true,
-                "UseDualStack": false
+                "Region": "us-iso-east-1"
               }
             },
             {
@@ -3687,9 +3603,9 @@
                 "error": "DualStack is enabled but this partition does not support DualStack"
               },
               "params": {
-                "Region": "us-iso-east-1",
+                "UseDualStack": true,
                 "UseFIPS": false,
-                "UseDualStack": true
+                "Region": "us-iso-east-1"
               }
             },
             {
@@ -3700,9 +3616,61 @@
                 }
               },
               "params": {
-                "Region": "us-iso-east-1",
+                "UseDualStack": false,
                 "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "us-iso-east-1"
+              }
+            },
+            {
+              "documentation": "For region us-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial-fips.us-east-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "UseFIPS": true,
+                "Region": "us-east-1"
+              }
+            },
+            {
+              "documentation": "For region us-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial-fips.us-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "UseFIPS": true,
+                "Region": "us-east-1"
+              }
+            },
+            {
+              "documentation": "For region us-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial.us-east-1.api.aws"
+                }
+              },
+              "params": {
+                "UseDualStack": true,
+                "UseFIPS": false,
+                "Region": "us-east-1"
+              }
+            },
+            {
+              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://sagemaker-geospatial.us-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "UseDualStack": false,
+                "UseFIPS": false,
+                "Region": "us-east-1"
               }
             },
             {
@@ -3711,9 +3679,9 @@
                 "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
               },
               "params": {
-                "Region": "us-isob-east-1",
+                "UseDualStack": true,
                 "UseFIPS": true,
-                "UseDualStack": true
+                "Region": "us-isob-east-1"
               }
             },
             {
@@ -3724,9 +3692,9 @@
                 }
               },
               "params": {
-                "Region": "us-isob-east-1",
+                "UseDualStack": false,
                 "UseFIPS": true,
-                "UseDualStack": false
+                "Region": "us-isob-east-1"
               }
             },
             {
@@ -3735,9 +3703,9 @@
                 "error": "DualStack is enabled but this partition does not support DualStack"
               },
               "params": {
-                "Region": "us-isob-east-1",
+                "UseDualStack": true,
                 "UseFIPS": false,
-                "UseDualStack": true
+                "Region": "us-isob-east-1"
               }
             },
             {
@@ -3748,35 +3716,22 @@
                 }
               },
               "params": {
-                "Region": "us-isob-east-1",
+                "UseDualStack": false,
                 "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "us-isob-east-1"
               }
             },
             {
-              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
                 }
               },
               "params": {
+                "UseDualStack": false,
+                "UseFIPS": false,
                 "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false,
-                "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://example.com"
-                }
-              },
-              "params": {
-                "UseFIPS": false,
-                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -3786,9 +3741,9 @@
                 "error": "Invalid Configuration: FIPS and custom endpoint are not supported"
               },
               "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
                 "UseDualStack": false,
+                "UseFIPS": true,
+                "Region": "us-east-1",
                 "Endpoint": "https://example.com"
               }
             },
@@ -3798,16 +3753,10 @@
                 "error": "Invalid Configuration: Dualstack and custom endpoint are not supported"
               },
               "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
                 "UseDualStack": true,
+                "UseFIPS": false,
+                "Region": "us-east-1",
                 "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "Missing region",
-              "expect": {
-                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -3866,7 +3815,7 @@
         "RasterDataCollectionQuery": {
           "target": "com.amazonaws.sagemakergeospatial#RasterDataCollectionQueryWithBandFilterInput",
           "traits": {
-            "smithy.api#documentation": "<p>RasterDataCollectionQuery consisting of <a href=\"https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_geospatial_AreaOfInterest.html\">AreaOfInterest(AOI)</a>, <a href=\"https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_geospatial_PropertyFilter.html\">PropertyFilters</a> and \n      <a href=\"https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_geospatial_TimeRangeFilterInput.html\">TimeRangeFilterInput</a> used in <a href=\"https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_geospatial_SearchRasterDataCollection.html\">SearchRasterDataCollection</a>.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -3887,7 +3836,7 @@
         "ApproximateResultCount": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "<p>Approximate number of results in the response.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
@@ -3900,7 +3849,7 @@
         "Items": {
           "target": "com.amazonaws.sagemakergeospatial#ItemSourceList",
           "traits": {
-            "smithy.api#documentation": "<p>List of items matching the Raster DataCollectionQuery.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -3920,7 +3869,8 @@
         "ResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>Identifier of the resource affected.</p>"
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
           }
         }
       },
@@ -3953,18 +3903,18 @@
         "OutputResolution": {
           "target": "com.amazonaws.sagemakergeospatial#OutputResolutionStackInput",
           "traits": {
-            "smithy.api#documentation": "<p>The structure representing output \n      resolution (in target georeferenced units) of the \n      result of stacking operation.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "TargetBands": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>A list of bands to be stacked in the specified order. When the parameter is not provided, all the available bands in the data collection are stacked in the alphabetical order of their asset names.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for Stacking Operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#StartEarthObservationJob": {
@@ -4015,9 +3965,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The name of the Earth Observation job.</p>",
-            "smithy.api#length": {
-              "max": 200
-            },
             "smithy.api#required": {}
           }
         },
@@ -4025,17 +3972,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>A unique token that guarantees that the call to this API is idempotent.</p>",
-            "smithy.api#idempotencyToken": {},
-            "smithy.api#length": {
-              "min": 36,
-              "max": 64
-            }
+            "smithy.api#idempotencyToken": {}
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         },
         "InputConfig": {
@@ -4053,10 +3996,9 @@
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>"
           }
         },
         "Tags": {
@@ -4091,8 +4033,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "DurationInSeconds": {
@@ -4110,9 +4051,9 @@
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         },
         "InputConfig": {
@@ -4129,10 +4070,9 @@
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>"
           }
         },
         "Tags": {
@@ -4191,9 +4131,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The name of the Vector Enrichment job.</p>",
-            "smithy.api#length": {
-              "max": 200
-            },
             "smithy.api#required": {}
           }
         },
@@ -4201,17 +4138,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>A unique token that guarantees that the call to this API is idempotent.</p>",
-            "smithy.api#idempotencyToken": {},
-            "smithy.api#length": {
-              "min": 36,
-              "max": 64
-            }
+            "smithy.api#idempotencyToken": {}
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         },
         "InputConfig": {
@@ -4229,7 +4162,7 @@
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
             "smithy.api#required": {}
@@ -4274,8 +4207,7 @@
           "target": "smithy.api#Timestamp",
           "traits": {
             "smithy.api#documentation": "<p>The creation time.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
+            "smithy.api#required": {}
           }
         },
         "DurationInSeconds": {
@@ -4293,9 +4225,9 @@
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         },
         "InputConfig": {
@@ -4313,7 +4245,7 @@
           }
         },
         "ExecutionRoleArn": {
-          "target": "com.amazonaws.sagemakergeospatial#ExecutionRoleArn",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the IAM role that you specified for the job.</p>",
             "smithy.api#required": {}
@@ -4581,25 +4513,25 @@
         "GroupBy": {
           "target": "com.amazonaws.sagemakergeospatial#GroupBy",
           "traits": {
-            "smithy.api#documentation": "<p>The input for the temporal statistics grouping by time frequency option.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "Statistics": {
           "target": "com.amazonaws.sagemakergeospatial#TemporalStatisticsListInput",
           "traits": {
-            "smithy.api#documentation": "<p>The list of the statistics method options.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "TargetBands": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>The list of target band names for the temporal statistic to calculate.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing the configuration for Temporal Statistics operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#TemporalStatisticsListInput": {
@@ -4625,7 +4557,8 @@
         "ResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p/>"
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
           }
         }
       },
@@ -4655,31 +4588,6 @@
       },
       "traits": {
         "smithy.api#documentation": "<p>The input for the time-range filter.</p>",
-        "smithy.api#sensitive": {}
-      }
-    },
-    "com.amazonaws.sagemakergeospatial#TimeRangeFilterOutput": {
-      "type": "structure",
-      "members": {
-        "StartTime": {
-          "target": "smithy.api#Timestamp",
-          "traits": {
-            "smithy.api#documentation": "<p>The starting time for the time range filter.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
-          }
-        },
-        "EndTime": {
-          "target": "smithy.api#Timestamp",
-          "traits": {
-            "smithy.api#documentation": "<p>The ending time for the time range filter.</p>",
-            "smithy.api#required": {},
-            "smithy.api#timestampFormat": "date-time"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The output structure of the time range filter.</p>",
         "smithy.api#sensitive": {}
       }
     },
@@ -4759,20 +4667,20 @@
         "Value": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The value for output resolution of the result.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "Unit": {
           "target": "com.amazonaws.sagemakergeospatial#Unit",
           "traits": {
-            "smithy.api#documentation": "<p>The units for output resolution of the result.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The output resolution (in target georeferenced units) \n      of the result of the operation</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ValidationException": {
@@ -4787,7 +4695,8 @@
         "ResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p/>"
+            "smithy.api#documentation": "<p/>",
+            "smithy.api#required": {}
           }
         }
       },
@@ -4843,13 +4752,13 @@
         "ReverseGeocodingConfig": {
           "target": "com.amazonaws.sagemakergeospatial#ReverseGeocodingConfig",
           "traits": {
-            "smithy.api#documentation": "<p>The input structure for Reverse Geocoding operation type.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "MapMatchingConfig": {
           "target": "com.amazonaws.sagemakergeospatial#MapMatchingConfig",
           "traits": {
-            "smithy.api#documentation": "<p>The input structure for Map Matching operation type.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
@@ -4863,12 +4772,12 @@
         "S3Data": {
           "target": "com.amazonaws.sagemakergeospatial#VectorEnrichmentJobS3Data",
           "traits": {
-            "smithy.api#documentation": "<p>The input structure for the Amazon S3 data that represents the Amazon S3 location of the input data objects.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for the data source that represents the storage type of the input data objects.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#VectorEnrichmentJobDocumentType": {
@@ -4925,7 +4834,7 @@
         "Type": {
           "target": "com.amazonaws.sagemakergeospatial#VectorEnrichmentJobExportErrorType",
           "traits": {
-            "smithy.api#documentation": "<p>The output error details for an Export operation on a Vector Enrichment job.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         },
         "Message": {
@@ -4979,14 +4888,14 @@
         "DocumentType": {
           "target": "com.amazonaws.sagemakergeospatial#VectorEnrichmentJobDocumentType",
           "traits": {
-            "smithy.api#documentation": "<p>The input structure that defines the data source file type.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "DataSourceConfig": {
           "target": "com.amazonaws.sagemakergeospatial#VectorEnrichmentJobDataSourceConfigInput",
           "traits": {
-            "smithy.api#documentation": "<p>The input structure for the data source that represents the storage type of the input data objects.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
@@ -5005,16 +4914,16 @@
       "type": "structure",
       "members": {
         "S3Uri": {
-          "target": "com.amazonaws.sagemakergeospatial#S3Uri",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "<p>The URL to the Amazon S3 data for the Vector Enrichment job.</p>",
             "smithy.api#required": {}
           }
         },
         "KmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Key Management Service key ID for server-side encryption.</p>"
+            "smithy.api#documentation": "<p>The Amazon Key Management Service (KMS) key ID for server-side encryption.</p>"
           }
         }
       },
@@ -5082,20 +4991,20 @@
         "LowerBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The minimum value for ViewOffNadir property filter. \n      This filters items having ViewOffNadir greater than or equal to this value. </p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "UpperBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The maximum value for ViewOffNadir property filter. \n      This filters items having ViewOffNadir lesser than or equal to this value.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for specifying ViewOffNadir property filter. \n      ViewOffNadir refers to the angle from the sensor between \n      nadir (straight down) and the scene center. Measured in degrees (0-90).</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ViewSunAzimuthInput": {
@@ -5104,20 +5013,20 @@
         "LowerBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The minimum value for ViewSunAzimuth property filter. \n      This filters items having ViewSunAzimuth greater than or equal to this value.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "UpperBound": {
           "target": "smithy.api#Float",
           "traits": {
-            "smithy.api#documentation": "<p>The maximum value for ViewSunAzimuth property filter. \n      This filters items having ViewSunAzimuth lesser than or equal to this value.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for specifying ViewSunAzimuth property filter.  \n      ViewSunAzimuth refers to the Sun azimuth angle. \n      From the scene center point on the ground, \n      this is the angle between truth north and the sun. \n      Measured clockwise in degrees (0-360).</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ViewSunElevationInput": {
@@ -5139,7 +5048,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The input structure for specifying ViewSunElevation angle property filter. </p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ZonalStatistics": {
@@ -5183,34 +5092,28 @@
       "type": "structure",
       "members": {
         "ZoneS3Path": {
-          "target": "com.amazonaws.sagemakergeospatial#S3Uri",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Amazon S3 path pointing to the GeoJSON containing the polygonal zones.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "Statistics": {
           "target": "com.amazonaws.sagemakergeospatial#ZonalStatisticsListInput",
           "traits": {
-            "smithy.api#documentation": "<p>List of zonal statistics to compute.</p>",
+            "smithy.api#documentation": "<p/>",
             "smithy.api#required": {}
           }
         },
         "TargetBands": {
           "target": "com.amazonaws.sagemakergeospatial#StringListInput",
           "traits": {
-            "smithy.api#documentation": "<p>Bands used in the operation. \n      If no target bands are specified, it uses all bands available input.</p>"
-          }
-        },
-        "ZoneS3PathKmsKeyId": {
-          "target": "com.amazonaws.sagemakergeospatial#KmsKey",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) or an ID of a Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to decrypt your output artifacts with Amazon S3 server-side encryption.\nThe SageMaker execution role must have <code>kms:GenerateDataKey</code> permission.</p>\n         <p>The <code>KmsKeyId</code> can be any of the following formats:</p>\n         <ul>\n            <li>\n               <p>// KMS Key ID</p>\n               <p>\n                  <code>\"1234abcd-12ab-34cd-56ef-1234567890ab\"</code>\n               </p>\n            </li>\n            <li>\n               <p>// Amazon Resource Name (ARN) of a KMS Key</p>\n               <p>\n                  <code>\"arn:aws:kms:&lt;region&gt;:&lt;account&gt;:key/&lt;key-id-12ab-34cd-56ef-1234567890ab&gt;\"</code>\n               </p>\n            </li>\n         </ul>\n         <p>For more information about key identifiers, see\n<a href=\"https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-id\">Key identifiers (KeyID)</a> in the\nAmazon Web Services Key Management Service (Amazon Web Services KMS) documentation.</p>"
+            "smithy.api#documentation": "<p/>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The structure representing input configuration of ZonalStatistics operation.</p>"
+        "smithy.api#documentation": "<p/>"
       }
     },
     "com.amazonaws.sagemakergeospatial#ZonalStatisticsListInput": {

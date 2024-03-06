@@ -84,17 +84,11 @@
             "smithy.api#documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#AssociateEntityToThingResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#CreateFlowTemplate": {
       "type": "operation",
@@ -144,9 +138,6 @@
             "smithy.api#documentation": "<p>The namespace version in which the workflow is to be created.</p>\n         <p>If no value is specified, the latest version is used by default.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#CreateFlowTemplateResponse": {
@@ -158,9 +149,6 @@
             "smithy.api#documentation": "<p>The summary object that describes the created workflow.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#CreateSystemInstance": {
@@ -238,9 +226,6 @@
             "smithy.api#documentation": "<p>The ARN of the IAM role that AWS IoT Things Graph will assume when it executes the flow. This role must have \n      read and write access to AWS Lambda and AWS IoT and any other AWS services that the flow uses when it executes.  This \n      value is required if the value of the <code>target</code> parameter is <code>CLOUD</code>.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#CreateSystemInstanceResponse": {
@@ -252,9 +237,6 @@
             "smithy.api#documentation": "<p>The summary object that describes the new system instance.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#CreateSystemTemplate": {
@@ -302,9 +284,6 @@
             "smithy.api#documentation": "<p>The namespace version in which the system is to be created.</p>\n         <p>If no value is specified, the latest version is used by default.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#CreateSystemTemplateResponse": {
@@ -316,9 +295,6 @@
             "smithy.api#documentation": "<p>The summary object that describes the created system.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DefinitionDocument": {
@@ -344,14 +320,14 @@
       }
     },
     "com.amazonaws.iotthingsgraph#DefinitionLanguage": {
-      "type": "enum",
-      "members": {
-        "GRAPHQL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GRAPHQL"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "GRAPHQL",
+            "name": "GRAPHQL"
           }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#DefinitionText": {
@@ -402,17 +378,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeleteFlowTemplateResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#DeleteNamespace": {
       "type": "operation",
@@ -439,10 +409,7 @@
     },
     "com.amazonaws.iotthingsgraph#DeleteNamespaceRequest": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#input": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#DeleteNamespaceResponse": {
       "type": "structure",
@@ -459,9 +426,6 @@
             "smithy.api#documentation": "<p>The name of the namespace to be deleted.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeleteSystemInstance": {
@@ -502,17 +466,11 @@
             "smithy.api#documentation": "<p>The ID of the system instance to be deleted.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeleteSystemInstanceResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#DeleteSystemTemplate": {
       "type": "operation",
@@ -553,17 +511,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeleteSystemTemplateResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#DependencyRevision": {
       "type": "structure",
@@ -632,9 +584,6 @@
             "smithy.api#documentation": "<p>The ID of the system instance. This value is returned by the <code>CreateSystemInstance</code> action.</p>\n         <p>The ID should be in the following format.</p>\n         <p>\n            <code>urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME</code>\n         </p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeploySystemInstanceResponse": {
@@ -653,26 +602,21 @@
             "smithy.api#documentation": "<p>The ID of the Greengrass deployment used to deploy the system instance.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeploymentTarget": {
-      "type": "enum",
-      "members": {
-        "GREENGRASS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GREENGRASS"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "GREENGRASS",
+            "name": "GREENGRASS"
+          },
+          {
+            "value": "CLOUD",
+            "name": "CLOUD"
           }
-        },
-        "CLOUD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CLOUD"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#DeprecateExistingEntities": {
@@ -720,17 +664,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeprecateFlowTemplateResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#DeprecateSystemTemplate": {
       "type": "operation",
@@ -771,17 +709,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DeprecateSystemTemplateResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#DescribeNamespace": {
       "type": "operation",
@@ -821,9 +753,6 @@
             "smithy.api#documentation": "<p>The name of the user's namespace. Set this to <code>aws</code> to get the public namespace.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DescribeNamespaceResponse": {
@@ -859,9 +788,6 @@
             "smithy.api#documentation": "<p>The version of the user's namespace to describe.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DissociateEntityFromThing": {
@@ -910,17 +836,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#DissociateEntityFromThingResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#Enabled": {
       "type": "boolean",
@@ -993,32 +913,26 @@
       }
     },
     "com.amazonaws.iotthingsgraph#EntityFilterName": {
-      "type": "enum",
-      "members": {
-        "NAME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NAME"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "NAME",
+            "name": "NAME"
+          },
+          {
+            "value": "NAMESPACE",
+            "name": "NAMESPACE"
+          },
+          {
+            "value": "SEMANTIC_TYPE_PATH",
+            "name": "SEMANTIC_TYPE_PATH"
+          },
+          {
+            "value": "REFERENCED_ENTITY_ID",
+            "name": "REFERENCED_ENTITY_ID"
           }
-        },
-        "NAMESPACE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NAMESPACE"
-          }
-        },
-        "SEMANTIC_TYPE_PATH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SEMANTIC_TYPE_PATH"
-          }
-        },
-        "REFERENCED_ENTITY_ID": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REFERENCED_ENTITY_ID"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#EntityFilterValue": {
@@ -1037,68 +951,50 @@
       }
     },
     "com.amazonaws.iotthingsgraph#EntityType": {
-      "type": "enum",
-      "members": {
-        "DEVICE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DEVICE"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "DEVICE",
+            "name": "DEVICE"
+          },
+          {
+            "value": "SERVICE",
+            "name": "SERVICE"
+          },
+          {
+            "value": "DEVICE_MODEL",
+            "name": "DEVICE_MODEL"
+          },
+          {
+            "value": "CAPABILITY",
+            "name": "CAPABILITY"
+          },
+          {
+            "value": "STATE",
+            "name": "STATE"
+          },
+          {
+            "value": "ACTION",
+            "name": "ACTION"
+          },
+          {
+            "value": "EVENT",
+            "name": "EVENT"
+          },
+          {
+            "value": "PROPERTY",
+            "name": "PROPERTY"
+          },
+          {
+            "value": "MAPPING",
+            "name": "MAPPING"
+          },
+          {
+            "value": "ENUM",
+            "name": "ENUM"
           }
-        },
-        "SERVICE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SERVICE"
-          }
-        },
-        "DEVICE_MODEL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DEVICE_MODEL"
-          }
-        },
-        "CAPABILITY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CAPABILITY"
-          }
-        },
-        "STATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STATE"
-          }
-        },
-        "ACTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACTION"
-          }
-        },
-        "EVENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EVENT"
-          }
-        },
-        "PROPERTY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROPERTY"
-          }
-        },
-        "MAPPING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MAPPING"
-          }
-        },
-        "ENUM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ENUM"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#EntityTypes": {
@@ -1117,110 +1013,78 @@
       }
     },
     "com.amazonaws.iotthingsgraph#FlowExecutionEventType": {
-      "type": "enum",
-      "members": {
-        "EXECUTION_STARTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EXECUTION_STARTED"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "EXECUTION_STARTED",
+            "name": "EXECUTION_STARTED"
+          },
+          {
+            "value": "EXECUTION_FAILED",
+            "name": "EXECUTION_FAILED"
+          },
+          {
+            "value": "EXECUTION_ABORTED",
+            "name": "EXECUTION_ABORTED"
+          },
+          {
+            "value": "EXECUTION_SUCCEEDED",
+            "name": "EXECUTION_SUCCEEDED"
+          },
+          {
+            "value": "STEP_STARTED",
+            "name": "STEP_STARTED"
+          },
+          {
+            "value": "STEP_FAILED",
+            "name": "STEP_FAILED"
+          },
+          {
+            "value": "STEP_SUCCEEDED",
+            "name": "STEP_SUCCEEDED"
+          },
+          {
+            "value": "ACTIVITY_SCHEDULED",
+            "name": "ACTIVITY_SCHEDULED"
+          },
+          {
+            "value": "ACTIVITY_STARTED",
+            "name": "ACTIVITY_STARTED"
+          },
+          {
+            "value": "ACTIVITY_FAILED",
+            "name": "ACTIVITY_FAILED"
+          },
+          {
+            "value": "ACTIVITY_SUCCEEDED",
+            "name": "ACTIVITY_SUCCEEDED"
+          },
+          {
+            "value": "START_FLOW_EXECUTION_TASK",
+            "name": "START_FLOW_EXECUTION_TASK"
+          },
+          {
+            "value": "SCHEDULE_NEXT_READY_STEPS_TASK",
+            "name": "SCHEDULE_NEXT_READY_STEPS_TASK"
+          },
+          {
+            "value": "THING_ACTION_TASK",
+            "name": "THING_ACTION_TASK"
+          },
+          {
+            "value": "THING_ACTION_TASK_FAILED",
+            "name": "THING_ACTION_TASK_FAILED"
+          },
+          {
+            "value": "THING_ACTION_TASK_SUCCEEDED",
+            "name": "THING_ACTION_TASK_SUCCEEDED"
+          },
+          {
+            "value": "ACKNOWLEDGE_TASK_MESSAGE",
+            "name": "ACKNOWLEDGE_TASK_MESSAGE"
           }
-        },
-        "EXECUTION_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EXECUTION_FAILED"
-          }
-        },
-        "EXECUTION_ABORTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EXECUTION_ABORTED"
-          }
-        },
-        "EXECUTION_SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EXECUTION_SUCCEEDED"
-          }
-        },
-        "STEP_STARTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STEP_STARTED"
-          }
-        },
-        "STEP_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STEP_FAILED"
-          }
-        },
-        "STEP_SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STEP_SUCCEEDED"
-          }
-        },
-        "ACTIVITY_SCHEDULED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACTIVITY_SCHEDULED"
-          }
-        },
-        "ACTIVITY_STARTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACTIVITY_STARTED"
-          }
-        },
-        "ACTIVITY_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACTIVITY_FAILED"
-          }
-        },
-        "ACTIVITY_SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACTIVITY_SUCCEEDED"
-          }
-        },
-        "START_FLOW_EXECUTION_TASK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "START_FLOW_EXECUTION_TASK"
-          }
-        },
-        "SCHEDULE_NEXT_READY_STEPS_TASK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SCHEDULE_NEXT_READY_STEPS_TASK"
-          }
-        },
-        "THING_ACTION_TASK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "THING_ACTION_TASK"
-          }
-        },
-        "THING_ACTION_TASK_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "THING_ACTION_TASK_FAILED"
-          }
-        },
-        "THING_ACTION_TASK_SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "THING_ACTION_TASK_SUCCEEDED"
-          }
-        },
-        "ACKNOWLEDGE_TASK_MESSAGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACKNOWLEDGE_TASK_MESSAGE"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#FlowExecutionId": {
@@ -1271,32 +1135,26 @@
       }
     },
     "com.amazonaws.iotthingsgraph#FlowExecutionStatus": {
-      "type": "enum",
-      "members": {
-        "RUNNING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "RUNNING"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "RUNNING",
+            "name": "RUNNING"
+          },
+          {
+            "value": "ABORTED",
+            "name": "ABORTED"
+          },
+          {
+            "value": "SUCCEEDED",
+            "name": "SUCCEEDED"
+          },
+          {
+            "value": "FAILED",
+            "name": "FAILED"
           }
-        },
-        "ABORTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ABORTED"
-          }
-        },
-        "SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SUCCEEDED"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FAILED"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#FlowExecutionSummaries": {
@@ -1398,14 +1256,14 @@
       }
     },
     "com.amazonaws.iotthingsgraph#FlowTemplateFilterName": {
-      "type": "enum",
-      "members": {
-        "DEVICE_MODEL_ID": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DEVICE_MODEL_ID"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "DEVICE_MODEL_ID",
+            "name": "DEVICE_MODEL_ID"
           }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#FlowTemplateFilterValue": {
@@ -1509,9 +1367,6 @@
             "smithy.api#documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetEntitiesResponse": {
@@ -1523,9 +1378,6 @@
             "smithy.api#documentation": "<p>An array of descriptions for the specified entities.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetFlowTemplate": {
@@ -1573,9 +1425,6 @@
             "smithy.api#documentation": "<p>The number of the workflow revision to retrieve.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetFlowTemplateResponse": {
@@ -1587,9 +1436,6 @@
             "smithy.api#documentation": "<p>The object that describes the specified workflow.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisions": {
@@ -1649,9 +1495,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisionsResponse": {
@@ -1669,9 +1512,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatus": {
@@ -1702,10 +1542,7 @@
     },
     "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatusRequest": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#input": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatusResponse": {
       "type": "structure",
@@ -1740,9 +1577,6 @@
             "smithy.api#documentation": "<p>An error code returned by the namespace deletion task.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetSystemInstance": {
@@ -1784,9 +1618,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetSystemInstanceResponse": {
@@ -1798,9 +1629,6 @@
             "smithy.api#documentation": "<p>An object that describes the system instance.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetSystemTemplate": {
@@ -1848,9 +1676,6 @@
             "smithy.api#documentation": "<p>The number that specifies the revision of the system to get.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetSystemTemplateResponse": {
@@ -1862,9 +1687,6 @@
             "smithy.api#documentation": "<p>An object that contains summary data about the system.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisions": {
@@ -1924,9 +1746,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisionsResponse": {
@@ -1944,9 +1763,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetUploadStatus": {
@@ -1988,9 +1804,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GetUploadStatusResponse": {
@@ -2041,9 +1854,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#GreengrassDeploymentId": {
@@ -2206,7 +2016,7 @@
           "name": "iotthingsgraph"
         },
         "aws.protocols#awsJson1_1": {},
-        "smithy.api#documentation": "<fullname>AWS IoT Things Graph</fullname>\n         <p>AWS IoT Things Graph provides an integrated set of tools that enable developers to connect devices and services that use different standards, \n       such as units of measure and communication protocols. AWS IoT Things Graph makes it possible to build IoT applications with little to no code by connecting devices and services \n       and defining how they interact at an abstract level.</p>\n         <p>For more information about how AWS IoT Things Graph works, see the <a href=\"https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html\">User Guide</a>.</p>\n         <p>The AWS IoT Things Graph service is discontinued.</p>",
+        "smithy.api#documentation": "<fullname>AWS IoT Things Graph</fullname>\n         <p>AWS IoT Things Graph provides an integrated set of tools that enable developers to connect devices and services that use different standards, \n       such as units of measure and communication protocols. AWS IoT Things Graph makes it possible to build IoT applications with little to no code by connecting devices and services \n       and defining how they interact at an abstract level.</p>\n         <p>For more information about how AWS IoT Things Graph works, see the <a href=\"https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html\">User Guide</a>.</p>\n    \n         <p>The AWS IoT Things Graph service is discontinued.</p>",
         "smithy.api#title": "AWS IoT Things Graph",
         "smithy.rules#endpointRuleSet": {
           "version": "1.0",
@@ -2242,15 +2052,164 @@
             {
               "conditions": [
                 {
-                  "fn": "isSet",
+                  "fn": "aws.partition",
                   "argv": [
                     {
-                      "ref": "Endpoint"
+                      "ref": "Region"
                     }
-                  ]
+                  ],
+                  "assign": "PartitionResult"
                 }
               ],
+              "type": "tree",
               "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "fn": "parseURL",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ],
+                      "assign": "url"
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "type": "error"
+                    },
+                    {
+                      "conditions": [],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                          "type": "error"
+                        },
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": {
+                              "ref": "Endpoint"
+                            },
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseFIPS"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://iotthingsgraph-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      "type": "error"
+                    }
+                  ]
+                },
                 {
                   "conditions": [
                     {
@@ -2263,8 +2222,51 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                  "type": "error"
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://iotthingsgraph-fips.{Region}.{PartitionResult#dnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS is enabled but this partition does not support FIPS",
+                      "type": "error"
+                    }
+                  ]
                 },
                 {
                   "conditions": [
@@ -2278,340 +2280,150 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                  "type": "error"
-                },
-                {
-                  "conditions": [],
-                  "endpoint": {
-                    "url": {
-                      "ref": "Endpoint"
-                    },
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
-                }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [
-                {
-                  "fn": "isSet",
-                  "argv": [
-                    {
-                      "ref": "Region"
-                    }
-                  ]
-                }
-              ],
-              "rules": [
-                {
-                  "conditions": [
-                    {
-                      "fn": "aws.partition",
-                      "argv": [
-                        {
-                          "ref": "Region"
-                        }
-                      ],
-                      "assign": "PartitionResult"
-                    }
-                  ],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://iotthingsgraph-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                },
-                                true
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://iotthingsgraph-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS is enabled but this partition does not support FIPS",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://iotthingsgraph.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "DualStack is enabled but this partition does not support DualStack",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "stringEquals",
-                          "argv": [
-                            "aws",
+                            true,
                             {
                               "fn": "getAttr",
                               "argv": [
                                 {
                                   "ref": "PartitionResult"
                                 },
-                                "name"
+                                "supportsDualStack"
                               ]
                             }
                           ]
                         }
                       ],
-                      "endpoint": {
-                        "url": "https://iotthingsgraph.{Region}.amazonaws.com",
-                        "properties": {},
-                        "headers": {}
-                      },
-                      "type": "endpoint"
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://iotthingsgraph.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
                     },
                     {
                       "conditions": [],
-                      "endpoint": {
-                        "url": "https://iotthingsgraph.{Region}.{PartitionResult#dnsSuffix}",
-                        "properties": {},
-                        "headers": {}
-                      },
-                      "type": "endpoint"
+                      "error": "DualStack is enabled but this partition does not support DualStack",
+                      "type": "error"
                     }
-                  ],
-                  "type": "tree"
+                  ]
+                },
+                {
+                  "conditions": [],
+                  "endpoint": {
+                    "url": "https://iotthingsgraph.{Region}.{PartitionResult#dnsSuffix}",
+                    "properties": {},
+                    "headers": {}
+                  },
+                  "type": "endpoint"
                 }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [],
-              "error": "Invalid Configuration: Missing Region",
-              "type": "error"
+              ]
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
             {
-              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://iotthingsgraph.ap-northeast-1.amazonaws.com"
+                  "url": "https://iotthingsgraph-fips.eu-central-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-northeast-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "eu-central-1",
+                "UseDualStack": true,
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS enabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://iotthingsgraph.ap-northeast-2.amazonaws.com"
+                  "url": "https://iotthingsgraph-fips.eu-central-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "ap-northeast-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "eu-central-1",
+                "UseDualStack": false,
+                "UseFIPS": true
               }
             },
             {
-              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://iotthingsgraph.ap-southeast-2.amazonaws.com"
+                  "url": "https://iotthingsgraph.eu-central-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-southeast-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "eu-central-1",
+                "UseDualStack": true,
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region eu-west-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://iotthingsgraph.eu-west-1.amazonaws.com"
+                  "url": "https://iotthingsgraph.eu-central-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "eu-west-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "eu-central-1",
+                "UseDualStack": false,
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-west-2 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://iotthingsgraph.us-east-1.amazonaws.com"
+                  "url": "https://iotthingsgraph-fips.us-west-2.api.aws"
                 }
               },
               "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "Region": "us-west-2",
+                "UseDualStack": true,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.us-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-west-2",
+                "UseDualStack": false,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.us-west-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-west-2",
+                "UseDualStack": true,
+                "UseFIPS": false
               }
             },
             {
@@ -2623,8 +2435,216 @@
               },
               "params": {
                 "Region": "us-west-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": false,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.eu-west-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseDualStack": true,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.eu-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseDualStack": false,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.eu-west-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseDualStack": true,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.eu-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseDualStack": false,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.ap-northeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseDualStack": true,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.ap-northeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseDualStack": false,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.ap-northeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseDualStack": true,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.ap-northeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseDualStack": false,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.ap-northeast-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseDualStack": true,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.ap-northeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseDualStack": false,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.ap-northeast-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseDualStack": true,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.ap-northeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseDualStack": false,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.ap-southeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseDualStack": true,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph-fips.ap-southeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseDualStack": false,
+                "UseFIPS": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.ap-southeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseDualStack": true,
+                "UseFIPS": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://iotthingsgraph.ap-southeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseDualStack": false,
+                "UseFIPS": false
               }
             },
             {
@@ -2636,8 +2656,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
+                "UseDualStack": true,
+                "UseFIPS": true
               }
             },
             {
@@ -2649,8 +2669,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
+                "UseDualStack": false,
+                "UseFIPS": true
               }
             },
             {
@@ -2662,212 +2682,25 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
+                "UseDualStack": true,
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
+              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://iotthingsgraph-fips.cn-north-1.api.amazonwebservices.com.cn"
+                  "url": "https://iotthingsgraph.us-east-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": true
+                "Region": "us-east-1",
+                "UseDualStack": false,
+                "UseFIPS": false
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph-fips.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph-fips.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph-fips.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://iotthingsgraph.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
@@ -2875,21 +2708,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": false,
                 "UseDualStack": false,
-                "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://example.com"
-                }
-              },
-              "params": {
                 "UseFIPS": false,
-                "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
             },
@@ -2900,8 +2720,8 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": true,
                 "UseDualStack": false,
+                "UseFIPS": true,
                 "Endpoint": "https://example.com"
               }
             },
@@ -2912,15 +2732,9 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": false,
                 "UseDualStack": true,
+                "UseFIPS": false,
                 "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "Missing region",
-              "expect": {
-                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -2998,9 +2812,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#ListFlowExecutionMessagesResponse": {
@@ -3018,9 +2829,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#ListTagsForResource": {
@@ -3080,9 +2888,6 @@
             "smithy.api#documentation": "<p>The token that specifies the next page of results to return.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#ListTagsForResourceResponse": {
@@ -3100,9 +2905,6 @@
             "smithy.api#documentation": "<p>The token that specifies the next page of results to return.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#MaxResults": {
@@ -3136,37 +2938,33 @@
       }
     },
     "com.amazonaws.iotthingsgraph#NamespaceDeletionStatus": {
-      "type": "enum",
-      "members": {
-        "IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "IN_PROGRESS"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "IN_PROGRESS",
+            "name": "IN_PROGRESS"
+          },
+          {
+            "value": "SUCCEEDED",
+            "name": "SUCCEEDED"
+          },
+          {
+            "value": "FAILED",
+            "name": "FAILED"
           }
-        },
-        "SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SUCCEEDED"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FAILED"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#NamespaceDeletionStatusErrorCodes": {
-      "type": "enum",
-      "members": {
-        "VALIDATION_FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VALIDATION_FAILED"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "VALIDATION_FAILED",
+            "name": "VALIDATION_FAILED"
           }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#NamespaceName": {
@@ -3286,7 +3084,7 @@
         "filters": {
           "target": "com.amazonaws.iotthingsgraph#EntityFilters",
           "traits": {
-            "smithy.api#documentation": "<p>Optional filter to apply to the search. Valid filters are <code>NAME</code>\n            <code>NAMESPACE</code>, <code>SEMANTIC_TYPE_PATH</code> and <code>REFERENCED_ENTITY_ID</code>. \n         <code>REFERENCED_ENTITY_ID</code> filters on entities that are used by the entity in the result set. For example, \n      you can filter on the ID of a property that is used in a state.</p>\n         <p>Multiple filters function as OR criteria in the query. Multiple values passed inside the filter function as AND criteria.</p>"
+            "smithy.api#documentation": "<p>Optional filter to apply to the search. Valid filters are <code>NAME</code> \n            <code>NAMESPACE</code>, <code>SEMANTIC_TYPE_PATH</code> and <code>REFERENCED_ENTITY_ID</code>. \n         <code>REFERENCED_ENTITY_ID</code> filters on entities that are used by the entity in the result set. For example, \n      you can filter on the ID of a property that is used in a state.</p>\n         <p>Multiple filters function as OR criteria in the query. Multiple values passed inside the filter function as AND criteria.</p>"
           }
         },
         "nextToken": {
@@ -3307,9 +3105,6 @@
             "smithy.api#documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchEntitiesResponse": {
@@ -3327,9 +3122,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchFlowExecutions": {
@@ -3407,9 +3199,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchFlowExecutionsResponse": {
@@ -3427,9 +3216,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchFlowTemplates": {
@@ -3485,9 +3271,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchFlowTemplatesResponse": {
@@ -3505,9 +3288,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchSystemInstances": {
@@ -3563,9 +3343,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchSystemInstancesResponse": {
@@ -3583,9 +3360,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results. </p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchSystemTemplates": {
@@ -3641,9 +3415,6 @@
             "smithy.api#documentation": "<p>The maximum number of results to return in the response.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchSystemTemplatesResponse": {
@@ -3661,9 +3432,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchThings": {
@@ -3729,9 +3497,6 @@
             "smithy.api#documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#SearchThingsResponse": {
@@ -3749,9 +3514,6 @@
             "smithy.api#documentation": "<p>The string to specify as <code>nextToken</code> when you request the next page of results.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#String": {
@@ -3770,56 +3532,42 @@
       }
     },
     "com.amazonaws.iotthingsgraph#SystemInstanceDeploymentStatus": {
-      "type": "enum",
-      "members": {
-        "NOT_DEPLOYED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NOT_DEPLOYED"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "NOT_DEPLOYED",
+            "name": "NOT_DEPLOYED"
+          },
+          {
+            "value": "BOOTSTRAP",
+            "name": "BOOTSTRAP"
+          },
+          {
+            "value": "DEPLOY_IN_PROGRESS",
+            "name": "DEPLOY_IN_PROGRESS"
+          },
+          {
+            "value": "DEPLOYED_IN_TARGET",
+            "name": "DEPLOYED_IN_TARGET"
+          },
+          {
+            "value": "UNDEPLOY_IN_PROGRESS",
+            "name": "UNDEPLOY_IN_PROGRESS"
+          },
+          {
+            "value": "FAILED",
+            "name": "FAILED"
+          },
+          {
+            "value": "PENDING_DELETE",
+            "name": "PENDING_DELETE"
+          },
+          {
+            "value": "DELETED_IN_TARGET",
+            "name": "DELETED_IN_TARGET"
           }
-        },
-        "BOOTSTRAP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "BOOTSTRAP"
-          }
-        },
-        "DEPLOY_IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DEPLOY_IN_PROGRESS"
-          }
-        },
-        "DEPLOYED_IN_TARGET": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DEPLOYED_IN_TARGET"
-          }
-        },
-        "UNDEPLOY_IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "UNDEPLOY_IN_PROGRESS"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FAILED"
-          }
-        },
-        "PENDING_DELETE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PENDING_DELETE"
-          }
-        },
-        "DELETED_IN_TARGET": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DELETED_IN_TARGET"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#SystemInstanceDescription": {
@@ -3887,26 +3635,22 @@
       }
     },
     "com.amazonaws.iotthingsgraph#SystemInstanceFilterName": {
-      "type": "enum",
-      "members": {
-        "SYSTEM_TEMPLATE_ID": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SYSTEM_TEMPLATE_ID"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "SYSTEM_TEMPLATE_ID",
+            "name": "SYSTEM_TEMPLATE_ID"
+          },
+          {
+            "value": "STATUS",
+            "name": "STATUS"
+          },
+          {
+            "value": "GREENGRASS_GROUP_NAME",
+            "name": "GREENGRASS_GROUP_NAME"
           }
-        },
-        "STATUS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STATUS"
-          }
-        },
-        "GREENGRASS_GROUP_NAME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GREENGRASS_GROUP_NAME"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#SystemInstanceFilterValue": {
@@ -4041,14 +3785,14 @@
       }
     },
     "com.amazonaws.iotthingsgraph#SystemTemplateFilterName": {
-      "type": "enum",
-      "members": {
-        "FLOW_TEMPLATE_ID": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FLOW_TEMPLATE_ID"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "FLOW_TEMPLATE_ID",
+            "name": "FLOW_TEMPLATE_ID"
           }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#SystemTemplateFilterValue": {
@@ -4209,17 +3953,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#TagResourceResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#TagValue": {
       "type": "string",
@@ -4326,9 +4064,6 @@
             "smithy.api#documentation": "<p>The ID of the system instance to remove from its target.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UndeploySystemInstanceResponse": {
@@ -4340,9 +4075,6 @@
             "smithy.api#documentation": "<p>An object that contains summary information about the system instance that was removed from its target.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UntagResource": {
@@ -4391,17 +4123,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UntagResourceResponse": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.iotthingsgraph#UpdateFlowTemplate": {
       "type": "operation",
@@ -4455,9 +4181,6 @@
             "smithy.api#documentation": "<p>The version of the user's namespace.</p>\n         <p>If no value is specified, the latest version is used by default. Use the <code>GetFlowTemplateRevisions</code> if you want to find earlier revisions of the flow \n      to update.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UpdateFlowTemplateResponse": {
@@ -4469,9 +4192,6 @@
             "smithy.api#documentation": "<p>An object containing summary information about the updated workflow.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UpdateSystemTemplate": {
@@ -4526,9 +4246,6 @@
             "smithy.api#documentation": "<p>The version of the user's namespace. Defaults to the latest version of the user's namespace.</p>\n         <p>If no value is specified, the latest version is used by default.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UpdateSystemTemplateResponse": {
@@ -4540,9 +4257,6 @@
             "smithy.api#documentation": "<p>An object containing summary information about the updated system.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UploadEntityDefinitions": {
@@ -4594,9 +4308,6 @@
             "smithy.api#documentation": "<p>A Boolean that specifies whether to deprecate all entities in the latest version before uploading the new <code>DefinitionDocument</code>. \n         If set to <code>true</code>, the upload will create a new namespace version.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UploadEntityDefinitionsResponse": {
@@ -4609,9 +4320,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.iotthingsgraph#UploadId": {
@@ -4624,26 +4332,22 @@
       }
     },
     "com.amazonaws.iotthingsgraph#UploadStatus": {
-      "type": "enum",
-      "members": {
-        "IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "IN_PROGRESS"
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [
+          {
+            "value": "IN_PROGRESS",
+            "name": "IN_PROGRESS"
+          },
+          {
+            "value": "SUCCEEDED",
+            "name": "SUCCEEDED"
+          },
+          {
+            "value": "FAILED",
+            "name": "FAILED"
           }
-        },
-        "SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SUCCEEDED"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FAILED"
-          }
-        }
+        ]
       }
     },
     "com.amazonaws.iotthingsgraph#Urn": {

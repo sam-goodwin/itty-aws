@@ -112,7 +112,7 @@
         "Enabled": {
           "target": "com.amazonaws.cloudfront#boolean",
           "traits": {
-            "smithy.api#documentation": "<p>This field is <code>true</code> if any of the Amazon Web Services accounts in the list are configured as\n\t\t\ttrusted signers. If not, this field is <code>false</code>.</p>",
+            "smithy.api#documentation": "<p>This field is <code>true</code> if any of the Amazon Web Services accounts in the list have active\n\t\t\tCloudFront key pairs that CloudFront can use to verify the signatures of signed URLs and signed\n\t\t\tcookies. If not, this field is <code>false</code>.</p>",
             "smithy.api#required": {}
           }
         },
@@ -271,9 +271,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#AwsAccountNumberList": {
@@ -493,7 +490,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A cache policy.</p>\n         <p>When it's attached to a cache behavior, the cache policy determines the\n\t\t\tfollowing:</p>\n         <ul>\n            <li>\n               <p>The values that CloudFront includes in the cache key. These values can include HTTP\n\t\t\t\t\theaders, cookies, and URL query strings. CloudFront uses the cache key to find an\n\t\t\t\t\tobject in its cache that it can return to the viewer.</p>\n            </li>\n            <li>\n               <p>The default, minimum, and maximum time to live (TTL) values that you want\n\t\t\t\t\tobjects to stay in the CloudFront cache.</p>\n            </li>\n         </ul>\n         <p>The headers, cookies, and query strings that are included in the cache key are also included\n\t\t\tin requests that CloudFront sends to the origin. CloudFront sends a request when it can't find a\n\t\t\tvalid object in its cache that matches the request's cache key. If you want to send\n\t\t\tvalues to the origin but <i>not</i> include them in the cache key, use\n\t\t\t<code>OriginRequestPolicy</code>.</p>"
+        "smithy.api#documentation": "<p>A cache policy.</p>\n         <p>When it's attached to a cache behavior, the cache policy determines the\n\t\t\tfollowing:</p>\n         <ul>\n            <li>\n               <p>The values that CloudFront includes in the cache key. These values can include HTTP\n\t\t\t\t\theaders, cookies, and URL query strings. CloudFront uses the cache key to find an\n\t\t\t\t\tobject in its cache that it can return to the viewer.</p>\n            </li>\n            <li>\n               <p>The default, minimum, and maximum time to live (TTL) values that you want\n\t\t\t\t\tobjects to stay in the CloudFront cache.</p>\n            </li>\n         </ul>\n         <p>The headers, cookies, and query strings that are included in the cache key are\n\t\t\tautomatically included in requests that CloudFront sends to the origin. CloudFront sends a request\n\t\t\twhen it can't find a valid object in its cache that matches the request's cache key. If\n\t\t\tyou want to send values to the origin but <i>not</i> include them in the\n\t\t\tcache key, use <code>OriginRequestPolicy</code>.</p>"
       }
     },
     "com.amazonaws.cloudfront#CachePolicyAlreadyExists": {
@@ -547,12 +544,12 @@
         "ParametersInCacheKeyAndForwardedToOrigin": {
           "target": "com.amazonaws.cloudfront#ParametersInCacheKeyAndForwardedToOrigin",
           "traits": {
-            "smithy.api#documentation": "<p>The HTTP headers, cookies, and URL query strings to include in the cache key. The values\n\t\t\tincluded in the cache key are also included in requests that CloudFront sends to the\n\t\t\torigin.</p>"
+            "smithy.api#documentation": "<p>The HTTP headers, cookies, and URL query strings to include in the cache key. The\n\t\t\tvalues included in the cache key are automatically included in requests that CloudFront sends\n\t\t\tto the origin.</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A cache policy configuration.</p>\n         <p>This configuration determines the following:</p>\n         <ul>\n            <li>\n               <p>The values that CloudFront includes in the cache key. These values can include HTTP\n\t\t\t\t\theaders, cookies, and URL query strings. CloudFront uses the cache key to find an\n\t\t\t\t\tobject in its cache that it can return to the viewer.</p>\n            </li>\n            <li>\n               <p>The default, minimum, and maximum time to live (TTL) values that you want\n\t\t\t\t\tobjects to stay in the CloudFront cache.</p>\n            </li>\n         </ul>\n         <p>The headers, cookies, and query strings that are included in the cache key are also included\n\t\t\tin requests that CloudFront sends to the origin. CloudFront sends a request when it can't find a\n\t\t\tvalid object in its cache that matches the request's cache key. If you want to send\n\t\t\tvalues to the origin but <i>not</i> include them in the cache key, use\n\t\t\t<code>OriginRequestPolicy</code>.</p>"
+        "smithy.api#documentation": "<p>A cache policy configuration.</p>\n         <p>This configuration determines the following:</p>\n         <ul>\n            <li>\n               <p>The values that CloudFront includes in the cache key. These values can include HTTP\n\t\t\t\t\theaders, cookies, and URL query strings. CloudFront uses the cache key to find an\n\t\t\t\t\tobject in its cache that it can return to the viewer.</p>\n            </li>\n            <li>\n               <p>The default, minimum, and maximum time to live (TTL) values that you want\n\t\t\t\t\tobjects to stay in the CloudFront cache.</p>\n            </li>\n         </ul>\n         <p>The headers, cookies, and query strings that are included in the cache key are\n\t\t\tautomatically included in requests that CloudFront sends to the origin. CloudFront sends a request\n\t\t\twhen it can't find a valid object in its cache that matches the request's cache key. If\n\t\t\tyou want to send values to the origin but <i>not</i> include them in the\n\t\t\tcache key, use <code>OriginRequestPolicy</code>.</p>"
       }
     },
     "com.amazonaws.cloudfront#CachePolicyCookieBehavior": {
@@ -590,7 +587,7 @@
         "CookieBehavior": {
           "target": "com.amazonaws.cloudfront#CachePolicyCookieBehavior",
           "traits": {
-            "smithy.api#documentation": "<p>Determines whether any cookies in viewer requests are included in the cache key and in\n\t\t\trequests that CloudFront sends to the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – No cookies in viewer requests are included in the cache key or in\n\t\t\t\t\trequests that CloudFront sends to the origin. Even when this field is set to\n\t\t\t\t\t<code>none</code>, any cookies that are listed in an\n\t\t\t\t\t<code>OriginRequestPolicy</code>\n                  <i>are</i> included in origin\n\t\t\t\t\trequests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – Only the cookies in viewer requests that are listed in the\n\t\t\t\t\t<code>CookieNames</code> type are included in the cache key and in requests that\n\t\t\t\t\tCloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All cookies in viewer requests are included in the cache key and\n\t\t\t\t\tin requests that CloudFront sends to the origin, <i>\n                     <b>except</b>\n                  </i> for those that are listed in the\n\t\t\t\t\t<code>CookieNames</code> type, which are not included.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All cookies in viewer requests are included in the cache key and in\n\t\t\t\t\trequests that CloudFront sends to the origin.</p>\n            </li>\n         </ul>",
+            "smithy.api#documentation": "<p>Determines whether any cookies in viewer requests are included in the cache key and\n\t\t\tautomatically included in requests that CloudFront sends to the origin. Valid values\n\t\t\tare:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – Cookies in viewer requests are not included in the cache\n\t\t\t\t\tkey and are not automatically included in requests that CloudFront sends to the\n\t\t\t\t\torigin. Even when this field is set to <code>none</code>, any cookies that are\n\t\t\t\t\tlisted in an <code>OriginRequestPolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – The cookies in viewer requests that are listed in the\n\t\t\t\t\t\t<code>CookieNames</code> type are included in the cache key and\n\t\t\t\t\tautomatically included in requests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All cookies in viewer requests that are\n\t\t\t\t\t\t\t<i>\n                     <b>not</b>\n                  </i> listed in the\n\t\t\t\t\t\t<code>CookieNames</code> type are included in the cache key and\n\t\t\t\t\tautomatically included in requests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All cookies in viewer requests are included in the cache\n\t\t\t\t\tkey and are automatically included in requests that CloudFront sends to the\n\t\t\t\t\torigin.</p>\n            </li>\n         </ul>",
             "smithy.api#required": {}
           }
         },
@@ -599,7 +596,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>An object that determines whether any cookies in viewer requests (and if so, which cookies)\n\t\t\tare included in the cache key and in requests that CloudFront sends to the origin.</p>"
+        "smithy.api#documentation": "<p>An object that determines whether any cookies in viewer requests (and if so, which\n\t\t\tcookies) are included in the cache key and automatically included in requests that CloudFront\n\t\t\tsends to the origin.</p>"
       }
     },
     "com.amazonaws.cloudfront#CachePolicyHeaderBehavior": {
@@ -625,7 +622,7 @@
         "HeaderBehavior": {
           "target": "com.amazonaws.cloudfront#CachePolicyHeaderBehavior",
           "traits": {
-            "smithy.api#documentation": "<p>Determines whether any HTTP headers are included in the cache key and in requests that CloudFront\n\t\t\tsends to the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – No HTTP headers are included in the cache key or in requests that CloudFront\n\t\t\t\t\tsends to the origin. Even when this field is set to <code>none</code>, any\n\t\t\t\t\theaders that are listed in an <code>OriginRequestPolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – Only the HTTP headers that are listed in the <code>Headers</code>\n\t\t\t\t\ttype are included in the cache key and in requests that CloudFront sends to the\n\t\t\t\t\torigin.</p>\n            </li>\n         </ul>",
+            "smithy.api#documentation": "<p>Determines whether any HTTP headers are included in the cache key and automatically\n\t\t\tincluded in requests that CloudFront sends to the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – HTTP headers are not included in the cache key and are not\n\t\t\t\t\tautomatically included in requests that CloudFront sends to the origin. Even when this\n\t\t\t\t\tfield is set to <code>none</code>, any headers that are listed in an\n\t\t\t\t\t\t<code>OriginRequestPolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – The HTTP headers that are listed in the\n\t\t\t\t\t\t<code>Headers</code> type are included in the cache key and are\n\t\t\t\t\tautomatically included in requests that CloudFront sends to the origin.</p>\n            </li>\n         </ul>",
             "smithy.api#required": {}
           }
         },
@@ -634,7 +631,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>An object that determines whether any HTTP headers (and if so, which headers) are included\n\t\t\tin the cache key and in requests that CloudFront sends to the origin.</p>"
+        "smithy.api#documentation": "<p>An object that determines whether any HTTP headers (and if so, which headers) are\n\t\t\tincluded in the cache key and automatically included in requests that CloudFront sends to the\n\t\t\torigin.</p>"
       }
     },
     "com.amazonaws.cloudfront#CachePolicyInUse": {
@@ -719,19 +716,19 @@
         "QueryStringBehavior": {
           "target": "com.amazonaws.cloudfront#CachePolicyQueryStringBehavior",
           "traits": {
-            "smithy.api#documentation": "<p>Determines whether any URL query strings in viewer requests are included in the cache key\n\t\t\tand in requests that CloudFront sends to the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – No query strings in viewer requests are included in the cache key or\n\t\t\t\t\tin requests that CloudFront sends to the origin. Even when this field is set to\n\t\t\t\t\t<code>none</code>, any query strings that are listed in an\n\t\t\t\t\t<code>OriginRequestPolicy</code>\n                  <i>are</i> included in origin\n\t\t\t\t\trequests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – Only the query strings in viewer requests that are listed in the\n\t\t\t\t\t<code>QueryStringNames</code> type are included in the cache key and in requests\n\t\t\t\t\tthat CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All query strings in viewer requests are included in the cache\n\t\t\t\t\tkey and in requests that CloudFront sends to the origin, <i>\n                     <b>except</b>\n                  </i> those that are listed in the\n\t\t\t\t\t<code>QueryStringNames</code> type, which are not included.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All query strings in viewer requests are included in the cache key and\n\t\t\t\t\tin requests that CloudFront sends to the origin.</p>\n            </li>\n         </ul>",
+            "smithy.api#documentation": "<p>Determines whether any URL query strings in viewer requests are included in the cache\n\t\t\tkey and automatically included in requests that CloudFront sends to the origin. Valid values\n\t\t\tare:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – Query strings in viewer requests are not included in the\n\t\t\t\t\tcache key and are not automatically included in requests that CloudFront sends to the\n\t\t\t\t\torigin. Even when this field is set to <code>none</code>, any query strings that\n\t\t\t\t\tare listed in an <code>OriginRequestPolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – The query strings in viewer requests that are listed\n\t\t\t\t\tin the <code>QueryStringNames</code> type are included in the cache key and\n\t\t\t\t\tautomatically included in requests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All query strings in viewer requests that are\n\t\t\t\t\t\t\t<i>\n                     <b>not</b>\n                  </i> listed in the\n\t\t\t\t\t\t<code>QueryStringNames</code> type are included in the cache key and\n\t\t\t\t\tautomatically included in requests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All query strings in viewer requests are included in the\n\t\t\t\t\tcache key and are automatically included in requests that CloudFront sends to the\n\t\t\t\t\torigin.</p>\n            </li>\n         </ul>",
             "smithy.api#required": {}
           }
         },
         "QueryStrings": {
           "target": "com.amazonaws.cloudfront#QueryStringNames",
           "traits": {
-            "smithy.api#documentation": "<p>Contains the specific query strings in viewer requests that either <i>\n               <b>are</b>\n            </i> or <i>\n               <b>are\n\t\t\tnot</b>\n            </i> included in the cache key and in requests that CloudFront sends to\n\t\t\tthe origin. The behavior depends on whether the <code>QueryStringBehavior</code> field\n\t\t\tin the <code>CachePolicyQueryStringsConfig</code> type is set to <code>whitelist</code>\n\t\t\t(the listed query strings <i>\n               <b>are</b>\n            </i>\n\t\t\tincluded) or <code>allExcept</code> (the listed query strings <i>\n               <b>are not</b>\n            </i> included, but all other query strings\n\t\t\tare).</p>"
+            "smithy.api#documentation": "<p>Contains the specific query strings in viewer requests that either <i>\n               <b>are</b>\n            </i> or <i>\n               <b>are\n\t\t\t\t\tnot</b>\n            </i> included in the cache key and automatically included\n\t\t\tin requests that CloudFront sends to the origin. The behavior depends on whether the\n\t\t\t\t<code>QueryStringBehavior</code> field in the\n\t\t\t\t<code>CachePolicyQueryStringsConfig</code> type is set to <code>whitelist</code>\n\t\t\t(the listed query strings <i>\n               <b>are</b>\n            </i>\n\t\t\tincluded) or <code>allExcept</code> (the listed query strings <i>\n               <b>are not</b>\n            </i> included, but all other query strings\n\t\t\tare).</p>"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>An object that determines whether any URL query strings in viewer requests (and if so, which\n\t\t\tquery strings) are included in the cache key and in requests that CloudFront sends to the\n\t\t\torigin.</p>"
+        "smithy.api#documentation": "<p>An object that determines whether any URL query strings in viewer requests (and if so,\n\t\t\twhich query strings) are included in the cache key and automatically included in\n\t\t\trequests that CloudFront sends to the origin.</p>"
       }
     },
     "com.amazonaws.cloudfront#CachePolicySummary": {
@@ -815,19 +812,6 @@
         "smithy.api#documentation": "<p>You can't change the value of a public key.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 400
-      }
-    },
-    "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "target": "com.amazonaws.cloudfront#string"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store entity cannot be deleted while it is in use.</p>",
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 409
       }
     },
     "com.amazonaws.cloudfront#CertificateSource": {
@@ -1056,9 +1040,6 @@
           "target": "com.amazonaws.cloudfront#CreateKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#CreateKeyValueStore"
-        },
-        {
           "target": "com.amazonaws.cloudfront#CreateMonitoringSubscription"
         },
         {
@@ -1107,9 +1088,6 @@
           "target": "com.amazonaws.cloudfront#DeleteKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#DeleteKeyValueStore"
-        },
-        {
           "target": "com.amazonaws.cloudfront#DeleteMonitoringSubscription"
         },
         {
@@ -1132,9 +1110,6 @@
         },
         {
           "target": "com.amazonaws.cloudfront#DescribeFunction"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#DescribeKeyValueStore"
         },
         {
           "target": "com.amazonaws.cloudfront#GetCachePolicy"
@@ -1269,9 +1244,6 @@
           "target": "com.amazonaws.cloudfront#ListKeyGroups"
         },
         {
-          "target": "com.amazonaws.cloudfront#ListKeyValueStores"
-        },
-        {
           "target": "com.amazonaws.cloudfront#ListOriginAccessControls"
         },
         {
@@ -1332,9 +1304,6 @@
           "target": "com.amazonaws.cloudfront#UpdateKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#UpdateKeyValueStore"
-        },
-        {
           "target": "com.amazonaws.cloudfront#UpdateOriginAccessControl"
         },
         {
@@ -1375,7 +1344,7 @@
           "parameters": {
             "Region": {
               "builtIn": "AWS::Region",
-              "required": false,
+              "required": true,
               "documentation": "The AWS region used to dispatch the request.",
               "type": "String"
             },
@@ -1404,15 +1373,641 @@
             {
               "conditions": [
                 {
-                  "fn": "isSet",
+                  "fn": "aws.partition",
                   "argv": [
                     {
-                      "ref": "Endpoint"
+                      "ref": "Region"
                     }
-                  ]
+                  ],
+                  "assign": "PartitionResult"
                 }
               ],
+              "type": "tree",
               "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "type": "error"
+                    },
+                    {
+                      "conditions": [],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                          "type": "error"
+                        },
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": {
+                              "ref": "Endpoint"
+                            },
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "stringEquals",
+                      "argv": [
+                        {
+                          "fn": "getAttr",
+                          "argv": [
+                            {
+                              "ref": "PartitionResult"
+                            },
+                            "name"
+                          ]
+                        },
+                        "aws"
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront-fips.{Region}.api.aws",
+                                "properties": {
+                                  "authSchemes": [
+                                    {
+                                      "name": "sigv4",
+                                      "signingRegion": "us-east-1",
+                                      "signingName": "cloudfront"
+                                    }
+                                  ]
+                                },
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [],
+                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                          "type": "error"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront-fips.{Region}.amazonaws.com",
+                                "properties": {
+                                  "authSchemes": [
+                                    {
+                                      "name": "sigv4",
+                                      "signingRegion": "us-east-1",
+                                      "signingName": "cloudfront"
+                                    }
+                                  ]
+                                },
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [],
+                          "error": "FIPS is enabled but this partition does not support FIPS",
+                          "type": "error"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront.{Region}.api.aws",
+                                "properties": {
+                                  "authSchemes": [
+                                    {
+                                      "name": "sigv4",
+                                      "signingRegion": "us-east-1",
+                                      "signingName": "cloudfront"
+                                    }
+                                  ]
+                                },
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [],
+                          "error": "DualStack is enabled but this partition does not support DualStack",
+                          "type": "error"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "endpoint": {
+                        "url": "https://cloudfront.amazonaws.com",
+                        "properties": {
+                          "authSchemes": [
+                            {
+                              "name": "sigv4",
+                              "signingRegion": "us-east-1",
+                              "signingName": "cloudfront"
+                            }
+                          ]
+                        },
+                        "headers": {}
+                      },
+                      "type": "endpoint"
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "stringEquals",
+                      "argv": [
+                        {
+                          "fn": "getAttr",
+                          "argv": [
+                            {
+                              "ref": "PartitionResult"
+                            },
+                            "name"
+                          ]
+                        },
+                        "aws-cn"
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront-fips.{Region}.api.amazonwebservices.com.cn",
+                                "properties": {
+                                  "authSchemes": [
+                                    {
+                                      "name": "sigv4",
+                                      "signingRegion": "cn-northwest-1",
+                                      "signingName": "cloudfront"
+                                    }
+                                  ]
+                                },
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [],
+                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                          "type": "error"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsFIPS"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront-fips.{Region}.amazonaws.com.cn",
+                                "properties": {
+                                  "authSchemes": [
+                                    {
+                                      "name": "sigv4",
+                                      "signingRegion": "cn-northwest-1",
+                                      "signingName": "cloudfront"
+                                    }
+                                  ]
+                                },
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [],
+                          "error": "FIPS is enabled but this partition does not support FIPS",
+                          "type": "error"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseDualStack"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                true,
+                                {
+                                  "fn": "getAttr",
+                                  "argv": [
+                                    {
+                                      "ref": "PartitionResult"
+                                    },
+                                    "supportsDualStack"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront.{Region}.api.amazonwebservices.com.cn",
+                                "properties": {
+                                  "authSchemes": [
+                                    {
+                                      "name": "sigv4",
+                                      "signingRegion": "cn-northwest-1",
+                                      "signingName": "cloudfront"
+                                    }
+                                  ]
+                                },
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        },
+                        {
+                          "conditions": [],
+                          "error": "DualStack is enabled but this partition does not support DualStack",
+                          "type": "error"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "endpoint": {
+                        "url": "https://cloudfront.cn-northwest-1.amazonaws.com.cn",
+                        "properties": {
+                          "authSchemes": [
+                            {
+                              "name": "sigv4",
+                              "signingRegion": "cn-northwest-1",
+                              "signingName": "cloudfront"
+                            }
+                          ]
+                        },
+                        "headers": {}
+                      },
+                      "type": "endpoint"
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseFIPS"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://cloudfront-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      "type": "error"
+                    }
+                  ]
+                },
                 {
                   "conditions": [
                     {
@@ -1425,8 +2020,51 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                  "type": "error"
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://cloudfront-fips.{Region}.{PartitionResult#dnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS is enabled but this partition does not support FIPS",
+                      "type": "error"
+                    }
+                  ]
                 },
                 {
                   "conditions": [
@@ -1440,47 +2078,49 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                  "type": "error"
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://cloudfront.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "DualStack is enabled but this partition does not support DualStack",
+                      "type": "error"
+                    }
+                  ]
                 },
                 {
                   "conditions": [],
-                  "endpoint": {
-                    "url": {
-                      "ref": "Endpoint"
-                    },
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
-                }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [
-                {
-                  "fn": "isSet",
-                  "argv": [
-                    {
-                      "ref": "Region"
-                    }
-                  ]
-                }
-              ],
-              "rules": [
-                {
-                  "conditions": [
-                    {
-                      "fn": "aws.partition",
-                      "argv": [
-                        {
-                          "ref": "Region"
-                        }
-                      ],
-                      "assign": "PartitionResult"
-                    }
-                  ],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
@@ -1488,33 +2128,9 @@
                           "fn": "stringEquals",
                           "argv": [
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "name"
-                              ]
+                              "ref": "Region"
                             },
-                            "aws"
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            false
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            false
+                            "aws-global"
                           ]
                         }
                       ],
@@ -1524,8 +2140,8 @@
                           "authSchemes": [
                             {
                               "name": "sigv4",
-                              "signingName": "cloudfront",
-                              "signingRegion": "us-east-1"
+                              "signingRegion": "us-east-1",
+                              "signingName": "cloudfront"
                             }
                           ]
                         },
@@ -1539,84 +2155,9 @@
                           "fn": "stringEquals",
                           "argv": [
                             {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "name"
-                              ]
+                              "ref": "Region"
                             },
-                            "aws"
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            false
-                          ]
-                        }
-                      ],
-                      "endpoint": {
-                        "url": "https://cloudfront-fips.amazonaws.com",
-                        "properties": {
-                          "authSchemes": [
-                            {
-                              "name": "sigv4",
-                              "signingName": "cloudfront",
-                              "signingRegion": "us-east-1"
-                            }
-                          ]
-                        },
-                        "headers": {}
-                      },
-                      "type": "endpoint"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "stringEquals",
-                          "argv": [
-                            {
-                              "fn": "getAttr",
-                              "argv": [
-                                {
-                                  "ref": "PartitionResult"
-                                },
-                                "name"
-                              ]
-                            },
-                            "aws-cn"
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            false
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            false
+                            "aws-cn-global"
                           ]
                         }
                       ],
@@ -1626,194 +2167,14 @@
                           "authSchemes": [
                             {
                               "name": "sigv4",
-                              "signingName": "cloudfront",
-                              "signingRegion": "cn-northwest-1"
+                              "signingRegion": "cn-northwest-1",
+                              "signingName": "cloudfront"
                             }
                           ]
                         },
                         "headers": {}
                       },
                       "type": "endpoint"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://cloudfront-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                },
-                                true
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://cloudfront-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS is enabled but this partition does not support FIPS",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://cloudfront.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "DualStack is enabled but this partition does not support DualStack",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
                     },
                     {
                       "conditions": [],
@@ -1824,135 +2185,14 @@
                       },
                       "type": "endpoint"
                     }
-                  ],
-                  "type": "tree"
+                  ]
                 }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [],
-              "error": "Invalid Configuration: Missing Region",
-              "type": "error"
+              ]
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
-            {
-              "documentation": "For region aws-global with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "properties": {
-                    "authSchemes": [
-                      {
-                        "name": "sigv4",
-                        "signingName": "cloudfront",
-                        "signingRegion": "us-east-1"
-                      }
-                    ]
-                  },
-                  "url": "https://cloudfront.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "aws-global",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region aws-global with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "properties": {
-                    "authSchemes": [
-                      {
-                        "name": "sigv4",
-                        "signingName": "cloudfront",
-                        "signingRegion": "us-east-1"
-                      }
-                    ]
-                  },
-                  "url": "https://cloudfront-fips.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "aws-global",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.us-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "properties": {
-                    "authSchemes": [
-                      {
-                        "name": "sigv4",
-                        "signingName": "cloudfront",
-                        "signingRegion": "us-east-1"
-                      }
-                    ]
-                  },
-                  "url": "https://cloudfront-fips.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront.us-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "properties": {
-                    "authSchemes": [
-                      {
-                        "name": "sigv4",
-                        "signingName": "cloudfront",
-                        "signingRegion": "us-east-1"
-                      }
-                    ]
-                  },
-                  "url": "https://cloudfront.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
             {
               "documentation": "For region aws-cn-global with FIPS disabled and DualStack disabled",
               "expect": {
@@ -1960,9 +2200,9 @@
                   "properties": {
                     "authSchemes": [
                       {
-                        "name": "sigv4",
+                        "signingRegion": "cn-northwest-1",
                         "signingName": "cloudfront",
-                        "signingRegion": "cn-northwest-1"
+                        "name": "sigv4"
                       }
                     ]
                   },
@@ -1970,243 +2210,43 @@
                 }
               },
               "params": {
+                "UseFIPS": false,
                 "Region": "aws-cn-global",
-                "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region aws-global with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
                   "properties": {
                     "authSchemes": [
                       {
-                        "name": "sigv4",
+                        "signingRegion": "us-east-1",
                         "signingName": "cloudfront",
-                        "signingRegion": "cn-northwest-1"
+                        "name": "sigv4"
                       }
                     ]
                   },
-                  "url": "https://cloudfront.cn-northwest-1.amazonaws.com.cn"
+                  "url": "https://cloudfront.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
                 "UseFIPS": false,
+                "Region": "aws-global",
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront.us-gov-east-1.api.aws"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront.us-gov-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-gov-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront-fips.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://cloudfront.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
                 }
               },
               "params": {
+                "UseFIPS": false,
                 "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false,
-                "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://example.com"
-                }
-              },
-              "params": {
-                "UseFIPS": false,
                 "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
@@ -2217,8 +2257,8 @@
                 "error": "Invalid Configuration: FIPS and custom endpoint are not supported"
               },
               "params": {
-                "Region": "us-east-1",
                 "UseFIPS": true,
+                "Region": "us-east-1",
                 "UseDualStack": false,
                 "Endpoint": "https://example.com"
               }
@@ -2229,16 +2269,10 @@
                 "error": "Invalid Configuration: Dualstack and custom endpoint are not supported"
               },
               "params": {
-                "Region": "us-east-1",
                 "UseFIPS": false,
+                "Region": "us-east-1",
                 "UseDualStack": true,
                 "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "Missing region",
-              "expect": {
-                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -2797,9 +2831,6 @@
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
-        },
-        {
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
         },
         {
@@ -2849,7 +2880,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Creates a staging distribution using the configuration of the provided primary\n\t\t\tdistribution. A staging distribution is a copy of an existing distribution (called the\n\t\t\tprimary distribution) that you can use in a continuous deployment workflow.</p>\n         <p>After you create a staging distribution, you can use <code>UpdateDistribution</code>\n\t\t\tto modify the staging distribution's configuration. Then you can use\n\t\t\t\t<code>CreateContinuousDeploymentPolicy</code> to incrementally move traffic to the\n\t\t\tstaging distribution.</p>\n         <p>This API operation requires the following IAM permissions:</p>\n         <ul>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html\">GetDistribution</a>\n               </p>\n            </li>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html\">CreateDistribution</a>\n               </p>\n            </li>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CopyDistribution.html\">CopyDistribution</a>\n               </p>\n            </li>\n         </ul>",
+        "smithy.api#documentation": "<p>Creates a staging distribution using the configuration of the provided primary\n\t\t\tdistribution. A staging distribution is a copy of an existing distribution (called the\n\t\t\tprimary distribution) that you can use in a continuous deployment workflow.</p>\n         <p>After you create a staging distribution, you can use <code>UpdateDistribution</code>\n\t\t\tto modify the staging distribution's configuration. Then you can use\n\t\t\t\t<code>CreateContinuousDeploymentPolicy</code> to incrementally move traffic to the\n\t\t\tstaging distribution.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2020-05-31/distribution/{PrimaryDistributionId}/copy",
@@ -2888,16 +2919,7 @@
             "smithy.api#documentation": "<p>A value that uniquely identifies a request to create a resource. This helps to prevent\n\t\t\tCloudFront from creating a duplicate resource if you accidentally resubmit an identical\n\t\t\trequest.</p>",
             "smithy.api#required": {}
           }
-        },
-        "Enabled": {
-          "target": "com.amazonaws.cloudfront#boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>A Boolean flag to specify the state of the staging distribution when it's\n\t\t\tcreated. When you set this value to <code>True</code>, the staging\n\t\t\tdistribution is enabled. When you set this value to <code>False</code>, the\n\t\t\tstaging distribution is disabled.</p>\n         <p>If you omit this field, the default value is <code>True</code>.</p>"
-          }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CopyDistributionResult": {
@@ -2923,9 +2945,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateCachePolicy": {
@@ -2963,7 +2982,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Creates a cache policy.</p>\n         <p>After you create a cache policy, you can attach it to one or more cache behaviors.\n\t\t\tWhen it's attached to a cache behavior, the cache policy determines the\n\t\t\tfollowing:</p>\n         <ul>\n            <li>\n               <p>The values that CloudFront includes in the <i>cache key</i>. These\n\t\t\t\t\tvalues can include HTTP headers, cookies, and URL query strings. CloudFront uses the\n\t\t\t\t\tcache key to find an object in its cache that it can return to the\n\t\t\t\t\tviewer.</p>\n            </li>\n            <li>\n               <p>The default, minimum, and maximum time to live (TTL) values that you want\n\t\t\t\t\tobjects to stay in the CloudFront cache.</p>\n            </li>\n         </ul>\n         <p>The headers, cookies, and query strings that are included in the cache key are also included\n\t\t\tin requests that CloudFront sends to the origin. CloudFront sends a request when it can't find an\n\t\t\tobject in its cache that matches the request's cache key. If you want to send values to\n\t\t\tthe origin but <i>not</i> include them in the cache key, use\n\t\t\t<code>OriginRequestPolicy</code>.</p>\n         <p>For more information about cache policies, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html\">Controlling the cache key</a> in the\n\t\t\t\t<i>Amazon CloudFront Developer Guide</i>.</p>",
+        "smithy.api#documentation": "<p>Creates a cache policy.</p>\n         <p>After you create a cache policy, you can attach it to one or more cache behaviors.\n\t\t\tWhen it's attached to a cache behavior, the cache policy determines the\n\t\t\tfollowing:</p>\n         <ul>\n            <li>\n               <p>The values that CloudFront includes in the <i>cache key</i>. These\n\t\t\t\t\tvalues can include HTTP headers, cookies, and URL query strings. CloudFront uses the\n\t\t\t\t\tcache key to find an object in its cache that it can return to the\n\t\t\t\t\tviewer.</p>\n            </li>\n            <li>\n               <p>The default, minimum, and maximum time to live (TTL) values that you want\n\t\t\t\t\tobjects to stay in the CloudFront cache.</p>\n            </li>\n         </ul>\n         <p>The headers, cookies, and query strings that are included in the cache key are\n\t\t\tautomatically included in requests that CloudFront sends to the origin. CloudFront sends a request\n\t\t\twhen it can't find an object in its cache that matches the request's cache key. If you\n\t\t\twant to send values to the origin but <i>not</i> include them in the cache\n\t\t\tkey, use <code>OriginRequestPolicy</code>.</p>\n         <p>For more information about cache policies, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html\">Controlling the cache key</a> in the\n\t\t\t\t<i>Amazon CloudFront Developer Guide</i>.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2020-05-31/cache-policy",
@@ -2983,9 +3002,6 @@
             "smithy.api#xmlName": "CachePolicyConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateCachePolicyResult": {
@@ -3012,9 +3028,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentity": {
@@ -3065,8 +3078,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to create a new origin access identity (OAI). An origin access identity is\n\t\t\ta special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all\n\t\t\tor just some of your Amazon S3 content. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html\"> Restricting Access to Amazon S3 Content by Using an Origin Access Identity</a> in\n\t\t\tthe <i>Amazon CloudFront Developer Guide</i>.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to create a new origin access identity (OAI). An origin access identity is\n\t\t\ta special CloudFront user that you can associate with Amazon S3 origins, so that you can secure all\n\t\t\tor just some of your Amazon S3 content. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html\"> Restricting Access to Amazon S3 Content by Using an Origin Access Identity</a> in\n\t\t\tthe <i>Amazon CloudFront Developer Guide</i>.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentityResult": {
@@ -3095,8 +3107,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicy": {
@@ -3148,9 +3159,6 @@
             "smithy.api#xmlName": "ContinuousDeploymentPolicyConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicyResult": {
@@ -3177,9 +3185,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateDistribution": {
@@ -3410,8 +3415,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to create a new distribution.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to create a new distribution.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateDistributionResult": {
@@ -3440,8 +3444,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateDistributionWithTags": {
@@ -3467,9 +3470,6 @@
         },
         {
           "target": "com.amazonaws.cloudfront#IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#IllegalOriginAccessConfiguration"
         },
         {
           "target": "com.amazonaws.cloudfront#InconsistentQuantities"
@@ -3601,9 +3601,6 @@
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
-        },
-        {
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
         },
         {
@@ -3653,7 +3650,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Create a new distribution with tags. This API operation requires the following IAM\n\t\t\tpermissions:</p>\n         <ul>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html\">CreateDistribution</a>\n               </p>\n            </li>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html\">TagResource</a>\n               </p>\n            </li>\n         </ul>",
+        "smithy.api#documentation": "<p>Create a new distribution with tags.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2020-05-31/distribution?WithTags",
@@ -3675,8 +3672,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to create a new distribution with tags.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to create a new distribution with tags.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateDistributionWithTagsResult": {
@@ -3705,8 +3701,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfig": {
@@ -3764,9 +3759,6 @@
             "smithy.api#xmlName": "FieldLevelEncryptionConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfigResult": {
@@ -3793,9 +3785,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfile": {
@@ -3853,9 +3842,6 @@
             "smithy.api#xmlName": "FieldLevelEncryptionProfileConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfileResult": {
@@ -3882,9 +3868,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateFunction": {
@@ -3945,9 +3928,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateFunctionResult": {
@@ -3974,9 +3954,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateInvalidation": {
@@ -4041,8 +4018,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to create an invalidation.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to create an invalidation.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateInvalidationResult": {
@@ -4064,8 +4040,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateKeyGroup": {
@@ -4111,9 +4086,6 @@
             "smithy.api#xmlName": "KeyGroupConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateKeyGroupResult": {
@@ -4140,99 +4112,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.amazonaws.cloudfront#CreateKeyValueStore": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.cloudfront#CreateKeyValueStoreRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.cloudfront#CreateKeyValueStoreResult"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.cloudfront#AccessDenied"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#EntityAlreadyExists"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#EntityLimitExceeded"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#EntitySizeLimitExceeded"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#InvalidArgument"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Specifies the Key Value Store resource to add to your account. In your account, the Key Value Store names must be unique. You can also import Key Value Store data in JSON format from an S3 bucket by providing a valid <code>ImportSource</code> that you own.</p>",
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/2020-05-31/key-value-store",
-          "code": 201
-        }
-      }
-    },
-    "com.amazonaws.cloudfront#CreateKeyValueStoreRequest": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreName",
-          "traits": {
-            "smithy.api#documentation": "<p>The name of the Key Value Store. The maximum length of the name is 32 characters.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Comment": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreComment",
-          "traits": {
-            "smithy.api#documentation": "<p>The comment of the Key Value Store.</p>"
-          }
-        },
-        "ImportSource": {
-          "target": "com.amazonaws.cloudfront#ImportSource",
-          "traits": {
-            "smithy.api#documentation": "<p>The S3 bucket that provides the source for the import. The source must be in a valid JSON format.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.cloudfront#CreateKeyValueStoreResult": {
-      "type": "structure",
-      "members": {
-        "KeyValueStore": {
-          "target": "com.amazonaws.cloudfront#KeyValueStore",
-          "traits": {
-            "smithy.api#documentation": "<p>The resulting Key Value Store.</p>",
-            "smithy.api#httpPayload": {}
-          }
-        },
-        "ETag": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The ETag in the resulting Key Value Store.</p>",
-            "smithy.api#httpHeader": "ETag"
-          }
-        },
-        "Location": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The location of the resulting Key Value Store.</p>",
-            "smithy.api#httpHeader": "Location"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateMonitoringSubscription": {
@@ -4286,9 +4165,6 @@
             "smithy.api#xmlName": "MonitoringSubscription"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateMonitoringSubscriptionResult": {
@@ -4301,9 +4177,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateOriginAccessControl": {
@@ -4326,7 +4199,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Creates a new origin access control in CloudFront. After you create an origin access\n\t\t\tcontrol, you can add it to an origin in a CloudFront distribution so that CloudFront sends\n\t\t\tauthenticated (signed) requests to the origin.</p>\n         <p>This makes it possible to block public access to the origin, allowing viewers (users) to\n\t\t\taccess the origin's content only through CloudFront.</p>\n         <p>For more information about using a CloudFront origin access control, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-origin.html\">Restricting access to an Amazon Web Services origin</a> in the\n\t\t\t\t<i>Amazon CloudFront Developer Guide</i>.</p>",
+        "smithy.api#documentation": "<p>Creates a new origin access control in CloudFront. After you create an origin access\n\t\t\tcontrol, you can add it to an origin in a CloudFront distribution so that CloudFront sends\n\t\t\tauthenticated (signed) requests to the origin.</p>\n         <p>For an Amazon S3 origin, this makes it possible to block public access to the Amazon S3 bucket\n\t\t\tso that viewers (users) can access the content in the bucket only through CloudFront.</p>\n         <p>For more information about using a CloudFront origin access control, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html\">Restricting access to an Amazon S3 origin</a> in the\n\t\t\t\t<i>Amazon CloudFront Developer Guide</i>.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2020-05-31/origin-access-control",
@@ -4346,9 +4219,6 @@
             "smithy.api#xmlName": "OriginAccessControlConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateOriginAccessControlResult": {
@@ -4375,9 +4245,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateOriginRequestPolicy": {
@@ -4435,9 +4302,6 @@
             "smithy.api#xmlName": "OriginRequestPolicyConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateOriginRequestPolicyResult": {
@@ -4464,9 +4328,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreatePublicKey": {
@@ -4509,9 +4370,6 @@
             "smithy.api#xmlName": "PublicKeyConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreatePublicKeyResult": {
@@ -4538,9 +4396,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateRealtimeLogConfig": {
@@ -4605,9 +4460,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateRealtimeLogConfigResult": {
@@ -4619,9 +4471,6 @@
             "smithy.api#documentation": "<p>A real-time log configuration.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateResponseHeadersPolicy": {
@@ -4679,9 +4528,6 @@
             "smithy.api#xmlName": "ResponseHeadersPolicyConfig"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#CreateResponseHeadersPolicyResult": {
@@ -4708,9 +4554,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#CreateStreamingDistribution": {
@@ -4785,8 +4628,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to create a new streaming distribution.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to create a new streaming distribution.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateStreamingDistributionResult": {
@@ -4815,8 +4657,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateStreamingDistributionWithTags": {
@@ -4894,8 +4735,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to create a new streaming distribution with tags.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to create a new streaming distribution with tags.</p>"
       }
     },
     "com.amazonaws.cloudfront#CreateStreamingDistributionWithTagsResult": {
@@ -4924,8 +4764,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#CustomErrorResponse": {
@@ -5233,9 +5072,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteCloudFrontOriginAccessIdentity": {
@@ -5292,8 +5128,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Deletes a origin access identity.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>Deletes a origin access identity.</p>"
       }
     },
     "com.amazonaws.cloudfront#DeleteContinuousDeploymentPolicy": {
@@ -5351,9 +5186,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteDistribution": {
@@ -5410,8 +5242,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>This action deletes a web distribution. To delete a web distribution using the CloudFront\n\t\t\tAPI, perform the following steps.</p>\n         <p>\n            <b>To delete a web distribution using the CloudFront API:</b>\n         </p>\n         <ol>\n            <li>\n               <p>Disable the web distribution</p>\n            </li>\n            <li>\n               <p>Submit a <code>GET Distribution Config</code> request to get the current\n\t\t\t\t\tconfiguration and the <code>Etag</code> header for the distribution.</p>\n            </li>\n            <li>\n               <p>Update the XML document that was returned in the response to your <code>GET\n\t\t\t\t\t\tDistribution Config</code> request to change the value of\n\t\t\t\t\t\t<code>Enabled</code> to <code>false</code>.</p>\n            </li>\n            <li>\n               <p>Submit a <code>PUT Distribution Config</code> request to update the\n\t\t\t\t\tconfiguration for your distribution. In the request body, include the XML\n\t\t\t\t\tdocument that you updated in Step 3. Set the value of the HTTP\n\t\t\t\t\t\t<code>If-Match</code> header to the value of the <code>ETag</code> header\n\t\t\t\t\tthat CloudFront returned when you submitted the <code>GET Distribution Config</code>\n\t\t\t\t\trequest in Step 2.</p>\n            </li>\n            <li>\n               <p>Review the response to the <code>PUT Distribution Config</code> request to\n\t\t\t\t\tconfirm that the distribution was successfully disabled.</p>\n            </li>\n            <li>\n               <p>Submit a <code>GET Distribution</code> request to confirm that your changes\n\t\t\t\t\thave propagated. When propagation is complete, the value of <code>Status</code>\n\t\t\t\t\tis <code>Deployed</code>.</p>\n            </li>\n            <li>\n               <p>Submit a <code>DELETE Distribution</code> request. Set the value of the HTTP\n\t\t\t\t\t\t<code>If-Match</code> header to the value of the <code>ETag</code> header\n\t\t\t\t\tthat CloudFront returned when you submitted the <code>GET Distribution Config</code>\n\t\t\t\t\trequest in Step 6.</p>\n            </li>\n            <li>\n               <p>Review the response to your <code>DELETE Distribution</code> request to\n\t\t\t\t\tconfirm that the distribution was successfully deleted.</p>\n            </li>\n         </ol>\n         <p>For information about deleting a distribution using the CloudFront console, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html\">Deleting a\n\t\t\t\tDistribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>This action deletes a web distribution. To delete a web distribution using the CloudFront\n\t\t\tAPI, perform the following steps.</p>\n         <p>\n            <b>To delete a web distribution using the CloudFront API:</b>\n         </p>\n         <ol>\n            <li>\n               <p>Disable the web distribution</p>\n            </li>\n            <li>\n               <p>Submit a <code>GET Distribution Config</code> request to get the current\n\t\t\t\t\tconfiguration and the <code>Etag</code> header for the distribution.</p>\n            </li>\n            <li>\n               <p>Update the XML document that was returned in the response to your <code>GET\n\t\t\t\t\t\tDistribution Config</code> request to change the value of\n\t\t\t\t\t\t<code>Enabled</code> to <code>false</code>.</p>\n            </li>\n            <li>\n               <p>Submit a <code>PUT Distribution Config</code> request to update the\n\t\t\t\t\tconfiguration for your distribution. In the request body, include the XML\n\t\t\t\t\tdocument that you updated in Step 3. Set the value of the HTTP\n\t\t\t\t\t\t<code>If-Match</code> header to the value of the <code>ETag</code> header\n\t\t\t\t\tthat CloudFront returned when you submitted the <code>GET Distribution Config</code>\n\t\t\t\t\trequest in Step 2.</p>\n            </li>\n            <li>\n               <p>Review the response to the <code>PUT Distribution Config</code> request to\n\t\t\t\t\tconfirm that the distribution was successfully disabled.</p>\n            </li>\n            <li>\n               <p>Submit a <code>GET Distribution</code> request to confirm that your changes\n\t\t\t\t\thave propagated. When propagation is complete, the value of <code>Status</code>\n\t\t\t\t\tis <code>Deployed</code>.</p>\n            </li>\n            <li>\n               <p>Submit a <code>DELETE Distribution</code> request. Set the value of the HTTP\n\t\t\t\t\t\t<code>If-Match</code> header to the value of the <code>ETag</code> header\n\t\t\t\t\tthat CloudFront returned when you submitted the <code>GET Distribution Config</code>\n\t\t\t\t\trequest in Step 6.</p>\n            </li>\n            <li>\n               <p>Review the response to your <code>DELETE Distribution</code> request to\n\t\t\t\t\tconfirm that the distribution was successfully deleted.</p>\n            </li>\n         </ol>\n         <p>For information about deleting a distribution using the CloudFront console, see <a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html\">Deleting a\n\t\t\t\tDistribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>"
       }
     },
     "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionConfig": {
@@ -5466,9 +5297,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionProfile": {
@@ -5523,9 +5351,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteFunction": {
@@ -5581,9 +5406,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteKeyGroup": {
@@ -5635,68 +5457,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.cloudfront#DeleteKeyValueStore": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.cloudfront#DeleteKeyValueStoreRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.cloudfront#AccessDenied"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#CannotDeleteEntityWhileInUse"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#EntityNotFound"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#PreconditionFailed"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Specifies the Key Value Store to delete.</p>",
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/2020-05-31/key-value-store/{Name}",
-          "code": 204
-        },
-        "smithy.api#idempotent": {}
-      }
-    },
-    "com.amazonaws.cloudfront#DeleteKeyValueStoreRequest": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreName",
-          "traits": {
-            "smithy.api#documentation": "<p>The name of the Key Value Store.</p>",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "IfMatch": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The Key Value Store to delete, if a match occurs.</p>",
-            "smithy.api#httpHeader": "If-Match",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteMonitoringSubscription": {
@@ -5741,17 +5501,11 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteMonitoringSubscriptionResult": {
       "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {}
-      }
+      "members": {}
     },
     "com.amazonaws.cloudfront#DeleteOriginAccessControl": {
       "type": "operation",
@@ -5805,9 +5559,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteOriginRequestPolicy": {
@@ -5865,9 +5616,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeletePublicKey": {
@@ -5922,9 +5670,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteRealtimeLogConfig": {
@@ -5973,9 +5718,6 @@
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the real-time log configuration to delete.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteResponseHeadersPolicy": {
@@ -6033,9 +5775,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DeleteStreamingDistribution": {
@@ -6092,8 +5831,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to delete a streaming distribution.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to delete a streaming distribution.</p>"
       }
     },
     "com.amazonaws.cloudfront#DescribeFunction": {
@@ -6139,9 +5877,6 @@
             "smithy.api#httpQuery": "Stage"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#DescribeFunctionResult": {
@@ -6161,75 +5896,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.amazonaws.cloudfront#DescribeKeyValueStore": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.cloudfront#DescribeKeyValueStoreRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.cloudfront#DescribeKeyValueStoreResult"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.cloudfront#AccessDenied"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#EntityNotFound"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#InvalidArgument"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Specifies the Key Value Store and its configuration.</p>",
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/2020-05-31/key-value-store/{Name}",
-          "code": 200
-        }
-      }
-    },
-    "com.amazonaws.cloudfront#DescribeKeyValueStoreRequest": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreName",
-          "traits": {
-            "smithy.api#documentation": "<p>The name of the Key Value Store.</p>",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.cloudfront#DescribeKeyValueStoreResult": {
-      "type": "structure",
-      "members": {
-        "KeyValueStore": {
-          "target": "com.amazonaws.cloudfront#KeyValueStore",
-          "traits": {
-            "smithy.api#documentation": "<p>The resulting Key Value Store.</p>",
-            "smithy.api#httpPayload": {}
-          }
-        },
-        "ETag": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The ETag of the resulting Key Value Store.</p>",
-            "smithy.api#httpHeader": "ETag"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#Distribution": {
@@ -6835,58 +6501,6 @@
         "target": "com.amazonaws.cloudfront#EndPoint"
       }
     },
-    "com.amazonaws.cloudfront#EntityAlreadyExists": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "target": "com.amazonaws.cloudfront#string"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store entity already exists. You must provide a unique Key Value Store\n\t\t\tentity.</p>",
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 409
-      }
-    },
-    "com.amazonaws.cloudfront#EntityLimitExceeded": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "target": "com.amazonaws.cloudfront#string"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store entity limit has been exceeded.</p>",
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 400
-      }
-    },
-    "com.amazonaws.cloudfront#EntityNotFound": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "target": "com.amazonaws.cloudfront#string"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store entity was not found.</p>",
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 404
-      }
-    },
-    "com.amazonaws.cloudfront#EntitySizeLimitExceeded": {
-      "type": "structure",
-      "members": {
-        "Message": {
-          "target": "com.amazonaws.cloudfront#string"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store entity size limit was exceeded.</p>",
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 413
-      }
-    },
     "com.amazonaws.cloudfront#EventType": {
       "type": "enum",
       "members": {
@@ -7035,7 +6649,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>List of field-level encryption configurations.</p>"
+        "smithy.api#documentation": "<p>List of field-level encrpytion configurations.</p>"
       }
     },
     "com.amazonaws.cloudfront#FieldLevelEncryptionProfile": {
@@ -7188,7 +6802,7 @@
         "LastModifiedTime": {
           "target": "com.amazonaws.cloudfront#timestamp",
           "traits": {
-            "smithy.api#documentation": "<p>The time when the  field-level encryption profile summary was last updated.</p>",
+            "smithy.api#documentation": "<p>The time when the the field-level encryption profile summary was last updated.</p>",
             "smithy.api#required": {}
           }
         },
@@ -7474,14 +7088,8 @@
         "Runtime": {
           "target": "com.amazonaws.cloudfront#FunctionRuntime",
           "traits": {
-            "smithy.api#documentation": "<p>The function's runtime environment version.</p>",
+            "smithy.api#documentation": "<p>The function's runtime environment. The only valid value is\n\t\t\t\t<code>cloudfront-js-1.0</code>.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "KeyValueStoreAssociations": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreAssociations",
-          "traits": {
-            "smithy.api#documentation": "<p>The configuration for the Key Value Store associations.</p>"
           }
         }
       },
@@ -7606,12 +7214,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cloudfront-js-1.0"
-          }
-        },
-        "cloudfront_js_2_0": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cloudfront-js-2.0"
           }
         }
       }
@@ -7802,9 +7404,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetCachePolicyConfigResult": {
@@ -7824,9 +7423,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetCachePolicyRequest": {
@@ -7840,9 +7436,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetCachePolicyResult": {
@@ -7862,9 +7455,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentity": {
@@ -7930,8 +7520,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The origin access identity's configuration information. For more information, see\n\t\t\t\t<a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CloudFrontOriginAccessIdentityConfig.html\">CloudFrontOriginAccessIdentityConfig</a>.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The origin access identity's configuration information. For more information, see\n\t\t\t\t<a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CloudFrontOriginAccessIdentityConfig.html\">CloudFrontOriginAccessIdentityConfig</a>.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityConfigResult": {
@@ -7953,8 +7542,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityRequest": {
@@ -7970,8 +7558,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to get an origin access identity's information.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to get an origin access identity's information.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityResult": {
@@ -7993,8 +7580,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetContinuousDeploymentPolicy": {
@@ -8058,9 +7644,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyConfigResult": {
@@ -8079,9 +7662,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyRequest": {
@@ -8095,9 +7675,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyResult": {
@@ -8117,9 +7694,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetDistribution": {
@@ -8203,8 +7777,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to get a distribution configuration.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to get a distribution configuration.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetDistributionConfigResult": {
@@ -8226,8 +7799,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetDistributionRequest": {
@@ -8243,8 +7815,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to get a distribution's information.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to get a distribution's information.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetDistributionResult": {
@@ -8266,8 +7837,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryption": {
@@ -8331,9 +7901,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionConfigResult": {
@@ -8353,9 +7920,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfile": {
@@ -8419,9 +7983,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileConfigResult": {
@@ -8441,9 +8002,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileRequest": {
@@ -8457,9 +8015,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileResult": {
@@ -8479,9 +8034,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionRequest": {
@@ -8495,9 +8047,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetFieldLevelEncryptionResult": {
@@ -8517,9 +8066,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetFunction": {
@@ -8565,9 +8111,6 @@
             "smithy.api#httpQuery": "Stage"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetFunctionResult": {
@@ -8594,9 +8137,6 @@
             "smithy.api#httpHeader": "Content-Type"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetInvalidation": {
@@ -8666,8 +8206,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to get an invalidation's information.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to get an invalidation's information.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetInvalidationResult": {
@@ -8682,8 +8221,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetKeyGroup": {
@@ -8741,9 +8279,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetKeyGroupConfigResult": {
@@ -8763,9 +8298,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetKeyGroupRequest": {
@@ -8779,9 +8311,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetKeyGroupResult": {
@@ -8801,9 +8330,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetMonitoringSubscription": {
@@ -8848,9 +8374,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetMonitoringSubscriptionResult": {
@@ -8863,9 +8386,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginAccessControl": {
@@ -8929,9 +8449,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginAccessControlConfigResult": {
@@ -8951,9 +8468,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginAccessControlRequest": {
@@ -8967,9 +8481,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginAccessControlResult": {
@@ -8989,9 +8500,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginRequestPolicy": {
@@ -9055,9 +8563,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginRequestPolicyConfigResult": {
@@ -9077,9 +8582,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginRequestPolicyRequest": {
@@ -9093,9 +8595,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetOriginRequestPolicyResult": {
@@ -9115,9 +8614,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetPublicKey": {
@@ -9181,9 +8677,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetPublicKeyConfigResult": {
@@ -9203,9 +8696,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetPublicKeyRequest": {
@@ -9219,9 +8709,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetPublicKeyResult": {
@@ -9241,9 +8728,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetRealtimeLogConfig": {
@@ -9289,9 +8773,6 @@
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the real-time log configuration to get.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetRealtimeLogConfigResult": {
@@ -9303,9 +8784,6 @@
             "smithy.api#documentation": "<p>A real-time log configuration.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetResponseHeadersPolicy": {
@@ -9369,9 +8847,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetResponseHeadersPolicyConfigResult": {
@@ -9391,9 +8866,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetResponseHeadersPolicyRequest": {
@@ -9407,9 +8879,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#GetResponseHeadersPolicyResult": {
@@ -9429,9 +8898,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#GetStreamingDistribution": {
@@ -9515,8 +8981,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>To request to get a streaming distribution configuration.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>To request to get a streaming distribution configuration.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetStreamingDistributionConfigResult": {
@@ -9538,8 +9003,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetStreamingDistributionRequest": {
@@ -9555,8 +9019,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to get a streaming distribution's information.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to get a streaming distribution's information.</p>"
       }
     },
     "com.amazonaws.cloudfront#GetStreamingDistributionResult": {
@@ -9578,8 +9041,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#HeaderList": {
@@ -9714,39 +9176,6 @@
         "smithy.api#documentation": "<p>The update contains modifications that are not allowed.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 400
-      }
-    },
-    "com.amazonaws.cloudfront#ImportSource": {
-      "type": "structure",
-      "members": {
-        "SourceType": {
-          "target": "com.amazonaws.cloudfront#ImportSourceType",
-          "traits": {
-            "smithy.api#documentation": "<p>The source type of the import source for the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "SourceARN": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the import source for the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The import source for the Key Value Store.</p>"
-      }
-    },
-    "com.amazonaws.cloudfront#ImportSourceType": {
-      "type": "enum",
-      "members": {
-        "S3": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "S3"
-          }
-        }
       }
     },
     "com.amazonaws.cloudfront#InconsistentQuantities": {
@@ -10451,172 +9880,6 @@
         "smithy.api#documentation": "<p>A list of CloudFront key pair identifiers.</p>"
       }
     },
-    "com.amazonaws.cloudfront#KeyValueStore": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The name of the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Id": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The unique Id for the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Comment": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>A comment for the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "ARN": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Status": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The status of the Key Value Store.</p>"
-          }
-        },
-        "LastModifiedTime": {
-          "target": "com.amazonaws.cloudfront#timestamp",
-          "traits": {
-            "smithy.api#documentation": "<p>The last-modified time of the Key Value Store.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store. Use this to separate data from function code, allowing you to update\n\t\t\tdata without having to publish a new version of a function. The Key Value Store holds\n\t\t\tkeys and their corresponding values.</p>"
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreARN": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 85
-        },
-        "smithy.api#pattern": "^arn:aws:cloudfront::[0-9]{12}:key-value-store\\/[0-9a-fA-F-]{36}$"
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreAssociation": {
-      "type": "structure",
-      "members": {
-        "KeyValueStoreARN": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreARN",
-          "traits": {
-            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the Key Value Store association.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store association.</p>"
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreAssociationList": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.cloudfront#KeyValueStoreAssociation",
-        "traits": {
-          "smithy.api#xmlName": "KeyValueStoreAssociation"
-        }
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreAssociations": {
-      "type": "structure",
-      "members": {
-        "Quantity": {
-          "target": "com.amazonaws.cloudfront#integer",
-          "traits": {
-            "smithy.api#documentation": "<p>The quantity of Key Value Store associations.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Items": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreAssociationList",
-          "traits": {
-            "smithy.api#documentation": "<p>The items of the Key Value Store association.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store associations.</p>"
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreComment": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 128
-        }
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreList": {
-      "type": "structure",
-      "members": {
-        "NextMarker": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The next marker associated with the Key Value Store list.</p>"
-          }
-        },
-        "MaxItems": {
-          "target": "com.amazonaws.cloudfront#integer",
-          "traits": {
-            "smithy.api#documentation": "<p>The maximum number of items in the Key Value Store list.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Quantity": {
-          "target": "com.amazonaws.cloudfront#integer",
-          "traits": {
-            "smithy.api#documentation": "<p>The quantity of the Key Value Store list.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "Items": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreSummaryList",
-          "traits": {
-            "smithy.api#documentation": "<p>The items of the Key Value Store list.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>The Key Value Store list.</p>"
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreName": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 1,
-          "max": 64
-        },
-        "smithy.api#pattern": "^[a-zA-Z0-9-_]{1,64}$"
-      }
-    },
-    "com.amazonaws.cloudfront#KeyValueStoreSummaryList": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.cloudfront#KeyValueStore",
-        "traits": {
-          "smithy.api#xmlName": "KeyValueStore"
-        }
-      }
-    },
     "com.amazonaws.cloudfront#KinesisStreamConfig": {
       "type": "structure",
       "members": {
@@ -10752,9 +10015,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListCachePoliciesResult": {
@@ -10767,9 +10027,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentities": {
@@ -10819,8 +10076,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to list origin access identities.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to list origin access identities.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentitiesResult": {
@@ -10835,8 +10091,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListConflictingAliases": {
@@ -10897,9 +10152,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListConflictingAliasesResult": {
@@ -10912,9 +10164,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListContinuousDeploymentPolicies": {
@@ -10962,9 +10211,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListContinuousDeploymentPoliciesResult": {
@@ -10977,9 +10223,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributions": {
@@ -11063,9 +10306,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByCachePolicyIdResult": {
@@ -11078,9 +10318,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByKeyGroup": {
@@ -11133,9 +10370,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByKeyGroupResult": {
@@ -11147,9 +10381,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyId": {
@@ -11205,9 +10436,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyIdResult": {
@@ -11220,9 +10448,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfig": {
@@ -11274,9 +10499,6 @@
             "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the real-time log configuration whose associated\n\t\t\tdistributions you want to list.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfigResult": {
@@ -11288,9 +10510,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyId": {
@@ -11346,9 +10565,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyIdResult": {
@@ -11360,9 +10576,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByWebACLId": {
@@ -11417,8 +10630,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to list distributions that are associated with a specified WAF web\n\t\t\tACL.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to list distributions that are associated with a specified WAF web\n\t\t\tACL.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsByWebACLIdResult": {
@@ -11433,8 +10645,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The response to a request to list the distributions that are associated with a\n\t\t\tspecified WAF web ACL.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The response to a request to list the distributions that are associated with a\n\t\t\tspecified WAF web ACL.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsRequest": {
@@ -11456,8 +10667,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to list your distributions.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to list your distributions.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListDistributionsResult": {
@@ -11472,8 +10682,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigs": {
@@ -11515,9 +10724,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigsResult": {
@@ -11530,9 +10736,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfiles": {
@@ -11574,9 +10777,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfilesResult": {
@@ -11589,9 +10789,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListFunctions": {
@@ -11643,9 +10840,6 @@
             "smithy.api#httpQuery": "Stage"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListFunctionsResult": {
@@ -11658,9 +10852,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListInvalidations": {
@@ -11724,8 +10915,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to list invalidations.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to list invalidations.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListInvalidationsResult": {
@@ -11740,8 +10930,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListKeyGroups": {
@@ -11783,9 +10972,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListKeyGroupsResult": {
@@ -11798,84 +10984,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.amazonaws.cloudfront#ListKeyValueStores": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.cloudfront#ListKeyValueStoresRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.cloudfront#ListKeyValueStoresResult"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.cloudfront#AccessDenied"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#InvalidArgument"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Specifies the Key Value Stores to list.</p>",
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/2020-05-31/key-value-store",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "Marker",
-          "outputToken": "KeyValueStoreList.NextMarker",
-          "items": "KeyValueStoreList.Items",
-          "pageSize": "MaxItems"
-        }
-      }
-    },
-    "com.amazonaws.cloudfront#ListKeyValueStoresRequest": {
-      "type": "structure",
-      "members": {
-        "Marker": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The marker associated with the Key Value Stores list.</p>",
-            "smithy.api#httpQuery": "Marker"
-          }
-        },
-        "MaxItems": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "<p>The maximum number of items in the Key Value Stores list.</p>",
-            "smithy.api#httpQuery": "MaxItems"
-          }
-        },
-        "Status": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The status of the request for the Key Value Stores list.</p>",
-            "smithy.api#httpQuery": "Status"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.cloudfront#ListKeyValueStoresResult": {
-      "type": "structure",
-      "members": {
-        "KeyValueStoreList": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreList",
-          "traits": {
-            "smithy.api#documentation": "<p>The resulting Key Value Stores list.</p>",
-            "smithy.api#httpPayload": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListOriginAccessControls": {
@@ -11917,9 +11025,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListOriginAccessControlsResult": {
@@ -11932,9 +11037,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListOriginRequestPolicies": {
@@ -11989,9 +11091,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListOriginRequestPoliciesResult": {
@@ -12004,9 +11103,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListPublicKeys": {
@@ -12048,9 +11144,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListPublicKeysResult": {
@@ -12063,9 +11156,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListRealtimeLogConfigs": {
@@ -12113,9 +11203,6 @@
             "smithy.api#httpQuery": "Marker"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListRealtimeLogConfigsResult": {
@@ -12128,9 +11215,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListResponseHeadersPolicies": {
@@ -12185,9 +11269,6 @@
             "smithy.api#httpQuery": "MaxItems"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#ListResponseHeadersPoliciesResult": {
@@ -12200,9 +11281,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#ListStreamingDistributions": {
@@ -12252,8 +11330,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to list your streaming distributions.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to list your streaming distributions.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListStreamingDistributionsResult": {
@@ -12268,8 +11345,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListTagsForResource": {
@@ -12316,8 +11392,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to list tags for a CloudFront resource.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to list tags for a CloudFront resource.</p>"
       }
     },
     "com.amazonaws.cloudfront#ListTagsForResourceResult": {
@@ -12333,8 +11408,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#LocationList": {
@@ -12813,7 +11887,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>An origin.</p>\n         <p>An origin is the location where content is stored, and from which CloudFront gets content to\n\t\t\tserve to viewers. To specify an origin:</p>\n         <ul>\n            <li>\n               <p>Use <code>S3OriginConfig</code> to specify an Amazon S3 bucket that is not\n\t\t\t\t\tconfigured with static website hosting.</p>\n            </li>\n            <li>\n               <p>Use <code>CustomOriginConfig</code> to specify all other kinds of origins,\n\t\t\t\t\tincluding:</p>\n               <ul>\n                  <li>\n                     <p>An Amazon S3 bucket that is configured with static website hosting</p>\n                  </li>\n                  <li>\n                     <p>An Elastic Load Balancing load balancer</p>\n                  </li>\n                  <li>\n                     <p>An Elemental MediaPackage endpoint</p>\n                  </li>\n                  <li>\n                     <p>An Elemental MediaStore container</p>\n                  </li>\n                  <li>\n                     <p>Any other HTTP server, running on an Amazon EC2 instance or any other kind\n\t\t\t\t\t\t\tof host</p>\n                  </li>\n               </ul>\n            </li>\n         </ul>\n         <p>For the current maximum number of origins that you can specify per distribution, see\n\t\t\t\t<a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-limits.html#limits-web-distributions\">General Quotas on Web Distributions</a> in the\n\t\t\t\t<i>Amazon CloudFront Developer Guide</i> (quotas were formerly referred to as\n\t\t\tlimits).</p>"
+        "smithy.api#documentation": "<p>An origin.</p>\n         <p>An origin is the location where content is stored, and from which CloudFront gets content to\n\t\t\tserve to viewers. To specify an origin:</p>\n         <ul>\n            <li>\n               <p>Use <code>S3OriginConfig</code> to specify an Amazon S3 bucket that is not\n\t\t\t\t\tconfigured with static website hosting.</p>\n            </li>\n            <li>\n               <p>Use <code>CustomOriginConfig</code> to specify all other kinds of origins,\n\t\t\t\t\tincluding:</p>\n               <ul>\n                  <li>\n                     <p>An Amazon S3 bucket that is configured with static website hosting</p>\n                  </li>\n                  <li>\n                     <p>An Elastic Load Balancing load balancer</p>\n                  </li>\n                  <li>\n                     <p>An AWS Elemental MediaPackage endpoint</p>\n                  </li>\n                  <li>\n                     <p>An AWS Elemental MediaStore container</p>\n                  </li>\n                  <li>\n                     <p>Any other HTTP server, running on an Amazon EC2 instance or any other kind\n\t\t\t\t\t\t\tof host</p>\n                  </li>\n               </ul>\n            </li>\n         </ul>\n         <p>For the current maximum number of origins that you can specify per distribution, see\n\t\t\t\t<a href=\"https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-limits.html#limits-web-distributions\">General Quotas on Web Distributions</a> in the\n\t\t\t\t<i>Amazon CloudFront Developer Guide</i> (quotas were formerly referred to as\n\t\t\tlimits).</p>"
       }
     },
     "com.amazonaws.cloudfront#OriginAccessControl": {
@@ -12883,7 +11957,7 @@
         "OriginAccessControlOriginType": {
           "target": "com.amazonaws.cloudfront#OriginAccessControlOriginTypes",
           "traits": {
-            "smithy.api#documentation": "<p>The type of origin that this origin access control is for.</p>",
+            "smithy.api#documentation": "<p>The type of origin that this origin access control is for. The only valid value is\n\t\t\t\t<code>s3</code>.</p>",
             "smithy.api#required": {}
           }
         }
@@ -12960,12 +12034,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "s3"
-          }
-        },
-        "mediastore": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "mediastore"
           }
         }
       }
@@ -13045,7 +12113,7 @@
         "OriginAccessControlOriginType": {
           "target": "com.amazonaws.cloudfront#OriginAccessControlOriginTypes",
           "traits": {
-            "smithy.api#documentation": "<p>The type of origin that this origin access control is for.</p>",
+            "smithy.api#documentation": "<p>The type of origin that this origin access control is for. The only valid value is\n\t\t\t\t<code>s3</code>.</p>",
             "smithy.api#required": {}
           }
         }
@@ -13120,7 +12188,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>An origin group includes two origins (a primary origin and a second origin to failover to)\n\t\t\tand a failover criteria that you specify. You create an origin group to support origin\n\t\t\tfailover in CloudFront. When you create or update a distribution, you can specify the\n\t\t\torigin group instead of a single origin, and CloudFront will failover from the primary\n\t\t\torigin to the second origin under the failover conditions that you've chosen.</p>"
+        "smithy.api#documentation": "<p>An origin group includes two origins (a primary origin and a second origin to failover\n\t\t\tto) and a failover criteria that you specify. You create an origin group to support\n\t\t\torigin failover in CloudFront. When you create or update a distribution, you can\n\t\t\tspecifiy the origin group instead of a single origin, and CloudFront will failover from\n\t\t\tthe primary origin to the second origin under the failover conditions that you've\n\t\t\tchosen.</p>"
       }
     },
     "com.amazonaws.cloudfront#OriginGroupFailoverCriteria": {
@@ -13365,12 +12433,6 @@
           "traits": {
             "smithy.api#enumValue": "all"
           }
-        },
-        "allExcept": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allExcept"
-          }
         }
       }
     },
@@ -13380,7 +12442,7 @@
         "CookieBehavior": {
           "target": "com.amazonaws.cloudfront#OriginRequestPolicyCookieBehavior",
           "traits": {
-            "smithy.api#documentation": "<p>Determines whether cookies in viewer requests are included in requests that CloudFront sends\n\t\t\tto the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – No cookies in viewer requests are included in requests that CloudFront sends\n\t\t\t\t\tto the origin. Even when this field is set to <code>none</code>, any cookies\n\t\t\t\t\tthat are listed in a <code>CachePolicy</code>\n                  <i>are</i> included\n\t\t\t\t\tin origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – Only the cookies in viewer requests that are listed in the\n\t\t\t\t\t<code>CookieNames</code> type are included in requests that CloudFront sends to the\n\t\t\t\t\torigin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All cookies in viewer requests are included in requests\n\t\t\t\t\tthat CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All cookies in viewer requests are included in\n\t\t\t\t\trequests that CloudFront sends to the origin, <i>\n                     <b>except</b>\n                  </i> for those listed in the <code>CookieNames</code>\n\t\t\t\t\ttype, which are not included.</p>\n            </li>\n         </ul>",
+            "smithy.api#documentation": "<p>Determines whether cookies in viewer requests are included in requests that CloudFront sends\n\t\t\tto the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – Cookies in viewer requests are not included in requests\n\t\t\t\t\tthat CloudFront sends to the origin. Even when this field is set to <code>none</code>,\n\t\t\t\t\tany cookies that are listed in a <code>CachePolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – The cookies in viewer requests that are listed in the\n\t\t\t\t\t\t<code>CookieNames</code> type are included in requests that CloudFront sends to\n\t\t\t\t\tthe origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All cookies in viewer requests are included in requests\n\t\t\t\t\tthat CloudFront sends to the origin.</p>\n            </li>\n         </ul>",
             "smithy.api#required": {}
           }
         },
@@ -13418,12 +12480,6 @@
           "traits": {
             "smithy.api#enumValue": "allViewerAndWhitelistCloudFront"
           }
-        },
-        "allExcept": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allExcept"
-          }
         }
       }
     },
@@ -13433,7 +12489,7 @@
         "HeaderBehavior": {
           "target": "com.amazonaws.cloudfront#OriginRequestPolicyHeaderBehavior",
           "traits": {
-            "smithy.api#documentation": "<p>Determines whether any HTTP headers are included in requests that CloudFront sends to the\n\t\t\torigin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – No HTTP headers in viewer requests are included in requests that CloudFront\n\t\t\t\t\tsends to the origin. Even when this field is set to <code>none</code>, any\n\t\t\t\t\theaders that are listed in a <code>CachePolicy</code>\n                  <i>are</i>\n\t\t\t\t\tincluded in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – Only the HTTP headers that are listed in the <code>Headers</code>\n\t\t\t\t\ttype are included in requests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allViewer</code> – All HTTP headers in viewer requests are included in\n\t\t\t\t\trequests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allViewerAndWhitelistCloudFront</code> – All HTTP headers in viewer\n\t\t\t\t\trequests and the additional CloudFront headers that are listed in the\n\t\t\t\t\t\t<code>Headers</code> type are included in requests that CloudFront sends to the\n\t\t\t\t\torigin. The additional headers are added by CloudFront.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All HTTP headers in viewer requests are included in\n\t\t\t\t\trequests that CloudFront sends to the origin, <i>\n                     <b>except</b>\n                  </i> for those listed in the <code>Headers</code> type,\n\t\t\t\t\twhich are not included.</p>\n            </li>\n         </ul>",
+            "smithy.api#documentation": "<p>Determines whether any HTTP headers are included in requests that CloudFront sends to the\n\t\t\torigin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – HTTP headers are not included in requests that CloudFront sends\n\t\t\t\t\tto the origin. Even when this field is set to <code>none</code>, any headers\n\t\t\t\t\tthat are listed in a <code>CachePolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – The HTTP headers that are listed in the\n\t\t\t\t\t\t<code>Headers</code> type are included in requests that CloudFront sends to the\n\t\t\t\t\torigin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allViewer</code> – All HTTP headers in viewer requests are included in\n\t\t\t\t\trequests that CloudFront sends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allViewerAndWhitelistCloudFront</code> – All HTTP headers in viewer\n\t\t\t\t\trequests and the additional CloudFront headers that are listed in the\n\t\t\t\t\t\t<code>Headers</code> type are included in requests that CloudFront sends to the\n\t\t\t\t\torigin. The additional headers are added by CloudFront.</p>\n            </li>\n         </ul>",
             "smithy.api#required": {}
           }
         },
@@ -13512,12 +12568,6 @@
           "traits": {
             "smithy.api#enumValue": "all"
           }
-        },
-        "allExcept": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "allExcept"
-          }
         }
       }
     },
@@ -13527,14 +12577,14 @@
         "QueryStringBehavior": {
           "target": "com.amazonaws.cloudfront#OriginRequestPolicyQueryStringBehavior",
           "traits": {
-            "smithy.api#documentation": "<p>Determines whether any URL query strings in viewer requests are included in requests\n\t\t\tthat CloudFront sends to the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – No query strings in viewer requests are included in requests that CloudFront\n\t\t\t\t\tsends to the origin. Even when this field is set to <code>none</code>, any query\n\t\t\t\t\tstrings that are listed in a <code>CachePolicy</code>\n                  <i>are</i>\n\t\t\t\t\tincluded in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – Only the query strings in viewer requests that are listed in the\n\t\t\t\t\t<code>QueryStringNames</code> type are included in requests that CloudFront sends to\n\t\t\t\t\tthe origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All query strings in viewer requests are included in requests that CloudFront\n\t\t\t\t\tsends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>allExcept</code> – All query strings in viewer requests are included in\n\t\t\t\t\trequests that CloudFront sends to the origin, <i>\n                     <b>except</b>\n                  </i> for those listed in the\n\t\t\t\t\t<code>QueryStringNames</code> type, which are not included.</p>\n            </li>\n         </ul>",
+            "smithy.api#documentation": "<p>Determines whether any URL query strings in viewer requests are included in requests\n\t\t\tthat CloudFront sends to the origin. Valid values are:</p>\n         <ul>\n            <li>\n               <p>\n                  <code>none</code> – Query strings in viewer requests are not included in\n\t\t\t\t\trequests that CloudFront sends to the origin. Even when this field is set to\n\t\t\t\t\t\t<code>none</code>, any query strings that are listed in a\n\t\t\t\t\t\t<code>CachePolicy</code>\n                  <i>are</i> included in origin requests.</p>\n            </li>\n            <li>\n               <p>\n                  <code>whitelist</code> – The query strings in viewer requests that are listed\n\t\t\t\t\tin the <code>QueryStringNames</code> type are included in requests that CloudFront\n\t\t\t\t\tsends to the origin.</p>\n            </li>\n            <li>\n               <p>\n                  <code>all</code> – All query strings in viewer requests are included in\n\t\t\t\t\trequests that CloudFront sends to the origin.</p>\n            </li>\n         </ul>",
             "smithy.api#required": {}
           }
         },
         "QueryStrings": {
           "target": "com.amazonaws.cloudfront#QueryStringNames",
           "traits": {
-            "smithy.api#documentation": "<p>Contains the specific query strings in viewer requests that either <i>\n               <b>are</b>\n            </i> or <i>\n               <b>are\n\t\t\tnot</b>\n            </i> included in requests that CloudFront sends to the origin. The\n\t\t\tbehavior depends on whether the <code>QueryStringBehavior</code> field in the\n\t\t\t<code>OriginRequestPolicyQueryStringsConfig</code> type is set to <code>whitelist</code>\n\t\t\t(the listed query strings <i>\n               <b>are</b>\n            </i>\n\t\t\tincluded) or <code>allExcept</code> (the listed query strings <i>\n               <b>are not</b>\n            </i> included, but all other query strings\n\t\t\tare).</p>"
+            "smithy.api#documentation": "<p>Contains a list of the query strings in viewer requests that are included in requests\n\t\t\tthat CloudFront sends to the origin.</p>"
           }
         }
       },
@@ -13684,27 +12734,27 @@
         "HeadersConfig": {
           "target": "com.amazonaws.cloudfront#CachePolicyHeadersConfig",
           "traits": {
-            "smithy.api#documentation": "<p>An object that determines whether any HTTP headers (and if so, which headers) are included\n\t\t\tin the cache key and in requests that CloudFront sends to the origin.</p>",
+            "smithy.api#documentation": "<p>An object that determines whether any HTTP headers (and if so, which headers) are\n\t\t\tincluded in the cache key and automatically included in requests that CloudFront sends to the\n\t\t\torigin.</p>",
             "smithy.api#required": {}
           }
         },
         "CookiesConfig": {
           "target": "com.amazonaws.cloudfront#CachePolicyCookiesConfig",
           "traits": {
-            "smithy.api#documentation": "<p>An object that determines whether any cookies in viewer requests (and if so, which cookies)\n\t\t\tare included in the cache key and in requests that CloudFront sends to the origin.</p>",
+            "smithy.api#documentation": "<p>An object that determines whether any cookies in viewer requests (and if so, which\n\t\t\tcookies) are included in the cache key and automatically included in requests that CloudFront\n\t\t\tsends to the origin.</p>",
             "smithy.api#required": {}
           }
         },
         "QueryStringsConfig": {
           "target": "com.amazonaws.cloudfront#CachePolicyQueryStringsConfig",
           "traits": {
-            "smithy.api#documentation": "<p>An object that determines whether any URL query strings in viewer requests (and if so, which\n\t\t\tquery strings) are included in the cache key and in requests that CloudFront sends to the\n\t\t\torigin.</p>",
+            "smithy.api#documentation": "<p>An object that determines whether any URL query strings in viewer requests (and if so,\n\t\t\twhich query strings) are included in the cache key and automatically included in\n\t\t\trequests that CloudFront sends to the origin.</p>",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>This object determines the values that CloudFront includes in the cache key. These values\n\t\t\tcan include HTTP headers, cookies, and URL query strings. CloudFront uses the cache key to\n\t\t\tfind an object in its cache that it can return to the viewer.</p>\n         <p>The headers, cookies, and query strings that are included in the cache key are also included\n\t\t\tin requests that CloudFront sends to the origin. CloudFront sends a request when it can't find an\n\t\t\tobject in its cache that matches the request's cache key. If you want to send values to\n\t\t\tthe origin but <i>not</i> include them in the cache key, use\n\t\t\t<code>OriginRequestPolicy</code>.</p>"
+        "smithy.api#documentation": "<p>This object determines the values that CloudFront includes in the cache key. These values\n\t\t\tcan include HTTP headers, cookies, and URL query strings. CloudFront uses the cache key to\n\t\t\tfind an object in its cache that it can return to the viewer.</p>\n         <p>The headers, cookies, and query strings that are included in the cache key are\n\t\t\tautomatically included in requests that CloudFront sends to the origin. CloudFront sends a request\n\t\t\twhen it can't find an object in its cache that matches the request's cache key. If you\n\t\t\twant to send values to the origin but <i>not</i> include them in the cache\n\t\t\tkey, use <code>OriginRequestPolicy</code>.</p>"
       }
     },
     "com.amazonaws.cloudfront#PathList": {
@@ -14010,9 +13060,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#PublishFunctionResult": {
@@ -14025,9 +13072,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#QueryArgProfile": {
@@ -15816,8 +14860,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to add tags to a CloudFront resource.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to add tags to a CloudFront resource.</p>"
       }
     },
     "com.amazonaws.cloudfront#TagValue": {
@@ -15923,9 +14966,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#TestFunctionResult": {
@@ -15938,9 +14978,6 @@
             "smithy.api#httpPayload": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#TestResult": {
@@ -16753,7 +15790,7 @@
         "Enabled": {
           "target": "com.amazonaws.cloudfront#boolean",
           "traits": {
-            "smithy.api#documentation": "<p>This field is <code>true</code> if any of the Amazon Web Services accounts in the list are configured as\n\t\t\ttrusted signers. If not, this field is <code>false</code>.</p>",
+            "smithy.api#documentation": "<p>This field is <code>true</code> if any of the Amazon Web Services accounts have public keys that\n\t\t\tCloudFront can use to verify the signatures of signed URLs and signed cookies. If not, this\n\t\t\tfield is <code>false</code>.</p>",
             "smithy.api#required": {}
           }
         },
@@ -16841,8 +15878,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to remove tags from a CloudFront resource.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to remove tags from a CloudFront resource.</p>"
       }
     },
     "com.amazonaws.cloudfront#UpdateCachePolicy": {
@@ -16924,9 +15960,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateCachePolicyResult": {
@@ -16946,9 +15979,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentity": {
@@ -17023,8 +16053,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to update an origin access identity.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to update an origin access identity.</p>"
       }
     },
     "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentityResult": {
@@ -17046,8 +16075,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicy": {
@@ -17117,9 +16145,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicyResult": {
@@ -17139,9 +16164,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateDistribution": {
@@ -17301,9 +16323,6 @@
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
-        },
-        {
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
         },
         {
@@ -17390,8 +16409,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to update a distribution.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to update a distribution.</p>"
       }
     },
     "com.amazonaws.cloudfront#UpdateDistributionResult": {
@@ -17413,8 +16431,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfig": {
@@ -17559,9 +16576,6 @@
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToKeyGroup"
         },
         {
-          "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginAccessControl"
-        },
-        {
           "target": "com.amazonaws.cloudfront#TooManyDistributionsAssociatedToOriginRequestPolicy"
         },
         {
@@ -17611,7 +16625,7 @@
         }
       ],
       "traits": {
-        "smithy.api#documentation": "<p>Copies the staging distribution's configuration to its corresponding primary\n\t\t\tdistribution. The primary distribution retains its <code>Aliases</code> (also known as\n\t\t\talternate domain names or CNAMEs) and <code>ContinuousDeploymentPolicyId</code> value,\n\t\t\tbut otherwise its configuration is overwritten to match the staging distribution.</p>\n         <p>You can use this operation in a continuous deployment workflow after you have tested\n\t\t\tconfiguration changes on the staging distribution. After using a continuous deployment\n\t\t\tpolicy to move a portion of your domain name's traffic to the staging distribution and\n\t\t\tverifying that it works as intended, you can use this operation to copy the staging\n\t\t\tdistribution's configuration to the primary distribution. This action will disable the\n\t\t\tcontinuous deployment policy and move your domain's traffic back to the primary distribution.</p>\n         <p>This API operation requires the following IAM permissions:</p>\n         <ul>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html\">GetDistribution</a>\n               </p>\n            </li>\n            <li>\n               <p>\n                  <a href=\"https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html\">UpdateDistribution</a>\n               </p>\n            </li>\n         </ul>",
+        "smithy.api#documentation": "<p>Copies the staging distribution's configuration to its corresponding primary\n\t\t\tdistribution. The primary distribution retains its <code>Aliases</code> (also known as\n\t\t\talternate domain names or CNAMEs) and <code>ContinuousDeploymentPolicyId</code> value,\n\t\t\tbut otherwise its configuration is overwritten to match the staging distribution.</p>\n         <p>You can use this operation in a continuous deployment workflow after you have tested\n\t\t\tconfiguration changes on the staging distribution. After using a continuous deployment\n\t\t\tpolicy to move a portion of your domain name's traffic to the staging distribution and\n\t\t\tverifying that it works as intended, you can use this operation to copy the staging\n\t\t\tdistribution's configuration to the primary distribution. This action will disable the\n\t\t\tcontinuous deployment policy and move your domain's traffic back to the primary distribution.</p>",
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/2020-05-31/distribution/{Id}/promote-staging-config",
@@ -17644,9 +16658,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfigResult": {
@@ -17665,9 +16676,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfig": {
@@ -17749,9 +16757,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfigResult": {
@@ -17771,9 +16776,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfile": {
@@ -17858,9 +16860,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfileResult": {
@@ -17880,9 +16879,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateFunction": {
@@ -17955,9 +16951,6 @@
             "smithy.api#required": {}
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateFunctionResult": {
@@ -17977,9 +16970,6 @@
             "smithy.api#httpHeader": "ETtag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateKeyGroup": {
@@ -18046,9 +17036,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateKeyGroupResult": {
@@ -18068,97 +17055,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.amazonaws.cloudfront#UpdateKeyValueStore": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.cloudfront#UpdateKeyValueStoreRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.cloudfront#UpdateKeyValueStoreResult"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.cloudfront#AccessDenied"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#EntityNotFound"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#InvalidArgument"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#InvalidIfMatchVersion"
-        },
-        {
-          "target": "com.amazonaws.cloudfront#PreconditionFailed"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Specifies the Key Value Store to update.</p>",
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "/2020-05-31/key-value-store/{Name}",
-          "code": 200
-        },
-        "smithy.api#idempotent": {}
-      }
-    },
-    "com.amazonaws.cloudfront#UpdateKeyValueStoreRequest": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreName",
-          "traits": {
-            "smithy.api#documentation": "<p>The name of the Key Value Store to update.</p>",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "Comment": {
-          "target": "com.amazonaws.cloudfront#KeyValueStoreComment",
-          "traits": {
-            "smithy.api#documentation": "<p>The comment of the Key Value Store to update.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "IfMatch": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The Key Value Store to update, if a match occurs.</p>",
-            "smithy.api#httpHeader": "If-Match",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.cloudfront#UpdateKeyValueStoreResult": {
-      "type": "structure",
-      "members": {
-        "KeyValueStore": {
-          "target": "com.amazonaws.cloudfront#KeyValueStore",
-          "traits": {
-            "smithy.api#documentation": "<p>The resulting Key Value Store to update.</p>",
-            "smithy.api#httpPayload": {}
-          }
-        },
-        "ETag": {
-          "target": "com.amazonaws.cloudfront#string",
-          "traits": {
-            "smithy.api#documentation": "<p>The ETag of the resulting Key Value Store.</p>",
-            "smithy.api#httpHeader": "ETag"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateOriginAccessControl": {
@@ -18228,9 +17124,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateOriginAccessControlResult": {
@@ -18250,9 +17143,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateOriginRequestPolicy": {
@@ -18334,9 +17224,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateOriginRequestPolicyResult": {
@@ -18356,9 +17243,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdatePublicKey": {
@@ -18428,9 +17312,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdatePublicKeyResult": {
@@ -18450,9 +17331,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateRealtimeLogConfig": {
@@ -18516,9 +17394,6 @@
             "smithy.api#documentation": "<p>The sampling rate for this real-time log configuration. The sampling rate determines\n\t\t\tthe percentage of viewer requests that are represented in the real-time log data. You\n\t\t\tmust provide an integer between 1 and 100, inclusive.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateRealtimeLogConfigResult": {
@@ -18530,9 +17405,6 @@
             "smithy.api#documentation": "<p>A real-time log configuration.</p>"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateResponseHeadersPolicy": {
@@ -18614,9 +17486,6 @@
             "smithy.api#httpHeader": "If-Match"
           }
         }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateResponseHeadersPolicyResult": {
@@ -18636,9 +17505,6 @@
             "smithy.api#httpHeader": "ETag"
           }
         }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.cloudfront#UpdateStreamingDistribution": {
@@ -18731,8 +17597,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request to update a streaming distribution.</p>",
-        "smithy.api#input": {}
+        "smithy.api#documentation": "<p>The request to update a streaming distribution.</p>"
       }
     },
     "com.amazonaws.cloudfront#UpdateStreamingDistributionResult": {
@@ -18754,8 +17619,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>",
-        "smithy.api#output": {}
+        "smithy.api#documentation": "<p>The returned result of the corresponding request.</p>"
       }
     },
     "com.amazonaws.cloudfront#ViewerCertificate": {

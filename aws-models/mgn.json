@@ -4,7 +4,6 @@
     "com.amazonaws.mgn#ARN": {
       "type": "string",
       "traits": {
-        "aws.api#arnReference": {},
         "smithy.api#length": {
           "min": 20,
           "max": 2048
@@ -45,63 +44,6 @@
         }
       }
     },
-    "com.amazonaws.mgn#ActionCategory": {
-      "type": "string",
-      "traits": {
-        "smithy.api#enum": [
-          {
-            "value": "DISASTER_RECOVERY",
-            "name": "DISASTER_RECOVERY"
-          },
-          {
-            "value": "OPERATING_SYSTEM",
-            "name": "OPERATING_SYSTEM"
-          },
-          {
-            "value": "LICENSE_AND_SUBSCRIPTION",
-            "name": "LICENSE_AND_SUBSCRIPTION"
-          },
-          {
-            "value": "VALIDATION",
-            "name": "VALIDATION"
-          },
-          {
-            "value": "OBSERVABILITY",
-            "name": "OBSERVABILITY"
-          },
-          {
-            "value": "SECURITY",
-            "name": "SECURITY"
-          },
-          {
-            "value": "NETWORKING",
-            "name": "NETWORKING"
-          },
-          {
-            "value": "CONFIGURATION",
-            "name": "CONFIGURATION"
-          },
-          {
-            "value": "BACKUP",
-            "name": "BACKUP"
-          },
-          {
-            "value": "OTHER",
-            "name": "OTHER"
-          }
-        ]
-      }
-    },
-    "com.amazonaws.mgn#ActionDescription": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 256
-        },
-        "smithy.api#pattern": "^[0-9a-zA-Z ():/.,'-_#*;\n]*$"
-      }
-    },
     "com.amazonaws.mgn#ActionID": {
       "type": "string",
       "traits": {
@@ -132,29 +74,6 @@
           "max": 256
         },
         "smithy.api#pattern": "^[^\\s\\x00]( *[^\\s\\x00])*$"
-      }
-    },
-    "com.amazonaws.mgn#ApplianceID": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 27,
-          "max": 27
-        },
-        "smithy.api#pattern": "^appliance-[0-9a-zA-Z]{17}$"
-      }
-    },
-    "com.amazonaws.mgn#ApplianceResource": {
-      "type": "resource",
-      "identifiers": {
-        "applianceID": {
-          "target": "com.amazonaws.mgn#ApplianceID"
-        }
-      },
-      "traits": {
-        "aws.api#arn": {
-          "template": "appliance/{applianceID}"
-        }
       }
     },
     "com.amazonaws.mgn#Application": {
@@ -333,9 +252,6 @@
           "target": "com.amazonaws.mgn#InitializeService"
         },
         {
-          "target": "com.amazonaws.mgn#ListManagedAccounts"
-        },
-        {
           "target": "com.amazonaws.mgn#ListTagsForResource"
         },
         {
@@ -350,19 +266,7 @@
           "target": "com.amazonaws.mgn#AccountResource"
         },
         {
-          "target": "com.amazonaws.mgn#ApplianceResource"
-        },
-        {
           "target": "com.amazonaws.mgn#ApplicationResource"
-        },
-        {
-          "target": "com.amazonaws.mgn#ConnectorResource"
-        },
-        {
-          "target": "com.amazonaws.mgn#ExportResource"
-        },
-        {
-          "target": "com.amazonaws.mgn#ImportResource"
         },
         {
           "target": "com.amazonaws.mgn#JobResource"
@@ -434,15 +338,164 @@
             {
               "conditions": [
                 {
-                  "fn": "isSet",
+                  "fn": "aws.partition",
                   "argv": [
                     {
-                      "ref": "Endpoint"
+                      "ref": "Region"
                     }
-                  ]
+                  ],
+                  "assign": "PartitionResult"
                 }
               ],
+              "type": "tree",
               "rules": [
+                {
+                  "conditions": [
+                    {
+                      "fn": "isSet",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "fn": "parseURL",
+                      "argv": [
+                        {
+                          "ref": "Endpoint"
+                        }
+                      ],
+                      "assign": "url"
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            {
+                              "ref": "UseFIPS"
+                            },
+                            true
+                          ]
+                        }
+                      ],
+                      "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
+                      "type": "error"
+                    },
+                    {
+                      "conditions": [],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [
+                            {
+                              "fn": "booleanEquals",
+                              "argv": [
+                                {
+                                  "ref": "UseDualStack"
+                                },
+                                true
+                              ]
+                            }
+                          ],
+                          "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
+                          "type": "error"
+                        },
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": {
+                              "ref": "Endpoint"
+                            },
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "conditions": [
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseFIPS"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "fn": "booleanEquals",
+                      "argv": [
+                        {
+                          "ref": "UseDualStack"
+                        },
+                        true
+                      ]
+                    }
+                  ],
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsDualStack"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "endpoint": {
+                            "url": "https://mgn-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      "type": "error"
+                    }
+                  ]
+                },
                 {
                   "conditions": [
                     {
@@ -455,8 +508,51 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: FIPS and custom endpoint are not supported",
-                  "type": "error"
+                  "type": "tree",
+                  "rules": [
+                    {
+                      "conditions": [
+                        {
+                          "fn": "booleanEquals",
+                          "argv": [
+                            true,
+                            {
+                              "fn": "getAttr",
+                              "argv": [
+                                {
+                                  "ref": "PartitionResult"
+                                },
+                                "supportsFIPS"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "tree",
+                      "rules": [
+                        {
+                          "conditions": [],
+                          "type": "tree",
+                          "rules": [
+                            {
+                              "conditions": [],
+                              "endpoint": {
+                                "url": "https://mgn-fips.{Region}.{PartitionResult#dnsSuffix}",
+                                "properties": {},
+                                "headers": {}
+                              },
+                              "type": "endpoint"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "conditions": [],
+                      "error": "FIPS is enabled but this partition does not support FIPS",
+                      "type": "error"
+                    }
+                  ]
                 },
                 {
                   "conditions": [
@@ -470,315 +566,98 @@
                       ]
                     }
                   ],
-                  "error": "Invalid Configuration: Dualstack and custom endpoint are not supported",
-                  "type": "error"
-                },
-                {
-                  "conditions": [],
-                  "endpoint": {
-                    "url": {
-                      "ref": "Endpoint"
-                    },
-                    "properties": {},
-                    "headers": {}
-                  },
-                  "type": "endpoint"
-                }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [
-                {
-                  "fn": "isSet",
-                  "argv": [
-                    {
-                      "ref": "Region"
-                    }
-                  ]
-                }
-              ],
-              "rules": [
-                {
-                  "conditions": [
-                    {
-                      "fn": "aws.partition",
-                      "argv": [
-                        {
-                          "ref": "Region"
-                        }
-                      ],
-                      "assign": "PartitionResult"
-                    }
-                  ],
+                  "type": "tree",
                   "rules": [
                     {
                       "conditions": [
                         {
                           "fn": "booleanEquals",
                           "argv": [
+                            true,
                             {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        },
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://mgn-fips.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS and DualStack are enabled, but this partition does not support one or both",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseFIPS"
-                            },
-                            true
-                          ]
-                        }
-                      ],
-                      "rules": [
-                        {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
+                              "fn": "getAttr",
                               "argv": [
                                 {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsFIPS"
-                                  ]
+                                  "ref": "PartitionResult"
                                 },
-                                true
+                                "supportsDualStack"
                               ]
                             }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://mgn-fips.{Region}.{PartitionResult#dnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
-                          "conditions": [],
-                          "error": "FIPS is enabled but this partition does not support FIPS",
-                          "type": "error"
-                        }
-                      ],
-                      "type": "tree"
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "fn": "booleanEquals",
-                          "argv": [
-                            {
-                              "ref": "UseDualStack"
-                            },
-                            true
                           ]
                         }
                       ],
+                      "type": "tree",
                       "rules": [
                         {
-                          "conditions": [
-                            {
-                              "fn": "booleanEquals",
-                              "argv": [
-                                true,
-                                {
-                                  "fn": "getAttr",
-                                  "argv": [
-                                    {
-                                      "ref": "PartitionResult"
-                                    },
-                                    "supportsDualStack"
-                                  ]
-                                }
-                              ]
-                            }
-                          ],
-                          "rules": [
-                            {
-                              "conditions": [],
-                              "endpoint": {
-                                "url": "https://mgn.{Region}.{PartitionResult#dualStackDnsSuffix}",
-                                "properties": {},
-                                "headers": {}
-                              },
-                              "type": "endpoint"
-                            }
-                          ],
-                          "type": "tree"
-                        },
-                        {
                           "conditions": [],
-                          "error": "DualStack is enabled but this partition does not support DualStack",
-                          "type": "error"
+                          "endpoint": {
+                            "url": "https://mgn.{Region}.{PartitionResult#dualStackDnsSuffix}",
+                            "properties": {},
+                            "headers": {}
+                          },
+                          "type": "endpoint"
                         }
-                      ],
-                      "type": "tree"
+                      ]
                     },
                     {
                       "conditions": [],
-                      "endpoint": {
-                        "url": "https://mgn.{Region}.{PartitionResult#dnsSuffix}",
-                        "properties": {},
-                        "headers": {}
-                      },
-                      "type": "endpoint"
+                      "error": "DualStack is enabled but this partition does not support DualStack",
+                      "type": "error"
                     }
-                  ],
-                  "type": "tree"
+                  ]
+                },
+                {
+                  "conditions": [],
+                  "endpoint": {
+                    "url": "https://mgn.{Region}.{PartitionResult#dnsSuffix}",
+                    "properties": {},
+                    "headers": {}
+                  },
+                  "type": "endpoint"
                 }
-              ],
-              "type": "tree"
-            },
-            {
-              "conditions": [],
-              "error": "Invalid Configuration: Missing Region",
-              "type": "error"
+              ]
             }
           ]
         },
         "smithy.rules#endpointTests": {
           "testCases": [
             {
-              "documentation": "For region af-south-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region ap-south-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.af-south-1.amazonaws.com"
+                  "url": "https://mgn-fips.ap-south-1.api.aws"
                 }
               },
               "params": {
-                "Region": "af-south-1",
-                "UseFIPS": false,
+                "Region": "ap-south-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-south-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-south-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-south-1",
+                "UseFIPS": true,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region ap-east-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region ap-south-1 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.ap-east-1.amazonaws.com"
+                  "url": "https://mgn.ap-south-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-east-1",
+                "Region": "ap-south-1",
                 "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.ap-northeast-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "ap-northeast-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.ap-northeast-2.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "ap-northeast-2",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region ap-northeast-3 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.ap-northeast-3.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "ap-northeast-3",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true
               }
             },
             {
@@ -795,68 +674,42 @@
               }
             },
             {
-              "documentation": "For region ap-southeast-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-south-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.ap-southeast-1.amazonaws.com"
+                  "url": "https://mgn-fips.eu-south-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-southeast-1",
-                "UseFIPS": false,
+                "Region": "eu-south-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-south-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-south-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-south-1",
+                "UseFIPS": true,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-south-1 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.ap-southeast-2.amazonaws.com"
+                  "url": "https://mgn.eu-south-1.api.aws"
                 }
               },
               "params": {
-                "Region": "ap-southeast-2",
+                "Region": "eu-south-1",
                 "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region ca-central-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.ca-central-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "ca-central-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region eu-central-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.eu-central-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "eu-central-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region eu-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.eu-north-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "eu-north-1",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true
               }
             },
             {
@@ -873,94 +726,146 @@
               }
             },
             {
-              "documentation": "For region eu-west-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region ca-central-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.eu-west-1.amazonaws.com"
+                  "url": "https://mgn-fips.ca-central-1.api.aws"
                 }
               },
               "params": {
-                "Region": "eu-west-1",
+                "Region": "ca-central-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ca-central-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ca-central-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ca-central-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ca-central-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ca-central-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ca-central-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ca-central-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ca-central-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ca-central-1",
                 "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region eu-west-2 with FIPS disabled and DualStack disabled",
+              "documentation": "For region eu-central-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.eu-west-2.amazonaws.com"
+                  "url": "https://mgn-fips.eu-central-1.api.aws"
                 }
               },
               "params": {
-                "Region": "eu-west-2",
+                "Region": "eu-central-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-central-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-central-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-central-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-central-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-central-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-central-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-central-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-central-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-central-1",
                 "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region eu-west-3 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-west-1 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.eu-west-3.amazonaws.com"
+                  "url": "https://mgn-fips.us-west-1.api.aws"
                 }
               },
               "params": {
-                "Region": "eu-west-3",
-                "UseFIPS": false,
+                "Region": "us-west-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-west-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.us-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-west-1",
+                "UseFIPS": true,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region me-south-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-west-1 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.me-south-1.amazonaws.com"
+                  "url": "https://mgn.us-west-1.api.aws"
                 }
               },
               "params": {
-                "Region": "me-south-1",
+                "Region": "us-west-1",
                 "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region sa-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.sa-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "sa-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.us-east-1.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-east-2 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.us-east-2.amazonaws.com"
-                }
-              },
-              "params": {
-                "Region": "us-east-2",
-                "UseFIPS": false,
-                "UseDualStack": false
+                "UseDualStack": true
               }
             },
             {
@@ -977,6 +882,45 @@
               }
             },
             {
+              "documentation": "For region us-west-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.us-west-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-west-2",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.us-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "us-west-2",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region us-west-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.us-west-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "us-west-2",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
               "documentation": "For region us-west-2 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
@@ -985,6 +929,734 @@
               },
               "params": {
                 "Region": "us-west-2",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region af-south-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.af-south-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "af-south-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region af-south-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.af-south-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "af-south-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region af-south-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.af-south-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "af-south-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region af-south-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.af-south-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "af-south-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-north-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-north-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-north-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-north-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-north-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-north-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-north-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-north-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-north-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-north-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-north-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-north-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-3 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-west-3.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-3",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-3 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-west-3.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-3",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-3 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-west-3.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-3",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-3 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-west-3.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-3",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-west-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-2",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-2",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-west-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-2",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-west-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-2",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-west-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.eu-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-west-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region eu-west-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.eu-west-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "eu-west-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-3 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-northeast-3.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-3",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-3 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-northeast-3.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-3",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-3 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-northeast-3.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-3",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-3 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-northeast-3.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-3",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-northeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-northeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-northeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-northeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-2",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-northeast-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-northeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-northeast-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-northeast-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-northeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-northeast-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region me-south-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.me-south-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "me-south-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region me-south-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.me-south-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "me-south-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region me-south-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.me-south-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "me-south-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region me-south-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.me-south-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "me-south-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region sa-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.sa-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "sa-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region sa-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.sa-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "sa-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region sa-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.sa-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "sa-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region sa-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.sa-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "sa-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-east-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-east-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-east-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-east-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-east-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-east-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-east-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-east-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-east-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-east-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-southeast-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-1",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-southeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-1",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-southeast-1.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-1",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-1 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-southeast-1.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-1",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-southeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-southeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-southeast-2.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-2 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-southeast-2.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-2",
+                "UseFIPS": false,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-3 with FIPS enabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-southeast-3.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-3",
+                "UseFIPS": true,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-3 with FIPS enabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn-fips.ap-southeast-3.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-3",
+                "UseFIPS": true,
+                "UseDualStack": false
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-3 with FIPS disabled and DualStack enabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-southeast-3.api.aws"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-3",
+                "UseFIPS": false,
+                "UseDualStack": true
+              }
+            },
+            {
+              "documentation": "For region ap-southeast-3 with FIPS disabled and DualStack disabled",
+              "expect": {
+                "endpoint": {
+                  "url": "https://mgn.ap-southeast-3.amazonaws.com"
+                }
+              },
+              "params": {
+                "Region": "ap-southeast-3",
                 "UseFIPS": false,
                 "UseDualStack": false
               }
@@ -1029,207 +1701,72 @@
               }
             },
             {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack enabled",
+              "documentation": "For region us-east-1 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn-fips.cn-north-1.api.amazonwebservices.com.cn"
+                  "url": "https://mgn.us-east-1.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn-fips.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.cn-north-1.api.amazonwebservices.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region cn-north-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.cn-north-1.amazonaws.com.cn"
-                }
-              },
-              "params": {
-                "Region": "cn-north-1",
+                "Region": "us-east-1",
                 "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack enabled",
+              "documentation": "For region us-east-2 with FIPS enabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn-fips.us-gov-east-1.api.aws"
+                  "url": "https://mgn-fips.us-east-2.api.aws"
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "Region": "us-east-2",
                 "UseFIPS": true,
                 "UseDualStack": true
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS enabled and DualStack disabled",
+              "documentation": "For region us-east-2 with FIPS enabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn-fips.us-gov-east-1.amazonaws.com"
+                  "url": "https://mgn-fips.us-east-2.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "Region": "us-east-2",
                 "UseFIPS": true,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack enabled",
+              "documentation": "For region us-east-2 with FIPS disabled and DualStack enabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.us-gov-east-1.api.aws"
+                  "url": "https://mgn.us-east-2.api.aws"
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "Region": "us-east-2",
                 "UseFIPS": false,
                 "UseDualStack": true
               }
             },
             {
-              "documentation": "For region us-gov-east-1 with FIPS disabled and DualStack disabled",
+              "documentation": "For region us-east-2 with FIPS disabled and DualStack disabled",
               "expect": {
                 "endpoint": {
-                  "url": "https://mgn.us-gov-east-1.amazonaws.com"
+                  "url": "https://mgn.us-east-2.amazonaws.com"
                 }
               },
               "params": {
-                "Region": "us-gov-east-1",
+                "Region": "us-east-2",
                 "UseFIPS": false,
                 "UseDualStack": false
               }
             },
             {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn-fips.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-iso-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.us-iso-east-1.c2s.ic.gov"
-                }
-              },
-              "params": {
-                "Region": "us-iso-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack enabled",
-              "expect": {
-                "error": "FIPS and DualStack are enabled, but this partition does not support one or both"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS enabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn-fips.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": true,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack enabled",
-              "expect": {
-                "error": "DualStack is enabled but this partition does not support DualStack"
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": true
-              }
-            },
-            {
-              "documentation": "For region us-isob-east-1 with FIPS disabled and DualStack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://mgn.us-isob-east-1.sc2s.sgov.gov"
-                }
-              },
-              "params": {
-                "Region": "us-isob-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region set and fips disabled and dualstack disabled",
+              "documentation": "For custom endpoint with fips disabled and dualstack disabled",
               "expect": {
                 "endpoint": {
                   "url": "https://example.com"
@@ -1237,19 +1774,6 @@
               },
               "params": {
                 "Region": "us-east-1",
-                "UseFIPS": false,
-                "UseDualStack": false,
-                "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "For custom endpoint with region not set and fips disabled and dualstack disabled",
-              "expect": {
-                "endpoint": {
-                  "url": "https://example.com"
-                }
-              },
-              "params": {
                 "UseFIPS": false,
                 "UseDualStack": false,
                 "Endpoint": "https://example.com"
@@ -1277,12 +1801,6 @@
                 "UseFIPS": false,
                 "UseDualStack": true,
                 "Endpoint": "https://example.com"
-              }
-            },
-            {
-              "documentation": "Missing region",
-              "expect": {
-                "error": "Invalid Configuration: Missing Region"
               }
             }
           ],
@@ -1404,12 +1922,6 @@
             "smithy.api#documentation": "<p>Application ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
       }
     },
@@ -1452,12 +1964,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Wave ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
@@ -1509,12 +2015,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Application IDs list.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
@@ -1571,12 +2071,6 @@
             "smithy.api#documentation": "<p>Source server IDs list.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
       }
     },
@@ -1595,16 +2089,6 @@
     "com.amazonaws.mgn#AssociateSourceServersResponse": {
       "type": "structure",
       "members": {}
-    },
-    "com.amazonaws.mgn#BandwidthThrottling": {
-      "type": "long",
-      "traits": {
-        "smithy.api#default": 0,
-        "smithy.api#range": {
-          "min": 0,
-          "max": 10000
-        }
-      }
     },
     "com.amazonaws.mgn#BootMode": {
       "type": "string",
@@ -1698,12 +2182,6 @@
             "smithy.api#documentation": "<p>The request to change the source server migration lifecycle state.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>The request to change the source server migration account ID.</p>"
-          }
         }
       }
     },
@@ -1739,15 +2217,6 @@
             "value": "CUTOVER"
           }
         ]
-      }
-    },
-    "com.amazonaws.mgn#ClientIdempotencyToken": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 64
-        }
       }
     },
     "com.amazonaws.mgn#CloudWatchLogGroupName": {
@@ -1798,161 +2267,6 @@
       "type": "list",
       "member": {
         "target": "com.amazonaws.mgn#ErrorDetails"
-      }
-    },
-    "com.amazonaws.mgn#Connector": {
-      "type": "structure",
-      "members": {
-        "connectorID": {
-          "target": "com.amazonaws.mgn#ConnectorID",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector ID.</p>"
-          }
-        },
-        "name": {
-          "target": "com.amazonaws.mgn#ConnectorName",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector name.</p>"
-          }
-        },
-        "ssmInstanceID": {
-          "target": "com.amazonaws.mgn#SsmInstanceID",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector SSM instance ID.</p>"
-          }
-        },
-        "arn": {
-          "target": "com.amazonaws.mgn#ARN",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector arn.</p>"
-          }
-        },
-        "tags": {
-          "target": "com.amazonaws.mgn#TagsMap",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector tags.</p>"
-          }
-        },
-        "ssmCommandConfig": {
-          "target": "com.amazonaws.mgn#ConnectorSsmCommandConfig",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector SSM command config.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#references": [
-          {
-            "resource": "com.amazonaws.mgn#ConnectorResource"
-          }
-        ]
-      }
-    },
-    "com.amazonaws.mgn#ConnectorArn": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 27,
-          "max": 100
-        },
-        "smithy.api#pattern": "^arn:[\\w-]+:mgn:([a-z]{2}-(gov-)?[a-z]+-\\d{1})?:(\\d{12})?:connector\\/(connector-[0-9a-zA-Z]{17})$"
-      }
-    },
-    "com.amazonaws.mgn#ConnectorID": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 27,
-          "max": 27
-        },
-        "smithy.api#pattern": "^connector-[0-9a-zA-Z]{17}$"
-      }
-    },
-    "com.amazonaws.mgn#ConnectorIDsFilter": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ConnectorID"
-      },
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 20
-        }
-      }
-    },
-    "com.amazonaws.mgn#ConnectorName": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 1,
-          "max": 256
-        },
-        "smithy.api#pattern": "^[A-Za-z0-9_-]+$"
-      }
-    },
-    "com.amazonaws.mgn#ConnectorResource": {
-      "type": "resource",
-      "identifiers": {
-        "connectorID": {
-          "target": "com.amazonaws.mgn#ConnectorID"
-        }
-      },
-      "create": {
-        "target": "com.amazonaws.mgn#CreateConnector"
-      },
-      "update": {
-        "target": "com.amazonaws.mgn#UpdateConnector"
-      },
-      "delete": {
-        "target": "com.amazonaws.mgn#DeleteConnector"
-      },
-      "list": {
-        "target": "com.amazonaws.mgn#ListConnectors"
-      },
-      "traits": {
-        "aws.api#arn": {
-          "template": "connector/{connectorID}"
-        }
-      }
-    },
-    "com.amazonaws.mgn#ConnectorSsmCommandConfig": {
-      "type": "structure",
-      "members": {
-        "s3OutputEnabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector SSM command config S3 output enabled.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "outputS3BucketName": {
-          "target": "com.amazonaws.mgn#S3BucketName",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector SSM command config output S3 bucket name.</p>"
-          }
-        },
-        "cloudWatchOutputEnabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector SSM command config CloudWatch output enabled.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "cloudWatchLogGroupName": {
-          "target": "com.amazonaws.mgn#CloudWatchLogGroupName",
-          "traits": {
-            "smithy.api#documentation": "<p>Connector SSM command config CloudWatch log group name.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Connector SSM command config.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ConnectorsList": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#Connector"
       }
     },
     "com.amazonaws.mgn#Cpus": {
@@ -2017,73 +2331,7 @@
           "traits": {
             "smithy.api#documentation": "<p>Application tags.</p>"
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
-      }
-    },
-    "com.amazonaws.mgn#CreateConnector": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#CreateConnectorRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#Connector"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Create Connector.</p>",
-        "smithy.api#http": {
-          "uri": "/CreateConnector",
-          "method": "POST",
-          "code": 201
-        },
-        "smithy.api#idempotent": {}
-      }
-    },
-    "com.amazonaws.mgn#CreateConnectorRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "com.amazonaws.mgn#ConnectorName",
-          "traits": {
-            "smithy.api#documentation": "<p>Create Connector request name.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "ssmInstanceID": {
-          "target": "com.amazonaws.mgn#SsmInstanceID",
-          "traits": {
-            "smithy.api#documentation": "<p>Create Connector request SSM instance ID.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "tags": {
-          "target": "com.amazonaws.mgn#TagsMap",
-          "traits": {
-            "smithy.api#documentation": "<p>Create Connector request tags.</p>"
-          }
-        },
-        "ssmCommandConfig": {
-          "target": "com.amazonaws.mgn#ConnectorSsmCommandConfig",
-          "traits": {
-            "smithy.api#documentation": "<p>Create Connector request SSM command config.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.mgn#CreateLaunchConfigurationTemplate": {
@@ -2288,7 +2536,7 @@
           }
         },
         "bandwidthThrottling": {
-          "target": "com.amazonaws.mgn#BandwidthThrottling",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
             "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Request to configure bandwidth throttling during Replication Settings template creation.</p>",
@@ -2314,12 +2562,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Request to configure Staging Area tags during Replication Settings template creation.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "useFipsEndpoint": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to use Fips Endpoint during Replication Settings template creation.</p>"
           }
         },
         "tags": {
@@ -2379,12 +2621,6 @@
           "target": "com.amazonaws.mgn#TagsMap",
           "traits": {
             "smithy.api#documentation": "<p>Wave tags.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
@@ -2807,62 +3043,12 @@
             "smithy.api#documentation": "<p>Application ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
       }
     },
     "com.amazonaws.mgn#DeleteApplicationResponse": {
       "type": "structure",
       "members": {}
-    },
-    "com.amazonaws.mgn#DeleteConnector": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#DeleteConnectorRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Delete Connector.</p>",
-        "smithy.api#http": {
-          "uri": "/DeleteConnector",
-          "method": "POST",
-          "code": 204
-        },
-        "smithy.api#idempotent": {}
-      }
-    },
-    "com.amazonaws.mgn#DeleteConnectorRequest": {
-      "type": "structure",
-      "members": {
-        "connectorID": {
-          "target": "com.amazonaws.mgn#ConnectorID",
-          "traits": {
-            "smithy.api#documentation": "<p>Delete Connector request connector ID.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
     },
     "com.amazonaws.mgn#DeleteJob": {
       "type": "operation",
@@ -2901,12 +3087,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Request to delete Job from service by Job ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to delete Job from service by Account ID.</p>"
           }
         }
       }
@@ -3043,12 +3223,6 @@
             "smithy.api#documentation": "<p>Request to delete Source Server from service by Server ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to delete Source Server from service by Account ID.</p>"
-          }
         }
       }
     },
@@ -3135,12 +3309,6 @@
             "smithy.api#documentation": "<p>Wave ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
       }
     },
@@ -3193,6 +3361,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Request to describe Job log item maximum results.</p>"
           }
         },
@@ -3200,12 +3369,6 @@
           "target": "com.amazonaws.mgn#PaginationToken",
           "traits": {
             "smithy.api#documentation": "<p>Request to describe Job log next token.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to describe Job log Account ID.</p>"
           }
         }
       }
@@ -3271,6 +3434,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Request to describe job log items by max results.</p>"
           }
         },
@@ -3278,12 +3442,6 @@
           "target": "com.amazonaws.mgn#PaginationToken",
           "traits": {
             "smithy.api#documentation": "<p>Request to describe job log items by next token.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to describe job log items by Account ID.</p>"
           }
         }
       }
@@ -3390,6 +3548,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Maximum results to be returned in DescribeLaunchConfigurationTemplates.</p>"
           }
         },
@@ -3465,6 +3624,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Request to describe Replication Configuration template by max results.</p>"
           }
         },
@@ -3537,6 +3697,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Request to filter Source Servers list by maximum results.</p>"
           }
         },
@@ -3544,12 +3705,6 @@
           "target": "com.amazonaws.mgn#PaginationToken",
           "traits": {
             "smithy.api#documentation": "<p>Request to filter Source Servers list by next token.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to filter Source Servers list by Accoun ID.</p>"
           }
         }
       }
@@ -3674,6 +3829,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Maximum results to be returned in DescribeVcenterClients.</p>",
             "smithy.api#httpQuery": "maxResults"
           }
@@ -3749,12 +3905,6 @@
             "smithy.api#documentation": "<p>Application IDs list.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
       }
     },
@@ -3806,12 +3956,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Source server IDs list.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
@@ -3868,12 +4012,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Request to disconnect Source Server from service by Server ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to disconnect Source Server from service by Account ID.</p>"
           }
         }
       }
@@ -3978,200 +4116,6 @@
         "smithy.api#documentation": "<p>Error details.</p>"
       }
     },
-    "com.amazonaws.mgn#ExportErrorData": {
-      "type": "structure",
-      "members": {
-        "rawError": {
-          "target": "com.amazonaws.mgn#LargeBoundedString",
-          "traits": {
-            "smithy.api#documentation": "<p>Export errors data raw error.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Export errors data.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ExportErrors": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ExportTaskError"
-      }
-    },
-    "com.amazonaws.mgn#ExportID": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 24,
-          "max": 24
-        },
-        "smithy.api#pattern": "^export-[0-9a-zA-Z]{17}$"
-      }
-    },
-    "com.amazonaws.mgn#ExportResource": {
-      "type": "resource",
-      "identifiers": {
-        "exportID": {
-          "target": "com.amazonaws.mgn#ExportID"
-        }
-      },
-      "create": {
-        "target": "com.amazonaws.mgn#StartExport"
-      },
-      "list": {
-        "target": "com.amazonaws.mgn#ListExports"
-      },
-      "operations": [
-        {
-          "target": "com.amazonaws.mgn#ListExportErrors"
-        }
-      ],
-      "traits": {
-        "aws.api#arn": {
-          "template": "export/{exportID}"
-        }
-      }
-    },
-    "com.amazonaws.mgn#ExportStatus": {
-      "type": "string",
-      "traits": {
-        "smithy.api#enum": [
-          {
-            "value": "PENDING",
-            "name": "PENDING"
-          },
-          {
-            "value": "STARTED",
-            "name": "STARTED"
-          },
-          {
-            "value": "FAILED",
-            "name": "FAILED"
-          },
-          {
-            "value": "SUCCEEDED",
-            "name": "SUCCEEDED"
-          }
-        ]
-      }
-    },
-    "com.amazonaws.mgn#ExportTask": {
-      "type": "structure",
-      "members": {
-        "exportID": {
-          "target": "com.amazonaws.mgn#ExportID",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task id.</p>"
-          }
-        },
-        "s3Bucket": {
-          "target": "com.amazonaws.mgn#S3BucketName",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task s3 bucket.</p>"
-          }
-        },
-        "s3Key": {
-          "target": "com.amazonaws.mgn#S3Key",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task s3 key.</p>"
-          }
-        },
-        "s3BucketOwner": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task s3 bucket owner.</p>"
-          }
-        },
-        "creationDateTime": {
-          "target": "com.amazonaws.mgn#ISO8601DatetimeString",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task creation datetime.</p>"
-          }
-        },
-        "endDateTime": {
-          "target": "com.amazonaws.mgn#ISO8601DatetimeString",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task end datetime.</p>"
-          }
-        },
-        "status": {
-          "target": "com.amazonaws.mgn#ExportStatus",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task status.</p>"
-          }
-        },
-        "progressPercentage": {
-          "target": "smithy.api#Float",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task progress percentage.</p>"
-          }
-        },
-        "summary": {
-          "target": "com.amazonaws.mgn#ExportTaskSummary",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task summary.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Export task.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ExportTaskError": {
-      "type": "structure",
-      "members": {
-        "errorDateTime": {
-          "target": "com.amazonaws.mgn#ISO8601DatetimeString",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task error datetime.</p>"
-          }
-        },
-        "errorData": {
-          "target": "com.amazonaws.mgn#ExportErrorData",
-          "traits": {
-            "smithy.api#documentation": "<p>Export task error data.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Export task error.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ExportTaskSummary": {
-      "type": "structure",
-      "members": {
-        "serversCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Export task summary servers count.</p>"
-          }
-        },
-        "applicationsCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Export task summary applications count.</p>"
-          }
-        },
-        "wavesCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Export task summary waves count.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Export task summary.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ExportsList": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ExportTask"
-      }
-    },
     "com.amazonaws.mgn#FinalizeCutover": {
       "type": "operation",
       "input": {
@@ -4211,12 +4155,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Request to finalize Cutover by Source Server ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to finalize Cutover by Source Account ID.</p>"
           }
         }
       }
@@ -4279,12 +4217,6 @@
             "smithy.api#documentation": "<p>Request to get Launch Configuration information by Source Server ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to get Launch Configuration information by Account ID.</p>"
-          }
         }
       }
     },
@@ -4322,12 +4254,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Request to get Replication Configuration by Source Server ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request to get Replication Configuration by Account ID.</p>"
           }
         }
       }
@@ -4393,321 +4319,6 @@
       },
       "traits": {
         "smithy.api#documentation": "<p>Identification hints.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportErrorData": {
-      "type": "structure",
-      "members": {
-        "sourceServerID": {
-          "target": "com.amazonaws.mgn#SourceServerID",
-          "traits": {
-            "smithy.api#documentation": "<p>Import error data source server ID.</p>"
-          }
-        },
-        "applicationID": {
-          "target": "com.amazonaws.mgn#ApplicationID",
-          "traits": {
-            "smithy.api#documentation": "<p>Import error data application ID.</p>"
-          }
-        },
-        "waveID": {
-          "target": "com.amazonaws.mgn#WaveID",
-          "traits": {
-            "smithy.api#documentation": "<p>Import error data wave id.</p>"
-          }
-        },
-        "ec2LaunchTemplateID": {
-          "target": "com.amazonaws.mgn#BoundedString",
-          "traits": {
-            "smithy.api#documentation": "<p>Import error data ec2 LaunchTemplate ID.</p>"
-          }
-        },
-        "rowNumber": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import error data row number.</p>"
-          }
-        },
-        "rawError": {
-          "target": "com.amazonaws.mgn#LargeBoundedString",
-          "traits": {
-            "smithy.api#documentation": "<p>Import error data raw error.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Import error data source account ID.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import error data.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportErrorType": {
-      "type": "string",
-      "traits": {
-        "smithy.api#enum": [
-          {
-            "name": "VALIDATION_ERROR",
-            "value": "VALIDATION_ERROR"
-          },
-          {
-            "name": "PROCESSING_ERROR",
-            "value": "PROCESSING_ERROR"
-          }
-        ]
-      }
-    },
-    "com.amazonaws.mgn#ImportErrors": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ImportTaskError"
-      }
-    },
-    "com.amazonaws.mgn#ImportID": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 24,
-          "max": 24
-        },
-        "smithy.api#pattern": "^import-[0-9a-zA-Z]{17}$"
-      }
-    },
-    "com.amazonaws.mgn#ImportIDsFilter": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ImportID"
-      },
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 10
-        }
-      }
-    },
-    "com.amazonaws.mgn#ImportList": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ImportTask"
-      }
-    },
-    "com.amazonaws.mgn#ImportResource": {
-      "type": "resource",
-      "identifiers": {
-        "importID": {
-          "target": "com.amazonaws.mgn#ImportID"
-        }
-      },
-      "create": {
-        "target": "com.amazonaws.mgn#StartImport"
-      },
-      "list": {
-        "target": "com.amazonaws.mgn#ListImports"
-      },
-      "operations": [
-        {
-          "target": "com.amazonaws.mgn#ListImportErrors"
-        }
-      ],
-      "traits": {
-        "aws.api#arn": {
-          "template": "import/{importID}"
-        }
-      }
-    },
-    "com.amazonaws.mgn#ImportStatus": {
-      "type": "string",
-      "traits": {
-        "smithy.api#enum": [
-          {
-            "value": "PENDING",
-            "name": "PENDING"
-          },
-          {
-            "value": "STARTED",
-            "name": "STARTED"
-          },
-          {
-            "value": "FAILED",
-            "name": "FAILED"
-          },
-          {
-            "value": "SUCCEEDED",
-            "name": "SUCCEEDED"
-          }
-        ]
-      }
-    },
-    "com.amazonaws.mgn#ImportTask": {
-      "type": "structure",
-      "members": {
-        "importID": {
-          "target": "com.amazonaws.mgn#ImportID",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task id.</p>"
-          }
-        },
-        "s3BucketSource": {
-          "target": "com.amazonaws.mgn#S3BucketSource",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task s3 bucket source.</p>"
-          }
-        },
-        "creationDateTime": {
-          "target": "com.amazonaws.mgn#ISO8601DatetimeString",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task creation datetime.</p>"
-          }
-        },
-        "endDateTime": {
-          "target": "com.amazonaws.mgn#ISO8601DatetimeString",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task end datetime.</p>"
-          }
-        },
-        "status": {
-          "target": "com.amazonaws.mgn#ImportStatus",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task status.</p>"
-          }
-        },
-        "progressPercentage": {
-          "target": "smithy.api#Float",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task progress percentage.</p>"
-          }
-        },
-        "summary": {
-          "target": "com.amazonaws.mgn#ImportTaskSummary",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task summary.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import task.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportTaskError": {
-      "type": "structure",
-      "members": {
-        "errorDateTime": {
-          "target": "com.amazonaws.mgn#ISO8601DatetimeString",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task error datetime.</p>"
-          }
-        },
-        "errorType": {
-          "target": "com.amazonaws.mgn#ImportErrorType",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task error type.</p>"
-          }
-        },
-        "errorData": {
-          "target": "com.amazonaws.mgn#ImportErrorData",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task error data.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import task error.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportTaskSummary": {
-      "type": "structure",
-      "members": {
-        "waves": {
-          "target": "com.amazonaws.mgn#ImportTaskSummaryWaves",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task summary waves.</p>"
-          }
-        },
-        "applications": {
-          "target": "com.amazonaws.mgn#ImportTaskSummaryApplications",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task summary applications.</p>"
-          }
-        },
-        "servers": {
-          "target": "com.amazonaws.mgn#ImportTaskSummaryServers",
-          "traits": {
-            "smithy.api#documentation": "<p>Import task summary servers.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import task summary.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportTaskSummaryApplications": {
-      "type": "structure",
-      "members": {
-        "createdCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import task summary applications created count.</p>"
-          }
-        },
-        "modifiedCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import task summary applications modified count.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import task summary applications.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportTaskSummaryServers": {
-      "type": "structure",
-      "members": {
-        "createdCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import task summary servers created count.</p>"
-          }
-        },
-        "modifiedCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import task summary servers modified count.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import task summary servers.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ImportTaskSummaryWaves": {
-      "type": "structure",
-      "members": {
-        "createdCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import task summery waves created count.</p>"
-          }
-        },
-        "modifiedCount": {
-          "target": "com.amazonaws.mgn#PositiveInteger",
-          "traits": {
-            "smithy.api#default": 0,
-            "smithy.api#documentation": "<p>Import task summery waves modified count.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Import task summery waves.</p>"
       }
     },
     "com.amazonaws.mgn#InitializeService": {
@@ -4788,25 +4399,6 @@
         "smithy.api#documentation": "<p>The server encountered an unexpected condition that prevented it from fulfilling the request.</p>",
         "smithy.api#error": "server",
         "smithy.api#httpError": 500
-      }
-    },
-    "com.amazonaws.mgn#Iops": {
-      "type": "long",
-      "traits": {
-        "smithy.api#range": {
-          "min": 100,
-          "max": 64000
-        }
-      }
-    },
-    "com.amazonaws.mgn#JmesPathString": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 1,
-          "max": 1011
-        },
-        "smithy.api#pattern": "^[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_\\[\\]]+)*$"
       }
     },
     "com.amazonaws.mgn#Job": {
@@ -5430,14 +5022,16 @@
           }
         },
         "iops": {
-          "target": "com.amazonaws.mgn#Iops",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Launch template disk iops configuration.</p>"
           }
         },
         "throughput": {
-          "target": "com.amazonaws.mgn#Throughput",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Launch template disk throughput configuration.</p>"
           }
         }
@@ -5723,10 +5317,6 @@
           {
             "name": "DISCOVERED",
             "value": "DISCOVERED"
-          },
-          {
-            "name": "PENDING_INSTALLATION",
-            "value": "PENDING_INSTALLATION"
           }
         ]
       }
@@ -5784,6 +5374,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Maximum results to return when listing applications.</p>"
           }
         },
@@ -5791,12 +5382,6 @@
           "target": "com.amazonaws.mgn#PaginationToken",
           "traits": {
             "smithy.api#documentation": "<p>Request next token.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Applications list Account ID.</p>"
           }
         }
       }
@@ -5842,521 +5427,6 @@
             "smithy.api#documentation": "<p>Response next token.</p>"
           }
         }
-      }
-    },
-    "com.amazonaws.mgn#ListConnectors": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ListConnectorsRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#ListConnectorsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>List Connectors.</p>",
-        "smithy.api#http": {
-          "uri": "/ListConnectors",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "nextToken",
-          "outputToken": "nextToken",
-          "pageSize": "maxResults",
-          "items": "items"
-        },
-        "smithy.api#readonly": {}
-      }
-    },
-    "com.amazonaws.mgn#ListConnectorsRequest": {
-      "type": "structure",
-      "members": {
-        "filters": {
-          "target": "com.amazonaws.mgn#ListConnectorsRequestFilters",
-          "traits": {
-            "smithy.api#documentation": "<p>List Connectors Request filters.</p>"
-          }
-        },
-        "maxResults": {
-          "target": "com.amazonaws.mgn#MaxResultsType",
-          "traits": {
-            "smithy.api#documentation": "<p>List Connectors Request max results.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List Connectors Request next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.mgn#ListConnectorsRequestFilters": {
-      "type": "structure",
-      "members": {
-        "connectorIDs": {
-          "target": "com.amazonaws.mgn#ConnectorIDsFilter",
-          "traits": {
-            "smithy.api#documentation": "<p>List Connectors Request Filters connector IDs.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List Connectors Request Filters.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListConnectorsResponse": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.amazonaws.mgn#ConnectorsList",
-          "traits": {
-            "smithy.api#documentation": "<p>List connectors response items.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List connectors response next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.amazonaws.mgn#ListExportErrors": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ListExportErrorsRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#ListExportErrorsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>List export errors.</p>",
-        "smithy.api#http": {
-          "uri": "/ListExportErrors",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "nextToken",
-          "outputToken": "nextToken",
-          "pageSize": "maxResults",
-          "items": "items"
-        },
-        "smithy.api#readonly": {}
-      }
-    },
-    "com.amazonaws.mgn#ListExportErrorsRequest": {
-      "type": "structure",
-      "members": {
-        "exportID": {
-          "target": "com.amazonaws.mgn#ExportID",
-          "traits": {
-            "smithy.api#documentation": "<p>List export errors request export id.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "maxResults": {
-          "target": "com.amazonaws.mgn#MaxResultsType",
-          "traits": {
-            "smithy.api#documentation": "<p>List export errors request max results.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List export errors request next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List export errors request.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListExportErrorsResponse": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.amazonaws.mgn#ExportErrors",
-          "traits": {
-            "smithy.api#documentation": "<p>List export errors response items.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List export errors response next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List export errors response.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListExports": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ListExportsRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#ListExportsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>List exports.</p>",
-        "smithy.api#http": {
-          "uri": "/ListExports",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "nextToken",
-          "outputToken": "nextToken",
-          "pageSize": "maxResults",
-          "items": "items"
-        },
-        "smithy.api#readonly": {}
-      }
-    },
-    "com.amazonaws.mgn#ListExportsRequest": {
-      "type": "structure",
-      "members": {
-        "filters": {
-          "target": "com.amazonaws.mgn#ListExportsRequestFilters"
-        },
-        "maxResults": {
-          "target": "com.amazonaws.mgn#MaxResultsType",
-          "traits": {
-            "smithy.api#documentation": "<p>List export request max results.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List export request next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List export request.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListExportsRequestFilters": {
-      "type": "structure",
-      "members": {
-        "exportIDs": {
-          "target": "com.amazonaws.mgn#ListExportsRequestFiltersExportIDs",
-          "traits": {
-            "smithy.api#documentation": "<p>List exports request filters export ids.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List exports request filters.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListExportsRequestFiltersExportIDs": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ExportID"
-      },
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 10
-        }
-      }
-    },
-    "com.amazonaws.mgn#ListExportsResponse": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.amazonaws.mgn#ExportsList",
-          "traits": {
-            "smithy.api#documentation": "<p>List export response items.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List export response next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List export response.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListImportErrors": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ListImportErrorsRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#ListImportErrorsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>List import errors.</p>",
-        "smithy.api#http": {
-          "uri": "/ListImportErrors",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "nextToken",
-          "outputToken": "nextToken",
-          "pageSize": "maxResults",
-          "items": "items"
-        },
-        "smithy.api#readonly": {}
-      }
-    },
-    "com.amazonaws.mgn#ListImportErrorsRequest": {
-      "type": "structure",
-      "members": {
-        "importID": {
-          "target": "com.amazonaws.mgn#ImportID",
-          "traits": {
-            "smithy.api#documentation": "<p>List import errors request import id.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "maxResults": {
-          "target": "com.amazonaws.mgn#MaxResultsType",
-          "traits": {
-            "smithy.api#documentation": "<p>List import errors request max results.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List import errors request next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List import errors request.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListImportErrorsResponse": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.amazonaws.mgn#ImportErrors",
-          "traits": {
-            "smithy.api#documentation": "<p>List imports errors response items.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List imports errors response next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List imports errors response.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListImports": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ListImportsRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#ListImportsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>List imports.</p>",
-        "smithy.api#http": {
-          "uri": "/ListImports",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "nextToken",
-          "outputToken": "nextToken",
-          "pageSize": "maxResults",
-          "items": "items"
-        },
-        "smithy.api#readonly": {}
-      }
-    },
-    "com.amazonaws.mgn#ListImportsRequest": {
-      "type": "structure",
-      "members": {
-        "filters": {
-          "target": "com.amazonaws.mgn#ListImportsRequestFilters",
-          "traits": {
-            "smithy.api#documentation": "<p>List imports request filters.</p>"
-          }
-        },
-        "maxResults": {
-          "target": "com.amazonaws.mgn#MaxResultsType",
-          "traits": {
-            "smithy.api#documentation": "<p>List imports request max results.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List imports request next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List imports request.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListImportsRequestFilters": {
-      "type": "structure",
-      "members": {
-        "importIDs": {
-          "target": "com.amazonaws.mgn#ImportIDsFilter",
-          "traits": {
-            "smithy.api#documentation": "<p>List imports request filters import IDs.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List imports request filters.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListImportsResponse": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.amazonaws.mgn#ImportList",
-          "traits": {
-            "smithy.api#documentation": "<p>List import response items.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List import response next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List import response.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ListManagedAccounts": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ListManagedAccountsRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#ListManagedAccountsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>List Managed Accounts.</p>",
-        "smithy.api#http": {
-          "uri": "/ListManagedAccounts",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#paginated": {
-          "inputToken": "nextToken",
-          "outputToken": "nextToken",
-          "pageSize": "maxResults",
-          "items": "items"
-        },
-        "smithy.api#readonly": {}
-      }
-    },
-    "com.amazonaws.mgn#ListManagedAccountsRequest": {
-      "type": "structure",
-      "members": {
-        "maxResults": {
-          "target": "com.amazonaws.mgn#MaxResultsType",
-          "traits": {
-            "smithy.api#documentation": "<p>List managed accounts request max results.</p>"
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List managed accounts request next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List managed accounts request.</p>",
-        "smithy.api#input": {}
-      }
-    },
-    "com.amazonaws.mgn#ListManagedAccountsResponse": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.amazonaws.mgn#ManagedAccounts",
-          "traits": {
-            "smithy.api#documentation": "<p>List managed accounts response items.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "nextToken": {
-          "target": "com.amazonaws.mgn#PaginationToken",
-          "traits": {
-            "smithy.api#documentation": "<p>List managed accounts response next token.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>List managed accounts response.</p>",
-        "smithy.api#output": {}
       }
     },
     "com.amazonaws.mgn#ListSourceServerActions": {
@@ -6410,6 +5480,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Maximum amount of items to return when listing source server post migration custom actions.</p>"
           }
         },
@@ -6417,12 +5488,6 @@
           "target": "com.amazonaws.mgn#PaginationToken",
           "traits": {
             "smithy.api#documentation": "<p>Next token to use when listing source server post migration custom actions.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID to return when listing source server post migration custom actions.</p>"
           }
         }
       }
@@ -6553,6 +5618,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Maximum amount of items to return when listing template post migration custom actions.</p>"
           }
         },
@@ -6622,6 +5688,7 @@
         "maxResults": {
           "target": "com.amazonaws.mgn#MaxResultsType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Maximum results to return when listing waves.</p>"
           }
         },
@@ -6629,12 +5696,6 @@
           "target": "com.amazonaws.mgn#PaginationToken",
           "traits": {
             "smithy.api#documentation": "<p>Request next token.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Request account ID.</p>"
           }
         }
       }
@@ -6676,32 +5737,6 @@
         }
       }
     },
-    "com.amazonaws.mgn#ManagedAccount": {
-      "type": "structure",
-      "members": {
-        "accountId": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Managed account, account ID.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Managed account.</p>"
-      }
-    },
-    "com.amazonaws.mgn#ManagedAccounts": {
-      "type": "list",
-      "member": {
-        "target": "com.amazonaws.mgn#ManagedAccount"
-      },
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 1000
-        }
-      }
-    },
     "com.amazonaws.mgn#MarkAsArchived": {
       "type": "operation",
       "input": {
@@ -6739,18 +5774,13 @@
             "smithy.api#documentation": "<p>Mark as archived by Source Server ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Mark as archived by Account ID.</p>"
-          }
         }
       }
     },
     "com.amazonaws.mgn#MaxResultsType": {
       "type": "integer",
       "traits": {
+        "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 1,
           "max": 1000
@@ -6818,6 +5848,7 @@
     "com.amazonaws.mgn#OrderType": {
       "type": "integer",
       "traits": {
+        "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 1001,
           "max": 10000
@@ -6870,61 +5901,6 @@
       "type": "list",
       "member": {
         "target": "com.amazonaws.mgn#ParticipatingServer"
-      }
-    },
-    "com.amazonaws.mgn#PauseReplication": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#PauseReplicationRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#SourceServer"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ConflictException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Pause Replication.</p>",
-        "smithy.api#http": {
-          "uri": "/PauseReplication",
-          "method": "POST",
-          "code": 200
-        }
-      }
-    },
-    "com.amazonaws.mgn#PauseReplicationRequest": {
-      "type": "structure",
-      "members": {
-        "sourceServerID": {
-          "target": "com.amazonaws.mgn#SourceServerID",
-          "traits": {
-            "smithy.api#documentation": "<p>Pause Replication Request source server ID.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Pause Replication Request account ID.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.mgn#PositiveInteger": {
@@ -7096,6 +6072,7 @@
         "order": {
           "target": "com.amazonaws.mgn#OrderType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Source server post migration custom action order.</p>",
             "smithy.api#required": {}
           }
@@ -7122,6 +6099,7 @@
         "timeoutSeconds": {
           "target": "com.amazonaws.mgn#StrictlyPositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Source server post migration custom action timeout in seconds.</p>"
           }
         },
@@ -7135,30 +6113,6 @@
           "target": "com.amazonaws.mgn#SsmDocumentParameters",
           "traits": {
             "smithy.api#documentation": "<p>Source server post migration custom action parameters.</p>"
-          }
-        },
-        "externalParameters": {
-          "target": "com.amazonaws.mgn#SsmDocumentExternalParameters",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom action external parameters.</p>"
-          }
-        },
-        "description": {
-          "target": "com.amazonaws.mgn#ActionDescription",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom action description.</p>"
-          }
-        },
-        "category": {
-          "target": "com.amazonaws.mgn#ActionCategory",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom action category.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom account ID.</p>"
           }
         }
       }
@@ -7221,6 +6175,7 @@
         "order": {
           "target": "com.amazonaws.mgn#OrderType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Template post migration custom action order.</p>",
             "smithy.api#required": {}
           }
@@ -7247,6 +6202,7 @@
         "timeoutSeconds": {
           "target": "com.amazonaws.mgn#StrictlyPositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Template post migration custom action timeout in seconds.</p>"
           }
         },
@@ -7266,24 +6222,6 @@
           "target": "com.amazonaws.mgn#OperatingSystemString",
           "traits": {
             "smithy.api#documentation": "<p>Operating system eligible for this template post migration custom action.</p>"
-          }
-        },
-        "externalParameters": {
-          "target": "com.amazonaws.mgn#SsmDocumentExternalParameters",
-          "traits": {
-            "smithy.api#documentation": "<p>Template post migration custom action external parameters.</p>"
-          }
-        },
-        "description": {
-          "target": "com.amazonaws.mgn#ActionDescription",
-          "traits": {
-            "smithy.api#documentation": "<p>Template post migration custom action description.</p>"
-          }
-        },
-        "category": {
-          "target": "com.amazonaws.mgn#ActionCategory",
-          "traits": {
-            "smithy.api#documentation": "<p>Template post migration custom action category.</p>"
           }
         }
       }
@@ -7331,12 +6269,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Source server post migration custom action ID to remove.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration account ID.</p>"
           }
         }
       }
@@ -7466,7 +6398,7 @@
           }
         },
         "bandwidthThrottling": {
-          "target": "com.amazonaws.mgn#BandwidthThrottling",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
             "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Replication Configuration set bandwidth throttling.</p>"
@@ -7488,12 +6420,6 @@
           "target": "com.amazonaws.mgn#TagsMap",
           "traits": {
             "smithy.api#documentation": "<p>Replication Configuration Staging Area tags.</p>"
-          }
-        },
-        "useFipsEndpoint": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Replication Configuration use Fips Endpoint.</p>"
           }
         }
       }
@@ -7703,7 +6629,7 @@
           }
         },
         "bandwidthThrottling": {
-          "target": "com.amazonaws.mgn#BandwidthThrottling",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
             "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Replication Configuration template bandwidth throttling.</p>"
@@ -7725,12 +6651,6 @@
           "target": "com.amazonaws.mgn#TagsMap",
           "traits": {
             "smithy.api#documentation": "<p>Replication Configuration template Staging Area Tags.</p>"
-          }
-        },
-        "useFipsEndpoint": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Replication Configuration template use Fips Endpoint.</p>"
           }
         },
         "tags": {
@@ -7861,61 +6781,6 @@
         "smithy.api#httpError": 404
       }
     },
-    "com.amazonaws.mgn#ResumeReplication": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#ResumeReplicationRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#SourceServer"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ConflictException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Resume Replication.</p>",
-        "smithy.api#http": {
-          "uri": "/ResumeReplication",
-          "method": "POST",
-          "code": 200
-        }
-      }
-    },
-    "com.amazonaws.mgn#ResumeReplicationRequest": {
-      "type": "structure",
-      "members": {
-        "sourceServerID": {
-          "target": "com.amazonaws.mgn#SourceServerID",
-          "traits": {
-            "smithy.api#documentation": "<p>Resume Replication Request source server ID.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Resume Replication Request account ID.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.amazonaws.mgn#RetryDataReplication": {
       "type": "operation",
       "input": {
@@ -7953,53 +6818,7 @@
             "smithy.api#documentation": "<p>Retry data replication for Source Server ID.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Retry data replication for Account ID.</p>"
-          }
         }
-      }
-    },
-    "com.amazonaws.mgn#S3BucketName": {
-      "type": "string",
-      "traits": {
-        "smithy.api#pattern": "^[a-zA-Z0-9.\\-_]{1,255}$"
-      }
-    },
-    "com.amazonaws.mgn#S3BucketSource": {
-      "type": "structure",
-      "members": {
-        "s3Bucket": {
-          "target": "com.amazonaws.mgn#S3BucketName",
-          "traits": {
-            "smithy.api#documentation": "<p>S3 bucket source s3 bucket.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "s3Key": {
-          "target": "com.amazonaws.mgn#S3Key",
-          "traits": {
-            "smithy.api#documentation": "<p>S3 bucket source s3 key.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "s3BucketOwner": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>S3 bucket source s3 bucket owner.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>S3 bucket source.</p>"
-      }
-    },
-    "com.amazonaws.mgn#S3Key": {
-      "type": "string",
-      "traits": {
-        "smithy.api#pattern": "^[^\\x00]{1,1020}\\.csv$"
       }
     },
     "com.amazonaws.mgn#S3LogBucketName": {
@@ -8009,16 +6828,6 @@
           "min": 3,
           "max": 63
         }
-      }
-    },
-    "com.amazonaws.mgn#SecretArn": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 20,
-          "max": 100
-        },
-        "smithy.api#pattern": "^arn:[\\w-]+:secretsmanager:([a-z]{2}-(gov-)?[a-z]+-\\d{1})?:(\\d{12})?:secret:(.+)$"
       }
     },
     "com.amazonaws.mgn#SecurityGroupID": {
@@ -8067,6 +6876,7 @@
         "quotaValue": {
           "target": "com.amazonaws.mgn#StrictlyPositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Exceeded the service quota value.</p>"
           }
         }
@@ -8211,24 +7021,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Source server application ID.</p>"
           }
-        },
-        "userProvidedID": {
-          "target": "com.amazonaws.mgn#BoundedString",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server user provided ID.</p>"
-          }
-        },
-        "fqdnForActionFramework": {
-          "target": "com.amazonaws.mgn#BoundedString",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server fqdn for action framework.</p>"
-          }
-        },
-        "connectorAction": {
-          "target": "com.amazonaws.mgn#SourceServerConnectorAction",
-          "traits": {
-            "smithy.api#documentation": "<p>Source Server connector action.</p>"
-          }
         }
       },
       "traits": {
@@ -8263,6 +7055,7 @@
         "order": {
           "target": "com.amazonaws.mgn#OrderType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Source server post migration custom action order.</p>"
           }
         },
@@ -8281,6 +7074,7 @@
         "timeoutSeconds": {
           "target": "com.amazonaws.mgn#StrictlyPositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Source server post migration custom action timeout in seconds.</p>"
           }
         },
@@ -8294,24 +7088,6 @@
           "target": "com.amazonaws.mgn#SsmDocumentParameters",
           "traits": {
             "smithy.api#documentation": "<p>Source server post migration custom action parameters.</p>"
-          }
-        },
-        "externalParameters": {
-          "target": "com.amazonaws.mgn#SsmDocumentExternalParameters",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom action external parameters.</p>"
-          }
-        },
-        "description": {
-          "target": "com.amazonaws.mgn#ActionDescription",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom action description.</p>"
-          }
-        },
-        "category": {
-          "target": "com.amazonaws.mgn#ActionCategory",
-          "traits": {
-            "smithy.api#documentation": "<p>Source server post migration custom action category.</p>"
           }
         }
       }
@@ -8342,26 +7118,6 @@
         "smithy.api#documentation": "<p>Source server post migration custom action filters.</p>"
       }
     },
-    "com.amazonaws.mgn#SourceServerConnectorAction": {
-      "type": "structure",
-      "members": {
-        "credentialsSecretArn": {
-          "target": "com.amazonaws.mgn#SecretArn",
-          "traits": {
-            "smithy.api#documentation": "<p>Source Server connector action credentials secret arn.</p>"
-          }
-        },
-        "connectorArn": {
-          "target": "com.amazonaws.mgn#ConnectorArn",
-          "traits": {
-            "smithy.api#documentation": "<p>Source Server connector action connector arn.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Source Server connector action.</p>"
-      }
-    },
     "com.amazonaws.mgn#SourceServerID": {
       "type": "string",
       "traits": {
@@ -8378,9 +7134,6 @@
         "sourceServerID": {
           "target": "com.amazonaws.mgn#SourceServerID"
         }
-      },
-      "update": {
-        "target": "com.amazonaws.mgn#UpdateSourceServer"
       },
       "delete": {
         "target": "com.amazonaws.mgn#DeleteSourceServer"
@@ -8411,25 +7164,16 @@
           "target": "com.amazonaws.mgn#MarkAsArchived"
         },
         {
-          "target": "com.amazonaws.mgn#PauseReplication"
-        },
-        {
           "target": "com.amazonaws.mgn#PutSourceServerAction"
         },
         {
           "target": "com.amazonaws.mgn#RemoveSourceServerAction"
         },
         {
-          "target": "com.amazonaws.mgn#ResumeReplication"
-        },
-        {
           "target": "com.amazonaws.mgn#RetryDataReplication"
         },
         {
           "target": "com.amazonaws.mgn#StartReplication"
-        },
-        {
-          "target": "com.amazonaws.mgn#StopReplication"
         },
         {
           "target": "com.amazonaws.mgn#UpdateLaunchConfiguration"
@@ -8484,6 +7228,7 @@
         "timeoutSeconds": {
           "target": "com.amazonaws.mgn#StrictlyPositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>AWS Systems Manager Document timeout seconds.</p>"
           }
         },
@@ -8498,31 +7243,10 @@
           "traits": {
             "smithy.api#documentation": "<p>AWS Systems Manager Document parameters.</p>"
           }
-        },
-        "externalParameters": {
-          "target": "com.amazonaws.mgn#SsmDocumentExternalParameters",
-          "traits": {
-            "smithy.api#documentation": "<p>AWS Systems Manager Document external parameters.</p>"
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "<p>AWS Systems Manager Document.</p>"
-      }
-    },
-    "com.amazonaws.mgn#SsmDocumentExternalParameters": {
-      "type": "map",
-      "key": {
-        "target": "com.amazonaws.mgn#SsmDocumentParameterName"
-      },
-      "value": {
-        "target": "com.amazonaws.mgn#SsmExternalParameter"
-      },
-      "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 20
-        }
       }
     },
     "com.amazonaws.mgn#SsmDocumentName": {
@@ -8585,30 +7309,6 @@
           "min": 0,
           "max": 10
         }
-      }
-    },
-    "com.amazonaws.mgn#SsmExternalParameter": {
-      "type": "union",
-      "members": {
-        "dynamicPath": {
-          "target": "com.amazonaws.mgn#JmesPathString",
-          "traits": {
-            "smithy.api#documentation": "<p>AWS Systems Manager Document external parameters dynamic path.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>AWS Systems Manager Document external parameter.</p>"
-      }
-    },
-    "com.amazonaws.mgn#SsmInstanceID": {
-      "type": "string",
-      "traits": {
-        "smithy.api#length": {
-          "min": 19,
-          "max": 20
-        },
-        "smithy.api#pattern": "(^i-[0-9a-zA-Z]{17}$)|(^mi-[0-9a-zA-Z]{17}$)"
       }
     },
     "com.amazonaws.mgn#SsmParameterStoreParameter": {
@@ -8709,12 +7409,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Start Cutover by Tags.</p>"
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Start Cutover by Account IDs</p>"
-          }
         }
       }
     },
@@ -8739,146 +7433,6 @@
             "smithy.api#documentation": "<p>Start Cutover Job response.</p>"
           }
         }
-      }
-    },
-    "com.amazonaws.mgn#StartExport": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#StartExportRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#StartExportResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Start export.</p>",
-        "smithy.api#http": {
-          "uri": "/StartExport",
-          "method": "POST",
-          "code": 202
-        }
-      }
-    },
-    "com.amazonaws.mgn#StartExportRequest": {
-      "type": "structure",
-      "members": {
-        "s3Bucket": {
-          "target": "com.amazonaws.mgn#S3BucketName",
-          "traits": {
-            "smithy.api#documentation": "<p>Start export request s3 bucket.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "s3Key": {
-          "target": "com.amazonaws.mgn#S3Key",
-          "traits": {
-            "smithy.api#documentation": "<p>Start export request s3key.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "s3BucketOwner": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Start export request s3 bucket owner.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Start export request.</p>"
-      }
-    },
-    "com.amazonaws.mgn#StartExportResponse": {
-      "type": "structure",
-      "members": {
-        "exportTask": {
-          "target": "com.amazonaws.mgn#ExportTask",
-          "traits": {
-            "smithy.api#documentation": "<p>Start export response export task.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Start export response.</p>"
-      }
-    },
-    "com.amazonaws.mgn#StartImport": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#StartImportRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#StartImportResponse"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ConflictException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Start import.</p>",
-        "smithy.api#http": {
-          "uri": "/StartImport",
-          "method": "POST",
-          "code": 202
-        }
-      }
-    },
-    "com.amazonaws.mgn#StartImportRequest": {
-      "type": "structure",
-      "members": {
-        "clientToken": {
-          "target": "com.amazonaws.mgn#ClientIdempotencyToken",
-          "traits": {
-            "smithy.api#documentation": "<p>Start import request client token.</p>",
-            "smithy.api#idempotencyToken": {}
-          }
-        },
-        "s3BucketSource": {
-          "target": "com.amazonaws.mgn#S3BucketSource",
-          "traits": {
-            "smithy.api#documentation": "<p>Start import request s3 bucket source.</p>",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Start import request.</p>"
-      }
-    },
-    "com.amazonaws.mgn#StartImportResponse": {
-      "type": "structure",
-      "members": {
-        "importTask": {
-          "target": "com.amazonaws.mgn#ImportTask",
-          "traits": {
-            "smithy.api#documentation": "<p>Start import response import task.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "<p>Start import response.</p>"
       }
     },
     "com.amazonaws.mgn#StartReplication": {
@@ -8923,12 +7477,6 @@
           "traits": {
             "smithy.api#documentation": "<p>ID of source server on which to start replication.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID on which to start replication.</p>"
           }
         }
       }
@@ -8976,12 +7524,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Start Test by Tags.</p>"
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Start Test for Account ID.</p>"
-          }
         }
       }
     },
@@ -9008,64 +7550,10 @@
         }
       }
     },
-    "com.amazonaws.mgn#StopReplication": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#StopReplicationRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#SourceServer"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ConflictException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ServiceQuotaExceededException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Stop Replication.</p>",
-        "smithy.api#http": {
-          "uri": "/StopReplication",
-          "method": "POST",
-          "code": 200
-        }
-      }
-    },
-    "com.amazonaws.mgn#StopReplicationRequest": {
-      "type": "structure",
-      "members": {
-        "sourceServerID": {
-          "target": "com.amazonaws.mgn#SourceServerID",
-          "traits": {
-            "smithy.api#documentation": "<p>Stop Replication Request source server ID.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Stop Replication Request account ID.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.amazonaws.mgn#StrictlyPositiveInteger": {
       "type": "integer",
       "traits": {
+        "smithy.api#default": 0,
         "smithy.api#range": {
           "min": 1
         }
@@ -9171,10 +7659,6 @@
         "target": "com.amazonaws.mgn#TagValue"
       },
       "traits": {
-        "smithy.api#length": {
-          "min": 0,
-          "max": 50
-        },
         "smithy.api#sensitive": {}
       }
     },
@@ -9217,6 +7701,7 @@
         "order": {
           "target": "com.amazonaws.mgn#OrderType",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Template post migration custom action order.</p>"
           }
         },
@@ -9235,6 +7720,7 @@
         "timeoutSeconds": {
           "target": "com.amazonaws.mgn#StrictlyPositiveInteger",
           "traits": {
+            "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Template post migration custom action timeout in seconds.</p>"
           }
         },
@@ -9254,24 +7740,6 @@
           "target": "com.amazonaws.mgn#OperatingSystemString",
           "traits": {
             "smithy.api#documentation": "<p>Operating system eligible for this template post migration custom action.</p>"
-          }
-        },
-        "externalParameters": {
-          "target": "com.amazonaws.mgn#SsmDocumentExternalParameters",
-          "traits": {
-            "smithy.api#documentation": "<p>Template post migration custom action external parameters.</p>"
-          }
-        },
-        "description": {
-          "target": "com.amazonaws.mgn#ActionDescription",
-          "traits": {
-            "smithy.api#documentation": "<p>Template post migration custom action description.</p>"
-          }
-        },
-        "category": {
-          "target": "com.amazonaws.mgn#ActionCategory",
-          "traits": {
-            "smithy.api#documentation": "<p>Template post migration custom action category.</p>"
           }
         }
       }
@@ -9345,12 +7813,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Terminate Target instance by Tags.</p>"
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Terminate Target instance by Account ID</p>"
-          }
         }
       }
     },
@@ -9412,15 +7874,6 @@
         "smithy.api#httpError": 429
       }
     },
-    "com.amazonaws.mgn#Throughput": {
-      "type": "long",
-      "traits": {
-        "smithy.api#range": {
-          "min": 125,
-          "max": 1000
-        }
-      }
-    },
     "com.amazonaws.mgn#UnarchiveApplication": {
       "type": "operation",
       "input": {
@@ -9457,12 +7910,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Application ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
@@ -9503,12 +7950,6 @@
           "traits": {
             "smithy.api#documentation": "<p>Wave ID.</p>",
             "smithy.api#required": {}
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
@@ -9634,69 +8075,7 @@
           "traits": {
             "smithy.api#documentation": "<p>Application description.</p>"
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
-          }
         }
-      }
-    },
-    "com.amazonaws.mgn#UpdateConnector": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#UpdateConnectorRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#Connector"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ValidationException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Update Connector.</p>",
-        "smithy.api#http": {
-          "uri": "/UpdateConnector",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#idempotent": {}
-      }
-    },
-    "com.amazonaws.mgn#UpdateConnectorRequest": {
-      "type": "structure",
-      "members": {
-        "connectorID": {
-          "target": "com.amazonaws.mgn#ConnectorID",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Connector request connector ID.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "com.amazonaws.mgn#ConnectorName",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Connector request name.</p>"
-          }
-        },
-        "ssmCommandConfig": {
-          "target": "com.amazonaws.mgn#ConnectorSsmCommandConfig",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Connector request SSM command config.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.mgn#UpdateLaunchConfiguration": {
@@ -9796,12 +8175,6 @@
           "target": "com.amazonaws.mgn#TagValue",
           "traits": {
             "smithy.api#documentation": "<p>Launch configuration map auto tagging MPE ID.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Launch configuration Account ID.</p>"
           }
         }
       }
@@ -10031,7 +8404,7 @@
           }
         },
         "bandwidthThrottling": {
-          "target": "com.amazonaws.mgn#BandwidthThrottling",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
             "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Update replication configuration bandwidth throttling request.</p>"
@@ -10053,18 +8426,6 @@
           "target": "com.amazonaws.mgn#TagsMap",
           "traits": {
             "smithy.api#documentation": "<p>Update replication configuration Staging Area Tags request.</p>"
-          }
-        },
-        "useFipsEndpoint": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Update replication configuration use Fips Endpoint.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Update replication configuration Account ID request.</p>"
           }
         }
       }
@@ -10165,7 +8526,7 @@
           }
         },
         "bandwidthThrottling": {
-          "target": "com.amazonaws.mgn#BandwidthThrottling",
+          "target": "com.amazonaws.mgn#PositiveInteger",
           "traits": {
             "smithy.api#default": 0,
             "smithy.api#documentation": "<p>Update replication configuration template bandwidth throttling request.</p>"
@@ -10188,42 +8549,7 @@
           "traits": {
             "smithy.api#documentation": "<p>Update replication configuration template Staging Area Tags request.</p>"
           }
-        },
-        "useFipsEndpoint": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "<p>Update replication configuration template use Fips Endpoint request.</p>"
-          }
         }
-      }
-    },
-    "com.amazonaws.mgn#UpdateSourceServer": {
-      "type": "operation",
-      "input": {
-        "target": "com.amazonaws.mgn#UpdateSourceServerRequest"
-      },
-      "output": {
-        "target": "com.amazonaws.mgn#SourceServer"
-      },
-      "errors": [
-        {
-          "target": "com.amazonaws.mgn#ConflictException"
-        },
-        {
-          "target": "com.amazonaws.mgn#ResourceNotFoundException"
-        },
-        {
-          "target": "com.amazonaws.mgn#UninitializedAccountException"
-        }
-      ],
-      "traits": {
-        "smithy.api#documentation": "<p>Update Source Server.</p>",
-        "smithy.api#http": {
-          "uri": "/UpdateSourceServer",
-          "method": "POST",
-          "code": 200
-        },
-        "smithy.api#idempotent": {}
       }
     },
     "com.amazonaws.mgn#UpdateSourceServerReplicationType": {
@@ -10273,40 +8599,7 @@
             "smithy.api#documentation": "<p>Replication type to which to update source server.</p>",
             "smithy.api#required": {}
           }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID on which to update replication type.</p>"
-          }
         }
-      }
-    },
-    "com.amazonaws.mgn#UpdateSourceServerRequest": {
-      "type": "structure",
-      "members": {
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Source Server request account ID.</p>"
-          }
-        },
-        "sourceServerID": {
-          "target": "com.amazonaws.mgn#SourceServerID",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Source Server request source server ID.</p>",
-            "smithy.api#required": {}
-          }
-        },
-        "connectorAction": {
-          "target": "com.amazonaws.mgn#SourceServerConnectorAction",
-          "traits": {
-            "smithy.api#documentation": "<p>Update Source Server request connector action.</p>"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.amazonaws.mgn#UpdateWave": {
@@ -10358,12 +8651,6 @@
           "target": "com.amazonaws.mgn#WaveDescription",
           "traits": {
             "smithy.api#documentation": "<p>Wave description.</p>"
-          }
-        },
-        "accountID": {
-          "target": "com.amazonaws.mgn#AccountID",
-          "traits": {
-            "smithy.api#documentation": "<p>Account ID.</p>"
           }
         }
       }
