@@ -13,7 +13,7 @@
     "generate:types": "tsx ./scripts/gen-sdk-types.mts",
     "generate:mappings": "tsx ./scripts/gen-sdk-mappings.mts",
     "build": "tsup src/index.ts --format esm --target esnext --dts",
-    "test": "vitest",
+    "test": "vitest run",
     "watch": "tsup src/index.ts --format esm --target esnext --watch",
     "analyze:bundle": "sh ./scripts/analyze-bundle.sh",
     "bench:synth": "pnpm -r --filter @benchmark/infra synth",

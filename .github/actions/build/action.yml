@@ -5,7 +5,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
 
-    - uses: pnpm/action-setup@v2
+    - uses: pnpm/action-setup@v3
       with:
         version: 8
 
@@ -21,7 +21,7 @@ runs:
       run: git diff --exit-code
       shell: bash
 
-    - name: "Generate"
+    - name: Generate
       run: pnpm generate
       shell: bash
 

@@ -154,7 +154,6 @@ export const AWS: SDK = new Proxy({} as any, {
               ).text;
 
               if (errorCode) {
-                console.log({ errorCode, errorMessage });
                 throw new AWSError(errorMessage, errorCode);
               }
             } else {
