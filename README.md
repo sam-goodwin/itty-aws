@@ -34,8 +34,8 @@ This project aims to eliminate the following issues with the official AWS SDK:
 
 The entire AWS SDK (including all Services and APIs) fits in to a
 
-- Minified bundle size of: `24 KB`.
-- Un-minified bundle size of: `37 KB`.
+- Minified bundle size of: `22 KB`.
+- Un-minified bundle size of: `32 KB`.
 
 > 💪 It is possible to reduce this even further.
 
