@@ -1,75 +1,110 @@
-import { ReadableStream } from "stream/web";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { AWS } from "../src";
 
-import { S3BucketName } from "./constants.js";
+import { s3Endpoint } from "./constants.js";
 
-const S3 = new AWS.S3();
+const client = new AWS.S3({
+  endpoint: s3Endpoint,
+});
+
+interface TestContext {
+  bucket: string;
+}
 
 const Key = "test-key";
 const Body = "test-body";
 
-describe("s3", () => {
-  test("S3 PutObject, GetObject, HeadObject", async () => {
-    await S3.putObject({
-      Bucket: S3BucketName,
+describe("S3", () => {
+  beforeEach<TestContext>(async (context) => {
+    const bucket = `itty-s3-bucket-${Date.now()}`;
+    await client.createBucket({
+      Bucket: bucket,
+    });
+    context.bucket = bucket;
+  });
+
+  afterEach<TestContext>(async (context) => {
+    const { Contents } = await client.listObjectsV2({
+      Bucket: context.bucket,
+    });
+
+    for (const object of Contents ?? []) {
+      await client.deleteObject({
+        Bucket: context.bucket,
+        Key: object.Key!,
+      });
+    }
+
+    await client.deleteBucket({
+      Bucket: context.bucket,
+    });
+  });
+
+  test<TestContext>("putObject, getObject, headObject", async (context) => {
+    await client.putObject({
+      Bucket: context.bucket,
       Key,
       Body,
     });
 
-    const response = await S3.getObject({
-      Bucket: S3BucketName,
+    const response = await client.getObject({
+      Bucket: context.bucket,
       Key,
     });
 
     expect(response?.Body?.toString()).toEqual(Body);
 
-    const head = await S3.headObject({
-      Bucket: S3BucketName,
+    const head = await client.headObject({
+      Bucket: context.bucket,
       Key,
     });
 
     expect(head.ContentLength).toEqual(9);
 
-    await S3.deleteObject({
-      Bucket: S3BucketName,
+    await client.deleteObject({
+      Bucket: context.bucket,
       Key,
     });
   });
 
-  test("listObjectsV2", async () => {
-    let response = await S3.listObjectsV2({
-      Bucket: S3BucketName,
-    });
+  test<TestContext>("listObjectsV2", async (context) => {
+    {
+      const response = await client.listObjectsV2({
+        Bucket: context.bucket,
+      });
 
-    expect(response.Contents).toBe(undefined);
+      expect(response.Contents).toBe(undefined);
+    }
 
-    await S3.putObject({
-      Bucket: S3BucketName,
-      Key,
-      Body,
-    });
+    {
+      await client.putObject({
+        Bucket: context.bucket,
+        Key,
+        Body,
+      });
 
-    response = await S3.listObjectsV2({
-      Bucket: S3BucketName,
-    });
+      const response = await client.listObjectsV2({
+        Bucket: context.bucket,
+      });
 
-    expect(response).toMatchObject({
-      Contents: [
-        {
-          Key,
-          ETag: expect.any(String),
-          LastModified: expect.any(String),
-          Owner: {
-            DisplayName: expect.any(String),
-            ID: expect.any(String),
+      expect(response).toMatchObject({
+        Contents: [
+          {
+            Key,
+            ETag: expect.any(String),
+            LastModified: expect.any(String),
+            Owner: {
+              DisplayName: expect.any(String),
+              ID: expect.any(String),
+            },
+            StorageClass: "STANDARD",
+            Size: 9,
           },
-          StorageClass: "STANDARD",
-          Size: 9,
-        },
-      ],
-      MaxKeys: 1000,
-      IsTruncated: false,
-      Name: S3BucketName,
-    });
+        ],
+        MaxKeys: 1000,
+        IsTruncated: false,
+        Name: context.bucket,
+      });
+    }
   });
 });

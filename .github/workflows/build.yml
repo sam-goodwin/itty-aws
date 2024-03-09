@@ -1,24 +1,21 @@
 name: build
 on:
   pull_request: {}
-  workflow_call:
-    secrets:
-      AWS_ACCESS_KEY_ID:
-        required: true
-      AWS_SECRET_ACCESS_KEY:
-        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
     concurrency: build
     env:
       CI: "true"
-      CLEAN_UP_STACK: "1"
     steps:
       - uses: actions/checkout@v3
+
       - uses: ./.github/actions/build
+
+      - name: Start LocalStack
+        uses: LocalStack/setup-localstack@v0.1.2
+        with:
+          image-tag: "latest"
+
       - name: Run tests
         run: pnpm test
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

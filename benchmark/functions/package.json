@@ -3,8 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "tsup src/*.ts --format esm --target esnext"
+  },
   "dependencies": {
-    "itty-aws": "workspace:^",
-    "@aws-sdk/client-dynamodb": "^3.245.0"
+    "@aws-sdk/client-dynamodb": "^3.245.0",
+    "itty-aws": "workspace:^"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1"
   }
 }

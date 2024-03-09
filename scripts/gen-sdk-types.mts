@@ -286,7 +286,7 @@ const sourceFile = ts.factory.createSourceFile(
 
 const printer = ts.createPrinter();
 
-const text = prettier.format(printer.printFile(sourceFile), {
+const text = await prettier.format(printer.printFile(sourceFile), {
   parser: "typescript",
 });
 

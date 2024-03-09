@@ -1,4 +1,5 @@
-lib/
+/dist/
+/benchmark/infra/lib/
 node_modules/
 sdk.generated.ts
 .bundle

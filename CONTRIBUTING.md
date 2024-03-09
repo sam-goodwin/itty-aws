@@ -44,11 +44,21 @@ The tests require that you have credentials in your environment variables:
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
+
+Alternatively, you can use LocalStack with docker:
+
+```sh
+docker run \
+  --rm -it \
+  -p 4566:4566 \
+  -p 4510-4559:4510-4559 \
+  localstack/localstack
+```
 
 The test procedure is as follows:
 
-1. run [`./test/setup.ts`](./test/setup.ts) to create AWS Resources for running tests again. See the [./test/constants.ts](./test/constants.ts) for the names (e.g. DynamoDB Table name) of Resources that will be created. This script uses `itty-aws` itself to create the Resources, so they also act as tests for the AWS Control Plane.
-2. Run `jest` which will run all the tests in [`./test/**.test.ts`](./test/). The tests will interact with Resources, putting and getting data, acting as tests for the AWS Data Plane.
+- Run `vitest` which will run all the tests in [`./test/**.test.ts`](./test/). The tests will create and interact with Resources, putting and getting data, acting as tests for the AWS Data Plane.
 
 ## Benchmark
 

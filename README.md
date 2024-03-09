@@ -11,9 +11,9 @@ Known to work:
 - ✅ Any modern API using plain JSON protocol should work out of the box.
 - ✅ DynamoDB
 - ✅ EventBridge
+- ✅ SQS
 - ✅ S3 `CreateBucket`, `GetObject`, `HeadObject`, `PutObject`, `DeleteObject`, `ListObjectsV2`
 - ⛔️ S3 the remaining S3 APis likely don't work due to inconsistencies in the XML API.
-- ⛔️ SQS (see: [#1](https://github.com/sam-goodwin/itty-aws/issues/1))
 - ⛔️ SNS (see: [#2](https://github.com/sam-goodwin/itty-aws/issues/2))
 
 ## Why?
@@ -33,8 +33,8 @@ This project aims to eliminate the following issues with the official AWS SDK:
 
 The entire AWS SDK (including all Services and APIs) fits in to a
 
-- Minified bundle size of: `49 KB`.
-- Un-minified bundle size of: `95 KB`.
+- Minified bundle size of: `22 KB`.
+- Un-minified bundle size of: `32 KB`.
 
 > 💪 It is possible to reduce this even further.
 

@@ -1,11 +1,14 @@
-export const TableName = "itty-test-table";
+const hasCredentials = process.env.AWS_ACCESS_KEY_ID != undefined;
 
-export const SsmParameterName = "itty-parameter-name";
+process.env.AWS_ACCESS_KEY_ID ??= "test";
+process.env.AWS_SECRET_ACCESS_KEY ??= "test";
+process.env.AWS_REGION ??= "us-east-2";
+process.env.AWS_DEFAULT_REGION ??= process.env.AWS_REGION;
 
-export const SsmParameterValue = "itty-parameter-value";
+export const endpoint: string | undefined = hasCredentials
+  ? undefined
+  : "http://localhost:4566";
 
-export const EventBusName = "itty-event-bus";
-
-export const S3BucketName = "itty-s3-bucket";
-
-process.env.AWS_REGION = "us-west-2";
+export const s3Endpoint: string | undefined = hasCredentials
+  ? undefined
+  : "http://s3.localhost.localstack.cloud:4566";
