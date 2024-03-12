@@ -41,6 +41,9 @@ export const AWS: SDK = new Proxy({} as any, {
               if (className === "S3") {
                 return createS3Handler(methodName as any);
               }
+              if (className === "SNS") {
+                return createSnsHandler(methodName as any);
+              }
               return createDefaultHandler(methodName);
             },
           },
@@ -78,6 +81,140 @@ export const AWS: SDK = new Proxy({} as any, {
               throw isJson
                 ? new AWSError(await response.json())
                 : new Error(await response.text());
+            }
+          };
+        }
+
+        function createSnsHandler(methodName: string) {
+          return async (input: any) => {
+            const url = new URL(endpoint);
+            const { searchParams } = url;
+            for (const [key, value] of Object.entries(input)) {
+              if (Array.isArray(value)) {
+                for (const [i, entry] of value.entries()) {
+                  for (const [memberKey, memberValue] of Object.entries(
+                    entry,
+                  )) {
+                    searchParams.set(
+                      `${key}.member.${i + 1}.${memberKey}`,
+                      memberValue as any,
+                    );
+                  }
+                }
+              } else {
+                searchParams.set(key, value as any);
+              }
+            }
+            searchParams.set("Action", resolveAction(methodName));
+            searchParams.set("Version", "2010-03-31");
+
+            const response = await sendRequest(url, {
+              method: "POST",
+              headers: {
+                // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
+                Host: url.host,
+                "Accept-Encoding": "identity",
+                "Content-Type": resolveContentType(className),
+                "X-Amz-Target": resolveXAmzTarget(className, methodName),
+                "User-Agent": "itty-aws",
+              },
+            });
+
+            const responseText = await response.text();
+            const parsedXml =
+              responseText !== "" ? parseXml(responseText) : undefined;
+            if (response.status < 200 || response.status >= 300) {
+              const errorXmlObject = (
+                (parsedXml?.children[0] as XmlElement).children.find(
+                  (child) =>
+                    child instanceof XmlElement && child.name === "Error",
+                ) as XmlElement
+              ).children as XmlElement[];
+              const errorCode = (
+                errorXmlObject.find((child) => child.name === "Code")
+                  ?.children[0] as XmlElement
+              ).text;
+              const errorMessage = (
+                errorXmlObject.find((child) => child.name === "Message")
+                  ?.children[0] as XmlElement
+              ).text;
+
+              if (errorCode) {
+                throw new AWSError(errorMessage, errorCode);
+              }
+            } else {
+              const xml = parseXml(responseText);
+              const response = xml.children.find(
+                (node) =>
+                  node instanceof XmlElement &&
+                  node.name.toLowerCase() ===
+                    `${methodName}Response`.toLowerCase(),
+              ) as XmlElement;
+              const result = response.children.find(
+                (node) =>
+                  node instanceof XmlElement &&
+                  node.name.toLowerCase() ===
+                    `${methodName}Result`.toLowerCase(),
+              ) as XmlElement | undefined;
+
+              if (result === undefined) {
+                return {};
+              }
+
+              const formatResultXmlElement = (element: XmlElement) => {
+                const result: Record<string, any> = {};
+                for (const child of element.children) {
+                  if (child instanceof XmlElement) {
+                    if (
+                      child.name &&
+                      child.children.length === 1 &&
+                      child.children[0] instanceof XmlText
+                    ) {
+                      result[child.name] = child.text;
+                    } else if (
+                      child.children[0] instanceof XmlElement &&
+                      child.children[0].name === "entry"
+                    ) {
+                      const record: Record<string, any> = {};
+                      for (const entry of child.children) {
+                        if (entry instanceof XmlElement) {
+                          const key = entry.children.find(
+                            (node) =>
+                              node instanceof XmlElement && node.name === "key",
+                          ) as XmlElement;
+                          const value = entry.children.find(
+                            (node) =>
+                              node instanceof XmlElement &&
+                              node.name === "value",
+                          ) as XmlElement;
+                          record[key.text] = value.text;
+                        }
+                        result[child.name] = record;
+                      }
+                    } else if (
+                      child.children[0] instanceof XmlElement &&
+                      child.children[0].name === "member"
+                    ) {
+                      const values = new Array<any>();
+                      for (const member of child.children) {
+                        if (member instanceof XmlElement) {
+                          const record: Record<string, any> = {};
+                          for (const entry of member.children) {
+                            if (entry instanceof XmlElement) {
+                              record[entry.name] = entry.text;
+                            }
+                          }
+                          values.push(record);
+                        }
+                      }
+                      result[child.name] = values;
+                    }
+                  }
+                }
+                return result;
+              };
+
+              return formatResultXmlElement(result);
             }
           };
         }
