@@ -39,28 +39,32 @@ describe("SNS", () => {
     });
   });
 
-  // Skip because LocalStack does not support this feature (or has a bug).
-  test.skip<TestContext>("publishBatch", async (context) => {
+  test<TestContext>("publishBatch", async (context) => {
     const response = await client.publishBatch({
       TopicArn: context.topicARN,
       PublishBatchRequestEntries: [
         {
           Id: "1",
           Message: "hello",
-          MessageGroupId: "group1",
-          MessageDeduplicationId: "dedup1",
         },
         {
           Id: "2",
           Message: "world",
-          MessageGroupId: "group1",
-          MessageDeduplicationId: "dedup2",
         },
       ],
     });
 
     expect(response).toMatchObject({
-      MessageId: expect.any(String),
+      Successful: [
+        {
+          Id: "1",
+          MessageId: expect.any(String),
+        },
+        {
+          Id: "2",
+          MessageId: expect.any(String),
+        },
+      ],
     });
   });
 

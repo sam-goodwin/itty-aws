@@ -88,29 +88,26 @@ export const AWS: SDK = new Proxy({} as any, {
         function createSnsHandler(methodName: string) {
           return async (input: any) => {
             const url = new URL(endpoint);
+            const { searchParams } = url;
             for (const [k, v] of Object.entries(input)) {
               if (k !== "PublishBatchRequestEntries") {
-                url.searchParams.set(k, v as any);
+                searchParams.set(k, v as any);
               } else {
                 for (const [i, entry] of (v as any[]).entries()) {
                   for (const [k, v] of Object.entries(entry)) {
-                    url.searchParams.set(
-                      `PublishBatchRequestEntries.${k}.${i}`,
-                      // `PublishBatchRequestEntries.${k}.${i + 1}`,
-                      // `PublishBatchRequestEntry.${i + 1}.${k}`,
-                      // `PublishBatchRequestEntries.${i + 1}.${k}`,
+                    searchParams.set(
+                      `PublishBatchRequestEntries.member.${i + 1}.${k}`,
                       v as any,
                     );
                   }
                 }
               }
             }
-            url.searchParams.set("Action", resolveAction(methodName));
-            url.searchParams.set("Version", "2010-03-31");
+            searchParams.set("Action", resolveAction(methodName));
+            searchParams.set("Version", "2010-03-31");
 
             const response = await sendRequest(url, {
               method: "POST",
-              body: JSON.stringify(input),
               headers: {
                 // host is required by AWS Signature V4: https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
                 Host: url.host,
@@ -173,8 +170,6 @@ export const AWS: SDK = new Proxy({} as any, {
                     ) {
                       result[child.name] = child.text;
                     } else if (
-                      child.name &&
-                      child.children.length > 1 &&
                       child.children[0] instanceof XmlElement &&
                       child.children[0].name === "entry"
                     ) {
@@ -194,6 +189,23 @@ export const AWS: SDK = new Proxy({} as any, {
                         }
                         result[child.name] = record;
                       }
+                    } else if (
+                      child.children[0] instanceof XmlElement &&
+                      child.children[0].name === "member"
+                    ) {
+                      const values = new Array<any>();
+                      for (const member of child.children) {
+                        if (member instanceof XmlElement) {
+                          const record: Record<string, any> = {};
+                          for (const entry of member.children) {
+                            if (entry instanceof XmlElement) {
+                              record[entry.name] = entry.text;
+                            }
+                          }
+                          values.push(record);
+                        }
+                      }
+                      result[child.name] = values;
                     }
                   }
                 }
