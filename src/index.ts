@@ -89,18 +89,20 @@ export const AWS: SDK = new Proxy({} as any, {
           return async (input: any) => {
             const url = new URL(endpoint);
             const { searchParams } = url;
-            for (const [k, v] of Object.entries(input)) {
-              if (k !== "PublishBatchRequestEntries") {
-                searchParams.set(k, v as any);
-              } else {
-                for (const [i, entry] of (v as any[]).entries()) {
-                  for (const [k, v] of Object.entries(entry)) {
+            for (const [key, value] of Object.entries(input)) {
+              if (Array.isArray(value)) {
+                for (const [i, entry] of value.entries()) {
+                  for (const [memberKey, memberValue] of Object.entries(
+                    entry,
+                  )) {
                     searchParams.set(
-                      `PublishBatchRequestEntries.member.${i + 1}.${k}`,
-                      v as any,
+                      `${key}.member.${i + 1}.${memberKey}`,
+                      memberValue as any,
                     );
                   }
                 }
+              } else {
+                searchParams.set(key, value as any);
               }
             }
             searchParams.set("Action", resolveAction(methodName));
