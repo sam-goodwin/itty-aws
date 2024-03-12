@@ -81,4 +81,44 @@ describe("SNS", () => {
       },
     });
   });
+
+  test<TestContext>("setTopicAttributes", async (context) => {
+    const response = await client.setTopicAttributes({
+      TopicArn: context.topicARN,
+      AttributeName: "DisplayName",
+      AttributeValue: "itty-sns-topic",
+    });
+
+    expect(response).toMatchObject({});
+  });
+
+  test<TestContext>("subscribe, unsubscribe", async (context) => {
+    const response = await client.subscribe({
+      TopicArn: context.topicARN,
+      Protocol: "sms",
+      Endpoint: "+1234567890",
+    });
+
+    expect(response).toMatchObject({
+      SubscriptionArn: expect.any(String),
+    });
+
+    expect(() =>
+      client.unsubscribe({
+        SubscriptionArn: response.SubscriptionArn!,
+      }),
+    ).not.toThrowError();
+  });
+
+  test<TestContext>("listTopics", async (context) => {
+    const response = await client.listTopics({});
+
+    expect(response).toMatchObject({
+      Topics: [
+        {
+          TopicArn: expect.any(String),
+        },
+      ],
+    });
+  });
 });
