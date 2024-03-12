@@ -1,6 +1,6 @@
 # itty-aws
 
-This is a teeny-tiny AWS SDK implementation for TypeScript using [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that fits everything into `~49 KB`, including all Services and APIs. The name is an homage to the awesome [itty-router](https://github.com/kwhitley/itty-router).
+This is a teeny-tiny AWS SDK implementation for TypeScript using [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that fits everything into `~37 KB`, including all Services and APIs. The name is an homage to the awesome [itty-router](https://github.com/kwhitley/itty-router).
 
 > 🛠 This is a highly experimental API, do not use for anything serious.
 
@@ -33,8 +33,8 @@ This project aims to eliminate the following issues with the official AWS SDK:
 
 The entire AWS SDK (including all Services and APIs) fits in to a
 
-- Minified bundle size of: `22 KB`.
-- Un-minified bundle size of: `32 KB`.
+- Minified bundle size of: `24 KB`.
+- Un-minified bundle size of: `37 KB`.
 
 > 💪 It is possible to reduce this even further.
 
