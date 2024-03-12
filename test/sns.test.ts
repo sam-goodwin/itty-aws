@@ -116,7 +116,7 @@ describe("SNS", () => {
     expect(response).toMatchObject({
       Topics: [
         {
-          TopicArn: expect.any(String),
+          TopicArn: context.topicARN,
         },
       ],
     });
