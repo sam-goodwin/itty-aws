@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Timestream_20181101 {
+export declare class TimestreamQuery extends AWSServiceClient {
   cancelQuery(
     input: CancelQueryRequest,
   ): Effect.Effect<
@@ -171,8 +172,6 @@ export interface Timestream_20181101 {
     | CommonAwsError
   >;
 }
-
-export type TimestreamQuery = Timestream_20181101;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CustomerProfiles_20200815 {
+export declare class CustomerProfiles extends AWSServiceClient {
   addProfileKey(
     input: AddProfileKeyRequest,
   ): Effect.Effect<
@@ -887,8 +888,6 @@ export interface CustomerProfiles_20200815 {
     | CommonAwsError
   >;
 }
-
-export type CustomerProfiles = CustomerProfiles_20200815;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

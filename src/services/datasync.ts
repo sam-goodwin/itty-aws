@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface FmrsService {
+export declare class DataSync extends AWSServiceClient {
   cancelTaskExecution(
     input: CancelTaskExecutionRequest,
   ): Effect.Effect<
@@ -322,7 +323,7 @@ export interface FmrsService {
   >;
 }
 
-export type Datasync = FmrsService;
+export declare class Datasync extends DataSync {}
 
 export type ActivationKey = string;
 

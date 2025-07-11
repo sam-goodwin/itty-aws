@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface FaultInjectionSimulator {
+export declare class fis extends AWSServiceClient {
   createExperimentTemplate(
     input: CreateExperimentTemplateRequest,
   ): Effect.Effect<
@@ -166,7 +167,7 @@ export interface FaultInjectionSimulator {
   >;
 }
 
-export type Fis = FaultInjectionSimulator;
+export declare class Fis extends fis {}
 
 export type AccountTargeting = "SINGLE_ACCOUNT" | "MULTI_ACCOUNT";
 export interface Action {

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Inspector2 {
+export declare class Inspector2 extends AWSServiceClient {
   associateMember(
     input: AssociateMemberRequest,
   ): Effect.Effect<

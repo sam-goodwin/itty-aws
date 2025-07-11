@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonRecycleBin {
+export declare class rbin extends AWSServiceClient {
   createRule(
     input: CreateRuleRequest,
   ): Effect.Effect<
@@ -97,7 +98,7 @@ export interface AmazonRecycleBin {
   >;
 }
 
-export type Rbin = AmazonRecycleBin;
+export declare class Rbin extends rbin {}
 
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",

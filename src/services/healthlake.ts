@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface HealthLake {
+export declare class HealthLake extends AWSServiceClient {
   createFHIRDatastore(
     input: CreateFHIRDatastoreRequest,
   ): Effect.Effect<
@@ -127,7 +128,7 @@ export interface HealthLake {
   >;
 }
 
-export type Healthlake = HealthLake;
+export declare class Healthlake extends HealthLake {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

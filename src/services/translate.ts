@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSShineFrontendService_20170701 {
+export declare class Translate extends AWSServiceClient {
   createParallelData(
     input: CreateParallelDataRequest,
   ): Effect.Effect<
@@ -208,8 +209,6 @@ export interface AWSShineFrontendService_20170701 {
     | CommonAwsError
   >;
 }
-
-export type Translate = AWSShineFrontendService_20170701;
 
 export interface AppliedTerminology {
   Name?: string;

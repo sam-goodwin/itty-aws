@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonRDSv19 {
+export declare class Neptune extends AWSServiceClient {
   addRoleToDBCluster(
     input: AddRoleToDBClusterMessage,
   ): Effect.Effect<
@@ -628,8 +629,6 @@ export interface AmazonRDSv19 {
     | CommonAwsError
   >;
 }
-
-export type Neptune = AmazonRDSv19;
 
 export interface AddRoleToDBClusterMessage {
   DBClusterIdentifier: string;

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface PhotonAdminProxyService {
+export declare class AppStream extends AWSServiceClient {
   associateAppBlockBuilderAppBlock(
     input: AssociateAppBlockBuilderAppBlockRequest,
   ): Effect.Effect<
@@ -727,7 +728,7 @@ export interface PhotonAdminProxyService {
   >;
 }
 
-export type Appstream = PhotonAdminProxyService;
+export declare class Appstream extends AppStream {}
 
 export interface AccessEndpoint {
   EndpointType: AccessEndpointType;

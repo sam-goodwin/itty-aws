@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface GreengrassV2 {
+export declare class GreengrassV2 extends AWSServiceClient {
   associateServiceRoleToAccount(
     input: AssociateServiceRoleToAccountRequest,
   ): Effect.Effect<
@@ -299,7 +300,7 @@ export interface GreengrassV2 {
   >;
 }
 
-export type Greengrassv2 = GreengrassV2;
+export declare class Greengrassv2 extends GreengrassV2 {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

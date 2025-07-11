@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CloudFormation {
+export declare class CloudFormation extends AWSServiceClient {
   activateOrganizationsAccess(
     input: ActivateOrganizationsAccessInput,
   ): Effect.Effect<
@@ -506,7 +507,7 @@ export interface CloudFormation {
   ): Effect.Effect<ValidateTemplateOutput, CommonAwsError>;
 }
 
-export type Cloudformation = CloudFormation;
+export declare class Cloudformation extends CloudFormation {}
 
 export type AcceptTermsAndConditions = boolean;
 

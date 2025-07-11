@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface NetworkManager {
+export declare class NetworkManager extends AWSServiceClient {
   acceptAttachment(
     input: AcceptAttachmentRequest,
   ): Effect.Effect<
@@ -1024,7 +1025,7 @@ export interface NetworkManager {
   >;
 }
 
-export type Networkmanager = NetworkManager;
+export declare class Networkmanager extends NetworkManager {}
 
 export interface AcceptAttachmentRequest {
   AttachmentId: string;

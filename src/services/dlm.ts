@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface dlm_20180112 {
+export declare class DLM extends AWSServiceClient {
   createLifecyclePolicy(
     input: CreateLifecyclePolicyRequest,
   ): Effect.Effect<
@@ -78,7 +79,7 @@ export interface dlm_20180112 {
   >;
 }
 
-export type Dlm = dlm_20180112;
+export declare class Dlm extends DLM {}
 
 export interface Action {
   Name: string;

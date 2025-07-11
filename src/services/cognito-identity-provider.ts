@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSCognitoIdentityProviderService {
+export declare class CognitoIdentityProvider extends AWSServiceClient {
   addCustomAttributes(
     input: AddCustomAttributesRequest,
   ): Effect.Effect<
@@ -1612,8 +1613,6 @@ export interface AWSCognitoIdentityProviderService {
     | CommonAwsError
   >;
 }
-
-export type CognitoIdentityProvider = AWSCognitoIdentityProviderService;
 
 export type AccessTokenValidityType = number;
 

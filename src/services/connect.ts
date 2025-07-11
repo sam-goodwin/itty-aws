@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonConnectService {
+export declare class Connect extends AWSServiceClient {
   activateEvaluationForm(
     input: ActivateEvaluationFormRequest,
   ): Effect.Effect<
@@ -3247,8 +3248,6 @@ export interface AmazonConnectService {
     | CommonAwsError
   >;
 }
-
-export type Connect = AmazonConnectService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

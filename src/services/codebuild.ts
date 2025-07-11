@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CodeBuild_20161006 {
+export declare class CodeBuild extends AWSServiceClient {
   batchDeleteBuilds(
     input: BatchDeleteBuildsInput,
   ): Effect.Effect<
@@ -365,7 +366,7 @@ export interface CodeBuild_20161006 {
   >;
 }
 
-export type Codebuild = CodeBuild_20161006;
+export declare class Codebuild extends CodeBuild {}
 
 export declare class AccountLimitExceededException extends EffectData.TaggedError(
   "AccountLimitExceededException",

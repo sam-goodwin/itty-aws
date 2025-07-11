@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Cloudfront2020_05_31 {
+export declare class CloudFront extends AWSServiceClient {
   associateAlias(
     input: AssociateAliasRequest,
   ): Effect.Effect<
@@ -1695,7 +1696,7 @@ export interface Cloudfront2020_05_31 {
   >;
 }
 
-export type Cloudfront = Cloudfront2020_05_31;
+export declare class Cloudfront extends CloudFront {}
 
 export type AccessControlAllowHeadersList = Array<string>;
 export type AccessControlAllowMethodsList =

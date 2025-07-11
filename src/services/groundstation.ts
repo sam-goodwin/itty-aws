@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface GroundStation {
+export declare class GroundStation extends AWSServiceClient {
   getMinuteUsage(
     input: GetMinuteUsageRequest,
   ): Effect.Effect<
@@ -40,7 +41,7 @@ export interface GroundStation {
   >;
 }
 
-export type Groundstation = GroundStation;
+export declare class Groundstation extends GroundStation {}
 
 export type AgentCpuCoresList = Array<number>;
 export interface AgentDetails {

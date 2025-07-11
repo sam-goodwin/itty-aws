@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSSimbaAPIService_v20180301 {
+export declare class FSx extends AWSServiceClient {
   associateFileSystemAliases(
     input: AssociateFileSystemAliasesRequest,
   ): Effect.Effect<
@@ -505,7 +506,7 @@ export interface AWSSimbaAPIService_v20180301 {
   >;
 }
 
-export type Fsx = AWSSimbaAPIService_v20180301;
+export declare class Fsx extends FSx {}
 
 export declare class AccessPointAlreadyOwnedByYou extends EffectData.TaggedError(
   "AccessPointAlreadyOwnedByYou",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface WallabyService {
+export declare class signer extends AWSServiceClient {
   addProfilePermission(
     input: AddProfilePermissionRequest,
   ): Effect.Effect<
@@ -205,7 +206,7 @@ export interface WallabyService {
   >;
 }
 
-export type Signer = WallabyService;
+export declare class Signer extends signer {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

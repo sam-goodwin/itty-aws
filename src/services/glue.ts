@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSGlue {
+export declare class Glue extends AWSServiceClient {
   batchCreatePartition(
     input: BatchCreatePartitionRequest,
   ): Effect.Effect<
@@ -2740,8 +2741,6 @@ export interface AWSGlue {
     | CommonAwsError
   >;
 }
-
-export type Glue = AWSGlue;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

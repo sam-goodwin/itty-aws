@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSElasticBeanstalkService {
+export declare class ElasticBeanstalk extends AWSServiceClient {
   abortEnvironmentUpdate(
     input: AbortEnvironmentUpdateMessage,
   ): Effect.Effect<{}, InsufficientPrivilegesException | CommonAwsError>;
@@ -262,8 +263,6 @@ export interface AWSElasticBeanstalkService {
     InsufficientPrivilegesException | TooManyBucketsException | CommonAwsError
   >;
 }
-
-export type ElasticBeanstalk = AWSElasticBeanstalkService;
 
 export type AbortableOperationInProgress = boolean;
 

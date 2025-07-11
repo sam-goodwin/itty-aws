@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Route53Resolver {
+export declare class Route53Resolver extends AWSServiceClient {
   associateFirewallRuleGroup(
     input: AssociateFirewallRuleGroupRequest,
   ): Effect.Effect<
@@ -798,7 +799,7 @@ export interface Route53Resolver {
   >;
 }
 
-export type Route53resolver = Route53Resolver;
+export declare class Route53resolver extends Route53Resolver {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

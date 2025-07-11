@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Parrot_v1 {
+export declare class Polly extends AWSServiceClient {
   deleteLexicon(
     input: DeleteLexiconInput,
   ): Effect.Effect<
@@ -88,8 +89,6 @@ export interface Parrot_v1 {
     | CommonAwsError
   >;
 }
-
-export type Polly = Parrot_v1;
 
 export type Alphabet = string;
 

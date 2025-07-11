@@ -459,10 +459,27 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
 
     // Generate imports
     let code = `import type { Effect${needsDataImport ? ", Data as EffectData" : ""} } from "effect";\n`;
-    code += `import type { CommonAwsError } from "../error.ts";\n\n`;
+    code += `import type { CommonAwsError } from "../error.ts";\n`;
+    code += `import { AWSServiceClient } from "../client.ts";\n\n`;
 
-    // Generate service interface first at the top
-    code += `export interface ${serviceShapeName} {\n`;
+    // Generate service interface first at the top - use consistent naming based on sdkId  
+    let consistentInterfaceName = sdkId.replace(/\s+/g, ''); // Remove spaces to make valid TS identifier
+    
+    // Check if the interface name conflicts with any existing type names in the manifest
+    const conflictsWithExistingType = Object.entries(manifest.shapes).some(([shapeId, shape]) => {
+      if (shapeId.includes('#')) {
+        const shapeName = extractShapeName(shapeId);
+        return shapeName === consistentInterfaceName && shape.type !== 'service';
+      }
+      return false;
+    });
+    
+    // If there's a conflict, append "Client" to the interface name
+    if (conflictsWithExistingType) {
+      consistentInterfaceName = `${consistentInterfaceName}Client`;
+    }
+    
+    code += `export declare class ${consistentInterfaceName} extends AWSServiceClient {\n`;
     
     for (const operation of operations) {
       const methodName = toLowerCamelCase(operation.name);
@@ -496,14 +513,14 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     
     code += "}\n\n";
 
-    // Add simplified service interface alias for easier use (only if different from service shape name)
+    // Add simplified service interface alias for easier use (only if different from consistent interface name)
     const simpleServiceName = serviceName === "dynamodb" ? "DynamoDB" : 
       serviceName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
     if (
-      simpleServiceName !== serviceShapeName &&
+      simpleServiceName !== consistentInterfaceName &&
       !shapeNameCounts.has(simpleServiceName)
     ) {
-      code += `export type ${simpleServiceName} = ${serviceShapeName};\n\n`;
+      code += `export declare class ${simpleServiceName} extends ${consistentInterfaceName} {}\n\n`;
     }
 
     // Track generated type names to avoid duplicates
@@ -651,11 +668,36 @@ const generateIndexFile = (serviceExports: Array<{ serviceName: string, sdkId: s
   return code;
 };
 
+// Generate AWS services type file
+const generateAwsFile = (serviceExports: Array<{ serviceName: string, serviceInterfaceName: string, friendlyName: string }>) => {
+  let code = `// Auto-generated AWS services re-exports\n\n`;
+
+  // Sort services alphabetically by friendly name
+  const sortedServices = serviceExports
+    .sort((a, b) => a.friendlyName.localeCompare(b.friendlyName));
+
+  // Re-export each service class directly using friendly names
+  sortedServices.forEach(({ serviceName, serviceInterfaceName, friendlyName }) => {
+    // Remove spaces and make it a valid TypeScript export name
+    const exportName = friendlyName.replace(/\s+/g, '');
+    
+    // If the friendly name differs from the interface name, alias it
+    if (exportName !== serviceInterfaceName) {
+      code += `export { ${serviceInterfaceName} as ${exportName} } from "./services/${serviceName}.ts";\n`;
+    } else {
+      code += `export { ${serviceInterfaceName} } from "./services/${serviceName}.ts";\n`;
+    }
+  });
+
+  return code;
+};
+
 // Main program
 const program = Effect.gen(function* () {
   const fs = yield* FileSystem.FileSystem;
   const servicesMetadata: Record<string, any> = {};
   const serviceExports: Array<{ serviceName: string, sdkId: string }> = [];
+  const awsServiceExports: Array<{ serviceName: string, serviceInterfaceName: string, friendlyName: string }> = [];
 
   // Read all manifest files from the manifests directory
   const manifestFiles = yield* fs.readDirectory("manifests");
@@ -675,13 +717,14 @@ const program = Effect.gen(function* () {
       const manifestContent = yield* fs.readFileString(manifestPath);
       const manifest = JSON.parse(manifestContent) as Manifest;
 
-      // Find service shape to get the sdkId
+      // Find service shape to get the sdkId and service interface name
       const serviceShapeEntry = Object.entries(manifest.shapes).find(([, shape]) => shape.type === "service");
       if (!serviceShapeEntry) {
         continue;
       }
       
-      const serviceShape = serviceShapeEntry[1];
+      const [serviceShapeId, serviceShape] = serviceShapeEntry;
+      const serviceShapeName = extractShapeName(serviceShapeId);
       const serviceTraits = serviceShape.traits || {};
       const serviceInfo = (serviceTraits["aws.api#service"] as any) || {};
       const sdkId = serviceInfo.sdkId || serviceName;
@@ -696,6 +739,29 @@ const program = Effect.gen(function* () {
         sdkId
       });
 
+      // Store AWS service interface info - use consistent naming based on sdkId
+      let awsInterfaceName = sdkId.replace(/\s+/g, ''); // Remove spaces to make valid TS identifier
+      
+      // Check if the interface name conflicts with any existing type names in the manifest
+      const conflictsWithExistingType = Object.entries(manifest.shapes).some(([shapeId, shape]) => {
+        if (shapeId.includes('#')) {
+          const shapeName = extractShapeName(shapeId);
+          return shapeName === awsInterfaceName && shape.type !== 'service';
+        }
+        return false;
+      });
+      
+      // If there's a conflict, append "Client" to the interface name
+      if (conflictsWithExistingType) {
+        awsInterfaceName = `${awsInterfaceName}Client`;
+      }
+      
+      awsServiceExports.push({
+        serviceName,
+        serviceInterfaceName: awsInterfaceName,
+        friendlyName: sdkId
+      });
+
       // Write the generated file
       const outputPath = `src/services/${serviceName}.ts`;
       yield* fs.writeFileString(outputPath, code);
@@ -706,11 +772,15 @@ const program = Effect.gen(function* () {
 
   // Generate metadata file
   const metadataCode = generateMetadataFile(servicesMetadata);
-  yield* fs.writeFileString("src/services/metadata.ts", metadataCode);
+  yield* fs.writeFileString("src/metadata.ts", metadataCode);
 
   // Generate index file
   const indexCode = generateIndexFile(serviceExports);
   yield* fs.writeFileString("src/services/index.ts", indexCode);
+
+  // Generate AWS services type file
+  const awsCode = generateAwsFile(awsServiceExports);
+  yield* fs.writeFileString("src/aws.ts", awsCode);
 });
 
 // Run the program

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ServerlessApplicationRepository {
+export declare class ServerlessApplicationRepository extends AWSServiceClient {
   createApplication(
     input: CreateApplicationRequest,
   ): Effect.Effect<
@@ -158,7 +159,7 @@ export interface ServerlessApplicationRepository {
   >;
 }
 
-export type Serverlessapplicationrepository = ServerlessApplicationRepository;
+export declare class Serverlessapplicationrepository extends ServerlessApplicationRepository {}
 
 export type __boolean = boolean;
 

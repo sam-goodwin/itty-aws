@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSDeepdishControlPlaneService {
+export declare class AppSync extends AWSServiceClient {
   associateApi(
     input: AssociateApiRequest,
   ): Effect.Effect<
@@ -803,7 +804,7 @@ export interface AWSDeepdishControlPlaneService {
   >;
 }
 
-export type Appsync = AWSDeepdishControlPlaneService;
+export declare class Appsync extends AppSync {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

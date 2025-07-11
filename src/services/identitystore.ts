@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIdentityStore {
+export declare class identitystore extends AWSServiceClient {
   getGroupId(
     input: GetGroupIdRequest,
   ): Effect.Effect<
@@ -34,7 +35,7 @@ export interface AWSIdentityStore {
   >;
 }
 
-export type Identitystore = AWSIdentityStore;
+export declare class Identitystore extends identitystore {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

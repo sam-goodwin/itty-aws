@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmplifyUIBuilder {
+export declare class AmplifyUIBuilder extends AWSServiceClient {
   exchangeCodeForToken(
     input: ExchangeCodeForTokenRequest,
   ): Effect.Effect<
@@ -61,7 +62,7 @@ export interface AmplifyUIBuilder {
   >;
 }
 
-export type Amplifyuibuilder = AmplifyUIBuilder;
+export declare class Amplifyuibuilder extends AmplifyUIBuilder {}
 
 export interface ActionParameters {
   type?: ComponentProperty;

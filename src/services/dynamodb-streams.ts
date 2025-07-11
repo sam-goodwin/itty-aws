@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface DynamoDBStreams_20120810 {
+export declare class DynamoDBStreams extends AWSServiceClient {
   describeStream(
     input: DescribeStreamInput,
   ): Effect.Effect<
@@ -36,7 +37,7 @@ export interface DynamoDBStreams_20120810 {
   >;
 }
 
-export type DynamodbStreams = DynamoDBStreams_20120810;
+export declare class DynamodbStreams extends DynamoDBStreams {}
 
 export type AttributeMap = Record<string, AttributeValue>;
 export type AttributeName = string;

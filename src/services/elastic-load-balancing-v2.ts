@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ElasticLoadBalancing_v10 {
+export declare class ElasticLoadBalancingv2 extends AWSServiceClient {
   addListenerCertificates(
     input: AddListenerCertificatesInput,
   ): Effect.Effect<
@@ -476,7 +477,7 @@ export interface ElasticLoadBalancing_v10 {
   >;
 }
 
-export type ElasticLoadBalancingV2 = ElasticLoadBalancing_v10;
+export declare class ElasticLoadBalancingV2 extends ElasticLoadBalancingv2 {}
 
 export interface Action {
   Type: ActionTypeEnum;

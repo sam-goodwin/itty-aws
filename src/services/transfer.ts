@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface TransferService {
+export declare class Transfer extends AWSServiceClient {
   createAccess(
     input: CreateAccessRequest,
   ): Effect.Effect<
@@ -314,8 +315,6 @@ export interface TransferService {
     | CommonAwsError
   >;
 }
-
-export type Transfer = TransferService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

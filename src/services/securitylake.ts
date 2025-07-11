@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SecurityLake {
+export declare class SecurityLake extends AWSServiceClient {
   createDataLakeExceptionSubscription(
     input: CreateDataLakeExceptionSubscriptionRequest,
   ): Effect.Effect<
@@ -124,7 +125,7 @@ export interface SecurityLake {
   >;
 }
 
-export type Securitylake = SecurityLake;
+export declare class Securitylake extends SecurityLake {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

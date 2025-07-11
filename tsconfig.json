@@ -2,6 +2,8 @@
   "include": ["src/**/*.ts", "scripts/manifest.ts", "scripts/npm.ts"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
     "types": ["bun-types", "@types/node"],
     // Enable latest features
     "lib": ["ESNext", "DOM"],
@@ -10,8 +12,7 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "esModuleInterop": true,
-    "noEmit": true,
-
+    "noEmit": false,
     // Bundler mode
     "module": "Preserve",
     "moduleResolution": "Bundler",

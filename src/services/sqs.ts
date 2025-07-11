@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonSQS {
+export declare class SQS extends AWSServiceClient {
   addPermission(
     input: AddPermissionRequest,
   ): Effect.Effect<
@@ -305,7 +306,7 @@ export interface AmazonSQS {
   >;
 }
 
-export type Sqs = AmazonSQS;
+export declare class Sqs extends SQS {}
 
 export type ActionNameList = Array<string>;
 export interface AddPermissionRequest {

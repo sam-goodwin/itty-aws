@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface IoTSecuredTunneling {
+export declare class IoTSecureTunneling extends AWSServiceClient {
   closeTunnel(
     input: CloseTunnelRequest,
   ): Effect.Effect<
@@ -46,7 +47,7 @@ export interface IoTSecuredTunneling {
   >;
 }
 
-export type Iotsecuretunneling = IoTSecuredTunneling;
+export declare class Iotsecuretunneling extends IoTSecureTunneling {}
 
 export type AmazonResourceName = string;
 

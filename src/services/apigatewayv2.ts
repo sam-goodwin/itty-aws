@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ApiGatewayV2 {
+export declare class ApiGatewayV2 extends AWSServiceClient {
   createApi(
     input: CreateApiRequest,
   ): Effect.Effect<
@@ -637,7 +638,7 @@ export interface ApiGatewayV2 {
   >;
 }
 
-export type Apigatewayv2 = ApiGatewayV2;
+export declare class Apigatewayv2 extends ApiGatewayV2 {}
 
 export type __boolean = boolean;
 

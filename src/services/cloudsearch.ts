@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface A9SearchCloudConfigService2013 {
+export declare class CloudSearch extends AWSServiceClient {
   buildSuggesters(
     input: BuildSuggestersRequest,
   ): Effect.Effect<
@@ -270,7 +271,7 @@ export interface A9SearchCloudConfigService2013 {
   >;
 }
 
-export type Cloudsearch = A9SearchCloudConfigService2013;
+export declare class Cloudsearch extends CloudSearch {}
 
 export interface AccessPoliciesStatus {
   Options: string;

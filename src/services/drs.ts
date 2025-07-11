@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ElasticDisasterRecoveryService {
+export declare class drs extends AWSServiceClient {
   createExtendedSourceServer(
     input: CreateExtendedSourceServerRequest,
   ): Effect.Effect<
@@ -116,7 +117,7 @@ export interface ElasticDisasterRecoveryService {
   >;
 }
 
-export type Drs = ElasticDisasterRecoveryService;
+export declare class Drs extends drs {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

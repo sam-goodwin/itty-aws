@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface GraniteServiceVersion20100801 {
+export declare class CloudWatch extends AWSServiceClient {
   deleteAlarms(
     input: DeleteAlarmsInput,
   ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
@@ -288,7 +289,7 @@ export interface GraniteServiceVersion20100801 {
   >;
 }
 
-export type Cloudwatch = GraniteServiceVersion20100801;
+export declare class Cloudwatch extends CloudWatch {}
 
 export type AccountId = string;
 

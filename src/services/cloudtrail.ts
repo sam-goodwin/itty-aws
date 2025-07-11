@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CloudTrail_20131101 {
+export declare class CloudTrail extends AWSServiceClient {
   addTags(
     input: AddTagsRequest,
   ): Effect.Effect<
@@ -924,7 +925,7 @@ export interface CloudTrail_20131101 {
   >;
 }
 
-export type Cloudtrail = CloudTrail_20131101;
+export declare class Cloudtrail extends CloudTrail {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

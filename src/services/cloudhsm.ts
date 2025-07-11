@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CloudHsmFrontendService {
+export declare class CloudHSM extends AWSServiceClient {
   addTagsToResource(
     input: AddTagsToResourceRequest,
   ): Effect.Effect<
@@ -181,7 +182,7 @@ export interface CloudHsmFrontendService {
   >;
 }
 
-export type Cloudhsm = CloudHsmFrontendService;
+export declare class Cloudhsm extends CloudHSM {}
 
 export interface AddTagsToResourceRequest {
   ResourceArn: string;

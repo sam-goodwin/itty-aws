@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Lightsail_20161128 {
+export declare class Lightsail extends AWSServiceClient {
   allocateStaticIp(
     input: AllocateStaticIpRequest,
   ): Effect.Effect<
@@ -1999,8 +2000,6 @@ export interface Lightsail_20161128 {
     | CommonAwsError
   >;
 }
-
-export type Lightsail = Lightsail_20161128;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

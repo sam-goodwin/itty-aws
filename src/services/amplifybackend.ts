@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmplifyBackend {
+export declare class AmplifyBackend extends AWSServiceClient {
   cloneBackend(
     input: CloneBackendRequest,
   ): Effect.Effect<
@@ -314,7 +315,7 @@ export interface AmplifyBackend {
   >;
 }
 
-export type Amplifybackend = AmplifyBackend;
+export declare class Amplifybackend extends AmplifyBackend {}
 
 export type __boolean = boolean;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonMWAA {
+export declare class MWAA extends AWSServiceClient {
   createCliToken(
     input: CreateCliTokenRequest,
   ): Effect.Effect<
@@ -104,7 +105,7 @@ export interface AmazonMWAA {
   >;
 }
 
-export type Mwaa = AmazonMWAA;
+export declare class Mwaa extends MWAA {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

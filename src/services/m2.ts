@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AwsSupernovaControlPlaneService {
+export declare class m2 extends AWSServiceClient {
   getSignedBluinsightsUrl(input: {}): Effect.Effect<
     GetSignedBluinsightsUrlResponse,
     | AccessDeniedException
@@ -55,7 +56,7 @@ export interface AwsSupernovaControlPlaneService {
   >;
 }
 
-export type M2 = AwsSupernovaControlPlaneService;
+export declare class M2 extends m2 {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

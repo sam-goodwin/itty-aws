@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSStepFunctions {
+export declare class SFN extends AWSServiceClient {
   createActivity(
     input: CreateActivityInput,
   ): Effect.Effect<
@@ -360,7 +361,7 @@ export interface AWSStepFunctions {
   >;
 }
 
-export type Sfn = AWSStepFunctions;
+export declare class Sfn extends SFN {}
 
 export declare class ActivityAlreadyExists extends EffectData.TaggedError(
   "ActivityAlreadyExists",

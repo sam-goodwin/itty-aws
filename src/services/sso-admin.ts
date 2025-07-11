@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SWBExternalService {
+export declare class SSOAdmin extends AWSServiceClient {
   attachCustomerManagedPolicyReferenceToPermissionSet(
     input: AttachCustomerManagedPolicyReferenceToPermissionSetRequest,
   ): Effect.Effect<
@@ -707,7 +708,7 @@ export interface SWBExternalService {
   >;
 }
 
-export type SsoAdmin = SWBExternalService;
+export declare class SsoAdmin extends SSOAdmin {}
 
 export interface AccessControlAttribute {
   Key: string;

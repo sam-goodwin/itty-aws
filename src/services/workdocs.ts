@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSGorillaBoyService {
+export declare class WorkDocs extends AWSServiceClient {
   abortDocumentVersionUpload(
     input: AbortDocumentVersionUploadRequest,
   ): Effect.Effect<
@@ -552,7 +553,7 @@ export interface AWSGorillaBoyService {
   >;
 }
 
-export type Workdocs = AWSGorillaBoyService;
+export declare class Workdocs extends WorkDocs {}
 
 export interface AbortDocumentVersionUploadRequest {
   AuthenticationToken?: string;

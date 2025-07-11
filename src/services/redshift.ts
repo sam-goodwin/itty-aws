@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface RedshiftServiceVersion20121201 {
+export declare class Redshift extends AWSServiceClient {
   acceptReservedNodeExchange(
     input: AcceptReservedNodeExchangeInputMessage,
   ): Effect.Effect<
@@ -1294,8 +1295,6 @@ export interface RedshiftServiceVersion20121201 {
     | CommonAwsError
   >;
 }
-
-export type Redshift = RedshiftServiceVersion20121201;
 
 export interface AcceptReservedNodeExchangeInputMessage {
   ReservedNodeId: string;

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SWBPortalService {
+export declare class SSO extends AWSServiceClient {
   getRoleCredentials(
     input: GetRoleCredentialsRequest,
   ): Effect.Effect<
@@ -43,7 +44,7 @@ export interface SWBPortalService {
   >;
 }
 
-export type Sso = SWBPortalService;
+export declare class Sso extends SSO {}
 
 export type AccessKeyType = string;
 

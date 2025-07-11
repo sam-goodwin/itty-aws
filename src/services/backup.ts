@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CryoControllerUserManager {
+export declare class Backup extends AWSServiceClient {
   associateBackupVaultMpaApprovalTeam(
     input: AssociateBackupVaultMpaApprovalTeamInput,
   ): Effect.Effect<
@@ -984,8 +985,6 @@ export interface CryoControllerUserManager {
     | CommonAwsError
   >;
 }
-
-export type Backup = CryoControllerUserManager;
 
 export type AccountId = string;
 

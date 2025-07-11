@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonForecast {
+export declare class forecast extends AWSServiceClient {
   createAutoPredictor(
     input: CreateAutoPredictorRequest,
   ): Effect.Effect<
@@ -511,7 +512,7 @@ export interface AmazonForecast {
   >;
 }
 
-export type Forecast = AmazonForecast;
+export declare class Forecast extends forecast {}
 
 export interface Action {
   AttributeName: string;

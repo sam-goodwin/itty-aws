@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonSimpleNotificationService {
+export declare class SNS extends AWSServiceClient {
   addPermission(
     input: AddPermissionInput,
   ): Effect.Effect<
@@ -482,7 +483,7 @@ export interface AmazonSimpleNotificationService {
   >;
 }
 
-export type Sns = AmazonSimpleNotificationService;
+export declare class Sns extends SNS {}
 
 export type account = string;
 

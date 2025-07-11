@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Transcribe {
+export declare class TranscribeStreaming extends AWSServiceClient {
   getMedicalScribeStream(
     input: GetMedicalScribeStreamRequest,
   ): Effect.Effect<
@@ -57,8 +58,6 @@ export interface Transcribe {
     | CommonAwsError
   >;
 }
-
-export type TranscribeStreaming = Transcribe;
 
 export interface Alternative {
   Transcript?: string;

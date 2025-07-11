@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CodePipeline_20150709 {
+export declare class CodePipeline extends AWSServiceClient {
   acknowledgeJob(
     input: AcknowledgeJobInput,
   ): Effect.Effect<
@@ -409,7 +410,7 @@ export interface CodePipeline_20150709 {
   >;
 }
 
-export type Codepipeline = CodePipeline_20150709;
+export declare class Codepipeline extends CodePipeline {}
 
 export type AccessKeyId = string;
 

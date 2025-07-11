@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonAppConfig {
+export declare class AppConfig extends AWSServiceClient {
   createApplication(
     input: CreateApplicationRequest,
   ): Effect.Effect<
@@ -400,7 +401,7 @@ export interface AmazonAppConfig {
   >;
 }
 
-export type Appconfig = AmazonAppConfig;
+export declare class Appconfig extends AppConfig {}
 
 export interface AccountSettings {
   DeletionProtection?: DeletionProtectionSettings;

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ServiceQuotasV20190624 {
+export declare class ServiceQuotas extends AWSServiceClient {
   associateServiceQuotaTemplate(
     input: AssociateServiceQuotaTemplateRequest,
   ): Effect.Effect<
@@ -261,8 +262,6 @@ export interface ServiceQuotasV20190624 {
     | CommonAwsError
   >;
 }
-
-export type ServiceQuotas = ServiceQuotasV20190624;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

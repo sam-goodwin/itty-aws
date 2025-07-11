@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSMigrationHubStrategyRecommendation {
+export declare class MigrationHubStrategy extends AWSServiceClient {
   getApplicationComponentDetails(
     input: GetApplicationComponentDetailsRequest,
   ): Effect.Effect<
@@ -228,7 +229,7 @@ export interface AWSMigrationHubStrategyRecommendation {
   >;
 }
 
-export type Migrationhubstrategy = AWSMigrationHubStrategyRecommendation;
+export declare class Migrationhubstrategy extends MigrationHubStrategy {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

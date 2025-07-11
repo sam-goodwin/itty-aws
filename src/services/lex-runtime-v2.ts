@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSDeepSenseRunTimeServiceApi2_0 {
+export declare class LexRuntimeV2 extends AWSServiceClient {
   deleteSession(
     input: DeleteSessionRequest,
   ): Effect.Effect<
@@ -78,8 +79,6 @@ export interface AWSDeepSenseRunTimeServiceApi2_0 {
     | CommonAwsError
   >;
 }
-
-export type LexRuntimeV2 = AWSDeepSenseRunTimeServiceApi2_0;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

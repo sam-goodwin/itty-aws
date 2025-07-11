@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CertificateManager {
+export declare class ACM extends AWSServiceClient {
   addTagsToCertificate(
     input: AddTagsToCertificateRequest,
   ): Effect.Effect<
@@ -158,7 +159,7 @@ export interface CertificateManager {
   >;
 }
 
-export type Acm = CertificateManager;
+export declare class Acm extends ACM {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

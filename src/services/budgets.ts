@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSBudgetServiceGateway {
+export declare class BudgetsClient extends AWSServiceClient {
   createBudget(
     input: CreateBudgetRequest,
   ): Effect.Effect<

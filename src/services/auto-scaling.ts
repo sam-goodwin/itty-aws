@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AutoScaling_2011_01_01 {
+export declare class AutoScaling extends AWSServiceClient {
   attachInstances(
     input: AttachInstancesQuery,
   ): Effect.Effect<
@@ -410,8 +411,6 @@ export interface AutoScaling_2011_01_01 {
     | CommonAwsError
   >;
 }
-
-export type AutoScaling = AutoScaling_2011_01_01;
 
 export interface AcceleratorCountRequest {
   Min?: number;

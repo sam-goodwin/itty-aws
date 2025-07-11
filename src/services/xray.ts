@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSXRay {
+export declare class XRay extends AWSServiceClient {
   batchGetTraces(
     input: BatchGetTracesRequest,
   ): Effect.Effect<
@@ -269,7 +270,7 @@ export interface AWSXRay {
   >;
 }
 
-export type Xray = AWSXRay;
+export declare class Xray extends XRay {}
 
 export interface Alias {
   Name?: string;

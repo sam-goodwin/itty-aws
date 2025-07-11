@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonBedrockFrontendService {
+export declare class BedrockRuntime extends AWSServiceClient {
   applyGuardrail(
     input: ApplyGuardrailRequest,
   ): Effect.Effect<
@@ -129,8 +130,6 @@ export interface AmazonBedrockFrontendService {
     | CommonAwsError
   >;
 }
-
-export type BedrockRuntime = AmazonBedrockFrontendService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

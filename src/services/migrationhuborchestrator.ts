@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSMigrationHubOrchestrator {
+export declare class MigrationHubOrchestrator extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -22,7 +23,7 @@ export interface AWSMigrationHubOrchestrator {
   >;
 }
 
-export type Migrationhuborchestrator = AWSMigrationHubOrchestrator;
+export declare class Migrationhuborchestrator extends MigrationHubOrchestrator {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

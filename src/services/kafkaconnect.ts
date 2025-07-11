@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface KafkaConnect {
+export declare class KafkaConnect extends AWSServiceClient {
   createConnector(
     input: CreateConnectorRequest,
   ): Effect.Effect<
@@ -242,7 +243,7 @@ export interface KafkaConnect {
   >;
 }
 
-export type Kafkaconnect = KafkaConnect;
+export declare class Kafkaconnect extends KafkaConnect {}
 
 export type __boolean = boolean;
 

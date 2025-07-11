@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSHealth_20160804 {
+export declare class Health extends AWSServiceClient {
   describeAffectedAccountsForOrganization(
     input: DescribeAffectedAccountsForOrganizationRequest,
   ): Effect.Effect<
@@ -78,8 +79,6 @@ export interface AWSHealth_20160804 {
     ConcurrentModificationException | CommonAwsError
   >;
 }
-
-export type Health = AWSHealth_20160804;
 
 export interface AccountEntityAggregate {
   accountId?: string;

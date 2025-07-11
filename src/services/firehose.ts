@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Firehose_20150804 {
+export declare class Firehose extends AWSServiceClient {
   createDeliveryStream(
     input: CreateDeliveryStreamInput,
   ): Effect.Effect<
@@ -110,8 +111,6 @@ export interface Firehose_20150804 {
     | CommonAwsError
   >;
 }
-
-export type Firehose = Firehose_20150804;
 
 export interface AmazonOpenSearchServerlessBufferingHints {
   IntervalInSeconds?: number;

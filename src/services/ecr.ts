@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonEC2ContainerRegistry_V20150921 {
+export declare class ECR extends AWSServiceClient {
   batchCheckLayerAvailability(
     input: BatchCheckLayerAvailabilityRequest,
   ): Effect.Effect<
@@ -519,7 +520,7 @@ export interface AmazonEC2ContainerRegistry_V20150921 {
   >;
 }
 
-export type Ecr = AmazonEC2ContainerRegistry_V20150921;
+export declare class Ecr extends ECR {}
 
 export type AccountSettingName = string;
 

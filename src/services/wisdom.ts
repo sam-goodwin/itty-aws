@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface WisdomService {
+export declare class Wisdom extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -21,8 +22,6 @@ export interface WisdomService {
     ResourceNotFoundException | CommonAwsError
   >;
 }
-
-export type Wisdom = WisdomService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

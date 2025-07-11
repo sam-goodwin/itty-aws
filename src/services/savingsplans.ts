@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSSavingsPlan {
+export declare class savingsplans extends AWSServiceClient {
   createSavingsPlan(
     input: CreateSavingsPlanRequest,
   ): Effect.Effect<
@@ -86,7 +87,7 @@ export interface AWSSavingsPlan {
   >;
 }
 
-export type Savingsplans = AWSSavingsPlan;
+export declare class Savingsplans extends savingsplans {}
 
 export type Amount = string;
 

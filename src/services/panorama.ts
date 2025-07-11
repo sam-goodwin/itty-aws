@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface OmniCloudServiceLambda {
+export declare class Panorama extends AWSServiceClient {
   createApplicationInstance(
     input: CreateApplicationInstanceRequest,
   ): Effect.Effect<
@@ -342,8 +343,6 @@ export interface OmniCloudServiceLambda {
     | CommonAwsError
   >;
 }
-
-export type Panorama = OmniCloudServiceLambda;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

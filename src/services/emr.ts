@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ElasticMapReduce {
+export declare class EMR extends AWSServiceClient {
   addInstanceFleet(
     input: AddInstanceFleetInput,
   ): Effect.Effect<
@@ -316,7 +317,7 @@ export interface ElasticMapReduce {
   >;
 }
 
-export type Emr = ElasticMapReduce;
+export declare class Emr extends EMR {}
 
 export type ActionOnFailure =
   | "TERMINATE_JOB_FLOW"

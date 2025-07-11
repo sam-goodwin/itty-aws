@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface secretsmanager {
+export declare class SecretsManager extends AWSServiceClient {
   batchGetSecretValue(
     input: BatchGetSecretValueRequest,
   ): Effect.Effect<
@@ -254,8 +255,6 @@ export interface secretsmanager {
     | CommonAwsError
   >;
 }
-
-export type SecretsManager = secretsmanager;
 
 export type AddReplicaRegionListType = Array<ReplicaRegionType>;
 export type APIErrorListType = Array<APIErrorType>;

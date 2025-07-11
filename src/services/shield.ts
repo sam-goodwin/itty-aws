@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSShield_20160616 {
+export declare class Shield extends AWSServiceClient {
   associateDRTLogBucket(
     input: AssociateDRTLogBucketRequest,
   ): Effect.Effect<
@@ -347,8 +348,6 @@ export interface AWSShield_20160616 {
     | CommonAwsError
   >;
 }
-
-export type Shield = AWSShield_20160616;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

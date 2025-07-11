@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface GiraffeMessageInTransitService {
+export declare class WorkMailMessageFlow extends AWSServiceClient {
   getRawMessageContent(
     input: GetRawMessageContentRequest,
   ): Effect.Effect<
@@ -20,7 +21,7 @@ export interface GiraffeMessageInTransitService {
   >;
 }
 
-export type Workmailmessageflow = GiraffeMessageInTransitService;
+export declare class Workmailmessageflow extends WorkMailMessageFlow {}
 
 export type errorMessage = string;
 

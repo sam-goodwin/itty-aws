@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSMPEntitlementService {
+export declare class MarketplaceEntitlementService extends AWSServiceClient {
   getEntitlements(
     input: GetEntitlementsRequest,
   ): Effect.Effect<
@@ -12,8 +13,6 @@ export interface AWSMPEntitlementService {
     | CommonAwsError
   >;
 }
-
-export type MarketplaceEntitlementService = AWSMPEntitlementService;
 
 export type MarketplaceEntitlementServiceBoolean = boolean;
 

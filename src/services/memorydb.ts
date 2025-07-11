@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonMemoryDB {
+export declare class MemoryDB extends AWSServiceClient {
   batchUpdateCluster(
     input: BatchUpdateClusterRequest,
   ): Effect.Effect<
@@ -500,7 +501,7 @@ export interface AmazonMemoryDB {
   >;
 }
 
-export type Memorydb = AmazonMemoryDB;
+export declare class Memorydb extends MemoryDB {}
 
 export type AccessString = string;
 

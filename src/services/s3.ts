@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonS3 {
+export declare class S3 extends AWSServiceClient {
   abortMultipartUpload(
     input: AbortMultipartUploadRequest,
   ): Effect.Effect<AbortMultipartUploadOutput, NoSuchUpload | CommonAwsError>;
@@ -322,8 +323,6 @@ export interface AmazonS3 {
     input: WriteGetObjectResponseRequest,
   ): Effect.Effect<{}, CommonAwsError>;
 }
-
-export type S3 = AmazonS3;
 
 export type AbortDate = Date | string;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSOrganizationsV20161128 {
+export declare class Organizations extends AWSServiceClient {
   acceptHandshake(
     input: AcceptHandshakeRequest,
   ): Effect.Effect<
@@ -767,8 +768,6 @@ export interface AWSOrganizationsV20161128 {
     | CommonAwsError
   >;
 }
-
-export type Organizations = AWSOrganizationsV20161128;
 
 export interface AcceptHandshakeRequest {
   HandshakeId: string;

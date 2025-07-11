@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface LookoutVisionService {
+export declare class LookoutVision extends AWSServiceClient {
   createDataset(
     input: CreateDatasetRequest,
   ): Effect.Effect<
@@ -272,7 +273,7 @@ export interface LookoutVisionService {
   >;
 }
 
-export type Lookoutvision = LookoutVisionService;
+export declare class Lookoutvision extends LookoutVision {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

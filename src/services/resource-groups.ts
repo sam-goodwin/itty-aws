@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Ardi {
+export declare class ResourceGroups extends AWSServiceClient {
   cancelTagSyncTask(
     input: CancelTagSyncTaskInput,
   ): Effect.Effect<
@@ -275,8 +276,6 @@ export interface Ardi {
     | CommonAwsError
   >;
 }
-
-export type ResourceGroups = Ardi;
 
 export interface AccountSettings {
   GroupLifecycleEventsDesiredStatus?: GroupLifecycleEventsDesiredStatus;

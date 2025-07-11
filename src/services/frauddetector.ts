@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSHawksNestServiceFacade {
+export declare class FraudDetector extends AWSServiceClient {
   batchCreateVariable(
     input: BatchCreateVariableRequest,
   ): Effect.Effect<
@@ -806,7 +807,7 @@ export interface AWSHawksNestServiceFacade {
   >;
 }
 
-export type Frauddetector = AWSHawksNestServiceFacade;
+export declare class Frauddetector extends FraudDetector {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

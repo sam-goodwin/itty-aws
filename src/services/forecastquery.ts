@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonForecastRuntime {
+export declare class forecastquery extends AWSServiceClient {
   queryForecast(
     input: QueryForecastRequest,
   ): Effect.Effect<
@@ -26,7 +27,7 @@ export interface AmazonForecastRuntime {
   >;
 }
 
-export type Forecastquery = AmazonForecastRuntime;
+export declare class Forecastquery extends forecastquery {}
 
 export type Arn = string;
 

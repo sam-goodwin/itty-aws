@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSSupport_20130415 {
+export declare class Support extends AWSServiceClient {
   addAttachmentsToSet(
     input: AddAttachmentsToSetRequest,
   ): Effect.Effect<
@@ -115,8 +116,6 @@ export interface AWSSupport_20130415 {
     CaseIdNotFound | InternalServerError | CommonAwsError
   >;
 }
-
-export type Support = AWSSupport_20130415;
 
 export interface AddAttachmentsToSetRequest {
   attachmentSetId?: string;

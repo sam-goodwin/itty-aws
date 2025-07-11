@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface WorkMailService {
+export declare class WorkMail extends AWSServiceClient {
   associateDelegateToResource(
     input: AssociateDelegateToResourceRequest,
   ): Effect.Effect<
@@ -968,7 +969,7 @@ export interface WorkMailService {
   >;
 }
 
-export type Workmail = WorkMailService;
+export declare class Workmail extends WorkMail {}
 
 export interface AccessControlRule {
   Name?: string;

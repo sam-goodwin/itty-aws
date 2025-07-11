@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface LocationService {
+export declare class Location extends AWSServiceClient {
   associateTrackerConsumer(
     input: AssociateTrackerConsumerRequest,
   ): Effect.Effect<
@@ -665,8 +666,6 @@ export interface LocationService {
     | CommonAwsError
   >;
 }
-
-export type Location = LocationService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonPrometheusService {
+export declare class amp extends AWSServiceClient {
   getDefaultScraperConfiguration(
     input: GetDefaultScraperConfigurationRequest,
   ): Effect.Effect<
@@ -46,7 +47,7 @@ export interface AmazonPrometheusService {
   >;
 }
 
-export type Amp = AmazonPrometheusService;
+export declare class Amp extends amp {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

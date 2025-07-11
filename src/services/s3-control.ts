@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSS3ControlServiceV20180820 {
+export declare class S3Control extends AWSServiceClient {
   associateAccessGrantsIdentityCenter(
     input: AssociateAccessGrantsIdentityCenterRequest,
   ): Effect.Effect<{}, CommonAwsError>;
@@ -361,8 +362,6 @@ export interface AWSS3ControlServiceV20180820 {
     input: UpdateStorageLensGroupRequest,
   ): Effect.Effect<{}, CommonAwsError>;
 }
-
-export type S3Control = AWSS3ControlServiceV20180820;
 
 export interface AbortIncompleteMultipartUpload {
   DaysAfterInitiation?: number;

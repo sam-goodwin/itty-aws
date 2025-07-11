@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSEvents {
+export declare class EventBridge extends AWSServiceClient {
   activateEventSource(
     input: ActivateEventSourceRequest,
   ): Effect.Effect<
@@ -477,7 +478,7 @@ export interface AWSEvents {
   >;
 }
 
-export type Eventbridge = AWSEvents;
+export declare class Eventbridge extends EventBridge {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

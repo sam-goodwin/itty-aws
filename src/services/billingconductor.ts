@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSBillingConductor {
+export declare class billingconductor extends AWSServiceClient {
   getBillingGroupCostReport(
     input: GetBillingGroupCostReportInput,
   ): Effect.Effect<
@@ -70,7 +71,7 @@ export interface AWSBillingConductor {
   >;
 }
 
-export type Billingconductor = AWSBillingConductor;
+export declare class Billingconductor extends billingconductor {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

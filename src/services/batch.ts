@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSBatchV20160810 {
+export declare class Batch extends AWSServiceClient {
   cancelJob(
     input: CancelJobRequest,
   ): Effect.Effect<
@@ -189,8 +190,6 @@ export interface AWSBatchV20160810 {
     ClientException | ServerException | CommonAwsError
   >;
 }
-
-export type Batch = AWSBatchV20160810;
 
 export type ArrayJobDependency = "N_TO_N" | "SEQUENTIAL";
 export type ArrayJobStatusSummary = Record<string, number>;

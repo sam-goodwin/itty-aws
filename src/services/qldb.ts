@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonQLDB {
+export declare class QLDB extends AWSServiceClient {
   cancelJournalKinesisStream(
     input: CancelJournalKinesisStreamRequest,
   ): Effect.Effect<
@@ -146,7 +147,7 @@ export interface AmazonQLDB {
   >;
 }
 
-export type Qldb = AmazonQLDB;
+export declare class Qldb extends QLDB {}
 
 export type Arn = string;
 

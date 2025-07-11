@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ApiGatewayManagementApi {
+export declare class ApiGatewayManagementApi extends AWSServiceClient {
   deleteConnection(
     input: DeleteConnectionRequest,
   ): Effect.Effect<
@@ -26,7 +27,7 @@ export interface ApiGatewayManagementApi {
   >;
 }
 
-export type Apigatewaymanagementapi = ApiGatewayManagementApi;
+export declare class Apigatewaymanagementapi extends ApiGatewayManagementApi {}
 
 export type __string = string;
 

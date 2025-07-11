@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface BedrockAssessmentManagerLambda {
+export declare class AuditManager extends AWSServiceClient {
   associateAssessmentReportEvidenceFolder(
     input: AssociateAssessmentReportEvidenceFolderRequest,
   ): Effect.Effect<
@@ -609,7 +610,7 @@ export interface BedrockAssessmentManagerLambda {
   >;
 }
 
-export type Auditmanager = BedrockAssessmentManagerLambda;
+export declare class Auditmanager extends AuditManager {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface GuardDutyAPIService {
+export declare class GuardDuty extends AWSServiceClient {
   acceptAdministratorInvitation(
     input: AcceptAdministratorInvitationRequest,
   ): Effect.Effect<
@@ -477,7 +478,7 @@ export interface GuardDutyAPIService {
   >;
 }
 
-export type Guardduty = GuardDutyAPIService;
+export declare class Guardduty extends GuardDuty {}
 
 export interface AcceptAdministratorInvitationRequest {
   DetectorId: string;

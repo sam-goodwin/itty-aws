@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonPersonalize {
+export declare class Personalize extends AWSServiceClient {
   createBatchInferenceJob(
     input: CreateBatchInferenceJobRequest,
   ): Effect.Effect<
@@ -583,8 +584,6 @@ export interface AmazonPersonalize {
     | CommonAwsError
   >;
 }
-
-export type Personalize = AmazonPersonalize;
 
 export type AccountId = string;
 

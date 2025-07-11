@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSDeepSenseRunTimeService {
+export declare class LexRuntimeService extends AWSServiceClient {
   deleteSession(
     input: DeleteSessionRequest,
   ): Effect.Effect<
@@ -69,8 +70,6 @@ export interface AWSDeepSenseRunTimeService {
     | CommonAwsError
   >;
 }
-
-export type LexRuntimeService = AWSDeepSenseRunTimeService;
 
 export type Accept = string;
 

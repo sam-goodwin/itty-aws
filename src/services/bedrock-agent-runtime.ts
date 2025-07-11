@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonBedrockAgentRunTimeService {
+export declare class BedrockAgentRuntime extends AWSServiceClient {
   createInvocation(
     input: CreateInvocationRequest,
   ): Effect.Effect<
@@ -401,8 +402,6 @@ export interface AmazonBedrockAgentRunTimeService {
     | CommonAwsError
   >;
 }
-
-export type BedrockAgentRuntime = AmazonBedrockAgentRunTimeService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface KinesisVideo_20170930 {
+export declare class KinesisVideo extends AWSServiceClient {
   createSignalingChannel(
     input: CreateSignalingChannelInput,
   ): Effect.Effect<
@@ -328,8 +329,6 @@ export interface KinesisVideo_20170930 {
     | CommonAwsError
   >;
 }
-
-export type KinesisVideo = KinesisVideo_20170930;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

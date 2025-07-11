@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface robomaker {
+export declare class RoboMaker extends AWSServiceClient {
   batchDeleteWorlds(
     input: BatchDeleteWorldsRequest,
   ): Effect.Effect<
@@ -585,7 +586,7 @@ export interface robomaker {
   >;
 }
 
-export type Robomaker = robomaker;
+export declare class Robomaker extends RoboMaker {}
 
 export type Architecture = "X86_64" | "ARM64" | "ARMHF";
 export type Arn = string;

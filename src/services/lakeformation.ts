@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSLakeFormation {
+export declare class LakeFormation extends AWSServiceClient {
   addLFTagsToResource(
     input: AddLFTagsToResourceRequest,
   ): Effect.Effect<
@@ -656,7 +657,7 @@ export interface AWSLakeFormation {
   >;
 }
 
-export type Lakeformation = AWSLakeFormation;
+export declare class Lakeformation extends LakeFormation {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

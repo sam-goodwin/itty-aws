@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonCloudDirectory_20170111 {
+export declare class CloudDirectory extends AWSServiceClient {
   addFacetToObject(
     input: AddFacetToObjectRequest,
   ): Effect.Effect<
@@ -983,7 +984,7 @@ export interface AmazonCloudDirectory_20170111 {
   >;
 }
 
-export type Clouddirectory = AmazonCloudDirectory_20170111;
+export declare class Clouddirectory extends CloudDirectory {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

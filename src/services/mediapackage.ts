@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MediaPackage {
+export declare class MediaPackage extends AWSServiceClient {
   configureLogs(
     input: ConfigureLogsRequest,
   ): Effect.Effect<
@@ -201,7 +202,7 @@ export interface MediaPackage {
   >;
 }
 
-export type Mediapackage = MediaPackage;
+export declare class Mediapackage extends MediaPackage {}
 
 export type __AdTriggersElement =
   | "SPLICE_INSERT"

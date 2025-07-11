@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSKendraFrontendService {
+export declare class kendra extends AWSServiceClient {
   associateEntitiesToExperience(
     input: AssociateEntitiesToExperienceRequest,
   ): Effect.Effect<
@@ -783,7 +784,7 @@ export interface AWSKendraFrontendService {
   >;
 }
 
-export type Kendra = AWSKendraFrontendService;
+export declare class Kendra extends kendra {}
 
 export type AccessControlConfigurationId = string;
 

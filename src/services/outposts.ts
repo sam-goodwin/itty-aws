@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface OutpostsOlafService {
+export declare class Outposts extends AWSServiceClient {
   cancelCapacityTask(
     input: CancelCapacityTaskInput,
   ): Effect.Effect<
@@ -339,8 +340,6 @@ export interface OutpostsOlafService {
     | CommonAwsError
   >;
 }
-
-export type Outposts = OutpostsOlafService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

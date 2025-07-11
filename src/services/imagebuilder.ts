@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface imagebuilder {
+export declare class imagebuilder extends AWSServiceClient {
   cancelImageCreation(
     input: CancelImageCreationRequest,
   ): Effect.Effect<
@@ -997,7 +998,7 @@ export interface imagebuilder {
   >;
 }
 
-export type Imagebuilder = imagebuilder;
+export declare class Imagebuilder extends imagebuilder {}
 
 export interface AccountAggregation {
   accountId?: string;

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonElasticsearchService2015 {
+export declare class ElasticsearchService extends AWSServiceClient {
   acceptInboundCrossClusterSearchConnection(
     input: AcceptInboundCrossClusterSearchConnectionRequest,
   ): Effect.Effect<
@@ -514,8 +515,6 @@ export interface AmazonElasticsearchService2015 {
     | CommonAwsError
   >;
 }
-
-export type ElasticsearchService = AmazonElasticsearchService2015;
 
 export interface AcceptInboundCrossClusterSearchConnectionRequest {
   CrossClusterSearchConnectionId: string;

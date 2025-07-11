@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface TrentService {
+export declare class KMS extends AWSServiceClient {
   cancelKeyDeletion(
     input: CancelKeyDeletionRequest,
   ): Effect.Effect<
@@ -709,7 +710,7 @@ export interface TrentService {
   >;
 }
 
-export type Kms = TrentService;
+export declare class Kms extends KMS {}
 
 export type AlgorithmSpec =
   | "RSAES_PKCS1_V1_5"

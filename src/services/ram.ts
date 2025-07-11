@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonResourceSharing {
+export declare class RAM extends AWSServiceClient {
   acceptResourceShareInvitation(
     input: AcceptResourceShareInvitationRequest,
   ): Effect.Effect<
@@ -464,7 +465,7 @@ export interface AmazonResourceSharing {
   >;
 }
 
-export type Ram = AmazonResourceSharing;
+export declare class Ram extends RAM {}
 
 export interface AcceptResourceShareInvitationRequest {
   resourceShareInvitationArn: string;

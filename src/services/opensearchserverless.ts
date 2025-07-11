@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface OpenSearchServerless {
+export declare class OpenSearchServerless extends AWSServiceClient {
   batchGetCollection(
     input: BatchGetCollectionRequest,
   ): Effect.Effect<
@@ -105,7 +106,7 @@ export interface OpenSearchServerless {
   >;
 }
 
-export type Opensearchserverless = OpenSearchServerless;
+export declare class Opensearchserverless extends OpenSearchServerless {}
 
 export interface AccessPolicyDetail {
   type?: string;

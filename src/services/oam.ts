@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface oamservice {
+export declare class OAM extends AWSServiceClient {
   createLink(
     input: CreateLinkInput,
   ): Effect.Effect<
@@ -146,7 +147,7 @@ export interface oamservice {
   >;
 }
 
-export type Oam = oamservice;
+export declare class Oam extends OAM {}
 
 export type Arn = string;
 

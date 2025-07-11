@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonElastiCacheV9 {
+export declare class ElastiCache extends AWSServiceClient {
   addTagsToResource(
     input: AddTagsToResourceMessage,
   ): Effect.Effect<
@@ -873,7 +874,7 @@ export interface AmazonElastiCacheV9 {
   >;
 }
 
-export type Elasticache = AmazonElastiCacheV9;
+export declare class Elasticache extends ElastiCache {}
 
 export type AccessString = string;
 

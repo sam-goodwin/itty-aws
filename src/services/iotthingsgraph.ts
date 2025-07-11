@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface IotThingsGraphFrontEndService {
+export declare class IoTThingsGraph extends AWSServiceClient {
   associateEntityToThing(
     input: AssociateEntityToThingRequest,
   ): Effect.Effect<
@@ -348,7 +349,7 @@ export interface IotThingsGraphFrontEndService {
   >;
 }
 
-export type Iotthingsgraph = IotThingsGraphFrontEndService;
+export declare class Iotthingsgraph extends IoTThingsGraph {}
 
 export type Arn = string;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface WellArchitectedApiServiceLambda {
+export declare class WellArchitected extends AWSServiceClient {
   associateLenses(
     input: AssociateLensesInput,
   ): Effect.Effect<
@@ -817,7 +818,7 @@ export interface WellArchitectedApiServiceLambda {
   >;
 }
 
-export type Wellarchitected = WellArchitectedApiServiceLambda;
+export declare class Wellarchitected extends WellArchitected {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSCognitoSyncService {
+export declare class CognitoSync extends AWSServiceClient {
   bulkPublish(
     input: BulkPublishRequest,
   ): Effect.Effect<
@@ -196,8 +197,6 @@ export interface AWSCognitoSyncService {
     | CommonAwsError
   >;
 }
-
-export type CognitoSync = AWSCognitoSyncService;
 
 export declare class AlreadyStreamedException extends EffectData.TaggedError(
   "AlreadyStreamedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AccessAnalyzer {
+export declare class AccessAnalyzer extends AWSServiceClient {
   applyArchiveRule(
     input: ApplyArchiveRuleRequest,
   ): Effect.Effect<
@@ -303,7 +304,7 @@ export interface AccessAnalyzer {
   >;
 }
 
-export type Accessanalyzer = AccessAnalyzer;
+export declare class Accessanalyzer extends AccessAnalyzer {}
 
 export interface Access {
   actions?: Array<string>;

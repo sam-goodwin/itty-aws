@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonDMSv20160101 {
+export declare class DatabaseMigrationService extends AWSServiceClient {
   addTagsToResource(
     input: AddTagsToResourceMessage,
   ): Effect.Effect<
@@ -944,8 +945,6 @@ export interface AmazonDMSv20160101 {
     AccessDeniedFault | InvalidResourceStateFault | CommonAwsError
   >;
 }
-
-export type DatabaseMigrationService = AmazonDMSv20160101;
 
 export declare class AccessDeniedFault extends EffectData.TaggedError(
   "AccessDeniedFault",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MediaStore_20170901 {
+export declare class MediaStore extends AWSServiceClient {
   createContainer(
     input: CreateContainerInput,
   ): Effect.Effect<
@@ -192,7 +193,7 @@ export interface MediaStore_20170901 {
   >;
 }
 
-export type Mediastore = MediaStore_20170901;
+export declare class Mediastore extends MediaStore {}
 
 export type AllowedHeaders = Array<string>;
 export type AllowedMethods = Array<MethodName>;

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSServerMigrationService_V2016_10_24 {
+export declare class SMS extends AWSServiceClient {
   createApp(
     input: CreateAppRequest,
   ): Effect.Effect<
@@ -385,7 +386,7 @@ export interface AWSServerMigrationService_V2016_10_24 {
   >;
 }
 
-export type Sms = AWSServerMigrationService_V2016_10_24;
+export declare class Sms extends SMS {}
 
 export type AmiId = string;
 

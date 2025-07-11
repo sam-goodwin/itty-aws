@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AwsResilienceHub {
+export declare class resiliencehub extends AWSServiceClient {
   acceptResourceGroupingRecommendations(
     input: AcceptResourceGroupingRecommendationsRequest,
   ): Effect.Effect<
@@ -730,7 +731,7 @@ export interface AwsResilienceHub {
   >;
 }
 
-export type Resiliencehub = AwsResilienceHub;
+export declare class Resiliencehub extends resiliencehub {}
 
 export type AcceptGroupingRecommendationEntries =
   Array<AcceptGroupingRecommendationEntry>;

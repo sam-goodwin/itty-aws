@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSApplicationCostProfiler {
+export declare class ApplicationCostProfiler extends AWSServiceClient {
   deleteReportDefinition(
     input: DeleteReportDefinitionRequest,
   ): Effect.Effect<
@@ -65,7 +66,7 @@ export interface AWSApplicationCostProfiler {
   >;
 }
 
-export type Applicationcostprofiler = AWSApplicationCostProfiler;
+export declare class Applicationcostprofiler extends ApplicationCostProfiler {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

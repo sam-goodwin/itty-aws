@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSWesleyFrontend {
+export declare class EKS extends AWSServiceClient {
   associateAccessPolicy(
     input: AssociateAccessPolicyRequest,
   ): Effect.Effect<
@@ -605,7 +606,7 @@ export interface AWSWesleyFrontend {
   >;
 }
 
-export type Eks = AWSWesleyFrontend;
+export declare class Eks extends EKS {}
 
 export interface AccessConfigResponse {
   bootstrapClusterCreatorAdminPermissions?: boolean;

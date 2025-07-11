@@ -1,7 +1,8 @@
 import type { Effect } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonEC2 {
+export declare class EC2 extends AWSServiceClient {
   acceptAddressTransfer(
     input: AcceptAddressTransferRequest,
   ): Effect.Effect<AcceptAddressTransferResult, CommonAwsError>;
@@ -2291,7 +2292,7 @@ export interface AmazonEC2 {
   ): Effect.Effect<WithdrawByoipCidrResult, CommonAwsError>;
 }
 
-export type Ec2 = AmazonEC2;
+export declare class Ec2 extends EC2 {}
 
 export interface AcceleratorCount {
   Min?: number;

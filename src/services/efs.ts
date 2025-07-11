@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MagnolioAPIService_v20150201 {
+export declare class EFS extends AWSServiceClient {
   createAccessPoint(
     input: CreateAccessPointRequest,
   ): Effect.Effect<
@@ -318,7 +319,7 @@ export interface MagnolioAPIService_v20150201 {
   >;
 }
 
-export type Efs = MagnolioAPIService_v20150201;
+export declare class Efs extends EFS {}
 
 export declare class AccessPointAlreadyExists extends EffectData.TaggedError(
   "AccessPointAlreadyExists",

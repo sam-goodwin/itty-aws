@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonBedrockAgentBuildTimeLambda {
+export declare class BedrockAgent extends AWSServiceClient {
   validateFlowDefinition(
     input: ValidateFlowDefinitionRequest,
   ): Effect.Effect<
@@ -13,8 +14,6 @@ export interface AmazonBedrockAgentBuildTimeLambda {
     | CommonAwsError
   >;
 }
-
-export type BedrockAgent = AmazonBedrockAgentBuildTimeLambda;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

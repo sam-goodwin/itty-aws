@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSChronosService {
+export declare class Scheduler extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
@@ -35,8 +36,6 @@ export interface AWSChronosService {
     | CommonAwsError
   >;
 }
-
-export type Scheduler = AWSChronosService;
 
 export type ActionAfterCompletion = string;
 

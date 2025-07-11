@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface DataExchange {
+export declare class DataExchange extends AWSServiceClient {
   acceptDataGrant(
     input: AcceptDataGrantRequest,
   ): Effect.Effect<
@@ -383,7 +384,7 @@ export interface DataExchange {
   >;
 }
 
-export type Dataexchange = DataExchange;
+export declare class Dataexchange extends DataExchange {}
 
 export type __boolean = boolean;
 

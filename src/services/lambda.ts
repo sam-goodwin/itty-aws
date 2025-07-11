@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSGirApiService {
+export declare class Lambda extends AWSServiceClient {
   addLayerVersionPermission(
     input: AddLayerVersionPermissionRequest,
   ): Effect.Effect<
@@ -770,8 +771,6 @@ export interface AWSGirApiService {
     | CommonAwsError
   >;
 }
-
-export type Lambda = AWSGirApiService;
 
 export interface AccountLimit {
   TotalCodeSize?: number;

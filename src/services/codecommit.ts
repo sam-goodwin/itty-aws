@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CodeCommit_20150413 {
+export declare class CodeCommit extends AWSServiceClient {
   associateApprovalRuleTemplateWithRepository(
     input: AssociateApprovalRuleTemplateWithRepositoryInput,
   ): Effect.Effect<
@@ -1576,7 +1577,7 @@ export interface CodeCommit_20150413 {
   >;
 }
 
-export type Codecommit = CodeCommit_20150413;
+export declare class Codecommit extends CodeCommit {}
 
 export type AccountId = string;
 

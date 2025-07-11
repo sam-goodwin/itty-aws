@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface RolesAnywhere {
+export declare class RolesAnywhere extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -50,7 +51,7 @@ export interface RolesAnywhere {
   >;
 }
 
-export type Rolesanywhere = RolesAnywhere;
+export declare class Rolesanywhere extends RolesAnywhere {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

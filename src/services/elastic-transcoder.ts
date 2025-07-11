@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface EtsCustomerService {
+export declare class ElasticTranscoder extends AWSServiceClient {
   cancelJob(
     input: CancelJobRequest,
   ): Effect.Effect<
@@ -195,8 +196,6 @@ export interface EtsCustomerService {
     | CommonAwsError
   >;
 }
-
-export type ElasticTranscoder = EtsCustomerService;
 
 export type AccessControl = string;
 

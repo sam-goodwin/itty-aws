@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface InspectorService {
+export declare class Inspector extends AWSServiceClient {
   addAttributesToFindings(
     input: AddAttributesToFindingsRequest,
   ): Effect.Effect<
@@ -368,8 +369,6 @@ export interface InspectorService {
     | CommonAwsError
   >;
 }
-
-export type Inspector = InspectorService;
 
 export type AccessDeniedErrorCode =
   | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"

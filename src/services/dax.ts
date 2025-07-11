@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonDAXV3 {
+export declare class DAX extends AWSServiceClient {
   createCluster(
     input: CreateClusterRequest,
   ): Effect.Effect<
@@ -245,7 +246,7 @@ export interface AmazonDAXV3 {
   >;
 }
 
-export type Dax = AmazonDAXV3;
+export declare class Dax extends DAX {}
 
 export type AvailabilityZoneList = Array<string>;
 export type AwsQueryErrorMessage = string;

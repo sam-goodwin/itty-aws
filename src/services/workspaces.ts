@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface WorkspacesService {
+export declare class WorkSpaces extends AWSServiceClient {
   acceptAccountLinkInvitation(
     input: AcceptAccountLinkInvitationRequest,
   ): Effect.Effect<
@@ -875,7 +876,7 @@ export interface WorkspacesService {
   >;
 }
 
-export type Workspaces = WorkspacesService;
+export declare class Workspaces extends WorkSpaces {}
 
 export interface AcceptAccountLinkInvitationRequest {
   LinkId: string;

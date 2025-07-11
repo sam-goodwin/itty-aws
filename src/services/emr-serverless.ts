@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AwsToledoWebService {
+export declare class EMRServerless extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -31,7 +32,7 @@ export interface AwsToledoWebService {
   >;
 }
 
-export type EmrServerless = AwsToledoWebService;
+export declare class EmrServerless extends EMRServerless {}
 
 export interface Application {
   applicationId: string;

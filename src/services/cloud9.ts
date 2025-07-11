@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSCloud9WorkspaceManagementService {
+export declare class Cloud9 extends AWSServiceClient {
   createEnvironmentEC2(
     input: CreateEnvironmentEC2Request,
   ): Effect.Effect<
@@ -162,8 +163,6 @@ export interface AWSCloud9WorkspaceManagementService {
     | CommonAwsError
   >;
 }
-
-export type Cloud9 = AWSCloud9WorkspaceManagementService;
 
 export type AutomaticStopTimeMinutes = number;
 

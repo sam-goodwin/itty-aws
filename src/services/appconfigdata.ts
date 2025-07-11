@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AppConfigData {
+export declare class AppConfigData extends AWSServiceClient {
   getLatestConfiguration(
     input: GetLatestConfigurationRequest,
   ): Effect.Effect<
@@ -14,7 +15,7 @@ export interface AppConfigData {
   >;
 }
 
-export type Appconfigdata = AppConfigData;
+export declare class Appconfigdata extends AppConfigData {}
 
 interface _BadRequestDetails {
   InvalidParameters?: Record<string, InvalidParameterDetail>;

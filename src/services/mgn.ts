@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ApplicationMigrationService {
+export declare class mgn extends AWSServiceClient {
   initializeService(
     input: InitializeServiceRequest,
   ): Effect.Effect<
@@ -49,7 +50,7 @@ export interface ApplicationMigrationService {
   >;
 }
 
-export type Mgn = ApplicationMigrationService;
+export declare class Mgn extends mgn {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

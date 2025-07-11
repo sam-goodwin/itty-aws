@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIoTSiteWise {
+export declare class IoTSiteWise extends AWSServiceClient {
   associateAssets(
     input: AssociateAssetsRequest,
   ): Effect.Effect<
@@ -981,7 +982,7 @@ export interface AWSIoTSiteWise {
   >;
 }
 
-export type Iotsitewise = AWSIoTSiteWise;
+export declare class Iotsitewise extends IoTSiteWise {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

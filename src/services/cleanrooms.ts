@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSBastionControlPlaneServiceLambda {
+export declare class CleanRooms extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
@@ -22,7 +23,7 @@ export interface AWSBastionControlPlaneServiceLambda {
   >;
 }
 
-export type Cleanrooms = AWSBastionControlPlaneServiceLambda;
+export declare class Cleanrooms extends CleanRooms {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

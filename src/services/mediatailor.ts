@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MediaTailor {
+export declare class MediaTailor extends AWSServiceClient {
   configureLogsForPlaybackConfiguration(
     input: ConfigureLogsForPlaybackConfigurationRequest,
   ): Effect.Effect<
@@ -25,7 +26,7 @@ export interface MediaTailor {
   ): Effect.Effect<{}, BadRequestException | CommonAwsError>;
 }
 
-export type Mediatailor = MediaTailor;
+export declare class Mediatailor extends MediaTailor {}
 
 export type __adsInteractionExcludeEventTypesList =
   Array<AdsInteractionExcludeEventType>;

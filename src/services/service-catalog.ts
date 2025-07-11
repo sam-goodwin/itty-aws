@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWS242ServiceCatalogService {
+export declare class ServiceCatalog extends AWSServiceClient {
   acceptPortfolioShare(
     input: AcceptPortfolioShareInput,
   ): Effect.Effect<
@@ -660,8 +661,6 @@ export interface AWS242ServiceCatalogService {
     | CommonAwsError
   >;
 }
-
-export type ServiceCatalog = AWS242ServiceCatalogService;
 
 export type AcceptLanguage = string;
 

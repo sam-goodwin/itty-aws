@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonRDSv19 {
+export declare class RDS extends AWSServiceClient {
   addRoleToDBCluster(
     input: AddRoleToDBClusterMessage,
   ): Effect.Effect<
@@ -1523,7 +1524,7 @@ export interface AmazonRDSv19 {
   >;
 }
 
-export type Rds = AmazonRDSv19;
+export declare class Rds extends RDS {}
 
 export interface AccountAttributesMessage {
   AccountQuotas?: Array<AccountQuota>;

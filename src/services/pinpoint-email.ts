@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonPinpointEmailService {
+export declare class PinpointEmail extends AWSServiceClient {
   createConfigurationSet(
     input: CreateConfigurationSetRequest,
   ): Effect.Effect<
@@ -389,8 +390,6 @@ export interface AmazonPinpointEmailService {
     | CommonAwsError
   >;
 }
-
-export type PinpointEmail = AmazonPinpointEmailService;
 
 export declare class AccountSuspendedException extends EffectData.TaggedError(
   "AccountSuspendedException",

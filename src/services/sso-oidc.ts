@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSSSOOIDCService {
+export declare class SSOOIDC extends AWSServiceClient {
   createToken(
     input: CreateTokenRequest,
   ): Effect.Effect<
@@ -62,7 +63,7 @@ export interface AWSSSOOIDCService {
   >;
 }
 
-export type SsoOidc = AWSSSOOIDCService;
+export declare class SsoOidc extends SSOOIDC {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

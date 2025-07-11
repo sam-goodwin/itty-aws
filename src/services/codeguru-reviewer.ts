@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSGuruFrontendService {
+export declare class CodeGuruReviewer extends AWSServiceClient {
   associateRepository(
     input: AssociateRepositoryRequest,
   ): Effect.Effect<
@@ -151,7 +152,7 @@ export interface AWSGuruFrontendService {
   >;
 }
 
-export type CodeguruReviewer = AWSGuruFrontendService;
+export declare class CodeguruReviewer extends CodeGuruReviewer {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SandstoneConfigurationServiceLambda {
+export declare class Appflow extends AWSServiceClient {
   cancelFlowExecutions(
     input: CancelFlowExecutionsRequest,
   ): Effect.Effect<
@@ -248,8 +249,6 @@ export interface SandstoneConfigurationServiceLambda {
     | CommonAwsError
   >;
 }
-
-export type Appflow = SandstoneConfigurationServiceLambda;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

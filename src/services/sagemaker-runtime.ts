@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonSageMakerRuntime {
+export declare class SageMakerRuntime extends AWSServiceClient {
   invokeEndpoint(
     input: InvokeEndpointInput,
   ): Effect.Effect<
@@ -34,7 +35,7 @@ export interface AmazonSageMakerRuntime {
   >;
 }
 
-export type SagemakerRuntime = AmazonSageMakerRuntime;
+export declare class SagemakerRuntime extends SageMakerRuntime {}
 
 export type BodyBlob = Uint8Array | string;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIoTAnalytics {
+export declare class IoTAnalytics extends AWSServiceClient {
   batchPutMessage(
     input: BatchPutMessageRequest,
   ): Effect.Effect<
@@ -381,7 +382,7 @@ export interface AWSIoTAnalytics {
   >;
 }
 
-export type Iotanalytics = AWSIoTAnalytics;
+export declare class Iotanalytics extends IoTAnalytics {}
 
 export type ActivityBatchSize = number;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSHabaneroManagementService {
+export declare class finspace extends AWSServiceClient {
   createEnvironment(
     input: CreateEnvironmentRequest,
   ): Effect.Effect<
@@ -600,7 +601,7 @@ export interface AWSHabaneroManagementService {
   >;
 }
 
-export type Finspace = AWSHabaneroManagementService;
+export declare class Finspace extends finspace {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Logs_20140328 {
+export declare class CloudWatchLogs extends AWSServiceClient {
   associateKmsKey(
     input: AssociateKmsKeyRequest,
   ): Effect.Effect<
@@ -877,7 +878,7 @@ export interface Logs_20140328 {
   >;
 }
 
-export type CloudwatchLogs = Logs_20140328;
+export declare class CloudwatchLogs extends CloudWatchLogs {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

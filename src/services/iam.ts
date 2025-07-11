@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIdentityManagementV20100508 {
+export declare class IAM extends AWSServiceClient {
   addClientIDToOpenIDConnectProvider(
     input: AddClientIDToOpenIDConnectProviderRequest,
   ): Effect.Effect<
@@ -1412,7 +1413,7 @@ export interface AWSIdentityManagementV20100508 {
   >;
 }
 
-export type Iam = AWSIdentityManagementV20100508;
+export declare class Iam extends IAM {}
 
 export type AccessAdvisorUsageGranularityType =
   | "SERVICE_LEVEL"

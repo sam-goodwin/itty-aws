@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSWAF_20150824 {
+export declare class WAF extends AWSServiceClient {
   createByteMatchSet(
     input: CreateByteMatchSetRequest,
   ): Effect.Effect<
@@ -805,7 +806,7 @@ export interface AWSWAF_20150824 {
   >;
 }
 
-export type Waf = AWSWAF_20150824;
+export declare class Waf extends WAF {}
 
 export type Action = string;
 

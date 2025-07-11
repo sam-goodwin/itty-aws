@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSMPSeymour {
+export declare class MarketplaceCatalog extends AWSServiceClient {
   batchDescribeEntities(
     input: BatchDescribeEntitiesRequest,
   ): Effect.Effect<
@@ -148,8 +149,6 @@ export interface AWSMPSeymour {
     | CommonAwsError
   >;
 }
-
-export type MarketplaceCatalog = AWSMPSeymour;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

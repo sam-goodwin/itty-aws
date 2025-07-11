@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSInsightsIndexService {
+export declare class CostExplorer extends AWSServiceClient {
   createAnomalyMonitor(
     input: CreateAnomalyMonitorRequest,
   ): Effect.Effect<
@@ -371,8 +372,6 @@ export interface AWSInsightsIndexService {
     | CommonAwsError
   >;
 }
-
-export type CostExplorer = AWSInsightsIndexService;
 
 export type AccountId = string;
 

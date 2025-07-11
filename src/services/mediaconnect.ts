@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MediaConnect {
+export declare class MediaConnect extends AWSServiceClient {
   listEntitlements(
     input: ListEntitlementsRequest,
   ): Effect.Effect<
@@ -41,7 +42,7 @@ export interface MediaConnect {
   >;
 }
 
-export type Mediaconnect = MediaConnect;
+export declare class Mediaconnect extends MediaConnect {}
 
 export type __listOfAddBridgeOutputRequest = Array<AddBridgeOutputRequest>;
 export type __listOfAddBridgeSourceRequest = Array<AddBridgeSourceRequest>;

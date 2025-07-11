@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface TaigaWebService {
+export declare class ManagedBlockchain extends AWSServiceClient {
   createAccessor(
     input: CreateAccessorInput,
   ): Effect.Effect<
@@ -313,7 +314,7 @@ export interface TaigaWebService {
   >;
 }
 
-export type Managedblockchain = TaigaWebService;
+export declare class Managedblockchain extends ManagedBlockchain {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

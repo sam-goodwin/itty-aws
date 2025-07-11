@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AppRunner {
+export declare class AppRunner extends AWSServiceClient {
   associateCustomDomain(
     input: AssociateCustomDomainRequest,
   ): Effect.Effect<
@@ -330,7 +331,7 @@ export interface AppRunner {
   >;
 }
 
-export type Apprunner = AppRunner;
+export declare class Apprunner extends AppRunner {}
 
 export type AppRunnerResourceArn = string;
 

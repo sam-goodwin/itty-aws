@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface StarlingDoveService {
+export declare class ConfigService extends AWSServiceClient {
   associateResourceTypes(
     input: AssociateResourceTypesRequest,
   ): Effect.Effect<
@@ -828,8 +829,6 @@ export interface StarlingDoveService {
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
 }
-
-export type ConfigService = StarlingDoveService;
 
 export interface AccountAggregationSource {
   AccountIds: Array<string>;

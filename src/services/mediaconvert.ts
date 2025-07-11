@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MediaConvert {
+export declare class MediaConvert extends AWSServiceClient {
   associateCertificate(
     input: AssociateCertificateRequest,
   ): Effect.Effect<
@@ -376,7 +377,7 @@ export interface MediaConvert {
   >;
 }
 
-export type Mediaconvert = MediaConvert;
+export declare class Mediaconvert extends MediaConvert {}
 
 export type __double = number;
 

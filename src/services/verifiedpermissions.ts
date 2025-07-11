@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface VerifiedPermissions {
+export declare class VerifiedPermissions extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
@@ -35,7 +36,7 @@ export interface VerifiedPermissions {
   >;
 }
 
-export type Verifiedpermissions = VerifiedPermissions;
+export declare class Verifiedpermissions extends VerifiedPermissions {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Transcribe {
+export declare class Transcribe extends AWSServiceClient {
   createCallAnalyticsCategory(
     input: CreateCallAnalyticsCategoryRequest,
   ): Effect.Effect<

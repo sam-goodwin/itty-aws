@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonBedrockControlPlaneService {
+export declare class Bedrock extends AWSServiceClient {
   batchDeleteEvaluationJob(
     input: BatchDeleteEvaluationJobRequest,
   ): Effect.Effect<
@@ -757,8 +758,6 @@ export interface AmazonBedrockControlPlaneService {
     | CommonAwsError
   >;
 }
-
-export type Bedrock = AmazonBedrockControlPlaneService;
 
 export type AcceptEula = boolean;
 

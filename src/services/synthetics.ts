@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Synthetics {
+export declare class synthetics extends AWSServiceClient {
   associateResource(
     input: AssociateResourceRequest,
   ): Effect.Effect<

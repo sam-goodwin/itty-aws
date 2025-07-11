@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface RUM {
+export declare class RUM extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -42,7 +43,7 @@ export interface RUM {
   >;
 }
 
-export type Rum = RUM;
+export declare class Rum extends RUM {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

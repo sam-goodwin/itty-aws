@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SimpleEmailService_v2 {
+export declare class SESv2 extends AWSServiceClient {
   batchGetMetricData(
     input: BatchGetMetricDataRequest,
   ): Effect.Effect<
@@ -884,7 +885,7 @@ export interface SimpleEmailService_v2 {
   >;
 }
 
-export type Sesv2 = SimpleEmailService_v2;
+export declare class Sesv2 extends SESv2 {}
 
 export interface AccountDetails {
   MailType?: MailType;

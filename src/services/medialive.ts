@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MediaLive {
+export declare class MediaLive extends AWSServiceClient {
   acceptInputDeviceTransfer(
     input: AcceptInputDeviceTransferRequest,
   ): Effect.Effect<
@@ -1548,7 +1549,7 @@ export interface MediaLive {
   >;
 }
 
-export type Medialive = MediaLive;
+export declare class Medialive extends MediaLive {}
 
 export type __boolean = boolean;
 

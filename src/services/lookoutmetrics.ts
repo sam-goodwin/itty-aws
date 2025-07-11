@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface LookoutMetrics {
+export declare class LookoutMetrics extends AWSServiceClient {
   activateAnomalyDetector(
     input: ActivateAnomalyDetectorRequest,
   ): Effect.Effect<
@@ -337,7 +338,7 @@ export interface LookoutMetrics {
   >;
 }
 
-export type Lookoutmetrics = LookoutMetrics;
+export declare class Lookoutmetrics extends LookoutMetrics {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

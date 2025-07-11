@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface KeyspacesService {
+export declare class Keyspaces extends AWSServiceClient {
   createKeyspace(
     input: CreateKeyspaceRequest,
   ): Effect.Effect<
@@ -222,8 +223,6 @@ export interface KeyspacesService {
     | CommonAwsError
   >;
 }
-
-export type Keyspaces = KeyspacesService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

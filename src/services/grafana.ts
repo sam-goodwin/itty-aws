@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSGrafanaControlPlane {
+export declare class grafana extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -48,7 +49,7 @@ export interface AWSGrafanaControlPlane {
   >;
 }
 
-export type Grafana = AWSGrafanaControlPlane;
+export declare class Grafana extends grafana {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

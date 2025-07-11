@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface mq {
+export declare class mq extends AWSServiceClient {
   createBroker(
     input: CreateBrokerRequest,
   ): Effect.Effect<
@@ -246,7 +247,7 @@ export interface mq {
   >;
 }
 
-export type Mq = mq;
+export declare class Mq extends mq {}
 
 export type __boolean = boolean;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSGlueDataBrew {
+export declare class DataBrew extends AWSServiceClient {
   batchDeleteRecipeVersion(
     input: BatchDeleteRecipeVersionRequest,
   ): Effect.Effect<
@@ -333,7 +334,7 @@ export interface AWSGlueDataBrew {
   >;
 }
 
-export type Databrew = AWSGlueDataBrew;
+export declare class Databrew extends DataBrew {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

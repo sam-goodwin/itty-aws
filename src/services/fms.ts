@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSFMS_20180101 {
+export declare class FMS extends AWSServiceClient {
   associateAdminAccount(
     input: AssociateAdminAccountRequest,
   ): Effect.Effect<
@@ -410,7 +411,7 @@ export interface AWSFMS_20180101 {
   >;
 }
 
-export type Fms = AWSFMS_20180101;
+export declare class Fms extends FMS {}
 
 export type AccountIdList = Array<string>;
 export type AccountRoleStatus =

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface UCBuzzConsoleService {
+export declare class Chime extends AWSServiceClient {
   associatePhoneNumberWithUser(
     input: AssociatePhoneNumberWithUserRequest,
   ): Effect.Effect<
@@ -812,8 +813,6 @@ export interface UCBuzzConsoleService {
     | CommonAwsError
   >;
 }
-
-export type Chime = UCBuzzConsoleService;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSDnsV20130401 {
+export declare class Route53 extends AWSServiceClient {
   activateKeySigningKey(
     input: ActivateKeySigningKeyRequest,
   ): Effect.Effect<
@@ -583,8 +584,6 @@ export interface AWSDnsV20130401 {
     | CommonAwsError
   >;
 }
-
-export type Route53 = AWSDnsV20130401;
 
 export interface AccountLimit {
   Type: AccountLimitType;

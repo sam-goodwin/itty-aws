@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface IotMoonrakerService {
+export declare class IoTDataPlane extends AWSServiceClient {
   deleteThingShadow(
     input: DeleteThingShadowRequest,
   ): Effect.Effect<
@@ -96,7 +97,7 @@ export interface IotMoonrakerService {
   >;
 }
 
-export type IotDataPlane = IotMoonrakerService;
+export declare class IotDataPlane extends IoTDataPlane {}
 
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",

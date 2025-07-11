@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface DeviceFarm_20150623 {
+export declare class DeviceFarm extends AWSServiceClient {
   createDevicePool(
     input: CreateDevicePoolRequest,
   ): Effect.Effect<
@@ -763,8 +764,6 @@ export interface DeviceFarm_20150623 {
     | CommonAwsError
   >;
 }
-
-export type DeviceFarm = DeviceFarm_20150623;
 
 export type AccountsCleanup = boolean;
 

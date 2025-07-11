@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface DynamoDB_20120810 {
+export declare class DynamoDB extends AWSServiceClient {
   batchExecuteStatement(
     input: BatchExecuteStatementInput,
   ): Effect.Effect<
@@ -571,8 +572,6 @@ export interface DynamoDB_20120810 {
     | CommonAwsError
   >;
 }
-
-export type DynamoDB = DynamoDB_20120810;
 
 export type ApproximateCreationDateTimePrecision =
   | "MILLISECOND"

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface S3Outposts {
+export declare class S3Outposts extends AWSServiceClient {
   createEndpoint(
     input: CreateEndpointRequest,
   ): Effect.Effect<
@@ -61,7 +62,7 @@ export interface S3Outposts {
   >;
 }
 
-export type S3outposts = S3Outposts;
+export declare class S3outposts extends S3Outposts {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface PerformanceInsightsv20180227 {
+export declare class PI extends AWSServiceClient {
   createPerformanceAnalysisReport(
     input: CreatePerformanceAnalysisReportRequest,
   ): Effect.Effect<
@@ -121,7 +122,7 @@ export interface PerformanceInsightsv20180227 {
   >;
 }
 
-export type Pi = PerformanceInsightsv20180227;
+export declare class Pi extends PI {}
 
 export type AcceptLanguage = "EN_US";
 export type AdditionalMetricsList = Array<string>;

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface schemas {
+export declare class schemas extends AWSServiceClient {
   createDiscoverer(
     input: CreateDiscovererRequest,
   ): Effect.Effect<
@@ -365,7 +366,7 @@ export interface schemas {
   >;
 }
 
-export type Schemas = schemas;
+export declare class Schemas extends schemas {}
 
 export type __boolean = boolean;
 

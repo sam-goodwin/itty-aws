@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CodeGuruProfiler {
+export declare class CodeGuruProfiler extends AWSServiceClient {
   getFindingsReportAccountSummary(
     input: GetFindingsReportAccountSummaryRequest,
   ): Effect.Effect<
@@ -40,7 +41,7 @@ export interface CodeGuruProfiler {
   >;
 }
 
-export type Codeguruprofiler = CodeGuruProfiler;
+export declare class Codeguruprofiler extends CodeGuruProfiler {}
 
 export type ActionGroup = string;
 

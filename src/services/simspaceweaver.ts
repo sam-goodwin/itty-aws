@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SimSpaceWeaver {
+export declare class SimSpaceWeaver extends AWSServiceClient {
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
@@ -25,7 +26,7 @@ export interface SimSpaceWeaver {
   >;
 }
 
-export type Simspaceweaver = SimSpaceWeaver;
+export declare class Simspaceweaver extends SimSpaceWeaver {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

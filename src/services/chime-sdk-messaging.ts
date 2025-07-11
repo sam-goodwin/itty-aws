@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ChimeMessagingService {
+export declare class ChimeSDKMessaging extends AWSServiceClient {
   associateChannelFlow(
     input: AssociateChannelFlowRequest,
   ): Effect.Effect<
@@ -652,7 +653,7 @@ export interface ChimeMessagingService {
   >;
 }
 
-export type ChimeSdkMessaging = ChimeMessagingService;
+export declare class ChimeSdkMessaging extends ChimeSDKMessaging {}
 
 export type AllowNotifications = "ALL" | "NONE" | "FILTERED";
 export interface AppInstanceUserMembershipSummary {

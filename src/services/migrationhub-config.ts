@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSMigrationHubMultiAccountService {
+export declare class MigrationHubConfig extends AWSServiceClient {
   createHomeRegionControl(
     input: CreateHomeRegionControlRequest,
   ): Effect.Effect<
@@ -49,7 +50,7 @@ export interface AWSMigrationHubMultiAccountService {
   >;
 }
 
-export type MigrationhubConfig = AWSMigrationHubMultiAccountService;
+export declare class MigrationhubConfig extends MigrationHubConfig {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

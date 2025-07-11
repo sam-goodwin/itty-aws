@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface MTurkRequesterServiceV20170117 {
+export declare class MTurk extends AWSServiceClient {
   acceptQualificationRequest(
     input: AcceptQualificationRequestRequest,
   ): Effect.Effect<
@@ -238,7 +239,7 @@ export interface MTurkRequesterServiceV20170117 {
   >;
 }
 
-export type Mturk = MTurkRequesterServiceV20170117;
+export declare class Mturk extends MTurk {}
 
 export interface AcceptQualificationRequestRequest {
   QualificationRequestId: string;

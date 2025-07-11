@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonPersonalizeEvents {
+export declare class PersonalizeEvents extends AWSServiceClient {
   putActionInteractions(
     input: PutActionInteractionsRequest,
   ): Effect.Effect<
@@ -42,8 +43,6 @@ export interface AmazonPersonalizeEvents {
     | CommonAwsError
   >;
 }
-
-export type PersonalizeEvents = AmazonPersonalizeEvents;
 
 export interface Action {
   actionId: string;

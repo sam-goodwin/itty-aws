@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ACMPrivateCA {
+export declare class ACMPCA extends AWSServiceClient {
   createCertificateAuthority(
     input: CreateCertificateAuthorityRequest,
   ): Effect.Effect<
@@ -250,7 +251,7 @@ export interface ACMPrivateCA {
   >;
 }
 
-export type AcmPca = ACMPrivateCA;
+export declare class AcmPca extends ACMPCA {}
 
 export interface AccessDescription {
   AccessMethod: AccessMethod;

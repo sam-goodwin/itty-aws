@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface ComprehendMedical_20181030 {
+export declare class ComprehendMedical extends AWSServiceClient {
   describeEntitiesDetectionV2Job(
     input: DescribeEntitiesDetectionV2JobRequest,
   ): Effect.Effect<
@@ -272,7 +273,7 @@ export interface ComprehendMedical_20181030 {
   >;
 }
 
-export type Comprehendmedical = ComprehendMedical_20181030;
+export declare class Comprehendmedical extends ComprehendMedical {}
 
 export type AnyLengthString = string;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonDetective {
+export declare class Detective extends AWSServiceClient {
   acceptInvitation(
     input: AcceptInvitationRequest,
   ): Effect.Effect<
@@ -302,8 +303,6 @@ export interface AmazonDetective {
     | CommonAwsError
   >;
 }
-
-export type Detective = AmazonDetective;
 
 export interface AcceptInvitationRequest {
   GraphArn: string;

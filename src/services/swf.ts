@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SimpleWorkflowService {
+export declare class SWF extends AWSServiceClient {
   countClosedWorkflowExecutions(
     input: CountClosedWorkflowExecutionsInput,
   ): Effect.Effect<
@@ -293,7 +294,7 @@ export interface SimpleWorkflowService {
   >;
 }
 
-export type Swf = SimpleWorkflowService;
+export declare class Swf extends SWF {}
 
 export type ActivityId = string;
 

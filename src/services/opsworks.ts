@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface OpsWorks_20130218 {
+export declare class OpsWorks extends AWSServiceClient {
   assignInstance(
     input: AssignInstanceRequest,
   ): Effect.Effect<
@@ -435,7 +436,7 @@ export interface OpsWorks_20130218 {
   >;
 }
 
-export type Opsworks = OpsWorks_20130218;
+export declare class Opsworks extends OpsWorks {}
 
 export interface AgentVersion {
   Version?: string;

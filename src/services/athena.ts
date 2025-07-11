@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonAthena {
+export declare class Athena extends AWSServiceClient {
   batchGetNamedQuery(
     input: BatchGetNamedQueryInput,
   ): Effect.Effect<
@@ -518,8 +519,6 @@ export interface AmazonAthena {
     InternalServerException | InvalidRequestException | CommonAwsError
   >;
 }
-
-export type Athena = AmazonAthena;
 
 export interface AclConfiguration {
   S3AclOption: S3AclOption;

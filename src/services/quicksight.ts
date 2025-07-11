@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface QuickSight_20180401 {
+export declare class QuickSight extends AWSServiceClient {
   batchCreateTopicReviewedAnswer(
     input: BatchCreateTopicReviewedAnswerRequest,
   ): Effect.Effect<
@@ -2652,7 +2653,7 @@ export interface QuickSight_20180401 {
   >;
 }
 
-export type Quicksight = QuickSight_20180401;
+export declare class Quicksight extends QuickSight {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Route53AutoNaming_v20170314 {
+export declare class ServiceDiscovery extends AWSServiceClient {
   createHttpNamespace(
     input: CreateHttpNamespaceRequest,
   ): Effect.Effect<
@@ -239,7 +240,7 @@ export interface Route53AutoNaming_v20170314 {
   >;
 }
 
-export type Servicediscovery = Route53AutoNaming_v20170314;
+export declare class Servicediscovery extends ServiceDiscovery {}
 
 export type AmazonResourceName = string;
 

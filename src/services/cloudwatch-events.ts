@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSEvents {
+export declare class CloudWatchEvents extends AWSServiceClient {
   activateEventSource(
     input: ActivateEventSourceRequest,
   ): Effect.Effect<
@@ -426,7 +427,7 @@ export interface AWSEvents {
   >;
 }
 
-export type CloudwatchEvents = AWSEvents;
+export declare class CloudwatchEvents extends CloudWatchEvents {}
 
 export type AccountId = string;
 

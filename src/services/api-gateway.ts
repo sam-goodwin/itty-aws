@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface BackplaneControlService {
+export declare class APIGateway extends AWSServiceClient {
   createApiKey(
     input: CreateApiKeyRequest,
   ): Effect.Effect<
@@ -1373,7 +1374,7 @@ export interface BackplaneControlService {
   >;
 }
 
-export type ApiGateway = BackplaneControlService;
+export declare class ApiGateway extends APIGateway {}
 
 export type AccessAssociationSourceType = "VPCE";
 export interface AccessLogSettings {

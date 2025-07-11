@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface CloudApiService {
+export declare class CloudControl extends AWSServiceClient {
   cancelResourceRequest(
     input: CancelResourceRequestInput,
   ): Effect.Effect<
@@ -142,7 +143,7 @@ export interface CloudApiService {
   >;
 }
 
-export type Cloudcontrol = CloudApiService;
+export declare class Cloudcontrol extends CloudControl {}
 
 export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",

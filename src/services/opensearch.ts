@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonOpenSearchService {
+export declare class OpenSearch extends AWSServiceClient {
   acceptInboundConnection(
     input: AcceptInboundConnectionRequest,
   ): Effect.Effect<
@@ -816,7 +817,7 @@ export interface AmazonOpenSearchService {
   >;
 }
 
-export type Opensearch = AmazonOpenSearchService;
+export declare class Opensearch extends OpenSearch {}
 
 export interface AcceptInboundConnectionRequest {
   ConnectionId: string;

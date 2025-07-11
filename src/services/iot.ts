@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIotService {
+export declare class IoT extends AWSServiceClient {
   acceptCertificateTransfer(
     input: AcceptCertificateTransferRequest,
   ): Effect.Effect<
@@ -2996,7 +2997,7 @@ export interface AWSIotService {
   >;
 }
 
-export type Iot = AWSIotService;
+export declare class Iot extends IoT {}
 
 export type AbortAction = "CANCEL";
 export interface AbortConfig {

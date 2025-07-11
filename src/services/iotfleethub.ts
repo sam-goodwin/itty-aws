@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIoTFleetHub {
+export declare class IoTFleetHub extends AWSServiceClient {
   createApplication(
     input: CreateApplicationRequest,
   ): Effect.Effect<
@@ -81,7 +82,7 @@ export interface AWSIoTFleetHub {
   >;
 }
 
-export type Iotfleethub = AWSIoTFleetHub;
+export declare class Iotfleethub extends IoTFleetHub {}
 
 export type ApplicationState =
   | "CREATING"

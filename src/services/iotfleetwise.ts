@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface IoTAutobahnControlPlane {
+export declare class IoTFleetWise extends AWSServiceClient {
   batchCreateVehicle(
     input: BatchCreateVehicleRequest,
   ): Effect.Effect<
@@ -132,7 +133,7 @@ export interface IoTAutobahnControlPlane {
   >;
 }
 
-export type Iotfleetwise = IoTAutobahnControlPlane;
+export declare class Iotfleetwise extends IoTFleetWise {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

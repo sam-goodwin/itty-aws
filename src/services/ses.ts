@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SimpleEmailService {
+export declare class SES extends AWSServiceClient {
   cloneReceiptRuleSet(
     input: CloneReceiptRuleSetRequest,
   ): Effect.Effect<
@@ -414,7 +415,7 @@ export interface SimpleEmailService {
   ): Effect.Effect<VerifyEmailIdentityResponse, CommonAwsError>;
 }
 
-export type Ses = SimpleEmailService;
+export declare class Ses extends SES {}
 
 export declare class AccountSendingPausedException extends EffectData.TaggedError(
   "AccountSendingPausedException",

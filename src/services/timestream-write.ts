@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Timestream_20181101 {
+export declare class TimestreamWrite extends AWSServiceClient {
   createBatchLoadTask(
     input: CreateBatchLoadTaskRequest,
   ): Effect.Effect<
@@ -228,8 +229,6 @@ export interface Timestream_20181101 {
     | CommonAwsError
   >;
 }
-
-export type TimestreamWrite = Timestream_20181101;
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

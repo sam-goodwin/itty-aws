@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSWAF_20190729 {
+export declare class WAFV2 extends AWSServiceClient {
   associateWebACL(
     input: AssociateWebACLRequest,
   ): Effect.Effect<
@@ -619,7 +620,7 @@ export interface AWSWAF_20190729 {
   >;
 }
 
-export type Wafv2 = AWSWAF_20190729;
+export declare class Wafv2 extends WAFV2 {}
 
 export type Action = string;
 

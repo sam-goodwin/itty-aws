@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSIESnowballJobManagementService {
+export declare class Snowball extends AWSServiceClient {
   cancelCluster(
     input: CancelClusterRequest,
   ): Effect.Effect<
@@ -193,8 +194,6 @@ export interface AWSIESnowballJobManagementService {
     InvalidResourceException | CommonAwsError
   >;
 }
-
-export type Snowball = AWSIESnowballJobManagementService;
 
 export interface Address {
   AddressId?: string;

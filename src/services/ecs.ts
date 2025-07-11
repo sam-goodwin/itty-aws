@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonEC2ContainerServiceV20141113 {
+export declare class ECS extends AWSServiceClient {
   createCapacityProvider(
     input: CreateCapacityProviderRequest,
   ): Effect.Effect<
@@ -655,7 +656,7 @@ export interface AmazonEC2ContainerServiceV20141113 {
   >;
 }
 
-export type Ecs = AmazonEC2ContainerServiceV20141113;
+export declare class Ecs extends ECS {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

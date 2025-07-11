@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface SageMaker {
+export declare class SageMaker extends AWSServiceClient {
   addAssociation(
     input: AddAssociationRequest,
   ): Effect.Effect<
@@ -1657,7 +1658,7 @@ export interface SageMaker {
   >;
 }
 
-export type Sagemaker = SageMaker;
+export declare class Sagemaker extends SageMaker {}
 
 export type Accept = string;
 

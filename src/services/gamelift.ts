@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface GameLift {
+export declare class GameLift extends AWSServiceClient {
   acceptMatch(
     input: AcceptMatchInput,
   ): Effect.Effect<
@@ -1285,7 +1286,7 @@ export interface GameLift {
   >;
 }
 
-export type Gamelift = GameLift;
+export declare class Gamelift extends GameLift {}
 
 export type AcceptanceType = "ACCEPT" | "REJECT";
 export interface AcceptMatchInput {

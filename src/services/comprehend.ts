@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface Comprehend_20171127 {
+export declare class Comprehend extends AWSServiceClient {
   batchDetectDominantLanguage(
     input: BatchDetectDominantLanguageRequest,
   ): Effect.Effect<
@@ -908,8 +909,6 @@ export interface Comprehend_20171127 {
     | CommonAwsError
   >;
 }
-
-export type Comprehend = Comprehend_20171127;
 
 export type AnyLengthString = string;
 

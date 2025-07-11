@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface KinesisAnalytics_20150814 {
+export declare class KinesisAnalytics extends AWSServiceClient {
   addApplicationCloudWatchLoggingOption(
     input: AddApplicationCloudWatchLoggingOptionRequest,
   ): Effect.Effect<
@@ -207,8 +208,6 @@ export interface KinesisAnalytics_20150814 {
     | CommonAwsError
   >;
 }
-
-export type KinesisAnalytics = KinesisAnalytics_20150814;
 
 export interface AddApplicationCloudWatchLoggingOptionRequest {
   ApplicationName: string;

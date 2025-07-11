@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonConnectCampaignService {
+export declare class ConnectCampaigns extends AWSServiceClient {
   createCampaign(
     input: CreateCampaignRequest,
   ): Effect.Effect<
@@ -254,7 +255,7 @@ export interface AmazonConnectCampaignService {
   >;
 }
 
-export type Connectcampaigns = AmazonConnectCampaignService;
+export declare class Connectcampaigns extends ConnectCampaigns {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",

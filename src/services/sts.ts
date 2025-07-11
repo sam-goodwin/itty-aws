@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AWSSecurityTokenServiceV20110615 {
+export declare class STS extends AWSServiceClient {
   assumeRole(
     input: AssumeRoleRequest,
   ): Effect.Effect<
@@ -72,7 +73,7 @@ export interface AWSSecurityTokenServiceV20110615 {
   >;
 }
 
-export type Sts = AWSSecurityTokenServiceV20110615;
+export declare class Sts extends STS {}
 
 export type accessKeyIdType = string;
 

@@ -1,7 +1,8 @@
 import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
+import { AWSServiceClient } from "../client.ts";
 
-export interface AmazonInteractiveVideoServiceChat {
+export declare class ivschat extends AWSServiceClient {
   createChatToken(
     input: CreateChatTokenRequest,
   ): Effect.Effect<
@@ -173,7 +174,7 @@ export interface AmazonInteractiveVideoServiceChat {
   >;
 }
 
-export type Ivschat = AmazonInteractiveVideoServiceChat;
+export declare class Ivschat extends ivschat {}
 
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
