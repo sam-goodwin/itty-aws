@@ -21,9 +21,14 @@ export declare class AccessDeniedException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+interface _ActionGroupExecutor {
+  lambda?: string;
+  customControl?: CustomControlMethod;
+}
+
 export type ActionGroupExecutor =
-  | { lambda: string; customControl?: undefined }
-  | { lambda?: undefined; customControl: CustomControlMethod };
+  | (_ActionGroupExecutor & { lambda: string })
+  | (_ActionGroupExecutor & { customControl: CustomControlMethod });
 export type ActionGroupSignature =
   | "AMAZON_USERINPUT"
   | "AMAZON_CODEINTERPRETER"
@@ -241,9 +246,14 @@ export interface AgentVersionSummary {
 }
 export type AliasInvocationState = "ACCEPT_INVOCATIONS" | "REJECT_INVOCATIONS";
 export interface AnyToolChoice {}
+interface _APISchema {
+  s3?: S3Identifier;
+  payload?: string;
+}
+
 export type APISchema =
-  | { s3: S3Identifier; payload?: undefined }
-  | { s3?: undefined; payload: string };
+  | (_APISchema & { s3: S3Identifier })
+  | (_APISchema & { payload: string });
 export interface AssociateAgentCollaboratorRequest {
   agentId: string;
   agentVersion: string;
@@ -354,9 +364,14 @@ export interface ConfluenceSourceConfiguration {
   authType: ConfluenceAuthType;
   credentialsSecretArn: string;
 }
+interface _ContentBlock {
+  text?: string;
+  cachePoint?: CachePointBlock;
+}
+
 export type ContentBlock =
-  | { text: string; cachePoint?: undefined }
-  | { text?: undefined; cachePoint: CachePointBlock };
+  | (_ContentBlock & { text: string })
+  | (_ContentBlock & { cachePoint: CachePointBlock });
 export type ContentBlocks = Array<ContentBlock>;
 export type ContentDataSourceType = "CUSTOM" | "S3";
 export interface ContextEnrichmentConfiguration {
@@ -841,9 +856,16 @@ export interface FlowConnection {
   target: string;
   configuration?: FlowConnectionConfiguration;
 }
+interface _FlowConnectionConfiguration {
+  data?: FlowDataConnectionConfiguration;
+  conditional?: FlowConditionalConnectionConfiguration;
+}
+
 export type FlowConnectionConfiguration =
-  | { data: FlowDataConnectionConfiguration; conditional?: undefined }
-  | { data?: undefined; conditional: FlowConditionalConnectionConfiguration };
+  | (_FlowConnectionConfiguration & { data: FlowDataConnectionConfiguration })
+  | (_FlowConnectionConfiguration & {
+      conditional: FlowConditionalConnectionConfiguration;
+    });
 export type FlowConnectionName = string;
 
 export type FlowConnections = Array<FlowConnection>;
@@ -873,295 +895,48 @@ export interface FlowNode {
   inputs?: Array<FlowNodeInput>;
   outputs?: Array<FlowNodeOutput>;
 }
+interface _FlowNodeConfiguration {
+  input?: InputFlowNodeConfiguration;
+  output?: OutputFlowNodeConfiguration;
+  knowledgeBase?: KnowledgeBaseFlowNodeConfiguration;
+  condition?: ConditionFlowNodeConfiguration;
+  lex?: LexFlowNodeConfiguration;
+  prompt?: PromptFlowNodeConfiguration;
+  lambdaFunction?: LambdaFunctionFlowNodeConfiguration;
+  storage?: StorageFlowNodeConfiguration;
+  agent?: AgentFlowNodeConfiguration;
+  retrieval?: RetrievalFlowNodeConfiguration;
+  iterator?: IteratorFlowNodeConfiguration;
+  collector?: CollectorFlowNodeConfiguration;
+  inlineCode?: InlineCodeFlowNodeConfiguration;
+  loop?: LoopFlowNodeConfiguration;
+  loopInput?: LoopInputFlowNodeConfiguration;
+  loopController?: LoopControllerFlowNodeConfiguration;
+}
+
 export type FlowNodeConfiguration =
-  | {
-      input: InputFlowNodeConfiguration;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output: OutputFlowNodeConfiguration;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
+  | (_FlowNodeConfiguration & { input: InputFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { output: OutputFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & {
       knowledgeBase: KnowledgeBaseFlowNodeConfiguration;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition: ConditionFlowNodeConfiguration;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex: LexFlowNodeConfiguration;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt: PromptFlowNodeConfiguration;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
+    })
+  | (_FlowNodeConfiguration & { condition: ConditionFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { lex: LexFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { prompt: PromptFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & {
       lambdaFunction: LambdaFunctionFlowNodeConfiguration;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage: StorageFlowNodeConfiguration;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent: AgentFlowNodeConfiguration;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval: RetrievalFlowNodeConfiguration;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator: IteratorFlowNodeConfiguration;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector: CollectorFlowNodeConfiguration;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode: InlineCodeFlowNodeConfiguration;
-      loop?: undefined;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop: LoopFlowNodeConfiguration;
-      loopInput?: undefined;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput: LoopInputFlowNodeConfiguration;
-      loopController?: undefined;
-    }
-  | {
-      input?: undefined;
-      output?: undefined;
-      knowledgeBase?: undefined;
-      condition?: undefined;
-      lex?: undefined;
-      prompt?: undefined;
-      lambdaFunction?: undefined;
-      storage?: undefined;
-      agent?: undefined;
-      retrieval?: undefined;
-      iterator?: undefined;
-      collector?: undefined;
-      inlineCode?: undefined;
-      loop?: undefined;
-      loopInput?: undefined;
+    })
+  | (_FlowNodeConfiguration & { storage: StorageFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { agent: AgentFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { retrieval: RetrievalFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { iterator: IteratorFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { collector: CollectorFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { inlineCode: InlineCodeFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { loop: LoopFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & { loopInput: LoopInputFlowNodeConfiguration })
+  | (_FlowNodeConfiguration & {
       loopController: LoopControllerFlowNodeConfiguration;
-    };
+    });
 export interface FlowNodeInput {
   name: string;
   type: FlowNodeIODataType;
@@ -1228,1162 +1003,140 @@ export interface FlowValidation {
   details?: FlowValidationDetails;
   type?: FlowValidationType;
 }
+interface _FlowValidationDetails {
+  cyclicConnection?: CyclicConnectionFlowValidationDetails;
+  duplicateConnections?: DuplicateConnectionsFlowValidationDetails;
+  duplicateConditionExpression?: DuplicateConditionExpressionFlowValidationDetails;
+  unreachableNode?: UnreachableNodeFlowValidationDetails;
+  unknownConnectionSource?: UnknownConnectionSourceFlowValidationDetails;
+  unknownConnectionSourceOutput?: UnknownConnectionSourceOutputFlowValidationDetails;
+  unknownConnectionTarget?: UnknownConnectionTargetFlowValidationDetails;
+  unknownConnectionTargetInput?: UnknownConnectionTargetInputFlowValidationDetails;
+  unknownConnectionCondition?: UnknownConnectionConditionFlowValidationDetails;
+  malformedConditionExpression?: MalformedConditionExpressionFlowValidationDetails;
+  malformedNodeInputExpression?: MalformedNodeInputExpressionFlowValidationDetails;
+  mismatchedNodeInputType?: MismatchedNodeInputTypeFlowValidationDetails;
+  mismatchedNodeOutputType?: MismatchedNodeOutputTypeFlowValidationDetails;
+  incompatibleConnectionDataType?: IncompatibleConnectionDataTypeFlowValidationDetails;
+  missingConnectionConfiguration?: MissingConnectionConfigurationFlowValidationDetails;
+  missingDefaultCondition?: MissingDefaultConditionFlowValidationDetails;
+  missingEndingNodes?: MissingEndingNodesFlowValidationDetails;
+  missingNodeConfiguration?: MissingNodeConfigurationFlowValidationDetails;
+  missingNodeInput?: MissingNodeInputFlowValidationDetails;
+  missingNodeOutput?: MissingNodeOutputFlowValidationDetails;
+  missingStartingNodes?: MissingStartingNodesFlowValidationDetails;
+  multipleNodeInputConnections?: MultipleNodeInputConnectionsFlowValidationDetails;
+  unfulfilledNodeInput?: UnfulfilledNodeInputFlowValidationDetails;
+  unsatisfiedConnectionConditions?: UnsatisfiedConnectionConditionsFlowValidationDetails;
+  unspecified?: UnspecifiedFlowValidationDetails;
+  unknownNodeInput?: UnknownNodeInputFlowValidationDetails;
+  unknownNodeOutput?: UnknownNodeOutputFlowValidationDetails;
+  missingLoopInputNode?: MissingLoopInputNodeFlowValidationDetails;
+  missingLoopControllerNode?: MissingLoopControllerNodeFlowValidationDetails;
+  multipleLoopInputNodes?: MultipleLoopInputNodesFlowValidationDetails;
+  multipleLoopControllerNodes?: MultipleLoopControllerNodesFlowValidationDetails;
+  loopIncompatibleNodeType?: LoopIncompatibleNodeTypeFlowValidationDetails;
+  invalidLoopBoundary?: InvalidLoopBoundaryFlowValidationDetails;
+}
+
 export type FlowValidationDetails =
-  | {
+  | (_FlowValidationDetails & {
       cyclicConnection: CyclicConnectionFlowValidationDetails;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
+    })
+  | (_FlowValidationDetails & {
       duplicateConnections: DuplicateConnectionsFlowValidationDetails;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
+    })
+  | (_FlowValidationDetails & {
       duplicateConditionExpression: DuplicateConditionExpressionFlowValidationDetails;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unreachableNode: UnreachableNodeFlowValidationDetails;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unknownConnectionSource: UnknownConnectionSourceFlowValidationDetails;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unknownConnectionSourceOutput: UnknownConnectionSourceOutputFlowValidationDetails;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unknownConnectionTarget: UnknownConnectionTargetFlowValidationDetails;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unknownConnectionTargetInput: UnknownConnectionTargetInputFlowValidationDetails;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unknownConnectionCondition: UnknownConnectionConditionFlowValidationDetails;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
+    })
+  | (_FlowValidationDetails & {
       malformedConditionExpression: MalformedConditionExpressionFlowValidationDetails;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
+    })
+  | (_FlowValidationDetails & {
       malformedNodeInputExpression: MalformedNodeInputExpressionFlowValidationDetails;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
+    })
+  | (_FlowValidationDetails & {
       mismatchedNodeInputType: MismatchedNodeInputTypeFlowValidationDetails;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
+    })
+  | (_FlowValidationDetails & {
       mismatchedNodeOutputType: MismatchedNodeOutputTypeFlowValidationDetails;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
+    })
+  | (_FlowValidationDetails & {
       incompatibleConnectionDataType: IncompatibleConnectionDataTypeFlowValidationDetails;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingConnectionConfiguration: MissingConnectionConfigurationFlowValidationDetails;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingDefaultCondition: MissingDefaultConditionFlowValidationDetails;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingEndingNodes: MissingEndingNodesFlowValidationDetails;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingNodeConfiguration: MissingNodeConfigurationFlowValidationDetails;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingNodeInput: MissingNodeInputFlowValidationDetails;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingNodeOutput: MissingNodeOutputFlowValidationDetails;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingStartingNodes: MissingStartingNodesFlowValidationDetails;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
+    })
+  | (_FlowValidationDetails & {
       multipleNodeInputConnections: MultipleNodeInputConnectionsFlowValidationDetails;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unfulfilledNodeInput: UnfulfilledNodeInputFlowValidationDetails;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unsatisfiedConnectionConditions: UnsatisfiedConnectionConditionsFlowValidationDetails;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified: UnspecifiedFlowValidationDetails;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
+    })
+  | (_FlowValidationDetails & { unspecified: UnspecifiedFlowValidationDetails })
+  | (_FlowValidationDetails & {
       unknownNodeInput: UnknownNodeInputFlowValidationDetails;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       unknownNodeOutput: UnknownNodeOutputFlowValidationDetails;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingLoopInputNode: MissingLoopInputNodeFlowValidationDetails;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
+    })
+  | (_FlowValidationDetails & {
       missingLoopControllerNode: MissingLoopControllerNodeFlowValidationDetails;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
+    })
+  | (_FlowValidationDetails & {
       multipleLoopInputNodes: MultipleLoopInputNodesFlowValidationDetails;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
+    })
+  | (_FlowValidationDetails & {
       multipleLoopControllerNodes: MultipleLoopControllerNodesFlowValidationDetails;
-      loopIncompatibleNodeType?: undefined;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
+    })
+  | (_FlowValidationDetails & {
       loopIncompatibleNodeType: LoopIncompatibleNodeTypeFlowValidationDetails;
-      invalidLoopBoundary?: undefined;
-    }
-  | {
-      cyclicConnection?: undefined;
-      duplicateConnections?: undefined;
-      duplicateConditionExpression?: undefined;
-      unreachableNode?: undefined;
-      unknownConnectionSource?: undefined;
-      unknownConnectionSourceOutput?: undefined;
-      unknownConnectionTarget?: undefined;
-      unknownConnectionTargetInput?: undefined;
-      unknownConnectionCondition?: undefined;
-      malformedConditionExpression?: undefined;
-      malformedNodeInputExpression?: undefined;
-      mismatchedNodeInputType?: undefined;
-      mismatchedNodeOutputType?: undefined;
-      incompatibleConnectionDataType?: undefined;
-      missingConnectionConfiguration?: undefined;
-      missingDefaultCondition?: undefined;
-      missingEndingNodes?: undefined;
-      missingNodeConfiguration?: undefined;
-      missingNodeInput?: undefined;
-      missingNodeOutput?: undefined;
-      missingStartingNodes?: undefined;
-      multipleNodeInputConnections?: undefined;
-      unfulfilledNodeInput?: undefined;
-      unsatisfiedConnectionConditions?: undefined;
-      unspecified?: undefined;
-      unknownNodeInput?: undefined;
-      unknownNodeOutput?: undefined;
-      missingLoopInputNode?: undefined;
-      missingLoopControllerNode?: undefined;
-      multipleLoopInputNodes?: undefined;
-      multipleLoopControllerNodes?: undefined;
-      loopIncompatibleNodeType?: undefined;
+    })
+  | (_FlowValidationDetails & {
       invalidLoopBoundary: InvalidLoopBoundaryFlowValidationDetails;
-    };
+    });
 export type FlowValidations = Array<FlowValidation>;
 export type FlowValidationSeverity = "WARNING" | "ERROR";
 export type FlowValidationType =
@@ -2437,7 +1190,13 @@ export interface BedrockAgentFunction {
 export type FunctionDescription = string;
 
 export type Functions = Array<BedrockAgentFunction>;
-export type FunctionSchema = { functions: Array<BedrockAgentFunction> };
+interface _FunctionSchema {
+  functions?: Array<BedrockAgentFunction>;
+}
+
+export type FunctionSchema = _FunctionSchema & {
+  functions: Array<BedrockAgentFunction>;
+};
 export interface GetAgentActionGroupRequest {
   agentId: string;
   agentVersion: string;
@@ -3136,7 +1895,11 @@ export interface OpenSearchServerlessFieldMapping {
 }
 export type OpenSearchServerlessIndexName = string;
 
-export type OrchestrationExecutor = { lambda: string };
+interface _OrchestrationExecutor {
+  lambda?: string;
+}
+
+export type OrchestrationExecutor = _OrchestrationExecutor & { lambda: string };
 export type OrchestrationType = "DEFAULT" | "CUSTOM_ORCHESTRATION";
 export interface OutputFlowNodeConfiguration {}
 export type ParameterDescription = string;
@@ -3238,15 +2001,34 @@ export interface PromptFlowNodeInlineConfiguration {
 export interface PromptFlowNodeResourceConfiguration {
   promptArn: string;
 }
+interface _PromptFlowNodeSourceConfiguration {
+  resource?: PromptFlowNodeResourceConfiguration;
+  inline?: PromptFlowNodeInlineConfiguration;
+}
+
 export type PromptFlowNodeSourceConfiguration =
-  | { resource: PromptFlowNodeResourceConfiguration; inline?: undefined }
-  | { resource?: undefined; inline: PromptFlowNodeInlineConfiguration };
-export type PromptGenAiResource = { agent: PromptAgentResource };
+  | (_PromptFlowNodeSourceConfiguration & {
+      resource: PromptFlowNodeResourceConfiguration;
+    })
+  | (_PromptFlowNodeSourceConfiguration & {
+      inline: PromptFlowNodeInlineConfiguration;
+    });
+interface _PromptGenAiResource {
+  agent?: PromptAgentResource;
+}
+
+export type PromptGenAiResource = _PromptGenAiResource & {
+  agent: PromptAgentResource;
+};
 export type PromptId = string;
 
 export type PromptIdentifier = string;
 
-export type PromptInferenceConfiguration = {
+interface _PromptInferenceConfiguration {
+  text?: PromptModelInferenceConfiguration;
+}
+
+export type PromptInferenceConfiguration = _PromptInferenceConfiguration & {
   text: PromptModelInferenceConfiguration;
 };
 export interface PromptInputVariable {
@@ -3289,9 +2071,14 @@ export interface PromptSummary {
   createdAt: Date | string;
   updatedAt: Date | string;
 }
+interface _PromptTemplateConfiguration {
+  text?: TextPromptTemplateConfiguration;
+  chat?: ChatPromptTemplateConfiguration;
+}
+
 export type PromptTemplateConfiguration =
-  | { text: TextPromptTemplateConfiguration; chat?: undefined }
-  | { text?: undefined; chat: ChatPromptTemplateConfiguration };
+  | (_PromptTemplateConfiguration & { text: TextPromptTemplateConfiguration })
+  | (_PromptTemplateConfiguration & { chat: ChatPromptTemplateConfiguration });
 export type PromptTemplateType = "TEXT" | "CHAT";
 export type PromptType =
   | "PRE_PROCESSING"
@@ -3434,9 +2221,18 @@ export interface RedshiftServerlessConfiguration {
 export type RelayConversationHistory = "TO_COLLABORATOR" | "DISABLED";
 export type RequireConfirmation = "ENABLED" | "DISABLED";
 export type RerankingMetadataSelectionMode = "SELECTIVE" | "ALL";
+interface _RerankingMetadataSelectiveModeConfiguration {
+  fieldsToInclude?: Array<FieldForReranking>;
+  fieldsToExclude?: Array<FieldForReranking>;
+}
+
 export type RerankingMetadataSelectiveModeConfiguration =
-  | { fieldsToInclude: Array<FieldForReranking>; fieldsToExclude?: undefined }
-  | { fieldsToInclude?: undefined; fieldsToExclude: Array<FieldForReranking> };
+  | (_RerankingMetadataSelectiveModeConfiguration & {
+      fieldsToInclude: Array<FieldForReranking>;
+    })
+  | (_RerankingMetadataSelectiveModeConfiguration & {
+      fieldsToExclude: Array<FieldForReranking>;
+    });
 export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
@@ -3448,9 +2244,14 @@ export interface RetrievalFlowNodeConfiguration {
 export interface RetrievalFlowNodeS3Configuration {
   bucketName: string;
 }
-export type RetrievalFlowNodeServiceConfiguration = {
-  s3: RetrievalFlowNodeS3Configuration;
-};
+interface _RetrievalFlowNodeServiceConfiguration {
+  s3?: RetrievalFlowNodeS3Configuration;
+}
+
+export type RetrievalFlowNodeServiceConfiguration =
+  _RetrievalFlowNodeServiceConfiguration & {
+    s3: RetrievalFlowNodeS3Configuration;
+  };
 export type S3BucketArn = string;
 
 export type S3BucketName = string;
@@ -3585,9 +2386,12 @@ export interface StorageFlowNodeConfiguration {
 export interface StorageFlowNodeS3Configuration {
   bucketName: string;
 }
-export type StorageFlowNodeServiceConfiguration = {
-  s3: StorageFlowNodeS3Configuration;
-};
+interface _StorageFlowNodeServiceConfiguration {
+  s3?: StorageFlowNodeS3Configuration;
+}
+
+export type StorageFlowNodeServiceConfiguration =
+  _StorageFlowNodeServiceConfiguration & { s3: StorageFlowNodeS3Configuration };
 export type StringListValue = Array<string>;
 export type StringValue = string;
 
@@ -3602,9 +2406,14 @@ export type SupplementalDataStorageLocations =
   Array<SupplementalDataStorageLocation>;
 export type SupplementalDataStorageLocationType = "S3";
 export type SupportedLanguages = "PYTHON_3";
+interface _SystemContentBlock {
+  text?: string;
+  cachePoint?: CachePointBlock;
+}
+
 export type SystemContentBlock =
-  | { text: string; cachePoint?: undefined }
-  | { text?: undefined; cachePoint: CachePointBlock };
+  | (_SystemContentBlock & { text: string })
+  | (_SystemContentBlock & { cachePoint: CachePointBlock });
 export type SystemContentBlocks = Array<SystemContentBlock>;
 export type TaggableResourcesArn = string;
 
@@ -3636,18 +2445,33 @@ export declare class ThrottlingException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+interface _Tool {
+  toolSpec?: ToolSpecification;
+  cachePoint?: CachePointBlock;
+}
+
 export type Tool =
-  | { toolSpec: ToolSpecification; cachePoint?: undefined }
-  | { toolSpec?: undefined; cachePoint: CachePointBlock };
+  | (_Tool & { toolSpec: ToolSpecification })
+  | (_Tool & { cachePoint: CachePointBlock });
+interface _ToolChoice {
+  auto?: AutoToolChoice;
+  any?: AnyToolChoice;
+  tool?: SpecificToolChoice;
+}
+
 export type ToolChoice =
-  | { auto: AutoToolChoice; any?: undefined; tool?: undefined }
-  | { auto?: undefined; any: AnyToolChoice; tool?: undefined }
-  | { auto?: undefined; any?: undefined; tool: SpecificToolChoice };
+  | (_ToolChoice & { auto: AutoToolChoice })
+  | (_ToolChoice & { any: AnyToolChoice })
+  | (_ToolChoice & { tool: SpecificToolChoice });
 export interface ToolConfiguration {
   tools: Array<Tool>;
   toolChoice?: ToolChoice;
 }
-export type ToolInputSchema = { json: unknown };
+interface _ToolInputSchema {
+  json?: unknown;
+}
+
+export type ToolInputSchema = _ToolInputSchema & { json: unknown };
 export type ToolName = string;
 
 export type Tools = Array<Tool>;

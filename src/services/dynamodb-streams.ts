@@ -41,127 +41,30 @@ export type DynamodbStreams = DynamoDBStreams_20120810;
 export type AttributeMap = Record<string, AttributeValue>;
 export type AttributeName = string;
 
+interface _AttributeValue {
+  S?: string;
+  N?: string;
+  B?: Uint8Array | string;
+  SS?: Array<string>;
+  NS?: Array<string>;
+  BS?: Array<Uint8Array | string>;
+  M?: Record<string, AttributeValue>;
+  L?: Array<AttributeValue>;
+  NULL?: boolean;
+  BOOL?: boolean;
+}
+
 export type AttributeValue =
-  | {
-      S: string;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N: string;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B: Uint8Array | string;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS: Array<string>;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS: Array<string>;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS: Array<Uint8Array | string>;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M: Record<string, AttributeValue>;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L: Array<AttributeValue>;
-      NULL?: undefined;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL: boolean;
-      BOOL?: undefined;
-    }
-  | {
-      S?: undefined;
-      N?: undefined;
-      B?: undefined;
-      SS?: undefined;
-      NS?: undefined;
-      BS?: undefined;
-      M?: undefined;
-      L?: undefined;
-      NULL?: undefined;
-      BOOL: boolean;
-    };
+  | (_AttributeValue & { S: string })
+  | (_AttributeValue & { N: string })
+  | (_AttributeValue & { B: Uint8Array | string })
+  | (_AttributeValue & { SS: Array<string> })
+  | (_AttributeValue & { NS: Array<string> })
+  | (_AttributeValue & { BS: Array<Uint8Array | string> })
+  | (_AttributeValue & { M: Record<string, AttributeValue> })
+  | (_AttributeValue & { L: Array<AttributeValue> })
+  | (_AttributeValue & { NULL: boolean })
+  | (_AttributeValue & { BOOL: boolean });
 export type BinaryAttributeValue = Uint8Array | string;
 
 export type BinarySetAttributeValue = Array<Uint8Array | string>;

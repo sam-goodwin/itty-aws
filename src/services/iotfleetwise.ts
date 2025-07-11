@@ -256,15 +256,18 @@ export type CloudWatchLogGroupName = string;
 
 export type collectionPeriodMs = number;
 
+interface _CollectionScheme {
+  timeBasedCollectionScheme?: TimeBasedCollectionScheme;
+  conditionBasedCollectionScheme?: ConditionBasedCollectionScheme;
+}
+
 export type CollectionScheme =
-  | {
+  | (_CollectionScheme & {
       timeBasedCollectionScheme: TimeBasedCollectionScheme;
-      conditionBasedCollectionScheme?: undefined;
-    }
-  | {
-      timeBasedCollectionScheme?: undefined;
+    })
+  | (_CollectionScheme & {
       conditionBasedCollectionScheme: ConditionBasedCollectionScheme;
-    };
+    });
 export type Compression = "OFF" | "SNAPPY";
 export interface ConditionBasedCollectionScheme {
   expression: string;
@@ -428,22 +431,16 @@ export interface CustomStruct {
   deprecationMessage?: string;
   comment?: string;
 }
+interface _DataDestinationConfig {
+  s3Config?: S3Config;
+  timestreamConfig?: TimestreamConfig;
+  mqttTopicConfig?: MqttTopicConfig;
+}
+
 export type DataDestinationConfig =
-  | {
-      s3Config: S3Config;
-      timestreamConfig?: undefined;
-      mqttTopicConfig?: undefined;
-    }
-  | {
-      s3Config?: undefined;
-      timestreamConfig: TimestreamConfig;
-      mqttTopicConfig?: undefined;
-    }
-  | {
-      s3Config?: undefined;
-      timestreamConfig?: undefined;
-      mqttTopicConfig: MqttTopicConfig;
-    };
+  | (_DataDestinationConfig & { s3Config: S3Config })
+  | (_DataDestinationConfig & { timestreamConfig: TimestreamConfig })
+  | (_DataDestinationConfig & { mqttTopicConfig: MqttTopicConfig });
 export type DataDestinationConfigs = Array<DataDestinationConfig>;
 export type DataExtraDimensionNodePathList = Array<string>;
 export type DataFormat = "JSON" | "PARQUET";
@@ -566,7 +563,11 @@ export interface FleetSummary {
   creationTime: Date | string;
   lastModificationTime?: Date | string;
 }
-export type FormattedVss = { vssJson: string };
+interface _FormattedVss {
+  vssJson?: string;
+}
+
+export type FormattedVss = _FormattedVss & { vssJson: string };
 export type Fqns = Array<string>;
 export type FullyQualifiedName = string;
 
@@ -943,7 +944,13 @@ export interface MqttTopicConfig {
 }
 export type NetworkFileBlob = Uint8Array | string;
 
-export type NetworkFileDefinition = { canDbc: CanDbcDefinition };
+interface _NetworkFileDefinition {
+  canDbc?: CanDbcDefinition;
+}
+
+export type NetworkFileDefinition = _NetworkFileDefinition & {
+  canDbc: CanDbcDefinition;
+};
 export type NetworkFileDefinitions = Array<NetworkFileDefinition>;
 export type NetworkFilesList = Array<Uint8Array | string>;
 export interface NetworkInterface {
@@ -971,55 +978,22 @@ export type NetworkInterfaceType =
   | "CUSTOM_DECODING_INTERFACE";
 export type nextToken = string;
 
+interface _Node {
+  branch?: Branch;
+  sensor?: Sensor;
+  actuator?: Actuator;
+  attribute?: Attribute;
+  struct?: CustomStruct;
+  property?: CustomProperty;
+}
+
 export type Node =
-  | {
-      branch: Branch;
-      sensor?: undefined;
-      actuator?: undefined;
-      attribute?: undefined;
-      struct?: undefined;
-      property?: undefined;
-    }
-  | {
-      branch?: undefined;
-      sensor: Sensor;
-      actuator?: undefined;
-      attribute?: undefined;
-      struct?: undefined;
-      property?: undefined;
-    }
-  | {
-      branch?: undefined;
-      sensor?: undefined;
-      actuator: Actuator;
-      attribute?: undefined;
-      struct?: undefined;
-      property?: undefined;
-    }
-  | {
-      branch?: undefined;
-      sensor?: undefined;
-      actuator?: undefined;
-      attribute: Attribute;
-      struct?: undefined;
-      property?: undefined;
-    }
-  | {
-      branch?: undefined;
-      sensor?: undefined;
-      actuator?: undefined;
-      attribute?: undefined;
-      struct: CustomStruct;
-      property?: undefined;
-    }
-  | {
-      branch?: undefined;
-      sensor?: undefined;
-      actuator?: undefined;
-      attribute?: undefined;
-      struct?: undefined;
-      property: CustomProperty;
-    };
+  | (_Node & { branch: Branch })
+  | (_Node & { sensor: Sensor })
+  | (_Node & { actuator: Actuator })
+  | (_Node & { attribute: Attribute })
+  | (_Node & { struct: CustomStruct })
+  | (_Node & { property: CustomProperty });
 export interface NodeCounts {
   totalNodes?: number;
   totalBranches?: number;
@@ -1108,7 +1082,11 @@ export type positiveLong = number;
 
 export type Prefix = string;
 
-export type PrimitiveMessageDefinition = {
+interface _PrimitiveMessageDefinition {
+  ros2PrimitiveMessageDefinition?: ROS2PrimitiveMessageDefinition;
+}
+
+export type PrimitiveMessageDefinition = _PrimitiveMessageDefinition & {
   ros2PrimitiveMessageDefinition: ROS2PrimitiveMessageDefinition;
 };
 export type priority = number;
@@ -1241,9 +1219,14 @@ export type SignalDecoderType =
   | "OBD_SIGNAL"
   | "MESSAGE_SIGNAL"
   | "CUSTOM_DECODING_SIGNAL";
+interface _SignalFetchConfig {
+  timeBased?: TimeBasedSignalFetchConfig;
+  conditionBased?: ConditionBasedSignalFetchConfig;
+}
+
 export type SignalFetchConfig =
-  | { timeBased: TimeBasedSignalFetchConfig; conditionBased?: undefined }
-  | { timeBased?: undefined; conditionBased: ConditionBasedSignalFetchConfig };
+  | (_SignalFetchConfig & { timeBased: TimeBasedSignalFetchConfig })
+  | (_SignalFetchConfig & { conditionBased: ConditionBasedSignalFetchConfig });
 export interface SignalFetchInformation {
   fullyQualifiedName: string;
   signalFetchConfig: SignalFetchConfig;
@@ -1286,9 +1269,18 @@ export interface StateTemplateSummary {
   lastModificationTime?: Date | string;
   id?: string;
 }
+interface _StateTemplateUpdateStrategy {
+  periodic?: PeriodicStateTemplateUpdateStrategy;
+  onChange?: OnChangeStateTemplateUpdateStrategy;
+}
+
 export type StateTemplateUpdateStrategy =
-  | { periodic: PeriodicStateTemplateUpdateStrategy; onChange?: undefined }
-  | { periodic?: undefined; onChange: OnChangeStateTemplateUpdateStrategy };
+  | (_StateTemplateUpdateStrategy & {
+      periodic: PeriodicStateTemplateUpdateStrategy;
+    })
+  | (_StateTemplateUpdateStrategy & {
+      onChange: OnChangeStateTemplateUpdateStrategy;
+    });
 export type statusStr = string;
 
 export type StorageCompressionFormat = "NONE" | "GZIP";
@@ -1310,22 +1302,22 @@ export type StorageMinimumTimeToLiveValue = number;
 
 export type Iotfleetwisestring = string;
 
+interface _StructuredMessage {
+  primitiveMessageDefinition?: PrimitiveMessageDefinition;
+  structuredMessageListDefinition?: StructuredMessageListDefinition;
+  structuredMessageDefinition?: Array<StructuredMessageFieldNameAndDataTypePair>;
+}
+
 export type StructuredMessage =
-  | {
+  | (_StructuredMessage & {
       primitiveMessageDefinition: PrimitiveMessageDefinition;
-      structuredMessageListDefinition?: undefined;
-      structuredMessageDefinition?: undefined;
-    }
-  | {
-      primitiveMessageDefinition?: undefined;
+    })
+  | (_StructuredMessage & {
       structuredMessageListDefinition: StructuredMessageListDefinition;
-      structuredMessageDefinition?: undefined;
-    }
-  | {
-      primitiveMessageDefinition?: undefined;
-      structuredMessageListDefinition?: undefined;
+    })
+  | (_StructuredMessage & {
       structuredMessageDefinition: Array<StructuredMessageFieldNameAndDataTypePair>;
-    };
+    });
 export type StructuredMessageDefinition =
   Array<StructuredMessageFieldNameAndDataTypePair>;
 export interface StructuredMessageFieldNameAndDataTypePair {

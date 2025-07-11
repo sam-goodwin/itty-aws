@@ -235,9 +235,14 @@ export declare class AccessDeniedException extends EffectData.TaggedError(
 )<{
   readonly message: string;
 }> {}
+interface _AnalysisStatusUnion {
+  runtimeAnalysisStatus?: string;
+  srcCodeOrDbAnalysisStatus?: string;
+}
+
 export type AnalysisStatusUnion =
-  | { runtimeAnalysisStatus: string; srcCodeOrDbAnalysisStatus?: undefined }
-  | { runtimeAnalysisStatus?: undefined; srcCodeOrDbAnalysisStatus: string };
+  | (_AnalysisStatusUnion & { runtimeAnalysisStatus: string })
+  | (_AnalysisStatusUnion & { srcCodeOrDbAnalysisStatus: string });
 export type AnalysisType = string;
 
 export interface AnalyzableServerSummary {
@@ -247,22 +252,16 @@ export interface AnalyzableServerSummary {
   vmId?: string;
 }
 export type AnalyzableServerSummaryList = Array<AnalyzableServerSummary>;
+interface _AnalyzerNameUnion {
+  binaryAnalyzerName?: string;
+  runTimeAnalyzerName?: string;
+  sourceCodeAnalyzerName?: string;
+}
+
 export type AnalyzerNameUnion =
-  | {
-      binaryAnalyzerName: string;
-      runTimeAnalyzerName?: undefined;
-      sourceCodeAnalyzerName?: undefined;
-    }
-  | {
-      binaryAnalyzerName?: undefined;
-      runTimeAnalyzerName: string;
-      sourceCodeAnalyzerName?: undefined;
-    }
-  | {
-      binaryAnalyzerName?: undefined;
-      runTimeAnalyzerName?: undefined;
-      sourceCodeAnalyzerName: string;
-    };
+  | (_AnalyzerNameUnion & { binaryAnalyzerName: string })
+  | (_AnalyzerNameUnion & { runTimeAnalyzerName: string })
+  | (_AnalyzerNameUnion & { sourceCodeAnalyzerName: string });
 export interface AntipatternReportResult {
   analyzerName?: AnalyzerNameUnion;
   antiPatternReportS3Object?: S3Object;
@@ -419,22 +418,18 @@ export interface DatabaseConfigDetail {
 }
 export type DatabaseManagementPreference = string;
 
+interface _DatabaseMigrationPreference {
+  heterogeneous?: Heterogeneous;
+  homogeneous?: Homogeneous;
+  noPreference?: NoDatabaseMigrationPreference;
+}
+
 export type DatabaseMigrationPreference =
-  | {
-      heterogeneous: Heterogeneous;
-      homogeneous?: undefined;
-      noPreference?: undefined;
-    }
-  | {
-      heterogeneous?: undefined;
-      homogeneous: Homogeneous;
-      noPreference?: undefined;
-    }
-  | {
-      heterogeneous?: undefined;
-      homogeneous?: undefined;
+  | (_DatabaseMigrationPreference & { heterogeneous: Heterogeneous })
+  | (_DatabaseMigrationPreference & { homogeneous: Homogeneous })
+  | (_DatabaseMigrationPreference & {
       noPreference: NoDatabaseMigrationPreference;
-    };
+    });
 export interface DatabasePreferences {
   databaseManagementPreference?: string;
   databaseMigrationPreference?: DatabaseMigrationPreference;
@@ -654,22 +649,16 @@ export type Location = string;
 
 export type MacAddress = string;
 
+interface _ManagementPreference {
+  awsManagedResources?: AwsManagedResources;
+  selfManageResources?: SelfManageResources;
+  noPreference?: NoManagementPreference;
+}
+
 export type ManagementPreference =
-  | {
-      awsManagedResources: AwsManagedResources;
-      selfManageResources?: undefined;
-      noPreference?: undefined;
-    }
-  | {
-      awsManagedResources?: undefined;
-      selfManageResources: SelfManageResources;
-      noPreference?: undefined;
-    }
-  | {
-      awsManagedResources?: undefined;
-      selfManageResources?: undefined;
-      noPreference: NoManagementPreference;
-    };
+  | (_ManagementPreference & { awsManagedResources: AwsManagedResources })
+  | (_ManagementPreference & { selfManageResources: SelfManageResources })
+  | (_ManagementPreference & { noPreference: NoManagementPreference });
 export type MaxResult = number;
 
 export type NetMask = string;

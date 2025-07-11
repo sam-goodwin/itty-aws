@@ -2375,57 +2375,46 @@ export interface AutoMLPartialFailureReason {
   PartialFailureMessage?: string;
 }
 export type AutoMLPartialFailureReasons = Array<AutoMLPartialFailureReason>;
+interface _AutoMLProblemTypeConfig {
+  ImageClassificationJobConfig?: ImageClassificationJobConfig;
+  TextClassificationJobConfig?: TextClassificationJobConfig;
+  TimeSeriesForecastingJobConfig?: TimeSeriesForecastingJobConfig;
+  TabularJobConfig?: TabularJobConfig;
+  TextGenerationJobConfig?: TextGenerationJobConfig;
+}
+
 export type AutoMLProblemTypeConfig =
-  | {
+  | (_AutoMLProblemTypeConfig & {
       ImageClassificationJobConfig: ImageClassificationJobConfig;
-      TextClassificationJobConfig?: undefined;
-      TimeSeriesForecastingJobConfig?: undefined;
-      TabularJobConfig?: undefined;
-      TextGenerationJobConfig?: undefined;
-    }
-  | {
-      ImageClassificationJobConfig?: undefined;
+    })
+  | (_AutoMLProblemTypeConfig & {
       TextClassificationJobConfig: TextClassificationJobConfig;
-      TimeSeriesForecastingJobConfig?: undefined;
-      TabularJobConfig?: undefined;
-      TextGenerationJobConfig?: undefined;
-    }
-  | {
-      ImageClassificationJobConfig?: undefined;
-      TextClassificationJobConfig?: undefined;
+    })
+  | (_AutoMLProblemTypeConfig & {
       TimeSeriesForecastingJobConfig: TimeSeriesForecastingJobConfig;
-      TabularJobConfig?: undefined;
-      TextGenerationJobConfig?: undefined;
-    }
-  | {
-      ImageClassificationJobConfig?: undefined;
-      TextClassificationJobConfig?: undefined;
-      TimeSeriesForecastingJobConfig?: undefined;
-      TabularJobConfig: TabularJobConfig;
-      TextGenerationJobConfig?: undefined;
-    }
-  | {
-      ImageClassificationJobConfig?: undefined;
-      TextClassificationJobConfig?: undefined;
-      TimeSeriesForecastingJobConfig?: undefined;
-      TabularJobConfig?: undefined;
+    })
+  | (_AutoMLProblemTypeConfig & { TabularJobConfig: TabularJobConfig })
+  | (_AutoMLProblemTypeConfig & {
       TextGenerationJobConfig: TextGenerationJobConfig;
-    };
+    });
 export type AutoMLProblemTypeConfigName =
   | "IMAGE_CLASSIFICATION"
   | "TEXT_CLASSIFICATION"
   | "TIMESERIES_FORECASTING"
   | "TABULAR"
   | "TEXT_GENERATION";
+interface _AutoMLProblemTypeResolvedAttributes {
+  TabularResolvedAttributes?: TabularResolvedAttributes;
+  TextGenerationResolvedAttributes?: TextGenerationResolvedAttributes;
+}
+
 export type AutoMLProblemTypeResolvedAttributes =
-  | {
+  | (_AutoMLProblemTypeResolvedAttributes & {
       TabularResolvedAttributes: TabularResolvedAttributes;
-      TextGenerationResolvedAttributes?: undefined;
-    }
-  | {
-      TabularResolvedAttributes?: undefined;
+    })
+  | (_AutoMLProblemTypeResolvedAttributes & {
       TextGenerationResolvedAttributes: TextGenerationResolvedAttributes;
-    };
+    });
 export type AutoMLProcessingUnit = "CPU" | "GPU";
 export interface AutoMLResolvedAttributes {
   AutoMLJobObjective?: AutoMLJobObjective;
@@ -2950,7 +2939,11 @@ export interface ClusterInstanceStatusDetails {
   Status: ClusterInstanceStatus;
   Message?: string;
 }
-export type ClusterInstanceStorageConfig = {
+interface _ClusterInstanceStorageConfig {
+  EbsVolumeConfig?: ClusterEbsVolumeConfig;
+}
+
+export type ClusterInstanceStorageConfig = _ClusterInstanceStorageConfig & {
   EbsVolumeConfig: ClusterEbsVolumeConfig;
 };
 export type ClusterInstanceStorageConfigs = Array<ClusterInstanceStorageConfig>;
@@ -3206,7 +3199,13 @@ export type CognitoUserGroup = string;
 
 export type CognitoUserPool = string;
 
-export type CollectionConfig = { VectorConfig: VectorConfig };
+interface _CollectionConfig {
+  VectorConfig?: VectorConfig;
+}
+
+export type CollectionConfig = _CollectionConfig & {
+  VectorConfig: VectorConfig;
+};
 export interface CollectionConfiguration {
   CollectionName?: string;
   CollectionParameters?: Record<string, string>;
@@ -4216,18 +4215,24 @@ export type CustomerMetadataKeyList = Array<string>;
 export type CustomerMetadataMap = Record<string, string>;
 export type CustomerMetadataValue = string;
 
+interface _CustomFileSystem {
+  EFSFileSystem?: EFSFileSystem;
+  FSxLustreFileSystem?: FSxLustreFileSystem;
+}
+
 export type CustomFileSystem =
-  | { EFSFileSystem: EFSFileSystem; FSxLustreFileSystem?: undefined }
-  | { EFSFileSystem?: undefined; FSxLustreFileSystem: FSxLustreFileSystem };
+  | (_CustomFileSystem & { EFSFileSystem: EFSFileSystem })
+  | (_CustomFileSystem & { FSxLustreFileSystem: FSxLustreFileSystem });
+interface _CustomFileSystemConfig {
+  EFSFileSystemConfig?: EFSFileSystemConfig;
+  FSxLustreFileSystemConfig?: FSxLustreFileSystemConfig;
+}
+
 export type CustomFileSystemConfig =
-  | {
-      EFSFileSystemConfig: EFSFileSystemConfig;
-      FSxLustreFileSystemConfig?: undefined;
-    }
-  | {
-      EFSFileSystemConfig?: undefined;
+  | (_CustomFileSystemConfig & { EFSFileSystemConfig: EFSFileSystemConfig })
+  | (_CustomFileSystemConfig & {
       FSxLustreFileSystemConfig: FSxLustreFileSystemConfig;
-    };
+    });
 export type CustomFileSystemConfigs = Array<CustomFileSystemConfig>;
 export type CustomFileSystems = Array<CustomFileSystem>;
 export interface CustomImage {
@@ -8986,9 +8991,14 @@ export type MetricName = string;
 export type MetricRegex = string;
 
 export type MetricSetSource = "TRAIN" | "VALIDATION" | "TEST";
+interface _MetricSpecification {
+  Predefined?: PredefinedMetricSpecification;
+  Customized?: CustomizedMetricSpecification;
+}
+
 export type MetricSpecification =
-  | { Predefined: PredefinedMetricSpecification; Customized?: undefined }
-  | { Predefined?: undefined; Customized: CustomizedMetricSpecification };
+  | (_MetricSpecification & { Predefined: PredefinedMetricSpecification })
+  | (_MetricSpecification & { Customized: CustomizedMetricSpecification });
 export interface MetricsSource {
   ContentType: string;
   ContentDigest?: string;
@@ -9877,22 +9887,16 @@ export type Operator =
   | "EXISTS"
   | "NOT_EXISTS"
   | "IN";
+interface _OptimizationConfig {
+  ModelQuantizationConfig?: ModelQuantizationConfig;
+  ModelCompilationConfig?: ModelCompilationConfig;
+  ModelShardingConfig?: ModelShardingConfig;
+}
+
 export type OptimizationConfig =
-  | {
-      ModelQuantizationConfig: ModelQuantizationConfig;
-      ModelCompilationConfig?: undefined;
-      ModelShardingConfig?: undefined;
-    }
-  | {
-      ModelQuantizationConfig?: undefined;
-      ModelCompilationConfig: ModelCompilationConfig;
-      ModelShardingConfig?: undefined;
-    }
-  | {
-      ModelQuantizationConfig?: undefined;
-      ModelCompilationConfig?: undefined;
-      ModelShardingConfig: ModelShardingConfig;
-    };
+  | (_OptimizationConfig & { ModelQuantizationConfig: ModelQuantizationConfig })
+  | (_OptimizationConfig & { ModelCompilationConfig: ModelCompilationConfig })
+  | (_OptimizationConfig & { ModelShardingConfig: ModelShardingConfig });
 export type OptimizationConfigs = Array<OptimizationConfig>;
 export type OptimizationContainerImage = string;
 
@@ -11478,7 +11482,11 @@ export type SampleWeightAttributeName = string;
 export type SamplingPercentage = number;
 
 export type ScalingPolicies = Array<ScalingPolicy>;
-export type ScalingPolicy = {
+interface _ScalingPolicy {
+  TargetTracking?: TargetTrackingScalingPolicyConfiguration;
+}
+
+export type ScalingPolicy = _ScalingPolicy & {
   TargetTracking: TargetTrackingScalingPolicyConfiguration;
 };
 export interface ScalingPolicyMetric {
@@ -12857,9 +12865,14 @@ export type TrialComponentParameters = Record<
   string,
   TrialComponentParameterValue
 >;
+interface _TrialComponentParameterValue {
+  StringValue?: string;
+  NumberValue?: number;
+}
+
 export type TrialComponentParameterValue =
-  | { StringValue: string; NumberValue?: undefined }
-  | { StringValue?: undefined; NumberValue: number };
+  | (_TrialComponentParameterValue & { StringValue: string })
+  | (_TrialComponentParameterValue & { NumberValue: number });
 export type TrialComponentPrimaryStatus =
   | "IN_PROGRESS"
   | "COMPLETED"

@@ -828,7 +828,13 @@ export interface AttachManagedPolicyToPermissionSetRequest {
   ManagedPolicyArn: string;
 }
 export interface AttachManagedPolicyToPermissionSetResponse {}
-export type AuthenticationMethod = { Iam: IamAuthenticationMethod };
+interface _AuthenticationMethod {
+  Iam?: IamAuthenticationMethod;
+}
+
+export type AuthenticationMethod = _AuthenticationMethod & {
+  Iam: IamAuthenticationMethod;
+};
 export interface AuthenticationMethodItem {
   AuthenticationMethodType?: AuthenticationMethodType;
   AuthenticationMethod?: AuthenticationMethod;
@@ -1140,31 +1146,18 @@ export interface GetPermissionsBoundaryForPermissionSetRequest {
 export interface GetPermissionsBoundaryForPermissionSetResponse {
   PermissionsBoundary?: PermissionsBoundary;
 }
+interface _Grant {
+  AuthorizationCode?: AuthorizationCodeGrant;
+  JwtBearer?: JwtBearerGrant;
+  RefreshToken?: RefreshTokenGrant;
+  TokenExchange?: TokenExchangeGrant;
+}
+
 export type Grant =
-  | {
-      AuthorizationCode: AuthorizationCodeGrant;
-      JwtBearer?: undefined;
-      RefreshToken?: undefined;
-      TokenExchange?: undefined;
-    }
-  | {
-      AuthorizationCode?: undefined;
-      JwtBearer: JwtBearerGrant;
-      RefreshToken?: undefined;
-      TokenExchange?: undefined;
-    }
-  | {
-      AuthorizationCode?: undefined;
-      JwtBearer?: undefined;
-      RefreshToken: RefreshTokenGrant;
-      TokenExchange?: undefined;
-    }
-  | {
-      AuthorizationCode?: undefined;
-      JwtBearer?: undefined;
-      RefreshToken?: undefined;
-      TokenExchange: TokenExchangeGrant;
-    };
+  | (_Grant & { AuthorizationCode: AuthorizationCodeGrant })
+  | (_Grant & { JwtBearer: JwtBearerGrant })
+  | (_Grant & { RefreshToken: RefreshTokenGrant })
+  | (_Grant & { TokenExchange: TokenExchangeGrant });
 export interface GrantItem {
   GrantType: GrantType;
   Grant: Grant;
@@ -1619,9 +1612,14 @@ export type TokenIssuerAudience = string;
 export type TokenIssuerAudiences = Array<string>;
 export type TrustedTokenIssuerArn = string;
 
-export type TrustedTokenIssuerConfiguration = {
-  OidcJwtConfiguration: OidcJwtConfiguration;
-};
+interface _TrustedTokenIssuerConfiguration {
+  OidcJwtConfiguration?: OidcJwtConfiguration;
+}
+
+export type TrustedTokenIssuerConfiguration =
+  _TrustedTokenIssuerConfiguration & {
+    OidcJwtConfiguration: OidcJwtConfiguration;
+  };
 export type TrustedTokenIssuerList = Array<TrustedTokenIssuerMetadata>;
 export interface TrustedTokenIssuerMetadata {
   TrustedTokenIssuerArn?: string;
@@ -1631,9 +1629,14 @@ export interface TrustedTokenIssuerMetadata {
 export type TrustedTokenIssuerName = string;
 
 export type TrustedTokenIssuerType = "OIDC_JWT";
-export type TrustedTokenIssuerUpdateConfiguration = {
-  OidcJwtConfiguration: OidcJwtUpdateConfiguration;
-};
+interface _TrustedTokenIssuerUpdateConfiguration {
+  OidcJwtConfiguration?: OidcJwtUpdateConfiguration;
+}
+
+export type TrustedTokenIssuerUpdateConfiguration =
+  _TrustedTokenIssuerUpdateConfiguration & {
+    OidcJwtConfiguration: OidcJwtUpdateConfiguration;
+  };
 export type TrustedTokenIssuerUrl = string;
 
 export interface UntagResourceRequest {

@@ -53,87 +53,26 @@ export type ActionType = string;
 
 export type AmazonResourceName = string;
 
+interface _AttributeValue {
+  boolean?: boolean;
+  entityIdentifier?: EntityIdentifier;
+  long?: number;
+  string?: string;
+  set?: Array<AttributeValue>;
+  record?: Record<string, AttributeValue>;
+  ipaddr?: string;
+  decimal?: string;
+}
+
 export type AttributeValue =
-  | {
-      boolean: boolean;
-      entityIdentifier?: undefined;
-      long?: undefined;
-      string?: undefined;
-      set?: undefined;
-      record?: undefined;
-      ipaddr?: undefined;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier: EntityIdentifier;
-      long?: undefined;
-      string?: undefined;
-      set?: undefined;
-      record?: undefined;
-      ipaddr?: undefined;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier?: undefined;
-      long: number;
-      string?: undefined;
-      set?: undefined;
-      record?: undefined;
-      ipaddr?: undefined;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier?: undefined;
-      long?: undefined;
-      string: string;
-      set?: undefined;
-      record?: undefined;
-      ipaddr?: undefined;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier?: undefined;
-      long?: undefined;
-      string?: undefined;
-      set: Array<AttributeValue>;
-      record?: undefined;
-      ipaddr?: undefined;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier?: undefined;
-      long?: undefined;
-      string?: undefined;
-      set?: undefined;
-      record: Record<string, AttributeValue>;
-      ipaddr?: undefined;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier?: undefined;
-      long?: undefined;
-      string?: undefined;
-      set?: undefined;
-      record?: undefined;
-      ipaddr: string;
-      decimal?: undefined;
-    }
-  | {
-      boolean?: undefined;
-      entityIdentifier?: undefined;
-      long?: undefined;
-      string?: undefined;
-      set?: undefined;
-      record?: undefined;
-      ipaddr?: undefined;
-      decimal: string;
-    };
+  | (_AttributeValue & { boolean: boolean })
+  | (_AttributeValue & { entityIdentifier: EntityIdentifier })
+  | (_AttributeValue & { long: number })
+  | (_AttributeValue & { string: string })
+  | (_AttributeValue & { set: Array<AttributeValue> })
+  | (_AttributeValue & { record: Record<string, AttributeValue> })
+  | (_AttributeValue & { ipaddr: string })
+  | (_AttributeValue & { decimal: string });
 export type Audience = string;
 
 export type Audiences = Array<string>;
@@ -252,42 +191,56 @@ export interface CognitoUserPoolConfigurationItem {
   issuer: string;
   groupConfiguration?: CognitoGroupConfigurationItem;
 }
+interface _Configuration {
+  cognitoUserPoolConfiguration?: CognitoUserPoolConfiguration;
+  openIdConnectConfiguration?: OpenIdConnectConfiguration;
+}
+
 export type Configuration =
-  | {
+  | (_Configuration & {
       cognitoUserPoolConfiguration: CognitoUserPoolConfiguration;
-      openIdConnectConfiguration?: undefined;
-    }
-  | {
-      cognitoUserPoolConfiguration?: undefined;
+    })
+  | (_Configuration & {
       openIdConnectConfiguration: OpenIdConnectConfiguration;
-    };
+    });
+interface _ConfigurationDetail {
+  cognitoUserPoolConfiguration?: CognitoUserPoolConfigurationDetail;
+  openIdConnectConfiguration?: OpenIdConnectConfigurationDetail;
+}
+
 export type ConfigurationDetail =
-  | {
+  | (_ConfigurationDetail & {
       cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail;
-      openIdConnectConfiguration?: undefined;
-    }
-  | {
-      cognitoUserPoolConfiguration?: undefined;
+    })
+  | (_ConfigurationDetail & {
       openIdConnectConfiguration: OpenIdConnectConfigurationDetail;
-    };
+    });
+interface _ConfigurationItem {
+  cognitoUserPoolConfiguration?: CognitoUserPoolConfigurationItem;
+  openIdConnectConfiguration?: OpenIdConnectConfigurationItem;
+}
+
 export type ConfigurationItem =
-  | {
+  | (_ConfigurationItem & {
       cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem;
-      openIdConnectConfiguration?: undefined;
-    }
-  | {
-      cognitoUserPoolConfiguration?: undefined;
+    })
+  | (_ConfigurationItem & {
       openIdConnectConfiguration: OpenIdConnectConfigurationItem;
-    };
+    });
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
   readonly resources: Array<ResourceConflict>;
 }> {}
+interface _ContextDefinition {
+  contextMap?: Record<string, AttributeValue>;
+  cedarJson?: string;
+}
+
 export type ContextDefinition =
-  | { contextMap: Record<string, AttributeValue>; cedarJson?: undefined }
-  | { contextMap?: undefined; cedarJson: string };
+  | (_ContextDefinition & { contextMap: Record<string, AttributeValue> })
+  | (_ContextDefinition & { cedarJson: string });
 export type ContextMap = Record<string, AttributeValue>;
 export interface CreateIdentitySourceInput {
   clientToken?: string;
@@ -371,9 +324,14 @@ export interface DeterminingPolicyItem {
 export type DeterminingPolicyList = Array<DeterminingPolicyItem>;
 export type DiscoveryUrl = string;
 
+interface _EntitiesDefinition {
+  entityList?: Array<EntityItem>;
+  cedarJson?: string;
+}
+
 export type EntitiesDefinition =
-  | { entityList: Array<EntityItem>; cedarJson?: undefined }
-  | { entityList?: undefined; cedarJson: string };
+  | (_EntitiesDefinition & { entityList: Array<EntityItem> })
+  | (_EntitiesDefinition & { cedarJson: string });
 export type EntityAttributes = Record<string, AttributeValue>;
 export type EntityId = string;
 
@@ -389,9 +347,14 @@ export interface EntityItem {
   parents?: Array<EntityIdentifier>;
 }
 export type EntityList = Array<EntityItem>;
+interface _EntityReference {
+  unspecified?: boolean;
+  identifier?: EntityIdentifier;
+}
+
 export type EntityReference =
-  | { unspecified: boolean; identifier?: undefined }
-  | { unspecified?: undefined; identifier: EntityIdentifier };
+  | (_EntityReference & { unspecified: boolean })
+  | (_EntityReference & { identifier: EntityIdentifier });
 export type EntityType = string;
 
 export interface EvaluationErrorItem {
@@ -646,47 +609,72 @@ export interface OpenIdConnectIdentityTokenConfigurationItem {
   principalIdClaim?: string;
   clientIds?: Array<string>;
 }
+interface _OpenIdConnectTokenSelection {
+  accessTokenOnly?: OpenIdConnectAccessTokenConfiguration;
+  identityTokenOnly?: OpenIdConnectIdentityTokenConfiguration;
+}
+
 export type OpenIdConnectTokenSelection =
-  | {
+  | (_OpenIdConnectTokenSelection & {
       accessTokenOnly: OpenIdConnectAccessTokenConfiguration;
-      identityTokenOnly?: undefined;
-    }
-  | {
-      accessTokenOnly?: undefined;
+    })
+  | (_OpenIdConnectTokenSelection & {
       identityTokenOnly: OpenIdConnectIdentityTokenConfiguration;
-    };
+    });
+interface _OpenIdConnectTokenSelectionDetail {
+  accessTokenOnly?: OpenIdConnectAccessTokenConfigurationDetail;
+  identityTokenOnly?: OpenIdConnectIdentityTokenConfigurationDetail;
+}
+
 export type OpenIdConnectTokenSelectionDetail =
-  | {
+  | (_OpenIdConnectTokenSelectionDetail & {
       accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail;
-      identityTokenOnly?: undefined;
-    }
-  | {
-      accessTokenOnly?: undefined;
+    })
+  | (_OpenIdConnectTokenSelectionDetail & {
       identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail;
-    };
+    });
+interface _OpenIdConnectTokenSelectionItem {
+  accessTokenOnly?: OpenIdConnectAccessTokenConfigurationItem;
+  identityTokenOnly?: OpenIdConnectIdentityTokenConfigurationItem;
+}
+
 export type OpenIdConnectTokenSelectionItem =
-  | {
+  | (_OpenIdConnectTokenSelectionItem & {
       accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem;
-      identityTokenOnly?: undefined;
-    }
-  | {
-      accessTokenOnly?: undefined;
+    })
+  | (_OpenIdConnectTokenSelectionItem & {
       identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem;
-    };
+    });
 export type OpenIdIssuer = "COGNITO";
 export type ParentList = Array<EntityIdentifier>;
+interface _PolicyDefinition {
+  static?: StaticPolicyDefinition;
+  templateLinked?: TemplateLinkedPolicyDefinition;
+}
+
 export type PolicyDefinition =
-  | { static: StaticPolicyDefinition; templateLinked?: undefined }
-  | { static?: undefined; templateLinked: TemplateLinkedPolicyDefinition };
+  | (_PolicyDefinition & { static: StaticPolicyDefinition })
+  | (_PolicyDefinition & { templateLinked: TemplateLinkedPolicyDefinition });
+interface _PolicyDefinitionDetail {
+  static?: StaticPolicyDefinitionDetail;
+  templateLinked?: TemplateLinkedPolicyDefinitionDetail;
+}
+
 export type PolicyDefinitionDetail =
-  | { static: StaticPolicyDefinitionDetail; templateLinked?: undefined }
-  | {
-      static?: undefined;
+  | (_PolicyDefinitionDetail & { static: StaticPolicyDefinitionDetail })
+  | (_PolicyDefinitionDetail & {
       templateLinked: TemplateLinkedPolicyDefinitionDetail;
-    };
+    });
+interface _PolicyDefinitionItem {
+  static?: StaticPolicyDefinitionItem;
+  templateLinked?: TemplateLinkedPolicyDefinitionItem;
+}
+
 export type PolicyDefinitionItem =
-  | { static: StaticPolicyDefinitionItem; templateLinked?: undefined }
-  | { static?: undefined; templateLinked: TemplateLinkedPolicyDefinitionItem };
+  | (_PolicyDefinitionItem & { static: StaticPolicyDefinitionItem })
+  | (_PolicyDefinitionItem & {
+      templateLinked: TemplateLinkedPolicyDefinitionItem;
+    });
 export type PolicyEffect = "PERMIT" | "FORBID";
 export interface PolicyFilter {
   principal?: EntityReference;
@@ -769,7 +757,11 @@ export type ResourceType =
   | "POLICY"
   | "POLICY_TEMPLATE"
   | "SCHEMA";
-export type SchemaDefinition = { cedarJson: string };
+interface _SchemaDefinition {
+  cedarJson?: string;
+}
+
+export type SchemaDefinition = _SchemaDefinition & { cedarJson: string };
 export type SchemaJson = string;
 
 export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
@@ -853,15 +845,18 @@ export interface UpdateCognitoUserPoolConfiguration {
   clientIds?: Array<string>;
   groupConfiguration?: UpdateCognitoGroupConfiguration;
 }
+interface _UpdateConfiguration {
+  cognitoUserPoolConfiguration?: UpdateCognitoUserPoolConfiguration;
+  openIdConnectConfiguration?: UpdateOpenIdConnectConfiguration;
+}
+
 export type UpdateConfiguration =
-  | {
+  | (_UpdateConfiguration & {
       cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration;
-      openIdConnectConfiguration?: undefined;
-    }
-  | {
-      cognitoUserPoolConfiguration?: undefined;
+    })
+  | (_UpdateConfiguration & {
       openIdConnectConfiguration: UpdateOpenIdConnectConfiguration;
-    };
+    });
 export interface UpdateIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
@@ -892,16 +887,25 @@ export interface UpdateOpenIdConnectIdentityTokenConfiguration {
   principalIdClaim?: string;
   clientIds?: Array<string>;
 }
+interface _UpdateOpenIdConnectTokenSelection {
+  accessTokenOnly?: UpdateOpenIdConnectAccessTokenConfiguration;
+  identityTokenOnly?: UpdateOpenIdConnectIdentityTokenConfiguration;
+}
+
 export type UpdateOpenIdConnectTokenSelection =
-  | {
+  | (_UpdateOpenIdConnectTokenSelection & {
       accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration;
-      identityTokenOnly?: undefined;
-    }
-  | {
-      accessTokenOnly?: undefined;
+    })
+  | (_UpdateOpenIdConnectTokenSelection & {
       identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration;
-    };
-export type UpdatePolicyDefinition = { static: UpdateStaticPolicyDefinition };
+    });
+interface _UpdatePolicyDefinition {
+  static?: UpdateStaticPolicyDefinition;
+}
+
+export type UpdatePolicyDefinition = _UpdatePolicyDefinition & {
+  static: UpdateStaticPolicyDefinition;
+};
 export interface UpdatePolicyInput {
   policyStoreId: string;
   policyId: string;

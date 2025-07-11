@@ -1695,7 +1695,11 @@ export type InputLogEvents = Array<InputLogEvent>;
 export type InputLogStreamNames = Array<string>;
 export type Integer = number;
 
-export type IntegrationDetails = {
+interface _IntegrationDetails {
+  openSearchIntegrationDetails?: OpenSearchIntegrationDetails;
+}
+
+export type IntegrationDetails = _IntegrationDetails & {
   openSearchIntegrationDetails: OpenSearchIntegrationDetails;
 };
 export type IntegrationName = string;
@@ -2366,7 +2370,11 @@ export declare class ResourceAlreadyExistsException extends EffectData.TaggedErr
   readonly message?: string;
 }> {}
 export type ResourceArns = Array<string>;
-export type ResourceConfig = {
+interface _ResourceConfig {
+  openSearchResourceConfig?: OpenSearchResourceConfig;
+}
+
+export type ResourceConfig = _ResourceConfig & {
   openSearchResourceConfig: OpenSearchResourceConfig;
 };
 export type ResourceIdentifier = string;
@@ -2484,31 +2492,22 @@ export interface StartLiveTailRequest {
 export interface StartLiveTailResponse {
   responseStream?: StartLiveTailResponseStream;
 }
+interface _StartLiveTailResponseStream {
+  sessionStart?: LiveTailSessionStart;
+  sessionUpdate?: LiveTailSessionUpdate;
+  SessionTimeoutException?: SessionTimeoutException;
+  SessionStreamingException?: SessionStreamingException;
+}
+
 export type StartLiveTailResponseStream =
-  | {
-      sessionStart: LiveTailSessionStart;
-      sessionUpdate?: undefined;
-      SessionTimeoutException?: undefined;
-      SessionStreamingException?: undefined;
-    }
-  | {
-      sessionStart?: undefined;
-      sessionUpdate: LiveTailSessionUpdate;
-      SessionTimeoutException?: undefined;
-      SessionStreamingException?: undefined;
-    }
-  | {
-      sessionStart?: undefined;
-      sessionUpdate?: undefined;
+  | (_StartLiveTailResponseStream & { sessionStart: LiveTailSessionStart })
+  | (_StartLiveTailResponseStream & { sessionUpdate: LiveTailSessionUpdate })
+  | (_StartLiveTailResponseStream & {
       SessionTimeoutException: SessionTimeoutException;
-      SessionStreamingException?: undefined;
-    }
-  | {
-      sessionStart?: undefined;
-      sessionUpdate?: undefined;
-      SessionTimeoutException?: undefined;
+    })
+  | (_StartLiveTailResponseStream & {
       SessionStreamingException: SessionStreamingException;
-    };
+    });
 export interface StartQueryRequest {
   queryLanguage?: QueryLanguage;
   logGroupName?: string;

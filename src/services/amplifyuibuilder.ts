@@ -74,22 +74,16 @@ export interface ActionParameters {
   fields?: Record<string, ComponentProperty>;
   state?: MutationActionSetStateParameter;
 }
+interface _ApiConfiguration {
+  graphQLConfig?: GraphQLRenderConfig;
+  dataStoreConfig?: DataStoreRenderConfig;
+  noApiConfig?: NoApiRenderConfig;
+}
+
 export type ApiConfiguration =
-  | {
-      graphQLConfig: GraphQLRenderConfig;
-      dataStoreConfig?: undefined;
-      noApiConfig?: undefined;
-    }
-  | {
-      graphQLConfig?: undefined;
-      dataStoreConfig: DataStoreRenderConfig;
-      noApiConfig?: undefined;
-    }
-  | {
-      graphQLConfig?: undefined;
-      dataStoreConfig?: undefined;
-      noApiConfig: NoApiRenderConfig;
-    };
+  | (_ApiConfiguration & { graphQLConfig: GraphQLRenderConfig })
+  | (_ApiConfiguration & { dataStoreConfig: DataStoreRenderConfig })
+  | (_ApiConfiguration & { noApiConfig: NoApiRenderConfig });
 export type AppId = string;
 
 export type AssociatedFieldsList = Array<string>;
@@ -190,7 +184,13 @@ export interface CodegenJobGenericDataSchema {
   nonModels: Record<string, CodegenGenericDataNonModel>;
 }
 export type CodegenJobGenericDataSourceType = "DATA_STORE";
-export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
+interface _CodegenJobRenderConfig {
+  react?: ReactStartCodegenJobData;
+}
+
+export type CodegenJobRenderConfig = _CodegenJobRenderConfig & {
+  react: ReactStartCodegenJobData;
+};
 export type CodegenJobStatus = "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
 export interface CodegenJobSummary {
   appId: string;
@@ -459,10 +459,16 @@ export interface FieldInputConfig {
   isArray?: boolean;
   fileUploaderConfig?: FileUploaderFieldConfig;
 }
+interface _FieldPosition {
+  fixed?: FixedPosition;
+  rightOf?: string;
+  below?: string;
+}
+
 export type FieldPosition =
-  | { fixed: FixedPosition; rightOf?: undefined; below?: undefined }
-  | { fixed?: undefined; rightOf: string; below?: undefined }
-  | { fixed?: undefined; rightOf?: undefined; below: string };
+  | (_FieldPosition & { fixed: FixedPosition })
+  | (_FieldPosition & { rightOf: string })
+  | (_FieldPosition & { below: string });
 export type FieldsMap = Record<string, FieldConfig>;
 export interface FieldValidationConfiguration {
   type: string;
@@ -547,9 +553,14 @@ export interface FormStyle {
   verticalGap?: FormStyleConfig;
   outerPadding?: FormStyleConfig;
 }
+interface _FormStyleConfig {
+  tokenReference?: string;
+  value?: string;
+}
+
 export type FormStyleConfig =
-  | { tokenReference: string; value?: undefined }
-  | { tokenReference?: undefined; value: string };
+  | (_FormStyleConfig & { tokenReference: string })
+  | (_FormStyleConfig & { value: string });
 export interface FormSummary {
   appId: string;
   dataType: FormDataTypeConfig;

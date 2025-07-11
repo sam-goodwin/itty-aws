@@ -2970,9 +2970,21 @@ export type ErrorCount = number;
 export type ExcludeAccount = string;
 
 export type ExcludeAccounts = Array<string>;
-export type ExecutionInputs = { Automation: AutomationExecutionInputs };
+interface _ExecutionInputs {
+  Automation?: AutomationExecutionInputs;
+}
+
+export type ExecutionInputs = _ExecutionInputs & {
+  Automation: AutomationExecutionInputs;
+};
 export type ExecutionMode = "Auto" | "Interactive";
-export type ExecutionPreview = { Automation: AutomationExecutionPreview };
+interface _ExecutionPreview {
+  Automation?: AutomationExecutionPreview;
+}
+
+export type ExecutionPreview = _ExecutionPreview & {
+  Automation: AutomationExecutionPreview;
+};
 export type ExecutionPreviewId = string;
 
 export type ExecutionPreviewStatus =
@@ -4521,7 +4533,11 @@ export type NodeRegion = string;
 
 export type NodeSummary = Record<string, string>;
 export type NodeSummaryList = Array<Record<string, string>>;
-export type NodeType = { Instance: InstanceInfo };
+interface _NodeType {
+  Instance?: InstanceInfo;
+}
+
+export type NodeType = _NodeType & { Instance: InstanceInfo };
 export type NodeTypeName = "INSTANCE";
 export interface NonCompliantSummary {
   NonCompliantCount?: number;

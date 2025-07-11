@@ -753,9 +753,14 @@ export interface DescribedWebAppCustomization {
   LogoFile?: Uint8Array | string;
   FaviconFile?: Uint8Array | string;
 }
-export type DescribedWebAppIdentityProviderDetails = {
-  IdentityCenterConfig: DescribedIdentityCenterConfig;
-};
+interface _DescribedWebAppIdentityProviderDetails {
+  IdentityCenterConfig?: DescribedIdentityCenterConfig;
+}
+
+export type DescribedWebAppIdentityProviderDetails =
+  _DescribedWebAppIdentityProviderDetails & {
+    IdentityCenterConfig: DescribedIdentityCenterConfig;
+  };
 export interface DescribedWorkflow {
   Arn: string;
   Description?: string;
@@ -1639,9 +1644,14 @@ export interface UpdateWebAppCustomizationResponse {
 export interface UpdateWebAppIdentityCenterConfig {
   Role?: string;
 }
-export type UpdateWebAppIdentityProviderDetails = {
-  IdentityCenterConfig: UpdateWebAppIdentityCenterConfig;
-};
+interface _UpdateWebAppIdentityProviderDetails {
+  IdentityCenterConfig?: UpdateWebAppIdentityCenterConfig;
+}
+
+export type UpdateWebAppIdentityProviderDetails =
+  _UpdateWebAppIdentityProviderDetails & {
+    IdentityCenterConfig: UpdateWebAppIdentityCenterConfig;
+  };
 export interface UpdateWebAppRequest {
   WebAppId: string;
   IdentityProviderDetails?: UpdateWebAppIdentityProviderDetails;
@@ -1677,7 +1687,11 @@ export type WebAppFaviconFile = Uint8Array | string;
 
 export type WebAppId = string;
 
-export type WebAppIdentityProviderDetails = {
+interface _WebAppIdentityProviderDetails {
+  IdentityCenterConfig?: IdentityCenterConfig;
+}
+
+export type WebAppIdentityProviderDetails = _WebAppIdentityProviderDetails & {
   IdentityCenterConfig: IdentityCenterConfig;
 };
 export type WebAppLogoFile = Uint8Array | string;
@@ -1686,7 +1700,11 @@ export type WebAppTitle = string;
 
 export type WebAppUnitCount = number;
 
-export type WebAppUnits = { Provisioned: number };
+interface _WebAppUnits {
+  Provisioned?: number;
+}
+
+export type WebAppUnits = _WebAppUnits & { Provisioned: number };
 export type WorkflowDescription = string;
 
 export interface WorkflowDetail {

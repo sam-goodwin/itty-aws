@@ -667,22 +667,20 @@ export interface DatastoreStatistics {
   size?: EstimatedResourceSize;
 }
 export type DatastoreStatus = "CREATING" | "ACTIVE" | "DELETING";
+interface _DatastoreStorage {
+  serviceManagedS3?: ServiceManagedDatastoreS3Storage;
+  customerManagedS3?: CustomerManagedDatastoreS3Storage;
+  iotSiteWiseMultiLayerStorage?: DatastoreIotSiteWiseMultiLayerStorage;
+}
+
 export type DatastoreStorage =
-  | {
-      serviceManagedS3: ServiceManagedDatastoreS3Storage;
-      customerManagedS3?: undefined;
-      iotSiteWiseMultiLayerStorage?: undefined;
-    }
-  | {
-      serviceManagedS3?: undefined;
+  | (_DatastoreStorage & { serviceManagedS3: ServiceManagedDatastoreS3Storage })
+  | (_DatastoreStorage & {
       customerManagedS3: CustomerManagedDatastoreS3Storage;
-      iotSiteWiseMultiLayerStorage?: undefined;
-    }
-  | {
-      serviceManagedS3?: undefined;
-      customerManagedS3?: undefined;
+    })
+  | (_DatastoreStorage & {
       iotSiteWiseMultiLayerStorage: DatastoreIotSiteWiseMultiLayerStorage;
-    };
+    });
 export interface DatastoreStorageSummary {
   serviceManagedS3?: ServiceManagedDatastoreS3StorageSummary;
   customerManagedS3?: CustomerManagedDatastoreS3StorageSummary;

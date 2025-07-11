@@ -1019,9 +1019,16 @@ export type IntervalInSeconds = number;
 export interface IotSiteWiseSourceConfiguration {
   filters?: Array<IotSiteWiseSourceConfigurationFilter>;
 }
+interface _IotSiteWiseSourceConfigurationFilter {
+  filterByAssetModel?: FilterByAssetModel;
+  filterByAsset?: FilterByAsset;
+}
+
 export type IotSiteWiseSourceConfigurationFilter =
-  | { filterByAssetModel: FilterByAssetModel; filterByAsset?: undefined }
-  | { filterByAssetModel?: undefined; filterByAsset: FilterByAsset };
+  | (_IotSiteWiseSourceConfigurationFilter & {
+      filterByAssetModel: FilterByAssetModel;
+    })
+  | (_IotSiteWiseSourceConfigurationFilter & { filterByAsset: FilterByAsset });
 export type IotSiteWiseSourceConfigurationFilters =
   Array<IotSiteWiseSourceConfigurationFilter>;
 export interface IotTwinMakerDestinationConfiguration {
@@ -1031,9 +1038,18 @@ export interface IotTwinMakerSourceConfiguration {
   workspace: string;
   filters?: Array<IotTwinMakerSourceConfigurationFilter>;
 }
+interface _IotTwinMakerSourceConfigurationFilter {
+  filterByComponentType?: FilterByComponentType;
+  filterByEntity?: FilterByEntity;
+}
+
 export type IotTwinMakerSourceConfigurationFilter =
-  | { filterByComponentType: FilterByComponentType; filterByEntity?: undefined }
-  | { filterByComponentType?: undefined; filterByEntity: FilterByEntity };
+  | (_IotTwinMakerSourceConfigurationFilter & {
+      filterByComponentType: FilterByComponentType;
+    })
+  | (_IotTwinMakerSourceConfigurationFilter & {
+      filterByEntity: FilterByEntity;
+    });
 export type IotTwinMakerSourceConfigurationFilters =
   Array<IotTwinMakerSourceConfigurationFilter>;
 export type LambdaArn = string;
@@ -1055,10 +1071,16 @@ export interface ListComponentsResponse {
   componentSummaries: Array<ComponentSummary>;
   nextToken?: string;
 }
+interface _ListComponentTypesFilter {
+  extendsFrom?: string;
+  namespace?: string;
+  isAbstract?: boolean;
+}
+
 export type ListComponentTypesFilter =
-  | { extendsFrom: string; namespace?: undefined; isAbstract?: undefined }
-  | { extendsFrom?: undefined; namespace: string; isAbstract?: undefined }
-  | { extendsFrom?: undefined; namespace?: undefined; isAbstract: boolean };
+  | (_ListComponentTypesFilter & { extendsFrom: string })
+  | (_ListComponentTypesFilter & { namespace: string })
+  | (_ListComponentTypesFilter & { isAbstract: boolean });
 export type ListComponentTypesFilters = Array<ListComponentTypesFilter>;
 export interface ListComponentTypesRequest {
   workspaceId: string;
@@ -1072,22 +1094,16 @@ export interface ListComponentTypesResponse {
   nextToken?: string;
   maxResults?: number;
 }
+interface _ListEntitiesFilter {
+  parentEntityId?: string;
+  componentTypeId?: string;
+  externalId?: string;
+}
+
 export type ListEntitiesFilter =
-  | {
-      parentEntityId: string;
-      componentTypeId?: undefined;
-      externalId?: undefined;
-    }
-  | {
-      parentEntityId?: undefined;
-      componentTypeId: string;
-      externalId?: undefined;
-    }
-  | {
-      parentEntityId?: undefined;
-      componentTypeId?: undefined;
-      externalId: string;
-    };
+  | (_ListEntitiesFilter & { parentEntityId: string })
+  | (_ListEntitiesFilter & { componentTypeId: string })
+  | (_ListEntitiesFilter & { externalId: string });
 export type ListEntitiesFilters = Array<ListEntitiesFilter>;
 export interface ListEntitiesRequest {
   workspaceId: string;
@@ -1099,9 +1115,14 @@ export interface ListEntitiesResponse {
   entitySummaries?: Array<EntitySummary>;
   nextToken?: string;
 }
+interface _ListMetadataTransferJobsFilter {
+  workspaceId?: string;
+  state?: string;
+}
+
 export type ListMetadataTransferJobsFilter =
-  | { workspaceId: string; state?: undefined }
-  | { workspaceId?: undefined; state: string };
+  | (_ListMetadataTransferJobsFilter & { workspaceId: string })
+  | (_ListMetadataTransferJobsFilter & { state: string });
 export type ListMetadataTransferJobsFilters =
   Array<ListMetadataTransferJobsFilter>;
 export interface ListMetadataTransferJobsRequest {
@@ -1437,31 +1458,18 @@ export interface SyncJobSummary {
   creationDateTime?: Date | string;
   updateDateTime?: Date | string;
 }
+interface _SyncResourceFilter {
+  state?: string;
+  resourceType?: string;
+  resourceId?: string;
+  externalId?: string;
+}
+
 export type SyncResourceFilter =
-  | {
-      state: string;
-      resourceType?: undefined;
-      resourceId?: undefined;
-      externalId?: undefined;
-    }
-  | {
-      state?: undefined;
-      resourceType: string;
-      resourceId?: undefined;
-      externalId?: undefined;
-    }
-  | {
-      state?: undefined;
-      resourceType?: undefined;
-      resourceId: string;
-      externalId?: undefined;
-    }
-  | {
-      state?: undefined;
-      resourceType?: undefined;
-      resourceId?: undefined;
-      externalId: string;
-    };
+  | (_SyncResourceFilter & { state: string })
+  | (_SyncResourceFilter & { resourceType: string })
+  | (_SyncResourceFilter & { resourceId: string })
+  | (_SyncResourceFilter & { externalId: string });
 export type SyncResourceFilters = Array<SyncResourceFilter>;
 export type SyncResourceState = string;
 

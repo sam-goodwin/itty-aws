@@ -4213,9 +4213,14 @@ export interface CreateContactResponse {
   ContactId?: string;
   ContactArn?: string;
 }
+interface _CreatedByInfo {
+  ConnectUserArn?: string;
+  AWSIdentityArn?: string;
+}
+
 export type CreatedByInfo =
-  | { ConnectUserArn: string; AWSIdentityArn?: undefined }
-  | { ConnectUserArn?: undefined; AWSIdentityArn: string };
+  | (_CreatedByInfo & { ConnectUserArn: string })
+  | (_CreatedByInfo & { AWSIdentityArn: string });
 export interface CreateEmailAddressRequest {
   Description?: string;
   InstanceId: string;
@@ -5187,14 +5192,16 @@ export interface Evaluation {
   LastModifiedTime: Date | string;
   Tags?: Record<string, string>;
 }
+interface _EvaluationAnswerData {
+  StringValue?: string;
+  NumericValue?: number;
+  NotApplicable?: boolean;
+}
+
 export type EvaluationAnswerData =
-  | { StringValue: string; NumericValue?: undefined; NotApplicable?: undefined }
-  | { StringValue?: undefined; NumericValue: number; NotApplicable?: undefined }
-  | {
-      StringValue?: undefined;
-      NumericValue?: undefined;
-      NotApplicable: boolean;
-    };
+  | (_EvaluationAnswerData & { StringValue: string })
+  | (_EvaluationAnswerData & { NumericValue: number })
+  | (_EvaluationAnswerData & { NotApplicable: boolean });
 export type EvaluationAnswerDataNumericValue = number;
 
 export type EvaluationAnswerDataStringValue = string;
@@ -5239,15 +5246,25 @@ export type EvaluationFormDescription = string;
 
 export type EvaluationFormId = string;
 
+interface _EvaluationFormItem {
+  Section?: EvaluationFormSection;
+  Question?: EvaluationFormQuestion;
+}
+
 export type EvaluationFormItem =
-  | { Section: EvaluationFormSection; Question?: undefined }
-  | { Section?: undefined; Question: EvaluationFormQuestion };
+  | (_EvaluationFormItem & { Section: EvaluationFormSection })
+  | (_EvaluationFormItem & { Question: EvaluationFormQuestion });
 export type EvaluationFormItemsList = Array<EvaluationFormItem>;
 export type EvaluationFormItemWeight = number;
 
-export type EvaluationFormNumericQuestionAutomation = {
-  PropertyValue: NumericQuestionPropertyValueAutomation;
-};
+interface _EvaluationFormNumericQuestionAutomation {
+  PropertyValue?: NumericQuestionPropertyValueAutomation;
+}
+
+export type EvaluationFormNumericQuestionAutomation =
+  _EvaluationFormNumericQuestionAutomation & {
+    PropertyValue: NumericQuestionPropertyValueAutomation;
+  };
 export interface EvaluationFormNumericQuestionOption {
   MinValue: number;
   MaxValue: number;
@@ -5278,15 +5295,18 @@ export type EvaluationFormQuestionInstructions = string;
 export type EvaluationFormQuestionTitle = string;
 
 export type EvaluationFormQuestionType = "TEXT" | "SINGLESELECT" | "NUMERIC";
+interface _EvaluationFormQuestionTypeProperties {
+  Numeric?: EvaluationFormNumericQuestionProperties;
+  SingleSelect?: EvaluationFormSingleSelectQuestionProperties;
+}
+
 export type EvaluationFormQuestionTypeProperties =
-  | {
+  | (_EvaluationFormQuestionTypeProperties & {
       Numeric: EvaluationFormNumericQuestionProperties;
-      SingleSelect?: undefined;
-    }
-  | {
-      Numeric?: undefined;
+    })
+  | (_EvaluationFormQuestionTypeProperties & {
       SingleSelect: EvaluationFormSingleSelectQuestionProperties;
-    };
+    });
 export type EvaluationFormScoringMode = "QUESTION_ONLY" | "SECTION_ONLY";
 export type EvaluationFormScoringStatus = "ENABLED" | "DISABLED";
 export interface EvaluationFormScoringStrategy {
@@ -5306,9 +5326,14 @@ export interface EvaluationFormSingleSelectQuestionAutomation {
   Options: Array<EvaluationFormSingleSelectQuestionAutomationOption>;
   DefaultOptionRefId?: string;
 }
-export type EvaluationFormSingleSelectQuestionAutomationOption = {
-  RuleCategory: SingleSelectQuestionRuleCategoryAutomation;
-};
+interface _EvaluationFormSingleSelectQuestionAutomationOption {
+  RuleCategory?: SingleSelectQuestionRuleCategoryAutomation;
+}
+
+export type EvaluationFormSingleSelectQuestionAutomationOption =
+  _EvaluationFormSingleSelectQuestionAutomationOption & {
+    RuleCategory: SingleSelectQuestionRuleCategoryAutomation;
+  };
 export type EvaluationFormSingleSelectQuestionAutomationOptionList =
   Array<EvaluationFormSingleSelectQuestionAutomationOption>;
 export type EvaluationFormSingleSelectQuestionDisplayMode =
@@ -6075,7 +6100,11 @@ export declare class InvalidRequestException extends EffectData.TaggedError(
   readonly Message?: string;
   readonly Reason?: InvalidRequestExceptionReason;
 }> {}
-export type InvalidRequestExceptionReason = {
+interface _InvalidRequestExceptionReason {
+  AttachedFileInvalidRequestExceptionReason?: AttachedFileInvalidRequestExceptionReason;
+}
+
+export type InvalidRequestExceptionReason = _InvalidRequestExceptionReason & {
   AttachedFileInvalidRequestExceptionReason: AttachedFileInvalidRequestExceptionReason;
 };
 export interface InvisibleFieldInfo {
@@ -6915,15 +6944,16 @@ export interface ParticipantTimerConfiguration {
 export type ParticipantTimerDurationInMinutes = number;
 
 export type ParticipantTimerType = "IDLE" | "DISCONNECT_NONCUSTOMER";
+interface _ParticipantTimerValue {
+  ParticipantTimerAction?: ParticipantTimerAction;
+  ParticipantTimerDurationInMinutes?: number;
+}
+
 export type ParticipantTimerValue =
-  | {
+  | (_ParticipantTimerValue & {
       ParticipantTimerAction: ParticipantTimerAction;
-      ParticipantTimerDurationInMinutes?: undefined;
-    }
-  | {
-      ParticipantTimerAction?: undefined;
-      ParticipantTimerDurationInMinutes: number;
-    };
+    })
+  | (_ParticipantTimerValue & { ParticipantTimerDurationInMinutes: number });
 export type ParticipantToken = string;
 
 export interface ParticipantTokenCredentials {
@@ -7264,7 +7294,13 @@ export interface PredefinedAttributeSummary {
   LastModifiedRegion?: string;
 }
 export type PredefinedAttributeSummaryList = Array<PredefinedAttributeSummary>;
-export type PredefinedAttributeValues = { StringList: Array<string> };
+interface _PredefinedAttributeValues {
+  StringList?: Array<string>;
+}
+
+export type PredefinedAttributeValues = _PredefinedAttributeValues & {
+  StringList: Array<string>;
+};
 export type Prefix = string;
 
 export type PreSignedAttachmentUrl = string;
@@ -7517,55 +7553,34 @@ export type RealTimeContactAnalysisPostContactSummaryFailureCode =
 export type RealTimeContactAnalysisPostContactSummaryStatus =
   | "FAILED"
   | "COMPLETED";
+interface _RealtimeContactAnalysisSegment {
+  Transcript?: RealTimeContactAnalysisSegmentTranscript;
+  Categories?: RealTimeContactAnalysisSegmentCategories;
+  Issues?: RealTimeContactAnalysisSegmentIssues;
+  Event?: RealTimeContactAnalysisSegmentEvent;
+  Attachments?: RealTimeContactAnalysisSegmentAttachments;
+  PostContactSummary?: RealTimeContactAnalysisSegmentPostContactSummary;
+}
+
 export type RealtimeContactAnalysisSegment =
-  | {
+  | (_RealtimeContactAnalysisSegment & {
       Transcript: RealTimeContactAnalysisSegmentTranscript;
-      Categories?: undefined;
-      Issues?: undefined;
-      Event?: undefined;
-      Attachments?: undefined;
-      PostContactSummary?: undefined;
-    }
-  | {
-      Transcript?: undefined;
+    })
+  | (_RealtimeContactAnalysisSegment & {
       Categories: RealTimeContactAnalysisSegmentCategories;
-      Issues?: undefined;
-      Event?: undefined;
-      Attachments?: undefined;
-      PostContactSummary?: undefined;
-    }
-  | {
-      Transcript?: undefined;
-      Categories?: undefined;
+    })
+  | (_RealtimeContactAnalysisSegment & {
       Issues: RealTimeContactAnalysisSegmentIssues;
-      Event?: undefined;
-      Attachments?: undefined;
-      PostContactSummary?: undefined;
-    }
-  | {
-      Transcript?: undefined;
-      Categories?: undefined;
-      Issues?: undefined;
+    })
+  | (_RealtimeContactAnalysisSegment & {
       Event: RealTimeContactAnalysisSegmentEvent;
-      Attachments?: undefined;
-      PostContactSummary?: undefined;
-    }
-  | {
-      Transcript?: undefined;
-      Categories?: undefined;
-      Issues?: undefined;
-      Event?: undefined;
+    })
+  | (_RealtimeContactAnalysisSegment & {
       Attachments: RealTimeContactAnalysisSegmentAttachments;
-      PostContactSummary?: undefined;
-    }
-  | {
-      Transcript?: undefined;
-      Categories?: undefined;
-      Issues?: undefined;
-      Event?: undefined;
-      Attachments?: undefined;
+    })
+  | (_RealtimeContactAnalysisSegment & {
       PostContactSummary: RealTimeContactAnalysisSegmentPostContactSummary;
-    };
+    });
 export interface RealTimeContactAnalysisSegmentAttachments {
   Id: string;
   ParticipantId: string;
@@ -7624,7 +7639,12 @@ export type RealTimeContactAnalysisStatus =
   | "FAILED"
   | "COMPLETED";
 export type RealTimeContactAnalysisSupportedChannel = "VOICE" | "CHAT";
-export type RealTimeContactAnalysisTimeData = { AbsoluteTime: Date | string };
+interface _RealTimeContactAnalysisTimeData {
+  AbsoluteTime?: Date | string;
+}
+
+export type RealTimeContactAnalysisTimeData =
+  _RealTimeContactAnalysisTimeData & { AbsoluteTime: Date | string };
 export type RealTimeContactAnalysisTimeInstant = Date | string;
 
 export type RealTimeContactAnalysisTranscriptContent = string;
@@ -7685,70 +7705,24 @@ export type ReferenceStatus =
   | "FAILED";
 export type ReferenceStatusReason = string;
 
+interface _ReferenceSummary {
+  Url?: UrlReference;
+  Attachment?: AttachmentReference;
+  EmailMessage?: EmailMessageReference;
+  String?: StringReference;
+  Number?: NumberReference;
+  Date?: DateReference;
+  Email?: EmailReference;
+}
+
 export type ReferenceSummary =
-  | {
-      Url: UrlReference;
-      Attachment?: undefined;
-      EmailMessage?: undefined;
-      String?: undefined;
-      Number?: undefined;
-      Date?: undefined;
-      Email?: undefined;
-    }
-  | {
-      Url?: undefined;
-      Attachment: AttachmentReference;
-      EmailMessage?: undefined;
-      String?: undefined;
-      Number?: undefined;
-      Date?: undefined;
-      Email?: undefined;
-    }
-  | {
-      Url?: undefined;
-      Attachment?: undefined;
-      EmailMessage: EmailMessageReference;
-      String?: undefined;
-      Number?: undefined;
-      Date?: undefined;
-      Email?: undefined;
-    }
-  | {
-      Url?: undefined;
-      Attachment?: undefined;
-      EmailMessage?: undefined;
-      String: StringReference;
-      Number?: undefined;
-      Date?: undefined;
-      Email?: undefined;
-    }
-  | {
-      Url?: undefined;
-      Attachment?: undefined;
-      EmailMessage?: undefined;
-      String?: undefined;
-      Number: NumberReference;
-      Date?: undefined;
-      Email?: undefined;
-    }
-  | {
-      Url?: undefined;
-      Attachment?: undefined;
-      EmailMessage?: undefined;
-      String?: undefined;
-      Number?: undefined;
-      Date: DateReference;
-      Email?: undefined;
-    }
-  | {
-      Url?: undefined;
-      Attachment?: undefined;
-      EmailMessage?: undefined;
-      String?: undefined;
-      Number?: undefined;
-      Date?: undefined;
-      Email: EmailReference;
-    };
+  | (_ReferenceSummary & { Url: UrlReference })
+  | (_ReferenceSummary & { Attachment: AttachmentReference })
+  | (_ReferenceSummary & { EmailMessage: EmailMessageReference })
+  | (_ReferenceSummary & { String: StringReference })
+  | (_ReferenceSummary & { Number: NumberReference })
+  | (_ReferenceSummary & { Date: DateReference })
+  | (_ReferenceSummary & { Email: EmailReference });
 export type ReferenceSummaryList = Array<ReferenceSummary>;
 export type ReferenceType =
   | "URL"
@@ -8388,9 +8362,14 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
   readonly Message?: string;
   readonly Reason?: ServiceQuotaExceededExceptionReason;
 }> {}
-export type ServiceQuotaExceededExceptionReason = {
-  AttachedFileServiceQuotaExceededExceptionReason: AttachedFileServiceQuotaExceededExceptionReason;
-};
+interface _ServiceQuotaExceededExceptionReason {
+  AttachedFileServiceQuotaExceededExceptionReason?: AttachedFileServiceQuotaExceededExceptionReason;
+}
+
+export type ServiceQuotaExceededExceptionReason =
+  _ServiceQuotaExceededExceptionReason & {
+    AttachedFileServiceQuotaExceededExceptionReason: AttachedFileServiceQuotaExceededExceptionReason;
+  };
 export interface SignInConfig {
   Distributions: Array<SignInDistribution>;
 }
@@ -9101,9 +9080,12 @@ export interface UpdateParticipantAuthenticationRequest {
   ErrorDescription?: string;
 }
 export interface UpdateParticipantAuthenticationResponse {}
-export type UpdateParticipantRoleConfigChannelInfo = {
-  Chat: ChatParticipantRoleConfig;
-};
+interface _UpdateParticipantRoleConfigChannelInfo {
+  Chat?: ChatParticipantRoleConfig;
+}
+
+export type UpdateParticipantRoleConfigChannelInfo =
+  _UpdateParticipantRoleConfigChannelInfo & { Chat: ChatParticipantRoleConfig };
 export interface UpdateParticipantRoleConfigRequest {
   InstanceId: string;
   ContactId: string;

@@ -156,22 +156,16 @@ export interface PayloadPart {
 }
 export type RequestTTLSecondsHeader = number;
 
+interface _ResponseStream {
+  PayloadPart?: PayloadPart;
+  ModelStreamError?: ModelStreamError;
+  InternalStreamFailure?: InternalStreamFailure;
+}
+
 export type ResponseStream =
-  | {
-      PayloadPart: PayloadPart;
-      ModelStreamError?: undefined;
-      InternalStreamFailure?: undefined;
-    }
-  | {
-      PayloadPart?: undefined;
-      ModelStreamError: ModelStreamError;
-      InternalStreamFailure?: undefined;
-    }
-  | {
-      PayloadPart?: undefined;
-      ModelStreamError?: undefined;
-      InternalStreamFailure: InternalStreamFailure;
-    };
+  | (_ResponseStream & { PayloadPart: PayloadPart })
+  | (_ResponseStream & { ModelStreamError: ModelStreamError })
+  | (_ResponseStream & { InternalStreamFailure: InternalStreamFailure });
 export declare class ServiceUnavailable extends EffectData.TaggedError(
   "ServiceUnavailable",
 )<{

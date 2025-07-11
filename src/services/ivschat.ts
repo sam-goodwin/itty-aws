@@ -263,22 +263,20 @@ export interface DeleteRoomRequest {
 }
 export type DeliveryStreamName = string;
 
+interface _DestinationConfiguration {
+  s3?: S3DestinationConfiguration;
+  cloudWatchLogs?: CloudWatchLogsDestinationConfiguration;
+  firehose?: FirehoseDestinationConfiguration;
+}
+
 export type DestinationConfiguration =
-  | {
-      s3: S3DestinationConfiguration;
-      cloudWatchLogs?: undefined;
-      firehose?: undefined;
-    }
-  | {
-      s3?: undefined;
+  | (_DestinationConfiguration & { s3: S3DestinationConfiguration })
+  | (_DestinationConfiguration & {
       cloudWatchLogs: CloudWatchLogsDestinationConfiguration;
-      firehose?: undefined;
-    }
-  | {
-      s3?: undefined;
-      cloudWatchLogs?: undefined;
+    })
+  | (_DestinationConfiguration & {
       firehose: FirehoseDestinationConfiguration;
-    };
+    });
 export interface DisconnectUserRequest {
   roomIdentifier: string;
   userId: string;

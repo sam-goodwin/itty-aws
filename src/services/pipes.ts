@@ -334,12 +334,23 @@ export type MessageDeduplicationId = string;
 
 export type MessageGroupId = string;
 
-export type MQBrokerAccessCredentials = { BasicAuth: string };
+interface _MQBrokerAccessCredentials {
+  BasicAuth?: string;
+}
+
+export type MQBrokerAccessCredentials = _MQBrokerAccessCredentials & {
+  BasicAuth: string;
+};
 export type MQBrokerQueueName = string;
 
+interface _MSKAccessCredentials {
+  SaslScram512Auth?: string;
+  ClientCertificateTlsAuth?: string;
+}
+
 export type MSKAccessCredentials =
-  | { SaslScram512Auth: string; ClientCertificateTlsAuth?: undefined }
-  | { SaslScram512Auth?: undefined; ClientCertificateTlsAuth: string };
+  | (_MSKAccessCredentials & { SaslScram512Auth: string })
+  | (_MSKAccessCredentials & { ClientCertificateTlsAuth: string });
 export type MSKStartPosition = string;
 
 export interface MultiMeasureAttributeMapping {
@@ -648,31 +659,24 @@ export type SecurityGroupId = string;
 
 export type SecurityGroupIds = Array<string>;
 export type SecurityGroups = Array<string>;
+interface _SelfManagedKafkaAccessConfigurationCredentials {
+  BasicAuth?: string;
+  SaslScram512Auth?: string;
+  SaslScram256Auth?: string;
+  ClientCertificateTlsAuth?: string;
+}
+
 export type SelfManagedKafkaAccessConfigurationCredentials =
-  | {
-      BasicAuth: string;
-      SaslScram512Auth?: undefined;
-      SaslScram256Auth?: undefined;
-      ClientCertificateTlsAuth?: undefined;
-    }
-  | {
-      BasicAuth?: undefined;
+  | (_SelfManagedKafkaAccessConfigurationCredentials & { BasicAuth: string })
+  | (_SelfManagedKafkaAccessConfigurationCredentials & {
       SaslScram512Auth: string;
-      SaslScram256Auth?: undefined;
-      ClientCertificateTlsAuth?: undefined;
-    }
-  | {
-      BasicAuth?: undefined;
-      SaslScram512Auth?: undefined;
+    })
+  | (_SelfManagedKafkaAccessConfigurationCredentials & {
       SaslScram256Auth: string;
-      ClientCertificateTlsAuth?: undefined;
-    }
-  | {
-      BasicAuth?: undefined;
-      SaslScram512Auth?: undefined;
-      SaslScram256Auth?: undefined;
+    })
+  | (_SelfManagedKafkaAccessConfigurationCredentials & {
       ClientCertificateTlsAuth: string;
-    };
+    });
 export interface SelfManagedKafkaAccessConfigurationVpc {
   Subnets?: Array<string>;
   SecurityGroup?: Array<string>;

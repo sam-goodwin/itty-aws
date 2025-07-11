@@ -254,9 +254,14 @@ export interface Source {
   sourceType?: string;
   sourceData?: SourceData;
 }
+interface _SourceData {
+  x509CertificateData?: string;
+  acmPcaArn?: string;
+}
+
 export type SourceData =
-  | { x509CertificateData: string; acmPcaArn?: undefined }
-  | { x509CertificateData?: undefined; acmPcaArn: string };
+  | (_SourceData & { x509CertificateData: string })
+  | (_SourceData & { acmPcaArn: string });
 export type SpecifierList = Array<string>;
 export interface SubjectDetail {
   subjectArn?: string;

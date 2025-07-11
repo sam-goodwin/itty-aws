@@ -858,31 +858,18 @@ export interface ValidationExceptionField {
 export type ValidationExceptionFieldList = Array<ValidationExceptionField>;
 export type ValidationExceptionReason = string;
 
+interface _VariableValue {
+  boolValue?: boolean;
+  stringValue?: string;
+  longValue?: number;
+  doubleValue?: number;
+}
+
 export type VariableValue =
-  | {
-      boolValue: boolean;
-      stringValue?: undefined;
-      longValue?: undefined;
-      doubleValue?: undefined;
-    }
-  | {
-      boolValue?: undefined;
-      stringValue: string;
-      longValue?: undefined;
-      doubleValue?: undefined;
-    }
-  | {
-      boolValue?: undefined;
-      stringValue?: undefined;
-      longValue: number;
-      doubleValue?: undefined;
-    }
-  | {
-      boolValue?: undefined;
-      stringValue?: undefined;
-      longValue?: undefined;
-      doubleValue: number;
-    };
+  | (_VariableValue & { boolValue: boolean })
+  | (_VariableValue & { stringValue: string })
+  | (_VariableValue & { longValue: number })
+  | (_VariableValue & { doubleValue: number });
 export interface Variation {
   name?: string;
   value?: VariableValue;

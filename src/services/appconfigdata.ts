@@ -16,7 +16,11 @@ export interface AppConfigData {
 
 export type Appconfigdata = AppConfigData;
 
-export type BadRequestDetails = {
+interface _BadRequestDetails {
+  InvalidParameters?: Record<string, InvalidParameterDetail>;
+}
+
+export type BadRequestDetails = _BadRequestDetails & {
   InvalidParameters: Record<string, InvalidParameterDetail>;
 };
 export declare class BadRequestException extends EffectData.TaggedError(

@@ -219,7 +219,11 @@ export interface DescribeWorkspaceRequest {
 export interface DescribeWorkspaceResponse {
   workspace: WorkspaceDescription;
 }
-export type Destination = { ampConfiguration: AmpConfiguration };
+interface _Destination {
+  ampConfiguration?: AmpConfiguration;
+}
+
+export type Destination = _Destination & { ampConfiguration: AmpConfiguration };
 export interface EksConfiguration {
   clusterArn: string;
   securityGroupIds?: Array<string>;
@@ -392,7 +396,13 @@ export interface RuleGroupsNamespaceSummary {
   tags?: Record<string, string>;
 }
 export type RuleGroupsNamespaceSummaryList = Array<RuleGroupsNamespaceSummary>;
-export type ScrapeConfiguration = { configurationBlob: Uint8Array | string };
+interface _ScrapeConfiguration {
+  configurationBlob?: Uint8Array | string;
+}
+
+export type ScrapeConfiguration = _ScrapeConfiguration & {
+  configurationBlob: Uint8Array | string;
+};
 export type ScraperAlias = string;
 
 export type ScraperArn = string;
@@ -447,7 +457,11 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
   readonly serviceCode: string;
   readonly quotaCode: string;
 }> {}
-export type Source = { eksConfiguration: EksConfiguration };
+interface _Source {
+  eksConfiguration?: EksConfiguration;
+}
+
+export type Source = _Source & { eksConfiguration: EksConfiguration };
 export type StatusReason = string;
 
 export type SubnetId = string;

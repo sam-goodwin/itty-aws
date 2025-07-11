@@ -283,10 +283,16 @@ export type AmazonResourceName = string;
 export type AnnotationKey = string;
 
 export type Annotations = Record<string, Array<ValueWithServiceIds>>;
+interface _AnnotationValue {
+  NumberValue?: number;
+  BooleanValue?: boolean;
+  StringValue?: string;
+}
+
 export type AnnotationValue =
-  | { NumberValue: number; BooleanValue?: undefined; StringValue?: undefined }
-  | { NumberValue?: undefined; BooleanValue: boolean; StringValue?: undefined }
-  | { NumberValue?: undefined; BooleanValue?: undefined; StringValue: string };
+  | (_AnnotationValue & { NumberValue: number })
+  | (_AnnotationValue & { BooleanValue: boolean })
+  | (_AnnotationValue & { StringValue: string });
 export interface AnomalousService {
   ServiceId?: ServiceId;
 }
@@ -661,8 +667,18 @@ export interface IndexingRule {
   Rule?: IndexingRuleValue;
 }
 export type IndexingRuleList = Array<IndexingRule>;
-export type IndexingRuleValue = { Probabilistic: ProbabilisticRuleValue };
-export type IndexingRuleValueUpdate = {
+interface _IndexingRuleValue {
+  Probabilistic?: ProbabilisticRuleValue;
+}
+
+export type IndexingRuleValue = _IndexingRuleValue & {
+  Probabilistic: ProbabilisticRuleValue;
+};
+interface _IndexingRuleValueUpdate {
+  Probabilistic?: ProbabilisticRuleValueUpdate;
+}
+
+export type IndexingRuleValueUpdate = _IndexingRuleValueUpdate & {
   Probabilistic: ProbabilisticRuleValueUpdate;
 };
 export interface Insight {

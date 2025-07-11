@@ -847,10 +847,20 @@ export interface ListTagsForResourceRequest {
 export interface ListTagsForResourceResponse {
   Tags?: Record<string, string>;
 }
-export type ManifestOverridesPayload = { PayloadData: string };
+interface _ManifestOverridesPayload {
+  PayloadData?: string;
+}
+
+export type ManifestOverridesPayload = _ManifestOverridesPayload & {
+  PayloadData: string;
+};
 export type ManifestOverridesPayloadData = string;
 
-export type ManifestPayload = { PayloadData: string };
+interface _ManifestPayload {
+  PayloadData?: string;
+}
+
+export type ManifestPayload = _ManifestPayload & { PayloadData: string };
 export type ManifestPayloadData = string;
 
 export type MarkLatestPatch = boolean;

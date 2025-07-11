@@ -451,7 +451,11 @@ export interface AppliedExtension {
 export type AppliedExtensions = Array<AppliedExtension>;
 export type Arn = string;
 
-export type BadRequestDetails = {
+interface _BadRequestDetails {
+  InvalidConfiguration?: Array<InvalidConfigurationDetail>;
+}
+
+export type BadRequestDetails = _BadRequestDetails & {
   InvalidConfiguration: Array<InvalidConfigurationDetail>;
 };
 export declare class BadRequestException extends EffectData.TaggedError(

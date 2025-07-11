@@ -375,9 +375,14 @@ export type AccountAggregations = Array<FindingAggregationAccountDetails>;
 export type AccountIdsList = Array<string>;
 export type AclCanonicalId = string;
 
+interface _AclGrantee {
+  id?: string;
+  uri?: string;
+}
+
 export type AclGrantee =
-  | { id: string; uri?: undefined }
-  | { id?: undefined; uri: string };
+  | (_AclGrantee & { id: string })
+  | (_AclGrantee & { uri: string });
 export type AclPermission = string;
 
 export type AclUri = string;
@@ -415,9 +420,14 @@ export interface AnalyzedResourceSummary {
 }
 export type AnalyzerArn = string;
 
+interface _AnalyzerConfiguration {
+  unusedAccess?: UnusedAccessConfiguration;
+  internalAccess?: InternalAccessConfiguration;
+}
+
 export type AnalyzerConfiguration =
-  | { unusedAccess: UnusedAccessConfiguration; internalAccess?: undefined }
-  | { unusedAccess?: undefined; internalAccess: InternalAccessConfiguration };
+  | (_AnalyzerConfiguration & { unusedAccess: UnusedAccessConfiguration })
+  | (_AnalyzerConfiguration & { internalAccess: InternalAccessConfiguration });
 export type AnalyzersList = Array<AnalyzerSummary>;
 export type AnalyzerStatus = string;
 
@@ -498,231 +508,44 @@ export interface CloudTrailProperties {
   endTime: Date | string;
 }
 export type ConditionKeyMap = Record<string, string>;
+interface _Configuration {
+  ebsSnapshot?: EbsSnapshotConfiguration;
+  ecrRepository?: EcrRepositoryConfiguration;
+  iamRole?: IamRoleConfiguration;
+  efsFileSystem?: EfsFileSystemConfiguration;
+  kmsKey?: KmsKeyConfiguration;
+  rdsDbClusterSnapshot?: RdsDbClusterSnapshotConfiguration;
+  rdsDbSnapshot?: RdsDbSnapshotConfiguration;
+  secretsManagerSecret?: SecretsManagerSecretConfiguration;
+  s3Bucket?: S3BucketConfiguration;
+  snsTopic?: SnsTopicConfiguration;
+  sqsQueue?: SqsQueueConfiguration;
+  s3ExpressDirectoryBucket?: S3ExpressDirectoryBucketConfiguration;
+  dynamodbStream?: DynamodbStreamConfiguration;
+  dynamodbTable?: DynamodbTableConfiguration;
+}
+
 export type Configuration =
-  | {
-      ebsSnapshot: EbsSnapshotConfiguration;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository: EcrRepositoryConfiguration;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole: IamRoleConfiguration;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem: EfsFileSystemConfiguration;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey: KmsKeyConfiguration;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
+  | (_Configuration & { ebsSnapshot: EbsSnapshotConfiguration })
+  | (_Configuration & { ecrRepository: EcrRepositoryConfiguration })
+  | (_Configuration & { iamRole: IamRoleConfiguration })
+  | (_Configuration & { efsFileSystem: EfsFileSystemConfiguration })
+  | (_Configuration & { kmsKey: KmsKeyConfiguration })
+  | (_Configuration & {
       rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot: RdsDbSnapshotConfiguration;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
+    })
+  | (_Configuration & { rdsDbSnapshot: RdsDbSnapshotConfiguration })
+  | (_Configuration & {
       secretsManagerSecret: SecretsManagerSecretConfiguration;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket: S3BucketConfiguration;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic: SnsTopicConfiguration;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue: SqsQueueConfiguration;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
+    })
+  | (_Configuration & { s3Bucket: S3BucketConfiguration })
+  | (_Configuration & { snsTopic: SnsTopicConfiguration })
+  | (_Configuration & { sqsQueue: SqsQueueConfiguration })
+  | (_Configuration & {
       s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration;
-      dynamodbStream?: undefined;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream: DynamodbStreamConfiguration;
-      dynamodbTable?: undefined;
-    }
-  | {
-      ebsSnapshot?: undefined;
-      ecrRepository?: undefined;
-      iamRole?: undefined;
-      efsFileSystem?: undefined;
-      kmsKey?: undefined;
-      rdsDbClusterSnapshot?: undefined;
-      rdsDbSnapshot?: undefined;
-      secretsManagerSecret?: undefined;
-      s3Bucket?: undefined;
-      snsTopic?: undefined;
-      sqsQueue?: undefined;
-      s3ExpressDirectoryBucket?: undefined;
-      dynamodbStream?: undefined;
-      dynamodbTable: DynamodbTableConfiguration;
-    };
+    })
+  | (_Configuration & { dynamodbStream: DynamodbStreamConfiguration })
+  | (_Configuration & { dynamodbTable: DynamodbTableConfiguration });
 export type ConfigurationsMap = Record<string, Configuration>;
 export type ConfigurationsMapKey = string;
 
@@ -846,55 +669,26 @@ export interface FindingAggregationAccountDetails {
 export type FindingAggregationAccountDetailsMap = Record<string, number>;
 export type FindingChangeType = string;
 
+interface _FindingDetails {
+  internalAccessDetails?: InternalAccessDetails;
+  externalAccessDetails?: ExternalAccessDetails;
+  unusedPermissionDetails?: UnusedPermissionDetails;
+  unusedIamUserAccessKeyDetails?: UnusedIamUserAccessKeyDetails;
+  unusedIamRoleDetails?: UnusedIamRoleDetails;
+  unusedIamUserPasswordDetails?: UnusedIamUserPasswordDetails;
+}
+
 export type FindingDetails =
-  | {
-      internalAccessDetails: InternalAccessDetails;
-      externalAccessDetails?: undefined;
-      unusedPermissionDetails?: undefined;
-      unusedIamUserAccessKeyDetails?: undefined;
-      unusedIamRoleDetails?: undefined;
-      unusedIamUserPasswordDetails?: undefined;
-    }
-  | {
-      internalAccessDetails?: undefined;
-      externalAccessDetails: ExternalAccessDetails;
-      unusedPermissionDetails?: undefined;
-      unusedIamUserAccessKeyDetails?: undefined;
-      unusedIamRoleDetails?: undefined;
-      unusedIamUserPasswordDetails?: undefined;
-    }
-  | {
-      internalAccessDetails?: undefined;
-      externalAccessDetails?: undefined;
-      unusedPermissionDetails: UnusedPermissionDetails;
-      unusedIamUserAccessKeyDetails?: undefined;
-      unusedIamRoleDetails?: undefined;
-      unusedIamUserPasswordDetails?: undefined;
-    }
-  | {
-      internalAccessDetails?: undefined;
-      externalAccessDetails?: undefined;
-      unusedPermissionDetails?: undefined;
+  | (_FindingDetails & { internalAccessDetails: InternalAccessDetails })
+  | (_FindingDetails & { externalAccessDetails: ExternalAccessDetails })
+  | (_FindingDetails & { unusedPermissionDetails: UnusedPermissionDetails })
+  | (_FindingDetails & {
       unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails;
-      unusedIamRoleDetails?: undefined;
-      unusedIamUserPasswordDetails?: undefined;
-    }
-  | {
-      internalAccessDetails?: undefined;
-      externalAccessDetails?: undefined;
-      unusedPermissionDetails?: undefined;
-      unusedIamUserAccessKeyDetails?: undefined;
-      unusedIamRoleDetails: UnusedIamRoleDetails;
-      unusedIamUserPasswordDetails?: undefined;
-    }
-  | {
-      internalAccessDetails?: undefined;
-      externalAccessDetails?: undefined;
-      unusedPermissionDetails?: undefined;
-      unusedIamUserAccessKeyDetails?: undefined;
-      unusedIamRoleDetails?: undefined;
+    })
+  | (_FindingDetails & { unusedIamRoleDetails: UnusedIamRoleDetails })
+  | (_FindingDetails & {
       unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails;
-    };
+    });
 export type FindingDetailsList = Array<FindingDetails>;
 export type FindingId = string;
 
@@ -912,22 +706,22 @@ export interface FindingSourceDetail {
 export type FindingSourceList = Array<FindingSource>;
 export type FindingSourceType = string;
 
+interface _FindingsStatistics {
+  externalAccessFindingsStatistics?: ExternalAccessFindingsStatistics;
+  internalAccessFindingsStatistics?: InternalAccessFindingsStatistics;
+  unusedAccessFindingsStatistics?: UnusedAccessFindingsStatistics;
+}
+
 export type FindingsStatistics =
-  | {
+  | (_FindingsStatistics & {
       externalAccessFindingsStatistics: ExternalAccessFindingsStatistics;
-      internalAccessFindingsStatistics?: undefined;
-      unusedAccessFindingsStatistics?: undefined;
-    }
-  | {
-      externalAccessFindingsStatistics?: undefined;
+    })
+  | (_FindingsStatistics & {
       internalAccessFindingsStatistics: InternalAccessFindingsStatistics;
-      unusedAccessFindingsStatistics?: undefined;
-    }
-  | {
-      externalAccessFindingsStatistics?: undefined;
-      internalAccessFindingsStatistics?: undefined;
+    })
+  | (_FindingsStatistics & {
       unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics;
-    };
+    });
 export type FindingsStatisticsList = Array<FindingsStatistics>;
 export type FindingStatus = string;
 
@@ -1276,29 +1070,30 @@ export interface Location {
 export type LocationList = Array<Location>;
 export type Name = string;
 
+interface _NetworkOriginConfiguration {
+  vpcConfiguration?: VpcConfiguration;
+  internetConfiguration?: InternetConfiguration;
+}
+
 export type NetworkOriginConfiguration =
-  | { vpcConfiguration: VpcConfiguration; internetConfiguration?: undefined }
-  | {
-      vpcConfiguration?: undefined;
+  | (_NetworkOriginConfiguration & { vpcConfiguration: VpcConfiguration })
+  | (_NetworkOriginConfiguration & {
       internetConfiguration: InternetConfiguration;
-    };
+    });
 export type OrderBy = string;
 
+interface _PathElement {
+  index?: number;
+  key?: string;
+  substring?: Substring;
+  value?: string;
+}
+
 export type PathElement =
-  | { index: number; key?: undefined; substring?: undefined; value?: undefined }
-  | { index?: undefined; key: string; substring?: undefined; value?: undefined }
-  | {
-      index?: undefined;
-      key?: undefined;
-      substring: Substring;
-      value?: undefined;
-    }
-  | {
-      index?: undefined;
-      key?: undefined;
-      substring?: undefined;
-      value: string;
-    };
+  | (_PathElement & { index: number })
+  | (_PathElement & { key: string })
+  | (_PathElement & { substring: Substring })
+  | (_PathElement & { value: string });
 export type PathElementList = Array<PathElement>;
 export type PolicyDocument = string;
 
@@ -1336,7 +1131,12 @@ export type RdsDbClusterSnapshotAttributesMap = Record<
   string,
   RdsDbClusterSnapshotAttributeValue
 >;
-export type RdsDbClusterSnapshotAttributeValue = { accountIds: Array<string> };
+interface _RdsDbClusterSnapshotAttributeValue {
+  accountIds?: Array<string>;
+}
+
+export type RdsDbClusterSnapshotAttributeValue =
+  _RdsDbClusterSnapshotAttributeValue & { accountIds: Array<string> };
 export interface RdsDbClusterSnapshotConfiguration {
   attributes?: Record<string, RdsDbClusterSnapshotAttributeValue>;
   kmsKeyId?: string;
@@ -1352,7 +1152,13 @@ export type RdsDbSnapshotAttributesMap = Record<
   string,
   RdsDbSnapshotAttributeValue
 >;
-export type RdsDbSnapshotAttributeValue = { accountIds: Array<string> };
+interface _RdsDbSnapshotAttributeValue {
+  accountIds?: Array<string>;
+}
+
+export type RdsDbSnapshotAttributeValue = _RdsDbSnapshotAttributeValue & {
+  accountIds: Array<string>;
+};
 export interface RdsDbSnapshotConfiguration {
   attributes?: Record<string, RdsDbSnapshotAttributeValue>;
   kmsKeyId?: string;
@@ -1375,7 +1181,11 @@ export type RecommendationType = string;
 
 export type RecommendedRemediationAction = string;
 
-export type RecommendedStep = {
+interface _RecommendedStep {
+  unusedPermissionsRecommendedStep?: UnusedPermissionsRecommendedStep;
+}
+
+export type RecommendedStep = _RecommendedStep & {
   unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep;
 };
 export type RecommendedStepList = Array<RecommendedStep>;

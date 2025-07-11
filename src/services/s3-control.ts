@@ -1173,7 +1173,11 @@ export type JobManifestFieldName = "Ignore" | "Bucket" | "Key" | "VersionId";
 export type JobManifestFormat =
   | "S3BatchOperations_CSV_20180820"
   | "S3InventoryReport_CSV_20161130";
-export type JobManifestGenerator = {
+interface _JobManifestGenerator {
+  S3JobManifestGenerator?: S3JobManifestGenerator;
+}
+
+export type JobManifestGenerator = _JobManifestGenerator & {
   S3JobManifestGenerator: S3JobManifestGenerator;
 };
 export interface JobManifestGeneratorFilter {
@@ -1613,9 +1617,12 @@ export interface ObjectLambdaConfiguration {
   AllowedFeatures?: Array<ObjectLambdaAllowedFeature>;
   TransformationConfigurations: Array<ObjectLambdaTransformationConfiguration>;
 }
-export type ObjectLambdaContentTransformation = {
-  AwsLambda: AwsLambdaTransformation;
-};
+interface _ObjectLambdaContentTransformation {
+  AwsLambda?: AwsLambdaTransformation;
+}
+
+export type ObjectLambdaContentTransformation =
+  _ObjectLambdaContentTransformation & { AwsLambda: AwsLambdaTransformation };
 export type ObjectLambdaPolicy = string;
 
 export type ObjectLambdaSupportingAccessPointArn = string;

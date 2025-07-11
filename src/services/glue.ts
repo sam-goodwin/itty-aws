@@ -8702,7 +8702,13 @@ export type TableOptimizerType =
   | "COMPACTION"
   | "RETENTION"
   | "ORPHAN_FILE_DELETION";
-export type TableOptimizerVpcConfiguration = { glueConnectionName: string };
+interface _TableOptimizerVpcConfiguration {
+  glueConnectionName?: string;
+}
+
+export type TableOptimizerVpcConfiguration = _TableOptimizerVpcConfiguration & {
+  glueConnectionName: string;
+};
 export type TablePrefix = string;
 
 export interface TableStatus {

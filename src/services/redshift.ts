@@ -3004,7 +3004,11 @@ export declare class Ipv6CidrBlockNotFoundFault extends EffectData.TaggedError(
 export interface LakeFormationQuery {
   Authorization: ServiceAuthorization;
 }
-export type LakeFormationScopeUnion = {
+interface _LakeFormationScopeUnion {
+  LakeFormationQuery?: LakeFormationQuery;
+}
+
+export type LakeFormationScopeUnion = _LakeFormationScopeUnion & {
   LakeFormationQuery: LakeFormationQuery;
 };
 export type LakeFormationServiceIntegrations = Array<LakeFormationScopeUnion>;
@@ -3216,15 +3220,16 @@ export interface ModifyUsageLimitMessage {
   Amount?: number;
   BreachAction?: UsageLimitBreachAction;
 }
+interface _NamespaceIdentifierUnion {
+  ServerlessIdentifier?: ServerlessIdentifier;
+  ProvisionedIdentifier?: ProvisionedIdentifier;
+}
+
 export type NamespaceIdentifierUnion =
-  | {
-      ServerlessIdentifier: ServerlessIdentifier;
-      ProvisionedIdentifier?: undefined;
-    }
-  | {
-      ServerlessIdentifier?: undefined;
+  | (_NamespaceIdentifierUnion & { ServerlessIdentifier: ServerlessIdentifier })
+  | (_NamespaceIdentifierUnion & {
       ProvisionedIdentifier: ProvisionedIdentifier;
-    };
+    });
 export type NamespaceRegistrationStatus = "REGISTERING" | "DEREGISTERING";
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
@@ -3707,7 +3712,13 @@ export interface RotateEncryptionKeyMessage {
 export interface RotateEncryptionKeyResult {
   Cluster?: Cluster;
 }
-export type S3AccessGrantsScopeUnion = { ReadWriteAccess: ReadWriteAccess };
+interface _S3AccessGrantsScopeUnion {
+  ReadWriteAccess?: ReadWriteAccess;
+}
+
+export type S3AccessGrantsScopeUnion = _S3AccessGrantsScopeUnion & {
+  ReadWriteAccess: ReadWriteAccess;
+};
 export type S3AccessGrantsServiceIntegrations = Array<S3AccessGrantsScopeUnion>;
 export type S3KeyPrefixValue = string;
 
@@ -3784,15 +3795,18 @@ export interface ServerlessIdentifier {
 }
 export type ServiceAuthorization = "ENABLED" | "DISABLED";
 export type ServiceIntegrationList = Array<ServiceIntegrationsUnion>;
+interface _ServiceIntegrationsUnion {
+  LakeFormation?: Array<LakeFormationScopeUnion>;
+  S3AccessGrants?: Array<S3AccessGrantsScopeUnion>;
+}
+
 export type ServiceIntegrationsUnion =
-  | {
+  | (_ServiceIntegrationsUnion & {
       LakeFormation: Array<LakeFormationScopeUnion>;
-      S3AccessGrants?: undefined;
-    }
-  | {
-      LakeFormation?: undefined;
+    })
+  | (_ServiceIntegrationsUnion & {
       S3AccessGrants: Array<S3AccessGrantsScopeUnion>;
-    };
+    });
 export interface Snapshot {
   SnapshotIdentifier?: string;
   ClusterIdentifier?: string;

@@ -2842,106 +2842,30 @@ export declare class ResourceNotFoundException extends EffectData.TaggedError(
   readonly message: string;
 }> {}
 export type ResourceType = "PORTAL" | "PROJECT";
+interface _ResponseStream {
+  trace?: Trace;
+  output?: InvocationOutput;
+  accessDeniedException?: AccessDeniedException;
+  conflictingOperationException?: ConflictingOperationException;
+  internalFailureException?: InternalFailureException;
+  invalidRequestException?: InvalidRequestException;
+  limitExceededException?: LimitExceededException;
+  resourceNotFoundException?: ResourceNotFoundException;
+  throttlingException?: ThrottlingException;
+}
+
 export type ResponseStream =
-  | {
-      trace: Trace;
-      output?: undefined;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output: InvocationOutput;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException: AccessDeniedException;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException?: undefined;
+  | (_ResponseStream & { trace: Trace })
+  | (_ResponseStream & { output: InvocationOutput })
+  | (_ResponseStream & { accessDeniedException: AccessDeniedException })
+  | (_ResponseStream & {
       conflictingOperationException: ConflictingOperationException;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException: InternalFailureException;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException: InvalidRequestException;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException: LimitExceededException;
-      resourceNotFoundException?: undefined;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException: ResourceNotFoundException;
-      throttlingException?: undefined;
-    }
-  | {
-      trace?: undefined;
-      output?: undefined;
-      accessDeniedException?: undefined;
-      conflictingOperationException?: undefined;
-      internalFailureException?: undefined;
-      invalidRequestException?: undefined;
-      limitExceededException?: undefined;
-      resourceNotFoundException?: undefined;
-      throttlingException: ThrottlingException;
-    };
+    })
+  | (_ResponseStream & { internalFailureException: InternalFailureException })
+  | (_ResponseStream & { invalidRequestException: InvalidRequestException })
+  | (_ResponseStream & { limitExceededException: LimitExceededException })
+  | (_ResponseStream & { resourceNotFoundException: ResourceNotFoundException })
+  | (_ResponseStream & { throttlingException: ThrottlingException });
 export type RestrictedDescription = string;
 
 export type RestrictedName = string;

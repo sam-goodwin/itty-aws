@@ -345,22 +345,16 @@ export interface DescribeCampaignResponse {
 }
 export type DestinationPhoneNumber = string;
 
+interface _DialerConfig {
+  progressiveDialerConfig?: ProgressiveDialerConfig;
+  predictiveDialerConfig?: PredictiveDialerConfig;
+  agentlessDialerConfig?: AgentlessDialerConfig;
+}
+
 export type DialerConfig =
-  | {
-      progressiveDialerConfig: ProgressiveDialerConfig;
-      predictiveDialerConfig?: undefined;
-      agentlessDialerConfig?: undefined;
-    }
-  | {
-      progressiveDialerConfig?: undefined;
-      predictiveDialerConfig: PredictiveDialerConfig;
-      agentlessDialerConfig?: undefined;
-    }
-  | {
-      progressiveDialerConfig?: undefined;
-      predictiveDialerConfig?: undefined;
-      agentlessDialerConfig: AgentlessDialerConfig;
-    };
+  | (_DialerConfig & { progressiveDialerConfig: ProgressiveDialerConfig })
+  | (_DialerConfig & { predictiveDialerConfig: PredictiveDialerConfig })
+  | (_DialerConfig & { agentlessDialerConfig: AgentlessDialerConfig });
 export type DialingCapacity = number;
 
 export interface DialRequest {

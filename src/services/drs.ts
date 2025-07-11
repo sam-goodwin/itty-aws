@@ -413,7 +413,13 @@ export type EC2InstanceState = string;
 
 export type EC2InstanceType = string;
 
-export type EventResourceData = { sourceNetworkData: SourceNetworkData };
+interface _EventResourceData {
+  sourceNetworkData?: SourceNetworkData;
+}
+
+export type EventResourceData = _EventResourceData & {
+  sourceNetworkData: SourceNetworkData;
+};
 export interface ExportSourceNetworkCfnTemplateRequest {
   sourceNetworkID: string;
 }
@@ -678,7 +684,13 @@ export interface ParticipatingResource {
   participatingResourceID?: ParticipatingResourceID;
   launchStatus?: string;
 }
-export type ParticipatingResourceID = { sourceNetworkID: string };
+interface _ParticipatingResourceID {
+  sourceNetworkID?: string;
+}
+
+export type ParticipatingResourceID = _ParticipatingResourceID & {
+  sourceNetworkID: string;
+};
 export type ParticipatingResources = Array<ParticipatingResource>;
 export interface ParticipatingServer {
   sourceServerID?: string;

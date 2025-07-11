@@ -53,9 +53,14 @@ export interface Address {
   Primary?: boolean;
 }
 export type Addresses = Array<Address>;
+interface _AlternateIdentifier {
+  ExternalId?: ExternalId;
+  UniqueAttribute?: UniqueAttribute;
+}
+
 export type AlternateIdentifier =
-  | { ExternalId: ExternalId; UniqueAttribute?: undefined }
-  | { ExternalId?: undefined; UniqueAttribute: UniqueAttribute };
+  | (_AlternateIdentifier & { ExternalId: ExternalId })
+  | (_AlternateIdentifier & { UniqueAttribute: UniqueAttribute });
 export interface AttributeOperation {
   AttributePath: string;
   AttributeValue?: unknown;
@@ -301,7 +306,11 @@ export interface ListUsersResponse {
 }
 export type MaxResults = number;
 
-export type MemberId = { UserId: string };
+interface _MemberId {
+  UserId?: string;
+}
+
+export type MemberId = _MemberId & { UserId: string };
 export interface Name {
   Formatted?: string;
   FamilyName?: string;

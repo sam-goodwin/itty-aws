@@ -131,22 +131,16 @@ export type ConfigCapabilityType =
   | "ANTENNA_UPLINK"
   | "UPLINK_ECHO"
   | "S3_RECORDING";
+interface _ConfigDetails {
+  endpointDetails?: EndpointDetails;
+  antennaDemodDecodeDetails?: AntennaDemodDecodeDetails;
+  s3RecordingDetails?: S3RecordingDetails;
+}
+
 export type ConfigDetails =
-  | {
-      endpointDetails: EndpointDetails;
-      antennaDemodDecodeDetails?: undefined;
-      s3RecordingDetails?: undefined;
-    }
-  | {
-      endpointDetails?: undefined;
-      antennaDemodDecodeDetails: AntennaDemodDecodeDetails;
-      s3RecordingDetails?: undefined;
-    }
-  | {
-      endpointDetails?: undefined;
-      antennaDemodDecodeDetails?: undefined;
-      s3RecordingDetails: S3RecordingDetails;
-    };
+  | (_ConfigDetails & { endpointDetails: EndpointDetails })
+  | (_ConfigDetails & { antennaDemodDecodeDetails: AntennaDemodDecodeDetails })
+  | (_ConfigDetails & { s3RecordingDetails: S3RecordingDetails });
 export interface ConfigIdResponse {
   configId?: string;
   configType?: ConfigCapabilityType;
@@ -159,70 +153,26 @@ export interface ConfigListItem {
   configArn?: string;
   name?: string;
 }
+interface _ConfigTypeData {
+  antennaDownlinkConfig?: AntennaDownlinkConfig;
+  trackingConfig?: TrackingConfig;
+  dataflowEndpointConfig?: DataflowEndpointConfig;
+  antennaDownlinkDemodDecodeConfig?: AntennaDownlinkDemodDecodeConfig;
+  antennaUplinkConfig?: AntennaUplinkConfig;
+  uplinkEchoConfig?: UplinkEchoConfig;
+  s3RecordingConfig?: S3RecordingConfig;
+}
+
 export type ConfigTypeData =
-  | {
-      antennaDownlinkConfig: AntennaDownlinkConfig;
-      trackingConfig?: undefined;
-      dataflowEndpointConfig?: undefined;
-      antennaDownlinkDemodDecodeConfig?: undefined;
-      antennaUplinkConfig?: undefined;
-      uplinkEchoConfig?: undefined;
-      s3RecordingConfig?: undefined;
-    }
-  | {
-      antennaDownlinkConfig?: undefined;
-      trackingConfig: TrackingConfig;
-      dataflowEndpointConfig?: undefined;
-      antennaDownlinkDemodDecodeConfig?: undefined;
-      antennaUplinkConfig?: undefined;
-      uplinkEchoConfig?: undefined;
-      s3RecordingConfig?: undefined;
-    }
-  | {
-      antennaDownlinkConfig?: undefined;
-      trackingConfig?: undefined;
-      dataflowEndpointConfig: DataflowEndpointConfig;
-      antennaDownlinkDemodDecodeConfig?: undefined;
-      antennaUplinkConfig?: undefined;
-      uplinkEchoConfig?: undefined;
-      s3RecordingConfig?: undefined;
-    }
-  | {
-      antennaDownlinkConfig?: undefined;
-      trackingConfig?: undefined;
-      dataflowEndpointConfig?: undefined;
+  | (_ConfigTypeData & { antennaDownlinkConfig: AntennaDownlinkConfig })
+  | (_ConfigTypeData & { trackingConfig: TrackingConfig })
+  | (_ConfigTypeData & { dataflowEndpointConfig: DataflowEndpointConfig })
+  | (_ConfigTypeData & {
       antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig;
-      antennaUplinkConfig?: undefined;
-      uplinkEchoConfig?: undefined;
-      s3RecordingConfig?: undefined;
-    }
-  | {
-      antennaDownlinkConfig?: undefined;
-      trackingConfig?: undefined;
-      dataflowEndpointConfig?: undefined;
-      antennaDownlinkDemodDecodeConfig?: undefined;
-      antennaUplinkConfig: AntennaUplinkConfig;
-      uplinkEchoConfig?: undefined;
-      s3RecordingConfig?: undefined;
-    }
-  | {
-      antennaDownlinkConfig?: undefined;
-      trackingConfig?: undefined;
-      dataflowEndpointConfig?: undefined;
-      antennaDownlinkDemodDecodeConfig?: undefined;
-      antennaUplinkConfig?: undefined;
-      uplinkEchoConfig: UplinkEchoConfig;
-      s3RecordingConfig?: undefined;
-    }
-  | {
-      antennaDownlinkConfig?: undefined;
-      trackingConfig?: undefined;
-      dataflowEndpointConfig?: undefined;
-      antennaDownlinkDemodDecodeConfig?: undefined;
-      antennaUplinkConfig?: undefined;
-      uplinkEchoConfig?: undefined;
-      s3RecordingConfig: S3RecordingConfig;
-    };
+    })
+  | (_ConfigTypeData & { antennaUplinkConfig: AntennaUplinkConfig })
+  | (_ConfigTypeData & { uplinkEchoConfig: UplinkEchoConfig })
+  | (_ConfigTypeData & { s3RecordingConfig: S3RecordingConfig });
 export interface ConnectionDetails {
   socketAddress: SocketAddress;
   mtu?: number;
@@ -425,9 +375,14 @@ export type EndpointStatus =
   | "deleting"
   | "failed";
 export type EphemeridesList = Array<EphemerisItem>;
+interface _EphemerisData {
+  tle?: TLEEphemeris;
+  oem?: OEMEphemeris;
+}
+
 export type EphemerisData =
-  | { tle: TLEEphemeris; oem?: undefined }
-  | { tle?: undefined; oem: OEMEphemeris };
+  | (_EphemerisData & { tle: TLEEphemeris })
+  | (_EphemerisData & { oem: OEMEphemeris });
 export interface EphemerisDescription {
   sourceS3Object?: S3Object;
   ephemerisData?: string;
@@ -467,9 +422,14 @@ export type EphemerisStatus =
   | "DISABLED"
   | "EXPIRED";
 export type EphemerisStatusList = Array<EphemerisStatus>;
+interface _EphemerisTypeDescription {
+  tle?: EphemerisDescription;
+  oem?: EphemerisDescription;
+}
+
 export type EphemerisTypeDescription =
-  | { tle: EphemerisDescription; oem?: undefined }
-  | { tle?: undefined; oem: EphemerisDescription };
+  | (_EphemerisTypeDescription & { tle: EphemerisDescription })
+  | (_EphemerisTypeDescription & { oem: EphemerisDescription });
 export interface Frequency {
   value: number;
   units: FrequencyUnits;
@@ -581,10 +541,16 @@ export type KeyAliasName = string;
 
 export type KeyArn = string;
 
+interface _KmsKey {
+  kmsKeyArn?: string;
+  kmsAliasArn?: string;
+  kmsAliasName?: string;
+}
+
 export type KmsKey =
-  | { kmsKeyArn: string; kmsAliasArn?: undefined; kmsAliasName?: undefined }
-  | { kmsKeyArn?: undefined; kmsAliasArn: string; kmsAliasName?: undefined }
-  | { kmsKeyArn?: undefined; kmsAliasArn?: undefined; kmsAliasName: string };
+  | (_KmsKey & { kmsKeyArn: string })
+  | (_KmsKey & { kmsAliasArn: string })
+  | (_KmsKey & { kmsAliasName: string });
 export interface ListConfigsRequest {
   maxResults?: number;
   nextToken?: string;

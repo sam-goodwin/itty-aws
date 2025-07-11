@@ -103,15 +103,16 @@ export type Arn = string;
 export type ArnList = Array<string>;
 export type AuthSecretsManagerArn = string;
 
+interface _BatchJobDefinition {
+  fileBatchJobDefinition?: FileBatchJobDefinition;
+  scriptBatchJobDefinition?: ScriptBatchJobDefinition;
+}
+
 export type BatchJobDefinition =
-  | {
-      fileBatchJobDefinition: FileBatchJobDefinition;
-      scriptBatchJobDefinition?: undefined;
-    }
-  | {
-      fileBatchJobDefinition?: undefined;
+  | (_BatchJobDefinition & { fileBatchJobDefinition: FileBatchJobDefinition })
+  | (_BatchJobDefinition & {
       scriptBatchJobDefinition: ScriptBatchJobDefinition;
-    };
+    });
 export type BatchJobDefinitions = Array<BatchJobDefinition>;
 export type BatchJobExecutionStatus = string;
 
@@ -128,31 +129,22 @@ export interface BatchJobExecutionSummary {
   batchJobIdentifier?: BatchJobIdentifier;
 }
 export type BatchJobExecutionSummaryList = Array<BatchJobExecutionSummary>;
+interface _BatchJobIdentifier {
+  fileBatchJobIdentifier?: FileBatchJobIdentifier;
+  scriptBatchJobIdentifier?: ScriptBatchJobIdentifier;
+  s3BatchJobIdentifier?: S3BatchJobIdentifier;
+  restartBatchJobIdentifier?: RestartBatchJobIdentifier;
+}
+
 export type BatchJobIdentifier =
-  | {
-      fileBatchJobIdentifier: FileBatchJobIdentifier;
-      scriptBatchJobIdentifier?: undefined;
-      s3BatchJobIdentifier?: undefined;
-      restartBatchJobIdentifier?: undefined;
-    }
-  | {
-      fileBatchJobIdentifier?: undefined;
+  | (_BatchJobIdentifier & { fileBatchJobIdentifier: FileBatchJobIdentifier })
+  | (_BatchJobIdentifier & {
       scriptBatchJobIdentifier: ScriptBatchJobIdentifier;
-      s3BatchJobIdentifier?: undefined;
-      restartBatchJobIdentifier?: undefined;
-    }
-  | {
-      fileBatchJobIdentifier?: undefined;
-      scriptBatchJobIdentifier?: undefined;
-      s3BatchJobIdentifier: S3BatchJobIdentifier;
-      restartBatchJobIdentifier?: undefined;
-    }
-  | {
-      fileBatchJobIdentifier?: undefined;
-      scriptBatchJobIdentifier?: undefined;
-      s3BatchJobIdentifier?: undefined;
+    })
+  | (_BatchJobIdentifier & { s3BatchJobIdentifier: S3BatchJobIdentifier })
+  | (_BatchJobIdentifier & {
       restartBatchJobIdentifier: RestartBatchJobIdentifier;
-    };
+    });
 export type BatchJobParametersMap = Record<string, string>;
 export type BatchJobStepList = Array<JobStep>;
 export type BatchJobType = string;
@@ -248,34 +240,26 @@ export interface DataSet {
   relativePath?: string;
   recordLength: RecordLength;
 }
+interface _DatasetDetailOrgAttributes {
+  vsam?: VsamDetailAttributes;
+  gdg?: GdgDetailAttributes;
+  po?: PoDetailAttributes;
+  ps?: PsDetailAttributes;
+}
+
 export type DatasetDetailOrgAttributes =
-  | {
-      vsam: VsamDetailAttributes;
-      gdg?: undefined;
-      po?: undefined;
-      ps?: undefined;
-    }
-  | {
-      vsam?: undefined;
-      gdg: GdgDetailAttributes;
-      po?: undefined;
-      ps?: undefined;
-    }
-  | {
-      vsam?: undefined;
-      gdg?: undefined;
-      po: PoDetailAttributes;
-      ps?: undefined;
-    }
-  | {
-      vsam?: undefined;
-      gdg?: undefined;
-      po?: undefined;
-      ps: PsDetailAttributes;
-    };
+  | (_DatasetDetailOrgAttributes & { vsam: VsamDetailAttributes })
+  | (_DatasetDetailOrgAttributes & { gdg: GdgDetailAttributes })
+  | (_DatasetDetailOrgAttributes & { po: PoDetailAttributes })
+  | (_DatasetDetailOrgAttributes & { ps: PsDetailAttributes });
+interface _DataSetExportConfig {
+  s3Location?: string;
+  dataSets?: Array<DataSetExportItem>;
+}
+
 export type DataSetExportConfig =
-  | { s3Location: string; dataSets?: undefined }
-  | { s3Location?: undefined; dataSets: Array<DataSetExportItem> };
+  | (_DataSetExportConfig & { s3Location: string })
+  | (_DataSetExportConfig & { dataSets: Array<DataSetExportItem> });
 export interface DataSetExportItem {
   datasetName: string;
   externalLocation: ExternalLocation;
@@ -295,9 +279,14 @@ export interface DataSetExportTask {
   statusReason?: string;
 }
 export type DataSetExportTaskList = Array<DataSetExportTask>;
+interface _DataSetImportConfig {
+  s3Location?: string;
+  dataSets?: Array<DataSetImportItem>;
+}
+
 export type DataSetImportConfig =
-  | { s3Location: string; dataSets?: undefined }
-  | { s3Location?: undefined; dataSets: Array<DataSetImportItem> };
+  | (_DataSetImportConfig & { s3Location: string })
+  | (_DataSetImportConfig & { dataSets: Array<DataSetImportItem> });
 export interface DataSetImportItem {
   dataSet: DataSet;
   externalLocation: ExternalLocation;
@@ -317,11 +306,18 @@ export interface DataSetImportTask {
   statusReason?: string;
 }
 export type DataSetImportTaskList = Array<DataSetImportTask>;
+interface _DatasetOrgAttributes {
+  vsam?: VsamAttributes;
+  gdg?: GdgAttributes;
+  po?: PoAttributes;
+  ps?: PsAttributes;
+}
+
 export type DatasetOrgAttributes =
-  | { vsam: VsamAttributes; gdg?: undefined; po?: undefined; ps?: undefined }
-  | { vsam?: undefined; gdg: GdgAttributes; po?: undefined; ps?: undefined }
-  | { vsam?: undefined; gdg?: undefined; po: PoAttributes; ps?: undefined }
-  | { vsam?: undefined; gdg?: undefined; po?: undefined; ps: PsAttributes };
+  | (_DatasetOrgAttributes & { vsam: VsamAttributes })
+  | (_DatasetOrgAttributes & { gdg: GdgAttributes })
+  | (_DatasetOrgAttributes & { po: PoAttributes })
+  | (_DatasetOrgAttributes & { ps: PsAttributes });
 export type DataSetsSummaryList = Array<DataSetSummary>;
 export interface DataSetSummary {
   dataSetName: string;
@@ -333,9 +329,14 @@ export interface DataSetSummary {
 }
 export type DataSetTaskLifecycle = string;
 
+interface _Definition {
+  s3Location?: string;
+  content?: string;
+}
+
 export type Definition =
-  | { s3Location: string; content?: undefined }
-  | { s3Location?: undefined; content: string };
+  | (_Definition & { s3Location: string })
+  | (_Definition & { content: string });
 export interface DeleteApplicationFromEnvironmentRequest {
   applicationId: string;
   environmentId: string;
@@ -403,7 +404,11 @@ export declare class ExecutionTimeoutException extends EffectData.TaggedError(
 )<{
   readonly message: string;
 }> {}
-export type ExternalLocation = { s3Location: string };
+interface _ExternalLocation {
+  s3Location?: string;
+}
+
+export type ExternalLocation = _ExternalLocation & { s3Location: string };
 export interface FileBatchJobDefinition {
   fileName: string;
   folderPath?: string;
@@ -574,9 +579,14 @@ export declare class InternalServerException extends EffectData.TaggedError(
   readonly message: string;
   readonly retryAfterSeconds?: number;
 }> {}
+interface _JobIdentifier {
+  fileName?: string;
+  scriptName?: string;
+}
+
 export type JobIdentifier =
-  | { fileName: string; scriptName?: undefined }
-  | { fileName?: undefined; scriptName: string };
+  | (_JobIdentifier & { fileName: string })
+  | (_JobIdentifier & { scriptName: string });
 export interface JobStep {
   stepNumber?: number;
   stepName?: string;
@@ -814,9 +824,14 @@ export interface StopApplicationRequest {
   forceStop?: boolean;
 }
 export interface StopApplicationResponse {}
+interface _StorageConfiguration {
+  efs?: EfsStorageConfiguration;
+  fsx?: FsxStorageConfiguration;
+}
+
 export type StorageConfiguration =
-  | { efs: EfsStorageConfiguration; fsx?: undefined }
-  | { efs?: undefined; fsx: FsxStorageConfiguration };
+  | (_StorageConfiguration & { efs: EfsStorageConfiguration })
+  | (_StorageConfiguration & { fsx: FsxStorageConfiguration });
 export type StorageConfigurationList = Array<StorageConfiguration>;
 export type String100 = string;
 

@@ -269,55 +269,22 @@ export interface ExecuteStatementOutput {
   WorkgroupName?: string;
   SessionId?: string;
 }
+interface _Field {
+  isNull?: boolean;
+  booleanValue?: boolean;
+  longValue?: number;
+  doubleValue?: number;
+  stringValue?: string;
+  blobValue?: Uint8Array | string;
+}
+
 export type Field =
-  | {
-      isNull: boolean;
-      booleanValue?: undefined;
-      longValue?: undefined;
-      doubleValue?: undefined;
-      stringValue?: undefined;
-      blobValue?: undefined;
-    }
-  | {
-      isNull?: undefined;
-      booleanValue: boolean;
-      longValue?: undefined;
-      doubleValue?: undefined;
-      stringValue?: undefined;
-      blobValue?: undefined;
-    }
-  | {
-      isNull?: undefined;
-      booleanValue?: undefined;
-      longValue: number;
-      doubleValue?: undefined;
-      stringValue?: undefined;
-      blobValue?: undefined;
-    }
-  | {
-      isNull?: undefined;
-      booleanValue?: undefined;
-      longValue?: undefined;
-      doubleValue: number;
-      stringValue?: undefined;
-      blobValue?: undefined;
-    }
-  | {
-      isNull?: undefined;
-      booleanValue?: undefined;
-      longValue?: undefined;
-      doubleValue?: undefined;
-      stringValue: string;
-      blobValue?: undefined;
-    }
-  | {
-      isNull?: undefined;
-      booleanValue?: undefined;
-      longValue?: undefined;
-      doubleValue?: undefined;
-      stringValue?: undefined;
-      blobValue: Uint8Array | string;
-    };
+  | (_Field & { isNull: boolean })
+  | (_Field & { booleanValue: boolean })
+  | (_Field & { longValue: number })
+  | (_Field & { doubleValue: number })
+  | (_Field & { stringValue: string })
+  | (_Field & { blobValue: Uint8Array | string });
 export type FieldList = Array<Field>;
 export type FormattedSqlRecords = Array<QueryRecords>;
 export interface GetStatementResultRequest {
@@ -416,7 +383,11 @@ export type ParameterName = string;
 
 export type ParameterValue = string;
 
-export type QueryRecords = { CSVRecords: string };
+interface _QueryRecords {
+  CSVRecords?: string;
+}
+
+export type QueryRecords = _QueryRecords & { CSVRecords: string };
 export declare class QueryTimeoutException extends EffectData.TaggedError(
   "QueryTimeoutException",
 )<{

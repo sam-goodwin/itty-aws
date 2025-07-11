@@ -520,9 +520,14 @@ export interface Filter {
   status?: Array<string>;
   type?: Array<string>;
 }
+interface _FormatOptions {
+  tsvOptions?: TsvOptions;
+  vcfOptions?: VcfOptions;
+}
+
 export type FormatOptions =
-  | { tsvOptions: TsvOptions; vcfOptions?: undefined }
-  | { tsvOptions?: undefined; vcfOptions: VcfOptions };
+  | (_FormatOptions & { tsvOptions: TsvOptions })
+  | (_FormatOptions & { vcfOptions: VcfOptions });
 export type FormatToHeader = Record<string, string>;
 export type FormatToHeaderKey = string;
 
@@ -1412,7 +1417,11 @@ export type ReferenceImportJobItemStatus = string;
 
 export type ReferenceImportJobStatus = string;
 
-export type ReferenceItem = { referenceArn: string };
+interface _ReferenceItem {
+  referenceArn?: string;
+}
+
+export type ReferenceItem = _ReferenceItem & { referenceArn: string };
 export type ReferenceList = Array<ReferenceListItem>;
 export interface ReferenceListItem {
   id: string;
@@ -1814,7 +1823,11 @@ export type StoreId = string;
 
 export type StoreName = string;
 
-export type StoreOptions = { tsvStoreOptions: TsvStoreOptions };
+interface _StoreOptions {
+  tsvStoreOptions?: TsvStoreOptions;
+}
+
+export type StoreOptions = _StoreOptions & { tsvStoreOptions: TsvStoreOptions };
 export type StoreStatus = string;
 
 export type StoreType = "SEQUENCE_STORE" | "REFERENCE_STORE";
@@ -2056,7 +2069,13 @@ export type VersionDeleteErrorList = Array<VersionDeleteError>;
 export type VersionList = Array<string>;
 export type VersionName = string;
 
-export type VersionOptions = { tsvVersionOptions: TsvVersionOptions };
+interface _VersionOptions {
+  tsvVersionOptions?: TsvVersionOptions;
+}
+
+export type VersionOptions = _VersionOptions & {
+  tsvVersionOptions: TsvVersionOptions;
+};
 export type VersionStatus = string;
 
 export type WorkflowArn = string;

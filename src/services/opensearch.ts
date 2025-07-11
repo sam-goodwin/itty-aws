@@ -1280,7 +1280,13 @@ export type DataSourceName = string;
 
 export type DataSources = Array<DataSource>;
 export type DataSourceStatus = "ACTIVE" | "DISABLED";
-export type DataSourceType = { S3GlueDataCatalog: S3GlueDataCatalog };
+interface _DataSourceType {
+  S3GlueDataCatalog?: S3GlueDataCatalog;
+}
+
+export type DataSourceType = _DataSourceType & {
+  S3GlueDataCatalog: S3GlueDataCatalog;
+};
 export interface DeleteApplicationRequest {
   id: string;
 }
@@ -1500,12 +1506,18 @@ export type DirectQueryDataSourceName = string;
 
 export type DirectQueryDataSourceRoleArn = string;
 
+interface _DirectQueryDataSourceType {
+  CloudWatchLog?: CloudWatchDirectQueryDataSource;
+  SecurityLake?: SecurityLakeDirectQueryDataSource;
+}
+
 export type DirectQueryDataSourceType =
-  | { CloudWatchLog: CloudWatchDirectQueryDataSource; SecurityLake?: undefined }
-  | {
-      CloudWatchLog?: undefined;
+  | (_DirectQueryDataSourceType & {
+      CloudWatchLog: CloudWatchDirectQueryDataSource;
+    })
+  | (_DirectQueryDataSourceType & {
       SecurityLake: SecurityLakeDirectQueryDataSource;
-    };
+    });
 export type DirectQueryOpenSearchARNList = Array<string>;
 export declare class DisabledOperationException extends EffectData.TaggedError(
   "DisabledOperationException",

@@ -1065,7 +1065,13 @@ export type SsmDocumentParameters = Record<
 export type SsmDocuments = Array<SsmDocument>;
 export type SsmDocumentType = string;
 
-export type SsmExternalParameter = { dynamicPath: string };
+interface _SsmExternalParameter {
+  dynamicPath?: string;
+}
+
+export type SsmExternalParameter = _SsmExternalParameter & {
+  dynamicPath: string;
+};
 export type SsmInstanceID = string;
 
 export interface SsmParameterStoreParameter {

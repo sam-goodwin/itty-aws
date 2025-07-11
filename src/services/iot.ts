@@ -3147,31 +3147,18 @@ export interface AssetPropertyValue {
   quality?: string;
 }
 export type AssetPropertyValueList = Array<AssetPropertyValue>;
+interface _AssetPropertyVariant {
+  stringValue?: string;
+  integerValue?: string;
+  doubleValue?: string;
+  booleanValue?: string;
+}
+
 export type AssetPropertyVariant =
-  | {
-      stringValue: string;
-      integerValue?: undefined;
-      doubleValue?: undefined;
-      booleanValue?: undefined;
-    }
-  | {
-      stringValue?: undefined;
-      integerValue: string;
-      doubleValue?: undefined;
-      booleanValue?: undefined;
-    }
-  | {
-      stringValue?: undefined;
-      integerValue?: undefined;
-      doubleValue: string;
-      booleanValue?: undefined;
-    }
-  | {
-      stringValue?: undefined;
-      integerValue?: undefined;
-      doubleValue?: undefined;
-      booleanValue: string;
-    };
+  | (_AssetPropertyVariant & { stringValue: string })
+  | (_AssetPropertyVariant & { integerValue: string })
+  | (_AssetPropertyVariant & { doubleValue: string })
+  | (_AssetPropertyVariant & { booleanValue: string });
 export interface AssociateSbomWithPackageVersionRequest {
   packageName: string;
   versionName: string;

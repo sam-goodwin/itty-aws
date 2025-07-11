@@ -107,32 +107,25 @@ export interface AnalysisRuleList {
   listColumns: Array<string>;
   additionalAnalyses?: AdditionalAnalyses;
 }
-export type AnalysisRulePolicy = { v1: AnalysisRulePolicyV1 };
+interface _AnalysisRulePolicy {
+  v1?: AnalysisRulePolicyV1;
+}
+
+export type AnalysisRulePolicy = _AnalysisRulePolicy & {
+  v1: AnalysisRulePolicyV1;
+};
+interface _AnalysisRulePolicyV1 {
+  list?: AnalysisRuleList;
+  aggregation?: AnalysisRuleAggregation;
+  custom?: AnalysisRuleCustom;
+  idMappingTable?: AnalysisRuleIdMappingTable;
+}
+
 export type AnalysisRulePolicyV1 =
-  | {
-      list: AnalysisRuleList;
-      aggregation?: undefined;
-      custom?: undefined;
-      idMappingTable?: undefined;
-    }
-  | {
-      list?: undefined;
-      aggregation: AnalysisRuleAggregation;
-      custom?: undefined;
-      idMappingTable?: undefined;
-    }
-  | {
-      list?: undefined;
-      aggregation?: undefined;
-      custom: AnalysisRuleCustom;
-      idMappingTable?: undefined;
-    }
-  | {
-      list?: undefined;
-      aggregation?: undefined;
-      custom?: undefined;
-      idMappingTable: AnalysisRuleIdMappingTable;
-    };
+  | (_AnalysisRulePolicyV1 & { list: AnalysisRuleList })
+  | (_AnalysisRulePolicyV1 & { aggregation: AnalysisRuleAggregation })
+  | (_AnalysisRulePolicyV1 & { custom: AnalysisRuleCustom })
+  | (_AnalysisRulePolicyV1 & { idMappingTable: AnalysisRuleIdMappingTable });
 export type AnalysisRuleType =
   | "AGGREGATION"
   | "LIST"
@@ -142,10 +135,19 @@ export type AnalysisRuleTypeList = Array<AnalysisRuleType>;
 export interface AnalysisSchema {
   referencedTables?: Array<string>;
 }
+interface _AnalysisSource {
+  text?: string;
+  artifacts?: AnalysisTemplateArtifacts;
+}
+
 export type AnalysisSource =
-  | { text: string; artifacts?: undefined }
-  | { text?: undefined; artifacts: AnalysisTemplateArtifacts };
-export type AnalysisSourceMetadata = {
+  | (_AnalysisSource & { text: string })
+  | (_AnalysisSource & { artifacts: AnalysisTemplateArtifacts });
+interface _AnalysisSourceMetadata {
+  artifacts?: AnalysisTemplateArtifactMetadata;
+}
+
+export type AnalysisSourceMetadata = _AnalysisSourceMetadata & {
   artifacts: AnalysisTemplateArtifactMetadata;
 };
 export interface AnalysisTemplate {
@@ -461,8 +463,18 @@ export type ColumnName = string;
 
 export type ColumnTypeString = string;
 
-export type ComputeConfiguration = { worker: WorkerComputeConfiguration };
-export type ConfigurationDetails = {
+interface _ComputeConfiguration {
+  worker?: WorkerComputeConfiguration;
+}
+
+export type ComputeConfiguration = _ComputeConfiguration & {
+  worker: WorkerComputeConfiguration;
+};
+interface _ConfigurationDetails {
+  directAnalysisConfigurationDetails?: DirectAnalysisConfigurationDetails;
+}
+
+export type ConfigurationDetails = _ConfigurationDetails & {
   directAnalysisConfigurationDetails: DirectAnalysisConfigurationDetails;
 };
 export type ConfiguredAudienceModelArn = string;
@@ -523,17 +535,26 @@ export interface ConfiguredTableAnalysisRule {
   createTime: Date | string;
   updateTime: Date | string;
 }
-export type ConfiguredTableAnalysisRulePolicy = {
-  v1: ConfiguredTableAnalysisRulePolicyV1;
-};
+interface _ConfiguredTableAnalysisRulePolicy {
+  v1?: ConfiguredTableAnalysisRulePolicyV1;
+}
+
+export type ConfiguredTableAnalysisRulePolicy =
+  _ConfiguredTableAnalysisRulePolicy & {
+    v1: ConfiguredTableAnalysisRulePolicyV1;
+  };
+interface _ConfiguredTableAnalysisRulePolicyV1 {
+  list?: AnalysisRuleList;
+  aggregation?: AnalysisRuleAggregation;
+  custom?: AnalysisRuleCustom;
+}
+
 export type ConfiguredTableAnalysisRulePolicyV1 =
-  | { list: AnalysisRuleList; aggregation?: undefined; custom?: undefined }
-  | {
-      list?: undefined;
+  | (_ConfiguredTableAnalysisRulePolicyV1 & { list: AnalysisRuleList })
+  | (_ConfiguredTableAnalysisRulePolicyV1 & {
       aggregation: AnalysisRuleAggregation;
-      custom?: undefined;
-    }
-  | { list?: undefined; aggregation?: undefined; custom: AnalysisRuleCustom };
+    })
+  | (_ConfiguredTableAnalysisRulePolicyV1 & { custom: AnalysisRuleCustom });
 export type ConfiguredTableAnalysisRuleType = "AGGREGATION" | "LIST" | "CUSTOM";
 export type ConfiguredTableAnalysisRuleTypeList =
   Array<ConfiguredTableAnalysisRuleType>;
@@ -574,25 +595,30 @@ export interface ConfiguredTableAssociationAnalysisRuleList {
   allowedResultReceivers?: Array<string>;
   allowedAdditionalAnalyses?: Array<string>;
 }
-export type ConfiguredTableAssociationAnalysisRulePolicy = {
-  v1: ConfiguredTableAssociationAnalysisRulePolicyV1;
-};
+interface _ConfiguredTableAssociationAnalysisRulePolicy {
+  v1?: ConfiguredTableAssociationAnalysisRulePolicyV1;
+}
+
+export type ConfiguredTableAssociationAnalysisRulePolicy =
+  _ConfiguredTableAssociationAnalysisRulePolicy & {
+    v1: ConfiguredTableAssociationAnalysisRulePolicyV1;
+  };
+interface _ConfiguredTableAssociationAnalysisRulePolicyV1 {
+  list?: ConfiguredTableAssociationAnalysisRuleList;
+  aggregation?: ConfiguredTableAssociationAnalysisRuleAggregation;
+  custom?: ConfiguredTableAssociationAnalysisRuleCustom;
+}
+
 export type ConfiguredTableAssociationAnalysisRulePolicyV1 =
-  | {
+  | (_ConfiguredTableAssociationAnalysisRulePolicyV1 & {
       list: ConfiguredTableAssociationAnalysisRuleList;
-      aggregation?: undefined;
-      custom?: undefined;
-    }
-  | {
-      list?: undefined;
+    })
+  | (_ConfiguredTableAssociationAnalysisRulePolicyV1 & {
       aggregation: ConfiguredTableAssociationAnalysisRuleAggregation;
-      custom?: undefined;
-    }
-  | {
-      list?: undefined;
-      aggregation?: undefined;
+    })
+  | (_ConfiguredTableAssociationAnalysisRulePolicyV1 & {
       custom: ConfiguredTableAssociationAnalysisRuleCustom;
-    };
+    });
 export type ConfiguredTableAssociationAnalysisRuleType =
   | "AGGREGATION"
   | "LIST"
@@ -639,7 +665,13 @@ export declare class ConflictException extends EffectData.TaggedError(
 }> {}
 export type ConflictExceptionReason = string;
 
-export type ConsolidatedPolicy = { v1: ConsolidatedPolicyV1 };
+interface _ConsolidatedPolicy {
+  v1?: ConsolidatedPolicyV1;
+}
+
+export type ConsolidatedPolicy = _ConsolidatedPolicy & {
+  v1: ConsolidatedPolicyV1;
+};
 export interface ConsolidatedPolicyAggregation {
   aggregateColumns: Array<AggregateColumn>;
   joinColumns: Array<string>;
@@ -669,22 +701,16 @@ export interface ConsolidatedPolicyList {
   allowedResultReceivers?: Array<string>;
   allowedAdditionalAnalyses?: Array<string>;
 }
+interface _ConsolidatedPolicyV1 {
+  list?: ConsolidatedPolicyList;
+  aggregation?: ConsolidatedPolicyAggregation;
+  custom?: ConsolidatedPolicyCustom;
+}
+
 export type ConsolidatedPolicyV1 =
-  | {
-      list: ConsolidatedPolicyList;
-      aggregation?: undefined;
-      custom?: undefined;
-    }
-  | {
-      list?: undefined;
-      aggregation: ConsolidatedPolicyAggregation;
-      custom?: undefined;
-    }
-  | {
-      list?: undefined;
-      aggregation?: undefined;
-      custom: ConsolidatedPolicyCustom;
-    };
+  | (_ConsolidatedPolicyV1 & { list: ConsolidatedPolicyList })
+  | (_ConsolidatedPolicyV1 & { aggregation: ConsolidatedPolicyAggregation })
+  | (_ConsolidatedPolicyV1 & { custom: ConsolidatedPolicyCustom });
 export interface CreateAnalysisTemplateInput {
   description?: string;
   membershipIdentifier: string;
@@ -1442,16 +1468,26 @@ export interface MembershipPaymentConfiguration {
   machineLearning?: MembershipMLPaymentConfig;
   jobCompute?: MembershipJobComputePaymentConfig;
 }
-export type MembershipProtectedJobOutputConfiguration = {
-  s3: ProtectedJobS3OutputConfigurationInput;
-};
+interface _MembershipProtectedJobOutputConfiguration {
+  s3?: ProtectedJobS3OutputConfigurationInput;
+}
+
+export type MembershipProtectedJobOutputConfiguration =
+  _MembershipProtectedJobOutputConfiguration & {
+    s3: ProtectedJobS3OutputConfigurationInput;
+  };
 export interface MembershipProtectedJobResultConfiguration {
   outputConfiguration: MembershipProtectedJobOutputConfiguration;
   roleArn: string;
 }
-export type MembershipProtectedQueryOutputConfiguration = {
-  s3: ProtectedQueryS3OutputConfiguration;
-};
+interface _MembershipProtectedQueryOutputConfiguration {
+  s3?: ProtectedQueryS3OutputConfiguration;
+}
+
+export type MembershipProtectedQueryOutputConfiguration =
+  _MembershipProtectedQueryOutputConfiguration & {
+    s3: ProtectedQueryS3OutputConfiguration;
+  };
 export interface MembershipProtectedQueryResultConfiguration {
   outputConfiguration: MembershipProtectedQueryOutputConfiguration;
   roleArn?: string;
@@ -1568,10 +1604,19 @@ export interface PreviewPrivacyImpactInput {
 export interface PreviewPrivacyImpactOutput {
   privacyImpact: PrivacyImpact;
 }
-export type PreviewPrivacyImpactParametersInput = {
-  differentialPrivacy: DifferentialPrivacyPreviewParametersInput;
-};
-export type PrivacyBudget = {
+interface _PreviewPrivacyImpactParametersInput {
+  differentialPrivacy?: DifferentialPrivacyPreviewParametersInput;
+}
+
+export type PreviewPrivacyImpactParametersInput =
+  _PreviewPrivacyImpactParametersInput & {
+    differentialPrivacy: DifferentialPrivacyPreviewParametersInput;
+  };
+interface _PrivacyBudget {
+  differentialPrivacy?: DifferentialPrivacyPrivacyBudget;
+}
+
+export type PrivacyBudget = _PrivacyBudget & {
   differentialPrivacy: DifferentialPrivacyPrivacyBudget;
 };
 export interface PrivacyBudgetSummary {
@@ -1606,12 +1651,22 @@ export type PrivacyBudgetTemplateArn = string;
 export type PrivacyBudgetTemplateAutoRefresh = "CALENDAR_MONTH" | "NONE";
 export type PrivacyBudgetTemplateIdentifier = string;
 
-export type PrivacyBudgetTemplateParametersInput = {
-  differentialPrivacy: DifferentialPrivacyTemplateParametersInput;
-};
-export type PrivacyBudgetTemplateParametersOutput = {
-  differentialPrivacy: DifferentialPrivacyTemplateParametersOutput;
-};
+interface _PrivacyBudgetTemplateParametersInput {
+  differentialPrivacy?: DifferentialPrivacyTemplateParametersInput;
+}
+
+export type PrivacyBudgetTemplateParametersInput =
+  _PrivacyBudgetTemplateParametersInput & {
+    differentialPrivacy: DifferentialPrivacyTemplateParametersInput;
+  };
+interface _PrivacyBudgetTemplateParametersOutput {
+  differentialPrivacy?: DifferentialPrivacyTemplateParametersOutput;
+}
+
+export type PrivacyBudgetTemplateParametersOutput =
+  _PrivacyBudgetTemplateParametersOutput & {
+    differentialPrivacy: DifferentialPrivacyTemplateParametersOutput;
+  };
 export interface PrivacyBudgetTemplateSummary {
   id: string;
   arn: string;
@@ -1625,11 +1680,20 @@ export interface PrivacyBudgetTemplateSummary {
 }
 export type PrivacyBudgetTemplateSummaryList =
   Array<PrivacyBudgetTemplateSummary>;
-export type PrivacyBudgetTemplateUpdateParameters = {
-  differentialPrivacy: DifferentialPrivacyTemplateUpdateParameters;
-};
+interface _PrivacyBudgetTemplateUpdateParameters {
+  differentialPrivacy?: DifferentialPrivacyTemplateUpdateParameters;
+}
+
+export type PrivacyBudgetTemplateUpdateParameters =
+  _PrivacyBudgetTemplateUpdateParameters & {
+    differentialPrivacy: DifferentialPrivacyTemplateUpdateParameters;
+  };
 export type PrivacyBudgetType = "DIFFERENTIAL_PRIVACY";
-export type PrivacyImpact = {
+interface _PrivacyImpact {
+  differentialPrivacy?: DifferentialPrivacyPrivacyImpact;
+}
+
+export type PrivacyImpact = _PrivacyImpact & {
   differentialPrivacy: DifferentialPrivacyPrivacyImpact;
 };
 export interface ProtectedJob {
@@ -1645,9 +1709,14 @@ export interface ProtectedJob {
   error?: ProtectedJobError;
 }
 export type ProtectedJobAnalysisType = "DIRECT_ANALYSIS";
-export type ProtectedJobConfigurationDetails = {
-  directAnalysisConfigurationDetails: ProtectedJobDirectAnalysisConfigurationDetails;
-};
+interface _ProtectedJobConfigurationDetails {
+  directAnalysisConfigurationDetails?: ProtectedJobDirectAnalysisConfigurationDetails;
+}
+
+export type ProtectedJobConfigurationDetails =
+  _ProtectedJobConfigurationDetails & {
+    directAnalysisConfigurationDetails: ProtectedJobDirectAnalysisConfigurationDetails;
+  };
 export interface ProtectedJobDirectAnalysisConfigurationDetails {
   receiverAccountIds?: Array<string>;
 }
@@ -1665,15 +1734,36 @@ export interface ProtectedJobMemberOutputConfigurationOutput {
 }
 export type ProtectedJobMemberOutputList =
   Array<ProtectedJobSingleMemberOutput>;
+interface _ProtectedJobOutput {
+  s3?: ProtectedJobS3Output;
+  memberList?: Array<ProtectedJobSingleMemberOutput>;
+}
+
 export type ProtectedJobOutput =
-  | { s3: ProtectedJobS3Output; memberList?: undefined }
-  | { s3?: undefined; memberList: Array<ProtectedJobSingleMemberOutput> };
-export type ProtectedJobOutputConfigurationInput = {
-  member: ProtectedJobMemberOutputConfigurationInput;
-};
+  | (_ProtectedJobOutput & { s3: ProtectedJobS3Output })
+  | (_ProtectedJobOutput & {
+      memberList: Array<ProtectedJobSingleMemberOutput>;
+    });
+interface _ProtectedJobOutputConfigurationInput {
+  member?: ProtectedJobMemberOutputConfigurationInput;
+}
+
+export type ProtectedJobOutputConfigurationInput =
+  _ProtectedJobOutputConfigurationInput & {
+    member: ProtectedJobMemberOutputConfigurationInput;
+  };
+interface _ProtectedJobOutputConfigurationOutput {
+  s3?: ProtectedJobS3OutputConfigurationOutput;
+  member?: ProtectedJobMemberOutputConfigurationOutput;
+}
+
 export type ProtectedJobOutputConfigurationOutput =
-  | { s3: ProtectedJobS3OutputConfigurationOutput; member?: undefined }
-  | { s3?: undefined; member: ProtectedJobMemberOutputConfigurationOutput };
+  | (_ProtectedJobOutputConfigurationOutput & {
+      s3: ProtectedJobS3OutputConfigurationOutput;
+    })
+  | (_ProtectedJobOutputConfigurationOutput & {
+      member: ProtectedJobMemberOutputConfigurationOutput;
+    });
 export interface ProtectedJobParameters {
   analysisTemplateArn?: string;
 }
@@ -1749,9 +1839,18 @@ export interface ProtectedQueryDistributeOutput {
 export interface ProtectedQueryDistributeOutputConfiguration {
   locations: Array<ProtectedQueryDistributeOutputConfigurationLocation>;
 }
+interface _ProtectedQueryDistributeOutputConfigurationLocation {
+  s3?: ProtectedQueryS3OutputConfiguration;
+  member?: ProtectedQueryMemberOutputConfiguration;
+}
+
 export type ProtectedQueryDistributeOutputConfigurationLocation =
-  | { s3: ProtectedQueryS3OutputConfiguration; member?: undefined }
-  | { s3?: undefined; member: ProtectedQueryMemberOutputConfiguration };
+  | (_ProtectedQueryDistributeOutputConfigurationLocation & {
+      s3: ProtectedQueryS3OutputConfiguration;
+    })
+  | (_ProtectedQueryDistributeOutputConfigurationLocation & {
+      member: ProtectedQueryMemberOutputConfiguration;
+    });
 export type ProtectedQueryDistributeOutputConfigurationLocations =
   Array<ProtectedQueryDistributeOutputConfigurationLocation>;
 export interface ProtectedQueryError {
@@ -1765,38 +1864,34 @@ export interface ProtectedQueryMemberOutputConfiguration {
 }
 export type ProtectedQueryMemberOutputList =
   Array<ProtectedQuerySingleMemberOutput>;
+interface _ProtectedQueryOutput {
+  s3?: ProtectedQueryS3Output;
+  memberList?: Array<ProtectedQuerySingleMemberOutput>;
+  distribute?: ProtectedQueryDistributeOutput;
+}
+
 export type ProtectedQueryOutput =
-  | {
-      s3: ProtectedQueryS3Output;
-      memberList?: undefined;
-      distribute?: undefined;
-    }
-  | {
-      s3?: undefined;
+  | (_ProtectedQueryOutput & { s3: ProtectedQueryS3Output })
+  | (_ProtectedQueryOutput & {
       memberList: Array<ProtectedQuerySingleMemberOutput>;
-      distribute?: undefined;
-    }
-  | {
-      s3?: undefined;
-      memberList?: undefined;
-      distribute: ProtectedQueryDistributeOutput;
-    };
+    })
+  | (_ProtectedQueryOutput & { distribute: ProtectedQueryDistributeOutput });
+interface _ProtectedQueryOutputConfiguration {
+  s3?: ProtectedQueryS3OutputConfiguration;
+  member?: ProtectedQueryMemberOutputConfiguration;
+  distribute?: ProtectedQueryDistributeOutputConfiguration;
+}
+
 export type ProtectedQueryOutputConfiguration =
-  | {
+  | (_ProtectedQueryOutputConfiguration & {
       s3: ProtectedQueryS3OutputConfiguration;
-      member?: undefined;
-      distribute?: undefined;
-    }
-  | {
-      s3?: undefined;
+    })
+  | (_ProtectedQueryOutputConfiguration & {
       member: ProtectedQueryMemberOutputConfiguration;
-      distribute?: undefined;
-    }
-  | {
-      s3?: undefined;
-      member?: undefined;
+    })
+  | (_ProtectedQueryOutputConfiguration & {
       distribute: ProtectedQueryDistributeOutputConfiguration;
-    };
+    });
 export interface ProtectedQueryResult {
   output: ProtectedQueryOutput;
 }
@@ -1840,7 +1935,13 @@ export type ProtectedQueryType = string;
 export interface QueryComputePaymentConfig {
   isResponsible: boolean;
 }
-export type QueryConstraint = { requireOverlap: QueryConstraintRequireOverlap };
+interface _QueryConstraint {
+  requireOverlap?: QueryConstraintRequireOverlap;
+}
+
+export type QueryConstraint = _QueryConstraint & {
+  requireOverlap: QueryConstraintRequireOverlap;
+};
 export type QueryConstraintList = Array<QueryConstraint>;
 export interface QueryConstraintRequireOverlap {
   columns?: Array<string>;
@@ -1942,7 +2043,11 @@ export interface SchemaSummary {
 }
 export type SchemaSummaryList = Array<SchemaSummary>;
 export type SchemaType = "TABLE" | "ID_MAPPING_TABLE";
-export type SchemaTypeProperties = {
+interface _SchemaTypeProperties {
+  idMappingTable?: IdMappingTableSchemaTypeProperties;
+}
+
+export type SchemaTypeProperties = _SchemaTypeProperties & {
   idMappingTable: IdMappingTableSchemaTypeProperties;
 };
 export type SecretsManagerArn = string;
@@ -1972,7 +2077,13 @@ export interface SnowflakeTableReference {
   schemaName: string;
   tableSchema: SnowflakeTableSchema;
 }
-export type SnowflakeTableSchema = { v1: Array<SnowflakeTableSchemaV1> };
+interface _SnowflakeTableSchema {
+  v1?: Array<SnowflakeTableSchemaV1>;
+}
+
+export type SnowflakeTableSchema = _SnowflakeTableSchema & {
+  v1: Array<SnowflakeTableSchemaV1>;
+};
 export type SnowflakeTableSchemaList = Array<SnowflakeTableSchemaV1>;
 export interface SnowflakeTableSchemaV1 {
   columnName: string;
@@ -2002,10 +2113,16 @@ export type TableAlias = string;
 export type TableAliasList = Array<string>;
 export type TableDescription = string;
 
+interface _TableReference {
+  glue?: GlueTableReference;
+  snowflake?: SnowflakeTableReference;
+  athena?: AthenaTableReference;
+}
+
 export type TableReference =
-  | { glue: GlueTableReference; snowflake?: undefined; athena?: undefined }
-  | { glue?: undefined; snowflake: SnowflakeTableReference; athena?: undefined }
-  | { glue?: undefined; snowflake?: undefined; athena: AthenaTableReference };
+  | (_TableReference & { glue: GlueTableReference })
+  | (_TableReference & { snowflake: SnowflakeTableReference })
+  | (_TableReference & { athena: AthenaTableReference });
 export type TagKey = string;
 
 export type TagKeys = Array<string>;

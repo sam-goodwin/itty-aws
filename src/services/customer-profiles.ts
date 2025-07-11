@@ -1424,12 +1424,16 @@ export interface DetectProfileObjectTypeRequest {
 export interface DetectProfileObjectTypeResponse {
   DetectedProfileObjectTypes?: Array<DetectedProfileObjectType>;
 }
+interface _Dimension {
+  ProfileAttributes?: ProfileAttributes;
+  CalculatedAttributes?: Record<string, CalculatedAttributeDimension>;
+}
+
 export type Dimension =
-  | { ProfileAttributes: ProfileAttributes; CalculatedAttributes?: undefined }
-  | {
-      ProfileAttributes?: undefined;
+  | (_Dimension & { ProfileAttributes: ProfileAttributes })
+  | (_Dimension & {
       CalculatedAttributes: Record<string, CalculatedAttributeDimension>;
-    };
+    });
 export type DimensionList = Array<Dimension>;
 export type displayName = string;
 

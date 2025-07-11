@@ -250,21 +250,26 @@ const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }
   let code = doc ? `${doc}\n` : "";
   
   if (shape.members) {
-    const memberNames = Object.keys(shape.members);
+    const baseName = `_${name}`;
     
+    // Generate base interface with all properties as optional
+    code += `interface ${baseName} {\n`;
+    for (const [memberName, member] of Object.entries(shape.members)) {
+      const memberType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
+      const memberDoc = getDocumentation(member.traits);
+      
+      if (memberDoc) {
+        code += `  ${memberDoc.split('\n').map(line => line.replace(/^\s*\*/, '  *')).join('\n')}\n`;
+      }
+      
+      code += `  ${memberName}?: ${memberType};\n`;
+    }
+    code += `}\n\n`;
+    
+    // Generate union type using intersection with base interface
     const variants = Object.entries(shape.members).map(([memberName, member]) => {
       const memberType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
-      
-      // Create a variant where this member is defined and all others are undefined
-      const properties = memberNames.map(name => {
-        if (name === memberName) {
-          return `${name}: ${memberType}`;
-        } else {
-          return `${name}?: undefined`;
-        }
-      });
-      
-      return `{ ${properties.join('; ')} }`;
+      return `(${baseName} & { ${memberName}: ${memberType} })`;
     });
     
     code += `export type ${name} = ${variants.join(" | ")};`;

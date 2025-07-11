@@ -603,7 +603,11 @@ export interface CreateStudioSessionMappingInput {
   IdentityType: IdentityType;
   SessionPolicyArn: string;
 }
-export type Credentials = { UsernamePassword: UsernamePassword };
+interface _Credentials {
+  UsernamePassword?: UsernamePassword;
+}
+
+export type Credentials = _Credentials & { UsernamePassword: UsernamePassword };
 export type EmrDate = Date | string;
 
 export interface DeleteSecurityConfigurationInput {

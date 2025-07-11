@@ -250,9 +250,14 @@ export declare class InternalServerException extends EffectData.TaggedError(
 }> {}
 export type JobArn = string;
 
+interface _JobDriver {
+  sparkSubmit?: SparkSubmit;
+  hive?: Hive;
+}
+
 export type JobDriver =
-  | { sparkSubmit: SparkSubmit; hive?: undefined }
-  | { sparkSubmit?: undefined; hive: Hive };
+  | (_JobDriver & { sparkSubmit: SparkSubmit })
+  | (_JobDriver & { hive: Hive });
 export interface JobRun {
   applicationId: string;
   jobRunId: string;

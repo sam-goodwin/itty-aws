@@ -164,7 +164,11 @@ export type AsyncInvokeIdentifier = string;
 
 export type AsyncInvokeMessage = string;
 
-export type AsyncInvokeOutputDataConfig = {
+interface _AsyncInvokeOutputDataConfig {
+  s3OutputDataConfig?: AsyncInvokeS3OutputDataConfig;
+}
+
+export type AsyncInvokeOutputDataConfig = _AsyncInvokeOutputDataConfig & {
   s3OutputDataConfig: AsyncInvokeS3OutputDataConfig;
 };
 export interface AsyncInvokeS3OutputDataConfig {
@@ -203,24 +207,24 @@ export interface Citation {
   sourceContent?: Array<CitationSourceContent>;
   location?: CitationLocation;
 }
-export type CitationGeneratedContent = { text: string };
+interface _CitationGeneratedContent {
+  text?: string;
+}
+
+export type CitationGeneratedContent = _CitationGeneratedContent & {
+  text: string;
+};
 export type CitationGeneratedContentList = Array<CitationGeneratedContent>;
+interface _CitationLocation {
+  documentChar?: DocumentCharLocation;
+  documentPage?: DocumentPageLocation;
+  documentChunk?: DocumentChunkLocation;
+}
+
 export type CitationLocation =
-  | {
-      documentChar: DocumentCharLocation;
-      documentPage?: undefined;
-      documentChunk?: undefined;
-    }
-  | {
-      documentChar?: undefined;
-      documentPage: DocumentPageLocation;
-      documentChunk?: undefined;
-    }
-  | {
-      documentChar?: undefined;
-      documentPage?: undefined;
-      documentChunk: DocumentChunkLocation;
-    };
+  | (_CitationLocation & { documentChar: DocumentCharLocation })
+  | (_CitationLocation & { documentPage: DocumentPageLocation })
+  | (_CitationLocation & { documentChunk: DocumentChunkLocation });
 export type Citations = Array<Citation>;
 export interface CitationsConfig {
   enabled: boolean;
@@ -234,7 +238,11 @@ export interface CitationsDelta {
   sourceContent?: Array<CitationSourceContentDelta>;
   location?: CitationLocation;
 }
-export type CitationSourceContent = { text: string };
+interface _CitationSourceContent {
+  text?: string;
+}
+
+export type CitationSourceContent = _CitationSourceContent & { text: string };
 export interface CitationSourceContentDelta {
   text?: string;
 }
@@ -245,158 +253,54 @@ export declare class ConflictException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+interface _ContentBlock {
+  text?: string;
+  image?: ImageBlock;
+  document?: DocumentBlock;
+  video?: VideoBlock;
+  toolUse?: ToolUseBlock;
+  toolResult?: ToolResultBlock;
+  guardContent?: GuardrailConverseContentBlock;
+  cachePoint?: CachePointBlock;
+  reasoningContent?: ReasoningContentBlock;
+  citationsContent?: CitationsContentBlock;
+}
+
 export type ContentBlock =
-  | {
-      text: string;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image: ImageBlock;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document: DocumentBlock;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video: VideoBlock;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse: ToolUseBlock;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult: ToolResultBlock;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent: GuardrailConverseContentBlock;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint: CachePointBlock;
-      reasoningContent?: undefined;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent: ReasoningContentBlock;
-      citationsContent?: undefined;
-    }
-  | {
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-      toolUse?: undefined;
-      toolResult?: undefined;
-      guardContent?: undefined;
-      cachePoint?: undefined;
-      reasoningContent?: undefined;
-      citationsContent: CitationsContentBlock;
-    };
+  | (_ContentBlock & { text: string })
+  | (_ContentBlock & { image: ImageBlock })
+  | (_ContentBlock & { document: DocumentBlock })
+  | (_ContentBlock & { video: VideoBlock })
+  | (_ContentBlock & { toolUse: ToolUseBlock })
+  | (_ContentBlock & { toolResult: ToolResultBlock })
+  | (_ContentBlock & { guardContent: GuardrailConverseContentBlock })
+  | (_ContentBlock & { cachePoint: CachePointBlock })
+  | (_ContentBlock & { reasoningContent: ReasoningContentBlock })
+  | (_ContentBlock & { citationsContent: CitationsContentBlock });
+interface _ContentBlockDelta {
+  text?: string;
+  toolUse?: ToolUseBlockDelta;
+  reasoningContent?: ReasoningContentBlockDelta;
+  citation?: CitationsDelta;
+}
+
 export type ContentBlockDelta =
-  | {
-      text: string;
-      toolUse?: undefined;
-      reasoningContent?: undefined;
-      citation?: undefined;
-    }
-  | {
-      text?: undefined;
-      toolUse: ToolUseBlockDelta;
-      reasoningContent?: undefined;
-      citation?: undefined;
-    }
-  | {
-      text?: undefined;
-      toolUse?: undefined;
-      reasoningContent: ReasoningContentBlockDelta;
-      citation?: undefined;
-    }
-  | {
-      text?: undefined;
-      toolUse?: undefined;
-      reasoningContent?: undefined;
-      citation: CitationsDelta;
-    };
+  | (_ContentBlockDelta & { text: string })
+  | (_ContentBlockDelta & { toolUse: ToolUseBlockDelta })
+  | (_ContentBlockDelta & { reasoningContent: ReasoningContentBlockDelta })
+  | (_ContentBlockDelta & { citation: CitationsDelta });
 export interface ContentBlockDeltaEvent {
   delta: ContentBlockDelta;
   contentBlockIndex: number;
 }
 export type ContentBlocks = Array<ContentBlock>;
-export type ContentBlockStart = { toolUse: ToolUseBlockStart };
+interface _ContentBlockStart {
+  toolUse?: ToolUseBlockStart;
+}
+
+export type ContentBlockStart = _ContentBlockStart & {
+  toolUse: ToolUseBlockStart;
+};
 export interface ContentBlockStartEvent {
   start: ContentBlockStart;
   contentBlockIndex: number;
@@ -410,7 +314,11 @@ export type ConversationRole = "USER" | "ASSISTANT";
 export interface ConverseMetrics {
   latencyMs: number;
 }
-export type ConverseOutput = { message: Message };
+interface _ConverseOutput {
+  message?: Message;
+}
+
+export type ConverseOutput = _ConverseOutput & { message: Message };
 export interface ConverseRequest {
   modelId: string;
   messages?: Array<Message>;
@@ -442,150 +350,38 @@ export interface ConverseStreamMetadataEvent {
 export interface ConverseStreamMetrics {
   latencyMs: number;
 }
+interface _ConverseStreamOutput {
+  messageStart?: MessageStartEvent;
+  contentBlockStart?: ContentBlockStartEvent;
+  contentBlockDelta?: ContentBlockDeltaEvent;
+  contentBlockStop?: ContentBlockStopEvent;
+  messageStop?: MessageStopEvent;
+  metadata?: ConverseStreamMetadataEvent;
+  internalServerException?: InternalServerException;
+  modelStreamErrorException?: ModelStreamErrorException;
+  validationException?: ValidationException;
+  throttlingException?: ThrottlingException;
+  serviceUnavailableException?: ServiceUnavailableException;
+}
+
 export type ConverseStreamOutput =
-  | {
-      messageStart: MessageStartEvent;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart: ContentBlockStartEvent;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta: ContentBlockDeltaEvent;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop: ContentBlockStopEvent;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop: MessageStopEvent;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata: ConverseStreamMetadataEvent;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
+  | (_ConverseStreamOutput & { messageStart: MessageStartEvent })
+  | (_ConverseStreamOutput & { contentBlockStart: ContentBlockStartEvent })
+  | (_ConverseStreamOutput & { contentBlockDelta: ContentBlockDeltaEvent })
+  | (_ConverseStreamOutput & { contentBlockStop: ContentBlockStopEvent })
+  | (_ConverseStreamOutput & { messageStop: MessageStopEvent })
+  | (_ConverseStreamOutput & { metadata: ConverseStreamMetadataEvent })
+  | (_ConverseStreamOutput & {
       internalServerException: InternalServerException;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
+    })
+  | (_ConverseStreamOutput & {
       modelStreamErrorException: ModelStreamErrorException;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException: ValidationException;
-      throttlingException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException: ThrottlingException;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      messageStart?: undefined;
-      contentBlockStart?: undefined;
-      contentBlockDelta?: undefined;
-      contentBlockStop?: undefined;
-      messageStop?: undefined;
-      metadata?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
+    })
+  | (_ConverseStreamOutput & { validationException: ValidationException })
+  | (_ConverseStreamOutput & { throttlingException: ThrottlingException })
+  | (_ConverseStreamOutput & {
       serviceUnavailableException: ServiceUnavailableException;
-    };
+    });
 export interface ConverseStreamRequest {
   modelId: string;
   messages?: Array<Message>;
@@ -627,7 +423,11 @@ export interface DocumentChunkLocation {
   start?: number;
   end?: number;
 }
-export type DocumentContentBlock = { text: string };
+interface _DocumentContentBlock {
+  text?: string;
+}
+
+export type DocumentContentBlock = _DocumentContentBlock & { text: string };
 export type DocumentContentBlocks = Array<DocumentContentBlock>;
 export type DocumentFormat =
   | "PDF"
@@ -644,31 +444,18 @@ export interface DocumentPageLocation {
   start?: number;
   end?: number;
 }
+interface _DocumentSource {
+  bytes?: Uint8Array | string;
+  s3Location?: S3Location;
+  text?: string;
+  content?: Array<DocumentContentBlock>;
+}
+
 export type DocumentSource =
-  | {
-      bytes: Uint8Array | string;
-      s3Location?: undefined;
-      text?: undefined;
-      content?: undefined;
-    }
-  | {
-      bytes?: undefined;
-      s3Location: S3Location;
-      text?: undefined;
-      content?: undefined;
-    }
-  | {
-      bytes?: undefined;
-      s3Location?: undefined;
-      text: string;
-      content?: undefined;
-    }
-  | {
-      bytes?: undefined;
-      s3Location?: undefined;
-      text?: undefined;
-      content: Array<DocumentContentBlock>;
-    };
+  | (_DocumentSource & { bytes: Uint8Array | string })
+  | (_DocumentSource & { s3Location: S3Location })
+  | (_DocumentSource & { text: string })
+  | (_DocumentSource & { content: Array<DocumentContentBlock> });
 export interface GetAsyncInvokeRequest {
   invocationArn: string;
 }
@@ -703,9 +490,14 @@ export interface GuardrailConfiguration {
   guardrailVersion: string;
   trace?: GuardrailTrace;
 }
+interface _GuardrailContentBlock {
+  text?: GuardrailTextBlock;
+  image?: GuardrailImageBlock;
+}
+
 export type GuardrailContentBlock =
-  | { text: GuardrailTextBlock; image?: undefined }
-  | { text?: undefined; image: GuardrailImageBlock };
+  | (_GuardrailContentBlock & { text: GuardrailTextBlock })
+  | (_GuardrailContentBlock & { image: GuardrailImageBlock });
 export type GuardrailContentBlockList = Array<GuardrailContentBlock>;
 export interface GuardrailContentFilter {
   type: GuardrailContentFilterType;
@@ -758,9 +550,14 @@ export interface GuardrailContextualGroundingPolicyAssessment {
 }
 export type GuardrailContextualGroundingPolicyUnitsProcessed = number;
 
+interface _GuardrailConverseContentBlock {
+  text?: GuardrailConverseTextBlock;
+  image?: GuardrailConverseImageBlock;
+}
+
 export type GuardrailConverseContentBlock =
-  | { text: GuardrailConverseTextBlock; image?: undefined }
-  | { text?: undefined; image: GuardrailConverseImageBlock };
+  | (_GuardrailConverseContentBlock & { text: GuardrailConverseTextBlock })
+  | (_GuardrailConverseContentBlock & { image: GuardrailConverseImageBlock });
 export type GuardrailConverseContentQualifier =
   | "GROUNDING_SOURCE"
   | "QUERY"
@@ -772,7 +569,13 @@ export interface GuardrailConverseImageBlock {
   source: GuardrailConverseImageSource;
 }
 export type GuardrailConverseImageFormat = "PNG" | "JPEG";
-export type GuardrailConverseImageSource = { bytes: Uint8Array | string };
+interface _GuardrailConverseImageSource {
+  bytes?: Uint8Array | string;
+}
+
+export type GuardrailConverseImageSource = _GuardrailConverseImageSource & {
+  bytes: Uint8Array | string;
+};
 export interface GuardrailConverseTextBlock {
   text: string;
   qualifiers?: Array<GuardrailConverseContentQualifier>;
@@ -798,7 +601,13 @@ export interface GuardrailImageCoverage {
   total?: number;
 }
 export type GuardrailImageFormat = "PNG" | "JPEG";
-export type GuardrailImageSource = { bytes: Uint8Array | string };
+interface _GuardrailImageSource {
+  bytes?: Uint8Array | string;
+}
+
+export type GuardrailImageSource = _GuardrailImageSource & {
+  bytes: Uint8Array | string;
+};
 export interface GuardrailInvocationMetrics {
   guardrailProcessingLatency?: number;
   usage?: GuardrailUsage;
@@ -941,9 +750,14 @@ export interface ImageBlock {
 export type ImageFormat = "PNG" | "JPEG" | "GIF" | "WEBP";
 export type ImagesGuarded = number;
 
+interface _ImageSource {
+  bytes?: Uint8Array | string;
+  s3Location?: S3Location;
+}
+
 export type ImageSource =
-  | { bytes: Uint8Array | string; s3Location?: undefined }
-  | { bytes?: undefined; s3Location: S3Location };
+  | (_ImageSource & { bytes: Uint8Array | string })
+  | (_ImageSource & { s3Location: S3Location });
 export type ImagesTotal = number;
 
 export interface InferenceConfiguration {
@@ -978,73 +792,46 @@ export interface InvokeModelResponse {
   contentType: string;
   performanceConfigLatency?: PerformanceConfigLatency;
 }
-export type InvokeModelWithBidirectionalStreamInput = {
-  chunk: BidirectionalInputPayloadPart;
-};
+interface _InvokeModelWithBidirectionalStreamInput {
+  chunk?: BidirectionalInputPayloadPart;
+}
+
+export type InvokeModelWithBidirectionalStreamInput =
+  _InvokeModelWithBidirectionalStreamInput & {
+    chunk: BidirectionalInputPayloadPart;
+  };
+interface _InvokeModelWithBidirectionalStreamOutput {
+  chunk?: BidirectionalOutputPayloadPart;
+  internalServerException?: InternalServerException;
+  modelStreamErrorException?: ModelStreamErrorException;
+  validationException?: ValidationException;
+  throttlingException?: ThrottlingException;
+  modelTimeoutException?: ModelTimeoutException;
+  serviceUnavailableException?: ServiceUnavailableException;
+}
+
 export type InvokeModelWithBidirectionalStreamOutput =
-  | {
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       chunk: BidirectionalOutputPayloadPart;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
+    })
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       internalServerException: InternalServerException;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
+    })
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       modelStreamErrorException: ModelStreamErrorException;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
+    })
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       validationException: ValidationException;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
+    })
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       throttlingException: ThrottlingException;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
+    })
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       modelTimeoutException: ModelTimeoutException;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
+    })
+  | (_InvokeModelWithBidirectionalStreamOutput & {
       serviceUnavailableException: ServiceUnavailableException;
-    };
+    });
 export interface InvokeModelWithBidirectionalStreamRequest {
   modelId: string;
   body: InvokeModelWithBidirectionalStreamInput;
@@ -1147,18 +934,29 @@ export interface PromptRouterTrace {
   invokedModelId?: string;
 }
 export type PromptVariableMap = Record<string, PromptVariableValues>;
-export type PromptVariableValues = { text: string };
+interface _PromptVariableValues {
+  text?: string;
+}
+
+export type PromptVariableValues = _PromptVariableValues & { text: string };
+interface _ReasoningContentBlock {
+  reasoningText?: ReasoningTextBlock;
+  redactedContent?: Uint8Array | string;
+}
+
 export type ReasoningContentBlock =
-  | { reasoningText: ReasoningTextBlock; redactedContent?: undefined }
-  | { reasoningText?: undefined; redactedContent: Uint8Array | string };
+  | (_ReasoningContentBlock & { reasoningText: ReasoningTextBlock })
+  | (_ReasoningContentBlock & { redactedContent: Uint8Array | string });
+interface _ReasoningContentBlockDelta {
+  text?: string;
+  redactedContent?: Uint8Array | string;
+  signature?: string;
+}
+
 export type ReasoningContentBlockDelta =
-  | { text: string; redactedContent?: undefined; signature?: undefined }
-  | {
-      text?: undefined;
-      redactedContent: Uint8Array | string;
-      signature?: undefined;
-    }
-  | { text?: undefined; redactedContent?: undefined; signature: string };
+  | (_ReasoningContentBlockDelta & { text: string })
+  | (_ReasoningContentBlockDelta & { redactedContent: Uint8Array | string })
+  | (_ReasoningContentBlockDelta & { signature: string });
 export interface ReasoningTextBlock {
   text: string;
   signature?: string;
@@ -1169,70 +967,26 @@ export declare class ResourceNotFoundException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+interface _ResponseStream {
+  chunk?: PayloadPart;
+  internalServerException?: InternalServerException;
+  modelStreamErrorException?: ModelStreamErrorException;
+  validationException?: ValidationException;
+  throttlingException?: ThrottlingException;
+  modelTimeoutException?: ModelTimeoutException;
+  serviceUnavailableException?: ServiceUnavailableException;
+}
+
 export type ResponseStream =
-  | {
-      chunk: PayloadPart;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException: InternalServerException;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException: ModelStreamErrorException;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException: ValidationException;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException: ThrottlingException;
-      modelTimeoutException?: undefined;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException: ModelTimeoutException;
-      serviceUnavailableException?: undefined;
-    }
-  | {
-      chunk?: undefined;
-      internalServerException?: undefined;
-      modelStreamErrorException?: undefined;
-      validationException?: undefined;
-      throttlingException?: undefined;
-      modelTimeoutException?: undefined;
+  | (_ResponseStream & { chunk: PayloadPart })
+  | (_ResponseStream & { internalServerException: InternalServerException })
+  | (_ResponseStream & { modelStreamErrorException: ModelStreamErrorException })
+  | (_ResponseStream & { validationException: ValidationException })
+  | (_ResponseStream & { throttlingException: ThrottlingException })
+  | (_ResponseStream & { modelTimeoutException: ModelTimeoutException })
+  | (_ResponseStream & {
       serviceUnavailableException: ServiceUnavailableException;
-    };
+    });
 export interface S3Location {
   uri: string;
   bucketOwner?: string;
@@ -1273,14 +1027,16 @@ export type StopReason =
   | "STOP_SEQUENCE"
   | "GUARDRAIL_INTERVENED"
   | "CONTENT_FILTERED";
+interface _SystemContentBlock {
+  text?: string;
+  guardContent?: GuardrailConverseContentBlock;
+  cachePoint?: CachePointBlock;
+}
+
 export type SystemContentBlock =
-  | { text: string; guardContent?: undefined; cachePoint?: undefined }
-  | {
-      text?: undefined;
-      guardContent: GuardrailConverseContentBlock;
-      cachePoint?: undefined;
-    }
-  | { text?: undefined; guardContent?: undefined; cachePoint: CachePointBlock };
+  | (_SystemContentBlock & { text: string })
+  | (_SystemContentBlock & { guardContent: GuardrailConverseContentBlock })
+  | (_SystemContentBlock & { cachePoint: CachePointBlock });
 export type SystemContentBlocks = Array<SystemContentBlock>;
 export interface Tag {
   key: string;
@@ -1309,18 +1065,33 @@ export interface TokenUsage {
   cacheReadInputTokens?: number;
   cacheWriteInputTokens?: number;
 }
+interface _Tool {
+  toolSpec?: ToolSpecification;
+  cachePoint?: CachePointBlock;
+}
+
 export type Tool =
-  | { toolSpec: ToolSpecification; cachePoint?: undefined }
-  | { toolSpec?: undefined; cachePoint: CachePointBlock };
+  | (_Tool & { toolSpec: ToolSpecification })
+  | (_Tool & { cachePoint: CachePointBlock });
+interface _ToolChoice {
+  auto?: AutoToolChoice;
+  any?: AnyToolChoice;
+  tool?: SpecificToolChoice;
+}
+
 export type ToolChoice =
-  | { auto: AutoToolChoice; any?: undefined; tool?: undefined }
-  | { auto?: undefined; any: AnyToolChoice; tool?: undefined }
-  | { auto?: undefined; any?: undefined; tool: SpecificToolChoice };
+  | (_ToolChoice & { auto: AutoToolChoice })
+  | (_ToolChoice & { any: AnyToolChoice })
+  | (_ToolChoice & { tool: SpecificToolChoice });
 export interface ToolConfiguration {
   tools: Array<Tool>;
   toolChoice?: ToolChoice;
 }
-export type ToolInputSchema = { json: unknown };
+interface _ToolInputSchema {
+  json?: unknown;
+}
+
+export type ToolInputSchema = _ToolInputSchema & { json: unknown };
 export type ToolName = string;
 
 export interface ToolResultBlock {
@@ -1328,42 +1099,20 @@ export interface ToolResultBlock {
   content: Array<ToolResultContentBlock>;
   status?: ToolResultStatus;
 }
+interface _ToolResultContentBlock {
+  json?: unknown;
+  text?: string;
+  image?: ImageBlock;
+  document?: DocumentBlock;
+  video?: VideoBlock;
+}
+
 export type ToolResultContentBlock =
-  | {
-      json: unknown;
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-    }
-  | {
-      json?: undefined;
-      text: string;
-      image?: undefined;
-      document?: undefined;
-      video?: undefined;
-    }
-  | {
-      json?: undefined;
-      text?: undefined;
-      image: ImageBlock;
-      document?: undefined;
-      video?: undefined;
-    }
-  | {
-      json?: undefined;
-      text?: undefined;
-      image?: undefined;
-      document: DocumentBlock;
-      video?: undefined;
-    }
-  | {
-      json?: undefined;
-      text?: undefined;
-      image?: undefined;
-      document?: undefined;
-      video: VideoBlock;
-    };
+  | (_ToolResultContentBlock & { json: unknown })
+  | (_ToolResultContentBlock & { text: string })
+  | (_ToolResultContentBlock & { image: ImageBlock })
+  | (_ToolResultContentBlock & { document: DocumentBlock })
+  | (_ToolResultContentBlock & { video: VideoBlock });
 export type ToolResultContentBlocks = Array<ToolResultContentBlock>;
 export type ToolResultStatus = "SUCCESS" | "ERROR";
 export type Tools = Array<Tool>;
@@ -1406,9 +1155,14 @@ export type VideoFormat =
   | "MPG"
   | "WMV"
   | "THREE_GP";
+interface _VideoSource {
+  bytes?: Uint8Array | string;
+  s3Location?: S3Location;
+}
+
 export type VideoSource =
-  | { bytes: Uint8Array | string; s3Location?: undefined }
-  | { bytes?: undefined; s3Location: S3Location };
+  | (_VideoSource & { bytes: Uint8Array | string })
+  | (_VideoSource & { s3Location: S3Location });
 export declare namespace ApplyGuardrail {
   export type Input = ApplyGuardrailRequest;
   export type Output = ApplyGuardrailResponse;

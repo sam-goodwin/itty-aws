@@ -275,7 +275,11 @@ export interface ImportJobProperties {
   Message?: string;
 }
 export type ImportJobPropertiesList = Array<ImportJobProperties>;
-export type InputDataConfig = { S3Uri: string };
+interface _InputDataConfig {
+  S3Uri?: string;
+}
+
+export type InputDataConfig = _InputDataConfig & { S3Uri: string };
 export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
@@ -359,7 +363,13 @@ export type Message = string;
 
 export type NextToken = string;
 
-export type OutputDataConfig = { S3Configuration: S3Configuration };
+interface _OutputDataConfig {
+  S3Configuration?: S3Configuration;
+}
+
+export type OutputDataConfig = _OutputDataConfig & {
+  S3Configuration: S3Configuration;
+};
 export interface PreloadDataConfig {
   PreloadDataType: PreloadDataType;
 }

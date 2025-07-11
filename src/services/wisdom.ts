@@ -44,8 +44,18 @@ export interface AssistantAssociationData {
   associationData: AssistantAssociationOutputData;
   tags?: Record<string, string>;
 }
-export type AssistantAssociationInputData = { knowledgeBaseId: string };
-export type AssistantAssociationOutputData = {
+interface _AssistantAssociationInputData {
+  knowledgeBaseId?: string;
+}
+
+export type AssistantAssociationInputData = _AssistantAssociationInputData & {
+  knowledgeBaseId: string;
+};
+interface _AssistantAssociationOutputData {
+  knowledgeBaseAssociation?: KnowledgeBaseAssociationData;
+}
+
+export type AssistantAssociationOutputData = _AssistantAssociationOutputData & {
   knowledgeBaseAssociation: KnowledgeBaseAssociationData;
 };
 export interface AssistantAssociationSummary {
@@ -96,7 +106,13 @@ export type Channel = string;
 export type Channels = Array<string>;
 export type ClientToken = string;
 
-export type Configuration = { connectConfiguration: ConnectConfiguration };
+interface _Configuration {
+  connectConfiguration?: ConnectConfiguration;
+}
+
+export type Configuration = _Configuration & {
+  connectConfiguration: ConnectConfiguration;
+};
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
@@ -545,7 +561,13 @@ export type QueryText = string;
 
 export type QuickResponseContent = string;
 
-export type QuickResponseContentProvider = { content: string };
+interface _QuickResponseContentProvider {
+  content?: string;
+}
+
+export type QuickResponseContentProvider = _QuickResponseContentProvider & {
+  content: string;
+};
 export interface QuickResponseContents {
   plainText?: QuickResponseContentProvider;
   markdown?: QuickResponseContentProvider;
@@ -570,7 +592,13 @@ export interface QuickResponseData {
   language?: string;
   tags?: Record<string, string>;
 }
-export type QuickResponseDataProvider = { content: string };
+interface _QuickResponseDataProvider {
+  content?: string;
+}
+
+export type QuickResponseDataProvider = _QuickResponseDataProvider & {
+  content: string;
+};
 export type QuickResponseDescription = string;
 
 export interface QuickResponseFilterField {
@@ -672,7 +700,11 @@ export interface RecommendationTrigger {
   data: RecommendationTriggerData;
   recommendationIds: Array<string>;
 }
-export type RecommendationTriggerData = {
+interface _RecommendationTriggerData {
+  query?: QueryRecommendationTriggerData;
+}
+
+export type RecommendationTriggerData = _RecommendationTriggerData & {
   query: QueryRecommendationTriggerData;
 };
 export type RecommendationTriggerList = Array<RecommendationTrigger>;
@@ -771,7 +803,11 @@ export interface SessionSummary {
 }
 export type ShortCutKey = string;
 
-export type SourceConfiguration = {
+interface _SourceConfiguration {
+  appIntegrations?: AppIntegrationsConfiguration;
+}
+
+export type SourceConfiguration = _SourceConfiguration & {
   appIntegrations: AppIntegrationsConfiguration;
 };
 export interface StartContentUploadRequest {
