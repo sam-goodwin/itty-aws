@@ -1,6 +1,6 @@
 import { FileSystem } from "@effect/platform";
 import { NodeFileSystem } from "@effect/platform-node";
-import { Console, Effect } from "effect";
+import { Effect } from "effect";
 import type { Manifest, Shape } from "./manifest.ts";
 
 // Configuration flags
@@ -54,6 +54,24 @@ const generateTypeReference = (target: string, manifest: Manifest): string => {
   // Handle special Smithy built-in types
   if (target === "smithy.api#Unit") {
     return "{}";
+  }
+  
+  // Handle common Smithy built-in primitive types
+  if (target === "smithy.api#String") {
+    return "string";
+  }
+  if (target === "smithy.api#Boolean") {
+    return "boolean";
+  }
+  if (target === "smithy.api#Integer" || target === "smithy.api#Long" || 
+      target === "smithy.api#Float" || target === "smithy.api#Double") {
+    return "number";
+  }
+  if (target === "smithy.api#Timestamp") {
+    return "Date | string";
+  }
+  if (target === "smithy.api#Blob") {
+    return "Uint8Array | string";
   }
   
   // Check if target exists in manifest shapes
@@ -240,7 +258,6 @@ const generateMapType = (name: string, shape: Extract<Shape, { type: "map" }>, m
 
 const generateServiceCode = (serviceName: string, manifest: Manifest) =>
   Effect.gen(function* () {
-    yield* Console.log(`📝 Generating code for ${serviceName}...`);
 
     let code = `import type { Effect, Data } from "effect";\n`;
     code += `import type { CommonAwsError } from "../client.ts";\n\n`;
@@ -293,11 +310,13 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       const methodName = toLowerCamelCase(operation.name);
       
       // Get input and output types
-      const inputType = operation.shape.input ? extractShapeName(operation.shape.input.target) : "{}";
-      const outputType = operation.shape.output ? extractShapeName(operation.shape.output.target) : "void";
+      const inputType = operation.shape.input ? 
+        (operation.shape.input.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.input.target)) : "{}";
+      const outputType = operation.shape.output ? 
+        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "void";
       
-      // Check if output is void and we need Unit
-      if (outputType === "void" || !operation.shape.output) {
+      // Check if output is void
+      if (outputType === "void" || outputType === "Unit" || !operation.shape.output) {
         needsVoid = true;
       }
       
@@ -319,9 +338,12 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     
     code += "}\n\n";
 
-    // Add simplified service interface alias for easier use
-    const simpleServiceName = serviceName === "dynamodb" ? "DynamoDB" : serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
-    code += `export type ${simpleServiceName} = ${serviceShapeName};\n\n`;
+    // Add simplified service interface alias for easier use (only if different from service shape name)
+    const simpleServiceName = serviceName === "dynamodb" ? "DynamoDB" : 
+      serviceName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+    if (simpleServiceName !== serviceShapeName) {
+      code += `export type ${simpleServiceName} = ${serviceShapeName};\n\n`;
+    }
 
     // Sort shapes by type for better organization
     const allShapes = Object.entries(manifest.shapes)
@@ -335,6 +357,11 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     // Generate type aliases, enums, and interfaces
     for (const [shapeId, shape] of allShapes) {
       const shapeName = extractShapeName(shapeId);
+      
+      // Skip generating Unit type - always use {} instead
+      if (shapeName === "Unit") {
+        continue;
+      }
       
       switch (shape.type) {
         case "structure":
@@ -389,8 +416,10 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     // Generate operation namespaces for error types
     for (const operation of operations) {
       // Get input and output types
-      const inputType = operation.shape.input ? extractShapeName(operation.shape.input.target) : "{}";
-      const outputType = operation.shape.output ? extractShapeName(operation.shape.output.target) : "void";
+      const inputType = operation.shape.input ? 
+        (operation.shape.input.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.input.target)) : "{}";
+      const outputType = operation.shape.output ? 
+        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "void";
       
       // Generate error union type
       const errors = operation.shape.errors || [];
@@ -440,47 +469,90 @@ export const serviceMetadata = {\n`;
   return code;
 };
 
+// Generate index file that exports all services
+const generateIndexFile = (serviceExports: Array<{ serviceName: string, sdkId: string }>) => {
+  let code = `// Auto-generated service exports\n\n`;
+
+  // Sort exports alphabetically by export name
+  const sortedExports = serviceExports
+    .map(({ serviceName, sdkId }) => ({
+      serviceName,
+      sdkId,
+      exportName: sdkId.replace(/\s+/g, '')
+    }))
+    .sort((a, b) => a.exportName.localeCompare(b.exportName));
+
+  // Export all services as namespaces using AWS's official naming
+  sortedExports.forEach(({ serviceName, exportName }) => {
+    code += `export * as ${exportName} from "./${serviceName}.ts";\n`;
+  });
+
+  return code;
+};
+
 // Main program
 const program = Effect.gen(function* () {
-  yield* Console.log("🚀 Starting AWS Client Generator...");
-
   const fs = yield* FileSystem.FileSystem;
   const servicesMetadata: Record<string, any> = {};
+  const serviceExports: Array<{ serviceName: string, sdkId: string }> = [];
 
-  // For now, just process DynamoDB
-  const serviceName = "dynamodb";
-  const manifestPath = `manifests/${serviceName}.json`;
-
-  yield* Console.log(`📖 Reading manifest for ${serviceName}...`);
-
-  const manifestContent = yield* fs.readFileString(manifestPath);
-  const manifest = JSON.parse(manifestContent) as Manifest;
-
-  // Generate the code
-  const { code, metadata } = yield* generateServiceCode(serviceName, manifest);
-  servicesMetadata[serviceName] = metadata;
+  // Read all manifest files from the manifests directory
+  const manifestFiles = yield* fs.readDirectory("manifests");
+  
+  // Filter for .json files only
+  const jsonFiles = manifestFiles.filter(file => file.endsWith('.json'));
 
   // Create services directory
   yield* fs.makeDirectory("src/services", { recursive: true });
 
-  // Write the generated file
-  const outputPath = `src/services/${serviceName}.ts`;
-  yield* fs.writeFileString(outputPath, code);
+  // Process each manifest file
+  for (const manifestFile of jsonFiles) {
+    const serviceName = manifestFile.replace('.json', '');
+    const manifestPath = `manifests/${manifestFile}`;
 
-  yield* Console.log(`✅ Generated ${outputPath}`);
+    try {
+      const manifestContent = yield* fs.readFileString(manifestPath);
+      const manifest = JSON.parse(manifestContent) as Manifest;
+
+      // Find service shape to get the sdkId
+      const serviceShapeEntry = Object.entries(manifest.shapes).find(([, shape]) => shape.type === "service");
+      if (!serviceShapeEntry) {
+        continue;
+      }
+      
+      const serviceShape = serviceShapeEntry[1];
+      const serviceTraits = serviceShape.traits || {};
+      const serviceInfo = (serviceTraits["aws.api#service"] as any) || {};
+      const sdkId = serviceInfo.sdkId || serviceName;
+
+      // Generate the code
+      const { code, metadata } = yield* generateServiceCode(serviceName, manifest);
+      servicesMetadata[serviceName] = metadata;
+
+      // Store export info with sdkId
+      serviceExports.push({
+        serviceName,
+        sdkId
+      });
+
+      // Write the generated file
+      const outputPath = `src/services/${serviceName}.ts`;
+      yield* fs.writeFileString(outputPath, code);
+    } catch (error) {
+      // Continue with other services instead of failing completely
+    }
+  }
 
   // Generate metadata file
   const metadataCode = generateMetadataFile(servicesMetadata);
   yield* fs.writeFileString("src/services/metadata.ts", metadataCode);
-  yield* Console.log("✅ Generated src/services/metadata.ts");
 
-  yield* Console.log("✨ Done!");
+  // Generate index file
+  const indexCode = generateIndexFile(serviceExports);
+  yield* fs.writeFileString("src/services/index.ts", indexCode);
 });
 
 // Run the program
 const runnable = program.pipe(Effect.provide(NodeFileSystem.layer));
 
-Effect.runPromise(runnable).then(
-  () => console.log("✅ Client generation complete"),
-  (error) => console.error("❌ Error:", error),
-);
+await Effect.runPromise(runnable)

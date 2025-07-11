@@ -101,7 +101,7 @@
 - Install Bun type definitions (@types/bun) for proper TypeScript support
 - Run tests with `bun test` during development
 - Test scripts with `bun run` commands
-- Regenerate services after updating manifests or generator logic using `bun run generate:clients`
+- Regenerate services after updating manifests or generator logic using `bun run generate`
 - Clean up temporary build artifacts after testing
 - Maintain compatibility with Effect ecosystem
 - Share code logically across scripts by extracting common functionality

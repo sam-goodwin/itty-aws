@@ -16,7 +16,7 @@
   },
   "scripts": {
     "fetch:manifests": "bun scripts/fetch-manifests.ts",
-    "generate:clients": "bun scripts/generate-clients.ts",
+    "generate": "bun scripts/generate-clients.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "test:watch": "vitest watch",
