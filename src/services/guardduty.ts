@@ -637,6 +637,8 @@ export interface BlockPublicAccess {
   BlockPublicAcls?: boolean;
   BlockPublicPolicy?: boolean;
 }
+export type GuarddutyBoolean = boolean;
+
 export interface BucketLevelPermissions {
   AccessControlList?: AccessControlList;
   BucketPolicy?: BucketPolicy;
@@ -2506,6 +2508,8 @@ export interface StopMonitoringMembersRequest {
 export interface StopMonitoringMembersResponse {
   UnprocessedAccounts: Array<UnprocessedAccount>;
 }
+export type GuarddutyString = string;
+
 export type SubnetIds = Array<string>;
 export interface Tag {
   Key?: string;

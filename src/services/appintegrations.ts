@@ -576,7 +576,7 @@ export type NonBlankLongString = string;
 
 export type NonBlankString = string;
 
-export type Object = string;
+export type AppintegrationsObject = string;
 
 export type ObjectConfiguration = Record<string, Record<string, Array<string>>>;
 export interface OnDemandConfiguration {

@@ -507,6 +507,8 @@ export interface AssociateResourceShareResponse {
   resourceShareAssociations?: Array<ResourceShareAssociation>;
   clientToken?: string;
 }
+export type RamBoolean = boolean;
+
 export interface CreatePermissionRequest {
   name: string;
   resourceType: string;
@@ -1072,6 +1074,8 @@ export interface SetDefaultPermissionVersionResponse {
   clientToken?: string;
 }
 export type SourceArnOrAccountList = Array<string>;
+export type RamString = string;
+
 export interface Tag {
   key?: string;
   value?: string;

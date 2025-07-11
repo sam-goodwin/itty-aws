@@ -610,6 +610,8 @@ export interface BatchPolicy {
 }
 export type BatchTimeoutInSeconds = number;
 
+export type RobomakerBoolean = boolean;
+
 export type BoxedBoolean = boolean;
 
 export interface CancelDeploymentJobRequest {

@@ -1854,6 +1854,8 @@ export interface BaselineOverride {
 }
 export type BatchErrorMessage = string;
 
+export type SsmBoolean = boolean;
+
 export type CalendarNameOrARN = string;
 
 export type CalendarNameOrARNList = Array<string>;
@@ -6011,6 +6013,8 @@ export interface StopAutomationExecutionRequest {
 export interface StopAutomationExecutionResult {}
 export type StopType = "COMPLETE" | "CANCEL";
 export type StreamUrl = string;
+
+export type SsmString = string;
 
 export type String1to256 = string;
 

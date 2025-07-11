@@ -884,6 +884,8 @@ export interface BatchDisassociateUserStackRequest {
 export interface BatchDisassociateUserStackResult {
   errors?: Array<UserStackAssociationError>;
 }
+export type AppstreamBoolean = boolean;
+
 export type BooleanObject = boolean;
 
 export interface CertificateBasedAuthProperties {
@@ -1853,6 +1855,8 @@ export interface StreamingExperienceSettings {
 export type StreamingUrlUserId = string;
 
 export type StreamView = "APP" | "DESKTOP";
+export type AppstreamString = string;
+
 export type StringList = Array<string>;
 export type SubnetIdList = Array<string>;
 export type TagKey = string;

@@ -788,6 +788,8 @@ export declare class BadRequestException extends EffectData.TaggedError(
 export interface BlockStorage {
   enabled?: boolean;
 }
+export type EksBoolean = boolean;
+
 export type BoxedBoolean = boolean;
 
 export type BoxedInteger = number;
@@ -1881,6 +1883,8 @@ export interface StorageConfigRequest {
 export interface StorageConfigResponse {
   blockStorage?: BlockStorage;
 }
+export type EksString = string;
+
 export type StringList = Array<string>;
 export type SupportType = "STANDARD" | "EXTENDED";
 export type TagKey = string;

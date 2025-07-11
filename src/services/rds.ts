@@ -1672,6 +1672,8 @@ export type BlueGreenDeploymentTaskName = string;
 
 export type BlueGreenDeploymentTaskStatus = string;
 
+export type RdsBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export type BucketName = string;
@@ -5462,6 +5464,8 @@ export declare class StorageTypeNotSupportedFault extends EffectData.TaggedError
 )<{
   readonly message?: string;
 }> {}
+export type RdsString = string;
+
 export type String255 = string;
 
 export type StringList = Array<string>;

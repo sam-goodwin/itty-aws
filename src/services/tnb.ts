@@ -595,12 +595,12 @@ export interface GetSolVnfInfo {
 }
 export interface InstantiateMetadata {
   nsdInfoId: string;
-  additionalParamsForNs?: _opaque_Document;
+  additionalParamsForNs?: unknown;
 }
 export interface InstantiateSolNetworkInstanceInput {
   nsInstanceId: string;
   dryRun?: boolean;
-  additionalParamsForNs?: _opaque_Document;
+  additionalParamsForNs?: unknown;
   tags?: Record<string, string>;
 }
 export interface InstantiateSolNetworkInstanceOutput {
@@ -750,7 +750,7 @@ export interface ListTagsForResourceOutput {
 }
 export interface ModifyVnfInfoMetadata {
   vnfInstanceId: string;
-  vnfConfigurableProperties: _opaque_Document;
+  vnfConfigurableProperties: unknown;
 }
 export interface NetworkArtifactMeta {
   overrides?: Array<ToscaOverride>;
@@ -891,7 +891,7 @@ export interface UntagResourceInput {
 export interface UntagResourceOutput {}
 export interface UpdateNsMetadata {
   nsdInfoId: string;
-  additionalParamsForNs?: _opaque_Document;
+  additionalParamsForNs?: unknown;
 }
 export interface UpdateSolFunctionPackageInput {
   vnfPkgId: string;
@@ -913,7 +913,7 @@ export interface UpdateSolNetworkInstanceOutput {
 }
 export interface UpdateSolNetworkModify {
   vnfInstanceId: string;
-  vnfConfigurableProperties: _opaque_Document;
+  vnfConfigurableProperties: unknown;
 }
 export interface UpdateSolNetworkPackageInput {
   nsdInfoId: string;
@@ -924,7 +924,7 @@ export interface UpdateSolNetworkPackageOutput {
 }
 export interface UpdateSolNetworkServiceData {
   nsdInfoId: string;
-  additionalParamsForNs?: _opaque_Document;
+  additionalParamsForNs?: unknown;
 }
 export type UpdateSolNetworkType = "MODIFY_VNF_INFORMATION" | "UPDATE_NS";
 export type UsageState = "IN_USE" | "NOT_IN_USE";

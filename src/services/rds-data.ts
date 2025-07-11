@@ -166,6 +166,8 @@ export interface BeginTransactionResponse {
 }
 export type Blob = Uint8Array | string;
 
+export type RdsDataBoolean = boolean;
+
 export type BooleanArray = Array<boolean>;
 export type BoxedBoolean = boolean;
 
@@ -307,17 +309,17 @@ export declare class NotFoundException extends EffectData.TaggedError(
 }> {}
 export type ParameterName = string;
 
-export interface Record {
+export interface RdsDataRecord {
   values?: Array<Value>;
 }
-export type Records = Array<Record>;
+export type Records = Array<RdsDataRecord>;
 export type RecordsFormatType = string;
 
 export type RecordsUpdated = number;
 
 export interface ResultFrame {
   resultSetMetadata?: ResultSetMetadata;
-  records?: Array<Record>;
+  records?: Array<RdsDataRecord>;
 }
 export interface ResultSetMetadata {
   columnCount?: number;
@@ -365,6 +367,8 @@ export declare class StatementTimeoutException extends EffectData.TaggedError(
   readonly message?: string;
   readonly dbConnectionId?: number;
 }> {}
+export type RdsDataString = string;
+
 export type StringArray = Array<string>;
 export interface StructValue {
   attributes?: Array<Value>;

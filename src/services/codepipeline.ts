@@ -721,6 +721,8 @@ export interface BlockerDeclaration {
 export type BlockerName = string;
 
 export type BlockerType = "Schedule";
+export type CodepipelineBoolean = boolean;
+
 export type ClientId = string;
 
 export type ClientRequestToken = string;
@@ -1824,6 +1826,8 @@ export interface StopPipelineExecutionOutput {
   pipelineExecutionId?: string;
 }
 export type StopPipelineExecutionReason = string;
+
+export type CodepipelineString = string;
 
 export interface SucceededInStageFilter {
   stageName?: string;

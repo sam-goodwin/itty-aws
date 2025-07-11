@@ -2138,7 +2138,7 @@ export interface Occurrences {
   lineRanges?: Array<Range>;
   offsetRanges?: Array<Range>;
   pages?: Array<Page>;
-  records?: Array<Record>;
+  records?: Array<Macie2Record>;
 }
 export type OrderBy = "ASC" | "DESC";
 export type OriginType =
@@ -2171,11 +2171,11 @@ export interface Range {
   startColumn?: number;
 }
 export type Ranges = Array<Range>;
-export interface Record {
+export interface Macie2Record {
   jsonPath?: string;
   recordIndex?: number;
 }
-export type Records = Array<Record>;
+export type Records = Array<Macie2Record>;
 export type RelationshipStatus =
   | "Enabled"
   | "Paused"
@@ -2525,6 +2525,7 @@ export type UnavailabilityReasonCode =
   | "MEMBER_ROLE_TOO_PERMISSIVE"
   | "INVALID_RESULT_SIGNATURE"
   | "RESULT_NOT_SIGNED";
+export type Unit = "TERABYTES";
 export declare class UnprocessableEntityException extends EffectData.TaggedError(
   "UnprocessableEntityException",
 )<{

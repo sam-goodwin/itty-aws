@@ -973,6 +973,8 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
   readonly quotaCode: string;
   readonly serviceCode: string;
 }> {}
+export type Greengrassv2String = string;
+
 export type StringMap = Record<string, string>;
 export interface SystemResourceLimits {
   memory?: number;

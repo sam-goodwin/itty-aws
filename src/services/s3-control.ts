@@ -477,6 +477,8 @@ export declare class BadRequestException extends EffectData.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
+export type S3ControlBoolean = boolean;
+
 export declare class BucketAlreadyExists extends EffectData.TaggedError(
   "BucketAlreadyExists",
 )<{}> {}
@@ -660,6 +662,8 @@ export interface Credentials {
 export type DataSourceId = string;
 
 export type DataSourceType = string;
+
+export type S3ControlDate = Date | string;
 
 export type Days = number;
 

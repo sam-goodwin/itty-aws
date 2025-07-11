@@ -954,6 +954,8 @@ export type BatchPutDocumentResponseFailedDocuments =
   Array<BatchPutDocumentResponseFailedDocument>;
 export type Blob = Uint8Array | string;
 
+export type KendraBoolean = boolean;
+
 export interface BoxConfiguration {
   EnterpriseId: string;
   SecretArn: string;
@@ -2817,6 +2819,8 @@ export interface StopDataSourceSyncJobRequest {
 }
 export type StorageCapacityUnit = number;
 
+export type KendraString = string;
+
 export type StringList = Array<string>;
 export interface SubmitFeedbackRequest {
   IndexId: string;
@@ -2890,8 +2894,10 @@ export type TagValue = string;
 
 export type TeamId = string;
 
+export type Template = unknown;
+
 export interface TemplateConfiguration {
-  Template?: Template;
+  Template?: unknown;
 }
 export type TenantDomain = string;
 

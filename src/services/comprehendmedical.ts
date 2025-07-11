@@ -884,6 +884,8 @@ export interface StopSNOMEDCTInferenceJobRequest {
 export interface StopSNOMEDCTInferenceJobResponse {
   JobId?: string;
 }
+export type ComprehendmedicalString = string;
+
 export declare class TextSizeLimitExceededException extends EffectData.TaggedError(
   "TextSizeLimitExceededException",
 )<{

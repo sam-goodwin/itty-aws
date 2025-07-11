@@ -2105,6 +2105,8 @@ export interface CreateUnreferencedMergeCommitOutput {
 }
 export type CreationDate = Date | string;
 
+export type CodecommitDate = string;
+
 export declare class DefaultBranchCannotBeDeletedException extends EffectData.TaggedError(
   "DefaultBranchCannotBeDeletedException",
 )<{

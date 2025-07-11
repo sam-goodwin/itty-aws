@@ -2183,6 +2183,8 @@ export interface Blueprint {
 }
 export type BlueprintList = Array<Blueprint>;
 export type BlueprintType = "os" | "app";
+export type Lightsailboolean = boolean;
+
 export type BPAStatusMessage =
   | "DEFAULTED_FOR_SLR_MISSING"
   | "SYNC_ON_HOLD"
@@ -4739,6 +4741,8 @@ export interface StopRelationalDatabaseRequest {
 export interface StopRelationalDatabaseResult {
   operations?: Array<Operation>;
 }
+export type Lightsailstring = string;
+
 export type StringList = Array<string>;
 export type StringMax256 = string;
 

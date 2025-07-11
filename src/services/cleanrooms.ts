@@ -1099,7 +1099,7 @@ export interface IdMappingTableSummary {
   name: string;
 }
 export type IdMappingTableSummaryList = Array<IdMappingTableSummary>;
-export type IdMappingWorkflowsSupported = Array<_opaque_Document>;
+export type IdMappingWorkflowsSupported = Array<unknown>;
 export interface IdNamespaceAssociation {
   id: string;
   arn: string;
@@ -1127,7 +1127,7 @@ export interface IdNamespaceAssociationInputReferenceConfig {
 }
 export interface IdNamespaceAssociationInputReferenceProperties {
   idNamespaceType: IdNamespaceType;
-  idMappingWorkflowsSupported: Array<_opaque_Document>;
+  idMappingWorkflowsSupported: Array<unknown>;
 }
 export interface IdNamespaceAssociationInputReferencePropertiesSummary {
   idNamespaceType: IdNamespaceType;

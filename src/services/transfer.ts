@@ -898,7 +898,7 @@ export type FilePath = string;
 export type FilePaths = Array<string>;
 export type Fips = boolean;
 
-export type Function = string;
+export type TransferFunction = string;
 
 export type HomeDirectory = string;
 

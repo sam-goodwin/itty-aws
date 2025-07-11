@@ -1486,6 +1486,8 @@ export interface CreateTypedLinkFacetRequest {
   Facet: TypedLinkFacet;
 }
 export interface CreateTypedLinkFacetResponse {}
+export type ClouddirectoryDate = Date | string;
+
 export type DatetimeAttributeValue = Date | string;
 
 export interface DeleteDirectoryRequest {

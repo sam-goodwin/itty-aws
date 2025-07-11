@@ -568,6 +568,8 @@ export interface BatchGetQueryExecutionOutput {
   QueryExecutions?: Array<QueryExecution>;
   UnprocessedQueryExecutionIds?: Array<UnprocessedQueryExecutionId>;
 }
+export type AthenaBoolean = boolean;
+
 export type BoxedBoolean = boolean;
 
 export type BytesScannedCutoffValue = number;
@@ -795,6 +797,8 @@ export interface DataCatalogSummary {
 }
 export type DataCatalogSummaryList = Array<DataCatalogSummary>;
 export type DataCatalogType = "LAMBDA" | "GLUE" | "HIVE" | "FEDERATED";
+export type AthenaDate = Date | string;
+
 export interface Datum {
   VarCharValue?: string;
 }
@@ -1559,6 +1563,8 @@ export interface StopQueryExecutionInput {
   QueryExecutionId: string;
 }
 export interface StopQueryExecutionOutput {}
+export type AthenaString = string;
+
 export type StringList = Array<string>;
 export type SupportedDPUSizeList = Array<number>;
 export interface TableMetadata {

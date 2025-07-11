@@ -765,6 +765,8 @@ export interface AccountAssignmentOperationStatusMetadata {
 export type AccountId = string;
 
 export type AccountList = Array<string>;
+export type ActorPolicyDocument = unknown;
+
 export interface Application {
   ApplicationArn?: string;
   ApplicationProviderArn?: string;
@@ -923,6 +925,8 @@ export interface CustomerManagedPolicyReference {
 }
 export type CustomerManagedPolicyReferenceList =
   Array<CustomerManagedPolicyReference>;
+export type SsoAdminDate = Date | string;
+
 export interface DeleteAccountAssignmentRequest {
   InstanceArn: string;
   TargetId: string;
@@ -1152,7 +1156,7 @@ export type GrantType =
   | "JWT_BEARER"
   | "TOKEN_EXCHANGE";
 export interface IamAuthenticationMethod {
-  ActorPolicy: ActorPolicyDocument;
+  ActorPolicy: unknown;
 }
 export type IconUrl = string;
 

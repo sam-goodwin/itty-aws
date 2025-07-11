@@ -235,6 +235,8 @@ export interface AttemptTaskContainerDetails {
   logStreamName?: string;
   networkInterfaces?: Array<NetworkInterface>;
 }
+export type BatchBoolean = boolean;
+
 export interface CancelJobRequest {
   jobId: string;
   reason: string;
@@ -1172,6 +1174,8 @@ export interface ShareAttributes {
   weightFactor?: number;
 }
 export type ShareAttributesList = Array<ShareAttributes>;
+export type BatchString = string;
+
 export type StringList = Array<string>;
 export interface SubmitJobRequest {
   jobName: string;

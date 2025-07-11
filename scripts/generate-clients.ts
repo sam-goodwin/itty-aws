@@ -18,6 +18,36 @@ const toTypescriptIdentifier = (name: string): string => {
   return name.replace(/[^a-zA-Z0-9]/g, "");
 };
 
+// Helper to check if a type name conflicts with built-in TypeScript types
+const getTypescriptSafeName = (shapeName: string, servicePrefix: string): string => {
+  // List of names that conflict with global TypeScript types and reserved words
+  const conflictingNames = new Set([
+    // Capitalized built-in types
+    "Date", "String", "Number", "Boolean", "Record", "Array", "Object", 
+    "Promise", "Function", "Error", "RegExp", "Map", "Set", "Symbol",
+    "Uint8Array", "DataView", "ArrayBuffer", "JSON", "Math", "Console",
+    // Lowercase primitive types and reserved words
+    "string", "number", "boolean", "object", "undefined", "null", "void",
+    "any", "unknown", "never", "bigint", "symbol",
+    // TypeScript keywords
+    "type", "interface", "enum", "class", "function", "var", "let", "const",
+    "import", "export", "default", "namespace", "module", "declare",
+    "abstract", "async", "await", "break", "case", "catch", "continue",
+    "debugger", "delete", "do", "else", "finally", "for", "if", "in",
+    "instanceof", "new", "return", "super", "switch", "this", "throw",
+    "try", "typeof", "while", "with", "yield",
+    // Browser/Node globals that could conflict
+    "document", "window", "global", "process", "Buffer", "console"
+  ]);
+  
+  if (conflictingNames.has(shapeName)) {
+    // Prefix with service name to avoid conflicts
+    return `${servicePrefix}${shapeName}`;
+  }
+  
+  return shapeName;
+};
+
 // Helper to convert to lowerCamelCase
 const toLowerCamelCase = (name: string): string => {
   return name.charAt(0).toLowerCase() + name.slice(1);
@@ -44,13 +74,15 @@ const mapSmithyTypeToTypeScript = (shape: Shape, shapeName: string): string => {
       return "Date | string";
     case "blob":
       return "Uint8Array | string";
+    case "document":
+      return "unknown";
     default:
       return `_opaque_${shapeName}`;
   }
 };
 
 // Helper to generate type reference from shape target
-const generateTypeReference = (target: string, manifest: Manifest): string => {
+const generateTypeReference = (target: string, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
   // Handle special Smithy built-in types
   if (target === "smithy.api#Unit") {
     return "{}";
@@ -60,10 +92,10 @@ const generateTypeReference = (target: string, manifest: Manifest): string => {
   if (target === "smithy.api#String") {
     return "string";
   }
-  if (target === "smithy.api#Boolean") {
+  if (target === "smithy.api#Boolean" || target === "smithy.api#PrimitiveBoolean") {
     return "boolean";
   }
-  if (target === "smithy.api#Integer" || target === "smithy.api#Long" || 
+  if (target === "smithy.api#Integer" || target === "smithy.api#Long" || target === "smithy.api#PrimitiveLong" ||
       target === "smithy.api#Float" || target === "smithy.api#Double") {
     return "number";
   }
@@ -73,15 +105,34 @@ const generateTypeReference = (target: string, manifest: Manifest): string => {
   if (target === "smithy.api#Blob") {
     return "Uint8Array | string";
   }
+  if (target === "smithy.api#Document") {
+    return "unknown";
+  }
   
   // Check if target exists in manifest shapes
   const targetShape = manifest.shapes[target];
   if (!targetShape) {
-    // If shape doesn't exist, return opaque type
-    return `_opaque_${extractShapeName(target)}`;
+    // Check if it's a cross-service reference
+    if (target.startsWith("com.amazonaws.") && target.includes("#")) {
+      const [serviceNamespace, typeName] = target.split("#");
+      const serviceName = serviceNamespace.replace("com.amazonaws.", "");
+      
+      // Add to cross-service imports if provided
+      if (crossServiceImports) {
+        crossServiceImports.add(serviceName);
+      }
+      
+      return typeName;
+    }
+    
+    // If shape doesn't exist and it's not a recognized cross-service reference, this is an error
+    throw new Error(`Cannot resolve type reference: ${target}`);
   }
 
   const shapeName = extractShapeName(target);
+  
+  // Check if we have a renamed version of this type
+  const finalTypeName = typeNameMapping?.get(shapeName) || shapeName;
   
   switch (targetShape.type) {
     case "string":
@@ -92,26 +143,27 @@ const generateTypeReference = (target: string, manifest: Manifest): string => {
     case "boolean":
     case "timestamp":
     case "blob":
+    case "document":
       return mapSmithyTypeToTypeScript(targetShape, shapeName);
     case "list":
       if (targetShape.member) {
-        const memberType = generateTypeReference(targetShape.member.target, manifest);
+        const memberType = generateTypeReference(targetShape.member.target, manifest, crossServiceImports, typeNameMapping);
         return `Array<${memberType}>`;
       }
       return `Array<unknown>`;
     case "map":
       if (targetShape.key && targetShape.value) {
-        const keyType = generateTypeReference(targetShape.key.target, manifest);
-        const valueType = generateTypeReference(targetShape.value.target, manifest);
+        const keyType = generateTypeReference(targetShape.key.target, manifest, crossServiceImports, typeNameMapping);
+        const valueType = generateTypeReference(targetShape.value.target, manifest, crossServiceImports, typeNameMapping);
         return `Record<${keyType}, ${valueType}>`;
       }
       return `Record<string, unknown>`;
     case "structure":
     case "union":
     case "enum":
-      return shapeName;
+      return finalTypeName;
     default:
-      return shapeName;
+      return finalTypeName;
   }
 };
 
@@ -136,7 +188,7 @@ const getDocumentation = (traits: Record<string, any> | undefined): string | und
 };
 
 // Helper to generate error class (declare class extending EffectData.TaggedError)
-const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifest): string => {
+const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
   const doc = getDocumentation(shape.traits);
   let code = "";
   
@@ -152,7 +204,7 @@ const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifes
   if (shape.members) {
     for (const [memberName, member] of Object.entries(shape.members)) {
       const memberInfo = member as any;
-      const fieldType = generateTypeReference(memberInfo.target, manifest);
+      const fieldType = generateTypeReference(memberInfo.target, manifest, crossServiceImports, typeNameMapping);
       const optional = !isRequired(memberInfo.traits);
       const memberDoc = getDocumentation(memberInfo.traits);
       
@@ -169,7 +221,7 @@ const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifes
 };
 
 // Helper to generate structure interface
-const generateStructureInterface = (name: string, shape: Extract<Shape, { type: "structure" }>, manifest: Manifest): string => {
+const generateStructureInterface = (name: string, shape: Extract<Shape, { type: "structure" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
@@ -183,7 +235,7 @@ const generateStructureInterface = (name: string, shape: Extract<Shape, { type: 
       }
       const isRequiredField = isRequired(member.traits);
       const questionMark = isRequiredField ? "" : "?";
-      const fieldType = generateTypeReference(member.target, manifest);
+      const fieldType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
       code += `  ${memberName}${questionMark}: ${fieldType};\n`;
     }
   }
@@ -193,13 +245,13 @@ const generateStructureInterface = (name: string, shape: Extract<Shape, { type: 
 };
 
 // Helper to generate union type
-const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }>, manifest: Manifest): string => {
+const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
   if (shape.members) {
     const variants = Object.entries(shape.members).map(([memberName, member]) => {
-      const memberType = generateTypeReference(member.target, manifest);
+      const memberType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
       return `{ ${memberName}: ${memberType} }`;
     });
     code += `export type ${name} = ${variants.join(" | ")};`;
@@ -226,12 +278,12 @@ const generateEnumType = (name: string, shape: Extract<Shape, { type: "enum" }>,
 };
 
 // Helper to generate list type
-const generateListType = (name: string, shape: Extract<Shape, { type: "list" }>, manifest: Manifest): string => {
+const generateListType = (name: string, shape: Extract<Shape, { type: "list" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
   if (shape.member) {
-    const memberType = generateTypeReference(shape.member.target, manifest);
+    const memberType = generateTypeReference(shape.member.target, manifest, crossServiceImports, typeNameMapping);
     code += `export type ${name} = Array<${memberType}>;`;
   } else {
     code += `export type ${name} = Array<unknown>;`;
@@ -241,13 +293,13 @@ const generateListType = (name: string, shape: Extract<Shape, { type: "list" }>,
 };
 
 // Helper to generate map type
-const generateMapType = (name: string, shape: Extract<Shape, { type: "map" }>, manifest: Manifest): string => {
+const generateMapType = (name: string, shape: Extract<Shape, { type: "map" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
   if (shape.key && shape.value) {
-    const keyType = generateTypeReference(shape.key.target, manifest);
-    const valueType = generateTypeReference(shape.value.target, manifest);
+    const keyType = generateTypeReference(shape.key.target, manifest, crossServiceImports, typeNameMapping);
+    const valueType = generateTypeReference(shape.value.target, manifest, crossServiceImports, typeNameMapping);
     code += `export type ${name} = Record<${keyType}, ${valueType}>;`;
   } else {
     code += `export type ${name} = Record<string, unknown>;`;
@@ -264,6 +316,15 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     
     // Check if we need Data import (only if there are error classes)
     let needsDataImport = false;
+    
+    // Track cross-service imports needed
+    const crossServiceImports = new Set<string>();
+
+    // Create type name mapping for conflicting types
+    const typeNameMapping = new Map<string, string>();
+    const servicePrefix = serviceName.split('-').map(part => 
+      part.charAt(0).toUpperCase() + part.slice(1)
+    ).join('');
 
     // Find service shape and extract metadata
     const serviceShapeEntry = Object.entries(manifest.shapes).find(([, shape]) => shape.type === "service");
@@ -330,6 +391,54 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       }
     }
 
+    // First pass: Build type name mapping for conflicting types and track all type names
+    const allShapes = Object.entries(manifest.shapes)
+      .filter(([shapeId]) => shapeId.includes(`#`))
+      .sort(([a], [b]) => {
+        const aName = extractShapeName(a);
+        const bName = extractShapeName(b);
+        return aName.localeCompare(bName);
+      });
+
+    // Track all shape names to detect duplicates
+    const shapeNameCounts = new Map<string, number>();
+    
+    for (const [shapeId, shape] of allShapes) {
+      const shapeName = extractShapeName(shapeId);
+      
+      // Note: We no longer skip service-specific "Unit" types. Only smithy.api#Unit is mapped to `{}` at reference time.
+      
+      const currentCount = shapeNameCounts.get(shapeName) || 0;
+      shapeNameCounts.set(shapeName, currentCount + 1);
+      
+      const safeTypeName = getTypescriptSafeName(shapeName, servicePrefix);
+      if (safeTypeName !== shapeName) {
+        typeNameMapping.set(shapeName, safeTypeName);
+      }
+    }
+
+    // For duplicates, create unique names
+    const processedShapes = new Map<string, string>(); // shapeName -> first shapeId that uses it
+    
+    for (const [shapeId, shape] of allShapes) {
+      const shapeName = extractShapeName(shapeId);
+      
+      if (shapeName === "Unit") {
+        continue;
+      }
+      
+      if (shapeNameCounts.get(shapeName)! > 1) {
+        // This is a duplicate name, check if we've already processed one with this name
+        if (processedShapes.has(shapeName)) {
+          // Skip subsequent duplicates
+          continue;
+        } else {
+          // Mark this as the first one we're processing
+          processedShapes.set(shapeName, shapeId);
+        }
+      }
+    }
+
     // Generate imports
     let code = `import type { Effect${needsDataImport ? ", Data as EffectData" : ""} } from "effect";\n`;
     code += `import type { CommonAwsError } from "../error.ts";\n\n`;
@@ -342,9 +451,9 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       
       // Get input and output types
       const inputType = operation.shape.input ? 
-        (operation.shape.input.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.input.target)) : "{}";
+        (operation.shape.input.target === "smithy.api#Unit" ? "{}" : typeNameMapping.get(extractShapeName(operation.shape.input.target)) || extractShapeName(operation.shape.input.target)) : "{}";
       const outputType = operation.shape.output ? 
-        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "{}";
+        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : typeNameMapping.get(extractShapeName(operation.shape.output.target)) || extractShapeName(operation.shape.output.target)) : "{}";
       
       // Check if output is void
       if (!operation.shape.output || operation.shape.output.target === "smithy.api#Unit") {
@@ -353,7 +462,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       
       // Generate error union type
       const errors = operation.shape.errors || [];
-      const errorTypes = errors.map(error => extractShapeName(error.target));
+      const errorTypes = errors.map(error => typeNameMapping.get(extractShapeName(error.target)) || extractShapeName(error.target));
       errorTypes.push("CommonAwsError");
       
       const errorUnion = errorTypes.length > 1 ? errorTypes.join(" | ") : errorTypes[0];
@@ -372,52 +481,59 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     // Add simplified service interface alias for easier use (only if different from service shape name)
     const simpleServiceName = serviceName === "dynamodb" ? "DynamoDB" : 
       serviceName.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
-    if (simpleServiceName !== serviceShapeName) {
+    if (
+      simpleServiceName !== serviceShapeName &&
+      !shapeNameCounts.has(simpleServiceName)
+    ) {
       code += `export type ${simpleServiceName} = ${serviceShapeName};\n\n`;
     }
 
-    // Sort shapes by type for better organization
-    const allShapes = Object.entries(manifest.shapes)
-      .filter(([shapeId]) => shapeId.includes(`#`))
-      .sort(([a], [b]) => {
-        const aName = extractShapeName(a);
-        const bName = extractShapeName(b);
-        return aName.localeCompare(bName);
-      });
+    // Track generated type names to avoid duplicates
+    const generatedTypes = new Set<string>();
 
     // Generate type aliases, enums, and interfaces
     for (const [shapeId, shape] of allShapes) {
       const shapeName = extractShapeName(shapeId);
+      const finalTypeName = typeNameMapping.get(shapeName) || shapeName;
       
-      // Skip generating Unit type - always use {} instead
-      if (shapeName === "Unit") {
+      // We allow service-specific "Unit" types; built-in smithy.api#Unit is handled at reference level.
+      
+      // Skip duplicates - only process if this is the first occurrence we marked
+      if (shapeNameCounts.get(shapeName)! > 1 && processedShapes.get(shapeName) !== shapeId) {
         continue;
       }
+      
+      // Skip if already generated
+      if (generatedTypes.has(finalTypeName)) {
+        continue;
+      }
+      
+      generatedTypes.add(finalTypeName);
       
       switch (shape.type) {
         case "structure":
           // Check if it's an exception/error
           if (shape.traits && "smithy.api#error" in shape.traits) {
-            code += generateErrorInterface(shapeName, shape, manifest);
+            code += generateErrorInterface(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
           } else {
-            code += generateStructureInterface(shapeName, shape, manifest);
+            code += generateStructureInterface(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
           }
           code += "\n";
           break;
         case "union":
-          code += generateUnionType(shapeName, shape, manifest);
+          code += generateUnionType(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
           code += "\n";
           break;
         case "enum":
-          code += generateEnumType(shapeName, shape, manifest);
+          code += generateEnumType(finalTypeName, shape, manifest);
           code += "\n";
           break;
         case "list":
-          code += generateListType(shapeName, shape, manifest);
+          code += generateListType(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
           code += "\n";
           break;
         case "map":
-          code += generateMapType(shapeName, shape, manifest);
+          code += generateMapType(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
           code += "\n";
           break;
         case "string":
@@ -428,20 +544,14 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         case "boolean":
         case "timestamp":
         case "blob":
+        case "document":
           // Generate type alias for simple types that might have traits/constraints
-          // Skip generating aliases for types that conflict with global types (both capitalized and lowercase)
-          if (shapeName === "Date" || shapeName === "String" || shapeName === "Number" || shapeName === "Boolean" ||
-              shapeName === "date" || shapeName === "string" || shapeName === "number" || shapeName === "boolean") {
-            // Skip generating these to avoid conflicts with global types
-            break;
-          }
-          
           const baseType = mapSmithyTypeToTypeScript(shape, shapeName);
           const doc = getDocumentation(shape.traits);
           if (doc) {
             code += `${doc}\n`;
           }
-          code += `export type ${shapeName} = ${baseType};\n\n`;
+          code += `export type ${finalTypeName} = ${baseType};\n\n`;
           break;
       }
     }
@@ -450,13 +560,13 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     for (const operation of operations) {
       // Get input and output types
       const inputType = operation.shape.input ? 
-        (operation.shape.input.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.input.target)) : "{}";
+        (operation.shape.input.target === "smithy.api#Unit" ? "{}" : typeNameMapping.get(extractShapeName(operation.shape.input.target)) || extractShapeName(operation.shape.input.target)) : "{}";
       const outputType = operation.shape.output ? 
-        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "{}";
+        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : typeNameMapping.get(extractShapeName(operation.shape.output.target)) || extractShapeName(operation.shape.output.target)) : "{}";
       
       // Generate error union type
       const errors = operation.shape.errors || [];
-      const errorTypes = errors.map(error => extractShapeName(error.target));
+      const errorTypes = errors.map(error => typeNameMapping.get(extractShapeName(error.target)) || extractShapeName(error.target));
       errorTypes.push("CommonAwsError");
       
       const errorUnion = errorTypes.map(type => `    | ${type}`).join("\n");

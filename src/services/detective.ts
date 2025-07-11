@@ -357,6 +357,8 @@ export interface BatchGetMembershipDatasourcesResponse {
   MembershipDatasources?: Array<MembershipDatasources>;
   UnprocessedGraphs?: Array<UnprocessedGraph>;
 }
+export type DetectiveBoolean = boolean;
+
 export type ByteValue = number;
 
 export declare class ConflictException extends EffectData.TaggedError(

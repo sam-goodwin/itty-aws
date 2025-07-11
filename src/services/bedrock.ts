@@ -771,11 +771,10 @@ export type AccountId = string;
 
 export type AcknowledgementFormDataBody = Uint8Array | string;
 
-export type AdditionalModelRequestFields = Record<
-  string,
-  AdditionalModelRequestFieldsValue
->;
+export type AdditionalModelRequestFields = Record<string, unknown>;
 export type AdditionalModelRequestFieldsKey = string;
+
+export type AdditionalModelRequestFieldsValue = unknown;
 
 export interface AgreementAvailability {
   status: AgreementStatus;
@@ -1260,10 +1259,7 @@ export interface ExternalSourcesGenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   kbInferenceConfig?: KbInferenceConfig;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
 }
 export interface ExternalSourcesRetrieveAndGenerateConfiguration {
   modelArn: string;
@@ -1277,9 +1273,11 @@ export interface FieldForReranking {
 export type FieldsForReranking = Array<FieldForReranking>;
 export interface FilterAttribute {
   key: string;
-  value: FilterValue;
+  value: unknown;
 }
 export type FilterKey = string;
+
+export type FilterValue = unknown;
 
 export type FineTuningJobStatus =
   | "IN_PROGRESS"
@@ -1322,10 +1320,7 @@ export interface GenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   kbInferenceConfig?: KbInferenceConfig;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
 }
 export interface GetCustomModelRequest {
   modelIdentifier: string;
@@ -2747,10 +2742,7 @@ export interface VectorSearchBedrockRerankingConfiguration {
 }
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
 }
 export interface VectorSearchRerankingConfiguration {
   type: VectorSearchRerankingConfigurationType;

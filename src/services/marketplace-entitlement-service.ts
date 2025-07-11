@@ -15,6 +15,8 @@ export interface AWSMPEntitlementService {
 
 export type MarketplaceEntitlementService = AWSMPEntitlementService;
 
+export type MarketplaceEntitlementServiceBoolean = boolean;
+
 export type Double = number;
 
 export interface Entitlement {
@@ -72,6 +74,8 @@ export type NonEmptyString = string;
 export type PageSizeInteger = number;
 
 export type ProductCode = string;
+
+export type MarketplaceEntitlementServiceString = string;
 
 export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",

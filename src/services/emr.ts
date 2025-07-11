@@ -410,6 +410,8 @@ export interface BlockPublicAccessConfigurationMetadata {
   CreationDateTime: Date | string;
   CreatedByArn: string;
 }
+export type EmrBoolean = boolean;
+
 export type BooleanObject = boolean;
 
 export interface BootstrapActionConfig {
@@ -602,6 +604,8 @@ export interface CreateStudioSessionMappingInput {
   SessionPolicyArn: string;
 }
 export type Credentials = { UsernamePassword: UsernamePassword };
+export type EmrDate = Date | string;
+
 export interface DeleteSecurityConfigurationInput {
   Name: string;
 }
@@ -1707,6 +1711,8 @@ export interface StepTimeline {
 export interface StopNotebookExecutionInput {
   NotebookExecutionId: string;
 }
+export type EmrString = string;
+
 export type StringList = Array<string>;
 export type StringMap = Record<string, string>;
 export interface Studio {
@@ -1772,6 +1778,34 @@ export interface TerminateJobFlowsInput {
 }
 export type ThroughputVal = number;
 
+export type Unit =
+  | "NONE"
+  | "SECONDS"
+  | "MICRO_SECONDS"
+  | "MILLI_SECONDS"
+  | "BYTES"
+  | "KILO_BYTES"
+  | "MEGA_BYTES"
+  | "GIGA_BYTES"
+  | "TERA_BYTES"
+  | "BITS"
+  | "KILO_BITS"
+  | "MEGA_BITS"
+  | "GIGA_BITS"
+  | "TERA_BITS"
+  | "PERCENT"
+  | "COUNT"
+  | "BYTES_PER_SECOND"
+  | "KILO_BYTES_PER_SECOND"
+  | "MEGA_BYTES_PER_SECOND"
+  | "GIGA_BYTES_PER_SECOND"
+  | "TERA_BYTES_PER_SECOND"
+  | "BITS_PER_SECOND"
+  | "KILO_BITS_PER_SECOND"
+  | "MEGA_BITS_PER_SECOND"
+  | "GIGA_BITS_PER_SECOND"
+  | "TERA_BITS_PER_SECOND"
+  | "COUNT_PER_SECOND";
 export interface UpdateStudioInput {
   StudioId: string;
   Name?: string;

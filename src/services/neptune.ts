@@ -667,6 +667,8 @@ export interface AvailabilityZone {
 }
 export type AvailabilityZoneList = Array<AvailabilityZone>;
 export type AvailabilityZones = Array<string>;
+export type NeptuneBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export declare class CertificateNotFoundFault extends EffectData.TaggedError(
@@ -2136,6 +2138,8 @@ export declare class StorageTypeNotSupportedFault extends EffectData.TaggedError
 )<{
   readonly message?: string;
 }> {}
+export type NeptuneString = string;
+
 export type StringList = Array<string>;
 export interface Subnet {
   SubnetIdentifier?: string;

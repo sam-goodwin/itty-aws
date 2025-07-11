@@ -449,6 +449,8 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
 }> {}
 export type SessionDurationInMinutes = number;
 
+export type IvschatString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

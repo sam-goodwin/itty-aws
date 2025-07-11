@@ -994,6 +994,8 @@ export interface BatchStartRecommendationsRequest {
 export interface BatchStartRecommendationsResponse {
   ErrorEntries?: Array<BatchStartRecommendationsErrorEntry>;
 }
+export type DatabaseMigrationServiceBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export interface CancelReplicationTaskAssessmentRunMessage {
@@ -3328,6 +3330,8 @@ export declare class StorageQuotaExceededFault extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+export type DatabaseMigrationServiceString = string;
+
 export type StringList = Array<string>;
 export interface Subnet {
   SubnetIdentifier?: string;

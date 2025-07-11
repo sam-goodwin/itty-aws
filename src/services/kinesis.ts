@@ -543,7 +543,7 @@ export interface GetRecordsInput {
 export type GetRecordsInputLimit = number;
 
 export interface GetRecordsOutput {
-  Records: Array<Record>;
+  Records: Array<KinesisRecord>;
   NextShardIterator?: string;
   MillisBehindLatest?: number;
   ChildShards?: Array<ChildShard>;
@@ -756,14 +756,14 @@ export interface PutResourcePolicyInput {
   ResourceARN: string;
   Policy: string;
 }
-export interface Record {
+export interface KinesisRecord {
   SequenceNumber: string;
   ApproximateArrivalTimestamp?: Date | string;
   Data: Uint8Array | string;
   PartitionKey: string;
   EncryptionType?: EncryptionType;
 }
-export type RecordList = Array<Record>;
+export type RecordList = Array<KinesisRecord>;
 export interface RegisterStreamConsumerInput {
   StreamARN: string;
   ConsumerName: string;
@@ -899,7 +899,7 @@ export interface StreamSummary {
 }
 export type StreamSummaryList = Array<StreamSummary>;
 export interface SubscribeToShardEvent {
-  Records: Array<Record>;
+  Records: Array<KinesisRecord>;
   ContinuationSequenceNumber: string;
   MillisBehindLatest: number;
   ChildShards?: Array<ChildShard>;

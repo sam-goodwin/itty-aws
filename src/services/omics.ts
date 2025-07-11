@@ -397,7 +397,7 @@ export type CreationType = string;
 
 export interface DeleteAnnotationStoreRequest {
   name: string;
-  force?: _opaque_PrimitiveBoolean;
+  force?: boolean;
 }
 export interface DeleteAnnotationStoreResponse {
   status: string;
@@ -405,7 +405,7 @@ export interface DeleteAnnotationStoreResponse {
 export interface DeleteAnnotationStoreVersionsRequest {
   name: string;
   versions: Array<string>;
-  force?: _opaque_PrimitiveBoolean;
+  force?: boolean;
 }
 export interface DeleteAnnotationStoreVersionsResponse {
   errors?: Array<VersionDeleteError>;
@@ -444,7 +444,7 @@ export interface DeleteShareResponse {
 }
 export interface DeleteVariantStoreRequest {
   name: string;
-  force?: _opaque_PrimitiveBoolean;
+  force?: boolean;
 }
 export interface DeleteVariantStoreResponse {
   status: string;
@@ -760,7 +760,7 @@ export interface GetRunResponse {
   priority?: number;
   definition?: string;
   digest?: string;
-  parameters?: RunParameters;
+  parameters?: unknown;
   storageCapacity?: number;
   outputUri?: string;
   logLevel?: string;
@@ -1554,6 +1554,8 @@ export type RunName = string;
 
 export type RunOutputUri = string;
 
+export type RunParameters = unknown;
+
 export type RunRequestId = string;
 
 export type RunResourceDigest = string;
@@ -1772,7 +1774,7 @@ export interface StartRunRequest {
   cacheBehavior?: string;
   runGroupId?: string;
   priority?: number;
-  parameters?: RunParameters;
+  parameters?: unknown;
   storageCapacity?: number;
   outputUri?: string;
   logLevel?: string;

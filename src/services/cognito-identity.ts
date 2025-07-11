@@ -599,6 +599,8 @@ export interface SetPrincipalTagAttributeMapResponse {
   UseDefaults?: boolean;
   PrincipalTags?: Record<string, string>;
 }
+export type CognitoIdentityString = string;
+
 export type TagKeysType = string;
 
 export interface TagResourceInput {

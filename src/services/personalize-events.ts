@@ -67,6 +67,8 @@ export type ActionInteractionsList = Array<ActionInteraction>;
 export type ActionList = Array<Action>;
 export type Arn = string;
 
+export type PersonalizeEventsDate = Date | string;
+
 export type ErrorMessage = string;
 
 export interface Event {

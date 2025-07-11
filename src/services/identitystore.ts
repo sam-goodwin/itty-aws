@@ -58,10 +58,12 @@ export type AlternateIdentifier =
   | { UniqueAttribute: UniqueAttribute };
 export interface AttributeOperation {
   AttributePath: string;
-  AttributeValue?: AttributeValue;
+  AttributeValue?: unknown;
 }
 export type AttributeOperations = Array<AttributeOperation>;
 export type AttributePath = string;
+
+export type AttributeValue = unknown;
 
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
@@ -351,7 +353,7 @@ export declare class ThrottlingException extends EffectData.TaggedError(
 }> {}
 export interface UniqueAttribute {
   AttributePath: string;
-  AttributeValue: AttributeValue;
+  AttributeValue: unknown;
 }
 export interface UpdateGroupRequest {
   IdentityStoreId: string;

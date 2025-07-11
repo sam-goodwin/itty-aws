@@ -283,6 +283,8 @@ export interface BonusPayment {
   GrantTime?: Date | string;
 }
 export type BonusPaymentList = Array<BonusPayment>;
+export type MturkBoolean = boolean;
+
 export type Comparator =
   | "LessThan"
   | "LessThanOrEqualTo"
@@ -769,6 +771,8 @@ export declare class ServiceFault extends EffectData.TaggedError(
   readonly Message?: string;
   readonly TurkErrorCode?: string;
 }> {}
+export type MturkString = string;
+
 export type StringList = Array<string>;
 export type Timestamp = Date | string;
 

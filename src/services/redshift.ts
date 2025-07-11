@@ -1461,6 +1461,8 @@ export interface BatchModifyClusterSnapshotsOutputMessage {
 }
 export type BatchSnapshotOperationErrorList = Array<SnapshotErrorMessage>;
 export type BatchSnapshotOperationErrors = Array<SnapshotErrorMessage>;
+export type RedshiftBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export declare class BucketNotFoundFault extends EffectData.TaggedError(
@@ -3939,6 +3941,8 @@ export type SourceType =
   | "cluster_security_group"
   | "cluster_snapshot"
   | "scheduled_action";
+export type RedshiftString = string;
+
 export interface Subnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: AvailabilityZone;

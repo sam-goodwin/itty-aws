@@ -862,6 +862,8 @@ export type Blob = Uint8Array | string;
 
 export type BlobStream = Uint8Array | string;
 
+export type LambdaBoolean = boolean;
+
 export interface CodeSigningConfig {
   CodeSigningConfigId: string;
   CodeSigningConfigArn: string;
@@ -999,6 +1001,8 @@ export interface CreateFunctionUrlConfigResponse {
   InvokeMode?: InvokeMode;
 }
 export type DatabaseName = string;
+
+export type LambdaDate = Date | string;
 
 export interface DeadLetterConfig {
   TargetArn?: string;
@@ -2162,6 +2166,8 @@ export type StateReasonCode =
   | "InvalidRuntime"
   | "InvalidZipFileException"
   | "FunctionError";
+export type LambdaString = string;
+
 export type StringList = Array<string>;
 export type SubnetId = string;
 

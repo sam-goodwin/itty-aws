@@ -1793,6 +1793,8 @@ export declare class BatchTooLarge extends EffectData.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
+export type Cloudfrontboolean = boolean;
+
 export interface CacheBehavior {
   PathPattern: string;
   TargetOriginId: string;
@@ -4303,6 +4305,8 @@ export interface StreamingLoggingConfig {
   Bucket: string;
   Prefix: string;
 }
+export type Cloudfrontstring = string;
+
 export interface StringSchemaConfig {
   Comment?: string;
   DefaultValue?: string;

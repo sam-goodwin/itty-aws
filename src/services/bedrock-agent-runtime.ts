@@ -441,11 +441,10 @@ export type ActionInvocationType =
   | "RESULT"
   | "USER_CONFIRMATION"
   | "USER_CONFIRMATION_AND_RESULT";
-export type AdditionalModelRequestFields = Record<
-  string,
-  AdditionalModelRequestFieldsValue
->;
+export type AdditionalModelRequestFields = Record<string, unknown>;
 export type AdditionalModelRequestFieldsKey = string;
+
+export type AdditionalModelRequestFieldsValue = unknown;
 
 export interface AgentActionGroup {
   actionGroupName: string;
@@ -555,10 +554,7 @@ export type BedrockRerankingModelArn = string;
 
 export interface BedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
 }
 export type BedrockSessionContentBlock =
   | { text: string }
@@ -716,10 +712,7 @@ export interface ExternalSourcesGenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   inferenceConfig?: InferenceConfig;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
   performanceConfig?: PerformanceConfiguration;
 }
 export interface ExternalSourcesRetrieveAndGenerateConfiguration {
@@ -755,9 +748,11 @@ export type FileSourceType = "S3" | "BYTE_CONTENT";
 export type FileUseCase = "CODE_INTERPRETER" | "CHAT";
 export interface FilterAttribute {
   key: string;
-  value: FilterValue;
+  value: unknown;
 }
 export type FilterKey = string;
+
+export type FilterValue = unknown;
 
 export interface FinalResponse {
   text?: string;
@@ -775,7 +770,7 @@ export type FlowErrorCode =
   | "VALIDATION"
   | "INTERNAL_SERVER"
   | "NODE_EXECUTION_FAILED";
-export type FlowExecutionContent = { document: _opaque_Document };
+export type FlowExecutionContent = { document: unknown };
 export interface FlowExecutionError {
   nodeName?: string;
   error?: FlowExecutionErrorType;
@@ -840,20 +835,20 @@ export interface FlowInput {
   content: FlowInputContent;
   nodeInputName?: string;
 }
-export type FlowInputContent = { document: _opaque_Document };
+export type FlowInputContent = { document: unknown };
 export interface FlowInputField {
   name: string;
   content: FlowExecutionContent;
 }
 export type FlowInputFields = Array<FlowInputField>;
 export type FlowInputs = Array<FlowInput>;
-export type FlowMultiTurnInputContent = { document: _opaque_Document };
+export type FlowMultiTurnInputContent = { document: unknown };
 export interface FlowMultiTurnInputRequestEvent {
   nodeName: string;
   nodeType: NodeType;
   content: FlowMultiTurnInputContent;
 }
-export type FlowOutputContent = { document: _opaque_Document };
+export type FlowOutputContent = { document: unknown };
 export interface FlowOutputEvent {
   nodeName: string;
   nodeType: NodeType;
@@ -902,7 +897,7 @@ export interface FlowTraceNodeActionEvent {
   serviceName: string;
   operationName: string;
 }
-export type FlowTraceNodeInputContent = { document: _opaque_Document };
+export type FlowTraceNodeInputContent = { document: unknown };
 export interface FlowTraceNodeInputEvent {
   nodeName: string;
   timestamp: Date | string;
@@ -913,7 +908,7 @@ export interface FlowTraceNodeInputField {
   content: FlowTraceNodeInputContent;
 }
 export type FlowTraceNodeInputFields = Array<FlowTraceNodeInputField>;
-export type FlowTraceNodeOutputContent = { document: _opaque_Document };
+export type FlowTraceNodeOutputContent = { document: unknown };
 export interface FlowTraceNodeOutputEvent {
   nodeName: string;
   timestamp: Date | string;
@@ -924,7 +919,7 @@ export interface FlowTraceNodeOutputField {
   content: FlowTraceNodeOutputContent;
 }
 export type FlowTraceNodeOutputFields = Array<FlowTraceNodeOutputField>;
-export type Function = string;
+export type BedrockAgentRuntimeFunction = string;
 
 export interface FunctionDefinition {
   name: string;
@@ -978,10 +973,7 @@ export interface GenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   inferenceConfig?: InferenceConfig;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
   performanceConfig?: PerformanceConfiguration;
 }
 export interface GetAgentMemoryRequest {
@@ -1414,7 +1406,7 @@ export interface KnowledgeBaseRetrievalResult {
   content: RetrievalResultContent;
   location?: RetrievalResultLocation;
   score?: number;
-  metadata?: Record<string, RetrievalResultMetadataValue>;
+  metadata?: Record<string, unknown>;
 }
 export type KnowledgeBaseRetrievalResults = Array<KnowledgeBaseRetrievalResult>;
 export interface KnowledgeBaseRetrieveAndGenerateConfiguration {
@@ -1563,7 +1555,7 @@ export type NodeErrorCode =
   | "DEPENDENCY_FAILED"
   | "BAD_GATEWAY"
   | "INTERNAL_SERVER";
-export type NodeExecutionContent = { document: _opaque_Document };
+export type NodeExecutionContent = { document: unknown };
 export interface NodeFailureEvent {
   nodeName: string;
   timestamp: Date | string;
@@ -1639,10 +1631,7 @@ export interface OptimizePromptResponse {
 export interface OrchestrationConfiguration {
   promptTemplate?: PromptTemplate;
   inferenceConfig?: InferenceConfig;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
   queryTransformationConfiguration?: QueryTransformationConfiguration;
   performanceConfig?: PerformanceConfiguration;
 }
@@ -1739,7 +1728,7 @@ export interface PromptConfiguration {
   inferenceConfiguration?: InferenceConfiguration;
   parserMode?: CreationMode;
   foundationModel?: string;
-  additionalModelRequestFields?: _opaque_Document;
+  additionalModelRequestFields?: unknown;
 }
 export type PromptConfigurations = Array<PromptConfiguration>;
 export interface PromptCreationConfigurations {
@@ -1814,7 +1803,7 @@ export type RequireConfirmation = "ENABLED" | "DISABLED";
 export interface RerankDocument {
   type: RerankDocumentType;
   textDocument?: RerankTextDocument;
-  jsonDocument?: _opaque_Document;
+  jsonDocument?: unknown;
 }
 export type RerankDocumentType = "TEXT" | "JSON";
 export interface RerankingConfiguration {
@@ -1947,11 +1936,10 @@ export type RetrievalResultLocationType =
   | "CUSTOM"
   | "KENDRA"
   | "SQL";
-export type RetrievalResultMetadata = Record<
-  string,
-  RetrievalResultMetadataValue
->;
+export type RetrievalResultMetadata = Record<string, unknown>;
 export type RetrievalResultMetadataKey = string;
+
+export type RetrievalResultMetadataValue = unknown;
 
 export interface RetrievalResultS3Location {
   uri?: string;
@@ -2024,7 +2012,7 @@ export type RetrieveAndGenerateType = "KNOWLEDGE_BASE" | "EXTERNAL_SOURCES";
 export interface RetrievedReference {
   content?: RetrievalResultContent;
   location?: RetrievalResultLocation;
-  metadata?: Record<string, RetrievalResultMetadataValue>;
+  metadata?: Record<string, unknown>;
 }
 export type RetrievedReferences = Array<RetrievedReference>;
 export interface RetrieveRequest {
@@ -2264,10 +2252,7 @@ export interface VectorSearchBedrockRerankingConfiguration {
 }
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
 }
 export interface VectorSearchRerankingConfiguration {
   type: VectorSearchRerankingConfigurationType;

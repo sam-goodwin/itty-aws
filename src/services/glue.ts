@@ -3190,6 +3190,8 @@ export type Blueprints = Array<Blueprint>;
 export type BlueprintStatus = "CREATING" | "ACTIVE" | "UPDATING" | "FAILED";
 export type Bool = boolean;
 
+export type GlueBoolean = boolean;
+
 export interface BooleanColumnStatisticsData {
   NumberOfTrues: number;
   NumberOfFalses: number;
@@ -5636,7 +5638,7 @@ export interface GetEntityRecordsRequest {
   SelectedFields?: Array<string>;
 }
 export interface GetEntityRecordsResponse {
-  Records?: Array<Record>;
+  Records?: Array<unknown>;
   NextToken?: string;
 }
 export interface GetIntegrationResourcePropertyRequest {
@@ -6221,6 +6223,8 @@ export interface IcebergCompactionMetrics {
   NumberOfDpus?: number;
   JobDurationInHour?: number;
 }
+export type IcebergDocument = unknown;
+
 export interface IcebergInput {
   MetadataOperation: MetadataOperation;
   Version?: string;
@@ -6282,7 +6286,7 @@ export type IcebergSortOrderFieldList = Array<IcebergSortField>;
 export interface IcebergStructField {
   Id: number;
   Name: string;
-  Type: IcebergDocument;
+  Type: unknown;
   Required: boolean;
   Doc?: string;
 }
@@ -7668,7 +7672,9 @@ export interface RecipeStep {
 export type RecipeSteps = Array<RecipeStep>;
 export type RecipeVersion = string;
 
-export type Records = Array<Record>;
+export type GlueRecord = unknown;
+
+export type Records = Array<unknown>;
 export type RecordsCount = number;
 
 export type RecrawlBehavior =

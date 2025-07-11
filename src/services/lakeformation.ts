@@ -736,6 +736,8 @@ export interface BatchRevokePermissionsRequest {
 export interface BatchRevokePermissionsResponse {
   Failures?: Array<BatchPermissionsFailureEntry>;
 }
+export type LakeformationBoolean = boolean;
+
 export type BooleanNullable = boolean;
 
 export interface CancelTransactionRequest {

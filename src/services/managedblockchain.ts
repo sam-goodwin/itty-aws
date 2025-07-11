@@ -853,6 +853,8 @@ export declare class ResourceNotReadyException extends EffectData.TaggedError(
   readonly Message?: string;
 }> {}
 export type StateDBType = "LevelDB" | "CouchDB";
+export type ManagedblockchainString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

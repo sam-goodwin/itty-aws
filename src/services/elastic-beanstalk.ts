@@ -1281,6 +1281,8 @@ export interface StatusCodes {
   Status4xx?: number;
   Status5xx?: number;
 }
+export type ElasticBeanstalkString = string;
+
 export type SupportedAddon = string;
 
 export type SupportedAddonList = Array<string>;

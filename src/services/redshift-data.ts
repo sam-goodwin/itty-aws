@@ -424,6 +424,8 @@ export type StatementString = string;
 export type StatementStringList = Array<string>;
 export type StatusString = string;
 
+export type RedshiftDataString = string;
+
 export interface SubStatementData {
   Id: string;
   Duration?: number;

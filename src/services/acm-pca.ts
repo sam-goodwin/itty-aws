@@ -305,6 +305,8 @@ export type AWSPolicy = string;
 
 export type Base64String1To4096 = string;
 
+export type AcmPcaBoolean = boolean;
+
 export type CertificateAuthorities = Array<CertificateAuthority>;
 export interface CertificateAuthority {
   Arn?: string;
@@ -757,6 +759,8 @@ export type SigningAlgorithm =
   | "SHA384WITHRSA"
   | "SHA512WITHRSA"
   | "SM3WITHSM2";
+export type AcmPcaString = string;
+
 export type String128 = string;
 
 export type String16 = string;

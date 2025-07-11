@@ -977,6 +977,8 @@ export interface AssociateKmsKeyRequest {
 }
 export type Baseline = boolean;
 
+export type CloudwatchLogsBoolean = boolean;
+
 export interface CancelExportTaskRequest {
   taskId: string;
 }

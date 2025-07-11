@@ -648,6 +648,8 @@ export declare class BaseException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+export type ElasticsearchServiceBoolean = boolean;
+
 export interface CancelDomainConfigChangeRequest {
   DomainName: string;
   DryRun?: boolean;
@@ -1673,6 +1675,8 @@ export interface StorageTypeLimit {
 export type StorageTypeLimitList = Array<StorageTypeLimit>;
 export type StorageTypeList = Array<StorageType>;
 export type StorageTypeName = string;
+
+export type ElasticsearchServiceString = string;
 
 export type StringList = Array<string>;
 export interface Tag {

@@ -77,6 +77,8 @@ export interface StartConfigurationSessionRequest {
 export interface StartConfigurationSessionResponse {
   InitialConfigurationToken?: string;
 }
+export type AppconfigdataString = string;
+
 export type StringMap = Record<string, string>;
 export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",

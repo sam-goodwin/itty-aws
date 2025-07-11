@@ -316,6 +316,8 @@ export interface BatchGetTracesResult {
   UnprocessedTraceIds?: Array<string>;
   NextToken?: string;
 }
+export type XrayBoolean = boolean;
+
 export type BorrowCount = number;
 
 export interface CancelTraceRetrievalRequest {
@@ -1049,6 +1051,8 @@ export interface StartTraceRetrievalRequest {
 export interface StartTraceRetrievalResult {
   RetrievalToken?: string;
 }
+export type XrayString = string;
+
 export interface Tag {
   Key: string;
   Value: string;

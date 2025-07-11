@@ -365,6 +365,8 @@ export type AwsManagedTargetDestination = string;
 export type AwsManagedTargetDestinations = Array<string>;
 export type BinaryAnalyzerName = string;
 
+export type MigrationhubstrategyBoolean = boolean;
+
 export interface BusinessGoals {
   speedOfMigration?: number;
   reduceOperationalOverheadWithManagedServices?: number;
@@ -872,6 +874,8 @@ export interface StrategySummary {
   strategy?: string;
   count?: number;
 }
+export type MigrationhubstrategyString = string;
+
 export interface SystemInfo {
   osInfo?: OSInfo;
   fileSystemType?: string;

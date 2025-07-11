@@ -137,6 +137,8 @@ export declare class AccessDeniedException extends EffectData.TaggedError(
 export type AmazonResourceName = string;
 
 export type AuthorizationStrategy = "SMARTV1" | "SMART_ON_FHIR" | "AWS_AUTH";
+export type HealthlakeBoolean = boolean;
+
 export type BoundedLengthString = string;
 
 export type ClientTokenString = string;
@@ -401,6 +403,8 @@ export interface StartFHIRImportJobResponse {
   JobStatus: JobStatus;
   DatastoreId?: string;
 }
+export type HealthlakeString = string;
+
 export interface Tag {
   Key: string;
   Value: string;

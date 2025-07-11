@@ -766,6 +766,8 @@ export interface ResponseAction {
 }
 export type RoleArn = string;
 
+export type ShieldString = string;
+
 export interface SubResourceSummary {
   Type?: SubResourceType;
   Id?: string;
@@ -827,6 +829,7 @@ export type Timestamp = Date | string;
 export type Token = string;
 
 export type TopContributors = Array<Contributor>;
+export type Unit = "BITS" | "BYTES" | "PACKETS" | "REQUESTS";
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;

@@ -326,6 +326,8 @@ export interface BasicAuthCredentials {
   username: string;
   password: string;
 }
+export type AppflowBoolean = boolean;
+
 export type BucketName = string;
 
 export type BucketPrefix = string;
@@ -729,6 +731,8 @@ export interface DataTransferApi {
 }
 export type DataTransferApiType = "SYNC" | "ASYNC" | "AUTOMATIC";
 export type DataTransferApiTypeName = string;
+
+export type AppflowDate = Date | string;
 
 export type DatetimeTypeFieldName = string;
 
@@ -1222,7 +1226,7 @@ export interface OAuthProperties {
 export type OAuthScope = string;
 
 export type OAuthScopeList = Array<string>;
-export type Object = string;
+export type AppflowObject = string;
 
 export type ObjectTypeName = string;
 
@@ -1771,6 +1775,8 @@ export interface StopFlowResponse {
   flowArn?: string;
   flowStatus?: FlowStatus;
 }
+export type AppflowString = string;
+
 export interface SuccessResponseHandlingConfig {
   bucketPrefix?: string;
   bucketName?: string;

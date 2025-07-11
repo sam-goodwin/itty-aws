@@ -344,6 +344,8 @@ export declare class BaseException extends EffectData.TaggedError(
   readonly Code?: string;
   readonly Message?: string;
 }> {}
+export type CloudsearchBoolean = boolean;
+
 export interface BuildSuggestersRequest {
   DomainName: string;
 }
@@ -757,6 +759,8 @@ export type ServiceUrl = string;
 export type StandardName = string;
 
 export type StandardNameList = Array<string>;
+export type CloudsearchString = string;
+
 export interface Suggester {
   SuggesterName: string;
   DocumentSuggesterOptions: DocumentSuggesterOptions;

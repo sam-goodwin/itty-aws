@@ -830,6 +830,8 @@ export type ArtifactType =
 export type AWSAccountNumber = string;
 
 export type BillingMethod = "METERED" | "UNMETERED";
+export type DeviceFarmBoolean = boolean;
+
 export declare class CannotDeleteException extends EffectData.TaggedError(
   "CannotDeleteException",
 )<{
@@ -1853,6 +1855,8 @@ export interface StopRunRequest {
 export interface StopRunResult {
   run?: Run;
 }
+export type DeviceFarmString = string;
+
 export type SubnetId = string;
 
 export type SubnetIds = Array<string>;

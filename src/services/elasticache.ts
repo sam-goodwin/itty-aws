@@ -943,6 +943,8 @@ export interface BatchStopUpdateActionMessage {
   CacheClusterIds?: Array<string>;
   ServiceUpdateName: string;
 }
+export type ElasticacheBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export interface CacheCluster {
@@ -2554,6 +2556,8 @@ export interface StartMigrationMessage {
 export interface StartMigrationResponse {
   ReplicationGroup?: ReplicationGroup;
 }
+export type ElasticacheString = string;
+
 export interface Subnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: AvailabilityZone;

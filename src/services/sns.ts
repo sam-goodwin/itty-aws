@@ -527,6 +527,8 @@ export interface BatchResultErrorEntry {
 export type BatchResultErrorEntryList = Array<BatchResultErrorEntry>;
 export type Binary = Uint8Array | string;
 
+export type Snsboolean = boolean;
+
 export interface CheckIfPhoneNumberIsOptedOutInput {
   phoneNumber: string;
 }
@@ -954,6 +956,8 @@ export declare class StaleTagException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+export type SnsString = string;
+
 export type subject = string;
 
 export interface SubscribeInput {

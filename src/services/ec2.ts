@@ -3218,6 +3218,8 @@ export type BlockPublicAccessMode =
 export interface BlockPublicAccessStates {
   InternetGatewayBlockMode?: BlockPublicAccessMode;
 }
+export type Ec2Boolean = boolean;
+
 export type BootModeType = "legacy_bios" | "uefi";
 export type BootModeTypeList = Array<BootModeType>;
 export type BootModeValues = "legacy_bios" | "uefi" | "uefi_preferred";
@@ -17128,6 +17130,8 @@ export interface StoreImageTaskResult {
   StoreTaskFailureReason?: string;
 }
 export type StoreImageTaskResultSet = Array<StoreImageTaskResult>;
+export type Ec2String = string;
+
 export type StringList = Array<string>;
 export type StringType = string;
 

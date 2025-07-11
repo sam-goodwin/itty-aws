@@ -1036,6 +1036,8 @@ export interface BookingOptions {
   AutoDeclineRecurringRequests?: boolean;
   AutoDeclineConflictingRequests?: boolean;
 }
+export type WorkmailBoolean = boolean;
+
 export type BooleanObject = boolean;
 
 export interface CancelMailboxExportJobRequest {
@@ -2163,6 +2165,8 @@ export interface StartMailboxExportJobRequest {
 export interface StartMailboxExportJobResponse {
   JobId?: string;
 }
+export type WorkmailString = string;
+
 export interface Tag {
   Key: string;
   Value: string;

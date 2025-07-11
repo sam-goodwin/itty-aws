@@ -385,6 +385,8 @@ export interface AutoScalingConfigurationSummary {
 }
 export type AutoScalingConfigurationSummaryList =
   Array<AutoScalingConfigurationSummary>;
+export type ApprunnerBoolean = boolean;
+
 export type BuildCommand = string;
 
 export interface CertificateValidationRecord {
@@ -958,6 +960,8 @@ export interface StartDeploymentRequest {
 export interface StartDeploymentResponse {
   OperationId: string;
 }
+export type ApprunnerString = string;
+
 export type StringList = Array<string>;
 export interface Tag {
   Key?: string;

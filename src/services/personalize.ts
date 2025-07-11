@@ -687,6 +687,8 @@ export interface BatchSegmentJobSummary {
   failureReason?: string;
   solutionVersionArn?: string;
 }
+export type PersonalizeBoolean = boolean;
+
 export interface Campaign {
   name?: string;
   campaignArn?: string;
@@ -1044,6 +1046,8 @@ export interface DatasetUpdateSummary {
 export interface DataSource {
   dataLocation?: string;
 }
+export type PersonalizeDate = Date | string;
+
 export interface DefaultCategoricalHyperParameterRange {
   name?: string;
   values?: Array<string>;

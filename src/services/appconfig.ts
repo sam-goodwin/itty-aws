@@ -464,6 +464,8 @@ export declare class BadRequestException extends EffectData.TaggedError(
 export type BadRequestReason = "INVALID_CONFIGURATION";
 export type Blob = Uint8Array | string;
 
+export type AppconfigBoolean = boolean;
+
 export type BytesMeasure = "KILOBYTES";
 export interface Configuration {
   Content?: Uint8Array | string;
@@ -952,6 +954,8 @@ export interface StopDeploymentRequest {
   DeploymentNumber: number;
   AllowRevert?: boolean;
 }
+export type AppconfigString = string;
+
 export type StringWithLengthBetween0And32768 = string;
 
 export type StringWithLengthBetween1And2048 = string;

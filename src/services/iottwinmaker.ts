@@ -465,6 +465,8 @@ export interface BatchPutPropertyValuesRequest {
 export interface BatchPutPropertyValuesResponse {
   errorEntries: Array<BatchPutPropertyErrorEntry>;
 }
+export type IottwinmakerBoolean = boolean;
+
 export interface BundleInformation {
   bundleNames: Array<string>;
   pricingTier?: string;
@@ -1314,6 +1316,8 @@ export interface PropertyValueHistory {
 }
 export type PropertyValueList = Array<PropertyValueHistory>;
 export type PropertyValues = Array<PropertyValue>;
+export type QueryResultValue = unknown;
+
 export type QueryServiceMaxResults = number;
 
 export type QueryStatement = string;
@@ -1340,9 +1344,9 @@ export declare class ResourceNotFoundException extends EffectData.TaggedError(
 export type RoleArn = string;
 
 export interface Row {
-  rowData?: Array<QueryResultValue>;
+  rowData?: Array<unknown>;
 }
-export type RowData = Array<QueryResultValue>;
+export type RowData = Array<unknown>;
 export type Rows = Array<Row>;
 export interface S3DestinationConfiguration {
   location: string;
@@ -1404,6 +1408,8 @@ export interface Status {
   state?: string;
   error?: ErrorDetails;
 }
+export type IottwinmakerString = string;
+
 export type SyncJobState = string;
 
 export interface SyncJobStatus {

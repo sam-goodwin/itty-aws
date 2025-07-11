@@ -408,6 +408,8 @@ export type StandardTierRetainRuleInterval = number;
 
 export type StatusMessage = string;
 
+export type DlmString = string;
+
 export interface Tag {
   Key: string;
   Value: string;

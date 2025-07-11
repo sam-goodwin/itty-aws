@@ -1753,6 +1753,8 @@ export interface StepAdjustment {
   ScalingAdjustment: number;
 }
 export type StepAdjustments = Array<StepAdjustment>;
+export type AutoScalingString = string;
+
 export interface SuspendedProcess {
   ProcessName?: string;
   SuspensionReason?: string;

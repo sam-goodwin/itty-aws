@@ -965,6 +965,8 @@ export declare class BadRequestException extends EffectData.TaggedError(
 export type BadRequestReason = "CODE_ERROR";
 export type Blob = Uint8Array | string;
 
+export type AppsyncBoolean = boolean;
+
 export type BooleanValue = boolean;
 
 export type CacheHealthMetricsConfig = "ENABLED" | "DISABLED";
@@ -1232,6 +1234,8 @@ export type DataSourceType =
   | "AMAZON_OPENSEARCH_SERVICE"
   | "AMAZON_EVENTBRIDGE"
   | "AMAZON_BEDROCK_RUNTIME";
+export type AppsyncDate = Date | string;
+
 export type DefaultAction = "ALLOW" | "DENY";
 export interface DeleteApiCacheRequest {
   apiId: string;
@@ -1887,6 +1891,8 @@ export interface StartSchemaMergeResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
 export type Stash = string;
+
+export type AppsyncString = string;
 
 export interface SyncConfig {
   conflictHandler?: ConflictHandlerType;

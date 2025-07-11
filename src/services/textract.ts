@@ -1097,6 +1097,8 @@ export interface StartLendingAnalysisResponse {
 }
 export type StatusMessage = string;
 
+export type TextractString = string;
+
 export type StringList = Array<string>;
 export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults =
   string;

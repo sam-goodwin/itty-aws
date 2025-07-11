@@ -79,6 +79,8 @@ export declare class BadRequestException extends EffectData.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
+export type TranscribeStreamingBoolean = boolean;
+
 export type BucketName = string;
 
 export interface CallAnalyticsEntity {
@@ -615,6 +617,8 @@ export interface StartStreamTranscriptionResponse {
   VocabularyNames?: string;
   VocabularyFilterNames?: string;
 }
+export type TranscribeStreamingString = string;
+
 export type StringList = Array<string>;
 export interface TimestampRange {
   BeginOffsetMillis?: number;

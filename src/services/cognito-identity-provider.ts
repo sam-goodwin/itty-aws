@@ -2039,7 +2039,7 @@ export declare class CodeMismatchException extends EffectData.TaggedError(
 export type ColorSchemeModeType = "LIGHT" | "DARK" | "DYNAMIC";
 export interface CompleteWebAuthnRegistrationRequest {
   AccessToken: string;
-  Credential: Document;
+  Credential: unknown;
 }
 export interface CompleteWebAuthnRegistrationResponse {}
 export type CompletionMessageType = string;
@@ -2126,7 +2126,7 @@ export interface CreateManagedLoginBrandingRequest {
   UserPoolId: string;
   ClientId: string;
   UseCognitoProvidedValues?: boolean;
-  Settings?: Document;
+  Settings?: unknown;
   Assets?: Array<AssetType>;
 }
 export interface CreateManagedLoginBrandingResponse {
@@ -2374,6 +2374,8 @@ export interface DeviceType {
   DeviceLastModifiedDate?: Date | string;
   DeviceLastAuthenticatedDate?: Date | string;
 }
+export type Document = unknown;
+
 export interface DomainDescriptionType {
   UserPoolId?: string;
   AWSAccountId?: string;
@@ -2885,7 +2887,7 @@ export interface ManagedLoginBrandingType {
   ManagedLoginBrandingId?: string;
   UserPoolId?: string;
   UseCognitoProvidedValues?: boolean;
-  Settings?: Document;
+  Settings?: unknown;
   Assets?: Array<AssetType>;
   CreationDate?: Date | string;
   LastModifiedDate?: Date | string;
@@ -3258,7 +3260,7 @@ export interface StartWebAuthnRegistrationRequest {
   AccessToken: string;
 }
 export interface StartWebAuthnRegistrationResponse {
-  CredentialCreationOptions: Document;
+  CredentialCreationOptions: unknown;
 }
 export type StatusType = "Enabled" | "Disabled";
 export interface StopUserImportJobRequest {
@@ -3391,7 +3393,7 @@ export interface UpdateManagedLoginBrandingRequest {
   UserPoolId?: string;
   ManagedLoginBrandingId?: string;
   UseCognitoProvidedValues?: boolean;
-  Settings?: Document;
+  Settings?: unknown;
   Assets?: Array<AssetType>;
 }
 export interface UpdateManagedLoginBrandingResponse {

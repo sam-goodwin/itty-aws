@@ -336,6 +336,8 @@ export type BatchResultErrorEntryList = Array<BatchResultErrorEntry>;
 export type Binary = Uint8Array | string;
 
 export type BinaryList = Array<Uint8Array | string>;
+export type SqsBoolean = boolean;
+
 export type BoxedInteger = number;
 
 export interface CancelMessageMoveTaskRequest {
@@ -736,6 +738,8 @@ export interface StartMessageMoveTaskRequest {
 export interface StartMessageMoveTaskResult {
   TaskHandle?: string;
 }
+export type SqsString = string;
+
 export type StringList = Array<string>;
 export type TagKey = string;
 

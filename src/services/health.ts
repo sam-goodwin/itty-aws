@@ -440,6 +440,8 @@ export type regionList = Array<string>;
 export type service = string;
 
 export type serviceList = Array<string>;
+export type Healthstring = string;
+
 export type tagFilter = Array<Record<string, string>>;
 export type tagKey = string;
 

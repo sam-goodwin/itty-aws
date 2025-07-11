@@ -203,6 +203,8 @@ export interface Service {
 export type ServiceCode = string;
 
 export type ServiceList = Array<Service>;
+export type PricingString = string;
+
 export type SynthesizedJsonPriceListJsonItem = string;
 
 export declare class ThrottlingException extends EffectData.TaggedError(

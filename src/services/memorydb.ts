@@ -568,6 +568,8 @@ export interface BatchUpdateClusterResponse {
   ProcessedClusters?: Array<Cluster>;
   UnprocessedClusters?: Array<UnprocessedCluster>;
 }
+export type MemorydbBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export interface Cluster {
@@ -1362,6 +1364,8 @@ export type SourceType =
   | "cluster"
   | "user"
   | "acl";
+export type MemorydbString = string;
+
 export interface Subnet {
   Identifier?: string;
   AvailabilityZone?: AvailabilityZone;

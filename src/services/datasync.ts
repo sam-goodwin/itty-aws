@@ -1130,6 +1130,8 @@ export interface StartTaskExecutionResponse {
 }
 export type StorageVirtualMachineArn = string;
 
+export type Datasyncstring = string;
+
 export type TaggableResourceArn = string;
 
 export type TagKey = string;

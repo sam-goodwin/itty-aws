@@ -1562,6 +1562,8 @@ export type SslProtocol = string;
 export type SslProtocols = Array<string>;
 export type StateReason = string;
 
+export type ElasticLoadBalancingV2String = string;
+
 export type StringValue = string;
 
 export type SubnetId = string;

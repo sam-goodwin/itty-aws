@@ -357,6 +357,8 @@ export interface ArchiveCreationOutput {
   checksum?: string;
   archiveId?: string;
 }
+export type Glacierboolean = boolean;
+
 export type CannedACL =
   | "Private"
   | "PublicRead"
@@ -784,6 +786,8 @@ export type StorageClass =
   | "ReducedRedundancy"
   | "StandardInfrequentAccess";
 export type Stream = Uint8Array | string;
+
+export type Glacierstring = string;
 
 export type TagKey = string;
 

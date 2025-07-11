@@ -513,6 +513,8 @@ export interface BatchDisassociateResourceResponse {
   ResourceSetIdentifier: string;
   FailedItems: Array<FailedItem>;
 }
+export type FmsBoolean = boolean;
+
 export type BooleanObject = boolean;
 
 export type CIDR = string;

@@ -127,6 +127,8 @@ export declare class BadGatewayException extends EffectData.TaggedError(
 }> {}
 export type BlobStream = Uint8Array | string;
 
+export type LexRuntimeV2Boolean = boolean;
+
 export type BotAliasIdentifier = string;
 
 export type BotIdentifier = string;
@@ -448,6 +450,8 @@ export type StartConversationResponseEventStream =
   | { ConflictException: ConflictException }
   | { DependencyFailedException: DependencyFailedException }
   | { BadGatewayException: BadGatewayException };
+export type LexRuntimeV2String = string;
+
 export type StringList = Array<string>;
 export type StringMap = Record<string, string>;
 export type StyleType = "DEFAULT" | "SPELL_BY_LETTER" | "SPELL_BY_WORD";

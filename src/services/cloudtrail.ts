@@ -976,6 +976,8 @@ export type AdvancedFieldSelectors = Array<AdvancedFieldSelector>;
 export type BillingMode =
   | "EXTENDABLE_RETENTION_PRICING"
   | "FIXED_RETENTION_PRICING";
+export type CloudtrailBoolean = boolean;
+
 export type ByteBuffer = Uint8Array | string;
 
 export interface CancelQueryRequest {
@@ -1169,6 +1171,8 @@ export interface DataResource {
 }
 export type DataResources = Array<DataResource>;
 export type DataResourceValues = Array<string>;
+export type CloudtrailDate = Date | string;
+
 export declare class DelegatedAdminAccountLimitExceededException extends EffectData.TaggedError(
   "DelegatedAdminAccountLimitExceededException",
 )<{
@@ -2271,6 +2275,8 @@ export interface StopLoggingRequest {
   Name: string;
 }
 export interface StopLoggingResponse {}
+export type CloudtrailString = string;
+
 export interface Tag {
   Key: string;
   Value?: string;

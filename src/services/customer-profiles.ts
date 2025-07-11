@@ -1049,6 +1049,8 @@ export interface BatchGetProfileResponse {
   Errors?: Array<BatchGetProfileError>;
   Profiles?: Array<Profile>;
 }
+export type CustomerProfilesboolean = boolean;
+
 export type BucketName = string;
 
 export type BucketPrefix = string;
@@ -1306,6 +1308,8 @@ export interface CreateUploadJobResponse {
 export type CustomAttributes = Record<string, AttributeDimension>;
 export type DataFormat = "CSV" | "JSONL" | "ORC";
 export type DataPullMode = "INCREMENTAL" | "COMPLETE";
+export type CustomerProfilesDate = Date | string;
+
 export interface DateDimension {
   DimensionType: DateDimensionType;
   Values: Array<string>;
@@ -2273,7 +2277,7 @@ export type minSize1 = number;
 
 export type name = string;
 
-export type Object = string;
+export type CustomerProfilesObject = string;
 
 export interface ObjectAttribute {
   Source?: string;
@@ -2844,6 +2848,7 @@ export type TriggerType = "SCHEDULED" | "EVENT" | "ONDEMAND";
 export type Type = "ALL" | "ANY" | "NONE";
 export type typeName = string;
 
+export type Unit = "DAYS";
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;

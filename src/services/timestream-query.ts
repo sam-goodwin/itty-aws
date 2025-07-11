@@ -590,6 +590,8 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
 export interface SnsConfiguration {
   TopicArn: string;
 }
+export type TimestreamQueryString = string;
+
 export type StringValue2048 = string;
 
 export interface Tag {

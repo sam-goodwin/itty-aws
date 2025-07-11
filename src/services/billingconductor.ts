@@ -705,6 +705,8 @@ export declare class ServiceLimitExceededException extends EffectData.TaggedErro
   readonly LimitCode: string;
   readonly ServiceCode: string;
 }> {}
+export type BillingconductorString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

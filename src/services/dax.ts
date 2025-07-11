@@ -594,6 +594,8 @@ export interface SSESpecification {
   Enabled: boolean;
 }
 export type SSEStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED";
+export type DaxString = string;
+
 export interface Subnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: string;

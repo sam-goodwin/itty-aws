@@ -795,7 +795,7 @@ export interface UpdateExperimentRequest {
   randomizationSalt?: string;
   samplingRate?: number;
   segment?: string;
-  removeSegment?: _opaque_PrimitiveBoolean;
+  removeSegment?: boolean;
   onlineAbConfig?: OnlineAbConfig;
 }
 export interface UpdateExperimentResponse {

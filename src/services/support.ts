@@ -180,6 +180,8 @@ export type AvailabilityErrorMessage = string;
 
 export type BeforeTime = string;
 
+export type SupportBoolean = boolean;
+
 export declare class CaseCreationLimitExceeded extends EffectData.TaggedError(
   "CaseCreationLimitExceeded",
 )<{
@@ -433,6 +435,8 @@ export type SeverityLevelsList = Array<SeverityLevel>;
 export type StartTime = string;
 
 export type Status = string;
+
+export type SupportString = string;
 
 export type StringList = Array<string>;
 export type Subject = string;

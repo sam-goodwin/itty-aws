@@ -193,6 +193,8 @@ export interface AddTagsToResourceResponse {
 export type AZ = string;
 
 export type AZList = Array<string>;
+export type CloudhsmBoolean = boolean;
+
 export type Certificate = string;
 
 export type CertificateFingerprint = string;
@@ -429,6 +431,8 @@ export interface RemoveTagsFromResourceResponse {
   Status: string;
 }
 export type SshKey = string;
+
+export type CloudhsmString = string;
 
 export type SubnetId = string;
 

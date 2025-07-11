@@ -381,6 +381,8 @@ export type ApplicationInstanceStatus = string;
 
 export type ApplicationInstanceStatusDescription = string;
 
+export type PanoramaBoolean = boolean;
+
 export type Bucket = string;
 
 export type BucketName = string;
@@ -969,7 +971,7 @@ export interface NtpStatus {
   IpAddress?: string;
   NtpServerName?: string;
 }
-export type Object = string;
+export type PanoramaObject = string;
 
 export type ObjectKey = string;
 
@@ -1133,6 +1135,8 @@ export interface StorageLocation {
   BinaryPrefixLocation: string;
   ManifestPrefixLocation: string;
 }
+export type PanoramaString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

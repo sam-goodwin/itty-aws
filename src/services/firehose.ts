@@ -980,14 +980,14 @@ export type Proportion = number;
 
 export interface PutRecordBatchInput {
   DeliveryStreamName: string;
-  Records: Array<Record>;
+  Records: Array<FirehoseRecord>;
 }
 export interface PutRecordBatchOutput {
   FailedPutCount: number;
   Encrypted?: boolean;
   RequestResponses: Array<PutRecordBatchResponseEntry>;
 }
-export type PutRecordBatchRequestEntryList = Array<Record>;
+export type PutRecordBatchRequestEntryList = Array<FirehoseRecord>;
 export interface PutRecordBatchResponseEntry {
   RecordId?: string;
   ErrorCode?: string;
@@ -997,7 +997,7 @@ export type PutRecordBatchResponseEntryList =
   Array<PutRecordBatchResponseEntry>;
 export interface PutRecordInput {
   DeliveryStreamName: string;
-  Record: Record;
+  Record: FirehoseRecord;
 }
 export interface PutRecordOutput {
   RecordId: string;
@@ -1007,7 +1007,7 @@ export type PutResponseRecordId = string;
 
 export type ReadFromTimestamp = Date | string;
 
-export interface Record {
+export interface FirehoseRecord {
   Data: Uint8Array | string;
 }
 export interface RedshiftDestinationConfiguration {

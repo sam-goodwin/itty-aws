@@ -1031,6 +1031,8 @@ export type AmiNameString = string;
 
 export type Arn = string;
 
+export type ImagebuilderBoolean = boolean;
+
 export type BuildType =
   | "USER_INITIATED"
   | "SCHEDULED"

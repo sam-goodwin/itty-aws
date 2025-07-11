@@ -281,6 +281,8 @@ export interface BatchLoadTaskDescription {
 export type BatchLoadTaskId = string;
 
 export type BatchLoadTaskList = Array<BatchLoadTask>;
+export type TimestreamWriteBoolean = boolean;
+
 export type ClientRequestToken = string;
 
 export declare class ConflictException extends EffectData.TaggedError(
@@ -360,6 +362,8 @@ export interface DataSourceS3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
 }
+export type TimestreamWriteDate = Date | string;
+
 export interface DeleteDatabaseRequest {
   DatabaseName: string;
 }
@@ -510,7 +514,7 @@ export interface PartitionKey {
 export type PartitionKeyEnforcementLevel = "REQUIRED" | "OPTIONAL";
 export type PartitionKeyList = Array<PartitionKey>;
 export type PartitionKeyType = "DIMENSION" | "MEASURE";
-export interface Record {
+export interface TimestreamWriteRecord {
   Dimensions?: Array<Dimension>;
   MeasureName?: string;
   MeasureValue?: string;
@@ -522,7 +526,7 @@ export interface Record {
 }
 export type RecordIndex = number;
 
-export type Records = Array<Record>;
+export type Records = Array<TimestreamWriteRecord>;
 export interface RecordsIngested {
   Total?: number;
   MemoryStore?: number;
@@ -599,6 +603,8 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
 )<{
   readonly Message?: string;
 }> {}
+export type TimestreamWriteString = string;
+
 export type StringValue1 = string;
 
 export type StringValue2048 = string;
@@ -673,8 +679,8 @@ export declare class ValidationException extends EffectData.TaggedError(
 export interface WriteRecordsRequest {
   DatabaseName: string;
   TableName: string;
-  CommonAttributes?: Record;
-  Records: Array<Record>;
+  CommonAttributes?: TimestreamWriteRecord;
+  Records: Array<TimestreamWriteRecord>;
 }
 export interface WriteRecordsResponse {
   RecordsIngested?: RecordsIngested;

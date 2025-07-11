@@ -1399,6 +1399,8 @@ export interface StreamingConfiguration {
   ResourceArn: string;
 }
 export type StreamingConfigurationList = Array<StreamingConfiguration>;
+export type ChimeSdkMessagingString = string;
+
 export type SubChannelId = string;
 
 export interface SubChannelSummary {

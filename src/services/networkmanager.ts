@@ -1152,6 +1152,8 @@ export interface Bandwidth {
 export interface BgpOptions {
   PeerAsn?: number;
 }
+export type NetworkmanagerBoolean = boolean;
+
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE";
 export type ChangeSetState =
   | "PENDING_GENERATION"

@@ -524,7 +524,7 @@ export type __listOfConnector = Array<Connector>;
 export type __listOfCore = Array<Core>;
 export type __listOfDefinitionInformation = Array<DefinitionInformation>;
 export type __listOfDevice = Array<Device>;
-export type __listOfFunction = Array<Function>;
+export type __listOfFunction = Array<GreengrassFunction>;
 export type __listOfGroupCertificateAuthorityProperties =
   Array<GroupCertificateAuthorityProperties>;
 export type __listOfGroupInformation = Array<GroupInformation>;
@@ -716,7 +716,7 @@ export interface CreateFunctionDefinitionVersionRequest {
   AmznClientToken?: string;
   DefaultConfig?: FunctionDefaultConfig;
   FunctionDefinitionId: string;
-  Functions?: Array<Function>;
+  Functions?: Array<GreengrassFunction>;
 }
 export interface CreateFunctionDefinitionVersionResponse {
   Arn?: string;
@@ -935,7 +935,7 @@ export interface ErrorDetail {
   DetailedErrorMessage?: string;
 }
 export type ErrorDetails = Array<ErrorDetail>;
-export interface Function {
+export interface GreengrassFunction {
   FunctionArn?: string;
   FunctionConfiguration?: FunctionConfiguration;
   Id: string;
@@ -965,7 +965,7 @@ export interface FunctionDefaultExecutionConfig {
 }
 export interface FunctionDefinitionVersion {
   DefaultConfig?: FunctionDefaultConfig;
-  Functions?: Array<Function>;
+  Functions?: Array<GreengrassFunction>;
 }
 export interface FunctionExecutionConfig {
   IsolationMode?: FunctionIsolationMode;

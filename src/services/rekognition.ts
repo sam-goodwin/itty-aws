@@ -1102,6 +1102,8 @@ export interface BlackFrame {
 }
 export type BodyPart = "FACE" | "HEAD" | "LEFT_HAND" | "RIGHT_HAND";
 export type BodyParts = Array<ProtectiveEquipmentBodyPart>;
+export type RekognitionBoolean = boolean;
+
 export interface BoundingBox {
   Width?: number;
   Height?: number;
@@ -2919,6 +2921,8 @@ export type StreamProcessorStatus =
   | "FAILED"
   | "STOPPING"
   | "UPDATING";
+export type RekognitionString = string;
+
 export interface Summary {
   S3Object?: S3Object;
 }

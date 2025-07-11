@@ -57,6 +57,8 @@ export type BinaryAttributeValue = Uint8Array | string;
 export type BinarySetAttributeValue = Array<Uint8Array | string>;
 export type BooleanAttributeValue = boolean;
 
+export type DynamodbStreamsDate = Date | string;
+
 export interface DescribeStreamInput {
   StreamArn: string;
   Limit?: number;
@@ -77,7 +79,7 @@ export interface GetRecordsInput {
   Limit?: number;
 }
 export interface GetRecordsOutput {
-  Records?: Array<Record>;
+  Records?: Array<DynamodbStreamsRecord>;
   NextShardIterator?: string;
 }
 export interface GetShardIteratorInput {
@@ -132,7 +134,7 @@ export type PositiveIntegerObject = number;
 
 export type PositiveLongObject = number;
 
-export interface Record {
+export interface DynamodbStreamsRecord {
   eventID?: string;
   eventName?: OperationType;
   eventVersion?: string;
@@ -141,7 +143,7 @@ export interface Record {
   dynamodb?: StreamRecord;
   userIdentity?: Identity;
 }
-export type RecordList = Array<Record>;
+export type RecordList = Array<DynamodbStreamsRecord>;
 export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
@@ -202,6 +204,8 @@ export type StreamViewType =
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
   | "KEYS_ONLY";
+export type DynamodbStreamsString = string;
+
 export type StringAttributeValue = string;
 
 export type StringSetAttributeValue = Array<string>;

@@ -519,6 +519,8 @@ export interface BackTestConfiguration {
 export type BinaryAttributeValue = string;
 
 export type BinaryListAttributeValue = Array<string>;
+export type LookoutmetricsBoolean = boolean;
+
 export type Charset = string;
 
 export interface CloudWatchConfig {

@@ -437,6 +437,8 @@ export declare class BadRequestException extends EffectData.TaggedError(
   readonly Message?: string;
 }> {}
 export type BaseModelName = "NARROW_BAND" | "WIDE_BAND";
+export type TranscribeBoolean = boolean;
+
 export type CallAnalyticsFeature = "GENERATIVE_SUMMARIZATION";
 export interface CallAnalyticsJob {
   CallAnalyticsJobName?: string;
@@ -1247,6 +1249,8 @@ export interface StartTranscriptionJobRequest {
 export interface StartTranscriptionJobResponse {
   TranscriptionJob?: TranscriptionJob;
 }
+export type TranscribeString = string;
+
 export type StringTargetList = Array<string>;
 export type SubtitleFileUris = Array<string>;
 export type SubtitleFormat = "VTT" | "SRT";

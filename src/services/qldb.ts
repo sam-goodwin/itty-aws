@@ -150,6 +150,8 @@ export type Qldb = AmazonQLDB;
 
 export type Arn = string;
 
+export type QldbBoolean = boolean;
+
 export interface CancelJournalKinesisStreamRequest {
   LedgerName: string;
   StreamId: string;

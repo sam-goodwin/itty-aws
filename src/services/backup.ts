@@ -1199,6 +1199,8 @@ export interface BackupVaultListMember {
 }
 export type BackupVaultName = string;
 
+export type BackupBoolean = boolean;
+
 export type Boolean2 = boolean;
 
 export interface CalculatedLifecycle {
@@ -2632,6 +2634,8 @@ export interface StopBackupJobInput {
   BackupJobId: string;
 }
 export type StorageClass = "WARM" | "COLD" | "DELETED";
+export type Backupstring = string;
+
 export type stringList = Array<string>;
 export type stringMap = Record<string, string>;
 export type TagKey = string;

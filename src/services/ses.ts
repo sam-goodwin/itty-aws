@@ -740,7 +740,7 @@ export type DsnStatus = string;
 
 export type Enabled = boolean;
 
-export type Error = string;
+export type SesError = string;
 
 export type ErrorMessage = string;
 

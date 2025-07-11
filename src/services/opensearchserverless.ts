@@ -112,7 +112,7 @@ export interface AccessPolicyDetail {
   name?: string;
   policyVersion?: string;
   description?: string;
-  policy?: _opaque_Document;
+  policy?: unknown;
   createdDate?: number;
   lastModifiedDate?: number;
 }
@@ -433,7 +433,7 @@ export interface LifecyclePolicyDetail {
   name?: string;
   policyVersion?: string;
   description?: string;
-  policy?: _opaque_Document;
+  policy?: unknown;
   createdDate?: number;
   lastModifiedDate?: number;
 }
@@ -612,7 +612,7 @@ export interface SecurityPolicyDetail {
   name?: string;
   policyVersion?: string;
   description?: string;
-  policy?: _opaque_Document;
+  policy?: unknown;
   createdDate?: number;
   lastModifiedDate?: number;
 }

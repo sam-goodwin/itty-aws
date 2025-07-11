@@ -40,11 +40,10 @@ export interface ActionGroupSummary {
   description?: string;
   updatedAt: Date | string;
 }
-export type AdditionalModelRequestFields = Record<
-  string,
-  AdditionalModelRequestFieldsValue
->;
+export type AdditionalModelRequestFields = Record<string, unknown>;
 export type AdditionalModelRequestFieldsKey = string;
+
+export type AdditionalModelRequestFieldsValue = unknown;
 
 export interface Agent {
   agentId: string;
@@ -1055,7 +1054,7 @@ export interface FlowVersionSummary {
   createdAt: Date | string;
   version: string;
 }
-export interface Function {
+export interface BedrockAgentFunction {
   name: string;
   description?: string;
   parameters?: Record<string, ParameterDetail>;
@@ -1063,8 +1062,8 @@ export interface Function {
 }
 export type FunctionDescription = string;
 
-export type Functions = Array<Function>;
-export type FunctionSchema = { functions: Array<Function> };
+export type Functions = Array<BedrockAgentFunction>;
+export type FunctionSchema = { functions: Array<BedrockAgentFunction> };
 export interface GetAgentActionGroupRequest {
   agentId: string;
   agentVersion: string;
@@ -1269,13 +1268,13 @@ export interface IngestionJobSortBy {
 }
 export type IngestionJobSortByAttribute = "STATUS" | "STARTED_AT";
 export interface IngestionJobStatistics {
-  numberOfDocumentsScanned?: _opaque_PrimitiveLong;
-  numberOfMetadataDocumentsScanned?: _opaque_PrimitiveLong;
-  numberOfNewDocumentsIndexed?: _opaque_PrimitiveLong;
-  numberOfModifiedDocumentsIndexed?: _opaque_PrimitiveLong;
-  numberOfMetadataDocumentsModified?: _opaque_PrimitiveLong;
-  numberOfDocumentsDeleted?: _opaque_PrimitiveLong;
-  numberOfDocumentsFailed?: _opaque_PrimitiveLong;
+  numberOfDocumentsScanned?: number;
+  numberOfMetadataDocumentsScanned?: number;
+  numberOfNewDocumentsIndexed?: number;
+  numberOfModifiedDocumentsIndexed?: number;
+  numberOfMetadataDocumentsModified?: number;
+  numberOfDocumentsDeleted?: number;
+  numberOfDocumentsFailed?: number;
 }
 export type IngestionJobStatus =
   | "STARTING"
@@ -1394,10 +1393,7 @@ export type KnowledgeBaseModelIdentifier = string;
 export interface KnowledgeBaseOrchestrationConfiguration {
   promptTemplate?: KnowledgeBasePromptTemplate;
   inferenceConfig?: PromptInferenceConfiguration;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
   performanceConfig?: PerformanceConfiguration;
 }
 export interface KnowledgeBasePromptTemplate {
@@ -1849,7 +1845,7 @@ export interface PromptConfiguration {
   inferenceConfiguration?: InferenceConfiguration;
   parserMode?: CreationMode;
   foundationModel?: string;
-  additionalModelRequestFields?: _opaque_Document;
+  additionalModelRequestFields?: unknown;
 }
 export type PromptConfigurations = Array<PromptConfiguration>;
 export type PromptDescription = string;
@@ -1863,7 +1859,7 @@ export interface PromptFlowNodeInlineConfiguration {
   templateConfiguration: PromptTemplateConfiguration;
   modelId: string;
   inferenceConfiguration?: PromptInferenceConfiguration;
-  additionalModelRequestFields?: _opaque_Document;
+  additionalModelRequestFields?: unknown;
 }
 export interface PromptFlowNodeResourceConfiguration {
   promptArn: string;
@@ -1936,7 +1932,7 @@ export interface PromptVariant {
   modelId?: string;
   inferenceConfiguration?: PromptInferenceConfiguration;
   metadata?: Array<PromptMetadataEntry>;
-  additionalModelRequestFields?: _opaque_Document;
+  additionalModelRequestFields?: unknown;
   genAiResource?: PromptGenAiResource;
 }
 export type PromptVariantList = Array<PromptVariant>;
@@ -2277,7 +2273,7 @@ export interface ToolConfiguration {
   tools: Array<Tool>;
   toolChoice?: ToolChoice;
 }
-export type ToolInputSchema = { json: _opaque_Document };
+export type ToolInputSchema = { json: unknown };
 export type ToolName = string;
 
 export type Tools = Array<Tool>;
@@ -2537,10 +2533,7 @@ export interface VectorSearchBedrockRerankingConfiguration {
 }
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<
-    string,
-    AdditionalModelRequestFieldsValue
-  >;
+  additionalModelRequestFields?: Record<string, unknown>;
 }
 export interface VectorSearchRerankingConfiguration {
   type: VectorSearchRerankingConfigurationType;

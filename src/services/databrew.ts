@@ -575,6 +575,8 @@ export interface DatasetParameter {
   CreateColumn?: boolean;
   Filter?: FilterExpression;
 }
+export type DatabrewDate = Date | string;
+
 export type DatetimeFormat = string;
 
 export interface DatetimeOptions {

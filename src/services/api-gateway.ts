@@ -1447,6 +1447,8 @@ export interface BasePathMappings {
 }
 export type Blob = Uint8Array | string;
 
+export type ApiGatewayBoolean = boolean;
+
 export type CacheClusterSize =
   | "SIZE_0_POINT_5_GB"
   | "SIZE_1_POINT_6_GB"
@@ -2447,6 +2449,8 @@ export interface Stages {
   item?: Array<Stage>;
 }
 export type StatusCode = string;
+
+export type ApiGatewayString = string;
 
 export interface TagResourceRequest {
   resourceArn: string;

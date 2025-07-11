@@ -317,8 +317,6 @@ export interface AWSBudgetServiceGateway {
   >;
 }
 
-export type Budgets = AWSBudgetServiceGateway;
-
 export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{

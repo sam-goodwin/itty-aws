@@ -3535,6 +3535,8 @@ export interface BodySectionRepeatPageBreakConfiguration {
 export interface BookmarksConfigurations {
   Enabled: boolean;
 }
+export type QuicksightBoolean = boolean;
+
 export type BooleanObject = boolean;
 
 export interface BorderStyle {
@@ -10027,6 +10029,8 @@ export interface StaticFileUrlSourceOptions {
 }
 export type Status = "ENABLED" | "DISABLED";
 export type StatusCode = number;
+
+export type QuicksightString = string;
 
 export interface StringDatasetParameter {
   Id: string;

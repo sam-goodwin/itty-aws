@@ -16,7 +16,7 @@
   },
   "scripts": {
     "fetch:manifests": "bun scripts/fetch-manifests.ts",
-    "generate": "bun scripts/generate-clients.ts && bun biome check --write",
+    "generate": "bun scripts/generate-clients.ts && bun biome check --write && tsc -b",
     "gen": "bun generate",
     "test": "vitest",
     "test:run": "vitest run",

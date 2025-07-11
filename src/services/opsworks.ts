@@ -507,6 +507,8 @@ export interface BlockDeviceMapping {
   Ebs?: EbsBlockDevice;
 }
 export type BlockDeviceMappings = Array<BlockDeviceMapping>;
+export type OpsworksBoolean = boolean;
+
 export interface ChefConfiguration {
   ManageBerkshelf?: boolean;
   BerkshelfVersion?: string;
@@ -1444,6 +1446,8 @@ export interface StopInstanceRequest {
 export interface StopStackRequest {
   StackId: string;
 }
+export type OpsworksString = string;
+
 export type Strings = Array<string>;
 export type Switch = string;
 

@@ -2607,6 +2607,8 @@ export interface StopTrainingEntityRecognizerRequest {
   EntityRecognizerArn: string;
 }
 export interface StopTrainingEntityRecognizerResponse {}
+export type ComprehendString = string;
+
 export type StringList = Array<string>;
 export type SubnetId = string;
 

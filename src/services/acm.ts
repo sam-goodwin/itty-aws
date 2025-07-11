@@ -550,6 +550,8 @@ export type ServiceErrorMessage = string;
 
 export type SortBy = "CREATED_AT";
 export type SortOrder = "ASCENDING" | "DESCENDING";
+export type AcmString = string;
+
 export interface Tag {
   Key: string;
   Value?: string;

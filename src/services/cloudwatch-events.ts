@@ -514,6 +514,8 @@ export interface BatchParameters {
 export interface BatchRetryStrategy {
   Attempts?: number;
 }
+export type CloudwatchEventsBoolean = boolean;
+
 export interface CancelReplayRequest {
   ReplayName: string;
 }
@@ -1404,6 +1406,8 @@ export interface StartReplayResponse {
 export type StatementId = string;
 
 export type StatementName = string;
+
+export type CloudwatchEventsString = string;
 
 export type StringList = Array<string>;
 export interface Tag {

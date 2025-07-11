@@ -366,6 +366,8 @@ export type NullableBoolean = boolean;
 
 export type Permissions = "OWNER" | "READ_WRITE" | "READ_ONLY";
 export type PermissionsList = Array<Permissions>;
+export type Cloud9String = string;
+
 export type SubnetId = string;
 
 export interface Tag {

@@ -239,6 +239,8 @@ export type BaseScreenshotIgnoreCoordinates = Array<string>;
 export type BaseScreenshots = Array<BaseScreenshot>;
 export type Blob = Uint8Array | string;
 
+export type Syntheticsboolean = boolean;
+
 export type Canaries = Array<Canary>;
 export type CanariesLastRun = Array<CanaryLastRun>;
 export interface Canary {
@@ -640,6 +642,8 @@ export interface StopCanaryRequest {
   Name: string;
 }
 export interface StopCanaryResponse {}
+export type SyntheticsString = string;
+
 export type StringList = Array<string>;
 export type SubnetId = string;
 

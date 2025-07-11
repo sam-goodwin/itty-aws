@@ -253,12 +253,12 @@ export interface InvokeRestApiRequest {
   Name: string;
   Path: string;
   Method: string;
-  QueryParameters?: _opaque_Document;
-  Body?: RestApiRequestBody;
+  QueryParameters?: unknown;
+  Body?: unknown;
 }
 export interface InvokeRestApiResponse {
   RestApiStatusCode?: number;
-  RestApiResponse?: RestApiResponse;
+  RestApiResponse?: unknown;
 }
 export type KmsKey = string;
 
@@ -349,17 +349,21 @@ export declare class RestApiClientException extends EffectData.TaggedError(
   "RestApiClientException",
 )<{
   readonly RestApiStatusCode?: number;
-  readonly RestApiResponse?: RestApiResponse;
+  readonly RestApiResponse?: unknown;
 }> {}
 export type RestApiMethod = string;
 
 export type RestApiPath = string;
 
+export type RestApiRequestBody = unknown;
+
+export type RestApiResponse = unknown;
+
 export declare class RestApiServerException extends EffectData.TaggedError(
   "RestApiServerException",
 )<{
   readonly RestApiStatusCode?: number;
-  readonly RestApiResponse?: RestApiResponse;
+  readonly RestApiResponse?: unknown;
 }> {}
 export type S3BucketArn = string;
 
@@ -391,6 +395,8 @@ export interface TagResourceOutput {}
 export type TagValue = string;
 
 export type Token = string;
+
+export type Unit = string;
 
 export interface UntagResourceInput {
   ResourceArn: string;

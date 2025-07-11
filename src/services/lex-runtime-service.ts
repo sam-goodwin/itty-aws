@@ -349,6 +349,8 @@ export interface SentimentResponse {
 }
 export type SentimentScore = string;
 
+export type LexRuntimeServiceString = string;
+
 export type StringMap = Record<string, string>;
 export type StringUrlWithLength = string;
 

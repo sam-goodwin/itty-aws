@@ -151,6 +151,8 @@ export interface AnalysisReportSummary {
 export type AnalysisReportSummaryList = Array<AnalysisReportSummary>;
 export type AnalysisStatus = "RUNNING" | "SUCCEEDED" | "FAILED";
 export type AuthorizedActionsList = Array<FineGrainedAction>;
+export type PiBoolean = boolean;
+
 export type ContextType = "CAUSAL" | "CONTEXTUAL";
 export interface CreatePerformanceAnalysisReportRequest {
   ServiceType: ServiceType;
@@ -436,6 +438,8 @@ export type SanitizedString = string;
 export type SanitizedStringList = Array<string>;
 export type ServiceType = "RDS" | "DOCDB";
 export type Severity = "LOW" | "MEDIUM" | "HIGH";
+export type PiString = string;
+
 export interface Tag {
   Key: string;
   Value: string;

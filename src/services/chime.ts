@@ -909,6 +909,8 @@ export interface BatchUpdateUserRequest {
 export interface BatchUpdateUserResponse {
   UserErrors?: Array<UserError>;
 }
+export type ChimeBoolean = boolean;
+
 export interface Bot {
   BotId?: string;
   UserId?: string;
@@ -1474,6 +1476,8 @@ export interface SigninDelegateGroup {
   GroupName?: string;
 }
 export type SigninDelegateGroupList = Array<SigninDelegateGroup>;
+export type ChimeString = string;
+
 export interface TelephonySettings {
   InboundCalling: boolean;
   OutboundCalling: boolean;

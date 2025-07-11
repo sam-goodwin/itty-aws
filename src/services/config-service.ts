@@ -1000,6 +1000,8 @@ export interface BatchGetResourceConfigResponse {
   baseConfigurationItems?: Array<BaseConfigurationItem>;
   unprocessedResourceKeys?: Array<ResourceKey>;
 }
+export type ConfigServiceBoolean = boolean;
+
 export type ChannelName = string;
 
 export type ChronologicalOrder = "Reverse" | "Forward";
@@ -1323,6 +1325,8 @@ export interface CustomPolicyDetails {
   PolicyText: string;
   EnableDebugLogDelivery?: boolean;
 }
+export type ConfigServiceDate = Date | string;
+
 export type DebugLogDeliveryAccounts = Array<string>;
 export interface DeleteAggregationAuthorizationRequest {
   AuthorizedAccountId: string;
@@ -3355,6 +3359,8 @@ export interface StoredQueryMetadata {
   Description?: string;
 }
 export type StoredQueryMetadataList = Array<StoredQueryMetadata>;
+export type ConfigServiceString = string;
+
 export type StringWithCharLimit1024 = string;
 
 export type StringWithCharLimit128 = string;

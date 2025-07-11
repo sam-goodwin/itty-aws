@@ -209,6 +209,8 @@ export type ApplicationArn = string;
 export type ApplicationArnList = Array<string>;
 export type AssumeRoleArn = string;
 
+export type CognitoSyncBoolean = boolean;
+
 export interface BulkPublishRequest {
   IdentityPoolId: string;
 }
@@ -245,6 +247,8 @@ export interface Dataset {
 }
 export type DatasetList = Array<Dataset>;
 export type DatasetName = string;
+
+export type CognitoSyncDate = Date | string;
 
 export interface DeleteDatasetRequest {
   IdentityPoolId: string;
@@ -394,7 +398,7 @@ export interface ListRecordsRequest {
   SyncSessionToken?: string;
 }
 export interface ListRecordsResponse {
-  Records?: Array<Record>;
+  Records?: Array<CognitoSyncRecord>;
   NextToken?: string;
   Count?: number;
   DatasetSyncCount?: number;
@@ -420,7 +424,7 @@ export interface PushSync {
 }
 export type PushToken = string;
 
-export interface Record {
+export interface CognitoSyncRecord {
   Key?: string;
   Value?: string;
   SyncCount?: number;
@@ -430,7 +434,7 @@ export interface Record {
 }
 export type RecordKey = string;
 
-export type RecordList = Array<Record>;
+export type RecordList = Array<CognitoSyncRecord>;
 export interface RecordPatch {
   Op: Operation;
   Key: string;
@@ -477,6 +481,8 @@ export interface SetIdentityPoolConfigurationResponse {
 export type StreamingStatus = "ENABLED" | "DISABLED";
 export type StreamName = string;
 
+export type CognitoSyncString = string;
+
 export interface SubscribeToDatasetRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -508,7 +514,7 @@ export interface UpdateRecordsRequest {
   ClientContext?: string;
 }
 export interface UpdateRecordsResponse {
-  Records?: Array<Record>;
+  Records?: Array<CognitoSyncRecord>;
 }
 export declare namespace BulkPublish {
   export type Input = BulkPublishRequest;

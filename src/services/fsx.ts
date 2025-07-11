@@ -2269,6 +2269,7 @@ export type TotalCount = number;
 
 export type TotalTransferBytes = number;
 
+export type Unit = "DAYS";
 export declare class UnsupportedOperation extends EffectData.TaggedError(
   "UnsupportedOperation",
 )<{

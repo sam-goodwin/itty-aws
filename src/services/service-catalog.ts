@@ -734,6 +734,8 @@ export interface BatchDisassociateServiceActionFromProvisioningArtifactInput {
 export interface BatchDisassociateServiceActionFromProvisioningArtifactOutput {
   FailedServiceActionAssociations?: Array<FailedServiceActionAssociation>;
 }
+export type ServiceCatalogBoolean = boolean;
+
 export interface BudgetDetail {
   BudgetName?: string;
 }
@@ -1174,7 +1176,7 @@ export interface EngineWorkflowResourceIdentifier {
 export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED";
 export type EngineWorkflowToken = string;
 
-export type Error = string;
+export type ServiceCatalogError = string;
 
 export type ErrorCode = string;
 
@@ -2194,6 +2196,8 @@ export type Status = "AVAILABLE" | "CREATING" | "FAILED";
 export type StatusDetail = string;
 
 export type StatusMessage = string;
+
+export type ServiceCatalogString = string;
 
 export type SuccessfulShares = Array<string>;
 export type SupportDescription = string;

@@ -725,6 +725,8 @@ export type BodyParsingFallbackBehavior =
   | "MATCH"
   | "NO_MATCH"
   | "EVALUATE_AS_STRING";
+export type Wafv2Boolean = boolean;
+
 export interface ByteMatchStatement {
   SearchString: Uint8Array | string;
   FieldToMatch: FieldToMatch;
@@ -2216,6 +2218,8 @@ export interface Statement {
   AsnMatchStatement?: AsnMatchStatement;
 }
 export type Statements = Array<Statement>;
+export type Wafv2String = string;
+
 export type SuccessCode = number;
 
 export type SuccessValue = string;

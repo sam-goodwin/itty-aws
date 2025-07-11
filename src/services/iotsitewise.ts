@@ -2372,7 +2372,7 @@ export interface InvocationOutput {
 export interface InvokeAssistantRequest {
   conversationId?: string;
   message: string;
-  enableTrace?: _opaque_PrimitiveBoolean;
+  enableTrace?: boolean;
 }
 export interface InvokeAssistantResponse {
   body: ResponseStream;
@@ -2887,6 +2887,8 @@ export interface SourceDetail {
 export type SSOApplicationId = string;
 
 export type StorageType = "SITEWISE_DEFAULT_STORAGE" | "MULTI_LAYER_STORAGE";
+export type IotsitewiseString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

@@ -100,6 +100,8 @@ export type BlockSize = number;
 
 export type BlockToken = string;
 
+export type EbsBoolean = boolean;
+
 export interface ChangedBlock {
   BlockIndex?: number;
   FirstBlockToken?: string;

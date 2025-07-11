@@ -290,6 +290,8 @@ export type AnomalyMask = Uint8Array | string;
 
 export type AnomalyName = string;
 
+export type LookoutvisionBoolean = boolean;
+
 export type ClientToken = string;
 
 export type Color = string;

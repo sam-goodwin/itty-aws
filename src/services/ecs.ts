@@ -718,6 +718,8 @@ export declare class BlockedException extends EffectData.TaggedError(
 )<{
   readonly message?: string;
 }> {}
+export type EcsBoolean = boolean;
+
 export type BoxedBoolean = boolean;
 
 export type BoxedInteger = number;
@@ -2122,6 +2124,8 @@ export interface StopTaskRequest {
 export interface StopTaskResponse {
   task?: Task;
 }
+export type EcsString = string;
+
 export type StringList = Array<string>;
 export type StringMap = Record<string, string>;
 export interface SubmitAttachmentStateChangesRequest {

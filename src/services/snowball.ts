@@ -219,6 +219,8 @@ export type AddressList = Array<Address>;
 export type AddressType = "CUST_PICKUP" | "AWS_SHIP";
 export type AmiId = string;
 
+export type SnowballBoolean = boolean;
+
 export interface CancelClusterRequest {
   ClusterId: string;
 }
@@ -753,6 +755,8 @@ export type SnsTopicARN = string;
 export type StorageLimit = number;
 
 export type StorageUnit = "TB";
+export type SnowballString = string;
+
 export interface TargetOnDeviceService {
   ServiceName?: DeviceServiceName;
   TransferOption?: TransferOption;

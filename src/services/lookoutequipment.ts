@@ -587,6 +587,8 @@ export type AutoPromotionResult =
   | "RETRAINING_CANCELLED";
 export type AutoPromotionResultReason = string;
 
+export type LookoutequipmentBoolean = boolean;
+
 export type BoundedLengthString = string;
 
 export interface CategoricalValues {

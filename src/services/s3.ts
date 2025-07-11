@@ -816,6 +816,8 @@ export interface CSVOutput {
   QuoteCharacter?: string;
 }
 export type DataRedundancy = "SingleAvailabilityZone" | "SingleLocalZone";
+export type S3Date = Date | string;
+
 export type Days = number;
 
 export type DaysAfterInitiation = number;
@@ -932,7 +934,7 @@ export interface DeleteObjectRequest {
 export interface DeleteObjectsOutput {
   Deleted?: Array<DeletedObject>;
   RequestCharged?: RequestCharged;
-  Errors?: Array<Error>;
+  Errors?: Array<S3Error>;
 }
 export interface DeleteObjectsRequest {
   Bucket: string;
@@ -992,7 +994,7 @@ export declare class EncryptionTypeMismatch extends EffectData.TaggedError(
 export type End = number;
 
 export interface EndEvent {}
-export interface Error {
+export interface S3Error {
   Key?: string;
   VersionId?: string;
   Code?: string;
@@ -1009,7 +1011,7 @@ export interface ErrorDocument {
 }
 export type ErrorMessage = string;
 
-export type Errors = Array<Error>;
+export type Errors = Array<S3Error>;
 export type ETag = string;
 
 export type Event =
@@ -1788,7 +1790,7 @@ export interface ListObjectsOutput {
   IsTruncated?: boolean;
   Marker?: string;
   NextMarker?: string;
-  Contents?: Array<Object>;
+  Contents?: Array<S3Object>;
   Name?: string;
   Prefix?: string;
   Delimiter?: string;
@@ -1810,7 +1812,7 @@ export interface ListObjectsRequest {
 }
 export interface ListObjectsV2Output {
   IsTruncated?: boolean;
-  Contents?: Array<Object>;
+  Contents?: Array<S3Object>;
   Name?: string;
   Prefix?: string;
   Delimiter?: string;
@@ -2034,7 +2036,7 @@ export interface NotificationConfigurationFilter {
 }
 export type NotificationId = string;
 
-export interface Object {
+export interface S3Object {
   Key?: string;
   LastModified?: Date | string;
   ETag?: string;
@@ -2073,7 +2075,7 @@ export interface ObjectIdentifier {
 export type ObjectIdentifierList = Array<ObjectIdentifier>;
 export type ObjectKey = string;
 
-export type ObjectList = Array<Object>;
+export type ObjectList = Array<S3Object>;
 export interface ObjectLockConfiguration {
   ObjectLockEnabled?: ObjectLockEnabled;
   Rule?: ObjectLockRule;

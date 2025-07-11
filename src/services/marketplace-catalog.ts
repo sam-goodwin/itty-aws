@@ -237,7 +237,7 @@ export interface Change {
   Entity: Entity;
   EntityTags?: Array<Tag>;
   Details?: string;
-  DetailsDocument?: JsonDocumentType;
+  DetailsDocument?: unknown;
   ChangeName?: string;
 }
 export type ChangeName = string;
@@ -266,7 +266,7 @@ export interface ChangeSummary {
   ChangeType?: string;
   Entity?: Entity;
   Details?: string;
-  DetailsDocument?: JsonDocumentType;
+  DetailsDocument?: unknown;
   ErrorDetailList?: Array<ErrorDetail>;
   ChangeName?: string;
 }
@@ -405,7 +405,7 @@ export interface DescribeEntityResponse {
   EntityArn?: string;
   LastModifiedDate?: string;
   Details?: string;
-  DetailsDocument?: JsonDocumentType;
+  DetailsDocument?: unknown;
 }
 export interface Entity {
   Type: string;
@@ -416,7 +416,7 @@ export interface EntityDetail {
   EntityArn?: string;
   EntityIdentifier?: string;
   LastModifiedDate?: string;
-  DetailsDocument?: JsonDocumentType;
+  DetailsDocument?: unknown;
 }
 export type EntityDetails = Record<string, EntityDetail>;
 export type EntityId = string;
@@ -497,6 +497,8 @@ export declare class InternalServiceException extends EffectData.TaggedError(
   readonly Message?: string;
 }> {}
 export type Json = string;
+
+export type JsonDocumentType = unknown;
 
 export type ListChangeSetsMaxResultInteger = number;
 

@@ -140,7 +140,7 @@ export interface CreateTokenWithIAMResponse {
 }
 export type DeviceCode = string;
 
-export type Error = string;
+export type SsoOidcError = string;
 
 export type ErrorDescription = string;
 

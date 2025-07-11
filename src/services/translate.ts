@@ -515,6 +515,8 @@ export interface StopTextTranslationJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+export type TranslateString = string;
+
 export interface Tag {
   Key: string;
   Value: string;

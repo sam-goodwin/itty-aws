@@ -157,6 +157,8 @@ export interface CreateApplicationResponse {
   name?: string;
   arn: string;
 }
+export type EmrServerlessDate = Date | string;
+
 export interface DeleteApplicationRequest {
   applicationId: string;
 }

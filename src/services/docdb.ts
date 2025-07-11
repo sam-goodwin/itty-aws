@@ -535,6 +535,8 @@ export interface AvailabilityZone {
 }
 export type AvailabilityZoneList = Array<AvailabilityZone>;
 export type AvailabilityZones = Array<string>;
+export type DocdbBoolean = boolean;
+
 export type BooleanOptional = boolean;
 
 export type CACertificateIdentifiersList = Array<string>;
@@ -1617,6 +1619,8 @@ export declare class StorageTypeNotSupportedFault extends EffectData.TaggedError
 )<{
   readonly message?: string;
 }> {}
+export type DocdbString = string;
+
 export interface Subnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: AvailabilityZone;

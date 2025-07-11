@@ -695,6 +695,8 @@ export type SnsTopic = string;
 export type SnsTopics = Array<string>;
 export type StorageClass = string;
 
+export type ElasticTranscoderString = string;
+
 export type Success = string;
 
 export type Target = string;

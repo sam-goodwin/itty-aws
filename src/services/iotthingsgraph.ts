@@ -748,6 +748,8 @@ export interface SearchThingsResponse {
   things?: Array<Thing>;
   nextToken?: string;
 }
+export type IotthingsgraphString = string;
+
 export type StringList = Array<string>;
 export type SyncWithPublicNamespace = boolean;
 

@@ -621,6 +621,8 @@ export interface StartSigningJobResponse {
 export type Statuses = Array<SigningProfileStatus>;
 export type StatusReason = string;
 
+export type SignerString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

@@ -408,6 +408,8 @@ export declare class ServiceQuotaExceededException extends EffectData.TaggedErro
 )<{
   readonly message: string;
 }> {}
+export type SavingsplansString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

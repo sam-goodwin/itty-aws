@@ -3490,6 +3490,8 @@ export type BinaryCommandExecutionResult = Uint8Array | string;
 
 export type BinaryParameterValue = Uint8Array | string;
 
+export type IotBoolean = boolean;
+
 export type Boolean2 = boolean;
 
 export type BooleanCommandExecutionResult = boolean;
@@ -6593,6 +6595,8 @@ export declare class NotConfiguredException extends EffectData.TaggedError(
 }> {}
 export type NullableBoolean = boolean;
 
+export type IotNumber = number;
+
 export type NumberList = Array<number>;
 export type NumberOfRetries = number;
 
@@ -7418,6 +7422,8 @@ export interface StreamSummary {
   description?: string;
 }
 export type StreamVersion = number;
+
+export type IotString = string;
 
 export type StringCommandExecutionResult = string;
 

@@ -135,6 +135,8 @@ export type BatchParamKey = string;
 
 export type BatchParamValue = string;
 
+export type M2Boolean = boolean;
+
 export interface CancelBatchJobExecutionRequest {
   applicationId: string;
   executionId: string;

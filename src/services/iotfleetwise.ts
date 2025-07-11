@@ -237,8 +237,8 @@ export type CanInterfaceName = string;
 
 export interface CanSignal {
   messageId: number;
-  isBigEndian: _opaque_PrimitiveBoolean;
-  isSigned: _opaque_PrimitiveBoolean;
+  isBigEndian: boolean;
+  isSigned: boolean;
   startBit: number;
   offset: number;
   factor: number;
@@ -1006,6 +1006,8 @@ export type NodePaths = Array<string>;
 export type Nodes = Array<Node>;
 export type nonNegativeInteger = number;
 
+export type Iotfleetwisenumber = number;
+
 export type ObdBitmaskLength = number;
 
 export type ObdByteLength = number;
@@ -1016,8 +1018,8 @@ export interface ObdInterface {
   obdStandard?: string;
   pidRequestIntervalSeconds?: number;
   dtcRequestIntervalSeconds?: number;
-  useExtendedIds?: _opaque_PrimitiveBoolean;
-  hasTransmissionEcu?: _opaque_PrimitiveBoolean;
+  useExtendedIds?: boolean;
+  hasTransmissionEcu?: boolean;
 }
 export type ObdInterfaceName = string;
 
@@ -1031,7 +1033,7 @@ export interface ObdSignal {
   byteLength: number;
   bitRightShift?: number;
   bitMaskLength?: number;
-  isSigned?: _opaque_PrimitiveBoolean;
+  isSigned?: boolean;
   signalValueType?: SignalValueType;
 }
 export type ObdStandard = string;
@@ -1245,6 +1247,8 @@ export interface StorageMinimumTimeToLive {
 }
 export type StorageMinimumTimeToLiveUnit = "HOURS" | "DAYS" | "WEEKS";
 export type StorageMinimumTimeToLiveValue = number;
+
+export type Iotfleetwisestring = string;
 
 export type StructuredMessage =
   | { primitiveMessageDefinition: PrimitiveMessageDefinition }

@@ -3723,6 +3723,8 @@ export interface BatchPutContactResponse {
 export type BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY" | "ROUTE_ANY_CHANNEL";
 export type Body = string;
 
+export type ConnectBoolean = boolean;
+
 export type BotName = string;
 
 export type BoxedBoolean = boolean;
@@ -8535,6 +8537,8 @@ export type StorageType =
   | "KINESIS_FIREHOSE";
 export type StreamingId = string;
 
+export type ConnectString = string;
+
 export type StringComparisonType = "STARTS_WITH" | "CONTAINS" | "EXACT";
 export interface StringCondition {
   FieldName?: string;
@@ -8803,6 +8807,7 @@ export interface TransferContactResponse {
   ContactId?: string;
   ContactArn?: string;
 }
+export type Unit = "SECONDS" | "COUNT" | "PERCENT";
 export interface UntagContactRequest {
   ContactId: string;
   InstanceId: string;

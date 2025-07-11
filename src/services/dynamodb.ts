@@ -939,6 +939,8 @@ export interface CsvOptions {
   Delimiter?: string;
   HeaderList?: Array<string>;
 }
+export type DynamodbDate = Date | string;
+
 export interface Delete {
   Key: Record<string, AttributeValue>;
   TableName: string;
@@ -2110,6 +2112,8 @@ export type StreamViewType =
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
   | "KEYS_ONLY";
+export type DynamodbString = string;
+
 export type StringAttributeValue = string;
 
 export type StringSetAttributeValue = Array<string>;

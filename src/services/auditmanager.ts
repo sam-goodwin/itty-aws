@@ -876,6 +876,8 @@ export interface BatchImportEvidenceToAssessmentControlRequest {
 export interface BatchImportEvidenceToAssessmentControlResponse {
   errors?: Array<BatchImportEvidenceToAssessmentControlError>;
 }
+export type AuditmanagerBoolean = boolean;
+
 export interface ChangeLog {
   objectType?: ObjectTypeEnum;
   objectName?: string;
@@ -1653,6 +1655,8 @@ export interface StartAssessmentFrameworkShareRequest {
 export interface StartAssessmentFrameworkShareResponse {
   assessmentFrameworkShareRequest?: AssessmentFrameworkShareRequest;
 }
+export type AuditmanagerString = string;
+
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;

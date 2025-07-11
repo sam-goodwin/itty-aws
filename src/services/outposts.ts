@@ -1044,6 +1044,8 @@ export type StateOrRegion = string;
 
 export type StateOrRegionList = Array<string>;
 export type StatusList = Array<AssetState>;
+export type OutpostsString = string;
+
 export type SupportedHardwareType = "RACK" | "SERVER";
 export type SupportedStorageEnum = "EBS" | "S3";
 export type SupportedStorageList = Array<SupportedStorageEnum>;

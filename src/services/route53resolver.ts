@@ -854,6 +854,8 @@ export type BlockOverrideDomain = string;
 export type BlockOverrideTtl = number;
 
 export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE";
+export type Route53resolverBoolean = boolean;
+
 export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH";
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
@@ -1756,6 +1758,8 @@ export type SortByKey = string;
 
 export type SortOrder = "Ascending" | "Descending";
 export type StatusMessage = string;
+
+export type Route53resolverString = string;
 
 export type SubnetId = string;
 

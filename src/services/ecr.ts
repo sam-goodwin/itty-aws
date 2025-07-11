@@ -682,6 +682,8 @@ export interface CvssScoreDetails {
   version?: string;
 }
 export type CvssScoreList = Array<CvssScore>;
+export type EcrDate = Date | string;
+
 export interface DeleteLifecyclePolicyRequest {
   registryId?: string;
   repositoryName: string;

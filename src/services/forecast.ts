@@ -548,6 +548,8 @@ export interface BaselineMetric {
   Value?: number;
 }
 export type BaselineMetrics = Array<BaselineMetric>;
+export type ForecastBoolean = boolean;
+
 export interface CategoricalParameterRange {
   Name: string;
   Values: Array<string>;
@@ -1553,6 +1555,8 @@ export type Status = string;
 export interface StopResourceRequest {
   ResourceArn: string;
 }
+export type ForecastString = string;
+
 export interface SupplementaryFeature {
   Name: string;
   Value: string;

@@ -925,6 +925,8 @@ export type batchPredictionsMaxPageSize = number;
 
 export type blob = Uint8Array | string;
 
+export type FrauddetectorBoolean = boolean;
+
 export interface CancelBatchImportJobRequest {
   jobId: string;
 }
@@ -1828,6 +1830,8 @@ export interface SendEventRequest {
 }
 export interface SendEventResult {}
 export type sensitiveString = string;
+
+export type Frauddetectorstring = string;
 
 export interface Tag {
   key: string;

@@ -71,6 +71,8 @@ export type BatchRetryAttempts = number;
 export interface BatchRetryStrategy {
   Attempts?: number;
 }
+export type PipesBoolean = boolean;
+
 export type CapacityProvider = string;
 
 export type CapacityProviderStrategy = Array<CapacityProviderStrategyItem>;
@@ -699,6 +701,8 @@ export interface StopPipeResponse {
   CreationTime?: Date | string;
   LastModifiedTime?: Date | string;
 }
+export type PipesString = string;
+
 export type StringList = Array<string>;
 export type Subnet = string;
 

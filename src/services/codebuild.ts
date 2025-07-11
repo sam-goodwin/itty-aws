@@ -464,6 +464,8 @@ export interface BatchRestrictions {
   computeTypesAllowed?: Array<string>;
   fleetsAllowed?: Array<string>;
 }
+export type CodebuildBoolean = boolean;
+
 export type BucketOwnerAccess = "NONE" | "READ_ONLY" | "FULL";
 export interface Build {
   id?: string;
@@ -1646,6 +1648,8 @@ export interface StopSandboxInput {
 export interface StopSandboxOutput {
   sandbox?: Sandbox;
 }
+export type CodebuildString = string;
+
 export type Subnets = Array<string>;
 export interface Tag {
   key?: string;

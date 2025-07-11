@@ -276,7 +276,7 @@ export interface ConverseRequest {
   inferenceConfig?: InferenceConfiguration;
   toolConfig?: ToolConfiguration;
   guardrailConfig?: GuardrailConfiguration;
-  additionalModelRequestFields?: _opaque_Document;
+  additionalModelRequestFields?: unknown;
   promptVariables?: Record<string, PromptVariableValues>;
   additionalModelResponseFieldPaths?: Array<string>;
   requestMetadata?: Record<string, string>;
@@ -287,7 +287,7 @@ export interface ConverseResponse {
   stopReason: StopReason;
   usage: TokenUsage;
   metrics: ConverseMetrics;
-  additionalModelResponseFields?: _opaque_Document;
+  additionalModelResponseFields?: unknown;
   trace?: ConverseTrace;
   performanceConfig?: PerformanceConfiguration;
 }
@@ -319,7 +319,7 @@ export interface ConverseStreamRequest {
   inferenceConfig?: InferenceConfiguration;
   toolConfig?: ToolConfiguration;
   guardrailConfig?: GuardrailStreamConfiguration;
-  additionalModelRequestFields?: _opaque_Document;
+  additionalModelRequestFields?: unknown;
   promptVariables?: Record<string, PromptVariableValues>;
   additionalModelResponseFieldPaths?: Array<string>;
   requestMetadata?: Record<string, string>;
@@ -744,7 +744,7 @@ export interface MessageStartEvent {
 }
 export interface MessageStopEvent {
   stopReason: StopReason;
-  additionalModelResponseFields?: _opaque_Document;
+  additionalModelResponseFields?: unknown;
 }
 export type MimeType = string;
 
@@ -755,6 +755,8 @@ export declare class ModelErrorException extends EffectData.TaggedError(
   readonly originalStatusCode?: number;
   readonly resourceName?: string;
 }> {}
+export type ModelInputPayload = unknown;
+
 export declare class ModelNotReadyException extends EffectData.TaggedError(
   "ModelNotReadyException",
 )<{
@@ -845,7 +847,7 @@ export interface SpecificToolChoice {
 export interface StartAsyncInvokeRequest {
   clientRequestToken?: string;
   modelId: string;
-  modelInput: ModelInputPayload;
+  modelInput: unknown;
   outputDataConfig: AsyncInvokeOutputDataConfig;
   tags?: Array<Tag>;
 }
@@ -904,7 +906,7 @@ export interface ToolConfiguration {
   tools: Array<Tool>;
   toolChoice?: ToolChoice;
 }
-export type ToolInputSchema = { json: _opaque_Document };
+export type ToolInputSchema = { json: unknown };
 export type ToolName = string;
 
 export interface ToolResultBlock {
@@ -913,7 +915,7 @@ export interface ToolResultBlock {
   status?: ToolResultStatus;
 }
 export type ToolResultContentBlock =
-  | { json: _opaque_Document }
+  | { json: unknown }
   | { text: string }
   | { image: ImageBlock }
   | { document: DocumentBlock }
@@ -929,7 +931,7 @@ export interface ToolSpecification {
 export interface ToolUseBlock {
   toolUseId: string;
   name: string;
-  input: _opaque_Document;
+  input: unknown;
 }
 export interface ToolUseBlockDelta {
   input: string;

@@ -2520,6 +2520,8 @@ export interface BlueGreenUpdatePolicy {
   TerminationWaitInSeconds?: number;
   MaximumExecutionTimeoutInSeconds?: number;
 }
+export type SagemakerBoolean = boolean;
+
 export type BooleanOperator = "AND" | "OR";
 export type BorrowLimit = number;
 
@@ -11890,6 +11892,8 @@ export interface StopTransformJobRequest {
 }
 export type StorageType = "STANDARD" | "IN_MEMORY";
 export type StreamUrl = string;
+
+export type SagemakerString = string;
 
 export type String1024 = string;
 
