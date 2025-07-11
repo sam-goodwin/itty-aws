@@ -1,186 +1,52 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface RolesAnywhere {
-  createProfile(
-    input: CreateProfileRequest,
-  ): Effect.Effect<
-    ProfileDetailResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  createTrustAnchor(
-    input: CreateTrustAnchorRequest,
-  ): Effect.Effect<
-    TrustAnchorDetailResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  deleteAttributeMapping(
-    input: DeleteAttributeMappingRequest,
-  ): Effect.Effect<
-    DeleteAttributeMappingResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteCrl(
-    input: ScalarCrlRequest,
-  ): Effect.Effect<
-    CrlDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteProfile(
-    input: ScalarProfileRequest,
-  ): Effect.Effect<
-    ProfileDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteTrustAnchor(
-    input: ScalarTrustAnchorRequest,
-  ): Effect.Effect<
-    TrustAnchorDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  disableCrl(
-    input: ScalarCrlRequest,
-  ): Effect.Effect<
-    CrlDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  disableProfile(
-    input: ScalarProfileRequest,
-  ): Effect.Effect<
-    ProfileDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  disableTrustAnchor(
-    input: ScalarTrustAnchorRequest,
-  ): Effect.Effect<
-    TrustAnchorDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  enableCrl(
-    input: ScalarCrlRequest,
-  ): Effect.Effect<
-    CrlDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  enableProfile(
-    input: ScalarProfileRequest,
-  ): Effect.Effect<
-    ProfileDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  enableTrustAnchor(
-    input: ScalarTrustAnchorRequest,
-  ): Effect.Effect<
-    TrustAnchorDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  getCrl(
-    input: ScalarCrlRequest,
-  ): Effect.Effect<
-    CrlDetailResponse,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  getProfile(
-    input: ScalarProfileRequest,
-  ): Effect.Effect<
-    ProfileDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  getSubject(
-    input: ScalarSubjectRequest,
-  ): Effect.Effect<
-    SubjectDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | CommonAwsError
-  >;
-  getTrustAnchor(
-    input: ScalarTrustAnchorRequest,
-  ): Effect.Effect<
-    TrustAnchorDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  importCrl(
-    input: ImportCrlRequest,
-  ): Effect.Effect<
-    CrlDetailResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  listCrls(
-    input: ListRequest,
-  ): Effect.Effect<
-    ListCrlsResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  listProfiles(
-    input: ListRequest,
-  ): Effect.Effect<
-    ListProfilesResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  listSubjects(
-    input: ListRequest,
-  ): Effect.Effect<
-    ListSubjectsResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listTrustAnchors(
-    input: ListRequest,
-  ): Effect.Effect<
-    ListTrustAnchorsResponse,
-    AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  putAttributeMapping(
-    input: PutAttributeMappingRequest,
-  ): Effect.Effect<
-    PutAttributeMappingResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   putNotificationSettings(
     input: PutNotificationSettingsRequest,
   ): Effect.Effect<
     PutNotificationSettingsResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   resetNotificationSettings(
     input: ResetNotificationSettingsRequest,
   ): Effect.Effect<
     ResetNotificationSettingsResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | ResourceNotFoundException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateCrl(
-    input: UpdateCrlRequest,
-  ): Effect.Effect<
-    CrlDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateProfile(
-    input: UpdateProfileRequest,
-  ): Effect.Effect<
-    ProfileDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateTrustAnchor(
-    input: UpdateTrustAnchorRequest,
-  ): Effect.Effect<
-    TrustAnchorDetailResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -388,7 +254,9 @@ export interface Source {
   sourceType?: string;
   sourceData?: SourceData;
 }
-export type SourceData = { x509CertificateData: string } | { acmPcaArn: string };
+export type SourceData =
+  | { x509CertificateData: string }
+  | { acmPcaArn: string };
 export type SpecifierList = Array<string>;
 export interface SubjectDetail {
   subjectArn?: string;
@@ -426,8 +294,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class TooManyTagsException extends Data.TaggedError(
@@ -457,8 +324,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateCrlRequest {
   crlId: string;
   name?: string;
@@ -485,209 +351,9 @@ export declare class ValidationException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare namespace CreateProfile {
-  export type Input = CreateProfileRequest;
-  export type Output = ProfileDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateTrustAnchor {
-  export type Input = CreateTrustAnchorRequest;
-  export type Output = TrustAnchorDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteAttributeMapping {
-  export type Input = DeleteAttributeMappingRequest;
-  export type Output = DeleteAttributeMappingResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteCrl {
-  export type Input = ScalarCrlRequest;
-  export type Output = CrlDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteProfile {
-  export type Input = ScalarProfileRequest;
-  export type Output = ProfileDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteTrustAnchor {
-  export type Input = ScalarTrustAnchorRequest;
-  export type Output = TrustAnchorDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DisableCrl {
-  export type Input = ScalarCrlRequest;
-  export type Output = CrlDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DisableProfile {
-  export type Input = ScalarProfileRequest;
-  export type Output = ProfileDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DisableTrustAnchor {
-  export type Input = ScalarTrustAnchorRequest;
-  export type Output = TrustAnchorDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace EnableCrl {
-  export type Input = ScalarCrlRequest;
-  export type Output = CrlDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace EnableProfile {
-  export type Input = ScalarProfileRequest;
-  export type Output = ProfileDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace EnableTrustAnchor {
-  export type Input = ScalarTrustAnchorRequest;
-  export type Output = TrustAnchorDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetCrl {
-  export type Input = ScalarCrlRequest;
-  export type Output = CrlDetailResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetProfile {
-  export type Input = ScalarProfileRequest;
-  export type Output = ProfileDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetSubject {
-  export type Input = ScalarSubjectRequest;
-  export type Output = SubjectDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetTrustAnchor {
-  export type Input = ScalarTrustAnchorRequest;
-  export type Output = TrustAnchorDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ImportCrl {
-  export type Input = ImportCrlRequest;
-  export type Output = CrlDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCrls {
-  export type Input = ListRequest;
-  export type Output = ListCrlsResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListProfiles {
-  export type Input = ListRequest;
-  export type Output = ListProfilesResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListSubjects {
-  export type Input = ListRequest;
-  export type Output = ListSubjectsResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListTrustAnchors {
-  export type Input = ListRequest;
-  export type Output = ListTrustAnchorsResponse;
-  export type Error =
-    | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PutAttributeMapping {
-  export type Input = PutAttributeMappingRequest;
-  export type Output = PutAttributeMappingResponse;
   export type Error =
     | AccessDeniedException
     | ResourceNotFoundException
@@ -735,34 +401,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateCrl {
-  export type Input = UpdateCrlRequest;
-  export type Output = CrlDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateProfile {
-  export type Input = UpdateProfileRequest;
-  export type Output = ProfileDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateTrustAnchor {
-  export type Input = UpdateTrustAnchorRequest;
-  export type Output = TrustAnchorDetailResponse;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-

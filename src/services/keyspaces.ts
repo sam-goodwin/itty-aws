@@ -1,120 +1,225 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface KeyspacesService {
   createKeyspace(
     input: CreateKeyspaceRequest,
   ): Effect.Effect<
     CreateKeyspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createTable(
     input: CreateTableRequest,
   ): Effect.Effect<
     CreateTableResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createType(
     input: CreateTypeRequest,
   ): Effect.Effect<
     CreateTypeResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteKeyspace(
     input: DeleteKeyspaceRequest,
   ): Effect.Effect<
     DeleteKeyspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteTable(
     input: DeleteTableRequest,
   ): Effect.Effect<
     DeleteTableResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteType(
     input: DeleteTypeRequest,
   ): Effect.Effect<
     DeleteTypeResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   getKeyspace(
     input: GetKeyspaceRequest,
   ): Effect.Effect<
     GetKeyspaceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   getTable(
     input: GetTableRequest,
   ): Effect.Effect<
     GetTableResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   getTableAutoScalingSettings(
     input: GetTableAutoScalingSettingsRequest,
   ): Effect.Effect<
     GetTableAutoScalingSettingsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   getType(
     input: GetTypeRequest,
   ): Effect.Effect<
     GetTypeResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   listKeyspaces(
     input: ListKeyspacesRequest,
   ): Effect.Effect<
     ListKeyspacesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   listTables(
     input: ListTablesRequest,
   ): Effect.Effect<
     ListTablesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   listTypes(
     input: ListTypesRequest,
   ): Effect.Effect<
     ListTypesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   restoreTable(
     input: RestoreTableRequest,
   ): Effect.Effect<
     RestoreTableResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   updateKeyspace(
     input: UpdateKeyspaceRequest,
   ): Effect.Effect<
     UpdateKeyspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   updateTable(
     input: UpdateTableRequest,
   ): Effect.Effect<
     UpdateTableResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -233,14 +338,12 @@ export type DefaultTimeToLive = number;
 export interface DeleteKeyspaceRequest {
   keyspaceName: string;
 }
-export interface DeleteKeyspaceResponse {
-}
+export interface DeleteKeyspaceResponse {}
 export interface DeleteTableRequest {
   keyspaceName: string;
   tableName: string;
 }
-export interface DeleteTableResponse {
-}
+export interface DeleteTableResponse {}
 export interface DeleteTypeRequest {
   keyspaceName: string;
   typeName: string;
@@ -403,7 +506,8 @@ export interface ReplicaAutoScalingSpecification {
   region?: string;
   autoScalingSpecification?: AutoScalingSpecification;
 }
-export type ReplicaAutoScalingSpecificationList = Array<ReplicaAutoScalingSpecification>;
+export type ReplicaAutoScalingSpecificationList =
+  Array<ReplicaAutoScalingSpecification>;
 export interface ReplicaSpecification {
   region: string;
   readCapacityUnits?: number;
@@ -415,7 +519,8 @@ export interface ReplicaSpecificationSummary {
   status?: string;
   capacitySpecification?: CapacitySpecificationSummary;
 }
-export type ReplicaSpecificationSummaryList = Array<ReplicaSpecificationSummary>;
+export type ReplicaSpecificationSummaryList =
+  Array<ReplicaSpecificationSummary>;
 export interface ReplicationGroupStatus {
   region: string;
   keyspaceStatus: string;
@@ -493,8 +598,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TargetTrackingScalingPolicyConfiguration {
@@ -521,8 +625,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tags: Array<Tag>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateKeyspaceRequest {
   keyspaceName: string;
   replicationSpecification: ReplicationSpecification;
@@ -792,4 +895,3 @@ export declare namespace UpdateTable {
     | ValidationException
     | CommonAwsError;
 }
-

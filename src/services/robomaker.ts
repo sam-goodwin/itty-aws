@@ -1,252 +1,428 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface robomaker {
   batchDeleteWorlds(
     input: BatchDeleteWorldsRequest,
   ): Effect.Effect<
     BatchDeleteWorldsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   batchDescribeSimulationJob(
     input: BatchDescribeSimulationJobRequest,
   ): Effect.Effect<
     BatchDescribeSimulationJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   cancelDeploymentJob(
     input: CancelDeploymentJobRequest,
   ): Effect.Effect<
     CancelDeploymentJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   cancelSimulationJob(
     input: CancelSimulationJobRequest,
   ): Effect.Effect<
     CancelSimulationJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   cancelSimulationJobBatch(
     input: CancelSimulationJobBatchRequest,
   ): Effect.Effect<
     CancelSimulationJobBatchResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   cancelWorldExportJob(
     input: CancelWorldExportJobRequest,
   ): Effect.Effect<
     CancelWorldExportJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   cancelWorldGenerationJob(
     input: CancelWorldGenerationJobRequest,
   ): Effect.Effect<
     CancelWorldGenerationJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createDeploymentJob(
     input: CreateDeploymentJobRequest,
   ): Effect.Effect<
     CreateDeploymentJobResponse,
-    ConcurrentDeploymentException | IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | ConcurrentDeploymentException
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createFleet(
     input: CreateFleetRequest,
   ): Effect.Effect<
     CreateFleetResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createRobot(
     input: CreateRobotRequest,
   ): Effect.Effect<
     CreateRobotResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ResourceAlreadyExistsException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createRobotApplication(
     input: CreateRobotApplicationRequest,
   ): Effect.Effect<
     CreateRobotApplicationResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ResourceAlreadyExistsException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createRobotApplicationVersion(
     input: CreateRobotApplicationVersionRequest,
   ): Effect.Effect<
     CreateRobotApplicationVersionResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createSimulationApplication(
     input: CreateSimulationApplicationRequest,
   ): Effect.Effect<
     CreateSimulationApplicationResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ResourceAlreadyExistsException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createSimulationApplicationVersion(
     input: CreateSimulationApplicationVersionRequest,
   ): Effect.Effect<
     CreateSimulationApplicationVersionResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createSimulationJob(
     input: CreateSimulationJobRequest,
   ): Effect.Effect<
     CreateSimulationJobResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createWorldExportJob(
     input: CreateWorldExportJobRequest,
   ): Effect.Effect<
     CreateWorldExportJobResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createWorldGenerationJob(
     input: CreateWorldGenerationJobRequest,
   ): Effect.Effect<
     CreateWorldGenerationJobResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createWorldTemplate(
     input: CreateWorldTemplateRequest,
   ): Effect.Effect<
     CreateWorldTemplateResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ResourceAlreadyExistsException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteFleet(
     input: DeleteFleetRequest,
   ): Effect.Effect<
     DeleteFleetResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteRobot(
     input: DeleteRobotRequest,
   ): Effect.Effect<
     DeleteRobotResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteRobotApplication(
     input: DeleteRobotApplicationRequest,
   ): Effect.Effect<
     DeleteRobotApplicationResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteSimulationApplication(
     input: DeleteSimulationApplicationRequest,
   ): Effect.Effect<
     DeleteSimulationApplicationResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteWorldTemplate(
     input: DeleteWorldTemplateRequest,
   ): Effect.Effect<
     DeleteWorldTemplateResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deregisterRobot(
     input: DeregisterRobotRequest,
   ): Effect.Effect<
     DeregisterRobotResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeDeploymentJob(
     input: DescribeDeploymentJobRequest,
   ): Effect.Effect<
     DescribeDeploymentJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeFleet(
     input: DescribeFleetRequest,
   ): Effect.Effect<
     DescribeFleetResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeRobot(
     input: DescribeRobotRequest,
   ): Effect.Effect<
     DescribeRobotResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeRobotApplication(
     input: DescribeRobotApplicationRequest,
   ): Effect.Effect<
     DescribeRobotApplicationResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeSimulationApplication(
     input: DescribeSimulationApplicationRequest,
   ): Effect.Effect<
     DescribeSimulationApplicationResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeSimulationJob(
     input: DescribeSimulationJobRequest,
   ): Effect.Effect<
     DescribeSimulationJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeSimulationJobBatch(
     input: DescribeSimulationJobBatchRequest,
   ): Effect.Effect<
     DescribeSimulationJobBatchResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeWorld(
     input: DescribeWorldRequest,
   ): Effect.Effect<
     DescribeWorldResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeWorldExportJob(
     input: DescribeWorldExportJobRequest,
   ): Effect.Effect<
     DescribeWorldExportJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeWorldGenerationJob(
     input: DescribeWorldGenerationJobRequest,
   ): Effect.Effect<
     DescribeWorldGenerationJobResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeWorldTemplate(
     input: DescribeWorldTemplateRequest,
   ): Effect.Effect<
     DescribeWorldTemplateResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getWorldTemplateBody(
     input: GetWorldTemplateBodyRequest,
   ): Effect.Effect<
     GetWorldTemplateBodyResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listDeploymentJobs(
     input: ListDeploymentJobsRequest,
   ): Effect.Effect<
     ListDeploymentJobsResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listFleets(
     input: ListFleetsRequest,
   ): Effect.Effect<
     ListFleetsResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listRobotApplications(
     input: ListRobotApplicationsRequest,
   ): Effect.Effect<
     ListRobotApplicationsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listRobots(
     input: ListRobotsRequest,
   ): Effect.Effect<
     ListRobotsResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listSimulationApplications(
     input: ListSimulationApplicationsRequest,
   ): Effect.Effect<
     ListSimulationApplicationsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listSimulationJobBatches(
     input: ListSimulationJobBatchesRequest,
@@ -258,91 +434,154 @@ export interface robomaker {
     input: ListSimulationJobsRequest,
   ): Effect.Effect<
     ListSimulationJobsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listWorldExportJobs(
     input: ListWorldExportJobsRequest,
   ): Effect.Effect<
     ListWorldExportJobsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listWorldGenerationJobs(
     input: ListWorldGenerationJobsRequest,
   ): Effect.Effect<
     ListWorldGenerationJobsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
-  >;
-  listWorldTemplates(
-    input: ListWorldTemplatesRequest,
-  ): Effect.Effect<
-    ListWorldTemplatesResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listWorlds(
     input: ListWorldsRequest,
   ): Effect.Effect<
     ListWorldsResponse,
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
+  >;
+  listWorldTemplates(
+    input: ListWorldTemplatesRequest,
+  ): Effect.Effect<
+    ListWorldTemplatesResponse,
+    | InternalServerException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   registerRobot(
     input: RegisterRobotRequest,
   ): Effect.Effect<
     RegisterRobotResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   restartSimulationJob(
     input: RestartSimulationJobRequest,
   ): Effect.Effect<
     RestartSimulationJobResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   startSimulationJobBatch(
     input: StartSimulationJobBatchRequest,
   ): Effect.Effect<
     StartSimulationJobBatchResponse,
-    IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ThrottlingException | CommonAwsError
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   syncDeploymentJob(
     input: SyncDeploymentJobRequest,
   ): Effect.Effect<
     SyncDeploymentJobResponse,
-    ConcurrentDeploymentException | IdempotentParameterMismatchException | InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | ConcurrentDeploymentException
+    | IdempotentParameterMismatchException
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateRobotApplication(
     input: UpdateRobotApplicationRequest,
   ): Effect.Effect<
     UpdateRobotApplicationResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateSimulationApplication(
     input: UpdateSimulationApplicationRequest,
   ): Effect.Effect<
     UpdateSimulationApplicationResponse,
-    InternalServerException | InvalidParameterException | LimitExceededException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateWorldTemplate(
     input: UpdateWorldTemplateRequest,
   ): Effect.Effect<
     UpdateWorldTemplateResponse,
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
@@ -376,28 +615,23 @@ export type BoxedBoolean = boolean;
 export interface CancelDeploymentJobRequest {
   job: string;
 }
-export interface CancelDeploymentJobResponse {
-}
+export interface CancelDeploymentJobResponse {}
 export interface CancelSimulationJobBatchRequest {
   batch: string;
 }
-export interface CancelSimulationJobBatchResponse {
-}
+export interface CancelSimulationJobBatchResponse {}
 export interface CancelSimulationJobRequest {
   job: string;
 }
-export interface CancelSimulationJobResponse {
-}
+export interface CancelSimulationJobResponse {}
 export interface CancelWorldExportJobRequest {
   job: string;
 }
-export interface CancelWorldExportJobResponse {
-}
+export interface CancelWorldExportJobResponse {}
 export interface CancelWorldGenerationJobRequest {
   job: string;
 }
-export interface CancelWorldGenerationJobResponse {
-}
+export interface CancelWorldGenerationJobResponse {}
 export type ClientRequestToken = string;
 
 export type Command = string;
@@ -642,30 +876,25 @@ export type DataSourceType = "Prefix" | "Archive" | "File";
 export interface DeleteFleetRequest {
   fleet: string;
 }
-export interface DeleteFleetResponse {
-}
+export interface DeleteFleetResponse {}
 export interface DeleteRobotApplicationRequest {
   application: string;
   applicationVersion?: string;
 }
-export interface DeleteRobotApplicationResponse {
-}
+export interface DeleteRobotApplicationResponse {}
 export interface DeleteRobotRequest {
   robot: string;
 }
-export interface DeleteRobotResponse {
-}
+export interface DeleteRobotResponse {}
 export interface DeleteSimulationApplicationRequest {
   application: string;
   applicationVersion?: string;
 }
-export interface DeleteSimulationApplicationResponse {
-}
+export interface DeleteSimulationApplicationResponse {}
 export interface DeleteWorldTemplateRequest {
   template: string;
 }
-export interface DeleteWorldTemplateResponse {
-}
+export interface DeleteWorldTemplateResponse {}
 export interface DeploymentApplicationConfig {
   application: string;
   applicationVersion: string;
@@ -688,7 +917,31 @@ export interface DeploymentJob {
   failureCode?: DeploymentJobErrorCode;
   createdAt?: Date | string;
 }
-export type DeploymentJobErrorCode = "ResourceNotFound" | "EnvironmentSetupError" | "EtagMismatch" | "FailureThresholdBreached" | "RobotDeploymentAborted" | "RobotDeploymentNoResponse" | "RobotAgentConnectionTimeout" | "GreengrassDeploymentFailed" | "InvalidGreengrassGroup" | "MissingRobotArchitecture" | "MissingRobotApplicationArchitecture" | "MissingRobotDeploymentResource" | "GreengrassGroupVersionDoesNotExist" | "LambdaDeleted" | "ExtractingBundleFailure" | "PreLaunchFileFailure" | "PostLaunchFileFailure" | "BadPermissionError" | "DownloadConditionFailed" | "BadLambdaAssociated" | "InternalServerError" | "RobotApplicationDoesNotExist" | "DeploymentFleetDoesNotExist" | "FleetDeploymentTimeout";
+export type DeploymentJobErrorCode =
+  | "ResourceNotFound"
+  | "EnvironmentSetupError"
+  | "EtagMismatch"
+  | "FailureThresholdBreached"
+  | "RobotDeploymentAborted"
+  | "RobotDeploymentNoResponse"
+  | "RobotAgentConnectionTimeout"
+  | "GreengrassDeploymentFailed"
+  | "InvalidGreengrassGroup"
+  | "MissingRobotArchitecture"
+  | "MissingRobotApplicationArchitecture"
+  | "MissingRobotDeploymentResource"
+  | "GreengrassGroupVersionDoesNotExist"
+  | "LambdaDeleted"
+  | "ExtractingBundleFailure"
+  | "PreLaunchFileFailure"
+  | "PostLaunchFileFailure"
+  | "BadPermissionError"
+  | "DownloadConditionFailed"
+  | "BadLambdaAssociated"
+  | "InternalServerError"
+  | "RobotApplicationDoesNotExist"
+  | "DeploymentFleetDoesNotExist"
+  | "FleetDeploymentTimeout";
 export type DeploymentJobs = Array<DeploymentJob>;
 export interface DeploymentLaunchConfig {
   packageName: string;
@@ -697,7 +950,13 @@ export interface DeploymentLaunchConfig {
   postLaunchFile?: string;
   environmentVariables?: Record<string, string>;
 }
-export type DeploymentStatus = "Pending" | "Preparing" | "InProgress" | "Failed" | "Succeeded" | "Canceled";
+export type DeploymentStatus =
+  | "Pending"
+  | "Preparing"
+  | "InProgress"
+  | "Failed"
+  | "Succeeded"
+  | "Canceled";
 export type DeploymentTimeout = number;
 
 export type DeploymentVersion = string;
@@ -903,7 +1162,8 @@ export interface FailedCreateSimulationJobRequest {
   failureCode?: SimulationJobErrorCode;
   failedAt?: Date | string;
 }
-export type FailedCreateSimulationJobRequests = Array<FailedCreateSimulationJobRequest>;
+export type FailedCreateSimulationJobRequests =
+  Array<FailedCreateSimulationJobRequest>;
 export type FailureBehavior = "Fail" | "Continue";
 export interface FailureSummary {
   totalFailureCount?: number;
@@ -1173,8 +1433,7 @@ export declare class ResourceNotFoundException extends Data.TaggedError(
 export interface RestartSimulationJobRequest {
   job: string;
 }
-export interface RestartSimulationJobResponse {
-}
+export interface RestartSimulationJobResponse {}
 export type RevisionId = string;
 
 export interface Robot {
@@ -1216,7 +1475,14 @@ export interface RobotDeployment {
   failureReason?: string;
   failureCode?: DeploymentJobErrorCode;
 }
-export type RobotDeploymentStep = "ValidatingStep" | "DownloadingExtractingStep" | "ExecutingDownloadCondition" | "PreLaunchStep" | "LaunchingStep" | "PostLaunchStep" | "FinishedStep";
+export type RobotDeploymentStep =
+  | "ValidatingStep"
+  | "DownloadingExtractingStep"
+  | "ExecutingDownloadCondition"
+  | "PreLaunchStep"
+  | "LaunchingStep"
+  | "PostLaunchStep"
+  | "FinishedStep";
 export type RobotDeploymentSummary = Array<RobotDeployment>;
 export type Robots = Array<Robot>;
 export interface RobotSoftwareSuite {
@@ -1224,8 +1490,19 @@ export interface RobotSoftwareSuite {
   version?: RobotSoftwareSuiteVersionType;
 }
 export type RobotSoftwareSuiteType = "ROS" | "ROS2" | "General";
-export type RobotSoftwareSuiteVersionType = "Kinetic" | "Melodic" | "Dashing" | "Foxy";
-export type RobotStatus = "Available" | "Registered" | "PendingNewDeployment" | "Deploying" | "Failed" | "InSync" | "NoResponse";
+export type RobotSoftwareSuiteVersionType =
+  | "Kinetic"
+  | "Melodic"
+  | "Dashing"
+  | "Foxy";
+export type RobotStatus =
+  | "Available"
+  | "Registered"
+  | "PendingNewDeployment"
+  | "Deploying"
+  | "Failed"
+  | "InSync"
+  | "NoResponse";
 export type S3Bucket = string;
 
 export type S3Etag = string;
@@ -1264,7 +1541,8 @@ export interface SimulationApplicationConfig {
 }
 export type SimulationApplicationConfigs = Array<SimulationApplicationConfig>;
 export type SimulationApplicationNames = Array<string>;
-export type SimulationApplicationSummaries = Array<SimulationApplicationSummary>;
+export type SimulationApplicationSummaries =
+  Array<SimulationApplicationSummary>;
 export interface SimulationApplicationSummary {
   name?: string;
   arn?: string;
@@ -1297,7 +1575,16 @@ export interface SimulationJob {
   compute?: ComputeResponse;
 }
 export type SimulationJobBatchErrorCode = "InternalServiceError";
-export type SimulationJobBatchStatus = "Pending" | "InProgress" | "Failed" | "Completed" | "Canceled" | "Canceling" | "Completing" | "TimingOut" | "TimedOut";
+export type SimulationJobBatchStatus =
+  | "Pending"
+  | "InProgress"
+  | "Failed"
+  | "Completed"
+  | "Canceled"
+  | "Canceling"
+  | "Completing"
+  | "TimingOut"
+  | "TimedOut";
 export type SimulationJobBatchSummaries = Array<SimulationJobBatchSummary>;
 export interface SimulationJobBatchSummary {
   arn?: string;
@@ -1308,7 +1595,38 @@ export interface SimulationJobBatchSummary {
   pendingRequestCount?: number;
   createdRequestCount?: number;
 }
-export type SimulationJobErrorCode = "InternalServiceError" | "RobotApplicationCrash" | "SimulationApplicationCrash" | "RobotApplicationHealthCheckFailure" | "SimulationApplicationHealthCheckFailure" | "BadPermissionsRobotApplication" | "BadPermissionsSimulationApplication" | "BadPermissionsS3Object" | "BadPermissionsS3Output" | "BadPermissionsCloudwatchLogs" | "SubnetIpLimitExceeded" | "ENILimitExceeded" | "BadPermissionsUserCredentials" | "InvalidBundleRobotApplication" | "InvalidBundleSimulationApplication" | "InvalidS3Resource" | "ThrottlingError" | "LimitExceeded" | "MismatchedEtag" | "RobotApplicationVersionMismatchedEtag" | "SimulationApplicationVersionMismatchedEtag" | "ResourceNotFound" | "RequestThrottled" | "BatchTimedOut" | "BatchCanceled" | "InvalidInput" | "WrongRegionS3Bucket" | "WrongRegionS3Output" | "WrongRegionRobotApplication" | "WrongRegionSimulationApplication" | "UploadContentMismatchError";
+export type SimulationJobErrorCode =
+  | "InternalServiceError"
+  | "RobotApplicationCrash"
+  | "SimulationApplicationCrash"
+  | "RobotApplicationHealthCheckFailure"
+  | "SimulationApplicationHealthCheckFailure"
+  | "BadPermissionsRobotApplication"
+  | "BadPermissionsSimulationApplication"
+  | "BadPermissionsS3Object"
+  | "BadPermissionsS3Output"
+  | "BadPermissionsCloudwatchLogs"
+  | "SubnetIpLimitExceeded"
+  | "ENILimitExceeded"
+  | "BadPermissionsUserCredentials"
+  | "InvalidBundleRobotApplication"
+  | "InvalidBundleSimulationApplication"
+  | "InvalidS3Resource"
+  | "ThrottlingError"
+  | "LimitExceeded"
+  | "MismatchedEtag"
+  | "RobotApplicationVersionMismatchedEtag"
+  | "SimulationApplicationVersionMismatchedEtag"
+  | "ResourceNotFound"
+  | "RequestThrottled"
+  | "BatchTimedOut"
+  | "BatchCanceled"
+  | "InvalidInput"
+  | "WrongRegionS3Bucket"
+  | "WrongRegionS3Output"
+  | "WrongRegionRobotApplication"
+  | "WrongRegionSimulationApplication"
+  | "UploadContentMismatchError";
 export interface SimulationJobRequest {
   outputLocation?: OutputLocation;
   loggingConfig?: LoggingConfig;
@@ -1324,7 +1642,17 @@ export interface SimulationJobRequest {
   tags?: Record<string, string>;
 }
 export type SimulationJobs = Array<SimulationJob>;
-export type SimulationJobStatus = "Pending" | "Preparing" | "Running" | "Restarting" | "Completed" | "Failed" | "RunningFailed" | "Terminating" | "Terminated" | "Canceled";
+export type SimulationJobStatus =
+  | "Pending"
+  | "Preparing"
+  | "Running"
+  | "Restarting"
+  | "Completed"
+  | "Failed"
+  | "RunningFailed"
+  | "Terminating"
+  | "Terminated"
+  | "Canceled";
 export type SimulationJobSummaries = Array<SimulationJobSummary>;
 export interface SimulationJobSummary {
   arn?: string;
@@ -1340,7 +1668,10 @@ export interface SimulationSoftwareSuite {
   name?: SimulationSoftwareSuiteType;
   version?: string;
 }
-export type SimulationSoftwareSuiteType = "Gazebo" | "RosbagPlay" | "SimulationRuntime";
+export type SimulationSoftwareSuiteType =
+  | "Gazebo"
+  | "RosbagPlay"
+  | "SimulationRuntime";
 export type SimulationSoftwareSuiteVersionType = string;
 
 export type SimulationTimeMillis = number;
@@ -1402,8 +1733,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TemplateLocation {
@@ -1439,8 +1769,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateRobotApplicationRequest {
   application: string;
   sources?: Array<SourceConfig>;
@@ -1491,7 +1820,9 @@ export interface UpdateWorldTemplateResponse {
   createdAt?: Date | string;
   lastUpdatedAt?: Date | string;
 }
-export type UploadBehavior = "UPLOAD_ON_TERMINATE" | "UPLOAD_ROLLING_AUTO_REMOVE";
+export type UploadBehavior =
+  | "UPLOAD_ON_TERMINATE"
+  | "UPLOAD_ROLLING_AUTO_REMOVE";
 export interface UploadConfiguration {
   name: string;
   path: string;
@@ -1521,8 +1852,20 @@ export interface WorldCount {
   floorplanCount?: number;
   interiorCountPerFloorplan?: number;
 }
-export type WorldExportJobErrorCode = "InternalServiceError" | "LimitExceeded" | "ResourceNotFound" | "RequestThrottled" | "InvalidInput" | "AccessDenied";
-export type WorldExportJobStatus = "Pending" | "Running" | "Completed" | "Failed" | "Canceling" | "Canceled";
+export type WorldExportJobErrorCode =
+  | "InternalServiceError"
+  | "LimitExceeded"
+  | "ResourceNotFound"
+  | "RequestThrottled"
+  | "InvalidInput"
+  | "AccessDenied";
+export type WorldExportJobStatus =
+  | "Pending"
+  | "Running"
+  | "Completed"
+  | "Failed"
+  | "Canceling"
+  | "Canceled";
 export type WorldExportJobSummaries = Array<WorldExportJobSummary>;
 export interface WorldExportJobSummary {
   arn?: string;
@@ -1537,8 +1880,21 @@ export interface WorldFailure {
   failureCount?: number;
 }
 export type WorldFailures = Array<WorldFailure>;
-export type WorldGenerationJobErrorCode = "InternalServiceError" | "LimitExceeded" | "ResourceNotFound" | "RequestThrottled" | "InvalidInput" | "AllWorldGenerationFailed";
-export type WorldGenerationJobStatus = "Pending" | "Running" | "Completed" | "Failed" | "PartialFailed" | "Canceling" | "Canceled";
+export type WorldGenerationJobErrorCode =
+  | "InternalServiceError"
+  | "LimitExceeded"
+  | "ResourceNotFound"
+  | "RequestThrottled"
+  | "InvalidInput"
+  | "AllWorldGenerationFailed";
+export type WorldGenerationJobStatus =
+  | "Pending"
+  | "Running"
+  | "Completed"
+  | "Failed"
+  | "PartialFailed"
+  | "Canceling"
+  | "Canceled";
 export type WorldGenerationJobSummaries = Array<WorldGenerationJobSummary>;
 export interface WorldGenerationJobSummary {
   arn?: string;
@@ -2069,9 +2425,9 @@ export declare namespace ListWorldGenerationJobs {
     | CommonAwsError;
 }
 
-export declare namespace ListWorldTemplates {
-  export type Input = ListWorldTemplatesRequest;
-  export type Output = ListWorldTemplatesResponse;
+export declare namespace ListWorlds {
+  export type Input = ListWorldsRequest;
+  export type Output = ListWorldsResponse;
   export type Error =
     | InternalServerException
     | InvalidParameterException
@@ -2079,9 +2435,9 @@ export declare namespace ListWorldTemplates {
     | CommonAwsError;
 }
 
-export declare namespace ListWorlds {
-  export type Input = ListWorldsRequest;
-  export type Output = ListWorldsResponse;
+export declare namespace ListWorldTemplates {
+  export type Input = ListWorldTemplatesRequest;
+  export type Output = ListWorldTemplatesResponse;
   export type Error =
     | InternalServerException
     | InvalidParameterException
@@ -2195,4 +2551,3 @@ export declare namespace UpdateWorldTemplate {
     | ThrottlingException
     | CommonAwsError;
 }
-

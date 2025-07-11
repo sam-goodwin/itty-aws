@@ -1,54 +1,89 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface HealthLake {
   createFHIRDatastore(
     input: CreateFHIRDatastoreRequest,
   ): Effect.Effect<
     CreateFHIRDatastoreResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteFHIRDatastore(
     input: DeleteFHIRDatastoreRequest,
   ): Effect.Effect<
     DeleteFHIRDatastoreResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeFHIRDatastore(
     input: DescribeFHIRDatastoreRequest,
   ): Effect.Effect<
     DescribeFHIRDatastoreResponse,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeFHIRExportJob(
     input: DescribeFHIRExportJobRequest,
   ): Effect.Effect<
     DescribeFHIRExportJobResponse,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeFHIRImportJob(
     input: DescribeFHIRImportJobRequest,
   ): Effect.Effect<
     DescribeFHIRImportJobResponse,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFHIRDatastores(
     input: ListFHIRDatastoresRequest,
   ): Effect.Effect<
     ListFHIRDatastoresResponse,
-    InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFHIRExportJobs(
     input: ListFHIRExportJobsRequest,
   ): Effect.Effect<
     ListFHIRExportJobsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFHIRImportJobs(
     input: ListFHIRImportJobsRequest,
   ): Effect.Effect<
     ListFHIRImportJobsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
@@ -60,13 +95,23 @@ export interface HealthLake {
     input: StartFHIRExportJobRequest,
   ): Effect.Effect<
     StartFHIRExportJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   startFHIRImportJob(
     input: StartFHIRImportJobRequest,
   ): Effect.Effect<
     StartFHIRImportJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
@@ -145,7 +190,12 @@ export interface DatastoreProperties {
   ErrorCause?: ErrorCause;
 }
 export type DatastorePropertiesList = Array<DatastoreProperties>;
-export type DatastoreStatus = "CREATING" | "ACTIVE" | "DELETING" | "DELETED" | "CREATE_FAILED";
+export type DatastoreStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "DELETED"
+  | "CREATE_FAILED";
 export interface DeleteFHIRDatastoreRequest {
   DatastoreId: string;
 }
@@ -243,7 +293,17 @@ export interface JobProgressReport {
   TotalNumberOfFilesReadWithCustomerError?: number;
   Throughput?: number;
 }
-export type JobStatus = "SUBMITTED" | "QUEUED" | "IN_PROGRESS" | "COMPLETED_WITH_ERRORS" | "COMPLETED" | "FAILED" | "CANCEL_SUBMITTED" | "CANCEL_IN_PROGRESS" | "CANCEL_COMPLETED" | "CANCEL_FAILED";
+export type JobStatus =
+  | "SUBMITTED"
+  | "QUEUED"
+  | "IN_PROGRESS"
+  | "COMPLETED_WITH_ERRORS"
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCEL_SUBMITTED"
+  | "CANCEL_IN_PROGRESS"
+  | "CANCEL_COMPLETED"
+  | "CANCEL_FAILED";
 export interface KmsEncryptionConfig {
   CmkType: CmkType;
   KmsKeyId?: string;
@@ -353,8 +413,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -368,8 +427,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export declare class ValidationException extends Data.TaggedError(
   "ValidationException",
 )<{
@@ -516,4 +574,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-

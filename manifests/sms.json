@@ -1,7 +1,143 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.sms#AWSServerMigrationService_V2016_10_24": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.sms#CreateApp"
+        },
+        {
+          "target": "com.amazonaws.sms#CreateReplicationJob"
+        },
+        {
+          "target": "com.amazonaws.sms#DeleteApp"
+        },
+        {
+          "target": "com.amazonaws.sms#DeleteAppLaunchConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#DeleteAppReplicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#DeleteAppValidationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#DeleteReplicationJob"
+        },
+        {
+          "target": "com.amazonaws.sms#DeleteServerCatalog"
+        },
+        {
+          "target": "com.amazonaws.sms#DisassociateConnector"
+        },
+        {
+          "target": "com.amazonaws.sms#GenerateChangeSet"
+        },
+        {
+          "target": "com.amazonaws.sms#GenerateTemplate"
+        },
+        {
+          "target": "com.amazonaws.sms#GetApp"
+        },
+        {
+          "target": "com.amazonaws.sms#GetAppLaunchConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#GetAppReplicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#GetAppValidationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#GetAppValidationOutput"
+        },
+        {
+          "target": "com.amazonaws.sms#GetConnectors"
+        },
+        {
+          "target": "com.amazonaws.sms#GetReplicationJobs"
+        },
+        {
+          "target": "com.amazonaws.sms#GetReplicationRuns"
+        },
+        {
+          "target": "com.amazonaws.sms#GetServers"
+        },
+        {
+          "target": "com.amazonaws.sms#ImportAppCatalog"
+        },
+        {
+          "target": "com.amazonaws.sms#ImportServerCatalog"
+        },
+        {
+          "target": "com.amazonaws.sms#LaunchApp"
+        },
+        {
+          "target": "com.amazonaws.sms#ListApps"
+        },
+        {
+          "target": "com.amazonaws.sms#NotifyAppValidationOutput"
+        },
+        {
+          "target": "com.amazonaws.sms#PutAppLaunchConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#PutAppReplicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#PutAppValidationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.sms#StartAppReplication"
+        },
+        {
+          "target": "com.amazonaws.sms#StartOnDemandAppReplication"
+        },
+        {
+          "target": "com.amazonaws.sms#StartOnDemandReplicationRun"
+        },
+        {
+          "target": "com.amazonaws.sms#StopAppReplication"
+        },
+        {
+          "target": "com.amazonaws.sms#TerminateApp"
+        },
+        {
+          "target": "com.amazonaws.sms#UpdateApp"
+        },
+        {
+          "target": "com.amazonaws.sms#UpdateReplicationJob"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SMS",

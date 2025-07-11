@@ -1,150 +1,260 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonPersonalize {
   createBatchInferenceJob(
     input: CreateBatchInferenceJobRequest,
   ): Effect.Effect<
     CreateBatchInferenceJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createBatchSegmentJob(
     input: CreateBatchSegmentJobRequest,
   ): Effect.Effect<
     CreateBatchSegmentJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createCampaign(
     input: CreateCampaignRequest,
   ): Effect.Effect<
     CreateCampaignResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createDataDeletionJob(
     input: CreateDataDeletionJobRequest,
   ): Effect.Effect<
     CreateDataDeletionJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createDataset(
     input: CreateDatasetRequest,
   ): Effect.Effect<
     CreateDatasetResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createDatasetExportJob(
     input: CreateDatasetExportJobRequest,
   ): Effect.Effect<
     CreateDatasetExportJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createDatasetGroup(
     input: CreateDatasetGroupRequest,
   ): Effect.Effect<
     CreateDatasetGroupResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createDatasetImportJob(
     input: CreateDatasetImportJobRequest,
   ): Effect.Effect<
     CreateDatasetImportJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createEventTracker(
     input: CreateEventTrackerRequest,
   ): Effect.Effect<
     CreateEventTrackerResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createFilter(
     input: CreateFilterRequest,
   ): Effect.Effect<
     CreateFilterResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createMetricAttribution(
     input: CreateMetricAttributionRequest,
   ): Effect.Effect<
     CreateMetricAttributionResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createRecommender(
     input: CreateRecommenderRequest,
   ): Effect.Effect<
     CreateRecommenderResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createSchema(
     input: CreateSchemaRequest,
   ): Effect.Effect<
     CreateSchemaResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | CommonAwsError
   >;
   createSolution(
     input: CreateSolutionRequest,
   ): Effect.Effect<
     CreateSolutionResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createSolutionVersion(
     input: CreateSolutionVersionRequest,
   ): Effect.Effect<
     CreateSolutionVersionResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   deleteCampaign(
     input: DeleteCampaignRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteDataset(
     input: DeleteDatasetRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteDatasetGroup(
     input: DeleteDatasetGroupRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteEventTracker(
     input: DeleteEventTrackerRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteFilter(
     input: DeleteFilterRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteMetricAttribution(
     input: DeleteMetricAttributionRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteRecommender(
     input: DeleteRecommenderRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteSchema(
     input: DeleteSchemaRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteSolution(
     input: DeleteSolutionRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeAlgorithm(
     input: DescribeAlgorithmRequest,
@@ -258,7 +368,10 @@ export interface AmazonPersonalize {
     input: GetSolutionMetricsRequest,
   ): Effect.Effect<
     GetSolutionMetricsResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listBatchInferenceJobs(
     input: ListBatchInferenceJobsRequest,
@@ -350,83 +463,124 @@ export interface AmazonPersonalize {
     ListSchemasResponse,
     InvalidNextTokenException | CommonAwsError
   >;
-  listSolutionVersions(
-    input: ListSolutionVersionsRequest,
-  ): Effect.Effect<
-    ListSolutionVersionsResponse,
-    InvalidInputException | InvalidNextTokenException | ResourceNotFoundException | CommonAwsError
-  >;
   listSolutions(
     input: ListSolutionsRequest,
   ): Effect.Effect<
     ListSolutionsResponse,
     InvalidInputException | InvalidNextTokenException | CommonAwsError
   >;
+  listSolutionVersions(
+    input: ListSolutionVersionsRequest,
+  ): Effect.Effect<
+    ListSolutionVersionsResponse,
+    | InvalidInputException
+    | InvalidNextTokenException
+    | ResourceNotFoundException
+    | CommonAwsError
+  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   startRecommender(
     input: StartRecommenderRequest,
   ): Effect.Effect<
     StartRecommenderResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   stopRecommender(
     input: StopRecommenderRequest,
   ): Effect.Effect<
     StopRecommenderResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   stopSolutionVersionCreation(
     input: StopSolutionVersionCreationRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InvalidInputException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | TooManyTagKeysException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagKeysException
+    | CommonAwsError
   >;
   updateCampaign(
     input: UpdateCampaignRequest,
   ): Effect.Effect<
     UpdateCampaignResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateDataset(
     input: UpdateDatasetRequest,
   ): Effect.Effect<
     UpdateDatasetResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateMetricAttribution(
     input: UpdateMetricAttributionRequest,
   ): Effect.Effect<
     UpdateMetricAttributionResponse,
-    InvalidInputException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateRecommender(
     input: UpdateRecommenderRequest,
   ): Effect.Effect<
     UpdateRecommenderResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateSolution(
     input: UpdateSolutionRequest,
   ): Effect.Effect<
     UpdateSolutionResponse,
-    InvalidInputException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -572,7 +726,8 @@ export interface CategoricalHyperParameterRange {
   name?: string;
   values?: Array<string>;
 }
-export type CategoricalHyperParameterRanges = Array<CategoricalHyperParameterRange>;
+export type CategoricalHyperParameterRanges =
+  Array<CategoricalHyperParameterRange>;
 export type CategoricalValue = string;
 
 export type CategoricalValues = Array<string>;
@@ -584,7 +739,8 @@ export interface ContinuousHyperParameterRange {
   minValue?: number;
   maxValue?: number;
 }
-export type ContinuousHyperParameterRanges = Array<ContinuousHyperParameterRange>;
+export type ContinuousHyperParameterRanges =
+  Array<ContinuousHyperParameterRange>;
 export type ContinuousMaxValue = number;
 
 export type ContinuousMinValue = number;
@@ -893,14 +1049,16 @@ export interface DefaultCategoricalHyperParameterRange {
   values?: Array<string>;
   isTunable?: boolean;
 }
-export type DefaultCategoricalHyperParameterRanges = Array<DefaultCategoricalHyperParameterRange>;
+export type DefaultCategoricalHyperParameterRanges =
+  Array<DefaultCategoricalHyperParameterRange>;
 export interface DefaultContinuousHyperParameterRange {
   name?: string;
   minValue?: number;
   maxValue?: number;
   isTunable?: boolean;
 }
-export type DefaultContinuousHyperParameterRanges = Array<DefaultContinuousHyperParameterRange>;
+export type DefaultContinuousHyperParameterRanges =
+  Array<DefaultContinuousHyperParameterRange>;
 export interface DefaultHyperParameterRanges {
   integerHyperParameterRanges?: Array<DefaultIntegerHyperParameterRange>;
   continuousHyperParameterRanges?: Array<DefaultContinuousHyperParameterRange>;
@@ -912,7 +1070,8 @@ export interface DefaultIntegerHyperParameterRange {
   maxValue?: number;
   isTunable?: boolean;
 }
-export type DefaultIntegerHyperParameterRanges = Array<DefaultIntegerHyperParameterRange>;
+export type DefaultIntegerHyperParameterRanges =
+  Array<DefaultIntegerHyperParameterRange>;
 export interface DeleteCampaignRequest {
   campaignArn: string;
 }
@@ -1605,8 +1764,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
@@ -1645,8 +1803,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateCampaignRequest {
   campaignArn: string;
   solutionVersionArn?: string;
@@ -2185,9 +2342,7 @@ export declare namespace ListDatasetExportJobs {
 export declare namespace ListDatasetGroups {
   export type Input = ListDatasetGroupsRequest;
   export type Output = ListDatasetGroupsResponse;
-  export type Error =
-    | InvalidNextTokenException
-    | CommonAwsError;
+  export type Error = InvalidNextTokenException | CommonAwsError;
 }
 
 export declare namespace ListDatasetImportJobs {
@@ -2265,7 +2420,14 @@ export declare namespace ListRecommenders {
 export declare namespace ListSchemas {
   export type Input = ListSchemasRequest;
   export type Output = ListSchemasResponse;
+  export type Error = InvalidNextTokenException | CommonAwsError;
+}
+
+export declare namespace ListSolutions {
+  export type Input = ListSolutionsRequest;
+  export type Output = ListSolutionsResponse;
   export type Error =
+    | InvalidInputException
     | InvalidNextTokenException
     | CommonAwsError;
 }
@@ -2277,15 +2439,6 @@ export declare namespace ListSolutionVersions {
     | InvalidInputException
     | InvalidNextTokenException
     | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListSolutions {
-  export type Input = ListSolutionsRequest;
-  export type Output = ListSolutionsResponse;
-  export type Error =
-    | InvalidInputException
-    | InvalidNextTokenException
     | CommonAwsError;
 }
 
@@ -2403,4 +2556,3 @@ export declare namespace UpdateSolution {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

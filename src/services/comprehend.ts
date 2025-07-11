@@ -1,516 +1,911 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Comprehend_20171127 {
   batchDetectDominantLanguage(
     input: BatchDetectDominantLanguageRequest,
   ): Effect.Effect<
     BatchDetectDominantLanguageResponse,
-    BatchSizeLimitExceededException | InternalServerException | InvalidRequestException | TextSizeLimitExceededException | CommonAwsError
+    | BatchSizeLimitExceededException
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | CommonAwsError
   >;
   batchDetectEntities(
     input: BatchDetectEntitiesRequest,
   ): Effect.Effect<
     BatchDetectEntitiesResponse,
-    BatchSizeLimitExceededException | InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | BatchSizeLimitExceededException
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   batchDetectKeyPhrases(
     input: BatchDetectKeyPhrasesRequest,
   ): Effect.Effect<
     BatchDetectKeyPhrasesResponse,
-    BatchSizeLimitExceededException | InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | BatchSizeLimitExceededException
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   batchDetectSentiment(
     input: BatchDetectSentimentRequest,
   ): Effect.Effect<
     BatchDetectSentimentResponse,
-    BatchSizeLimitExceededException | InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | BatchSizeLimitExceededException
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   batchDetectSyntax(
     input: BatchDetectSyntaxRequest,
   ): Effect.Effect<
     BatchDetectSyntaxResponse,
-    BatchSizeLimitExceededException | InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | BatchSizeLimitExceededException
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   batchDetectTargetedSentiment(
     input: BatchDetectTargetedSentimentRequest,
   ): Effect.Effect<
     BatchDetectTargetedSentimentResponse,
-    BatchSizeLimitExceededException | InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | BatchSizeLimitExceededException
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   classifyDocument(
     input: ClassifyDocumentRequest,
   ): Effect.Effect<
     ClassifyDocumentResponse,
-    InternalServerException | InvalidRequestException | ResourceUnavailableException | TextSizeLimitExceededException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceUnavailableException
+    | TextSizeLimitExceededException
+    | CommonAwsError
   >;
   containsPiiEntities(
     input: ContainsPiiEntitiesRequest,
   ): Effect.Effect<
     ContainsPiiEntitiesResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   createDataset(
     input: CreateDatasetRequest,
   ): Effect.Effect<
     CreateDatasetResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceLimitExceededException | ResourceNotFoundException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createDocumentClassifier(
     input: CreateDocumentClassifierRequest,
   ): Effect.Effect<
     CreateDocumentClassifierResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | ResourceLimitExceededException | TooManyRequestsException | TooManyTagsException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   createEndpoint(
     input: CreateEndpointRequest,
   ): Effect.Effect<
     CreateEndpointResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceLimitExceededException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createEntityRecognizer(
     input: CreateEntityRecognizerRequest,
   ): Effect.Effect<
     CreateEntityRecognizerResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | ResourceLimitExceededException | TooManyRequestsException | TooManyTagsException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   createFlywheel(
     input: CreateFlywheelRequest,
   ): Effect.Effect<
     CreateFlywheelResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | ResourceLimitExceededException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | TooManyTagsException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   deleteDocumentClassifier(
     input: DeleteDocumentClassifierRequest,
   ): Effect.Effect<
     DeleteDocumentClassifierResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEndpoint(
     input: DeleteEndpointRequest,
   ): Effect.Effect<
     DeleteEndpointResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEntityRecognizer(
     input: DeleteEntityRecognizerRequest,
   ): Effect.Effect<
     DeleteEntityRecognizerResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteFlywheel(
     input: DeleteFlywheelRequest,
   ): Effect.Effect<
     DeleteFlywheelResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteResourcePolicy(
     input: DeleteResourcePolicyRequest,
   ): Effect.Effect<
     DeleteResourcePolicyResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeDataset(
     input: DescribeDatasetRequest,
   ): Effect.Effect<
     DescribeDatasetResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeDocumentClassificationJob(
     input: DescribeDocumentClassificationJobRequest,
   ): Effect.Effect<
     DescribeDocumentClassificationJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeDocumentClassifier(
     input: DescribeDocumentClassifierRequest,
   ): Effect.Effect<
     DescribeDocumentClassifierResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeDominantLanguageDetectionJob(
     input: DescribeDominantLanguageDetectionJobRequest,
   ): Effect.Effect<
     DescribeDominantLanguageDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeEndpoint(
     input: DescribeEndpointRequest,
   ): Effect.Effect<
     DescribeEndpointResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeEntitiesDetectionJob(
     input: DescribeEntitiesDetectionJobRequest,
   ): Effect.Effect<
     DescribeEntitiesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeEntityRecognizer(
     input: DescribeEntityRecognizerRequest,
   ): Effect.Effect<
     DescribeEntityRecognizerResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeEventsDetectionJob(
     input: DescribeEventsDetectionJobRequest,
   ): Effect.Effect<
     DescribeEventsDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeFlywheel(
     input: DescribeFlywheelRequest,
   ): Effect.Effect<
     DescribeFlywheelResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeFlywheelIteration(
     input: DescribeFlywheelIterationRequest,
   ): Effect.Effect<
     DescribeFlywheelIterationResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeKeyPhrasesDetectionJob(
     input: DescribeKeyPhrasesDetectionJobRequest,
   ): Effect.Effect<
     DescribeKeyPhrasesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describePiiEntitiesDetectionJob(
     input: DescribePiiEntitiesDetectionJobRequest,
   ): Effect.Effect<
     DescribePiiEntitiesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeResourcePolicy(
     input: DescribeResourcePolicyRequest,
   ): Effect.Effect<
     DescribeResourcePolicyResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeSentimentDetectionJob(
     input: DescribeSentimentDetectionJobRequest,
   ): Effect.Effect<
     DescribeSentimentDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeTargetedSentimentDetectionJob(
     input: DescribeTargetedSentimentDetectionJobRequest,
   ): Effect.Effect<
     DescribeTargetedSentimentDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeTopicsDetectionJob(
     input: DescribeTopicsDetectionJobRequest,
   ): Effect.Effect<
     DescribeTopicsDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   detectDominantLanguage(
     input: DetectDominantLanguageRequest,
   ): Effect.Effect<
     DetectDominantLanguageResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | CommonAwsError
   >;
   detectEntities(
     input: DetectEntitiesRequest,
   ): Effect.Effect<
     DetectEntitiesResponse,
-    InternalServerException | InvalidRequestException | ResourceUnavailableException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceUnavailableException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   detectKeyPhrases(
     input: DetectKeyPhrasesRequest,
   ): Effect.Effect<
     DetectKeyPhrasesResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   detectPiiEntities(
     input: DetectPiiEntitiesRequest,
   ): Effect.Effect<
     DetectPiiEntitiesResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   detectSentiment(
     input: DetectSentimentRequest,
   ): Effect.Effect<
     DetectSentimentResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   detectSyntax(
     input: DetectSyntaxRequest,
   ): Effect.Effect<
     DetectSyntaxResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   detectTargetedSentiment(
     input: DetectTargetedSentimentRequest,
   ): Effect.Effect<
     DetectTargetedSentimentResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   detectToxicContent(
     input: DetectToxicContentRequest,
   ): Effect.Effect<
     DetectToxicContentResponse,
-    InternalServerException | InvalidRequestException | TextSizeLimitExceededException | UnsupportedLanguageException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TextSizeLimitExceededException
+    | UnsupportedLanguageException
+    | CommonAwsError
   >;
   importModel(
     input: ImportModelRequest,
   ): Effect.Effect<
     ImportModelResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | ResourceLimitExceededException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   listDatasets(
     input: ListDatasetsRequest,
   ): Effect.Effect<
     ListDatasetsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listDocumentClassificationJobs(
     input: ListDocumentClassificationJobsRequest,
   ): Effect.Effect<
     ListDocumentClassificationJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
-  >;
-  listDocumentClassifierSummaries(
-    input: ListDocumentClassifierSummariesRequest,
-  ): Effect.Effect<
-    ListDocumentClassifierSummariesResponse,
-    InternalServerException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listDocumentClassifiers(
     input: ListDocumentClassifiersRequest,
   ): Effect.Effect<
     ListDocumentClassifiersResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  listDocumentClassifierSummaries(
+    input: ListDocumentClassifierSummariesRequest,
+  ): Effect.Effect<
+    ListDocumentClassifierSummariesResponse,
+    | InternalServerException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listDominantLanguageDetectionJobs(
     input: ListDominantLanguageDetectionJobsRequest,
   ): Effect.Effect<
     ListDominantLanguageDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listEndpoints(
     input: ListEndpointsRequest,
   ): Effect.Effect<
     ListEndpointsResponse,
-    InternalServerException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listEntitiesDetectionJobs(
     input: ListEntitiesDetectionJobsRequest,
   ): Effect.Effect<
     ListEntitiesDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
-  >;
-  listEntityRecognizerSummaries(
-    input: ListEntityRecognizerSummariesRequest,
-  ): Effect.Effect<
-    ListEntityRecognizerSummariesResponse,
-    InternalServerException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listEntityRecognizers(
     input: ListEntityRecognizersRequest,
   ): Effect.Effect<
     ListEntityRecognizersResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  listEntityRecognizerSummaries(
+    input: ListEntityRecognizerSummariesRequest,
+  ): Effect.Effect<
+    ListEntityRecognizerSummariesResponse,
+    | InternalServerException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listEventsDetectionJobs(
     input: ListEventsDetectionJobsRequest,
   ): Effect.Effect<
     ListEventsDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listFlywheelIterationHistory(
     input: ListFlywheelIterationHistoryRequest,
   ): Effect.Effect<
     ListFlywheelIterationHistoryResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listFlywheels(
     input: ListFlywheelsRequest,
   ): Effect.Effect<
     ListFlywheelsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listKeyPhrasesDetectionJobs(
     input: ListKeyPhrasesDetectionJobsRequest,
   ): Effect.Effect<
     ListKeyPhrasesDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listPiiEntitiesDetectionJobs(
     input: ListPiiEntitiesDetectionJobsRequest,
   ): Effect.Effect<
     ListPiiEntitiesDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listSentimentDetectionJobs(
     input: ListSentimentDetectionJobsRequest,
   ): Effect.Effect<
     ListSentimentDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listTargetedSentimentDetectionJobs(
     input: ListTargetedSentimentDetectionJobsRequest,
   ): Effect.Effect<
     ListTargetedSentimentDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTopicsDetectionJobs(
     input: ListTopicsDetectionJobsRequest,
   ): Effect.Effect<
     ListTopicsDetectionJobsResponse,
-    InternalServerException | InvalidFilterException | InvalidRequestException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putResourcePolicy(
     input: PutResourcePolicyRequest,
   ): Effect.Effect<
     PutResourcePolicyResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   startDocumentClassificationJob(
     input: StartDocumentClassificationJobRequest,
   ): Effect.Effect<
     StartDocumentClassificationJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startDominantLanguageDetectionJob(
     input: StartDominantLanguageDetectionJobRequest,
   ): Effect.Effect<
     StartDominantLanguageDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startEntitiesDetectionJob(
     input: StartEntitiesDetectionJobRequest,
   ): Effect.Effect<
     StartEntitiesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startEventsDetectionJob(
     input: StartEventsDetectionJobRequest,
   ): Effect.Effect<
     StartEventsDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startFlywheelIteration(
     input: StartFlywheelIterationRequest,
   ): Effect.Effect<
     StartFlywheelIterationResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   startKeyPhrasesDetectionJob(
     input: StartKeyPhrasesDetectionJobRequest,
   ): Effect.Effect<
     StartKeyPhrasesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startPiiEntitiesDetectionJob(
     input: StartPiiEntitiesDetectionJobRequest,
   ): Effect.Effect<
     StartPiiEntitiesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startSentimentDetectionJob(
     input: StartSentimentDetectionJobRequest,
   ): Effect.Effect<
     StartSentimentDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startTargetedSentimentDetectionJob(
     input: StartTargetedSentimentDetectionJobRequest,
   ): Effect.Effect<
     StartTargetedSentimentDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   startTopicsDetectionJob(
     input: StartTopicsDetectionJobRequest,
   ): Effect.Effect<
     StartTopicsDetectionJobResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceInUseException | TooManyRequestsException | TooManyTagsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceInUseException
+    | TooManyRequestsException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   stopDominantLanguageDetectionJob(
     input: StopDominantLanguageDetectionJobRequest,
   ): Effect.Effect<
     StopDominantLanguageDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopEntitiesDetectionJob(
     input: StopEntitiesDetectionJobRequest,
   ): Effect.Effect<
     StopEntitiesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopEventsDetectionJob(
     input: StopEventsDetectionJobRequest,
   ): Effect.Effect<
     StopEventsDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopKeyPhrasesDetectionJob(
     input: StopKeyPhrasesDetectionJobRequest,
   ): Effect.Effect<
     StopKeyPhrasesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopPiiEntitiesDetectionJob(
     input: StopPiiEntitiesDetectionJobRequest,
   ): Effect.Effect<
     StopPiiEntitiesDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopSentimentDetectionJob(
     input: StopSentimentDetectionJobRequest,
   ): Effect.Effect<
     StopSentimentDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopTargetedSentimentDetectionJob(
     input: StopTargetedSentimentDetectionJobRequest,
   ): Effect.Effect<
     StopTargetedSentimentDetectionJobResponse,
-    InternalServerException | InvalidRequestException | JobNotFoundException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | JobNotFoundException
+    | CommonAwsError
   >;
   stopTrainingDocumentClassifier(
     input: StopTrainingDocumentClassifierRequest,
   ): Effect.Effect<
     StopTrainingDocumentClassifierResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   stopTrainingEntityRecognizer(
     input: StopTrainingEntityRecognizerRequest,
   ): Effect.Effect<
     StopTrainingEntityRecognizerResponse,
-    InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    ConcurrentModificationException | InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | ConcurrentModificationException
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    ConcurrentModificationException | InternalServerException | InvalidRequestException | ResourceNotFoundException | TooManyTagKeysException | CommonAwsError
+    | ConcurrentModificationException
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyTagKeysException
+    | CommonAwsError
   >;
   updateEndpoint(
     input: UpdateEndpointRequest,
   ): Effect.Effect<
     UpdateEndpointResponse,
-    InternalServerException | InvalidRequestException | ResourceInUseException | ResourceLimitExceededException | ResourceNotFoundException | ResourceUnavailableException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceInUseException
+    | ResourceLimitExceededException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateFlywheel(
     input: UpdateFlywheelRequest,
   ): Effect.Effect<
     UpdateFlywheelResponse,
-    InternalServerException | InvalidRequestException | KmsKeyValidationException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalServerException
+    | InvalidRequestException
+    | KmsKeyValidationException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -521,7 +916,9 @@ export type AnyLengthString = string;
 export type AttributeNamesList = Array<string>;
 export type AttributeNamesListItem = string;
 
-export type AugmentedManifestsDocumentTypeFormat = "PLAIN_TEXT_DOCUMENT" | "SEMI_STRUCTURED_DOCUMENT";
+export type AugmentedManifestsDocumentTypeFormat =
+  | "PLAIN_TEXT_DOCUMENT"
+  | "SEMI_STRUCTURED_DOCUMENT";
 export interface AugmentedManifestsListItem {
   S3Uri: string;
   Split?: Split;
@@ -780,7 +1177,8 @@ export interface DataSecurityConfig {
   DataLakeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
-export type DatasetAugmentedManifestsList = Array<DatasetAugmentedManifestsListItem>;
+export type DatasetAugmentedManifestsList =
+  Array<DatasetAugmentedManifestsListItem>;
 export interface DatasetAugmentedManifestsListItem {
   AttributeNames: Array<string>;
   S3Uri: string;
@@ -838,29 +1236,24 @@ export type DatasetType = "TRAIN" | "TEST";
 export interface DeleteDocumentClassifierRequest {
   DocumentClassifierArn: string;
 }
-export interface DeleteDocumentClassifierResponse {
-}
+export interface DeleteDocumentClassifierResponse {}
 export interface DeleteEndpointRequest {
   EndpointArn: string;
 }
-export interface DeleteEndpointResponse {
-}
+export interface DeleteEndpointResponse {}
 export interface DeleteEntityRecognizerRequest {
   EntityRecognizerArn: string;
 }
-export interface DeleteEntityRecognizerResponse {
-}
+export interface DeleteEntityRecognizerResponse {}
 export interface DeleteFlywheelRequest {
   FlywheelArn: string;
 }
-export interface DeleteFlywheelResponse {
-}
+export interface DeleteFlywheelResponse {}
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
   PolicyRevisionId?: string;
 }
-export interface DeleteResourcePolicyResponse {
-}
+export interface DeleteResourcePolicyResponse {}
 export interface DescribeDatasetRequest {
   DatasetArn: string;
 }
@@ -1057,16 +1450,22 @@ export interface DocumentClassificationJobProperties {
   VpcConfig?: VpcConfig;
   FlywheelArn?: string;
 }
-export type DocumentClassificationJobPropertiesList = Array<DocumentClassificationJobProperties>;
+export type DocumentClassificationJobPropertiesList =
+  Array<DocumentClassificationJobProperties>;
 export type DocumentClassifierArn = string;
 
-export type DocumentClassifierAugmentedManifestsList = Array<AugmentedManifestsListItem>;
-export type DocumentClassifierDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST";
+export type DocumentClassifierAugmentedManifestsList =
+  Array<AugmentedManifestsListItem>;
+export type DocumentClassifierDataFormat =
+  | "COMPREHEND_CSV"
+  | "AUGMENTED_MANIFEST";
 export interface DocumentClassifierDocuments {
   S3Uri: string;
   TestS3Uri?: string;
 }
-export type DocumentClassifierDocumentTypeFormat = "PLAIN_TEXT_DOCUMENT" | "SEMI_STRUCTURED_DOCUMENT";
+export type DocumentClassifierDocumentTypeFormat =
+  | "PLAIN_TEXT_DOCUMENT"
+  | "SEMI_STRUCTURED_DOCUMENT";
 export type DocumentClassifierEndpointArn = string;
 
 export interface DocumentClassifierFilter {
@@ -1112,7 +1511,8 @@ export interface DocumentClassifierProperties {
   SourceModelArn?: string;
   FlywheelArn?: string;
 }
-export type DocumentClassifierPropertiesList = Array<DocumentClassifierProperties>;
+export type DocumentClassifierPropertiesList =
+  Array<DocumentClassifierProperties>;
 export type DocumentClassifierSummariesList = Array<DocumentClassifierSummary>;
 export interface DocumentClassifierSummary {
   DocumentClassifierName?: string;
@@ -1130,7 +1530,9 @@ export interface DocumentMetadata {
   Pages?: number;
   ExtractedCharacters?: Array<ExtractedCharactersListItem>;
 }
-export type DocumentReadAction = "TEXTRACT_DETECT_DOCUMENT_TEXT" | "TEXTRACT_ANALYZE_DOCUMENT";
+export type DocumentReadAction =
+  | "TEXTRACT_DETECT_DOCUMENT_TEXT"
+  | "TEXTRACT_ANALYZE_DOCUMENT";
 export interface DocumentReaderConfig {
   DocumentReadAction: DocumentReadAction;
   DocumentReadMode?: DocumentReadMode;
@@ -1138,7 +1540,14 @@ export interface DocumentReaderConfig {
 }
 export type DocumentReadFeatureTypes = "TABLES" | "FORMS";
 export type DocumentReadMode = "SERVICE_DEFAULT" | "FORCE_DOCUMENT_READ_ACTION";
-export type DocumentType = "NATIVE_PDF" | "SCANNED_PDF" | "MS_WORD" | "IMAGE" | "PLAIN_TEXT" | "TEXTRACT_DETECT_DOCUMENT_TEXT_JSON" | "TEXTRACT_ANALYZE_DOCUMENT_JSON";
+export type DocumentType =
+  | "NATIVE_PDF"
+  | "SCANNED_PDF"
+  | "MS_WORD"
+  | "IMAGE"
+  | "PLAIN_TEXT"
+  | "TEXTRACT_DETECT_DOCUMENT_TEXT_JSON"
+  | "TEXTRACT_ANALYZE_DOCUMENT_JSON";
 export interface DocumentTypeListItem {
   Page?: number;
   Type?: DocumentType;
@@ -1167,7 +1576,8 @@ export interface DominantLanguageDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
-export type DominantLanguageDetectionJobPropertiesList = Array<DominantLanguageDetectionJobProperties>;
+export type DominantLanguageDetectionJobPropertiesList =
+  Array<DominantLanguageDetectionJobProperties>;
 export type Double = number;
 
 export interface EndpointFilter {
@@ -1191,7 +1601,12 @@ export interface EndpointProperties {
   FlywheelArn?: string;
 }
 export type EndpointPropertiesList = Array<EndpointProperties>;
-export type EndpointStatus = "CREATING" | "DELETING" | "FAILED" | "IN_SERVICE" | "UPDATING";
+export type EndpointStatus =
+  | "CREATING"
+  | "DELETING"
+  | "FAILED"
+  | "IN_SERVICE"
+  | "UPDATING";
 export interface EntitiesDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
@@ -1215,7 +1630,8 @@ export interface EntitiesDetectionJobProperties {
   VpcConfig?: VpcConfig;
   FlywheelArn?: string;
 }
-export type EntitiesDetectionJobPropertiesList = Array<EntitiesDetectionJobProperties>;
+export type EntitiesDetectionJobPropertiesList =
+  Array<EntitiesDetectionJobProperties>;
 export interface Entity {
   Score?: number;
   Type?: EntityType;
@@ -1237,8 +1653,11 @@ export interface EntityRecognizerAnnotations {
 }
 export type EntityRecognizerArn = string;
 
-export type EntityRecognizerAugmentedManifestsList = Array<AugmentedManifestsListItem>;
-export type EntityRecognizerDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST";
+export type EntityRecognizerAugmentedManifestsList =
+  Array<AugmentedManifestsListItem>;
+export type EntityRecognizerDataFormat =
+  | "COMPREHEND_CSV"
+  | "AUGMENTED_MANIFEST";
 export interface EntityRecognizerDocuments {
   S3Uri: string;
   TestS3Uri?: string;
@@ -1274,7 +1693,8 @@ export interface EntityRecognizerMetadata {
   EvaluationMetrics?: EntityRecognizerEvaluationMetrics;
   EntityTypes?: Array<EntityRecognizerMetadataEntityTypesListItem>;
 }
-export type EntityRecognizerMetadataEntityTypesList = Array<EntityRecognizerMetadataEntityTypesListItem>;
+export type EntityRecognizerMetadataEntityTypesList =
+  Array<EntityRecognizerMetadataEntityTypesListItem>;
 export interface EntityRecognizerMetadataEntityTypesListItem {
   Type?: string;
   EvaluationMetrics?: EntityTypesEvaluationMetrics;
@@ -1312,7 +1732,16 @@ export interface EntityRecognizerSummary {
   LatestVersionName?: string;
   LatestVersionStatus?: ModelStatus;
 }
-export type EntityType = "PERSON" | "LOCATION" | "ORGANIZATION" | "COMMERCIAL_ITEM" | "EVENT" | "DATE" | "QUANTITY" | "TITLE" | "OTHER";
+export type EntityType =
+  | "PERSON"
+  | "LOCATION"
+  | "ORGANIZATION"
+  | "COMMERCIAL_ITEM"
+  | "EVENT"
+  | "DATE"
+  | "QUANTITY"
+  | "TITLE"
+  | "OTHER";
 export type EntityTypeName = string;
 
 export interface EntityTypesEvaluationMetrics {
@@ -1349,7 +1778,8 @@ export interface EventsDetectionJobProperties {
   DataAccessRoleArn?: string;
   TargetEventTypes?: Array<string>;
 }
-export type EventsDetectionJobPropertiesList = Array<EventsDetectionJobProperties>;
+export type EventsDetectionJobPropertiesList =
+  Array<EventsDetectionJobProperties>;
 export type EventTypeString = string;
 
 export interface ExtractedCharactersListItem {
@@ -1382,8 +1812,15 @@ export interface FlywheelIterationProperties {
   TrainedModelMetrics?: FlywheelModelEvaluationMetrics;
   EvaluationManifestS3Prefix?: string;
 }
-export type FlywheelIterationPropertiesList = Array<FlywheelIterationProperties>;
-export type FlywheelIterationStatus = "TRAINING" | "EVALUATING" | "COMPLETED" | "FAILED" | "STOP_REQUESTED" | "STOPPED";
+export type FlywheelIterationPropertiesList =
+  Array<FlywheelIterationProperties>;
+export type FlywheelIterationStatus =
+  | "TRAINING"
+  | "EVALUATING"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOP_REQUESTED"
+  | "STOPPED";
 export interface FlywheelModelEvaluationMetrics {
   AverageF1Score?: number;
   AveragePrecision?: number;
@@ -1406,7 +1843,12 @@ export interface FlywheelProperties {
 }
 export type FlywheelS3Uri = string;
 
-export type FlywheelStatus = "CREATING" | "ACTIVE" | "UPDATING" | "DELETING" | "FAILED";
+export type FlywheelStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED";
 export interface FlywheelSummary {
   FlywheelArn?: string;
   ActiveModelArn?: string;
@@ -1459,7 +1901,11 @@ export declare class InvalidFilterException extends Data.TaggedError(
 export interface InvalidRequestDetail {
   Reason?: InvalidRequestDetailReason;
 }
-export type InvalidRequestDetailReason = "DOCUMENT_SIZE_EXCEEDED" | "UNSUPPORTED_DOC_TYPE" | "PAGE_LIMIT_EXCEEDED" | "TEXTRACT_ACCESS_DENIED";
+export type InvalidRequestDetailReason =
+  | "DOCUMENT_SIZE_EXCEEDED"
+  | "UNSUPPORTED_DOC_TYPE"
+  | "PAGE_LIMIT_EXCEEDED"
+  | "TEXTRACT_ACCESS_DENIED";
 export declare class InvalidRequestException extends Data.TaggedError(
   "InvalidRequestException",
 )<{
@@ -1477,7 +1923,13 @@ export declare class JobNotFoundException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type JobStatus = "SUBMITTED" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOP_REQUESTED" | "STOPPED";
+export type JobStatus =
+  | "SUBMITTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOP_REQUESTED"
+  | "STOPPED";
 export interface KeyPhrase {
   Score?: number;
   Text?: string;
@@ -1505,7 +1957,8 @@ export interface KeyPhrasesDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
-export type KeyPhrasesDetectionJobPropertiesList = Array<KeyPhrasesDetectionJobProperties>;
+export type KeyPhrasesDetectionJobPropertiesList =
+  Array<KeyPhrasesDetectionJobProperties>;
 export type KmsKeyId = string;
 
 export declare class KmsKeyValidationException extends Data.TaggedError(
@@ -1518,7 +1971,19 @@ export type LabelDelimiter = string;
 export type LabelListItem = string;
 
 export type LabelsList = Array<string>;
-export type LanguageCode = "EN" | "ES" | "FR" | "DE" | "IT" | "PT" | "AR" | "HI" | "JA" | "KO" | "ZH" | "ZH_TW";
+export type LanguageCode =
+  | "EN"
+  | "ES"
+  | "FR"
+  | "DE"
+  | "IT"
+  | "PT"
+  | "AR"
+  | "HI"
+  | "JA"
+  | "KO"
+  | "ZH"
+  | "ZH_TW";
 export interface ListDatasetsRequest {
   FlywheelArn?: string;
   Filter?: DatasetFilter;
@@ -1641,12 +2106,15 @@ export type ListOfBlocks = Array<Block>;
 export type ListOfChildBlocks = Array<ChildBlock>;
 export type ListOfClasses = Array<DocumentClass>;
 export type ListOfDescriptiveMentionIndices = Array<number>;
-export type ListOfDetectDominantLanguageResult = Array<BatchDetectDominantLanguageItemResult>;
+export type ListOfDetectDominantLanguageResult =
+  Array<BatchDetectDominantLanguageItemResult>;
 export type ListOfDetectEntitiesResult = Array<BatchDetectEntitiesItemResult>;
-export type ListOfDetectKeyPhrasesResult = Array<BatchDetectKeyPhrasesItemResult>;
+export type ListOfDetectKeyPhrasesResult =
+  Array<BatchDetectKeyPhrasesItemResult>;
 export type ListOfDetectSentimentResult = Array<BatchDetectSentimentItemResult>;
 export type ListOfDetectSyntaxResult = Array<BatchDetectSyntaxItemResult>;
-export type ListOfDetectTargetedSentimentResult = Array<BatchDetectTargetedSentimentItemResult>;
+export type ListOfDetectTargetedSentimentResult =
+  Array<BatchDetectTargetedSentimentItemResult>;
 export type ListOfDocumentReadFeatureTypes = Array<DocumentReadFeatureTypes>;
 export type ListOfDocumentType = Array<DocumentTypeListItem>;
 export type ListOfDominantLanguages = Array<DominantLanguage>;
@@ -1717,7 +2185,15 @@ export interface MentionSentiment {
   Sentiment?: SentimentType;
   SentimentScore?: SentimentScore;
 }
-export type ModelStatus = "SUBMITTED" | "TRAINING" | "DELETING" | "STOP_REQUESTED" | "STOPPED" | "IN_ERROR" | "TRAINED" | "TRAINED_WITH_WARNING";
+export type ModelStatus =
+  | "SUBMITTED"
+  | "TRAINING"
+  | "DELETING"
+  | "STOP_REQUESTED"
+  | "STOPPED"
+  | "IN_ERROR"
+  | "TRAINED"
+  | "TRAINED_WITH_WARNING";
 export type ModelType = "DOCUMENT_CLASSIFIER" | "ENTITY_RECOGNIZER";
 export type NumberOfDocuments = number;
 
@@ -1727,13 +2203,38 @@ export interface OutputDataConfig {
   S3Uri: string;
   KmsKeyId?: string;
 }
-export type PageBasedErrorCode = "TEXTRACT_BAD_PAGE" | "TEXTRACT_PROVISIONED_THROUGHPUT_EXCEEDED" | "PAGE_CHARACTERS_EXCEEDED" | "PAGE_SIZE_EXCEEDED" | "INTERNAL_SERVER_ERROR";
-export type PageBasedWarningCode = "INFERENCING_PLAINTEXT_WITH_NATIVE_TRAINED_MODEL" | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL";
+export type PageBasedErrorCode =
+  | "TEXTRACT_BAD_PAGE"
+  | "TEXTRACT_PROVISIONED_THROUGHPUT_EXCEEDED"
+  | "PAGE_CHARACTERS_EXCEEDED"
+  | "PAGE_SIZE_EXCEEDED"
+  | "INTERNAL_SERVER_ERROR";
+export type PageBasedWarningCode =
+  | "INFERENCING_PLAINTEXT_WITH_NATIVE_TRAINED_MODEL"
+  | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL";
 export interface PartOfSpeechTag {
   Tag?: PartOfSpeechTagType;
   Score?: number;
 }
-export type PartOfSpeechTagType = "ADJ" | "ADP" | "ADV" | "AUX" | "CONJ" | "CCONJ" | "DET" | "INTJ" | "NOUN" | "NUM" | "O" | "PART" | "PRON" | "PROPN" | "PUNCT" | "SCONJ" | "SYM" | "VERB";
+export type PartOfSpeechTagType =
+  | "ADJ"
+  | "ADP"
+  | "ADV"
+  | "AUX"
+  | "CONJ"
+  | "CCONJ"
+  | "DET"
+  | "INTJ"
+  | "NOUN"
+  | "NUM"
+  | "O"
+  | "PART"
+  | "PRON"
+  | "PROPN"
+  | "PUNCT"
+  | "SCONJ"
+  | "SYM"
+  | "VERB";
 export interface PiiEntitiesDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
@@ -1755,8 +2256,11 @@ export interface PiiEntitiesDetectionJobProperties {
   DataAccessRoleArn?: string;
   Mode?: PiiEntitiesDetectionMode;
 }
-export type PiiEntitiesDetectionJobPropertiesList = Array<PiiEntitiesDetectionJobProperties>;
-export type PiiEntitiesDetectionMaskMode = "MASK" | "REPLACE_WITH_PII_ENTITY_TYPE";
+export type PiiEntitiesDetectionJobPropertiesList =
+  Array<PiiEntitiesDetectionJobProperties>;
+export type PiiEntitiesDetectionMaskMode =
+  | "MASK"
+  | "REPLACE_WITH_PII_ENTITY_TYPE";
 export type PiiEntitiesDetectionMode = "ONLY_REDACTION" | "ONLY_OFFSETS";
 export interface PiiEntity {
   Score?: number;
@@ -1764,7 +2268,44 @@ export interface PiiEntity {
   BeginOffset?: number;
   EndOffset?: number;
 }
-export type PiiEntityType = "BANK_ACCOUNT_NUMBER" | "BANK_ROUTING" | "CREDIT_DEBIT_NUMBER" | "CREDIT_DEBIT_CVV" | "CREDIT_DEBIT_EXPIRY" | "PIN" | "EMAIL" | "ADDRESS" | "NAME" | "PHONE" | "SSN" | "DATE_TIME" | "PASSPORT_NUMBER" | "DRIVER_ID" | "URL" | "AGE" | "USERNAME" | "PASSWORD" | "AWS_ACCESS_KEY" | "AWS_SECRET_KEY" | "IP_ADDRESS" | "MAC_ADDRESS" | "ALL" | "LICENSE_PLATE" | "VEHICLE_IDENTIFICATION_NUMBER" | "UK_NATIONAL_INSURANCE_NUMBER" | "CA_SOCIAL_INSURANCE_NUMBER" | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER" | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER" | "IN_PERMANENT_ACCOUNT_NUMBER" | "IN_NREGA" | "INTERNATIONAL_BANK_ACCOUNT_NUMBER" | "SWIFT_CODE" | "UK_NATIONAL_HEALTH_SERVICE_NUMBER" | "CA_HEALTH_NUMBER" | "IN_AADHAAR" | "IN_VOTER_NUMBER";
+export type PiiEntityType =
+  | "BANK_ACCOUNT_NUMBER"
+  | "BANK_ROUTING"
+  | "CREDIT_DEBIT_NUMBER"
+  | "CREDIT_DEBIT_CVV"
+  | "CREDIT_DEBIT_EXPIRY"
+  | "PIN"
+  | "EMAIL"
+  | "ADDRESS"
+  | "NAME"
+  | "PHONE"
+  | "SSN"
+  | "DATE_TIME"
+  | "PASSPORT_NUMBER"
+  | "DRIVER_ID"
+  | "URL"
+  | "AGE"
+  | "USERNAME"
+  | "PASSWORD"
+  | "AWS_ACCESS_KEY"
+  | "AWS_SECRET_KEY"
+  | "IP_ADDRESS"
+  | "MAC_ADDRESS"
+  | "ALL"
+  | "LICENSE_PLATE"
+  | "VEHICLE_IDENTIFICATION_NUMBER"
+  | "UK_NATIONAL_INSURANCE_NUMBER"
+  | "CA_SOCIAL_INSURANCE_NUMBER"
+  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+  | "IN_PERMANENT_ACCOUNT_NUMBER"
+  | "IN_NREGA"
+  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
+  | "SWIFT_CODE"
+  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
+  | "CA_HEALTH_NUMBER"
+  | "IN_AADHAAR"
+  | "IN_VOTER_NUMBER";
 export interface PiiOutputDataConfig {
   S3Uri: string;
   KmsKeyId?: string;
@@ -1844,7 +2385,8 @@ export interface SentimentDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
-export type SentimentDetectionJobPropertiesList = Array<SentimentDetectionJobProperties>;
+export type SentimentDetectionJobPropertiesList =
+  Array<SentimentDetectionJobProperties>;
 export interface SentimentScore {
   Positive?: number;
   Negative?: number;
@@ -2060,13 +2602,11 @@ export interface StopTargetedSentimentDetectionJobResponse {
 export interface StopTrainingDocumentClassifierRequest {
   DocumentClassifierArn: string;
 }
-export interface StopTrainingDocumentClassifierResponse {
-}
+export interface StopTrainingDocumentClassifierResponse {}
 export interface StopTrainingEntityRecognizerRequest {
   EntityRecognizerArn: string;
 }
-export interface StopTrainingEntityRecognizerResponse {
-}
+export interface StopTrainingEntityRecognizerResponse {}
 export type StringList = Array<string>;
 export type SubnetId = string;
 
@@ -2091,8 +2631,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TargetedSentimentDetectionJobFilter {
@@ -2116,12 +2655,30 @@ export interface TargetedSentimentDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
-export type TargetedSentimentDetectionJobPropertiesList = Array<TargetedSentimentDetectionJobProperties>;
+export type TargetedSentimentDetectionJobPropertiesList =
+  Array<TargetedSentimentDetectionJobProperties>;
 export interface TargetedSentimentEntity {
   DescriptiveMentionIndex?: Array<number>;
   Mentions?: Array<TargetedSentimentMention>;
 }
-export type TargetedSentimentEntityType = "PERSON" | "LOCATION" | "ORGANIZATION" | "FACILITY" | "BRAND" | "COMMERCIAL_ITEM" | "MOVIE" | "MUSIC" | "BOOK" | "SOFTWARE" | "GAME" | "PERSONAL_TITLE" | "EVENT" | "DATE" | "QUANTITY" | "ATTRIBUTE" | "OTHER";
+export type TargetedSentimentEntityType =
+  | "PERSON"
+  | "LOCATION"
+  | "ORGANIZATION"
+  | "FACILITY"
+  | "BRAND"
+  | "COMMERCIAL_ITEM"
+  | "MOVIE"
+  | "MUSIC"
+  | "BOOK"
+  | "SOFTWARE"
+  | "GAME"
+  | "PERSONAL_TITLE"
+  | "EVENT"
+  | "DATE"
+  | "QUANTITY"
+  | "ATTRIBUTE"
+  | "OTHER";
 export interface TargetedSentimentMention {
   Score?: number;
   GroupScore?: number;
@@ -2183,12 +2740,20 @@ export interface TopicsDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
-export type TopicsDetectionJobPropertiesList = Array<TopicsDetectionJobProperties>;
+export type TopicsDetectionJobPropertiesList =
+  Array<TopicsDetectionJobProperties>;
 export interface ToxicContent {
   Name?: ToxicContentType;
   Score?: number;
 }
-export type ToxicContentType = "GRAPHIC" | "HARASSMENT_OR_ABUSE" | "HATE_SPEECH" | "INSULT" | "PROFANITY" | "SEXUAL" | "VIOLENCE_OR_THREAT";
+export type ToxicContentType =
+  | "GRAPHIC"
+  | "HARASSMENT_OR_ABUSE"
+  | "HATE_SPEECH"
+  | "INSULT"
+  | "PROFANITY"
+  | "SEXUAL"
+  | "VIOLENCE_OR_THREAT";
 export interface ToxicLabels {
   Labels?: Array<ToxicContent>;
   Toxicity?: number;
@@ -2202,8 +2767,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateDataSecurityConfig {
   ModelKmsKeyId?: string;
   VolumeKmsKeyId?: string;
@@ -2771,22 +3335,22 @@ export declare namespace ListDocumentClassificationJobs {
     | CommonAwsError;
 }
 
-export declare namespace ListDocumentClassifierSummaries {
-  export type Input = ListDocumentClassifierSummariesRequest;
-  export type Output = ListDocumentClassifierSummariesResponse;
-  export type Error =
-    | InternalServerException
-    | InvalidRequestException
-    | TooManyRequestsException
-    | CommonAwsError;
-}
-
 export declare namespace ListDocumentClassifiers {
   export type Input = ListDocumentClassifiersRequest;
   export type Output = ListDocumentClassifiersResponse;
   export type Error =
     | InternalServerException
     | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
+export declare namespace ListDocumentClassifierSummaries {
+  export type Input = ListDocumentClassifierSummariesRequest;
+  export type Output = ListDocumentClassifierSummariesResponse;
+  export type Error =
+    | InternalServerException
     | InvalidRequestException
     | TooManyRequestsException
     | CommonAwsError;
@@ -2824,22 +3388,22 @@ export declare namespace ListEntitiesDetectionJobs {
     | CommonAwsError;
 }
 
-export declare namespace ListEntityRecognizerSummaries {
-  export type Input = ListEntityRecognizerSummariesRequest;
-  export type Output = ListEntityRecognizerSummariesResponse;
-  export type Error =
-    | InternalServerException
-    | InvalidRequestException
-    | TooManyRequestsException
-    | CommonAwsError;
-}
-
 export declare namespace ListEntityRecognizers {
   export type Input = ListEntityRecognizersRequest;
   export type Output = ListEntityRecognizersResponse;
   export type Error =
     | InternalServerException
     | InvalidFilterException
+    | InvalidRequestException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
+export declare namespace ListEntityRecognizerSummaries {
+  export type Input = ListEntityRecognizerSummariesRequest;
+  export type Output = ListEntityRecognizerSummariesResponse;
+  export type Error =
+    | InternalServerException
     | InvalidRequestException
     | TooManyRequestsException
     | CommonAwsError;
@@ -3228,4 +3792,3 @@ export declare namespace UpdateFlywheel {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

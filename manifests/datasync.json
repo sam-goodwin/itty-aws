@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.datasync#ActivationKey": {
       "type": "string",
@@ -3325,6 +3354,167 @@
     },
     "com.amazonaws.datasync#FmrsService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.datasync#CancelTaskExecution"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateAgent"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationAzureBlob"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationEfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationFsxLustre"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationFsxOntap"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationFsxOpenZfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationFsxWindows"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationHdfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationNfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationObjectStorage"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationS3"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateLocationSmb"
+        },
+        {
+          "target": "com.amazonaws.datasync#CreateTask"
+        },
+        {
+          "target": "com.amazonaws.datasync#DeleteAgent"
+        },
+        {
+          "target": "com.amazonaws.datasync#DeleteLocation"
+        },
+        {
+          "target": "com.amazonaws.datasync#DeleteTask"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeAgent"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationAzureBlob"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationEfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationFsxLustre"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationFsxOntap"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationFsxOpenZfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationFsxWindows"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationHdfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationNfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationObjectStorage"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationS3"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeLocationSmb"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeTask"
+        },
+        {
+          "target": "com.amazonaws.datasync#DescribeTaskExecution"
+        },
+        {
+          "target": "com.amazonaws.datasync#ListAgents"
+        },
+        {
+          "target": "com.amazonaws.datasync#ListLocations"
+        },
+        {
+          "target": "com.amazonaws.datasync#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.datasync#ListTaskExecutions"
+        },
+        {
+          "target": "com.amazonaws.datasync#ListTasks"
+        },
+        {
+          "target": "com.amazonaws.datasync#StartTaskExecution"
+        },
+        {
+          "target": "com.amazonaws.datasync#TagResource"
+        },
+        {
+          "target": "com.amazonaws.datasync#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateAgent"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationAzureBlob"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationEfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationFsxLustre"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationFsxOntap"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationFsxOpenZfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationFsxWindows"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationHdfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationNfs"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationObjectStorage"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationS3"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateLocationSmb"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateTask"
+        },
+        {
+          "target": "com.amazonaws.datasync#UpdateTaskExecution"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "DataSync",

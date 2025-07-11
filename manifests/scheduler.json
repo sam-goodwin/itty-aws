@@ -1,7 +1,19 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.scheduler#AWSChronosService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.scheduler#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.scheduler#TagResource"
+        },
+        {
+          "target": "com.amazonaws.scheduler#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Scheduler",

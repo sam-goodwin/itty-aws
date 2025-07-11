@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface OpenSearchServerless {
   batchGetCollection(
@@ -26,83 +26,25 @@ export interface OpenSearchServerless {
     BatchGetVpcEndpointResponse,
     InternalServerException | ValidationException | CommonAwsError
   >;
-  createAccessPolicy(
-    input: CreateAccessPolicyRequest,
-  ): Effect.Effect<
-    CreateAccessPolicyResponse,
-    ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  createCollection(
-    input: CreateCollectionRequest,
-  ): Effect.Effect<
-    CreateCollectionResponse,
-    ConflictException | InternalServerException | OcuLimitExceededException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
   createLifecyclePolicy(
     input: CreateLifecyclePolicyRequest,
   ): Effect.Effect<
     CreateLifecyclePolicyResponse,
-    ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  createSecurityConfig(
-    input: CreateSecurityConfigRequest,
-  ): Effect.Effect<
-    CreateSecurityConfigResponse,
-    ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createSecurityPolicy(
     input: CreateSecurityPolicyRequest,
   ): Effect.Effect<
     CreateSecurityPolicyResponse,
-    ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  createVpcEndpoint(
-    input: CreateVpcEndpointRequest,
-  ): Effect.Effect<
-    CreateVpcEndpointResponse,
-    ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  deleteAccessPolicy(
-    input: DeleteAccessPolicyRequest,
-  ): Effect.Effect<
-    DeleteAccessPolicyResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteCollection(
-    input: DeleteCollectionRequest,
-  ): Effect.Effect<
-    DeleteCollectionResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteLifecyclePolicy(
-    input: DeleteLifecyclePolicyRequest,
-  ): Effect.Effect<
-    DeleteLifecyclePolicyResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteSecurityConfig(
-    input: DeleteSecurityConfigRequest,
-  ): Effect.Effect<
-    DeleteSecurityConfigResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteSecurityPolicy(
-    input: DeleteSecurityPolicyRequest,
-  ): Effect.Effect<
-    DeleteSecurityPolicyResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteVpcEndpoint(
-    input: DeleteVpcEndpointRequest,
-  ): Effect.Effect<
-    DeleteVpcEndpointResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  getAccessPolicy(
-    input: GetAccessPolicyRequest,
-  ): Effect.Effect<
-    GetAccessPolicyResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   getAccountSettings(
     input: GetAccountSettingsRequest,
@@ -116,77 +58,35 @@ export interface OpenSearchServerless {
     GetPoliciesStatsResponse,
     InternalServerException | CommonAwsError
   >;
-  getSecurityConfig(
-    input: GetSecurityConfigRequest,
-  ): Effect.Effect<
-    GetSecurityConfigResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  getSecurityPolicy(
-    input: GetSecurityPolicyRequest,
-  ): Effect.Effect<
-    GetSecurityPolicyResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listAccessPolicies(
-    input: ListAccessPoliciesRequest,
-  ): Effect.Effect<
-    ListAccessPoliciesResponse,
-    InternalServerException | ValidationException | CommonAwsError
-  >;
-  listCollections(
-    input: ListCollectionsRequest,
-  ): Effect.Effect<
-    ListCollectionsResponse,
-    InternalServerException | ValidationException | CommonAwsError
-  >;
-  listLifecyclePolicies(
-    input: ListLifecyclePoliciesRequest,
-  ): Effect.Effect<
-    ListLifecyclePoliciesResponse,
-    InternalServerException | ValidationException | CommonAwsError
-  >;
-  listSecurityConfigs(
-    input: ListSecurityConfigsRequest,
-  ): Effect.Effect<
-    ListSecurityConfigsResponse,
-    InternalServerException | ValidationException | CommonAwsError
-  >;
-  listSecurityPolicies(
-    input: ListSecurityPoliciesRequest,
-  ): Effect.Effect<
-    ListSecurityPoliciesResponse,
-    InternalServerException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listVpcEndpoints(
-    input: ListVpcEndpointsRequest,
-  ): Effect.Effect<
-    ListVpcEndpointsResponse,
-    InternalServerException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateAccessPolicy(
-    input: UpdateAccessPolicyRequest,
-  ): Effect.Effect<
-    UpdateAccessPolicyResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateAccountSettings(
     input: UpdateAccountSettingsRequest,
@@ -194,35 +94,14 @@ export interface OpenSearchServerless {
     UpdateAccountSettingsResponse,
     InternalServerException | ValidationException | CommonAwsError
   >;
-  updateCollection(
-    input: UpdateCollectionRequest,
-  ): Effect.Effect<
-    UpdateCollectionResponse,
-    ConflictException | InternalServerException | ValidationException | CommonAwsError
-  >;
-  updateLifecyclePolicy(
-    input: UpdateLifecyclePolicyRequest,
-  ): Effect.Effect<
-    UpdateLifecyclePolicyResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  updateSecurityConfig(
-    input: UpdateSecurityConfigRequest,
-  ): Effect.Effect<
-    UpdateSecurityConfigResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateSecurityPolicy(
-    input: UpdateSecurityPolicyRequest,
-  ): Effect.Effect<
-    UpdateSecurityPolicyResponse,
-    ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
   updateVpcEndpoint(
     input: UpdateVpcEndpointRequest,
   ): Effect.Effect<
     UpdateVpcEndpointResponse,
-    ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -434,8 +313,7 @@ export interface DeleteAccessPolicyRequest {
   name: string;
   clientToken?: string;
 }
-export interface DeleteAccessPolicyResponse {
-}
+export interface DeleteAccessPolicyResponse {}
 export interface DeleteCollectionDetail {
   id?: string;
   name?: string;
@@ -453,21 +331,18 @@ export interface DeleteLifecyclePolicyRequest {
   name: string;
   clientToken?: string;
 }
-export interface DeleteLifecyclePolicyResponse {
-}
+export interface DeleteLifecyclePolicyResponse {}
 export interface DeleteSecurityConfigRequest {
   id: string;
   clientToken?: string;
 }
-export interface DeleteSecurityConfigResponse {
-}
+export interface DeleteSecurityConfigResponse {}
 export interface DeleteSecurityPolicyRequest {
   type: string;
   name: string;
   clientToken?: string;
 }
-export interface DeleteSecurityPolicyResponse {
-}
+export interface DeleteSecurityPolicyResponse {}
 export interface DeleteVpcEndpointDetail {
   id?: string;
   name?: string;
@@ -488,14 +363,16 @@ export interface EffectiveLifecyclePolicyDetail {
   retentionPeriod?: string;
   noMinRetentionPeriod?: boolean;
 }
-export type EffectiveLifecyclePolicyDetails = Array<EffectiveLifecyclePolicyDetail>;
+export type EffectiveLifecyclePolicyDetails =
+  Array<EffectiveLifecyclePolicyDetail>;
 export interface EffectiveLifecyclePolicyErrorDetail {
   type?: string;
   resource?: string;
   errorMessage?: string;
   errorCode?: string;
 }
-export type EffectiveLifecyclePolicyErrorDetails = Array<EffectiveLifecyclePolicyErrorDetail>;
+export type EffectiveLifecyclePolicyErrorDetails =
+  Array<EffectiveLifecyclePolicyErrorDetail>;
 export interface GetAccessPolicyRequest {
   type: string;
   name: string;
@@ -503,13 +380,11 @@ export interface GetAccessPolicyRequest {
 export interface GetAccessPolicyResponse {
   accessPolicyDetail?: AccessPolicyDetail;
 }
-export interface GetAccountSettingsRequest {
-}
+export interface GetAccountSettingsRequest {}
 export interface GetAccountSettingsResponse {
   accountSettingsDetail?: AccountSettingsDetail;
 }
-export interface GetPoliciesStatsRequest {
-}
+export interface GetPoliciesStatsRequest {}
 export interface GetPoliciesStatsResponse {
   AccessPolicyStats?: AccessPolicyStats;
   SecurityPolicyStats?: SecurityPolicyStats;
@@ -579,7 +454,8 @@ export interface LifecyclePolicyResourceIdentifier {
   type: string;
   resource: string;
 }
-export type LifecyclePolicyResourceIdentifiers = Array<LifecyclePolicyResourceIdentifier>;
+export type LifecyclePolicyResourceIdentifiers =
+  Array<LifecyclePolicyResourceIdentifier>;
 export interface LifecyclePolicyStats {
   RetentionPolicyCount?: number;
 }
@@ -780,8 +656,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
@@ -789,8 +664,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAccessPolicyRequest {
   type: string;
   name: string;
@@ -959,43 +833,9 @@ export declare namespace BatchGetVpcEndpoint {
     | CommonAwsError;
 }
 
-export declare namespace CreateAccessPolicy {
-  export type Input = CreateAccessPolicyRequest;
-  export type Output = CreateAccessPolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateCollection {
-  export type Input = CreateCollectionRequest;
-  export type Output = CreateCollectionResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | OcuLimitExceededException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace CreateLifecyclePolicy {
   export type Input = CreateLifecyclePolicyRequest;
   export type Output = CreateLifecyclePolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateSecurityConfig {
-  export type Input = CreateSecurityConfigRequest;
-  export type Output = CreateSecurityConfigResponse;
   export type Error =
     | ConflictException
     | InternalServerException
@@ -1015,93 +855,6 @@ export declare namespace CreateSecurityPolicy {
     | CommonAwsError;
 }
 
-export declare namespace CreateVpcEndpoint {
-  export type Input = CreateVpcEndpointRequest;
-  export type Output = CreateVpcEndpointResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteAccessPolicy {
-  export type Input = DeleteAccessPolicyRequest;
-  export type Output = DeleteAccessPolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteCollection {
-  export type Input = DeleteCollectionRequest;
-  export type Output = DeleteCollectionResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteLifecyclePolicy {
-  export type Input = DeleteLifecyclePolicyRequest;
-  export type Output = DeleteLifecyclePolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteSecurityConfig {
-  export type Input = DeleteSecurityConfigRequest;
-  export type Output = DeleteSecurityConfigResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteSecurityPolicy {
-  export type Input = DeleteSecurityPolicyRequest;
-  export type Output = DeleteSecurityPolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteVpcEndpoint {
-  export type Input = DeleteVpcEndpointRequest;
-  export type Output = DeleteVpcEndpointResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetAccessPolicy {
-  export type Input = GetAccessPolicyRequest;
-  export type Output = GetAccessPolicyResponse;
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace GetAccountSettings {
   export type Input = GetAccountSettingsRequest;
   export type Output = GetAccountSettingsResponse;
@@ -1114,74 +867,7 @@ export declare namespace GetAccountSettings {
 export declare namespace GetPoliciesStats {
   export type Input = GetPoliciesStatsRequest;
   export type Output = GetPoliciesStatsResponse;
-  export type Error =
-    | InternalServerException
-    | CommonAwsError;
-}
-
-export declare namespace GetSecurityConfig {
-  export type Input = GetSecurityConfigRequest;
-  export type Output = GetSecurityConfigResponse;
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetSecurityPolicy {
-  export type Input = GetSecurityPolicyRequest;
-  export type Output = GetSecurityPolicyResponse;
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListAccessPolicies {
-  export type Input = ListAccessPoliciesRequest;
-  export type Output = ListAccessPoliciesResponse;
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollections {
-  export type Input = ListCollectionsRequest;
-  export type Output = ListCollectionsResponse;
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListLifecyclePolicies {
-  export type Input = ListLifecyclePoliciesRequest;
-  export type Output = ListLifecyclePoliciesResponse;
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListSecurityConfigs {
-  export type Input = ListSecurityConfigsRequest;
-  export type Output = ListSecurityConfigsResponse;
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListSecurityPolicies {
-  export type Input = ListSecurityPoliciesRequest;
-  export type Output = ListSecurityPoliciesResponse;
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
+  export type Error = InternalServerException | CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
@@ -1190,15 +876,6 @@ export declare namespace ListTagsForResource {
   export type Error =
     | InternalServerException
     | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListVpcEndpoints {
-  export type Input = ListVpcEndpointsRequest;
-  export type Output = ListVpcEndpointsResponse;
-  export type Error =
-    | InternalServerException
     | ValidationException
     | CommonAwsError;
 }
@@ -1226,67 +903,11 @@ export declare namespace UntagResource {
     | CommonAwsError;
 }
 
-export declare namespace UpdateAccessPolicy {
-  export type Input = UpdateAccessPolicyRequest;
-  export type Output = UpdateAccessPolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace UpdateAccountSettings {
   export type Input = UpdateAccountSettingsRequest;
   export type Output = UpdateAccountSettingsResponse;
   export type Error =
     | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateCollection {
-  export type Input = UpdateCollectionRequest;
-  export type Output = UpdateCollectionResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateLifecyclePolicy {
-  export type Input = UpdateLifecyclePolicyRequest;
-  export type Output = UpdateLifecyclePolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateSecurityConfig {
-  export type Input = UpdateSecurityConfigRequest;
-  export type Output = UpdateSecurityConfigResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateSecurityPolicy {
-  export type Input = UpdateSecurityPolicyRequest;
-  export type Output = UpdateSecurityPolicyResponse;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
     | ValidationException
     | CommonAwsError;
 }
@@ -1300,4 +921,3 @@ export declare namespace UpdateVpcEndpoint {
     | ValidationException
     | CommonAwsError;
 }
-

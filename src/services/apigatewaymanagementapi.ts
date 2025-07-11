@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface ApiGatewayManagementApi {
   deleteConnection(
@@ -18,7 +18,11 @@ export interface ApiGatewayManagementApi {
     input: PostToConnectionRequest,
   ): Effect.Effect<
     {},
-    ForbiddenException | GoneException | LimitExceededException | PayloadTooLargeException | CommonAwsError
+    | ForbiddenException
+    | GoneException
+    | LimitExceededException
+    | PayloadTooLargeException
+    | CommonAwsError
   >;
 }
 
@@ -35,8 +39,7 @@ export interface DeleteConnectionRequest {
 }
 export declare class ForbiddenException extends Data.TaggedError(
   "ForbiddenException",
-)<{
-}> {}
+)<{}> {}
 export interface GetConnectionRequest {
   ConnectionId: string;
 }
@@ -47,16 +50,14 @@ export interface GetConnectionResponse {
 }
 export declare class GoneException extends Data.TaggedError(
   "GoneException",
-)<{
-}> {}
+)<{}> {}
 export interface Identity {
   SourceIp: string;
   UserAgent: string;
 }
 export declare class LimitExceededException extends Data.TaggedError(
   "LimitExceededException",
-)<{
-}> {}
+)<{}> {}
 export declare class PayloadTooLargeException extends Data.TaggedError(
   "PayloadTooLargeException",
 )<{
@@ -96,4 +97,3 @@ export declare namespace PostToConnection {
     | PayloadTooLargeException
     | CommonAwsError;
 }
-

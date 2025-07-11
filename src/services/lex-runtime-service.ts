@@ -1,36 +1,72 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSDeepSenseRunTimeService {
   deleteSession(
     input: DeleteSessionRequest,
   ): Effect.Effect<
     DeleteSessionResponse,
-    BadRequestException | ConflictException | InternalFailureException | LimitExceededException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   getSession(
     input: GetSessionRequest,
   ): Effect.Effect<
     GetSessionResponse,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   postContent(
     input: PostContentRequest,
   ): Effect.Effect<
     PostContentResponse,
-    BadGatewayException | BadRequestException | ConflictException | DependencyFailedException | InternalFailureException | LimitExceededException | LoopDetectedException | NotAcceptableException | NotFoundException | RequestTimeoutException | UnsupportedMediaTypeException | CommonAwsError
+    | BadGatewayException
+    | BadRequestException
+    | ConflictException
+    | DependencyFailedException
+    | InternalFailureException
+    | LimitExceededException
+    | LoopDetectedException
+    | NotAcceptableException
+    | NotFoundException
+    | RequestTimeoutException
+    | UnsupportedMediaTypeException
+    | CommonAwsError
   >;
   postText(
     input: PostTextRequest,
   ): Effect.Effect<
     PostTextResponse,
-    BadGatewayException | BadRequestException | ConflictException | DependencyFailedException | InternalFailureException | LimitExceededException | LoopDetectedException | NotFoundException | CommonAwsError
+    | BadGatewayException
+    | BadRequestException
+    | ConflictException
+    | DependencyFailedException
+    | InternalFailureException
+    | LimitExceededException
+    | LoopDetectedException
+    | NotFoundException
+    | CommonAwsError
   >;
   putSession(
     input: PutSessionRequest,
   ): Effect.Effect<
     PutSessionResponse,
-    BadGatewayException | BadRequestException | ConflictException | DependencyFailedException | InternalFailureException | LimitExceededException | NotAcceptableException | NotFoundException | CommonAwsError
+    | BadGatewayException
+    | BadRequestException
+    | ConflictException
+    | DependencyFailedException
+    | InternalFailureException
+    | LimitExceededException
+    | NotAcceptableException
+    | NotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -113,8 +149,19 @@ export interface DialogAction {
   message?: string;
   messageFormat?: MessageFormatType;
 }
-export type DialogActionType = "ELICIT_INTENT" | "CONFIRM_INTENT" | "ELICIT_SLOT" | "CLOSE" | "DELEGATE";
-export type DialogState = "ELICIT_INTENT" | "CONFIRM_INTENT" | "ELICIT_SLOT" | "FULFILLED" | "READY_FOR_FULFILLMENT" | "FAILED";
+export type DialogActionType =
+  | "ELICIT_INTENT"
+  | "CONFIRM_INTENT"
+  | "ELICIT_SLOT"
+  | "CLOSE"
+  | "DELEGATE";
+export type DialogState =
+  | "ELICIT_INTENT"
+  | "CONFIRM_INTENT"
+  | "ELICIT_SLOT"
+  | "FULFILLED"
+  | "READY_FOR_FULFILLMENT"
+  | "FAILED";
 export type Double = number;
 
 export type ErrorMessage = string;
@@ -178,7 +225,11 @@ export declare class LoopDetectedException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type MessageFormatType = "PLAIN_TEXT" | "CUSTOM_PAYLOAD" | "SSML" | "COMPOSITE";
+export type MessageFormatType =
+  | "PLAIN_TEXT"
+  | "CUSTOM_PAYLOAD"
+  | "SSML"
+  | "COMPOSITE";
 export declare class NotAcceptableException extends Data.TaggedError(
   "NotAcceptableException",
 )<{
@@ -388,4 +439,3 @@ export declare namespace PutSession {
     | NotFoundException
     | CommonAwsError;
 }
-

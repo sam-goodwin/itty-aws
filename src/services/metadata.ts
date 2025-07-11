@@ -1,9 +1,9 @@
 // Auto-generated service metadata
 export const serviceMetadata = {
-  "lookoutmetrics": {
+  lookoutmetrics: {
     sdkId: "LookoutMetrics",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "lookoutmetrics",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "sso-admin": {
@@ -12,55 +12,55 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "SWBExternalService",
   },
-  "frauddetector": {
+  frauddetector: {
     sdkId: "FraudDetector",
     endpointPrefix: "frauddetector",
     protocol: "json",
     targetPrefix: "AWSHawksNestServiceFacade",
   },
-  "braket": {
+  braket: {
     sdkId: "Braket",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "accessanalyzer": {
+  accessanalyzer: {
     sdkId: "AccessAnalyzer",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "efs": {
+  efs: {
     sdkId: "EFS",
     endpointPrefix: "elasticfilesystem",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "kafkaconnect": {
+  kafkaconnect: {
     sdkId: "KafkaConnect",
     endpointPrefix: "kafkaconnect",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "macie2": {
+  macie2: {
     sdkId: "Macie2",
     endpointPrefix: "macie2",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "iam": {
+  iam: {
     sdkId: "IAM",
     endpointPrefix: "iam",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "mediastore": {
+  mediastore: {
     sdkId: "MediaStore",
     endpointPrefix: "mediastore",
     protocol: "json",
     targetPrefix: "MediaStore_20170901",
   },
-  "elasticache": {
+  elasticache: {
     sdkId: "ElastiCache",
     endpointPrefix: "elasticache",
     protocol: "unknown",
@@ -72,25 +72,25 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "athena": {
+  athena: {
     sdkId: "Athena",
     endpointPrefix: "athena",
     protocol: "json",
     targetPrefix: "AmazonAthena",
   },
-  "cloud9": {
+  cloud9: {
     sdkId: "Cloud9",
     endpointPrefix: "cloud9",
     protocol: "json",
     targetPrefix: "AWSCloud9WorkspaceManagementService",
   },
-  "lookoutequipment": {
+  lookoutequipment: {
     sdkId: "LookoutEquipment",
     endpointPrefix: "lookoutequipment",
     protocol: "json",
     targetPrefix: "AWSLookoutEquipmentFrontendService",
   },
-  "iotfleethub": {
+  iotfleethub: {
     sdkId: "IoTFleetHub",
     endpointPrefix: "api.fleethub.iot",
     protocol: "rest-json",
@@ -102,31 +102,31 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "guardduty": {
+  guardduty: {
     sdkId: "GuardDuty",
     endpointPrefix: "guardduty",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "securitylake": {
+  securitylake: {
     sdkId: "SecurityLake",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "wellarchitected": {
+  wellarchitected: {
     sdkId: "WellArchitected",
     endpointPrefix: "wellarchitected",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "translate": {
+  translate: {
     sdkId: "Translate",
     endpointPrefix: "translate",
     protocol: "json",
     targetPrefix: "AWSShineFrontendService_20170701",
   },
-  "amp": {
+  amp: {
     sdkId: "amp",
     endpointPrefix: "",
     protocol: "rest-json",
@@ -138,13 +138,13 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "iotdeviceadvisor": {
+  iotdeviceadvisor: {
     sdkId: "IotDeviceAdvisor",
     endpointPrefix: "api.iotdeviceadvisor",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "rum": {
+  rum: {
     sdkId: "RUM",
     endpointPrefix: "",
     protocol: "rest-json",
@@ -156,52 +156,52 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "AWSMigrationHubMultiAccountService",
   },
-  "dataexchange": {
+  dataexchange: {
     sdkId: "DataExchange",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "dataexchange",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "connect": {
+  connect: {
     sdkId: "Connect",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "connect",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "datasync": {
+  datasync: {
     sdkId: "DataSync",
     endpointPrefix: "datasync",
     protocol: "json",
     targetPrefix: "FmrsService",
   },
-  "workmailmessageflow": {
+  workmailmessageflow: {
     sdkId: "WorkMailMessageFlow",
     endpointPrefix: "workmailmessageflow",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "workmail": {
+  workmail: {
     sdkId: "WorkMail",
     endpointPrefix: "workmail",
     protocol: "json",
     targetPrefix: "WorkMailService",
   },
-  "wisdom": {
+  wisdom: {
     sdkId: "Wisdom",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "eventbridge": {
+  eventbridge: {
     sdkId: "EventBridge",
     endpointPrefix: "events",
     protocol: "json",
     targetPrefix: "AWSEvents",
   },
-  "fis": {
+  fis: {
     sdkId: "fis",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "fis",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "codeguru-reviewer": {
@@ -212,9 +212,9 @@ export const serviceMetadata = {
   },
   "secrets-manager": {
     sdkId: "Secrets Manager",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "secretsmanager",
+    protocol: "json",
+    targetPrefix: "secretsmanager",
   },
   "cost-explorer": {
     sdkId: "Cost Explorer",
@@ -222,13 +222,13 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "AWSInsightsIndexService",
   },
-  "appstream": {
+  appstream: {
     sdkId: "AppStream",
     endpointPrefix: "appstream2",
     protocol: "json",
     targetPrefix: "PhotonAdminProxyService",
   },
-  "kafka": {
+  kafka: {
     sdkId: "Kafka",
     endpointPrefix: "kafka",
     protocol: "rest-json",
@@ -240,10 +240,10 @@ export const serviceMetadata = {
     protocol: "unknown",
     targetPrefix: "",
   },
-  "appconfig": {
+  appconfig: {
     sdkId: "AppConfig",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "appconfig",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "sso-oidc": {
@@ -252,37 +252,37 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "fms": {
+  fms: {
     sdkId: "FMS",
     endpointPrefix: "fms",
     protocol: "json",
     targetPrefix: "AWSFMS_20180101",
   },
-  "panorama": {
+  panorama: {
     sdkId: "Panorama",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "glacier": {
+  glacier: {
     sdkId: "Glacier",
     endpointPrefix: "glacier",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "iotanalytics": {
+  iotanalytics: {
     sdkId: "IoTAnalytics",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "iotanalytics",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "mediatailor": {
+  mediatailor: {
     sdkId: "MediaTailor",
     endpointPrefix: "api.mediatailor",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "cloudformation": {
+  cloudformation: {
     sdkId: "CloudFormation",
     endpointPrefix: "cloudformation",
     protocol: "unknown",
@@ -294,10 +294,10 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "Logs_20140328",
   },
-  "drs": {
+  drs: {
     sdkId: "drs",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "chime-sdk-messaging": {
@@ -306,97 +306,97 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "omics": {
+  omics: {
     sdkId: "Omics",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "waf": {
+  waf: {
     sdkId: "WAF",
     endpointPrefix: "waf",
     protocol: "json",
     targetPrefix: "AWSWAF_20150824",
   },
-  "dlm": {
+  dlm: {
     sdkId: "DLM",
     endpointPrefix: "dlm",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "pinpoint": {
+  pinpoint: {
     sdkId: "Pinpoint",
     endpointPrefix: "pinpoint",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "fsx": {
+  fsx: {
     sdkId: "FSx",
     endpointPrefix: "fsx",
     protocol: "json",
     targetPrefix: "AWSSimbaAPIService_v20180301",
   },
-  "migrationhubstrategy": {
+  migrationhubstrategy: {
     sdkId: "MigrationHubStrategy",
     endpointPrefix: "migrationhub-strategy",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "ebs": {
+  ebs: {
     sdkId: "EBS",
     endpointPrefix: "ebs",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "personalize": {
+  personalize: {
     sdkId: "Personalize",
     endpointPrefix: "personalize",
     protocol: "json",
     targetPrefix: "AmazonPersonalize",
   },
-  "mediaconvert": {
+  mediaconvert: {
     sdkId: "MediaConvert",
     endpointPrefix: "mediaconvert",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "cloudwatch": {
+  cloudwatch: {
     sdkId: "CloudWatch",
     endpointPrefix: "monitoring",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "mediaconnect": {
+  mediaconnect: {
     sdkId: "MediaConnect",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "backup": {
+  backup: {
     sdkId: "Backup",
     endpointPrefix: "backup",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "wafv2": {
+  wafv2: {
     sdkId: "WAFV2",
     endpointPrefix: "wafv2",
     protocol: "json",
     targetPrefix: "AWSWAF_20190729",
   },
-  "appsync": {
+  appsync: {
     sdkId: "AppSync",
     endpointPrefix: "appsync",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "amplifybackend": {
+  amplifybackend: {
     sdkId: "AmplifyBackend",
     endpointPrefix: "amplifybackend",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "transfer": {
+  transfer: {
     sdkId: "Transfer",
     endpointPrefix: "transfer",
     protocol: "json",
@@ -408,67 +408,67 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "location": {
+  location: {
     sdkId: "Location",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "health": {
+  health: {
     sdkId: "Health",
     endpointPrefix: "health",
     protocol: "json",
     targetPrefix: "AWSHealth_20160804",
   },
-  "savingsplans": {
+  savingsplans: {
     sdkId: "savingsplans",
     endpointPrefix: "savingsplans",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "verifiedpermissions": {
+  verifiedpermissions: {
     sdkId: "VerifiedPermissions",
     endpointPrefix: "verifiedpermissions",
     protocol: "json",
     targetPrefix: "VerifiedPermissions",
   },
-  "mwaa": {
+  mwaa: {
     sdkId: "MWAA",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "signer": {
+  signer: {
     sdkId: "signer",
     endpointPrefix: "signer",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "servicediscovery": {
+  servicediscovery: {
     sdkId: "ServiceDiscovery",
     endpointPrefix: "servicediscovery",
     protocol: "json",
     targetPrefix: "Route53AutoNaming_v20170314",
   },
-  "codebuild": {
+  codebuild: {
     sdkId: "CodeBuild",
     endpointPrefix: "codebuild",
     protocol: "json",
     targetPrefix: "CodeBuild_20161006",
   },
-  "appconfigdata": {
+  appconfigdata: {
     sdkId: "AppConfigData",
     endpointPrefix: "appconfigdata",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "ecr": {
+  ecr: {
     sdkId: "ECR",
     endpointPrefix: "api.ecr",
     protocol: "json",
     targetPrefix: "AmazonEC2ContainerRegistry_V20150921",
   },
-  "networkmanager": {
+  networkmanager: {
     sdkId: "NetworkManager",
     endpointPrefix: "networkmanager",
     protocol: "rest-json",
@@ -477,25 +477,25 @@ export const serviceMetadata = {
   "emr-serverless": {
     sdkId: "EMR Serverless",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "identitystore": {
+  identitystore: {
     sdkId: "identitystore",
     endpointPrefix: "identitystore",
     protocol: "json",
     targetPrefix: "AWSIdentityStore",
   },
-  "grafana": {
+  grafana: {
     sdkId: "grafana",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "greengrassv2": {
+  greengrassv2: {
     sdkId: "GreengrassV2",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "greengrass",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "dynamodb-streams": {
@@ -504,37 +504,37 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "DynamoDBStreams_20120810",
   },
-  "codeguruprofiler": {
+  codeguruprofiler: {
     sdkId: "CodeGuruProfiler",
     endpointPrefix: "codeguru-profiler",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "oam": {
+  oam: {
     sdkId: "OAM",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "sso": {
+  sso: {
     sdkId: "SSO",
     endpointPrefix: "portal.sso",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "comprehendmedical": {
+  comprehendmedical: {
     sdkId: "ComprehendMedical",
     endpointPrefix: "comprehendmedical",
     protocol: "json",
     targetPrefix: "ComprehendMedical_20181030",
   },
-  "sagemaker": {
+  sagemaker: {
     sdkId: "SageMaker",
     endpointPrefix: "api.sagemaker",
     protocol: "json",
     targetPrefix: "SageMaker",
   },
-  "qldb": {
+  qldb: {
     sdkId: "QLDB",
     endpointPrefix: "qldb",
     protocol: "rest-json",
@@ -542,17 +542,17 @@ export const serviceMetadata = {
   },
   "s3-control": {
     sdkId: "S3 Control",
-    endpointPrefix: "",
+    endpointPrefix: "s3-control",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "route53resolver": {
+  route53resolver: {
     sdkId: "Route53Resolver",
     endpointPrefix: "route53resolver",
     protocol: "json",
     targetPrefix: "Route53Resolver",
   },
-  "organizations": {
+  organizations: {
     sdkId: "Organizations",
     endpointPrefix: "organizations",
     protocol: "json",
@@ -564,25 +564,25 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "shield": {
+  shield: {
     sdkId: "Shield",
     endpointPrefix: "shield",
     protocol: "json",
     targetPrefix: "AWSShield_20160616",
   },
-  "cloudhsm": {
+  cloudhsm: {
     sdkId: "CloudHSM",
     endpointPrefix: "cloudhsm",
     protocol: "json",
     targetPrefix: "CloudHsmFrontendService",
   },
-  "pipes": {
+  pipes: {
     sdkId: "Pipes",
     endpointPrefix: "pipes",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "ecs": {
+  ecs: {
     sdkId: "ECS",
     endpointPrefix: "ecs",
     protocol: "json",
@@ -594,55 +594,55 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "inspector": {
+  inspector: {
     sdkId: "Inspector",
     endpointPrefix: "inspector",
     protocol: "json",
     targetPrefix: "InspectorService",
   },
-  "acm": {
+  acm: {
     sdkId: "ACM",
     endpointPrefix: "acm",
     protocol: "json",
     targetPrefix: "CertificateManager",
   },
-  "workspaces": {
+  workspaces: {
     sdkId: "WorkSpaces",
     endpointPrefix: "workspaces",
     protocol: "json",
     targetPrefix: "WorkspacesService",
   },
-  "polly": {
+  polly: {
     sdkId: "Polly",
     endpointPrefix: "polly",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "greengrass": {
+  greengrass: {
     sdkId: "Greengrass",
     endpointPrefix: "greengrass",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "opsworks": {
+  opsworks: {
     sdkId: "OpsWorks",
     endpointPrefix: "opsworks",
     protocol: "json",
     targetPrefix: "OpsWorks_20130218",
   },
-  "ses": {
+  ses: {
     sdkId: "SES",
     endpointPrefix: "email",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "iotsitewise": {
+  iotsitewise: {
     sdkId: "IoTSiteWise",
     endpointPrefix: "iotsitewise",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "lookoutvision": {
+  lookoutvision: {
     sdkId: "LookoutVision",
     endpointPrefix: "lookoutvision",
     protocol: "rest-json",
@@ -650,9 +650,9 @@ export const serviceMetadata = {
   },
   "cognito-identity-provider": {
     sdkId: "Cognito Identity Provider",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "cognito-idp",
+    protocol: "json",
+    targetPrefix: "AWSCognitoIdentityProviderService",
   },
   "database-migration-service": {
     sdkId: "Database Migration Service",
@@ -660,13 +660,13 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "AmazonDMSv20160101",
   },
-  "clouddirectory": {
+  clouddirectory: {
     sdkId: "CloudDirectory",
     endpointPrefix: "clouddirectory",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "glue": {
+  glue: {
     sdkId: "Glue",
     endpointPrefix: "glue",
     protocol: "json",
@@ -678,19 +678,19 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "RedshiftData",
   },
-  "serverlessapplicationrepository": {
+  serverlessapplicationrepository: {
     sdkId: "ServerlessApplicationRepository",
     endpointPrefix: "serverlessrepo",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "synthetics": {
+  synthetics: {
     sdkId: "synthetics",
     endpointPrefix: "synthetics",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "ec2": {
+  ec2: {
     sdkId: "EC2",
     endpointPrefix: "ec2",
     protocol: "unknown",
@@ -702,13 +702,13 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "DeviceFarm_20150623",
   },
-  "apigatewaymanagementapi": {
+  apigatewaymanagementapi: {
     sdkId: "ApiGatewayManagementApi",
     endpointPrefix: "execute-api",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "account": {
+  account: {
     sdkId: "Account",
     endpointPrefix: "",
     protocol: "rest-json",
@@ -716,9 +716,9 @@ export const serviceMetadata = {
   },
   "acm-pca": {
     sdkId: "ACM PCA",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "acm-pca",
+    protocol: "json",
+    targetPrefix: "ACMPrivateCA",
   },
   "service-quotas": {
     sdkId: "Service Quotas",
@@ -726,49 +726,49 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "ServiceQuotasV20190624",
   },
-  "cleanrooms": {
+  cleanrooms: {
     sdkId: "CleanRooms",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "cloudsearch": {
+  cloudsearch: {
     sdkId: "CloudSearch",
     endpointPrefix: "cloudsearch",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "resiliencehub": {
+  resiliencehub: {
     sdkId: "resiliencehub",
     endpointPrefix: "resiliencehub",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "opensearch": {
+  opensearch: {
     sdkId: "OpenSearch",
     endpointPrefix: "es",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "finspace": {
+  finspace: {
     sdkId: "finspace",
     endpointPrefix: "finspace",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "detective": {
+  detective: {
     sdkId: "Detective",
     endpointPrefix: "api.detective",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "iotthingsgraph": {
+  iotthingsgraph: {
     sdkId: "IoTThingsGraph",
     endpointPrefix: "iotthingsgraph",
     protocol: "json",
     targetPrefix: "IotThingsGraphFrontEndService",
   },
-  "s3": {
+  s3: {
     sdkId: "S3",
     endpointPrefix: "s3",
     protocol: "unknown",
@@ -780,37 +780,37 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "iotfleetwise": {
+  iotfleetwise: {
     sdkId: "IoTFleetWise",
     endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    protocol: "json",
+    targetPrefix: "IoTAutobahnControlPlane",
   },
-  "dax": {
+  dax: {
     sdkId: "DAX",
     endpointPrefix: "dax",
     protocol: "json",
     targetPrefix: "AmazonDAXV3",
   },
-  "xray": {
+  xray: {
     sdkId: "XRay",
     endpointPrefix: "xray",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "auditmanager": {
+  auditmanager: {
     sdkId: "AuditManager",
     endpointPrefix: "auditmanager",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "lakeformation": {
+  lakeformation: {
     sdkId: "LakeFormation",
     endpointPrefix: "lakeformation",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "snowball": {
+  snowball: {
     sdkId: "Snowball",
     endpointPrefix: "snowball",
     protocol: "json",
@@ -822,13 +822,13 @@ export const serviceMetadata = {
     protocol: "unknown",
     targetPrefix: "",
   },
-  "batch": {
+  batch: {
     sdkId: "Batch",
     endpointPrefix: "batch",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "transcribe": {
+  transcribe: {
     sdkId: "Transcribe",
     endpointPrefix: "transcribe",
     protocol: "json",
@@ -840,133 +840,133 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "managedblockchain": {
+  managedblockchain: {
     sdkId: "ManagedBlockchain",
     endpointPrefix: "managedblockchain",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "connectparticipant": {
+  connectparticipant: {
     sdkId: "ConnectParticipant",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "participant.connect",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "databrew": {
+  databrew: {
     sdkId: "DataBrew",
     endpointPrefix: "databrew",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "simspaceweaver": {
+  simspaceweaver: {
     sdkId: "SimSpaceWeaver",
     endpointPrefix: "simspaceweaver",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "neptune": {
+  neptune: {
     sdkId: "Neptune",
     endpointPrefix: "rds",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "apigatewayv2": {
+  apigatewayv2: {
     sdkId: "ApiGatewayV2",
     endpointPrefix: "apigateway",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "workdocs": {
+  workdocs: {
     sdkId: "WorkDocs",
     endpointPrefix: "workdocs",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "connectcases": {
+  connectcases: {
     sdkId: "ConnectCases",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "cases",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "iottwinmaker": {
+  iottwinmaker: {
     sdkId: "IoTTwinMaker",
     endpointPrefix: "iottwinmaker",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "imagebuilder": {
+  imagebuilder: {
     sdkId: "imagebuilder",
     endpointPrefix: "imagebuilder",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "ram": {
+  ram: {
     sdkId: "RAM",
     endpointPrefix: "ram",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "eks": {
+  eks: {
     sdkId: "EKS",
     endpointPrefix: "eks",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "tnb": {
+  tnb: {
     sdkId: "tnb",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "scheduler": {
+  scheduler: {
     sdkId: "Scheduler",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "sts": {
+  sts: {
     sdkId: "STS",
     endpointPrefix: "sts",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "ssm": {
+  ssm: {
     sdkId: "SSM",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "ssm",
+    protocol: "json",
+    targetPrefix: "AmazonSSM",
   },
-  "emr": {
+  emr: {
     sdkId: "EMR",
     endpointPrefix: "elasticmapreduce",
     protocol: "json",
     targetPrefix: "ElasticMapReduce",
   },
-  "sms": {
+  sms: {
     sdkId: "SMS",
     endpointPrefix: "sms",
     protocol: "json",
     targetPrefix: "AWSServerMigrationService_V2016_10_24",
   },
-  "sesv2": {
+  sesv2: {
     sdkId: "SESv2",
     endpointPrefix: "email",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "mediapackage": {
+  mediapackage: {
     sdkId: "MediaPackage",
     endpointPrefix: "mediapackage",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "appintegrations": {
+  appintegrations: {
     sdkId: "AppIntegrations",
     endpointPrefix: "app-integrations",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "budgets": {
+  budgets: {
     sdkId: "Budgets",
     endpointPrefix: "budgets",
     protocol: "json",
@@ -974,71 +974,71 @@ export const serviceMetadata = {
   },
   "timestream-query": {
     sdkId: "Timestream Query",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "query.timestream",
+    protocol: "json",
+    targetPrefix: "Timestream_20181101",
   },
-  "rds": {
+  rds: {
     sdkId: "RDS",
     endpointPrefix: "rds",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "pricing": {
+  pricing: {
     sdkId: "Pricing",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "api.pricing",
+    protocol: "json",
+    targetPrefix: "AWSPriceListService",
   },
-  "rbin": {
+  rbin: {
     sdkId: "rbin",
     endpointPrefix: "rbin",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "schemas": {
+  schemas: {
     sdkId: "schemas",
     endpointPrefix: "schemas",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "sfn": {
+  sfn: {
     sdkId: "SFN",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "states",
+    protocol: "json",
+    targetPrefix: "AWSStepFunctions",
   },
-  "mgn": {
+  mgn: {
     sdkId: "mgn",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "chime": {
+  chime: {
     sdkId: "Chime",
     endpointPrefix: "chime",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "support": {
+  support: {
     sdkId: "Support",
     endpointPrefix: "support",
     protocol: "json",
     targetPrefix: "AWSSupport_20130415",
   },
-  "kms": {
+  kms: {
     sdkId: "KMS",
     endpointPrefix: "kms",
     protocol: "json",
     targetPrefix: "TrentService",
   },
-  "m2": {
+  m2: {
     sdkId: "m2",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "m2",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "gamelift": {
+  gamelift: {
     sdkId: "GameLift",
     endpointPrefix: "gamelift",
     protocol: "json",
@@ -1050,19 +1050,19 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "sqs": {
+  sqs: {
     sdkId: "SQS",
     endpointPrefix: "sqs",
     protocol: "json",
     targetPrefix: "AmazonSQS",
   },
-  "connectcampaigns": {
+  connectcampaigns: {
     sdkId: "ConnectCampaigns",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "opensearchserverless": {
+  opensearchserverless: {
     sdkId: "OpenSearchServerless",
     endpointPrefix: "",
     protocol: "json",
@@ -1074,7 +1074,7 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "rekognition": {
+  rekognition: {
     sdkId: "Rekognition",
     endpointPrefix: "rekognition",
     protocol: "json",
@@ -1086,31 +1086,31 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "KinesisAnalytics_20150814",
   },
-  "forecast": {
+  forecast: {
     sdkId: "forecast",
     endpointPrefix: "forecast",
     protocol: "json",
     targetPrefix: "AmazonForecast",
   },
-  "s3outposts": {
+  s3outposts: {
     sdkId: "S3Outposts",
     endpointPrefix: "s3-outposts",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "groundstation": {
+  groundstation: {
     sdkId: "GroundStation",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "amplify": {
+  amplify: {
     sdkId: "Amplify",
     endpointPrefix: "amplify",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "firehose": {
+  firehose: {
     sdkId: "Firehose",
     endpointPrefix: "firehose",
     protocol: "json",
@@ -1122,31 +1122,31 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "AWS242ServiceCatalogService",
   },
-  "inspector2": {
+  inspector2: {
     sdkId: "Inspector2",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "kendra": {
+  kendra: {
     sdkId: "kendra",
     endpointPrefix: "kendra",
     protocol: "json",
     targetPrefix: "AWSKendraFrontendService",
   },
-  "appflow": {
+  appflow: {
     sdkId: "Appflow",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "appflow",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "cloudcontrol": {
+  cloudcontrol: {
     sdkId: "CloudControl",
     endpointPrefix: "cloudcontrolapi",
     protocol: "json",
     targetPrefix: "CloudApiService",
   },
-  "applicationcostprofiler": {
+  applicationcostprofiler: {
     sdkId: "ApplicationCostProfiler",
     endpointPrefix: "application-cost-profiler",
     protocol: "rest-json",
@@ -1158,7 +1158,7 @@ export const serviceMetadata = {
     protocol: "unknown",
     targetPrefix: "",
   },
-  "redshift": {
+  redshift: {
     sdkId: "Redshift",
     endpointPrefix: "redshift",
     protocol: "unknown",
@@ -1178,29 +1178,29 @@ export const serviceMetadata = {
   },
   "timestream-write": {
     sdkId: "Timestream Write",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "ingest.timestream",
+    protocol: "json",
+    targetPrefix: "Timestream_20181101",
   },
-  "lambda": {
+  lambda: {
     sdkId: "Lambda",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "lambda",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "quicksight": {
+  quicksight: {
     sdkId: "QuickSight",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "quicksight",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "codepipeline": {
+  codepipeline: {
     sdkId: "CodePipeline",
     endpointPrefix: "codepipeline",
     protocol: "json",
     targetPrefix: "CodePipeline_20150709",
   },
-  "cloudfront": {
+  cloudfront: {
     sdkId: "CloudFront",
     endpointPrefix: "cloudfront",
     protocol: "unknown",
@@ -1208,35 +1208,35 @@ export const serviceMetadata = {
   },
   "config-service": {
     sdkId: "Config Service",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "config",
+    protocol: "json",
+    targetPrefix: "StarlingDoveService",
   },
-  "memorydb": {
+  memorydb: {
     sdkId: "MemoryDB",
     endpointPrefix: "memory-db",
     protocol: "json",
     targetPrefix: "AmazonMemoryDB",
   },
-  "lightsail": {
+  lightsail: {
     sdkId: "Lightsail",
     endpointPrefix: "lightsail",
     protocol: "json",
     targetPrefix: "Lightsail_20161128",
   },
-  "bedrock": {
+  bedrock: {
     sdkId: "Bedrock",
     endpointPrefix: "bedrock",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "comprehend": {
+  comprehend: {
     sdkId: "Comprehend",
     endpointPrefix: "comprehend",
     protocol: "json",
     targetPrefix: "Comprehend_20171127",
   },
-  "robomaker": {
+  robomaker: {
     sdkId: "RoboMaker",
     endpointPrefix: "robomaker",
     protocol: "rest-json",
@@ -1248,31 +1248,31 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "evidently": {
+  evidently: {
     sdkId: "Evidently",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "docdb": {
+  docdb: {
     sdkId: "DocDB",
     endpointPrefix: "rds",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "mq": {
+  mq: {
     sdkId: "mq",
     endpointPrefix: "mq",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "kinesis": {
+  kinesis: {
     sdkId: "Kinesis",
     endpointPrefix: "kinesis",
     protocol: "json",
     targetPrefix: "Kinesis_20131202",
   },
-  "pi": {
+  pi: {
     sdkId: "PI",
     endpointPrefix: "pi",
     protocol: "json",
@@ -1280,8 +1280,8 @@ export const serviceMetadata = {
   },
   "customer-profiles": {
     sdkId: "Customer Profiles",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "profile",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "marketplace-entitlement-service": {
@@ -1296,31 +1296,31 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "swf": {
+  swf: {
     sdkId: "SWF",
     endpointPrefix: "swf",
     protocol: "json",
     targetPrefix: "SimpleWorkflowService",
   },
-  "migrationhuborchestrator": {
+  migrationhuborchestrator: {
     sdkId: "MigrationHubOrchestrator",
     endpointPrefix: "migrationhub-orchestrator",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "keyspaces": {
+  keyspaces: {
     sdkId: "Keyspaces",
     endpointPrefix: "cassandra",
     protocol: "json",
     targetPrefix: "KeyspacesService",
   },
-  "mturk": {
+  mturk: {
     sdkId: "MTurk",
     endpointPrefix: "mturk-requester",
     protocol: "json",
     targetPrefix: "MTurkRequesterServiceV20170117",
   },
-  "outposts": {
+  outposts: {
     sdkId: "Outposts",
     endpointPrefix: "outposts",
     protocol: "rest-json",
@@ -1332,7 +1332,7 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "ivschat": {
+  ivschat: {
     sdkId: "ivschat",
     endpointPrefix: "",
     protocol: "rest-json",
@@ -1344,7 +1344,7 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "medialive": {
+  medialive: {
     sdkId: "MediaLive",
     endpointPrefix: "medialive",
     protocol: "rest-json",
@@ -1352,23 +1352,23 @@ export const serviceMetadata = {
   },
   "bedrock-agent": {
     sdkId: "Bedrock Agent",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "bedrock-agent",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "cognito-identity": {
     sdkId: "Cognito Identity",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "cognito-identity",
+    protocol: "json",
+    targetPrefix: "AWSCognitoIdentityService",
   },
-  "cloudtrail": {
+  cloudtrail: {
     sdkId: "CloudTrail",
     endpointPrefix: "cloudtrail",
     protocol: "json",
     targetPrefix: "CloudTrail_20131101",
   },
-  "forecastquery": {
+  forecastquery: {
     sdkId: "forecastquery",
     endpointPrefix: "forecastquery",
     protocol: "json",
@@ -1380,46 +1380,46 @@ export const serviceMetadata = {
     protocol: "json",
     targetPrefix: "AWSEvents",
   },
-  "amplifyuibuilder": {
+  amplifyuibuilder: {
     sdkId: "AmplifyUIBuilder",
     endpointPrefix: "",
-    protocol: "unknown",
+    protocol: "rest-json",
     targetPrefix: "",
   },
-  "apprunner": {
+  apprunner: {
     sdkId: "AppRunner",
     endpointPrefix: "apprunner",
     protocol: "json",
     targetPrefix: "AppRunner",
   },
-  "sns": {
+  sns: {
     sdkId: "SNS",
     endpointPrefix: "sns",
     protocol: "unknown",
     targetPrefix: "",
   },
-  "textract": {
+  textract: {
     sdkId: "Textract",
     endpointPrefix: "textract",
     protocol: "json",
     targetPrefix: "Textract",
   },
-  "healthlake": {
+  healthlake: {
     sdkId: "HealthLake",
     endpointPrefix: "healthlake",
     protocol: "json",
     targetPrefix: "HealthLake",
   },
-  "iotsecuretunneling": {
+  iotsecuretunneling: {
     sdkId: "IoTSecureTunneling",
-    endpointPrefix: "",
-    protocol: "unknown",
-    targetPrefix: "",
+    endpointPrefix: "api.tunneling.iot",
+    protocol: "json",
+    targetPrefix: "IoTSecuredTunneling",
   },
-  "iot": {
+  iot: {
     sdkId: "IoT",
-    endpointPrefix: "",
-    protocol: "unknown",
+    endpointPrefix: "iot",
+    protocol: "rest-json",
     targetPrefix: "",
   },
   "iot-data-plane": {
@@ -1428,13 +1428,13 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "billingconductor": {
+  billingconductor: {
     sdkId: "billingconductor",
     endpointPrefix: "",
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "dynamodb": {
+  dynamodb: {
     sdkId: "DynamoDB",
     endpointPrefix: "dynamodb",
     protocol: "json",
@@ -1446,13 +1446,13 @@ export const serviceMetadata = {
     protocol: "rest-json",
     targetPrefix: "",
   },
-  "codecommit": {
+  codecommit: {
     sdkId: "CodeCommit",
     endpointPrefix: "codecommit",
     protocol: "json",
     targetPrefix: "CodeCommit_20150413",
   },
-  "rolesanywhere": {
+  rolesanywhere: {
     sdkId: "RolesAnywhere",
     endpointPrefix: "",
     protocol: "rest-json",

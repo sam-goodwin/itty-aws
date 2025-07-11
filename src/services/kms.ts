@@ -1,330 +1,723 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface TrentService {
   cancelKeyDeletion(
     input: CancelKeyDeletionRequest,
   ): Effect.Effect<
     CancelKeyDeletionResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   connectCustomKeyStore(
     input: ConnectCustomKeyStoreRequest,
   ): Effect.Effect<
     ConnectCustomKeyStoreResponse,
-    CloudHsmClusterInvalidConfigurationException | CloudHsmClusterNotActiveException | CustomKeyStoreInvalidStateException | CustomKeyStoreNotFoundException | KMSInternalException | CommonAwsError
+    | CloudHsmClusterInvalidConfigurationException
+    | CloudHsmClusterNotActiveException
+    | CustomKeyStoreInvalidStateException
+    | CustomKeyStoreNotFoundException
+    | KMSInternalException
+    | CommonAwsError
   >;
   createAlias(
     input: CreateAliasRequest,
   ): Effect.Effect<
     {},
-    AlreadyExistsException | DependencyTimeoutException | InvalidAliasNameException | KMSInternalException | KMSInvalidStateException | LimitExceededException | NotFoundException | CommonAwsError
+    | AlreadyExistsException
+    | DependencyTimeoutException
+    | InvalidAliasNameException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   createCustomKeyStore(
     input: CreateCustomKeyStoreRequest,
   ): Effect.Effect<
     CreateCustomKeyStoreResponse,
-    CloudHsmClusterInUseException | CloudHsmClusterInvalidConfigurationException | CloudHsmClusterNotActiveException | CloudHsmClusterNotFoundException | CustomKeyStoreNameInUseException | IncorrectTrustAnchorException | KMSInternalException | LimitExceededException | XksProxyIncorrectAuthenticationCredentialException | XksProxyInvalidConfigurationException | XksProxyInvalidResponseException | XksProxyUriEndpointInUseException | XksProxyUriInUseException | XksProxyUriUnreachableException | XksProxyVpcEndpointServiceInUseException | XksProxyVpcEndpointServiceInvalidConfigurationException | XksProxyVpcEndpointServiceNotFoundException | CommonAwsError
+    | CloudHsmClusterInUseException
+    | CloudHsmClusterInvalidConfigurationException
+    | CloudHsmClusterNotActiveException
+    | CloudHsmClusterNotFoundException
+    | CustomKeyStoreNameInUseException
+    | IncorrectTrustAnchorException
+    | KMSInternalException
+    | LimitExceededException
+    | XksProxyIncorrectAuthenticationCredentialException
+    | XksProxyInvalidConfigurationException
+    | XksProxyInvalidResponseException
+    | XksProxyUriEndpointInUseException
+    | XksProxyUriInUseException
+    | XksProxyUriUnreachableException
+    | XksProxyVpcEndpointServiceInUseException
+    | XksProxyVpcEndpointServiceInvalidConfigurationException
+    | XksProxyVpcEndpointServiceNotFoundException
+    | CommonAwsError
   >;
   createGrant(
     input: CreateGrantRequest,
   ): Effect.Effect<
     CreateGrantResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidArnException | InvalidGrantTokenException | KMSInternalException | KMSInvalidStateException | LimitExceededException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidArnException
+    | InvalidGrantTokenException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   createKey(
     input: CreateKeyRequest,
   ): Effect.Effect<
     CreateKeyResponse,
-    CloudHsmClusterInvalidConfigurationException | CustomKeyStoreInvalidStateException | CustomKeyStoreNotFoundException | DependencyTimeoutException | InvalidArnException | KMSInternalException | LimitExceededException | MalformedPolicyDocumentException | TagException | UnsupportedOperationException | XksKeyAlreadyInUseException | XksKeyInvalidConfigurationException | XksKeyNotFoundException | CommonAwsError
+    | CloudHsmClusterInvalidConfigurationException
+    | CustomKeyStoreInvalidStateException
+    | CustomKeyStoreNotFoundException
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | LimitExceededException
+    | MalformedPolicyDocumentException
+    | TagException
+    | UnsupportedOperationException
+    | XksKeyAlreadyInUseException
+    | XksKeyInvalidConfigurationException
+    | XksKeyNotFoundException
+    | CommonAwsError
   >;
   decrypt(
     input: DecryptRequest,
   ): Effect.Effect<
     DecryptResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | IncorrectKeyException | InvalidCiphertextException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | IncorrectKeyException
+    | InvalidCiphertextException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteAlias(
     input: DeleteAliasRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteCustomKeyStore(
     input: DeleteCustomKeyStoreRequest,
   ): Effect.Effect<
     DeleteCustomKeyStoreResponse,
-    CustomKeyStoreHasCMKsException | CustomKeyStoreInvalidStateException | CustomKeyStoreNotFoundException | KMSInternalException | CommonAwsError
+    | CustomKeyStoreHasCMKsException
+    | CustomKeyStoreInvalidStateException
+    | CustomKeyStoreNotFoundException
+    | KMSInternalException
+    | CommonAwsError
   >;
   deleteImportedKeyMaterial(
     input: DeleteImportedKeyMaterialRequest,
   ): Effect.Effect<
     DeleteImportedKeyMaterialResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deriveSharedSecret(
     input: DeriveSharedSecretRequest,
   ): Effect.Effect<
     DeriveSharedSecretResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   describeCustomKeyStores(
     input: DescribeCustomKeyStoresRequest,
   ): Effect.Effect<
     DescribeCustomKeyStoresResponse,
-    CustomKeyStoreNotFoundException | InvalidMarkerException | KMSInternalException | CommonAwsError
+    | CustomKeyStoreNotFoundException
+    | InvalidMarkerException
+    | KMSInternalException
+    | CommonAwsError
   >;
   describeKey(
     input: DescribeKeyRequest,
   ): Effect.Effect<
     DescribeKeyResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | NotFoundException
+    | CommonAwsError
   >;
   disableKey(
     input: DisableKeyRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   disableKeyRotation(
     input: DisableKeyRotationRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | DisabledException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   disconnectCustomKeyStore(
     input: DisconnectCustomKeyStoreRequest,
   ): Effect.Effect<
     DisconnectCustomKeyStoreResponse,
-    CustomKeyStoreInvalidStateException | CustomKeyStoreNotFoundException | KMSInternalException | CommonAwsError
+    | CustomKeyStoreInvalidStateException
+    | CustomKeyStoreNotFoundException
+    | KMSInternalException
+    | CommonAwsError
   >;
   enableKey(
     input: EnableKeyRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | LimitExceededException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   enableKeyRotation(
     input: EnableKeyRotationRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | DisabledException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   encrypt(
     input: EncryptRequest,
   ): Effect.Effect<
     EncryptResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   generateDataKey(
     input: GenerateDataKeyRequest,
   ): Effect.Effect<
     GenerateDataKeyResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   generateDataKeyPair(
     input: GenerateDataKeyPairRequest,
   ): Effect.Effect<
     GenerateDataKeyPairResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   generateDataKeyPairWithoutPlaintext(
     input: GenerateDataKeyPairWithoutPlaintextRequest,
   ): Effect.Effect<
     GenerateDataKeyPairWithoutPlaintextResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   generateDataKeyWithoutPlaintext(
     input: GenerateDataKeyWithoutPlaintextRequest,
   ): Effect.Effect<
     GenerateDataKeyWithoutPlaintextResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   generateMac(
     input: GenerateMacRequest,
   ): Effect.Effect<
     GenerateMacResponse,
-    DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   generateRandom(
     input: GenerateRandomRequest,
   ): Effect.Effect<
     GenerateRandomResponse,
-    CustomKeyStoreInvalidStateException | CustomKeyStoreNotFoundException | DependencyTimeoutException | KMSInternalException | UnsupportedOperationException | CommonAwsError
+    | CustomKeyStoreInvalidStateException
+    | CustomKeyStoreNotFoundException
+    | DependencyTimeoutException
+    | KMSInternalException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   getKeyPolicy(
     input: GetKeyPolicyRequest,
   ): Effect.Effect<
     GetKeyPolicyResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   getKeyRotationStatus(
     input: GetKeyRotationStatusRequest,
   ): Effect.Effect<
     GetKeyRotationStatusResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   getParametersForImport(
     input: GetParametersForImportRequest,
   ): Effect.Effect<
     GetParametersForImportResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   getPublicKey(
     input: GetPublicKeyRequest,
   ): Effect.Effect<
     GetPublicKeyResponse,
-    DependencyTimeoutException | DisabledException | InvalidArnException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | InvalidArnException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   importKeyMaterial(
     input: ImportKeyMaterialRequest,
   ): Effect.Effect<
     ImportKeyMaterialResponse,
-    DependencyTimeoutException | ExpiredImportTokenException | IncorrectKeyMaterialException | InvalidArnException | InvalidCiphertextException | InvalidImportTokenException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | ExpiredImportTokenException
+    | IncorrectKeyMaterialException
+    | InvalidArnException
+    | InvalidCiphertextException
+    | InvalidImportTokenException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   listAliases(
     input: ListAliasesRequest,
   ): Effect.Effect<
     ListAliasesResponse,
-    DependencyTimeoutException | InvalidArnException | InvalidMarkerException | KMSInternalException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | InvalidMarkerException
+    | KMSInternalException
+    | NotFoundException
+    | CommonAwsError
   >;
   listGrants(
     input: ListGrantsRequest,
   ): Effect.Effect<
     ListGrantsResponse,
-    DependencyTimeoutException | InvalidArnException | InvalidGrantIdException | InvalidMarkerException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | InvalidGrantIdException
+    | InvalidMarkerException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   listKeyPolicies(
     input: ListKeyPoliciesRequest,
   ): Effect.Effect<
     ListKeyPoliciesResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   listKeyRotations(
     input: ListKeyRotationsRequest,
   ): Effect.Effect<
     ListKeyRotationsResponse,
-    InvalidArnException | InvalidMarkerException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | InvalidArnException
+    | InvalidMarkerException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   listKeys(
     input: ListKeysRequest,
   ): Effect.Effect<
     ListKeysResponse,
-    DependencyTimeoutException | InvalidMarkerException | KMSInternalException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidMarkerException
+    | KMSInternalException
+    | CommonAwsError
   >;
   listResourceTags(
     input: ListResourceTagsRequest,
   ): Effect.Effect<
     ListResourceTagsResponse,
-    InvalidArnException | InvalidMarkerException | KMSInternalException | NotFoundException | CommonAwsError
+    | InvalidArnException
+    | InvalidMarkerException
+    | KMSInternalException
+    | NotFoundException
+    | CommonAwsError
   >;
   listRetirableGrants(
     input: ListRetirableGrantsRequest,
   ): Effect.Effect<
     ListGrantsResponse,
-    DependencyTimeoutException | InvalidArnException | InvalidMarkerException | KMSInternalException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | InvalidMarkerException
+    | KMSInternalException
+    | NotFoundException
+    | CommonAwsError
   >;
   putKeyPolicy(
     input: PutKeyPolicyRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | LimitExceededException | MalformedPolicyDocumentException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | MalformedPolicyDocumentException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   reEncrypt(
     input: ReEncryptRequest,
   ): Effect.Effect<
     ReEncryptResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | IncorrectKeyException | InvalidCiphertextException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | IncorrectKeyException
+    | InvalidCiphertextException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   replicateKey(
     input: ReplicateKeyRequest,
   ): Effect.Effect<
     ReplicateKeyResponse,
-    AlreadyExistsException | DisabledException | InvalidArnException | KMSInternalException | KMSInvalidStateException | LimitExceededException | MalformedPolicyDocumentException | NotFoundException | TagException | UnsupportedOperationException | CommonAwsError
+    | AlreadyExistsException
+    | DisabledException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | MalformedPolicyDocumentException
+    | NotFoundException
+    | TagException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   retireGrant(
     input: RetireGrantRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | DryRunOperationException | InvalidArnException | InvalidGrantIdException | InvalidGrantTokenException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DryRunOperationException
+    | InvalidArnException
+    | InvalidGrantIdException
+    | InvalidGrantTokenException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   revokeGrant(
     input: RevokeGrantRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | DryRunOperationException | InvalidArnException | InvalidGrantIdException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DryRunOperationException
+    | InvalidArnException
+    | InvalidGrantIdException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   rotateKeyOnDemand(
     input: RotateKeyOnDemandRequest,
   ): Effect.Effect<
     RotateKeyOnDemandResponse,
-    ConflictException | DependencyTimeoutException | DisabledException | InvalidArnException | KMSInternalException | KMSInvalidStateException | LimitExceededException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConflictException
+    | DependencyTimeoutException
+    | DisabledException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   scheduleKeyDeletion(
     input: ScheduleKeyDeletionRequest,
   ): Effect.Effect<
     ScheduleKeyDeletionResponse,
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   sign(
     input: SignRequest,
   ): Effect.Effect<
     SignResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    InvalidArnException | KMSInternalException | KMSInvalidStateException | LimitExceededException | NotFoundException | TagException | CommonAwsError
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | NotFoundException
+    | TagException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | TagException | CommonAwsError
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | TagException
+    | CommonAwsError
   >;
   updateAlias(
     input: UpdateAliasRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | KMSInternalException | KMSInvalidStateException | LimitExceededException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateCustomKeyStore(
     input: UpdateCustomKeyStoreRequest,
   ): Effect.Effect<
     UpdateCustomKeyStoreResponse,
-    CloudHsmClusterInvalidConfigurationException | CloudHsmClusterNotActiveException | CloudHsmClusterNotFoundException | CloudHsmClusterNotRelatedException | CustomKeyStoreInvalidStateException | CustomKeyStoreNameInUseException | CustomKeyStoreNotFoundException | KMSInternalException | XksProxyIncorrectAuthenticationCredentialException | XksProxyInvalidConfigurationException | XksProxyInvalidResponseException | XksProxyUriEndpointInUseException | XksProxyUriInUseException | XksProxyUriUnreachableException | XksProxyVpcEndpointServiceInUseException | XksProxyVpcEndpointServiceInvalidConfigurationException | XksProxyVpcEndpointServiceNotFoundException | CommonAwsError
+    | CloudHsmClusterInvalidConfigurationException
+    | CloudHsmClusterNotActiveException
+    | CloudHsmClusterNotFoundException
+    | CloudHsmClusterNotRelatedException
+    | CustomKeyStoreInvalidStateException
+    | CustomKeyStoreNameInUseException
+    | CustomKeyStoreNotFoundException
+    | KMSInternalException
+    | XksProxyIncorrectAuthenticationCredentialException
+    | XksProxyInvalidConfigurationException
+    | XksProxyInvalidResponseException
+    | XksProxyUriEndpointInUseException
+    | XksProxyUriInUseException
+    | XksProxyUriUnreachableException
+    | XksProxyVpcEndpointServiceInUseException
+    | XksProxyVpcEndpointServiceInvalidConfigurationException
+    | XksProxyVpcEndpointServiceNotFoundException
+    | CommonAwsError
   >;
   updateKeyDescription(
     input: UpdateKeyDescriptionRequest,
   ): Effect.Effect<
     {},
-    DependencyTimeoutException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   updatePrimaryRegion(
     input: UpdatePrimaryRegionRequest,
   ): Effect.Effect<
     {},
-    DisabledException | InvalidArnException | KMSInternalException | KMSInvalidStateException | NotFoundException | UnsupportedOperationException | CommonAwsError
+    | DisabledException
+    | InvalidArnException
+    | KMSInternalException
+    | KMSInvalidStateException
+    | NotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   verify(
     input: VerifyRequest,
   ): Effect.Effect<
     VerifyResponse,
-    DependencyTimeoutException | DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidSignatureException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DependencyTimeoutException
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidSignatureException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
   verifyMac(
     input: VerifyMacRequest,
   ): Effect.Effect<
     VerifyMacResponse,
-    DisabledException | DryRunOperationException | InvalidGrantTokenException | InvalidKeyUsageException | KeyUnavailableException | KMSInternalException | KMSInvalidMacException | KMSInvalidStateException | NotFoundException | CommonAwsError
+    | DisabledException
+    | DryRunOperationException
+    | InvalidGrantTokenException
+    | InvalidKeyUsageException
+    | KeyUnavailableException
+    | KMSInternalException
+    | KMSInvalidMacException
+    | KMSInvalidStateException
+    | NotFoundException
+    | CommonAwsError
   >;
 }
 
 export type Kms = TrentService;
 
-export type AlgorithmSpec = "RSAES_PKCS1_V1_5" | "RSAES_OAEP_SHA_1" | "RSAES_OAEP_SHA_256" | "RSA_AES_KEY_WRAP_SHA_1" | "RSA_AES_KEY_WRAP_SHA_256" | "SM2PKE";
+export type AlgorithmSpec =
+  | "RSAES_PKCS1_V1_5"
+  | "RSAES_OAEP_SHA_1"
+  | "RSAES_OAEP_SHA_256"
+  | "RSA_AES_KEY_WRAP_SHA_1"
+  | "RSA_AES_KEY_WRAP_SHA_256"
+  | "SM2PKE";
 export type AliasList = Array<AliasListEntry>;
 export interface AliasListEntry {
   AliasName?: string;
@@ -395,10 +788,32 @@ export declare class ConflictException extends Data.TaggedError(
 export interface ConnectCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
-export interface ConnectCustomKeyStoreResponse {
-}
-export type ConnectionErrorCodeType = "INVALID_CREDENTIALS" | "CLUSTER_NOT_FOUND" | "NETWORK_ERRORS" | "INTERNAL_ERROR" | "INSUFFICIENT_CLOUDHSM_HSMS" | "USER_LOCKED_OUT" | "USER_NOT_FOUND" | "USER_LOGGED_IN" | "SUBNET_NOT_FOUND" | "INSUFFICIENT_FREE_ADDRESSES_IN_SUBNET" | "XKS_PROXY_ACCESS_DENIED" | "XKS_PROXY_NOT_REACHABLE" | "XKS_VPC_ENDPOINT_SERVICE_NOT_FOUND" | "XKS_PROXY_INVALID_RESPONSE" | "XKS_PROXY_INVALID_CONFIGURATION" | "XKS_VPC_ENDPOINT_SERVICE_INVALID_CONFIGURATION" | "XKS_PROXY_TIMED_OUT" | "XKS_PROXY_INVALID_TLS_CONFIGURATION";
-export type ConnectionStateType = "CONNECTED" | "CONNECTING" | "FAILED" | "DISCONNECTED" | "DISCONNECTING";
+export interface ConnectCustomKeyStoreResponse {}
+export type ConnectionErrorCodeType =
+  | "INVALID_CREDENTIALS"
+  | "CLUSTER_NOT_FOUND"
+  | "NETWORK_ERRORS"
+  | "INTERNAL_ERROR"
+  | "INSUFFICIENT_CLOUDHSM_HSMS"
+  | "USER_LOCKED_OUT"
+  | "USER_NOT_FOUND"
+  | "USER_LOGGED_IN"
+  | "SUBNET_NOT_FOUND"
+  | "INSUFFICIENT_FREE_ADDRESSES_IN_SUBNET"
+  | "XKS_PROXY_ACCESS_DENIED"
+  | "XKS_PROXY_NOT_REACHABLE"
+  | "XKS_VPC_ENDPOINT_SERVICE_NOT_FOUND"
+  | "XKS_PROXY_INVALID_RESPONSE"
+  | "XKS_PROXY_INVALID_CONFIGURATION"
+  | "XKS_VPC_ENDPOINT_SERVICE_INVALID_CONFIGURATION"
+  | "XKS_PROXY_TIMED_OUT"
+  | "XKS_PROXY_INVALID_TLS_CONFIGURATION";
+export type ConnectionStateType =
+  | "CONNECTED"
+  | "CONNECTING"
+  | "FAILED"
+  | "DISCONNECTED"
+  | "DISCONNECTING";
 export interface CreateAliasRequest {
   AliasName: string;
   TargetKeyId: string;
@@ -448,7 +863,20 @@ export interface CreateKeyRequest {
 export interface CreateKeyResponse {
   KeyMetadata?: KeyMetadata;
 }
-export type CustomerMasterKeySpec = "RSA_2048" | "RSA_3072" | "RSA_4096" | "ECC_NIST_P256" | "ECC_NIST_P384" | "ECC_NIST_P521" | "ECC_SECG_P256K1" | "SYMMETRIC_DEFAULT" | "HMAC_224" | "HMAC_256" | "HMAC_384" | "HMAC_512" | "SM2";
+export type CustomerMasterKeySpec =
+  | "RSA_2048"
+  | "RSA_3072"
+  | "RSA_4096"
+  | "ECC_NIST_P256"
+  | "ECC_NIST_P384"
+  | "ECC_NIST_P521"
+  | "ECC_SECG_P256K1"
+  | "SYMMETRIC_DEFAULT"
+  | "HMAC_224"
+  | "HMAC_256"
+  | "HMAC_384"
+  | "HMAC_512"
+  | "SM2";
 export declare class CustomKeyStoreHasCMKsException extends Data.TaggedError(
   "CustomKeyStoreHasCMKsException",
 )<{
@@ -486,7 +914,15 @@ export interface CustomKeyStoresListEntry {
   XksProxyConfiguration?: XksProxyConfigurationType;
 }
 export type CustomKeyStoreType = "AWS_CLOUDHSM" | "EXTERNAL_KEY_STORE";
-export type DataKeyPairSpec = "RSA_2048" | "RSA_3072" | "RSA_4096" | "ECC_NIST_P256" | "ECC_NIST_P384" | "ECC_NIST_P521" | "ECC_SECG_P256K1" | "SM2";
+export type DataKeyPairSpec =
+  | "RSA_2048"
+  | "RSA_3072"
+  | "RSA_4096"
+  | "ECC_NIST_P256"
+  | "ECC_NIST_P384"
+  | "ECC_NIST_P521"
+  | "ECC_SECG_P256K1"
+  | "SM2";
 export type DataKeySpec = "AES_256" | "AES_128";
 export type DateType = Date | string;
 
@@ -512,8 +948,7 @@ export interface DeleteAliasRequest {
 export interface DeleteCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
-export interface DeleteCustomKeyStoreResponse {
-}
+export interface DeleteCustomKeyStoreResponse {}
 export interface DeleteImportedKeyMaterialRequest {
   KeyId: string;
   KeyMaterialId?: string;
@@ -576,8 +1011,7 @@ export interface DisableKeyRotationRequest {
 export interface DisconnectCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
-export interface DisconnectCustomKeyStoreResponse {
-}
+export interface DisconnectCustomKeyStoreResponse {}
 export declare class DryRunOperationException extends Data.TaggedError(
   "DryRunOperationException",
 )<{
@@ -590,7 +1024,11 @@ export interface EnableKeyRotationRequest {
   KeyId: string;
   RotationPeriodInDays?: number;
 }
-export type EncryptionAlgorithmSpec = "SYMMETRIC_DEFAULT" | "RSAES_OAEP_SHA_1" | "RSAES_OAEP_SHA_256" | "SM2PKE";
+export type EncryptionAlgorithmSpec =
+  | "SYMMETRIC_DEFAULT"
+  | "RSAES_OAEP_SHA_1"
+  | "RSAES_OAEP_SHA_256"
+  | "SM2PKE";
 export type EncryptionAlgorithmSpecList = Array<EncryptionAlgorithmSpec>;
 export type EncryptionContextKey = string;
 
@@ -612,7 +1050,9 @@ export interface EncryptResponse {
 }
 export type ErrorMessageType = string;
 
-export type ExpirationModelType = "KEY_MATERIAL_EXPIRES" | "KEY_MATERIAL_DOES_NOT_EXPIRE";
+export type ExpirationModelType =
+  | "KEY_MATERIAL_EXPIRES"
+  | "KEY_MATERIAL_DOES_NOT_EXPIRE";
 export declare class ExpiredImportTokenException extends Data.TaggedError(
   "ExpiredImportTokenException",
 )<{
@@ -762,7 +1202,24 @@ export interface GrantListEntry {
 }
 export type GrantNameType = string;
 
-export type GrantOperation = "Decrypt" | "Encrypt" | "GenerateDataKey" | "GenerateDataKeyWithoutPlaintext" | "ReEncryptFrom" | "ReEncryptTo" | "Sign" | "Verify" | "GetPublicKey" | "CreateGrant" | "RetireGrant" | "DescribeKey" | "GenerateDataKeyPair" | "GenerateDataKeyPairWithoutPlaintext" | "GenerateMac" | "VerifyMac" | "DeriveSharedSecret";
+export type GrantOperation =
+  | "Decrypt"
+  | "Encrypt"
+  | "GenerateDataKey"
+  | "GenerateDataKeyWithoutPlaintext"
+  | "ReEncryptFrom"
+  | "ReEncryptTo"
+  | "Sign"
+  | "Verify"
+  | "GetPublicKey"
+  | "CreateGrant"
+  | "RetireGrant"
+  | "DescribeKey"
+  | "GenerateDataKeyPair"
+  | "GenerateDataKeyPairWithoutPlaintext"
+  | "GenerateMac"
+  | "VerifyMac"
+  | "DeriveSharedSecret";
 export type GrantOperationList = Array<GrantOperation>;
 export type GrantTokenList = Array<string>;
 export type GrantTokenType = string;
@@ -881,8 +1338,32 @@ export interface KeyMetadata {
   XksKeyConfiguration?: XksKeyConfigurationType;
   CurrentKeyMaterialId?: string;
 }
-export type KeySpec = "RSA_2048" | "RSA_3072" | "RSA_4096" | "ECC_NIST_P256" | "ECC_NIST_P384" | "ECC_NIST_P521" | "ECC_SECG_P256K1" | "SYMMETRIC_DEFAULT" | "HMAC_224" | "HMAC_256" | "HMAC_384" | "HMAC_512" | "SM2" | "ML_DSA_44" | "ML_DSA_65" | "ML_DSA_87";
-export type KeyState = "Creating" | "Enabled" | "Disabled" | "PendingDeletion" | "PendingImport" | "PendingReplicaDeletion" | "Unavailable" | "Updating";
+export type KeySpec =
+  | "RSA_2048"
+  | "RSA_3072"
+  | "RSA_4096"
+  | "ECC_NIST_P256"
+  | "ECC_NIST_P384"
+  | "ECC_NIST_P521"
+  | "ECC_SECG_P256K1"
+  | "SYMMETRIC_DEFAULT"
+  | "HMAC_224"
+  | "HMAC_256"
+  | "HMAC_384"
+  | "HMAC_512"
+  | "SM2"
+  | "ML_DSA_44"
+  | "ML_DSA_65"
+  | "ML_DSA_87";
+export type KeyState =
+  | "Creating"
+  | "Enabled"
+  | "Disabled"
+  | "PendingDeletion"
+  | "PendingImport"
+  | "PendingReplicaDeletion"
+  | "Unavailable"
+  | "Updating";
 export type KeyStorePasswordType = string;
 
 export declare class KeyUnavailableException extends Data.TaggedError(
@@ -890,7 +1371,11 @@ export declare class KeyUnavailableException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type KeyUsageType = "SIGN_VERIFY" | "ENCRYPT_DECRYPT" | "GENERATE_VERIFY_MAC" | "KEY_AGREEMENT";
+export type KeyUsageType =
+  | "SIGN_VERIFY"
+  | "ENCRYPT_DECRYPT"
+  | "GENERATE_VERIFY_MAC"
+  | "KEY_AGREEMENT";
 export declare class KMSInternalException extends Data.TaggedError(
   "KMSInternalException",
 )<{
@@ -985,7 +1470,11 @@ export interface ListRetirableGrantsRequest {
   Marker?: string;
   RetiringPrincipal: string;
 }
-export type MacAlgorithmSpec = "HMAC_SHA_224" | "HMAC_SHA_256" | "HMAC_SHA_384" | "HMAC_SHA_512";
+export type MacAlgorithmSpec =
+  | "HMAC_SHA_224"
+  | "HMAC_SHA_256"
+  | "HMAC_SHA_384"
+  | "HMAC_SHA_512";
 export type MacAlgorithmSpecList = Array<MacAlgorithmSpec>;
 export declare class MalformedPolicyDocumentException extends Data.TaggedError(
   "MalformedPolicyDocumentException",
@@ -1015,7 +1504,11 @@ export type NullableBooleanType = boolean;
 
 export type NumberOfBytesType = number;
 
-export type OriginType = "AWS_KMS" | "EXTERNAL" | "AWS_CLOUDHSM" | "EXTERNAL_KEY_STORE";
+export type OriginType =
+  | "AWS_KMS"
+  | "EXTERNAL"
+  | "AWS_CLOUDHSM"
+  | "EXTERNAL_KEY_STORE";
 export type PendingWindowInDaysType = number;
 
 export type PlaintextType = Uint8Array | string;
@@ -1116,7 +1609,18 @@ export interface ScheduleKeyDeletionResponse {
   KeyState?: KeyState;
   PendingWindowInDays?: number;
 }
-export type SigningAlgorithmSpec = "RSASSA_PSS_SHA_256" | "RSASSA_PSS_SHA_384" | "RSASSA_PSS_SHA_512" | "RSASSA_PKCS1_V1_5_SHA_256" | "RSASSA_PKCS1_V1_5_SHA_384" | "RSASSA_PKCS1_V1_5_SHA_512" | "ECDSA_SHA_256" | "ECDSA_SHA_384" | "ECDSA_SHA_512" | "SM2DSA" | "ML_DSA_SHAKE_256";
+export type SigningAlgorithmSpec =
+  | "RSASSA_PSS_SHA_256"
+  | "RSASSA_PSS_SHA_384"
+  | "RSASSA_PSS_SHA_512"
+  | "RSASSA_PKCS1_V1_5_SHA_256"
+  | "RSASSA_PKCS1_V1_5_SHA_384"
+  | "RSASSA_PKCS1_V1_5_SHA_512"
+  | "ECDSA_SHA_256"
+  | "ECDSA_SHA_384"
+  | "ECDSA_SHA_512"
+  | "SM2DSA"
+  | "ML_DSA_SHAKE_256";
 export type SigningAlgorithmSpecList = Array<SigningAlgorithmSpec>;
 export interface SignRequest {
   KeyId: string;
@@ -1135,9 +1639,7 @@ export interface Tag {
   TagKey: string;
   TagValue: string;
 }
-export declare class TagException extends Data.TaggedError(
-  "TagException",
-)<{
+export declare class TagException extends Data.TaggedError("TagException")<{
   readonly message?: string;
 }> {}
 export type TagKeyList = Array<string>;
@@ -1176,8 +1678,7 @@ export interface UpdateCustomKeyStoreRequest {
   XksProxyAuthenticationCredential?: XksProxyAuthenticationCredentialType;
   XksProxyConnectivity?: XksProxyConnectivityType;
 }
-export interface UpdateCustomKeyStoreResponse {
-}
+export interface UpdateCustomKeyStoreResponse {}
 export interface UpdateKeyDescriptionRequest {
   KeyId: string;
   Description: string;
@@ -1249,7 +1750,9 @@ export interface XksProxyConfigurationType {
   UriPath?: string;
   VpcEndpointServiceName?: string;
 }
-export type XksProxyConnectivityType = "PUBLIC_ENDPOINT" | "VPC_ENDPOINT_SERVICE";
+export type XksProxyConnectivityType =
+  | "PUBLIC_ENDPOINT"
+  | "VPC_ENDPOINT_SERVICE";
 export declare class XksProxyIncorrectAuthenticationCredentialException extends Data.TaggedError(
   "XksProxyIncorrectAuthenticationCredentialException",
 )<{
@@ -2058,4 +2561,3 @@ export declare namespace VerifyMac {
     | NotFoundException
     | CommonAwsError;
 }
-

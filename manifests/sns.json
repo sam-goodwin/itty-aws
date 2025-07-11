@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.sns#ActionsList": {
       "type": "list",
@@ -79,6 +108,134 @@
     },
     "com.amazonaws.sns#AmazonSimpleNotificationService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.sns#AddPermission"
+        },
+        {
+          "target": "com.amazonaws.sns#CheckIfPhoneNumberIsOptedOut"
+        },
+        {
+          "target": "com.amazonaws.sns#ConfirmSubscription"
+        },
+        {
+          "target": "com.amazonaws.sns#CreatePlatformApplication"
+        },
+        {
+          "target": "com.amazonaws.sns#CreatePlatformEndpoint"
+        },
+        {
+          "target": "com.amazonaws.sns#CreateSMSSandboxPhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.sns#CreateTopic"
+        },
+        {
+          "target": "com.amazonaws.sns#DeleteEndpoint"
+        },
+        {
+          "target": "com.amazonaws.sns#DeletePlatformApplication"
+        },
+        {
+          "target": "com.amazonaws.sns#DeleteSMSSandboxPhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.sns#DeleteTopic"
+        },
+        {
+          "target": "com.amazonaws.sns#GetDataProtectionPolicy"
+        },
+        {
+          "target": "com.amazonaws.sns#GetEndpointAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#GetPlatformApplicationAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#GetSMSAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#GetSMSSandboxAccountStatus"
+        },
+        {
+          "target": "com.amazonaws.sns#GetSubscriptionAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#GetTopicAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#ListEndpointsByPlatformApplication"
+        },
+        {
+          "target": "com.amazonaws.sns#ListOriginationNumbers"
+        },
+        {
+          "target": "com.amazonaws.sns#ListPhoneNumbersOptedOut"
+        },
+        {
+          "target": "com.amazonaws.sns#ListPlatformApplications"
+        },
+        {
+          "target": "com.amazonaws.sns#ListSMSSandboxPhoneNumbers"
+        },
+        {
+          "target": "com.amazonaws.sns#ListSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.sns#ListSubscriptionsByTopic"
+        },
+        {
+          "target": "com.amazonaws.sns#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.sns#ListTopics"
+        },
+        {
+          "target": "com.amazonaws.sns#OptInPhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.sns#Publish"
+        },
+        {
+          "target": "com.amazonaws.sns#PublishBatch"
+        },
+        {
+          "target": "com.amazonaws.sns#PutDataProtectionPolicy"
+        },
+        {
+          "target": "com.amazonaws.sns#RemovePermission"
+        },
+        {
+          "target": "com.amazonaws.sns#SetEndpointAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#SetPlatformApplicationAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#SetSMSAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#SetSubscriptionAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#SetTopicAttributes"
+        },
+        {
+          "target": "com.amazonaws.sns#Subscribe"
+        },
+        {
+          "target": "com.amazonaws.sns#TagResource"
+        },
+        {
+          "target": "com.amazonaws.sns#Unsubscribe"
+        },
+        {
+          "target": "com.amazonaws.sns#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.sns#VerifySMSSandboxPhoneNumber"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SNS",

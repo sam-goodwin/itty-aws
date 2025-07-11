@@ -1,318 +1,600 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface WellArchitectedApiServiceLambda {
   associateLenses(
     input: AssociateLensesInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   associateProfiles(
     input: AssociateProfilesInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createLensShare(
     input: CreateLensShareInput,
   ): Effect.Effect<
     CreateLensShareOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createLensVersion(
     input: CreateLensVersionInput,
   ): Effect.Effect<
     CreateLensVersionOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createMilestone(
     input: CreateMilestoneInput,
   ): Effect.Effect<
     CreateMilestoneOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createProfile(
     input: CreateProfileInput,
   ): Effect.Effect<
     CreateProfileOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createProfileShare(
     input: CreateProfileShareInput,
   ): Effect.Effect<
     CreateProfileShareOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createReviewTemplate(
     input: CreateReviewTemplateInput,
   ): Effect.Effect<
     CreateReviewTemplateOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createTemplateShare(
     input: CreateTemplateShareInput,
   ): Effect.Effect<
     CreateTemplateShareOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createWorkload(
     input: CreateWorkloadInput,
   ): Effect.Effect<
     CreateWorkloadOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createWorkloadShare(
     input: CreateWorkloadShareInput,
   ): Effect.Effect<
     CreateWorkloadShareOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteLens(
     input: DeleteLensInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteLensShare(
     input: DeleteLensShareInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteProfile(
     input: DeleteProfileInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteProfileShare(
     input: DeleteProfileShareInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteReviewTemplate(
     input: DeleteReviewTemplateInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteTemplateShare(
     input: DeleteTemplateShareInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteWorkload(
     input: DeleteWorkloadInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteWorkloadShare(
     input: DeleteWorkloadShareInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   disassociateLenses(
     input: DisassociateLensesInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   disassociateProfiles(
     input: DisassociateProfilesInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   exportLens(
     input: ExportLensInput,
   ): Effect.Effect<
     ExportLensOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getAnswer(
     input: GetAnswerInput,
   ): Effect.Effect<
     GetAnswerOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getConsolidatedReport(
     input: GetConsolidatedReportInput,
   ): Effect.Effect<
     GetConsolidatedReportOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
-  getGlobalSettings(
-    input: {},
-  ): Effect.Effect<
+  getGlobalSettings(input: {}): Effect.Effect<
     GetGlobalSettingsOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getLens(
     input: GetLensInput,
   ): Effect.Effect<
     GetLensOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getLensReview(
     input: GetLensReviewInput,
   ): Effect.Effect<
     GetLensReviewOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getLensReviewReport(
     input: GetLensReviewReportInput,
   ): Effect.Effect<
     GetLensReviewReportOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getLensVersionDifference(
     input: GetLensVersionDifferenceInput,
   ): Effect.Effect<
     GetLensVersionDifferenceOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getMilestone(
     input: GetMilestoneInput,
   ): Effect.Effect<
     GetMilestoneOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getProfile(
     input: GetProfileInput,
   ): Effect.Effect<
     GetProfileOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getProfileTemplate(
     input: GetProfileTemplateInput,
   ): Effect.Effect<
     GetProfileTemplateOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getReviewTemplate(
     input: GetReviewTemplateInput,
   ): Effect.Effect<
     GetReviewTemplateOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getReviewTemplateAnswer(
     input: GetReviewTemplateAnswerInput,
   ): Effect.Effect<
     GetReviewTemplateAnswerOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getReviewTemplateLensReview(
     input: GetReviewTemplateLensReviewInput,
   ): Effect.Effect<
     GetReviewTemplateLensReviewOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getWorkload(
     input: GetWorkloadInput,
   ): Effect.Effect<
     GetWorkloadOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   importLens(
     input: ImportLensInput,
   ): Effect.Effect<
     ImportLensOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listAnswers(
     input: ListAnswersInput,
   ): Effect.Effect<
     ListAnswersOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listCheckDetails(
     input: ListCheckDetailsInput,
   ): Effect.Effect<
     ListCheckDetailsOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listCheckSummaries(
     input: ListCheckSummariesInput,
   ): Effect.Effect<
     ListCheckSummariesOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listLensReviewImprovements(
-    input: ListLensReviewImprovementsInput,
-  ): Effect.Effect<
-    ListLensReviewImprovementsOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listLensReviews(
-    input: ListLensReviewsInput,
-  ): Effect.Effect<
-    ListLensReviewsOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listLensShares(
-    input: ListLensSharesInput,
-  ): Effect.Effect<
-    ListLensSharesOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listLenses(
     input: ListLensesInput,
   ): Effect.Effect<
     ListLensesOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listLensReviewImprovements(
+    input: ListLensReviewImprovementsInput,
+  ): Effect.Effect<
+    ListLensReviewImprovementsOutput,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listLensReviews(
+    input: ListLensReviewsInput,
+  ): Effect.Effect<
+    ListLensReviewsOutput,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listLensShares(
+    input: ListLensSharesInput,
+  ): Effect.Effect<
+    ListLensSharesOutput,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listMilestones(
     input: ListMilestonesInput,
   ): Effect.Effect<
     ListMilestonesOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listNotifications(
     input: ListNotificationsInput,
   ): Effect.Effect<
     ListNotificationsOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listProfileNotifications(
     input: ListProfileNotificationsInput,
   ): Effect.Effect<
     ListProfileNotificationsOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listProfileShares(
-    input: ListProfileSharesInput,
-  ): Effect.Effect<
-    ListProfileSharesOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listProfiles(
     input: ListProfilesInput,
   ): Effect.Effect<
     ListProfilesOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listProfileShares(
+    input: ListProfileSharesInput,
+  ): Effect.Effect<
+    ListProfileSharesOutput,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listReviewTemplateAnswers(
     input: ListReviewTemplateAnswersInput,
   ): Effect.Effect<
     ListReviewTemplateAnswersOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listReviewTemplates(
     input: ListReviewTemplatesInput,
   ): Effect.Effect<
     ListReviewTemplatesOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listShareInvitations(
     input: ListShareInvitationsInput,
   ): Effect.Effect<
     ListShareInvitationsOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceInput,
@@ -324,19 +606,33 @@ export interface WellArchitectedApiServiceLambda {
     input: ListTemplateSharesInput,
   ): Effect.Effect<
     ListTemplateSharesOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listWorkloadShares(
-    input: ListWorkloadSharesInput,
-  ): Effect.Effect<
-    ListWorkloadSharesOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listWorkloads(
     input: ListWorkloadsInput,
   ): Effect.Effect<
     ListWorkloadsOutput,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listWorkloadShares(
+    input: ListWorkloadSharesInput,
+  ): Effect.Effect<
+    ListWorkloadSharesOutput,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
@@ -354,85 +650,170 @@ export interface WellArchitectedApiServiceLambda {
     input: UpdateAnswerInput,
   ): Effect.Effect<
     UpdateAnswerOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateGlobalSettings(
     input: UpdateGlobalSettingsInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateIntegration(
     input: UpdateIntegrationInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateLensReview(
     input: UpdateLensReviewInput,
   ): Effect.Effect<
     UpdateLensReviewOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateProfile(
     input: UpdateProfileInput,
   ): Effect.Effect<
     UpdateProfileOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateReviewTemplate(
     input: UpdateReviewTemplateInput,
   ): Effect.Effect<
     UpdateReviewTemplateOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateReviewTemplateAnswer(
     input: UpdateReviewTemplateAnswerInput,
   ): Effect.Effect<
     UpdateReviewTemplateAnswerOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateReviewTemplateLensReview(
     input: UpdateReviewTemplateLensReviewInput,
   ): Effect.Effect<
     UpdateReviewTemplateLensReviewOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateShareInvitation(
     input: UpdateShareInvitationInput,
   ): Effect.Effect<
     UpdateShareInvitationOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateWorkload(
     input: UpdateWorkloadInput,
   ): Effect.Effect<
     UpdateWorkloadOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateWorkloadShare(
     input: UpdateWorkloadShareInput,
   ): Effect.Effect<
     UpdateWorkloadShareOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   upgradeLensReview(
     input: UpgradeLensReviewInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   upgradeProfileVersion(
     input: UpgradeProfileVersionInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   upgradeReviewTemplateLensReview(
     input: UpgradeReviewTemplateLensReviewInput,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -482,7 +863,12 @@ export interface Answer {
   Reason?: AnswerReason;
   JiraConfiguration?: JiraConfiguration;
 }
-export type AnswerReason = "OUT_OF_SCOPE" | "BUSINESS_PRIORITIES" | "ARCHITECTURE_CONSTRAINTS" | "OTHER" | "NONE";
+export type AnswerReason =
+  | "OUT_OF_SCOPE"
+  | "BUSINESS_PRIORITIES"
+  | "ARCHITECTURE_CONSTRAINTS"
+  | "OTHER"
+  | "NONE";
 export type AnswerSummaries = Array<AnswerSummary>;
 export interface AnswerSummary {
   QuestionId?: string;
@@ -536,13 +922,22 @@ export interface CheckDetail {
   UpdatedAt?: Date | string;
 }
 export type CheckDetails = Array<CheckDetail>;
-export type CheckFailureReason = "ASSUME_ROLE_ERROR" | "ACCESS_DENIED" | "UNKNOWN_ERROR" | "PREMIUM_SUPPORT_REQUIRED";
+export type CheckFailureReason =
+  | "ASSUME_ROLE_ERROR"
+  | "ACCESS_DENIED"
+  | "UNKNOWN_ERROR"
+  | "PREMIUM_SUPPORT_REQUIRED";
 export type CheckId = string;
 
 export type CheckName = string;
 
 export type CheckProvider = "TRUSTED_ADVISOR";
-export type CheckStatus = "OKAY" | "WARNING" | "ERROR" | "NOT_AVAILABLE" | "FETCH_FAILED";
+export type CheckStatus =
+  | "OKAY"
+  | "WARNING"
+  | "ERROR"
+  | "NOT_AVAILABLE"
+  | "FETCH_FAILED";
 export type CheckStatusCount = number;
 
 export type CheckSummaries = Array<CheckSummary>;
@@ -600,7 +995,12 @@ export interface ChoiceImprovementPlan {
 export type ChoiceImprovementPlans = Array<ChoiceImprovementPlan>;
 export type ChoiceNotes = string;
 
-export type ChoiceReason = "OUT_OF_SCOPE" | "BUSINESS_PRIORITIES" | "ARCHITECTURE_CONSTRAINTS" | "OTHER" | "NONE";
+export type ChoiceReason =
+  | "OUT_OF_SCOPE"
+  | "BUSINESS_PRIORITIES"
+  | "ARCHITECTURE_CONSTRAINTS"
+  | "OTHER"
+  | "NONE";
 export type Choices = Array<Choice>;
 export type ChoiceStatus = "SELECTED" | "NOT_APPLICABLE" | "UNSELECTED";
 export type ChoiceTitle = string;
@@ -887,8 +1287,7 @@ export interface GetProfileInput {
 export interface GetProfileOutput {
   Profile?: Profile;
 }
-export interface GetProfileTemplateInput {
-}
+export interface GetProfileTemplateInput {}
 export interface GetProfileTemplateOutput {
   ProfileTemplate?: ProfileTemplate;
 }
@@ -1046,7 +1445,12 @@ export interface LensShareSummary {
   Status?: ShareStatus;
   StatusMessage?: string;
 }
-export type LensStatus = "CURRENT" | "NOT_CURRENT" | "DEPRECATED" | "DELETED" | "UNSHARED";
+export type LensStatus =
+  | "CURRENT"
+  | "NOT_CURRENT"
+  | "DEPRECATED"
+  | "DELETED"
+  | "UNSHARED";
 export type LensStatusType = "ALL" | "DRAFT" | "PUBLISHED";
 export type LensSummaries = Array<LensSummary>;
 export interface LensSummary {
@@ -1342,7 +1746,9 @@ export interface NotificationSummary {
   Type?: NotificationType;
   LensUpgradeSummary?: LensUpgradeSummary;
 }
-export type NotificationType = "LENS_VERSION_UPGRADED" | "LENS_VERSION_DEPRECATED";
+export type NotificationType =
+  | "LENS_VERSION_UPGRADED"
+  | "LENS_VERSION_DEPRECATED";
 export type OrganizationSharingStatus = "ENABLED" | "DISABLED";
 export type PermissionType = "READONLY" | "CONTRIBUTOR";
 export interface PillarDifference {
@@ -1407,7 +1813,9 @@ export interface ProfileNotificationSummary {
   WorkloadId?: string;
   WorkloadName?: string;
 }
-export type ProfileNotificationType = "PROFILE_ANSWERS_UPDATED" | "PROFILE_DELETED";
+export type ProfileNotificationType =
+  | "PROFILE_ANSWERS_UPDATED"
+  | "PROFILE_DELETED";
 export type ProfileOwnerType = "SELF" | "SHARED";
 export interface ProfileQuestion {
   QuestionId?: string;
@@ -1556,7 +1964,8 @@ export interface ReviewTemplateLensReview {
   QuestionCounts?: Record<Question, number>;
   NextToken?: string;
 }
-export type ReviewTemplatePillarReviewSummaries = Array<ReviewTemplatePillarReviewSummary>;
+export type ReviewTemplatePillarReviewSummaries =
+  Array<ReviewTemplatePillarReviewSummary>;
 export interface ReviewTemplatePillarReviewSummary {
   PillarId?: string;
   PillarName?: string;
@@ -1633,7 +2042,15 @@ export interface ShareInvitationSummary {
   TemplateArn?: string;
 }
 export type ShareResourceType = "WORKLOAD" | "LENS" | "PROFILE" | "TEMPLATE";
-export type ShareStatus = "ACCEPTED" | "REJECTED" | "PENDING" | "REVOKED" | "EXPIRED" | "ASSOCIATING" | "ASSOCIATED" | "FAILED";
+export type ShareStatus =
+  | "ACCEPTED"
+  | "REJECTED"
+  | "PENDING"
+  | "REVOKED"
+  | "EXPIRED"
+  | "ASSOCIATING"
+  | "ASSOCIATED"
+  | "FAILED";
 export type StatusMessage = string;
 
 export type Subdomain = string;
@@ -1646,8 +2063,7 @@ export interface TagResourceInput {
   WorkloadArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceOutput {
-}
+export interface TagResourceOutput {}
 export type TagValue = string;
 
 export type TemplateArn = string;
@@ -1680,8 +2096,7 @@ export interface UntagResourceInput {
   WorkloadArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceOutput {
-}
+export interface UntagResourceOutput {}
 export interface UpdateAnswerInput {
   WorkloadId: string;
   LensAlias: string;
@@ -1834,7 +2249,11 @@ export interface ValidationExceptionField {
 export type ValidationExceptionFieldList = Array<ValidationExceptionField>;
 export type ValidationExceptionFieldName = string;
 
-export type ValidationExceptionReason = "UNKNOWN_OPERATION" | "CANNOT_PARSE" | "FIELD_VALIDATION_FAILED" | "OTHER";
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER";
 export interface VersionDifferences {
   PillarDifferences?: Array<PillarDifference>;
 }
@@ -1884,7 +2303,12 @@ export interface WorkloadDiscoveryConfig {
 export type WorkloadEnvironment = "PRODUCTION" | "PREPRODUCTION";
 export type WorkloadId = string;
 
-export type WorkloadImprovementStatus = "NOT_APPLICABLE" | "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE" | "RISK_ACKNOWLEDGED";
+export type WorkloadImprovementStatus =
+  | "NOT_APPLICABLE"
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "COMPLETE"
+  | "RISK_ACKNOWLEDGED";
 export type WorkloadIndustry = string;
 
 export type WorkloadIndustryType = string;
@@ -2459,6 +2883,17 @@ export declare namespace ListCheckSummaries {
     | CommonAwsError;
 }
 
+export declare namespace ListLenses {
+  export type Input = ListLensesInput;
+  export type Output = ListLensesOutput;
+  export type Error =
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError;
+}
+
 export declare namespace ListLensReviewImprovements {
   export type Input = ListLensReviewImprovementsInput;
   export type Output = ListLensReviewImprovementsOutput;
@@ -2490,17 +2925,6 @@ export declare namespace ListLensShares {
     | AccessDeniedException
     | InternalServerException
     | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListLenses {
-  export type Input = ListLensesInput;
-  export type Output = ListLensesOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -2540,6 +2964,17 @@ export declare namespace ListProfileNotifications {
     | CommonAwsError;
 }
 
+export declare namespace ListProfiles {
+  export type Input = ListProfilesInput;
+  export type Output = ListProfilesOutput;
+  export type Error =
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError;
+}
+
 export declare namespace ListProfileShares {
   export type Input = ListProfileSharesInput;
   export type Output = ListProfileSharesOutput;
@@ -2547,17 +2982,6 @@ export declare namespace ListProfileShares {
     | AccessDeniedException
     | InternalServerException
     | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListProfiles {
-  export type Input = ListProfilesInput;
-  export type Output = ListProfilesOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -2618,6 +3042,17 @@ export declare namespace ListTemplateShares {
     | CommonAwsError;
 }
 
+export declare namespace ListWorkloads {
+  export type Input = ListWorkloadsInput;
+  export type Output = ListWorkloadsOutput;
+  export type Error =
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError;
+}
+
 export declare namespace ListWorkloadShares {
   export type Input = ListWorkloadSharesInput;
   export type Output = ListWorkloadSharesOutput;
@@ -2625,17 +3060,6 @@ export declare namespace ListWorkloadShares {
     | AccessDeniedException
     | InternalServerException
     | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListWorkloads {
-  export type Input = ListWorkloadsInput;
-  export type Output = ListWorkloadsOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -2841,4 +3265,3 @@ export declare namespace UpgradeReviewTemplateLensReview {
     | ValidationException
     | CommonAwsError;
 }
-

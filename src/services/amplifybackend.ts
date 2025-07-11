@@ -1,192 +1,316 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmplifyBackend {
   cloneBackend(
     input: CloneBackendRequest,
   ): Effect.Effect<
     CloneBackendResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createBackend(
     input: CreateBackendRequest,
   ): Effect.Effect<
     CreateBackendResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createBackendAPI(
     input: CreateBackendAPIRequest,
   ): Effect.Effect<
     CreateBackendAPIResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createBackendAuth(
     input: CreateBackendAuthRequest,
   ): Effect.Effect<
     CreateBackendAuthResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createBackendConfig(
     input: CreateBackendConfigRequest,
   ): Effect.Effect<
     CreateBackendConfigResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createBackendStorage(
     input: CreateBackendStorageRequest,
   ): Effect.Effect<
     CreateBackendStorageResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createToken(
     input: CreateTokenRequest,
   ): Effect.Effect<
     CreateTokenResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteBackend(
     input: DeleteBackendRequest,
   ): Effect.Effect<
     DeleteBackendResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteBackendAPI(
     input: DeleteBackendAPIRequest,
   ): Effect.Effect<
     DeleteBackendAPIResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteBackendAuth(
     input: DeleteBackendAuthRequest,
   ): Effect.Effect<
     DeleteBackendAuthResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteBackendStorage(
     input: DeleteBackendStorageRequest,
   ): Effect.Effect<
     DeleteBackendStorageResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteToken(
     input: DeleteTokenRequest,
   ): Effect.Effect<
     DeleteTokenResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   generateBackendAPIModels(
     input: GenerateBackendAPIModelsRequest,
   ): Effect.Effect<
     GenerateBackendAPIModelsResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBackend(
     input: GetBackendRequest,
   ): Effect.Effect<
     GetBackendResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBackendAPI(
     input: GetBackendAPIRequest,
   ): Effect.Effect<
     GetBackendAPIResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBackendAPIModels(
     input: GetBackendAPIModelsRequest,
   ): Effect.Effect<
     GetBackendAPIModelsResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBackendAuth(
     input: GetBackendAuthRequest,
   ): Effect.Effect<
     GetBackendAuthResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBackendJob(
     input: GetBackendJobRequest,
   ): Effect.Effect<
     GetBackendJobResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBackendStorage(
     input: GetBackendStorageRequest,
   ): Effect.Effect<
     GetBackendStorageResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getToken(
     input: GetTokenRequest,
   ): Effect.Effect<
     GetTokenResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   importBackendAuth(
     input: ImportBackendAuthRequest,
   ): Effect.Effect<
     ImportBackendAuthResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   importBackendStorage(
     input: ImportBackendStorageRequest,
   ): Effect.Effect<
     ImportBackendStorageResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listBackendJobs(
     input: ListBackendJobsRequest,
   ): Effect.Effect<
     ListBackendJobsResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listS3Buckets(
     input: ListS3BucketsRequest,
   ): Effect.Effect<
     ListS3BucketsResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   removeAllBackends(
     input: RemoveAllBackendsRequest,
   ): Effect.Effect<
     RemoveAllBackendsResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   removeBackendConfig(
     input: RemoveBackendConfigRequest,
   ): Effect.Effect<
     RemoveBackendConfigResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateBackendAPI(
     input: UpdateBackendAPIRequest,
   ): Effect.Effect<
     UpdateBackendAPIResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateBackendAuth(
     input: UpdateBackendAuthRequest,
   ): Effect.Effect<
     UpdateBackendAuthResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateBackendConfig(
     input: UpdateBackendConfigRequest,
   ): Effect.Effect<
     UpdateBackendConfigResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateBackendJob(
     input: UpdateBackendJobRequest,
   ): Effect.Effect<
     UpdateBackendJobResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateBackendStorage(
     input: UpdateBackendStorageRequest,
   ): Effect.Effect<
     UpdateBackendStorageResponse,
-    BadRequestException | GatewayTimeoutException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | GatewayTimeoutException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -200,7 +324,11 @@ export type __integerMin1Max25 = number;
 
 export type __string = string;
 
-export type AdditionalConstraintsElement = "REQUIRE_DIGIT" | "REQUIRE_LOWERCASE" | "REQUIRE_SYMBOL" | "REQUIRE_UPPERCASE";
+export type AdditionalConstraintsElement =
+  | "REQUIRE_DIGIT"
+  | "REQUIRE_LOWERCASE"
+  | "REQUIRE_SYMBOL"
+  | "REQUIRE_UPPERCASE";
 export type AuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE";
 export type AuthResources = "USER_POOL_ONLY" | "IDENTITY_POOL_AND_USER_POOL";
 export interface BackendAPIAppSyncAuthSettings {
@@ -608,13 +736,15 @@ export interface ListBackendJobsResponse {
   NextToken?: string;
 }
 export type ListOf__string = Array<string>;
-export type ListOfAdditionalConstraintsElement = Array<AdditionalConstraintsElement>;
+export type ListOfAdditionalConstraintsElement =
+  Array<AdditionalConstraintsElement>;
 export type ListOfAuthenticatedElement = Array<AuthenticatedElement>;
 export type ListOfBackendAPIAuthType = Array<BackendAPIAuthType>;
 export type ListOfBackendJobRespObj = Array<BackendJobRespObj>;
 export type ListOfMfaTypesElement = Array<MfaTypesElement>;
 export type ListOfOAuthScopesElement = Array<OAuthScopesElement>;
-export type ListOfRequiredSignUpAttributesElement = Array<RequiredSignUpAttributesElement>;
+export type ListOfRequiredSignUpAttributesElement =
+  Array<RequiredSignUpAttributesElement>;
 export type ListOfS3BucketInfo = Array<S3BucketInfo>;
 export type ListOfUnAuthenticatedElement = Array<UnAuthenticatedElement>;
 export interface ListS3BucketsRequest {
@@ -632,7 +762,11 @@ export interface LoginAuthConfigReqObj {
 }
 export type MFAMode = "ON" | "OFF" | "OPTIONAL";
 export type MfaTypesElement = "SMS" | "TOTP";
-export type Mode = "API_KEY" | "AWS_IAM" | "AMAZON_COGNITO_USER_POOLS" | "OPENID_CONNECT";
+export type Mode =
+  | "API_KEY"
+  | "AWS_IAM"
+  | "AMAZON_COGNITO_USER_POOLS"
+  | "OPENID_CONNECT";
 export declare class NotFoundException extends Data.TaggedError(
   "NotFoundException",
 )<{
@@ -640,7 +774,12 @@ export declare class NotFoundException extends Data.TaggedError(
   readonly ResourceType?: string;
 }> {}
 export type OAuthGrantType = "CODE" | "IMPLICIT";
-export type OAuthScopesElement = "PHONE" | "EMAIL" | "OPENID" | "PROFILE" | "AWS_COGNITO_SIGNIN_USER_ADMIN";
+export type OAuthScopesElement =
+  | "PHONE"
+  | "EMAIL"
+  | "OPENID"
+  | "PROFILE"
+  | "AWS_COGNITO_SIGNIN_USER_ADMIN";
 export interface RemoveAllBackendsRequest {
   AppId: string;
   CleanAmplifyApp?: boolean;
@@ -658,10 +797,30 @@ export interface RemoveBackendConfigRequest {
 export interface RemoveBackendConfigResponse {
   Error?: string;
 }
-export type RequiredSignUpAttributesElement = "ADDRESS" | "BIRTHDATE" | "EMAIL" | "FAMILY_NAME" | "GENDER" | "GIVEN_NAME" | "LOCALE" | "MIDDLE_NAME" | "NAME" | "NICKNAME" | "PHONE_NUMBER" | "PICTURE" | "PREFERRED_USERNAME" | "PROFILE" | "UPDATED_AT" | "WEBSITE" | "ZONE_INFO";
-export type ResolutionStrategy = "OPTIMISTIC_CONCURRENCY" | "LAMBDA" | "AUTOMERGE" | "NONE";
-export interface ResourceConfig {
-}
+export type RequiredSignUpAttributesElement =
+  | "ADDRESS"
+  | "BIRTHDATE"
+  | "EMAIL"
+  | "FAMILY_NAME"
+  | "GENDER"
+  | "GIVEN_NAME"
+  | "LOCALE"
+  | "MIDDLE_NAME"
+  | "NAME"
+  | "NICKNAME"
+  | "PHONE_NUMBER"
+  | "PICTURE"
+  | "PREFERRED_USERNAME"
+  | "PROFILE"
+  | "UPDATED_AT"
+  | "WEBSITE"
+  | "ZONE_INFO";
+export type ResolutionStrategy =
+  | "OPTIMISTIC_CONCURRENCY"
+  | "LAMBDA"
+  | "AUTOMERGE"
+  | "NONE";
+export interface ResourceConfig {}
 export interface S3BucketInfo {
   CreationDate?: string;
   Name?: string;
@@ -672,7 +831,11 @@ export interface Settings {
   MfaTypes?: Array<MfaTypesElement>;
   SmsMessage?: string;
 }
-export type SignInMethod = "EMAIL" | "EMAIL_AND_PHONE_NUMBER" | "PHONE_NUMBER" | "USERNAME";
+export type SignInMethod =
+  | "EMAIL"
+  | "EMAIL_AND_PHONE_NUMBER"
+  | "PHONE_NUMBER"
+  | "USERNAME";
 export interface SmsSettings {
   SmsMessage?: string;
 }
@@ -1143,4 +1306,3 @@ export declare namespace UpdateBackendStorage {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

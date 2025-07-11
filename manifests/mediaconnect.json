@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.mediaconnect#AddBridgeFlowSourceRequest": {
       "type": "structure",
@@ -5578,6 +5579,20 @@
     },
     "com.amazonaws.mediaconnect#MediaConnect": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mediaconnect#ListEntitlements"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mediaconnect#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MediaConnect",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.fsx#AWSAccountId": {
       "type": "string",
@@ -13,6 +42,152 @@
     },
     "com.amazonaws.fsx#AWSSimbaAPIService_v20180301": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.fsx#AssociateFileSystemAliases"
+        },
+        {
+          "target": "com.amazonaws.fsx#CancelDataRepositoryTask"
+        },
+        {
+          "target": "com.amazonaws.fsx#CopyBackup"
+        },
+        {
+          "target": "com.amazonaws.fsx#CopySnapshotAndUpdateVolume"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateAndAttachS3AccessPoint"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateBackup"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateDataRepositoryAssociation"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateDataRepositoryTask"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateFileCache"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateFileSystem"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateFileSystemFromBackup"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateSnapshot"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateStorageVirtualMachine"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateVolume"
+        },
+        {
+          "target": "com.amazonaws.fsx#CreateVolumeFromBackup"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteBackup"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteDataRepositoryAssociation"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteFileCache"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteFileSystem"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteSnapshot"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteStorageVirtualMachine"
+        },
+        {
+          "target": "com.amazonaws.fsx#DeleteVolume"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeBackups"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeDataRepositoryAssociations"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeDataRepositoryTasks"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeFileCaches"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeFileSystemAliases"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeFileSystems"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeS3AccessPointAttachments"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeSharedVpcConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeSnapshots"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeStorageVirtualMachines"
+        },
+        {
+          "target": "com.amazonaws.fsx#DescribeVolumes"
+        },
+        {
+          "target": "com.amazonaws.fsx#DetachAndDeleteS3AccessPoint"
+        },
+        {
+          "target": "com.amazonaws.fsx#DisassociateFileSystemAliases"
+        },
+        {
+          "target": "com.amazonaws.fsx#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.fsx#ReleaseFileSystemNfsV3Locks"
+        },
+        {
+          "target": "com.amazonaws.fsx#RestoreVolumeFromSnapshot"
+        },
+        {
+          "target": "com.amazonaws.fsx#StartMisconfiguredStateRecovery"
+        },
+        {
+          "target": "com.amazonaws.fsx#TagResource"
+        },
+        {
+          "target": "com.amazonaws.fsx#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateDataRepositoryAssociation"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateFileCache"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateFileSystem"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateSharedVpcConfiguration"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateSnapshot"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateStorageVirtualMachine"
+        },
+        {
+          "target": "com.amazonaws.fsx#UpdateVolume"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "FSx",

@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.ssoadmin#AccessControlAttribute": {
       "type": "structure",
@@ -6631,6 +6632,191 @@
     },
     "com.amazonaws.ssoadmin#SWBExternalService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ssoadmin#AttachCustomerManagedPolicyReferenceToPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#AttachManagedPolicyToPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreateAccountAssignment"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreateApplicationAssignment"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreateInstance"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreateInstanceAccessControlAttributeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreatePermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#CreateTrustedTokenIssuer"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteAccountAssignment"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteApplicationAssignment"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteInlinePolicyFromPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteInstance"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteInstanceAccessControlAttributeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeletePermissionsBoundaryFromPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeletePermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DeleteTrustedTokenIssuer"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeAccountAssignmentCreationStatus"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeAccountAssignmentDeletionStatus"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeApplication"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeApplicationAssignment"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeApplicationProvider"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeInstance"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeInstanceAccessControlAttributeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribePermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribePermissionSetProvisioningStatus"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DescribeTrustedTokenIssuer"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DetachCustomerManagedPolicyReferenceFromPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#DetachManagedPolicyFromPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#GetApplicationAssignmentConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#GetInlinePolicyForPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#GetPermissionsBoundaryForPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListAccountAssignmentCreationStatus"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListAccountAssignmentDeletionStatus"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListAccountAssignments"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListAccountAssignmentsForPrincipal"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListAccountsForProvisionedPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListApplicationAssignments"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListApplicationAssignmentsForPrincipal"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListApplicationProviders"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListApplications"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListCustomerManagedPolicyReferencesInPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListInstances"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListManagedPoliciesInPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListPermissionSetProvisioningStatus"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListPermissionSets"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListPermissionSetsProvisionedToAccount"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ListTrustedTokenIssuers"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#ProvisionPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#PutApplicationAssignmentConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#PutInlinePolicyToPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#PutPermissionsBoundaryToPermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#TagResource"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#UpdateApplication"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#UpdateInstance"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#UpdateInstanceAccessControlAttributeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#UpdatePermissionSet"
+        },
+        {
+          "target": "com.amazonaws.ssoadmin#UpdateTrustedTokenIssuer"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SSO Admin",

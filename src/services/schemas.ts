@@ -1,192 +1,367 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface schemas {
   createDiscoverer(
     input: CreateDiscovererRequest,
   ): Effect.Effect<
     CreateDiscovererResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createRegistry(
     input: CreateRegistryRequest,
   ): Effect.Effect<
     CreateRegistryResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createSchema(
     input: CreateSchemaRequest,
   ): Effect.Effect<
     CreateSchemaResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteDiscoverer(
     input: DeleteDiscovererRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteRegistry(
     input: DeleteRegistryRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteResourcePolicy(
     input: DeleteResourcePolicyRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteSchema(
     input: DeleteSchemaRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteSchemaVersion(
     input: DeleteSchemaVersionRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeCodeBinding(
     input: DescribeCodeBindingRequest,
   ): Effect.Effect<
     DescribeCodeBindingResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeDiscoverer(
     input: DescribeDiscovererRequest,
   ): Effect.Effect<
     DescribeDiscovererResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeRegistry(
     input: DescribeRegistryRequest,
   ): Effect.Effect<
     DescribeRegistryResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeSchema(
     input: DescribeSchemaRequest,
   ): Effect.Effect<
     DescribeSchemaResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   exportSchema(
     input: ExportSchemaRequest,
   ): Effect.Effect<
     ExportSchemaResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getCodeBindingSource(
     input: GetCodeBindingSourceRequest,
   ): Effect.Effect<
     GetCodeBindingSourceResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDiscoveredSchema(
     input: GetDiscoveredSchemaRequest,
   ): Effect.Effect<
     GetDiscoveredSchemaResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getResourcePolicy(
     input: GetResourcePolicyRequest,
   ): Effect.Effect<
     GetResourcePolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listDiscoverers(
     input: ListDiscoverersRequest,
   ): Effect.Effect<
     ListDiscoverersResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listRegistries(
     input: ListRegistriesRequest,
   ): Effect.Effect<
     ListRegistriesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
-  >;
-  listSchemaVersions(
-    input: ListSchemaVersionsRequest,
-  ): Effect.Effect<
-    ListSchemaVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listSchemas(
     input: ListSchemasRequest,
   ): Effect.Effect<
     ListSchemasResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
+  >;
+  listSchemaVersions(
+    input: ListSchemaVersionsRequest,
+  ): Effect.Effect<
+    ListSchemaVersionsResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   putCodeBinding(
     input: PutCodeBindingRequest,
   ): Effect.Effect<
     PutCodeBindingResponse,
-    BadRequestException | ForbiddenException | GoneException | InternalServerErrorException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | GoneException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putResourcePolicy(
     input: PutResourcePolicyRequest,
   ): Effect.Effect<
     PutResourcePolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | PreconditionFailedException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | PreconditionFailedException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   searchSchemas(
     input: SearchSchemasRequest,
   ): Effect.Effect<
     SearchSchemasResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startDiscoverer(
     input: StartDiscovererRequest,
   ): Effect.Effect<
     StartDiscovererResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   stopDiscoverer(
     input: StopDiscovererRequest,
   ): Effect.Effect<
     StopDiscovererResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateDiscoverer(
     input: UpdateDiscovererRequest,
   ): Effect.Effect<
     UpdateDiscovererResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateRegistry(
     input: UpdateRegistryRequest,
   ): Effect.Effect<
     UpdateRegistryResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateSchema(
     input: UpdateSchemaRequest,
   ): Effect.Effect<
     UpdateSchemaResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
 }
 
@@ -203,7 +378,8 @@ export type __listOfRegistrySummary = Array<RegistrySummary>;
 export type __listOfSchemaSummary = Array<SchemaSummary>;
 export type __listOfSchemaVersionSummary = Array<SchemaVersionSummary>;
 export type __listOfSearchSchemaSummary = Array<SearchSchemaSummary>;
-export type __listOfSearchSchemaVersionSummary = Array<SearchSchemaVersionSummary>;
+export type __listOfSearchSchemaVersionSummary =
+  Array<SearchSchemaVersionSummary>;
 export type __long = number;
 
 export type __string = string;
@@ -226,7 +402,10 @@ export declare class BadRequestException extends Data.TaggedError(
 }> {}
 export type Body = Uint8Array | string;
 
-export type CodeGenerationStatus = "CREATE_IN_PROGRESS" | "CREATE_COMPLETE" | "CREATE_FAILED";
+export type CodeGenerationStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_COMPLETE"
+  | "CREATE_FAILED";
 export declare class ConflictException extends Data.TaggedError(
   "ConflictException",
 )<{
@@ -397,9 +576,7 @@ export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export declare class GoneException extends Data.TaggedError(
-  "GoneException",
-)<{
+export declare class GoneException extends Data.TaggedError("GoneException")<{
   readonly Code: string;
   readonly Message: string;
 }> {}
@@ -843,6 +1020,18 @@ export declare namespace ListRegistries {
     | CommonAwsError;
 }
 
+export declare namespace ListSchemas {
+  export type Input = ListSchemasRequest;
+  export type Output = ListSchemasResponse;
+  export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError;
+}
+
 export declare namespace ListSchemaVersions {
   export type Input = ListSchemaVersionsRequest;
   export type Output = ListSchemaVersionsResponse;
@@ -851,18 +1040,6 @@ export declare namespace ListSchemaVersions {
     | ForbiddenException
     | InternalServerErrorException
     | NotFoundException
-    | ServiceUnavailableException
-    | UnauthorizedException
-    | CommonAwsError;
-}
-
-export declare namespace ListSchemas {
-  export type Input = ListSchemasRequest;
-  export type Output = ListSchemasResponse;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
     | ServiceUnavailableException
     | UnauthorizedException
     | CommonAwsError;
@@ -1004,4 +1181,3 @@ export declare namespace UpdateSchema {
     | ServiceUnavailableException
     | CommonAwsError;
 }
-

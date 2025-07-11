@@ -1,102 +1,184 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSServerMigrationService_V2016_10_24 {
   createApp(
     input: CreateAppRequest,
   ): Effect.Effect<
     CreateAppResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   createReplicationJob(
     input: CreateReplicationJobRequest,
   ): Effect.Effect<
     CreateReplicationJobResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | NoConnectorsAvailableException | OperationNotPermittedException | ReplicationJobAlreadyExistsException | ServerCannotBeReplicatedException | TemporarilyUnavailableException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | NoConnectorsAvailableException
+    | OperationNotPermittedException
+    | ReplicationJobAlreadyExistsException
+    | ServerCannotBeReplicatedException
+    | TemporarilyUnavailableException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   deleteApp(
     input: DeleteAppRequest,
   ): Effect.Effect<
     DeleteAppResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   deleteAppLaunchConfiguration(
     input: DeleteAppLaunchConfigurationRequest,
   ): Effect.Effect<
     DeleteAppLaunchConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   deleteAppReplicationConfiguration(
     input: DeleteAppReplicationConfigurationRequest,
   ): Effect.Effect<
     DeleteAppReplicationConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   deleteAppValidationConfiguration(
     input: DeleteAppValidationConfigurationRequest,
   ): Effect.Effect<
     DeleteAppValidationConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   deleteReplicationJob(
     input: DeleteReplicationJobRequest,
   ): Effect.Effect<
     DeleteReplicationJobResponse,
-    InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | ReplicationJobNotFoundException | UnauthorizedOperationException | CommonAwsError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | ReplicationJobNotFoundException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   deleteServerCatalog(
     input: DeleteServerCatalogRequest,
   ): Effect.Effect<
     DeleteServerCatalogResponse,
-    InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   disassociateConnector(
     input: DisassociateConnectorRequest,
   ): Effect.Effect<
     DisassociateConnectorResponse,
-    InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   generateChangeSet(
     input: GenerateChangeSetRequest,
   ): Effect.Effect<
     GenerateChangeSetResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   generateTemplate(
     input: GenerateTemplateRequest,
   ): Effect.Effect<
     GenerateTemplateResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getApp(
     input: GetAppRequest,
   ): Effect.Effect<
     GetAppResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getAppLaunchConfiguration(
     input: GetAppLaunchConfigurationRequest,
   ): Effect.Effect<
     GetAppLaunchConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getAppReplicationConfiguration(
     input: GetAppReplicationConfigurationRequest,
   ): Effect.Effect<
     GetAppReplicationConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getAppValidationConfiguration(
     input: GetAppValidationConfigurationRequest,
   ): Effect.Effect<
     GetAppValidationConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getAppValidationOutput(
     input: GetAppValidationOutputRequest,
   ): Effect.Effect<
     GetAppValidationOutputResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getConnectors(
     input: GetConnectorsRequest,
@@ -108,109 +190,198 @@ export interface AWSServerMigrationService_V2016_10_24 {
     input: GetReplicationJobsRequest,
   ): Effect.Effect<
     GetReplicationJobsResponse,
-    InvalidParameterException | MissingRequiredParameterException | UnauthorizedOperationException | CommonAwsError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getReplicationRuns(
     input: GetReplicationRunsRequest,
   ): Effect.Effect<
     GetReplicationRunsResponse,
-    InvalidParameterException | MissingRequiredParameterException | UnauthorizedOperationException | CommonAwsError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   getServers(
     input: GetServersRequest,
   ): Effect.Effect<
     GetServersResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   importAppCatalog(
     input: ImportAppCatalogRequest,
   ): Effect.Effect<
     ImportAppCatalogResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   importServerCatalog(
     input: ImportServerCatalogRequest,
   ): Effect.Effect<
     ImportServerCatalogResponse,
-    InvalidParameterException | MissingRequiredParameterException | NoConnectorsAvailableException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | NoConnectorsAvailableException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   launchApp(
     input: LaunchAppRequest,
   ): Effect.Effect<
     LaunchAppResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   listApps(
     input: ListAppsRequest,
   ): Effect.Effect<
     ListAppsResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   notifyAppValidationOutput(
     input: NotifyAppValidationOutputRequest,
   ): Effect.Effect<
     NotifyAppValidationOutputResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   putAppLaunchConfiguration(
     input: PutAppLaunchConfigurationRequest,
   ): Effect.Effect<
     PutAppLaunchConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   putAppReplicationConfiguration(
     input: PutAppReplicationConfigurationRequest,
   ): Effect.Effect<
     PutAppReplicationConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   putAppValidationConfiguration(
     input: PutAppValidationConfigurationRequest,
   ): Effect.Effect<
     PutAppValidationConfigurationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   startAppReplication(
     input: StartAppReplicationRequest,
   ): Effect.Effect<
     StartAppReplicationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   startOnDemandAppReplication(
     input: StartOnDemandAppReplicationRequest,
   ): Effect.Effect<
     StartOnDemandAppReplicationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   startOnDemandReplicationRun(
     input: StartOnDemandReplicationRunRequest,
   ): Effect.Effect<
     StartOnDemandReplicationRunResponse,
-    DryRunOperationException | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | ReplicationRunLimitExceededException | UnauthorizedOperationException | CommonAwsError
+    | DryRunOperationException
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | ReplicationRunLimitExceededException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   stopAppReplication(
     input: StopAppReplicationRequest,
   ): Effect.Effect<
     StopAppReplicationResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   terminateApp(
     input: TerminateAppRequest,
   ): Effect.Effect<
     TerminateAppResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   updateApp(
     input: UpdateAppRequest,
   ): Effect.Effect<
     UpdateAppResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
   updateReplicationJob(
     input: UpdateReplicationJobRequest,
   ): Effect.Effect<
     UpdateReplicationJobResponse,
-    InternalError | InvalidParameterException | MissingRequiredParameterException | OperationNotPermittedException | ReplicationJobNotFoundException | ServerCannotBeReplicatedException | TemporarilyUnavailableException | UnauthorizedOperationException | CommonAwsError
+    | InternalError
+    | InvalidParameterException
+    | MissingRequiredParameterException
+    | OperationNotPermittedException
+    | ReplicationJobNotFoundException
+    | ServerCannotBeReplicatedException
+    | TemporarilyUnavailableException
+    | UnauthorizedOperationException
+    | CommonAwsError
   >;
 }
 
@@ -226,17 +397,54 @@ export type AppIds = Array<string>;
 export type AppIdWithValidation = string;
 
 export type AppLaunchConfigurationStatus = "NotConfigured" | "Configured";
-export type AppLaunchStatus = "ReadyForConfiguration" | "ConfigurationInProgress" | "ConfigurationInvalid" | "ReadyForLaunch" | "ValidationInProgress" | "LaunchPending" | "LaunchInProgress" | "Launched" | "PartiallyLaunched" | "DeltaLaunchInProgress" | "DeltaLaunchFailed" | "LaunchFailed" | "TerminateInProgress" | "TerminateFailed" | "Terminated";
+export type AppLaunchStatus =
+  | "ReadyForConfiguration"
+  | "ConfigurationInProgress"
+  | "ConfigurationInvalid"
+  | "ReadyForLaunch"
+  | "ValidationInProgress"
+  | "LaunchPending"
+  | "LaunchInProgress"
+  | "Launched"
+  | "PartiallyLaunched"
+  | "DeltaLaunchInProgress"
+  | "DeltaLaunchFailed"
+  | "LaunchFailed"
+  | "TerminateInProgress"
+  | "TerminateFailed"
+  | "Terminated";
 export type AppLaunchStatusMessage = string;
 
 export type AppName = string;
 
 export type AppReplicationConfigurationStatus = "NotConfigured" | "Configured";
-export type AppReplicationStatus = "ReadyForConfiguration" | "ConfigurationInProgress" | "ConfigurationInvalid" | "ReadyForReplication" | "ValidationInProgress" | "ReplicationPending" | "ReplicationInProgress" | "Replicated" | "PartiallyReplicated" | "DeltaReplicationInProgress" | "DeltaReplicated" | "DeltaReplicationFailed" | "ReplicationFailed" | "ReplicationStopping" | "ReplicationStopFailed" | "ReplicationStopped";
+export type AppReplicationStatus =
+  | "ReadyForConfiguration"
+  | "ConfigurationInProgress"
+  | "ConfigurationInvalid"
+  | "ReadyForReplication"
+  | "ValidationInProgress"
+  | "ReplicationPending"
+  | "ReplicationInProgress"
+  | "Replicated"
+  | "PartiallyReplicated"
+  | "DeltaReplicationInProgress"
+  | "DeltaReplicated"
+  | "DeltaReplicationFailed"
+  | "ReplicationFailed"
+  | "ReplicationStopping"
+  | "ReplicationStopFailed"
+  | "ReplicationStopped";
 export type AppReplicationStatusMessage = string;
 
 export type Apps = Array<AppSummary>;
-export type AppStatus = "Creating" | "Active" | "Updating" | "Deleting" | "Deleted" | "DELETE_FAILED";
+export type AppStatus =
+  | "Creating"
+  | "Active"
+  | "Updating"
+  | "Deleting"
+  | "Deleted"
+  | "DELETE_FAILED";
 export type AppStatusMessage = string;
 
 export interface AppSummary {
@@ -293,7 +501,12 @@ export interface Connector {
   macAddress?: string;
   associatedOn?: Date | string;
 }
-export type ConnectorCapability = "vSphere" | "scvmm" | "hyperVManager" | "snapshotBatching" | "smsOptimized";
+export type ConnectorCapability =
+  | "vSphere"
+  | "scvmm"
+  | "hyperVManager"
+  | "snapshotBatching"
+  | "smsOptimized";
 export type ConnectorCapabilityList = Array<ConnectorCapability>;
 export type ConnectorId = string;
 
@@ -332,41 +545,33 @@ export interface CreateReplicationJobResponse {
 export interface DeleteAppLaunchConfigurationRequest {
   appId?: string;
 }
-export interface DeleteAppLaunchConfigurationResponse {
-}
+export interface DeleteAppLaunchConfigurationResponse {}
 export interface DeleteAppReplicationConfigurationRequest {
   appId?: string;
 }
-export interface DeleteAppReplicationConfigurationResponse {
-}
+export interface DeleteAppReplicationConfigurationResponse {}
 export interface DeleteAppRequest {
   appId?: string;
   forceStopAppReplication?: boolean;
   forceTerminateApp?: boolean;
 }
-export interface DeleteAppResponse {
-}
+export interface DeleteAppResponse {}
 export interface DeleteAppValidationConfigurationRequest {
   appId: string;
 }
-export interface DeleteAppValidationConfigurationResponse {
-}
+export interface DeleteAppValidationConfigurationResponse {}
 export interface DeleteReplicationJobRequest {
   replicationJobId: string;
 }
-export interface DeleteReplicationJobResponse {
-}
-export interface DeleteServerCatalogRequest {
-}
-export interface DeleteServerCatalogResponse {
-}
+export interface DeleteReplicationJobResponse {}
+export interface DeleteServerCatalogRequest {}
+export interface DeleteServerCatalogResponse {}
 export type Description = string;
 
 export interface DisassociateConnectorRequest {
   connectorId: string;
 }
-export interface DisassociateConnectorResponse {
-}
+export interface DisassociateConnectorResponse {}
 export declare class DryRunOperationException extends Data.TaggedError(
   "DryRunOperationException",
 )<{
@@ -477,21 +682,16 @@ export interface GetServersResponse {
 export interface ImportAppCatalogRequest {
   roleName?: string;
 }
-export interface ImportAppCatalogResponse {
-}
+export interface ImportAppCatalogResponse {}
 export type ImportedAppId = string;
 
-export interface ImportServerCatalogRequest {
-}
-export interface ImportServerCatalogResponse {
-}
+export interface ImportServerCatalogRequest {}
+export interface ImportServerCatalogResponse {}
 export type InstanceId = string;
 
 export type InstanceType = string;
 
-export declare class InternalError extends Data.TaggedError(
-  "InternalError",
-)<{
+export declare class InternalError extends Data.TaggedError("InternalError")<{
   readonly message?: string;
 }> {}
 export declare class InvalidParameterException extends Data.TaggedError(
@@ -506,8 +706,7 @@ export type KmsKeyId = string;
 export interface LaunchAppRequest {
   appId?: string;
 }
-export interface LaunchAppResponse {
-}
+export interface LaunchAppResponse {}
 export interface LaunchDetails {
   latestLaunchTime?: Date | string;
   stackName?: string;
@@ -554,8 +753,7 @@ export interface NotifyAppValidationOutputRequest {
   appId: string;
   notificationContext?: NotificationContext;
 }
-export interface NotifyAppValidationOutputResponse {
-}
+export interface NotifyAppValidationOutputResponse {}
 export type NumberOfRecentAmisToKeep = number;
 
 export declare class OperationNotPermittedException extends Data.TaggedError(
@@ -570,21 +768,18 @@ export interface PutAppLaunchConfigurationRequest {
   autoLaunch?: boolean;
   serverGroupLaunchConfigurations?: Array<ServerGroupLaunchConfiguration>;
 }
-export interface PutAppLaunchConfigurationResponse {
-}
+export interface PutAppLaunchConfigurationResponse {}
 export interface PutAppReplicationConfigurationRequest {
   appId?: string;
   serverGroupReplicationConfigurations?: Array<ServerGroupReplicationConfiguration>;
 }
-export interface PutAppReplicationConfigurationResponse {
-}
+export interface PutAppReplicationConfigurationResponse {}
 export interface PutAppValidationConfigurationRequest {
   appId: string;
   appValidationConfigurations?: Array<AppValidationConfiguration>;
   serverGroupValidationConfigurations?: Array<ServerGroupValidationConfiguration>;
 }
-export interface PutAppValidationConfigurationResponse {
-}
+export interface PutAppValidationConfigurationResponse {}
 export interface ReplicationJob {
   replicationJobId?: string;
   serverId?: string;
@@ -618,7 +813,15 @@ export declare class ReplicationJobNotFoundException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type ReplicationJobState = "Pending" | "Active" | "Failed" | "Deleting" | "Deleted" | "Completed" | "PausedOnFailure" | "Failing";
+export type ReplicationJobState =
+  | "Pending"
+  | "Active"
+  | "Failed"
+  | "Deleting"
+  | "Deleted"
+  | "Completed"
+  | "PausedOnFailure"
+  | "Failing";
 export type ReplicationJobStatusMessage = string;
 
 export type ReplicationJobTerminated = boolean;
@@ -652,7 +855,14 @@ export interface ReplicationRunStageDetails {
 }
 export type ReplicationRunStageProgress = string;
 
-export type ReplicationRunState = "Pending" | "Missed" | "Active" | "Failed" | "Completed" | "Deleting" | "Deleted";
+export type ReplicationRunState =
+  | "Pending"
+  | "Missed"
+  | "Active"
+  | "Failed"
+  | "Completed"
+  | "Deleting"
+  | "Deleted";
 export type ReplicationRunStatusMessage = string;
 
 export type ReplicationRunType = "OnDemand" | "Automatic";
@@ -683,7 +893,12 @@ export declare class ServerCannotBeReplicatedException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type ServerCatalogStatus = "NotImported" | "Importing" | "Available" | "Deleted" | "Expired";
+export type ServerCatalogStatus =
+  | "NotImported"
+  | "Importing"
+  | "Available"
+  | "Deleted"
+  | "Expired";
 export interface ServerGroup {
   serverGroupId?: string;
   name?: string;
@@ -696,20 +911,23 @@ export interface ServerGroupLaunchConfiguration {
   launchOrder?: number;
   serverLaunchConfigurations?: Array<ServerLaunchConfiguration>;
 }
-export type ServerGroupLaunchConfigurations = Array<ServerGroupLaunchConfiguration>;
+export type ServerGroupLaunchConfigurations =
+  Array<ServerGroupLaunchConfiguration>;
 export type ServerGroupName = string;
 
 export interface ServerGroupReplicationConfiguration {
   serverGroupId?: string;
   serverReplicationConfigurations?: Array<ServerReplicationConfiguration>;
 }
-export type ServerGroupReplicationConfigurations = Array<ServerGroupReplicationConfiguration>;
+export type ServerGroupReplicationConfigurations =
+  Array<ServerGroupReplicationConfiguration>;
 export type ServerGroups = Array<ServerGroup>;
 export interface ServerGroupValidationConfiguration {
   serverGroupId?: string;
   serverValidationConfigurations?: Array<ServerValidationConfiguration>;
 }
-export type ServerGroupValidationConfigurations = Array<ServerGroupValidationConfiguration>;
+export type ServerGroupValidationConfigurations =
+  Array<ServerGroupValidationConfiguration>;
 export type ServerId = string;
 
 export interface ServerLaunchConfiguration {
@@ -732,7 +950,8 @@ export interface ServerReplicationConfiguration {
   server?: Server;
   serverReplicationParameters?: ServerReplicationParameters;
 }
-export type ServerReplicationConfigurations = Array<ServerReplicationConfiguration>;
+export type ServerReplicationConfigurations =
+  Array<ServerReplicationConfiguration>;
 export interface ServerReplicationParameters {
   seedTime?: Date | string;
   frequency?: number;
@@ -750,7 +969,8 @@ export interface ServerValidationConfiguration {
   serverValidationStrategy?: ServerValidationStrategy;
   userDataValidationParameters?: UserDataValidationParameters;
 }
-export type ServerValidationConfigurations = Array<ServerValidationConfiguration>;
+export type ServerValidationConfigurations =
+  Array<ServerValidationConfiguration>;
 export interface ServerValidationOutput {
   server?: Server;
 }
@@ -776,14 +996,12 @@ export type StackName = string;
 export interface StartAppReplicationRequest {
   appId?: string;
 }
-export interface StartAppReplicationResponse {
-}
+export interface StartAppReplicationResponse {}
 export interface StartOnDemandAppReplicationRequest {
   appId: string;
   description?: string;
 }
-export interface StartOnDemandAppReplicationResponse {
-}
+export interface StartOnDemandAppReplicationResponse {}
 export interface StartOnDemandReplicationRunRequest {
   replicationJobId: string;
   description?: string;
@@ -794,8 +1012,7 @@ export interface StartOnDemandReplicationRunResponse {
 export interface StopAppReplicationRequest {
   appId?: string;
 }
-export interface StopAppReplicationResponse {
-}
+export interface StopAppReplicationResponse {}
 export type Subnet = string;
 
 export interface Tag {
@@ -809,13 +1026,11 @@ export type TagValue = string;
 
 export declare class TemporarilyUnavailableException extends Data.TaggedError(
   "TemporarilyUnavailableException",
-)<{
-}> {}
+)<{}> {}
 export interface TerminateAppRequest {
   appId?: string;
 }
-export interface TerminateAppResponse {
-}
+export interface TerminateAppResponse {}
 export type Timestamp = Date | string;
 
 export type TotalServerGroups = number;
@@ -851,8 +1066,7 @@ export interface UpdateReplicationJobRequest {
   encrypted?: boolean;
   kmsKeyId?: string;
 }
-export interface UpdateReplicationJobResponse {
-}
+export interface UpdateReplicationJobResponse {}
 export interface UserData {
   s3Location?: S3Location;
 }
@@ -872,7 +1086,12 @@ export interface ValidationOutput {
   serverValidationOutput?: ServerValidationOutput;
 }
 export type ValidationOutputList = Array<ValidationOutput>;
-export type ValidationStatus = "ReadyForValidation" | "Pending" | "InProgress" | "Succeeded" | "Failed";
+export type ValidationStatus =
+  | "ReadyForValidation"
+  | "Pending"
+  | "InProgress"
+  | "Succeeded"
+  | "Failed";
 export type ValidationStatusMessage = string;
 
 export type VmId = string;
@@ -1097,9 +1316,7 @@ export declare namespace GetAppValidationOutput {
 export declare namespace GetConnectors {
   export type Input = GetConnectorsRequest;
   export type Output = GetConnectorsResponse;
-  export type Error =
-    | UnauthorizedOperationException
-    | CommonAwsError;
+  export type Error = UnauthorizedOperationException | CommonAwsError;
 }
 
 export declare namespace GetReplicationJobs {
@@ -1316,4 +1533,3 @@ export declare namespace UpdateReplicationJob {
     | UnauthorizedOperationException
     | CommonAwsError;
 }
-

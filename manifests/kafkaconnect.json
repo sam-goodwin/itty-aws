@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.kafkaconnect#ApacheKafkaCluster": {
       "type": "structure",
@@ -2154,6 +2155,62 @@
     },
     "com.amazonaws.kafkaconnect#KafkaConnect": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kafkaconnect#CreateConnector"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#CreateCustomPlugin"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#CreateWorkerConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DeleteConnector"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DeleteCustomPlugin"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DeleteWorkerConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DescribeConnector"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DescribeConnectorOperation"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DescribeCustomPlugin"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#DescribeWorkerConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ListConnectorOperations"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ListConnectors"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ListCustomPlugins"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#ListWorkerConfigurations"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kafkaconnect#UpdateConnector"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "KafkaConnect",

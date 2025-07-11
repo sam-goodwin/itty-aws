@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.signer#AccessDeniedException": {
       "type": "structure",
@@ -2982,6 +3011,65 @@
     },
     "com.amazonaws.signer#WallabyService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.signer#AddProfilePermission"
+        },
+        {
+          "target": "com.amazonaws.signer#CancelSigningProfile"
+        },
+        {
+          "target": "com.amazonaws.signer#DescribeSigningJob"
+        },
+        {
+          "target": "com.amazonaws.signer#GetRevocationStatus"
+        },
+        {
+          "target": "com.amazonaws.signer#GetSigningPlatform"
+        },
+        {
+          "target": "com.amazonaws.signer#GetSigningProfile"
+        },
+        {
+          "target": "com.amazonaws.signer#ListProfilePermissions"
+        },
+        {
+          "target": "com.amazonaws.signer#ListSigningJobs"
+        },
+        {
+          "target": "com.amazonaws.signer#ListSigningPlatforms"
+        },
+        {
+          "target": "com.amazonaws.signer#ListSigningProfiles"
+        },
+        {
+          "target": "com.amazonaws.signer#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.signer#PutSigningProfile"
+        },
+        {
+          "target": "com.amazonaws.signer#RemoveProfilePermission"
+        },
+        {
+          "target": "com.amazonaws.signer#RevokeSignature"
+        },
+        {
+          "target": "com.amazonaws.signer#RevokeSigningProfile"
+        },
+        {
+          "target": "com.amazonaws.signer#SignPayload"
+        },
+        {
+          "target": "com.amazonaws.signer#StartSigningJob"
+        },
+        {
+          "target": "com.amazonaws.signer#TagResource"
+        },
+        {
+          "target": "com.amazonaws.signer#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "signer",

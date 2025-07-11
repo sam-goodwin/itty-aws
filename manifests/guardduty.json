@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.guardduty#AcceptAdministratorInvitation": {
       "type": "operation",
@@ -7499,6 +7528,230 @@
     },
     "com.amazonaws.guardduty#GuardDutyAPIService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.guardduty#AcceptAdministratorInvitation"
+        },
+        {
+          "target": "com.amazonaws.guardduty#AcceptInvitation"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ArchiveFindings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateDetector"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateFilter"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateIPSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateMalwareProtectionPlan"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreatePublishingDestination"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateSampleFindings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#CreateThreatIntelSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeclineInvitations"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteDetector"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteFilter"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteInvitations"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteIPSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteMalwareProtectionPlan"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeletePublishingDestination"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DeleteThreatIntelSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DescribeMalwareScans"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DescribeOrganizationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DescribePublishingDestination"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DisableOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DisassociateFromAdministratorAccount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DisassociateFromMasterAccount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#DisassociateMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#EnableOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetAdministratorAccount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetCoverageStatistics"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetDetector"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetFilter"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetFindings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetFindingsStatistics"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetInvitationsCount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetIPSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetMalwareProtectionPlan"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetMalwareScanSettings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetMasterAccount"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetMemberDetectors"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetOrganizationStatistics"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetRemainingFreeTrialDays"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetThreatIntelSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#GetUsageStatistics"
+        },
+        {
+          "target": "com.amazonaws.guardduty#InviteMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListCoverage"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListDetectors"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListFilters"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListFindings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListInvitations"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListIPSets"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListMalwareProtectionPlans"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListOrganizationAdminAccounts"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListPublishingDestinations"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.guardduty#ListThreatIntelSets"
+        },
+        {
+          "target": "com.amazonaws.guardduty#StartMalwareScan"
+        },
+        {
+          "target": "com.amazonaws.guardduty#StartMonitoringMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#StopMonitoringMembers"
+        },
+        {
+          "target": "com.amazonaws.guardduty#TagResource"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UnarchiveFindings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateDetector"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateFilter"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateFindingsFeedback"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateIPSet"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateMalwareProtectionPlan"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateMalwareScanSettings"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateMemberDetectors"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateOrganizationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdatePublishingDestination"
+        },
+        {
+          "target": "com.amazonaws.guardduty#UpdateThreatIntelSet"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "GuardDuty",

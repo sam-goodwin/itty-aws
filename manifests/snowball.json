@@ -1,7 +1,119 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.snowball#AWSIESnowballJobManagementService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.snowball#CancelCluster"
+        },
+        {
+          "target": "com.amazonaws.snowball#CancelJob"
+        },
+        {
+          "target": "com.amazonaws.snowball#CreateAddress"
+        },
+        {
+          "target": "com.amazonaws.snowball#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.snowball#CreateJob"
+        },
+        {
+          "target": "com.amazonaws.snowball#CreateLongTermPricing"
+        },
+        {
+          "target": "com.amazonaws.snowball#CreateReturnShippingLabel"
+        },
+        {
+          "target": "com.amazonaws.snowball#DescribeAddress"
+        },
+        {
+          "target": "com.amazonaws.snowball#DescribeAddresses"
+        },
+        {
+          "target": "com.amazonaws.snowball#DescribeCluster"
+        },
+        {
+          "target": "com.amazonaws.snowball#DescribeJob"
+        },
+        {
+          "target": "com.amazonaws.snowball#DescribeReturnShippingLabel"
+        },
+        {
+          "target": "com.amazonaws.snowball#GetJobManifest"
+        },
+        {
+          "target": "com.amazonaws.snowball#GetJobUnlockCode"
+        },
+        {
+          "target": "com.amazonaws.snowball#GetSnowballUsage"
+        },
+        {
+          "target": "com.amazonaws.snowball#GetSoftwareUpdates"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListClusterJobs"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListClusters"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListCompatibleImages"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListLongTermPricing"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListPickupLocations"
+        },
+        {
+          "target": "com.amazonaws.snowball#ListServiceVersions"
+        },
+        {
+          "target": "com.amazonaws.snowball#UpdateCluster"
+        },
+        {
+          "target": "com.amazonaws.snowball#UpdateJob"
+        },
+        {
+          "target": "com.amazonaws.snowball#UpdateJobShipmentState"
+        },
+        {
+          "target": "com.amazonaws.snowball#UpdateLongTermPricing"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Snowball",

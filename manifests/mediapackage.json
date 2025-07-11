@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.mediapackage#AdMarkers": {
       "type": "enum",
@@ -2508,6 +2537,65 @@
     },
     "com.amazonaws.mediapackage#MediaPackage": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mediapackage#ConfigureLogs"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#CreateChannel"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#CreateHarvestJob"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#CreateOriginEndpoint"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#DeleteChannel"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#DeleteOriginEndpoint"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#DescribeChannel"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#DescribeHarvestJob"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#DescribeOriginEndpoint"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ListChannels"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ListHarvestJobs"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ListOriginEndpoints"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#RotateChannelCredentials"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#RotateIngestEndpointCredentials"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UpdateChannel"
+        },
+        {
+          "target": "com.amazonaws.mediapackage#UpdateOriginEndpoint"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MediaPackage",

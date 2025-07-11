@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.greengrass#AssociateRoleToGroup": {
       "type": "operation",
@@ -5181,6 +5210,284 @@
     },
     "com.amazonaws.greengrass#Greengrass": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.greengrass#AssociateRoleToGroup"
+        },
+        {
+          "target": "com.amazonaws.greengrass#AssociateServiceRoleToAccount"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateConnectorDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateConnectorDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateCoreDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateCoreDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateDeployment"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateDeviceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateDeviceDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateFunctionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateFunctionDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateGroup"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateGroupCertificateAuthority"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateGroupVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateLoggerDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateLoggerDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateResourceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateResourceDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateSoftwareUpdateJob"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateSubscriptionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#CreateSubscriptionDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteConnectorDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteCoreDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteDeviceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteFunctionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteGroup"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteLoggerDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteResourceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DeleteSubscriptionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DisassociateRoleFromGroup"
+        },
+        {
+          "target": "com.amazonaws.greengrass#DisassociateServiceRoleFromAccount"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetAssociatedRole"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetBulkDeploymentStatus"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetConnectivityInfo"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetConnectorDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetConnectorDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetCoreDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetCoreDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetDeploymentStatus"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetDeviceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetDeviceDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetFunctionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetFunctionDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetGroup"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetGroupCertificateAuthority"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetGroupCertificateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetGroupVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetLoggerDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetLoggerDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetResourceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetResourceDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetServiceRoleForAccount"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetSubscriptionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetSubscriptionDefinitionVersion"
+        },
+        {
+          "target": "com.amazonaws.greengrass#GetThingRuntimeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListBulkDeploymentDetailedReports"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListBulkDeployments"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListConnectorDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListConnectorDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListCoreDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListCoreDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListDeployments"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListDeviceDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListDeviceDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListFunctionDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListFunctionDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListGroupCertificateAuthorities"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListGroups"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListGroupVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListLoggerDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListLoggerDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListResourceDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListResourceDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListSubscriptionDefinitions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListSubscriptionDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.greengrass#ResetDeployments"
+        },
+        {
+          "target": "com.amazonaws.greengrass#StartBulkDeployment"
+        },
+        {
+          "target": "com.amazonaws.greengrass#StopBulkDeployment"
+        },
+        {
+          "target": "com.amazonaws.greengrass#TagResource"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateConnectivityInfo"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateConnectorDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateCoreDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateDeviceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateFunctionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateGroup"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateGroupCertificateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateLoggerDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateResourceDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateSubscriptionDefinition"
+        },
+        {
+          "target": "com.amazonaws.greengrass#UpdateThingRuntimeConfiguration"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Greengrass",

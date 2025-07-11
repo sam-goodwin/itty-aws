@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.marketplacecatalog#ARN": {
       "type": "string",
@@ -12,6 +41,47 @@
     },
     "com.amazonaws.marketplacecatalog#AWSMPSeymour": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.marketplacecatalog#BatchDescribeEntities"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#CancelChangeSet"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#DescribeChangeSet"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#DescribeEntity"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ListChangeSets"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ListEntities"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#StartChangeSet"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#TagResource"
+        },
+        {
+          "target": "com.amazonaws.marketplacecatalog#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Marketplace Catalog",

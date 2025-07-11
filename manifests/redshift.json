@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.redshift#AcceptReservedNodeExchange": {
       "type": "operation",
@@ -14258,6 +14287,425 @@
     },
     "com.amazonaws.redshift#RedshiftServiceVersion20121201": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.redshift#AcceptReservedNodeExchange"
+        },
+        {
+          "target": "com.amazonaws.redshift#AddPartner"
+        },
+        {
+          "target": "com.amazonaws.redshift#AssociateDataShareConsumer"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizeClusterSecurityGroupIngress"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizeDataShare"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizeEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#AuthorizeSnapshotAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#BatchDeleteClusterSnapshots"
+        },
+        {
+          "target": "com.amazonaws.redshift#BatchModifyClusterSnapshots"
+        },
+        {
+          "target": "com.amazonaws.redshift#CancelResize"
+        },
+        {
+          "target": "com.amazonaws.redshift#CopyClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateAuthenticationProfile"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateClusterSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateClusterSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateCustomDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateHsmClientCertificate"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateHsmConfiguration"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateIntegration"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateRedshiftIdcApplication"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateScheduledAction"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateSnapshotCopyGrant"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateSnapshotSchedule"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateTags"
+        },
+        {
+          "target": "com.amazonaws.redshift#CreateUsageLimit"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeauthorizeDataShare"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteAuthenticationProfile"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteClusterSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteClusterSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteCustomDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteHsmClientCertificate"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteHsmConfiguration"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteIntegration"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeletePartner"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteRedshiftIdcApplication"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteScheduledAction"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteSnapshotCopyGrant"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteSnapshotSchedule"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteTags"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeleteUsageLimit"
+        },
+        {
+          "target": "com.amazonaws.redshift#DeregisterNamespace"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeAccountAttributes"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeAuthenticationProfiles"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterDbRevisions"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterParameters"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusters"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterSecurityGroups"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterSnapshots"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterTracks"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeClusterVersions"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeCustomDomainAssociations"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeDataShares"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeDataSharesForConsumer"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeDataSharesForProducer"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeDefaultClusterParameters"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeEndpointAuthorization"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeEventCategories"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeEventSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeHsmClientCertificates"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeHsmConfigurations"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeInboundIntegrations"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeIntegrations"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeLoggingStatus"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeNodeConfigurationOptions"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeOrderableClusterOptions"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribePartners"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeRedshiftIdcApplications"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeReservedNodeExchangeStatus"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeReservedNodeOfferings"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeReservedNodes"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeResize"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeScheduledActions"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeSnapshotCopyGrants"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeSnapshotSchedules"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeStorage"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeTableRestoreStatus"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeTags"
+        },
+        {
+          "target": "com.amazonaws.redshift#DescribeUsageLimits"
+        },
+        {
+          "target": "com.amazonaws.redshift#DisableLogging"
+        },
+        {
+          "target": "com.amazonaws.redshift#DisableSnapshotCopy"
+        },
+        {
+          "target": "com.amazonaws.redshift#DisassociateDataShareConsumer"
+        },
+        {
+          "target": "com.amazonaws.redshift#EnableLogging"
+        },
+        {
+          "target": "com.amazonaws.redshift#EnableSnapshotCopy"
+        },
+        {
+          "target": "com.amazonaws.redshift#FailoverPrimaryCompute"
+        },
+        {
+          "target": "com.amazonaws.redshift#GetClusterCredentials"
+        },
+        {
+          "target": "com.amazonaws.redshift#GetClusterCredentialsWithIAM"
+        },
+        {
+          "target": "com.amazonaws.redshift#GetReservedNodeExchangeConfigurationOptions"
+        },
+        {
+          "target": "com.amazonaws.redshift#GetReservedNodeExchangeOfferings"
+        },
+        {
+          "target": "com.amazonaws.redshift#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.redshift#ListRecommendations"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyAquaConfiguration"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyAuthenticationProfile"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterDbRevision"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterIamRoles"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterMaintenance"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterSnapshotSchedule"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyClusterSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyCustomDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyIntegration"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyRedshiftIdcApplication"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyScheduledAction"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifySnapshotCopyRetentionPeriod"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifySnapshotSchedule"
+        },
+        {
+          "target": "com.amazonaws.redshift#ModifyUsageLimit"
+        },
+        {
+          "target": "com.amazonaws.redshift#PauseCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#PurchaseReservedNodeOffering"
+        },
+        {
+          "target": "com.amazonaws.redshift#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.redshift#RebootCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#RegisterNamespace"
+        },
+        {
+          "target": "com.amazonaws.redshift#RejectDataShare"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResetClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResizeCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#RestoreFromClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.redshift#RestoreTableFromClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.redshift#ResumeCluster"
+        },
+        {
+          "target": "com.amazonaws.redshift#RevokeClusterSecurityGroupIngress"
+        },
+        {
+          "target": "com.amazonaws.redshift#RevokeEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#RevokeSnapshotAccess"
+        },
+        {
+          "target": "com.amazonaws.redshift#RotateEncryptionKey"
+        },
+        {
+          "target": "com.amazonaws.redshift#UpdatePartnerStatus"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Redshift",

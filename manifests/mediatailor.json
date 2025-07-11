@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.mediatailor#AccessConfiguration": {
       "type": "structure",
@@ -4173,6 +4174,23 @@
     },
     "com.amazonaws.mediatailor#MediaTailor": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mediatailor#ConfigureLogsForPlaybackConfiguration"
+        },
+        {
+          "target": "com.amazonaws.mediatailor#ListAlerts"
+        },
+        {
+          "target": "com.amazonaws.mediatailor#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mediatailor#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mediatailor#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MediaTailor",

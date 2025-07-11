@@ -1,48 +1,12 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Pipes {
-  createPipe(
-    input: CreatePipeRequest,
-  ): Effect.Effect<
-    CreatePipeResponse,
-    ConflictException | InternalException | NotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deletePipe(
-    input: DeletePipeRequest,
-  ): Effect.Effect<
-    DeletePipeResponse,
-    ConflictException | InternalException | NotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describePipe(
-    input: DescribePipeRequest,
-  ): Effect.Effect<
-    DescribePipeResponse,
-    InternalException | NotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listPipes(
-    input: ListPipesRequest,
-  ): Effect.Effect<
-    ListPipesResponse,
-    InternalException | ThrottlingException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
     InternalException | NotFoundException | ValidationException | CommonAwsError
-  >;
-  startPipe(
-    input: StartPipeRequest,
-  ): Effect.Effect<
-    StartPipeResponse,
-    ConflictException | InternalException | NotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  stopPipe(
-    input: StopPipeRequest,
-  ): Effect.Effect<
-    StopPipeResponse,
-    ConflictException | InternalException | NotFoundException | ThrottlingException | ValidationException | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
@@ -55,12 +19,6 @@ export interface Pipes {
   ): Effect.Effect<
     UntagResourceResponse,
     InternalException | NotFoundException | ValidationException | CommonAwsError
-  >;
-  updatePipe(
-    input: UpdatePipeRequest,
-  ): Effect.Effect<
-    UpdatePipeResponse,
-    ConflictException | InternalException | NotFoundException | ThrottlingException | ValidationException | CommonAwsError
   >;
 }
 
@@ -248,7 +206,8 @@ export interface EcsInferenceAcceleratorOverride {
   deviceName?: string;
   deviceType?: string;
 }
-export type EcsInferenceAcceleratorOverrideList = Array<EcsInferenceAcceleratorOverride>;
+export type EcsInferenceAcceleratorOverrideList =
+  Array<EcsInferenceAcceleratorOverride>;
 export interface EcsResourceRequirement {
   type: string;
   value: string;
@@ -376,7 +335,9 @@ export type MessageGroupId = string;
 export type MQBrokerAccessCredentials = { BasicAuth: string };
 export type MQBrokerQueueName = string;
 
-export type MSKAccessCredentials = { SaslScram512Auth: string } | { ClientCertificateTlsAuth: string };
+export type MSKAccessCredentials =
+  | { SaslScram512Auth: string }
+  | { ClientCertificateTlsAuth: string };
 export type MSKStartPosition = string;
 
 export interface MultiMeasureAttributeMapping {
@@ -685,7 +646,11 @@ export type SecurityGroupId = string;
 
 export type SecurityGroupIds = Array<string>;
 export type SecurityGroups = Array<string>;
-export type SelfManagedKafkaAccessConfigurationCredentials = { BasicAuth: string } | { SaslScram512Auth: string } | { SaslScram256Auth: string } | { ClientCertificateTlsAuth: string };
+export type SelfManagedKafkaAccessConfigurationCredentials =
+  | { BasicAuth: string }
+  | { SaslScram512Auth: string }
+  | { SaslScram256Auth: string }
+  | { ClientCertificateTlsAuth: string };
 export interface SelfManagedKafkaAccessConfigurationVpc {
   Subnets?: Array<string>;
   SecurityGroup?: Array<string>;
@@ -754,8 +719,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -778,8 +742,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdatePipeRequest {
   Name: string;
   Description?: string;
@@ -870,82 +833,12 @@ export interface ValidationExceptionField {
 export type ValidationExceptionFieldList = Array<ValidationExceptionField>;
 export type VersionValue = string;
 
-export declare namespace CreatePipe {
-  export type Input = CreatePipeRequest;
-  export type Output = CreatePipeResponse;
-  export type Error =
-    | ConflictException
-    | InternalException
-    | NotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeletePipe {
-  export type Input = DeletePipeRequest;
-  export type Output = DeletePipeResponse;
-  export type Error =
-    | ConflictException
-    | InternalException
-    | NotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribePipe {
-  export type Input = DescribePipeRequest;
-  export type Output = DescribePipeResponse;
-  export type Error =
-    | InternalException
-    | NotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListPipes {
-  export type Input = ListPipesRequest;
-  export type Output = ListPipesResponse;
-  export type Error =
-    | InternalException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
   export type Error =
     | InternalException
     | NotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartPipe {
-  export type Input = StartPipeRequest;
-  export type Output = StartPipeResponse;
-  export type Error =
-    | ConflictException
-    | InternalException
-    | NotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StopPipe {
-  export type Input = StopPipeRequest;
-  export type Output = StopPipeResponse;
-  export type Error =
-    | ConflictException
-    | InternalException
-    | NotFoundException
-    | ThrottlingException
     | ValidationException
     | CommonAwsError;
 }
@@ -969,16 +862,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdatePipe {
-  export type Input = UpdatePipeRequest;
-  export type Output = UpdatePipeResponse;
-  export type Error =
-    | ConflictException
-    | InternalException
-    | NotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-

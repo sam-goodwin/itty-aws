@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.amplify#AccessToken": {
       "type": "string",
@@ -22,6 +51,119 @@
     },
     "com.amazonaws.amplify#Amplify": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.amplify#CreateApp"
+        },
+        {
+          "target": "com.amazonaws.amplify#CreateBackendEnvironment"
+        },
+        {
+          "target": "com.amazonaws.amplify#CreateBranch"
+        },
+        {
+          "target": "com.amazonaws.amplify#CreateDeployment"
+        },
+        {
+          "target": "com.amazonaws.amplify#CreateDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.amplify#CreateWebhook"
+        },
+        {
+          "target": "com.amazonaws.amplify#DeleteApp"
+        },
+        {
+          "target": "com.amazonaws.amplify#DeleteBackendEnvironment"
+        },
+        {
+          "target": "com.amazonaws.amplify#DeleteBranch"
+        },
+        {
+          "target": "com.amazonaws.amplify#DeleteDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.amplify#DeleteJob"
+        },
+        {
+          "target": "com.amazonaws.amplify#DeleteWebhook"
+        },
+        {
+          "target": "com.amazonaws.amplify#GenerateAccessLogs"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetApp"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetArtifactUrl"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetBackendEnvironment"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetBranch"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetJob"
+        },
+        {
+          "target": "com.amazonaws.amplify#GetWebhook"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListApps"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListArtifacts"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListBackendEnvironments"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListBranches"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListDomainAssociations"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.amplify#ListWebhooks"
+        },
+        {
+          "target": "com.amazonaws.amplify#StartDeployment"
+        },
+        {
+          "target": "com.amazonaws.amplify#StartJob"
+        },
+        {
+          "target": "com.amazonaws.amplify#StopJob"
+        },
+        {
+          "target": "com.amazonaws.amplify#TagResource"
+        },
+        {
+          "target": "com.amazonaws.amplify#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.amplify#UpdateApp"
+        },
+        {
+          "target": "com.amazonaws.amplify#UpdateBranch"
+        },
+        {
+          "target": "com.amazonaws.amplify#UpdateDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.amplify#UpdateWebhook"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Amplify",

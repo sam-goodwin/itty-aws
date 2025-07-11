@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface DynamoDBStreams_20120810 {
   describeStream(
@@ -12,13 +12,21 @@ export interface DynamoDBStreams_20120810 {
     input: GetRecordsInput,
   ): Effect.Effect<
     GetRecordsOutput,
-    ExpiredIteratorException | InternalServerError | LimitExceededException | ResourceNotFoundException | TrimmedDataAccessException | CommonAwsError
+    | ExpiredIteratorException
+    | InternalServerError
+    | LimitExceededException
+    | ResourceNotFoundException
+    | TrimmedDataAccessException
+    | CommonAwsError
   >;
   getShardIterator(
     input: GetShardIteratorInput,
   ): Effect.Effect<
     GetShardIteratorOutput,
-    InternalServerError | ResourceNotFoundException | TrimmedDataAccessException | CommonAwsError
+    | InternalServerError
+    | ResourceNotFoundException
+    | TrimmedDataAccessException
+    | CommonAwsError
   >;
   listStreams(
     input: ListStreamsInput,
@@ -33,7 +41,17 @@ export type DynamodbStreams = DynamoDBStreams_20120810;
 export type AttributeMap = Record<string, AttributeValue>;
 export type AttributeName = string;
 
-export type AttributeValue = { S: string } | { N: string } | { B: Uint8Array | string } | { SS: Array<string> } | { NS: Array<string> } | { BS: Array<Uint8Array | string> } | { M: Record<string, AttributeValue> } | { L: Array<AttributeValue> } | { NULL: boolean } | { BOOL: boolean };
+export type AttributeValue =
+  | { S: string }
+  | { N: string }
+  | { B: Uint8Array | string }
+  | { SS: Array<string> }
+  | { NS: Array<string> }
+  | { BS: Array<Uint8Array | string> }
+  | { M: Record<string, AttributeValue> }
+  | { L: Array<AttributeValue> }
+  | { NULL: boolean }
+  | { BOOL: boolean };
 export type BinaryAttributeValue = Uint8Array | string;
 
 export type BinarySetAttributeValue = Array<Uint8Array | string>;
@@ -145,7 +163,11 @@ export type ShardId = string;
 
 export type ShardIterator = string;
 
-export type ShardIteratorType = "TRIM_HORIZON" | "LATEST" | "AT_SEQUENCE_NUMBER" | "AFTER_SEQUENCE_NUMBER";
+export type ShardIteratorType =
+  | "TRIM_HORIZON"
+  | "LATEST"
+  | "AT_SEQUENCE_NUMBER"
+  | "AFTER_SEQUENCE_NUMBER";
 export interface Stream {
   StreamArn?: string;
   TableName?: string;
@@ -175,7 +197,11 @@ export interface StreamRecord {
   StreamViewType?: StreamViewType;
 }
 export type StreamStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED";
-export type StreamViewType = "NEW_IMAGE" | "OLD_IMAGE" | "NEW_AND_OLD_IMAGES" | "KEYS_ONLY";
+export type StreamViewType =
+  | "NEW_IMAGE"
+  | "OLD_IMAGE"
+  | "NEW_AND_OLD_IMAGES"
+  | "KEYS_ONLY";
 export type StringAttributeValue = string;
 
 export type StringSetAttributeValue = Array<string>;
@@ -225,4 +251,3 @@ export declare namespace ListStreams {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

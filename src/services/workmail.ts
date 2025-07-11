@@ -1,48 +1,92 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface WorkMailService {
   associateDelegateToResource(
     input: AssociateDelegateToResourceRequest,
   ): Effect.Effect<
     AssociateDelegateToResourceResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   associateMemberToGroup(
     input: AssociateMemberToGroupRequest,
   ): Effect.Effect<
     AssociateMemberToGroupResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   assumeImpersonationRole(
     input: AssumeImpersonationRoleRequest,
   ): Effect.Effect<
     AssumeImpersonationRoleResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   cancelMailboxExportJob(
     input: CancelMailboxExportJobRequest,
   ): Effect.Effect<
     CancelMailboxExportJobResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   createAlias(
     input: CreateAliasRequest,
   ): Effect.Effect<
     CreateAliasResponse,
-    EmailAddressInUseException | EntityNotFoundException | EntityStateException | InvalidParameterException | LimitExceededException | MailDomainNotFoundException | MailDomainStateException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EmailAddressInUseException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | LimitExceededException
+    | MailDomainNotFoundException
+    | MailDomainStateException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   createAvailabilityConfiguration(
     input: CreateAvailabilityConfigurationRequest,
   ): Effect.Effect<
     CreateAvailabilityConfigurationResponse,
-    InvalidParameterException | LimitExceededException | NameAvailabilityException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | LimitExceededException
+    | NameAvailabilityException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   createGroup(
     input: CreateGroupRequest,
   ): Effect.Effect<
     CreateGroupResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | InvalidParameterException | NameAvailabilityException | OrganizationNotFoundException | OrganizationStateException | ReservedNameException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | InvalidParameterException
+    | NameAvailabilityException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ReservedNameException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   createIdentityCenterApplication(
     input: CreateIdentityCenterApplicationRequest,
@@ -54,31 +98,63 @@ export interface WorkMailService {
     input: CreateImpersonationRoleRequest,
   ): Effect.Effect<
     CreateImpersonationRoleResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | LimitExceededException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | LimitExceededException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   createMobileDeviceAccessRule(
     input: CreateMobileDeviceAccessRuleRequest,
   ): Effect.Effect<
     CreateMobileDeviceAccessRuleResponse,
-    InvalidParameterException | LimitExceededException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | LimitExceededException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   createOrganization(
     input: CreateOrganizationRequest,
   ): Effect.Effect<
     CreateOrganizationResponse,
-    DirectoryInUseException | DirectoryUnavailableException | InvalidParameterException | LimitExceededException | NameAvailabilityException | CommonAwsError
+    | DirectoryInUseException
+    | DirectoryUnavailableException
+    | InvalidParameterException
+    | LimitExceededException
+    | NameAvailabilityException
+    | CommonAwsError
   >;
   createResource(
     input: CreateResourceRequest,
   ): Effect.Effect<
     CreateResourceResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | InvalidParameterException | NameAvailabilityException | OrganizationNotFoundException | OrganizationStateException | ReservedNameException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | InvalidParameterException
+    | NameAvailabilityException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ReservedNameException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   createUser(
     input: CreateUserRequest,
   ): Effect.Effect<
     CreateUserResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | InvalidParameterException | InvalidPasswordException | NameAvailabilityException | OrganizationNotFoundException | OrganizationStateException | ReservedNameException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | InvalidParameterException
+    | InvalidPasswordException
+    | NameAvailabilityException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ReservedNameException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteAccessControlRule(
     input: DeleteAccessControlRuleRequest,
@@ -90,7 +166,12 @@ export interface WorkMailService {
     input: DeleteAliasRequest,
   ): Effect.Effect<
     DeleteAliasResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteAvailabilityConfiguration(
     input: DeleteAvailabilityConfigurationRequest,
@@ -102,13 +183,23 @@ export interface WorkMailService {
     input: DeleteEmailMonitoringConfigurationRequest,
   ): Effect.Effect<
     DeleteEmailMonitoringConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteGroup(
     input: DeleteGroupRequest,
   ): Effect.Effect<
     DeleteGroupResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteIdentityCenterApplication(
     input: DeleteIdentityCenterApplicationRequest,
@@ -120,97 +211,162 @@ export interface WorkMailService {
     input: DeleteIdentityProviderConfigurationRequest,
   ): Effect.Effect<
     DeleteIdentityProviderConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteImpersonationRole(
     input: DeleteImpersonationRoleRequest,
   ): Effect.Effect<
     DeleteImpersonationRoleResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteMailboxPermissions(
     input: DeleteMailboxPermissionsRequest,
   ): Effect.Effect<
     DeleteMailboxPermissionsResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteMobileDeviceAccessOverride(
     input: DeleteMobileDeviceAccessOverrideRequest,
   ): Effect.Effect<
     DeleteMobileDeviceAccessOverrideResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteMobileDeviceAccessRule(
     input: DeleteMobileDeviceAccessRuleRequest,
   ): Effect.Effect<
     DeleteMobileDeviceAccessRuleResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteOrganization(
     input: DeleteOrganizationRequest,
   ): Effect.Effect<
     DeleteOrganizationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deletePersonalAccessToken(
     input: DeletePersonalAccessTokenRequest,
   ): Effect.Effect<
     DeletePersonalAccessTokenResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteResource(
     input: DeleteResourceRequest,
   ): Effect.Effect<
     DeleteResourceResponse,
-    EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteRetentionPolicy(
     input: DeleteRetentionPolicyRequest,
   ): Effect.Effect<
     DeleteRetentionPolicyResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deleteUser(
     input: DeleteUserRequest,
   ): Effect.Effect<
     DeleteUserResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deregisterFromWorkMail(
     input: DeregisterFromWorkMailRequest,
   ): Effect.Effect<
     DeregisterFromWorkMailResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   deregisterMailDomain(
     input: DeregisterMailDomainRequest,
   ): Effect.Effect<
     DeregisterMailDomainResponse,
-    InvalidCustomSesConfigurationException | InvalidParameterException | MailDomainInUseException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidCustomSesConfigurationException
+    | InvalidParameterException
+    | MailDomainInUseException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   describeEmailMonitoringConfiguration(
     input: DescribeEmailMonitoringConfigurationRequest,
   ): Effect.Effect<
     DescribeEmailMonitoringConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeEntity(
     input: DescribeEntityRequest,
   ): Effect.Effect<
     DescribeEntityResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   describeGroup(
     input: DescribeGroupRequest,
   ): Effect.Effect<
     DescribeGroupResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   describeIdentityProviderConfiguration(
     input: DescribeIdentityProviderConfigurationRequest,
   ): Effect.Effect<
     DescribeIdentityProviderConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeInboundDmarcSettings(
     input: DescribeInboundDmarcSettingsRequest,
@@ -222,7 +378,11 @@ export interface WorkMailService {
     input: DescribeMailboxExportJobRequest,
   ): Effect.Effect<
     DescribeMailboxExportJobResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   describeOrganization(
     input: DescribeOrganizationRequest,
@@ -234,79 +394,143 @@ export interface WorkMailService {
     input: DescribeResourceRequest,
   ): Effect.Effect<
     DescribeResourceResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   describeUser(
     input: DescribeUserRequest,
   ): Effect.Effect<
     DescribeUserResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   disassociateDelegateFromResource(
     input: DisassociateDelegateFromResourceRequest,
   ): Effect.Effect<
     DisassociateDelegateFromResourceResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   disassociateMemberFromGroup(
     input: DisassociateMemberFromGroupRequest,
   ): Effect.Effect<
     DisassociateMemberFromGroupResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   getAccessControlEffect(
     input: GetAccessControlEffectRequest,
   ): Effect.Effect<
     GetAccessControlEffectResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getDefaultRetentionPolicy(
     input: GetDefaultRetentionPolicyRequest,
   ): Effect.Effect<
     GetDefaultRetentionPolicyResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   getImpersonationRole(
     input: GetImpersonationRoleRequest,
   ): Effect.Effect<
     GetImpersonationRoleResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getImpersonationRoleEffect(
     input: GetImpersonationRoleEffectRequest,
   ): Effect.Effect<
     GetImpersonationRoleEffectResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
-  >;
-  getMailDomain(
-    input: GetMailDomainRequest,
-  ): Effect.Effect<
-    GetMailDomainResponse,
-    InvalidParameterException | MailDomainNotFoundException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getMailboxDetails(
     input: GetMailboxDetailsRequest,
   ): Effect.Effect<
     GetMailboxDetailsResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
+  >;
+  getMailDomain(
+    input: GetMailDomainRequest,
+  ): Effect.Effect<
+    GetMailDomainResponse,
+    | InvalidParameterException
+    | MailDomainNotFoundException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   getMobileDeviceAccessEffect(
     input: GetMobileDeviceAccessEffectRequest,
   ): Effect.Effect<
     GetMobileDeviceAccessEffectResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   getMobileDeviceAccessOverride(
     input: GetMobileDeviceAccessOverrideRequest,
   ): Effect.Effect<
     GetMobileDeviceAccessOverrideResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getPersonalAccessTokenMetadata(
     input: GetPersonalAccessTokenMetadataRequest,
   ): Effect.Effect<
     GetPersonalAccessTokenMetadataResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAccessControlRules(
     input: ListAccessControlRulesRequest,
@@ -318,67 +542,109 @@ export interface WorkMailService {
     input: ListAliasesRequest,
   ): Effect.Effect<
     ListAliasesResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listAvailabilityConfigurations(
     input: ListAvailabilityConfigurationsRequest,
   ): Effect.Effect<
     ListAvailabilityConfigurationsResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listGroupMembers(
     input: ListGroupMembersRequest,
   ): Effect.Effect<
     ListGroupMembersResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listGroups(
     input: ListGroupsRequest,
   ): Effect.Effect<
     ListGroupsResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listGroupsForEntity(
     input: ListGroupsForEntityRequest,
   ): Effect.Effect<
     ListGroupsForEntityResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listImpersonationRoles(
     input: ListImpersonationRolesRequest,
   ): Effect.Effect<
     ListImpersonationRolesResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
-  >;
-  listMailDomains(
-    input: ListMailDomainsRequest,
-  ): Effect.Effect<
-    ListMailDomainsResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listMailboxExportJobs(
     input: ListMailboxExportJobsRequest,
   ): Effect.Effect<
     ListMailboxExportJobsResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listMailboxPermissions(
     input: ListMailboxPermissionsRequest,
   ): Effect.Effect<
     ListMailboxPermissionsResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
+  >;
+  listMailDomains(
+    input: ListMailDomainsRequest,
+  ): Effect.Effect<
+    ListMailDomainsResponse,
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listMobileDeviceAccessOverrides(
     input: ListMobileDeviceAccessOverridesRequest,
   ): Effect.Effect<
     ListMobileDeviceAccessOverridesResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listMobileDeviceAccessRules(
     input: ListMobileDeviceAccessRulesRequest,
   ): Effect.Effect<
     ListMobileDeviceAccessRulesResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listOrganizations(
     input: ListOrganizationsRequest,
@@ -390,19 +656,34 @@ export interface WorkMailService {
     input: ListPersonalAccessTokensRequest,
   ): Effect.Effect<
     ListPersonalAccessTokensResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   listResourceDelegates(
     input: ListResourceDelegatesRequest,
   ): Effect.Effect<
     ListResourceDelegatesResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   listResources(
     input: ListResourcesRequest,
   ): Effect.Effect<
     ListResourcesResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
@@ -414,25 +695,42 @@ export interface WorkMailService {
     input: ListUsersRequest,
   ): Effect.Effect<
     ListUsersResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   putAccessControlRule(
     input: PutAccessControlRuleRequest,
   ): Effect.Effect<
     PutAccessControlRuleResponse,
-    EntityNotFoundException | InvalidParameterException | LimitExceededException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | LimitExceededException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putEmailMonitoringConfiguration(
     input: PutEmailMonitoringConfigurationRequest,
   ): Effect.Effect<
     PutEmailMonitoringConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putIdentityProviderConfiguration(
     input: PutIdentityProviderConfigurationRequest,
   ): Effect.Effect<
     PutIdentityProviderConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putInboundDmarcSettings(
     input: PutInboundDmarcSettingsRequest,
@@ -444,55 +742,107 @@ export interface WorkMailService {
     input: PutMailboxPermissionsRequest,
   ): Effect.Effect<
     PutMailboxPermissionsResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   putMobileDeviceAccessOverride(
     input: PutMobileDeviceAccessOverrideRequest,
   ): Effect.Effect<
     PutMobileDeviceAccessOverrideResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   putRetentionPolicy(
     input: PutRetentionPolicyRequest,
   ): Effect.Effect<
     PutRetentionPolicyResponse,
-    InvalidParameterException | LimitExceededException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | LimitExceededException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   registerMailDomain(
     input: RegisterMailDomainRequest,
   ): Effect.Effect<
     RegisterMailDomainResponse,
-    InvalidParameterException | LimitExceededException | MailDomainInUseException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | LimitExceededException
+    | MailDomainInUseException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   registerToWorkMail(
     input: RegisterToWorkMailRequest,
   ): Effect.Effect<
     RegisterToWorkMailResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EmailAddressInUseException | EntityAlreadyRegisteredException | EntityNotFoundException | EntityStateException | InvalidParameterException | MailDomainNotFoundException | MailDomainStateException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EmailAddressInUseException
+    | EntityAlreadyRegisteredException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | MailDomainNotFoundException
+    | MailDomainStateException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   resetPassword(
     input: ResetPasswordRequest,
   ): Effect.Effect<
     ResetPasswordResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityNotFoundException | EntityStateException | InvalidParameterException | InvalidPasswordException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | InvalidPasswordException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   startMailboxExportJob(
     input: StartMailboxExportJobRequest,
   ): Effect.Effect<
     StartMailboxExportJobResponse,
-    EntityNotFoundException | InvalidParameterException | LimitExceededException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | LimitExceededException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InvalidParameterException | OrganizationStateException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   testAvailabilityConfiguration(
     input: TestAvailabilityConfigurationRequest,
   ): Effect.Effect<
     TestAvailabilityConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
@@ -504,55 +854,117 @@ export interface WorkMailService {
     input: UpdateAvailabilityConfigurationRequest,
   ): Effect.Effect<
     UpdateAvailabilityConfigurationResponse,
-    InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateDefaultMailDomain(
     input: UpdateDefaultMailDomainRequest,
   ): Effect.Effect<
     UpdateDefaultMailDomainResponse,
-    InvalidParameterException | MailDomainNotFoundException | MailDomainStateException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | InvalidParameterException
+    | MailDomainNotFoundException
+    | MailDomainStateException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   updateGroup(
     input: UpdateGroupRequest,
   ): Effect.Effect<
     UpdateGroupResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   updateImpersonationRole(
     input: UpdateImpersonationRoleRequest,
   ): Effect.Effect<
     UpdateImpersonationRoleResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | LimitExceededException | OrganizationNotFoundException | OrganizationStateException | ResourceNotFoundException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | LimitExceededException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateMailboxQuota(
     input: UpdateMailboxQuotaRequest,
   ): Effect.Effect<
     UpdateMailboxQuotaResponse,
-    EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   updateMobileDeviceAccessRule(
     input: UpdateMobileDeviceAccessRuleRequest,
   ): Effect.Effect<
     UpdateMobileDeviceAccessRuleResponse,
-    EntityNotFoundException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError
   >;
   updatePrimaryEmailAddress(
     input: UpdatePrimaryEmailAddressRequest,
   ): Effect.Effect<
     UpdatePrimaryEmailAddressResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EmailAddressInUseException | EntityNotFoundException | EntityStateException | InvalidParameterException | MailDomainNotFoundException | MailDomainStateException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EmailAddressInUseException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | MailDomainNotFoundException
+    | MailDomainStateException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   updateResource(
     input: UpdateResourceRequest,
   ): Effect.Effect<
     UpdateResourceResponse,
-    DirectoryUnavailableException | EmailAddressInUseException | EntityNotFoundException | EntityStateException | InvalidConfigurationException | InvalidParameterException | MailDomainNotFoundException | MailDomainStateException | NameAvailabilityException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryUnavailableException
+    | EmailAddressInUseException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidConfigurationException
+    | InvalidParameterException
+    | MailDomainNotFoundException
+    | MailDomainStateException
+    | NameAvailabilityException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   updateUser(
     input: UpdateUserRequest,
   ): Effect.Effect<
     UpdateUserResponse,
-    DirectoryServiceAuthenticationFailedException | DirectoryUnavailableException | EntityNotFoundException | EntityStateException | InvalidParameterException | OrganizationNotFoundException | OrganizationStateException | UnsupportedOperationException | CommonAwsError
+    | DirectoryServiceAuthenticationFailedException
+    | DirectoryUnavailableException
+    | EntityNotFoundException
+    | EntityStateException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
 }
 
@@ -594,15 +1006,13 @@ export interface AssociateDelegateToResourceRequest {
   ResourceId: string;
   EntityId: string;
 }
-export interface AssociateDelegateToResourceResponse {
-}
+export interface AssociateDelegateToResourceResponse {}
 export interface AssociateMemberToGroupRequest {
   OrganizationId: string;
   GroupId: string;
   MemberId: string;
 }
-export interface AssociateMemberToGroupResponse {
-}
+export interface AssociateMemberToGroupResponse {}
 export interface AssumeImpersonationRoleRequest {
   OrganizationId: string;
   ImpersonationRoleId: string;
@@ -633,15 +1043,13 @@ export interface CancelMailboxExportJobRequest {
   JobId: string;
   OrganizationId: string;
 }
-export interface CancelMailboxExportJobResponse {
-}
+export interface CancelMailboxExportJobResponse {}
 export interface CreateAliasRequest {
   OrganizationId: string;
   EntityId: string;
   Alias: string;
 }
-export interface CreateAliasResponse {
-}
+export interface CreateAliasResponse {}
 export interface CreateAvailabilityConfigurationRequest {
   ClientToken?: string;
   OrganizationId: string;
@@ -649,8 +1057,7 @@ export interface CreateAvailabilityConfigurationRequest {
   EwsProvider?: EwsAvailabilityProvider;
   LambdaProvider?: LambdaAvailabilityProvider;
 }
-export interface CreateAvailabilityConfigurationResponse {
-}
+export interface CreateAvailabilityConfigurationResponse {}
 export interface CreateGroupRequest {
   OrganizationId: string;
   Name: string;
@@ -739,68 +1146,57 @@ export interface DeleteAccessControlRuleRequest {
   OrganizationId: string;
   Name: string;
 }
-export interface DeleteAccessControlRuleResponse {
-}
+export interface DeleteAccessControlRuleResponse {}
 export interface DeleteAliasRequest {
   OrganizationId: string;
   EntityId: string;
   Alias: string;
 }
-export interface DeleteAliasResponse {
-}
+export interface DeleteAliasResponse {}
 export interface DeleteAvailabilityConfigurationRequest {
   OrganizationId: string;
   DomainName: string;
 }
-export interface DeleteAvailabilityConfigurationResponse {
-}
+export interface DeleteAvailabilityConfigurationResponse {}
 export interface DeleteEmailMonitoringConfigurationRequest {
   OrganizationId: string;
 }
-export interface DeleteEmailMonitoringConfigurationResponse {
-}
+export interface DeleteEmailMonitoringConfigurationResponse {}
 export interface DeleteGroupRequest {
   OrganizationId: string;
   GroupId: string;
 }
-export interface DeleteGroupResponse {
-}
+export interface DeleteGroupResponse {}
 export interface DeleteIdentityCenterApplicationRequest {
   ApplicationArn: string;
 }
-export interface DeleteIdentityCenterApplicationResponse {
-}
+export interface DeleteIdentityCenterApplicationResponse {}
 export interface DeleteIdentityProviderConfigurationRequest {
   OrganizationId: string;
 }
-export interface DeleteIdentityProviderConfigurationResponse {
-}
+export interface DeleteIdentityProviderConfigurationResponse {}
 export interface DeleteImpersonationRoleRequest {
   OrganizationId: string;
   ImpersonationRoleId: string;
 }
-export interface DeleteImpersonationRoleResponse {
-}
+export interface DeleteImpersonationRoleResponse {}
 export interface DeleteMailboxPermissionsRequest {
   OrganizationId: string;
   EntityId: string;
   GranteeId: string;
 }
-export interface DeleteMailboxPermissionsResponse {
-}
+export interface DeleteMailboxPermissionsResponse {}
 export interface DeleteMobileDeviceAccessOverrideRequest {
   OrganizationId: string;
   UserId: string;
   DeviceId: string;
 }
-export interface DeleteMobileDeviceAccessOverrideResponse {
-}
+export interface DeleteMobileDeviceAccessOverrideResponse {}
 export interface DeleteMobileDeviceAccessRuleRequest {
   OrganizationId: string;
   MobileDeviceAccessRuleId: string;
 }
-export interface DeleteMobileDeviceAccessRuleResponse {
-}
+export interface DeleteMobileDeviceAccessRuleResponse {}
 export interface DeleteOrganizationRequest {
   ClientToken?: string;
   OrganizationId: string;
@@ -816,38 +1212,32 @@ export interface DeletePersonalAccessTokenRequest {
   OrganizationId: string;
   PersonalAccessTokenId: string;
 }
-export interface DeletePersonalAccessTokenResponse {
-}
+export interface DeletePersonalAccessTokenResponse {}
 export interface DeleteResourceRequest {
   OrganizationId: string;
   ResourceId: string;
 }
-export interface DeleteResourceResponse {
-}
+export interface DeleteResourceResponse {}
 export interface DeleteRetentionPolicyRequest {
   OrganizationId: string;
   Id: string;
 }
-export interface DeleteRetentionPolicyResponse {
-}
+export interface DeleteRetentionPolicyResponse {}
 export interface DeleteUserRequest {
   OrganizationId: string;
   UserId: string;
 }
-export interface DeleteUserResponse {
-}
+export interface DeleteUserResponse {}
 export interface DeregisterFromWorkMailRequest {
   OrganizationId: string;
   EntityId: string;
 }
-export interface DeregisterFromWorkMailResponse {
-}
+export interface DeregisterFromWorkMailResponse {}
 export interface DeregisterMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
 }
-export interface DeregisterMailDomainResponse {
-}
+export interface DeregisterMailDomainResponse {}
 export interface DescribeEmailMonitoringConfigurationRequest {
   OrganizationId: string;
 }
@@ -1010,15 +1400,13 @@ export interface DisassociateDelegateFromResourceRequest {
   ResourceId: string;
   EntityId: string;
 }
-export interface DisassociateDelegateFromResourceResponse {
-}
+export interface DisassociateDelegateFromResourceResponse {}
 export interface DisassociateMemberFromGroupRequest {
   OrganizationId: string;
   GroupId: string;
   MemberId: string;
 }
-export interface DisassociateMemberFromGroupResponse {
-}
+export interface DisassociateMemberFromGroupResponse {}
 export interface DnsRecord {
   Type?: string;
   Hostname?: string;
@@ -1074,7 +1462,12 @@ export interface FolderConfiguration {
   Period?: number;
 }
 export type FolderConfigurations = Array<FolderConfiguration>;
-export type FolderName = "INBOX" | "DELETED_ITEMS" | "SENT_ITEMS" | "DRAFTS" | "JUNK_EMAIL";
+export type FolderName =
+  | "INBOX"
+  | "DELETED_ITEMS"
+  | "SENT_ITEMS"
+  | "DRAFTS"
+  | "JUNK_EMAIL";
 export interface GetAccessControlEffectRequest {
   OrganizationId: string;
   IpAddress: string;
@@ -1200,7 +1593,9 @@ export interface IdentityCenterConfiguration {
   InstanceArn: string;
   ApplicationArn: string;
 }
-export type IdentityProviderAuthenticationMode = "IDENTITY_PROVIDER_ONLY" | "IDENTITY_PROVIDER_AND_DIRECTORY";
+export type IdentityProviderAuthenticationMode =
+  | "IDENTITY_PROVIDER_ONLY"
+  | "IDENTITY_PROVIDER_AND_DIRECTORY";
 export type IdentityProviderIdentityStoreId = string;
 
 export type IdentityProviderUserId = string;
@@ -1488,7 +1883,11 @@ export interface MailboxExportJob {
 }
 export type MailboxExportJobId = string;
 
-export type MailboxExportJobState = "RUNNING" | "COMPLETED" | "FAILED" | "CANCELLED";
+export type MailboxExportJobState =
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED";
 export type MailboxQuota = number;
 
 export type MailboxSize = number;
@@ -1529,7 +1928,8 @@ export interface MobileDeviceAccessMatchedRule {
   MobileDeviceAccessRuleId?: string;
   Name?: string;
 }
-export type MobileDeviceAccessMatchedRuleList = Array<MobileDeviceAccessMatchedRule>;
+export type MobileDeviceAccessMatchedRuleList =
+  Array<MobileDeviceAccessMatchedRule>;
 export interface MobileDeviceAccessOverride {
   UserId?: string;
   DeviceId?: string;
@@ -1646,37 +2046,32 @@ export interface PutAccessControlRuleRequest {
   ImpersonationRoleIds?: Array<string>;
   NotImpersonationRoleIds?: Array<string>;
 }
-export interface PutAccessControlRuleResponse {
-}
+export interface PutAccessControlRuleResponse {}
 export interface PutEmailMonitoringConfigurationRequest {
   OrganizationId: string;
   RoleArn: string;
   LogGroupArn: string;
 }
-export interface PutEmailMonitoringConfigurationResponse {
-}
+export interface PutEmailMonitoringConfigurationResponse {}
 export interface PutIdentityProviderConfigurationRequest {
   OrganizationId: string;
   AuthenticationMode: IdentityProviderAuthenticationMode;
   IdentityCenterConfiguration: IdentityCenterConfiguration;
   PersonalAccessTokenConfiguration: PersonalAccessTokenConfiguration;
 }
-export interface PutIdentityProviderConfigurationResponse {
-}
+export interface PutIdentityProviderConfigurationResponse {}
 export interface PutInboundDmarcSettingsRequest {
   OrganizationId: string;
   Enforced: boolean;
 }
-export interface PutInboundDmarcSettingsResponse {
-}
+export interface PutInboundDmarcSettingsResponse {}
 export interface PutMailboxPermissionsRequest {
   OrganizationId: string;
   EntityId: string;
   GranteeId: string;
   PermissionValues: Array<PermissionType>;
 }
-export interface PutMailboxPermissionsResponse {
-}
+export interface PutMailboxPermissionsResponse {}
 export interface PutMobileDeviceAccessOverrideRequest {
   OrganizationId: string;
   UserId: string;
@@ -1684,8 +2079,7 @@ export interface PutMobileDeviceAccessOverrideRequest {
   Effect: MobileDeviceAccessRuleEffect;
   Description?: string;
 }
-export interface PutMobileDeviceAccessOverrideResponse {
-}
+export interface PutMobileDeviceAccessOverrideResponse {}
 export interface PutRetentionPolicyRequest {
   OrganizationId: string;
   Id?: string;
@@ -1693,8 +2087,7 @@ export interface PutRetentionPolicyRequest {
   Description?: string;
   FolderConfigurations: Array<FolderConfiguration>;
 }
-export interface PutRetentionPolicyResponse {
-}
+export interface PutRetentionPolicyResponse {}
 export interface RedactedEwsAvailabilityProvider {
   EwsEndpoint?: string;
   EwsUsername?: string;
@@ -1704,15 +2097,13 @@ export interface RegisterMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
 }
-export interface RegisterMailDomainResponse {
-}
+export interface RegisterMailDomainResponse {}
 export interface RegisterToWorkMailRequest {
   OrganizationId: string;
   EntityId: string;
   Email: string;
 }
-export interface RegisterToWorkMailResponse {
-}
+export interface RegisterToWorkMailResponse {}
 export declare class ReservedNameException extends Data.TaggedError(
   "ReservedNameException",
 )<{
@@ -1723,8 +2114,7 @@ export interface ResetPasswordRequest {
   UserId: string;
   Password: string;
 }
-export interface ResetPasswordResponse {
-}
+export interface ResetPasswordResponse {}
 export interface Resource {
   Id?: string;
   Email?: string;
@@ -1785,8 +2175,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TargetUsers = Array<string>;
@@ -1816,29 +2205,25 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAvailabilityConfigurationRequest {
   OrganizationId: string;
   DomainName: string;
   EwsProvider?: EwsAvailabilityProvider;
   LambdaProvider?: LambdaAvailabilityProvider;
 }
-export interface UpdateAvailabilityConfigurationResponse {
-}
+export interface UpdateAvailabilityConfigurationResponse {}
 export interface UpdateDefaultMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
 }
-export interface UpdateDefaultMailDomainResponse {
-}
+export interface UpdateDefaultMailDomainResponse {}
 export interface UpdateGroupRequest {
   OrganizationId: string;
   GroupId: string;
   HiddenFromGlobalAddressList?: boolean;
 }
-export interface UpdateGroupResponse {
-}
+export interface UpdateGroupResponse {}
 export interface UpdateImpersonationRoleRequest {
   OrganizationId: string;
   ImpersonationRoleId: string;
@@ -1847,15 +2232,13 @@ export interface UpdateImpersonationRoleRequest {
   Description?: string;
   Rules: Array<ImpersonationRule>;
 }
-export interface UpdateImpersonationRoleResponse {
-}
+export interface UpdateImpersonationRoleResponse {}
 export interface UpdateMailboxQuotaRequest {
   OrganizationId: string;
   UserId: string;
   MailboxQuota: number;
 }
-export interface UpdateMailboxQuotaResponse {
-}
+export interface UpdateMailboxQuotaResponse {}
 export interface UpdateMobileDeviceAccessRuleRequest {
   OrganizationId: string;
   MobileDeviceAccessRuleId: string;
@@ -1871,15 +2254,13 @@ export interface UpdateMobileDeviceAccessRuleRequest {
   DeviceUserAgents?: Array<string>;
   NotDeviceUserAgents?: Array<string>;
 }
-export interface UpdateMobileDeviceAccessRuleResponse {
-}
+export interface UpdateMobileDeviceAccessRuleResponse {}
 export interface UpdatePrimaryEmailAddressRequest {
   OrganizationId: string;
   EntityId: string;
   Email: string;
 }
-export interface UpdatePrimaryEmailAddressResponse {
-}
+export interface UpdatePrimaryEmailAddressResponse {}
 export interface UpdateResourceRequest {
   OrganizationId: string;
   ResourceId: string;
@@ -1889,8 +2270,7 @@ export interface UpdateResourceRequest {
   Type?: ResourceType;
   HiddenFromGlobalAddressList?: boolean;
 }
-export interface UpdateResourceResponse {
-}
+export interface UpdateResourceResponse {}
 export interface UpdateUserRequest {
   OrganizationId: string;
   UserId: string;
@@ -1911,8 +2291,7 @@ export interface UpdateUserRequest {
   Office?: string;
   IdentityProviderUserId?: string;
 }
-export interface UpdateUserResponse {
-}
+export interface UpdateUserResponse {}
 export type Url = string;
 
 export interface User {
@@ -2034,9 +2413,7 @@ export declare namespace CreateGroup {
 export declare namespace CreateIdentityCenterApplication {
   export type Input = CreateIdentityCenterApplicationRequest;
   export type Output = CreateIdentityCenterApplicationResponse;
-  export type Error =
-    | InvalidParameterException
-    | CommonAwsError;
+  export type Error = InvalidParameterException | CommonAwsError;
 }
 
 export declare namespace CreateImpersonationRole {
@@ -2475,23 +2852,23 @@ export declare namespace GetImpersonationRoleEffect {
     | CommonAwsError;
 }
 
-export declare namespace GetMailDomain {
-  export type Input = GetMailDomainRequest;
-  export type Output = GetMailDomainResponse;
-  export type Error =
-    | InvalidParameterException
-    | MailDomainNotFoundException
-    | OrganizationNotFoundException
-    | OrganizationStateException
-    | CommonAwsError;
-}
-
 export declare namespace GetMailboxDetails {
   export type Input = GetMailboxDetailsRequest;
   export type Output = GetMailboxDetailsResponse;
   export type Error =
     | EntityNotFoundException
     | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError;
+}
+
+export declare namespace GetMailDomain {
+  export type Input = GetMailDomainRequest;
+  export type Output = GetMailDomainResponse;
+  export type Error =
+    | InvalidParameterException
+    | MailDomainNotFoundException
     | OrganizationNotFoundException
     | OrganizationStateException
     | CommonAwsError;
@@ -2606,16 +2983,6 @@ export declare namespace ListImpersonationRoles {
     | CommonAwsError;
 }
 
-export declare namespace ListMailDomains {
-  export type Input = ListMailDomainsRequest;
-  export type Output = ListMailDomainsResponse;
-  export type Error =
-    | InvalidParameterException
-    | OrganizationNotFoundException
-    | OrganizationStateException
-    | CommonAwsError;
-}
-
 export declare namespace ListMailboxExportJobs {
   export type Input = ListMailboxExportJobsRequest;
   export type Output = ListMailboxExportJobsResponse;
@@ -2631,6 +2998,16 @@ export declare namespace ListMailboxPermissions {
   export type Output = ListMailboxPermissionsResponse;
   export type Error =
     | EntityNotFoundException
+    | InvalidParameterException
+    | OrganizationNotFoundException
+    | OrganizationStateException
+    | CommonAwsError;
+}
+
+export declare namespace ListMailDomains {
+  export type Input = ListMailDomainsRequest;
+  export type Output = ListMailDomainsResponse;
+  export type Error =
     | InvalidParameterException
     | OrganizationNotFoundException
     | OrganizationStateException
@@ -2661,9 +3038,7 @@ export declare namespace ListMobileDeviceAccessRules {
 export declare namespace ListOrganizations {
   export type Input = ListOrganizationsRequest;
   export type Output = ListOrganizationsResponse;
-  export type Error =
-    | InvalidParameterException
-    | CommonAwsError;
+  export type Error = InvalidParameterException | CommonAwsError;
 }
 
 export declare namespace ListPersonalAccessTokens {
@@ -2705,9 +3080,7 @@ export declare namespace ListResources {
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace ListUsers {
@@ -2882,9 +3255,7 @@ export declare namespace TestAvailabilityConfiguration {
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
   export type Output = UntagResourceResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace UpdateAvailabilityConfiguration {
@@ -3011,4 +3382,3 @@ export declare namespace UpdateUser {
     | UnsupportedOperationException
     | CommonAwsError;
 }
-

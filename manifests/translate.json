@@ -1,7 +1,95 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.translate#AWSShineFrontendService_20170701": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.translate#CreateParallelData"
+        },
+        {
+          "target": "com.amazonaws.translate#DeleteParallelData"
+        },
+        {
+          "target": "com.amazonaws.translate#DeleteTerminology"
+        },
+        {
+          "target": "com.amazonaws.translate#DescribeTextTranslationJob"
+        },
+        {
+          "target": "com.amazonaws.translate#GetParallelData"
+        },
+        {
+          "target": "com.amazonaws.translate#GetTerminology"
+        },
+        {
+          "target": "com.amazonaws.translate#ImportTerminology"
+        },
+        {
+          "target": "com.amazonaws.translate#ListLanguages"
+        },
+        {
+          "target": "com.amazonaws.translate#ListParallelData"
+        },
+        {
+          "target": "com.amazonaws.translate#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.translate#ListTerminologies"
+        },
+        {
+          "target": "com.amazonaws.translate#ListTextTranslationJobs"
+        },
+        {
+          "target": "com.amazonaws.translate#StartTextTranslationJob"
+        },
+        {
+          "target": "com.amazonaws.translate#StopTextTranslationJob"
+        },
+        {
+          "target": "com.amazonaws.translate#TagResource"
+        },
+        {
+          "target": "com.amazonaws.translate#TranslateDocument"
+        },
+        {
+          "target": "com.amazonaws.translate#TranslateText"
+        },
+        {
+          "target": "com.amazonaws.translate#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.translate#UpdateParallelData"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Translate",

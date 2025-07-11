@@ -1,7 +1,130 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.iottwinmaker#AWSIoTTwinMaker": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iottwinmaker#BatchPutPropertyValues"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CancelMetadataTransferJob"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CreateComponentType"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CreateEntity"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CreateMetadataTransferJob"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CreateScene"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CreateSyncJob"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#CreateWorkspace"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#DeleteComponentType"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#DeleteEntity"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#DeleteScene"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#DeleteSyncJob"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#DeleteWorkspace"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ExecuteQuery"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetComponentType"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetEntity"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetMetadataTransferJob"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetPricingPlan"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetPropertyValue"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetPropertyValueHistory"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetScene"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetSyncJob"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#GetWorkspace"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListComponents"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListComponentTypes"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListEntities"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListMetadataTransferJobs"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListProperties"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListScenes"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListSyncJobs"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListSyncResources"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#ListWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#TagResource"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#UpdateComponentType"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#UpdateEntity"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#UpdatePricingPlan"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#UpdateScene"
+        },
+        {
+          "target": "com.amazonaws.iottwinmaker#UpdateWorkspace"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IoTTwinMaker",

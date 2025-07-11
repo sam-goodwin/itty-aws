@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.macie2#AcceptInvitation": {
       "type": "operation",
@@ -8911,6 +8940,251 @@
     },
     "com.amazonaws.macie2#Macie2": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.macie2#AcceptInvitation"
+        },
+        {
+          "target": "com.amazonaws.macie2#BatchGetCustomDataIdentifiers"
+        },
+        {
+          "target": "com.amazonaws.macie2#BatchUpdateAutomatedDiscoveryAccounts"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateAllowList"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateClassificationJob"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateCustomDataIdentifier"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateFindingsFilter"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateInvitations"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateMember"
+        },
+        {
+          "target": "com.amazonaws.macie2#CreateSampleFindings"
+        },
+        {
+          "target": "com.amazonaws.macie2#DeclineInvitations"
+        },
+        {
+          "target": "com.amazonaws.macie2#DeleteAllowList"
+        },
+        {
+          "target": "com.amazonaws.macie2#DeleteCustomDataIdentifier"
+        },
+        {
+          "target": "com.amazonaws.macie2#DeleteFindingsFilter"
+        },
+        {
+          "target": "com.amazonaws.macie2#DeleteInvitations"
+        },
+        {
+          "target": "com.amazonaws.macie2#DeleteMember"
+        },
+        {
+          "target": "com.amazonaws.macie2#DescribeBuckets"
+        },
+        {
+          "target": "com.amazonaws.macie2#DescribeClassificationJob"
+        },
+        {
+          "target": "com.amazonaws.macie2#DescribeOrganizationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#DisableMacie"
+        },
+        {
+          "target": "com.amazonaws.macie2#DisableOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.macie2#DisassociateFromAdministratorAccount"
+        },
+        {
+          "target": "com.amazonaws.macie2#DisassociateFromMasterAccount"
+        },
+        {
+          "target": "com.amazonaws.macie2#DisassociateMember"
+        },
+        {
+          "target": "com.amazonaws.macie2#EnableMacie"
+        },
+        {
+          "target": "com.amazonaws.macie2#EnableOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetAdministratorAccount"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetAllowList"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetAutomatedDiscoveryConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetBucketStatistics"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetClassificationExportConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetClassificationScope"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetCustomDataIdentifier"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetFindings"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetFindingsFilter"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetFindingsPublicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetFindingStatistics"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetInvitationsCount"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetMacieSession"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetMasterAccount"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetMember"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetResourceProfile"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetRevealConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetSensitiveDataOccurrences"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetSensitiveDataOccurrencesAvailability"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetSensitivityInspectionTemplate"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetUsageStatistics"
+        },
+        {
+          "target": "com.amazonaws.macie2#GetUsageTotals"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListAllowLists"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListAutomatedDiscoveryAccounts"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListClassificationJobs"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListClassificationScopes"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListCustomDataIdentifiers"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListFindings"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListFindingsFilters"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListInvitations"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListManagedDataIdentifiers"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListMembers"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListOrganizationAdminAccounts"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListResourceProfileArtifacts"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListResourceProfileDetections"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListSensitivityInspectionTemplates"
+        },
+        {
+          "target": "com.amazonaws.macie2#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.macie2#PutClassificationExportConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#PutFindingsPublicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#SearchResources"
+        },
+        {
+          "target": "com.amazonaws.macie2#TagResource"
+        },
+        {
+          "target": "com.amazonaws.macie2#TestCustomDataIdentifier"
+        },
+        {
+          "target": "com.amazonaws.macie2#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateAllowList"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateAutomatedDiscoveryConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateClassificationJob"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateClassificationScope"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateFindingsFilter"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateMacieSession"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateMemberSession"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateOrganizationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateResourceProfile"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateResourceProfileDetections"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateRevealConfiguration"
+        },
+        {
+          "target": "com.amazonaws.macie2#UpdateSensitivityInspectionTemplate"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Macie2",

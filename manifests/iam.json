@@ -1,7 +1,530 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.iam#AWSIdentityManagementV20100508": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iam#AddClientIDToOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#AddRoleToInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#AddUserToGroup"
+        },
+        {
+          "target": "com.amazonaws.iam#AttachGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#AttachRolePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#AttachUserPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#ChangePassword"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateAccessKey"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateAccountAlias"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateGroup"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateLoginProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#CreatePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#CreatePolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateRole"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateSAMLProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateServiceLinkedRole"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateServiceSpecificCredential"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.iam#CreateVirtualMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#DeactivateMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteAccessKey"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteAccountAlias"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteAccountPasswordPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteGroup"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteLoginProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#DeletePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DeletePolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteRole"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteRolePermissionsBoundary"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteRolePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteSAMLProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteServerCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteServiceLinkedRole"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteServiceSpecificCredential"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteSigningCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteSSHPublicKey"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteUserPermissionsBoundary"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteUserPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DeleteVirtualMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#DetachGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DetachRolePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DetachUserPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#DisableOrganizationsRootCredentialsManagement"
+        },
+        {
+          "target": "com.amazonaws.iam#DisableOrganizationsRootSessions"
+        },
+        {
+          "target": "com.amazonaws.iam#EnableMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#EnableOrganizationsRootCredentialsManagement"
+        },
+        {
+          "target": "com.amazonaws.iam#EnableOrganizationsRootSessions"
+        },
+        {
+          "target": "com.amazonaws.iam#GenerateCredentialReport"
+        },
+        {
+          "target": "com.amazonaws.iam#GenerateOrganizationsAccessReport"
+        },
+        {
+          "target": "com.amazonaws.iam#GenerateServiceLastAccessedDetails"
+        },
+        {
+          "target": "com.amazonaws.iam#GetAccessKeyLastUsed"
+        },
+        {
+          "target": "com.amazonaws.iam#GetAccountAuthorizationDetails"
+        },
+        {
+          "target": "com.amazonaws.iam#GetAccountPasswordPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#GetAccountSummary"
+        },
+        {
+          "target": "com.amazonaws.iam#GetContextKeysForCustomPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#GetContextKeysForPrincipalPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#GetCredentialReport"
+        },
+        {
+          "target": "com.amazonaws.iam#GetGroup"
+        },
+        {
+          "target": "com.amazonaws.iam#GetGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#GetInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#GetLoginProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#GetMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#GetOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#GetOrganizationsAccessReport"
+        },
+        {
+          "target": "com.amazonaws.iam#GetPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#GetPolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.iam#GetRole"
+        },
+        {
+          "target": "com.amazonaws.iam#GetRolePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#GetSAMLProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#GetServerCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#GetServiceLastAccessedDetails"
+        },
+        {
+          "target": "com.amazonaws.iam#GetServiceLastAccessedDetailsWithEntities"
+        },
+        {
+          "target": "com.amazonaws.iam#GetServiceLinkedRoleDeletionStatus"
+        },
+        {
+          "target": "com.amazonaws.iam#GetSSHPublicKey"
+        },
+        {
+          "target": "com.amazonaws.iam#GetUser"
+        },
+        {
+          "target": "com.amazonaws.iam#GetUserPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#ListAccessKeys"
+        },
+        {
+          "target": "com.amazonaws.iam#ListAccountAliases"
+        },
+        {
+          "target": "com.amazonaws.iam#ListAttachedGroupPolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListAttachedRolePolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListAttachedUserPolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListEntitiesForPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#ListGroupPolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListGroups"
+        },
+        {
+          "target": "com.amazonaws.iam#ListGroupsForUser"
+        },
+        {
+          "target": "com.amazonaws.iam#ListInstanceProfiles"
+        },
+        {
+          "target": "com.amazonaws.iam#ListInstanceProfilesForRole"
+        },
+        {
+          "target": "com.amazonaws.iam#ListInstanceProfileTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListMFADevices"
+        },
+        {
+          "target": "com.amazonaws.iam#ListMFADeviceTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListOpenIDConnectProviders"
+        },
+        {
+          "target": "com.amazonaws.iam#ListOpenIDConnectProviderTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListOrganizationsFeatures"
+        },
+        {
+          "target": "com.amazonaws.iam#ListPolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListPoliciesGrantingServiceAccess"
+        },
+        {
+          "target": "com.amazonaws.iam#ListPolicyTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListPolicyVersions"
+        },
+        {
+          "target": "com.amazonaws.iam#ListRolePolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListRoles"
+        },
+        {
+          "target": "com.amazonaws.iam#ListRoleTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListSAMLProviders"
+        },
+        {
+          "target": "com.amazonaws.iam#ListSAMLProviderTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListServerCertificates"
+        },
+        {
+          "target": "com.amazonaws.iam#ListServerCertificateTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListServiceSpecificCredentials"
+        },
+        {
+          "target": "com.amazonaws.iam#ListSigningCertificates"
+        },
+        {
+          "target": "com.amazonaws.iam#ListSSHPublicKeys"
+        },
+        {
+          "target": "com.amazonaws.iam#ListUserPolicies"
+        },
+        {
+          "target": "com.amazonaws.iam#ListUsers"
+        },
+        {
+          "target": "com.amazonaws.iam#ListUserTags"
+        },
+        {
+          "target": "com.amazonaws.iam#ListVirtualMFADevices"
+        },
+        {
+          "target": "com.amazonaws.iam#PutGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#PutRolePermissionsBoundary"
+        },
+        {
+          "target": "com.amazonaws.iam#PutRolePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#PutUserPermissionsBoundary"
+        },
+        {
+          "target": "com.amazonaws.iam#PutUserPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#RemoveClientIDFromOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#RemoveRoleFromInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#RemoveUserFromGroup"
+        },
+        {
+          "target": "com.amazonaws.iam#ResetServiceSpecificCredential"
+        },
+        {
+          "target": "com.amazonaws.iam#ResyncMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#SetDefaultPolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.iam#SetSecurityTokenServicePreferences"
+        },
+        {
+          "target": "com.amazonaws.iam#SimulateCustomPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#SimulatePrincipalPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#TagInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#TagMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#TagOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#TagPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#TagRole"
+        },
+        {
+          "target": "com.amazonaws.iam#TagSAMLProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#TagServerCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#TagUser"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagMFADevice"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagOpenIDConnectProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagRole"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagSAMLProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagServerCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#UntagUser"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateAccessKey"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateAccountPasswordPolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateAssumeRolePolicy"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateGroup"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateLoginProfile"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateOpenIDConnectProviderThumbprint"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateRole"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateRoleDescription"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateSAMLProvider"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateServerCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateServiceSpecificCredential"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateSigningCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateSSHPublicKey"
+        },
+        {
+          "target": "com.amazonaws.iam#UpdateUser"
+        },
+        {
+          "target": "com.amazonaws.iam#UploadServerCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#UploadSigningCertificate"
+        },
+        {
+          "target": "com.amazonaws.iam#UploadSSHPublicKey"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IAM",

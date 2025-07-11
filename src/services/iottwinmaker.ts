@@ -1,192 +1,356 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSIoTTwinMaker {
   batchPutPropertyValues(
     input: BatchPutPropertyValuesRequest,
   ): Effect.Effect<
     BatchPutPropertyValuesResponse,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   cancelMetadataTransferJob(
     input: CancelMetadataTransferJobRequest,
   ): Effect.Effect<
     CancelMetadataTransferJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createComponentType(
     input: CreateComponentTypeRequest,
   ): Effect.Effect<
     CreateComponentTypeResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createEntity(
     input: CreateEntityRequest,
   ): Effect.Effect<
     CreateEntityResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createMetadataTransferJob(
     input: CreateMetadataTransferJobRequest,
   ): Effect.Effect<
     CreateMetadataTransferJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createScene(
     input: CreateSceneRequest,
   ): Effect.Effect<
     CreateSceneResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createSyncJob(
     input: CreateSyncJobRequest,
   ): Effect.Effect<
     CreateSyncJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createWorkspace(
     input: CreateWorkspaceRequest,
   ): Effect.Effect<
     CreateWorkspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteComponentType(
     input: DeleteComponentTypeRequest,
   ): Effect.Effect<
     DeleteComponentTypeResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteEntity(
     input: DeleteEntityRequest,
   ): Effect.Effect<
     DeleteEntityResponse,
-    InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteScene(
     input: DeleteSceneRequest,
   ): Effect.Effect<
     DeleteSceneResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteSyncJob(
     input: DeleteSyncJobRequest,
   ): Effect.Effect<
     DeleteSyncJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteWorkspace(
     input: DeleteWorkspaceRequest,
   ): Effect.Effect<
     DeleteWorkspaceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   executeQuery(
     input: ExecuteQueryRequest,
   ): Effect.Effect<
     ExecuteQueryResponse,
-    AccessDeniedException | InternalServerException | QueryTimeoutException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | QueryTimeoutException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getComponentType(
     input: GetComponentTypeRequest,
   ): Effect.Effect<
     GetComponentTypeResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEntity(
     input: GetEntityRequest,
   ): Effect.Effect<
     GetEntityResponse,
-    InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getMetadataTransferJob(
     input: GetMetadataTransferJobRequest,
   ): Effect.Effect<
     GetMetadataTransferJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getPricingPlan(
     input: GetPricingPlanRequest,
   ): Effect.Effect<
     GetPricingPlanResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getPropertyValue(
     input: GetPropertyValueRequest,
   ): Effect.Effect<
     GetPropertyValueResponse,
-    AccessDeniedException | ConnectorFailureException | ConnectorTimeoutException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConnectorFailureException
+    | ConnectorTimeoutException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getPropertyValueHistory(
     input: GetPropertyValueHistoryRequest,
   ): Effect.Effect<
     GetPropertyValueHistoryResponse,
-    AccessDeniedException | ConnectorFailureException | ConnectorTimeoutException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConnectorFailureException
+    | ConnectorTimeoutException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getScene(
     input: GetSceneRequest,
   ): Effect.Effect<
     GetSceneResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getSyncJob(
     input: GetSyncJobRequest,
   ): Effect.Effect<
     GetSyncJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getWorkspace(
     input: GetWorkspaceRequest,
   ): Effect.Effect<
     GetWorkspaceResponse,
-    InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listComponentTypes(
-    input: ListComponentTypesRequest,
-  ): Effect.Effect<
-    ListComponentTypesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listComponents(
     input: ListComponentsRequest,
   ): Effect.Effect<
     ListComponentsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listComponentTypes(
+    input: ListComponentTypesRequest,
+  ): Effect.Effect<
+    ListComponentTypesResponse,
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listEntities(
     input: ListEntitiesRequest,
   ): Effect.Effect<
     ListEntitiesResponse,
-    InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listMetadataTransferJobs(
     input: ListMetadataTransferJobsRequest,
   ): Effect.Effect<
     ListMetadataTransferJobsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listProperties(
     input: ListPropertiesRequest,
   ): Effect.Effect<
     ListPropertiesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listScenes(
     input: ListScenesRequest,
   ): Effect.Effect<
     ListScenesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listSyncJobs(
     input: ListSyncJobsRequest,
   ): Effect.Effect<
     ListSyncJobsResponse,
-    AccessDeniedException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listSyncResources(
     input: ListSyncResourcesRequest,
   ): Effect.Effect<
     ListSyncResourcesResponse,
-    AccessDeniedException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
@@ -198,13 +362,20 @@ export interface AWSIoTTwinMaker {
     input: ListWorkspacesRequest,
   ): Effect.Effect<
     ListWorkspacesResponse,
-    InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
@@ -216,31 +387,59 @@ export interface AWSIoTTwinMaker {
     input: UpdateComponentTypeRequest,
   ): Effect.Effect<
     UpdateComponentTypeResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateEntity(
     input: UpdateEntityRequest,
   ): Effect.Effect<
     UpdateEntityResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updatePricingPlan(
     input: UpdatePricingPlanRequest,
   ): Effect.Effect<
     UpdatePricingPlanResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateScene(
     input: UpdateSceneRequest,
   ): Effect.Effect<
     UpdateSceneResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateWorkspace(
     input: UpdateWorkspaceRequest,
   ): Effect.Effect<
     UpdateWorkspaceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -298,13 +497,19 @@ export interface ComponentPropertyGroupRequest {
   propertyNames?: Array<string>;
   updateType?: string;
 }
-export type ComponentPropertyGroupRequests = Record<string, ComponentPropertyGroupRequest>;
+export type ComponentPropertyGroupRequests = Record<
+  string,
+  ComponentPropertyGroupRequest
+>;
 export interface ComponentPropertyGroupResponse {
   groupType: string;
   propertyNames: Array<string>;
   isInherited: boolean;
 }
-export type ComponentPropertyGroupResponses = Record<string, ComponentPropertyGroupResponse>;
+export type ComponentPropertyGroupResponses = Record<
+  string,
+  ComponentPropertyGroupResponse
+>;
 export interface ComponentRequest {
   description?: string;
   componentTypeId?: string;
@@ -367,7 +572,10 @@ export interface CompositeComponentRequest {
   propertyGroups?: Record<string, ComponentPropertyGroupRequest>;
 }
 export type CompositeComponentResponse = Record<string, ComponentSummary>;
-export type CompositeComponentsMapRequest = Record<string, CompositeComponentRequest>;
+export type CompositeComponentsMapRequest = Record<
+  string,
+  CompositeComponentRequest
+>;
 export interface CompositeComponentTypeRequest {
   componentTypeId?: string;
 }
@@ -375,15 +583,24 @@ export interface CompositeComponentTypeResponse {
   componentTypeId?: string;
   isInherited?: boolean;
 }
-export type CompositeComponentTypesRequest = Record<string, CompositeComponentTypeRequest>;
-export type CompositeComponentTypesResponse = Record<string, CompositeComponentTypeResponse>;
+export type CompositeComponentTypesRequest = Record<
+  string,
+  CompositeComponentTypeRequest
+>;
+export type CompositeComponentTypesResponse = Record<
+  string,
+  CompositeComponentTypeResponse
+>;
 export interface CompositeComponentUpdateRequest {
   updateType?: string;
   description?: string;
   propertyUpdates?: Record<string, PropertyRequest>;
   propertyGroupUpdates?: Record<string, ComponentPropertyGroupRequest>;
 }
-export type CompositeComponentUpdatesMapRequest = Record<string, CompositeComponentUpdateRequest>;
+export type CompositeComponentUpdatesMapRequest = Record<
+  string,
+  CompositeComponentUpdateRequest
+>;
 export type Configuration = Record<string, string>;
 export declare class ConflictException extends Data.TaggedError(
   "ConflictException",
@@ -524,8 +741,7 @@ export interface DeleteSceneRequest {
   workspaceId: string;
   sceneId: string;
 }
-export interface DeleteSceneResponse {
-}
+export interface DeleteSceneResponse {}
 export interface DeleteSyncJobRequest {
   workspaceId: string;
   syncSource: string;
@@ -691,8 +907,7 @@ export interface GetMetadataTransferJobResponse {
   status: MetadataTransferJobStatus;
   progress?: MetadataTransferJobProgress;
 }
-export interface GetPricingPlanRequest {
-}
+export interface GetPricingPlanRequest {}
 export interface GetPricingPlanResponse {
   currentPricingPlan: PricingPlan;
   pendingPricingPlan?: PricingPlan;
@@ -802,8 +1017,11 @@ export type IntervalInSeconds = number;
 export interface IotSiteWiseSourceConfiguration {
   filters?: Array<IotSiteWiseSourceConfigurationFilter>;
 }
-export type IotSiteWiseSourceConfigurationFilter = { filterByAssetModel: FilterByAssetModel } | { filterByAsset: FilterByAsset };
-export type IotSiteWiseSourceConfigurationFilters = Array<IotSiteWiseSourceConfigurationFilter>;
+export type IotSiteWiseSourceConfigurationFilter =
+  | { filterByAssetModel: FilterByAssetModel }
+  | { filterByAsset: FilterByAsset };
+export type IotSiteWiseSourceConfigurationFilters =
+  Array<IotSiteWiseSourceConfigurationFilter>;
 export interface IotTwinMakerDestinationConfiguration {
   workspace: string;
 }
@@ -811,8 +1029,11 @@ export interface IotTwinMakerSourceConfiguration {
   workspace: string;
   filters?: Array<IotTwinMakerSourceConfigurationFilter>;
 }
-export type IotTwinMakerSourceConfigurationFilter = { filterByComponentType: FilterByComponentType } | { filterByEntity: FilterByEntity };
-export type IotTwinMakerSourceConfigurationFilters = Array<IotTwinMakerSourceConfigurationFilter>;
+export type IotTwinMakerSourceConfigurationFilter =
+  | { filterByComponentType: FilterByComponentType }
+  | { filterByEntity: FilterByEntity };
+export type IotTwinMakerSourceConfigurationFilters =
+  Array<IotTwinMakerSourceConfigurationFilter>;
 export type LambdaArn = string;
 
 export interface LambdaFunction {
@@ -832,7 +1053,10 @@ export interface ListComponentsResponse {
   componentSummaries: Array<ComponentSummary>;
   nextToken?: string;
 }
-export type ListComponentTypesFilter = { extendsFrom: string } | { namespace: string } | { isAbstract: boolean };
+export type ListComponentTypesFilter =
+  | { extendsFrom: string }
+  | { namespace: string }
+  | { isAbstract: boolean };
 export type ListComponentTypesFilters = Array<ListComponentTypesFilter>;
 export interface ListComponentTypesRequest {
   workspaceId: string;
@@ -846,7 +1070,10 @@ export interface ListComponentTypesResponse {
   nextToken?: string;
   maxResults?: number;
 }
-export type ListEntitiesFilter = { parentEntityId: string } | { componentTypeId: string } | { externalId: string };
+export type ListEntitiesFilter =
+  | { parentEntityId: string }
+  | { componentTypeId: string }
+  | { externalId: string };
 export type ListEntitiesFilters = Array<ListEntitiesFilter>;
 export interface ListEntitiesRequest {
   workspaceId: string;
@@ -858,8 +1085,11 @@ export interface ListEntitiesResponse {
   entitySummaries?: Array<EntitySummary>;
   nextToken?: string;
 }
-export type ListMetadataTransferJobsFilter = { workspaceId: string } | { state: string };
-export type ListMetadataTransferJobsFilters = Array<ListMetadataTransferJobsFilter>;
+export type ListMetadataTransferJobsFilter =
+  | { workspaceId: string }
+  | { state: string };
+export type ListMetadataTransferJobsFilters =
+  Array<ListMetadataTransferJobsFilter>;
 export interface ListMetadataTransferJobsRequest {
   sourceType: string;
   destinationType: string;
@@ -1012,8 +1242,14 @@ export interface PropertyDefinitionResponse {
   configuration?: Record<string, string>;
   displayName?: string;
 }
-export type PropertyDefinitionsRequest = Record<string, PropertyDefinitionRequest>;
-export type PropertyDefinitionsResponse = Record<string, PropertyDefinitionResponse>;
+export type PropertyDefinitionsRequest = Record<
+  string,
+  PropertyDefinitionRequest
+>;
+export type PropertyDefinitionsResponse = Record<
+  string,
+  PropertyDefinitionResponse
+>;
 export type PropertyDisplayName = string;
 
 export interface PropertyFilter {
@@ -1183,7 +1419,11 @@ export interface SyncJobSummary {
   creationDateTime?: Date | string;
   updateDateTime?: Date | string;
 }
-export type SyncResourceFilter = { state: string } | { resourceType: string } | { resourceId: string } | { externalId: string };
+export type SyncResourceFilter =
+  | { state: string }
+  | { resourceType: string }
+  | { resourceId: string }
+  | { externalId: string };
 export type SyncResourceFilters = Array<SyncResourceFilter>;
 export type SyncResourceState = string;
 
@@ -1217,8 +1457,7 @@ export interface TagResourceRequest {
   resourceARN: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -1243,8 +1482,7 @@ export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateComponentTypeRequest {
   workspaceId: string;
   isSingleton?: boolean;
@@ -1616,17 +1854,6 @@ export declare namespace GetWorkspace {
     | CommonAwsError;
 }
 
-export declare namespace ListComponentTypes {
-  export type Input = ListComponentTypesRequest;
-  export type Output = ListComponentTypesResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListComponents {
   export type Input = ListComponentsRequest;
   export type Output = ListComponentsResponse;
@@ -1634,6 +1861,17 @@ export declare namespace ListComponents {
     | AccessDeniedException
     | InternalServerException
     | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError;
+}
+
+export declare namespace ListComponentTypes {
+  export type Input = ListComponentTypesRequest;
+  export type Output = ListComponentTypesResponse;
+  export type Error =
+    | AccessDeniedException
+    | InternalServerException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -1809,4 +2047,3 @@ export declare namespace UpdateWorkspace {
     | ValidationException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.wafv2#APIKey": {
       "type": "string",
@@ -200,6 +229,170 @@
     },
     "com.amazonaws.wafv2#AWSWAF_20190729": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.wafv2#AssociateWebACL"
+        },
+        {
+          "target": "com.amazonaws.wafv2#CheckCapacity"
+        },
+        {
+          "target": "com.amazonaws.wafv2#CreateAPIKey"
+        },
+        {
+          "target": "com.amazonaws.wafv2#CreateIPSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#CreateRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#CreateRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.wafv2#CreateWebACL"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteAPIKey"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteFirewallManagerRuleGroups"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteIPSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeletePermissionPolicy"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DeleteWebACL"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DescribeAllManagedProducts"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DescribeManagedProductsByVendor"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DescribeManagedRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.wafv2#DisassociateWebACL"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GenerateMobileSdkReleaseUrl"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetDecryptedAPIKey"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetIPSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetManagedRuleSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetMobileSdkRelease"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetPermissionPolicy"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetRateBasedStatementManagedKeys"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetSampledRequests"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetWebACL"
+        },
+        {
+          "target": "com.amazonaws.wafv2#GetWebACLForResource"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListAPIKeys"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListAvailableManagedRuleGroups"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListAvailableManagedRuleGroupVersions"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListIPSets"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListLoggingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListManagedRuleSets"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListMobileSdkReleases"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListRegexPatternSets"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListResourcesForWebACL"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListRuleGroups"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.wafv2#ListWebACLs"
+        },
+        {
+          "target": "com.amazonaws.wafv2#PutLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.wafv2#PutManagedRuleSetVersions"
+        },
+        {
+          "target": "com.amazonaws.wafv2#PutPermissionPolicy"
+        },
+        {
+          "target": "com.amazonaws.wafv2#TagResource"
+        },
+        {
+          "target": "com.amazonaws.wafv2#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.wafv2#UpdateIPSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#UpdateManagedRuleSetVersionExpiryDate"
+        },
+        {
+          "target": "com.amazonaws.wafv2#UpdateRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.wafv2#UpdateRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.wafv2#UpdateWebACL"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WAFV2",

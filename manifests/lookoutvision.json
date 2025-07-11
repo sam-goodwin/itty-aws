@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.lookoutvision#AccessDeniedException": {
       "type": "structure",
@@ -2029,6 +2058,74 @@
     },
     "com.amazonaws.lookoutvision#LookoutVisionService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.lookoutvision#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#CreateModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#CreateProject"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DeleteModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DeleteProject"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DescribeModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DescribeModelPackagingJob"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DescribeProject"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#DetectAnomalies"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ListDatasetEntries"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ListModelPackagingJobs"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ListModels"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ListProjects"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#StartModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#StartModelPackagingJob"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#StopModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#TagResource"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.lookoutvision#UpdateDatasetEntries"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "LookoutVision",

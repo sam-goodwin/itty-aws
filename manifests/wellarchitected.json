@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.wellarchitected#AccessDeniedException": {
       "type": "structure",
@@ -9993,6 +10022,224 @@
     },
     "com.amazonaws.wellarchitected#WellArchitectedApiServiceLambda": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.wellarchitected#AssociateLenses"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#AssociateProfiles"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateLensShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateLensVersion"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateMilestone"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateProfile"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateProfileShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateReviewTemplate"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateTemplateShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateWorkload"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#CreateWorkloadShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteLens"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteLensShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteProfile"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteProfileShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteReviewTemplate"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteTemplateShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteWorkload"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DeleteWorkloadShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DisassociateLenses"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#DisassociateProfiles"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ExportLens"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetAnswer"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetConsolidatedReport"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetGlobalSettings"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetLens"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetLensReview"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetLensReviewReport"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetLensVersionDifference"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetMilestone"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetProfile"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetProfileTemplate"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetReviewTemplate"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetReviewTemplateAnswer"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetReviewTemplateLensReview"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#GetWorkload"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ImportLens"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListAnswers"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListCheckDetails"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListCheckSummaries"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListLenses"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListLensReviewImprovements"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListLensReviews"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListLensShares"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListMilestones"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListNotifications"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListProfileNotifications"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListProfiles"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListProfileShares"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListReviewTemplateAnswers"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListReviewTemplates"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListShareInvitations"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListTemplateShares"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListWorkloads"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#ListWorkloadShares"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#TagResource"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateAnswer"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateGlobalSettings"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateIntegration"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateLensReview"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateProfile"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateReviewTemplate"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateReviewTemplateAnswer"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateReviewTemplateLensReview"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateShareInvitation"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateWorkload"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpdateWorkloadShare"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpgradeLensReview"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpgradeProfileVersion"
+        },
+        {
+          "target": "com.amazonaws.wellarchitected#UpgradeReviewTemplateLensReview"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WellArchitected",

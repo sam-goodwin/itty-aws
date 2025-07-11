@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.iotthingsgraph#Arn": {
       "type": "string"
@@ -2057,6 +2086,113 @@
     },
     "com.amazonaws.iotthingsgraph#IotThingsGraphFrontEndService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iotthingsgraph#AssociateEntityToThing"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#CreateFlowTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#CreateSystemInstance"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#CreateSystemTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeleteFlowTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeleteNamespace"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeleteSystemInstance"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeleteSystemTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeploySystemInstance"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeprecateFlowTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DeprecateSystemTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DescribeNamespace"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#DissociateEntityFromThing"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetEntities"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetFlowTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetFlowTemplateRevisions"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetNamespaceDeletionStatus"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetSystemInstance"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetSystemTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetSystemTemplateRevisions"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#GetUploadStatus"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ListFlowExecutionMessages"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#SearchEntities"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#SearchFlowExecutions"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#SearchFlowTemplates"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#SearchSystemInstances"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#SearchSystemTemplates"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#SearchThings"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#TagResource"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#UndeploySystemInstance"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#UpdateFlowTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#UpdateSystemTemplate"
+        },
+        {
+          "target": "com.amazonaws.iotthingsgraph#UploadEntityDefinitions"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IoTThingsGraph",

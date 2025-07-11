@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.clouddirectory#AccessDeniedException": {
       "type": "structure",
@@ -122,6 +151,206 @@
     },
     "com.amazonaws.clouddirectory#AmazonCloudDirectory_20170111": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.clouddirectory#AddFacetToObject"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ApplySchema"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#AttachObject"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#AttachPolicy"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#AttachToIndex"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#AttachTypedLink"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#BatchRead"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#BatchWrite"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CreateDirectory"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CreateFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CreateIndex"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CreateObject"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CreateSchema"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#CreateTypedLinkFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DeleteDirectory"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DeleteFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DeleteObject"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DeleteSchema"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DeleteTypedLinkFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DetachFromIndex"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DetachObject"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DetachPolicy"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DetachTypedLink"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#DisableDirectory"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#EnableDirectory"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetAppliedSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetDirectory"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetLinkAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetObjectAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetObjectInformation"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetSchemaAsJson"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#GetTypedLinkFacetInformation"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListAppliedSchemaArns"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListAttachedIndices"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListDevelopmentSchemaArns"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListDirectories"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListFacetAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListFacetNames"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListIncomingTypedLinks"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListIndex"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListManagedSchemaArns"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListObjectAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListObjectChildren"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListObjectParentPaths"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListObjectParents"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListObjectPolicies"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListOutgoingTypedLinks"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListPolicyAttachments"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListPublishedSchemaArns"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListTypedLinkFacetAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#ListTypedLinkFacetNames"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#LookupPolicy"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#PublishSchema"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#PutSchemaFromJson"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#RemoveFacetFromObject"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#TagResource"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpdateFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpdateLinkAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpdateObjectAttributes"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpdateSchema"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpdateTypedLinkFacet"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpgradeAppliedSchema"
+        },
+        {
+          "target": "com.amazonaws.clouddirectory#UpgradePublishedSchema"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudDirectory",

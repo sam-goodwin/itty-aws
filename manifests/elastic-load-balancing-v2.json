@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.elasticloadbalancingv2#ALPNPolicyNotSupportedException": {
       "type": "structure",
@@ -4047,6 +4076,161 @@
     },
     "com.amazonaws.elasticloadbalancingv2#ElasticLoadBalancing_v10": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AddListenerCertificates"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AddTags"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#AddTrustStoreRevocations"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CreateListener"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CreateLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CreateRule"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CreateTargetGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#CreateTrustStore"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteListener"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteRule"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteSharedTrustStoreAssociation"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteTargetGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeleteTrustStore"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DeregisterTargets"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeAccountLimits"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeListenerAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeListenerCertificates"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeListeners"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancerAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeLoadBalancers"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeRules"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeSSLPolicies"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTags"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroupAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTargetGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTargetHealth"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreAssociations"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTrustStoreRevocations"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#DescribeTrustStores"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#GetTrustStoreCaCertificatesBundle"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#GetTrustStoreRevocationContent"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyIpPools"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyListener"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyListenerAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyLoadBalancerAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyRule"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyTargetGroupAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#ModifyTrustStore"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RegisterTargets"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RemoveListenerCertificates"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RemoveTags"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#RemoveTrustStoreRevocations"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SetIpAddressType"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SetRulePriorities"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SetSecurityGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticloadbalancingv2#SetSubnets"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Elastic Load Balancing v2",

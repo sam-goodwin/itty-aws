@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.forecast#Action": {
       "type": "structure",
@@ -64,6 +93,197 @@
     },
     "com.amazonaws.forecast#AmazonForecast": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.forecast#CreateAutoPredictor"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateDatasetGroup"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateDatasetImportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateExplainability"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateExplainabilityExport"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateForecast"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateForecastExportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateMonitor"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreatePredictor"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreatePredictorBacktestExportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateWhatIfAnalysis"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateWhatIfForecast"
+        },
+        {
+          "target": "com.amazonaws.forecast#CreateWhatIfForecastExport"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteDatasetGroup"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteDatasetImportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteExplainability"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteExplainabilityExport"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteForecast"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteForecastExportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteMonitor"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeletePredictor"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeletePredictorBacktestExportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteResourceTree"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteWhatIfAnalysis"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteWhatIfForecast"
+        },
+        {
+          "target": "com.amazonaws.forecast#DeleteWhatIfForecastExport"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeAutoPredictor"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeDatasetGroup"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeDatasetImportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeExplainability"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeExplainabilityExport"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeForecast"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeForecastExportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeMonitor"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribePredictor"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribePredictorBacktestExportJob"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeWhatIfAnalysis"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeWhatIfForecast"
+        },
+        {
+          "target": "com.amazonaws.forecast#DescribeWhatIfForecastExport"
+        },
+        {
+          "target": "com.amazonaws.forecast#GetAccuracyMetrics"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListDatasetGroups"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListDatasetImportJobs"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListExplainabilities"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListExplainabilityExports"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListForecastExportJobs"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListForecasts"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListMonitorEvaluations"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListMonitors"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListPredictorBacktestExportJobs"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListPredictors"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListWhatIfAnalyses"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListWhatIfForecastExports"
+        },
+        {
+          "target": "com.amazonaws.forecast#ListWhatIfForecasts"
+        },
+        {
+          "target": "com.amazonaws.forecast#ResumeResource"
+        },
+        {
+          "target": "com.amazonaws.forecast#StopResource"
+        },
+        {
+          "target": "com.amazonaws.forecast#TagResource"
+        },
+        {
+          "target": "com.amazonaws.forecast#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.forecast#UpdateDatasetGroup"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "forecast",

@@ -1,78 +1,38 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSChronosService {
-  createSchedule(
-    input: CreateScheduleInput,
-  ): Effect.Effect<
-    CreateScheduleOutput,
-    ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createScheduleGroup(
-    input: CreateScheduleGroupInput,
-  ): Effect.Effect<
-    CreateScheduleGroupOutput,
-    ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteSchedule(
-    input: DeleteScheduleInput,
-  ): Effect.Effect<
-    DeleteScheduleOutput,
-    ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteScheduleGroup(
-    input: DeleteScheduleGroupInput,
-  ): Effect.Effect<
-    DeleteScheduleGroupOutput,
-    ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getSchedule(
-    input: GetScheduleInput,
-  ): Effect.Effect<
-    GetScheduleOutput,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getScheduleGroup(
-    input: GetScheduleGroupInput,
-  ): Effect.Effect<
-    GetScheduleGroupOutput,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listScheduleGroups(
-    input: ListScheduleGroupsInput,
-  ): Effect.Effect<
-    ListScheduleGroupsOutput,
-    InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listSchedules(
-    input: ListSchedulesInput,
-  ): Effect.Effect<
-    ListSchedulesOutput,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
     ListTagsForResourceOutput,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
     TagResourceOutput,
-    ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
     UntagResourceOutput,
-    ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateSchedule(
-    input: UpdateScheduleInput,
-  ): Effect.Effect<
-    UpdateScheduleOutput,
-    ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -141,15 +101,13 @@ export interface DeleteScheduleGroupInput {
   Name: string;
   ClientToken?: string;
 }
-export interface DeleteScheduleGroupOutput {
-}
+export interface DeleteScheduleGroupOutput {}
 export interface DeleteScheduleInput {
   Name: string;
   GroupName?: string;
   ClientToken?: string;
 }
-export interface DeleteScheduleOutput {
-}
+export interface DeleteScheduleOutput {}
 export type Description = string;
 
 export type DetailType = string;
@@ -394,8 +352,7 @@ export interface TagResourceInput {
   ResourceArn: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceOutput {
-}
+export interface TagResourceOutput {}
 export type Tags = Array<Record<string, string>>;
 export type TagValue = string;
 
@@ -433,8 +390,7 @@ export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceOutput {
-}
+export interface UntagResourceOutput {}
 export interface UpdateScheduleInput {
   Name: string;
   GroupName?: string;
@@ -458,98 +414,6 @@ export declare class ValidationException extends Data.TaggedError(
 )<{
   readonly Message: string;
 }> {}
-export declare namespace CreateSchedule {
-  export type Input = CreateScheduleInput;
-  export type Output = CreateScheduleOutput;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateScheduleGroup {
-  export type Input = CreateScheduleGroupInput;
-  export type Output = CreateScheduleGroupOutput;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteSchedule {
-  export type Input = DeleteScheduleInput;
-  export type Output = DeleteScheduleOutput;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteScheduleGroup {
-  export type Input = DeleteScheduleGroupInput;
-  export type Output = DeleteScheduleGroupOutput;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetSchedule {
-  export type Input = GetScheduleInput;
-  export type Output = GetScheduleOutput;
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetScheduleGroup {
-  export type Input = GetScheduleGroupInput;
-  export type Output = GetScheduleGroupOutput;
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListScheduleGroups {
-  export type Input = ListScheduleGroupsInput;
-  export type Output = ListScheduleGroupsOutput;
-  export type Error =
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListSchedules {
-  export type Input = ListSchedulesInput;
-  export type Output = ListSchedulesOutput;
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceInput;
   export type Output = ListTagsForResourceOutput;
@@ -584,16 +448,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateSchedule {
-  export type Input = UpdateScheduleInput;
-  export type Output = UpdateScheduleOutput;
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-

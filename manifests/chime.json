@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.chime#AccessDeniedException": {
       "type": "structure",
@@ -5817,6 +5846,194 @@
     },
     "com.amazonaws.chime#UCBuzzConsoleService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.chime#AssociatePhoneNumberWithUser"
+        },
+        {
+          "target": "com.amazonaws.chime#AssociateSigninDelegateGroupsWithAccount"
+        },
+        {
+          "target": "com.amazonaws.chime#BatchCreateRoomMembership"
+        },
+        {
+          "target": "com.amazonaws.chime#BatchDeletePhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.chime#BatchSuspendUser"
+        },
+        {
+          "target": "com.amazonaws.chime#BatchUnsuspendUser"
+        },
+        {
+          "target": "com.amazonaws.chime#BatchUpdatePhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.chime#BatchUpdateUser"
+        },
+        {
+          "target": "com.amazonaws.chime#CreateAccount"
+        },
+        {
+          "target": "com.amazonaws.chime#CreateBot"
+        },
+        {
+          "target": "com.amazonaws.chime#CreateMeetingDialOut"
+        },
+        {
+          "target": "com.amazonaws.chime#CreatePhoneNumberOrder"
+        },
+        {
+          "target": "com.amazonaws.chime#CreateRoom"
+        },
+        {
+          "target": "com.amazonaws.chime#CreateRoomMembership"
+        },
+        {
+          "target": "com.amazonaws.chime#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.chime#DeleteAccount"
+        },
+        {
+          "target": "com.amazonaws.chime#DeleteEventsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.chime#DeletePhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.chime#DeleteRoom"
+        },
+        {
+          "target": "com.amazonaws.chime#DeleteRoomMembership"
+        },
+        {
+          "target": "com.amazonaws.chime#DisassociatePhoneNumberFromUser"
+        },
+        {
+          "target": "com.amazonaws.chime#DisassociateSigninDelegateGroupsFromAccount"
+        },
+        {
+          "target": "com.amazonaws.chime#GetAccount"
+        },
+        {
+          "target": "com.amazonaws.chime#GetAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#GetBot"
+        },
+        {
+          "target": "com.amazonaws.chime#GetEventsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.chime#GetGlobalSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#GetPhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.chime#GetPhoneNumberOrder"
+        },
+        {
+          "target": "com.amazonaws.chime#GetPhoneNumberSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#GetRetentionSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#GetRoom"
+        },
+        {
+          "target": "com.amazonaws.chime#GetUser"
+        },
+        {
+          "target": "com.amazonaws.chime#GetUserSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#InviteUsers"
+        },
+        {
+          "target": "com.amazonaws.chime#ListAccounts"
+        },
+        {
+          "target": "com.amazonaws.chime#ListBots"
+        },
+        {
+          "target": "com.amazonaws.chime#ListPhoneNumberOrders"
+        },
+        {
+          "target": "com.amazonaws.chime#ListPhoneNumbers"
+        },
+        {
+          "target": "com.amazonaws.chime#ListRoomMemberships"
+        },
+        {
+          "target": "com.amazonaws.chime#ListRooms"
+        },
+        {
+          "target": "com.amazonaws.chime#ListSupportedPhoneNumberCountries"
+        },
+        {
+          "target": "com.amazonaws.chime#ListUsers"
+        },
+        {
+          "target": "com.amazonaws.chime#LogoutUser"
+        },
+        {
+          "target": "com.amazonaws.chime#PutEventsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.chime#PutRetentionSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#RedactConversationMessage"
+        },
+        {
+          "target": "com.amazonaws.chime#RedactRoomMessage"
+        },
+        {
+          "target": "com.amazonaws.chime#RegenerateSecurityToken"
+        },
+        {
+          "target": "com.amazonaws.chime#ResetPersonalPIN"
+        },
+        {
+          "target": "com.amazonaws.chime#RestorePhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.chime#SearchAvailablePhoneNumbers"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateAccount"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateBot"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateGlobalSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdatePhoneNumber"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdatePhoneNumberSettings"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateRoom"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateRoomMembership"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateUser"
+        },
+        {
+          "target": "com.amazonaws.chime#UpdateUserSettings"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Chime",

@@ -1,60 +1,101 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonInteractiveVideoServiceChat {
   createChatToken(
     input: CreateChatTokenRequest,
   ): Effect.Effect<
     CreateChatTokenResponse,
-    AccessDeniedException | PendingVerification | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   createLoggingConfiguration(
     input: CreateLoggingConfigurationRequest,
   ): Effect.Effect<
     CreateLoggingConfigurationResponse,
-    AccessDeniedException | ConflictException | PendingVerification | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createRoom(
     input: CreateRoomRequest,
   ): Effect.Effect<
     CreateRoomResponse,
-    AccessDeniedException | ConflictException | PendingVerification | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteLoggingConfiguration(
     input: DeleteLoggingConfigurationRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | PendingVerification | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteMessage(
     input: DeleteMessageRequest,
   ): Effect.Effect<
     DeleteMessageResponse,
-    AccessDeniedException | PendingVerification | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteRoom(
     input: DeleteRoomRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | PendingVerification | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   disconnectUser(
     input: DisconnectUserRequest,
   ): Effect.Effect<
     DisconnectUserResponse,
-    AccessDeniedException | PendingVerification | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getLoggingConfiguration(
     input: GetLoggingConfigurationRequest,
   ): Effect.Effect<
     GetLoggingConfigurationResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   getRoom(
     input: GetRoomRequest,
   ): Effect.Effect<
     GetRoomResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listLoggingConfigurations(
     input: ListLoggingConfigurationsRequest,
@@ -66,43 +107,69 @@ export interface AmazonInteractiveVideoServiceChat {
     input: ListRoomsRequest,
   ): Effect.Effect<
     ListRoomsResponse,
-    AccessDeniedException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   sendEvent(
     input: SendEventRequest,
   ): Effect.Effect<
     SendEventResponse,
-    AccessDeniedException | PendingVerification | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateLoggingConfiguration(
     input: UpdateLoggingConfigurationRequest,
   ): Effect.Effect<
     UpdateLoggingConfigurationResponse,
-    AccessDeniedException | ConflictException | PendingVerification | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateRoom(
     input: UpdateRoomRequest,
   ): Effect.Effect<
     UpdateRoomResponse,
-    AccessDeniedException | PendingVerification | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | PendingVerification
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -196,14 +263,16 @@ export interface DeleteRoomRequest {
 }
 export type DeliveryStreamName = string;
 
-export type DestinationConfiguration = { s3: S3DestinationConfiguration } | { cloudWatchLogs: CloudWatchLogsDestinationConfiguration } | { firehose: FirehoseDestinationConfiguration };
+export type DestinationConfiguration =
+  | { s3: S3DestinationConfiguration }
+  | { cloudWatchLogs: CloudWatchLogsDestinationConfiguration }
+  | { firehose: FirehoseDestinationConfiguration };
 export interface DisconnectUserRequest {
   roomIdentifier: string;
   userId: string;
   reason?: string;
 }
-export interface DisconnectUserResponse {
-}
+export interface DisconnectUserResponse {}
 export type ErrorMessage = string;
 
 export type EventAttributes = Record<string, string>;
@@ -387,8 +456,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Record<string, string>;
 export type TagValue = string;
 
@@ -406,8 +474,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateLoggingConfigurationRequest {
   identifier: string;
   name?: string;
@@ -648,4 +715,3 @@ export declare namespace UpdateRoom {
     | ValidationException
     | CommonAwsError;
 }
-

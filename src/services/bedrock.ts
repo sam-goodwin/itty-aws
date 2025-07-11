@@ -1,402 +1,760 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonBedrockControlPlaneService {
   batchDeleteEvaluationJob(
     input: BatchDeleteEvaluationJobRequest,
   ): Effect.Effect<
     BatchDeleteEvaluationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createCustomModel(
     input: CreateCustomModelRequest,
   ): Effect.Effect<
     CreateCustomModelResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   createEvaluationJob(
     input: CreateEvaluationJobRequest,
   ): Effect.Effect<
     CreateEvaluationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createFoundationModelAgreement(
     input: CreateFoundationModelAgreementRequest,
   ): Effect.Effect<
     CreateFoundationModelAgreementResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createGuardrail(
     input: CreateGuardrailRequest,
   ): Effect.Effect<
     CreateGuardrailResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   createGuardrailVersion(
     input: CreateGuardrailVersionRequest,
   ): Effect.Effect<
     CreateGuardrailVersionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createInferenceProfile(
     input: CreateInferenceProfileRequest,
   ): Effect.Effect<
     CreateInferenceProfileResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   createMarketplaceModelEndpoint(
     input: CreateMarketplaceModelEndpointRequest,
   ): Effect.Effect<
     CreateMarketplaceModelEndpointResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createModelCopyJob(
     input: CreateModelCopyJobRequest,
   ): Effect.Effect<
     CreateModelCopyJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createModelCustomizationJob(
     input: CreateModelCustomizationJobRequest,
   ): Effect.Effect<
     CreateModelCustomizationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   createModelImportJob(
     input: CreateModelImportJobRequest,
   ): Effect.Effect<
     CreateModelImportJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   createModelInvocationJob(
     input: CreateModelInvocationJobRequest,
   ): Effect.Effect<
     CreateModelInvocationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createPromptRouter(
     input: CreatePromptRouterRequest,
   ): Effect.Effect<
     CreatePromptRouterResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   createProvisionedModelThroughput(
     input: CreateProvisionedModelThroughputRequest,
   ): Effect.Effect<
     CreateProvisionedModelThroughputResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteCustomModel(
     input: DeleteCustomModelRequest,
   ): Effect.Effect<
     DeleteCustomModelResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteFoundationModelAgreement(
     input: DeleteFoundationModelAgreementRequest,
   ): Effect.Effect<
     DeleteFoundationModelAgreementResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteGuardrail(
     input: DeleteGuardrailRequest,
   ): Effect.Effect<
     DeleteGuardrailResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteImportedModel(
     input: DeleteImportedModelRequest,
   ): Effect.Effect<
     DeleteImportedModelResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteInferenceProfile(
     input: DeleteInferenceProfileRequest,
   ): Effect.Effect<
     DeleteInferenceProfileResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteMarketplaceModelEndpoint(
     input: DeleteMarketplaceModelEndpointRequest,
   ): Effect.Effect<
     DeleteMarketplaceModelEndpointResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteModelInvocationLoggingConfiguration(
     input: DeleteModelInvocationLoggingConfigurationRequest,
   ): Effect.Effect<
     DeleteModelInvocationLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deletePromptRouter(
     input: DeletePromptRouterRequest,
   ): Effect.Effect<
     DeletePromptRouterResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteProvisionedModelThroughput(
     input: DeleteProvisionedModelThroughputRequest,
   ): Effect.Effect<
     DeleteProvisionedModelThroughputResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deregisterMarketplaceModelEndpoint(
     input: DeregisterMarketplaceModelEndpointRequest,
   ): Effect.Effect<
     DeregisterMarketplaceModelEndpointResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getCustomModel(
     input: GetCustomModelRequest,
   ): Effect.Effect<
     GetCustomModelResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEvaluationJob(
     input: GetEvaluationJobRequest,
   ): Effect.Effect<
     GetEvaluationJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getFoundationModel(
     input: GetFoundationModelRequest,
   ): Effect.Effect<
     GetFoundationModelResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getFoundationModelAvailability(
     input: GetFoundationModelAvailabilityRequest,
   ): Effect.Effect<
     GetFoundationModelAvailabilityResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getGuardrail(
     input: GetGuardrailRequest,
   ): Effect.Effect<
     GetGuardrailResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getImportedModel(
     input: GetImportedModelRequest,
   ): Effect.Effect<
     GetImportedModelResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getInferenceProfile(
     input: GetInferenceProfileRequest,
   ): Effect.Effect<
     GetInferenceProfileResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getMarketplaceModelEndpoint(
     input: GetMarketplaceModelEndpointRequest,
   ): Effect.Effect<
     GetMarketplaceModelEndpointResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getModelCopyJob(
     input: GetModelCopyJobRequest,
   ): Effect.Effect<
     GetModelCopyJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getModelCustomizationJob(
     input: GetModelCustomizationJobRequest,
   ): Effect.Effect<
     GetModelCustomizationJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getModelImportJob(
     input: GetModelImportJobRequest,
   ): Effect.Effect<
     GetModelImportJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getModelInvocationJob(
     input: GetModelInvocationJobRequest,
   ): Effect.Effect<
     GetModelInvocationJobResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getModelInvocationLoggingConfiguration(
     input: GetModelInvocationLoggingConfigurationRequest,
   ): Effect.Effect<
     GetModelInvocationLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getPromptRouter(
     input: GetPromptRouterRequest,
   ): Effect.Effect<
     GetPromptRouterResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getProvisionedModelThroughput(
     input: GetProvisionedModelThroughputRequest,
   ): Effect.Effect<
     GetProvisionedModelThroughputResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getUseCaseForModelAccess(
     input: GetUseCaseForModelAccessRequest,
   ): Effect.Effect<
     GetUseCaseForModelAccessResponse,
-    InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listCustomModels(
     input: ListCustomModelsRequest,
   ): Effect.Effect<
     ListCustomModelsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listEvaluationJobs(
     input: ListEvaluationJobsRequest,
   ): Effect.Effect<
     ListEvaluationJobsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFoundationModelAgreementOffers(
     input: ListFoundationModelAgreementOffersRequest,
   ): Effect.Effect<
     ListFoundationModelAgreementOffersResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFoundationModels(
     input: ListFoundationModelsRequest,
   ): Effect.Effect<
     ListFoundationModelsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listGuardrails(
     input: ListGuardrailsRequest,
   ): Effect.Effect<
     ListGuardrailsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listImportedModels(
     input: ListImportedModelsRequest,
   ): Effect.Effect<
     ListImportedModelsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listInferenceProfiles(
     input: ListInferenceProfilesRequest,
   ): Effect.Effect<
     ListInferenceProfilesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listMarketplaceModelEndpoints(
     input: ListMarketplaceModelEndpointsRequest,
   ): Effect.Effect<
     ListMarketplaceModelEndpointsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listModelCopyJobs(
     input: ListModelCopyJobsRequest,
   ): Effect.Effect<
     ListModelCopyJobsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listModelCustomizationJobs(
     input: ListModelCustomizationJobsRequest,
   ): Effect.Effect<
     ListModelCustomizationJobsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listModelImportJobs(
     input: ListModelImportJobsRequest,
   ): Effect.Effect<
     ListModelImportJobsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listModelInvocationJobs(
     input: ListModelInvocationJobsRequest,
   ): Effect.Effect<
     ListModelInvocationJobsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listPromptRouters(
     input: ListPromptRoutersRequest,
   ): Effect.Effect<
     ListPromptRoutersResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listProvisionedModelThroughputs(
     input: ListProvisionedModelThroughputsRequest,
   ): Effect.Effect<
     ListProvisionedModelThroughputsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putModelInvocationLoggingConfiguration(
     input: PutModelInvocationLoggingConfigurationRequest,
   ): Effect.Effect<
     PutModelInvocationLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putUseCaseForModelAccess(
     input: PutUseCaseForModelAccessRequest,
   ): Effect.Effect<
     PutUseCaseForModelAccessResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   registerMarketplaceModelEndpoint(
     input: RegisterMarketplaceModelEndpointRequest,
   ): Effect.Effect<
     RegisterMarketplaceModelEndpointResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   stopEvaluationJob(
     input: StopEvaluationJobRequest,
   ): Effect.Effect<
     StopEvaluationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   stopModelCustomizationJob(
     input: StopModelCustomizationJobRequest,
   ): Effect.Effect<
     StopModelCustomizationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   stopModelInvocationJob(
     input: StopModelInvocationJobRequest,
   ): Effect.Effect<
     StopModelInvocationJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | TooManyTagsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateGuardrail(
     input: UpdateGuardrailRequest,
   ): Effect.Effect<
     UpdateGuardrailResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateMarketplaceModelEndpoint(
     input: UpdateMarketplaceModelEndpointRequest,
   ): Effect.Effect<
     UpdateMarketplaceModelEndpointResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateProvisionedModelThroughput(
     input: UpdateProvisionedModelThroughputRequest,
   ): Effect.Effect<
     UpdateProvisionedModelThroughputResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -413,14 +771,21 @@ export type AccountId = string;
 
 export type AcknowledgementFormDataBody = Uint8Array | string;
 
-export type AdditionalModelRequestFields = Record<string, AdditionalModelRequestFieldsValue>;
+export type AdditionalModelRequestFields = Record<
+  string,
+  AdditionalModelRequestFieldsValue
+>;
 export type AdditionalModelRequestFieldsKey = string;
 
 export interface AgreementAvailability {
   status: AgreementStatus;
   errorMessage?: string;
 }
-export type AgreementStatus = "AVAILABLE" | "PENDING" | "NOT_AVAILABLE" | "ERROR";
+export type AgreementStatus =
+  | "AVAILABLE"
+  | "PENDING"
+  | "NOT_AVAILABLE"
+  | "ERROR";
 export type ApplicationType = "MODEL_EVALUATION" | "RAG_EVALUATION";
 export type Arn = string;
 
@@ -435,8 +800,11 @@ export interface AutomatedEvaluationCustomMetricConfig {
   customMetrics: Array<AutomatedEvaluationCustomMetricSource>;
   evaluatorModelConfig: CustomMetricEvaluatorModelConfig;
 }
-export type AutomatedEvaluationCustomMetrics = Array<AutomatedEvaluationCustomMetricSource>;
-export type AutomatedEvaluationCustomMetricSource = { customMetricDefinition: CustomMetricDefinition };
+export type AutomatedEvaluationCustomMetrics =
+  Array<AutomatedEvaluationCustomMetricSource>;
+export type AutomatedEvaluationCustomMetricSource = {
+  customMetricDefinition: CustomMetricDefinition;
+};
 export type BaseModelIdentifier = string;
 
 export interface BatchDeleteEvaluationJobError {
@@ -444,7 +812,8 @@ export interface BatchDeleteEvaluationJobError {
   code: string;
   message?: string;
 }
-export type BatchDeleteEvaluationJobErrors = Array<BatchDeleteEvaluationJobError>;
+export type BatchDeleteEvaluationJobErrors =
+  Array<BatchDeleteEvaluationJobError>;
 export interface BatchDeleteEvaluationJobItem {
   jobIdentifier: string;
   jobStatus: EvaluationJobStatus;
@@ -658,11 +1027,16 @@ export interface CreateProvisionedModelThroughputResponse {
   provisionedModelArn: string;
 }
 export type CustomizationConfig = { distillationConfig: DistillationConfig };
-export type CustomizationType = "FINE_TUNING" | "CONTINUED_PRE_TRAINING" | "DISTILLATION" | "IMPORTED";
+export type CustomizationType =
+  | "FINE_TUNING"
+  | "CONTINUED_PRE_TRAINING"
+  | "DISTILLATION"
+  | "IMPORTED";
 export interface CustomMetricBedrockEvaluatorModel {
   modelIdentifier: string;
 }
-export type CustomMetricBedrockEvaluatorModels = Array<CustomMetricBedrockEvaluatorModel>;
+export type CustomMetricBedrockEvaluatorModels =
+  Array<CustomMetricBedrockEvaluatorModel>;
 export interface CustomMetricDefinition {
   name: string;
   instructions: string;
@@ -702,53 +1076,42 @@ export interface DataProcessingDetails {
 export interface DeleteCustomModelRequest {
   modelIdentifier: string;
 }
-export interface DeleteCustomModelResponse {
-}
+export interface DeleteCustomModelResponse {}
 export interface DeleteFoundationModelAgreementRequest {
   modelId: string;
 }
-export interface DeleteFoundationModelAgreementResponse {
-}
+export interface DeleteFoundationModelAgreementResponse {}
 export interface DeleteGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion?: string;
 }
-export interface DeleteGuardrailResponse {
-}
+export interface DeleteGuardrailResponse {}
 export interface DeleteImportedModelRequest {
   modelIdentifier: string;
 }
-export interface DeleteImportedModelResponse {
-}
+export interface DeleteImportedModelResponse {}
 export interface DeleteInferenceProfileRequest {
   inferenceProfileIdentifier: string;
 }
-export interface DeleteInferenceProfileResponse {
-}
+export interface DeleteInferenceProfileResponse {}
 export interface DeleteMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
-export interface DeleteMarketplaceModelEndpointResponse {
-}
-export interface DeleteModelInvocationLoggingConfigurationRequest {
-}
-export interface DeleteModelInvocationLoggingConfigurationResponse {
-}
+export interface DeleteMarketplaceModelEndpointResponse {}
+export interface DeleteModelInvocationLoggingConfigurationRequest {}
+export interface DeleteModelInvocationLoggingConfigurationResponse {}
 export interface DeletePromptRouterRequest {
   promptRouterArn: string;
 }
-export interface DeletePromptRouterResponse {
-}
+export interface DeletePromptRouterResponse {}
 export interface DeleteProvisionedModelThroughputRequest {
   provisionedModelId: string;
 }
-export interface DeleteProvisionedModelThroughputResponse {
-}
+export interface DeleteProvisionedModelThroughputResponse {}
 export interface DeregisterMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
-export interface DeregisterMarketplaceModelEndpointResponse {
-}
+export interface DeregisterMarketplaceModelEndpointResponse {}
 export interface DimensionalPriceRate {
   dimension?: string;
   price?: string;
@@ -774,7 +1137,9 @@ export interface EvaluationBedrockModel {
 export type EvaluationBedrockModelIdentifier = string;
 
 export type EvaluationBedrockModelIdentifiers = Array<string>;
-export type EvaluationConfig = { automated: AutomatedEvaluationConfig } | { human: HumanEvaluationConfig };
+export type EvaluationConfig =
+  | { automated: AutomatedEvaluationConfig }
+  | { human: HumanEvaluationConfig };
 export interface EvaluationDataset {
   name: string;
   datasetLocation?: EvaluationDatasetLocation;
@@ -785,10 +1150,13 @@ export interface EvaluationDatasetMetricConfig {
   dataset: EvaluationDataset;
   metricNames: Array<string>;
 }
-export type EvaluationDatasetMetricConfigs = Array<EvaluationDatasetMetricConfig>;
+export type EvaluationDatasetMetricConfigs =
+  Array<EvaluationDatasetMetricConfig>;
 export type EvaluationDatasetName = string;
 
-export type EvaluationInferenceConfig = { models: Array<EvaluationModelConfig> } | { ragConfigs: Array<RAGConfig> };
+export type EvaluationInferenceConfig =
+  | { models: Array<EvaluationModelConfig> }
+  | { ragConfigs: Array<RAGConfig> };
 export interface EvaluationInferenceConfigSummary {
   modelConfigSummary?: EvaluationModelConfigSummary;
   ragConfigSummary?: EvaluationRagConfigSummary;
@@ -802,14 +1170,22 @@ export type EvaluationJobIdentifier = string;
 export type EvaluationJobIdentifiers = Array<string>;
 export type EvaluationJobName = string;
 
-export type EvaluationJobStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED" | "DELETING";
+export type EvaluationJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED"
+  | "DELETING";
 export type EvaluationJobType = "HUMAN" | "AUTOMATED";
 export type EvaluationMetricDescription = string;
 
 export type EvaluationMetricName = string;
 
 export type EvaluationMetricNames = Array<string>;
-export type EvaluationModelConfig = { bedrockModel: EvaluationBedrockModel } | { precomputedInferenceSource: EvaluationPrecomputedInferenceSource };
+export type EvaluationModelConfig =
+  | { bedrockModel: EvaluationBedrockModel }
+  | { precomputedInferenceSource: EvaluationPrecomputedInferenceSource };
 export type EvaluationModelConfigs = Array<EvaluationModelConfig>;
 export interface EvaluationModelConfigSummary {
   bedrockModelIdentifiers?: Array<string>;
@@ -826,7 +1202,11 @@ export interface EvaluationPrecomputedInferenceSource {
 export type EvaluationPrecomputedInferenceSourceIdentifier = string;
 
 export type EvaluationPrecomputedInferenceSourceIdentifiers = Array<string>;
-export type EvaluationPrecomputedRagSourceConfig = { retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig } | { retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig };
+export type EvaluationPrecomputedRagSourceConfig =
+  | { retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig }
+  | {
+      retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig;
+    };
 export type EvaluationPrecomputedRagSourceIdentifier = string;
 
 export type EvaluationPrecomputedRagSourceIdentifiers = Array<string>;
@@ -857,9 +1237,16 @@ export interface EvaluationSummary {
   inferenceConfigSummary?: EvaluationInferenceConfigSummary;
   applicationType?: ApplicationType;
 }
-export type EvaluationTaskType = "SUMMARIZATION" | "CLASSIFICATION" | "QUESTION_AND_ANSWER" | "GENERATION" | "CUSTOM";
+export type EvaluationTaskType =
+  | "SUMMARIZATION"
+  | "CLASSIFICATION"
+  | "QUESTION_AND_ANSWER"
+  | "GENERATION"
+  | "CUSTOM";
 export type EvaluationTaskTypes = Array<EvaluationTaskType>;
-export type EvaluatorModelConfig = { bedrockEvaluatorModels: Array<BedrockEvaluatorModel> };
+export type EvaluatorModelConfig = {
+  bedrockEvaluatorModels: Array<BedrockEvaluatorModel>;
+};
 export type EvaluatorModelIdentifier = string;
 
 export type EvaluatorModelIdentifiers = Array<string>;
@@ -873,7 +1260,10 @@ export interface ExternalSourcesGenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   kbInferenceConfig?: KbInferenceConfig;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
 }
 export interface ExternalSourcesRetrieveAndGenerateConfiguration {
   modelArn: string;
@@ -891,7 +1281,12 @@ export interface FilterAttribute {
 }
 export type FilterKey = string;
 
-export type FineTuningJobStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type FineTuningJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export type FoundationModelArn = string;
 
 export interface FoundationModelDetails {
@@ -927,7 +1322,10 @@ export interface GenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   kbInferenceConfig?: KbInferenceConfig;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
 }
 export interface GetCustomModelRequest {
   modelIdentifier: string;
@@ -1128,8 +1526,7 @@ export interface GetModelInvocationJobResponse {
   timeoutDurationInHours?: number;
   jobExpirationTime?: Date | string;
 }
-export interface GetModelInvocationLoggingConfigurationRequest {
-}
+export interface GetModelInvocationLoggingConfigurationRequest {}
 export interface GetModelInvocationLoggingConfigurationResponse {
   loggingConfig?: LoggingConfig;
 }
@@ -1166,8 +1563,7 @@ export interface GetProvisionedModelThroughputResponse {
   commitmentDuration?: CommitmentDuration;
   commitmentExpirationTime?: Date | string;
 }
-export interface GetUseCaseForModelAccessRequest {
-}
+export interface GetUseCaseForModelAccessRequest {}
 export interface GetUseCaseForModelAccessResponse {
   formData: Uint8Array | string;
 }
@@ -1211,7 +1607,13 @@ export interface GuardrailContentFiltersTierConfig {
   tierName: GuardrailContentFiltersTierName;
 }
 export type GuardrailContentFiltersTierName = "CLASSIC" | "STANDARD";
-export type GuardrailContentFilterType = "SEXUAL" | "VIOLENCE" | "HATE" | "INSULTS" | "MISCONDUCT" | "PROMPT_ATTACK";
+export type GuardrailContentFilterType =
+  | "SEXUAL"
+  | "VIOLENCE"
+  | "HATE"
+  | "INSULTS"
+  | "MISCONDUCT"
+  | "PROMPT_ATTACK";
 export interface GuardrailContentPolicy {
   filters?: Array<GuardrailContentFilter>;
   tier?: GuardrailContentFiltersTier;
@@ -1233,8 +1635,10 @@ export interface GuardrailContextualGroundingFilterConfig {
   action?: GuardrailContextualGroundingAction;
   enabled?: boolean;
 }
-export type GuardrailContextualGroundingFilters = Array<GuardrailContextualGroundingFilter>;
-export type GuardrailContextualGroundingFiltersConfig = Array<GuardrailContextualGroundingFilterConfig>;
+export type GuardrailContextualGroundingFilters =
+  Array<GuardrailContextualGroundingFilter>;
+export type GuardrailContextualGroundingFiltersConfig =
+  Array<GuardrailContextualGroundingFilterConfig>;
 export type GuardrailContextualGroundingFilterType = "GROUNDING" | "RELEVANCE";
 export interface GuardrailContextualGroundingPolicy {
   filters: Array<GuardrailContextualGroundingFilter>;
@@ -1268,7 +1672,8 @@ export type GuardrailId = string;
 export type GuardrailIdentifier = string;
 
 export type GuardrailManagedWordLists = Array<GuardrailManagedWords>;
-export type GuardrailManagedWordListsConfig = Array<GuardrailManagedWordsConfig>;
+export type GuardrailManagedWordListsConfig =
+  Array<GuardrailManagedWordsConfig>;
 export interface GuardrailManagedWords {
   type: GuardrailManagedWordsType;
   inputAction?: GuardrailWordAction;
@@ -1308,7 +1713,38 @@ export interface GuardrailPiiEntityConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-export type GuardrailPiiEntityType = "ADDRESS" | "AGE" | "AWS_ACCESS_KEY" | "AWS_SECRET_KEY" | "CA_HEALTH_NUMBER" | "CA_SOCIAL_INSURANCE_NUMBER" | "CREDIT_DEBIT_CARD_CVV" | "CREDIT_DEBIT_CARD_EXPIRY" | "CREDIT_DEBIT_CARD_NUMBER" | "DRIVER_ID" | "EMAIL" | "INTERNATIONAL_BANK_ACCOUNT_NUMBER" | "IP_ADDRESS" | "LICENSE_PLATE" | "MAC_ADDRESS" | "NAME" | "PASSWORD" | "PHONE" | "PIN" | "SWIFT_CODE" | "UK_NATIONAL_HEALTH_SERVICE_NUMBER" | "UK_NATIONAL_INSURANCE_NUMBER" | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER" | "URL" | "USERNAME" | "US_BANK_ACCOUNT_NUMBER" | "US_BANK_ROUTING_NUMBER" | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER" | "US_PASSPORT_NUMBER" | "US_SOCIAL_SECURITY_NUMBER" | "VEHICLE_IDENTIFICATION_NUMBER";
+export type GuardrailPiiEntityType =
+  | "ADDRESS"
+  | "AGE"
+  | "AWS_ACCESS_KEY"
+  | "AWS_SECRET_KEY"
+  | "CA_HEALTH_NUMBER"
+  | "CA_SOCIAL_INSURANCE_NUMBER"
+  | "CREDIT_DEBIT_CARD_CVV"
+  | "CREDIT_DEBIT_CARD_EXPIRY"
+  | "CREDIT_DEBIT_CARD_NUMBER"
+  | "DRIVER_ID"
+  | "EMAIL"
+  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
+  | "IP_ADDRESS"
+  | "LICENSE_PLATE"
+  | "MAC_ADDRESS"
+  | "NAME"
+  | "PASSWORD"
+  | "PHONE"
+  | "PIN"
+  | "SWIFT_CODE"
+  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
+  | "UK_NATIONAL_INSURANCE_NUMBER"
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+  | "URL"
+  | "USERNAME"
+  | "US_BANK_ACCOUNT_NUMBER"
+  | "US_BANK_ROUTING_NUMBER"
+  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
+  | "US_PASSPORT_NUMBER"
+  | "US_SOCIAL_SECURITY_NUMBER"
+  | "VEHICLE_IDENTIFICATION_NUMBER";
 export interface GuardrailRegex {
   name: string;
   description?: string;
@@ -1331,7 +1767,10 @@ export interface GuardrailRegexConfig {
 }
 export type GuardrailRegexes = Array<GuardrailRegex>;
 export type GuardrailRegexesConfig = Array<GuardrailRegexConfig>;
-export type GuardrailSensitiveInformationAction = "BLOCK" | "ANONYMIZE" | "NONE";
+export type GuardrailSensitiveInformationAction =
+  | "BLOCK"
+  | "ANONYMIZE"
+  | "NONE";
 export interface GuardrailSensitiveInformationPolicy {
   piiEntities?: Array<GuardrailPiiEntity>;
   regexes?: Array<GuardrailRegex>;
@@ -1340,7 +1779,13 @@ export interface GuardrailSensitiveInformationPolicyConfig {
   piiEntitiesConfig?: Array<GuardrailPiiEntityConfig>;
   regexesConfig?: Array<GuardrailRegexConfig>;
 }
-export type GuardrailStatus = "CREATING" | "UPDATING" | "VERSIONING" | "READY" | "FAILED" | "DELETING";
+export type GuardrailStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "VERSIONING"
+  | "READY"
+  | "FAILED"
+  | "DELETING";
 export type GuardrailStatusReason = string;
 
 export type GuardrailStatusReasons = Array<string>;
@@ -1520,7 +1965,13 @@ export interface InvocationLogsConfig {
 export type InvocationLogSource = { s3Uri: string };
 export type JobName = string;
 
-export type JobStatusDetails = "IN_PROGRESS" | "COMPLETED" | "STOPPING" | "STOPPED" | "FAILED" | "NOT_STARTED";
+export type JobStatusDetails =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "STOPPING"
+  | "STOPPED"
+  | "FAILED"
+  | "NOT_STARTED";
 export interface KbInferenceConfig {
   textInferenceConfig?: TextInferenceConfig;
 }
@@ -1532,7 +1983,9 @@ export type KmsKeyArn = string;
 
 export type KmsKeyId = string;
 
-export type KnowledgeBaseConfig = { retrieveConfig: RetrieveConfig } | { retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration };
+export type KnowledgeBaseConfig =
+  | { retrieveConfig: RetrieveConfig }
+  | { retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration };
 export type KnowledgeBaseId = string;
 
 export interface KnowledgeBaseRetrievalConfiguration {
@@ -1753,7 +2206,8 @@ export interface MarketplaceModelEndpoint {
   endpointStatus: string;
   endpointStatusMessage?: string;
 }
-export type MarketplaceModelEndpointSummaries = Array<MarketplaceModelEndpointSummary>;
+export type MarketplaceModelEndpointSummaries =
+  Array<MarketplaceModelEndpointSummary>;
 export interface MarketplaceModelEndpointSummary {
   endpointArn: string;
   modelSourceIdentifier: string;
@@ -1803,14 +2257,23 @@ export interface ModelCopyJobSummary {
   failureMessage?: string;
   sourceModelName?: string;
 }
-export type ModelCustomization = "FINE_TUNING" | "CONTINUED_PRE_TRAINING" | "DISTILLATION";
+export type ModelCustomization =
+  | "FINE_TUNING"
+  | "CONTINUED_PRE_TRAINING"
+  | "DISTILLATION";
 export type ModelCustomizationHyperParameters = Record<string, string>;
 export type ModelCustomizationJobArn = string;
 
 export type ModelCustomizationJobIdentifier = string;
 
-export type ModelCustomizationJobStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
-export type ModelCustomizationJobSummaries = Array<ModelCustomizationJobSummary>;
+export type ModelCustomizationJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
+export type ModelCustomizationJobSummaries =
+  Array<ModelCustomizationJobSummary>;
 export interface ModelCustomizationJobSummary {
   jobArn: string;
   baseModelArn: string;
@@ -1852,10 +2315,14 @@ export type ModelInvocationJobArn = string;
 
 export type ModelInvocationJobIdentifier = string;
 
-export type ModelInvocationJobInputDataConfig = { s3InputDataConfig: ModelInvocationJobS3InputDataConfig };
+export type ModelInvocationJobInputDataConfig = {
+  s3InputDataConfig: ModelInvocationJobS3InputDataConfig;
+};
 export type ModelInvocationJobName = string;
 
-export type ModelInvocationJobOutputDataConfig = { s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig };
+export type ModelInvocationJobOutputDataConfig = {
+  s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig;
+};
 export interface ModelInvocationJobS3InputDataConfig {
   s3InputFormat?: S3InputFormat;
   s3Uri: string;
@@ -1866,7 +2333,17 @@ export interface ModelInvocationJobS3OutputDataConfig {
   s3EncryptionKeyId?: string;
   s3BucketOwner?: string;
 }
-export type ModelInvocationJobStatus = "SUBMITTED" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED" | "PARTIALLY_COMPLETED" | "EXPIRED" | "VALIDATING" | "SCHEDULED";
+export type ModelInvocationJobStatus =
+  | "SUBMITTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED"
+  | "PARTIALLY_COMPLETED"
+  | "EXPIRED"
+  | "VALIDATING"
+  | "SCHEDULED";
 export type ModelInvocationJobSummaries = Array<ModelInvocationJobSummary>;
 export interface ModelInvocationJobSummary {
   jobArn: string;
@@ -1962,7 +2439,11 @@ export type ProvisionedModelId = string;
 
 export type ProvisionedModelName = string;
 
-export type ProvisionedModelStatus = "CREATING" | "IN_SERVICE" | "UPDATING" | "FAILED";
+export type ProvisionedModelStatus =
+  | "CREATING"
+  | "IN_SERVICE"
+  | "UPDATING"
+  | "FAILED";
 export type ProvisionedModelSummaries = Array<ProvisionedModelSummary>;
 export interface ProvisionedModelSummary {
   provisionedModelName: string;
@@ -1981,18 +2462,18 @@ export interface ProvisionedModelSummary {
 export interface PutModelInvocationLoggingConfigurationRequest {
   loggingConfig: LoggingConfig;
 }
-export interface PutModelInvocationLoggingConfigurationResponse {
-}
+export interface PutModelInvocationLoggingConfigurationResponse {}
 export interface PutUseCaseForModelAccessRequest {
   formData: Uint8Array | string;
 }
-export interface PutUseCaseForModelAccessResponse {
-}
+export interface PutUseCaseForModelAccessResponse {}
 export interface QueryTransformationConfiguration {
   type: QueryTransformationType;
 }
 export type QueryTransformationType = "QUERY_DECOMPOSITION";
-export type RAGConfig = { knowledgeBaseConfig: KnowledgeBaseConfig } | { precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig };
+export type RAGConfig =
+  | { knowledgeBaseConfig: KnowledgeBaseConfig }
+  | { precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig };
 export type RagConfigs = Array<RAGConfig>;
 export type RAGStopSequences = Array<string>;
 export type RateCard = Array<DimensionalPriceRate>;
@@ -2003,7 +2484,9 @@ export interface RatingScaleItem {
 }
 export type RatingScaleItemDefinition = string;
 
-export type RatingScaleItemValue = { stringValue: string } | { floatValue: number };
+export type RatingScaleItemValue =
+  | { stringValue: string }
+  | { floatValue: number };
 export type RegionAvailability = "AVAILABLE" | "NOT_AVAILABLE";
 export interface RegisterMarketplaceModelEndpointRequest {
   endpointIdentifier: string;
@@ -2016,17 +2499,36 @@ export interface RequestMetadataBaseFilters {
   equals?: Record<string, string>;
   notEquals?: Record<string, string>;
 }
-export type RequestMetadataFilters = { equals: Record<string, string> } | { notEquals: Record<string, string> } | { andAll: Array<RequestMetadataBaseFilters> } | { orAll: Array<RequestMetadataBaseFilters> };
+export type RequestMetadataFilters =
+  | { equals: Record<string, string> }
+  | { notEquals: Record<string, string> }
+  | { andAll: Array<RequestMetadataBaseFilters> }
+  | { orAll: Array<RequestMetadataBaseFilters> };
 export type RequestMetadataFiltersList = Array<RequestMetadataBaseFilters>;
 export type RequestMetadataMap = Record<string, string>;
 export type RerankingMetadataSelectionMode = "SELECTIVE" | "ALL";
-export type RerankingMetadataSelectiveModeConfiguration = { fieldsToInclude: Array<FieldForReranking> } | { fieldsToExclude: Array<FieldForReranking> };
+export type RerankingMetadataSelectiveModeConfiguration =
+  | { fieldsToInclude: Array<FieldForReranking> }
+  | { fieldsToExclude: Array<FieldForReranking> };
 export declare class ResourceNotFoundException extends Data.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export type RetrievalFilter = { equals: FilterAttribute } | { notEquals: FilterAttribute } | { greaterThan: FilterAttribute } | { greaterThanOrEquals: FilterAttribute } | { lessThan: FilterAttribute } | { lessThanOrEquals: FilterAttribute } | { in: FilterAttribute } | { notIn: FilterAttribute } | { startsWith: FilterAttribute } | { listContains: FilterAttribute } | { stringContains: FilterAttribute } | { andAll: Array<RetrievalFilter> } | { orAll: Array<RetrievalFilter> };
+export type RetrievalFilter =
+  | { equals: FilterAttribute }
+  | { notEquals: FilterAttribute }
+  | { greaterThan: FilterAttribute }
+  | { greaterThanOrEquals: FilterAttribute }
+  | { lessThan: FilterAttribute }
+  | { lessThanOrEquals: FilterAttribute }
+  | { in: FilterAttribute }
+  | { notIn: FilterAttribute }
+  | { startsWith: FilterAttribute }
+  | { listContains: FilterAttribute }
+  | { stringContains: FilterAttribute }
+  | { andAll: Array<RetrievalFilter> }
+  | { orAll: Array<RetrievalFilter> };
 export type RetrievalFilterList = Array<RetrievalFilter>;
 export interface RetrieveAndGenerateConfiguration {
   type: RetrieveAndGenerateType;
@@ -2092,18 +2594,15 @@ export interface StatusDetails {
 export interface StopEvaluationJobRequest {
   jobIdentifier: string;
 }
-export interface StopEvaluationJobResponse {
-}
+export interface StopEvaluationJobResponse {}
 export interface StopModelCustomizationJobRequest {
   jobIdentifier: string;
 }
-export interface StopModelCustomizationJobResponse {
-}
+export interface StopModelCustomizationJobResponse {}
 export interface StopModelInvocationJobRequest {
   jobIdentifier: string;
 }
-export interface StopModelInvocationJobResponse {
-}
+export interface StopModelInvocationJobResponse {}
 export type SubnetId = string;
 
 export type SubnetIds = Array<string>;
@@ -2124,8 +2623,7 @@ export interface TagResourceRequest {
   resourceARN: string;
   tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TeacherModelConfig {
@@ -2181,8 +2679,7 @@ export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateGuardrailRequest {
   guardrailIdentifier: string;
   name: string;
@@ -2216,8 +2713,7 @@ export interface UpdateProvisionedModelThroughputRequest {
   desiredProvisionedModelName?: string;
   desiredModelId?: string;
 }
-export interface UpdateProvisionedModelThroughputResponse {
-}
+export interface UpdateProvisionedModelThroughputResponse {}
 export type UsePromptResponse = boolean;
 
 export interface ValidationDataConfig {
@@ -2251,7 +2747,10 @@ export interface VectorSearchBedrockRerankingConfiguration {
 }
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
 }
 export interface VectorSearchRerankingConfiguration {
   type: VectorSearchRerankingConfigurationType;
@@ -3081,4 +3580,3 @@ export declare namespace UpdateProvisionedModelThroughput {
     | ValidationException
     | CommonAwsError;
 }
-

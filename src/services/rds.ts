@@ -1,18 +1,26 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonRDSv19 {
   addRoleToDBCluster(
     input: AddRoleToDBClusterMessage,
   ): Effect.Effect<
     {},
-    DBClusterNotFoundFault | DBClusterRoleAlreadyExistsFault | DBClusterRoleQuotaExceededFault | InvalidDBClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBClusterRoleAlreadyExistsFault
+    | DBClusterRoleQuotaExceededFault
+    | InvalidDBClusterStateFault
+    | CommonAwsError
   >;
   addRoleToDBInstance(
     input: AddRoleToDBInstanceMessage,
   ): Effect.Effect<
     {},
-    DBInstanceNotFoundFault | DBInstanceRoleAlreadyExistsFault | DBInstanceRoleQuotaExceededFault | InvalidDBInstanceStateFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | DBInstanceRoleAlreadyExistsFault
+    | DBInstanceRoleQuotaExceededFault
+    | InvalidDBInstanceStateFault
+    | CommonAwsError
   >;
   addSourceIdentifierToSubscription(
     input: AddSourceIdentifierToSubscriptionMessage,
@@ -24,19 +32,35 @@ export interface AmazonRDSv19 {
     input: AddTagsToResourceMessage,
   ): Effect.Effect<
     {},
-    BlueGreenDeploymentNotFoundFault | DBClusterNotFoundFault | DBInstanceNotFoundFault | DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | DBSnapshotNotFoundFault | DBSnapshotTenantDatabaseNotFoundFault | IntegrationNotFoundFault | TenantDatabaseNotFoundFault | CommonAwsError
+    | BlueGreenDeploymentNotFoundFault
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | DBSnapshotNotFoundFault
+    | DBSnapshotTenantDatabaseNotFoundFault
+    | IntegrationNotFoundFault
+    | TenantDatabaseNotFoundFault
+    | CommonAwsError
   >;
   applyPendingMaintenanceAction(
     input: ApplyPendingMaintenanceActionMessage,
   ): Effect.Effect<
     ApplyPendingMaintenanceActionResult,
-    InvalidDBClusterStateFault | InvalidDBInstanceStateFault | ResourceNotFoundFault | CommonAwsError
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | ResourceNotFoundFault
+    | CommonAwsError
   >;
   authorizeDBSecurityGroupIngress(
     input: AuthorizeDBSecurityGroupIngressMessage,
   ): Effect.Effect<
     AuthorizeDBSecurityGroupIngressResult,
-    AuthorizationAlreadyExistsFault | AuthorizationQuotaExceededFault | DBSecurityGroupNotFoundFault | InvalidDBSecurityGroupStateFault | CommonAwsError
+    | AuthorizationAlreadyExistsFault
+    | AuthorizationQuotaExceededFault
+    | DBSecurityGroupNotFoundFault
+    | InvalidDBSecurityGroupStateFault
+    | CommonAwsError
   >;
   backtrackDBCluster(
     input: BacktrackDBClusterMessage,
@@ -54,211 +78,410 @@ export interface AmazonRDSv19 {
     input: CopyDBClusterParameterGroupMessage,
   ): Effect.Effect<
     CopyDBClusterParameterGroupResult,
-    DBParameterGroupAlreadyExistsFault | DBParameterGroupNotFoundFault | DBParameterGroupQuotaExceededFault | CommonAwsError
+    | DBParameterGroupAlreadyExistsFault
+    | DBParameterGroupNotFoundFault
+    | DBParameterGroupQuotaExceededFault
+    | CommonAwsError
   >;
   copyDBClusterSnapshot(
     input: CopyDBClusterSnapshotMessage,
   ): Effect.Effect<
     CopyDBClusterSnapshotResult,
-    DBClusterSnapshotAlreadyExistsFault | DBClusterSnapshotNotFoundFault | InvalidDBClusterSnapshotStateFault | InvalidDBClusterStateFault | KMSKeyNotAccessibleFault | SnapshotQuotaExceededFault | CommonAwsError
+    | DBClusterSnapshotAlreadyExistsFault
+    | DBClusterSnapshotNotFoundFault
+    | InvalidDBClusterSnapshotStateFault
+    | InvalidDBClusterStateFault
+    | KMSKeyNotAccessibleFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   copyDBParameterGroup(
     input: CopyDBParameterGroupMessage,
   ): Effect.Effect<
     CopyDBParameterGroupResult,
-    DBParameterGroupAlreadyExistsFault | DBParameterGroupNotFoundFault | DBParameterGroupQuotaExceededFault | CommonAwsError
+    | DBParameterGroupAlreadyExistsFault
+    | DBParameterGroupNotFoundFault
+    | DBParameterGroupQuotaExceededFault
+    | CommonAwsError
   >;
   copyDBSnapshot(
     input: CopyDBSnapshotMessage,
   ): Effect.Effect<
     CopyDBSnapshotResult,
-    CustomAvailabilityZoneNotFoundFault | DBSnapshotAlreadyExistsFault | DBSnapshotNotFoundFault | InvalidDBSnapshotStateFault | KMSKeyNotAccessibleFault | SnapshotQuotaExceededFault | CommonAwsError
+    | CustomAvailabilityZoneNotFoundFault
+    | DBSnapshotAlreadyExistsFault
+    | DBSnapshotNotFoundFault
+    | InvalidDBSnapshotStateFault
+    | KMSKeyNotAccessibleFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   copyOptionGroup(
     input: CopyOptionGroupMessage,
   ): Effect.Effect<
     CopyOptionGroupResult,
-    OptionGroupAlreadyExistsFault | OptionGroupNotFoundFault | OptionGroupQuotaExceededFault | CommonAwsError
+    | OptionGroupAlreadyExistsFault
+    | OptionGroupNotFoundFault
+    | OptionGroupQuotaExceededFault
+    | CommonAwsError
   >;
   createBlueGreenDeployment(
     input: CreateBlueGreenDeploymentRequest,
   ): Effect.Effect<
     CreateBlueGreenDeploymentResponse,
-    BlueGreenDeploymentAlreadyExistsFault | DBClusterNotFoundFault | DBClusterParameterGroupNotFoundFault | DBClusterQuotaExceededFault | DBInstanceNotFoundFault | DBParameterGroupNotFoundFault | InstanceQuotaExceededFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | SourceClusterNotSupportedFault | SourceDatabaseNotSupportedFault | CommonAwsError
+    | BlueGreenDeploymentAlreadyExistsFault
+    | DBClusterNotFoundFault
+    | DBClusterParameterGroupNotFoundFault
+    | DBClusterQuotaExceededFault
+    | DBInstanceNotFoundFault
+    | DBParameterGroupNotFoundFault
+    | InstanceQuotaExceededFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | SourceClusterNotSupportedFault
+    | SourceDatabaseNotSupportedFault
+    | CommonAwsError
   >;
   createCustomDBEngineVersion(
     input: CreateCustomDBEngineVersionMessage,
   ): Effect.Effect<
     DBEngineVersion,
-    CreateCustomDBEngineVersionFault | CustomDBEngineVersionAlreadyExistsFault | CustomDBEngineVersionQuotaExceededFault | Ec2ImagePropertiesNotSupportedFault | KMSKeyNotAccessibleFault | CommonAwsError
+    | CreateCustomDBEngineVersionFault
+    | CustomDBEngineVersionAlreadyExistsFault
+    | CustomDBEngineVersionQuotaExceededFault
+    | Ec2ImagePropertiesNotSupportedFault
+    | KMSKeyNotAccessibleFault
+    | CommonAwsError
   >;
   createDBCluster(
     input: CreateDBClusterMessage,
   ): Effect.Effect<
     CreateDBClusterResult,
-    DBClusterAlreadyExistsFault | DBClusterNotFoundFault | DBClusterParameterGroupNotFoundFault | DBClusterQuotaExceededFault | DBInstanceNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | DomainNotFoundFault | GlobalClusterNotFoundFault | InsufficientDBInstanceCapacityFault | InsufficientStorageClusterCapacityFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBSubnetGroupFault | InvalidDBSubnetGroupStateFault | InvalidGlobalClusterStateFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | OptionGroupNotFoundFault | StorageQuotaExceededFault | CommonAwsError
+    | DBClusterAlreadyExistsFault
+    | DBClusterNotFoundFault
+    | DBClusterParameterGroupNotFoundFault
+    | DBClusterQuotaExceededFault
+    | DBInstanceNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | GlobalClusterNotFoundFault
+    | InsufficientDBInstanceCapacityFault
+    | InsufficientStorageClusterCapacityFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBSubnetGroupFault
+    | InvalidDBSubnetGroupStateFault
+    | InvalidGlobalClusterStateFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | OptionGroupNotFoundFault
+    | StorageQuotaExceededFault
+    | CommonAwsError
   >;
   createDBClusterEndpoint(
     input: CreateDBClusterEndpointMessage,
   ): Effect.Effect<
     DBClusterEndpoint,
-    DBClusterEndpointAlreadyExistsFault | DBClusterEndpointQuotaExceededFault | DBClusterNotFoundFault | DBInstanceNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | CommonAwsError
+    | DBClusterEndpointAlreadyExistsFault
+    | DBClusterEndpointQuotaExceededFault
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | CommonAwsError
   >;
   createDBClusterParameterGroup(
     input: CreateDBClusterParameterGroupMessage,
   ): Effect.Effect<
     CreateDBClusterParameterGroupResult,
-    DBParameterGroupAlreadyExistsFault | DBParameterGroupQuotaExceededFault | CommonAwsError
+    | DBParameterGroupAlreadyExistsFault
+    | DBParameterGroupQuotaExceededFault
+    | CommonAwsError
   >;
   createDBClusterSnapshot(
     input: CreateDBClusterSnapshotMessage,
   ): Effect.Effect<
     CreateDBClusterSnapshotResult,
-    DBClusterNotFoundFault | DBClusterSnapshotAlreadyExistsFault | InvalidDBClusterSnapshotStateFault | InvalidDBClusterStateFault | SnapshotQuotaExceededFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBClusterSnapshotAlreadyExistsFault
+    | InvalidDBClusterSnapshotStateFault
+    | InvalidDBClusterStateFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   createDBInstance(
     input: CreateDBInstanceMessage,
   ): Effect.Effect<
     CreateDBInstanceResult,
-    AuthorizationNotFoundFault | BackupPolicyNotFoundFault | CertificateNotFoundFault | DBClusterNotFoundFault | DBInstanceAlreadyExistsFault | DBParameterGroupNotFoundFault | DBSecurityGroupNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InstanceQuotaExceededFault | InsufficientDBInstanceCapacityFault | InvalidDBClusterStateFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | NetworkTypeNotSupported | OptionGroupNotFoundFault | ProvisionedIopsNotAvailableInAZFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | TenantDatabaseQuotaExceededFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | BackupPolicyNotFoundFault
+    | CertificateNotFoundFault
+    | DBClusterNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBParameterGroupNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InstanceQuotaExceededFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidDBClusterStateFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | NetworkTypeNotSupported
+    | OptionGroupNotFoundFault
+    | ProvisionedIopsNotAvailableInAZFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | TenantDatabaseQuotaExceededFault
+    | CommonAwsError
   >;
   createDBInstanceReadReplica(
     input: CreateDBInstanceReadReplicaMessage,
   ): Effect.Effect<
     CreateDBInstanceReadReplicaResult,
-    CertificateNotFoundFault | DBClusterNotFoundFault | DBInstanceAlreadyExistsFault | DBInstanceNotFoundFault | DBParameterGroupNotFoundFault | DBSecurityGroupNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotAllowedFault | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InstanceQuotaExceededFault | InsufficientDBInstanceCapacityFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBSubnetGroupFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | NetworkTypeNotSupported | OptionGroupNotFoundFault | ProvisionedIopsNotAvailableInAZFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | TenantDatabaseQuotaExceededFault | CommonAwsError
+    | CertificateNotFoundFault
+    | DBClusterNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBInstanceNotFoundFault
+    | DBParameterGroupNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotAllowedFault
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InstanceQuotaExceededFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBSubnetGroupFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | NetworkTypeNotSupported
+    | OptionGroupNotFoundFault
+    | ProvisionedIopsNotAvailableInAZFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | TenantDatabaseQuotaExceededFault
+    | CommonAwsError
   >;
   createDBParameterGroup(
     input: CreateDBParameterGroupMessage,
   ): Effect.Effect<
     CreateDBParameterGroupResult,
-    DBParameterGroupAlreadyExistsFault | DBParameterGroupQuotaExceededFault | CommonAwsError
+    | DBParameterGroupAlreadyExistsFault
+    | DBParameterGroupQuotaExceededFault
+    | CommonAwsError
   >;
   createDBProxy(
     input: CreateDBProxyRequest,
   ): Effect.Effect<
     CreateDBProxyResponse,
-    DBProxyAlreadyExistsFault | DBProxyQuotaExceededFault | InvalidSubnet | CommonAwsError
+    | DBProxyAlreadyExistsFault
+    | DBProxyQuotaExceededFault
+    | InvalidSubnet
+    | CommonAwsError
   >;
   createDBProxyEndpoint(
     input: CreateDBProxyEndpointRequest,
   ): Effect.Effect<
     CreateDBProxyEndpointResponse,
-    DBProxyEndpointAlreadyExistsFault | DBProxyEndpointQuotaExceededFault | DBProxyNotFoundFault | InvalidDBProxyStateFault | InvalidSubnet | CommonAwsError
+    | DBProxyEndpointAlreadyExistsFault
+    | DBProxyEndpointQuotaExceededFault
+    | DBProxyNotFoundFault
+    | InvalidDBProxyStateFault
+    | InvalidSubnet
+    | CommonAwsError
   >;
   createDBSecurityGroup(
     input: CreateDBSecurityGroupMessage,
   ): Effect.Effect<
     CreateDBSecurityGroupResult,
-    DBSecurityGroupAlreadyExistsFault | DBSecurityGroupNotSupportedFault | DBSecurityGroupQuotaExceededFault | CommonAwsError
+    | DBSecurityGroupAlreadyExistsFault
+    | DBSecurityGroupNotSupportedFault
+    | DBSecurityGroupQuotaExceededFault
+    | CommonAwsError
   >;
   createDBShardGroup(
     input: CreateDBShardGroupMessage,
   ): Effect.Effect<
     DBShardGroup,
-    DBClusterNotFoundFault | DBShardGroupAlreadyExistsFault | InvalidDBClusterStateFault | InvalidVPCNetworkStateFault | MaxDBShardGroupLimitReached | NetworkTypeNotSupported | UnsupportedDBEngineVersionFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBShardGroupAlreadyExistsFault
+    | InvalidDBClusterStateFault
+    | InvalidVPCNetworkStateFault
+    | MaxDBShardGroupLimitReached
+    | NetworkTypeNotSupported
+    | UnsupportedDBEngineVersionFault
+    | CommonAwsError
   >;
   createDBSnapshot(
     input: CreateDBSnapshotMessage,
   ): Effect.Effect<
     CreateDBSnapshotResult,
-    DBInstanceNotFoundFault | DBSnapshotAlreadyExistsFault | InvalidDBInstanceStateFault | SnapshotQuotaExceededFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | DBSnapshotAlreadyExistsFault
+    | InvalidDBInstanceStateFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   createDBSubnetGroup(
     input: CreateDBSubnetGroupMessage,
   ): Effect.Effect<
     CreateDBSubnetGroupResult,
-    DBSubnetGroupAlreadyExistsFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupQuotaExceededFault | DBSubnetQuotaExceededFault | InvalidSubnet | CommonAwsError
+    | DBSubnetGroupAlreadyExistsFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupQuotaExceededFault
+    | DBSubnetQuotaExceededFault
+    | InvalidSubnet
+    | CommonAwsError
   >;
   createEventSubscription(
     input: CreateEventSubscriptionMessage,
   ): Effect.Effect<
     CreateEventSubscriptionResult,
-    EventSubscriptionQuotaExceededFault | SNSInvalidTopicFault | SNSNoAuthorizationFault | SNSTopicArnNotFoundFault | SourceNotFoundFault | SubscriptionAlreadyExistFault | SubscriptionCategoryNotFoundFault | CommonAwsError
+    | EventSubscriptionQuotaExceededFault
+    | SNSInvalidTopicFault
+    | SNSNoAuthorizationFault
+    | SNSTopicArnNotFoundFault
+    | SourceNotFoundFault
+    | SubscriptionAlreadyExistFault
+    | SubscriptionCategoryNotFoundFault
+    | CommonAwsError
   >;
   createGlobalCluster(
     input: CreateGlobalClusterMessage,
   ): Effect.Effect<
     CreateGlobalClusterResult,
-    DBClusterNotFoundFault | GlobalClusterAlreadyExistsFault | GlobalClusterQuotaExceededFault | InvalidDBClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | GlobalClusterAlreadyExistsFault
+    | GlobalClusterQuotaExceededFault
+    | InvalidDBClusterStateFault
+    | CommonAwsError
   >;
   createIntegration(
     input: CreateIntegrationMessage,
   ): Effect.Effect<
     Integration,
-    DBClusterNotFoundFault | DBInstanceNotFoundFault | IntegrationAlreadyExistsFault | IntegrationConflictOperationFault | IntegrationQuotaExceededFault | KMSKeyNotAccessibleFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | IntegrationAlreadyExistsFault
+    | IntegrationConflictOperationFault
+    | IntegrationQuotaExceededFault
+    | KMSKeyNotAccessibleFault
+    | CommonAwsError
   >;
   createOptionGroup(
     input: CreateOptionGroupMessage,
   ): Effect.Effect<
     CreateOptionGroupResult,
-    OptionGroupAlreadyExistsFault | OptionGroupQuotaExceededFault | CommonAwsError
+    | OptionGroupAlreadyExistsFault
+    | OptionGroupQuotaExceededFault
+    | CommonAwsError
   >;
   createTenantDatabase(
     input: CreateTenantDatabaseMessage,
   ): Effect.Effect<
     CreateTenantDatabaseResult,
-    DBInstanceNotFoundFault | InvalidDBInstanceStateFault | KMSKeyNotAccessibleFault | TenantDatabaseAlreadyExistsFault | TenantDatabaseQuotaExceededFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | InvalidDBInstanceStateFault
+    | KMSKeyNotAccessibleFault
+    | TenantDatabaseAlreadyExistsFault
+    | TenantDatabaseQuotaExceededFault
+    | CommonAwsError
   >;
   deleteBlueGreenDeployment(
     input: DeleteBlueGreenDeploymentRequest,
   ): Effect.Effect<
     DeleteBlueGreenDeploymentResponse,
-    BlueGreenDeploymentNotFoundFault | InvalidBlueGreenDeploymentStateFault | CommonAwsError
+    | BlueGreenDeploymentNotFoundFault
+    | InvalidBlueGreenDeploymentStateFault
+    | CommonAwsError
   >;
   deleteCustomDBEngineVersion(
     input: DeleteCustomDBEngineVersionMessage,
   ): Effect.Effect<
     DBEngineVersion,
-    CustomDBEngineVersionNotFoundFault | InvalidCustomDBEngineVersionStateFault | CommonAwsError
+    | CustomDBEngineVersionNotFoundFault
+    | InvalidCustomDBEngineVersionStateFault
+    | CommonAwsError
   >;
   deleteDBCluster(
     input: DeleteDBClusterMessage,
   ): Effect.Effect<
     DeleteDBClusterResult,
-    DBClusterAutomatedBackupQuotaExceededFault | DBClusterNotFoundFault | DBClusterSnapshotAlreadyExistsFault | InvalidDBClusterSnapshotStateFault | InvalidDBClusterStateFault | SnapshotQuotaExceededFault | CommonAwsError
+    | DBClusterAutomatedBackupQuotaExceededFault
+    | DBClusterNotFoundFault
+    | DBClusterSnapshotAlreadyExistsFault
+    | InvalidDBClusterSnapshotStateFault
+    | InvalidDBClusterStateFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   deleteDBClusterAutomatedBackup(
     input: DeleteDBClusterAutomatedBackupMessage,
   ): Effect.Effect<
     DeleteDBClusterAutomatedBackupResult,
-    DBClusterAutomatedBackupNotFoundFault | InvalidDBClusterAutomatedBackupStateFault | CommonAwsError
+    | DBClusterAutomatedBackupNotFoundFault
+    | InvalidDBClusterAutomatedBackupStateFault
+    | CommonAwsError
   >;
   deleteDBClusterEndpoint(
     input: DeleteDBClusterEndpointMessage,
   ): Effect.Effect<
     DBClusterEndpoint,
-    DBClusterEndpointNotFoundFault | InvalidDBClusterEndpointStateFault | InvalidDBClusterStateFault | CommonAwsError
+    | DBClusterEndpointNotFoundFault
+    | InvalidDBClusterEndpointStateFault
+    | InvalidDBClusterStateFault
+    | CommonAwsError
   >;
   deleteDBClusterParameterGroup(
     input: DeleteDBClusterParameterGroupMessage,
   ): Effect.Effect<
     {},
-    DBParameterGroupNotFoundFault | InvalidDBParameterGroupStateFault | CommonAwsError
+    | DBParameterGroupNotFoundFault
+    | InvalidDBParameterGroupStateFault
+    | CommonAwsError
   >;
   deleteDBClusterSnapshot(
     input: DeleteDBClusterSnapshotMessage,
   ): Effect.Effect<
     DeleteDBClusterSnapshotResult,
-    DBClusterSnapshotNotFoundFault | InvalidDBClusterSnapshotStateFault | CommonAwsError
+    | DBClusterSnapshotNotFoundFault
+    | InvalidDBClusterSnapshotStateFault
+    | CommonAwsError
   >;
   deleteDBInstance(
     input: DeleteDBInstanceMessage,
   ): Effect.Effect<
     DeleteDBInstanceResult,
-    DBInstanceAutomatedBackupQuotaExceededFault | DBInstanceNotFoundFault | DBSnapshotAlreadyExistsFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | SnapshotQuotaExceededFault | CommonAwsError
+    | DBInstanceAutomatedBackupQuotaExceededFault
+    | DBInstanceNotFoundFault
+    | DBSnapshotAlreadyExistsFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   deleteDBInstanceAutomatedBackup(
     input: DeleteDBInstanceAutomatedBackupMessage,
   ): Effect.Effect<
     DeleteDBInstanceAutomatedBackupResult,
-    DBInstanceAutomatedBackupNotFoundFault | InvalidDBInstanceAutomatedBackupStateFault | CommonAwsError
+    | DBInstanceAutomatedBackupNotFoundFault
+    | InvalidDBInstanceAutomatedBackupStateFault
+    | CommonAwsError
   >;
   deleteDBParameterGroup(
     input: DeleteDBParameterGroupMessage,
   ): Effect.Effect<
     {},
-    DBParameterGroupNotFoundFault | InvalidDBParameterGroupStateFault | CommonAwsError
+    | DBParameterGroupNotFoundFault
+    | InvalidDBParameterGroupStateFault
+    | CommonAwsError
   >;
   deleteDBProxy(
     input: DeleteDBProxyRequest,
@@ -270,19 +493,26 @@ export interface AmazonRDSv19 {
     input: DeleteDBProxyEndpointRequest,
   ): Effect.Effect<
     DeleteDBProxyEndpointResponse,
-    DBProxyEndpointNotFoundFault | InvalidDBProxyEndpointStateFault | CommonAwsError
+    | DBProxyEndpointNotFoundFault
+    | InvalidDBProxyEndpointStateFault
+    | CommonAwsError
   >;
   deleteDBSecurityGroup(
     input: DeleteDBSecurityGroupMessage,
   ): Effect.Effect<
     {},
-    DBSecurityGroupNotFoundFault | InvalidDBSecurityGroupStateFault | CommonAwsError
+    | DBSecurityGroupNotFoundFault
+    | InvalidDBSecurityGroupStateFault
+    | CommonAwsError
   >;
   deleteDBShardGroup(
     input: DeleteDBShardGroupMessage,
   ): Effect.Effect<
     DBShardGroup,
-    DBShardGroupNotFoundFault | InvalidDBClusterStateFault | InvalidDBShardGroupStateFault | CommonAwsError
+    | DBShardGroupNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBShardGroupStateFault
+    | CommonAwsError
   >;
   deleteDBSnapshot(
     input: DeleteDBSnapshotMessage,
@@ -294,13 +524,18 @@ export interface AmazonRDSv19 {
     input: DeleteDBSubnetGroupMessage,
   ): Effect.Effect<
     {},
-    DBSubnetGroupNotFoundFault | InvalidDBSubnetGroupStateFault | InvalidDBSubnetStateFault | CommonAwsError
+    | DBSubnetGroupNotFoundFault
+    | InvalidDBSubnetGroupStateFault
+    | InvalidDBSubnetStateFault
+    | CommonAwsError
   >;
   deleteEventSubscription(
     input: DeleteEventSubscriptionMessage,
   ): Effect.Effect<
     DeleteEventSubscriptionResult,
-    InvalidEventSubscriptionStateFault | SubscriptionNotFoundFault | CommonAwsError
+    | InvalidEventSubscriptionStateFault
+    | SubscriptionNotFoundFault
+    | CommonAwsError
   >;
   deleteGlobalCluster(
     input: DeleteGlobalClusterMessage,
@@ -312,7 +547,10 @@ export interface AmazonRDSv19 {
     input: DeleteIntegrationMessage,
   ): Effect.Effect<
     Integration,
-    IntegrationConflictOperationFault | IntegrationNotFoundFault | InvalidIntegrationStateFault | CommonAwsError
+    | IntegrationConflictOperationFault
+    | IntegrationNotFoundFault
+    | InvalidIntegrationStateFault
+    | CommonAwsError
   >;
   deleteOptionGroup(
     input: DeleteOptionGroupMessage,
@@ -324,20 +562,24 @@ export interface AmazonRDSv19 {
     input: DeleteTenantDatabaseMessage,
   ): Effect.Effect<
     DeleteTenantDatabaseResult,
-    DBInstanceNotFoundFault | InvalidDBInstanceStateFault | TenantDatabaseNotFoundFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | InvalidDBInstanceStateFault
+    | TenantDatabaseNotFoundFault
+    | CommonAwsError
   >;
   deregisterDBProxyTargets(
     input: DeregisterDBProxyTargetsRequest,
   ): Effect.Effect<
     DeregisterDBProxyTargetsResponse,
-    DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | DBProxyTargetNotFoundFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | DBProxyTargetNotFoundFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   describeAccountAttributes(
     input: DescribeAccountAttributesMessage,
-  ): Effect.Effect<
-    AccountAttributesMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<AccountAttributesMessage, CommonAwsError>;
   describeBlueGreenDeployments(
     input: DescribeBlueGreenDeploymentsRequest,
   ): Effect.Effect<
@@ -380,6 +622,9 @@ export interface AmazonRDSv19 {
     DBClusterParameterGroupDetails,
     DBParameterGroupNotFoundFault | CommonAwsError
   >;
+  describeDBClusters(
+    input: DescribeDBClustersMessage,
+  ): Effect.Effect<DBClusterMessage, DBClusterNotFoundFault | CommonAwsError>;
   describeDBClusterSnapshotAttributes(
     input: DescribeDBClusterSnapshotAttributesMessage,
   ): Effect.Effect<
@@ -392,18 +637,9 @@ export interface AmazonRDSv19 {
     DBClusterSnapshotMessage,
     DBClusterSnapshotNotFoundFault | CommonAwsError
   >;
-  describeDBClusters(
-    input: DescribeDBClustersMessage,
-  ): Effect.Effect<
-    DBClusterMessage,
-    DBClusterNotFoundFault | CommonAwsError
-  >;
   describeDBEngineVersions(
     input: DescribeDBEngineVersionsMessage,
-  ): Effect.Effect<
-    DBEngineVersionMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DBEngineVersionMessage, CommonAwsError>;
   describeDBInstanceAutomatedBackups(
     input: DescribeDBInstanceAutomatedBackupsMessage,
   ): Effect.Effect<
@@ -412,10 +648,7 @@ export interface AmazonRDSv19 {
   >;
   describeDBInstances(
     input: DescribeDBInstancesMessage,
-  ): Effect.Effect<
-    DBInstanceMessage,
-    DBInstanceNotFoundFault | CommonAwsError
-  >;
+  ): Effect.Effect<DBInstanceMessage, DBInstanceNotFoundFault | CommonAwsError>;
   describeDBLogFiles(
     input: DescribeDBLogFilesMessage,
   ): Effect.Effect<
@@ -424,10 +657,7 @@ export interface AmazonRDSv19 {
   >;
   describeDBMajorEngineVersions(
     input: DescribeDBMajorEngineVersionsRequest,
-  ): Effect.Effect<
-    DescribeDBMajorEngineVersionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeDBMajorEngineVersionsResponse, CommonAwsError>;
   describeDBParameterGroups(
     input: DescribeDBParameterGroupsMessage,
   ): Effect.Effect<
@@ -456,20 +686,24 @@ export interface AmazonRDSv19 {
     input: DescribeDBProxyTargetGroupsRequest,
   ): Effect.Effect<
     DescribeDBProxyTargetGroupsResponse,
-    DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   describeDBProxyTargets(
     input: DescribeDBProxyTargetsRequest,
   ): Effect.Effect<
     DescribeDBProxyTargetsResponse,
-    DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | DBProxyTargetNotFoundFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | DBProxyTargetNotFoundFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   describeDBRecommendations(
     input: DescribeDBRecommendationsMessage,
-  ): Effect.Effect<
-    DBRecommendationsMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DBRecommendationsMessage, CommonAwsError>;
   describeDBSecurityGroups(
     input: DescribeDBSecurityGroupsMessage,
   ): Effect.Effect<
@@ -488,16 +722,13 @@ export interface AmazonRDSv19 {
     DescribeDBSnapshotAttributesResult,
     DBSnapshotNotFoundFault | CommonAwsError
   >;
+  describeDBSnapshots(
+    input: DescribeDBSnapshotsMessage,
+  ): Effect.Effect<DBSnapshotMessage, DBSnapshotNotFoundFault | CommonAwsError>;
   describeDBSnapshotTenantDatabases(
     input: DescribeDBSnapshotTenantDatabasesMessage,
   ): Effect.Effect<
     DBSnapshotTenantDatabasesMessage,
-    DBSnapshotNotFoundFault | CommonAwsError
-  >;
-  describeDBSnapshots(
-    input: DescribeDBSnapshotsMessage,
-  ): Effect.Effect<
-    DBSnapshotMessage,
     DBSnapshotNotFoundFault | CommonAwsError
   >;
   describeDBSubnetGroups(
@@ -514,27 +745,18 @@ export interface AmazonRDSv19 {
   >;
   describeEngineDefaultParameters(
     input: DescribeEngineDefaultParametersMessage,
-  ): Effect.Effect<
-    DescribeEngineDefaultParametersResult,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeEngineDefaultParametersResult, CommonAwsError>;
   describeEventCategories(
     input: DescribeEventCategoriesMessage,
-  ): Effect.Effect<
-    EventCategoriesMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<EventCategoriesMessage, CommonAwsError>;
+  describeEvents(
+    input: DescribeEventsMessage,
+  ): Effect.Effect<EventsMessage, CommonAwsError>;
   describeEventSubscriptions(
     input: DescribeEventSubscriptionsMessage,
   ): Effect.Effect<
     EventSubscriptionsMessage,
     SubscriptionNotFoundFault | CommonAwsError
-  >;
-  describeEvents(
-    input: DescribeEventsMessage,
-  ): Effect.Effect<
-    EventsMessage,
-    CommonAwsError
   >;
   describeExportTasks(
     input: DescribeExportTasksMessage,
@@ -556,22 +778,13 @@ export interface AmazonRDSv19 {
   >;
   describeOptionGroupOptions(
     input: DescribeOptionGroupOptionsMessage,
-  ): Effect.Effect<
-    OptionGroupOptionsMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<OptionGroupOptionsMessage, CommonAwsError>;
   describeOptionGroups(
     input: DescribeOptionGroupsMessage,
-  ): Effect.Effect<
-    OptionGroups,
-    OptionGroupNotFoundFault | CommonAwsError
-  >;
+  ): Effect.Effect<OptionGroups, OptionGroupNotFoundFault | CommonAwsError>;
   describeOrderableDBInstanceOptions(
     input: DescribeOrderableDBInstanceOptionsMessage,
-  ): Effect.Effect<
-    OrderableDBInstanceOptionsMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<OrderableDBInstanceOptionsMessage, CommonAwsError>;
   describePendingMaintenanceActions(
     input: DescribePendingMaintenanceActionsMessage,
   ): Effect.Effect<
@@ -592,10 +805,7 @@ export interface AmazonRDSv19 {
   >;
   describeSourceRegions(
     input: DescribeSourceRegionsMessage,
-  ): Effect.Effect<
-    SourceRegionMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<SourceRegionMessage, CommonAwsError>;
   describeTenantDatabases(
     input: DescribeTenantDatabasesMessage,
   ): Effect.Effect<
@@ -618,7 +828,10 @@ export interface AmazonRDSv19 {
     input: DownloadDBLogFilePortionMessage,
   ): Effect.Effect<
     DownloadDBLogFilePortionDetails,
-    DBInstanceNotFoundFault | DBInstanceNotReadyFault | DBLogFileNotFoundFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | DBInstanceNotReadyFault
+    | DBLogFileNotFoundFault
+    | CommonAwsError
   >;
   enableHttpEndpoint(
     input: EnableHttpEndpointRequest,
@@ -630,25 +843,44 @@ export interface AmazonRDSv19 {
     input: FailoverDBClusterMessage,
   ): Effect.Effect<
     FailoverDBClusterResult,
-    DBClusterNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | CommonAwsError
   >;
   failoverGlobalCluster(
     input: FailoverGlobalClusterMessage,
   ): Effect.Effect<
     FailoverGlobalClusterResult,
-    DBClusterNotFoundFault | GlobalClusterNotFoundFault | InvalidDBClusterStateFault | InvalidGlobalClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | GlobalClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidGlobalClusterStateFault
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceMessage,
   ): Effect.Effect<
     TagListMessage,
-    BlueGreenDeploymentNotFoundFault | DBClusterNotFoundFault | DBInstanceNotFoundFault | DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | DBSnapshotNotFoundFault | DBSnapshotTenantDatabaseNotFoundFault | IntegrationNotFoundFault | TenantDatabaseNotFoundFault | CommonAwsError
+    | BlueGreenDeploymentNotFoundFault
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | DBSnapshotNotFoundFault
+    | DBSnapshotTenantDatabaseNotFoundFault
+    | IntegrationNotFoundFault
+    | TenantDatabaseNotFoundFault
+    | CommonAwsError
   >;
   modifyActivityStream(
     input: ModifyActivityStreamRequest,
   ): Effect.Effect<
     ModifyActivityStreamResponse,
-    DBInstanceNotFoundFault | InvalidDBInstanceStateFault | ResourceNotFoundFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | InvalidDBInstanceStateFault
+    | ResourceNotFoundFault
+    | CommonAwsError
   >;
   modifyCertificates(
     input: ModifyCertificatesMessage,
@@ -660,79 +892,142 @@ export interface AmazonRDSv19 {
     input: ModifyCurrentDBClusterCapacityMessage,
   ): Effect.Effect<
     DBClusterCapacityInfo,
-    DBClusterNotFoundFault | InvalidDBClusterCapacityFault | InvalidDBClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | InvalidDBClusterCapacityFault
+    | InvalidDBClusterStateFault
+    | CommonAwsError
   >;
   modifyCustomDBEngineVersion(
     input: ModifyCustomDBEngineVersionMessage,
   ): Effect.Effect<
     DBEngineVersion,
-    CustomDBEngineVersionNotFoundFault | InvalidCustomDBEngineVersionStateFault | CommonAwsError
+    | CustomDBEngineVersionNotFoundFault
+    | InvalidCustomDBEngineVersionStateFault
+    | CommonAwsError
   >;
   modifyDBCluster(
     input: ModifyDBClusterMessage,
   ): Effect.Effect<
     ModifyDBClusterResult,
-    DBClusterAlreadyExistsFault | DBClusterNotFoundFault | DBClusterParameterGroupNotFoundFault | DBInstanceAlreadyExistsFault | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBSecurityGroupStateFault | InvalidDBSubnetGroupStateFault | InvalidSubnet | InvalidVPCNetworkStateFault | OptionGroupNotFoundFault | StorageQuotaExceededFault | StorageTypeNotAvailableFault | CommonAwsError
+    | DBClusterAlreadyExistsFault
+    | DBClusterNotFoundFault
+    | DBClusterParameterGroupNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBSecurityGroupStateFault
+    | InvalidDBSubnetGroupStateFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | OptionGroupNotFoundFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotAvailableFault
+    | CommonAwsError
   >;
   modifyDBClusterEndpoint(
     input: ModifyDBClusterEndpointMessage,
   ): Effect.Effect<
     DBClusterEndpoint,
-    DBClusterEndpointNotFoundFault | DBInstanceNotFoundFault | InvalidDBClusterEndpointStateFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | CommonAwsError
+    | DBClusterEndpointNotFoundFault
+    | DBInstanceNotFoundFault
+    | InvalidDBClusterEndpointStateFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | CommonAwsError
   >;
   modifyDBClusterParameterGroup(
     input: ModifyDBClusterParameterGroupMessage,
   ): Effect.Effect<
     DBClusterParameterGroupNameMessage,
-    DBParameterGroupNotFoundFault | InvalidDBParameterGroupStateFault | CommonAwsError
+    | DBParameterGroupNotFoundFault
+    | InvalidDBParameterGroupStateFault
+    | CommonAwsError
   >;
   modifyDBClusterSnapshotAttribute(
     input: ModifyDBClusterSnapshotAttributeMessage,
   ): Effect.Effect<
     ModifyDBClusterSnapshotAttributeResult,
-    DBClusterSnapshotNotFoundFault | InvalidDBClusterSnapshotStateFault | SharedSnapshotQuotaExceededFault | CommonAwsError
+    | DBClusterSnapshotNotFoundFault
+    | InvalidDBClusterSnapshotStateFault
+    | SharedSnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   modifyDBInstance(
     input: ModifyDBInstanceMessage,
   ): Effect.Effect<
     ModifyDBInstanceResult,
-    AuthorizationNotFoundFault | BackupPolicyNotFoundFault | CertificateNotFoundFault | DBInstanceAlreadyExistsFault | DBInstanceNotFoundFault | DBParameterGroupNotFoundFault | DBSecurityGroupNotFoundFault | DBUpgradeDependencyFailureFault | DomainNotFoundFault | InsufficientDBInstanceCapacityFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBSecurityGroupStateFault | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | NetworkTypeNotSupported | OptionGroupNotFoundFault | ProvisionedIopsNotAvailableInAZFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | TenantDatabaseQuotaExceededFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | BackupPolicyNotFoundFault
+    | CertificateNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBInstanceNotFoundFault
+    | DBParameterGroupNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | DBUpgradeDependencyFailureFault
+    | DomainNotFoundFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBSecurityGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | NetworkTypeNotSupported
+    | OptionGroupNotFoundFault
+    | ProvisionedIopsNotAvailableInAZFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | TenantDatabaseQuotaExceededFault
+    | CommonAwsError
   >;
   modifyDBParameterGroup(
     input: ModifyDBParameterGroupMessage,
   ): Effect.Effect<
     DBParameterGroupNameMessage,
-    DBParameterGroupNotFoundFault | InvalidDBParameterGroupStateFault | CommonAwsError
+    | DBParameterGroupNotFoundFault
+    | InvalidDBParameterGroupStateFault
+    | CommonAwsError
   >;
   modifyDBProxy(
     input: ModifyDBProxyRequest,
   ): Effect.Effect<
     ModifyDBProxyResponse,
-    DBProxyAlreadyExistsFault | DBProxyNotFoundFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBProxyAlreadyExistsFault
+    | DBProxyNotFoundFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   modifyDBProxyEndpoint(
     input: ModifyDBProxyEndpointRequest,
   ): Effect.Effect<
     ModifyDBProxyEndpointResponse,
-    DBProxyEndpointAlreadyExistsFault | DBProxyEndpointNotFoundFault | InvalidDBProxyEndpointStateFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBProxyEndpointAlreadyExistsFault
+    | DBProxyEndpointNotFoundFault
+    | InvalidDBProxyEndpointStateFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   modifyDBProxyTargetGroup(
     input: ModifyDBProxyTargetGroupRequest,
   ): Effect.Effect<
     ModifyDBProxyTargetGroupResponse,
-    DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   modifyDBRecommendation(
     input: ModifyDBRecommendationMessage,
-  ): Effect.Effect<
-    DBRecommendationMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DBRecommendationMessage, CommonAwsError>;
   modifyDBShardGroup(
     input: ModifyDBShardGroupMessage,
   ): Effect.Effect<
     DBShardGroup,
-    DBShardGroupAlreadyExistsFault | DBShardGroupNotFoundFault | InvalidDBClusterStateFault | CommonAwsError
+    | DBShardGroupAlreadyExistsFault
+    | DBShardGroupNotFoundFault
+    | InvalidDBClusterStateFault
+    | CommonAwsError
   >;
   modifyDBSnapshot(
     input: ModifyDBSnapshotMessage,
@@ -744,31 +1039,53 @@ export interface AmazonRDSv19 {
     input: ModifyDBSnapshotAttributeMessage,
   ): Effect.Effect<
     ModifyDBSnapshotAttributeResult,
-    DBSnapshotNotFoundFault | InvalidDBSnapshotStateFault | SharedSnapshotQuotaExceededFault | CommonAwsError
+    | DBSnapshotNotFoundFault
+    | InvalidDBSnapshotStateFault
+    | SharedSnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   modifyDBSubnetGroup(
     input: ModifyDBSubnetGroupMessage,
   ): Effect.Effect<
     ModifyDBSubnetGroupResult,
-    DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | DBSubnetQuotaExceededFault | InvalidSubnet | SubnetAlreadyInUse | CommonAwsError
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | DBSubnetQuotaExceededFault
+    | InvalidSubnet
+    | SubnetAlreadyInUse
+    | CommonAwsError
   >;
   modifyEventSubscription(
     input: ModifyEventSubscriptionMessage,
   ): Effect.Effect<
     ModifyEventSubscriptionResult,
-    EventSubscriptionQuotaExceededFault | SNSInvalidTopicFault | SNSNoAuthorizationFault | SNSTopicArnNotFoundFault | SubscriptionCategoryNotFoundFault | SubscriptionNotFoundFault | CommonAwsError
+    | EventSubscriptionQuotaExceededFault
+    | SNSInvalidTopicFault
+    | SNSNoAuthorizationFault
+    | SNSTopicArnNotFoundFault
+    | SubscriptionCategoryNotFoundFault
+    | SubscriptionNotFoundFault
+    | CommonAwsError
   >;
   modifyGlobalCluster(
     input: ModifyGlobalClusterMessage,
   ): Effect.Effect<
     ModifyGlobalClusterResult,
-    GlobalClusterAlreadyExistsFault | GlobalClusterNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidGlobalClusterStateFault | CommonAwsError
+    | GlobalClusterAlreadyExistsFault
+    | GlobalClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidGlobalClusterStateFault
+    | CommonAwsError
   >;
   modifyIntegration(
     input: ModifyIntegrationMessage,
   ): Effect.Effect<
     Integration,
-    IntegrationConflictOperationFault | IntegrationNotFoundFault | InvalidIntegrationStateFault | CommonAwsError
+    | IntegrationConflictOperationFault
+    | IntegrationNotFoundFault
+    | InvalidIntegrationStateFault
+    | CommonAwsError
   >;
   modifyOptionGroup(
     input: ModifyOptionGroupMessage,
@@ -780,7 +1097,12 @@ export interface AmazonRDSv19 {
     input: ModifyTenantDatabaseMessage,
   ): Effect.Effect<
     ModifyTenantDatabaseResult,
-    DBInstanceNotFoundFault | InvalidDBInstanceStateFault | KMSKeyNotAccessibleFault | TenantDatabaseAlreadyExistsFault | TenantDatabaseNotFoundFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | InvalidDBInstanceStateFault
+    | KMSKeyNotAccessibleFault
+    | TenantDatabaseAlreadyExistsFault
+    | TenantDatabaseNotFoundFault
+    | CommonAwsError
   >;
   promoteReadReplica(
     input: PromoteReadReplicaMessage,
@@ -798,13 +1120,19 @@ export interface AmazonRDSv19 {
     input: PurchaseReservedDBInstancesOfferingMessage,
   ): Effect.Effect<
     PurchaseReservedDBInstancesOfferingResult,
-    ReservedDBInstanceAlreadyExistsFault | ReservedDBInstanceQuotaExceededFault | ReservedDBInstancesOfferingNotFoundFault | CommonAwsError
+    | ReservedDBInstanceAlreadyExistsFault
+    | ReservedDBInstanceQuotaExceededFault
+    | ReservedDBInstancesOfferingNotFoundFault
+    | CommonAwsError
   >;
   rebootDBCluster(
     input: RebootDBClusterMessage,
   ): Effect.Effect<
     RebootDBClusterResult,
-    DBClusterNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | CommonAwsError
   >;
   rebootDBInstance(
     input: RebootDBInstanceMessage,
@@ -822,25 +1150,43 @@ export interface AmazonRDSv19 {
     input: RegisterDBProxyTargetsRequest,
   ): Effect.Effect<
     RegisterDBProxyTargetsResponse,
-    DBClusterNotFoundFault | DBInstanceNotFoundFault | DBProxyNotFoundFault | DBProxyTargetAlreadyRegisteredFault | DBProxyTargetGroupNotFoundFault | InsufficientAvailableIPsInSubnetFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBProxyStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | DBProxyNotFoundFault
+    | DBProxyTargetAlreadyRegisteredFault
+    | DBProxyTargetGroupNotFoundFault
+    | InsufficientAvailableIPsInSubnetFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBProxyStateFault
+    | CommonAwsError
   >;
   removeFromGlobalCluster(
     input: RemoveFromGlobalClusterMessage,
   ): Effect.Effect<
     RemoveFromGlobalClusterResult,
-    DBClusterNotFoundFault | GlobalClusterNotFoundFault | InvalidGlobalClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | GlobalClusterNotFoundFault
+    | InvalidGlobalClusterStateFault
+    | CommonAwsError
   >;
   removeRoleFromDBCluster(
     input: RemoveRoleFromDBClusterMessage,
   ): Effect.Effect<
     {},
-    DBClusterNotFoundFault | DBClusterRoleNotFoundFault | InvalidDBClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBClusterRoleNotFoundFault
+    | InvalidDBClusterStateFault
+    | CommonAwsError
   >;
   removeRoleFromDBInstance(
     input: RemoveRoleFromDBInstanceMessage,
   ): Effect.Effect<
     {},
-    DBInstanceNotFoundFault | DBInstanceRoleNotFoundFault | InvalidDBInstanceStateFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | DBInstanceRoleNotFoundFault
+    | InvalidDBInstanceStateFault
+    | CommonAwsError
   >;
   removeSourceIdentifierFromSubscription(
     input: RemoveSourceIdentifierFromSubscriptionMessage,
@@ -852,109 +1198,298 @@ export interface AmazonRDSv19 {
     input: RemoveTagsFromResourceMessage,
   ): Effect.Effect<
     {},
-    BlueGreenDeploymentNotFoundFault | DBClusterNotFoundFault | DBInstanceNotFoundFault | DBProxyNotFoundFault | DBProxyTargetGroupNotFoundFault | DBSnapshotNotFoundFault | DBSnapshotTenantDatabaseNotFoundFault | IntegrationNotFoundFault | TenantDatabaseNotFoundFault | CommonAwsError
+    | BlueGreenDeploymentNotFoundFault
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | DBProxyNotFoundFault
+    | DBProxyTargetGroupNotFoundFault
+    | DBSnapshotNotFoundFault
+    | DBSnapshotTenantDatabaseNotFoundFault
+    | IntegrationNotFoundFault
+    | TenantDatabaseNotFoundFault
+    | CommonAwsError
   >;
   resetDBClusterParameterGroup(
     input: ResetDBClusterParameterGroupMessage,
   ): Effect.Effect<
     DBClusterParameterGroupNameMessage,
-    DBParameterGroupNotFoundFault | InvalidDBParameterGroupStateFault | CommonAwsError
+    | DBParameterGroupNotFoundFault
+    | InvalidDBParameterGroupStateFault
+    | CommonAwsError
   >;
   resetDBParameterGroup(
     input: ResetDBParameterGroupMessage,
   ): Effect.Effect<
     DBParameterGroupNameMessage,
-    DBParameterGroupNotFoundFault | InvalidDBParameterGroupStateFault | CommonAwsError
+    | DBParameterGroupNotFoundFault
+    | InvalidDBParameterGroupStateFault
+    | CommonAwsError
   >;
   restoreDBClusterFromS3(
     input: RestoreDBClusterFromS3Message,
   ): Effect.Effect<
     RestoreDBClusterFromS3Result,
-    DBClusterAlreadyExistsFault | DBClusterNotFoundFault | DBClusterParameterGroupNotFoundFault | DBClusterQuotaExceededFault | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InsufficientStorageClusterCapacityFault | InvalidDBClusterStateFault | InvalidDBSubnetGroupStateFault | InvalidS3BucketFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | CommonAwsError
+    | DBClusterAlreadyExistsFault
+    | DBClusterNotFoundFault
+    | DBClusterParameterGroupNotFoundFault
+    | DBClusterQuotaExceededFault
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InsufficientStorageClusterCapacityFault
+    | InvalidDBClusterStateFault
+    | InvalidDBSubnetGroupStateFault
+    | InvalidS3BucketFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | CommonAwsError
   >;
   restoreDBClusterFromSnapshot(
     input: RestoreDBClusterFromSnapshotMessage,
   ): Effect.Effect<
     RestoreDBClusterFromSnapshotResult,
-    DBClusterAlreadyExistsFault | DBClusterParameterGroupNotFoundFault | DBClusterQuotaExceededFault | DBClusterSnapshotNotFoundFault | DBSnapshotNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InsufficientDBClusterCapacityFault | InsufficientDBInstanceCapacityFault | InsufficientStorageClusterCapacityFault | InvalidDBClusterSnapshotStateFault | InvalidDBInstanceStateFault | InvalidDBSnapshotStateFault | InvalidRestoreFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | OptionGroupNotFoundFault | StorageQuotaExceededFault | CommonAwsError
+    | DBClusterAlreadyExistsFault
+    | DBClusterParameterGroupNotFoundFault
+    | DBClusterQuotaExceededFault
+    | DBClusterSnapshotNotFoundFault
+    | DBSnapshotNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InsufficientDBClusterCapacityFault
+    | InsufficientDBInstanceCapacityFault
+    | InsufficientStorageClusterCapacityFault
+    | InvalidDBClusterSnapshotStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBSnapshotStateFault
+    | InvalidRestoreFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | OptionGroupNotFoundFault
+    | StorageQuotaExceededFault
+    | CommonAwsError
   >;
   restoreDBClusterToPointInTime(
     input: RestoreDBClusterToPointInTimeMessage,
   ): Effect.Effect<
     RestoreDBClusterToPointInTimeResult,
-    DBClusterAlreadyExistsFault | DBClusterAutomatedBackupNotFoundFault | DBClusterNotFoundFault | DBClusterParameterGroupNotFoundFault | DBClusterQuotaExceededFault | DBClusterSnapshotNotFoundFault | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InsufficientDBClusterCapacityFault | InsufficientDBInstanceCapacityFault | InsufficientStorageClusterCapacityFault | InvalidDBClusterSnapshotStateFault | InvalidDBClusterStateFault | InvalidDBSnapshotStateFault | InvalidRestoreFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | OptionGroupNotFoundFault | StorageQuotaExceededFault | CommonAwsError
+    | DBClusterAlreadyExistsFault
+    | DBClusterAutomatedBackupNotFoundFault
+    | DBClusterNotFoundFault
+    | DBClusterParameterGroupNotFoundFault
+    | DBClusterQuotaExceededFault
+    | DBClusterSnapshotNotFoundFault
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InsufficientDBClusterCapacityFault
+    | InsufficientDBInstanceCapacityFault
+    | InsufficientStorageClusterCapacityFault
+    | InvalidDBClusterSnapshotStateFault
+    | InvalidDBClusterStateFault
+    | InvalidDBSnapshotStateFault
+    | InvalidRestoreFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | OptionGroupNotFoundFault
+    | StorageQuotaExceededFault
+    | CommonAwsError
   >;
   restoreDBInstanceFromDBSnapshot(
     input: RestoreDBInstanceFromDBSnapshotMessage,
   ): Effect.Effect<
     RestoreDBInstanceFromDBSnapshotResult,
-    AuthorizationNotFoundFault | BackupPolicyNotFoundFault | CertificateNotFoundFault | DBClusterSnapshotNotFoundFault | DBInstanceAlreadyExistsFault | DBParameterGroupNotFoundFault | DBSecurityGroupNotFoundFault | DBSnapshotNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InstanceQuotaExceededFault | InsufficientDBInstanceCapacityFault | InvalidDBSnapshotStateFault | InvalidRestoreFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | NetworkTypeNotSupported | OptionGroupNotFoundFault | ProvisionedIopsNotAvailableInAZFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | TenantDatabaseQuotaExceededFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | BackupPolicyNotFoundFault
+    | CertificateNotFoundFault
+    | DBClusterSnapshotNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBParameterGroupNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | DBSnapshotNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InstanceQuotaExceededFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidDBSnapshotStateFault
+    | InvalidRestoreFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | NetworkTypeNotSupported
+    | OptionGroupNotFoundFault
+    | ProvisionedIopsNotAvailableInAZFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | TenantDatabaseQuotaExceededFault
+    | CommonAwsError
   >;
   restoreDBInstanceFromS3(
     input: RestoreDBInstanceFromS3Message,
   ): Effect.Effect<
     RestoreDBInstanceFromS3Result,
-    AuthorizationNotFoundFault | BackupPolicyNotFoundFault | CertificateNotFoundFault | DBInstanceAlreadyExistsFault | DBParameterGroupNotFoundFault | DBSecurityGroupNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | InstanceQuotaExceededFault | InsufficientDBInstanceCapacityFault | InvalidS3BucketFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | NetworkTypeNotSupported | OptionGroupNotFoundFault | ProvisionedIopsNotAvailableInAZFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | BackupPolicyNotFoundFault
+    | CertificateNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBParameterGroupNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | InstanceQuotaExceededFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidS3BucketFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | NetworkTypeNotSupported
+    | OptionGroupNotFoundFault
+    | ProvisionedIopsNotAvailableInAZFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | CommonAwsError
   >;
   restoreDBInstanceToPointInTime(
     input: RestoreDBInstanceToPointInTimeMessage,
   ): Effect.Effect<
     RestoreDBInstanceToPointInTimeResult,
-    AuthorizationNotFoundFault | BackupPolicyNotFoundFault | CertificateNotFoundFault | DBInstanceAlreadyExistsFault | DBInstanceAutomatedBackupNotFoundFault | DBInstanceNotFoundFault | DBParameterGroupNotFoundFault | DBSecurityGroupNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | DomainNotFoundFault | InstanceQuotaExceededFault | InsufficientDBInstanceCapacityFault | InvalidDBInstanceStateFault | InvalidRestoreFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | NetworkTypeNotSupported | OptionGroupNotFoundFault | PointInTimeRestoreNotEnabledFault | ProvisionedIopsNotAvailableInAZFault | StorageQuotaExceededFault | StorageTypeNotSupportedFault | TenantDatabaseQuotaExceededFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | BackupPolicyNotFoundFault
+    | CertificateNotFoundFault
+    | DBInstanceAlreadyExistsFault
+    | DBInstanceAutomatedBackupNotFoundFault
+    | DBInstanceNotFoundFault
+    | DBParameterGroupNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | DomainNotFoundFault
+    | InstanceQuotaExceededFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidDBInstanceStateFault
+    | InvalidRestoreFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | NetworkTypeNotSupported
+    | OptionGroupNotFoundFault
+    | PointInTimeRestoreNotEnabledFault
+    | ProvisionedIopsNotAvailableInAZFault
+    | StorageQuotaExceededFault
+    | StorageTypeNotSupportedFault
+    | TenantDatabaseQuotaExceededFault
+    | CommonAwsError
   >;
   revokeDBSecurityGroupIngress(
     input: RevokeDBSecurityGroupIngressMessage,
   ): Effect.Effect<
     RevokeDBSecurityGroupIngressResult,
-    AuthorizationNotFoundFault | DBSecurityGroupNotFoundFault | InvalidDBSecurityGroupStateFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | DBSecurityGroupNotFoundFault
+    | InvalidDBSecurityGroupStateFault
+    | CommonAwsError
   >;
   startActivityStream(
     input: StartActivityStreamRequest,
   ): Effect.Effect<
     StartActivityStreamResponse,
-    DBClusterNotFoundFault | DBInstanceNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | KMSKeyNotAccessibleFault | ResourceNotFoundFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | KMSKeyNotAccessibleFault
+    | ResourceNotFoundFault
+    | CommonAwsError
   >;
   startDBCluster(
     input: StartDBClusterMessage,
   ): Effect.Effect<
     StartDBClusterResult,
-    DBClusterNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBShardGroupStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBShardGroupStateFault
+    | CommonAwsError
   >;
   startDBInstance(
     input: StartDBInstanceMessage,
   ): Effect.Effect<
     StartDBInstanceResult,
-    AuthorizationNotFoundFault | DBClusterNotFoundFault | DBInstanceNotFoundFault | DBSubnetGroupDoesNotCoverEnoughAZs | DBSubnetGroupNotFoundFault | InsufficientDBInstanceCapacityFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidSubnet | InvalidVPCNetworkStateFault | KMSKeyNotAccessibleFault | CommonAwsError
+    | AuthorizationNotFoundFault
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | DBSubnetGroupDoesNotCoverEnoughAZs
+    | DBSubnetGroupNotFoundFault
+    | InsufficientDBInstanceCapacityFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidSubnet
+    | InvalidVPCNetworkStateFault
+    | KMSKeyNotAccessibleFault
+    | CommonAwsError
   >;
   startDBInstanceAutomatedBackupsReplication(
     input: StartDBInstanceAutomatedBackupsReplicationMessage,
   ): Effect.Effect<
     StartDBInstanceAutomatedBackupsReplicationResult,
-    DBInstanceAutomatedBackupQuotaExceededFault | DBInstanceNotFoundFault | InvalidDBInstanceStateFault | KMSKeyNotAccessibleFault | StorageTypeNotSupportedFault | CommonAwsError
+    | DBInstanceAutomatedBackupQuotaExceededFault
+    | DBInstanceNotFoundFault
+    | InvalidDBInstanceStateFault
+    | KMSKeyNotAccessibleFault
+    | StorageTypeNotSupportedFault
+    | CommonAwsError
   >;
   startExportTask(
     input: StartExportTaskMessage,
   ): Effect.Effect<
     ExportTask,
-    DBClusterNotFoundFault | DBClusterSnapshotNotFoundFault | DBSnapshotNotFoundFault | ExportTaskAlreadyExistsFault | IamRoleMissingPermissionsFault | IamRoleNotFoundFault | InvalidExportOnlyFault | InvalidExportSourceStateFault | InvalidS3BucketFault | KMSKeyNotAccessibleFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBClusterSnapshotNotFoundFault
+    | DBSnapshotNotFoundFault
+    | ExportTaskAlreadyExistsFault
+    | IamRoleMissingPermissionsFault
+    | IamRoleNotFoundFault
+    | InvalidExportOnlyFault
+    | InvalidExportSourceStateFault
+    | InvalidS3BucketFault
+    | KMSKeyNotAccessibleFault
+    | CommonAwsError
   >;
   stopActivityStream(
     input: StopActivityStreamRequest,
   ): Effect.Effect<
     StopActivityStreamResponse,
-    DBClusterNotFoundFault | DBInstanceNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | ResourceNotFoundFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | DBInstanceNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | ResourceNotFoundFault
+    | CommonAwsError
   >;
   stopDBCluster(
     input: StopDBClusterMessage,
   ): Effect.Effect<
     StopDBClusterResult,
-    DBClusterNotFoundFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | InvalidDBShardGroupStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | InvalidDBShardGroupStateFault
+    | CommonAwsError
   >;
   stopDBInstance(
     input: StopDBInstanceMessage,
   ): Effect.Effect<
     StopDBInstanceResult,
-    DBInstanceNotFoundFault | DBSnapshotAlreadyExistsFault | InvalidDBClusterStateFault | InvalidDBInstanceStateFault | SnapshotQuotaExceededFault | CommonAwsError
+    | DBInstanceNotFoundFault
+    | DBSnapshotAlreadyExistsFault
+    | InvalidDBClusterStateFault
+    | InvalidDBInstanceStateFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   stopDBInstanceAutomatedBackupsReplication(
     input: StopDBInstanceAutomatedBackupsReplicationMessage,
@@ -966,13 +1501,19 @@ export interface AmazonRDSv19 {
     input: SwitchoverBlueGreenDeploymentRequest,
   ): Effect.Effect<
     SwitchoverBlueGreenDeploymentResponse,
-    BlueGreenDeploymentNotFoundFault | InvalidBlueGreenDeploymentStateFault | CommonAwsError
+    | BlueGreenDeploymentNotFoundFault
+    | InvalidBlueGreenDeploymentStateFault
+    | CommonAwsError
   >;
   switchoverGlobalCluster(
     input: SwitchoverGlobalClusterMessage,
   ): Effect.Effect<
     SwitchoverGlobalClusterResult,
-    DBClusterNotFoundFault | GlobalClusterNotFoundFault | InvalidDBClusterStateFault | InvalidGlobalClusterStateFault | CommonAwsError
+    | DBClusterNotFoundFault
+    | GlobalClusterNotFoundFault
+    | InvalidDBClusterStateFault
+    | InvalidGlobalClusterStateFault
+    | CommonAwsError
   >;
   switchoverReadReplica(
     input: SwitchoverReadReplicaMessage,
@@ -995,8 +1536,16 @@ export interface AccountQuota {
 export type AccountQuotaList = Array<AccountQuota>;
 export type ActivityStreamMode = "sync" | "async";
 export type ActivityStreamModeList = Array<string>;
-export type ActivityStreamPolicyStatus = "locked" | "unlocked" | "locking_policy" | "unlocking_policy";
-export type ActivityStreamStatus = "stopped" | "starting" | "started" | "stopping";
+export type ActivityStreamPolicyStatus =
+  | "locked"
+  | "unlocked"
+  | "locking_policy"
+  | "unlocking_policy";
+export type ActivityStreamStatus =
+  | "stopped"
+  | "starting"
+  | "started"
+  | "stopping";
 export interface AddRoleToDBClusterMessage {
   DBClusterIdentifier: string;
   RoleArn: string;
@@ -1160,7 +1709,12 @@ export interface CharacterSet {
   CharacterSetName?: string;
   CharacterSetDescription?: string;
 }
-export type ClientPasswordAuthType = "MYSQL_NATIVE_PASSWORD" | "MYSQL_CACHING_SHA2_PASSWORD" | "POSTGRES_SCRAM_SHA_256" | "POSTGRES_MD5" | "SQL_SERVER_AUTHENTICATION";
+export type ClientPasswordAuthType =
+  | "MYSQL_NATIVE_PASSWORD"
+  | "MYSQL_CACHING_SHA2_PASSWORD"
+  | "POSTGRES_SCRAM_SHA_256"
+  | "POSTGRES_MD5"
+  | "SQL_SERVER_AUTHENTICATION";
 export interface CloudwatchLogsExportConfiguration {
   EnableLogTypes?: Array<string>;
   DisableLogTypes?: Array<string>;
@@ -1653,7 +2207,10 @@ export type CustomEngineName = string;
 
 export type CustomEngineVersion = string;
 
-export type CustomEngineVersionStatus = "available" | "inactive" | "inactive_except_restore";
+export type CustomEngineVersionStatus =
+  | "available"
+  | "inactive"
+  | "inactive_except_restore";
 export type DatabaseArn = string;
 
 export type DatabaseInsightsMode = "STANDARD" | "ADVANCED";
@@ -2167,7 +2724,8 @@ export declare class DBInstanceAutomatedBackupQuotaExceededFault extends Data.Ta
 export interface DBInstanceAutomatedBackupsReplication {
   DBInstanceAutomatedBackupsArn?: string;
 }
-export type DBInstanceAutomatedBackupsReplicationList = Array<DBInstanceAutomatedBackupsReplication>;
+export type DBInstanceAutomatedBackupsReplicationList =
+  Array<DBInstanceAutomatedBackupsReplication>;
 export type DBInstanceList = Array<DBInstance>;
 export interface DBInstanceMessage {
   Marker?: string;
@@ -2313,7 +2871,13 @@ export declare class DBProxyEndpointQuotaExceededFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type DBProxyEndpointStatus = "AVAILABLE" | "MODIFYING" | "INCOMPATIBLE_NETWORK" | "INSUFFICIENT_RESOURCE_LIMITS" | "CREATING" | "DELETING";
+export type DBProxyEndpointStatus =
+  | "AVAILABLE"
+  | "MODIFYING"
+  | "INCOMPATIBLE_NETWORK"
+  | "INSUFFICIENT_RESOURCE_LIMITS"
+  | "CREATING"
+  | "DELETING";
 export type DBProxyEndpointTargetRole = "READ_WRITE" | "READ_ONLY";
 export type DBProxyList = Array<DBProxy>;
 export type DBProxyName = string;
@@ -2328,7 +2892,16 @@ export declare class DBProxyQuotaExceededFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type DBProxyStatus = "AVAILABLE" | "MODIFYING" | "INCOMPATIBLE_NETWORK" | "INSUFFICIENT_RESOURCE_LIMITS" | "CREATING" | "DELETING" | "SUSPENDED" | "SUSPENDING" | "REACTIVATING";
+export type DBProxyStatus =
+  | "AVAILABLE"
+  | "MODIFYING"
+  | "INCOMPATIBLE_NETWORK"
+  | "INSUFFICIENT_RESOURCE_LIMITS"
+  | "CREATING"
+  | "DELETING"
+  | "SUSPENDED"
+  | "SUSPENDING"
+  | "REACTIVATING";
 export interface DBProxyTarget {
   TargetArn?: string;
   Endpoint?: string;
@@ -2714,10 +3287,8 @@ export interface DeregisterDBProxyTargetsRequest {
   DBInstanceIdentifiers?: Array<string>;
   DBClusterIdentifiers?: Array<string>;
 }
-export interface DeregisterDBProxyTargetsResponse {
-}
-export interface DescribeAccountAttributesMessage {
-}
+export interface DeregisterDBProxyTargetsResponse {}
+export interface DescribeAccountAttributesMessage {}
 export interface DescribeBlueGreenDeploymentsRequest {
   BlueGreenDeploymentIdentifier?: string;
   Filters?: Array<Filter>;
@@ -3322,7 +3893,9 @@ export interface GlobalClusterMember {
   SynchronizationStatus?: GlobalClusterMemberSynchronizationStatus;
 }
 export type GlobalClusterMemberList = Array<GlobalClusterMember>;
-export type GlobalClusterMemberSynchronizationStatus = "CONNECTED" | "PENDING_RESYNC";
+export type GlobalClusterMemberSynchronizationStatus =
+  | "CONNECTED"
+  | "PENDING_RESYNC";
 export declare class GlobalClusterNotFoundFault extends Data.TaggedError(
   "GlobalClusterNotFoundFault",
 )<{
@@ -3425,7 +3998,14 @@ export declare class IntegrationQuotaExceededFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type IntegrationStatus = "CREATING" | "ACTIVE" | "MODIFYING" | "FAILED" | "DELETING" | "SYNCING" | "NEEDS_ATTENTION";
+export type IntegrationStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "MODIFYING"
+  | "FAILED"
+  | "DELETING"
+  | "SYNCING"
+  | "NEEDS_ATTENTION";
 export declare class InvalidBlueGreenDeploymentStateFault extends Data.TaggedError(
   "InvalidBlueGreenDeploymentStateFault",
 )<{
@@ -3566,9 +4146,7 @@ export declare class InvalidS3BucketFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSubnet extends Data.TaggedError(
-  "InvalidSubnet",
-)<{
+export declare class InvalidSubnet extends Data.TaggedError("InvalidSubnet")<{
   readonly message?: string;
 }> {}
 export declare class InvalidVPCNetworkStateFault extends Data.TaggedError(
@@ -3592,17 +4170,32 @@ export declare class KMSKeyNotAccessibleFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type LifecycleSupportName = "OPEN_SOURCE_RDS_STANDARD_SUPPORT" | "OPEN_SOURCE_RDS_EXTENDED_SUPPORT";
+export type LifecycleSupportName =
+  | "OPEN_SOURCE_RDS_STANDARD_SUPPORT"
+  | "OPEN_SOURCE_RDS_EXTENDED_SUPPORT";
 export interface LimitlessDatabase {
   Status?: LimitlessDatabaseStatus;
   MinRequiredACU?: number;
 }
-export type LimitlessDatabaseStatus = "ACTIVE" | "NOT_IN_USE" | "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING" | "MODIFYING_MAX_CAPACITY" | "ERROR";
+export type LimitlessDatabaseStatus =
+  | "ACTIVE"
+  | "NOT_IN_USE"
+  | "ENABLED"
+  | "DISABLED"
+  | "ENABLING"
+  | "DISABLING"
+  | "MODIFYING_MAX_CAPACITY"
+  | "ERROR";
 export interface ListTagsForResourceMessage {
   ResourceName: string;
   Filters?: Array<Filter>;
 }
-export type LocalWriteForwardingStatus = "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING" | "REQUESTED";
+export type LocalWriteForwardingStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "ENABLING"
+  | "DISABLING"
+  | "REQUESTED";
 export type LogTypeList = Array<string>;
 export type Long = number;
 
@@ -3643,7 +4236,8 @@ export interface MinimumEngineVersionPerAllowedValue {
   AllowedValue?: string;
   MinimumEngineVersion?: string;
 }
-export type MinimumEngineVersionPerAllowedValueList = Array<MinimumEngineVersionPerAllowedValue>;
+export type MinimumEngineVersionPerAllowedValueList =
+  Array<MinimumEngineVersionPerAllowedValue>;
 export interface ModifyActivityStreamRequest {
   ResourceArn?: string;
   AuditPolicyState?: AuditPolicyState;
@@ -4122,7 +4716,8 @@ export interface PendingMaintenanceAction {
   Description?: string;
 }
 export type PendingMaintenanceActionDetails = Array<PendingMaintenanceAction>;
-export type PendingMaintenanceActions = Array<ResourcePendingMaintenanceActions>;
+export type PendingMaintenanceActions =
+  Array<ResourcePendingMaintenanceActions>;
 export interface PendingMaintenanceActionsMessage {
   PendingMaintenanceActions?: Array<ResourcePendingMaintenanceActions>;
   Marker?: string;
@@ -4353,7 +4948,8 @@ export interface ReservedDBInstancesOffering {
   MultiAZ?: boolean;
   RecurringCharges?: Array<RecurringCharge>;
 }
-export type ReservedDBInstancesOfferingList = Array<ReservedDBInstancesOffering>;
+export type ReservedDBInstancesOfferingList =
+  Array<ReservedDBInstancesOffering>;
 export interface ReservedDBInstancesOfferingMessage {
   Marker?: string;
   ReservedDBInstancesOfferings?: Array<ReservedDBInstancesOffering>;
@@ -4766,7 +5362,16 @@ export interface SourceRegionMessage {
   Marker?: string;
   SourceRegions?: Array<SourceRegion>;
 }
-export type SourceType = "db_instance" | "db_parameter_group" | "db_security_group" | "db_snapshot" | "db_cluster" | "db_cluster_snapshot" | "custom_engine_version" | "db_proxy" | "blue_green_deployment";
+export type SourceType =
+  | "db_instance"
+  | "db_parameter_group"
+  | "db_security_group"
+  | "db_snapshot"
+  | "db_cluster"
+  | "db_cluster_snapshot"
+  | "custom_engine_version"
+  | "db_proxy"
+  | "blue_green_deployment";
 export interface StartActivityStreamRequest {
   ResourceArn: string;
   Mode: ActivityStreamMode;
@@ -4946,13 +5551,21 @@ export interface TargetHealth {
   Reason?: TargetHealthReason;
   Description?: string;
 }
-export type TargetHealthReason = "UNREACHABLE" | "CONNECTION_FAILED" | "AUTH_FAILURE" | "PENDING_PROXY_CAPACITY" | "INVALID_REPLICATION_STATE";
+export type TargetHealthReason =
+  | "UNREACHABLE"
+  | "CONNECTION_FAILED"
+  | "AUTH_FAILURE"
+  | "PENDING_PROXY_CAPACITY"
+  | "INVALID_REPLICATION_STATE";
 export type TargetList = Array<DBProxyTarget>;
 export type TargetRole = "READ_WRITE" | "READ_ONLY" | "UNKNOWN";
 export type TargetState = "registering" | "available" | "unavailable";
 export type TargetStorageType = string;
 
-export type TargetType = "RDS_INSTANCE" | "RDS_SERVERLESS_ENDPOINT" | "TRACKED_CLUSTER";
+export type TargetType =
+  | "RDS_INSTANCE"
+  | "RDS_SERVERLESS_ENDPOINT"
+  | "TRACKED_CLUSTER";
 export interface TenantDatabase {
   TenantDatabaseCreateTime?: Date | string;
   DBInstanceIdentifier?: string;
@@ -5057,7 +5670,12 @@ export interface VpcSecurityGroupMembership {
   Status?: string;
 }
 export type VpcSecurityGroupMembershipList = Array<VpcSecurityGroupMembership>;
-export type WriteForwardingStatus = "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING" | "UNKNOWN";
+export type WriteForwardingStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "ENABLING"
+  | "DISABLING"
+  | "UNKNOWN";
 export declare namespace AddRoleToDBCluster {
   export type Input = AddRoleToDBClusterMessage;
   export type Output = {};
@@ -5705,32 +6323,25 @@ export declare namespace DeregisterDBProxyTargets {
 export declare namespace DescribeAccountAttributes {
   export type Input = DescribeAccountAttributesMessage;
   export type Output = AccountAttributesMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeBlueGreenDeployments {
   export type Input = DescribeBlueGreenDeploymentsRequest;
   export type Output = DescribeBlueGreenDeploymentsResponse;
-  export type Error =
-    | BlueGreenDeploymentNotFoundFault
-    | CommonAwsError;
+  export type Error = BlueGreenDeploymentNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeCertificates {
   export type Input = DescribeCertificatesMessage;
   export type Output = CertificateMessage;
-  export type Error =
-    | CertificateNotFoundFault
-    | CommonAwsError;
+  export type Error = CertificateNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBClusterAutomatedBackups {
   export type Input = DescribeDBClusterAutomatedBackupsMessage;
   export type Output = DBClusterAutomatedBackupMessage;
-  export type Error =
-    | DBClusterAutomatedBackupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBClusterAutomatedBackupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBClusterBacktracks {
@@ -5745,72 +6356,55 @@ export declare namespace DescribeDBClusterBacktracks {
 export declare namespace DescribeDBClusterEndpoints {
   export type Input = DescribeDBClusterEndpointsMessage;
   export type Output = DBClusterEndpointMessage;
-  export type Error =
-    | DBClusterNotFoundFault
-    | CommonAwsError;
+  export type Error = DBClusterNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBClusterParameterGroups {
   export type Input = DescribeDBClusterParameterGroupsMessage;
   export type Output = DBClusterParameterGroupsMessage;
-  export type Error =
-    | DBParameterGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBParameterGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBClusterParameters {
   export type Input = DescribeDBClusterParametersMessage;
   export type Output = DBClusterParameterGroupDetails;
-  export type Error =
-    | DBParameterGroupNotFoundFault
-    | CommonAwsError;
-}
-
-export declare namespace DescribeDBClusterSnapshotAttributes {
-  export type Input = DescribeDBClusterSnapshotAttributesMessage;
-  export type Output = DescribeDBClusterSnapshotAttributesResult;
-  export type Error =
-    | DBClusterSnapshotNotFoundFault
-    | CommonAwsError;
-}
-
-export declare namespace DescribeDBClusterSnapshots {
-  export type Input = DescribeDBClusterSnapshotsMessage;
-  export type Output = DBClusterSnapshotMessage;
-  export type Error =
-    | DBClusterSnapshotNotFoundFault
-    | CommonAwsError;
+  export type Error = DBParameterGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBClusters {
   export type Input = DescribeDBClustersMessage;
   export type Output = DBClusterMessage;
-  export type Error =
-    | DBClusterNotFoundFault
-    | CommonAwsError;
+  export type Error = DBClusterNotFoundFault | CommonAwsError;
+}
+
+export declare namespace DescribeDBClusterSnapshotAttributes {
+  export type Input = DescribeDBClusterSnapshotAttributesMessage;
+  export type Output = DescribeDBClusterSnapshotAttributesResult;
+  export type Error = DBClusterSnapshotNotFoundFault | CommonAwsError;
+}
+
+export declare namespace DescribeDBClusterSnapshots {
+  export type Input = DescribeDBClusterSnapshotsMessage;
+  export type Output = DBClusterSnapshotMessage;
+  export type Error = DBClusterSnapshotNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBEngineVersions {
   export type Input = DescribeDBEngineVersionsMessage;
   export type Output = DBEngineVersionMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeDBInstanceAutomatedBackups {
   export type Input = DescribeDBInstanceAutomatedBackupsMessage;
   export type Output = DBInstanceAutomatedBackupMessage;
-  export type Error =
-    | DBInstanceAutomatedBackupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBInstanceAutomatedBackupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBInstances {
   export type Input = DescribeDBInstancesMessage;
   export type Output = DBInstanceMessage;
-  export type Error =
-    | DBInstanceNotFoundFault
-    | CommonAwsError;
+  export type Error = DBInstanceNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBLogFiles {
@@ -5825,32 +6419,25 @@ export declare namespace DescribeDBLogFiles {
 export declare namespace DescribeDBMajorEngineVersions {
   export type Input = DescribeDBMajorEngineVersionsRequest;
   export type Output = DescribeDBMajorEngineVersionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeDBParameterGroups {
   export type Input = DescribeDBParameterGroupsMessage;
   export type Output = DBParameterGroupsMessage;
-  export type Error =
-    | DBParameterGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBParameterGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBParameters {
   export type Input = DescribeDBParametersMessage;
   export type Output = DBParameterGroupDetails;
-  export type Error =
-    | DBParameterGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBParameterGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBProxies {
   export type Input = DescribeDBProxiesRequest;
   export type Output = DescribeDBProxiesResponse;
-  export type Error =
-    | DBProxyNotFoundFault
-    | CommonAwsError;
+  export type Error = DBProxyNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBProxyEndpoints {
@@ -5886,16 +6473,13 @@ export declare namespace DescribeDBProxyTargets {
 export declare namespace DescribeDBRecommendations {
   export type Input = DescribeDBRecommendationsMessage;
   export type Output = DBRecommendationsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeDBSecurityGroups {
   export type Input = DescribeDBSecurityGroupsMessage;
   export type Output = DBSecurityGroupMessage;
-  export type Error =
-    | DBSecurityGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBSecurityGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBShardGroups {
@@ -5910,154 +6494,121 @@ export declare namespace DescribeDBShardGroups {
 export declare namespace DescribeDBSnapshotAttributes {
   export type Input = DescribeDBSnapshotAttributesMessage;
   export type Output = DescribeDBSnapshotAttributesResult;
-  export type Error =
-    | DBSnapshotNotFoundFault
-    | CommonAwsError;
-}
-
-export declare namespace DescribeDBSnapshotTenantDatabases {
-  export type Input = DescribeDBSnapshotTenantDatabasesMessage;
-  export type Output = DBSnapshotTenantDatabasesMessage;
-  export type Error =
-    | DBSnapshotNotFoundFault
-    | CommonAwsError;
+  export type Error = DBSnapshotNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBSnapshots {
   export type Input = DescribeDBSnapshotsMessage;
   export type Output = DBSnapshotMessage;
-  export type Error =
-    | DBSnapshotNotFoundFault
-    | CommonAwsError;
+  export type Error = DBSnapshotNotFoundFault | CommonAwsError;
+}
+
+export declare namespace DescribeDBSnapshotTenantDatabases {
+  export type Input = DescribeDBSnapshotTenantDatabasesMessage;
+  export type Output = DBSnapshotTenantDatabasesMessage;
+  export type Error = DBSnapshotNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeDBSubnetGroups {
   export type Input = DescribeDBSubnetGroupsMessage;
   export type Output = DBSubnetGroupMessage;
-  export type Error =
-    | DBSubnetGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = DBSubnetGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeEngineDefaultClusterParameters {
   export type Input = DescribeEngineDefaultClusterParametersMessage;
   export type Output = DescribeEngineDefaultClusterParametersResult;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeEngineDefaultParameters {
   export type Input = DescribeEngineDefaultParametersMessage;
   export type Output = DescribeEngineDefaultParametersResult;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeEventCategories {
   export type Input = DescribeEventCategoriesMessage;
   export type Output = EventCategoriesMessage;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace DescribeEventSubscriptions {
-  export type Input = DescribeEventSubscriptionsMessage;
-  export type Output = EventSubscriptionsMessage;
-  export type Error =
-    | SubscriptionNotFoundFault
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeEvents {
   export type Input = DescribeEventsMessage;
   export type Output = EventsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace DescribeEventSubscriptions {
+  export type Input = DescribeEventSubscriptionsMessage;
+  export type Output = EventSubscriptionsMessage;
+  export type Error = SubscriptionNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeExportTasks {
   export type Input = DescribeExportTasksMessage;
   export type Output = ExportTasksMessage;
-  export type Error =
-    | ExportTaskNotFoundFault
-    | CommonAwsError;
+  export type Error = ExportTaskNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeGlobalClusters {
   export type Input = DescribeGlobalClustersMessage;
   export type Output = GlobalClustersMessage;
-  export type Error =
-    | GlobalClusterNotFoundFault
-    | CommonAwsError;
+  export type Error = GlobalClusterNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeIntegrations {
   export type Input = DescribeIntegrationsMessage;
   export type Output = DescribeIntegrationsResponse;
-  export type Error =
-    | IntegrationNotFoundFault
-    | CommonAwsError;
+  export type Error = IntegrationNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeOptionGroupOptions {
   export type Input = DescribeOptionGroupOptionsMessage;
   export type Output = OptionGroupOptionsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeOptionGroups {
   export type Input = DescribeOptionGroupsMessage;
   export type Output = OptionGroups;
-  export type Error =
-    | OptionGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = OptionGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeOrderableDBInstanceOptions {
   export type Input = DescribeOrderableDBInstanceOptionsMessage;
   export type Output = OrderableDBInstanceOptionsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribePendingMaintenanceActions {
   export type Input = DescribePendingMaintenanceActionsMessage;
   export type Output = PendingMaintenanceActionsMessage;
-  export type Error =
-    | ResourceNotFoundFault
-    | CommonAwsError;
+  export type Error = ResourceNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeReservedDBInstances {
   export type Input = DescribeReservedDBInstancesMessage;
   export type Output = ReservedDBInstanceMessage;
-  export type Error =
-    | ReservedDBInstanceNotFoundFault
-    | CommonAwsError;
+  export type Error = ReservedDBInstanceNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeReservedDBInstancesOfferings {
   export type Input = DescribeReservedDBInstancesOfferingsMessage;
   export type Output = ReservedDBInstancesOfferingMessage;
-  export type Error =
-    | ReservedDBInstancesOfferingNotFoundFault
-    | CommonAwsError;
+  export type Error = ReservedDBInstancesOfferingNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeSourceRegions {
   export type Input = DescribeSourceRegionsMessage;
   export type Output = SourceRegionMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeTenantDatabases {
   export type Input = DescribeTenantDatabasesMessage;
   export type Output = TenantDatabasesMessage;
-  export type Error =
-    | DBInstanceNotFoundFault
-    | CommonAwsError;
+  export type Error = DBInstanceNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeValidDBInstanceModifications {
@@ -6147,9 +6698,7 @@ export declare namespace ModifyActivityStream {
 export declare namespace ModifyCertificates {
   export type Input = ModifyCertificatesMessage;
   export type Output = ModifyCertificatesResult;
-  export type Error =
-    | CertificateNotFoundFault
-    | CommonAwsError;
+  export type Error = CertificateNotFoundFault | CommonAwsError;
 }
 
 export declare namespace ModifyCurrentDBClusterCapacity {
@@ -6295,8 +6844,7 @@ export declare namespace ModifyDBProxyTargetGroup {
 export declare namespace ModifyDBRecommendation {
   export type Input = ModifyDBRecommendationMessage;
   export type Output = DBRecommendationMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ModifyDBShardGroup {
@@ -6312,9 +6860,7 @@ export declare namespace ModifyDBShardGroup {
 export declare namespace ModifyDBSnapshot {
   export type Input = ModifyDBSnapshotMessage;
   export type Output = ModifyDBSnapshotResult;
-  export type Error =
-    | DBSnapshotNotFoundFault
-    | CommonAwsError;
+  export type Error = DBSnapshotNotFoundFault | CommonAwsError;
 }
 
 export declare namespace ModifyDBSnapshotAttribute {
@@ -6858,4 +7404,3 @@ export declare namespace SwitchoverReadReplica {
     | InvalidDBInstanceStateFault
     | CommonAwsError;
 }
-

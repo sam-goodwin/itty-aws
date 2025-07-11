@@ -1,444 +1,808 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSHawksNestServiceFacade {
   batchCreateVariable(
     input: BatchCreateVariableRequest,
   ): Effect.Effect<
     BatchCreateVariableResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   batchGetVariable(
     input: BatchGetVariableRequest,
   ): Effect.Effect<
     BatchGetVariableResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   cancelBatchImportJob(
     input: CancelBatchImportJobRequest,
   ): Effect.Effect<
     CancelBatchImportJobResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   cancelBatchPredictionJob(
     input: CancelBatchPredictionJobRequest,
   ): Effect.Effect<
     CancelBatchPredictionJobResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createBatchImportJob(
     input: CreateBatchImportJobRequest,
   ): Effect.Effect<
     CreateBatchImportJobResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createBatchPredictionJob(
     input: CreateBatchPredictionJobRequest,
   ): Effect.Effect<
     CreateBatchPredictionJobResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createDetectorVersion(
     input: CreateDetectorVersionRequest,
   ): Effect.Effect<
     CreateDetectorVersionResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createList(
     input: CreateListRequest,
   ): Effect.Effect<
     CreateListResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createModel(
     input: CreateModelRequest,
   ): Effect.Effect<
     CreateModelResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createModelVersion(
     input: CreateModelVersionRequest,
   ): Effect.Effect<
     CreateModelVersionResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createRule(
     input: CreateRuleRequest,
   ): Effect.Effect<
     CreateRuleResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createVariable(
     input: CreateVariableRequest,
   ): Effect.Effect<
     CreateVariableResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteBatchImportJob(
     input: DeleteBatchImportJobRequest,
   ): Effect.Effect<
     DeleteBatchImportJobResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteBatchPredictionJob(
     input: DeleteBatchPredictionJobRequest,
   ): Effect.Effect<
     DeleteBatchPredictionJobResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteDetector(
     input: DeleteDetectorRequest,
   ): Effect.Effect<
     DeleteDetectorResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteDetectorVersion(
     input: DeleteDetectorVersionRequest,
   ): Effect.Effect<
     DeleteDetectorVersionResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteEntityType(
     input: DeleteEntityTypeRequest,
   ): Effect.Effect<
     DeleteEntityTypeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteEvent(
     input: DeleteEventRequest,
   ): Effect.Effect<
     DeleteEventResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteEventType(
-    input: DeleteEventTypeRequest,
-  ): Effect.Effect<
-    DeleteEventTypeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteEventsByEventType(
     input: DeleteEventsByEventTypeRequest,
   ): Effect.Effect<
     DeleteEventsByEventTypeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  deleteEventType(
+    input: DeleteEventTypeRequest,
+  ): Effect.Effect<
+    DeleteEventTypeResult,
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteExternalModel(
     input: DeleteExternalModelRequest,
   ): Effect.Effect<
     DeleteExternalModelResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteLabel(
     input: DeleteLabelRequest,
   ): Effect.Effect<
     DeleteLabelResult,
-    ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteList(
     input: DeleteListRequest,
   ): Effect.Effect<
     DeleteListResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteModel(
     input: DeleteModelRequest,
   ): Effect.Effect<
     DeleteModelResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteModelVersion(
     input: DeleteModelVersionRequest,
   ): Effect.Effect<
     DeleteModelVersionResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteOutcome(
     input: DeleteOutcomeRequest,
   ): Effect.Effect<
     DeleteOutcomeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteRule(
     input: DeleteRuleRequest,
   ): Effect.Effect<
     DeleteRuleResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteVariable(
     input: DeleteVariableRequest,
   ): Effect.Effect<
     DeleteVariableResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeDetector(
     input: DescribeDetectorRequest,
   ): Effect.Effect<
     DescribeDetectorResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeModelVersions(
     input: DescribeModelVersionsRequest,
   ): Effect.Effect<
     DescribeModelVersionsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getBatchImportJobs(
     input: GetBatchImportJobsRequest,
   ): Effect.Effect<
     GetBatchImportJobsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getBatchPredictionJobs(
     input: GetBatchPredictionJobsRequest,
   ): Effect.Effect<
     GetBatchPredictionJobsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getDeleteEventsByEventTypeStatus(
     input: GetDeleteEventsByEventTypeStatusRequest,
   ): Effect.Effect<
     GetDeleteEventsByEventTypeStatusResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getDetectorVersion(
-    input: GetDetectorVersionRequest,
-  ): Effect.Effect<
-    GetDetectorVersionResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getDetectors(
     input: GetDetectorsRequest,
   ): Effect.Effect<
     GetDetectorsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  getDetectorVersion(
+    input: GetDetectorVersionRequest,
+  ): Effect.Effect<
+    GetDetectorVersionResult,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEntityTypes(
     input: GetEntityTypesRequest,
   ): Effect.Effect<
     GetEntityTypesResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEvent(
     input: GetEventRequest,
   ): Effect.Effect<
     GetEventResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEventPrediction(
     input: GetEventPredictionRequest,
   ): Effect.Effect<
     GetEventPredictionResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ResourceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEventPredictionMetadata(
     input: GetEventPredictionMetadataRequest,
   ): Effect.Effect<
     GetEventPredictionMetadataResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getEventTypes(
     input: GetEventTypesRequest,
   ): Effect.Effect<
     GetEventTypesResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getExternalModels(
     input: GetExternalModelsRequest,
   ): Effect.Effect<
     GetExternalModelsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
-  getKMSEncryptionKey(
-    input: {},
-  ): Effect.Effect<
+  getKMSEncryptionKey(input: {}): Effect.Effect<
     GetKMSEncryptionKeyResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getLabels(
     input: GetLabelsRequest,
   ): Effect.Effect<
     GetLabelsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getListElements(
     input: GetListElementsRequest,
   ): Effect.Effect<
     GetListElementsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getListsMetadata(
     input: GetListsMetadataRequest,
   ): Effect.Effect<
     GetListsMetadataResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getModelVersion(
-    input: GetModelVersionRequest,
-  ): Effect.Effect<
-    GetModelVersionResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getModels(
     input: GetModelsRequest,
   ): Effect.Effect<
     GetModelsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  getModelVersion(
+    input: GetModelVersionRequest,
+  ): Effect.Effect<
+    GetModelVersionResult,
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getOutcomes(
     input: GetOutcomesRequest,
   ): Effect.Effect<
     GetOutcomesResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getRules(
     input: GetRulesRequest,
   ): Effect.Effect<
     GetRulesResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getVariables(
     input: GetVariablesRequest,
   ): Effect.Effect<
     GetVariablesResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listEventPredictions(
     input: ListEventPredictionsRequest,
   ): Effect.Effect<
     ListEventPredictionsResult,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResult,
-    AccessDeniedException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putDetector(
     input: PutDetectorRequest,
   ): Effect.Effect<
     PutDetectorResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putEntityType(
     input: PutEntityTypeRequest,
   ): Effect.Effect<
     PutEntityTypeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putEventType(
     input: PutEventTypeRequest,
   ): Effect.Effect<
     PutEventTypeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putExternalModel(
     input: PutExternalModelRequest,
   ): Effect.Effect<
     PutExternalModelResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putKMSEncryptionKey(
     input: PutKMSEncryptionKeyRequest,
   ): Effect.Effect<
     PutKMSEncryptionKeyResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putLabel(
     input: PutLabelRequest,
   ): Effect.Effect<
     PutLabelResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putOutcome(
     input: PutOutcomeRequest,
   ): Effect.Effect<
     PutOutcomeResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   sendEvent(
     input: SendEventRequest,
   ): Effect.Effect<
     SendEventResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResult,
-    AccessDeniedException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResult,
-    AccessDeniedException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateDetectorVersion(
     input: UpdateDetectorVersionRequest,
   ): Effect.Effect<
     UpdateDetectorVersionResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateDetectorVersionMetadata(
     input: UpdateDetectorVersionMetadataRequest,
   ): Effect.Effect<
     UpdateDetectorVersionMetadataResult,
-    AccessDeniedException | ConflictException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateDetectorVersionStatus(
     input: UpdateDetectorVersionStatusRequest,
   ): Effect.Effect<
     UpdateDetectorVersionStatusResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateEventLabel(
     input: UpdateEventLabelRequest,
   ): Effect.Effect<
     UpdateEventLabelResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateList(
     input: UpdateListRequest,
   ): Effect.Effect<
     UpdateListResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateModel(
     input: UpdateModelRequest,
   ): Effect.Effect<
     UpdateModelResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateModelVersion(
     input: UpdateModelVersionRequest,
   ): Effect.Effect<
     UpdateModelVersionResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateModelVersionStatus(
     input: UpdateModelVersionStatusRequest,
   ): Effect.Effect<
     UpdateModelVersionStatusResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateRuleMetadata(
     input: UpdateRuleMetadataRequest,
   ): Effect.Effect<
     UpdateRuleMetadataResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateRuleVersion(
     input: UpdateRuleVersionRequest,
   ): Effect.Effect<
     UpdateRuleVersionResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateVariable(
     input: UpdateVariableRequest,
   ): Effect.Effect<
     UpdateVariableResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -470,7 +834,13 @@ export interface AllowDenyList {
   arn?: string;
 }
 export type AllowDenyLists = Array<AllowDenyList>;
-export type AsyncJobStatus = "IN_PROGRESS_INITIALIZING" | "IN_PROGRESS" | "CANCEL_IN_PROGRESS" | "CANCELED" | "COMPLETE" | "FAILED";
+export type AsyncJobStatus =
+  | "IN_PROGRESS_INITIALIZING"
+  | "IN_PROGRESS"
+  | "CANCEL_IN_PROGRESS"
+  | "CANCELED"
+  | "COMPLETE"
+  | "FAILED";
 export interface ATIMetricDataPoint {
   cr?: number;
   adr?: number;
@@ -558,13 +928,11 @@ export type blob = Uint8Array | string;
 export interface CancelBatchImportJobRequest {
   jobId: string;
 }
-export interface CancelBatchImportJobResult {
-}
+export interface CancelBatchImportJobResult {}
 export interface CancelBatchPredictionJobRequest {
   jobId: string;
 }
-export interface CancelBatchPredictionJobResult {
-}
+export interface CancelBatchPredictionJobResult {}
 export declare class ConflictException extends Data.TaggedError(
   "ConflictException",
 )<{
@@ -580,8 +948,7 @@ export interface CreateBatchImportJobRequest {
   iamRoleArn: string;
   tags?: Array<Tag>;
 }
-export interface CreateBatchImportJobResult {
-}
+export interface CreateBatchImportJobResult {}
 export interface CreateBatchPredictionJobRequest {
   jobId: string;
   inputPath: string;
@@ -592,8 +959,7 @@ export interface CreateBatchPredictionJobRequest {
   iamRoleArn: string;
   tags?: Array<Tag>;
 }
-export interface CreateBatchPredictionJobResult {
-}
+export interface CreateBatchPredictionJobResult {}
 export interface CreateDetectorVersionRequest {
   detectorId: string;
   description?: string;
@@ -615,8 +981,7 @@ export interface CreateListRequest {
   description?: string;
   tags?: Array<Tag>;
 }
-export interface CreateListResult {
-}
+export interface CreateListResult {}
 export interface CreateModelRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -624,8 +989,7 @@ export interface CreateModelRequest {
   eventTypeName: string;
   tags?: Array<Tag>;
 }
-export interface CreateModelResult {
-}
+export interface CreateModelResult {}
 export interface CreateModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -662,8 +1026,7 @@ export interface CreateVariableRequest {
   variableType?: string;
   tags?: Array<Tag>;
 }
-export interface CreateVariableResult {
-}
+export interface CreateVariableResult {}
 export type CsvIndexToVariableMap = Record<string, string>;
 export type DataSource = "EVENT" | "MODEL_SCORE" | "EXTERNAL_MODEL_SCORE";
 export type DataType = "STRING" | "INTEGER" | "FLOAT" | "BOOLEAN" | "DATETIME";
@@ -676,36 +1039,30 @@ export type DeleteAuditHistory = boolean;
 export interface DeleteBatchImportJobRequest {
   jobId: string;
 }
-export interface DeleteBatchImportJobResult {
-}
+export interface DeleteBatchImportJobResult {}
 export interface DeleteBatchPredictionJobRequest {
   jobId: string;
 }
-export interface DeleteBatchPredictionJobResult {
-}
+export interface DeleteBatchPredictionJobResult {}
 export interface DeleteDetectorRequest {
   detectorId: string;
 }
-export interface DeleteDetectorResult {
-}
+export interface DeleteDetectorResult {}
 export interface DeleteDetectorVersionRequest {
   detectorId: string;
   detectorVersionId: string;
 }
-export interface DeleteDetectorVersionResult {
-}
+export interface DeleteDetectorVersionResult {}
 export interface DeleteEntityTypeRequest {
   name: string;
 }
-export interface DeleteEntityTypeResult {
-}
+export interface DeleteEntityTypeResult {}
 export interface DeleteEventRequest {
   eventId: string;
   eventTypeName: string;
   deleteAuditHistory?: boolean;
 }
-export interface DeleteEventResult {
-}
+export interface DeleteEventResult {}
 export interface DeleteEventsByEventTypeRequest {
   eventTypeName: string;
 }
@@ -716,51 +1073,42 @@ export interface DeleteEventsByEventTypeResult {
 export interface DeleteEventTypeRequest {
   name: string;
 }
-export interface DeleteEventTypeResult {
-}
+export interface DeleteEventTypeResult {}
 export interface DeleteExternalModelRequest {
   modelEndpoint: string;
 }
-export interface DeleteExternalModelResult {
-}
+export interface DeleteExternalModelResult {}
 export interface DeleteLabelRequest {
   name: string;
 }
-export interface DeleteLabelResult {
-}
+export interface DeleteLabelResult {}
 export interface DeleteListRequest {
   name: string;
 }
-export interface DeleteListResult {
-}
+export interface DeleteListResult {}
 export interface DeleteModelRequest {
   modelId: string;
   modelType: ModelTypeEnum;
 }
-export interface DeleteModelResult {
-}
+export interface DeleteModelResult {}
 export interface DeleteModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
   modelVersionNumber: string;
 }
-export interface DeleteModelVersionResult {
-}
+export interface DeleteModelVersionResult {}
 export interface DeleteOutcomeRequest {
   name: string;
 }
-export interface DeleteOutcomeResult {
-}
+export interface DeleteOutcomeResult {}
 export interface DeleteRuleRequest {
   rule: Rule;
 }
-export interface DeleteRuleResult {
-}
+export interface DeleteRuleResult {}
 export interface DeleteVariableRequest {
   name: string;
 }
-export interface DeleteVariableResult {
-}
+export interface DeleteVariableResult {}
 export interface DescribeDetectorRequest {
   detectorId: string;
   nextToken?: string;
@@ -908,7 +1256,10 @@ export interface ExternalModel {
   createdTime?: string;
   arn?: string;
 }
-export type ExternalModelEndpointDataBlobMap = Record<string, ModelEndpointDataBlob>;
+export type ExternalModelEndpointDataBlobMap = Record<
+  string,
+  ModelEndpointDataBlob
+>;
 export type ExternalModelList = Array<ExternalModel>;
 export interface ExternalModelOutputs {
   externalModel?: ExternalModelSummary;
@@ -1218,7 +1569,8 @@ export interface ListEventPredictionsResult {
   nextToken?: string;
 }
 export type ListOfAggregatedLogOddsMetrics = Array<AggregatedLogOddsMetric>;
-export type ListOfAggregatedVariablesImpactExplanations = Array<AggregatedVariablesImpactExplanation>;
+export type ListOfAggregatedVariablesImpactExplanations =
+  Array<AggregatedVariablesImpactExplanation>;
 export type listOfEntities = Array<Entity>;
 export type ListOfEvaluatedExternalModels = Array<EvaluatedExternalModel>;
 export type ListOfEvaluatedModelVersions = Array<EvaluatedModelVersion>;
@@ -1302,7 +1654,10 @@ export interface ModelScores {
 export type modelsMaxPageSize = number;
 
 export type ModelSource = "SAGEMAKER";
-export type ModelTypeEnum = "ONLINE_FRAUD_INSIGHTS" | "TRANSACTION_FRAUD_INSIGHTS" | "ACCOUNT_TAKEOVER_INSIGHTS";
+export type ModelTypeEnum =
+  | "ONLINE_FRAUD_INSIGHTS"
+  | "TRANSACTION_FRAUD_INSIGHTS"
+  | "ACCOUNT_TAKEOVER_INSIGHTS";
 export interface ModelVersion {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -1376,15 +1731,13 @@ export interface PutDetectorRequest {
   eventTypeName: string;
   tags?: Array<Tag>;
 }
-export interface PutDetectorResult {
-}
+export interface PutDetectorResult {}
 export interface PutEntityTypeRequest {
   name: string;
   description?: string;
   tags?: Array<Tag>;
 }
-export interface PutEntityTypeResult {
-}
+export interface PutEntityTypeResult {}
 export interface PutEventTypeRequest {
   name: string;
   description?: string;
@@ -1395,8 +1748,7 @@ export interface PutEventTypeRequest {
   tags?: Array<Tag>;
   eventOrchestration?: EventOrchestration;
 }
-export interface PutEventTypeResult {
-}
+export interface PutEventTypeResult {}
 export interface PutExternalModelRequest {
   modelEndpoint: string;
   modelSource: ModelSource;
@@ -1406,27 +1758,23 @@ export interface PutExternalModelRequest {
   modelEndpointStatus: ModelEndpointStatus;
   tags?: Array<Tag>;
 }
-export interface PutExternalModelResult {
-}
+export interface PutExternalModelResult {}
 export interface PutKMSEncryptionKeyRequest {
   kmsEncryptionKeyArn: string;
 }
-export interface PutKMSEncryptionKeyResult {
-}
+export interface PutKMSEncryptionKeyResult {}
 export interface PutLabelRequest {
   name: string;
   description?: string;
   tags?: Array<Tag>;
 }
-export interface PutLabelResult {
-}
+export interface PutLabelResult {}
 export interface PutOutcomeRequest {
   name: string;
   description?: string;
   tags?: Array<Tag>;
 }
-export interface PutOutcomeResult {
-}
+export interface PutOutcomeResult {}
 export declare class ResourceNotFoundException extends Data.TaggedError(
   "ResourceNotFoundException",
 )<{
@@ -1478,11 +1826,8 @@ export interface SendEventRequest {
   labelTimestamp?: string;
   entities: Array<Entity>;
 }
-export interface SendEventResult {
-}
+export interface SendEventResult {}
 export type sensitiveString = string;
-
-export type string = string;
 
 export interface Tag {
   key: string;
@@ -1496,8 +1841,7 @@ export interface TagResourceRequest {
   resourceARN: string;
   tags: Array<Tag>;
 }
-export interface TagResourceResult {
-}
+export interface TagResourceResult {}
 export type TagsMaxResults = number;
 
 export type tagValue = string;
@@ -1558,15 +1902,13 @@ export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResult {
-}
+export interface UntagResourceResult {}
 export interface UpdateDetectorVersionMetadataRequest {
   detectorId: string;
   detectorVersionId: string;
   description: string;
 }
-export interface UpdateDetectorVersionMetadataResult {
-}
+export interface UpdateDetectorVersionMetadataResult {}
 export interface UpdateDetectorVersionRequest {
   detectorId: string;
   detectorVersionId: string;
@@ -1576,23 +1918,20 @@ export interface UpdateDetectorVersionRequest {
   modelVersions?: Array<ModelVersion>;
   ruleExecutionMode?: RuleExecutionMode;
 }
-export interface UpdateDetectorVersionResult {
-}
+export interface UpdateDetectorVersionResult {}
 export interface UpdateDetectorVersionStatusRequest {
   detectorId: string;
   detectorVersionId: string;
   status: DetectorVersionStatus;
 }
-export interface UpdateDetectorVersionStatusResult {
-}
+export interface UpdateDetectorVersionStatusResult {}
 export interface UpdateEventLabelRequest {
   eventId: string;
   eventTypeName: string;
   assignedLabel: string;
   labelTimestamp: string;
 }
-export interface UpdateEventLabelResult {
-}
+export interface UpdateEventLabelResult {}
 export interface UpdateListRequest {
   name: string;
   elements?: Array<string>;
@@ -1600,15 +1939,13 @@ export interface UpdateListRequest {
   updateMode?: ListUpdateMode;
   variableType?: string;
 }
-export interface UpdateListResult {
-}
+export interface UpdateListResult {}
 export interface UpdateModelRequest {
   modelId: string;
   modelType: ModelTypeEnum;
   description?: string;
 }
-export interface UpdateModelResult {
-}
+export interface UpdateModelResult {}
 export interface UpdateModelVersionRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -1629,14 +1966,12 @@ export interface UpdateModelVersionStatusRequest {
   modelVersionNumber: string;
   status: ModelVersionStatus;
 }
-export interface UpdateModelVersionStatusResult {
-}
+export interface UpdateModelVersionStatusResult {}
 export interface UpdateRuleMetadataRequest {
   rule: Rule;
   description: string;
 }
-export interface UpdateRuleMetadataResult {
-}
+export interface UpdateRuleMetadataResult {}
 export interface UpdateRuleVersionRequest {
   rule: Rule;
   description?: string;
@@ -1654,8 +1989,7 @@ export interface UpdateVariableRequest {
   description?: string;
   variableType?: string;
 }
-export interface UpdateVariableResult {
-}
+export interface UpdateVariableResult {}
 export type UseEventVariables = boolean;
 
 export type utcTimestampISO8601 = string;
@@ -1912,18 +2246,6 @@ export declare namespace DeleteEvent {
     | CommonAwsError;
 }
 
-export declare namespace DeleteEventType {
-  export type Input = DeleteEventTypeRequest;
-  export type Output = DeleteEventTypeResult;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace DeleteEventsByEventType {
   export type Input = DeleteEventsByEventTypeRequest;
   export type Output = DeleteEventsByEventTypeResult;
@@ -1932,6 +2254,18 @@ export declare namespace DeleteEventsByEventType {
     | ConflictException
     | InternalServerException
     | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError;
+}
+
+export declare namespace DeleteEventType {
+  export type Input = DeleteEventTypeRequest;
+  export type Output = DeleteEventTypeResult;
+  export type Error =
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -2092,9 +2426,9 @@ export declare namespace GetDeleteEventsByEventTypeStatus {
     | CommonAwsError;
 }
 
-export declare namespace GetDetectorVersion {
-  export type Input = GetDetectorVersionRequest;
-  export type Output = GetDetectorVersionResult;
+export declare namespace GetDetectors {
+  export type Input = GetDetectorsRequest;
+  export type Output = GetDetectorsResult;
   export type Error =
     | AccessDeniedException
     | InternalServerException
@@ -2104,9 +2438,9 @@ export declare namespace GetDetectorVersion {
     | CommonAwsError;
 }
 
-export declare namespace GetDetectors {
-  export type Input = GetDetectorsRequest;
-  export type Output = GetDetectorsResult;
+export declare namespace GetDetectorVersion {
+  export type Input = GetDetectorVersionRequest;
+  export type Output = GetDetectorVersionResult;
   export type Error =
     | AccessDeniedException
     | InternalServerException
@@ -2237,9 +2571,9 @@ export declare namespace GetListsMetadata {
     | CommonAwsError;
 }
 
-export declare namespace GetModelVersion {
-  export type Input = GetModelVersionRequest;
-  export type Output = GetModelVersionResult;
+export declare namespace GetModels {
+  export type Input = GetModelsRequest;
+  export type Output = GetModelsResult;
   export type Error =
     | AccessDeniedException
     | InternalServerException
@@ -2249,9 +2583,9 @@ export declare namespace GetModelVersion {
     | CommonAwsError;
 }
 
-export declare namespace GetModels {
-  export type Input = GetModelsRequest;
-  export type Output = GetModelsResult;
+export declare namespace GetModelVersion {
+  export type Input = GetModelVersionRequest;
+  export type Output = GetModelVersionResult;
   export type Error =
     | AccessDeniedException
     | InternalServerException
@@ -2580,4 +2914,3 @@ export declare namespace UpdateVariable {
     | ValidationException
     | CommonAwsError;
 }
-

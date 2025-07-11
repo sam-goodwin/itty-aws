@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.rdsdata#AccessDeniedException": {
       "type": "structure",
@@ -1130,6 +1131,26 @@
     },
     "com.amazonaws.rdsdata#RdsDataService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.rdsdata#BatchExecuteStatement"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#BeginTransaction"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#CommitTransaction"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ExecuteSql"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#ExecuteStatement"
+        },
+        {
+          "target": "com.amazonaws.rdsdata#RollbackTransaction"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "RDS Data",

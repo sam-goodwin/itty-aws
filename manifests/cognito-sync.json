@@ -1,7 +1,89 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cognitosync#AWSCognitoSyncService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cognitosync#BulkPublish"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#DescribeIdentityPoolUsage"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#DescribeIdentityUsage"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#GetBulkPublishDetails"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#GetCognitoEvents"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#GetIdentityPoolConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ListIdentityPoolUsage"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#ListRecords"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#RegisterDevice"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#SetCognitoEvents"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#SetIdentityPoolConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#SubscribeToDataset"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#UnsubscribeFromDataset"
+        },
+        {
+          "target": "com.amazonaws.cognitosync#UpdateRecords"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Cognito Sync",

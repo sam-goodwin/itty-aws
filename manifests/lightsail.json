@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.lightsail#AccessDeniedException": {
       "type": "structure",
@@ -15220,6 +15249,491 @@
     },
     "com.amazonaws.lightsail#Lightsail_20161128": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.lightsail#AllocateStaticIp"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AttachCertificateToDistribution"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AttachDisk"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AttachInstancesToLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AttachLoadBalancerTlsCertificate"
+        },
+        {
+          "target": "com.amazonaws.lightsail#AttachStaticIp"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CloseInstancePublicPorts"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CopySnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateBucket"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateBucketAccessKey"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateCertificate"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateCloudFormationStack"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateContactMethod"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateContainerService"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateContainerServiceDeployment"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateContainerServiceRegistryLogin"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateDisk"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateDiskFromSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateDiskSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateDistribution"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateDomain"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateDomainEntry"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateGUISessionAccessDetails"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateInstances"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateInstancesFromSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateInstanceSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateKeyPair"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateLoadBalancerTlsCertificate"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateRelationalDatabaseFromSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#CreateRelationalDatabaseSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteAlarm"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteAutoSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteBucket"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteBucketAccessKey"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteCertificate"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteContactMethod"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteContainerImage"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteContainerService"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteDisk"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteDiskSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteDistribution"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteDomain"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteDomainEntry"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteInstance"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteInstanceSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteKeyPair"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteKnownHostKeys"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteLoadBalancerTlsCertificate"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DeleteRelationalDatabaseSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DetachCertificateFromDistribution"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DetachDisk"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DetachInstancesFromLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DetachStaticIp"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DisableAddOn"
+        },
+        {
+          "target": "com.amazonaws.lightsail#DownloadDefaultKeyPair"
+        },
+        {
+          "target": "com.amazonaws.lightsail#EnableAddOn"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ExportSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetActiveNames"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetAlarms"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetAutoSnapshots"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetBlueprints"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetBucketAccessKeys"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetBucketBundles"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetBucketMetricData"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetBuckets"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetBundles"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetCertificates"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetCloudFormationStackRecords"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContactMethods"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerAPIMetadata"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerImages"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerLog"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerServiceDeployments"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerServiceMetricData"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerServicePowers"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetContainerServices"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetCostEstimate"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDisk"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDisks"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDiskSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDiskSnapshots"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDistributionBundles"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDistributionLatestCacheReset"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDistributionMetricData"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDistributions"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDomain"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetDomains"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetExportSnapshotRecords"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstance"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstanceAccessDetails"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstanceMetricData"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstancePortStates"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstances"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstanceSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstanceSnapshots"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetInstanceState"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetKeyPair"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetKeyPairs"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetLoadBalancerMetricData"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetLoadBalancers"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetLoadBalancerTlsCertificates"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetLoadBalancerTlsPolicies"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetOperation"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetOperations"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetOperationsForResource"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRegions"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseBlueprints"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseBundles"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseEvents"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseLogEvents"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseLogStreams"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseMasterUserPassword"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseMetricData"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseParameters"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabases"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseSnapshot"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetRelationalDatabaseSnapshots"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetSetupHistory"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetStaticIp"
+        },
+        {
+          "target": "com.amazonaws.lightsail#GetStaticIps"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ImportKeyPair"
+        },
+        {
+          "target": "com.amazonaws.lightsail#IsVpcPeered"
+        },
+        {
+          "target": "com.amazonaws.lightsail#OpenInstancePublicPorts"
+        },
+        {
+          "target": "com.amazonaws.lightsail#PeerVpc"
+        },
+        {
+          "target": "com.amazonaws.lightsail#PutAlarm"
+        },
+        {
+          "target": "com.amazonaws.lightsail#PutInstancePublicPorts"
+        },
+        {
+          "target": "com.amazonaws.lightsail#RebootInstance"
+        },
+        {
+          "target": "com.amazonaws.lightsail#RebootRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#RegisterContainerImage"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ReleaseStaticIp"
+        },
+        {
+          "target": "com.amazonaws.lightsail#ResetDistributionCache"
+        },
+        {
+          "target": "com.amazonaws.lightsail#SendContactMethodVerification"
+        },
+        {
+          "target": "com.amazonaws.lightsail#SetIpAddressType"
+        },
+        {
+          "target": "com.amazonaws.lightsail#SetResourceAccessForBucket"
+        },
+        {
+          "target": "com.amazonaws.lightsail#SetupInstanceHttps"
+        },
+        {
+          "target": "com.amazonaws.lightsail#StartGUISession"
+        },
+        {
+          "target": "com.amazonaws.lightsail#StartInstance"
+        },
+        {
+          "target": "com.amazonaws.lightsail#StartRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#StopGUISession"
+        },
+        {
+          "target": "com.amazonaws.lightsail#StopInstance"
+        },
+        {
+          "target": "com.amazonaws.lightsail#StopRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#TagResource"
+        },
+        {
+          "target": "com.amazonaws.lightsail#TestAlarm"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UnpeerVpc"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateBucket"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateBucketBundle"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateContainerService"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateDistribution"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateDistributionBundle"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateDomainEntry"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateInstanceMetadataOptions"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateLoadBalancerAttribute"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateRelationalDatabase"
+        },
+        {
+          "target": "com.amazonaws.lightsail#UpdateRelationalDatabaseParameters"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Lightsail",

@@ -1,120 +1,84 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AwsToledoWebService {
-  cancelJobRun(
-    input: CancelJobRunRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  createApplication(
-    input: CreateApplicationRequest,
-  ): Effect.Effect<
-    {},
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteApplication(
-    input: DeleteApplicationRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  getApplication(
-    input: GetApplicationRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  getDashboardForJobRun(
-    input: GetDashboardForJobRunRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  getJobRun(
-    input: GetJobRunRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listApplications(
-    input: ListApplicationsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ValidationException | CommonAwsError
-  >;
-  listJobRunAttempts(
-    input: ListJobRunAttemptsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listJobRuns(
-    input: ListJobRunsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  startApplication(
-    input: StartApplicationRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  startJobRun(
-    input: StartJobRunRequest,
-  ): Effect.Effect<
-    {},
-    ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  stopApplication(
-    input: StopApplicationRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    ListTagsForResourceResponse,
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    TagResourceResponse,
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateApplication(
-    input: UpdateApplicationRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    UntagResourceResponse,
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
 export type EmrServerless = AwsToledoWebService;
 
 export interface Application {
+  applicationId: string;
+  name?: string;
+  arn: string;
+  releaseLabel: string;
+  type: string;
+  state: string;
+  stateDetails?: string;
+  initialCapacity?: Record<string, InitialCapacityConfig>;
+  maximumCapacity?: MaximumAllowedResources;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  tags?: Record<string, string>;
+  autoStartConfiguration?: AutoStartConfig;
+  autoStopConfiguration?: AutoStopConfig;
+  networkConfiguration?: NetworkConfiguration;
+  architecture?: string;
+  imageConfiguration?: ImageConfiguration;
+  workerTypeSpecifications?: Record<string, WorkerTypeSpecification>;
+  runtimeConfiguration?: Array<Configuration>;
+  monitoringConfiguration?: MonitoringConfiguration;
+  interactiveConfiguration?: InteractiveConfiguration;
+  schedulerConfiguration?: SchedulerConfiguration;
+  identityCenterConfiguration?: IdentityCenterConfiguration;
 }
 export type ApplicationArn = string;
 
 export type ApplicationId = string;
 
-export type ApplicationList = Array<unknown>;
+export type ApplicationList = Array<ApplicationSummary>;
 export type ApplicationName = string;
 
 export type ApplicationState = string;
 
-export type ApplicationStateSet = Array<unknown>;
+export type ApplicationStateSet = Array<string>;
 export interface ApplicationSummary {
+  id: string;
+  name?: string;
+  arn: string;
+  releaseLabel: string;
+  type: string;
+  state: string;
+  stateDetails?: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  architecture?: string;
 }
 export type Architecture = string;
 
@@ -123,38 +87,80 @@ export type Arn = string;
 export type AttemptNumber = number;
 
 export interface AutoStartConfig {
+  enabled?: boolean;
 }
 export interface AutoStopConfig {
+  enabled?: boolean;
+  idleTimeoutMinutes?: number;
 }
 export interface CancelJobRunRequest {
+  applicationId: string;
+  jobRunId: string;
+  shutdownGracePeriodInSeconds?: number;
 }
 export interface CancelJobRunResponse {
+  applicationId: string;
+  jobRunId: string;
 }
 export type ClientToken = string;
 
 export interface CloudWatchLoggingConfiguration {
+  enabled: boolean;
+  logGroupName?: string;
+  logStreamNamePrefix?: string;
+  encryptionKeyArn?: string;
+  logTypes?: Record<string, Array<string>>;
 }
 export interface Configuration {
+  classification: string;
+  properties?: Record<string, string>;
+  configurations?: Array<Configuration>;
 }
-export type ConfigurationList = Array<unknown>;
+export type ConfigurationList = Array<Configuration>;
 export interface ConfigurationOverrides {
+  applicationConfiguration?: Array<Configuration>;
+  monitoringConfiguration?: MonitoringConfiguration;
 }
 export type ConfigurationPropertyKey = string;
 
 export type ConfigurationPropertyValue = string;
 
-export interface ConflictException {
-}
+export declare class ConflictException extends Data.TaggedError(
+  "ConflictException",
+)<{
+  readonly message: string;
+}> {}
 export type CpuSize = string;
 
 export interface CreateApplicationRequest {
+  name?: string;
+  releaseLabel: string;
+  type: string;
+  clientToken: string;
+  initialCapacity?: Record<string, InitialCapacityConfig>;
+  maximumCapacity?: MaximumAllowedResources;
+  tags?: Record<string, string>;
+  autoStartConfiguration?: AutoStartConfig;
+  autoStopConfiguration?: AutoStopConfig;
+  networkConfiguration?: NetworkConfiguration;
+  architecture?: string;
+  imageConfiguration?: ImageConfigurationInput;
+  workerTypeSpecifications?: Record<string, WorkerTypeSpecificationInput>;
+  runtimeConfiguration?: Array<Configuration>;
+  monitoringConfiguration?: MonitoringConfiguration;
+  interactiveConfiguration?: InteractiveConfiguration;
+  schedulerConfiguration?: SchedulerConfiguration;
+  identityCenterConfiguration?: IdentityCenterConfigurationInput;
 }
 export interface CreateApplicationResponse {
+  applicationId: string;
+  name?: string;
+  arn: string;
 }
 export interface DeleteApplicationRequest {
+  applicationId: string;
 }
-export interface DeleteApplicationResponse {
-}
+export interface DeleteApplicationResponse {}
 export type DiskSize = string;
 
 export type DiskType = string;
@@ -167,22 +173,36 @@ export type EngineType = string;
 
 export type EntryPointArgument = string;
 
-export type EntryPointArguments = Array<unknown>;
+export type EntryPointArguments = Array<string>;
 export type EntryPointPath = string;
 
 export interface GetApplicationRequest {
+  applicationId: string;
 }
 export interface GetApplicationResponse {
+  application: Application;
 }
 export interface GetDashboardForJobRunRequest {
+  applicationId: string;
+  jobRunId: string;
+  attempt?: number;
+  accessSystemProfileLogs?: boolean;
 }
 export interface GetDashboardForJobRunResponse {
+  url?: string;
 }
 export interface GetJobRunRequest {
+  applicationId: string;
+  jobRunId: string;
+  attempt?: number;
 }
 export interface GetJobRunResponse {
+  jobRun: JobRun;
 }
 export interface Hive {
+  query: string;
+  initQueryFile?: string;
+  parameters?: string;
 }
 export type HiveCliParameters = string;
 
@@ -191,90 +211,198 @@ export type IAMRoleArn = string;
 export type IdentityCenterApplicationArn = string;
 
 export interface IdentityCenterConfiguration {
+  identityCenterInstanceArn?: string;
+  identityCenterApplicationArn?: string;
 }
 export interface IdentityCenterConfigurationInput {
+  identityCenterInstanceArn?: string;
 }
 export type IdentityCenterInstanceArn = string;
 
 export interface ImageConfiguration {
+  imageUri: string;
+  resolvedImageDigest?: string;
 }
 export interface ImageConfigurationInput {
+  imageUri?: string;
 }
 export type ImageDigest = string;
 
 export type ImageUri = string;
 
 export interface InitialCapacityConfig {
+  workerCount: number;
+  workerConfiguration?: WorkerResourceConfig;
 }
-export type InitialCapacityConfigMap = Record<string, unknown>;
+export type InitialCapacityConfigMap = Record<string, InitialCapacityConfig>;
 export type InitScriptPath = string;
 
 export interface InteractiveConfiguration {
+  studioEnabled?: boolean;
+  livyEndpointEnabled?: boolean;
 }
-export interface InternalServerException {
-}
+export declare class InternalServerException extends Data.TaggedError(
+  "InternalServerException",
+)<{
+  readonly message: string;
+}> {}
 export type JobArn = string;
 
-export type JobDriver = never;
+export type JobDriver = { sparkSubmit: SparkSubmit } | { hive: Hive };
 export interface JobRun {
+  applicationId: string;
+  jobRunId: string;
+  name?: string;
+  arn: string;
+  createdBy: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  executionRole: string;
+  executionIamPolicy?: JobRunExecutionIamPolicy;
+  state: string;
+  stateDetails: string;
+  releaseLabel: string;
+  configurationOverrides?: ConfigurationOverrides;
+  jobDriver: JobDriver;
+  tags?: Record<string, string>;
+  totalResourceUtilization?: TotalResourceUtilization;
+  networkConfiguration?: NetworkConfiguration;
+  totalExecutionDurationSeconds?: number;
+  executionTimeoutMinutes?: number;
+  billedResourceUtilization?: ResourceUtilization;
+  mode?: string;
+  retryPolicy?: RetryPolicy;
+  attempt?: number;
+  attemptCreatedAt?: Date | string;
+  attemptUpdatedAt?: Date | string;
+  startedAt?: Date | string;
+  endedAt?: Date | string;
+  queuedDurationMilliseconds?: number;
 }
-export type JobRunAttempts = Array<unknown>;
+export type JobRunAttempts = Array<JobRunAttemptSummary>;
 export interface JobRunAttemptSummary {
+  applicationId: string;
+  id: string;
+  name?: string;
+  mode?: string;
+  arn: string;
+  createdBy: string;
+  jobCreatedAt: Date | string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  executionRole: string;
+  state: string;
+  stateDetails: string;
+  releaseLabel: string;
+  type?: string;
+  attempt?: number;
 }
 export interface JobRunExecutionIamPolicy {
+  policy?: string;
+  policyArns?: Array<string>;
 }
 export type JobRunId = string;
 
 export type JobRunMode = string;
 
-export type JobRuns = Array<unknown>;
+export type JobRuns = Array<JobRunSummary>;
 export type JobRunState = string;
 
-export type JobRunStateSet = Array<unknown>;
+export type JobRunStateSet = Array<string>;
 export interface JobRunSummary {
+  applicationId: string;
+  id: string;
+  name?: string;
+  mode?: string;
+  arn: string;
+  createdBy: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  executionRole: string;
+  state: string;
+  stateDetails: string;
+  releaseLabel: string;
+  type?: string;
+  attempt?: number;
+  attemptCreatedAt?: Date | string;
+  attemptUpdatedAt?: Date | string;
 }
 export type JobRunType = string;
 
 export interface ListApplicationsRequest {
+  nextToken?: string;
+  maxResults?: number;
+  states?: Array<string>;
 }
 export interface ListApplicationsResponse {
+  applications: Array<ApplicationSummary>;
+  nextToken?: string;
 }
 export interface ListJobRunAttemptsRequest {
+  applicationId: string;
+  jobRunId: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListJobRunAttemptsResponse {
+  jobRunAttempts: Array<JobRunAttemptSummary>;
+  nextToken?: string;
 }
 export interface ListJobRunsRequest {
+  applicationId: string;
+  nextToken?: string;
+  maxResults?: number;
+  createdAtAfter?: Date | string;
+  createdAtBefore?: Date | string;
+  states?: Array<string>;
+  mode?: string;
 }
 export interface ListJobRunsResponse {
+  jobRuns: Array<JobRunSummary>;
+  nextToken?: string;
 }
 export interface ListTagsForResourceRequest {
+  resourceArn: string;
 }
 export interface ListTagsForResourceResponse {
+  tags?: Record<string, string>;
 }
 export type LogGroupName = string;
 
 export type LogStreamNamePrefix = string;
 
-export type LogTypeList = Array<unknown>;
-export type LogTypeMap = Record<string, unknown>;
+export type LogTypeList = Array<string>;
+export type LogTypeMap = Record<string, Array<string>>;
 export type LogTypeString = string;
 
 export interface ManagedPersistenceMonitoringConfiguration {
+  enabled?: boolean;
+  encryptionKeyArn?: string;
 }
 export interface MaximumAllowedResources {
+  cpu: string;
+  memory: string;
+  disk?: string;
 }
 export type MemorySize = string;
 
 export interface MonitoringConfiguration {
+  s3MonitoringConfiguration?: S3MonitoringConfiguration;
+  managedPersistenceMonitoringConfiguration?: ManagedPersistenceMonitoringConfiguration;
+  cloudWatchLoggingConfiguration?: CloudWatchLoggingConfiguration;
+  prometheusMonitoringConfiguration?: PrometheusMonitoringConfiguration;
 }
 export interface NetworkConfiguration {
+  subnetIds?: Array<string>;
+  securityGroupIds?: Array<string>;
 }
 export type NextToken = string;
 
-export type PolicyArnList = Array<unknown>;
+export type PolicyArnList = Array<string>;
 export type PolicyDocument = string;
 
 export interface PrometheusMonitoringConfiguration {
+  remoteWriteUrl?: string;
 }
 export type PrometheusUrlString = string;
 
@@ -286,209 +414,157 @@ export type RequestIdentityUserArn = string;
 
 export type ResourceArn = string;
 
-export interface ResourceNotFoundException {
-}
+export declare class ResourceNotFoundException extends Data.TaggedError(
+  "ResourceNotFoundException",
+)<{
+  readonly message: string;
+}> {}
 export interface ResourceUtilization {
+  vCPUHour?: number;
+  memoryGBHour?: number;
+  storageGBHour?: number;
 }
 export interface RetryPolicy {
+  maxAttempts?: number;
+  maxFailedAttemptsPerHour?: number;
 }
 export interface S3MonitoringConfiguration {
+  logUri?: string;
+  encryptionKeyArn?: string;
 }
 export interface SchedulerConfiguration {
+  queueTimeoutMinutes?: number;
+  maxConcurrentRuns?: number;
 }
-export type SecurityGroupIds = Array<unknown>;
+export type SecurityGroupIds = Array<string>;
 export type SecurityGroupString = string;
 
-export type SensitivePropertiesMap = Record<string, unknown>;
-export interface ServiceQuotaExceededException {
-}
+export type SensitivePropertiesMap = Record<string, string>;
+export declare class ServiceQuotaExceededException extends Data.TaggedError(
+  "ServiceQuotaExceededException",
+)<{
+  readonly message: string;
+}> {}
 export type ShutdownGracePeriodInSeconds = number;
 
 export interface SparkSubmit {
+  entryPoint: string;
+  entryPointArguments?: Array<string>;
+  sparkSubmitParameters?: string;
 }
 export type SparkSubmitParameters = string;
 
 export interface StartApplicationRequest {
+  applicationId: string;
 }
-export interface StartApplicationResponse {
-}
+export interface StartApplicationResponse {}
 export interface StartJobRunRequest {
+  applicationId: string;
+  clientToken: string;
+  executionRoleArn: string;
+  executionIamPolicy?: JobRunExecutionIamPolicy;
+  jobDriver?: JobDriver;
+  configurationOverrides?: ConfigurationOverrides;
+  tags?: Record<string, string>;
+  executionTimeoutMinutes?: number;
+  name?: string;
+  mode?: string;
+  retryPolicy?: RetryPolicy;
 }
 export interface StartJobRunResponse {
+  applicationId: string;
+  jobRunId: string;
+  arn: string;
 }
 export interface StopApplicationRequest {
+  applicationId: string;
 }
-export interface StopApplicationResponse {
-}
+export interface StopApplicationResponse {}
 export type String1024 = string;
 
 export type String256 = string;
 
-export type SubnetIds = Array<unknown>;
+export type SubnetIds = Array<string>;
 export type SubnetString = string;
 
 export type TagKey = string;
 
-export type TagKeyList = Array<unknown>;
-export type TagMap = Record<string, unknown>;
+export type TagKeyList = Array<string>;
+export type TagMap = Record<string, string>;
 export interface TagResourceRequest {
+  resourceArn: string;
+  tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TotalResourceUtilization {
+  vCPUHour?: number;
+  memoryGBHour?: number;
+  storageGBHour?: number;
 }
 export interface UntagResourceRequest {
+  resourceArn: string;
+  tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateApplicationRequest {
+  applicationId: string;
+  clientToken: string;
+  initialCapacity?: Record<string, InitialCapacityConfig>;
+  maximumCapacity?: MaximumAllowedResources;
+  autoStartConfiguration?: AutoStartConfig;
+  autoStopConfiguration?: AutoStopConfig;
+  networkConfiguration?: NetworkConfiguration;
+  architecture?: string;
+  imageConfiguration?: ImageConfigurationInput;
+  workerTypeSpecifications?: Record<string, WorkerTypeSpecificationInput>;
+  interactiveConfiguration?: InteractiveConfiguration;
+  releaseLabel?: string;
+  runtimeConfiguration?: Array<Configuration>;
+  monitoringConfiguration?: MonitoringConfiguration;
+  schedulerConfiguration?: SchedulerConfiguration;
+  identityCenterConfiguration?: IdentityCenterConfigurationInput;
 }
 export interface UpdateApplicationResponse {
+  application: Application;
 }
 export type UriString = string;
 
 export type Url = string;
 
-export interface ValidationException {
-}
+export declare class ValidationException extends Data.TaggedError(
+  "ValidationException",
+)<{
+  readonly message: string;
+}> {}
 export type WorkerCounts = number;
 
 export interface WorkerResourceConfig {
+  cpu: string;
+  memory: string;
+  disk?: string;
+  diskType?: string;
 }
 export interface WorkerTypeSpecification {
+  imageConfiguration?: ImageConfiguration;
 }
 export interface WorkerTypeSpecificationInput {
+  imageConfiguration?: ImageConfigurationInput;
 }
-export type WorkerTypeSpecificationInputMap = Record<string, unknown>;
-export type WorkerTypeSpecificationMap = Record<string, unknown>;
+export type WorkerTypeSpecificationInputMap = Record<
+  string,
+  WorkerTypeSpecificationInput
+>;
+export type WorkerTypeSpecificationMap = Record<
+  string,
+  WorkerTypeSpecification
+>;
 export type WorkerTypeString = string;
-
-export declare namespace CancelJobRun {
-  export type Input = CancelJobRunRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateApplication {
-  export type Input = CreateApplicationRequest;
-  export type Output = {};
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteApplication {
-  export type Input = DeleteApplicationRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetApplication {
-  export type Input = GetApplicationRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetDashboardForJobRun {
-  export type Input = GetDashboardForJobRunRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetJobRun {
-  export type Input = GetJobRunRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListApplications {
-  export type Input = ListApplicationsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListJobRunAttempts {
-  export type Input = ListJobRunAttemptsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListJobRuns {
-  export type Input = ListJobRunsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartApplication {
-  export type Input = StartApplicationRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartJobRun {
-  export type Input = StartJobRunRequest;
-  export type Output = {};
-  export type Error =
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StopApplication {
-  export type Input = StopApplicationRequest;
-  export type Output = {};
+  export type Output = ListTagsForResourceResponse;
   export type Error =
     | InternalServerException
     | ResourceNotFoundException
@@ -498,7 +574,7 @@ export declare namespace StopApplication {
 
 export declare namespace TagResource {
   export type Input = TagResourceRequest;
-  export type Output = {};
+  export type Output = TagResourceResponse;
   export type Error =
     | InternalServerException
     | ResourceNotFoundException
@@ -508,21 +584,10 @@ export declare namespace TagResource {
 
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
-  export type Output = {};
+  export type Output = UntagResourceResponse;
   export type Error =
     | InternalServerException
     | ResourceNotFoundException
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateApplication {
-  export type Input = UpdateApplicationRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-

@@ -1,114 +1,244 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface KafkaConnect {
   createConnector(
     input: CreateConnectorRequest,
   ): Effect.Effect<
     CreateConnectorResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createCustomPlugin(
     input: CreateCustomPluginRequest,
   ): Effect.Effect<
     CreateCustomPluginResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createWorkerConfiguration(
     input: CreateWorkerConfigurationRequest,
   ): Effect.Effect<
     CreateWorkerConfigurationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteConnector(
     input: DeleteConnectorRequest,
   ): Effect.Effect<
     DeleteConnectorResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteCustomPlugin(
     input: DeleteCustomPluginRequest,
   ): Effect.Effect<
     DeleteCustomPluginResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteWorkerConfiguration(
     input: DeleteWorkerConfigurationRequest,
   ): Effect.Effect<
     DeleteWorkerConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeConnector(
     input: DescribeConnectorRequest,
   ): Effect.Effect<
     DescribeConnectorResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeConnectorOperation(
     input: DescribeConnectorOperationRequest,
   ): Effect.Effect<
     DescribeConnectorOperationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeCustomPlugin(
     input: DescribeCustomPluginRequest,
   ): Effect.Effect<
     DescribeCustomPluginResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeWorkerConfiguration(
     input: DescribeWorkerConfigurationRequest,
   ): Effect.Effect<
     DescribeWorkerConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listConnectorOperations(
     input: ListConnectorOperationsRequest,
   ): Effect.Effect<
     ListConnectorOperationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listConnectors(
     input: ListConnectorsRequest,
   ): Effect.Effect<
     ListConnectorsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listCustomPlugins(
     input: ListCustomPluginsRequest,
   ): Effect.Effect<
     ListCustomPluginsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listWorkerConfigurations(
     input: ListWorkerConfigurationsRequest,
   ): Effect.Effect<
     ListWorkerConfigurationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateConnector(
     input: UpdateConnectorRequest,
   ): Effect.Effect<
     UpdateConnectorResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -124,12 +254,14 @@ export type __integerMin1Max8 = number;
 
 export type __listOf__string = Array<string>;
 export type __listOfConnectorOperationStep = Array<ConnectorOperationStep>;
-export type __listOfConnectorOperationSummary = Array<ConnectorOperationSummary>;
+export type __listOfConnectorOperationSummary =
+  Array<ConnectorOperationSummary>;
 export type __listOfConnectorSummary = Array<ConnectorSummary>;
 export type __listOfCustomPluginSummary = Array<CustomPluginSummary>;
 export type __listOfPlugin = Array<Plugin>;
 export type __listOfPluginDescription = Array<PluginDescription>;
-export type __listOfWorkerConfigurationSummary = Array<WorkerConfigurationSummary>;
+export type __listOfWorkerConfigurationSummary =
+  Array<WorkerConfigurationSummary>;
 export type __long = number;
 
 export type __longMin1 = number;
@@ -578,8 +710,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Record<string, string>;
 export type TagValue = string;
 
@@ -597,8 +728,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateConnectorRequest {
   capacity?: CapacityUpdate;
   connectorConfiguration?: Record<string, string>;
@@ -915,4 +1045,3 @@ export declare namespace UpdateConnector {
     | UnauthorizedException
     | CommonAwsError;
 }
-

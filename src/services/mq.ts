@@ -1,150 +1,248 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface mq {
   createBroker(
     input: CreateBrokerRequest,
   ): Effect.Effect<
     CreateBrokerResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createConfiguration(
     input: CreateConfigurationRequest,
   ): Effect.Effect<
     CreateConfigurationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   createTags(
     input: CreateTagsRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   createUser(
     input: CreateUserRequest,
   ): Effect.Effect<
     CreateUserResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteBroker(
     input: DeleteBrokerRequest,
   ): Effect.Effect<
     DeleteBrokerResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteConfiguration(
     input: DeleteConfigurationRequest,
   ): Effect.Effect<
     DeleteConfigurationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteTags(
     input: DeleteTagsRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteUser(
     input: DeleteUserRequest,
   ): Effect.Effect<
     DeleteUserResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   describeBroker(
     input: DescribeBrokerRequest,
   ): Effect.Effect<
     DescribeBrokerResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   describeBrokerEngineTypes(
     input: DescribeBrokerEngineTypesRequest,
   ): Effect.Effect<
     DescribeBrokerEngineTypesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   describeBrokerInstanceOptions(
     input: DescribeBrokerInstanceOptionsRequest,
   ): Effect.Effect<
     DescribeBrokerInstanceOptionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   describeConfiguration(
     input: DescribeConfigurationRequest,
   ): Effect.Effect<
     DescribeConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   describeConfigurationRevision(
     input: DescribeConfigurationRevisionRequest,
   ): Effect.Effect<
     DescribeConfigurationRevisionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   describeUser(
     input: DescribeUserRequest,
   ): Effect.Effect<
     DescribeUserResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   listBrokers(
     input: ListBrokersRequest,
   ): Effect.Effect<
     ListBrokersResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   listConfigurationRevisions(
     input: ListConfigurationRevisionsRequest,
   ): Effect.Effect<
     ListConfigurationRevisionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   listConfigurations(
     input: ListConfigurationsRequest,
   ): Effect.Effect<
     ListConfigurationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   listTags(
     input: ListTagsRequest,
   ): Effect.Effect<
     ListTagsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   listUsers(
     input: ListUsersRequest,
   ): Effect.Effect<
     ListUsersResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   promote(
     input: PromoteRequest,
   ): Effect.Effect<
     PromoteResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   rebootBroker(
     input: RebootBrokerRequest,
   ): Effect.Effect<
     RebootBrokerResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateBroker(
     input: UpdateBrokerRequest,
   ): Effect.Effect<
     UpdateBrokerResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateConfiguration(
     input: UpdateConfigurationRequest,
   ): Effect.Effect<
     UpdateConfigurationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateUser(
     input: UpdateUserRequest,
   ): Effect.Effect<
     UpdateUserResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -207,7 +305,14 @@ export interface BrokerInstanceOption {
   SupportedDeploymentModes?: Array<DeploymentMode>;
   SupportedEngineVersions?: Array<string>;
 }
-export type BrokerState = "CREATION_IN_PROGRESS" | "CREATION_FAILED" | "DELETION_IN_PROGRESS" | "RUNNING" | "REBOOT_IN_PROGRESS" | "CRITICAL_ACTION_REQUIRED" | "REPLICA";
+export type BrokerState =
+  | "CREATION_IN_PROGRESS"
+  | "CREATION_FAILED"
+  | "DELETION_IN_PROGRESS"
+  | "RUNNING"
+  | "REBOOT_IN_PROGRESS"
+  | "CRITICAL_ACTION_REQUIRED"
+  | "REPLICA";
 export type BrokerStorageType = "EBS" | "EFS";
 export interface BrokerSummary {
   BrokerArn?: string;
@@ -306,8 +411,7 @@ export interface CreateUserRequest {
   Username: string;
   ReplicationUser?: boolean;
 }
-export interface CreateUserResponse {
-}
+export interface CreateUserResponse {}
 export interface DataReplicationCounterpart {
   BrokerId: string;
   Region: string;
@@ -317,7 +421,14 @@ export interface DataReplicationMetadataOutput {
   DataReplicationRole: string;
 }
 export type DataReplicationMode = "NONE" | "CRDR";
-export type DayOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type DayOfWeek =
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export interface DeleteBrokerRequest {
   BrokerId: string;
 }
@@ -338,9 +449,11 @@ export interface DeleteUserRequest {
   BrokerId: string;
   Username: string;
 }
-export interface DeleteUserResponse {
-}
-export type DeploymentMode = "SINGLE_INSTANCE" | "ACTIVE_STANDBY_MULTI_AZ" | "CLUSTER_MULTI_AZ";
+export interface DeleteUserResponse {}
+export type DeploymentMode =
+  | "SINGLE_INSTANCE"
+  | "ACTIVE_STANDBY_MULTI_AZ"
+  | "CLUSTER_MULTI_AZ";
 export interface DescribeBrokerEngineTypesRequest {
   EngineType?: string;
   MaxResults?: number;
@@ -562,14 +675,16 @@ export interface PromoteResponse {
 export interface RebootBrokerRequest {
   BrokerId: string;
 }
-export interface RebootBrokerResponse {
-}
+export interface RebootBrokerResponse {}
 export interface SanitizationWarning {
   AttributeName?: string;
   ElementName?: string;
   Reason: SanitizationWarningReason;
 }
-export type SanitizationWarningReason = "DISALLOWED_ELEMENT_REMOVED" | "DISALLOWED_ATTRIBUTE_REMOVED" | "INVALID_ATTRIBUTE_VALUE_REMOVED";
+export type SanitizationWarningReason =
+  | "DISALLOWED_ELEMENT_REMOVED"
+  | "DISALLOWED_ATTRIBUTE_REMOVED"
+  | "INVALID_ATTRIBUTE_VALUE_REMOVED";
 export declare class UnauthorizedException extends Data.TaggedError(
   "UnauthorizedException",
 )<{
@@ -626,8 +741,7 @@ export interface UpdateUserRequest {
   Username: string;
   ReplicationUser?: boolean;
 }
-export interface UpdateUserResponse {
-}
+export interface UpdateUserResponse {}
 export interface User {
   ConsoleAccess?: boolean;
   Groups?: Array<string>;
@@ -914,4 +1028,3 @@ export declare namespace UpdateUser {
     | NotFoundException
     | CommonAwsError;
 }
-

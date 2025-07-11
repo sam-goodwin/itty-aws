@@ -1,7 +1,170 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.databrew#AWSGlueDataBrew": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.databrew#BatchDeleteRecipeVersion"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateProfileJob"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateProject"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateRecipe"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateRecipeJob"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateRuleset"
+        },
+        {
+          "target": "com.amazonaws.databrew#CreateSchedule"
+        },
+        {
+          "target": "com.amazonaws.databrew#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.databrew#DeleteJob"
+        },
+        {
+          "target": "com.amazonaws.databrew#DeleteProject"
+        },
+        {
+          "target": "com.amazonaws.databrew#DeleteRecipeVersion"
+        },
+        {
+          "target": "com.amazonaws.databrew#DeleteRuleset"
+        },
+        {
+          "target": "com.amazonaws.databrew#DeleteSchedule"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeJob"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeJobRun"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeProject"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeRecipe"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeRuleset"
+        },
+        {
+          "target": "com.amazonaws.databrew#DescribeSchedule"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListJobRuns"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListProjects"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListRecipes"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListRecipeVersions"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListRulesets"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListSchedules"
+        },
+        {
+          "target": "com.amazonaws.databrew#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.databrew#PublishRecipe"
+        },
+        {
+          "target": "com.amazonaws.databrew#SendProjectSessionAction"
+        },
+        {
+          "target": "com.amazonaws.databrew#StartJobRun"
+        },
+        {
+          "target": "com.amazonaws.databrew#StartProjectSession"
+        },
+        {
+          "target": "com.amazonaws.databrew#StopJobRun"
+        },
+        {
+          "target": "com.amazonaws.databrew#TagResource"
+        },
+        {
+          "target": "com.amazonaws.databrew#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateDataset"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateProfileJob"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateProject"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateRecipe"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateRecipeJob"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateRuleset"
+        },
+        {
+          "target": "com.amazonaws.databrew#UpdateSchedule"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "DataBrew",

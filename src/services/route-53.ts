@@ -1,108 +1,207 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSDnsV20130401 {
   activateKeySigningKey(
     input: ActivateKeySigningKeyRequest,
   ): Effect.Effect<
     ActivateKeySigningKeyResponse,
-    ConcurrentModification | InvalidInput | InvalidKeySigningKeyStatus | InvalidKMSArn | InvalidSigningStatus | NoSuchKeySigningKey | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | InvalidKeySigningKeyStatus
+    | InvalidKMSArn
+    | InvalidSigningStatus
+    | NoSuchKeySigningKey
+    | CommonAwsError
   >;
   associateVPCWithHostedZone(
     input: AssociateVPCWithHostedZoneRequest,
   ): Effect.Effect<
     AssociateVPCWithHostedZoneResponse,
-    ConflictingDomainExists | InvalidInput | InvalidVPCId | LimitsExceeded | NoSuchHostedZone | NotAuthorizedException | PriorRequestNotComplete | PublicZoneVPCAssociation | CommonAwsError
+    | ConflictingDomainExists
+    | InvalidInput
+    | InvalidVPCId
+    | LimitsExceeded
+    | NoSuchHostedZone
+    | NotAuthorizedException
+    | PriorRequestNotComplete
+    | PublicZoneVPCAssociation
+    | CommonAwsError
   >;
   changeCidrCollection(
     input: ChangeCidrCollectionRequest,
   ): Effect.Effect<
     ChangeCidrCollectionResponse,
-    CidrBlockInUseException | CidrCollectionVersionMismatchException | ConcurrentModification | InvalidInput | LimitsExceeded | NoSuchCidrCollectionException | CommonAwsError
+    | CidrBlockInUseException
+    | CidrCollectionVersionMismatchException
+    | ConcurrentModification
+    | InvalidInput
+    | LimitsExceeded
+    | NoSuchCidrCollectionException
+    | CommonAwsError
   >;
   changeResourceRecordSets(
     input: ChangeResourceRecordSetsRequest,
   ): Effect.Effect<
     ChangeResourceRecordSetsResponse,
-    InvalidChangeBatch | InvalidInput | NoSuchHealthCheck | NoSuchHostedZone | PriorRequestNotComplete | CommonAwsError
+    | InvalidChangeBatch
+    | InvalidInput
+    | NoSuchHealthCheck
+    | NoSuchHostedZone
+    | PriorRequestNotComplete
+    | CommonAwsError
   >;
   changeTagsForResource(
     input: ChangeTagsForResourceRequest,
   ): Effect.Effect<
     ChangeTagsForResourceResponse,
-    InvalidInput | NoSuchHealthCheck | NoSuchHostedZone | PriorRequestNotComplete | ThrottlingException | CommonAwsError
+    | InvalidInput
+    | NoSuchHealthCheck
+    | NoSuchHostedZone
+    | PriorRequestNotComplete
+    | ThrottlingException
+    | CommonAwsError
   >;
   createCidrCollection(
     input: CreateCidrCollectionRequest,
   ): Effect.Effect<
     CreateCidrCollectionResponse,
-    CidrCollectionAlreadyExistsException | ConcurrentModification | InvalidInput | LimitsExceeded | CommonAwsError
+    | CidrCollectionAlreadyExistsException
+    | ConcurrentModification
+    | InvalidInput
+    | LimitsExceeded
+    | CommonAwsError
   >;
   createHealthCheck(
     input: CreateHealthCheckRequest,
   ): Effect.Effect<
     CreateHealthCheckResponse,
-    HealthCheckAlreadyExists | InvalidInput | TooManyHealthChecks | CommonAwsError
+    | HealthCheckAlreadyExists
+    | InvalidInput
+    | TooManyHealthChecks
+    | CommonAwsError
   >;
   createHostedZone(
     input: CreateHostedZoneRequest,
   ): Effect.Effect<
     CreateHostedZoneResponse,
-    ConflictingDomainExists | DelegationSetNotAvailable | DelegationSetNotReusable | HostedZoneAlreadyExists | InvalidDomainName | InvalidInput | InvalidVPCId | NoSuchDelegationSet | TooManyHostedZones | CommonAwsError
+    | ConflictingDomainExists
+    | DelegationSetNotAvailable
+    | DelegationSetNotReusable
+    | HostedZoneAlreadyExists
+    | InvalidDomainName
+    | InvalidInput
+    | InvalidVPCId
+    | NoSuchDelegationSet
+    | TooManyHostedZones
+    | CommonAwsError
   >;
   createKeySigningKey(
     input: CreateKeySigningKeyRequest,
   ): Effect.Effect<
     CreateKeySigningKeyResponse,
-    ConcurrentModification | InvalidArgument | InvalidInput | InvalidKeySigningKeyName | InvalidKeySigningKeyStatus | InvalidKMSArn | InvalidSigningStatus | KeySigningKeyAlreadyExists | NoSuchHostedZone | TooManyKeySigningKeys | CommonAwsError
+    | ConcurrentModification
+    | InvalidArgument
+    | InvalidInput
+    | InvalidKeySigningKeyName
+    | InvalidKeySigningKeyStatus
+    | InvalidKMSArn
+    | InvalidSigningStatus
+    | KeySigningKeyAlreadyExists
+    | NoSuchHostedZone
+    | TooManyKeySigningKeys
+    | CommonAwsError
   >;
   createQueryLoggingConfig(
     input: CreateQueryLoggingConfigRequest,
   ): Effect.Effect<
     CreateQueryLoggingConfigResponse,
-    ConcurrentModification | InsufficientCloudWatchLogsResourcePolicy | InvalidInput | NoSuchCloudWatchLogsLogGroup | NoSuchHostedZone | QueryLoggingConfigAlreadyExists | CommonAwsError
+    | ConcurrentModification
+    | InsufficientCloudWatchLogsResourcePolicy
+    | InvalidInput
+    | NoSuchCloudWatchLogsLogGroup
+    | NoSuchHostedZone
+    | QueryLoggingConfigAlreadyExists
+    | CommonAwsError
   >;
   createReusableDelegationSet(
     input: CreateReusableDelegationSetRequest,
   ): Effect.Effect<
     CreateReusableDelegationSetResponse,
-    DelegationSetAlreadyCreated | DelegationSetAlreadyReusable | DelegationSetNotAvailable | HostedZoneNotFound | InvalidArgument | InvalidInput | LimitsExceeded | CommonAwsError
+    | DelegationSetAlreadyCreated
+    | DelegationSetAlreadyReusable
+    | DelegationSetNotAvailable
+    | HostedZoneNotFound
+    | InvalidArgument
+    | InvalidInput
+    | LimitsExceeded
+    | CommonAwsError
   >;
   createTrafficPolicy(
     input: CreateTrafficPolicyRequest,
   ): Effect.Effect<
     CreateTrafficPolicyResponse,
-    InvalidInput | InvalidTrafficPolicyDocument | TooManyTrafficPolicies | TrafficPolicyAlreadyExists | CommonAwsError
+    | InvalidInput
+    | InvalidTrafficPolicyDocument
+    | TooManyTrafficPolicies
+    | TrafficPolicyAlreadyExists
+    | CommonAwsError
   >;
   createTrafficPolicyInstance(
     input: CreateTrafficPolicyInstanceRequest,
   ): Effect.Effect<
     CreateTrafficPolicyInstanceResponse,
-    InvalidInput | NoSuchHostedZone | NoSuchTrafficPolicy | TooManyTrafficPolicyInstances | TrafficPolicyInstanceAlreadyExists | CommonAwsError
+    | InvalidInput
+    | NoSuchHostedZone
+    | NoSuchTrafficPolicy
+    | TooManyTrafficPolicyInstances
+    | TrafficPolicyInstanceAlreadyExists
+    | CommonAwsError
   >;
   createTrafficPolicyVersion(
     input: CreateTrafficPolicyVersionRequest,
   ): Effect.Effect<
     CreateTrafficPolicyVersionResponse,
-    ConcurrentModification | InvalidInput | InvalidTrafficPolicyDocument | NoSuchTrafficPolicy | TooManyTrafficPolicyVersionsForCurrentPolicy | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | InvalidTrafficPolicyDocument
+    | NoSuchTrafficPolicy
+    | TooManyTrafficPolicyVersionsForCurrentPolicy
+    | CommonAwsError
   >;
   createVPCAssociationAuthorization(
     input: CreateVPCAssociationAuthorizationRequest,
   ): Effect.Effect<
     CreateVPCAssociationAuthorizationResponse,
-    ConcurrentModification | InvalidInput | InvalidVPCId | NoSuchHostedZone | TooManyVPCAssociationAuthorizations | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | InvalidVPCId
+    | NoSuchHostedZone
+    | TooManyVPCAssociationAuthorizations
+    | CommonAwsError
   >;
   deactivateKeySigningKey(
     input: DeactivateKeySigningKeyRequest,
   ): Effect.Effect<
     DeactivateKeySigningKeyResponse,
-    ConcurrentModification | InvalidInput | InvalidKeySigningKeyStatus | InvalidSigningStatus | KeySigningKeyInParentDSRecord | KeySigningKeyInUse | NoSuchKeySigningKey | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | InvalidKeySigningKeyStatus
+    | InvalidSigningStatus
+    | KeySigningKeyInParentDSRecord
+    | KeySigningKeyInUse
+    | NoSuchKeySigningKey
+    | CommonAwsError
   >;
   deleteCidrCollection(
     input: DeleteCidrCollectionRequest,
   ): Effect.Effect<
     DeleteCidrCollectionResponse,
-    CidrCollectionInUseException | ConcurrentModification | InvalidInput | NoSuchCidrCollectionException | CommonAwsError
+    | CidrCollectionInUseException
+    | ConcurrentModification
+    | InvalidInput
+    | NoSuchCidrCollectionException
+    | CommonAwsError
   >;
   deleteHealthCheck(
     input: DeleteHealthCheckRequest,
@@ -114,68 +213,117 @@ export interface AWSDnsV20130401 {
     input: DeleteHostedZoneRequest,
   ): Effect.Effect<
     DeleteHostedZoneResponse,
-    HostedZoneNotEmpty | InvalidDomainName | InvalidInput | NoSuchHostedZone | PriorRequestNotComplete | CommonAwsError
+    | HostedZoneNotEmpty
+    | InvalidDomainName
+    | InvalidInput
+    | NoSuchHostedZone
+    | PriorRequestNotComplete
+    | CommonAwsError
   >;
   deleteKeySigningKey(
     input: DeleteKeySigningKeyRequest,
   ): Effect.Effect<
     DeleteKeySigningKeyResponse,
-    ConcurrentModification | InvalidInput | InvalidKeySigningKeyStatus | InvalidKMSArn | InvalidSigningStatus | NoSuchKeySigningKey | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | InvalidKeySigningKeyStatus
+    | InvalidKMSArn
+    | InvalidSigningStatus
+    | NoSuchKeySigningKey
+    | CommonAwsError
   >;
   deleteQueryLoggingConfig(
     input: DeleteQueryLoggingConfigRequest,
   ): Effect.Effect<
     DeleteQueryLoggingConfigResponse,
-    ConcurrentModification | InvalidInput | NoSuchQueryLoggingConfig | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | NoSuchQueryLoggingConfig
+    | CommonAwsError
   >;
   deleteReusableDelegationSet(
     input: DeleteReusableDelegationSetRequest,
   ): Effect.Effect<
     DeleteReusableDelegationSetResponse,
-    DelegationSetInUse | DelegationSetNotReusable | InvalidInput | NoSuchDelegationSet | CommonAwsError
+    | DelegationSetInUse
+    | DelegationSetNotReusable
+    | InvalidInput
+    | NoSuchDelegationSet
+    | CommonAwsError
   >;
   deleteTrafficPolicy(
     input: DeleteTrafficPolicyRequest,
   ): Effect.Effect<
     DeleteTrafficPolicyResponse,
-    ConcurrentModification | InvalidInput | NoSuchTrafficPolicy | TrafficPolicyInUse | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | NoSuchTrafficPolicy
+    | TrafficPolicyInUse
+    | CommonAwsError
   >;
   deleteTrafficPolicyInstance(
     input: DeleteTrafficPolicyInstanceRequest,
   ): Effect.Effect<
     DeleteTrafficPolicyInstanceResponse,
-    InvalidInput | NoSuchTrafficPolicyInstance | PriorRequestNotComplete | CommonAwsError
+    | InvalidInput
+    | NoSuchTrafficPolicyInstance
+    | PriorRequestNotComplete
+    | CommonAwsError
   >;
   deleteVPCAssociationAuthorization(
     input: DeleteVPCAssociationAuthorizationRequest,
   ): Effect.Effect<
     DeleteVPCAssociationAuthorizationResponse,
-    ConcurrentModification | InvalidInput | InvalidVPCId | NoSuchHostedZone | VPCAssociationAuthorizationNotFound | CommonAwsError
+    | ConcurrentModification
+    | InvalidInput
+    | InvalidVPCId
+    | NoSuchHostedZone
+    | VPCAssociationAuthorizationNotFound
+    | CommonAwsError
   >;
   disableHostedZoneDNSSEC(
     input: DisableHostedZoneDNSSECRequest,
   ): Effect.Effect<
     DisableHostedZoneDNSSECResponse,
-    ConcurrentModification | DNSSECNotFound | InvalidArgument | InvalidInput | InvalidKeySigningKeyStatus | InvalidKMSArn | KeySigningKeyInParentDSRecord | NoSuchHostedZone | CommonAwsError
+    | ConcurrentModification
+    | DNSSECNotFound
+    | InvalidArgument
+    | InvalidInput
+    | InvalidKeySigningKeyStatus
+    | InvalidKMSArn
+    | KeySigningKeyInParentDSRecord
+    | NoSuchHostedZone
+    | CommonAwsError
   >;
   disassociateVPCFromHostedZone(
     input: DisassociateVPCFromHostedZoneRequest,
   ): Effect.Effect<
     DisassociateVPCFromHostedZoneResponse,
-    InvalidInput | InvalidVPCId | LastVPCAssociation | NoSuchHostedZone | VPCAssociationNotFound | CommonAwsError
+    | InvalidInput
+    | InvalidVPCId
+    | LastVPCAssociation
+    | NoSuchHostedZone
+    | VPCAssociationNotFound
+    | CommonAwsError
   >;
   enableHostedZoneDNSSEC(
     input: EnableHostedZoneDNSSECRequest,
   ): Effect.Effect<
     EnableHostedZoneDNSSECResponse,
-    ConcurrentModification | DNSSECNotFound | HostedZonePartiallyDelegated | InvalidArgument | InvalidInput | InvalidKeySigningKeyStatus | InvalidKMSArn | KeySigningKeyWithActiveStatusNotFound | NoSuchHostedZone | CommonAwsError
+    | ConcurrentModification
+    | DNSSECNotFound
+    | HostedZonePartiallyDelegated
+    | InvalidArgument
+    | InvalidInput
+    | InvalidKeySigningKeyStatus
+    | InvalidKMSArn
+    | KeySigningKeyWithActiveStatusNotFound
+    | NoSuchHostedZone
+    | CommonAwsError
   >;
   getAccountLimit(
     input: GetAccountLimitRequest,
-  ): Effect.Effect<
-    GetAccountLimitResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<GetAccountLimitResponse, InvalidInput | CommonAwsError>;
   getChange(
     input: GetChangeRequest,
   ): Effect.Effect<
@@ -184,10 +332,7 @@ export interface AWSDnsV20130401 {
   >;
   getCheckerIpRanges(
     input: GetCheckerIpRangesRequest,
-  ): Effect.Effect<
-    GetCheckerIpRangesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetCheckerIpRangesResponse, CommonAwsError>;
   getDNSSEC(
     input: GetDNSSECRequest,
   ): Effect.Effect<
@@ -208,10 +353,7 @@ export interface AWSDnsV20130401 {
   >;
   getHealthCheckCount(
     input: GetHealthCheckCountRequest,
-  ): Effect.Effect<
-    GetHealthCheckCountResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetHealthCheckCountResponse, CommonAwsError>;
   getHealthCheckLastFailureReason(
     input: GetHealthCheckLastFailureReasonRequest,
   ): Effect.Effect<
@@ -232,10 +374,7 @@ export interface AWSDnsV20130401 {
   >;
   getHostedZoneCount(
     input: GetHostedZoneCountRequest,
-  ): Effect.Effect<
-    GetHostedZoneCountResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<GetHostedZoneCountResponse, InvalidInput | CommonAwsError>;
   getHostedZoneLimit(
     input: GetHostedZoneLimitRequest,
   ): Effect.Effect<
@@ -252,7 +391,10 @@ export interface AWSDnsV20130401 {
     input: GetReusableDelegationSetRequest,
   ): Effect.Effect<
     GetReusableDelegationSetResponse,
-    DelegationSetNotReusable | InvalidInput | NoSuchDelegationSet | CommonAwsError
+    | DelegationSetNotReusable
+    | InvalidInput
+    | NoSuchDelegationSet
+    | CommonAwsError
   >;
   getReusableDelegationSetLimit(
     input: GetReusableDelegationSetLimitRequest,
@@ -274,22 +416,19 @@ export interface AWSDnsV20130401 {
   >;
   getTrafficPolicyInstanceCount(
     input: GetTrafficPolicyInstanceCountRequest,
-  ): Effect.Effect<
-    GetTrafficPolicyInstanceCountResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetTrafficPolicyInstanceCountResponse, CommonAwsError>;
   listCidrBlocks(
     input: ListCidrBlocksRequest,
   ): Effect.Effect<
     ListCidrBlocksResponse,
-    InvalidInput | NoSuchCidrCollectionException | NoSuchCidrLocationException | CommonAwsError
+    | InvalidInput
+    | NoSuchCidrCollectionException
+    | NoSuchCidrLocationException
+    | CommonAwsError
   >;
   listCidrCollections(
     input: ListCidrCollectionsRequest,
-  ): Effect.Effect<
-    ListCidrCollectionsResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<ListCidrCollectionsResponse, InvalidInput | CommonAwsError>;
   listCidrLocations(
     input: ListCidrLocationsRequest,
   ): Effect.Effect<
@@ -298,10 +437,7 @@ export interface AWSDnsV20130401 {
   >;
   listGeoLocations(
     input: ListGeoLocationsRequest,
-  ): Effect.Effect<
-    ListGeoLocationsResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<ListGeoLocationsResponse, InvalidInput | CommonAwsError>;
   listHealthChecks(
     input: ListHealthChecksRequest,
   ): Effect.Effect<
@@ -312,7 +448,10 @@ export interface AWSDnsV20130401 {
     input: ListHostedZonesRequest,
   ): Effect.Effect<
     ListHostedZonesResponse,
-    DelegationSetNotReusable | InvalidInput | NoSuchDelegationSet | CommonAwsError
+    | DelegationSetNotReusable
+    | InvalidInput
+    | NoSuchDelegationSet
+    | CommonAwsError
   >;
   listHostedZonesByName(
     input: ListHostedZonesByNameRequest,
@@ -348,20 +487,27 @@ export interface AWSDnsV20130401 {
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InvalidInput | NoSuchHealthCheck | NoSuchHostedZone | PriorRequestNotComplete | ThrottlingException | CommonAwsError
+    | InvalidInput
+    | NoSuchHealthCheck
+    | NoSuchHostedZone
+    | PriorRequestNotComplete
+    | ThrottlingException
+    | CommonAwsError
   >;
   listTagsForResources(
     input: ListTagsForResourcesRequest,
   ): Effect.Effect<
     ListTagsForResourcesResponse,
-    InvalidInput | NoSuchHealthCheck | NoSuchHostedZone | PriorRequestNotComplete | ThrottlingException | CommonAwsError
+    | InvalidInput
+    | NoSuchHealthCheck
+    | NoSuchHostedZone
+    | PriorRequestNotComplete
+    | ThrottlingException
+    | CommonAwsError
   >;
   listTrafficPolicies(
     input: ListTrafficPoliciesRequest,
-  ): Effect.Effect<
-    ListTrafficPoliciesResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<ListTrafficPoliciesResponse, InvalidInput | CommonAwsError>;
   listTrafficPolicyInstances(
     input: ListTrafficPolicyInstancesRequest,
   ): Effect.Effect<
@@ -372,13 +518,19 @@ export interface AWSDnsV20130401 {
     input: ListTrafficPolicyInstancesByHostedZoneRequest,
   ): Effect.Effect<
     ListTrafficPolicyInstancesByHostedZoneResponse,
-    InvalidInput | NoSuchHostedZone | NoSuchTrafficPolicyInstance | CommonAwsError
+    | InvalidInput
+    | NoSuchHostedZone
+    | NoSuchTrafficPolicyInstance
+    | CommonAwsError
   >;
   listTrafficPolicyInstancesByPolicy(
     input: ListTrafficPolicyInstancesByPolicyRequest,
   ): Effect.Effect<
     ListTrafficPolicyInstancesByPolicyResponse,
-    InvalidInput | NoSuchTrafficPolicy | NoSuchTrafficPolicyInstance | CommonAwsError
+    | InvalidInput
+    | NoSuchTrafficPolicy
+    | NoSuchTrafficPolicyInstance
+    | CommonAwsError
   >;
   listTrafficPolicyVersions(
     input: ListTrafficPolicyVersionsRequest,
@@ -402,7 +554,10 @@ export interface AWSDnsV20130401 {
     input: UpdateHealthCheckRequest,
   ): Effect.Effect<
     UpdateHealthCheckResponse,
-    HealthCheckVersionMismatch | InvalidInput | NoSuchHealthCheck | CommonAwsError
+    | HealthCheckVersionMismatch
+    | InvalidInput
+    | NoSuchHealthCheck
+    | CommonAwsError
   >;
   updateHostedZoneComment(
     input: UpdateHostedZoneCommentRequest,
@@ -420,7 +575,12 @@ export interface AWSDnsV20130401 {
     input: UpdateTrafficPolicyInstanceRequest,
   ): Effect.Effect<
     UpdateTrafficPolicyInstanceResponse,
-    ConflictingTypes | InvalidInput | NoSuchTrafficPolicy | NoSuchTrafficPolicyInstance | PriorRequestNotComplete | CommonAwsError
+    | ConflictingTypes
+    | InvalidInput
+    | NoSuchTrafficPolicy
+    | NoSuchTrafficPolicyInstance
+    | PriorRequestNotComplete
+    | CommonAwsError
   >;
 }
 
@@ -430,7 +590,12 @@ export interface AccountLimit {
   Type: AccountLimitType;
   Value: number;
 }
-export type AccountLimitType = "MAX_HEALTH_CHECKS_BY_OWNER" | "MAX_HOSTED_ZONES_BY_OWNER" | "MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER" | "MAX_REUSABLE_DELEGATION_SETS_BY_OWNER" | "MAX_TRAFFIC_POLICIES_BY_OWNER";
+export type AccountLimitType =
+  | "MAX_HEALTH_CHECKS_BY_OWNER"
+  | "MAX_HOSTED_ZONES_BY_OWNER"
+  | "MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"
+  | "MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"
+  | "MAX_TRAFFIC_POLICIES_BY_OWNER";
 export interface ActivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
@@ -509,8 +674,7 @@ export interface ChangeTagsForResourceRequest {
   AddTags?: Array<Tag>;
   RemoveTagKeys?: Array<string>;
 }
-export interface ChangeTagsForResourceResponse {
-}
+export interface ChangeTagsForResourceResponse {}
 export type CheckerIpRanges = Array<string>;
 export type ChildHealthCheckList = Array<string>;
 export type Cidr = string;
@@ -576,7 +740,50 @@ export interface CloudWatchAlarmConfiguration {
 }
 export type CloudWatchLogsLogGroupArn = string;
 
-export type CloudWatchRegion = "us_east_1" | "us_east_2" | "us_west_1" | "us_west_2" | "ca_central_1" | "eu_central_1" | "eu_central_2" | "eu_west_1" | "eu_west_2" | "eu_west_3" | "ap_east_1" | "me_south_1" | "me_central_1" | "ap_south_1" | "ap_south_2" | "ap_southeast_1" | "ap_southeast_2" | "ap_southeast_3" | "ap_northeast_1" | "ap_northeast_2" | "ap_northeast_3" | "eu_north_1" | "sa_east_1" | "cn_northwest_1" | "cn_north_1" | "af_south_1" | "eu_south_1" | "eu_south_2" | "us_gov_west_1" | "us_gov_east_1" | "us_iso_east_1" | "us_iso_west_1" | "us_isob_east_1" | "ap_southeast_4" | "il_central_1" | "ca_west_1" | "ap_southeast_5" | "mx_central_1" | "us_isof_south_1" | "us_isof_east_1" | "ap_southeast_7" | "ap_east_2" | "eu_isoe_west_1";
+export type CloudWatchRegion =
+  | "us_east_1"
+  | "us_east_2"
+  | "us_west_1"
+  | "us_west_2"
+  | "ca_central_1"
+  | "eu_central_1"
+  | "eu_central_2"
+  | "eu_west_1"
+  | "eu_west_2"
+  | "eu_west_3"
+  | "ap_east_1"
+  | "me_south_1"
+  | "me_central_1"
+  | "ap_south_1"
+  | "ap_south_2"
+  | "ap_southeast_1"
+  | "ap_southeast_2"
+  | "ap_southeast_3"
+  | "ap_northeast_1"
+  | "ap_northeast_2"
+  | "ap_northeast_3"
+  | "eu_north_1"
+  | "sa_east_1"
+  | "cn_northwest_1"
+  | "cn_north_1"
+  | "af_south_1"
+  | "eu_south_1"
+  | "eu_south_2"
+  | "us_gov_west_1"
+  | "us_gov_east_1"
+  | "us_iso_east_1"
+  | "us_iso_west_1"
+  | "us_isob_east_1"
+  | "ap_southeast_4"
+  | "il_central_1"
+  | "ca_west_1"
+  | "ap_southeast_5"
+  | "mx_central_1"
+  | "us_isof_south_1"
+  | "us_isof_east_1"
+  | "ap_southeast_7"
+  | "ap_east_2"
+  | "eu_isoe_west_1";
 export type CollectionName = string;
 
 export type CollectionSummaries = Array<CollectionSummary>;
@@ -588,7 +795,11 @@ export interface CollectionSummary {
 }
 export type CollectionVersion = number;
 
-export type ComparisonOperator = "GreaterThanOrEqualToThreshold" | "GreaterThanThreshold" | "LessThanThreshold" | "LessThanOrEqualToThreshold";
+export type ComparisonOperator =
+  | "GreaterThanOrEqualToThreshold"
+  | "GreaterThanThreshold"
+  | "LessThanThreshold"
+  | "LessThanOrEqualToThreshold";
 export declare class ConcurrentModification extends Data.TaggedError(
   "ConcurrentModification",
 )<{
@@ -745,13 +956,11 @@ export type DelegationSets = Array<DelegationSet>;
 export interface DeleteCidrCollectionRequest {
   Id: string;
 }
-export interface DeleteCidrCollectionResponse {
-}
+export interface DeleteCidrCollectionResponse {}
 export interface DeleteHealthCheckRequest {
   HealthCheckId: string;
 }
-export interface DeleteHealthCheckResponse {
-}
+export interface DeleteHealthCheckResponse {}
 export interface DeleteHostedZoneRequest {
   Id: string;
 }
@@ -768,30 +977,25 @@ export interface DeleteKeySigningKeyResponse {
 export interface DeleteQueryLoggingConfigRequest {
   Id: string;
 }
-export interface DeleteQueryLoggingConfigResponse {
-}
+export interface DeleteQueryLoggingConfigResponse {}
 export interface DeleteReusableDelegationSetRequest {
   Id: string;
 }
-export interface DeleteReusableDelegationSetResponse {
-}
+export interface DeleteReusableDelegationSetResponse {}
 export interface DeleteTrafficPolicyInstanceRequest {
   Id: string;
 }
-export interface DeleteTrafficPolicyInstanceResponse {
-}
+export interface DeleteTrafficPolicyInstanceResponse {}
 export interface DeleteTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-export interface DeleteTrafficPolicyResponse {
-}
+export interface DeleteTrafficPolicyResponse {}
 export interface DeleteVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-export interface DeleteVPCAssociationAuthorizationResponse {
-}
+export interface DeleteVPCAssociationAuthorizationResponse {}
 export interface Dimension {
   Name: string;
   Value: string;
@@ -821,9 +1025,7 @@ export type DNSName = string;
 
 export type DNSRCode = string;
 
-export declare class DNSSECNotFound extends Data.TaggedError(
-  "DNSSECNotFound",
-)<{
+export declare class DNSSECNotFound extends Data.TaggedError("DNSSECNotFound")<{
   readonly message?: string;
 }> {}
 export interface DNSSECStatus {
@@ -892,8 +1094,7 @@ export interface GetChangeRequest {
 export interface GetChangeResponse {
   ChangeInfo: ChangeInfo;
 }
-export interface GetCheckerIpRangesRequest {
-}
+export interface GetCheckerIpRangesRequest {}
 export interface GetCheckerIpRangesResponse {
   CheckerIpRanges: Array<string>;
 }
@@ -912,8 +1113,7 @@ export interface GetGeoLocationRequest {
 export interface GetGeoLocationResponse {
   GeoLocationDetails: GeoLocationDetails;
 }
-export interface GetHealthCheckCountRequest {
-}
+export interface GetHealthCheckCountRequest {}
 export interface GetHealthCheckCountResponse {
   HealthCheckCount: number;
 }
@@ -935,8 +1135,7 @@ export interface GetHealthCheckStatusRequest {
 export interface GetHealthCheckStatusResponse {
   HealthCheckObservations: Array<HealthCheckObservation>;
 }
-export interface GetHostedZoneCountRequest {
-}
+export interface GetHostedZoneCountRequest {}
 export interface GetHostedZoneCountResponse {
   HostedZoneCount: number;
 }
@@ -976,8 +1175,7 @@ export interface GetReusableDelegationSetRequest {
 export interface GetReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
 }
-export interface GetTrafficPolicyInstanceCountRequest {
-}
+export interface GetTrafficPolicyInstanceCountRequest {}
 export interface GetTrafficPolicyInstanceCountResponse {
   TrafficPolicyInstanceCount: number;
 }
@@ -1044,10 +1242,26 @@ export interface HealthCheckObservation {
   StatusReport?: StatusReport;
 }
 export type HealthCheckObservations = Array<HealthCheckObservation>;
-export type HealthCheckRegion = "us_east_1" | "us_west_1" | "us_west_2" | "eu_west_1" | "ap_southeast_1" | "ap_southeast_2" | "ap_northeast_1" | "sa_east_1";
+export type HealthCheckRegion =
+  | "us_east_1"
+  | "us_west_1"
+  | "us_west_2"
+  | "eu_west_1"
+  | "ap_southeast_1"
+  | "ap_southeast_2"
+  | "ap_northeast_1"
+  | "sa_east_1";
 export type HealthCheckRegionList = Array<HealthCheckRegion>;
 export type HealthChecks = Array<HealthCheck>;
-export type HealthCheckType = "HTTP" | "HTTPS" | "HTTP_STR_MATCH" | "HTTPS_STR_MATCH" | "TCP" | "CALCULATED" | "CLOUDWATCH_METRIC" | "RECOVERY_CONTROL";
+export type HealthCheckType =
+  | "HTTP"
+  | "HTTPS"
+  | "HTTP_STR_MATCH"
+  | "HTTPS_STR_MATCH"
+  | "TCP"
+  | "CALCULATED"
+  | "CLOUDWATCH_METRIC"
+  | "RECOVERY_CONTROL";
 export type HealthCheckVersion = number;
 
 export declare class HealthCheckVersionMismatch extends Data.TaggedError(
@@ -1080,7 +1294,9 @@ export interface HostedZoneLimit {
   Type: HostedZoneLimitType;
   Value: number;
 }
-export type HostedZoneLimitType = "MAX_RRSETS_BY_ZONE" | "MAX_VPCS_ASSOCIATED_BY_ZONE";
+export type HostedZoneLimitType =
+  | "MAX_RRSETS_BY_ZONE"
+  | "MAX_VPCS_ASSOCIATED_BY_ZONE";
 export declare class HostedZoneNotEmpty extends Data.TaggedError(
   "HostedZoneNotEmpty",
 )<{
@@ -1127,7 +1343,10 @@ export declare class InsufficientCloudWatchLogsResourcePolicy extends Data.Tagge
 )<{
   readonly message?: string;
 }> {}
-export type InsufficientDataHealthStatus = "Healthy" | "Unhealthy" | "LastKnownStatus";
+export type InsufficientDataHealthStatus =
+  | "Healthy"
+  | "Unhealthy"
+  | "LastKnownStatus";
 export declare class InvalidArgument extends Data.TaggedError(
   "InvalidArgument",
 )<{
@@ -1144,9 +1363,7 @@ export declare class InvalidDomainName extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidInput extends Data.TaggedError(
-  "InvalidInput",
-)<{
+export declare class InvalidInput extends Data.TaggedError("InvalidInput")<{
   readonly message?: string;
 }> {}
 export declare class InvalidKeySigningKeyName extends Data.TaggedError(
@@ -1159,9 +1376,7 @@ export declare class InvalidKeySigningKeyStatus extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidKMSArn extends Data.TaggedError(
-  "InvalidKMSArn",
-)<{
+export declare class InvalidKMSArn extends Data.TaggedError("InvalidKMSArn")<{
   readonly message?: string;
 }> {}
 export declare class InvalidPaginationToken extends Data.TaggedError(
@@ -1179,9 +1394,7 @@ export declare class InvalidTrafficPolicyDocument extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidVPCId extends Data.TaggedError(
-  "InvalidVPCId",
-)<{
+export declare class InvalidVPCId extends Data.TaggedError("InvalidVPCId")<{
   readonly message?: string;
 }> {}
 export type Inverted = boolean;
@@ -1238,9 +1451,7 @@ export declare class LastVPCAssociation extends Data.TaggedError(
 }> {}
 export type Latitude = string;
 
-export declare class LimitsExceeded extends Data.TaggedError(
-  "LimitsExceeded",
-)<{
+export declare class LimitsExceeded extends Data.TaggedError("LimitsExceeded")<{
   readonly message?: string;
 }> {}
 export type LimitValue = number;
@@ -1482,9 +1693,7 @@ export type Namespace = string;
 
 export type Nonce = string;
 
-export declare class NoSuchChange extends Data.TaggedError(
-  "NoSuchChange",
-)<{
+export declare class NoSuchChange extends Data.TaggedError("NoSuchChange")<{
   readonly message?: string;
 }> {}
 export declare class NoSuchCidrCollectionException extends Data.TaggedError(
@@ -1587,7 +1796,11 @@ export type RecordDataEntry = string;
 
 export type RequestInterval = number;
 
-export type ResettableElementName = "FullyQualifiedDomainName" | "Regions" | "ResourcePath" | "ChildHealthChecks";
+export type ResettableElementName =
+  | "FullyQualifiedDomainName"
+  | "Regions"
+  | "ResourcePath"
+  | "ChildHealthChecks";
 export type ResettableElementNameList = Array<ResettableElementName>;
 export type ResourceDescription = string;
 
@@ -1621,7 +1834,44 @@ export type ResourceRecordSetIdentifier = string;
 
 export type ResourceRecordSetMultiValueAnswer = boolean;
 
-export type ResourceRecordSetRegion = "us_east_1" | "us_east_2" | "us_west_1" | "us_west_2" | "ca_central_1" | "eu_west_1" | "eu_west_2" | "eu_west_3" | "eu_central_1" | "eu_central_2" | "ap_southeast_1" | "ap_southeast_2" | "ap_southeast_3" | "ap_northeast_1" | "ap_northeast_2" | "ap_northeast_3" | "eu_north_1" | "sa_east_1" | "cn_north_1" | "cn_northwest_1" | "ap_east_1" | "me_south_1" | "me_central_1" | "ap_south_1" | "ap_south_2" | "af_south_1" | "eu_south_1" | "eu_south_2" | "ap_southeast_4" | "il_central_1" | "ca_west_1" | "ap_southeast_5" | "mx_central_1" | "ap_southeast_7" | "us_gov_east_1" | "us_gov_west_1" | "ap_east_2";
+export type ResourceRecordSetRegion =
+  | "us_east_1"
+  | "us_east_2"
+  | "us_west_1"
+  | "us_west_2"
+  | "ca_central_1"
+  | "eu_west_1"
+  | "eu_west_2"
+  | "eu_west_3"
+  | "eu_central_1"
+  | "eu_central_2"
+  | "ap_southeast_1"
+  | "ap_southeast_2"
+  | "ap_southeast_3"
+  | "ap_northeast_1"
+  | "ap_northeast_2"
+  | "ap_northeast_3"
+  | "eu_north_1"
+  | "sa_east_1"
+  | "cn_north_1"
+  | "cn_northwest_1"
+  | "ap_east_1"
+  | "me_south_1"
+  | "me_central_1"
+  | "ap_south_1"
+  | "ap_south_2"
+  | "af_south_1"
+  | "eu_south_1"
+  | "eu_south_2"
+  | "ap_southeast_4"
+  | "il_central_1"
+  | "ca_west_1"
+  | "ap_southeast_5"
+  | "mx_central_1"
+  | "ap_southeast_7"
+  | "us_gov_east_1"
+  | "us_gov_west_1"
+  | "ap_east_2";
 export type ResourceRecordSets = Array<ResourceRecordSet>;
 export type ResourceRecordSetWeight = number;
 
@@ -1637,10 +1887,28 @@ export interface ReusableDelegationSetLimit {
   Type: ReusableDelegationSetLimitType;
   Value: number;
 }
-export type ReusableDelegationSetLimitType = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET";
+export type ReusableDelegationSetLimitType =
+  "MAX_ZONES_BY_REUSABLE_DELEGATION_SET";
 export type RoutingControlArn = string;
 
-export type RRType = "SOA" | "A" | "TXT" | "NS" | "CNAME" | "MX" | "NAPTR" | "PTR" | "SRV" | "SPF" | "AAAA" | "CAA" | "DS" | "TLSA" | "SSHFP" | "SVCB" | "HTTPS";
+export type RRType =
+  | "SOA"
+  | "A"
+  | "TXT"
+  | "NS"
+  | "CNAME"
+  | "MX"
+  | "NAPTR"
+  | "PTR"
+  | "SRV"
+  | "SPF"
+  | "AAAA"
+  | "CAA"
+  | "DS"
+  | "TLSA"
+  | "SSHFP"
+  | "SVCB"
+  | "HTTPS";
 export type SearchString = string;
 
 export type ServeSignature = string;
@@ -1659,7 +1927,12 @@ export type SigningKeyString = string;
 
 export type SigningKeyTag = number;
 
-export type Statistic = "Average" | "Sum" | "SampleCount" | "Maximum" | "Minimum";
+export type Statistic =
+  | "Average"
+  | "Sum"
+  | "SampleCount"
+  | "Maximum"
+  | "Minimum";
 export type Status = string;
 
 export interface StatusReport {
@@ -1874,7 +2147,50 @@ export declare class VPCAssociationNotFound extends Data.TaggedError(
 }> {}
 export type VPCId = string;
 
-export type VPCRegion = "us_east_1" | "us_east_2" | "us_west_1" | "us_west_2" | "eu_west_1" | "eu_west_2" | "eu_west_3" | "eu_central_1" | "eu_central_2" | "ap_east_1" | "me_south_1" | "us_gov_west_1" | "us_gov_east_1" | "us_iso_east_1" | "us_iso_west_1" | "us_isob_east_1" | "me_central_1" | "ap_southeast_1" | "ap_southeast_2" | "ap_southeast_3" | "ap_south_1" | "ap_south_2" | "ap_northeast_1" | "ap_northeast_2" | "ap_northeast_3" | "eu_north_1" | "sa_east_1" | "ca_central_1" | "cn_north_1" | "cn_northwest_1" | "af_south_1" | "eu_south_1" | "eu_south_2" | "ap_southeast_4" | "il_central_1" | "ca_west_1" | "ap_southeast_5" | "mx_central_1" | "us_isof_south_1" | "us_isof_east_1" | "ap_southeast_7" | "ap_east_2" | "eu_isoe_west_1";
+export type VPCRegion =
+  | "us_east_1"
+  | "us_east_2"
+  | "us_west_1"
+  | "us_west_2"
+  | "eu_west_1"
+  | "eu_west_2"
+  | "eu_west_3"
+  | "eu_central_1"
+  | "eu_central_2"
+  | "ap_east_1"
+  | "me_south_1"
+  | "us_gov_west_1"
+  | "us_gov_east_1"
+  | "us_iso_east_1"
+  | "us_iso_west_1"
+  | "us_isob_east_1"
+  | "me_central_1"
+  | "ap_southeast_1"
+  | "ap_southeast_2"
+  | "ap_southeast_3"
+  | "ap_south_1"
+  | "ap_south_2"
+  | "ap_northeast_1"
+  | "ap_northeast_2"
+  | "ap_northeast_3"
+  | "eu_north_1"
+  | "sa_east_1"
+  | "ca_central_1"
+  | "cn_north_1"
+  | "cn_northwest_1"
+  | "af_south_1"
+  | "eu_south_1"
+  | "eu_south_2"
+  | "ap_southeast_4"
+  | "il_central_1"
+  | "ca_west_1"
+  | "ap_southeast_5"
+  | "mx_central_1"
+  | "us_isof_south_1"
+  | "us_isof_east_1"
+  | "ap_southeast_7"
+  | "ap_east_2"
+  | "eu_isoe_west_1";
 export type VPCs = Array<VPC>;
 export declare namespace ActivateKeySigningKey {
   export type Input = ActivateKeySigningKeyRequest;
@@ -2229,25 +2545,19 @@ export declare namespace EnableHostedZoneDNSSEC {
 export declare namespace GetAccountLimit {
   export type Input = GetAccountLimitRequest;
   export type Output = GetAccountLimitResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace GetChange {
   export type Input = GetChangeRequest;
   export type Output = GetChangeResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchChange
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchChange | CommonAwsError;
 }
 
 export declare namespace GetCheckerIpRanges {
   export type Input = GetCheckerIpRangesRequest;
   export type Output = GetCheckerIpRangesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetDNSSEC {
@@ -2263,10 +2573,7 @@ export declare namespace GetDNSSEC {
 export declare namespace GetGeoLocation {
   export type Input = GetGeoLocationRequest;
   export type Output = GetGeoLocationResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchGeoLocation
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchGeoLocation | CommonAwsError;
 }
 
 export declare namespace GetHealthCheck {
@@ -2282,43 +2589,31 @@ export declare namespace GetHealthCheck {
 export declare namespace GetHealthCheckCount {
   export type Input = GetHealthCheckCountRequest;
   export type Output = GetHealthCheckCountResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetHealthCheckLastFailureReason {
   export type Input = GetHealthCheckLastFailureReasonRequest;
   export type Output = GetHealthCheckLastFailureReasonResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchHealthCheck
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchHealthCheck | CommonAwsError;
 }
 
 export declare namespace GetHealthCheckStatus {
   export type Input = GetHealthCheckStatusRequest;
   export type Output = GetHealthCheckStatusResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchHealthCheck
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchHealthCheck | CommonAwsError;
 }
 
 export declare namespace GetHostedZone {
   export type Input = GetHostedZoneRequest;
   export type Output = GetHostedZoneResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchHostedZone
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchHostedZone | CommonAwsError;
 }
 
 export declare namespace GetHostedZoneCount {
   export type Input = GetHostedZoneCountRequest;
   export type Output = GetHostedZoneCountResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace GetHostedZoneLimit {
@@ -2334,10 +2629,7 @@ export declare namespace GetHostedZoneLimit {
 export declare namespace GetQueryLoggingConfig {
   export type Input = GetQueryLoggingConfigRequest;
   export type Output = GetQueryLoggingConfigResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchQueryLoggingConfig
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchQueryLoggingConfig | CommonAwsError;
 }
 
 export declare namespace GetReusableDelegationSet {
@@ -2353,19 +2645,13 @@ export declare namespace GetReusableDelegationSet {
 export declare namespace GetReusableDelegationSetLimit {
   export type Input = GetReusableDelegationSetLimitRequest;
   export type Output = GetReusableDelegationSetLimitResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchDelegationSet
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchDelegationSet | CommonAwsError;
 }
 
 export declare namespace GetTrafficPolicy {
   export type Input = GetTrafficPolicyRequest;
   export type Output = GetTrafficPolicyResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchTrafficPolicy
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchTrafficPolicy | CommonAwsError;
 }
 
 export declare namespace GetTrafficPolicyInstance {
@@ -2380,8 +2666,7 @@ export declare namespace GetTrafficPolicyInstance {
 export declare namespace GetTrafficPolicyInstanceCount {
   export type Input = GetTrafficPolicyInstanceCountRequest;
   export type Output = GetTrafficPolicyInstanceCountResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListCidrBlocks {
@@ -2397,9 +2682,7 @@ export declare namespace ListCidrBlocks {
 export declare namespace ListCidrCollections {
   export type Input = ListCidrCollectionsRequest;
   export type Output = ListCidrCollectionsResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListCidrLocations {
@@ -2414,18 +2697,13 @@ export declare namespace ListCidrLocations {
 export declare namespace ListGeoLocations {
   export type Input = ListGeoLocationsRequest;
   export type Output = ListGeoLocationsResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListHealthChecks {
   export type Input = ListHealthChecksRequest;
   export type Output = ListHealthChecksResponse;
-  export type Error =
-    | IncompatibleVersion
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = IncompatibleVersion | InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListHostedZones {
@@ -2441,19 +2719,13 @@ export declare namespace ListHostedZones {
 export declare namespace ListHostedZonesByName {
   export type Input = ListHostedZonesByNameRequest;
   export type Output = ListHostedZonesByNameResponse;
-  export type Error =
-    | InvalidDomainName
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidDomainName | InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListHostedZonesByVPC {
   export type Input = ListHostedZonesByVPCRequest;
   export type Output = ListHostedZonesByVPCResponse;
-  export type Error =
-    | InvalidInput
-    | InvalidPaginationToken
-    | CommonAwsError;
+  export type Error = InvalidInput | InvalidPaginationToken | CommonAwsError;
 }
 
 export declare namespace ListQueryLoggingConfigs {
@@ -2469,18 +2741,13 @@ export declare namespace ListQueryLoggingConfigs {
 export declare namespace ListResourceRecordSets {
   export type Input = ListResourceRecordSetsRequest;
   export type Output = ListResourceRecordSetsResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchHostedZone
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchHostedZone | CommonAwsError;
 }
 
 export declare namespace ListReusableDelegationSets {
   export type Input = ListReusableDelegationSetsRequest;
   export type Output = ListReusableDelegationSetsResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
@@ -2510,9 +2777,7 @@ export declare namespace ListTagsForResources {
 export declare namespace ListTrafficPolicies {
   export type Input = ListTrafficPoliciesRequest;
   export type Output = ListTrafficPoliciesResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListTrafficPolicyInstances {
@@ -2547,10 +2812,7 @@ export declare namespace ListTrafficPolicyInstancesByPolicy {
 export declare namespace ListTrafficPolicyVersions {
   export type Input = ListTrafficPolicyVersionsRequest;
   export type Output = ListTrafficPolicyVersionsResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchTrafficPolicy
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchTrafficPolicy | CommonAwsError;
 }
 
 export declare namespace ListVPCAssociationAuthorizations {
@@ -2566,10 +2828,7 @@ export declare namespace ListVPCAssociationAuthorizations {
 export declare namespace TestDNSAnswer {
   export type Input = TestDNSAnswerRequest;
   export type Output = TestDNSAnswerResponse;
-  export type Error =
-    | InvalidInput
-    | NoSuchHostedZone
-    | CommonAwsError;
+  export type Error = InvalidInput | NoSuchHostedZone | CommonAwsError;
 }
 
 export declare namespace UpdateHealthCheck {
@@ -2613,4 +2872,3 @@ export declare namespace UpdateTrafficPolicyInstance {
     | PriorRequestNotComplete
     | CommonAwsError;
 }
-

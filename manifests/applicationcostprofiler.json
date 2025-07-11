@@ -1,7 +1,56 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.applicationcostprofiler#AWSApplicationCostProfiler": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.applicationcostprofiler#DeleteReportDefinition"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#GetReportDefinition"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ImportApplicationUsage"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#ListReportDefinitions"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#PutReportDefinition"
+        },
+        {
+          "target": "com.amazonaws.applicationcostprofiler#UpdateReportDefinition"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ApplicationCostProfiler",

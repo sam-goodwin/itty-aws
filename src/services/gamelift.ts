@@ -1,714 +1,1287 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface GameLift {
   acceptMatch(
     input: AcceptMatchInput,
   ): Effect.Effect<
     AcceptMatchOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   claimGameServer(
     input: ClaimGameServerInput,
   ): Effect.Effect<
     ClaimGameServerOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | NotFoundException | OutOfCapacityException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | OutOfCapacityException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createAlias(
     input: CreateAliasInput,
   ): Effect.Effect<
     CreateAliasOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createBuild(
     input: CreateBuildInput,
   ): Effect.Effect<
     CreateBuildOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createContainerFleet(
     input: CreateContainerFleetInput,
   ): Effect.Effect<
     CreateContainerFleetOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | TaggingFailedException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | TaggingFailedException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createContainerGroupDefinition(
     input: CreateContainerGroupDefinitionInput,
   ): Effect.Effect<
     CreateContainerGroupDefinitionOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | TaggingFailedException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | TaggingFailedException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createFleet(
     input: CreateFleetInput,
   ): Effect.Effect<
     CreateFleetOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | NotFoundException | NotReadyException | TaggingFailedException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | NotReadyException
+    | TaggingFailedException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createFleetLocations(
     input: CreateFleetLocationsInput,
   ): Effect.Effect<
     CreateFleetLocationsOutput,
-    ConflictException | InternalServiceException | InvalidFleetStatusException | InvalidRequestException | LimitExceededException | NotFoundException | NotReadyException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | NotReadyException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createGameServerGroup(
     input: CreateGameServerGroupInput,
   ): Effect.Effect<
     CreateGameServerGroupOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createGameSession(
     input: CreateGameSessionInput,
   ): Effect.Effect<
     CreateGameSessionOutput,
-    ConflictException | FleetCapacityExceededException | IdempotentParameterMismatchException | InternalServiceException | InvalidFleetStatusException | InvalidRequestException | LimitExceededException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | ConflictException
+    | FleetCapacityExceededException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createGameSessionQueue(
     input: CreateGameSessionQueueInput,
   ): Effect.Effect<
     CreateGameSessionQueueOutput,
-    InternalServiceException | InvalidRequestException | LimitExceededException | NotFoundException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createLocation(
     input: CreateLocationInput,
   ): Effect.Effect<
     CreateLocationOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createMatchmakingConfiguration(
     input: CreateMatchmakingConfigurationInput,
   ): Effect.Effect<
     CreateMatchmakingConfigurationOutput,
-    InternalServiceException | InvalidRequestException | LimitExceededException | NotFoundException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createMatchmakingRuleSet(
     input: CreateMatchmakingRuleSetInput,
   ): Effect.Effect<
     CreateMatchmakingRuleSetOutput,
-    InternalServiceException | InvalidRequestException | LimitExceededException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   createPlayerSession(
     input: CreatePlayerSessionInput,
   ): Effect.Effect<
     CreatePlayerSessionOutput,
-    GameSessionFullException | InternalServiceException | InvalidGameSessionStatusException | InvalidRequestException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | CommonAwsError
+    | GameSessionFullException
+    | InternalServiceException
+    | InvalidGameSessionStatusException
+    | InvalidRequestException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createPlayerSessions(
     input: CreatePlayerSessionsInput,
   ): Effect.Effect<
     CreatePlayerSessionsOutput,
-    GameSessionFullException | InternalServiceException | InvalidGameSessionStatusException | InvalidRequestException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | CommonAwsError
+    | GameSessionFullException
+    | InternalServiceException
+    | InvalidGameSessionStatusException
+    | InvalidRequestException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createScript(
     input: CreateScriptInput,
   ): Effect.Effect<
     CreateScriptOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createVpcPeeringAuthorization(
     input: CreateVpcPeeringAuthorizationInput,
   ): Effect.Effect<
     CreateVpcPeeringAuthorizationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createVpcPeeringConnection(
     input: CreateVpcPeeringConnectionInput,
   ): Effect.Effect<
     CreateVpcPeeringConnectionOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteAlias(
     input: DeleteAliasInput,
   ): Effect.Effect<
     {},
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteBuild(
     input: DeleteBuildInput,
   ): Effect.Effect<
     {},
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteContainerFleet(
     input: DeleteContainerFleetInput,
   ): Effect.Effect<
     DeleteContainerFleetOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   deleteContainerGroupDefinition(
     input: DeleteContainerGroupDefinitionInput,
   ): Effect.Effect<
     DeleteContainerGroupDefinitionOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   deleteFleet(
     input: DeleteFleetInput,
   ): Effect.Effect<
     {},
-    InternalServiceException | InvalidFleetStatusException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteFleetLocations(
     input: DeleteFleetLocationsInput,
   ): Effect.Effect<
     DeleteFleetLocationsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   deleteGameServerGroup(
     input: DeleteGameServerGroupInput,
   ): Effect.Effect<
     DeleteGameServerGroupOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteGameSessionQueue(
     input: DeleteGameSessionQueueInput,
   ): Effect.Effect<
     DeleteGameSessionQueueOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteLocation(
     input: DeleteLocationInput,
   ): Effect.Effect<
     DeleteLocationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteMatchmakingConfiguration(
     input: DeleteMatchmakingConfigurationInput,
   ): Effect.Effect<
     DeleteMatchmakingConfigurationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   deleteMatchmakingRuleSet(
     input: DeleteMatchmakingRuleSetInput,
   ): Effect.Effect<
     DeleteMatchmakingRuleSetOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   deleteScalingPolicy(
     input: DeleteScalingPolicyInput,
   ): Effect.Effect<
     {},
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   deleteScript(
     input: DeleteScriptInput,
   ): Effect.Effect<
     {},
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteVpcPeeringAuthorization(
     input: DeleteVpcPeeringAuthorizationInput,
   ): Effect.Effect<
     DeleteVpcPeeringAuthorizationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteVpcPeeringConnection(
     input: DeleteVpcPeeringConnectionInput,
   ): Effect.Effect<
     DeleteVpcPeeringConnectionOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deregisterCompute(
     input: DeregisterComputeInput,
   ): Effect.Effect<
     DeregisterComputeOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deregisterGameServer(
     input: DeregisterGameServerInput,
   ): Effect.Effect<
     {},
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeAlias(
     input: DescribeAliasInput,
   ): Effect.Effect<
     DescribeAliasOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeBuild(
     input: DescribeBuildInput,
   ): Effect.Effect<
     DescribeBuildOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeCompute(
     input: DescribeComputeInput,
   ): Effect.Effect<
     DescribeComputeOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeContainerFleet(
     input: DescribeContainerFleetInput,
   ): Effect.Effect<
     DescribeContainerFleetOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeContainerGroupDefinition(
     input: DescribeContainerGroupDefinitionInput,
   ): Effect.Effect<
     DescribeContainerGroupDefinitionOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeEC2InstanceLimits(
     input: DescribeEC2InstanceLimitsInput,
   ): Effect.Effect<
     DescribeEC2InstanceLimitsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetAttributes(
     input: DescribeFleetAttributesInput,
   ): Effect.Effect<
     DescribeFleetAttributesOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeFleetCapacity(
     input: DescribeFleetCapacityInput,
   ): Effect.Effect<
     DescribeFleetCapacityOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetDeployment(
     input: DescribeFleetDeploymentInput,
   ): Effect.Effect<
     DescribeFleetDeploymentOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetEvents(
     input: DescribeFleetEventsInput,
   ): Effect.Effect<
     DescribeFleetEventsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetLocationAttributes(
     input: DescribeFleetLocationAttributesInput,
   ): Effect.Effect<
     DescribeFleetLocationAttributesOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetLocationCapacity(
     input: DescribeFleetLocationCapacityInput,
   ): Effect.Effect<
     DescribeFleetLocationCapacityOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetLocationUtilization(
     input: DescribeFleetLocationUtilizationInput,
   ): Effect.Effect<
     DescribeFleetLocationUtilizationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetPortSettings(
     input: DescribeFleetPortSettingsInput,
   ): Effect.Effect<
     DescribeFleetPortSettingsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeFleetUtilization(
     input: DescribeFleetUtilizationInput,
   ): Effect.Effect<
     DescribeFleetUtilizationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeGameServer(
     input: DescribeGameServerInput,
   ): Effect.Effect<
     DescribeGameServerOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeGameServerGroup(
     input: DescribeGameServerGroupInput,
   ): Effect.Effect<
     DescribeGameServerGroupOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeGameServerInstances(
     input: DescribeGameServerInstancesInput,
   ): Effect.Effect<
     DescribeGameServerInstancesOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeGameSessionDetails(
     input: DescribeGameSessionDetailsInput,
   ): Effect.Effect<
     DescribeGameSessionDetailsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeGameSessionPlacement(
     input: DescribeGameSessionPlacementInput,
   ): Effect.Effect<
     DescribeGameSessionPlacementOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeGameSessionQueues(
     input: DescribeGameSessionQueuesInput,
   ): Effect.Effect<
     DescribeGameSessionQueuesOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeGameSessions(
     input: DescribeGameSessionsInput,
   ): Effect.Effect<
     DescribeGameSessionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeInstances(
     input: DescribeInstancesInput,
   ): Effect.Effect<
     DescribeInstancesOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeMatchmaking(
     input: DescribeMatchmakingInput,
   ): Effect.Effect<
     DescribeMatchmakingOutput,
-    InternalServiceException | InvalidRequestException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeMatchmakingConfigurations(
     input: DescribeMatchmakingConfigurationsInput,
   ): Effect.Effect<
     DescribeMatchmakingConfigurationsOutput,
-    InternalServiceException | InvalidRequestException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeMatchmakingRuleSets(
     input: DescribeMatchmakingRuleSetsInput,
   ): Effect.Effect<
     DescribeMatchmakingRuleSetsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describePlayerSessions(
     input: DescribePlayerSessionsInput,
   ): Effect.Effect<
     DescribePlayerSessionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeRuntimeConfiguration(
     input: DescribeRuntimeConfigurationInput,
   ): Effect.Effect<
     DescribeRuntimeConfigurationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeScalingPolicies(
     input: DescribeScalingPoliciesInput,
   ): Effect.Effect<
     DescribeScalingPoliciesOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   describeScript(
     input: DescribeScriptInput,
   ): Effect.Effect<
     DescribeScriptOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeVpcPeeringAuthorizations(
     input: DescribeVpcPeeringAuthorizationsInput,
   ): Effect.Effect<
     DescribeVpcPeeringAuthorizationsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeVpcPeeringConnections(
     input: DescribeVpcPeeringConnectionsInput,
   ): Effect.Effect<
     DescribeVpcPeeringConnectionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getComputeAccess(
     input: GetComputeAccessInput,
   ): Effect.Effect<
     GetComputeAccessOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   getComputeAuthToken(
     input: GetComputeAuthTokenInput,
   ): Effect.Effect<
     GetComputeAuthTokenOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   getGameSessionLogUrl(
     input: GetGameSessionLogUrlInput,
   ): Effect.Effect<
     GetGameSessionLogUrlOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getInstanceAccess(
     input: GetInstanceAccessInput,
   ): Effect.Effect<
     GetInstanceAccessOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listAliases(
     input: ListAliasesInput,
   ): Effect.Effect<
     ListAliasesOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listBuilds(
     input: ListBuildsInput,
   ): Effect.Effect<
     ListBuildsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listCompute(
     input: ListComputeInput,
   ): Effect.Effect<
     ListComputeOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   listContainerFleets(
     input: ListContainerFleetsInput,
   ): Effect.Effect<
     ListContainerFleetsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
-  >;
-  listContainerGroupDefinitionVersions(
-    input: ListContainerGroupDefinitionVersionsInput,
-  ): Effect.Effect<
-    ListContainerGroupDefinitionVersionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   listContainerGroupDefinitions(
     input: ListContainerGroupDefinitionsInput,
   ): Effect.Effect<
     ListContainerGroupDefinitionsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
+  >;
+  listContainerGroupDefinitionVersions(
+    input: ListContainerGroupDefinitionVersionsInput,
+  ): Effect.Effect<
+    ListContainerGroupDefinitionVersionsOutput,
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   listFleetDeployments(
     input: ListFleetDeploymentsInput,
   ): Effect.Effect<
     ListFleetDeploymentsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   listFleets(
     input: ListFleetsInput,
   ): Effect.Effect<
     ListFleetsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listGameServerGroups(
     input: ListGameServerGroupsInput,
   ): Effect.Effect<
     ListGameServerGroupsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listGameServers(
     input: ListGameServersInput,
   ): Effect.Effect<
     ListGameServersOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listLocations(
     input: ListLocationsInput,
   ): Effect.Effect<
     ListLocationsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listScripts(
     input: ListScriptsInput,
   ): Effect.Effect<
     ListScriptsOutput,
-    InternalServiceException | InvalidRequestException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   putScalingPolicy(
     input: PutScalingPolicyInput,
   ): Effect.Effect<
     PutScalingPolicyOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   registerCompute(
     input: RegisterComputeInput,
   ): Effect.Effect<
     RegisterComputeOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | NotReadyException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotReadyException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   registerGameServer(
     input: RegisterGameServerInput,
   ): Effect.Effect<
     RegisterGameServerOutput,
-    ConflictException | InternalServiceException | InvalidRequestException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   requestUploadCredentials(
     input: RequestUploadCredentialsInput,
   ): Effect.Effect<
     RequestUploadCredentialsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   resolveAlias(
     input: ResolveAliasInput,
   ): Effect.Effect<
     ResolveAliasOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   resumeGameServerGroup(
     input: ResumeGameServerGroupInput,
   ): Effect.Effect<
     ResumeGameServerGroupOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   searchGameSessions(
     input: SearchGameSessionsInput,
   ): Effect.Effect<
     SearchGameSessionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | TerminalRoutingStrategyException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TerminalRoutingStrategyException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   startFleetActions(
     input: StartFleetActionsInput,
   ): Effect.Effect<
     StartFleetActionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   startGameSessionPlacement(
     input: StartGameSessionPlacementInput,
   ): Effect.Effect<
     StartGameSessionPlacementOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   startMatchBackfill(
     input: StartMatchBackfillInput,
   ): Effect.Effect<
     StartMatchBackfillOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   startMatchmaking(
     input: StartMatchmakingInput,
   ): Effect.Effect<
     StartMatchmakingOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   stopFleetActions(
     input: StopFleetActionsInput,
   ): Effect.Effect<
     StopFleetActionsOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   stopGameSessionPlacement(
     input: StopGameSessionPlacementInput,
   ): Effect.Effect<
     StopGameSessionPlacementOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   stopMatchmaking(
     input: StopMatchmakingInput,
   ): Effect.Effect<
     StopMatchmakingOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   suspendGameServerGroup(
     input: SuspendGameServerGroupInput,
   ): Effect.Effect<
     SuspendGameServerGroupOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   terminateGameSession(
     input: TerminateGameSessionInput,
   ): Effect.Effect<
     TerminateGameSessionOutput,
-    InternalServiceException | InvalidGameSessionStatusException | InvalidRequestException | NotFoundException | NotReadyException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidGameSessionStatusException
+    | InvalidRequestException
+    | NotFoundException
+    | NotReadyException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServiceException | InvalidRequestException | NotFoundException | TaggingFailedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | TaggingFailedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   updateAlias(
     input: UpdateAliasInput,
   ): Effect.Effect<
     UpdateAliasOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateBuild(
     input: UpdateBuildInput,
   ): Effect.Effect<
     UpdateBuildOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateContainerFleet(
     input: UpdateContainerFleetInput,
   ): Effect.Effect<
     UpdateContainerFleetOutput,
-    InternalServiceException | InvalidRequestException | LimitExceededException | NotFoundException | NotReadyException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | NotReadyException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   updateContainerGroupDefinition(
     input: UpdateContainerGroupDefinitionInput,
   ): Effect.Effect<
     UpdateContainerGroupDefinitionOutput,
-    InternalServiceException | InvalidRequestException | LimitExceededException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   updateFleetAttributes(
     input: UpdateFleetAttributesInput,
   ): Effect.Effect<
     UpdateFleetAttributesOutput,
-    ConflictException | InternalServiceException | InvalidFleetStatusException | InvalidRequestException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateFleetCapacity(
     input: UpdateFleetCapacityInput,
   ): Effect.Effect<
     UpdateFleetCapacityOutput,
-    ConflictException | InternalServiceException | InvalidFleetStatusException | InvalidRequestException | LimitExceededException | NotFoundException | UnauthorizedException | UnsupportedRegionException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   updateFleetPortSettings(
     input: UpdateFleetPortSettingsInput,
   ): Effect.Effect<
     UpdateFleetPortSettingsOutput,
-    ConflictException | InternalServiceException | InvalidFleetStatusException | InvalidRequestException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateGameServer(
     input: UpdateGameServerInput,
   ): Effect.Effect<
     UpdateGameServerOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateGameServerGroup(
     input: UpdateGameServerGroupInput,
   ): Effect.Effect<
     UpdateGameServerGroupOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateGameSession(
     input: UpdateGameSessionInput,
   ): Effect.Effect<
     UpdateGameSessionOutput,
-    ConflictException | InternalServiceException | InvalidGameSessionStatusException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidGameSessionStatusException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateGameSessionQueue(
     input: UpdateGameSessionQueueInput,
   ): Effect.Effect<
     UpdateGameSessionQueueOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateMatchmakingConfiguration(
     input: UpdateMatchmakingConfigurationInput,
   ): Effect.Effect<
     UpdateMatchmakingConfigurationOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
   updateRuntimeConfiguration(
     input: UpdateRuntimeConfigurationInput,
   ): Effect.Effect<
     UpdateRuntimeConfigurationOutput,
-    InternalServiceException | InvalidFleetStatusException | InvalidRequestException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidFleetStatusException
+    | InvalidRequestException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateScript(
     input: UpdateScriptInput,
   ): Effect.Effect<
     UpdateScriptOutput,
-    InternalServiceException | InvalidRequestException | NotFoundException | UnauthorizedException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   validateMatchmakingRuleSet(
     input: ValidateMatchmakingRuleSetInput,
   ): Effect.Effect<
     ValidateMatchmakingRuleSetOutput,
-    InternalServiceException | InvalidRequestException | UnsupportedRegionException | CommonAwsError
+    | InternalServiceException
+    | InvalidRequestException
+    | UnsupportedRegionException
+    | CommonAwsError
   >;
 }
 
@@ -720,8 +1293,7 @@ export interface AcceptMatchInput {
   PlayerIds: Array<string>;
   AcceptanceType: AcceptanceType;
 }
-export interface AcceptMatchOutput {
-}
+export interface AcceptMatchOutput {}
 export interface Alias {
   AliasId?: string;
   Name?: string;
@@ -759,7 +1331,10 @@ export interface AwsCredentials {
   SessionToken?: string;
 }
 export type BackfillMode = "AUTOMATIC" | "MANUAL";
-export type BalancingStrategy = "SPOT_ONLY" | "SPOT_PREFERRED" | "ON_DEMAND_ONLY";
+export type BalancingStrategy =
+  | "SPOT_ONLY"
+  | "SPOT_PREFERRED"
+  | "ON_DEMAND_ONLY";
 export type BooleanModel = boolean;
 
 export interface Build {
@@ -797,7 +1372,11 @@ export interface ClaimGameServerInput {
 export interface ClaimGameServerOutput {
   GameServer?: GameServer;
 }
-export type ComparisonOperatorType = "GreaterThanOrEqualToThreshold" | "GreaterThanThreshold" | "LessThanThreshold" | "LessThanOrEqualToThreshold";
+export type ComparisonOperatorType =
+  | "GreaterThanOrEqualToThreshold"
+  | "GreaterThanThreshold"
+  | "LessThanThreshold"
+  | "LessThanOrEqualToThreshold";
 export interface Compute {
   FleetId?: string;
   FleetArn?: string;
@@ -846,7 +1425,11 @@ export interface ContainerDependency {
   ContainerName: string;
   Condition: ContainerDependencyCondition;
 }
-export type ContainerDependencyCondition = "START" | "COMPLETE" | "SUCCESS" | "HEALTHY";
+export type ContainerDependencyCondition =
+  | "START"
+  | "COMPLETE"
+  | "SUCCESS"
+  | "HEALTHY";
 export type ContainerDependencyList = Array<ContainerDependency>;
 export interface ContainerEnvironment {
   Name: string;
@@ -883,11 +1466,28 @@ export interface ContainerFleetLocationAttributes {
   Location?: string;
   Status?: ContainerFleetLocationStatus;
 }
-export type ContainerFleetLocationAttributesList = Array<ContainerFleetLocationAttributes>;
-export type ContainerFleetLocationStatus = "PENDING" | "CREATING" | "CREATED" | "ACTIVATING" | "ACTIVE" | "UPDATING" | "DELETING";
-export type ContainerFleetRemoveAttribute = "PER_INSTANCE_CONTAINER_GROUP_DEFINITION";
-export type ContainerFleetRemoveAttributeList = Array<ContainerFleetRemoveAttribute>;
-export type ContainerFleetStatus = "PENDING" | "CREATING" | "CREATED" | "ACTIVATING" | "ACTIVE" | "UPDATING" | "DELETING";
+export type ContainerFleetLocationAttributesList =
+  Array<ContainerFleetLocationAttributes>;
+export type ContainerFleetLocationStatus =
+  | "PENDING"
+  | "CREATING"
+  | "CREATED"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
+export type ContainerFleetRemoveAttribute =
+  "PER_INSTANCE_CONTAINER_GROUP_DEFINITION";
+export type ContainerFleetRemoveAttributeList =
+  Array<ContainerFleetRemoveAttribute>;
+export type ContainerFleetStatus =
+  | "PENDING"
+  | "CREATING"
+  | "CREATED"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
 export interface ContainerGroupDefinition {
   ContainerGroupDefinitionArn?: string;
   CreationTime?: Date | string;
@@ -1171,8 +1771,7 @@ export interface CreateVpcPeeringConnectionInput {
   PeerVpcAwsAccountId: string;
   PeerVpcId: string;
 }
-export interface CreateVpcPeeringConnectionOutput {
-}
+export interface CreateVpcPeeringConnectionOutput {}
 export type CustomEventData = string;
 
 export type CustomInputLocationStringModel = string;
@@ -1188,15 +1787,13 @@ export interface DeleteBuildInput {
 export interface DeleteContainerFleetInput {
   FleetId: string;
 }
-export interface DeleteContainerFleetOutput {
-}
+export interface DeleteContainerFleetOutput {}
 export interface DeleteContainerGroupDefinitionInput {
   Name: string;
   VersionNumber?: number;
   VersionCountToRetain?: number;
 }
-export interface DeleteContainerGroupDefinitionOutput {
-}
+export interface DeleteContainerGroupDefinitionOutput {}
 export interface DeleteFleetInput {
   FleetId: string;
 }
@@ -1219,23 +1816,19 @@ export interface DeleteGameServerGroupOutput {
 export interface DeleteGameSessionQueueInput {
   Name: string;
 }
-export interface DeleteGameSessionQueueOutput {
-}
+export interface DeleteGameSessionQueueOutput {}
 export interface DeleteLocationInput {
   LocationName: string;
 }
-export interface DeleteLocationOutput {
-}
+export interface DeleteLocationOutput {}
 export interface DeleteMatchmakingConfigurationInput {
   Name: string;
 }
-export interface DeleteMatchmakingConfigurationOutput {
-}
+export interface DeleteMatchmakingConfigurationOutput {}
 export interface DeleteMatchmakingRuleSetInput {
   Name: string;
 }
-export interface DeleteMatchmakingRuleSetOutput {
-}
+export interface DeleteMatchmakingRuleSetOutput {}
 export interface DeleteScalingPolicyInput {
   Name: string;
   FleetId: string;
@@ -1247,14 +1840,12 @@ export interface DeleteVpcPeeringAuthorizationInput {
   GameLiftAwsAccountId: string;
   PeerVpcId: string;
 }
-export interface DeleteVpcPeeringAuthorizationOutput {
-}
+export interface DeleteVpcPeeringAuthorizationOutput {}
 export interface DeleteVpcPeeringConnectionInput {
   FleetId: string;
   VpcPeeringConnectionId: string;
 }
-export interface DeleteVpcPeeringConnectionOutput {
-}
+export interface DeleteVpcPeeringConnectionOutput {}
 export interface DeploymentConfiguration {
   ProtectionStrategy?: DeploymentProtectionStrategy;
   MinimumHealthyPercentage?: number;
@@ -1266,14 +1857,22 @@ export interface DeploymentDetails {
 export type DeploymentId = string;
 
 export type DeploymentImpairmentStrategy = "MAINTAIN" | "ROLLBACK";
-export type DeploymentProtectionStrategy = "WITH_PROTECTION" | "IGNORE_PROTECTION";
-export type DeploymentStatus = "IN_PROGRESS" | "IMPAIRED" | "COMPLETE" | "ROLLBACK_IN_PROGRESS" | "ROLLBACK_COMPLETE" | "CANCELLED" | "PENDING";
+export type DeploymentProtectionStrategy =
+  | "WITH_PROTECTION"
+  | "IGNORE_PROTECTION";
+export type DeploymentStatus =
+  | "IN_PROGRESS"
+  | "IMPAIRED"
+  | "COMPLETE"
+  | "ROLLBACK_IN_PROGRESS"
+  | "ROLLBACK_COMPLETE"
+  | "CANCELLED"
+  | "PENDING";
 export interface DeregisterComputeInput {
   FleetId: string;
   ComputeName: string;
 }
-export interface DeregisterComputeOutput {
-}
+export interface DeregisterComputeOutput {}
 export interface DeregisterGameServerInput {
   GameServerGroupName: string;
   GameServerId: string;
@@ -1535,8 +2134,7 @@ export interface DescribeScriptInput {
 export interface DescribeScriptOutput {
   Script?: Script;
 }
-export interface DescribeVpcPeeringAuthorizationsInput {
-}
+export interface DescribeVpcPeeringAuthorizationsInput {}
 export interface DescribeVpcPeeringAuthorizationsOutput {
   VpcPeeringAuthorizations?: Array<VpcPeeringAuthorization>;
 }
@@ -1575,7 +2173,512 @@ export interface EC2InstanceLimit {
   Location?: string;
 }
 export type EC2InstanceLimitList = Array<EC2InstanceLimit>;
-export type EC2InstanceType = "t2_micro" | "t2_small" | "t2_medium" | "t2_large" | "c3_large" | "c3_xlarge" | "c3_2xlarge" | "c3_4xlarge" | "c3_8xlarge" | "c4_large" | "c4_xlarge" | "c4_2xlarge" | "c4_4xlarge" | "c4_8xlarge" | "c5_large" | "c5_xlarge" | "c5_2xlarge" | "c5_4xlarge" | "c5_9xlarge" | "c5_12xlarge" | "c5_18xlarge" | "c5_24xlarge" | "c5a_large" | "c5a_xlarge" | "c5a_2xlarge" | "c5a_4xlarge" | "c5a_8xlarge" | "c5a_12xlarge" | "c5a_16xlarge" | "c5a_24xlarge" | "r3_large" | "r3_xlarge" | "r3_2xlarge" | "r3_4xlarge" | "r3_8xlarge" | "r4_large" | "r4_xlarge" | "r4_2xlarge" | "r4_4xlarge" | "r4_8xlarge" | "r4_16xlarge" | "r5_large" | "r5_xlarge" | "r5_2xlarge" | "r5_4xlarge" | "r5_8xlarge" | "r5_12xlarge" | "r5_16xlarge" | "r5_24xlarge" | "r5a_large" | "r5a_xlarge" | "r5a_2xlarge" | "r5a_4xlarge" | "r5a_8xlarge" | "r5a_12xlarge" | "r5a_16xlarge" | "r5a_24xlarge" | "m3_medium" | "m3_large" | "m3_xlarge" | "m3_2xlarge" | "m4_large" | "m4_xlarge" | "m4_2xlarge" | "m4_4xlarge" | "m4_10xlarge" | "m5_large" | "m5_xlarge" | "m5_2xlarge" | "m5_4xlarge" | "m5_8xlarge" | "m5_12xlarge" | "m5_16xlarge" | "m5_24xlarge" | "m5a_large" | "m5a_xlarge" | "m5a_2xlarge" | "m5a_4xlarge" | "m5a_8xlarge" | "m5a_12xlarge" | "m5a_16xlarge" | "m5a_24xlarge" | "c5d_large" | "c5d_xlarge" | "c5d_2xlarge" | "c5d_4xlarge" | "c5d_9xlarge" | "c5d_12xlarge" | "c5d_18xlarge" | "c5d_24xlarge" | "c6a_large" | "c6a_xlarge" | "c6a_2xlarge" | "c6a_4xlarge" | "c6a_8xlarge" | "c6a_12xlarge" | "c6a_16xlarge" | "c6a_24xlarge" | "c6i_large" | "c6i_xlarge" | "c6i_2xlarge" | "c6i_4xlarge" | "c6i_8xlarge" | "c6i_12xlarge" | "c6i_16xlarge" | "c6i_24xlarge" | "r5d_large" | "r5d_xlarge" | "r5d_2xlarge" | "r5d_4xlarge" | "r5d_8xlarge" | "r5d_12xlarge" | "r5d_16xlarge" | "r5d_24xlarge" | "m6g_medium" | "m6g_large" | "m6g_xlarge" | "m6g_2xlarge" | "m6g_4xlarge" | "m6g_8xlarge" | "m6g_12xlarge" | "m6g_16xlarge" | "c6g_medium" | "c6g_large" | "c6g_xlarge" | "c6g_2xlarge" | "c6g_4xlarge" | "c6g_8xlarge" | "c6g_12xlarge" | "c6g_16xlarge" | "r6g_medium" | "r6g_large" | "r6g_xlarge" | "r6g_2xlarge" | "r6g_4xlarge" | "r6g_8xlarge" | "r6g_12xlarge" | "r6g_16xlarge" | "c6gn_medium" | "c6gn_large" | "c6gn_xlarge" | "c6gn_2xlarge" | "c6gn_4xlarge" | "c6gn_8xlarge" | "c6gn_12xlarge" | "c6gn_16xlarge" | "c7g_medium" | "c7g_large" | "c7g_xlarge" | "c7g_2xlarge" | "c7g_4xlarge" | "c7g_8xlarge" | "c7g_12xlarge" | "c7g_16xlarge" | "r7g_medium" | "r7g_large" | "r7g_xlarge" | "r7g_2xlarge" | "r7g_4xlarge" | "r7g_8xlarge" | "r7g_12xlarge" | "r7g_16xlarge" | "m7g_medium" | "m7g_large" | "m7g_xlarge" | "m7g_2xlarge" | "m7g_4xlarge" | "m7g_8xlarge" | "m7g_12xlarge" | "m7g_16xlarge" | "g5g_xlarge" | "g5g_2xlarge" | "g5g_4xlarge" | "g5g_8xlarge" | "g5g_16xlarge" | "r6i_large" | "r6i_xlarge" | "r6i_2xlarge" | "r6i_4xlarge" | "r6i_8xlarge" | "r6i_12xlarge" | "r6i_16xlarge" | "c6gd_medium" | "c6gd_large" | "c6gd_xlarge" | "c6gd_2xlarge" | "c6gd_4xlarge" | "c6gd_8xlarge" | "c6gd_12xlarge" | "c6gd_16xlarge" | "c6in_large" | "c6in_xlarge" | "c6in_2xlarge" | "c6in_4xlarge" | "c6in_8xlarge" | "c6in_12xlarge" | "c6in_16xlarge" | "c7a_medium" | "c7a_large" | "c7a_xlarge" | "c7a_2xlarge" | "c7a_4xlarge" | "c7a_8xlarge" | "c7a_12xlarge" | "c7a_16xlarge" | "c7gd_medium" | "c7gd_large" | "c7gd_xlarge" | "c7gd_2xlarge" | "c7gd_4xlarge" | "c7gd_8xlarge" | "c7gd_12xlarge" | "c7gd_16xlarge" | "c7gn_medium" | "c7gn_large" | "c7gn_xlarge" | "c7gn_2xlarge" | "c7gn_4xlarge" | "c7gn_8xlarge" | "c7gn_12xlarge" | "c7gn_16xlarge" | "c7i_large" | "c7i_xlarge" | "c7i_2xlarge" | "c7i_4xlarge" | "c7i_8xlarge" | "c7i_12xlarge" | "c7i_16xlarge" | "m6a_large" | "m6a_xlarge" | "m6a_2xlarge" | "m6a_4xlarge" | "m6a_8xlarge" | "m6a_12xlarge" | "m6a_16xlarge" | "m6gd_medium" | "m6gd_large" | "m6gd_xlarge" | "m6gd_2xlarge" | "m6gd_4xlarge" | "m6gd_8xlarge" | "m6gd_12xlarge" | "m6gd_16xlarge" | "m6i_large" | "m6i_xlarge" | "m6i_2xlarge" | "m6i_4xlarge" | "m6i_8xlarge" | "m6i_12xlarge" | "m6i_16xlarge" | "m7a_medium" | "m7a_large" | "m7a_xlarge" | "m7a_2xlarge" | "m7a_4xlarge" | "m7a_8xlarge" | "m7a_12xlarge" | "m7a_16xlarge" | "m7gd_medium" | "m7gd_large" | "m7gd_xlarge" | "m7gd_2xlarge" | "m7gd_4xlarge" | "m7gd_8xlarge" | "m7gd_12xlarge" | "m7gd_16xlarge" | "m7i_large" | "m7i_xlarge" | "m7i_2xlarge" | "m7i_4xlarge" | "m7i_8xlarge" | "m7i_12xlarge" | "m7i_16xlarge" | "r6gd_medium" | "r6gd_large" | "r6gd_xlarge" | "r6gd_2xlarge" | "r6gd_4xlarge" | "r6gd_8xlarge" | "r6gd_12xlarge" | "r6gd_16xlarge" | "r7a_medium" | "r7a_large" | "r7a_xlarge" | "r7a_2xlarge" | "r7a_4xlarge" | "r7a_8xlarge" | "r7a_12xlarge" | "r7a_16xlarge" | "r7gd_medium" | "r7gd_large" | "r7gd_xlarge" | "r7gd_2xlarge" | "r7gd_4xlarge" | "r7gd_8xlarge" | "r7gd_12xlarge" | "r7gd_16xlarge" | "r7i_large" | "r7i_xlarge" | "r7i_2xlarge" | "r7i_4xlarge" | "r7i_8xlarge" | "r7i_12xlarge" | "r7i_16xlarge" | "r7i_24xlarge" | "r7i_48xlarge" | "c5ad_large" | "c5ad_xlarge" | "c5ad_2xlarge" | "c5ad_4xlarge" | "c5ad_8xlarge" | "c5ad_12xlarge" | "c5ad_16xlarge" | "c5ad_24xlarge" | "c5n_large" | "c5n_xlarge" | "c5n_2xlarge" | "c5n_4xlarge" | "c5n_9xlarge" | "c5n_18xlarge" | "r5ad_large" | "r5ad_xlarge" | "r5ad_2xlarge" | "r5ad_4xlarge" | "r5ad_8xlarge" | "r5ad_12xlarge" | "r5ad_16xlarge" | "r5ad_24xlarge" | "c6id_large" | "c6id_xlarge" | "c6id_2xlarge" | "c6id_4xlarge" | "c6id_8xlarge" | "c6id_12xlarge" | "c6id_16xlarge" | "c6id_24xlarge" | "c6id_32xlarge" | "c8g_medium" | "c8g_large" | "c8g_xlarge" | "c8g_2xlarge" | "c8g_4xlarge" | "c8g_8xlarge" | "c8g_12xlarge" | "c8g_16xlarge" | "c8g_24xlarge" | "c8g_48xlarge" | "m5ad_large" | "m5ad_xlarge" | "m5ad_2xlarge" | "m5ad_4xlarge" | "m5ad_8xlarge" | "m5ad_12xlarge" | "m5ad_16xlarge" | "m5ad_24xlarge" | "m5d_large" | "m5d_xlarge" | "m5d_2xlarge" | "m5d_4xlarge" | "m5d_8xlarge" | "m5d_12xlarge" | "m5d_16xlarge" | "m5d_24xlarge" | "m5dn_large" | "m5dn_xlarge" | "m5dn_2xlarge" | "m5dn_4xlarge" | "m5dn_8xlarge" | "m5dn_12xlarge" | "m5dn_16xlarge" | "m5dn_24xlarge" | "m5n_large" | "m5n_xlarge" | "m5n_2xlarge" | "m5n_4xlarge" | "m5n_8xlarge" | "m5n_12xlarge" | "m5n_16xlarge" | "m5n_24xlarge" | "m6id_large" | "m6id_xlarge" | "m6id_2xlarge" | "m6id_4xlarge" | "m6id_8xlarge" | "m6id_12xlarge" | "m6id_16xlarge" | "m6id_24xlarge" | "m6id_32xlarge" | "m6idn_large" | "m6idn_xlarge" | "m6idn_2xlarge" | "m6idn_4xlarge" | "m6idn_8xlarge" | "m6idn_12xlarge" | "m6idn_16xlarge" | "m6idn_24xlarge" | "m6idn_32xlarge" | "m6in_large" | "m6in_xlarge" | "m6in_2xlarge" | "m6in_4xlarge" | "m6in_8xlarge" | "m6in_12xlarge" | "m6in_16xlarge" | "m6in_24xlarge" | "m6in_32xlarge" | "m8g_medium" | "m8g_large" | "m8g_xlarge" | "m8g_2xlarge" | "m8g_4xlarge" | "m8g_8xlarge" | "m8g_12xlarge" | "m8g_16xlarge" | "m8g_24xlarge" | "m8g_48xlarge" | "r5dn_large" | "r5dn_xlarge" | "r5dn_2xlarge" | "r5dn_4xlarge" | "r5dn_8xlarge" | "r5dn_12xlarge" | "r5dn_16xlarge" | "r5dn_24xlarge" | "r5n_large" | "r5n_xlarge" | "r5n_2xlarge" | "r5n_4xlarge" | "r5n_8xlarge" | "r5n_12xlarge" | "r5n_16xlarge" | "r5n_24xlarge" | "r6a_large" | "r6a_xlarge" | "r6a_2xlarge" | "r6a_4xlarge" | "r6a_8xlarge" | "r6a_12xlarge" | "r6a_16xlarge" | "r6a_24xlarge" | "r6a_32xlarge" | "r6a_48xlarge" | "r6id_large" | "r6id_xlarge" | "r6id_2xlarge" | "r6id_4xlarge" | "r6id_8xlarge" | "r6id_12xlarge" | "r6id_16xlarge" | "r6id_24xlarge" | "r6id_32xlarge" | "r6idn_large" | "r6idn_xlarge" | "r6idn_2xlarge" | "r6idn_4xlarge" | "r6idn_8xlarge" | "r6idn_12xlarge" | "r6idn_16xlarge" | "r6idn_24xlarge" | "r6idn_32xlarge" | "r6in_large" | "r6in_xlarge" | "r6in_2xlarge" | "r6in_4xlarge" | "r6in_8xlarge" | "r6in_12xlarge" | "r6in_16xlarge" | "r6in_24xlarge" | "r6in_32xlarge" | "r8g_medium" | "r8g_large" | "r8g_xlarge" | "r8g_2xlarge" | "r8g_4xlarge" | "r8g_8xlarge" | "r8g_12xlarge" | "r8g_16xlarge" | "r8g_24xlarge" | "r8g_48xlarge" | "m4_16xlarge" | "c6a_32xlarge" | "c6a_48xlarge" | "c6i_32xlarge" | "r6i_24xlarge" | "r6i_32xlarge" | "c6in_24xlarge" | "c6in_32xlarge" | "c7a_24xlarge" | "c7a_32xlarge" | "c7a_48xlarge" | "c7i_24xlarge" | "c7i_48xlarge" | "m6a_24xlarge" | "m6a_32xlarge" | "m6a_48xlarge" | "m6i_24xlarge" | "m6i_32xlarge" | "m7a_24xlarge" | "m7a_32xlarge" | "m7a_48xlarge" | "m7i_24xlarge" | "m7i_48xlarge" | "r7a_24xlarge" | "r7a_32xlarge" | "r7a_48xlarge";
+export type EC2InstanceType =
+  | "t2_micro"
+  | "t2_small"
+  | "t2_medium"
+  | "t2_large"
+  | "c3_large"
+  | "c3_xlarge"
+  | "c3_2xlarge"
+  | "c3_4xlarge"
+  | "c3_8xlarge"
+  | "c4_large"
+  | "c4_xlarge"
+  | "c4_2xlarge"
+  | "c4_4xlarge"
+  | "c4_8xlarge"
+  | "c5_large"
+  | "c5_xlarge"
+  | "c5_2xlarge"
+  | "c5_4xlarge"
+  | "c5_9xlarge"
+  | "c5_12xlarge"
+  | "c5_18xlarge"
+  | "c5_24xlarge"
+  | "c5a_large"
+  | "c5a_xlarge"
+  | "c5a_2xlarge"
+  | "c5a_4xlarge"
+  | "c5a_8xlarge"
+  | "c5a_12xlarge"
+  | "c5a_16xlarge"
+  | "c5a_24xlarge"
+  | "r3_large"
+  | "r3_xlarge"
+  | "r3_2xlarge"
+  | "r3_4xlarge"
+  | "r3_8xlarge"
+  | "r4_large"
+  | "r4_xlarge"
+  | "r4_2xlarge"
+  | "r4_4xlarge"
+  | "r4_8xlarge"
+  | "r4_16xlarge"
+  | "r5_large"
+  | "r5_xlarge"
+  | "r5_2xlarge"
+  | "r5_4xlarge"
+  | "r5_8xlarge"
+  | "r5_12xlarge"
+  | "r5_16xlarge"
+  | "r5_24xlarge"
+  | "r5a_large"
+  | "r5a_xlarge"
+  | "r5a_2xlarge"
+  | "r5a_4xlarge"
+  | "r5a_8xlarge"
+  | "r5a_12xlarge"
+  | "r5a_16xlarge"
+  | "r5a_24xlarge"
+  | "m3_medium"
+  | "m3_large"
+  | "m3_xlarge"
+  | "m3_2xlarge"
+  | "m4_large"
+  | "m4_xlarge"
+  | "m4_2xlarge"
+  | "m4_4xlarge"
+  | "m4_10xlarge"
+  | "m5_large"
+  | "m5_xlarge"
+  | "m5_2xlarge"
+  | "m5_4xlarge"
+  | "m5_8xlarge"
+  | "m5_12xlarge"
+  | "m5_16xlarge"
+  | "m5_24xlarge"
+  | "m5a_large"
+  | "m5a_xlarge"
+  | "m5a_2xlarge"
+  | "m5a_4xlarge"
+  | "m5a_8xlarge"
+  | "m5a_12xlarge"
+  | "m5a_16xlarge"
+  | "m5a_24xlarge"
+  | "c5d_large"
+  | "c5d_xlarge"
+  | "c5d_2xlarge"
+  | "c5d_4xlarge"
+  | "c5d_9xlarge"
+  | "c5d_12xlarge"
+  | "c5d_18xlarge"
+  | "c5d_24xlarge"
+  | "c6a_large"
+  | "c6a_xlarge"
+  | "c6a_2xlarge"
+  | "c6a_4xlarge"
+  | "c6a_8xlarge"
+  | "c6a_12xlarge"
+  | "c6a_16xlarge"
+  | "c6a_24xlarge"
+  | "c6i_large"
+  | "c6i_xlarge"
+  | "c6i_2xlarge"
+  | "c6i_4xlarge"
+  | "c6i_8xlarge"
+  | "c6i_12xlarge"
+  | "c6i_16xlarge"
+  | "c6i_24xlarge"
+  | "r5d_large"
+  | "r5d_xlarge"
+  | "r5d_2xlarge"
+  | "r5d_4xlarge"
+  | "r5d_8xlarge"
+  | "r5d_12xlarge"
+  | "r5d_16xlarge"
+  | "r5d_24xlarge"
+  | "m6g_medium"
+  | "m6g_large"
+  | "m6g_xlarge"
+  | "m6g_2xlarge"
+  | "m6g_4xlarge"
+  | "m6g_8xlarge"
+  | "m6g_12xlarge"
+  | "m6g_16xlarge"
+  | "c6g_medium"
+  | "c6g_large"
+  | "c6g_xlarge"
+  | "c6g_2xlarge"
+  | "c6g_4xlarge"
+  | "c6g_8xlarge"
+  | "c6g_12xlarge"
+  | "c6g_16xlarge"
+  | "r6g_medium"
+  | "r6g_large"
+  | "r6g_xlarge"
+  | "r6g_2xlarge"
+  | "r6g_4xlarge"
+  | "r6g_8xlarge"
+  | "r6g_12xlarge"
+  | "r6g_16xlarge"
+  | "c6gn_medium"
+  | "c6gn_large"
+  | "c6gn_xlarge"
+  | "c6gn_2xlarge"
+  | "c6gn_4xlarge"
+  | "c6gn_8xlarge"
+  | "c6gn_12xlarge"
+  | "c6gn_16xlarge"
+  | "c7g_medium"
+  | "c7g_large"
+  | "c7g_xlarge"
+  | "c7g_2xlarge"
+  | "c7g_4xlarge"
+  | "c7g_8xlarge"
+  | "c7g_12xlarge"
+  | "c7g_16xlarge"
+  | "r7g_medium"
+  | "r7g_large"
+  | "r7g_xlarge"
+  | "r7g_2xlarge"
+  | "r7g_4xlarge"
+  | "r7g_8xlarge"
+  | "r7g_12xlarge"
+  | "r7g_16xlarge"
+  | "m7g_medium"
+  | "m7g_large"
+  | "m7g_xlarge"
+  | "m7g_2xlarge"
+  | "m7g_4xlarge"
+  | "m7g_8xlarge"
+  | "m7g_12xlarge"
+  | "m7g_16xlarge"
+  | "g5g_xlarge"
+  | "g5g_2xlarge"
+  | "g5g_4xlarge"
+  | "g5g_8xlarge"
+  | "g5g_16xlarge"
+  | "r6i_large"
+  | "r6i_xlarge"
+  | "r6i_2xlarge"
+  | "r6i_4xlarge"
+  | "r6i_8xlarge"
+  | "r6i_12xlarge"
+  | "r6i_16xlarge"
+  | "c6gd_medium"
+  | "c6gd_large"
+  | "c6gd_xlarge"
+  | "c6gd_2xlarge"
+  | "c6gd_4xlarge"
+  | "c6gd_8xlarge"
+  | "c6gd_12xlarge"
+  | "c6gd_16xlarge"
+  | "c6in_large"
+  | "c6in_xlarge"
+  | "c6in_2xlarge"
+  | "c6in_4xlarge"
+  | "c6in_8xlarge"
+  | "c6in_12xlarge"
+  | "c6in_16xlarge"
+  | "c7a_medium"
+  | "c7a_large"
+  | "c7a_xlarge"
+  | "c7a_2xlarge"
+  | "c7a_4xlarge"
+  | "c7a_8xlarge"
+  | "c7a_12xlarge"
+  | "c7a_16xlarge"
+  | "c7gd_medium"
+  | "c7gd_large"
+  | "c7gd_xlarge"
+  | "c7gd_2xlarge"
+  | "c7gd_4xlarge"
+  | "c7gd_8xlarge"
+  | "c7gd_12xlarge"
+  | "c7gd_16xlarge"
+  | "c7gn_medium"
+  | "c7gn_large"
+  | "c7gn_xlarge"
+  | "c7gn_2xlarge"
+  | "c7gn_4xlarge"
+  | "c7gn_8xlarge"
+  | "c7gn_12xlarge"
+  | "c7gn_16xlarge"
+  | "c7i_large"
+  | "c7i_xlarge"
+  | "c7i_2xlarge"
+  | "c7i_4xlarge"
+  | "c7i_8xlarge"
+  | "c7i_12xlarge"
+  | "c7i_16xlarge"
+  | "m6a_large"
+  | "m6a_xlarge"
+  | "m6a_2xlarge"
+  | "m6a_4xlarge"
+  | "m6a_8xlarge"
+  | "m6a_12xlarge"
+  | "m6a_16xlarge"
+  | "m6gd_medium"
+  | "m6gd_large"
+  | "m6gd_xlarge"
+  | "m6gd_2xlarge"
+  | "m6gd_4xlarge"
+  | "m6gd_8xlarge"
+  | "m6gd_12xlarge"
+  | "m6gd_16xlarge"
+  | "m6i_large"
+  | "m6i_xlarge"
+  | "m6i_2xlarge"
+  | "m6i_4xlarge"
+  | "m6i_8xlarge"
+  | "m6i_12xlarge"
+  | "m6i_16xlarge"
+  | "m7a_medium"
+  | "m7a_large"
+  | "m7a_xlarge"
+  | "m7a_2xlarge"
+  | "m7a_4xlarge"
+  | "m7a_8xlarge"
+  | "m7a_12xlarge"
+  | "m7a_16xlarge"
+  | "m7gd_medium"
+  | "m7gd_large"
+  | "m7gd_xlarge"
+  | "m7gd_2xlarge"
+  | "m7gd_4xlarge"
+  | "m7gd_8xlarge"
+  | "m7gd_12xlarge"
+  | "m7gd_16xlarge"
+  | "m7i_large"
+  | "m7i_xlarge"
+  | "m7i_2xlarge"
+  | "m7i_4xlarge"
+  | "m7i_8xlarge"
+  | "m7i_12xlarge"
+  | "m7i_16xlarge"
+  | "r6gd_medium"
+  | "r6gd_large"
+  | "r6gd_xlarge"
+  | "r6gd_2xlarge"
+  | "r6gd_4xlarge"
+  | "r6gd_8xlarge"
+  | "r6gd_12xlarge"
+  | "r6gd_16xlarge"
+  | "r7a_medium"
+  | "r7a_large"
+  | "r7a_xlarge"
+  | "r7a_2xlarge"
+  | "r7a_4xlarge"
+  | "r7a_8xlarge"
+  | "r7a_12xlarge"
+  | "r7a_16xlarge"
+  | "r7gd_medium"
+  | "r7gd_large"
+  | "r7gd_xlarge"
+  | "r7gd_2xlarge"
+  | "r7gd_4xlarge"
+  | "r7gd_8xlarge"
+  | "r7gd_12xlarge"
+  | "r7gd_16xlarge"
+  | "r7i_large"
+  | "r7i_xlarge"
+  | "r7i_2xlarge"
+  | "r7i_4xlarge"
+  | "r7i_8xlarge"
+  | "r7i_12xlarge"
+  | "r7i_16xlarge"
+  | "r7i_24xlarge"
+  | "r7i_48xlarge"
+  | "c5ad_large"
+  | "c5ad_xlarge"
+  | "c5ad_2xlarge"
+  | "c5ad_4xlarge"
+  | "c5ad_8xlarge"
+  | "c5ad_12xlarge"
+  | "c5ad_16xlarge"
+  | "c5ad_24xlarge"
+  | "c5n_large"
+  | "c5n_xlarge"
+  | "c5n_2xlarge"
+  | "c5n_4xlarge"
+  | "c5n_9xlarge"
+  | "c5n_18xlarge"
+  | "r5ad_large"
+  | "r5ad_xlarge"
+  | "r5ad_2xlarge"
+  | "r5ad_4xlarge"
+  | "r5ad_8xlarge"
+  | "r5ad_12xlarge"
+  | "r5ad_16xlarge"
+  | "r5ad_24xlarge"
+  | "c6id_large"
+  | "c6id_xlarge"
+  | "c6id_2xlarge"
+  | "c6id_4xlarge"
+  | "c6id_8xlarge"
+  | "c6id_12xlarge"
+  | "c6id_16xlarge"
+  | "c6id_24xlarge"
+  | "c6id_32xlarge"
+  | "c8g_medium"
+  | "c8g_large"
+  | "c8g_xlarge"
+  | "c8g_2xlarge"
+  | "c8g_4xlarge"
+  | "c8g_8xlarge"
+  | "c8g_12xlarge"
+  | "c8g_16xlarge"
+  | "c8g_24xlarge"
+  | "c8g_48xlarge"
+  | "m5ad_large"
+  | "m5ad_xlarge"
+  | "m5ad_2xlarge"
+  | "m5ad_4xlarge"
+  | "m5ad_8xlarge"
+  | "m5ad_12xlarge"
+  | "m5ad_16xlarge"
+  | "m5ad_24xlarge"
+  | "m5d_large"
+  | "m5d_xlarge"
+  | "m5d_2xlarge"
+  | "m5d_4xlarge"
+  | "m5d_8xlarge"
+  | "m5d_12xlarge"
+  | "m5d_16xlarge"
+  | "m5d_24xlarge"
+  | "m5dn_large"
+  | "m5dn_xlarge"
+  | "m5dn_2xlarge"
+  | "m5dn_4xlarge"
+  | "m5dn_8xlarge"
+  | "m5dn_12xlarge"
+  | "m5dn_16xlarge"
+  | "m5dn_24xlarge"
+  | "m5n_large"
+  | "m5n_xlarge"
+  | "m5n_2xlarge"
+  | "m5n_4xlarge"
+  | "m5n_8xlarge"
+  | "m5n_12xlarge"
+  | "m5n_16xlarge"
+  | "m5n_24xlarge"
+  | "m6id_large"
+  | "m6id_xlarge"
+  | "m6id_2xlarge"
+  | "m6id_4xlarge"
+  | "m6id_8xlarge"
+  | "m6id_12xlarge"
+  | "m6id_16xlarge"
+  | "m6id_24xlarge"
+  | "m6id_32xlarge"
+  | "m6idn_large"
+  | "m6idn_xlarge"
+  | "m6idn_2xlarge"
+  | "m6idn_4xlarge"
+  | "m6idn_8xlarge"
+  | "m6idn_12xlarge"
+  | "m6idn_16xlarge"
+  | "m6idn_24xlarge"
+  | "m6idn_32xlarge"
+  | "m6in_large"
+  | "m6in_xlarge"
+  | "m6in_2xlarge"
+  | "m6in_4xlarge"
+  | "m6in_8xlarge"
+  | "m6in_12xlarge"
+  | "m6in_16xlarge"
+  | "m6in_24xlarge"
+  | "m6in_32xlarge"
+  | "m8g_medium"
+  | "m8g_large"
+  | "m8g_xlarge"
+  | "m8g_2xlarge"
+  | "m8g_4xlarge"
+  | "m8g_8xlarge"
+  | "m8g_12xlarge"
+  | "m8g_16xlarge"
+  | "m8g_24xlarge"
+  | "m8g_48xlarge"
+  | "r5dn_large"
+  | "r5dn_xlarge"
+  | "r5dn_2xlarge"
+  | "r5dn_4xlarge"
+  | "r5dn_8xlarge"
+  | "r5dn_12xlarge"
+  | "r5dn_16xlarge"
+  | "r5dn_24xlarge"
+  | "r5n_large"
+  | "r5n_xlarge"
+  | "r5n_2xlarge"
+  | "r5n_4xlarge"
+  | "r5n_8xlarge"
+  | "r5n_12xlarge"
+  | "r5n_16xlarge"
+  | "r5n_24xlarge"
+  | "r6a_large"
+  | "r6a_xlarge"
+  | "r6a_2xlarge"
+  | "r6a_4xlarge"
+  | "r6a_8xlarge"
+  | "r6a_12xlarge"
+  | "r6a_16xlarge"
+  | "r6a_24xlarge"
+  | "r6a_32xlarge"
+  | "r6a_48xlarge"
+  | "r6id_large"
+  | "r6id_xlarge"
+  | "r6id_2xlarge"
+  | "r6id_4xlarge"
+  | "r6id_8xlarge"
+  | "r6id_12xlarge"
+  | "r6id_16xlarge"
+  | "r6id_24xlarge"
+  | "r6id_32xlarge"
+  | "r6idn_large"
+  | "r6idn_xlarge"
+  | "r6idn_2xlarge"
+  | "r6idn_4xlarge"
+  | "r6idn_8xlarge"
+  | "r6idn_12xlarge"
+  | "r6idn_16xlarge"
+  | "r6idn_24xlarge"
+  | "r6idn_32xlarge"
+  | "r6in_large"
+  | "r6in_xlarge"
+  | "r6in_2xlarge"
+  | "r6in_4xlarge"
+  | "r6in_8xlarge"
+  | "r6in_12xlarge"
+  | "r6in_16xlarge"
+  | "r6in_24xlarge"
+  | "r6in_32xlarge"
+  | "r8g_medium"
+  | "r8g_large"
+  | "r8g_xlarge"
+  | "r8g_2xlarge"
+  | "r8g_4xlarge"
+  | "r8g_8xlarge"
+  | "r8g_12xlarge"
+  | "r8g_16xlarge"
+  | "r8g_24xlarge"
+  | "r8g_48xlarge"
+  | "m4_16xlarge"
+  | "c6a_32xlarge"
+  | "c6a_48xlarge"
+  | "c6i_32xlarge"
+  | "r6i_24xlarge"
+  | "r6i_32xlarge"
+  | "c6in_24xlarge"
+  | "c6in_32xlarge"
+  | "c7a_24xlarge"
+  | "c7a_32xlarge"
+  | "c7a_48xlarge"
+  | "c7i_24xlarge"
+  | "c7i_48xlarge"
+  | "m6a_24xlarge"
+  | "m6a_32xlarge"
+  | "m6a_48xlarge"
+  | "m6i_24xlarge"
+  | "m6i_32xlarge"
+  | "m7a_24xlarge"
+  | "m7a_32xlarge"
+  | "m7a_48xlarge"
+  | "m7i_24xlarge"
+  | "m7i_48xlarge"
+  | "r7a_24xlarge"
+  | "r7a_32xlarge"
+  | "r7a_48xlarge";
 export interface Event {
   EventId?: string;
   ResourceId?: string;
@@ -1585,7 +2688,63 @@ export interface Event {
   PreSignedLogUrl?: string;
   Count?: number;
 }
-export type EventCode = "GENERIC_EVENT" | "FLEET_CREATED" | "FLEET_DELETED" | "FLEET_SCALING_EVENT" | "FLEET_STATE_DOWNLOADING" | "FLEET_STATE_VALIDATING" | "FLEET_STATE_BUILDING" | "FLEET_STATE_ACTIVATING" | "FLEET_STATE_ACTIVE" | "FLEET_STATE_ERROR" | "FLEET_STATE_PENDING" | "FLEET_STATE_CREATING" | "FLEET_STATE_CREATED" | "FLEET_STATE_UPDATING" | "FLEET_INITIALIZATION_FAILED" | "FLEET_BINARY_DOWNLOAD_FAILED" | "FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND" | "FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE" | "FLEET_VALIDATION_TIMED_OUT" | "FLEET_ACTIVATION_FAILED" | "FLEET_ACTIVATION_FAILED_NO_INSTANCES" | "FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED" | "SERVER_PROCESS_INVALID_PATH" | "SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT" | "SERVER_PROCESS_PROCESS_READY_TIMEOUT" | "SERVER_PROCESS_CRASHED" | "SERVER_PROCESS_TERMINATED_UNHEALTHY" | "SERVER_PROCESS_FORCE_TERMINATED" | "SERVER_PROCESS_PROCESS_EXIT_TIMEOUT" | "SERVER_PROCESS_SDK_INITIALIZATION_FAILED" | "SERVER_PROCESS_MISCONFIGURED_CONTAINER_PORT" | "GAME_SESSION_ACTIVATION_TIMEOUT" | "FLEET_CREATION_EXTRACTING_BUILD" | "FLEET_CREATION_RUNNING_INSTALLER" | "FLEET_CREATION_VALIDATING_RUNTIME_CONFIG" | "FLEET_VPC_PEERING_SUCCEEDED" | "FLEET_VPC_PEERING_FAILED" | "FLEET_VPC_PEERING_DELETED" | "INSTANCE_INTERRUPTED" | "INSTANCE_RECYCLED" | "INSTANCE_REPLACED_UNHEALTHY" | "FLEET_CREATION_COMPLETED_INSTALLER" | "FLEET_CREATION_FAILED_INSTALLER" | "COMPUTE_LOG_UPLOAD_FAILED" | "GAME_SERVER_CONTAINER_GROUP_CRASHED" | "PER_INSTANCE_CONTAINER_GROUP_CRASHED" | "GAME_SERVER_CONTAINER_GROUP_REPLACED_UNHEALTHY" | "LOCATION_STATE_PENDING" | "LOCATION_STATE_CREATING" | "LOCATION_STATE_CREATED" | "LOCATION_STATE_ACTIVATING" | "LOCATION_STATE_ACTIVE" | "LOCATION_STATE_UPDATING" | "LOCATION_STATE_ERROR" | "LOCATION_STATE_DELETING" | "LOCATION_STATE_DELETED";
+export type EventCode =
+  | "GENERIC_EVENT"
+  | "FLEET_CREATED"
+  | "FLEET_DELETED"
+  | "FLEET_SCALING_EVENT"
+  | "FLEET_STATE_DOWNLOADING"
+  | "FLEET_STATE_VALIDATING"
+  | "FLEET_STATE_BUILDING"
+  | "FLEET_STATE_ACTIVATING"
+  | "FLEET_STATE_ACTIVE"
+  | "FLEET_STATE_ERROR"
+  | "FLEET_STATE_PENDING"
+  | "FLEET_STATE_CREATING"
+  | "FLEET_STATE_CREATED"
+  | "FLEET_STATE_UPDATING"
+  | "FLEET_INITIALIZATION_FAILED"
+  | "FLEET_BINARY_DOWNLOAD_FAILED"
+  | "FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND"
+  | "FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE"
+  | "FLEET_VALIDATION_TIMED_OUT"
+  | "FLEET_ACTIVATION_FAILED"
+  | "FLEET_ACTIVATION_FAILED_NO_INSTANCES"
+  | "FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED"
+  | "SERVER_PROCESS_INVALID_PATH"
+  | "SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT"
+  | "SERVER_PROCESS_PROCESS_READY_TIMEOUT"
+  | "SERVER_PROCESS_CRASHED"
+  | "SERVER_PROCESS_TERMINATED_UNHEALTHY"
+  | "SERVER_PROCESS_FORCE_TERMINATED"
+  | "SERVER_PROCESS_PROCESS_EXIT_TIMEOUT"
+  | "SERVER_PROCESS_SDK_INITIALIZATION_FAILED"
+  | "SERVER_PROCESS_MISCONFIGURED_CONTAINER_PORT"
+  | "GAME_SESSION_ACTIVATION_TIMEOUT"
+  | "FLEET_CREATION_EXTRACTING_BUILD"
+  | "FLEET_CREATION_RUNNING_INSTALLER"
+  | "FLEET_CREATION_VALIDATING_RUNTIME_CONFIG"
+  | "FLEET_VPC_PEERING_SUCCEEDED"
+  | "FLEET_VPC_PEERING_FAILED"
+  | "FLEET_VPC_PEERING_DELETED"
+  | "INSTANCE_INTERRUPTED"
+  | "INSTANCE_RECYCLED"
+  | "INSTANCE_REPLACED_UNHEALTHY"
+  | "FLEET_CREATION_COMPLETED_INSTALLER"
+  | "FLEET_CREATION_FAILED_INSTALLER"
+  | "COMPUTE_LOG_UPLOAD_FAILED"
+  | "GAME_SERVER_CONTAINER_GROUP_CRASHED"
+  | "PER_INSTANCE_CONTAINER_GROUP_CRASHED"
+  | "GAME_SERVER_CONTAINER_GROUP_REPLACED_UNHEALTHY"
+  | "LOCATION_STATE_PENDING"
+  | "LOCATION_STATE_CREATING"
+  | "LOCATION_STATE_CREATED"
+  | "LOCATION_STATE_ACTIVATING"
+  | "LOCATION_STATE_ACTIVE"
+  | "LOCATION_STATE_UPDATING"
+  | "LOCATION_STATE_ERROR"
+  | "LOCATION_STATE_DELETING"
+  | "LOCATION_STATE_DELETED";
 export type EventCount = number;
 
 export type EventList = Array<Event>;
@@ -1661,7 +2820,17 @@ export type FleetIdList = Array<string>;
 export type FleetIdOrArn = string;
 
 export type FleetIdOrArnList = Array<string>;
-export type FleetStatus = "NEW" | "DOWNLOADING" | "VALIDATING" | "BUILDING" | "ACTIVATING" | "ACTIVE" | "DELETING" | "ERROR" | "TERMINATED" | "NOT_FOUND";
+export type FleetStatus =
+  | "NEW"
+  | "DOWNLOADING"
+  | "VALIDATING"
+  | "BUILDING"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "ERROR"
+  | "TERMINATED"
+  | "NOT_FOUND";
 export type FleetType = "OnDemand" | "Spot";
 export interface FleetUtilization {
   FleetId?: string;
@@ -1758,14 +2927,112 @@ export interface GameServerGroupAutoScalingPolicy {
   EstimatedInstanceWarmup?: number;
   TargetTrackingConfiguration: TargetTrackingConfiguration;
 }
-export type GameServerGroupDeleteOption = "SAFE_DELETE" | "FORCE_DELETE" | "RETAIN";
-export type GameServerGroupInstanceType = "c4_large" | "c4_xlarge" | "c4_2xlarge" | "c4_4xlarge" | "c4_8xlarge" | "c5_large" | "c5_xlarge" | "c5_2xlarge" | "c5_4xlarge" | "c5_9xlarge" | "c5_12xlarge" | "c5_18xlarge" | "c5_24xlarge" | "c5a_large" | "c5a_xlarge" | "c5a_2xlarge" | "c5a_4xlarge" | "c5a_8xlarge" | "c5a_12xlarge" | "c5a_16xlarge" | "c5a_24xlarge" | "c6g_medium" | "c6g_large" | "c6g_xlarge" | "c6g_2xlarge" | "c6g_4xlarge" | "c6g_8xlarge" | "c6g_12xlarge" | "c6g_16xlarge" | "r4_large" | "r4_xlarge" | "r4_2xlarge" | "r4_4xlarge" | "r4_8xlarge" | "r4_16xlarge" | "r5_large" | "r5_xlarge" | "r5_2xlarge" | "r5_4xlarge" | "r5_8xlarge" | "r5_12xlarge" | "r5_16xlarge" | "r5_24xlarge" | "r5a_large" | "r5a_xlarge" | "r5a_2xlarge" | "r5a_4xlarge" | "r5a_8xlarge" | "r5a_12xlarge" | "r5a_16xlarge" | "r5a_24xlarge" | "r6g_medium" | "r6g_large" | "r6g_xlarge" | "r6g_2xlarge" | "r6g_4xlarge" | "r6g_8xlarge" | "r6g_12xlarge" | "r6g_16xlarge" | "m4_large" | "m4_xlarge" | "m4_2xlarge" | "m4_4xlarge" | "m4_10xlarge" | "m5_large" | "m5_xlarge" | "m5_2xlarge" | "m5_4xlarge" | "m5_8xlarge" | "m5_12xlarge" | "m5_16xlarge" | "m5_24xlarge" | "m5a_large" | "m5a_xlarge" | "m5a_2xlarge" | "m5a_4xlarge" | "m5a_8xlarge" | "m5a_12xlarge" | "m5a_16xlarge" | "m5a_24xlarge" | "m6g_medium" | "m6g_large" | "m6g_xlarge" | "m6g_2xlarge" | "m6g_4xlarge" | "m6g_8xlarge" | "m6g_12xlarge" | "m6g_16xlarge";
+export type GameServerGroupDeleteOption =
+  | "SAFE_DELETE"
+  | "FORCE_DELETE"
+  | "RETAIN";
+export type GameServerGroupInstanceType =
+  | "c4_large"
+  | "c4_xlarge"
+  | "c4_2xlarge"
+  | "c4_4xlarge"
+  | "c4_8xlarge"
+  | "c5_large"
+  | "c5_xlarge"
+  | "c5_2xlarge"
+  | "c5_4xlarge"
+  | "c5_9xlarge"
+  | "c5_12xlarge"
+  | "c5_18xlarge"
+  | "c5_24xlarge"
+  | "c5a_large"
+  | "c5a_xlarge"
+  | "c5a_2xlarge"
+  | "c5a_4xlarge"
+  | "c5a_8xlarge"
+  | "c5a_12xlarge"
+  | "c5a_16xlarge"
+  | "c5a_24xlarge"
+  | "c6g_medium"
+  | "c6g_large"
+  | "c6g_xlarge"
+  | "c6g_2xlarge"
+  | "c6g_4xlarge"
+  | "c6g_8xlarge"
+  | "c6g_12xlarge"
+  | "c6g_16xlarge"
+  | "r4_large"
+  | "r4_xlarge"
+  | "r4_2xlarge"
+  | "r4_4xlarge"
+  | "r4_8xlarge"
+  | "r4_16xlarge"
+  | "r5_large"
+  | "r5_xlarge"
+  | "r5_2xlarge"
+  | "r5_4xlarge"
+  | "r5_8xlarge"
+  | "r5_12xlarge"
+  | "r5_16xlarge"
+  | "r5_24xlarge"
+  | "r5a_large"
+  | "r5a_xlarge"
+  | "r5a_2xlarge"
+  | "r5a_4xlarge"
+  | "r5a_8xlarge"
+  | "r5a_12xlarge"
+  | "r5a_16xlarge"
+  | "r5a_24xlarge"
+  | "r6g_medium"
+  | "r6g_large"
+  | "r6g_xlarge"
+  | "r6g_2xlarge"
+  | "r6g_4xlarge"
+  | "r6g_8xlarge"
+  | "r6g_12xlarge"
+  | "r6g_16xlarge"
+  | "m4_large"
+  | "m4_xlarge"
+  | "m4_2xlarge"
+  | "m4_4xlarge"
+  | "m4_10xlarge"
+  | "m5_large"
+  | "m5_xlarge"
+  | "m5_2xlarge"
+  | "m5_4xlarge"
+  | "m5_8xlarge"
+  | "m5_12xlarge"
+  | "m5_16xlarge"
+  | "m5_24xlarge"
+  | "m5a_large"
+  | "m5a_xlarge"
+  | "m5a_2xlarge"
+  | "m5a_4xlarge"
+  | "m5a_8xlarge"
+  | "m5a_12xlarge"
+  | "m5a_16xlarge"
+  | "m5a_24xlarge"
+  | "m6g_medium"
+  | "m6g_large"
+  | "m6g_xlarge"
+  | "m6g_2xlarge"
+  | "m6g_4xlarge"
+  | "m6g_8xlarge"
+  | "m6g_12xlarge"
+  | "m6g_16xlarge";
 export type GameServerGroupName = string;
 
 export type GameServerGroupNameOrArn = string;
 
 export type GameServerGroups = Array<GameServerGroup>;
-export type GameServerGroupStatus = "NEW" | "ACTIVATING" | "ACTIVE" | "DELETE_SCHEDULED" | "DELETING" | "DELETED" | "ERROR";
+export type GameServerGroupStatus =
+  | "NEW"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "DELETE_SCHEDULED"
+  | "DELETING"
+  | "DELETED"
+  | "ERROR";
 export type GameServerHealthCheck = "HEALTHY";
 export type GameServerId = string;
 
@@ -1779,7 +3046,10 @@ export type GameServerInstanceId = string;
 
 export type GameServerInstanceIds = Array<string>;
 export type GameServerInstances = Array<GameServerInstance>;
-export type GameServerInstanceStatus = "ACTIVE" | "DRAINING" | "SPOT_TERMINATING";
+export type GameServerInstanceStatus =
+  | "ACTIVE"
+  | "DRAINING"
+  | "SPOT_TERMINATING";
 export type GameServerProtectionPolicy = "NO_PROTECTION" | "FULL_PROTECTION";
 export type GameServers = Array<GameServer>;
 export type GameServerUtilizationStatus = "AVAILABLE" | "UTILIZED";
@@ -1851,7 +3121,12 @@ export interface GameSessionPlacement {
   MatchmakerData?: string;
   PriorityConfigurationOverride?: PriorityConfigurationOverride;
 }
-export type GameSessionPlacementState = "PENDING" | "FULFILLED" | "CANCELLED" | "TIMED_OUT" | "FAILED";
+export type GameSessionPlacementState =
+  | "PENDING"
+  | "FULFILLED"
+  | "CANCELLED"
+  | "TIMED_OUT"
+  | "FAILED";
 export interface GameSessionQueue {
   Name?: string;
   GameSessionQueueArn?: string;
@@ -1868,15 +3143,24 @@ export type GameSessionQueueArn = string;
 export interface GameSessionQueueDestination {
   DestinationArn?: string;
 }
-export type GameSessionQueueDestinationList = Array<GameSessionQueueDestination>;
+export type GameSessionQueueDestinationList =
+  Array<GameSessionQueueDestination>;
 export type GameSessionQueueList = Array<GameSessionQueue>;
 export type GameSessionQueueName = string;
 
 export type GameSessionQueueNameOrArn = string;
 
 export type GameSessionQueueNameOrArnList = Array<string>;
-export type GameSessionStatus = "ACTIVE" | "ACTIVATING" | "TERMINATED" | "TERMINATING" | "ERROR";
-export type GameSessionStatusReason = "INTERRUPTED" | "TRIGGERED_ON_PROCESS_TERMINATE" | "FORCE_TERMINATED";
+export type GameSessionStatus =
+  | "ACTIVE"
+  | "ACTIVATING"
+  | "TERMINATED"
+  | "TERMINATING"
+  | "ERROR";
+export type GameSessionStatusReason =
+  | "INTERRUPTED"
+  | "TRIGGERED_ON_PROCESS_TERMINATE"
+  | "FORCE_TERMINATED";
 export interface GetComputeAccessInput {
   FleetId: string;
   ComputeName: string;
@@ -2219,7 +3503,15 @@ export type MatchmakingConfigurationList = Array<MatchmakingConfiguration>;
 export type MatchmakingConfigurationName = string;
 
 export type MatchmakingConfigurationNameList = Array<string>;
-export type MatchmakingConfigurationStatus = "CANCELLED" | "COMPLETED" | "FAILED" | "PLACING" | "QUEUED" | "REQUIRES_ACCEPTANCE" | "SEARCHING" | "TIMED_OUT";
+export type MatchmakingConfigurationStatus =
+  | "CANCELLED"
+  | "COMPLETED"
+  | "FAILED"
+  | "PLACING"
+  | "QUEUED"
+  | "REQUIRES_ACCEPTANCE"
+  | "SEARCHING"
+  | "TIMED_OUT";
 export type MatchmakingIdList = Array<string>;
 export type MatchmakingIdStringModel = string;
 
@@ -2258,7 +3550,19 @@ export type MaximumGameServerContainerGroupsPerInstance = number;
 export type MetricGroup = string;
 
 export type MetricGroupList = Array<string>;
-export type MetricName = "ActivatingGameSessions" | "ActiveGameSessions" | "ActiveInstances" | "AvailableGameSessions" | "AvailablePlayerSessions" | "CurrentPlayerSessions" | "IdleInstances" | "PercentAvailableGameSessions" | "PercentIdleInstances" | "QueueDepth" | "WaitTime" | "ConcurrentActivatableGameSessions";
+export type MetricName =
+  | "ActivatingGameSessions"
+  | "ActiveGameSessions"
+  | "ActiveInstances"
+  | "AvailableGameSessions"
+  | "AvailablePlayerSessions"
+  | "CurrentPlayerSessions"
+  | "IdleInstances"
+  | "PercentAvailableGameSessions"
+  | "PercentIdleInstances"
+  | "QueueDepth"
+  | "WaitTime"
+  | "ConcurrentActivatableGameSessions";
 export type MinimumHealthyPercentage = number;
 
 export type NonBlankAndLengthConstraintString = string;
@@ -2285,7 +3589,12 @@ export declare class NotReadyException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type OperatingSystem = "WINDOWS_2012" | "AMAZON_LINUX" | "AMAZON_LINUX_2" | "WINDOWS_2016" | "AMAZON_LINUX_2023";
+export type OperatingSystem =
+  | "WINDOWS_2012"
+  | "AMAZON_LINUX"
+  | "AMAZON_LINUX_2"
+  | "WINDOWS_2016"
+  | "AMAZON_LINUX_2023";
 export declare class OutOfCapacityException extends Data.TaggedError(
   "OutOfCapacityException",
 )<{
@@ -2348,7 +3657,11 @@ export type PlayerSessionCreationPolicy = "ACCEPT_ALL" | "DENY_ALL";
 export type PlayerSessionId = string;
 
 export type PlayerSessionList = Array<PlayerSession>;
-export type PlayerSessionStatus = "RESERVED" | "ACTIVE" | "COMPLETED" | "TIMEDOUT";
+export type PlayerSessionStatus =
+  | "RESERVED"
+  | "ACTIVE"
+  | "COMPLETED"
+  | "TIMEDOUT";
 export type PolicyType = "RuleBased" | "TargetBased";
 export type PortNumber = number;
 
@@ -2454,7 +3767,10 @@ export interface S3Location {
   RoleArn?: string;
   ObjectVersion?: string;
 }
-export type ScalingAdjustmentType = "ChangeInCapacity" | "ExactCapacity" | "PercentChangeInCapacity";
+export type ScalingAdjustmentType =
+  | "ChangeInCapacity"
+  | "ExactCapacity"
+  | "PercentChangeInCapacity";
 export interface ScalingPolicy {
   FleetId?: string;
   FleetArn?: string;
@@ -2472,7 +3788,14 @@ export interface ScalingPolicy {
   Location?: string;
 }
 export type ScalingPolicyList = Array<ScalingPolicy>;
-export type ScalingStatusType = "ACTIVE" | "UPDATE_REQUESTED" | "UPDATING" | "DELETE_REQUESTED" | "DELETING" | "DELETED" | "ERROR";
+export type ScalingStatusType =
+  | "ACTIVE"
+  | "UPDATE_REQUESTED"
+  | "UPDATING"
+  | "DELETE_REQUESTED"
+  | "DELETING"
+  | "DELETED"
+  | "ERROR";
 export interface Script {
   ScriptId?: string;
   ScriptArn?: string;
@@ -2575,8 +3898,7 @@ export interface StopGameSessionPlacementOutput {
 export interface StopMatchmakingInput {
   TicketId: string;
 }
-export interface StopMatchmakingOutput {
-}
+export interface StopMatchmakingOutput {}
 export type StringList = Array<string>;
 export type StringModel = string;
 
@@ -2605,7 +3927,8 @@ export interface SupportContainerDefinitionInput {
   PortConfiguration?: ContainerPortConfiguration;
   Vcpu?: number;
 }
-export type SupportContainerDefinitionInputList = Array<SupportContainerDefinitionInput>;
+export type SupportContainerDefinitionInputList =
+  Array<SupportContainerDefinitionInput>;
 export type SupportContainerDefinitionList = Array<SupportContainerDefinition>;
 export interface SuspendGameServerGroupInput {
   GameServerGroupName: string;
@@ -2631,8 +3954,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TargetConfiguration {
@@ -2653,7 +3975,9 @@ export interface TerminateGameSessionInput {
 export interface TerminateGameSessionOutput {
   GameSession?: GameSession;
 }
-export type TerminationMode = "TRIGGER_ON_PROCESS_TERMINATE" | "FORCE_TERMINATE";
+export type TerminationMode =
+  | "TRIGGER_ON_PROCESS_TERMINATE"
+  | "FORCE_TERMINATE";
 export type Timestamp = Date | string;
 
 export interface UDPEndpoint {
@@ -2674,8 +3998,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAliasInput {
   AliasId: string;
   Name?: string;
@@ -3782,6 +5105,17 @@ export declare namespace ListContainerFleets {
     | CommonAwsError;
 }
 
+export declare namespace ListContainerGroupDefinitions {
+  export type Input = ListContainerGroupDefinitionsInput;
+  export type Output = ListContainerGroupDefinitionsOutput;
+  export type Error =
+    | InternalServiceException
+    | InvalidRequestException
+    | UnauthorizedException
+    | UnsupportedRegionException
+    | CommonAwsError;
+}
+
 export declare namespace ListContainerGroupDefinitionVersions {
   export type Input = ListContainerGroupDefinitionVersionsInput;
   export type Output = ListContainerGroupDefinitionVersionsOutput;
@@ -3789,17 +5123,6 @@ export declare namespace ListContainerGroupDefinitionVersions {
     | InternalServiceException
     | InvalidRequestException
     | NotFoundException
-    | UnauthorizedException
-    | UnsupportedRegionException
-    | CommonAwsError;
-}
-
-export declare namespace ListContainerGroupDefinitions {
-  export type Input = ListContainerGroupDefinitionsInput;
-  export type Output = ListContainerGroupDefinitionsOutput;
-  export type Error =
-    | InternalServiceException
-    | InvalidRequestException
     | UnauthorizedException
     | UnsupportedRegionException
     | CommonAwsError;
@@ -4274,4 +5597,3 @@ export declare namespace ValidateMatchmakingRuleSet {
     | UnsupportedRegionException
     | CommonAwsError;
 }
-

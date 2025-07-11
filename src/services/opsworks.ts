@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface OpsWorks_20130218 {
   assignInstance(
@@ -58,10 +58,7 @@ export interface OpsWorks_20130218 {
   >;
   createStack(
     input: CreateStackRequest,
-  ): Effect.Effect<
-    CreateStackResult,
-    ValidationException | CommonAwsError
-  >;
+  ): Effect.Effect<CreateStackResult, ValidationException | CommonAwsError>;
   createUserProfile(
     input: CreateUserProfileRequest,
   ): Effect.Effect<
@@ -188,15 +185,11 @@ export interface OpsWorks_20130218 {
     DescribeLoadBasedAutoScalingResult,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
-  describeMyUserProfile(
-    input: {},
-  ): Effect.Effect<
+  describeMyUserProfile(input: {}): Effect.Effect<
     DescribeMyUserProfileResult,
     CommonAwsError
   >;
-  describeOperatingSystems(
-    input: {},
-  ): Effect.Effect<
+  describeOperatingSystems(input: {}): Effect.Effect<
     DescribeOperatingSystemsResponse,
     CommonAwsError
   >;
@@ -230,16 +223,16 @@ export interface OpsWorks_20130218 {
     DescribeStackProvisioningParametersResult,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
-  describeStackSummary(
-    input: DescribeStackSummaryRequest,
-  ): Effect.Effect<
-    DescribeStackSummaryResult,
-    ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
   describeStacks(
     input: DescribeStacksRequest,
   ): Effect.Effect<
     DescribeStacksResult,
+    ResourceNotFoundException | ValidationException | CommonAwsError
+  >;
+  describeStackSummary(
+    input: DescribeStackSummaryRequest,
+  ): Effect.Effect<
+    DescribeStackSummaryResult,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
   describeTimeBasedAutoScaling(
@@ -262,10 +255,7 @@ export interface OpsWorks_20130218 {
   >;
   detachElasticLoadBalancer(
     input: DetachElasticLoadBalancerRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFoundException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFoundException | CommonAwsError>;
   disassociateElasticIp(
     input: DisassociateElasticIpRequest,
   ): Effect.Effect<
@@ -418,10 +408,7 @@ export interface OpsWorks_20130218 {
   >;
   updateMyUserProfile(
     input: UpdateMyUserProfileRequest,
-  ): Effect.Effect<
-    {},
-    ValidationException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ValidationException | CommonAwsError>;
   updateRdsDbInstance(
     input: UpdateRdsDbInstanceRequest,
   ): Effect.Effect<
@@ -472,9 +459,20 @@ export interface App {
   Environment?: Array<EnvironmentVariable>;
 }
 export type AppAttributes = Record<AppAttributesKeys, string>;
-export type AppAttributesKeys = "DocumentRoot" | "RailsEnv" | "AutoBundleOnDeploy" | "AwsFlowRubySettings";
+export type AppAttributesKeys =
+  | "DocumentRoot"
+  | "RailsEnv"
+  | "AutoBundleOnDeploy"
+  | "AwsFlowRubySettings";
 export type Apps = Array<App>;
-export type AppType = "aws_flow_ruby" | "java" | "rails" | "php" | "nodejs" | "static" | "other";
+export type AppType =
+  | "aws_flow_ruby"
+  | "java"
+  | "rails"
+  | "php"
+  | "nodejs"
+  | "static"
+  | "other";
 export type Architecture = "x86_64" | "i386";
 export interface AssignInstanceRequest {
   InstanceId: string;
@@ -544,7 +542,99 @@ export interface CloudWatchLogsConfiguration {
   Enabled?: boolean;
   LogStreams?: Array<CloudWatchLogsLogStream>;
 }
-export type CloudWatchLogsEncoding = "ascii" | "big5" | "big5hkscs" | "cp037" | "cp424" | "cp437" | "cp500" | "cp720" | "cp737" | "cp775" | "cp850" | "cp852" | "cp855" | "cp856" | "cp857" | "cp858" | "cp860" | "cp861" | "cp862" | "cp863" | "cp864" | "cp865" | "cp866" | "cp869" | "cp874" | "cp875" | "cp932" | "cp949" | "cp950" | "cp1006" | "cp1026" | "cp1140" | "cp1250" | "cp1251" | "cp1252" | "cp1253" | "cp1254" | "cp1255" | "cp1256" | "cp1257" | "cp1258" | "euc_jp" | "euc_jis_2004" | "euc_jisx0213" | "euc_kr" | "gb2312" | "gbk" | "gb18030" | "hz" | "iso2022_jp" | "iso2022_jp_1" | "iso2022_jp_2" | "iso2022_jp_2004" | "iso2022_jp_3" | "iso2022_jp_ext" | "iso2022_kr" | "latin_1" | "iso8859_2" | "iso8859_3" | "iso8859_4" | "iso8859_5" | "iso8859_6" | "iso8859_7" | "iso8859_8" | "iso8859_9" | "iso8859_10" | "iso8859_13" | "iso8859_14" | "iso8859_15" | "iso8859_16" | "johab" | "koi8_r" | "koi8_u" | "mac_cyrillic" | "mac_greek" | "mac_iceland" | "mac_latin2" | "mac_roman" | "mac_turkish" | "ptcp154" | "shift_jis" | "shift_jis_2004" | "shift_jisx0213" | "utf_32" | "utf_32_be" | "utf_32_le" | "utf_16" | "utf_16_be" | "utf_16_le" | "utf_7" | "utf_8" | "utf_8_sig";
+export type CloudWatchLogsEncoding =
+  | "ascii"
+  | "big5"
+  | "big5hkscs"
+  | "cp037"
+  | "cp424"
+  | "cp437"
+  | "cp500"
+  | "cp720"
+  | "cp737"
+  | "cp775"
+  | "cp850"
+  | "cp852"
+  | "cp855"
+  | "cp856"
+  | "cp857"
+  | "cp858"
+  | "cp860"
+  | "cp861"
+  | "cp862"
+  | "cp863"
+  | "cp864"
+  | "cp865"
+  | "cp866"
+  | "cp869"
+  | "cp874"
+  | "cp875"
+  | "cp932"
+  | "cp949"
+  | "cp950"
+  | "cp1006"
+  | "cp1026"
+  | "cp1140"
+  | "cp1250"
+  | "cp1251"
+  | "cp1252"
+  | "cp1253"
+  | "cp1254"
+  | "cp1255"
+  | "cp1256"
+  | "cp1257"
+  | "cp1258"
+  | "euc_jp"
+  | "euc_jis_2004"
+  | "euc_jisx0213"
+  | "euc_kr"
+  | "gb2312"
+  | "gbk"
+  | "gb18030"
+  | "hz"
+  | "iso2022_jp"
+  | "iso2022_jp_1"
+  | "iso2022_jp_2"
+  | "iso2022_jp_2004"
+  | "iso2022_jp_3"
+  | "iso2022_jp_ext"
+  | "iso2022_kr"
+  | "latin_1"
+  | "iso8859_2"
+  | "iso8859_3"
+  | "iso8859_4"
+  | "iso8859_5"
+  | "iso8859_6"
+  | "iso8859_7"
+  | "iso8859_8"
+  | "iso8859_9"
+  | "iso8859_10"
+  | "iso8859_13"
+  | "iso8859_14"
+  | "iso8859_15"
+  | "iso8859_16"
+  | "johab"
+  | "koi8_r"
+  | "koi8_u"
+  | "mac_cyrillic"
+  | "mac_greek"
+  | "mac_iceland"
+  | "mac_latin2"
+  | "mac_roman"
+  | "mac_turkish"
+  | "ptcp154"
+  | "shift_jis"
+  | "shift_jis_2004"
+  | "shift_jisx0213"
+  | "utf_32"
+  | "utf_32_be"
+  | "utf_32_le"
+  | "utf_16"
+  | "utf_16_be"
+  | "utf_16_le"
+  | "utf_7"
+  | "utf_8"
+  | "utf_8_sig";
 export type CloudWatchLogsInitialPosition = "start_of_file" | "end_of_file";
 export interface CloudWatchLogsLogStream {
   LogGroupName?: string;
@@ -727,7 +817,19 @@ export interface DeploymentCommand {
   Args?: Record<string, Array<string>>;
 }
 export type DeploymentCommandArgs = Record<string, Array<string>>;
-export type DeploymentCommandName = "install_dependencies" | "update_dependencies" | "update_custom_cookbooks" | "execute_recipes" | "configure" | "setup" | "deploy" | "rollback" | "start" | "stop" | "restart" | "undeploy";
+export type DeploymentCommandName =
+  | "install_dependencies"
+  | "update_dependencies"
+  | "update_custom_cookbooks"
+  | "execute_recipes"
+  | "configure"
+  | "setup"
+  | "deploy"
+  | "rollback"
+  | "start"
+  | "stop"
+  | "restart"
+  | "undeploy";
 export type Deployments = Array<Deployment>;
 export interface DeregisterEcsClusterRequest {
   EcsClusterArn: string;
@@ -1059,9 +1161,46 @@ export interface Layer {
   LifecycleEventConfiguration?: LifecycleEventConfiguration;
 }
 export type LayerAttributes = Record<LayerAttributesKeys, string>;
-export type LayerAttributesKeys = "EcsClusterArn" | "EnableHaproxyStats" | "HaproxyStatsUrl" | "HaproxyStatsUser" | "HaproxyStatsPassword" | "HaproxyHealthCheckUrl" | "HaproxyHealthCheckMethod" | "MysqlRootPassword" | "MysqlRootPasswordUbiquitous" | "GangliaUrl" | "GangliaUser" | "GangliaPassword" | "MemcachedMemory" | "NodejsVersion" | "RubyVersion" | "RubygemsVersion" | "ManageBundler" | "BundlerVersion" | "RailsStack" | "PassengerVersion" | "Jvm" | "JvmVersion" | "JvmOptions" | "JavaAppServer" | "JavaAppServerVersion";
+export type LayerAttributesKeys =
+  | "EcsClusterArn"
+  | "EnableHaproxyStats"
+  | "HaproxyStatsUrl"
+  | "HaproxyStatsUser"
+  | "HaproxyStatsPassword"
+  | "HaproxyHealthCheckUrl"
+  | "HaproxyHealthCheckMethod"
+  | "MysqlRootPassword"
+  | "MysqlRootPasswordUbiquitous"
+  | "GangliaUrl"
+  | "GangliaUser"
+  | "GangliaPassword"
+  | "MemcachedMemory"
+  | "NodejsVersion"
+  | "RubyVersion"
+  | "RubygemsVersion"
+  | "ManageBundler"
+  | "BundlerVersion"
+  | "RailsStack"
+  | "PassengerVersion"
+  | "Jvm"
+  | "JvmVersion"
+  | "JvmOptions"
+  | "JavaAppServer"
+  | "JavaAppServerVersion";
 export type Layers = Array<Layer>;
-export type LayerType = "aws_flow_ruby" | "ecs_cluster" | "java_app" | "lb" | "web" | "php_app" | "rails_app" | "nodejs_app" | "memcached" | "db_master" | "monitoring_master" | "custom";
+export type LayerType =
+  | "aws_flow_ruby"
+  | "ecs_cluster"
+  | "java_app"
+  | "lb"
+  | "web"
+  | "php_app"
+  | "rails_app"
+  | "nodejs_app"
+  | "memcached"
+  | "db_master"
+  | "monitoring_master"
+  | "custom";
 export interface LifecycleEventConfiguration {
   Shutdown?: ShutdownEventConfiguration;
 }
@@ -1080,7 +1219,8 @@ export interface LoadBasedAutoScalingConfiguration {
   UpScaling?: AutoScalingThresholds;
   DownScaling?: AutoScalingThresholds;
 }
-export type LoadBasedAutoScalingConfigurations = Array<LoadBasedAutoScalingConfiguration>;
+export type LoadBasedAutoScalingConfigurations =
+  Array<LoadBasedAutoScalingConfiguration>;
 export type MaxResults = number;
 
 export type Minute = number;
@@ -1100,7 +1240,8 @@ export interface OperatingSystemConfigurationManager {
   Name?: string;
   Version?: string;
 }
-export type OperatingSystemConfigurationManagers = Array<OperatingSystemConfigurationManager>;
+export type OperatingSystemConfigurationManagers =
+  Array<OperatingSystemConfigurationManager>;
 export type OperatingSystems = Array<OperatingSystem>;
 export type Parameters = Record<string, string>;
 export interface Permission {
@@ -1326,7 +1467,8 @@ export interface TimeBasedAutoScalingConfiguration {
   InstanceId?: string;
   AutoScalingSchedule?: WeeklyAutoScalingSchedule;
 }
-export type TimeBasedAutoScalingConfigurations = Array<TimeBasedAutoScalingConfiguration>;
+export type TimeBasedAutoScalingConfigurations =
+  Array<TimeBasedAutoScalingConfiguration>;
 export interface UnassignInstanceRequest {
   InstanceId: string;
 }
@@ -1563,17 +1705,13 @@ export declare namespace CreateLayer {
 export declare namespace CreateStack {
   export type Input = CreateStackRequest;
   export type Output = CreateStackResult;
-  export type Error =
-    | ValidationException
-    | CommonAwsError;
+  export type Error = ValidationException | CommonAwsError;
 }
 
 export declare namespace CreateUserProfile {
   export type Input = CreateUserProfileRequest;
   export type Output = CreateUserProfileResult;
-  export type Error =
-    | ValidationException
-    | CommonAwsError;
+  export type Error = ValidationException | CommonAwsError;
 }
 
 export declare namespace DeleteApp {
@@ -1759,15 +1897,13 @@ export declare namespace DescribeLoadBasedAutoScaling {
 export declare namespace DescribeMyUserProfile {
   export type Input = {};
   export type Output = DescribeMyUserProfileResult;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeOperatingSystems {
   export type Input = {};
   export type Output = DescribeOperatingSystemsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribePermissions {
@@ -1815,18 +1951,18 @@ export declare namespace DescribeStackProvisioningParameters {
     | CommonAwsError;
 }
 
-export declare namespace DescribeStackSummary {
-  export type Input = DescribeStackSummaryRequest;
-  export type Output = DescribeStackSummaryResult;
+export declare namespace DescribeStacks {
+  export type Input = DescribeStacksRequest;
+  export type Output = DescribeStacksResult;
   export type Error =
     | ResourceNotFoundException
     | ValidationException
     | CommonAwsError;
 }
 
-export declare namespace DescribeStacks {
-  export type Input = DescribeStacksRequest;
-  export type Output = DescribeStacksResult;
+export declare namespace DescribeStackSummary {
+  export type Input = DescribeStackSummaryRequest;
+  export type Output = DescribeStackSummaryResult;
   export type Error =
     | ResourceNotFoundException
     | ValidationException
@@ -1863,9 +1999,7 @@ export declare namespace DescribeVolumes {
 export declare namespace DetachElasticLoadBalancer {
   export type Input = DetachElasticLoadBalancerRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace DisassociateElasticIp {
@@ -2096,9 +2230,7 @@ export declare namespace UpdateLayer {
 export declare namespace UpdateMyUserProfile {
   export type Input = UpdateMyUserProfileRequest;
   export type Output = {};
-  export type Error =
-    | ValidationException
-    | CommonAwsError;
+  export type Error = ValidationException | CommonAwsError;
 }
 
 export declare namespace UpdateRdsDbInstance {
@@ -2136,4 +2268,3 @@ export declare namespace UpdateVolume {
     | ValidationException
     | CommonAwsError;
 }
-

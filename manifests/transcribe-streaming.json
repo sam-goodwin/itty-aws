@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.transcribestreaming#Alternative": {
       "type": "structure",
@@ -3483,6 +3512,23 @@
     },
     "com.amazonaws.transcribestreaming#Transcribe": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.transcribestreaming#GetMedicalScribeStream"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#StartCallAnalyticsStreamTranscription"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#StartMedicalScribeStream"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#StartMedicalStreamTranscription"
+        },
+        {
+          "target": "com.amazonaws.transcribestreaming#StartStreamTranscription"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Transcribe Streaming",

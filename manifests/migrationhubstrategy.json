@@ -1,7 +1,76 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.migrationhubstrategy#AWSMigrationHubStrategyRecommendation": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetApplicationComponentDetails"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetApplicationComponentStrategies"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetAssessment"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetImportFileTask"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetLatestAssessmentId"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetPortfolioPreferences"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetPortfolioSummary"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetRecommendationReportDetails"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetServerDetails"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#GetServerStrategies"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ListAnalyzableServers"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ListApplicationComponents"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ListCollectors"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ListImportFileTask"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#ListServers"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#PutPortfolioPreferences"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#StartAssessment"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#StartImportFileTask"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#StartRecommendationReportGeneration"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#StopAssessment"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#UpdateApplicationComponentConfig"
+        },
+        {
+          "target": "com.amazonaws.migrationhubstrategy#UpdateServerConfig"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MigrationHubStrategy",

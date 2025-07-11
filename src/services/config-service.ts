@@ -1,31 +1,35 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface StarlingDoveService {
   associateResourceTypes(
     input: AssociateResourceTypesRequest,
   ): Effect.Effect<
-    {},
-    ConflictException | NoSuchConfigurationRecorderException | ValidationException | CommonAwsError
+    AssociateResourceTypesResponse,
+    | ConflictException
+    | NoSuchConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   batchGetAggregateResourceConfig(
     input: BatchGetAggregateResourceConfigRequest,
   ): Effect.Effect<
-    {},
-    NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    BatchGetAggregateResourceConfigResponse,
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   batchGetResourceConfig(
     input: BatchGetResourceConfigRequest,
   ): Effect.Effect<
-    {},
-    NoAvailableConfigurationRecorderException | ValidationException | CommonAwsError
+    BatchGetResourceConfigResponse,
+    | NoAvailableConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteAggregationAuthorization(
     input: DeleteAggregationAuthorizationRequest,
-  ): Effect.Effect<
-    {},
-    InvalidParameterValueException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InvalidParameterValueException | CommonAwsError>;
   deleteConfigRule(
     input: DeleteConfigRuleRequest,
   ): Effect.Effect<
@@ -34,15 +38,14 @@ export interface StarlingDoveService {
   >;
   deleteConfigurationAggregator(
     input: DeleteConfigurationAggregatorRequest,
-  ): Effect.Effect<
-    {},
-    NoSuchConfigurationAggregatorException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, NoSuchConfigurationAggregatorException | CommonAwsError>;
   deleteConfigurationRecorder(
     input: DeleteConfigurationRecorderRequest,
   ): Effect.Effect<
     {},
-    NoSuchConfigurationRecorderException | UnmodifiableEntityException | CommonAwsError
+    | NoSuchConfigurationRecorderException
+    | UnmodifiableEntityException
+    | CommonAwsError
   >;
   deleteConformancePack(
     input: DeleteConformancePackRequest,
@@ -54,529 +57,769 @@ export interface StarlingDoveService {
     input: DeleteDeliveryChannelRequest,
   ): Effect.Effect<
     {},
-    LastDeliveryChannelDeleteFailedException | NoSuchDeliveryChannelException | CommonAwsError
+    | LastDeliveryChannelDeleteFailedException
+    | NoSuchDeliveryChannelException
+    | CommonAwsError
   >;
   deleteEvaluationResults(
     input: DeleteEvaluationResultsRequest,
   ): Effect.Effect<
-    {},
+    DeleteEvaluationResultsResponse,
     NoSuchConfigRuleException | ResourceInUseException | CommonAwsError
   >;
   deleteOrganizationConfigRule(
     input: DeleteOrganizationConfigRuleRequest,
   ): Effect.Effect<
     {},
-    NoSuchOrganizationConfigRuleException | OrganizationAccessDeniedException | ResourceInUseException | CommonAwsError
+    | NoSuchOrganizationConfigRuleException
+    | OrganizationAccessDeniedException
+    | ResourceInUseException
+    | CommonAwsError
   >;
   deleteOrganizationConformancePack(
     input: DeleteOrganizationConformancePackRequest,
   ): Effect.Effect<
     {},
-    NoSuchOrganizationConformancePackException | OrganizationAccessDeniedException | ResourceInUseException | CommonAwsError
+    | NoSuchOrganizationConformancePackException
+    | OrganizationAccessDeniedException
+    | ResourceInUseException
+    | CommonAwsError
   >;
   deletePendingAggregationRequest(
     input: DeletePendingAggregationRequestRequest,
-  ): Effect.Effect<
-    {},
-    InvalidParameterValueException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InvalidParameterValueException | CommonAwsError>;
   deleteRemediationConfiguration(
     input: DeleteRemediationConfigurationRequest,
   ): Effect.Effect<
-    {},
-    InsufficientPermissionsException | InvalidParameterValueException | NoSuchRemediationConfigurationException | RemediationInProgressException | CommonAwsError
+    DeleteRemediationConfigurationResponse,
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | NoSuchRemediationConfigurationException
+    | RemediationInProgressException
+    | CommonAwsError
   >;
   deleteRemediationExceptions(
     input: DeleteRemediationExceptionsRequest,
   ): Effect.Effect<
-    {},
+    DeleteRemediationExceptionsResponse,
     NoSuchRemediationExceptionException | CommonAwsError
   >;
   deleteResourceConfig(
     input: DeleteResourceConfigRequest,
   ): Effect.Effect<
     {},
-    NoRunningConfigurationRecorderException | ValidationException | CommonAwsError
+    | NoRunningConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteRetentionConfiguration(
     input: DeleteRetentionConfigurationRequest,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | NoSuchRetentionConfigurationException | CommonAwsError
+    | InvalidParameterValueException
+    | NoSuchRetentionConfigurationException
+    | CommonAwsError
   >;
   deleteServiceLinkedConfigurationRecorder(
     input: DeleteServiceLinkedConfigurationRecorderRequest,
   ): Effect.Effect<
-    {},
-    ConflictException | NoSuchConfigurationRecorderException | ValidationException | CommonAwsError
+    DeleteServiceLinkedConfigurationRecorderResponse,
+    | ConflictException
+    | NoSuchConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteStoredQuery(
     input: DeleteStoredQueryRequest,
   ): Effect.Effect<
-    {},
+    DeleteStoredQueryResponse,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
   deliverConfigSnapshot(
     input: DeliverConfigSnapshotRequest,
   ): Effect.Effect<
-    {},
-    NoAvailableConfigurationRecorderException | NoRunningConfigurationRecorderException | NoSuchDeliveryChannelException | CommonAwsError
+    DeliverConfigSnapshotResponse,
+    | NoAvailableConfigurationRecorderException
+    | NoRunningConfigurationRecorderException
+    | NoSuchDeliveryChannelException
+    | CommonAwsError
   >;
   describeAggregateComplianceByConfigRules(
     input: DescribeAggregateComplianceByConfigRulesRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    DescribeAggregateComplianceByConfigRulesResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   describeAggregateComplianceByConformancePacks(
     input: DescribeAggregateComplianceByConformancePacksRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    DescribeAggregateComplianceByConformancePacksResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   describeAggregationAuthorizations(
     input: DescribeAggregationAuthorizationsRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | CommonAwsError
+    DescribeAggregationAuthorizationsResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeComplianceByConfigRule(
     input: DescribeComplianceByConfigRuleRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigRuleException | CommonAwsError
+    DescribeComplianceByConfigRuleResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigRuleException
+    | CommonAwsError
   >;
   describeComplianceByResource(
     input: DescribeComplianceByResourceRequest,
   ): Effect.Effect<
-    {},
+    DescribeComplianceByResourceResponse,
     InvalidNextTokenException | InvalidParameterValueException | CommonAwsError
   >;
   describeConfigRuleEvaluationStatus(
     input: DescribeConfigRuleEvaluationStatusRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigRuleException | CommonAwsError
+    DescribeConfigRuleEvaluationStatusResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigRuleException
+    | CommonAwsError
   >;
   describeConfigRules(
     input: DescribeConfigRulesRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigRuleException | CommonAwsError
-  >;
-  describeConfigurationAggregatorSourcesStatus(
-    input: DescribeConfigurationAggregatorSourcesStatusRequest,
-  ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigurationAggregatorException | CommonAwsError
+    DescribeConfigRulesResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigRuleException
+    | CommonAwsError
   >;
   describeConfigurationAggregators(
     input: DescribeConfigurationAggregatorsRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigurationAggregatorException | CommonAwsError
+    DescribeConfigurationAggregatorsResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigurationAggregatorException
+    | CommonAwsError
   >;
-  describeConfigurationRecorderStatus(
-    input: DescribeConfigurationRecorderStatusRequest,
+  describeConfigurationAggregatorSourcesStatus(
+    input: DescribeConfigurationAggregatorSourcesStatusRequest,
   ): Effect.Effect<
-    {},
-    NoSuchConfigurationRecorderException | ValidationException | CommonAwsError
+    DescribeConfigurationAggregatorSourcesStatusResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigurationAggregatorException
+    | CommonAwsError
   >;
   describeConfigurationRecorders(
     input: DescribeConfigurationRecordersRequest,
   ): Effect.Effect<
-    {},
+    DescribeConfigurationRecordersResponse,
+    NoSuchConfigurationRecorderException | ValidationException | CommonAwsError
+  >;
+  describeConfigurationRecorderStatus(
+    input: DescribeConfigurationRecorderStatusRequest,
+  ): Effect.Effect<
+    DescribeConfigurationRecorderStatusResponse,
     NoSuchConfigurationRecorderException | ValidationException | CommonAwsError
   >;
   describeConformancePackCompliance(
     input: DescribeConformancePackComplianceRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigRuleInConformancePackException | NoSuchConformancePackException | CommonAwsError
-  >;
-  describeConformancePackStatus(
-    input: DescribeConformancePackStatusRequest,
-  ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | CommonAwsError
+    DescribeConformancePackComplianceResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigRuleInConformancePackException
+    | NoSuchConformancePackException
+    | CommonAwsError
   >;
   describeConformancePacks(
     input: DescribeConformancePacksRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | NoSuchConformancePackException | CommonAwsError
+    DescribeConformancePacksResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConformancePackException
+    | CommonAwsError
   >;
-  describeDeliveryChannelStatus(
-    input: DescribeDeliveryChannelStatusRequest,
+  describeConformancePackStatus(
+    input: DescribeConformancePackStatusRequest,
   ): Effect.Effect<
-    {},
-    NoSuchDeliveryChannelException | CommonAwsError
+    DescribeConformancePackStatusResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeDeliveryChannels(
     input: DescribeDeliveryChannelsRequest,
   ): Effect.Effect<
-    {},
+    DescribeDeliveryChannelsResponse,
     NoSuchDeliveryChannelException | CommonAwsError
   >;
-  describeOrganizationConfigRuleStatuses(
-    input: DescribeOrganizationConfigRuleStatusesRequest,
+  describeDeliveryChannelStatus(
+    input: DescribeDeliveryChannelStatusRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchOrganizationConfigRuleException | OrganizationAccessDeniedException | CommonAwsError
+    DescribeDeliveryChannelStatusResponse,
+    NoSuchDeliveryChannelException | CommonAwsError
   >;
   describeOrganizationConfigRules(
     input: DescribeOrganizationConfigRulesRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchOrganizationConfigRuleException | OrganizationAccessDeniedException | CommonAwsError
+    DescribeOrganizationConfigRulesResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConfigRuleException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
   >;
-  describeOrganizationConformancePackStatuses(
-    input: DescribeOrganizationConformancePackStatusesRequest,
+  describeOrganizationConfigRuleStatuses(
+    input: DescribeOrganizationConfigRuleStatusesRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchOrganizationConformancePackException | OrganizationAccessDeniedException | CommonAwsError
+    DescribeOrganizationConfigRuleStatusesResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConfigRuleException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
   >;
   describeOrganizationConformancePacks(
     input: DescribeOrganizationConformancePacksRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchOrganizationConformancePackException | OrganizationAccessDeniedException | CommonAwsError
+    DescribeOrganizationConformancePacksResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConformancePackException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
+  >;
+  describeOrganizationConformancePackStatuses(
+    input: DescribeOrganizationConformancePackStatusesRequest,
+  ): Effect.Effect<
+    DescribeOrganizationConformancePackStatusesResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConformancePackException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
   >;
   describePendingAggregationRequests(
     input: DescribePendingAggregationRequestsRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | CommonAwsError
+    DescribePendingAggregationRequestsResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeRemediationConfigurations(
     input: DescribeRemediationConfigurationsRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeRemediationConfigurationsResponse, CommonAwsError>;
   describeRemediationExceptions(
     input: DescribeRemediationExceptionsRequest,
   ): Effect.Effect<
-    {},
+    DescribeRemediationExceptionsResponse,
     InvalidNextTokenException | InvalidParameterValueException | CommonAwsError
   >;
   describeRemediationExecutionStatus(
     input: DescribeRemediationExecutionStatusRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | NoSuchRemediationConfigurationException | CommonAwsError
+    DescribeRemediationExecutionStatusResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchRemediationConfigurationException
+    | CommonAwsError
   >;
   describeRetentionConfigurations(
     input: DescribeRetentionConfigurationsRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | NoSuchRetentionConfigurationException | CommonAwsError
+    DescribeRetentionConfigurationsResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchRetentionConfigurationException
+    | CommonAwsError
   >;
   disassociateResourceTypes(
     input: DisassociateResourceTypesRequest,
   ): Effect.Effect<
-    {},
-    ConflictException | NoSuchConfigurationRecorderException | ValidationException | CommonAwsError
+    DisassociateResourceTypesResponse,
+    | ConflictException
+    | NoSuchConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   getAggregateComplianceDetailsByConfigRule(
     input: GetAggregateComplianceDetailsByConfigRuleRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    GetAggregateComplianceDetailsByConfigRuleResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   getAggregateConfigRuleComplianceSummary(
     input: GetAggregateConfigRuleComplianceSummaryRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    GetAggregateConfigRuleComplianceSummaryResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   getAggregateConformancePackComplianceSummary(
     input: GetAggregateConformancePackComplianceSummaryRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    GetAggregateConformancePackComplianceSummaryResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   getAggregateDiscoveredResourceCounts(
     input: GetAggregateDiscoveredResourceCountsRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    GetAggregateDiscoveredResourceCountsResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   getAggregateResourceConfig(
     input: GetAggregateResourceConfigRequest,
   ): Effect.Effect<
-    {},
-    NoSuchConfigurationAggregatorException | OversizedConfigurationItemException | ResourceNotDiscoveredException | ValidationException | CommonAwsError
+    GetAggregateResourceConfigResponse,
+    | NoSuchConfigurationAggregatorException
+    | OversizedConfigurationItemException
+    | ResourceNotDiscoveredException
+    | ValidationException
+    | CommonAwsError
   >;
   getComplianceDetailsByConfigRule(
     input: GetComplianceDetailsByConfigRuleRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigRuleException | CommonAwsError
+    GetComplianceDetailsByConfigRuleResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigRuleException
+    | CommonAwsError
   >;
   getComplianceDetailsByResource(
     input: GetComplianceDetailsByResourceRequest,
   ): Effect.Effect<
-    {},
+    GetComplianceDetailsByResourceResponse,
     InvalidParameterValueException | CommonAwsError
   >;
-  getComplianceSummaryByConfigRule(
-    input: {},
-  ): Effect.Effect<
-    {},
+  getComplianceSummaryByConfigRule(input: {}): Effect.Effect<
+    GetComplianceSummaryByConfigRuleResponse,
     CommonAwsError
   >;
   getComplianceSummaryByResourceType(
     input: GetComplianceSummaryByResourceTypeRequest,
   ): Effect.Effect<
-    {},
+    GetComplianceSummaryByResourceTypeResponse,
     InvalidParameterValueException | CommonAwsError
   >;
   getConformancePackComplianceDetails(
     input: GetConformancePackComplianceDetailsRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | NoSuchConfigRuleInConformancePackException | NoSuchConformancePackException | CommonAwsError
+    GetConformancePackComplianceDetailsResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigRuleInConformancePackException
+    | NoSuchConformancePackException
+    | CommonAwsError
   >;
   getConformancePackComplianceSummary(
     input: GetConformancePackComplianceSummaryRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConformancePackException | CommonAwsError
+    GetConformancePackComplianceSummaryResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConformancePackException
+    | CommonAwsError
   >;
   getCustomRulePolicy(
     input: GetCustomRulePolicyRequest,
   ): Effect.Effect<
-    {},
+    GetCustomRulePolicyResponse,
     NoSuchConfigRuleException | CommonAwsError
   >;
   getDiscoveredResourceCounts(
     input: GetDiscoveredResourceCountsRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | ValidationException | CommonAwsError
+    GetDiscoveredResourceCountsResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | ValidationException
+    | CommonAwsError
   >;
   getOrganizationConfigRuleDetailedStatus(
     input: GetOrganizationConfigRuleDetailedStatusRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchOrganizationConfigRuleException | OrganizationAccessDeniedException | CommonAwsError
+    GetOrganizationConfigRuleDetailedStatusResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConfigRuleException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
   >;
   getOrganizationConformancePackDetailedStatus(
     input: GetOrganizationConformancePackDetailedStatusRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchOrganizationConformancePackException | OrganizationAccessDeniedException | CommonAwsError
+    GetOrganizationConformancePackDetailedStatusResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConformancePackException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
   >;
   getOrganizationCustomRulePolicy(
     input: GetOrganizationCustomRulePolicyRequest,
   ): Effect.Effect<
-    {},
-    NoSuchOrganizationConfigRuleException | OrganizationAccessDeniedException | CommonAwsError
+    GetOrganizationCustomRulePolicyResponse,
+    | NoSuchOrganizationConfigRuleException
+    | OrganizationAccessDeniedException
+    | CommonAwsError
   >;
   getResourceConfigHistory(
     input: GetResourceConfigHistoryRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidTimeRangeException | NoAvailableConfigurationRecorderException | ResourceNotDiscoveredException | ValidationException | CommonAwsError
+    GetResourceConfigHistoryResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidTimeRangeException
+    | NoAvailableConfigurationRecorderException
+    | ResourceNotDiscoveredException
+    | ValidationException
+    | CommonAwsError
   >;
   getResourceEvaluationSummary(
     input: GetResourceEvaluationSummaryRequest,
   ): Effect.Effect<
-    {},
+    GetResourceEvaluationSummaryResponse,
     ResourceNotFoundException | CommonAwsError
   >;
   getStoredQuery(
     input: GetStoredQueryRequest,
   ): Effect.Effect<
-    {},
+    GetStoredQueryResponse,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
   listAggregateDiscoveredResources(
     input: ListAggregateDiscoveredResourcesRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | ValidationException | CommonAwsError
+    ListAggregateDiscoveredResourcesResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | ValidationException
+    | CommonAwsError
   >;
   listConfigurationRecorders(
     input: ListConfigurationRecordersRequest,
   ): Effect.Effect<
-    {},
+    ListConfigurationRecordersResponse,
     ValidationException | CommonAwsError
   >;
   listConformancePackComplianceScores(
     input: ListConformancePackComplianceScoresRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | InvalidParameterValueException | CommonAwsError
+    ListConformancePackComplianceScoresResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   listDiscoveredResources(
     input: ListDiscoveredResourcesRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | NoAvailableConfigurationRecorderException | ValidationException | CommonAwsError
+    ListDiscoveredResourcesResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoAvailableConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   listResourceEvaluations(
     input: ListResourceEvaluationsRequest,
   ): Effect.Effect<
-    {},
-    InvalidNextTokenException | InvalidParameterValueException | InvalidTimeRangeException | CommonAwsError
+    ListResourceEvaluationsResponse,
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | InvalidTimeRangeException
+    | CommonAwsError
   >;
   listStoredQueries(
     input: ListStoredQueriesRequest,
   ): Effect.Effect<
-    {},
+    ListStoredQueriesResponse,
     InvalidNextTokenException | ValidationException | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
-    {},
-    InvalidLimitException | InvalidNextTokenException | ResourceNotFoundException | ValidationException | CommonAwsError
+    ListTagsForResourceResponse,
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   putAggregationAuthorization(
     input: PutAggregationAuthorizationRequest,
   ): Effect.Effect<
-    {},
+    PutAggregationAuthorizationResponse,
     InvalidParameterValueException | CommonAwsError
   >;
   putConfigRule(
     input: PutConfigRuleRequest,
   ): Effect.Effect<
     {},
-    InsufficientPermissionsException | InvalidParameterValueException | MaxNumberOfConfigRulesExceededException | NoAvailableConfigurationRecorderException | ResourceInUseException | CommonAwsError
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | MaxNumberOfConfigRulesExceededException
+    | NoAvailableConfigurationRecorderException
+    | ResourceInUseException
+    | CommonAwsError
   >;
   putConfigurationAggregator(
     input: PutConfigurationAggregatorRequest,
   ): Effect.Effect<
-    {},
-    InvalidParameterValueException | InvalidRoleException | LimitExceededException | NoAvailableOrganizationException | OrganizationAccessDeniedException | OrganizationAllFeaturesNotEnabledException | CommonAwsError
+    PutConfigurationAggregatorResponse,
+    | InvalidParameterValueException
+    | InvalidRoleException
+    | LimitExceededException
+    | NoAvailableOrganizationException
+    | OrganizationAccessDeniedException
+    | OrganizationAllFeaturesNotEnabledException
+    | CommonAwsError
   >;
   putConfigurationRecorder(
     input: PutConfigurationRecorderRequest,
   ): Effect.Effect<
     {},
-    InvalidConfigurationRecorderNameException | InvalidRecordingGroupException | InvalidRoleException | MaxNumberOfConfigurationRecordersExceededException | UnmodifiableEntityException | ValidationException | CommonAwsError
+    | InvalidConfigurationRecorderNameException
+    | InvalidRecordingGroupException
+    | InvalidRoleException
+    | MaxNumberOfConfigurationRecordersExceededException
+    | UnmodifiableEntityException
+    | ValidationException
+    | CommonAwsError
   >;
   putConformancePack(
     input: PutConformancePackRequest,
   ): Effect.Effect<
-    {},
-    ConformancePackTemplateValidationException | InsufficientPermissionsException | InvalidParameterValueException | MaxNumberOfConformancePacksExceededException | ResourceInUseException | CommonAwsError
+    PutConformancePackResponse,
+    | ConformancePackTemplateValidationException
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | MaxNumberOfConformancePacksExceededException
+    | ResourceInUseException
+    | CommonAwsError
   >;
   putDeliveryChannel(
     input: PutDeliveryChannelRequest,
   ): Effect.Effect<
     {},
-    InsufficientDeliveryPolicyException | InvalidDeliveryChannelNameException | InvalidS3KeyPrefixException | InvalidS3KmsKeyArnException | InvalidSNSTopicARNException | MaxNumberOfDeliveryChannelsExceededException | NoAvailableConfigurationRecorderException | NoSuchBucketException | CommonAwsError
+    | InsufficientDeliveryPolicyException
+    | InvalidDeliveryChannelNameException
+    | InvalidS3KeyPrefixException
+    | InvalidS3KmsKeyArnException
+    | InvalidSNSTopicARNException
+    | MaxNumberOfDeliveryChannelsExceededException
+    | NoAvailableConfigurationRecorderException
+    | NoSuchBucketException
+    | CommonAwsError
   >;
   putEvaluations(
     input: PutEvaluationsRequest,
   ): Effect.Effect<
-    {},
-    InvalidParameterValueException | InvalidResultTokenException | NoSuchConfigRuleException | CommonAwsError
+    PutEvaluationsResponse,
+    | InvalidParameterValueException
+    | InvalidResultTokenException
+    | NoSuchConfigRuleException
+    | CommonAwsError
   >;
   putExternalEvaluation(
     input: PutExternalEvaluationRequest,
   ): Effect.Effect<
-    {},
+    PutExternalEvaluationResponse,
     InvalidParameterValueException | NoSuchConfigRuleException | CommonAwsError
   >;
   putOrganizationConfigRule(
     input: PutOrganizationConfigRuleRequest,
   ): Effect.Effect<
-    {},
-    InsufficientPermissionsException | InvalidParameterValueException | MaxNumberOfOrganizationConfigRulesExceededException | NoAvailableOrganizationException | OrganizationAccessDeniedException | OrganizationAllFeaturesNotEnabledException | ResourceInUseException | ValidationException | CommonAwsError
+    PutOrganizationConfigRuleResponse,
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | MaxNumberOfOrganizationConfigRulesExceededException
+    | NoAvailableOrganizationException
+    | OrganizationAccessDeniedException
+    | OrganizationAllFeaturesNotEnabledException
+    | ResourceInUseException
+    | ValidationException
+    | CommonAwsError
   >;
   putOrganizationConformancePack(
     input: PutOrganizationConformancePackRequest,
   ): Effect.Effect<
-    {},
-    InsufficientPermissionsException | MaxNumberOfOrganizationConformancePacksExceededException | NoAvailableOrganizationException | OrganizationAccessDeniedException | OrganizationAllFeaturesNotEnabledException | OrganizationConformancePackTemplateValidationException | ResourceInUseException | ValidationException | CommonAwsError
+    PutOrganizationConformancePackResponse,
+    | InsufficientPermissionsException
+    | MaxNumberOfOrganizationConformancePacksExceededException
+    | NoAvailableOrganizationException
+    | OrganizationAccessDeniedException
+    | OrganizationAllFeaturesNotEnabledException
+    | OrganizationConformancePackTemplateValidationException
+    | ResourceInUseException
+    | ValidationException
+    | CommonAwsError
   >;
   putRemediationConfigurations(
     input: PutRemediationConfigurationsRequest,
   ): Effect.Effect<
-    {},
-    InsufficientPermissionsException | InvalidParameterValueException | CommonAwsError
+    PutRemediationConfigurationsResponse,
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   putRemediationExceptions(
     input: PutRemediationExceptionsRequest,
   ): Effect.Effect<
-    {},
-    InsufficientPermissionsException | InvalidParameterValueException | CommonAwsError
+    PutRemediationExceptionsResponse,
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   putResourceConfig(
     input: PutResourceConfigRequest,
   ): Effect.Effect<
     {},
-    InsufficientPermissionsException | MaxActiveResourcesExceededException | NoRunningConfigurationRecorderException | ValidationException | CommonAwsError
+    | InsufficientPermissionsException
+    | MaxActiveResourcesExceededException
+    | NoRunningConfigurationRecorderException
+    | ValidationException
+    | CommonAwsError
   >;
   putRetentionConfiguration(
     input: PutRetentionConfigurationRequest,
   ): Effect.Effect<
-    {},
-    InvalidParameterValueException | MaxNumberOfRetentionConfigurationsExceededException | CommonAwsError
+    PutRetentionConfigurationResponse,
+    | InvalidParameterValueException
+    | MaxNumberOfRetentionConfigurationsExceededException
+    | CommonAwsError
   >;
   putServiceLinkedConfigurationRecorder(
     input: PutServiceLinkedConfigurationRecorderRequest,
   ): Effect.Effect<
-    {},
-    ConflictException | InsufficientPermissionsException | LimitExceededException | ValidationException | CommonAwsError
+    PutServiceLinkedConfigurationRecorderResponse,
+    | ConflictException
+    | InsufficientPermissionsException
+    | LimitExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   putStoredQuery(
     input: PutStoredQueryRequest,
   ): Effect.Effect<
-    {},
-    ResourceConcurrentModificationException | TooManyTagsException | ValidationException | CommonAwsError
+    PutStoredQueryResponse,
+    | ResourceConcurrentModificationException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   selectAggregateResourceConfig(
     input: SelectAggregateResourceConfigRequest,
   ): Effect.Effect<
-    {},
-    InvalidExpressionException | InvalidLimitException | InvalidNextTokenException | NoSuchConfigurationAggregatorException | CommonAwsError
+    SelectAggregateResourceConfigResponse,
+    | InvalidExpressionException
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchConfigurationAggregatorException
+    | CommonAwsError
   >;
   selectResourceConfig(
     input: SelectResourceConfigRequest,
   ): Effect.Effect<
-    {},
-    InvalidExpressionException | InvalidLimitException | InvalidNextTokenException | CommonAwsError
+    SelectResourceConfigResponse,
+    | InvalidExpressionException
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | CommonAwsError
   >;
   startConfigRulesEvaluation(
     input: StartConfigRulesEvaluationRequest,
   ): Effect.Effect<
-    {},
-    InvalidParameterValueException | LimitExceededException | NoSuchConfigRuleException | ResourceInUseException | CommonAwsError
+    StartConfigRulesEvaluationResponse,
+    | InvalidParameterValueException
+    | LimitExceededException
+    | NoSuchConfigRuleException
+    | ResourceInUseException
+    | CommonAwsError
   >;
   startConfigurationRecorder(
     input: StartConfigurationRecorderRequest,
   ): Effect.Effect<
     {},
-    NoAvailableDeliveryChannelException | NoSuchConfigurationRecorderException | UnmodifiableEntityException | CommonAwsError
+    | NoAvailableDeliveryChannelException
+    | NoSuchConfigurationRecorderException
+    | UnmodifiableEntityException
+    | CommonAwsError
   >;
   startRemediationExecution(
     input: StartRemediationExecutionRequest,
   ): Effect.Effect<
-    {},
-    InsufficientPermissionsException | InvalidParameterValueException | NoSuchRemediationConfigurationException | CommonAwsError
+    StartRemediationExecutionResponse,
+    | InsufficientPermissionsException
+    | InvalidParameterValueException
+    | NoSuchRemediationConfigurationException
+    | CommonAwsError
   >;
   startResourceEvaluation(
     input: StartResourceEvaluationRequest,
   ): Effect.Effect<
-    {},
-    IdempotentParameterMismatch | InvalidParameterValueException | CommonAwsError
+    StartResourceEvaluationResponse,
+    | IdempotentParameterMismatch
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   stopConfigurationRecorder(
     input: StopConfigurationRecorderRequest,
   ): Effect.Effect<
     {},
-    NoSuchConfigurationRecorderException | UnmodifiableEntityException | CommonAwsError
+    | NoSuchConfigurationRecorderException
+    | UnmodifiableEntityException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    ResourceNotFoundException | TooManyTagsException | ValidationException | CommonAwsError
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
@@ -589,54 +832,115 @@ export interface StarlingDoveService {
 export type ConfigService = StarlingDoveService;
 
 export interface AccountAggregationSource {
+  AccountIds: Array<string>;
+  AllAwsRegions?: boolean;
+  AwsRegions?: Array<string>;
 }
-export type AccountAggregationSourceAccountList = Array<unknown>;
-export type AccountAggregationSourceList = Array<unknown>;
+export type AccountAggregationSourceAccountList = Array<string>;
+export type AccountAggregationSourceList = Array<AccountAggregationSource>;
 export type AccountId = string;
 
 export interface AggregateComplianceByConfigRule {
+  ConfigRuleName?: string;
+  Compliance?: Compliance;
+  AccountId?: string;
+  AwsRegion?: string;
 }
-export type AggregateComplianceByConfigRuleList = Array<unknown>;
+export type AggregateComplianceByConfigRuleList =
+  Array<AggregateComplianceByConfigRule>;
 export interface AggregateComplianceByConformancePack {
+  ConformancePackName?: string;
+  Compliance?: AggregateConformancePackCompliance;
+  AccountId?: string;
+  AwsRegion?: string;
 }
-export type AggregateComplianceByConformancePackList = Array<unknown>;
+export type AggregateComplianceByConformancePackList =
+  Array<AggregateComplianceByConformancePack>;
 export interface AggregateComplianceCount {
+  GroupName?: string;
+  ComplianceSummary?: ComplianceSummary;
 }
-export type AggregateComplianceCountList = Array<unknown>;
+export type AggregateComplianceCountList = Array<AggregateComplianceCount>;
 export interface AggregateConformancePackCompliance {
+  ComplianceType?: ConformancePackComplianceType;
+  CompliantRuleCount?: number;
+  NonCompliantRuleCount?: number;
+  TotalRuleCount?: number;
 }
 export interface AggregateConformancePackComplianceCount {
+  CompliantConformancePackCount?: number;
+  NonCompliantConformancePackCount?: number;
 }
 export interface AggregateConformancePackComplianceFilters {
+  ConformancePackName?: string;
+  ComplianceType?: ConformancePackComplianceType;
+  AccountId?: string;
+  AwsRegion?: string;
 }
 export interface AggregateConformancePackComplianceSummary {
+  ComplianceSummary?: AggregateConformancePackComplianceCount;
+  GroupName?: string;
 }
 export interface AggregateConformancePackComplianceSummaryFilters {
+  AccountId?: string;
+  AwsRegion?: string;
 }
-export type AggregateConformancePackComplianceSummaryGroupKey = never;
-export type AggregateConformancePackComplianceSummaryList = Array<unknown>;
+export type AggregateConformancePackComplianceSummaryGroupKey =
+  | "ACCOUNT_ID"
+  | "AWS_REGION";
+export type AggregateConformancePackComplianceSummaryList =
+  Array<AggregateConformancePackComplianceSummary>;
 export interface AggregatedSourceStatus {
+  SourceId?: string;
+  SourceType?: AggregatedSourceType;
+  AwsRegion?: string;
+  LastUpdateStatus?: AggregatedSourceStatusType;
+  LastUpdateTime?: Date | string;
+  LastErrorCode?: string;
+  LastErrorMessage?: string;
 }
-export type AggregatedSourceStatusList = Array<unknown>;
-export type AggregatedSourceStatusType = never;
-export type AggregatedSourceStatusTypeList = Array<unknown>;
-export type AggregatedSourceType = never;
+export type AggregatedSourceStatusList = Array<AggregatedSourceStatus>;
+export type AggregatedSourceStatusType = "FAILED" | "SUCCEEDED" | "OUTDATED";
+export type AggregatedSourceStatusTypeList = Array<AggregatedSourceStatusType>;
+export type AggregatedSourceType = "ACCOUNT" | "ORGANIZATION";
 export interface AggregateEvaluationResult {
+  EvaluationResultIdentifier?: EvaluationResultIdentifier;
+  ComplianceType?: ComplianceType;
+  ResultRecordedTime?: Date | string;
+  ConfigRuleInvokedTime?: Date | string;
+  Annotation?: string;
+  AccountId?: string;
+  AwsRegion?: string;
 }
-export type AggregateEvaluationResultList = Array<unknown>;
+export type AggregateEvaluationResultList = Array<AggregateEvaluationResult>;
 export interface AggregateResourceIdentifier {
+  SourceAccountId: string;
+  SourceRegion: string;
+  ResourceId: string;
+  ResourceType: ResourceType;
+  ResourceName?: string;
 }
 export interface AggregationAuthorization {
+  AggregationAuthorizationArn?: string;
+  AuthorizedAccountId?: string;
+  AuthorizedAwsRegion?: string;
+  CreationTime?: Date | string;
 }
-export type AggregationAuthorizationList = Array<unknown>;
+export type AggregationAuthorizationList = Array<AggregationAuthorization>;
 export interface AggregatorFilterResourceType {
+  Type?: AggregatorFilterType;
+  Value?: Array<string>;
 }
 export interface AggregatorFilters {
+  ResourceType?: AggregatorFilterResourceType;
+  ServicePrincipal?: AggregatorFilterServicePrincipal;
 }
 export interface AggregatorFilterServicePrincipal {
+  Type?: AggregatorFilterType;
+  Value?: Array<string>;
 }
-export type AggregatorFilterType = never;
-export type AggregatorRegionList = Array<unknown>;
+export type AggregatorFilterType = "INCLUDE";
+export type AggregatorRegionList = Array<string>;
 export type AllSupported = boolean;
 
 export type AmazonResourceName = string;
@@ -646,8 +950,11 @@ export type Annotation = string;
 export type ARN = string;
 
 export interface AssociateResourceTypesRequest {
+  ConfigurationRecorderArn: string;
+  ResourceTypes: Array<ResourceType>;
 }
 export interface AssociateResourceTypesResponse {
+  ConfigurationRecorder: ConfigurationRecorder;
 }
 export type AutoRemediationAttempts = number;
 
@@ -658,326 +965,694 @@ export type AvailabilityZone = string;
 export type AwsRegion = string;
 
 export interface BaseConfigurationItem {
+  version?: string;
+  accountId?: string;
+  configurationItemCaptureTime?: Date | string;
+  configurationItemStatus?: ConfigurationItemStatus;
+  configurationStateId?: string;
+  arn?: string;
+  resourceType?: ResourceType;
+  resourceId?: string;
+  resourceName?: string;
+  awsRegion?: string;
+  availabilityZone?: string;
+  resourceCreationTime?: Date | string;
+  configuration?: string;
+  supplementaryConfiguration?: Record<string, string>;
+  recordingFrequency?: RecordingFrequency;
+  configurationItemDeliveryTime?: Date | string;
 }
-export type BaseConfigurationItems = Array<unknown>;
+export type BaseConfigurationItems = Array<BaseConfigurationItem>;
 export type BaseResourceId = string;
 
 export interface BatchGetAggregateResourceConfigRequest {
+  ConfigurationAggregatorName: string;
+  ResourceIdentifiers: Array<AggregateResourceIdentifier>;
 }
 export interface BatchGetAggregateResourceConfigResponse {
+  BaseConfigurationItems?: Array<BaseConfigurationItem>;
+  UnprocessedResourceIdentifiers?: Array<AggregateResourceIdentifier>;
 }
 export interface BatchGetResourceConfigRequest {
+  resourceKeys: Array<ResourceKey>;
 }
 export interface BatchGetResourceConfigResponse {
+  baseConfigurationItems?: Array<BaseConfigurationItem>;
+  unprocessedResourceKeys?: Array<ResourceKey>;
 }
 export type ChannelName = string;
 
-export type ChronologicalOrder = never;
+export type ChronologicalOrder = "Reverse" | "Forward";
 export type ClientToken = string;
 
 export interface Compliance {
+  ComplianceType?: ComplianceType;
+  ComplianceContributorCount?: ComplianceContributorCount;
 }
 export interface ComplianceByConfigRule {
+  ConfigRuleName?: string;
+  Compliance?: Compliance;
 }
-export type ComplianceByConfigRules = Array<unknown>;
+export type ComplianceByConfigRules = Array<ComplianceByConfigRule>;
 export interface ComplianceByResource {
+  ResourceType?: string;
+  ResourceId?: string;
+  Compliance?: Compliance;
 }
-export type ComplianceByResources = Array<unknown>;
+export type ComplianceByResources = Array<ComplianceByResource>;
 export interface ComplianceContributorCount {
+  CappedCount?: number;
+  CapExceeded?: boolean;
 }
-export type ComplianceResourceTypes = Array<unknown>;
+export type ComplianceResourceTypes = Array<string>;
 export type ComplianceScore = string;
 
-export type ComplianceSummariesByResourceType = Array<unknown>;
+export type ComplianceSummariesByResourceType =
+  Array<ComplianceSummaryByResourceType>;
 export interface ComplianceSummary {
+  CompliantResourceCount?: ComplianceContributorCount;
+  NonCompliantResourceCount?: ComplianceContributorCount;
+  ComplianceSummaryTimestamp?: Date | string;
 }
 export interface ComplianceSummaryByResourceType {
+  ResourceType?: string;
+  ComplianceSummary?: ComplianceSummary;
 }
-export type ComplianceType = never;
-export type ComplianceTypes = Array<unknown>;
+export type ComplianceType =
+  | "Compliant"
+  | "Non_Compliant"
+  | "Not_Applicable"
+  | "Insufficient_Data";
+export type ComplianceTypes = Array<ComplianceType>;
 export interface ConfigExportDeliveryInfo {
+  lastStatus?: DeliveryStatus;
+  lastErrorCode?: string;
+  lastErrorMessage?: string;
+  lastAttemptTime?: Date | string;
+  lastSuccessfulTime?: Date | string;
+  nextDeliveryTime?: Date | string;
 }
 export interface ConfigRule {
+  ConfigRuleName?: string;
+  ConfigRuleArn?: string;
+  ConfigRuleId?: string;
+  Description?: string;
+  Scope?: Scope;
+  Source: Source;
+  InputParameters?: string;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  ConfigRuleState?: ConfigRuleState;
+  CreatedBy?: string;
+  EvaluationModes?: Array<EvaluationModeConfiguration>;
 }
 export interface ConfigRuleComplianceFilters {
+  ConfigRuleName?: string;
+  ComplianceType?: ComplianceType;
+  AccountId?: string;
+  AwsRegion?: string;
 }
 export interface ConfigRuleComplianceSummaryFilters {
+  AccountId?: string;
+  AwsRegion?: string;
 }
-export type ConfigRuleComplianceSummaryGroupKey = never;
+export type ConfigRuleComplianceSummaryGroupKey = "ACCOUNT_ID" | "AWS_REGION";
 export interface ConfigRuleEvaluationStatus {
+  ConfigRuleName?: string;
+  ConfigRuleArn?: string;
+  ConfigRuleId?: string;
+  LastSuccessfulInvocationTime?: Date | string;
+  LastFailedInvocationTime?: Date | string;
+  LastSuccessfulEvaluationTime?: Date | string;
+  LastFailedEvaluationTime?: Date | string;
+  FirstActivatedTime?: Date | string;
+  LastDeactivatedTime?: Date | string;
+  LastErrorCode?: string;
+  LastErrorMessage?: string;
+  FirstEvaluationStarted?: boolean;
+  LastDebugLogDeliveryStatus?: string;
+  LastDebugLogDeliveryStatusReason?: string;
+  LastDebugLogDeliveryTime?: Date | string;
 }
-export type ConfigRuleEvaluationStatusList = Array<unknown>;
+export type ConfigRuleEvaluationStatusList = Array<ConfigRuleEvaluationStatus>;
 export type ConfigRuleName = string;
 
-export type ConfigRuleNames = Array<unknown>;
-export type ConfigRules = Array<unknown>;
-export type ConfigRuleState = never;
+export type ConfigRuleNames = Array<string>;
+export type ConfigRules = Array<ConfigRule>;
+export type ConfigRuleState =
+  | "ACTIVE"
+  | "DELETING"
+  | "DELETING_RESULTS"
+  | "EVALUATING";
 export interface ConfigSnapshotDeliveryProperties {
+  deliveryFrequency?: MaximumExecutionFrequency;
 }
 export interface ConfigStreamDeliveryInfo {
+  lastStatus?: DeliveryStatus;
+  lastErrorCode?: string;
+  lastErrorMessage?: string;
+  lastStatusChangeTime?: Date | string;
 }
 export type Configuration = string;
 
 export interface ConfigurationAggregator {
+  ConfigurationAggregatorName?: string;
+  ConfigurationAggregatorArn?: string;
+  AccountAggregationSources?: Array<AccountAggregationSource>;
+  OrganizationAggregationSource?: OrganizationAggregationSource;
+  CreationTime?: Date | string;
+  LastUpdatedTime?: Date | string;
+  CreatedBy?: string;
+  AggregatorFilters?: AggregatorFilters;
 }
 export type ConfigurationAggregatorArn = string;
 
-export type ConfigurationAggregatorList = Array<unknown>;
+export type ConfigurationAggregatorList = Array<ConfigurationAggregator>;
 export type ConfigurationAggregatorName = string;
 
-export type ConfigurationAggregatorNameList = Array<unknown>;
+export type ConfigurationAggregatorNameList = Array<string>;
 export interface ConfigurationItem {
+  version?: string;
+  accountId?: string;
+  configurationItemCaptureTime?: Date | string;
+  configurationItemStatus?: ConfigurationItemStatus;
+  configurationStateId?: string;
+  configurationItemMD5Hash?: string;
+  arn?: string;
+  resourceType?: ResourceType;
+  resourceId?: string;
+  resourceName?: string;
+  awsRegion?: string;
+  availabilityZone?: string;
+  resourceCreationTime?: Date | string;
+  tags?: Record<string, string>;
+  relatedEvents?: Array<string>;
+  relationships?: Array<Relationship>;
+  configuration?: string;
+  supplementaryConfiguration?: Record<string, string>;
+  recordingFrequency?: RecordingFrequency;
+  configurationItemDeliveryTime?: Date | string;
 }
 export type ConfigurationItemCaptureTime = Date | string;
 
 export type ConfigurationItemDeliveryTime = Date | string;
 
-export type ConfigurationItemList = Array<unknown>;
+export type ConfigurationItemList = Array<ConfigurationItem>;
 export type ConfigurationItemMD5Hash = string;
 
-export type ConfigurationItemStatus = never;
+export type ConfigurationItemStatus =
+  | "OK"
+  | "ResourceDiscovered"
+  | "ResourceNotRecorded"
+  | "ResourceDeleted"
+  | "ResourceDeletedNotRecorded";
 export interface ConfigurationRecorder {
+  arn?: string;
+  name?: string;
+  roleARN?: string;
+  recordingGroup?: RecordingGroup;
+  recordingMode?: RecordingMode;
+  recordingScope?: RecordingScope;
+  servicePrincipal?: string;
 }
 export interface ConfigurationRecorderFilter {
+  filterName?: ConfigurationRecorderFilterName;
+  filterValue?: Array<string>;
 }
-export type ConfigurationRecorderFilterList = Array<unknown>;
-export type ConfigurationRecorderFilterName = never;
+export type ConfigurationRecorderFilterList =
+  Array<ConfigurationRecorderFilter>;
+export type ConfigurationRecorderFilterName = "RecordingScope";
 export type ConfigurationRecorderFilterValue = string;
 
-export type ConfigurationRecorderFilterValues = Array<unknown>;
-export type ConfigurationRecorderList = Array<unknown>;
-export type ConfigurationRecorderNameList = Array<unknown>;
+export type ConfigurationRecorderFilterValues = Array<string>;
+export type ConfigurationRecorderList = Array<ConfigurationRecorder>;
+export type ConfigurationRecorderNameList = Array<string>;
 export interface ConfigurationRecorderStatus {
+  arn?: string;
+  name?: string;
+  lastStartTime?: Date | string;
+  lastStopTime?: Date | string;
+  recording?: boolean;
+  lastStatus?: RecorderStatus;
+  lastErrorCode?: string;
+  lastErrorMessage?: string;
+  lastStatusChangeTime?: Date | string;
+  servicePrincipal?: string;
 }
-export type ConfigurationRecorderStatusList = Array<unknown>;
-export type ConfigurationRecorderSummaries = Array<unknown>;
+export type ConfigurationRecorderStatusList =
+  Array<ConfigurationRecorderStatus>;
+export type ConfigurationRecorderSummaries =
+  Array<ConfigurationRecorderSummary>;
 export interface ConfigurationRecorderSummary {
+  arn: string;
+  name: string;
+  servicePrincipal?: string;
+  recordingScope: RecordingScope;
 }
 export type ConfigurationStateId = string;
 
-export interface ConflictException {
-}
+export declare class ConflictException extends Data.TaggedError(
+  "ConflictException",
+)<{
+  readonly message?: string;
+}> {}
 export type ConformancePackArn = string;
 
 export interface ConformancePackComplianceFilters {
+  ConfigRuleNames?: Array<string>;
+  ComplianceType?: ConformancePackComplianceType;
 }
-export type ConformancePackComplianceResourceIds = Array<unknown>;
+export type ConformancePackComplianceResourceIds = Array<string>;
 export interface ConformancePackComplianceScore {
+  Score?: string;
+  ConformancePackName?: string;
+  LastUpdatedTime?: Date | string;
 }
-export type ConformancePackComplianceScores = Array<unknown>;
+export type ConformancePackComplianceScores =
+  Array<ConformancePackComplianceScore>;
 export interface ConformancePackComplianceScoresFilters {
+  ConformancePackNames: Array<string>;
 }
 export interface ConformancePackComplianceSummary {
+  ConformancePackName: string;
+  ConformancePackComplianceStatus: ConformancePackComplianceType;
 }
-export type ConformancePackComplianceSummaryList = Array<unknown>;
-export type ConformancePackComplianceType = never;
-export type ConformancePackConfigRuleNames = Array<unknown>;
+export type ConformancePackComplianceSummaryList =
+  Array<ConformancePackComplianceSummary>;
+export type ConformancePackComplianceType =
+  | "COMPLIANT"
+  | "NON_COMPLIANT"
+  | "INSUFFICIENT_DATA";
+export type ConformancePackConfigRuleNames = Array<string>;
 export interface ConformancePackDetail {
+  ConformancePackName: string;
+  ConformancePackArn: string;
+  ConformancePackId: string;
+  DeliveryS3Bucket?: string;
+  DeliveryS3KeyPrefix?: string;
+  ConformancePackInputParameters?: Array<ConformancePackInputParameter>;
+  LastUpdateRequestedTime?: Date | string;
+  CreatedBy?: string;
+  TemplateSSMDocumentDetails?: TemplateSSMDocumentDetails;
 }
-export type ConformancePackDetailList = Array<unknown>;
+export type ConformancePackDetailList = Array<ConformancePackDetail>;
 export interface ConformancePackEvaluationFilters {
+  ConfigRuleNames?: Array<string>;
+  ComplianceType?: ConformancePackComplianceType;
+  ResourceType?: string;
+  ResourceIds?: Array<string>;
 }
 export interface ConformancePackEvaluationResult {
+  ComplianceType: ConformancePackComplianceType;
+  EvaluationResultIdentifier: EvaluationResultIdentifier;
+  ConfigRuleInvokedTime: Date | string;
+  ResultRecordedTime: Date | string;
+  Annotation?: string;
 }
 export type ConformancePackId = string;
 
 export interface ConformancePackInputParameter {
+  ParameterName: string;
+  ParameterValue: string;
 }
-export type ConformancePackInputParameters = Array<unknown>;
+export type ConformancePackInputParameters =
+  Array<ConformancePackInputParameter>;
 export type ConformancePackName = string;
 
-export type ConformancePackNameFilter = Array<unknown>;
-export type ConformancePackNamesList = Array<unknown>;
-export type ConformancePackNamesToSummarizeList = Array<unknown>;
+export type ConformancePackNameFilter = Array<string>;
+export type ConformancePackNamesList = Array<string>;
+export type ConformancePackNamesToSummarizeList = Array<string>;
 export interface ConformancePackRuleCompliance {
+  ConfigRuleName?: string;
+  ComplianceType?: ConformancePackComplianceType;
+  Controls?: Array<string>;
 }
-export type ConformancePackRuleComplianceList = Array<unknown>;
-export type ConformancePackRuleEvaluationResultsList = Array<unknown>;
-export type ConformancePackState = never;
+export type ConformancePackRuleComplianceList =
+  Array<ConformancePackRuleCompliance>;
+export type ConformancePackRuleEvaluationResultsList =
+  Array<ConformancePackEvaluationResult>;
+export type ConformancePackState =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_COMPLETE"
+  | "CREATE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_FAILED";
 export interface ConformancePackStatusDetail {
+  ConformancePackName: string;
+  ConformancePackId: string;
+  ConformancePackArn: string;
+  ConformancePackState: ConformancePackState;
+  StackArn: string;
+  ConformancePackStatusReason?: string;
+  LastUpdateRequestedTime: Date | string;
+  LastUpdateCompletedTime?: Date | string;
 }
-export type ConformancePackStatusDetailsList = Array<unknown>;
+export type ConformancePackStatusDetailsList =
+  Array<ConformancePackStatusDetail>;
 export type ConformancePackStatusReason = string;
 
-export interface ConformancePackTemplateValidationException {
-}
-export type ControlsList = Array<unknown>;
+export declare class ConformancePackTemplateValidationException extends Data.TaggedError(
+  "ConformancePackTemplateValidationException",
+)<{
+  readonly message?: string;
+}> {}
+export type ControlsList = Array<string>;
 export type CosmosPageLimit = number;
 
 export interface CustomPolicyDetails {
+  PolicyRuntime: string;
+  PolicyText: string;
+  EnableDebugLogDelivery?: boolean;
 }
-export type DebugLogDeliveryAccounts = Array<unknown>;
+export type DebugLogDeliveryAccounts = Array<string>;
 export interface DeleteAggregationAuthorizationRequest {
+  AuthorizedAccountId: string;
+  AuthorizedAwsRegion: string;
 }
 export interface DeleteConfigRuleRequest {
+  ConfigRuleName: string;
 }
 export interface DeleteConfigurationAggregatorRequest {
+  ConfigurationAggregatorName: string;
 }
 export interface DeleteConfigurationRecorderRequest {
+  ConfigurationRecorderName: string;
 }
 export interface DeleteConformancePackRequest {
+  ConformancePackName: string;
 }
 export interface DeleteDeliveryChannelRequest {
+  DeliveryChannelName: string;
 }
 export interface DeleteEvaluationResultsRequest {
+  ConfigRuleName: string;
 }
-export interface DeleteEvaluationResultsResponse {
-}
+export interface DeleteEvaluationResultsResponse {}
 export interface DeleteOrganizationConfigRuleRequest {
+  OrganizationConfigRuleName: string;
 }
 export interface DeleteOrganizationConformancePackRequest {
+  OrganizationConformancePackName: string;
 }
 export interface DeletePendingAggregationRequestRequest {
+  RequesterAccountId: string;
+  RequesterAwsRegion: string;
 }
 export interface DeleteRemediationConfigurationRequest {
+  ConfigRuleName: string;
+  ResourceType?: string;
 }
-export interface DeleteRemediationConfigurationResponse {
-}
+export interface DeleteRemediationConfigurationResponse {}
 export interface DeleteRemediationExceptionsRequest {
+  ConfigRuleName: string;
+  ResourceKeys: Array<RemediationExceptionResourceKey>;
 }
 export interface DeleteRemediationExceptionsResponse {
+  FailedBatches?: Array<FailedDeleteRemediationExceptionsBatch>;
 }
 export interface DeleteResourceConfigRequest {
+  ResourceType: string;
+  ResourceId: string;
 }
 export interface DeleteRetentionConfigurationRequest {
+  RetentionConfigurationName: string;
 }
 export interface DeleteServiceLinkedConfigurationRecorderRequest {
+  ServicePrincipal: string;
 }
 export interface DeleteServiceLinkedConfigurationRecorderResponse {
+  Arn: string;
+  Name: string;
 }
 export interface DeleteStoredQueryRequest {
+  QueryName: string;
 }
-export interface DeleteStoredQueryResponse {
-}
+export interface DeleteStoredQueryResponse {}
 export interface DeliverConfigSnapshotRequest {
+  deliveryChannelName: string;
 }
 export interface DeliverConfigSnapshotResponse {
+  configSnapshotId?: string;
 }
 export interface DeliveryChannel {
+  name?: string;
+  s3BucketName?: string;
+  s3KeyPrefix?: string;
+  s3KmsKeyArn?: string;
+  snsTopicARN?: string;
+  configSnapshotDeliveryProperties?: ConfigSnapshotDeliveryProperties;
 }
-export type DeliveryChannelList = Array<unknown>;
-export type DeliveryChannelNameList = Array<unknown>;
+export type DeliveryChannelList = Array<DeliveryChannel>;
+export type DeliveryChannelNameList = Array<string>;
 export interface DeliveryChannelStatus {
+  name?: string;
+  configSnapshotDeliveryInfo?: ConfigExportDeliveryInfo;
+  configHistoryDeliveryInfo?: ConfigExportDeliveryInfo;
+  configStreamDeliveryInfo?: ConfigStreamDeliveryInfo;
 }
-export type DeliveryChannelStatusList = Array<unknown>;
+export type DeliveryChannelStatusList = Array<DeliveryChannelStatus>;
 export type DeliveryS3Bucket = string;
 
 export type DeliveryS3KeyPrefix = string;
 
-export type DeliveryStatus = never;
+export type DeliveryStatus = "Success" | "Failure" | "Not_Applicable";
 export interface DescribeAggregateComplianceByConfigRulesRequest {
+  ConfigurationAggregatorName: string;
+  Filters?: ConfigRuleComplianceFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeAggregateComplianceByConfigRulesResponse {
+  AggregateComplianceByConfigRules?: Array<AggregateComplianceByConfigRule>;
+  NextToken?: string;
 }
 export interface DescribeAggregateComplianceByConformancePacksRequest {
+  ConfigurationAggregatorName: string;
+  Filters?: AggregateConformancePackComplianceFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeAggregateComplianceByConformancePacksResponse {
+  AggregateComplianceByConformancePacks?: Array<AggregateComplianceByConformancePack>;
+  NextToken?: string;
 }
 export interface DescribeAggregationAuthorizationsRequest {
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeAggregationAuthorizationsResponse {
+  AggregationAuthorizations?: Array<AggregationAuthorization>;
+  NextToken?: string;
 }
 export interface DescribeComplianceByConfigRuleRequest {
+  ConfigRuleNames?: Array<string>;
+  ComplianceTypes?: Array<ComplianceType>;
+  NextToken?: string;
 }
 export interface DescribeComplianceByConfigRuleResponse {
+  ComplianceByConfigRules?: Array<ComplianceByConfigRule>;
+  NextToken?: string;
 }
 export interface DescribeComplianceByResourceRequest {
+  ResourceType?: string;
+  ResourceId?: string;
+  ComplianceTypes?: Array<ComplianceType>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeComplianceByResourceResponse {
+  ComplianceByResources?: Array<ComplianceByResource>;
+  NextToken?: string;
 }
 export interface DescribeConfigRuleEvaluationStatusRequest {
+  ConfigRuleNames?: Array<string>;
+  NextToken?: string;
+  Limit?: number;
 }
 export interface DescribeConfigRuleEvaluationStatusResponse {
+  ConfigRulesEvaluationStatus?: Array<ConfigRuleEvaluationStatus>;
+  NextToken?: string;
 }
 export interface DescribeConfigRulesFilters {
+  EvaluationMode?: EvaluationMode;
 }
 export interface DescribeConfigRulesRequest {
+  ConfigRuleNames?: Array<string>;
+  NextToken?: string;
+  Filters?: DescribeConfigRulesFilters;
 }
 export interface DescribeConfigRulesResponse {
+  ConfigRules?: Array<ConfigRule>;
+  NextToken?: string;
 }
 export interface DescribeConfigurationAggregatorSourcesStatusRequest {
+  ConfigurationAggregatorName: string;
+  UpdateStatus?: Array<AggregatedSourceStatusType>;
+  NextToken?: string;
+  Limit?: number;
 }
 export interface DescribeConfigurationAggregatorSourcesStatusResponse {
+  AggregatedSourceStatusList?: Array<AggregatedSourceStatus>;
+  NextToken?: string;
 }
 export interface DescribeConfigurationAggregatorsRequest {
+  ConfigurationAggregatorNames?: Array<string>;
+  NextToken?: string;
+  Limit?: number;
 }
 export interface DescribeConfigurationAggregatorsResponse {
+  ConfigurationAggregators?: Array<ConfigurationAggregator>;
+  NextToken?: string;
 }
 export interface DescribeConfigurationRecordersRequest {
+  ConfigurationRecorderNames?: Array<string>;
+  ServicePrincipal?: string;
+  Arn?: string;
 }
 export interface DescribeConfigurationRecordersResponse {
+  ConfigurationRecorders?: Array<ConfigurationRecorder>;
 }
 export interface DescribeConfigurationRecorderStatusRequest {
+  ConfigurationRecorderNames?: Array<string>;
+  ServicePrincipal?: string;
+  Arn?: string;
 }
 export interface DescribeConfigurationRecorderStatusResponse {
+  ConfigurationRecordersStatus?: Array<ConfigurationRecorderStatus>;
 }
 export type DescribeConformancePackComplianceLimit = number;
 
 export interface DescribeConformancePackComplianceRequest {
+  ConformancePackName: string;
+  Filters?: ConformancePackComplianceFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeConformancePackComplianceResponse {
+  ConformancePackName: string;
+  ConformancePackRuleComplianceList: Array<ConformancePackRuleCompliance>;
+  NextToken?: string;
 }
 export interface DescribeConformancePacksRequest {
+  ConformancePackNames?: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeConformancePacksResponse {
+  ConformancePackDetails?: Array<ConformancePackDetail>;
+  NextToken?: string;
 }
 export interface DescribeConformancePackStatusRequest {
+  ConformancePackNames?: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeConformancePackStatusResponse {
+  ConformancePackStatusDetails?: Array<ConformancePackStatusDetail>;
+  NextToken?: string;
 }
 export interface DescribeDeliveryChannelsRequest {
+  DeliveryChannelNames?: Array<string>;
 }
 export interface DescribeDeliveryChannelsResponse {
+  DeliveryChannels?: Array<DeliveryChannel>;
 }
 export interface DescribeDeliveryChannelStatusRequest {
+  DeliveryChannelNames?: Array<string>;
 }
 export interface DescribeDeliveryChannelStatusResponse {
+  DeliveryChannelsStatus?: Array<DeliveryChannelStatus>;
 }
 export interface DescribeOrganizationConfigRulesRequest {
+  OrganizationConfigRuleNames?: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConfigRulesResponse {
+  OrganizationConfigRules?: Array<OrganizationConfigRule>;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConfigRuleStatusesRequest {
+  OrganizationConfigRuleNames?: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConfigRuleStatusesResponse {
+  OrganizationConfigRuleStatuses?: Array<OrganizationConfigRuleStatus>;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConformancePacksRequest {
+  OrganizationConformancePackNames?: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConformancePacksResponse {
+  OrganizationConformancePacks?: Array<OrganizationConformancePack>;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConformancePackStatusesRequest {
+  OrganizationConformancePackNames?: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeOrganizationConformancePackStatusesResponse {
+  OrganizationConformancePackStatuses?: Array<OrganizationConformancePackStatus>;
+  NextToken?: string;
 }
 export type DescribePendingAggregationRequestsLimit = number;
 
 export interface DescribePendingAggregationRequestsRequest {
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribePendingAggregationRequestsResponse {
+  PendingAggregationRequests?: Array<PendingAggregationRequest>;
+  NextToken?: string;
 }
 export interface DescribeRemediationConfigurationsRequest {
+  ConfigRuleNames: Array<string>;
 }
 export interface DescribeRemediationConfigurationsResponse {
+  RemediationConfigurations?: Array<RemediationConfiguration>;
 }
 export interface DescribeRemediationExceptionsRequest {
+  ConfigRuleName: string;
+  ResourceKeys?: Array<RemediationExceptionResourceKey>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeRemediationExceptionsResponse {
+  RemediationExceptions?: Array<RemediationException>;
+  NextToken?: string;
 }
 export interface DescribeRemediationExecutionStatusRequest {
+  ConfigRuleName: string;
+  ResourceKeys?: Array<ResourceKey>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface DescribeRemediationExecutionStatusResponse {
+  RemediationExecutionStatuses?: Array<RemediationExecutionStatus>;
+  NextToken?: string;
 }
 export interface DescribeRetentionConfigurationsRequest {
+  RetentionConfigurationNames?: Array<string>;
+  NextToken?: string;
 }
 export interface DescribeRetentionConfigurationsResponse {
+  RetentionConfigurations?: Array<RetentionConfiguration>;
+  NextToken?: string;
 }
 export type Description = string;
 
 export interface DisassociateResourceTypesRequest {
+  ConfigurationRecorderArn: string;
+  ResourceTypes: Array<ResourceType>;
 }
 export interface DisassociateResourceTypesResponse {
+  ConfigurationRecorder: ConfigurationRecorder;
 }
-export type DiscoveredResourceIdentifierList = Array<unknown>;
+export type DiscoveredResourceIdentifierList =
+  Array<AggregateResourceIdentifier>;
 export type EarlierTime = Date | string;
 
 export type EmptiableStringWithCharLimit256 = string;
@@ -985,321 +1660,780 @@ export type EmptiableStringWithCharLimit256 = string;
 export type ErrorMessage = string;
 
 export interface Evaluation {
+  ComplianceResourceType: string;
+  ComplianceResourceId: string;
+  ComplianceType: ComplianceType;
+  Annotation?: string;
+  OrderingTimestamp: Date | string;
 }
 export interface EvaluationContext {
+  EvaluationContextIdentifier?: string;
 }
 export type EvaluationContextIdentifier = string;
 
-export type EvaluationMode = never;
+export type EvaluationMode = "DETECTIVE" | "PROACTIVE";
 export interface EvaluationModeConfiguration {
+  Mode?: EvaluationMode;
 }
-export type EvaluationModes = Array<unknown>;
+export type EvaluationModes = Array<EvaluationModeConfiguration>;
 export interface EvaluationResult {
+  EvaluationResultIdentifier?: EvaluationResultIdentifier;
+  ComplianceType?: ComplianceType;
+  ResultRecordedTime?: Date | string;
+  ConfigRuleInvokedTime?: Date | string;
+  Annotation?: string;
+  ResultToken?: string;
 }
 export interface EvaluationResultIdentifier {
+  EvaluationResultQualifier?: EvaluationResultQualifier;
+  OrderingTimestamp?: Date | string;
+  ResourceEvaluationId?: string;
 }
 export interface EvaluationResultQualifier {
+  ConfigRuleName?: string;
+  ResourceType?: string;
+  ResourceId?: string;
+  EvaluationMode?: EvaluationMode;
 }
-export type EvaluationResults = Array<unknown>;
-export type Evaluations = Array<unknown>;
+export type EvaluationResults = Array<EvaluationResult>;
+export type Evaluations = Array<Evaluation>;
 export interface EvaluationStatus {
+  Status: ResourceEvaluationStatus;
+  FailureReason?: string;
 }
 export type EvaluationTimeout = number;
 
-export type EventSource = never;
-export type ExcludedAccounts = Array<unknown>;
+export type EventSource = "Aws_Config";
+export type ExcludedAccounts = Array<string>;
 export interface ExclusionByResourceTypes {
+  resourceTypes?: Array<ResourceType>;
 }
 export interface ExecutionControls {
+  SsmControls?: SsmControls;
 }
 export type Expression = string;
 
 export interface ExternalEvaluation {
+  ComplianceResourceType: string;
+  ComplianceResourceId: string;
+  ComplianceType: ComplianceType;
+  Annotation?: string;
+  OrderingTimestamp: Date | string;
 }
 export interface FailedDeleteRemediationExceptionsBatch {
+  FailureMessage?: string;
+  FailedItems?: Array<RemediationExceptionResourceKey>;
 }
-export type FailedDeleteRemediationExceptionsBatches = Array<unknown>;
+export type FailedDeleteRemediationExceptionsBatches =
+  Array<FailedDeleteRemediationExceptionsBatch>;
 export interface FailedRemediationBatch {
+  FailureMessage?: string;
+  FailedItems?: Array<RemediationConfiguration>;
 }
-export type FailedRemediationBatches = Array<unknown>;
+export type FailedRemediationBatches = Array<FailedRemediationBatch>;
 export interface FailedRemediationExceptionBatch {
+  FailureMessage?: string;
+  FailedItems?: Array<RemediationException>;
 }
-export type FailedRemediationExceptionBatches = Array<unknown>;
+export type FailedRemediationExceptionBatches =
+  Array<FailedRemediationExceptionBatch>;
 export interface FieldInfo {
+  Name?: string;
 }
-export type FieldInfoList = Array<unknown>;
+export type FieldInfoList = Array<FieldInfo>;
 export type FieldName = string;
 
 export interface GetAggregateComplianceDetailsByConfigRuleRequest {
+  ConfigurationAggregatorName: string;
+  ConfigRuleName: string;
+  AccountId: string;
+  AwsRegion: string;
+  ComplianceType?: ComplianceType;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetAggregateComplianceDetailsByConfigRuleResponse {
+  AggregateEvaluationResults?: Array<AggregateEvaluationResult>;
+  NextToken?: string;
 }
 export interface GetAggregateConfigRuleComplianceSummaryRequest {
+  ConfigurationAggregatorName: string;
+  Filters?: ConfigRuleComplianceSummaryFilters;
+  GroupByKey?: ConfigRuleComplianceSummaryGroupKey;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetAggregateConfigRuleComplianceSummaryResponse {
+  GroupByKey?: string;
+  AggregateComplianceCounts?: Array<AggregateComplianceCount>;
+  NextToken?: string;
 }
 export interface GetAggregateConformancePackComplianceSummaryRequest {
+  ConfigurationAggregatorName: string;
+  Filters?: AggregateConformancePackComplianceSummaryFilters;
+  GroupByKey?: AggregateConformancePackComplianceSummaryGroupKey;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetAggregateConformancePackComplianceSummaryResponse {
+  AggregateConformancePackComplianceSummaries?: Array<AggregateConformancePackComplianceSummary>;
+  GroupByKey?: string;
+  NextToken?: string;
 }
 export interface GetAggregateDiscoveredResourceCountsRequest {
+  ConfigurationAggregatorName: string;
+  Filters?: ResourceCountFilters;
+  GroupByKey?: ResourceCountGroupKey;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetAggregateDiscoveredResourceCountsResponse {
+  TotalDiscoveredResources: number;
+  GroupByKey?: string;
+  GroupedResourceCounts?: Array<GroupedResourceCount>;
+  NextToken?: string;
 }
 export interface GetAggregateResourceConfigRequest {
+  ConfigurationAggregatorName: string;
+  ResourceIdentifier: AggregateResourceIdentifier;
 }
 export interface GetAggregateResourceConfigResponse {
+  ConfigurationItem?: ConfigurationItem;
 }
 export interface GetComplianceDetailsByConfigRuleRequest {
+  ConfigRuleName: string;
+  ComplianceTypes?: Array<ComplianceType>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetComplianceDetailsByConfigRuleResponse {
+  EvaluationResults?: Array<EvaluationResult>;
+  NextToken?: string;
 }
 export interface GetComplianceDetailsByResourceRequest {
+  ResourceType?: string;
+  ResourceId?: string;
+  ComplianceTypes?: Array<ComplianceType>;
+  NextToken?: string;
+  ResourceEvaluationId?: string;
 }
 export interface GetComplianceDetailsByResourceResponse {
+  EvaluationResults?: Array<EvaluationResult>;
+  NextToken?: string;
 }
 export interface GetComplianceSummaryByConfigRuleResponse {
+  ComplianceSummary?: ComplianceSummary;
 }
 export interface GetComplianceSummaryByResourceTypeRequest {
+  ResourceTypes?: Array<string>;
 }
 export interface GetComplianceSummaryByResourceTypeResponse {
+  ComplianceSummariesByResourceType?: Array<ComplianceSummaryByResourceType>;
 }
 export type GetConformancePackComplianceDetailsLimit = number;
 
 export interface GetConformancePackComplianceDetailsRequest {
+  ConformancePackName: string;
+  Filters?: ConformancePackEvaluationFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetConformancePackComplianceDetailsResponse {
+  ConformancePackName: string;
+  ConformancePackRuleEvaluationResults?: Array<ConformancePackEvaluationResult>;
+  NextToken?: string;
 }
 export interface GetConformancePackComplianceSummaryRequest {
+  ConformancePackNames: Array<string>;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetConformancePackComplianceSummaryResponse {
+  ConformancePackComplianceSummaryList?: Array<ConformancePackComplianceSummary>;
+  NextToken?: string;
 }
 export interface GetCustomRulePolicyRequest {
+  ConfigRuleName?: string;
 }
 export interface GetCustomRulePolicyResponse {
+  PolicyText?: string;
 }
 export interface GetDiscoveredResourceCountsRequest {
+  resourceTypes?: Array<string>;
+  limit?: number;
+  nextToken?: string;
 }
 export interface GetDiscoveredResourceCountsResponse {
+  totalDiscoveredResources?: number;
+  resourceCounts?: Array<ResourceCount>;
+  nextToken?: string;
 }
 export interface GetOrganizationConfigRuleDetailedStatusRequest {
+  OrganizationConfigRuleName: string;
+  Filters?: StatusDetailFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetOrganizationConfigRuleDetailedStatusResponse {
+  OrganizationConfigRuleDetailedStatus?: Array<MemberAccountStatus>;
+  NextToken?: string;
 }
 export interface GetOrganizationConformancePackDetailedStatusRequest {
+  OrganizationConformancePackName: string;
+  Filters?: OrganizationResourceDetailedStatusFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface GetOrganizationConformancePackDetailedStatusResponse {
+  OrganizationConformancePackDetailedStatuses?: Array<OrganizationConformancePackDetailedStatus>;
+  NextToken?: string;
 }
 export interface GetOrganizationCustomRulePolicyRequest {
+  OrganizationConfigRuleName: string;
 }
 export interface GetOrganizationCustomRulePolicyResponse {
+  PolicyText?: string;
 }
 export interface GetResourceConfigHistoryRequest {
+  resourceType: ResourceType;
+  resourceId: string;
+  laterTime?: Date | string;
+  earlierTime?: Date | string;
+  chronologicalOrder?: ChronologicalOrder;
+  limit?: number;
+  nextToken?: string;
 }
 export interface GetResourceConfigHistoryResponse {
+  configurationItems?: Array<ConfigurationItem>;
+  nextToken?: string;
 }
 export interface GetResourceEvaluationSummaryRequest {
+  ResourceEvaluationId: string;
 }
 export interface GetResourceEvaluationSummaryResponse {
+  ResourceEvaluationId?: string;
+  EvaluationMode?: EvaluationMode;
+  EvaluationStatus?: EvaluationStatus;
+  EvaluationStartTimestamp?: Date | string;
+  Compliance?: ComplianceType;
+  EvaluationContext?: EvaluationContext;
+  ResourceDetails?: ResourceDetails;
 }
 export interface GetStoredQueryRequest {
+  QueryName: string;
 }
 export interface GetStoredQueryResponse {
+  StoredQuery?: StoredQuery;
 }
 export type GroupByAPILimit = number;
 
 export interface GroupedResourceCount {
+  GroupName: string;
+  ResourceCount: number;
 }
-export type GroupedResourceCountList = Array<unknown>;
-export interface IdempotentParameterMismatch {
-}
+export type GroupedResourceCountList = Array<GroupedResourceCount>;
+export declare class IdempotentParameterMismatch extends Data.TaggedError(
+  "IdempotentParameterMismatch",
+)<{
+  readonly message?: string;
+}> {}
 export type IncludeGlobalResourceTypes = boolean;
 
-export interface InsufficientDeliveryPolicyException {
-}
-export interface InsufficientPermissionsException {
-}
+export declare class InsufficientDeliveryPolicyException extends Data.TaggedError(
+  "InsufficientDeliveryPolicyException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InsufficientPermissionsException extends Data.TaggedError(
+  "InsufficientPermissionsException",
+)<{
+  readonly message?: string;
+}> {}
 export type Integer = number;
 
-export interface InvalidConfigurationRecorderNameException {
-}
-export interface InvalidDeliveryChannelNameException {
-}
-export interface InvalidExpressionException {
-}
-export interface InvalidLimitException {
-}
-export interface InvalidNextTokenException {
-}
-export interface InvalidParameterValueException {
-}
-export interface InvalidRecordingGroupException {
-}
-export interface InvalidResultTokenException {
-}
-export interface InvalidRoleException {
-}
-export interface InvalidS3KeyPrefixException {
-}
-export interface InvalidS3KmsKeyArnException {
-}
-export interface InvalidSNSTopicARNException {
-}
-export interface InvalidTimeRangeException {
-}
-export interface LastDeliveryChannelDeleteFailedException {
-}
+export declare class InvalidConfigurationRecorderNameException extends Data.TaggedError(
+  "InvalidConfigurationRecorderNameException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidDeliveryChannelNameException extends Data.TaggedError(
+  "InvalidDeliveryChannelNameException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidExpressionException extends Data.TaggedError(
+  "InvalidExpressionException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidLimitException extends Data.TaggedError(
+  "InvalidLimitException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidNextTokenException extends Data.TaggedError(
+  "InvalidNextTokenException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidParameterValueException extends Data.TaggedError(
+  "InvalidParameterValueException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidRecordingGroupException extends Data.TaggedError(
+  "InvalidRecordingGroupException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidResultTokenException extends Data.TaggedError(
+  "InvalidResultTokenException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidRoleException extends Data.TaggedError(
+  "InvalidRoleException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidS3KeyPrefixException extends Data.TaggedError(
+  "InvalidS3KeyPrefixException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidS3KmsKeyArnException extends Data.TaggedError(
+  "InvalidS3KmsKeyArnException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidSNSTopicARNException extends Data.TaggedError(
+  "InvalidSNSTopicARNException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidTimeRangeException extends Data.TaggedError(
+  "InvalidTimeRangeException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class LastDeliveryChannelDeleteFailedException extends Data.TaggedError(
+  "LastDeliveryChannelDeleteFailedException",
+)<{
+  readonly message?: string;
+}> {}
 export type LastUpdatedTime = Date | string;
 
 export type LaterTime = Date | string;
 
 export type Limit = number;
 
-export interface LimitExceededException {
-}
+export declare class LimitExceededException extends Data.TaggedError(
+  "LimitExceededException",
+)<{
+  readonly message?: string;
+}> {}
 export interface ListAggregateDiscoveredResourcesRequest {
+  ConfigurationAggregatorName: string;
+  ResourceType: ResourceType;
+  Filters?: ResourceFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface ListAggregateDiscoveredResourcesResponse {
+  ResourceIdentifiers?: Array<AggregateResourceIdentifier>;
+  NextToken?: string;
 }
 export interface ListConfigurationRecordersRequest {
+  Filters?: Array<ConfigurationRecorderFilter>;
+  MaxResults?: number;
+  NextToken?: string;
 }
 export interface ListConfigurationRecordersResponse {
+  ConfigurationRecorderSummaries: Array<ConfigurationRecorderSummary>;
+  NextToken?: string;
 }
 export interface ListConformancePackComplianceScoresRequest {
+  Filters?: ConformancePackComplianceScoresFilters;
+  SortOrder?: SortOrder;
+  SortBy?: SortBy;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface ListConformancePackComplianceScoresResponse {
+  NextToken?: string;
+  ConformancePackComplianceScores: Array<ConformancePackComplianceScore>;
 }
 export interface ListDiscoveredResourcesRequest {
+  resourceType: ResourceType;
+  resourceIds?: Array<string>;
+  resourceName?: string;
+  limit?: number;
+  includeDeletedResources?: boolean;
+  nextToken?: string;
 }
 export interface ListDiscoveredResourcesResponse {
+  resourceIdentifiers?: Array<ResourceIdentifier>;
+  nextToken?: string;
 }
 export type ListResourceEvaluationsPageItemLimit = number;
 
 export interface ListResourceEvaluationsRequest {
+  Filters?: ResourceEvaluationFilters;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface ListResourceEvaluationsResponse {
+  ResourceEvaluations?: Array<ResourceEvaluation>;
+  NextToken?: string;
 }
 export interface ListStoredQueriesRequest {
+  NextToken?: string;
+  MaxResults?: number;
 }
 export interface ListStoredQueriesResponse {
+  StoredQueryMetadata?: Array<StoredQueryMetadata>;
+  NextToken?: string;
 }
 export interface ListTagsForResourceRequest {
+  ResourceArn: string;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface ListTagsForResourceResponse {
+  Tags?: Array<Tag>;
+  NextToken?: string;
 }
 export type Long = number;
 
-export interface MaxActiveResourcesExceededException {
-}
-export type MaximumExecutionFrequency = never;
-export interface MaxNumberOfConfigRulesExceededException {
-}
-export interface MaxNumberOfConfigurationRecordersExceededException {
-}
-export interface MaxNumberOfConformancePacksExceededException {
-}
-export interface MaxNumberOfDeliveryChannelsExceededException {
-}
-export interface MaxNumberOfOrganizationConfigRulesExceededException {
-}
-export interface MaxNumberOfOrganizationConformancePacksExceededException {
-}
-export interface MaxNumberOfRetentionConfigurationsExceededException {
-}
+export declare class MaxActiveResourcesExceededException extends Data.TaggedError(
+  "MaxActiveResourcesExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export type MaximumExecutionFrequency =
+  | "One_Hour"
+  | "Three_Hours"
+  | "Six_Hours"
+  | "Twelve_Hours"
+  | "TwentyFour_Hours";
+export declare class MaxNumberOfConfigRulesExceededException extends Data.TaggedError(
+  "MaxNumberOfConfigRulesExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class MaxNumberOfConfigurationRecordersExceededException extends Data.TaggedError(
+  "MaxNumberOfConfigurationRecordersExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class MaxNumberOfConformancePacksExceededException extends Data.TaggedError(
+  "MaxNumberOfConformancePacksExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class MaxNumberOfDeliveryChannelsExceededException extends Data.TaggedError(
+  "MaxNumberOfDeliveryChannelsExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class MaxNumberOfOrganizationConfigRulesExceededException extends Data.TaggedError(
+  "MaxNumberOfOrganizationConfigRulesExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class MaxNumberOfOrganizationConformancePacksExceededException extends Data.TaggedError(
+  "MaxNumberOfOrganizationConformancePacksExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class MaxNumberOfRetentionConfigurationsExceededException extends Data.TaggedError(
+  "MaxNumberOfRetentionConfigurationsExceededException",
+)<{
+  readonly message?: string;
+}> {}
 export type MaxResults = number;
 
-export type MemberAccountRuleStatus = never;
+export type MemberAccountRuleStatus =
+  | "CREATE_SUCCESSFUL"
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "DELETE_SUCCESSFUL"
+  | "DELETE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "UPDATE_SUCCESSFUL"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED";
 export interface MemberAccountStatus {
+  AccountId: string;
+  ConfigRuleName: string;
+  MemberAccountRuleStatus: MemberAccountRuleStatus;
+  ErrorCode?: string;
+  ErrorMessage?: string;
+  LastUpdateTime?: Date | string;
 }
-export type MessageType = never;
+export type MessageType =
+  | "ConfigurationItemChangeNotification"
+  | "ConfigurationSnapshotDeliveryCompleted"
+  | "ScheduledNotification"
+  | "OversizedConfigurationItemChangeNotification";
 export type Name = string;
 
 export type NextToken = string;
 
-export interface NoAvailableConfigurationRecorderException {
-}
-export interface NoAvailableDeliveryChannelException {
-}
-export interface NoAvailableOrganizationException {
-}
-export interface NoRunningConfigurationRecorderException {
-}
-export interface NoSuchBucketException {
-}
-export interface NoSuchConfigRuleException {
-}
-export interface NoSuchConfigRuleInConformancePackException {
-}
-export interface NoSuchConfigurationAggregatorException {
-}
-export interface NoSuchConfigurationRecorderException {
-}
-export interface NoSuchConformancePackException {
-}
-export interface NoSuchDeliveryChannelException {
-}
-export interface NoSuchOrganizationConfigRuleException {
-}
-export interface NoSuchOrganizationConformancePackException {
-}
-export interface NoSuchRemediationConfigurationException {
-}
-export interface NoSuchRemediationExceptionException {
-}
-export interface NoSuchRetentionConfigurationException {
-}
+export declare class NoAvailableConfigurationRecorderException extends Data.TaggedError(
+  "NoAvailableConfigurationRecorderException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoAvailableDeliveryChannelException extends Data.TaggedError(
+  "NoAvailableDeliveryChannelException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoAvailableOrganizationException extends Data.TaggedError(
+  "NoAvailableOrganizationException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoRunningConfigurationRecorderException extends Data.TaggedError(
+  "NoRunningConfigurationRecorderException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchBucketException extends Data.TaggedError(
+  "NoSuchBucketException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchConfigRuleException extends Data.TaggedError(
+  "NoSuchConfigRuleException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchConfigRuleInConformancePackException extends Data.TaggedError(
+  "NoSuchConfigRuleInConformancePackException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchConfigurationAggregatorException extends Data.TaggedError(
+  "NoSuchConfigurationAggregatorException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchConfigurationRecorderException extends Data.TaggedError(
+  "NoSuchConfigurationRecorderException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchConformancePackException extends Data.TaggedError(
+  "NoSuchConformancePackException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchDeliveryChannelException extends Data.TaggedError(
+  "NoSuchDeliveryChannelException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchOrganizationConfigRuleException extends Data.TaggedError(
+  "NoSuchOrganizationConfigRuleException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchOrganizationConformancePackException extends Data.TaggedError(
+  "NoSuchOrganizationConformancePackException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchRemediationConfigurationException extends Data.TaggedError(
+  "NoSuchRemediationConfigurationException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchRemediationExceptionException extends Data.TaggedError(
+  "NoSuchRemediationExceptionException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class NoSuchRetentionConfigurationException extends Data.TaggedError(
+  "NoSuchRetentionConfigurationException",
+)<{
+  readonly message?: string;
+}> {}
 export type OrderingTimestamp = Date | string;
 
-export interface OrganizationAccessDeniedException {
-}
+export declare class OrganizationAccessDeniedException extends Data.TaggedError(
+  "OrganizationAccessDeniedException",
+)<{
+  readonly message?: string;
+}> {}
 export interface OrganizationAggregationSource {
+  RoleArn: string;
+  AwsRegions?: Array<string>;
+  AllAwsRegions?: boolean;
 }
-export interface OrganizationAllFeaturesNotEnabledException {
-}
+export declare class OrganizationAllFeaturesNotEnabledException extends Data.TaggedError(
+  "OrganizationAllFeaturesNotEnabledException",
+)<{
+  readonly message?: string;
+}> {}
 export interface OrganizationConfigRule {
+  OrganizationConfigRuleName: string;
+  OrganizationConfigRuleArn: string;
+  OrganizationManagedRuleMetadata?: OrganizationManagedRuleMetadata;
+  OrganizationCustomRuleMetadata?: OrganizationCustomRuleMetadata;
+  ExcludedAccounts?: Array<string>;
+  LastUpdateTime?: Date | string;
+  OrganizationCustomPolicyRuleMetadata?: OrganizationCustomPolicyRuleMetadataNoPolicy;
 }
-export type OrganizationConfigRuleDetailedStatus = Array<unknown>;
+export type OrganizationConfigRuleDetailedStatus = Array<MemberAccountStatus>;
 export type OrganizationConfigRuleName = string;
 
-export type OrganizationConfigRuleNames = Array<unknown>;
-export type OrganizationConfigRules = Array<unknown>;
+export type OrganizationConfigRuleNames = Array<string>;
+export type OrganizationConfigRules = Array<OrganizationConfigRule>;
 export interface OrganizationConfigRuleStatus {
+  OrganizationConfigRuleName: string;
+  OrganizationRuleStatus: OrganizationRuleStatus;
+  ErrorCode?: string;
+  ErrorMessage?: string;
+  LastUpdateTime?: Date | string;
 }
-export type OrganizationConfigRuleStatuses = Array<unknown>;
-export type OrganizationConfigRuleTriggerType = never;
-export type OrganizationConfigRuleTriggerTypeNoSN = never;
-export type OrganizationConfigRuleTriggerTypeNoSNs = Array<unknown>;
-export type OrganizationConfigRuleTriggerTypes = Array<unknown>;
+export type OrganizationConfigRuleStatuses =
+  Array<OrganizationConfigRuleStatus>;
+export type OrganizationConfigRuleTriggerType =
+  | "CONFIGURATION_ITEM_CHANGE_NOTIFICATION"
+  | "OVERSIZED_CONFIGURATION_ITEM_CHANGE_NOTIFCATION"
+  | "SCHEDULED_NOTIFICATION";
+export type OrganizationConfigRuleTriggerTypeNoSN =
+  | "CONFIGURATION_ITEM_CHANGE_NOTIFICATION"
+  | "OVERSIZED_CONFIGURATION_ITEM_CHANGE_NOTIFCATION";
+export type OrganizationConfigRuleTriggerTypeNoSNs =
+  Array<OrganizationConfigRuleTriggerTypeNoSN>;
+export type OrganizationConfigRuleTriggerTypes =
+  Array<OrganizationConfigRuleTriggerType>;
 export interface OrganizationConformancePack {
+  OrganizationConformancePackName: string;
+  OrganizationConformancePackArn: string;
+  DeliveryS3Bucket?: string;
+  DeliveryS3KeyPrefix?: string;
+  ConformancePackInputParameters?: Array<ConformancePackInputParameter>;
+  ExcludedAccounts?: Array<string>;
+  LastUpdateTime: Date | string;
 }
 export interface OrganizationConformancePackDetailedStatus {
+  AccountId: string;
+  ConformancePackName: string;
+  Status: OrganizationResourceDetailedStatus;
+  ErrorCode?: string;
+  ErrorMessage?: string;
+  LastUpdateTime?: Date | string;
 }
-export type OrganizationConformancePackDetailedStatuses = Array<unknown>;
+export type OrganizationConformancePackDetailedStatuses =
+  Array<OrganizationConformancePackDetailedStatus>;
 export type OrganizationConformancePackName = string;
 
-export type OrganizationConformancePackNames = Array<unknown>;
-export type OrganizationConformancePacks = Array<unknown>;
+export type OrganizationConformancePackNames = Array<string>;
+export type OrganizationConformancePacks = Array<OrganizationConformancePack>;
 export interface OrganizationConformancePackStatus {
+  OrganizationConformancePackName: string;
+  Status: OrganizationResourceStatus;
+  ErrorCode?: string;
+  ErrorMessage?: string;
+  LastUpdateTime?: Date | string;
 }
-export type OrganizationConformancePackStatuses = Array<unknown>;
-export interface OrganizationConformancePackTemplateValidationException {
-}
+export type OrganizationConformancePackStatuses =
+  Array<OrganizationConformancePackStatus>;
+export declare class OrganizationConformancePackTemplateValidationException extends Data.TaggedError(
+  "OrganizationConformancePackTemplateValidationException",
+)<{
+  readonly message?: string;
+}> {}
 export interface OrganizationCustomPolicyRuleMetadata {
+  Description?: string;
+  OrganizationConfigRuleTriggerTypes?: Array<OrganizationConfigRuleTriggerTypeNoSN>;
+  InputParameters?: string;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  ResourceTypesScope?: Array<string>;
+  ResourceIdScope?: string;
+  TagKeyScope?: string;
+  TagValueScope?: string;
+  PolicyRuntime: string;
+  PolicyText: string;
+  DebugLogDeliveryAccounts?: Array<string>;
 }
 export interface OrganizationCustomPolicyRuleMetadataNoPolicy {
+  Description?: string;
+  OrganizationConfigRuleTriggerTypes?: Array<OrganizationConfigRuleTriggerTypeNoSN>;
+  InputParameters?: string;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  ResourceTypesScope?: Array<string>;
+  ResourceIdScope?: string;
+  TagKeyScope?: string;
+  TagValueScope?: string;
+  PolicyRuntime?: string;
+  DebugLogDeliveryAccounts?: Array<string>;
 }
 export interface OrganizationCustomRuleMetadata {
+  Description?: string;
+  LambdaFunctionArn: string;
+  OrganizationConfigRuleTriggerTypes: Array<OrganizationConfigRuleTriggerType>;
+  InputParameters?: string;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  ResourceTypesScope?: Array<string>;
+  ResourceIdScope?: string;
+  TagKeyScope?: string;
+  TagValueScope?: string;
 }
 export interface OrganizationManagedRuleMetadata {
+  Description?: string;
+  RuleIdentifier: string;
+  InputParameters?: string;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency;
+  ResourceTypesScope?: Array<string>;
+  ResourceIdScope?: string;
+  TagKeyScope?: string;
+  TagValueScope?: string;
 }
-export type OrganizationResourceDetailedStatus = never;
+export type OrganizationResourceDetailedStatus =
+  | "CREATE_SUCCESSFUL"
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "DELETE_SUCCESSFUL"
+  | "DELETE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "UPDATE_SUCCESSFUL"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED";
 export interface OrganizationResourceDetailedStatusFilters {
+  AccountId?: string;
+  Status?: OrganizationResourceDetailedStatus;
 }
-export type OrganizationResourceStatus = never;
-export type OrganizationRuleStatus = never;
-export interface OversizedConfigurationItemException {
-}
-export type Owner = never;
+export type OrganizationResourceStatus =
+  | "CREATE_SUCCESSFUL"
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "DELETE_SUCCESSFUL"
+  | "DELETE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "UPDATE_SUCCESSFUL"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED";
+export type OrganizationRuleStatus =
+  | "CREATE_SUCCESSFUL"
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "DELETE_SUCCESSFUL"
+  | "DELETE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "UPDATE_SUCCESSFUL"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED";
+export declare class OversizedConfigurationItemException extends Data.TaggedError(
+  "OversizedConfigurationItemException",
+)<{
+  readonly message?: string;
+}> {}
+export type Owner = "Custom_Lambda" | "Aws" | "Custom_Policy";
 export type PageSizeLimit = number;
 
 export type ParameterName = string;
@@ -1307,8 +2441,10 @@ export type ParameterName = string;
 export type ParameterValue = string;
 
 export interface PendingAggregationRequest {
+  RequesterAccountId?: string;
+  RequesterAwsRegion?: string;
 }
-export type PendingAggregationRequestList = Array<unknown>;
+export type PendingAggregationRequestList = Array<PendingAggregationRequest>;
 export type Percentage = number;
 
 export type PolicyRuntime = string;
@@ -1316,60 +2452,124 @@ export type PolicyRuntime = string;
 export type PolicyText = string;
 
 export interface PutAggregationAuthorizationRequest {
+  AuthorizedAccountId: string;
+  AuthorizedAwsRegion: string;
+  Tags?: Array<Tag>;
 }
 export interface PutAggregationAuthorizationResponse {
+  AggregationAuthorization?: AggregationAuthorization;
 }
 export interface PutConfigRuleRequest {
+  ConfigRule: ConfigRule;
+  Tags?: Array<Tag>;
 }
 export interface PutConfigurationAggregatorRequest {
+  ConfigurationAggregatorName: string;
+  AccountAggregationSources?: Array<AccountAggregationSource>;
+  OrganizationAggregationSource?: OrganizationAggregationSource;
+  Tags?: Array<Tag>;
+  AggregatorFilters?: AggregatorFilters;
 }
 export interface PutConfigurationAggregatorResponse {
+  ConfigurationAggregator?: ConfigurationAggregator;
 }
 export interface PutConfigurationRecorderRequest {
+  ConfigurationRecorder: ConfigurationRecorder;
+  Tags?: Array<Tag>;
 }
 export interface PutConformancePackRequest {
+  ConformancePackName: string;
+  TemplateS3Uri?: string;
+  TemplateBody?: string;
+  DeliveryS3Bucket?: string;
+  DeliveryS3KeyPrefix?: string;
+  ConformancePackInputParameters?: Array<ConformancePackInputParameter>;
+  TemplateSSMDocumentDetails?: TemplateSSMDocumentDetails;
 }
 export interface PutConformancePackResponse {
+  ConformancePackArn?: string;
 }
 export interface PutDeliveryChannelRequest {
+  DeliveryChannel: DeliveryChannel;
 }
 export interface PutEvaluationsRequest {
+  Evaluations?: Array<Evaluation>;
+  ResultToken: string;
+  TestMode?: boolean;
 }
 export interface PutEvaluationsResponse {
+  FailedEvaluations?: Array<Evaluation>;
 }
 export interface PutExternalEvaluationRequest {
+  ConfigRuleName: string;
+  ExternalEvaluation: ExternalEvaluation;
 }
-export interface PutExternalEvaluationResponse {
-}
+export interface PutExternalEvaluationResponse {}
 export interface PutOrganizationConfigRuleRequest {
+  OrganizationConfigRuleName: string;
+  OrganizationManagedRuleMetadata?: OrganizationManagedRuleMetadata;
+  OrganizationCustomRuleMetadata?: OrganizationCustomRuleMetadata;
+  ExcludedAccounts?: Array<string>;
+  OrganizationCustomPolicyRuleMetadata?: OrganizationCustomPolicyRuleMetadata;
 }
 export interface PutOrganizationConfigRuleResponse {
+  OrganizationConfigRuleArn?: string;
 }
 export interface PutOrganizationConformancePackRequest {
+  OrganizationConformancePackName: string;
+  TemplateS3Uri?: string;
+  TemplateBody?: string;
+  DeliveryS3Bucket?: string;
+  DeliveryS3KeyPrefix?: string;
+  ConformancePackInputParameters?: Array<ConformancePackInputParameter>;
+  ExcludedAccounts?: Array<string>;
 }
 export interface PutOrganizationConformancePackResponse {
+  OrganizationConformancePackArn?: string;
 }
 export interface PutRemediationConfigurationsRequest {
+  RemediationConfigurations: Array<RemediationConfiguration>;
 }
 export interface PutRemediationConfigurationsResponse {
+  FailedBatches?: Array<FailedRemediationBatch>;
 }
 export interface PutRemediationExceptionsRequest {
+  ConfigRuleName: string;
+  ResourceKeys: Array<RemediationExceptionResourceKey>;
+  Message?: string;
+  ExpirationTime?: Date | string;
 }
 export interface PutRemediationExceptionsResponse {
+  FailedBatches?: Array<FailedRemediationExceptionBatch>;
 }
 export interface PutResourceConfigRequest {
+  ResourceType: string;
+  SchemaVersionId: string;
+  ResourceId: string;
+  ResourceName?: string;
+  Configuration: string;
+  Tags?: Record<string, string>;
 }
 export interface PutRetentionConfigurationRequest {
+  RetentionPeriodInDays: number;
 }
 export interface PutRetentionConfigurationResponse {
+  RetentionConfiguration?: RetentionConfiguration;
 }
 export interface PutServiceLinkedConfigurationRecorderRequest {
+  ServicePrincipal: string;
+  Tags?: Array<Tag>;
 }
 export interface PutServiceLinkedConfigurationRecorderResponse {
+  Arn?: string;
+  Name?: string;
 }
 export interface PutStoredQueryRequest {
+  StoredQuery: StoredQuery;
+  Tags?: Array<Tag>;
 }
 export interface PutStoredQueryResponse {
+  QueryArn?: string;
 }
 export type QueryArn = string;
 
@@ -1380,121 +2580,668 @@ export type QueryExpression = string;
 export type QueryId = string;
 
 export interface QueryInfo {
+  SelectFields?: Array<FieldInfo>;
 }
 export type QueryName = string;
 
 export type RecorderName = string;
 
-export type RecorderStatus = never;
-export type RecordingFrequency = never;
+export type RecorderStatus =
+  | "Pending"
+  | "Success"
+  | "Failure"
+  | "NotApplicable";
+export type RecordingFrequency = "CONTINUOUS" | "DAILY";
 export interface RecordingGroup {
+  allSupported?: boolean;
+  includeGlobalResourceTypes?: boolean;
+  resourceTypes?: Array<ResourceType>;
+  exclusionByResourceTypes?: ExclusionByResourceTypes;
+  recordingStrategy?: RecordingStrategy;
 }
 export interface RecordingMode {
+  recordingFrequency: RecordingFrequency;
+  recordingModeOverrides?: Array<RecordingModeOverride>;
 }
 export interface RecordingModeOverride {
+  description?: string;
+  resourceTypes: Array<ResourceType>;
+  recordingFrequency: RecordingFrequency;
 }
-export type RecordingModeOverrides = Array<unknown>;
-export type RecordingModeResourceTypesList = Array<unknown>;
-export type RecordingScope = never;
+export type RecordingModeOverrides = Array<RecordingModeOverride>;
+export type RecordingModeResourceTypesList = Array<ResourceType>;
+export type RecordingScope = "INTERNAL" | "PAID";
 export interface RecordingStrategy {
+  useOnly?: RecordingStrategyType;
 }
-export type RecordingStrategyType = never;
-export type ReevaluateConfigRuleNames = Array<unknown>;
+export type RecordingStrategyType =
+  | "ALL_SUPPORTED_RESOURCE_TYPES"
+  | "INCLUSION_BY_RESOURCE_TYPES"
+  | "EXCLUSION_BY_RESOURCE_TYPES";
+export type ReevaluateConfigRuleNames = Array<string>;
 export type RelatedEvent = string;
 
-export type RelatedEventList = Array<unknown>;
+export type RelatedEventList = Array<string>;
 export interface Relationship {
+  resourceType?: ResourceType;
+  resourceId?: string;
+  resourceName?: string;
+  relationshipName?: string;
 }
-export type RelationshipList = Array<unknown>;
+export type RelationshipList = Array<Relationship>;
 export type RelationshipName = string;
 
 export interface RemediationConfiguration {
+  ConfigRuleName: string;
+  TargetType: RemediationTargetType;
+  TargetId: string;
+  TargetVersion?: string;
+  Parameters?: Record<string, RemediationParameterValue>;
+  ResourceType?: string;
+  Automatic?: boolean;
+  ExecutionControls?: ExecutionControls;
+  MaximumAutomaticAttempts?: number;
+  RetryAttemptSeconds?: number;
+  Arn?: string;
+  CreatedByService?: string;
 }
-export type RemediationConfigurations = Array<unknown>;
+export type RemediationConfigurations = Array<RemediationConfiguration>;
 export interface RemediationException {
+  ConfigRuleName: string;
+  ResourceType: string;
+  ResourceId: string;
+  Message?: string;
+  ExpirationTime?: Date | string;
 }
 export interface RemediationExceptionResourceKey {
+  ResourceType?: string;
+  ResourceId?: string;
 }
-export type RemediationExceptionResourceKeys = Array<unknown>;
-export type RemediationExceptions = Array<unknown>;
-export type RemediationExecutionState = never;
+export type RemediationExceptionResourceKeys =
+  Array<RemediationExceptionResourceKey>;
+export type RemediationExceptions = Array<RemediationException>;
+export type RemediationExecutionState =
+  | "QUEUED"
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED";
 export interface RemediationExecutionStatus {
+  ResourceKey?: ResourceKey;
+  State?: RemediationExecutionState;
+  StepDetails?: Array<RemediationExecutionStep>;
+  InvocationTime?: Date | string;
+  LastUpdatedTime?: Date | string;
 }
-export type RemediationExecutionStatuses = Array<unknown>;
+export type RemediationExecutionStatuses = Array<RemediationExecutionStatus>;
 export interface RemediationExecutionStep {
+  Name?: string;
+  State?: RemediationExecutionStepState;
+  ErrorMessage?: string;
+  StartTime?: Date | string;
+  StopTime?: Date | string;
 }
-export type RemediationExecutionSteps = Array<unknown>;
-export type RemediationExecutionStepState = never;
-export interface RemediationInProgressException {
-}
-export type RemediationParameters = Record<string, unknown>;
+export type RemediationExecutionSteps = Array<RemediationExecutionStep>;
+export type RemediationExecutionStepState = "SUCCEEDED" | "PENDING" | "FAILED";
+export declare class RemediationInProgressException extends Data.TaggedError(
+  "RemediationInProgressException",
+)<{
+  readonly message?: string;
+}> {}
+export type RemediationParameters = Record<string, RemediationParameterValue>;
 export interface RemediationParameterValue {
+  ResourceValue?: ResourceValue;
+  StaticValue?: StaticValue;
 }
-export type RemediationTargetType = never;
-export interface ResourceConcurrentModificationException {
-}
+export type RemediationTargetType = "SSM_DOCUMENT";
+export declare class ResourceConcurrentModificationException extends Data.TaggedError(
+  "ResourceConcurrentModificationException",
+)<{
+  readonly message?: string;
+}> {}
 export type ResourceConfiguration = string;
 
-export type ResourceConfigurationSchemaType = never;
+export type ResourceConfigurationSchemaType = "CFN_RESOURCE_SCHEMA";
 export interface ResourceCount {
+  resourceType?: ResourceType;
+  count?: number;
 }
 export interface ResourceCountFilters {
+  ResourceType?: ResourceType;
+  AccountId?: string;
+  Region?: string;
 }
-export type ResourceCountGroupKey = never;
-export type ResourceCounts = Array<unknown>;
+export type ResourceCountGroupKey =
+  | "RESOURCE_TYPE"
+  | "ACCOUNT_ID"
+  | "AWS_REGION";
+export type ResourceCounts = Array<ResourceCount>;
 export type ResourceCreationTime = Date | string;
 
 export type ResourceDeletionTime = Date | string;
 
 export interface ResourceDetails {
+  ResourceId: string;
+  ResourceType: string;
+  ResourceConfiguration: string;
+  ResourceConfigurationSchemaType?: ResourceConfigurationSchemaType;
 }
 export interface ResourceEvaluation {
+  ResourceEvaluationId?: string;
+  EvaluationMode?: EvaluationMode;
+  EvaluationStartTimestamp?: Date | string;
 }
 export interface ResourceEvaluationFilters {
+  EvaluationMode?: EvaluationMode;
+  TimeWindow?: TimeWindow;
+  EvaluationContextIdentifier?: string;
 }
 export type ResourceEvaluationId = string;
 
-export type ResourceEvaluations = Array<unknown>;
-export type ResourceEvaluationStatus = never;
+export type ResourceEvaluations = Array<ResourceEvaluation>;
+export type ResourceEvaluationStatus = "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
 export interface ResourceFilters {
+  AccountId?: string;
+  ResourceId?: string;
+  ResourceName?: string;
+  Region?: string;
 }
 export type ResourceId = string;
 
 export interface ResourceIdentifier {
+  resourceType?: ResourceType;
+  resourceId?: string;
+  resourceName?: string;
+  resourceDeletionTime?: Date | string;
 }
-export type ResourceIdentifierList = Array<unknown>;
-export type ResourceIdentifiersList = Array<unknown>;
-export type ResourceIdList = Array<unknown>;
-export interface ResourceInUseException {
-}
+export type ResourceIdentifierList = Array<ResourceIdentifier>;
+export type ResourceIdentifiersList = Array<AggregateResourceIdentifier>;
+export type ResourceIdList = Array<string>;
+export declare class ResourceInUseException extends Data.TaggedError(
+  "ResourceInUseException",
+)<{
+  readonly message?: string;
+}> {}
 export interface ResourceKey {
+  resourceType: ResourceType;
+  resourceId: string;
 }
-export type ResourceKeys = Array<unknown>;
+export type ResourceKeys = Array<ResourceKey>;
 export type ResourceName = string;
 
-export interface ResourceNotDiscoveredException {
-}
-export interface ResourceNotFoundException {
-}
-export type ResourceType = never;
-export type ResourceTypeList = Array<unknown>;
-export type ResourceTypes = Array<unknown>;
-export type ResourceTypesScope = Array<unknown>;
+export declare class ResourceNotDiscoveredException extends Data.TaggedError(
+  "ResourceNotDiscoveredException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class ResourceNotFoundException extends Data.TaggedError(
+  "ResourceNotFoundException",
+)<{
+  readonly message?: string;
+}> {}
+export type ResourceType =
+  | "CustomerGateway"
+  | "EIP"
+  | "Host"
+  | "Instance"
+  | "InternetGateway"
+  | "NetworkAcl"
+  | "NetworkInterface"
+  | "RouteTable"
+  | "SecurityGroup"
+  | "Subnet"
+  | "Trail"
+  | "Volume"
+  | "VPC"
+  | "VPNConnection"
+  | "VPNGateway"
+  | "RegisteredHAInstance"
+  | "NatGateway"
+  | "EgressOnlyInternetGateway"
+  | "VPCEndpoint"
+  | "VPCEndpointService"
+  | "FlowLog"
+  | "VPCPeeringConnection"
+  | "Domain"
+  | "Group"
+  | "Policy"
+  | "Role"
+  | "User"
+  | "LoadBalancerV2"
+  | "Certificate"
+  | "DBInstance"
+  | "DBSubnetGroup"
+  | "DBSecurityGroup"
+  | "DBSnapshot"
+  | "DBCluster"
+  | "DBClusterSnapshot"
+  | "EventSubscription"
+  | "Bucket"
+  | "AccountPublicAccessBlock"
+  | "Cluster"
+  | "ClusterSnapshot"
+  | "ClusterParameterGroup"
+  | "ClusterSecurityGroup"
+  | "ClusterSubnetGroup"
+  | "RedshiftEventSubscription"
+  | "ManagedInstanceInventory"
+  | "Alarm"
+  | "Stack"
+  | "LoadBalancer"
+  | "AutoScalingGroup"
+  | "LaunchConfiguration"
+  | "ScalingPolicy"
+  | "ScheduledAction"
+  | "Table"
+  | "Project"
+  | "RateBasedRule"
+  | "Rule"
+  | "RuleGroup"
+  | "WebACL"
+  | "RegionalRateBasedRule"
+  | "RegionalRule"
+  | "RegionalRuleGroup"
+  | "RegionalWebACL"
+  | "Distribution"
+  | "StreamingDistribution"
+  | "Function"
+  | "NetworkFirewallFirewall"
+  | "NetworkFirewallFirewallPolicy"
+  | "NetworkFirewallRuleGroup"
+  | "Application"
+  | "ApplicationVersion"
+  | "Environment"
+  | "WebACLV2"
+  | "RuleGroupV2"
+  | "IPSetV2"
+  | "RegexPatternSetV2"
+  | "ManagedRuleSetV2"
+  | "EncryptionConfig"
+  | "AssociationCompliance"
+  | "PatchCompliance"
+  | "Protection"
+  | "RegionalProtection"
+  | "ConformancePackCompliance"
+  | "ResourceCompliance"
+  | "Stage"
+  | "RestApi"
+  | "StageV2"
+  | "Api"
+  | "Pipeline"
+  | "CloudFormationProvisionedProduct"
+  | "CloudFormationProduct"
+  | "Portfolio"
+  | "Queue"
+  | "Key"
+  | "QLDBLedger"
+  | "Secret"
+  | "Topic"
+  | "FileData"
+  | "BackupPlan"
+  | "BackupSelection"
+  | "BackupVault"
+  | "BackupRecoveryPoint"
+  | "ECRRepository"
+  | "ECSCluster"
+  | "ECSService"
+  | "ECSTaskDefinition"
+  | "EFSAccessPoint"
+  | "EFSFileSystem"
+  | "EKSCluster"
+  | "OpenSearchDomain"
+  | "TransitGateway"
+  | "KinesisStream"
+  | "KinesisStreamConsumer"
+  | "CodeDeployApplication"
+  | "CodeDeployDeploymentConfig"
+  | "CodeDeployDeploymentGroup"
+  | "LaunchTemplate"
+  | "ECRPublicRepository"
+  | "GuardDutyDetector"
+  | "EMRSecurityConfiguration"
+  | "SageMakerCodeRepository"
+  | "Route53ResolverResolverEndpoint"
+  | "Route53ResolverResolverRule"
+  | "Route53ResolverResolverRuleAssociation"
+  | "DMSReplicationSubnetGroup"
+  | "DMSEventSubscription"
+  | "MSKCluster"
+  | "StepFunctionsActivity"
+  | "WorkSpacesWorkspace"
+  | "WorkSpacesConnectionAlias"
+  | "SageMakerModel"
+  | "ListenerV2"
+  | "StepFunctionsStateMachine"
+  | "BatchJobQueue"
+  | "BatchComputeEnvironment"
+  | "AccessAnalyzerAnalyzer"
+  | "AthenaWorkGroup"
+  | "AthenaDataCatalog"
+  | "DetectiveGraph"
+  | "GlobalAcceleratorAccelerator"
+  | "GlobalAcceleratorEndpointGroup"
+  | "GlobalAcceleratorListener"
+  | "TransitGatewayAttachment"
+  | "TransitGatewayRouteTable"
+  | "DMSCertificate"
+  | "AppConfigApplication"
+  | "AppSyncGraphQLApi"
+  | "DataSyncLocationSMB"
+  | "DataSyncLocationFSxLustre"
+  | "DataSyncLocationS3"
+  | "DataSyncLocationEFS"
+  | "DataSyncTask"
+  | "DataSyncLocationNFS"
+  | "NetworkInsightsAccessScopeAnalysis"
+  | "EKSFargateProfile"
+  | "GlueJob"
+  | "GuardDutyThreatIntelSet"
+  | "GuardDutyIPSet"
+  | "SageMakerWorkteam"
+  | "SageMakerNotebookInstanceLifecycleConfig"
+  | "ServiceDiscoveryService"
+  | "ServiceDiscoveryPublicDnsNamespace"
+  | "SESContactList"
+  | "SESConfigurationSet"
+  | "Route53HostedZone"
+  | "IoTEventsInput"
+  | "IoTEventsDetectorModel"
+  | "IoTEventsAlarmModel"
+  | "ServiceDiscoveryHttpNamespace"
+  | "EventsEventBus"
+  | "ImageBuilderContainerRecipe"
+  | "ImageBuilderDistributionConfiguration"
+  | "ImageBuilderInfrastructureConfiguration"
+  | "DataSyncLocationObjectStorage"
+  | "DataSyncLocationHDFS"
+  | "GlueClassifier"
+  | "Route53RecoveryReadinessCell"
+  | "Route53RecoveryReadinessReadinessCheck"
+  | "ECRRegistryPolicy"
+  | "BackupReportPlan"
+  | "LightsailCertificate"
+  | "RUMAppMonitor"
+  | "EventsEndpoint"
+  | "SESReceiptRuleSet"
+  | "EventsArchive"
+  | "EventsApiDestination"
+  | "LightsailDisk"
+  | "FISExperimentTemplate"
+  | "DataSyncLocationFSxWindows"
+  | "SESReceiptFilter"
+  | "GuardDutyFilter"
+  | "SESTemplate"
+  | "AmazonMQBroker"
+  | "AppConfigEnvironment"
+  | "AppConfigConfigurationProfile"
+  | "Cloud9EnvironmentEC2"
+  | "EventSchemasRegistry"
+  | "EventSchemasRegistryPolicy"
+  | "EventSchemasDiscoverer"
+  | "FraudDetectorLabel"
+  | "FraudDetectorEntityType"
+  | "FraudDetectorVariable"
+  | "FraudDetectorOutcome"
+  | "IoTAuthorizer"
+  | "IoTSecurityProfile"
+  | "IoTRoleAlias"
+  | "IoTDimension"
+  | "IoTAnalyticsDatastore"
+  | "LightsailBucket"
+  | "LightsailStaticIp"
+  | "MediaPackagePackagingGroup"
+  | "Route53RecoveryReadinessRecoveryGroup"
+  | "ResilienceHubResiliencyPolicy"
+  | "TransferWorkflow"
+  | "EKSIdentityProviderConfig"
+  | "EKSAddon"
+  | "GlueMLTransform"
+  | "IoTPolicy"
+  | "IoTMitigationAction"
+  | "IoTTwinMakerWorkspace"
+  | "IoTTwinMakerEntity"
+  | "IoTAnalyticsDataset"
+  | "IoTAnalyticsPipeline"
+  | "IoTAnalyticsChannel"
+  | "IoTSiteWiseDashboard"
+  | "IoTSiteWiseProject"
+  | "IoTSiteWisePortal"
+  | "IoTSiteWiseAssetModel"
+  | "IVSChannel"
+  | "IVSRecordingConfiguration"
+  | "IVSPlaybackKeyPair"
+  | "KinesisAnalyticsV2Application"
+  | "RDSGlobalCluster"
+  | "S3MultiRegionAccessPoint"
+  | "DeviceFarmTestGridProject"
+  | "BudgetsBudgetsAction"
+  | "LexBot"
+  | "CodeGuruReviewerRepositoryAssociation"
+  | "IoTCustomMetric"
+  | "Route53ResolverFirewallDomainList"
+  | "RoboMakerRobotApplicationVersion"
+  | "EC2TrafficMirrorSession"
+  | "IoTSiteWiseGateway"
+  | "LexBotAlias"
+  | "LookoutMetricsAlert"
+  | "IoTAccountAuditConfiguration"
+  | "EC2TrafficMirrorTarget"
+  | "S3StorageLens"
+  | "IoTScheduledAudit"
+  | "EventsConnection"
+  | "EventSchemasSchema"
+  | "MediaPackagePackagingConfiguration"
+  | "KinesisVideoSignalingChannel"
+  | "AppStreamDirectoryConfig"
+  | "LookoutVisionProject"
+  | "Route53RecoveryControlCluster"
+  | "Route53RecoveryControlSafetyRule"
+  | "Route53RecoveryControlControlPanel"
+  | "Route53RecoveryControlRoutingControl"
+  | "Route53RecoveryReadinessResourceSet"
+  | "RoboMakerSimulationApplication"
+  | "RoboMakerRobotApplication"
+  | "HealthLakeFHIRDatastore"
+  | "PinpointSegment"
+  | "PinpointApplicationSettings"
+  | "EventsRule"
+  | "EC2DHCPOptions"
+  | "EC2NetworkInsightsPath"
+  | "EC2TrafficMirrorFilter"
+  | "EC2IPAM"
+  | "IoTTwinMakerScene"
+  | "NetworkManagerTransitGatewayRegistration"
+  | "CustomerProfilesDomain"
+  | "AutoScalingWarmPool"
+  | "ConnectPhoneNumber"
+  | "AppConfigDeploymentStrategy"
+  | "AppFlowFlow"
+  | "AuditManagerAssessment"
+  | "CloudWatchMetricStream"
+  | "DeviceFarmInstanceProfile"
+  | "DeviceFarmProject"
+  | "EC2EC2Fleet"
+  | "EC2SubnetRouteTableAssociation"
+  | "ECRPullThroughCacheRule"
+  | "GroundStationConfig"
+  | "ImageBuilderImagePipeline"
+  | "IoTFleetMetric"
+  | "IoTWirelessServiceProfile"
+  | "NetworkManagerDevice"
+  | "NetworkManagerGlobalNetwork"
+  | "NetworkManagerLink"
+  | "NetworkManagerSite"
+  | "PanoramaPackage"
+  | "PinpointApp"
+  | "RedshiftScheduledAction"
+  | "Route53ResolverFirewallRuleGroupAssociation"
+  | "SageMakerAppImageConfig"
+  | "SageMakerImage"
+  | "ECSTaskSet"
+  | "CassandraKeyspace"
+  | "SignerSigningProfile"
+  | "AmplifyApp"
+  | "AppMeshVirtualNode"
+  | "AppMeshVirtualService"
+  | "AppRunnerVpcConnector"
+  | "AppStreamApplication"
+  | "CodeArtifactRepository"
+  | "EC2PrefixList"
+  | "EC2SpotFleet"
+  | "EvidentlyProject"
+  | "ForecastDataset"
+  | "IAMSAMLProvider"
+  | "IAMServerCertificate"
+  | "PinpointCampaign"
+  | "PinpointInAppTemplate"
+  | "SageMakerDomain"
+  | "TransferAgreement"
+  | "TransferConnector"
+  | "KinesisFirehoseDeliveryStream"
+  | "AmplifyBranch"
+  | "AppIntegrationsEventIntegration"
+  | "AppMeshRoute"
+  | "AthenaPreparedStatement"
+  | "EC2IPAMScope"
+  | "EvidentlyLaunch"
+  | "ForecastDatasetGroup"
+  | "GreengrassV2ComponentVersion"
+  | "GroundStationMissionProfile"
+  | "MediaConnectFlowEntitlement"
+  | "MediaConnectFlowVpcInterface"
+  | "MediaTailorPlaybackConfiguration"
+  | "MSKConfiguration"
+  | "PersonalizeDataset"
+  | "PersonalizeSchema"
+  | "PersonalizeSolution"
+  | "PinpointEmailTemplate"
+  | "PinpointEventStream"
+  | "ResilienceHubApp"
+  | "ACMPCACertificateAuthority"
+  | "AppConfigHostedConfigurationVersion"
+  | "AppMeshVirtualGateway"
+  | "AppMeshVirtualRouter"
+  | "AppRunnerService"
+  | "CustomerProfilesObjectType"
+  | "DMSEndpoint"
+  | "EC2CapacityReservation"
+  | "EC2ClientVpnEndpoint"
+  | "KendraIndex"
+  | "KinesisVideoStream"
+  | "LogsDestination"
+  | "PinpointEmailChannel"
+  | "S3AccessPoint"
+  | "NetworkManagerCustomerGatewayAssociation"
+  | "NetworkManagerLinkAssociation"
+  | "IoTWirelessMulticastGroup"
+  | "PersonalizeDatasetGroup"
+  | "IoTTwinMakerComponentType"
+  | "CodeBuildReportGroup"
+  | "SageMakerFeatureGroup"
+  | "MSKBatchScramSecret"
+  | "AppStreamStack"
+  | "IoTJobTemplate"
+  | "IoTWirelessFuotaTask"
+  | "IoTProvisioningTemplate"
+  | "InspectorV2Filter"
+  | "Route53ResolverResolverQueryLoggingConfigAssociation"
+  | "ServiceDiscoveryInstance"
+  | "TransferCertificate"
+  | "MediaConnectFlowSource"
+  | "APSRuleGroupsNamespace"
+  | "CodeGuruProfilerProfilingGroup"
+  | "Route53ResolverResolverQueryLoggingConfig"
+  | "BatchSchedulingPolicy"
+  | "ACMPCACertificateAuthorityActivation"
+  | "AppMeshGatewayRoute"
+  | "AppMeshMesh"
+  | "ConnectInstance"
+  | "ConnectQuickConnect"
+  | "EC2CarrierGateway"
+  | "EC2IPAMPool"
+  | "EC2TransitGatewayConnect"
+  | "EC2TransitGatewayMulticastDomain"
+  | "ECSCapacityProvider"
+  | "IAMInstanceProfile"
+  | "IoTCACertificate"
+  | "IoTTwinMakerSyncJob"
+  | "KafkaConnectConnector"
+  | "LambdaCodeSigningConfig"
+  | "NetworkManagerConnectPeer"
+  | "ResourceExplorer2Index"
+  | "AppStreamFleet"
+  | "CognitoUserPool"
+  | "CognitoUserPoolClient"
+  | "CognitoUserPoolGroup"
+  | "EC2NetworkInsightsAccessScope"
+  | "EC2NetworkInsightsAnalysis"
+  | "GrafanaWorkspace"
+  | "GroundStationDataflowEndpointGroup"
+  | "ImageBuilderImageRecipe"
+  | "KMSAlias"
+  | "M2Environment"
+  | "QuickSightDataSource"
+  | "QuickSightTemplate"
+  | "QuickSightTheme"
+  | "RDSOptionGroup"
+  | "RedshiftEndpointAccess"
+  | "Route53ResolverFirewallRuleGroup"
+  | "SSMDocument"
+  | "AppConfigExtensionAssociation"
+  | "AppIntegrationsApplication"
+  | "AppSyncApiCache"
+  | "BedrockGuardrail"
+  | "BedrockKnowledgeBase"
+  | "CognitoIdentityPool"
+  | "ConnectRule"
+  | "ConnectUser"
+  | "EC2ClientVpnTargetNetworkAssociation"
+  | "EC2EIPAssociation"
+  | "EC2IPAMResourceDiscovery"
+  | "EC2IPAMResourceDiscoveryAssociation"
+  | "EC2InstanceConnectEndpoint"
+  | "EC2SnapshotBlockPublicAccess"
+  | "EC2VPCBlockPublicAccessExclusion"
+  | "EC2VPCBlockPublicAccessOptions"
+  | "EC2VPCEndpointConnectionNotification"
+  | "EC2VPNConnectionRoute"
+  | "EvidentlySegment"
+  | "IAMOIDCProvider"
+  | "InspectorV2Activation"
+  | "MSKClusterPolicy"
+  | "MSKVpcConnection"
+  | "MediaConnectGateway"
+  | "MemoryDBSubnetGroup"
+  | "OpenSearchServerlessCollection"
+  | "OpenSearchServerlessVpcEndpoint"
+  | "RedshiftEndpointAuthorization"
+  | "Route53ProfilesProfile"
+  | "S3StorageLensGroup"
+  | "S3ExpressBucketPolicy"
+  | "S3ExpressDirectoryBucket"
+  | "SageMakerInferenceExperiment"
+  | "SecurityHubStandard"
+  | "TransferProfile";
+export type ResourceTypeList = Array<ResourceType>;
+export type ResourceTypes = Array<string>;
+export type ResourceTypesScope = Array<string>;
 export type ResourceTypeString = string;
 
 export type ResourceTypeValue = string;
 
-export type ResourceTypeValueList = Array<unknown>;
+export type ResourceTypeValueList = Array<string>;
 export interface ResourceValue {
+  Value: ResourceValueType;
 }
-export type ResourceValueType = never;
-export type Results = Array<unknown>;
+export type ResourceValueType = "RESOURCE_ID";
+export type Results = Array<string>;
 export interface RetentionConfiguration {
+  Name: string;
+  RetentionPeriodInDays: number;
 }
-export type RetentionConfigurationList = Array<unknown>;
+export type RetentionConfigurationList = Array<RetentionConfiguration>;
 export type RetentionConfigurationName = string;
 
-export type RetentionConfigurationNameList = Array<unknown>;
+export type RetentionConfigurationNameList = Array<string>;
 export type RetentionPeriodInDays = number;
 
 export type RuleLimit = number;
@@ -1502,28 +3249,55 @@ export type RuleLimit = number;
 export type SchemaVersionId = string;
 
 export interface Scope {
+  ComplianceResourceTypes?: Array<string>;
+  TagKey?: string;
+  TagValue?: string;
+  ComplianceResourceId?: string;
 }
 export interface SelectAggregateResourceConfigRequest {
+  Expression: string;
+  ConfigurationAggregatorName: string;
+  Limit?: number;
+  MaxResults?: number;
+  NextToken?: string;
 }
 export interface SelectAggregateResourceConfigResponse {
+  Results?: Array<string>;
+  QueryInfo?: QueryInfo;
+  NextToken?: string;
 }
 export interface SelectResourceConfigRequest {
+  Expression: string;
+  Limit?: number;
+  NextToken?: string;
 }
 export interface SelectResourceConfigResponse {
+  Results?: Array<string>;
+  QueryInfo?: QueryInfo;
+  NextToken?: string;
 }
 export type ServicePrincipal = string;
 
 export type ServicePrincipalValue = string;
 
-export type ServicePrincipalValueList = Array<unknown>;
-export type SortBy = never;
-export type SortOrder = never;
+export type ServicePrincipalValueList = Array<string>;
+export type SortBy = "SCORE";
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export interface Source {
+  Owner: Owner;
+  SourceIdentifier?: string;
+  SourceDetails?: Array<SourceDetail>;
+  CustomPolicyDetails?: CustomPolicyDetails;
 }
 export interface SourceDetail {
+  EventSource?: EventSource;
+  MessageType?: MessageType;
+  MaximumExecutionFrequency?: MaximumExecutionFrequency;
 }
-export type SourceDetails = Array<unknown>;
+export type SourceDetails = Array<SourceDetail>;
 export interface SsmControls {
+  ConcurrentExecutionRatePercentage?: number;
+  ErrorPercentage?: number;
 }
 export type SSMDocumentName = string;
 
@@ -1532,31 +3306,55 @@ export type SSMDocumentVersion = string;
 export type StackArn = string;
 
 export interface StartConfigRulesEvaluationRequest {
+  ConfigRuleNames?: Array<string>;
 }
-export interface StartConfigRulesEvaluationResponse {
-}
+export interface StartConfigRulesEvaluationResponse {}
 export interface StartConfigurationRecorderRequest {
+  ConfigurationRecorderName: string;
 }
 export interface StartRemediationExecutionRequest {
+  ConfigRuleName: string;
+  ResourceKeys: Array<ResourceKey>;
 }
 export interface StartRemediationExecutionResponse {
+  FailureMessage?: string;
+  FailedItems?: Array<ResourceKey>;
 }
 export interface StartResourceEvaluationRequest {
+  ResourceDetails: ResourceDetails;
+  EvaluationContext?: EvaluationContext;
+  EvaluationMode: EvaluationMode;
+  EvaluationTimeout?: number;
+  ClientToken?: string;
 }
 export interface StartResourceEvaluationResponse {
+  ResourceEvaluationId?: string;
 }
-export type StaticParameterValues = Array<unknown>;
+export type StaticParameterValues = Array<string>;
 export interface StaticValue {
+  Values: Array<string>;
 }
 export interface StatusDetailFilters {
+  AccountId?: string;
+  MemberAccountRuleStatus?: MemberAccountRuleStatus;
 }
 export interface StopConfigurationRecorderRequest {
+  ConfigurationRecorderName: string;
 }
 export interface StoredQuery {
+  QueryId?: string;
+  QueryArn?: string;
+  QueryName: string;
+  Description?: string;
+  Expression?: string;
 }
 export interface StoredQueryMetadata {
+  QueryId: string;
+  QueryArn: string;
+  QueryName: string;
+  Description?: string;
 }
-export type StoredQueryMetadataList = Array<unknown>;
+export type StoredQueryMetadataList = Array<StoredQueryMetadata>;
 export type StringWithCharLimit1024 = string;
 
 export type StringWithCharLimit128 = string;
@@ -1571,21 +3369,25 @@ export type StringWithCharLimit64 = string;
 
 export type StringWithCharLimit768 = string;
 
-export type SupplementaryConfiguration = Record<string, unknown>;
+export type SupplementaryConfiguration = Record<string, string>;
 export type SupplementaryConfigurationName = string;
 
 export type SupplementaryConfigurationValue = string;
 
 export interface Tag {
+  Key?: string;
+  Value?: string;
 }
 export type TagKey = string;
 
-export type TagKeyList = Array<unknown>;
-export type TagList = Array<unknown>;
+export type TagKeyList = Array<string>;
+export type TagList = Array<Tag>;
 export interface TagResourceRequest {
+  ResourceArn: string;
+  Tags: Array<Tag>;
 }
-export type Tags = Record<string, unknown>;
-export type TagsList = Array<unknown>;
+export type Tags = Record<string, string>;
+export type TagsList = Array<Tag>;
 export type TagValue = string;
 
 export type TemplateBody = string;
@@ -1593,25 +3395,41 @@ export type TemplateBody = string;
 export type TemplateS3Uri = string;
 
 export interface TemplateSSMDocumentDetails {
+  DocumentName: string;
+  DocumentVersion?: string;
 }
 export interface TimeWindow {
+  StartTime?: Date | string;
+  EndTime?: Date | string;
 }
-export interface TooManyTagsException {
-}
-export interface UnmodifiableEntityException {
-}
-export type UnprocessedResourceIdentifierList = Array<unknown>;
+export declare class TooManyTagsException extends Data.TaggedError(
+  "TooManyTagsException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class UnmodifiableEntityException extends Data.TaggedError(
+  "UnmodifiableEntityException",
+)<{
+  readonly message?: string;
+}> {}
+export type UnprocessedResourceIdentifierList =
+  Array<AggregateResourceIdentifier>;
 export interface UntagResourceRequest {
+  ResourceArn: string;
+  TagKeys: Array<string>;
 }
-export interface ValidationException {
-}
+export declare class ValidationException extends Data.TaggedError(
+  "ValidationException",
+)<{
+  readonly message?: string;
+}> {}
 export type Value = string;
 
 export type Version = string;
 
 export declare namespace AssociateResourceTypes {
   export type Input = AssociateResourceTypesRequest;
-  export type Output = {};
+  export type Output = AssociateResourceTypesResponse;
   export type Error =
     | ConflictException
     | NoSuchConfigurationRecorderException
@@ -1621,7 +3439,7 @@ export declare namespace AssociateResourceTypes {
 
 export declare namespace BatchGetAggregateResourceConfig {
   export type Input = BatchGetAggregateResourceConfigRequest;
-  export type Output = {};
+  export type Output = BatchGetAggregateResourceConfigResponse;
   export type Error =
     | NoSuchConfigurationAggregatorException
     | ValidationException
@@ -1630,7 +3448,7 @@ export declare namespace BatchGetAggregateResourceConfig {
 
 export declare namespace BatchGetResourceConfig {
   export type Input = BatchGetResourceConfigRequest;
-  export type Output = {};
+  export type Output = BatchGetResourceConfigResponse;
   export type Error =
     | NoAvailableConfigurationRecorderException
     | ValidationException
@@ -1640,9 +3458,7 @@ export declare namespace BatchGetResourceConfig {
 export declare namespace DeleteAggregationAuthorization {
   export type Input = DeleteAggregationAuthorizationRequest;
   export type Output = {};
-  export type Error =
-    | InvalidParameterValueException
-    | CommonAwsError;
+  export type Error = InvalidParameterValueException | CommonAwsError;
 }
 
 export declare namespace DeleteConfigRule {
@@ -1657,9 +3473,7 @@ export declare namespace DeleteConfigRule {
 export declare namespace DeleteConfigurationAggregator {
   export type Input = DeleteConfigurationAggregatorRequest;
   export type Output = {};
-  export type Error =
-    | NoSuchConfigurationAggregatorException
-    | CommonAwsError;
+  export type Error = NoSuchConfigurationAggregatorException | CommonAwsError;
 }
 
 export declare namespace DeleteConfigurationRecorder {
@@ -1691,7 +3505,7 @@ export declare namespace DeleteDeliveryChannel {
 
 export declare namespace DeleteEvaluationResults {
   export type Input = DeleteEvaluationResultsRequest;
-  export type Output = {};
+  export type Output = DeleteEvaluationResultsResponse;
   export type Error =
     | NoSuchConfigRuleException
     | ResourceInUseException
@@ -1721,14 +3535,12 @@ export declare namespace DeleteOrganizationConformancePack {
 export declare namespace DeletePendingAggregationRequest {
   export type Input = DeletePendingAggregationRequestRequest;
   export type Output = {};
-  export type Error =
-    | InvalidParameterValueException
-    | CommonAwsError;
+  export type Error = InvalidParameterValueException | CommonAwsError;
 }
 
 export declare namespace DeleteRemediationConfiguration {
   export type Input = DeleteRemediationConfigurationRequest;
-  export type Output = {};
+  export type Output = DeleteRemediationConfigurationResponse;
   export type Error =
     | InsufficientPermissionsException
     | InvalidParameterValueException
@@ -1739,10 +3551,8 @@ export declare namespace DeleteRemediationConfiguration {
 
 export declare namespace DeleteRemediationExceptions {
   export type Input = DeleteRemediationExceptionsRequest;
-  export type Output = {};
-  export type Error =
-    | NoSuchRemediationExceptionException
-    | CommonAwsError;
+  export type Output = DeleteRemediationExceptionsResponse;
+  export type Error = NoSuchRemediationExceptionException | CommonAwsError;
 }
 
 export declare namespace DeleteResourceConfig {
@@ -1765,7 +3575,7 @@ export declare namespace DeleteRetentionConfiguration {
 
 export declare namespace DeleteServiceLinkedConfigurationRecorder {
   export type Input = DeleteServiceLinkedConfigurationRecorderRequest;
-  export type Output = {};
+  export type Output = DeleteServiceLinkedConfigurationRecorderResponse;
   export type Error =
     | ConflictException
     | NoSuchConfigurationRecorderException
@@ -1775,7 +3585,7 @@ export declare namespace DeleteServiceLinkedConfigurationRecorder {
 
 export declare namespace DeleteStoredQuery {
   export type Input = DeleteStoredQueryRequest;
-  export type Output = {};
+  export type Output = DeleteStoredQueryResponse;
   export type Error =
     | ResourceNotFoundException
     | ValidationException
@@ -1784,7 +3594,7 @@ export declare namespace DeleteStoredQuery {
 
 export declare namespace DeliverConfigSnapshot {
   export type Input = DeliverConfigSnapshotRequest;
-  export type Output = {};
+  export type Output = DeliverConfigSnapshotResponse;
   export type Error =
     | NoAvailableConfigurationRecorderException
     | NoRunningConfigurationRecorderException
@@ -1794,7 +3604,7 @@ export declare namespace DeliverConfigSnapshot {
 
 export declare namespace DescribeAggregateComplianceByConfigRules {
   export type Input = DescribeAggregateComplianceByConfigRulesRequest;
-  export type Output = {};
+  export type Output = DescribeAggregateComplianceByConfigRulesResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1805,7 +3615,7 @@ export declare namespace DescribeAggregateComplianceByConfigRules {
 
 export declare namespace DescribeAggregateComplianceByConformancePacks {
   export type Input = DescribeAggregateComplianceByConformancePacksRequest;
-  export type Output = {};
+  export type Output = DescribeAggregateComplianceByConformancePacksResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1816,7 +3626,7 @@ export declare namespace DescribeAggregateComplianceByConformancePacks {
 
 export declare namespace DescribeAggregationAuthorizations {
   export type Input = DescribeAggregationAuthorizationsRequest;
-  export type Output = {};
+  export type Output = DescribeAggregationAuthorizationsResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1826,7 +3636,7 @@ export declare namespace DescribeAggregationAuthorizations {
 
 export declare namespace DescribeComplianceByConfigRule {
   export type Input = DescribeComplianceByConfigRuleRequest;
-  export type Output = {};
+  export type Output = DescribeComplianceByConfigRuleResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -1836,7 +3646,7 @@ export declare namespace DescribeComplianceByConfigRule {
 
 export declare namespace DescribeComplianceByResource {
   export type Input = DescribeComplianceByResourceRequest;
-  export type Output = {};
+  export type Output = DescribeComplianceByResourceResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -1845,7 +3655,7 @@ export declare namespace DescribeComplianceByResource {
 
 export declare namespace DescribeConfigRuleEvaluationStatus {
   export type Input = DescribeConfigRuleEvaluationStatusRequest;
-  export type Output = {};
+  export type Output = DescribeConfigRuleEvaluationStatusResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -1855,7 +3665,7 @@ export declare namespace DescribeConfigRuleEvaluationStatus {
 
 export declare namespace DescribeConfigRules {
   export type Input = DescribeConfigRulesRequest;
-  export type Output = {};
+  export type Output = DescribeConfigRulesResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -1863,20 +3673,9 @@ export declare namespace DescribeConfigRules {
     | CommonAwsError;
 }
 
-export declare namespace DescribeConfigurationAggregatorSourcesStatus {
-  export type Input = DescribeConfigurationAggregatorSourcesStatusRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidLimitException
-    | InvalidNextTokenException
-    | InvalidParameterValueException
-    | NoSuchConfigurationAggregatorException
-    | CommonAwsError;
-}
-
 export declare namespace DescribeConfigurationAggregators {
   export type Input = DescribeConfigurationAggregatorsRequest;
-  export type Output = {};
+  export type Output = DescribeConfigurationAggregatorsResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1885,18 +3684,29 @@ export declare namespace DescribeConfigurationAggregators {
     | CommonAwsError;
 }
 
-export declare namespace DescribeConfigurationRecorderStatus {
-  export type Input = DescribeConfigurationRecorderStatusRequest;
-  export type Output = {};
+export declare namespace DescribeConfigurationAggregatorSourcesStatus {
+  export type Input = DescribeConfigurationAggregatorSourcesStatusRequest;
+  export type Output = DescribeConfigurationAggregatorSourcesStatusResponse;
+  export type Error =
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
+    | NoSuchConfigurationAggregatorException
+    | CommonAwsError;
+}
+
+export declare namespace DescribeConfigurationRecorders {
+  export type Input = DescribeConfigurationRecordersRequest;
+  export type Output = DescribeConfigurationRecordersResponse;
   export type Error =
     | NoSuchConfigurationRecorderException
     | ValidationException
     | CommonAwsError;
 }
 
-export declare namespace DescribeConfigurationRecorders {
-  export type Input = DescribeConfigurationRecordersRequest;
-  export type Output = {};
+export declare namespace DescribeConfigurationRecorderStatus {
+  export type Input = DescribeConfigurationRecorderStatusRequest;
+  export type Output = DescribeConfigurationRecorderStatusResponse;
   export type Error =
     | NoSuchConfigurationRecorderException
     | ValidationException
@@ -1905,7 +3715,7 @@ export declare namespace DescribeConfigurationRecorders {
 
 export declare namespace DescribeConformancePackCompliance {
   export type Input = DescribeConformancePackComplianceRequest;
-  export type Output = {};
+  export type Output = DescribeConformancePackComplianceResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1915,19 +3725,9 @@ export declare namespace DescribeConformancePackCompliance {
     | CommonAwsError;
 }
 
-export declare namespace DescribeConformancePackStatus {
-  export type Input = DescribeConformancePackStatusRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidLimitException
-    | InvalidNextTokenException
-    | InvalidParameterValueException
-    | CommonAwsError;
-}
-
 export declare namespace DescribeConformancePacks {
   export type Input = DescribeConformancePacksRequest;
-  export type Output = {};
+  export type Output = DescribeConformancePacksResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1936,25 +3736,42 @@ export declare namespace DescribeConformancePacks {
     | CommonAwsError;
 }
 
-export declare namespace DescribeDeliveryChannelStatus {
-  export type Input = DescribeDeliveryChannelStatusRequest;
-  export type Output = {};
+export declare namespace DescribeConformancePackStatus {
+  export type Input = DescribeConformancePackStatusRequest;
+  export type Output = DescribeConformancePackStatusResponse;
   export type Error =
-    | NoSuchDeliveryChannelException
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | InvalidParameterValueException
     | CommonAwsError;
 }
 
 export declare namespace DescribeDeliveryChannels {
   export type Input = DescribeDeliveryChannelsRequest;
-  export type Output = {};
+  export type Output = DescribeDeliveryChannelsResponse;
+  export type Error = NoSuchDeliveryChannelException | CommonAwsError;
+}
+
+export declare namespace DescribeDeliveryChannelStatus {
+  export type Input = DescribeDeliveryChannelStatusRequest;
+  export type Output = DescribeDeliveryChannelStatusResponse;
+  export type Error = NoSuchDeliveryChannelException | CommonAwsError;
+}
+
+export declare namespace DescribeOrganizationConfigRules {
+  export type Input = DescribeOrganizationConfigRulesRequest;
+  export type Output = DescribeOrganizationConfigRulesResponse;
   export type Error =
-    | NoSuchDeliveryChannelException
+    | InvalidLimitException
+    | InvalidNextTokenException
+    | NoSuchOrganizationConfigRuleException
+    | OrganizationAccessDeniedException
     | CommonAwsError;
 }
 
 export declare namespace DescribeOrganizationConfigRuleStatuses {
   export type Input = DescribeOrganizationConfigRuleStatusesRequest;
-  export type Output = {};
+  export type Output = DescribeOrganizationConfigRuleStatusesResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1963,20 +3780,9 @@ export declare namespace DescribeOrganizationConfigRuleStatuses {
     | CommonAwsError;
 }
 
-export declare namespace DescribeOrganizationConfigRules {
-  export type Input = DescribeOrganizationConfigRulesRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidLimitException
-    | InvalidNextTokenException
-    | NoSuchOrganizationConfigRuleException
-    | OrganizationAccessDeniedException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeOrganizationConformancePackStatuses {
-  export type Input = DescribeOrganizationConformancePackStatusesRequest;
-  export type Output = {};
+export declare namespace DescribeOrganizationConformancePacks {
+  export type Input = DescribeOrganizationConformancePacksRequest;
+  export type Output = DescribeOrganizationConformancePacksResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1985,9 +3791,9 @@ export declare namespace DescribeOrganizationConformancePackStatuses {
     | CommonAwsError;
 }
 
-export declare namespace DescribeOrganizationConformancePacks {
-  export type Input = DescribeOrganizationConformancePacksRequest;
-  export type Output = {};
+export declare namespace DescribeOrganizationConformancePackStatuses {
+  export type Input = DescribeOrganizationConformancePackStatusesRequest;
+  export type Output = DescribeOrganizationConformancePackStatusesResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -1998,7 +3804,7 @@ export declare namespace DescribeOrganizationConformancePacks {
 
 export declare namespace DescribePendingAggregationRequests {
   export type Input = DescribePendingAggregationRequestsRequest;
-  export type Output = {};
+  export type Output = DescribePendingAggregationRequestsResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2008,14 +3814,13 @@ export declare namespace DescribePendingAggregationRequests {
 
 export declare namespace DescribeRemediationConfigurations {
   export type Input = DescribeRemediationConfigurationsRequest;
-  export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Output = DescribeRemediationConfigurationsResponse;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeRemediationExceptions {
   export type Input = DescribeRemediationExceptionsRequest;
-  export type Output = {};
+  export type Output = DescribeRemediationExceptionsResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -2024,7 +3829,7 @@ export declare namespace DescribeRemediationExceptions {
 
 export declare namespace DescribeRemediationExecutionStatus {
   export type Input = DescribeRemediationExecutionStatusRequest;
-  export type Output = {};
+  export type Output = DescribeRemediationExecutionStatusResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -2034,7 +3839,7 @@ export declare namespace DescribeRemediationExecutionStatus {
 
 export declare namespace DescribeRetentionConfigurations {
   export type Input = DescribeRetentionConfigurationsRequest;
-  export type Output = {};
+  export type Output = DescribeRetentionConfigurationsResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -2044,7 +3849,7 @@ export declare namespace DescribeRetentionConfigurations {
 
 export declare namespace DisassociateResourceTypes {
   export type Input = DisassociateResourceTypesRequest;
-  export type Output = {};
+  export type Output = DisassociateResourceTypesResponse;
   export type Error =
     | ConflictException
     | NoSuchConfigurationRecorderException
@@ -2054,7 +3859,7 @@ export declare namespace DisassociateResourceTypes {
 
 export declare namespace GetAggregateComplianceDetailsByConfigRule {
   export type Input = GetAggregateComplianceDetailsByConfigRuleRequest;
-  export type Output = {};
+  export type Output = GetAggregateComplianceDetailsByConfigRuleResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2065,7 +3870,7 @@ export declare namespace GetAggregateComplianceDetailsByConfigRule {
 
 export declare namespace GetAggregateConfigRuleComplianceSummary {
   export type Input = GetAggregateConfigRuleComplianceSummaryRequest;
-  export type Output = {};
+  export type Output = GetAggregateConfigRuleComplianceSummaryResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2076,7 +3881,7 @@ export declare namespace GetAggregateConfigRuleComplianceSummary {
 
 export declare namespace GetAggregateConformancePackComplianceSummary {
   export type Input = GetAggregateConformancePackComplianceSummaryRequest;
-  export type Output = {};
+  export type Output = GetAggregateConformancePackComplianceSummaryResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2087,7 +3892,7 @@ export declare namespace GetAggregateConformancePackComplianceSummary {
 
 export declare namespace GetAggregateDiscoveredResourceCounts {
   export type Input = GetAggregateDiscoveredResourceCountsRequest;
-  export type Output = {};
+  export type Output = GetAggregateDiscoveredResourceCountsResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2098,7 +3903,7 @@ export declare namespace GetAggregateDiscoveredResourceCounts {
 
 export declare namespace GetAggregateResourceConfig {
   export type Input = GetAggregateResourceConfigRequest;
-  export type Output = {};
+  export type Output = GetAggregateResourceConfigResponse;
   export type Error =
     | NoSuchConfigurationAggregatorException
     | OversizedConfigurationItemException
@@ -2109,7 +3914,7 @@ export declare namespace GetAggregateResourceConfig {
 
 export declare namespace GetComplianceDetailsByConfigRule {
   export type Input = GetComplianceDetailsByConfigRuleRequest;
-  export type Output = {};
+  export type Output = GetComplianceDetailsByConfigRuleResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -2119,30 +3924,25 @@ export declare namespace GetComplianceDetailsByConfigRule {
 
 export declare namespace GetComplianceDetailsByResource {
   export type Input = GetComplianceDetailsByResourceRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidParameterValueException
-    | CommonAwsError;
+  export type Output = GetComplianceDetailsByResourceResponse;
+  export type Error = InvalidParameterValueException | CommonAwsError;
 }
 
 export declare namespace GetComplianceSummaryByConfigRule {
   export type Input = {};
-  export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Output = GetComplianceSummaryByConfigRuleResponse;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetComplianceSummaryByResourceType {
   export type Input = GetComplianceSummaryByResourceTypeRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidParameterValueException
-    | CommonAwsError;
+  export type Output = GetComplianceSummaryByResourceTypeResponse;
+  export type Error = InvalidParameterValueException | CommonAwsError;
 }
 
 export declare namespace GetConformancePackComplianceDetails {
   export type Input = GetConformancePackComplianceDetailsRequest;
-  export type Output = {};
+  export type Output = GetConformancePackComplianceDetailsResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2154,7 +3954,7 @@ export declare namespace GetConformancePackComplianceDetails {
 
 export declare namespace GetConformancePackComplianceSummary {
   export type Input = GetConformancePackComplianceSummaryRequest;
-  export type Output = {};
+  export type Output = GetConformancePackComplianceSummaryResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2164,15 +3964,13 @@ export declare namespace GetConformancePackComplianceSummary {
 
 export declare namespace GetCustomRulePolicy {
   export type Input = GetCustomRulePolicyRequest;
-  export type Output = {};
-  export type Error =
-    | NoSuchConfigRuleException
-    | CommonAwsError;
+  export type Output = GetCustomRulePolicyResponse;
+  export type Error = NoSuchConfigRuleException | CommonAwsError;
 }
 
 export declare namespace GetDiscoveredResourceCounts {
   export type Input = GetDiscoveredResourceCountsRequest;
-  export type Output = {};
+  export type Output = GetDiscoveredResourceCountsResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2182,7 +3980,7 @@ export declare namespace GetDiscoveredResourceCounts {
 
 export declare namespace GetOrganizationConfigRuleDetailedStatus {
   export type Input = GetOrganizationConfigRuleDetailedStatusRequest;
-  export type Output = {};
+  export type Output = GetOrganizationConfigRuleDetailedStatusResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2193,7 +3991,7 @@ export declare namespace GetOrganizationConfigRuleDetailedStatus {
 
 export declare namespace GetOrganizationConformancePackDetailedStatus {
   export type Input = GetOrganizationConformancePackDetailedStatusRequest;
-  export type Output = {};
+  export type Output = GetOrganizationConformancePackDetailedStatusResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2204,7 +4002,7 @@ export declare namespace GetOrganizationConformancePackDetailedStatus {
 
 export declare namespace GetOrganizationCustomRulePolicy {
   export type Input = GetOrganizationCustomRulePolicyRequest;
-  export type Output = {};
+  export type Output = GetOrganizationCustomRulePolicyResponse;
   export type Error =
     | NoSuchOrganizationConfigRuleException
     | OrganizationAccessDeniedException
@@ -2213,7 +4011,7 @@ export declare namespace GetOrganizationCustomRulePolicy {
 
 export declare namespace GetResourceConfigHistory {
   export type Input = GetResourceConfigHistoryRequest;
-  export type Output = {};
+  export type Output = GetResourceConfigHistoryResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2226,15 +4024,13 @@ export declare namespace GetResourceConfigHistory {
 
 export declare namespace GetResourceEvaluationSummary {
   export type Input = GetResourceEvaluationSummaryRequest;
-  export type Output = {};
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Output = GetResourceEvaluationSummaryResponse;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace GetStoredQuery {
   export type Input = GetStoredQueryRequest;
-  export type Output = {};
+  export type Output = GetStoredQueryResponse;
   export type Error =
     | ResourceNotFoundException
     | ValidationException
@@ -2243,7 +4039,7 @@ export declare namespace GetStoredQuery {
 
 export declare namespace ListAggregateDiscoveredResources {
   export type Input = ListAggregateDiscoveredResourcesRequest;
-  export type Output = {};
+  export type Output = ListAggregateDiscoveredResourcesResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2254,15 +4050,13 @@ export declare namespace ListAggregateDiscoveredResources {
 
 export declare namespace ListConfigurationRecorders {
   export type Input = ListConfigurationRecordersRequest;
-  export type Output = {};
-  export type Error =
-    | ValidationException
-    | CommonAwsError;
+  export type Output = ListConfigurationRecordersResponse;
+  export type Error = ValidationException | CommonAwsError;
 }
 
 export declare namespace ListConformancePackComplianceScores {
   export type Input = ListConformancePackComplianceScoresRequest;
-  export type Output = {};
+  export type Output = ListConformancePackComplianceScoresResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2272,7 +4066,7 @@ export declare namespace ListConformancePackComplianceScores {
 
 export declare namespace ListDiscoveredResources {
   export type Input = ListDiscoveredResourcesRequest;
-  export type Output = {};
+  export type Output = ListDiscoveredResourcesResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2283,7 +4077,7 @@ export declare namespace ListDiscoveredResources {
 
 export declare namespace ListResourceEvaluations {
   export type Input = ListResourceEvaluationsRequest;
-  export type Output = {};
+  export type Output = ListResourceEvaluationsResponse;
   export type Error =
     | InvalidNextTokenException
     | InvalidParameterValueException
@@ -2293,7 +4087,7 @@ export declare namespace ListResourceEvaluations {
 
 export declare namespace ListStoredQueries {
   export type Input = ListStoredQueriesRequest;
-  export type Output = {};
+  export type Output = ListStoredQueriesResponse;
   export type Error =
     | InvalidNextTokenException
     | ValidationException
@@ -2302,7 +4096,7 @@ export declare namespace ListStoredQueries {
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
-  export type Output = {};
+  export type Output = ListTagsForResourceResponse;
   export type Error =
     | InvalidLimitException
     | InvalidNextTokenException
@@ -2313,10 +4107,8 @@ export declare namespace ListTagsForResource {
 
 export declare namespace PutAggregationAuthorization {
   export type Input = PutAggregationAuthorizationRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidParameterValueException
-    | CommonAwsError;
+  export type Output = PutAggregationAuthorizationResponse;
+  export type Error = InvalidParameterValueException | CommonAwsError;
 }
 
 export declare namespace PutConfigRule {
@@ -2333,7 +4125,7 @@ export declare namespace PutConfigRule {
 
 export declare namespace PutConfigurationAggregator {
   export type Input = PutConfigurationAggregatorRequest;
-  export type Output = {};
+  export type Output = PutConfigurationAggregatorResponse;
   export type Error =
     | InvalidParameterValueException
     | InvalidRoleException
@@ -2359,7 +4151,7 @@ export declare namespace PutConfigurationRecorder {
 
 export declare namespace PutConformancePack {
   export type Input = PutConformancePackRequest;
-  export type Output = {};
+  export type Output = PutConformancePackResponse;
   export type Error =
     | ConformancePackTemplateValidationException
     | InsufficientPermissionsException
@@ -2386,7 +4178,7 @@ export declare namespace PutDeliveryChannel {
 
 export declare namespace PutEvaluations {
   export type Input = PutEvaluationsRequest;
-  export type Output = {};
+  export type Output = PutEvaluationsResponse;
   export type Error =
     | InvalidParameterValueException
     | InvalidResultTokenException
@@ -2396,7 +4188,7 @@ export declare namespace PutEvaluations {
 
 export declare namespace PutExternalEvaluation {
   export type Input = PutExternalEvaluationRequest;
-  export type Output = {};
+  export type Output = PutExternalEvaluationResponse;
   export type Error =
     | InvalidParameterValueException
     | NoSuchConfigRuleException
@@ -2405,7 +4197,7 @@ export declare namespace PutExternalEvaluation {
 
 export declare namespace PutOrganizationConfigRule {
   export type Input = PutOrganizationConfigRuleRequest;
-  export type Output = {};
+  export type Output = PutOrganizationConfigRuleResponse;
   export type Error =
     | InsufficientPermissionsException
     | InvalidParameterValueException
@@ -2420,7 +4212,7 @@ export declare namespace PutOrganizationConfigRule {
 
 export declare namespace PutOrganizationConformancePack {
   export type Input = PutOrganizationConformancePackRequest;
-  export type Output = {};
+  export type Output = PutOrganizationConformancePackResponse;
   export type Error =
     | InsufficientPermissionsException
     | MaxNumberOfOrganizationConformancePacksExceededException
@@ -2435,7 +4227,7 @@ export declare namespace PutOrganizationConformancePack {
 
 export declare namespace PutRemediationConfigurations {
   export type Input = PutRemediationConfigurationsRequest;
-  export type Output = {};
+  export type Output = PutRemediationConfigurationsResponse;
   export type Error =
     | InsufficientPermissionsException
     | InvalidParameterValueException
@@ -2444,7 +4236,7 @@ export declare namespace PutRemediationConfigurations {
 
 export declare namespace PutRemediationExceptions {
   export type Input = PutRemediationExceptionsRequest;
-  export type Output = {};
+  export type Output = PutRemediationExceptionsResponse;
   export type Error =
     | InsufficientPermissionsException
     | InvalidParameterValueException
@@ -2464,7 +4256,7 @@ export declare namespace PutResourceConfig {
 
 export declare namespace PutRetentionConfiguration {
   export type Input = PutRetentionConfigurationRequest;
-  export type Output = {};
+  export type Output = PutRetentionConfigurationResponse;
   export type Error =
     | InvalidParameterValueException
     | MaxNumberOfRetentionConfigurationsExceededException
@@ -2473,7 +4265,7 @@ export declare namespace PutRetentionConfiguration {
 
 export declare namespace PutServiceLinkedConfigurationRecorder {
   export type Input = PutServiceLinkedConfigurationRecorderRequest;
-  export type Output = {};
+  export type Output = PutServiceLinkedConfigurationRecorderResponse;
   export type Error =
     | ConflictException
     | InsufficientPermissionsException
@@ -2484,7 +4276,7 @@ export declare namespace PutServiceLinkedConfigurationRecorder {
 
 export declare namespace PutStoredQuery {
   export type Input = PutStoredQueryRequest;
-  export type Output = {};
+  export type Output = PutStoredQueryResponse;
   export type Error =
     | ResourceConcurrentModificationException
     | TooManyTagsException
@@ -2494,7 +4286,7 @@ export declare namespace PutStoredQuery {
 
 export declare namespace SelectAggregateResourceConfig {
   export type Input = SelectAggregateResourceConfigRequest;
-  export type Output = {};
+  export type Output = SelectAggregateResourceConfigResponse;
   export type Error =
     | InvalidExpressionException
     | InvalidLimitException
@@ -2505,7 +4297,7 @@ export declare namespace SelectAggregateResourceConfig {
 
 export declare namespace SelectResourceConfig {
   export type Input = SelectResourceConfigRequest;
-  export type Output = {};
+  export type Output = SelectResourceConfigResponse;
   export type Error =
     | InvalidExpressionException
     | InvalidLimitException
@@ -2515,7 +4307,7 @@ export declare namespace SelectResourceConfig {
 
 export declare namespace StartConfigRulesEvaluation {
   export type Input = StartConfigRulesEvaluationRequest;
-  export type Output = {};
+  export type Output = StartConfigRulesEvaluationResponse;
   export type Error =
     | InvalidParameterValueException
     | LimitExceededException
@@ -2536,7 +4328,7 @@ export declare namespace StartConfigurationRecorder {
 
 export declare namespace StartRemediationExecution {
   export type Input = StartRemediationExecutionRequest;
-  export type Output = {};
+  export type Output = StartRemediationExecutionResponse;
   export type Error =
     | InsufficientPermissionsException
     | InvalidParameterValueException
@@ -2546,7 +4338,7 @@ export declare namespace StartRemediationExecution {
 
 export declare namespace StartResourceEvaluation {
   export type Input = StartResourceEvaluationRequest;
-  export type Output = {};
+  export type Output = StartResourceEvaluationResponse;
   export type Error =
     | IdempotentParameterMismatch
     | InvalidParameterValueException
@@ -2580,4 +4372,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-

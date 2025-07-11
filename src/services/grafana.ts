@@ -1,156 +1,50 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSGrafanaControlPlane {
-  associateLicense(
-    input: AssociateLicenseRequest,
-  ): Effect.Effect<
-    AssociateLicenseResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createWorkspace(
-    input: CreateWorkspaceRequest,
-  ): Effect.Effect<
-    CreateWorkspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createWorkspaceApiKey(
-    input: CreateWorkspaceApiKeyRequest,
-  ): Effect.Effect<
-    CreateWorkspaceApiKeyResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createWorkspaceServiceAccount(
-    input: CreateWorkspaceServiceAccountRequest,
-  ): Effect.Effect<
-    CreateWorkspaceServiceAccountResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createWorkspaceServiceAccountToken(
-    input: CreateWorkspaceServiceAccountTokenRequest,
-  ): Effect.Effect<
-    CreateWorkspaceServiceAccountTokenResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteWorkspace(
-    input: DeleteWorkspaceRequest,
-  ): Effect.Effect<
-    DeleteWorkspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteWorkspaceApiKey(
-    input: DeleteWorkspaceApiKeyRequest,
-  ): Effect.Effect<
-    DeleteWorkspaceApiKeyResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteWorkspaceServiceAccount(
-    input: DeleteWorkspaceServiceAccountRequest,
-  ): Effect.Effect<
-    DeleteWorkspaceServiceAccountResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteWorkspaceServiceAccountToken(
-    input: DeleteWorkspaceServiceAccountTokenRequest,
-  ): Effect.Effect<
-    DeleteWorkspaceServiceAccountTokenResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeWorkspace(
-    input: DescribeWorkspaceRequest,
-  ): Effect.Effect<
-    DescribeWorkspaceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeWorkspaceAuthentication(
-    input: DescribeWorkspaceAuthenticationRequest,
-  ): Effect.Effect<
-    DescribeWorkspaceAuthenticationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeWorkspaceConfiguration(
-    input: DescribeWorkspaceConfigurationRequest,
-  ): Effect.Effect<
-    DescribeWorkspaceConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | CommonAwsError
-  >;
-  disassociateLicense(
-    input: DisassociateLicenseRequest,
-  ): Effect.Effect<
-    DisassociateLicenseResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listPermissions(
-    input: ListPermissionsRequest,
-  ): Effect.Effect<
-    ListPermissionsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listVersions(
     input: ListVersionsRequest,
   ): Effect.Effect<
     ListVersionsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listWorkspaceServiceAccountTokens(
-    input: ListWorkspaceServiceAccountTokensRequest,
-  ): Effect.Effect<
-    ListWorkspaceServiceAccountTokensResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listWorkspaceServiceAccounts(
-    input: ListWorkspaceServiceAccountsRequest,
-  ): Effect.Effect<
-    ListWorkspaceServiceAccountsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listWorkspaces(
-    input: ListWorkspacesRequest,
-  ): Effect.Effect<
-    ListWorkspacesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updatePermissions(
-    input: UpdatePermissionsRequest,
-  ): Effect.Effect<
-    UpdatePermissionsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateWorkspace(
-    input: UpdateWorkspaceRequest,
-  ): Effect.Effect<
-    UpdateWorkspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateWorkspaceAuthentication(
-    input: UpdateWorkspaceAuthenticationRequest,
-  ): Effect.Effect<
-    UpdateWorkspaceAuthenticationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateWorkspaceConfiguration(
-    input: UpdateWorkspaceConfigurationRequest,
-  ): Effect.Effect<
-    UpdateWorkspaceConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -519,8 +413,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -535,8 +428,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type UpdateAction = string;
 
 export interface UpdateError {
@@ -571,8 +463,7 @@ export interface UpdateWorkspaceConfigurationRequest {
   workspaceId: string;
   grafanaVersion?: string;
 }
-export interface UpdateWorkspaceConfigurationResponse {
-}
+export interface UpdateWorkspaceConfigurationResponse {}
 export interface UpdateWorkspaceRequest {
   accountAccessType?: string;
   organizationRoleName?: string;
@@ -670,185 +561,6 @@ export interface WorkspaceSummary {
   licenseType?: string;
   grafanaToken?: string;
 }
-export declare namespace AssociateLicense {
-  export type Input = AssociateLicenseRequest;
-  export type Output = AssociateLicenseResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateWorkspace {
-  export type Input = CreateWorkspaceRequest;
-  export type Output = CreateWorkspaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateWorkspaceApiKey {
-  export type Input = CreateWorkspaceApiKeyRequest;
-  export type Output = CreateWorkspaceApiKeyResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateWorkspaceServiceAccount {
-  export type Input = CreateWorkspaceServiceAccountRequest;
-  export type Output = CreateWorkspaceServiceAccountResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateWorkspaceServiceAccountToken {
-  export type Input = CreateWorkspaceServiceAccountTokenRequest;
-  export type Output = CreateWorkspaceServiceAccountTokenResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteWorkspace {
-  export type Input = DeleteWorkspaceRequest;
-  export type Output = DeleteWorkspaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteWorkspaceApiKey {
-  export type Input = DeleteWorkspaceApiKeyRequest;
-  export type Output = DeleteWorkspaceApiKeyResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteWorkspaceServiceAccount {
-  export type Input = DeleteWorkspaceServiceAccountRequest;
-  export type Output = DeleteWorkspaceServiceAccountResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteWorkspaceServiceAccountToken {
-  export type Input = DeleteWorkspaceServiceAccountTokenRequest;
-  export type Output = DeleteWorkspaceServiceAccountTokenResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeWorkspace {
-  export type Input = DescribeWorkspaceRequest;
-  export type Output = DescribeWorkspaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeWorkspaceAuthentication {
-  export type Input = DescribeWorkspaceAuthenticationRequest;
-  export type Output = DescribeWorkspaceAuthenticationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeWorkspaceConfiguration {
-  export type Input = DescribeWorkspaceConfigurationRequest;
-  export type Output = DescribeWorkspaceConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | CommonAwsError;
-}
-
-export declare namespace DisassociateLicense {
-  export type Input = DisassociateLicenseRequest;
-  export type Output = DisassociateLicenseResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListPermissions {
-  export type Input = ListPermissionsRequest;
-  export type Output = ListPermissionsResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
@@ -870,42 +582,6 @@ export declare namespace ListVersions {
     | ResourceNotFoundException
     | ThrottlingException
     | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListWorkspaceServiceAccountTokens {
-  export type Input = ListWorkspaceServiceAccountTokensRequest;
-  export type Output = ListWorkspaceServiceAccountTokensResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListWorkspaceServiceAccounts {
-  export type Input = ListWorkspaceServiceAccountsRequest;
-  export type Output = ListWorkspaceServiceAccountsResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListWorkspaces {
-  export type Input = ListWorkspacesRequest;
-  export type Output = ListWorkspacesResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
     | CommonAwsError;
 }
 
@@ -932,55 +608,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdatePermissions {
-  export type Input = UpdatePermissionsRequest;
-  export type Output = UpdatePermissionsResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateWorkspace {
-  export type Input = UpdateWorkspaceRequest;
-  export type Output = UpdateWorkspaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateWorkspaceAuthentication {
-  export type Input = UpdateWorkspaceAuthenticationRequest;
-  export type Output = UpdateWorkspaceAuthenticationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateWorkspaceConfiguration {
-  export type Input = UpdateWorkspaceConfigurationRequest;
-  export type Output = UpdateWorkspaceConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-

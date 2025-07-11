@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.omics#AbortMultipartReadSetUpload": {
       "type": "operation",
@@ -11922,6 +11923,17 @@
     },
     "com.amazonaws.omics#Omics": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.omics#DeleteS3AccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.omics#GetS3AccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.omics#PutS3AccessPolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Omics",

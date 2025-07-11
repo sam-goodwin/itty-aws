@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.opensearch#AIMLOptionsInput": {
       "type": "structure",
@@ -692,6 +721,236 @@
     },
     "com.amazonaws.opensearch#AmazonOpenSearchService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.opensearch#AcceptInboundConnection"
+        },
+        {
+          "target": "com.amazonaws.opensearch#AddDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#AddDirectQueryDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#AddTags"
+        },
+        {
+          "target": "com.amazonaws.opensearch#AssociatePackage"
+        },
+        {
+          "target": "com.amazonaws.opensearch#AssociatePackages"
+        },
+        {
+          "target": "com.amazonaws.opensearch#AuthorizeVpcEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CancelDomainConfigChange"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CancelServiceSoftwareUpdate"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CreateDomain"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CreateOutboundConnection"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CreatePackage"
+        },
+        {
+          "target": "com.amazonaws.opensearch#CreateVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteDirectQueryDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteDomain"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteInboundConnection"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteOutboundConnection"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeletePackage"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DeleteVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomain"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomainAutoTunes"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomainChangeProgress"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomainConfig"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomainHealth"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomainNodes"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDomains"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeDryRunProgress"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeInboundConnections"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeInstanceTypeLimits"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeOutboundConnections"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribePackages"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeReservedInstanceOfferings"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeReservedInstances"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DescribeVpcEndpoints"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DissociatePackage"
+        },
+        {
+          "target": "com.amazonaws.opensearch#DissociatePackages"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetApplication"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetCompatibleVersions"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetDirectQueryDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetDomainMaintenanceStatus"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetPackageVersionHistory"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetUpgradeHistory"
+        },
+        {
+          "target": "com.amazonaws.opensearch#GetUpgradeStatus"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListApplications"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListDataSources"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListDirectQueryDataSources"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListDomainMaintenances"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListDomainNames"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListDomainsForPackage"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListInstanceTypeDetails"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListPackagesForDomain"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListScheduledActions"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListTags"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListVersions"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListVpcEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListVpcEndpoints"
+        },
+        {
+          "target": "com.amazonaws.opensearch#ListVpcEndpointsForDomain"
+        },
+        {
+          "target": "com.amazonaws.opensearch#PurchaseReservedInstanceOffering"
+        },
+        {
+          "target": "com.amazonaws.opensearch#RejectInboundConnection"
+        },
+        {
+          "target": "com.amazonaws.opensearch#RemoveTags"
+        },
+        {
+          "target": "com.amazonaws.opensearch#RevokeVpcEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.opensearch#StartDomainMaintenance"
+        },
+        {
+          "target": "com.amazonaws.opensearch#StartServiceSoftwareUpdate"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdateApplication"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdateDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdateDirectQueryDataSource"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdateDomainConfig"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdatePackage"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdatePackageScope"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdateScheduledAction"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpdateVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.opensearch#UpgradeDomain"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "OpenSearch",

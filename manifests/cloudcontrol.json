@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.cloudcontrol#AlreadyExistsException": {
       "type": "structure",
@@ -87,6 +88,32 @@
     },
     "com.amazonaws.cloudcontrol#CloudApiService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudcontrol#CancelResourceRequest"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#CreateResource"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#DeleteResource"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GetResource"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#GetResourceRequestStatus"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ListResourceRequests"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#ListResources"
+        },
+        {
+          "target": "com.amazonaws.cloudcontrol#UpdateResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudControl",

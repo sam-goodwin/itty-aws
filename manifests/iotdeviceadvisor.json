@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.iotdeviceadvisor#AmazonResourceName": {
       "type": "string",
@@ -675,6 +704,50 @@
     },
     "com.amazonaws.iotdeviceadvisor#IotSenateService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#CreateSuiteDefinition"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#DeleteSuiteDefinition"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#GetEndpoint"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#GetSuiteDefinition"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#GetSuiteRun"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#GetSuiteRunReport"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ListSuiteDefinitions"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ListSuiteRuns"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#StartSuiteRun"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#StopSuiteRun"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#TagResource"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.iotdeviceadvisor#UpdateSuiteDefinition"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IotDeviceAdvisor",

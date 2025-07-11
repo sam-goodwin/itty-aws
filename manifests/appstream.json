@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.appstream#AccessEndpoint": {
       "type": "structure",
@@ -7003,6 +7032,245 @@
     },
     "com.amazonaws.appstream#PhotonAdminProxyService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.appstream#AssociateAppBlockBuilderAppBlock"
+        },
+        {
+          "target": "com.amazonaws.appstream#AssociateApplicationFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#AssociateApplicationToEntitlement"
+        },
+        {
+          "target": "com.amazonaws.appstream#AssociateFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#BatchAssociateUserStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#BatchDisassociateUserStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#CopyImage"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateAppBlock"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateAppBlockBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateAppBlockBuilderStreamingURL"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateDirectoryConfig"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateEntitlement"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateImageBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateImageBuilderStreamingURL"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateStreamingURL"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateThemeForStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateUpdatedImage"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateUsageReportSubscription"
+        },
+        {
+          "target": "com.amazonaws.appstream#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteAppBlock"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteAppBlockBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteDirectoryConfig"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteEntitlement"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteImage"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteImageBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteImagePermissions"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteThemeForStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteUsageReportSubscription"
+        },
+        {
+          "target": "com.amazonaws.appstream#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeAppBlockBuilderAppBlockAssociations"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeAppBlockBuilders"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeAppBlocks"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeApplicationFleetAssociations"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeApplications"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeDirectoryConfigs"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeEntitlements"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeFleets"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeImageBuilders"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeImagePermissions"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeImages"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeSessions"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeStacks"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeThemeForStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeUsageReportSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeUsers"
+        },
+        {
+          "target": "com.amazonaws.appstream#DescribeUserStackAssociations"
+        },
+        {
+          "target": "com.amazonaws.appstream#DisableUser"
+        },
+        {
+          "target": "com.amazonaws.appstream#DisassociateAppBlockBuilderAppBlock"
+        },
+        {
+          "target": "com.amazonaws.appstream#DisassociateApplicationFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#DisassociateApplicationFromEntitlement"
+        },
+        {
+          "target": "com.amazonaws.appstream#DisassociateFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#EnableUser"
+        },
+        {
+          "target": "com.amazonaws.appstream#ExpireSession"
+        },
+        {
+          "target": "com.amazonaws.appstream#ListAssociatedFleets"
+        },
+        {
+          "target": "com.amazonaws.appstream#ListAssociatedStacks"
+        },
+        {
+          "target": "com.amazonaws.appstream#ListEntitledApplications"
+        },
+        {
+          "target": "com.amazonaws.appstream#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.appstream#StartAppBlockBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#StartFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#StartImageBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#StopAppBlockBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#StopFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#StopImageBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#TagResource"
+        },
+        {
+          "target": "com.amazonaws.appstream#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateAppBlockBuilder"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateApplication"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateDirectoryConfig"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateEntitlement"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateFleet"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateImagePermissions"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateStack"
+        },
+        {
+          "target": "com.amazonaws.appstream#UpdateThemeForStack"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AppStream",

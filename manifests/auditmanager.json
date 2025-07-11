@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.auditmanager#AWSAccount": {
       "type": "structure",
@@ -1707,6 +1736,194 @@
     },
     "com.amazonaws.auditmanager#BedrockAssessmentManagerLambda": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.auditmanager#AssociateAssessmentReportEvidenceFolder"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#BatchAssociateAssessmentReportEvidence"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#BatchCreateDelegationByAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#BatchDeleteDelegationByAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#BatchDisassociateAssessmentReportEvidence"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#BatchImportEvidenceToAssessmentControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#CreateAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#CreateAssessmentFramework"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#CreateAssessmentReport"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#CreateControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeleteAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeleteAssessmentFramework"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeleteAssessmentFrameworkShare"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeleteAssessmentReport"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeleteControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeregisterAccount"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DeregisterOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#DisassociateAssessmentReportEvidenceFolder"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetAccountStatus"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetAssessmentFramework"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetAssessmentReportUrl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetChangeLogs"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetDelegations"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetEvidence"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetEvidenceByEvidenceFolder"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetEvidenceFileUploadUrl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetEvidenceFolder"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetEvidenceFoldersByAssessmentControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetInsights"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetInsightsByAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetServicesInScope"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#GetSettings"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListAssessmentControlInsightsByControlDomain"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListAssessmentFrameworks"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListAssessmentFrameworkShareRequests"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListAssessmentReports"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListAssessments"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListControlDomainInsights"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListControlDomainInsightsByAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListControlInsightsByControlDomain"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListControls"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListKeywordsForDataSource"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListNotifications"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#RegisterAccount"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#RegisterOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#StartAssessmentFrameworkShare"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#TagResource"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateAssessment"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateAssessmentControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateAssessmentControlSetStatus"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateAssessmentFramework"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateAssessmentFrameworkShare"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateAssessmentStatus"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateControl"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#UpdateSettings"
+        },
+        {
+          "target": "com.amazonaws.auditmanager#ValidateAssessmentReportIntegrity"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AuditManager",

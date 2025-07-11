@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.opsworks#AgentVersion": {
       "type": "structure",
@@ -5881,6 +5910,230 @@
     },
     "com.amazonaws.opsworks#OpsWorks_20130218": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.opsworks#AssignInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#AssignVolume"
+        },
+        {
+          "target": "com.amazonaws.opsworks#AssociateElasticIp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#AttachElasticLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CloneStack"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CreateApp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CreateDeployment"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CreateInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CreateLayer"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CreateStack"
+        },
+        {
+          "target": "com.amazonaws.opsworks#CreateUserProfile"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeleteApp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeleteInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeleteLayer"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeleteStack"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeleteUserProfile"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeregisterEcsCluster"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeregisterElasticIp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeregisterInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeregisterRdsDbInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DeregisterVolume"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeAgentVersions"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeApps"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeCommands"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeDeployments"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeEcsClusters"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeElasticIps"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeElasticLoadBalancers"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeInstances"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeLayers"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeLoadBasedAutoScaling"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeMyUserProfile"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeOperatingSystems"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribePermissions"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeRaidArrays"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeRdsDbInstances"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeServiceErrors"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeStackProvisioningParameters"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeStacks"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeStackSummary"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeTimeBasedAutoScaling"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeUserProfiles"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DescribeVolumes"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DetachElasticLoadBalancer"
+        },
+        {
+          "target": "com.amazonaws.opsworks#DisassociateElasticIp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#GetHostnameSuggestion"
+        },
+        {
+          "target": "com.amazonaws.opsworks#GrantAccess"
+        },
+        {
+          "target": "com.amazonaws.opsworks#ListTags"
+        },
+        {
+          "target": "com.amazonaws.opsworks#RebootInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#RegisterEcsCluster"
+        },
+        {
+          "target": "com.amazonaws.opsworks#RegisterElasticIp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#RegisterInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#RegisterRdsDbInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#RegisterVolume"
+        },
+        {
+          "target": "com.amazonaws.opsworks#SetLoadBasedAutoScaling"
+        },
+        {
+          "target": "com.amazonaws.opsworks#SetPermission"
+        },
+        {
+          "target": "com.amazonaws.opsworks#SetTimeBasedAutoScaling"
+        },
+        {
+          "target": "com.amazonaws.opsworks#StartInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#StartStack"
+        },
+        {
+          "target": "com.amazonaws.opsworks#StopInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#StopStack"
+        },
+        {
+          "target": "com.amazonaws.opsworks#TagResource"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UnassignInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UnassignVolume"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateApp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateElasticIp"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateLayer"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateMyUserProfile"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateRdsDbInstance"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateStack"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateUserProfile"
+        },
+        {
+          "target": "com.amazonaws.opsworks#UpdateVolume"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "OpsWorks",

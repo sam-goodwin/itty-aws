@@ -1,120 +1,207 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface WallabyService {
   addProfilePermission(
     input: AddProfilePermissionRequest,
   ): Effect.Effect<
     AddProfilePermissionResponse,
-    AccessDeniedException | ConflictException | InternalServiceErrorException | ResourceNotFoundException | ServiceLimitExceededException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | ServiceLimitExceededException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   cancelSigningProfile(
     input: CancelSigningProfileRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeSigningJob(
     input: DescribeSigningJobRequest,
   ): Effect.Effect<
     DescribeSigningJobResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getRevocationStatus(
     input: GetRevocationStatusRequest,
   ): Effect.Effect<
     GetRevocationStatusResponse,
-    AccessDeniedException | InternalServiceErrorException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getSigningPlatform(
     input: GetSigningPlatformRequest,
   ): Effect.Effect<
     GetSigningPlatformResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSigningProfile(
     input: GetSigningProfileRequest,
   ): Effect.Effect<
     GetSigningProfileResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listProfilePermissions(
     input: ListProfilePermissionsRequest,
   ): Effect.Effect<
     ListProfilePermissionsResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listSigningJobs(
     input: ListSigningJobsRequest,
   ): Effect.Effect<
     ListSigningJobsResponse,
-    AccessDeniedException | InternalServiceErrorException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listSigningPlatforms(
     input: ListSigningPlatformsRequest,
   ): Effect.Effect<
     ListSigningPlatformsResponse,
-    AccessDeniedException | InternalServiceErrorException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listSigningProfiles(
     input: ListSigningProfilesRequest,
   ): Effect.Effect<
     ListSigningProfilesResponse,
-    AccessDeniedException | InternalServiceErrorException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | InternalServiceErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | InternalServiceErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putSigningProfile(
     input: PutSigningProfileRequest,
   ): Effect.Effect<
     PutSigningProfileResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   removeProfilePermission(
     input: RemoveProfilePermissionRequest,
   ): Effect.Effect<
     RemoveProfilePermissionResponse,
-    AccessDeniedException | ConflictException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   revokeSignature(
     input: RevokeSignatureRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   revokeSigningProfile(
     input: RevokeSigningProfileRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   signPayload(
     input: SignPayloadRequest,
   ): Effect.Effect<
     SignPayloadResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   startSigningJob(
     input: StartSigningJobRequest,
   ): Effect.Effect<
     StartSigningJobResponse,
-    AccessDeniedException | InternalServiceErrorException | ResourceNotFoundException | ThrottlingException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceErrorException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    BadRequestException | InternalServiceErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | InternalServiceErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    BadRequestException | InternalServiceErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | InternalServiceErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -542,8 +629,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -564,8 +650,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export declare class ValidationException extends Data.TaggedError(
   "ValidationException",
 )<{
@@ -794,4 +879,3 @@ export declare namespace UntagResource {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

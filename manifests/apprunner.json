@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.apprunner#ASConfigMaxConcurrency": {
       "type": "integer",
@@ -28,6 +57,119 @@
     },
     "com.amazonaws.apprunner#AppRunner": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.apprunner#AssociateCustomDomain"
+        },
+        {
+          "target": "com.amazonaws.apprunner#CreateAutoScalingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#CreateConnection"
+        },
+        {
+          "target": "com.amazonaws.apprunner#CreateObservabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#CreateService"
+        },
+        {
+          "target": "com.amazonaws.apprunner#CreateVpcConnector"
+        },
+        {
+          "target": "com.amazonaws.apprunner#CreateVpcIngressConnection"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DeleteAutoScalingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DeleteObservabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DeleteService"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DeleteVpcConnector"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DeleteVpcIngressConnection"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DescribeAutoScalingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DescribeCustomDomains"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DescribeObservabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DescribeService"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DescribeVpcConnector"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DescribeVpcIngressConnection"
+        },
+        {
+          "target": "com.amazonaws.apprunner#DisassociateCustomDomain"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListAutoScalingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListConnections"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListObservabilityConfigurations"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListOperations"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListServices"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListServicesForAutoScalingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListVpcConnectors"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ListVpcIngressConnections"
+        },
+        {
+          "target": "com.amazonaws.apprunner#PauseService"
+        },
+        {
+          "target": "com.amazonaws.apprunner#ResumeService"
+        },
+        {
+          "target": "com.amazonaws.apprunner#StartDeployment"
+        },
+        {
+          "target": "com.amazonaws.apprunner#TagResource"
+        },
+        {
+          "target": "com.amazonaws.apprunner#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.apprunner#UpdateDefaultAutoScalingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apprunner#UpdateService"
+        },
+        {
+          "target": "com.amazonaws.apprunner#UpdateVpcIngressConnection"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AppRunner",

@@ -1,36 +1,60 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Route53AutoNaming_v20170314 {
   createHttpNamespace(
     input: CreateHttpNamespaceRequest,
   ): Effect.Effect<
     CreateHttpNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceAlreadyExists | ResourceLimitExceeded | TooManyTagsException | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceAlreadyExists
+    | ResourceLimitExceeded
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createPrivateDnsNamespace(
     input: CreatePrivateDnsNamespaceRequest,
   ): Effect.Effect<
     CreatePrivateDnsNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceAlreadyExists | ResourceLimitExceeded | TooManyTagsException | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceAlreadyExists
+    | ResourceLimitExceeded
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createPublicDnsNamespace(
     input: CreatePublicDnsNamespaceRequest,
   ): Effect.Effect<
     CreatePublicDnsNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceAlreadyExists | ResourceLimitExceeded | TooManyTagsException | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceAlreadyExists
+    | ResourceLimitExceeded
+    | TooManyTagsException
+    | CommonAwsError
   >;
   createService(
     input: CreateServiceRequest,
   ): Effect.Effect<
     CreateServiceResponse,
-    InvalidInput | NamespaceNotFound | ResourceLimitExceeded | ServiceAlreadyExists | TooManyTagsException | CommonAwsError
+    | InvalidInput
+    | NamespaceNotFound
+    | ResourceLimitExceeded
+    | ServiceAlreadyExists
+    | TooManyTagsException
+    | CommonAwsError
   >;
   deleteNamespace(
     input: DeleteNamespaceRequest,
   ): Effect.Effect<
     DeleteNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceNotFound | ResourceInUse | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceNotFound
+    | ResourceInUse
+    | CommonAwsError
   >;
   deleteService(
     input: DeleteServiceRequest,
@@ -48,19 +72,32 @@ export interface Route53AutoNaming_v20170314 {
     input: DeregisterInstanceRequest,
   ): Effect.Effect<
     DeregisterInstanceResponse,
-    DuplicateRequest | InstanceNotFound | InvalidInput | ResourceInUse | ServiceNotFound | CommonAwsError
+    | DuplicateRequest
+    | InstanceNotFound
+    | InvalidInput
+    | ResourceInUse
+    | ServiceNotFound
+    | CommonAwsError
   >;
   discoverInstances(
     input: DiscoverInstancesRequest,
   ): Effect.Effect<
     DiscoverInstancesResponse,
-    InvalidInput | NamespaceNotFound | RequestLimitExceeded | ServiceNotFound | CommonAwsError
+    | InvalidInput
+    | NamespaceNotFound
+    | RequestLimitExceeded
+    | ServiceNotFound
+    | CommonAwsError
   >;
   discoverInstancesRevision(
     input: DiscoverInstancesRevisionRequest,
   ): Effect.Effect<
     DiscoverInstancesRevisionResponse,
-    InvalidInput | NamespaceNotFound | RequestLimitExceeded | ServiceNotFound | CommonAwsError
+    | InvalidInput
+    | NamespaceNotFound
+    | RequestLimitExceeded
+    | ServiceNotFound
+    | CommonAwsError
   >;
   getInstance(
     input: GetInstanceRequest,
@@ -106,22 +143,13 @@ export interface Route53AutoNaming_v20170314 {
   >;
   listNamespaces(
     input: ListNamespacesRequest,
-  ): Effect.Effect<
-    ListNamespacesResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<ListNamespacesResponse, InvalidInput | CommonAwsError>;
   listOperations(
     input: ListOperationsRequest,
-  ): Effect.Effect<
-    ListOperationsResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<ListOperationsResponse, InvalidInput | CommonAwsError>;
   listServices(
     input: ListServicesRequest,
-  ): Effect.Effect<
-    ListServicesResponse,
-    InvalidInput | CommonAwsError
-  >;
+  ): Effect.Effect<ListServicesResponse, InvalidInput | CommonAwsError>;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
@@ -132,13 +160,21 @@ export interface Route53AutoNaming_v20170314 {
     input: RegisterInstanceRequest,
   ): Effect.Effect<
     RegisterInstanceResponse,
-    DuplicateRequest | InvalidInput | ResourceInUse | ResourceLimitExceeded | ServiceNotFound | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | ResourceInUse
+    | ResourceLimitExceeded
+    | ServiceNotFound
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InvalidInput | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | InvalidInput
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
@@ -150,25 +186,41 @@ export interface Route53AutoNaming_v20170314 {
     input: UpdateHttpNamespaceRequest,
   ): Effect.Effect<
     UpdateHttpNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceNotFound | ResourceInUse | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceNotFound
+    | ResourceInUse
+    | CommonAwsError
   >;
   updateInstanceCustomHealthStatus(
     input: UpdateInstanceCustomHealthStatusRequest,
   ): Effect.Effect<
     {},
-    CustomHealthNotFound | InstanceNotFound | InvalidInput | ServiceNotFound | CommonAwsError
+    | CustomHealthNotFound
+    | InstanceNotFound
+    | InvalidInput
+    | ServiceNotFound
+    | CommonAwsError
   >;
   updatePrivateDnsNamespace(
     input: UpdatePrivateDnsNamespaceRequest,
   ): Effect.Effect<
     UpdatePrivateDnsNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceNotFound | ResourceInUse | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceNotFound
+    | ResourceInUse
+    | CommonAwsError
   >;
   updatePublicDnsNamespace(
     input: UpdatePublicDnsNamespaceRequest,
   ): Effect.Effect<
     UpdatePublicDnsNamespaceResponse,
-    DuplicateRequest | InvalidInput | NamespaceNotFound | ResourceInUse | CommonAwsError
+    | DuplicateRequest
+    | InvalidInput
+    | NamespaceNotFound
+    | ResourceInUse
+    | CommonAwsError
   >;
   updateService(
     input: UpdateServiceRequest,
@@ -180,7 +232,10 @@ export interface Route53AutoNaming_v20170314 {
     input: UpdateServiceAttributesRequest,
   ): Effect.Effect<
     UpdateServiceAttributesResponse,
-    InvalidInput | ServiceAttributesLimitExceededException | ServiceNotFound | CommonAwsError
+    | InvalidInput
+    | ServiceAttributesLimitExceededException
+    | ServiceNotFound
+    | CommonAwsError
   >;
 }
 
@@ -257,13 +312,11 @@ export interface DeleteServiceAttributesRequest {
   ServiceId: string;
   Attributes: Array<string>;
 }
-export interface DeleteServiceAttributesResponse {
-}
+export interface DeleteServiceAttributesResponse {}
 export interface DeleteServiceRequest {
   Id: string;
 }
-export interface DeleteServiceResponse {
-}
+export interface DeleteServiceResponse {}
 export interface DeregisterInstanceRequest {
   ServiceId: string;
   InstanceId: string;
@@ -374,7 +427,11 @@ export interface HealthCheckCustomConfig {
 }
 export type HealthCheckType = "HTTP" | "HTTPS" | "TCP";
 export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN";
-export type HealthStatusFilter = "HEALTHY" | "UNHEALTHY" | "ALL" | "HEALTHY_OR_ELSE_ALL";
+export type HealthStatusFilter =
+  | "HEALTHY"
+  | "UNHEALTHY"
+  | "ALL"
+  | "HEALTHY_OR_ELSE_ALL";
 export interface HttpInstanceSummary {
   InstanceId?: string;
   NamespaceName?: string;
@@ -408,9 +465,7 @@ export interface InstanceSummary {
   Attributes?: Record<string, string>;
 }
 export type InstanceSummaryList = Array<InstanceSummary>;
-export declare class InvalidInput extends Data.TaggedError(
-  "InvalidInput",
-)<{
+export declare class InvalidInput extends Data.TaggedError("InvalidInput")<{
   readonly Message?: string;
 }> {}
 export interface ListInstancesRequest {
@@ -530,7 +585,12 @@ export interface OperationFilter {
   Values: Array<string>;
   Condition?: FilterCondition;
 }
-export type OperationFilterName = "NAMESPACE_ID" | "SERVICE_ID" | "STATUS" | "TYPE" | "UPDATE_DATE";
+export type OperationFilterName =
+  | "NAMESPACE_ID"
+  | "SERVICE_ID"
+  | "STATUS"
+  | "TYPE"
+  | "UPDATE_DATE";
 export type OperationFilters = Array<OperationFilter>;
 export type OperationId = string;
 
@@ -547,7 +607,13 @@ export interface OperationSummary {
 export type OperationSummaryList = Array<OperationSummary>;
 export type OperationTargetsMap = Record<OperationTargetType, string>;
 export type OperationTargetType = "NAMESPACE" | "SERVICE" | "INSTANCE";
-export type OperationType = "CREATE_NAMESPACE" | "DELETE_NAMESPACE" | "UPDATE_NAMESPACE" | "UPDATE_SERVICE" | "REGISTER_INSTANCE" | "DEREGISTER_INSTANCE";
+export type OperationType =
+  | "CREATE_NAMESPACE"
+  | "DELETE_NAMESPACE"
+  | "UPDATE_NAMESPACE"
+  | "UPDATE_SERVICE"
+  | "REGISTER_INSTANCE"
+  | "DEREGISTER_INSTANCE";
 export interface PrivateDnsNamespaceChange {
   Description?: string;
   Properties?: PrivateDnsNamespacePropertiesChange;
@@ -603,9 +669,7 @@ export type ResourceDescription = string;
 
 export type ResourceId = string;
 
-export declare class ResourceInUse extends Data.TaggedError(
-  "ResourceInUse",
-)<{
+export declare class ResourceInUse extends Data.TaggedError("ResourceInUse")<{
   readonly Message?: string;
 }> {}
 export declare class ResourceLimitExceeded extends Data.TaggedError(
@@ -711,8 +775,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type Timestamp = Date | string;
@@ -727,8 +790,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateHttpNamespaceRequest {
   Id: string;
   UpdaterRequestId?: string;
@@ -762,8 +824,7 @@ export interface UpdateServiceAttributesRequest {
   ServiceId: string;
   Attributes: Record<string, string>;
 }
-export interface UpdateServiceAttributesResponse {
-}
+export interface UpdateServiceAttributesResponse {}
 export interface UpdateServiceRequest {
   Id: string;
   Service: ServiceChange;
@@ -843,10 +904,7 @@ export declare namespace DeleteService {
 export declare namespace DeleteServiceAttributes {
   export type Input = DeleteServiceAttributesRequest;
   export type Output = DeleteServiceAttributesResponse;
-  export type Error =
-    | InvalidInput
-    | ServiceNotFound
-    | CommonAwsError;
+  export type Error = InvalidInput | ServiceNotFound | CommonAwsError;
 }
 
 export declare namespace DeregisterInstance {
@@ -906,79 +964,55 @@ export declare namespace GetInstancesHealthStatus {
 export declare namespace GetNamespace {
   export type Input = GetNamespaceRequest;
   export type Output = GetNamespaceResponse;
-  export type Error =
-    | InvalidInput
-    | NamespaceNotFound
-    | CommonAwsError;
+  export type Error = InvalidInput | NamespaceNotFound | CommonAwsError;
 }
 
 export declare namespace GetOperation {
   export type Input = GetOperationRequest;
   export type Output = GetOperationResponse;
-  export type Error =
-    | InvalidInput
-    | OperationNotFound
-    | CommonAwsError;
+  export type Error = InvalidInput | OperationNotFound | CommonAwsError;
 }
 
 export declare namespace GetService {
   export type Input = GetServiceRequest;
   export type Output = GetServiceResponse;
-  export type Error =
-    | InvalidInput
-    | ServiceNotFound
-    | CommonAwsError;
+  export type Error = InvalidInput | ServiceNotFound | CommonAwsError;
 }
 
 export declare namespace GetServiceAttributes {
   export type Input = GetServiceAttributesRequest;
   export type Output = GetServiceAttributesResponse;
-  export type Error =
-    | InvalidInput
-    | ServiceNotFound
-    | CommonAwsError;
+  export type Error = InvalidInput | ServiceNotFound | CommonAwsError;
 }
 
 export declare namespace ListInstances {
   export type Input = ListInstancesRequest;
   export type Output = ListInstancesResponse;
-  export type Error =
-    | InvalidInput
-    | ServiceNotFound
-    | CommonAwsError;
+  export type Error = InvalidInput | ServiceNotFound | CommonAwsError;
 }
 
 export declare namespace ListNamespaces {
   export type Input = ListNamespacesRequest;
   export type Output = ListNamespacesResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListOperations {
   export type Input = ListOperationsRequest;
   export type Output = ListOperationsResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListServices {
   export type Input = ListServicesRequest;
   export type Output = ListServicesResponse;
-  export type Error =
-    | InvalidInput
-    | CommonAwsError;
+  export type Error = InvalidInput | CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
-  export type Error =
-    | InvalidInput
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = InvalidInput | ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace RegisterInstance {
@@ -1006,10 +1040,7 @@ export declare namespace TagResource {
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
   export type Output = UntagResourceResponse;
-  export type Error =
-    | InvalidInput
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = InvalidInput | ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace UpdateHttpNamespace {
@@ -1075,4 +1106,3 @@ export declare namespace UpdateServiceAttributes {
     | ServiceNotFound
     | CommonAwsError;
 }
-

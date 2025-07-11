@@ -1,7 +1,65 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.sts#AWSSecurityTokenServiceV20110615": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.sts#AssumeRole"
+        },
+        {
+          "target": "com.amazonaws.sts#AssumeRoleWithSAML"
+        },
+        {
+          "target": "com.amazonaws.sts#AssumeRoleWithWebIdentity"
+        },
+        {
+          "target": "com.amazonaws.sts#AssumeRoot"
+        },
+        {
+          "target": "com.amazonaws.sts#DecodeAuthorizationMessage"
+        },
+        {
+          "target": "com.amazonaws.sts#GetAccessKeyInfo"
+        },
+        {
+          "target": "com.amazonaws.sts#GetCallerIdentity"
+        },
+        {
+          "target": "com.amazonaws.sts#GetFederationToken"
+        },
+        {
+          "target": "com.amazonaws.sts#GetSessionToken"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "STS",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.kinesisanalytics#AddApplicationCloudWatchLoggingOption": {
       "type": "operation",
@@ -1834,6 +1863,68 @@
     },
     "com.amazonaws.kinesisanalytics#KinesisAnalytics_20150814": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kinesisanalytics#AddApplicationCloudWatchLoggingOption"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#AddApplicationInput"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#AddApplicationInputProcessingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#AddApplicationOutput"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#AddApplicationReferenceDataSource"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DeleteApplicationCloudWatchLoggingOption"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DeleteApplicationInputProcessingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DeleteApplicationOutput"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DeleteApplicationReferenceDataSource"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DescribeApplication"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#DiscoverInputSchema"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ListApplications"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#StartApplication"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#StopApplication"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kinesisanalytics#UpdateApplication"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Kinesis Analytics",

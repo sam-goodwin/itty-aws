@@ -1,7 +1,50 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.ssooidc#AWSSSOOIDCService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ssooidc#CreateToken"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#CreateTokenWithIAM"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#RegisterClient"
+        },
+        {
+          "target": "com.amazonaws.ssooidc#StartDeviceAuthorization"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SSO OIDC",

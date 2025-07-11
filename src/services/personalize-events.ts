@@ -1,36 +1,45 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonPersonalizeEvents {
   putActionInteractions(
     input: PutActionInteractionsRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putActions(
     input: PutActionsRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putEvents(
     input: PutEventsRequest,
-  ): Effect.Effect<
-    {},
-    InvalidInputException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InvalidInputException | CommonAwsError>;
   putItems(
     input: PutItemsRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putUsers(
     input: PutUsersRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -168,9 +177,7 @@ export declare namespace PutActions {
 export declare namespace PutEvents {
   export type Input = PutEventsRequest;
   export type Output = {};
-  export type Error =
-    | InvalidInputException
-    | CommonAwsError;
+  export type Error = InvalidInputException | CommonAwsError;
 }
 
 export declare namespace PutItems {
@@ -192,4 +199,3 @@ export declare namespace PutUsers {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

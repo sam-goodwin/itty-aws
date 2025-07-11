@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.serverlessapplicationrepository#ApplicationDependencySummary": {
       "type": "structure",
@@ -1902,6 +1931,50 @@
     },
     "com.amazonaws.serverlessapplicationrepository#ServerlessApplicationRepository": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#CreateApplicationVersion"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationChangeSet"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#CreateCloudFormationTemplate"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#GetApplication"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#GetApplicationPolicy"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#GetCloudFormationTemplate"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ListApplicationDependencies"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ListApplications"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#ListApplicationVersions"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#PutApplicationPolicy"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#UnshareApplication"
+        },
+        {
+          "target": "com.amazonaws.serverlessapplicationrepository#UpdateApplication"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ServerlessApplicationRepository",

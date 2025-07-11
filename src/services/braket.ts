@@ -1,84 +1,33 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Braket {
-  cancelJob(
-    input: CancelJobRequest,
-  ): Effect.Effect<
-    CancelJobResponse,
-    AccessDeniedException | ConflictException | InternalServiceException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  cancelQuantumTask(
-    input: CancelQuantumTaskRequest,
-  ): Effect.Effect<
-    CancelQuantumTaskResponse,
-    AccessDeniedException | ConflictException | InternalServiceException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createJob(
-    input: CreateJobRequest,
-  ): Effect.Effect<
-    CreateJobResponse,
-    AccessDeniedException | ConflictException | DeviceOfflineException | DeviceRetiredException | InternalServiceException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createQuantumTask(
-    input: CreateQuantumTaskRequest,
-  ): Effect.Effect<
-    CreateQuantumTaskResponse,
-    AccessDeniedException | DeviceOfflineException | DeviceRetiredException | InternalServiceException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getDevice(
-    input: GetDeviceRequest,
-  ): Effect.Effect<
-    GetDeviceResponse,
-    AccessDeniedException | InternalServiceException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getJob(
-    input: GetJobRequest,
-  ): Effect.Effect<
-    GetJobResponse,
-    AccessDeniedException | InternalServiceException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getQuantumTask(
-    input: GetQuantumTaskRequest,
-  ): Effect.Effect<
-    GetQuantumTaskResponse,
-    AccessDeniedException | InternalServiceException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServiceException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  searchDevices(
-    input: SearchDevicesRequest,
-  ): Effect.Effect<
-    SearchDevicesResponse,
-    AccessDeniedException | InternalServiceException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  searchJobs(
-    input: SearchJobsRequest,
-  ): Effect.Effect<
-    SearchJobsResponse,
-    AccessDeniedException | InternalServiceException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  searchQuantumTasks(
-    input: SearchQuantumTasksRequest,
-  ): Effect.Effect<
-    SearchQuantumTasksResponse,
-    AccessDeniedException | InternalServiceException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServiceException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServiceException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServiceException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServiceException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServiceException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -441,8 +390,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagsMap = Record<string, string>;
 export declare class ThrottlingException extends Data.TaggedError(
   "ThrottlingException",
@@ -453,8 +401,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type Uri = string;
 
 export declare class ValidationException extends Data.TaggedError(
@@ -462,136 +409,12 @@ export declare class ValidationException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare namespace CancelJob {
-  export type Input = CancelJobRequest;
-  export type Output = CancelJobResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServiceException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CancelQuantumTask {
-  export type Input = CancelQuantumTaskRequest;
-  export type Output = CancelQuantumTaskResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServiceException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateJob {
-  export type Input = CreateJobRequest;
-  export type Output = CreateJobResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | DeviceOfflineException
-    | DeviceRetiredException
-    | InternalServiceException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateQuantumTask {
-  export type Input = CreateQuantumTaskRequest;
-  export type Output = CreateQuantumTaskResponse;
-  export type Error =
-    | AccessDeniedException
-    | DeviceOfflineException
-    | DeviceRetiredException
-    | InternalServiceException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetDevice {
-  export type Input = GetDeviceRequest;
-  export type Output = GetDeviceResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServiceException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetJob {
-  export type Input = GetJobRequest;
-  export type Output = GetJobResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServiceException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetQuantumTask {
-  export type Input = GetQuantumTaskRequest;
-  export type Output = GetQuantumTaskResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServiceException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
   export type Error =
     | InternalServiceException
     | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace SearchDevices {
-  export type Input = SearchDevicesRequest;
-  export type Output = SearchDevicesResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServiceException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace SearchJobs {
-  export type Input = SearchJobsRequest;
-  export type Output = SearchJobsResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServiceException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace SearchQuantumTasks {
-  export type Input = SearchQuantumTasksRequest;
-  export type Output = SearchQuantumTasksResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServiceException
-    | ThrottlingException
     | ValidationException
     | CommonAwsError;
 }
@@ -615,4 +438,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-

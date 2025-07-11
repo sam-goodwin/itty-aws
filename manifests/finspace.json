@@ -1,7 +1,188 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.finspace#AWSHabaneroManagementService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.finspace#CreateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxChangeset"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxCluster"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxDatabase"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxDataview"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxScalingGroup"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxUser"
+        },
+        {
+          "target": "com.amazonaws.finspace#CreateKxVolume"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxCluster"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxClusterNode"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxDatabase"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxDataview"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxScalingGroup"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxUser"
+        },
+        {
+          "target": "com.amazonaws.finspace#DeleteKxVolume"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxChangeset"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxCluster"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxConnectionString"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxDatabase"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxDataview"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxScalingGroup"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxUser"
+        },
+        {
+          "target": "com.amazonaws.finspace#GetKxVolume"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListEnvironments"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxChangesets"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxClusterNodes"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxClusters"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxDatabases"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxDataviews"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxEnvironments"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxScalingGroups"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxUsers"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListKxVolumes"
+        },
+        {
+          "target": "com.amazonaws.finspace#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.finspace#TagResource"
+        },
+        {
+          "target": "com.amazonaws.finspace#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxClusterCodeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxClusterDatabases"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxDatabase"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxDataview"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxEnvironment"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxEnvironmentNetwork"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxUser"
+        },
+        {
+          "target": "com.amazonaws.finspace#UpdateKxVolume"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "finspace",

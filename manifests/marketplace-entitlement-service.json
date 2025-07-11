@@ -1,7 +1,41 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.marketplaceentitlementservice#AWSMPEntitlementService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.marketplaceentitlementservice#GetEntitlements"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Marketplace Entitlement Service",

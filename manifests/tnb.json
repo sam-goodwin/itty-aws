@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.tnb#AccessDeniedException": {
       "type": "structure",
@@ -4477,6 +4478,107 @@
     },
     "com.amazonaws.tnb#TNB": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.tnb#CancelSolNetworkOperation"
+        },
+        {
+          "target": "com.amazonaws.tnb#CreateSolFunctionPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#CreateSolNetworkInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#CreateSolNetworkPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#DeleteSolFunctionPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#DeleteSolNetworkInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#DeleteSolNetworkPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolFunctionInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolFunctionPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolFunctionPackageContent"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolFunctionPackageDescriptor"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolNetworkInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolNetworkOperation"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolNetworkPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolNetworkPackageContent"
+        },
+        {
+          "target": "com.amazonaws.tnb#GetSolNetworkPackageDescriptor"
+        },
+        {
+          "target": "com.amazonaws.tnb#InstantiateSolNetworkInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#ListSolFunctionInstances"
+        },
+        {
+          "target": "com.amazonaws.tnb#ListSolFunctionPackages"
+        },
+        {
+          "target": "com.amazonaws.tnb#ListSolNetworkInstances"
+        },
+        {
+          "target": "com.amazonaws.tnb#ListSolNetworkOperations"
+        },
+        {
+          "target": "com.amazonaws.tnb#ListSolNetworkPackages"
+        },
+        {
+          "target": "com.amazonaws.tnb#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.tnb#PutSolFunctionPackageContent"
+        },
+        {
+          "target": "com.amazonaws.tnb#PutSolNetworkPackageContent"
+        },
+        {
+          "target": "com.amazonaws.tnb#TagResource"
+        },
+        {
+          "target": "com.amazonaws.tnb#TerminateSolNetworkInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.tnb#UpdateSolFunctionPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#UpdateSolNetworkInstance"
+        },
+        {
+          "target": "com.amazonaws.tnb#UpdateSolNetworkPackage"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidateSolFunctionPackageContent"
+        },
+        {
+          "target": "com.amazonaws.tnb#ValidateSolNetworkPackageContent"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "tnb",

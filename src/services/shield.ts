@@ -1,42 +1,81 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSShield_20160616 {
   associateDRTLogBucket(
     input: AssociateDRTLogBucketRequest,
   ): Effect.Effect<
     AssociateDRTLogBucketResponse,
-    AccessDeniedForDependencyException | InternalErrorException | InvalidOperationException | InvalidParameterException | LimitsExceededException | NoAssociatedRoleException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedForDependencyException
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | LimitsExceededException
+    | NoAssociatedRoleException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateDRTRole(
     input: AssociateDRTRoleRequest,
   ): Effect.Effect<
     AssociateDRTRoleResponse,
-    AccessDeniedForDependencyException | InternalErrorException | InvalidOperationException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedForDependencyException
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateHealthCheck(
     input: AssociateHealthCheckRequest,
   ): Effect.Effect<
     AssociateHealthCheckResponse,
-    InternalErrorException | InvalidParameterException | InvalidResourceException | LimitsExceededException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | InvalidResourceException
+    | LimitsExceededException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateProactiveEngagementDetails(
     input: AssociateProactiveEngagementDetailsRequest,
   ): Effect.Effect<
     AssociateProactiveEngagementDetailsResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createProtection(
     input: CreateProtectionRequest,
   ): Effect.Effect<
     CreateProtectionResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | InvalidResourceException | LimitsExceededException | OptimisticLockException | ResourceAlreadyExistsException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | InvalidResourceException
+    | LimitsExceededException
+    | OptimisticLockException
+    | ResourceAlreadyExistsException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createProtectionGroup(
     input: CreateProtectionGroupRequest,
   ): Effect.Effect<
     CreateProtectionGroupResponse,
-    InternalErrorException | InvalidParameterException | LimitsExceededException | OptimisticLockException | ResourceAlreadyExistsException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | LimitsExceededException
+    | OptimisticLockException
+    | ResourceAlreadyExistsException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createSubscription(
     input: CreateSubscriptionRequest,
@@ -48,19 +87,28 @@ export interface AWSShield_20160616 {
     input: DeleteProtectionRequest,
   ): Effect.Effect<
     DeleteProtectionResponse,
-    InternalErrorException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteProtectionGroup(
     input: DeleteProtectionGroupRequest,
   ): Effect.Effect<
     DeleteProtectionGroupResponse,
-    InternalErrorException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteSubscription(
     input: DeleteSubscriptionRequest,
   ): Effect.Effect<
     DeleteSubscriptionResponse,
-    InternalErrorException | LockedSubscriptionException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | LockedSubscriptionException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeAttack(
     input: DescribeAttackRequest,
@@ -90,7 +138,10 @@ export interface AWSShield_20160616 {
     input: DescribeProtectionRequest,
   ): Effect.Effect<
     DescribeProtectionResponse,
-    InternalErrorException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeProtectionGroup(
     input: DescribeProtectionGroupRequest,
@@ -108,43 +159,79 @@ export interface AWSShield_20160616 {
     input: DisableApplicationLayerAutomaticResponseRequest,
   ): Effect.Effect<
     DisableApplicationLayerAutomaticResponseResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disableProactiveEngagement(
     input: DisableProactiveEngagementRequest,
   ): Effect.Effect<
     DisableProactiveEngagementResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateDRTLogBucket(
     input: DisassociateDRTLogBucketRequest,
   ): Effect.Effect<
     DisassociateDRTLogBucketResponse,
-    AccessDeniedForDependencyException | InternalErrorException | InvalidOperationException | NoAssociatedRoleException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedForDependencyException
+    | InternalErrorException
+    | InvalidOperationException
+    | NoAssociatedRoleException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateDRTRole(
     input: DisassociateDRTRoleRequest,
   ): Effect.Effect<
     DisassociateDRTRoleResponse,
-    InternalErrorException | InvalidOperationException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateHealthCheck(
     input: DisassociateHealthCheckRequest,
   ): Effect.Effect<
     DisassociateHealthCheckResponse,
-    InternalErrorException | InvalidParameterException | InvalidResourceException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | InvalidResourceException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   enableApplicationLayerAutomaticResponse(
     input: EnableApplicationLayerAutomaticResponseRequest,
   ): Effect.Effect<
     EnableApplicationLayerAutomaticResponseResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | LimitsExceededException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | LimitsExceededException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   enableProactiveEngagement(
     input: EnableProactiveEngagementRequest,
   ): Effect.Effect<
     EnableProactiveEngagementResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getSubscriptionState(
     input: GetSubscriptionStateRequest,
@@ -156,67 +243,108 @@ export interface AWSShield_20160616 {
     input: ListAttacksRequest,
   ): Effect.Effect<
     ListAttacksResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | CommonAwsError
   >;
   listProtectionGroups(
     input: ListProtectionGroupsRequest,
   ): Effect.Effect<
     ListProtectionGroupsResponse,
-    InternalErrorException | InvalidPaginationTokenException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidPaginationTokenException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listProtections(
     input: ListProtectionsRequest,
   ): Effect.Effect<
     ListProtectionsResponse,
-    InternalErrorException | InvalidPaginationTokenException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidPaginationTokenException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listResourcesInProtectionGroup(
     input: ListResourcesInProtectionGroupRequest,
   ): Effect.Effect<
     ListResourcesInProtectionGroupResponse,
-    InternalErrorException | InvalidPaginationTokenException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidPaginationTokenException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalErrorException | InvalidResourceException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidResourceException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalErrorException | InvalidParameterException | InvalidResourceException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | InvalidResourceException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalErrorException | InvalidParameterException | InvalidResourceException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | InvalidResourceException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateApplicationLayerAutomaticResponse(
     input: UpdateApplicationLayerAutomaticResponseRequest,
   ): Effect.Effect<
     UpdateApplicationLayerAutomaticResponseResponse,
-    InternalErrorException | InvalidOperationException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateEmergencyContactSettings(
     input: UpdateEmergencyContactSettingsRequest,
   ): Effect.Effect<
     UpdateEmergencyContactSettingsResponse,
-    InternalErrorException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateProtectionGroup(
     input: UpdateProtectionGroupRequest,
   ): Effect.Effect<
     UpdateProtectionGroupResponse,
-    InternalErrorException | InvalidParameterException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateSubscription(
     input: UpdateSubscriptionRequest,
   ): Effect.Effect<
     UpdateSubscriptionResponse,
-    InternalErrorException | InvalidParameterException | LockedSubscriptionException | OptimisticLockException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | LockedSubscriptionException
+    | OptimisticLockException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -240,24 +368,20 @@ export type ApplicationLayerAutomaticResponseStatus = "ENABLED" | "DISABLED";
 export interface AssociateDRTLogBucketRequest {
   LogBucket: string;
 }
-export interface AssociateDRTLogBucketResponse {
-}
+export interface AssociateDRTLogBucketResponse {}
 export interface AssociateDRTRoleRequest {
   RoleArn: string;
 }
-export interface AssociateDRTRoleResponse {
-}
+export interface AssociateDRTRoleResponse {}
 export interface AssociateHealthCheckRequest {
   ProtectionId: string;
   HealthCheckArn: string;
 }
-export interface AssociateHealthCheckResponse {
-}
+export interface AssociateHealthCheckResponse {}
 export interface AssociateProactiveEngagementDetailsRequest {
   EmergencyContactList: Array<EmergencyContact>;
 }
-export interface AssociateProactiveEngagementDetailsResponse {
-}
+export interface AssociateProactiveEngagementDetailsResponse {}
 export interface AttackDetail {
   AttackId?: string;
   ResourceArn?: string;
@@ -279,7 +403,15 @@ export interface AttackProperty {
   Unit?: Unit;
   Total?: number;
 }
-export type AttackPropertyIdentifier = "DESTINATION_URL" | "REFERRER" | "SOURCE_ASN" | "SOURCE_COUNTRY" | "SOURCE_IP_ADDRESS" | "SOURCE_USER_AGENT" | "WORDPRESS_PINGBACK_REFLECTOR" | "WORDPRESS_PINGBACK_SOURCE";
+export type AttackPropertyIdentifier =
+  | "DESTINATION_URL"
+  | "REFERRER"
+  | "SOURCE_ASN"
+  | "SOURCE_COUNTRY"
+  | "SOURCE_IP_ADDRESS"
+  | "SOURCE_USER_AGENT"
+  | "WORDPRESS_PINGBACK_REFLECTOR"
+  | "WORDPRESS_PINGBACK_SOURCE";
 export interface AttackStatisticsDataItem {
   AttackVolume?: AttackVolume;
   AttackCount: number;
@@ -308,16 +440,14 @@ export interface AttackVolumeStatistics {
   Max: number;
 }
 export type AutoRenew = "ENABLED" | "DISABLED";
-export interface BlockAction {
-}
+export interface BlockAction {}
 export type ContactNotes = string;
 
 export interface Contributor {
   Name?: string;
   Value?: number;
 }
-export interface CountAction {
-}
+export interface CountAction {}
 export interface CreateProtectionGroupRequest {
   ProtectionGroupId: string;
   Aggregation: ProtectionGroupAggregation;
@@ -326,8 +456,7 @@ export interface CreateProtectionGroupRequest {
   Members?: Array<string>;
   Tags?: Array<Tag>;
 }
-export interface CreateProtectionGroupResponse {
-}
+export interface CreateProtectionGroupResponse {}
 export interface CreateProtectionRequest {
   Name: string;
   ResourceArn: string;
@@ -336,44 +465,35 @@ export interface CreateProtectionRequest {
 export interface CreateProtectionResponse {
   ProtectionId?: string;
 }
-export interface CreateSubscriptionRequest {
-}
-export interface CreateSubscriptionResponse {
-}
+export interface CreateSubscriptionRequest {}
+export interface CreateSubscriptionResponse {}
 export interface DeleteProtectionGroupRequest {
   ProtectionGroupId: string;
 }
-export interface DeleteProtectionGroupResponse {
-}
+export interface DeleteProtectionGroupResponse {}
 export interface DeleteProtectionRequest {
   ProtectionId: string;
 }
-export interface DeleteProtectionResponse {
-}
-export interface DeleteSubscriptionRequest {
-}
-export interface DeleteSubscriptionResponse {
-}
+export interface DeleteProtectionResponse {}
+export interface DeleteSubscriptionRequest {}
+export interface DeleteSubscriptionResponse {}
 export interface DescribeAttackRequest {
   AttackId: string;
 }
 export interface DescribeAttackResponse {
   Attack?: AttackDetail;
 }
-export interface DescribeAttackStatisticsRequest {
-}
+export interface DescribeAttackStatisticsRequest {}
 export interface DescribeAttackStatisticsResponse {
   TimeRange: TimeRange;
   DataItems: Array<AttackStatisticsDataItem>;
 }
-export interface DescribeDRTAccessRequest {
-}
+export interface DescribeDRTAccessRequest {}
 export interface DescribeDRTAccessResponse {
   RoleArn?: string;
   LogBucketList?: Array<string>;
 }
-export interface DescribeEmergencyContactSettingsRequest {
-}
+export interface DescribeEmergencyContactSettingsRequest {}
 export interface DescribeEmergencyContactSettingsResponse {
   EmergencyContactList?: Array<EmergencyContact>;
 }
@@ -390,35 +510,27 @@ export interface DescribeProtectionRequest {
 export interface DescribeProtectionResponse {
   Protection?: Protection;
 }
-export interface DescribeSubscriptionRequest {
-}
+export interface DescribeSubscriptionRequest {}
 export interface DescribeSubscriptionResponse {
   Subscription?: Subscription;
 }
 export interface DisableApplicationLayerAutomaticResponseRequest {
   ResourceArn: string;
 }
-export interface DisableApplicationLayerAutomaticResponseResponse {
-}
-export interface DisableProactiveEngagementRequest {
-}
-export interface DisableProactiveEngagementResponse {
-}
+export interface DisableApplicationLayerAutomaticResponseResponse {}
+export interface DisableProactiveEngagementRequest {}
+export interface DisableProactiveEngagementResponse {}
 export interface DisassociateDRTLogBucketRequest {
   LogBucket: string;
 }
-export interface DisassociateDRTLogBucketResponse {
-}
-export interface DisassociateDRTRoleRequest {
-}
-export interface DisassociateDRTRoleResponse {
-}
+export interface DisassociateDRTLogBucketResponse {}
+export interface DisassociateDRTRoleRequest {}
+export interface DisassociateDRTRoleResponse {}
 export interface DisassociateHealthCheckRequest {
   ProtectionId: string;
   HealthCheckArn: string;
 }
-export interface DisassociateHealthCheckResponse {
-}
+export interface DisassociateHealthCheckResponse {}
 export type Double = number;
 
 export type DurationInSeconds = number;
@@ -435,16 +547,12 @@ export interface EnableApplicationLayerAutomaticResponseRequest {
   ResourceArn: string;
   Action: ResponseAction;
 }
-export interface EnableApplicationLayerAutomaticResponseResponse {
-}
-export interface EnableProactiveEngagementRequest {
-}
-export interface EnableProactiveEngagementResponse {
-}
+export interface EnableApplicationLayerAutomaticResponseResponse {}
+export interface EnableProactiveEngagementRequest {}
+export interface EnableProactiveEngagementResponse {}
 export type errorMessage = string;
 
-export interface GetSubscriptionStateRequest {
-}
+export interface GetSubscriptionStateRequest {}
 export interface GetSubscriptionStateResponse {
   SubscriptionState: SubscriptionState;
 }
@@ -582,7 +690,13 @@ export declare class OptimisticLockException extends Data.TaggedError(
 export type PhoneNumber = string;
 
 export type ProactiveEngagementStatus = "ENABLED" | "DISABLED" | "PENDING";
-export type ProtectedResourceType = "CLOUDFRONT_DISTRIBUTION" | "ROUTE_53_HOSTED_ZONE" | "ELASTIC_IP_ALLOCATION" | "CLASSIC_LOAD_BALANCER" | "APPLICATION_LOAD_BALANCER" | "GLOBAL_ACCELERATOR";
+export type ProtectedResourceType =
+  | "CLOUDFRONT_DISTRIBUTION"
+  | "ROUTE_53_HOSTED_ZONE"
+  | "ELASTIC_IP_ALLOCATION"
+  | "CLASSIC_LOAD_BALANCER"
+  | "APPLICATION_LOAD_BALANCER"
+  | "GLOBAL_ACCELERATOR";
 export type ProtectedResourceTypeFilters = Array<ProtectedResourceType>;
 export interface Protection {
   Id?: string;
@@ -601,7 +715,8 @@ export interface ProtectionGroup {
   ProtectionGroupArn?: string;
 }
 export type ProtectionGroupAggregation = "SUM" | "MEAN" | "MAX";
-export type ProtectionGroupAggregationFilters = Array<ProtectionGroupAggregation>;
+export type ProtectionGroupAggregationFilters =
+  Array<ProtectionGroupAggregation>;
 export interface ProtectionGroupArbitraryPatternLimits {
   MaxMembers: number;
 }
@@ -700,8 +815,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface TimeRange {
@@ -717,19 +831,16 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateApplicationLayerAutomaticResponseRequest {
   ResourceArn: string;
   Action: ResponseAction;
 }
-export interface UpdateApplicationLayerAutomaticResponseResponse {
-}
+export interface UpdateApplicationLayerAutomaticResponseResponse {}
 export interface UpdateEmergencyContactSettingsRequest {
   EmergencyContactList?: Array<EmergencyContact>;
 }
-export interface UpdateEmergencyContactSettingsResponse {
-}
+export interface UpdateEmergencyContactSettingsResponse {}
 export interface UpdateProtectionGroupRequest {
   ProtectionGroupId: string;
   Aggregation: ProtectionGroupAggregation;
@@ -737,13 +848,11 @@ export interface UpdateProtectionGroupRequest {
   ResourceType?: ProtectedResourceType;
   Members?: Array<string>;
 }
-export interface UpdateProtectionGroupResponse {
-}
+export interface UpdateProtectionGroupResponse {}
 export interface UpdateSubscriptionRequest {
   AutoRenew?: AutoRenew;
 }
-export interface UpdateSubscriptionResponse {
-}
+export interface UpdateSubscriptionResponse {}
 export interface ValidationExceptionField {
   name: string;
   message: string;
@@ -882,9 +991,7 @@ export declare namespace DescribeAttack {
 export declare namespace DescribeAttackStatistics {
   export type Input = DescribeAttackStatisticsRequest;
   export type Output = DescribeAttackStatisticsResponse;
-  export type Error =
-    | InternalErrorException
-    | CommonAwsError;
+  export type Error = InternalErrorException | CommonAwsError;
 }
 
 export declare namespace DescribeDRTAccess {
@@ -1021,9 +1128,7 @@ export declare namespace EnableProactiveEngagement {
 export declare namespace GetSubscriptionState {
   export type Input = GetSubscriptionStateRequest;
   export type Output = GetSubscriptionStateResponse;
-  export type Error =
-    | InternalErrorException
-    | CommonAwsError;
+  export type Error = InternalErrorException | CommonAwsError;
 }
 
 export declare namespace ListAttacks {
@@ -1143,4 +1248,3 @@ export declare namespace UpdateSubscription {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

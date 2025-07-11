@@ -1,738 +1,1547 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Pinpoint {
   createApp(
     input: CreateAppRequest,
   ): Effect.Effect<
     CreateAppResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createCampaign(
     input: CreateCampaignRequest,
   ): Effect.Effect<
     CreateCampaignResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createEmailTemplate(
     input: CreateEmailTemplateRequest,
   ): Effect.Effect<
     CreateEmailTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createExportJob(
     input: CreateExportJobRequest,
   ): Effect.Effect<
     CreateExportJobResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createImportJob(
     input: CreateImportJobRequest,
   ): Effect.Effect<
     CreateImportJobResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createInAppTemplate(
     input: CreateInAppTemplateRequest,
   ): Effect.Effect<
     CreateInAppTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createJourney(
     input: CreateJourneyRequest,
   ): Effect.Effect<
     CreateJourneyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createPushTemplate(
     input: CreatePushTemplateRequest,
   ): Effect.Effect<
     CreatePushTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createRecommenderConfiguration(
     input: CreateRecommenderConfigurationRequest,
   ): Effect.Effect<
     CreateRecommenderConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createSegment(
     input: CreateSegmentRequest,
   ): Effect.Effect<
     CreateSegmentResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createSmsTemplate(
     input: CreateSmsTemplateRequest,
   ): Effect.Effect<
     CreateSmsTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createVoiceTemplate(
     input: CreateVoiceTemplateRequest,
   ): Effect.Effect<
     CreateVoiceTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteAdmChannel(
     input: DeleteAdmChannelRequest,
   ): Effect.Effect<
     DeleteAdmChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteApnsChannel(
     input: DeleteApnsChannelRequest,
   ): Effect.Effect<
     DeleteApnsChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteApnsSandboxChannel(
     input: DeleteApnsSandboxChannelRequest,
   ): Effect.Effect<
     DeleteApnsSandboxChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteApnsVoipChannel(
     input: DeleteApnsVoipChannelRequest,
   ): Effect.Effect<
     DeleteApnsVoipChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteApnsVoipSandboxChannel(
     input: DeleteApnsVoipSandboxChannelRequest,
   ): Effect.Effect<
     DeleteApnsVoipSandboxChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteApp(
     input: DeleteAppRequest,
   ): Effect.Effect<
     DeleteAppResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteBaiduChannel(
     input: DeleteBaiduChannelRequest,
   ): Effect.Effect<
     DeleteBaiduChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteCampaign(
     input: DeleteCampaignRequest,
   ): Effect.Effect<
     DeleteCampaignResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEmailChannel(
     input: DeleteEmailChannelRequest,
   ): Effect.Effect<
     DeleteEmailChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEmailTemplate(
     input: DeleteEmailTemplateRequest,
   ): Effect.Effect<
     DeleteEmailTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEndpoint(
     input: DeleteEndpointRequest,
   ): Effect.Effect<
     DeleteEndpointResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEventStream(
     input: DeleteEventStreamRequest,
   ): Effect.Effect<
     DeleteEventStreamResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteGcmChannel(
     input: DeleteGcmChannelRequest,
   ): Effect.Effect<
     DeleteGcmChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteInAppTemplate(
     input: DeleteInAppTemplateRequest,
   ): Effect.Effect<
     DeleteInAppTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteJourney(
     input: DeleteJourneyRequest,
   ): Effect.Effect<
     DeleteJourneyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deletePushTemplate(
     input: DeletePushTemplateRequest,
   ): Effect.Effect<
     DeletePushTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteRecommenderConfiguration(
     input: DeleteRecommenderConfigurationRequest,
   ): Effect.Effect<
     DeleteRecommenderConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteSegment(
     input: DeleteSegmentRequest,
   ): Effect.Effect<
     DeleteSegmentResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteSmsChannel(
     input: DeleteSmsChannelRequest,
   ): Effect.Effect<
     DeleteSmsChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteSmsTemplate(
     input: DeleteSmsTemplateRequest,
   ): Effect.Effect<
     DeleteSmsTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteUserEndpoints(
     input: DeleteUserEndpointsRequest,
   ): Effect.Effect<
     DeleteUserEndpointsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteVoiceChannel(
     input: DeleteVoiceChannelRequest,
   ): Effect.Effect<
     DeleteVoiceChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteVoiceTemplate(
     input: DeleteVoiceTemplateRequest,
   ): Effect.Effect<
     DeleteVoiceTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getAdmChannel(
     input: GetAdmChannelRequest,
   ): Effect.Effect<
     GetAdmChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApnsChannel(
     input: GetApnsChannelRequest,
   ): Effect.Effect<
     GetApnsChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApnsSandboxChannel(
     input: GetApnsSandboxChannelRequest,
   ): Effect.Effect<
     GetApnsSandboxChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApnsVoipChannel(
     input: GetApnsVoipChannelRequest,
   ): Effect.Effect<
     GetApnsVoipChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApnsVoipSandboxChannel(
     input: GetApnsVoipSandboxChannelRequest,
   ): Effect.Effect<
     GetApnsVoipSandboxChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApp(
     input: GetAppRequest,
   ): Effect.Effect<
     GetAppResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApplicationDateRangeKpi(
     input: GetApplicationDateRangeKpiRequest,
   ): Effect.Effect<
     GetApplicationDateRangeKpiResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApplicationSettings(
     input: GetApplicationSettingsRequest,
   ): Effect.Effect<
     GetApplicationSettingsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApps(
     input: GetAppsRequest,
   ): Effect.Effect<
     GetAppsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBaiduChannel(
     input: GetBaiduChannelRequest,
   ): Effect.Effect<
     GetBaiduChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCampaign(
     input: GetCampaignRequest,
   ): Effect.Effect<
     GetCampaignResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCampaignActivities(
     input: GetCampaignActivitiesRequest,
   ): Effect.Effect<
     GetCampaignActivitiesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCampaignDateRangeKpi(
     input: GetCampaignDateRangeKpiRequest,
   ): Effect.Effect<
     GetCampaignDateRangeKpiResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
-  >;
-  getCampaignVersion(
-    input: GetCampaignVersionRequest,
-  ): Effect.Effect<
-    GetCampaignVersionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
-  >;
-  getCampaignVersions(
-    input: GetCampaignVersionsRequest,
-  ): Effect.Effect<
-    GetCampaignVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCampaigns(
     input: GetCampaignsRequest,
   ): Effect.Effect<
     GetCampaignsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  getCampaignVersion(
+    input: GetCampaignVersionRequest,
+  ): Effect.Effect<
+    GetCampaignVersionResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  getCampaignVersions(
+    input: GetCampaignVersionsRequest,
+  ): Effect.Effect<
+    GetCampaignVersionsResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getChannels(
     input: GetChannelsRequest,
   ): Effect.Effect<
     GetChannelsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEmailChannel(
     input: GetEmailChannelRequest,
   ): Effect.Effect<
     GetEmailChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEmailTemplate(
     input: GetEmailTemplateRequest,
   ): Effect.Effect<
     GetEmailTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEndpoint(
     input: GetEndpointRequest,
   ): Effect.Effect<
     GetEndpointResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEventStream(
     input: GetEventStreamRequest,
   ): Effect.Effect<
     GetEventStreamResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getExportJob(
     input: GetExportJobRequest,
   ): Effect.Effect<
     GetExportJobResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getExportJobs(
     input: GetExportJobsRequest,
   ): Effect.Effect<
     GetExportJobsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getGcmChannel(
     input: GetGcmChannelRequest,
   ): Effect.Effect<
     GetGcmChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getImportJob(
     input: GetImportJobRequest,
   ): Effect.Effect<
     GetImportJobResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getImportJobs(
     input: GetImportJobsRequest,
   ): Effect.Effect<
     GetImportJobsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getInAppMessages(
     input: GetInAppMessagesRequest,
   ): Effect.Effect<
     GetInAppMessagesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getInAppTemplate(
     input: GetInAppTemplateRequest,
   ): Effect.Effect<
     GetInAppTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourney(
     input: GetJourneyRequest,
   ): Effect.Effect<
     GetJourneyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourneyDateRangeKpi(
     input: GetJourneyDateRangeKpiRequest,
   ): Effect.Effect<
     GetJourneyDateRangeKpiResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourneyExecutionActivityMetrics(
     input: GetJourneyExecutionActivityMetricsRequest,
   ): Effect.Effect<
     GetJourneyExecutionActivityMetricsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourneyExecutionMetrics(
     input: GetJourneyExecutionMetricsRequest,
   ): Effect.Effect<
     GetJourneyExecutionMetricsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourneyRunExecutionActivityMetrics(
     input: GetJourneyRunExecutionActivityMetricsRequest,
   ): Effect.Effect<
     GetJourneyRunExecutionActivityMetricsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourneyRunExecutionMetrics(
     input: GetJourneyRunExecutionMetricsRequest,
   ): Effect.Effect<
     GetJourneyRunExecutionMetricsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJourneyRuns(
     input: GetJourneyRunsRequest,
   ): Effect.Effect<
     GetJourneyRunsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getPushTemplate(
     input: GetPushTemplateRequest,
   ): Effect.Effect<
     GetPushTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getRecommenderConfiguration(
     input: GetRecommenderConfigurationRequest,
   ): Effect.Effect<
     GetRecommenderConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getRecommenderConfigurations(
     input: GetRecommenderConfigurationsRequest,
   ): Effect.Effect<
     GetRecommenderConfigurationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSegment(
     input: GetSegmentRequest,
   ): Effect.Effect<
     GetSegmentResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSegmentExportJobs(
     input: GetSegmentExportJobsRequest,
   ): Effect.Effect<
     GetSegmentExportJobsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSegmentImportJobs(
     input: GetSegmentImportJobsRequest,
   ): Effect.Effect<
     GetSegmentImportJobsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
-  >;
-  getSegmentVersion(
-    input: GetSegmentVersionRequest,
-  ): Effect.Effect<
-    GetSegmentVersionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
-  >;
-  getSegmentVersions(
-    input: GetSegmentVersionsRequest,
-  ): Effect.Effect<
-    GetSegmentVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSegments(
     input: GetSegmentsRequest,
   ): Effect.Effect<
     GetSegmentsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  getSegmentVersion(
+    input: GetSegmentVersionRequest,
+  ): Effect.Effect<
+    GetSegmentVersionResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  getSegmentVersions(
+    input: GetSegmentVersionsRequest,
+  ): Effect.Effect<
+    GetSegmentVersionsResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSmsChannel(
     input: GetSmsChannelRequest,
   ): Effect.Effect<
     GetSmsChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSmsTemplate(
     input: GetSmsTemplateRequest,
   ): Effect.Effect<
     GetSmsTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getUserEndpoints(
     input: GetUserEndpointsRequest,
   ): Effect.Effect<
     GetUserEndpointsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getVoiceChannel(
     input: GetVoiceChannelRequest,
   ): Effect.Effect<
     GetVoiceChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getVoiceTemplate(
     input: GetVoiceTemplateRequest,
   ): Effect.Effect<
     GetVoiceTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listJourneys(
     input: ListJourneysRequest,
   ): Effect.Effect<
     ListJourneysResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
+  ): Effect.Effect<ListTagsForResourceResponse, CommonAwsError>;
+  listTemplates(
+    input: ListTemplatesRequest,
   ): Effect.Effect<
-    ListTagsForResourceResponse,
-    CommonAwsError
+    ListTemplatesResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTemplateVersions(
     input: ListTemplateVersionsRequest,
   ): Effect.Effect<
     ListTemplateVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
-  >;
-  listTemplates(
-    input: ListTemplatesRequest,
-  ): Effect.Effect<
-    ListTemplatesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   phoneNumberValidate(
     input: PhoneNumberValidateRequest,
   ): Effect.Effect<
     PhoneNumberValidateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
-  >;
-  putEventStream(
-    input: PutEventStreamRequest,
-  ): Effect.Effect<
-    PutEventStreamResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putEvents(
     input: PutEventsRequest,
   ): Effect.Effect<
     PutEventsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  putEventStream(
+    input: PutEventStreamRequest,
+  ): Effect.Effect<
+    PutEventStreamResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   removeAttributes(
     input: RemoveAttributesRequest,
   ): Effect.Effect<
     RemoveAttributesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   sendMessages(
     input: SendMessagesRequest,
   ): Effect.Effect<
     SendMessagesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   sendOTPMessage(
     input: SendOTPMessageRequest,
   ): Effect.Effect<
     SendOTPMessageResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   sendUsersMessages(
     input: SendUsersMessagesRequest,
   ): Effect.Effect<
     SendUsersMessagesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
-  tagResource(
-    input: TagResourceRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
-  untagResource(
-    input: UntagResourceRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  tagResource(input: TagResourceRequest): Effect.Effect<{}, CommonAwsError>;
+  untagResource(input: UntagResourceRequest): Effect.Effect<{}, CommonAwsError>;
   updateAdmChannel(
     input: UpdateAdmChannelRequest,
   ): Effect.Effect<
     UpdateAdmChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApnsChannel(
     input: UpdateApnsChannelRequest,
   ): Effect.Effect<
     UpdateApnsChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApnsSandboxChannel(
     input: UpdateApnsSandboxChannelRequest,
   ): Effect.Effect<
     UpdateApnsSandboxChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApnsVoipChannel(
     input: UpdateApnsVoipChannelRequest,
   ): Effect.Effect<
     UpdateApnsVoipChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApnsVoipSandboxChannel(
     input: UpdateApnsVoipSandboxChannelRequest,
   ): Effect.Effect<
     UpdateApnsVoipSandboxChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApplicationSettings(
     input: UpdateApplicationSettingsRequest,
   ): Effect.Effect<
     UpdateApplicationSettingsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateBaiduChannel(
     input: UpdateBaiduChannelRequest,
   ): Effect.Effect<
     UpdateBaiduChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateCampaign(
     input: UpdateCampaignRequest,
   ): Effect.Effect<
     UpdateCampaignResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateEmailChannel(
     input: UpdateEmailChannelRequest,
   ): Effect.Effect<
     UpdateEmailChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateEmailTemplate(
     input: UpdateEmailTemplateRequest,
   ): Effect.Effect<
     UpdateEmailTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateEndpoint(
     input: UpdateEndpointRequest,
   ): Effect.Effect<
     UpdateEndpointResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateEndpointsBatch(
     input: UpdateEndpointsBatchRequest,
   ): Effect.Effect<
     UpdateEndpointsBatchResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateGcmChannel(
     input: UpdateGcmChannelRequest,
   ): Effect.Effect<
     UpdateGcmChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateInAppTemplate(
     input: UpdateInAppTemplateRequest,
   ): Effect.Effect<
     UpdateInAppTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateJourney(
     input: UpdateJourneyRequest,
   ): Effect.Effect<
     UpdateJourneyResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateJourneyState(
     input: UpdateJourneyStateRequest,
   ): Effect.Effect<
     UpdateJourneyStateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updatePushTemplate(
     input: UpdatePushTemplateRequest,
   ): Effect.Effect<
     UpdatePushTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateRecommenderConfiguration(
     input: UpdateRecommenderConfigurationRequest,
   ): Effect.Effect<
     UpdateRecommenderConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateSegment(
     input: UpdateSegmentRequest,
   ): Effect.Effect<
     UpdateSegmentResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateSmsChannel(
     input: UpdateSmsChannelRequest,
   ): Effect.Effect<
     UpdateSmsChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateSmsTemplate(
     input: UpdateSmsTemplateRequest,
   ): Effect.Effect<
     UpdateSmsTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateTemplateActiveVersion(
     input: UpdateTemplateActiveVersionRequest,
   ): Effect.Effect<
     UpdateTemplateActiveVersionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateVoiceChannel(
     input: UpdateVoiceChannelRequest,
   ): Effect.Effect<
     UpdateVoiceChannelResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateVoiceTemplate(
     input: UpdateVoiceTemplateRequest,
   ): Effect.Effect<
     UpdateVoiceTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   verifyOTPMessage(
     input: VerifyOTPMessageRequest,
   ): Effect.Effect<
     VerifyOTPMessageResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | PayloadTooLargeException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -742,7 +1551,20 @@ export type __boolean = boolean;
 
 export type __double = number;
 
-export type __EndpointTypesElement = "PUSH" | "GCM" | "APNS" | "APNS_SANDBOX" | "APNS_VOIP" | "APNS_VOIP_SANDBOX" | "ADM" | "SMS" | "VOICE" | "EMAIL" | "BAIDU" | "CUSTOM" | "IN_APP";
+export type __EndpointTypesElement =
+  | "PUSH"
+  | "GCM"
+  | "APNS"
+  | "APNS_SANDBOX"
+  | "APNS_VOIP"
+  | "APNS_VOIP_SANDBOX"
+  | "ADM"
+  | "SMS"
+  | "VOICE"
+  | "EMAIL"
+  | "BAIDU"
+  | "CUSTOM"
+  | "IN_APP";
 export type __integer = number;
 
 export type __string = string;
@@ -1005,7 +1827,14 @@ export interface AttributesResource {
   AttributeType: string;
   Attributes?: Array<string>;
 }
-export type AttributeType = "INCLUSIVE" | "EXCLUSIVE" | "CONTAINS" | "BEFORE" | "AFTER" | "ON" | "BETWEEN";
+export type AttributeType =
+  | "INCLUSIVE"
+  | "EXCLUSIVE"
+  | "CONTAINS"
+  | "BEFORE"
+  | "AFTER"
+  | "ON"
+  | "BETWEEN";
 export declare class BadRequestException extends Data.TaggedError(
   "BadRequestException",
 )<{
@@ -1133,7 +1962,14 @@ export interface CampaignsResponse {
 export interface CampaignState {
   CampaignStatus?: CampaignStatus;
 }
-export type CampaignStatus = "SCHEDULED" | "EXECUTING" | "PENDING_NEXT_RUN" | "COMPLETED" | "PAUSED" | "DELETED" | "INVALID";
+export type CampaignStatus =
+  | "SCHEDULED"
+  | "EXECUTING"
+  | "PENDING_NEXT_RUN"
+  | "COMPLETED"
+  | "PAUSED"
+  | "DELETED"
+  | "INVALID";
 export interface ChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -1148,7 +1984,20 @@ export interface ChannelResponse {
 export interface ChannelsResponse {
   Channels: Record<string, ChannelResponse>;
 }
-export type ChannelType = "PUSH" | "GCM" | "APNS" | "APNS_SANDBOX" | "APNS_VOIP" | "APNS_VOIP_SANDBOX" | "ADM" | "SMS" | "VOICE" | "EMAIL" | "BAIDU" | "CUSTOM" | "IN_APP";
+export type ChannelType =
+  | "PUSH"
+  | "GCM"
+  | "APNS"
+  | "APNS_SANDBOX"
+  | "APNS_VOIP"
+  | "APNS_VOIP_SANDBOX"
+  | "ADM"
+  | "SMS"
+  | "VOICE"
+  | "EMAIL"
+  | "BAIDU"
+  | "CUSTOM"
+  | "IN_APP";
 export interface ClosedDays {
   EMAIL?: Array<ClosedDaysRule>;
   SMS?: Array<ClosedDaysRule>;
@@ -1294,7 +2143,14 @@ export interface CustomMessageActivity {
   TemplateName?: string;
   TemplateVersion?: string;
 }
-export type DayOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type DayOfWeek =
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export interface DefaultButtonConfiguration {
   BackgroundColor?: string;
   BorderRadius?: number;
@@ -1471,7 +2327,14 @@ export interface DeleteVoiceTemplateRequest {
 export interface DeleteVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
-export type DeliveryStatus = "SUCCESSFUL" | "THROTTLED" | "TEMPORARY_FAILURE" | "PERMANENT_FAILURE" | "UNKNOWN_FAILURE" | "OPT_OUT" | "DUPLICATE";
+export type DeliveryStatus =
+  | "SUCCESSFUL"
+  | "THROTTLED"
+  | "TEMPORARY_FAILURE"
+  | "PERMANENT_FAILURE"
+  | "UNKNOWN_FAILURE"
+  | "OPT_OUT"
+  | "DUPLICATE";
 export type DimensionType = "INCLUSIVE" | "EXCLUSIVE";
 export interface DirectMessageConfiguration {
   ADMMessage?: ADMMessage;
@@ -1733,7 +2596,14 @@ export declare class ForbiddenException extends Data.TaggedError(
   readonly RequestID?: string;
 }> {}
 export type Format = "CSV" | "JSON";
-export type Frequency = "ONCE" | "HOURLY" | "DAILY" | "WEEKLY" | "MONTHLY" | "EVENT" | "IN_APP_EVENT";
+export type Frequency =
+  | "ONCE"
+  | "HOURLY"
+  | "DAILY"
+  | "WEEKLY"
+  | "MONTHLY"
+  | "EVENT"
+  | "IN_APP_EVENT";
 export interface GCMChannelRequest {
   ApiKey?: string;
   DefaultAuthenticationMethod?: string;
@@ -2276,7 +3146,16 @@ export interface ItemResponse {
   EndpointItemResponse?: EndpointItemResponse;
   EventsItemResponse?: Record<string, EventItemResponse>;
 }
-export type JobStatus = "CREATED" | "PREPARING_FOR_INITIALIZATION" | "INITIALIZING" | "PROCESSING" | "PENDING_JOB" | "COMPLETING" | "COMPLETED" | "FAILING" | "FAILED";
+export type JobStatus =
+  | "CREATED"
+  | "PREPARING_FOR_INITIALIZATION"
+  | "INITIALIZING"
+  | "PROCESSING"
+  | "PENDING_JOB"
+  | "COMPLETING"
+  | "COMPLETED"
+  | "FAILING"
+  | "FAILED";
 export interface JourneyChannelSettings {
   ConnectCampaignArn?: string;
   ConnectCampaignExecutionRoleArn?: string;
@@ -2371,7 +3250,11 @@ export interface JourneyRunsResponse {
   Item: Array<JourneyRunResponse>;
   NextToken?: string;
 }
-export type JourneyRunStatus = "SCHEDULED" | "RUNNING" | "COMPLETED" | "CANCELLED";
+export type JourneyRunStatus =
+  | "SCHEDULED"
+  | "RUNNING"
+  | "COMPLETED"
+  | "CANCELLED";
 export interface JourneySchedule {
   EndTime?: Date | string;
   StartTime?: Date | string;
@@ -2395,7 +3278,13 @@ export interface JourneyTimeframeCap {
   Cap?: number;
   Days?: number;
 }
-export type Layout = "BOTTOM_BANNER" | "TOP_BANNER" | "OVERLAYS" | "MOBILE_FEED" | "MIDDLE_BANNER" | "CAROUSEL";
+export type Layout =
+  | "BOTTOM_BANNER"
+  | "TOP_BANNER"
+  | "OVERLAYS"
+  | "MOBILE_FEED"
+  | "MIDDLE_BANNER"
+  | "CAROUSEL";
 export interface ListJourneysRequest {
   ApplicationId: string;
   PageSize?: string;
@@ -2406,7 +3295,8 @@ export interface ListJourneysResponse {
 }
 export type ListOf__EndpointTypesElement = Array<__EndpointTypesElement>;
 export type ListOf__string = Array<string>;
-export type ListOf__TimezoneEstimationMethodsElement = Array<__TimezoneEstimationMethodsElement>;
+export type ListOf__TimezoneEstimationMethodsElement =
+  Array<__TimezoneEstimationMethodsElement>;
 export type ListOfActivityResponse = Array<ActivityResponse>;
 export type ListOfApplicationResponse = Array<ApplicationResponse>;
 export type ListOfCampaignResponse = Array<CampaignResponse>;
@@ -2423,7 +3313,8 @@ export type ListOfMessageHeader = Array<MessageHeader>;
 export type ListOfMultiConditionalBranch = Array<MultiConditionalBranch>;
 export type ListOfOpenHoursRules = Array<OpenHoursRule>;
 export type ListOfRandomSplitEntry = Array<RandomSplitEntry>;
-export type ListOfRecommenderConfigurationResponse = Array<RecommenderConfigurationResponse>;
+export type ListOfRecommenderConfigurationResponse =
+  Array<RecommenderConfigurationResponse>;
 export type ListOfResultRow = Array<ResultRow>;
 export type ListOfResultRowValue = Array<ResultRowValue>;
 export type ListOfSegmentDimensions = Array<SegmentDimensions>;
@@ -2471,14 +3362,20 @@ export type MapOfAddressConfiguration = Record<string, AddressConfiguration>;
 export type MapOfAttributeDimension = Record<string, AttributeDimension>;
 export type MapOfChannelResponse = Record<string, ChannelResponse>;
 export type MapOfEndpointMessageResult = Record<string, EndpointMessageResult>;
-export type MapOfEndpointSendConfiguration = Record<string, EndpointSendConfiguration>;
+export type MapOfEndpointSendConfiguration = Record<
+  string,
+  EndpointSendConfiguration
+>;
 export type MapOfEvent = Record<string, Event>;
 export type MapOfEventItemResponse = Record<string, EventItemResponse>;
 export type MapOfEventsBatch = Record<string, EventsBatch>;
 export type MapOfItemResponse = Record<string, ItemResponse>;
 export type MapOfListOf__string = Record<string, Array<string>>;
 export type MapOfListOfOpenHoursRules = Record<DayOfWeek, Array<OpenHoursRule>>;
-export type MapOfMapOfEndpointMessageResult = Record<string, Record<string, EndpointMessageResult>>;
+export type MapOfMapOfEndpointMessageResult = Record<
+  string,
+  Record<string, EndpointMessageResult>
+>;
 export type MapOfMessageResult = Record<string, MessageResult>;
 export type MapOfMetricDimension = Record<string, MetricDimension>;
 export interface Message {
@@ -2932,7 +3829,13 @@ export interface StartCondition {
   EventStartCondition?: EventStartCondition;
   SegmentStartCondition?: SegmentCondition;
 }
-export type State = "DRAFT" | "ACTIVE" | "COMPLETED" | "CANCELLED" | "CLOSED" | "PAUSED";
+export type State =
+  | "DRAFT"
+  | "ACTIVE"
+  | "COMPLETED"
+  | "CANCELLED"
+  | "CLOSED"
+  | "PAUSED";
 export interface TagResourceRequest {
   ResourceArn: string;
   TagsModel: TagsModel;
@@ -4006,6 +4909,20 @@ export declare namespace GetCampaignDateRangeKpi {
     | CommonAwsError;
 }
 
+export declare namespace GetCampaigns {
+  export type Input = GetCampaignsRequest;
+  export type Output = GetCampaignsResponse;
+  export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
 export declare namespace GetCampaignVersion {
   export type Input = GetCampaignVersionRequest;
   export type Output = GetCampaignVersionResponse;
@@ -4023,20 +4940,6 @@ export declare namespace GetCampaignVersion {
 export declare namespace GetCampaignVersions {
   export type Input = GetCampaignVersionsRequest;
   export type Output = GetCampaignVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
-    | MethodNotAllowedException
-    | NotFoundException
-    | PayloadTooLargeException
-    | TooManyRequestsException
-    | CommonAwsError;
-}
-
-export declare namespace GetCampaigns {
-  export type Input = GetCampaignsRequest;
-  export type Output = GetCampaignsResponse;
   export type Error =
     | BadRequestException
     | ForbiddenException
@@ -4398,6 +5301,20 @@ export declare namespace GetSegmentImportJobs {
     | CommonAwsError;
 }
 
+export declare namespace GetSegments {
+  export type Input = GetSegmentsRequest;
+  export type Output = GetSegmentsResponse;
+  export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | PayloadTooLargeException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
 export declare namespace GetSegmentVersion {
   export type Input = GetSegmentVersionRequest;
   export type Output = GetSegmentVersionResponse;
@@ -4415,20 +5332,6 @@ export declare namespace GetSegmentVersion {
 export declare namespace GetSegmentVersions {
   export type Input = GetSegmentVersionsRequest;
   export type Output = GetSegmentVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
-    | MethodNotAllowedException
-    | NotFoundException
-    | PayloadTooLargeException
-    | TooManyRequestsException
-    | CommonAwsError;
-}
-
-export declare namespace GetSegments {
-  export type Input = GetSegmentsRequest;
-  export type Output = GetSegmentsResponse;
   export type Error =
     | BadRequestException
     | ForbiddenException
@@ -4527,7 +5430,18 @@ export declare namespace ListJourneys {
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListTemplates {
+  export type Input = ListTemplatesRequest;
+  export type Output = ListTemplatesResponse;
   export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
     | CommonAwsError;
 }
 
@@ -4541,18 +5455,6 @@ export declare namespace ListTemplateVersions {
     | MethodNotAllowedException
     | NotFoundException
     | PayloadTooLargeException
-    | TooManyRequestsException
-    | CommonAwsError;
-}
-
-export declare namespace ListTemplates {
-  export type Input = ListTemplatesRequest;
-  export type Output = ListTemplatesResponse;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
-    | MethodNotAllowedException
     | TooManyRequestsException
     | CommonAwsError;
 }
@@ -4571,9 +5473,9 @@ export declare namespace PhoneNumberValidate {
     | CommonAwsError;
 }
 
-export declare namespace PutEventStream {
-  export type Input = PutEventStreamRequest;
-  export type Output = PutEventStreamResponse;
+export declare namespace PutEvents {
+  export type Input = PutEventsRequest;
+  export type Output = PutEventsResponse;
   export type Error =
     | BadRequestException
     | ForbiddenException
@@ -4585,9 +5487,9 @@ export declare namespace PutEventStream {
     | CommonAwsError;
 }
 
-export declare namespace PutEvents {
-  export type Input = PutEventsRequest;
-  export type Output = PutEventsResponse;
+export declare namespace PutEventStream {
+  export type Input = PutEventStreamRequest;
+  export type Output = PutEventStreamResponse;
   export type Error =
     | BadRequestException
     | ForbiddenException
@@ -4658,15 +5560,13 @@ export declare namespace SendUsersMessages {
 export declare namespace TagResource {
   export type Input = TagResourceRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace UpdateAdmChannel {
@@ -5019,4 +5919,3 @@ export declare namespace VerifyOTPMessage {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.pinpoint#ADMChannelRequest": {
       "type": "structure",
@@ -14808,6 +14837,374 @@
     },
     "com.amazonaws.pinpoint#Pinpoint": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.pinpoint#CreateApp"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateCampaign"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateExportJob"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateImportJob"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateInAppTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateJourney"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreatePushTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateRecommenderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateSegment"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateSmsTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#CreateVoiceTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteAdmChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteApnsChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteApnsSandboxChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteApnsVoipChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteApnsVoipSandboxChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteApp"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteBaiduChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteCampaign"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteEmailChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteEndpoint"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteEventStream"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteGcmChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteInAppTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteJourney"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeletePushTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteRecommenderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteSegment"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteSmsChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteSmsTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteUserEndpoints"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteVoiceChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#DeleteVoiceTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetAdmChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApnsChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApnsSandboxChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApnsVoipChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApnsVoipSandboxChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApp"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApplicationDateRangeKpi"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApplicationSettings"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetApps"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetBaiduChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetCampaign"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetCampaignActivities"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetCampaignDateRangeKpi"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetCampaigns"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetCampaignVersion"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetCampaignVersions"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetChannels"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetEmailChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetEndpoint"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetEventStream"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetExportJob"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetExportJobs"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetGcmChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetImportJob"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetImportJobs"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetInAppMessages"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetInAppTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourney"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourneyDateRangeKpi"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourneyExecutionActivityMetrics"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourneyExecutionMetrics"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourneyRunExecutionActivityMetrics"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourneyRunExecutionMetrics"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetJourneyRuns"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetPushTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetRecommenderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetRecommenderConfigurations"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSegment"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSegmentExportJobs"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSegmentImportJobs"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSegments"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSegmentVersion"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSegmentVersions"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSmsChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetSmsTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetUserEndpoints"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetVoiceChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#GetVoiceTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ListJourneys"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ListTemplates"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#ListTemplateVersions"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PhoneNumberValidate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PutEvents"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#PutEventStream"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#RemoveAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#SendMessages"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#SendOTPMessage"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#SendUsersMessages"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#TagResource"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateAdmChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateApnsChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateApnsSandboxChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateApnsVoipChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateApnsVoipSandboxChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateApplicationSettings"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateBaiduChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateCampaign"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateEmailChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateEndpointsBatch"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateGcmChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateInAppTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateJourney"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateJourneyState"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdatePushTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateRecommenderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateSegment"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateSmsChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateSmsTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateTemplateActiveVersion"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateVoiceChannel"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#UpdateVoiceTemplate"
+        },
+        {
+          "target": "com.amazonaws.pinpoint#VerifyOTPMessage"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Pinpoint",

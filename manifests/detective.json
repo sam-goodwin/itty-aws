@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.detective#APIFailureCount": {
       "type": "long",
@@ -212,6 +241,95 @@
     },
     "com.amazonaws.detective#AmazonDetective": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.detective#AcceptInvitation"
+        },
+        {
+          "target": "com.amazonaws.detective#BatchGetGraphMemberDatasources"
+        },
+        {
+          "target": "com.amazonaws.detective#BatchGetMembershipDatasources"
+        },
+        {
+          "target": "com.amazonaws.detective#CreateGraph"
+        },
+        {
+          "target": "com.amazonaws.detective#CreateMembers"
+        },
+        {
+          "target": "com.amazonaws.detective#DeleteGraph"
+        },
+        {
+          "target": "com.amazonaws.detective#DeleteMembers"
+        },
+        {
+          "target": "com.amazonaws.detective#DescribeOrganizationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.detective#DisableOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.detective#DisassociateMembership"
+        },
+        {
+          "target": "com.amazonaws.detective#EnableOrganizationAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.detective#GetInvestigation"
+        },
+        {
+          "target": "com.amazonaws.detective#GetMembers"
+        },
+        {
+          "target": "com.amazonaws.detective#ListDatasourcePackages"
+        },
+        {
+          "target": "com.amazonaws.detective#ListGraphs"
+        },
+        {
+          "target": "com.amazonaws.detective#ListIndicators"
+        },
+        {
+          "target": "com.amazonaws.detective#ListInvestigations"
+        },
+        {
+          "target": "com.amazonaws.detective#ListInvitations"
+        },
+        {
+          "target": "com.amazonaws.detective#ListMembers"
+        },
+        {
+          "target": "com.amazonaws.detective#ListOrganizationAdminAccounts"
+        },
+        {
+          "target": "com.amazonaws.detective#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.detective#RejectInvitation"
+        },
+        {
+          "target": "com.amazonaws.detective#StartInvestigation"
+        },
+        {
+          "target": "com.amazonaws.detective#StartMonitoringMember"
+        },
+        {
+          "target": "com.amazonaws.detective#TagResource"
+        },
+        {
+          "target": "com.amazonaws.detective#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.detective#UpdateDatasourcePackages"
+        },
+        {
+          "target": "com.amazonaws.detective#UpdateInvestigationState"
+        },
+        {
+          "target": "com.amazonaws.detective#UpdateOrganizationConfiguration"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Detective",

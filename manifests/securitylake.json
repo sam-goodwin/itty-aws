@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.securitylake#AccessDeniedException": {
       "type": "structure",
@@ -3087,6 +3088,38 @@
     },
     "com.amazonaws.securitylake#SecurityLake": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.securitylake#CreateDataLakeExceptionSubscription"
+        },
+        {
+          "target": "com.amazonaws.securitylake#DeleteDataLakeExceptionSubscription"
+        },
+        {
+          "target": "com.amazonaws.securitylake#DeregisterDataLakeDelegatedAdministrator"
+        },
+        {
+          "target": "com.amazonaws.securitylake#GetDataLakeExceptionSubscription"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ListDataLakeExceptions"
+        },
+        {
+          "target": "com.amazonaws.securitylake#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.securitylake#RegisterDataLakeDelegatedAdministrator"
+        },
+        {
+          "target": "com.amazonaws.securitylake#TagResource"
+        },
+        {
+          "target": "com.amazonaws.securitylake#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.securitylake#UpdateDataLakeExceptionSubscription"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SecurityLake",

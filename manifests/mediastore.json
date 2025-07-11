@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.mediastore#AllowedHeaders": {
       "type": "list",
@@ -1035,6 +1064,71 @@
     },
     "com.amazonaws.mediastore#MediaStore_20170901": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mediastore#CreateContainer"
+        },
+        {
+          "target": "com.amazonaws.mediastore#DeleteContainer"
+        },
+        {
+          "target": "com.amazonaws.mediastore#DeleteContainerPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#DeleteCorsPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#DeleteLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#DeleteMetricPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#DescribeContainer"
+        },
+        {
+          "target": "com.amazonaws.mediastore#GetContainerPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#GetCorsPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#GetLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#GetMetricPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ListContainers"
+        },
+        {
+          "target": "com.amazonaws.mediastore#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PutContainerPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PutCorsPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PutLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#PutMetricPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediastore#StartAccessLogging"
+        },
+        {
+          "target": "com.amazonaws.mediastore#StopAccessLogging"
+        },
+        {
+          "target": "com.amazonaws.mediastore#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mediastore#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MediaStore",

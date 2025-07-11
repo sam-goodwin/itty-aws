@@ -1,12 +1,18 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonSageMakerRuntime {
   invokeEndpoint(
     input: InvokeEndpointInput,
   ): Effect.Effect<
     InvokeEndpointOutput,
-    InternalDependencyException | InternalFailure | ModelError | ModelNotReadyException | ServiceUnavailable | ValidationError | CommonAwsError
+    | InternalDependencyException
+    | InternalFailure
+    | ModelError
+    | ModelNotReadyException
+    | ServiceUnavailable
+    | ValidationError
+    | CommonAwsError
   >;
   invokeEndpointAsync(
     input: InvokeEndpointAsyncInput,
@@ -18,7 +24,13 @@ export interface AmazonSageMakerRuntime {
     input: InvokeEndpointWithResponseStreamInput,
   ): Effect.Effect<
     InvokeEndpointWithResponseStreamOutput,
-    InternalFailure | InternalStreamFailure | ModelError | ModelStreamError | ServiceUnavailable | ValidationError | CommonAwsError
+    | InternalFailure
+    | InternalStreamFailure
+    | ModelError
+    | ModelStreamError
+    | ServiceUnavailable
+    | ValidationError
+    | CommonAwsError
   >;
 }
 
@@ -118,9 +130,7 @@ export type LogStreamArn = string;
 
 export type Message = string;
 
-export declare class ModelError extends Data.TaggedError(
-  "ModelError",
-)<{
+export declare class ModelError extends Data.TaggedError("ModelError")<{
   readonly Message?: string;
   readonly OriginalStatusCode?: number;
   readonly OriginalMessage?: string;
@@ -146,7 +156,10 @@ export interface PayloadPart {
 }
 export type RequestTTLSecondsHeader = number;
 
-export type ResponseStream = { PayloadPart: PayloadPart } | { ModelStreamError: ModelStreamError } | { InternalStreamFailure: InternalStreamFailure };
+export type ResponseStream =
+  | { PayloadPart: PayloadPart }
+  | { ModelStreamError: ModelStreamError }
+  | { InternalStreamFailure: InternalStreamFailure };
 export declare class ServiceUnavailable extends Data.TaggedError(
   "ServiceUnavailable",
 )<{
@@ -204,4 +217,3 @@ export declare namespace InvokeEndpointWithResponseStream {
     | ValidationError
     | CommonAwsError;
 }
-

@@ -1,96 +1,21 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface SimSpaceWeaver {
-  createSnapshot(
-    input: CreateSnapshotInput,
-  ): Effect.Effect<
-    CreateSnapshotOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteApp(
-    input: DeleteAppInput,
-  ): Effect.Effect<
-    DeleteAppOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteSimulation(
-    input: DeleteSimulationInput,
-  ): Effect.Effect<
-    DeleteSimulationOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  describeApp(
-    input: DescribeAppInput,
-  ): Effect.Effect<
-    DescribeAppOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  describeSimulation(
-    input: DescribeSimulationInput,
-  ): Effect.Effect<
-    DescribeSimulationOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listApps(
-    input: ListAppsInput,
-  ): Effect.Effect<
-    ListAppsOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  listSimulations(
-    input: ListSimulationsInput,
-  ): Effect.Effect<
-    ListSimulationsOutput,
-    AccessDeniedException | InternalServerException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
     ListTagsForResourceOutput,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
-  startApp(
-    input: StartAppInput,
-  ): Effect.Effect<
-    StartAppOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  startClock(
-    input: StartClockInput,
-  ): Effect.Effect<
-    StartClockOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  startSimulation(
-    input: StartSimulationInput,
-  ): Effect.Effect<
-    StartSimulationOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
-  >;
-  stopApp(
-    input: StopAppInput,
-  ): Effect.Effect<
-    StopAppOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  stopClock(
-    input: StopClockInput,
-  ): Effect.Effect<
-    StopClockOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  stopSimulation(
-    input: StopSimulationInput,
-  ): Effect.Effect<
-    StopSimulationOutput,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
     TagResourceOutput,
-    ResourceNotFoundException | TooManyTagsException | ValidationException | CommonAwsError
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
@@ -128,20 +53,17 @@ export interface CreateSnapshotInput {
   Simulation: string;
   Destination: S3Destination;
 }
-export interface CreateSnapshotOutput {
-}
+export interface CreateSnapshotOutput {}
 export interface DeleteAppInput {
   Simulation: string;
   Domain: string;
   App: string;
 }
-export interface DeleteAppOutput {
-}
+export interface DeleteAppOutput {}
 export interface DeleteSimulationInput {
   Simulation: string;
 }
-export interface DeleteSimulationOutput {
-}
+export interface DeleteSimulationOutput {}
 export interface DescribeAppInput {
   Simulation: string;
   Domain: string;
@@ -323,8 +245,7 @@ export interface StartAppOutput {
 export interface StartClockInput {
   Simulation: string;
 }
-export interface StartClockOutput {
-}
+export interface StartClockOutput {}
 export interface StartSimulationInput {
   ClientToken?: string;
   Name: string;
@@ -345,18 +266,15 @@ export interface StopAppInput {
   Domain: string;
   App: string;
 }
-export interface StopAppOutput {
-}
+export interface StopAppOutput {}
 export interface StopClockInput {
   Simulation: string;
 }
-export interface StopClockOutput {
-}
+export interface StopClockOutput {}
 export interface StopSimulationInput {
   Simulation: string;
 }
-export interface StopSimulationOutput {
-}
+export interface StopSimulationOutput {}
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;
@@ -365,8 +283,7 @@ export interface TagResourceInput {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceOutput {
-}
+export interface TagResourceOutput {}
 export type TagValue = string;
 
 export type Timestamp = Date | string;
@@ -382,8 +299,7 @@ export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceOutput {
-}
+export interface UntagResourceOutput {}
 export type UUID = string;
 
 export declare class ValidationException extends Data.TaggedError(
@@ -391,161 +307,10 @@ export declare class ValidationException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export declare namespace CreateSnapshot {
-  export type Input = CreateSnapshotInput;
-  export type Output = CreateSnapshotOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteApp {
-  export type Input = DeleteAppInput;
-  export type Output = DeleteAppOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteSimulation {
-  export type Input = DeleteSimulationInput;
-  export type Output = DeleteSimulationOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeApp {
-  export type Input = DescribeAppInput;
-  export type Output = DescribeAppOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeSimulation {
-  export type Input = DescribeSimulationInput;
-  export type Output = DescribeSimulationOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListApps {
-  export type Input = ListAppsInput;
-  export type Output = ListAppsOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListSimulations {
-  export type Input = ListSimulationsInput;
-  export type Output = ListSimulationsOutput;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceInput;
   export type Output = ListTagsForResourceOutput;
   export type Error =
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartApp {
-  export type Input = StartAppInput;
-  export type Output = StartAppOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartClock {
-  export type Input = StartClockInput;
-  export type Output = StartClockOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartSimulation {
-  export type Input = StartSimulationInput;
-  export type Output = StartSimulationOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StopApp {
-  export type Input = StopAppInput;
-  export type Output = StopAppOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StopClock {
-  export type Input = StopClockInput;
-  export type Output = StopClockOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StopSimulation {
-  export type Input = StopSimulationInput;
-  export type Output = StopSimulationOutput;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
     | ResourceNotFoundException
     | ValidationException
     | CommonAwsError;
@@ -569,4 +334,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-

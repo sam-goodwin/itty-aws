@@ -1,270 +1,554 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSGorillaBoyService {
   abortDocumentVersionUpload(
     input: AbortDocumentVersionUploadRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   activateUser(
     input: ActivateUserRequest,
   ): Effect.Effect<
     ActivateUserResponse,
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   addResourcePermissions(
     input: AddResourcePermissionsRequest,
   ): Effect.Effect<
     AddResourcePermissionsResponse,
-    FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   createComment(
     input: CreateCommentRequest,
   ): Effect.Effect<
     CreateCommentResponse,
-    DocumentLockedForCommentsException | EntityNotExistsException | FailedDependencyException | InvalidCommentOperationException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | DocumentLockedForCommentsException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidCommentOperationException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   createCustomMetadata(
     input: CreateCustomMetadataRequest,
   ): Effect.Effect<
     CreateCustomMetadataResponse,
-    CustomMetadataLimitExceededException | EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | CustomMetadataLimitExceededException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   createFolder(
     input: CreateFolderRequest,
   ): Effect.Effect<
     CreateFolderResponse,
-    ConcurrentModificationException | ConflictingOperationException | EntityAlreadyExistsException | EntityNotExistsException | FailedDependencyException | LimitExceededException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityAlreadyExistsException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | LimitExceededException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   createLabels(
     input: CreateLabelsRequest,
   ): Effect.Effect<
     CreateLabelsResponse,
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | TooManyLabelsException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | TooManyLabelsException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   createNotificationSubscription(
     input: CreateNotificationSubscriptionRequest,
   ): Effect.Effect<
     CreateNotificationSubscriptionResponse,
-    InvalidArgumentException | ServiceUnavailableException | TooManySubscriptionsException | UnauthorizedResourceAccessException | CommonAwsError
+    | InvalidArgumentException
+    | ServiceUnavailableException
+    | TooManySubscriptionsException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   createUser(
     input: CreateUserRequest,
   ): Effect.Effect<
     CreateUserResponse,
-    EntityAlreadyExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityAlreadyExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deactivateUser(
     input: DeactivateUserRequest,
   ): Effect.Effect<
     {},
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteComment(
     input: DeleteCommentRequest,
   ): Effect.Effect<
     {},
-    DocumentLockedForCommentsException | EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | DocumentLockedForCommentsException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteCustomMetadata(
     input: DeleteCustomMetadataRequest,
   ): Effect.Effect<
     DeleteCustomMetadataResponse,
-    EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteDocument(
     input: DeleteDocumentRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | ConflictingOperationException | EntityNotExistsException | FailedDependencyException | LimitExceededException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | LimitExceededException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteDocumentVersion(
     input: DeleteDocumentVersionRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | ConflictingOperationException | EntityNotExistsException | FailedDependencyException | InvalidOperationException | ProhibitedStateException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidOperationException
+    | ProhibitedStateException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteFolder(
     input: DeleteFolderRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | ConflictingOperationException | EntityNotExistsException | FailedDependencyException | LimitExceededException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | LimitExceededException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteFolderContents(
     input: DeleteFolderContentsRequest,
   ): Effect.Effect<
     {},
-    ConflictingOperationException | EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConflictingOperationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteLabels(
     input: DeleteLabelsRequest,
   ): Effect.Effect<
     DeleteLabelsResponse,
-    EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteNotificationSubscription(
     input: DeleteNotificationSubscriptionRequest,
   ): Effect.Effect<
     {},
-    EntityNotExistsException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   deleteUser(
     input: DeleteUserRequest,
   ): Effect.Effect<
     {},
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeActivities(
     input: DescribeActivitiesRequest,
   ): Effect.Effect<
     DescribeActivitiesResponse,
-    FailedDependencyException | InvalidArgumentException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | InvalidArgumentException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeComments(
     input: DescribeCommentsRequest,
   ): Effect.Effect<
     DescribeCommentsResponse,
-    EntityNotExistsException | FailedDependencyException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeDocumentVersions(
     input: DescribeDocumentVersionsRequest,
   ): Effect.Effect<
     DescribeDocumentVersionsResponse,
-    EntityNotExistsException | FailedDependencyException | InvalidArgumentException | InvalidPasswordException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidArgumentException
+    | InvalidPasswordException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeFolderContents(
     input: DescribeFolderContentsRequest,
   ): Effect.Effect<
     DescribeFolderContentsResponse,
-    EntityNotExistsException | FailedDependencyException | InvalidArgumentException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidArgumentException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeGroups(
     input: DescribeGroupsRequest,
   ): Effect.Effect<
     DescribeGroupsResponse,
-    FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeNotificationSubscriptions(
     input: DescribeNotificationSubscriptionsRequest,
   ): Effect.Effect<
     DescribeNotificationSubscriptionsResponse,
-    EntityNotExistsException | ServiceUnavailableException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | ServiceUnavailableException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeResourcePermissions(
     input: DescribeResourcePermissionsRequest,
   ): Effect.Effect<
     DescribeResourcePermissionsResponse,
-    FailedDependencyException | InvalidArgumentException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | InvalidArgumentException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeRootFolders(
     input: DescribeRootFoldersRequest,
   ): Effect.Effect<
     DescribeRootFoldersResponse,
-    FailedDependencyException | InvalidArgumentException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | InvalidArgumentException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   describeUsers(
     input: DescribeUsersRequest,
   ): Effect.Effect<
     DescribeUsersResponse,
-    EntityNotExistsException | FailedDependencyException | InvalidArgumentException | RequestedEntityTooLargeException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidArgumentException
+    | RequestedEntityTooLargeException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getCurrentUser(
     input: GetCurrentUserRequest,
   ): Effect.Effect<
     GetCurrentUserResponse,
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getDocument(
     input: GetDocumentRequest,
   ): Effect.Effect<
     GetDocumentResponse,
-    EntityNotExistsException | FailedDependencyException | InvalidArgumentException | InvalidPasswordException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidArgumentException
+    | InvalidPasswordException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getDocumentPath(
     input: GetDocumentPathRequest,
   ): Effect.Effect<
     GetDocumentPathResponse,
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getDocumentVersion(
     input: GetDocumentVersionRequest,
   ): Effect.Effect<
     GetDocumentVersionResponse,
-    EntityNotExistsException | FailedDependencyException | InvalidPasswordException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidPasswordException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getFolder(
     input: GetFolderRequest,
   ): Effect.Effect<
     GetFolderResponse,
-    EntityNotExistsException | FailedDependencyException | InvalidArgumentException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidArgumentException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getFolderPath(
     input: GetFolderPathRequest,
   ): Effect.Effect<
     GetFolderPathResponse,
-    EntityNotExistsException | FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | EntityNotExistsException
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   getResources(
     input: GetResourcesRequest,
   ): Effect.Effect<
     GetResourcesResponse,
-    FailedDependencyException | InvalidArgumentException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | InvalidArgumentException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   initiateDocumentVersionUpload(
     input: InitiateDocumentVersionUploadRequest,
   ): Effect.Effect<
     InitiateDocumentVersionUploadResponse,
-    DraftUploadOutOfSyncException | EntityAlreadyExistsException | EntityNotExistsException | FailedDependencyException | InvalidArgumentException | InvalidPasswordException | LimitExceededException | ProhibitedStateException | ResourceAlreadyCheckedOutException | ServiceUnavailableException | StorageLimitExceededException | StorageLimitWillExceedException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | DraftUploadOutOfSyncException
+    | EntityAlreadyExistsException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidArgumentException
+    | InvalidPasswordException
+    | LimitExceededException
+    | ProhibitedStateException
+    | ResourceAlreadyCheckedOutException
+    | ServiceUnavailableException
+    | StorageLimitExceededException
+    | StorageLimitWillExceedException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   removeAllResourcePermissions(
     input: RemoveAllResourcePermissionsRequest,
   ): Effect.Effect<
     {},
-    FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   removeResourcePermission(
     input: RemoveResourcePermissionRequest,
   ): Effect.Effect<
     {},
-    FailedDependencyException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | FailedDependencyException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   restoreDocumentVersions(
     input: RestoreDocumentVersionsRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | ConflictingOperationException | EntityNotExistsException | FailedDependencyException | InvalidOperationException | ProhibitedStateException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidOperationException
+    | ProhibitedStateException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   searchResources(
     input: SearchResourcesRequest,
   ): Effect.Effect<
     SearchResourcesResponse,
-    InvalidArgumentException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | InvalidArgumentException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   updateDocument(
     input: UpdateDocumentRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | ConflictingOperationException | EntityAlreadyExistsException | EntityNotExistsException | FailedDependencyException | LimitExceededException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityAlreadyExistsException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | LimitExceededException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   updateDocumentVersion(
     input: UpdateDocumentVersionRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | EntityNotExistsException | FailedDependencyException | InvalidOperationException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | InvalidOperationException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   updateFolder(
     input: UpdateFolderRequest,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | ConflictingOperationException | EntityAlreadyExistsException | EntityNotExistsException | FailedDependencyException | LimitExceededException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | ConcurrentModificationException
+    | ConflictingOperationException
+    | EntityAlreadyExistsException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | LimitExceededException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
   updateUser(
     input: UpdateUserRequest,
   ): Effect.Effect<
     UpdateUserResponse,
-    DeactivatingLastSystemUserException | EntityNotExistsException | FailedDependencyException | IllegalUserStateException | InvalidArgumentException | ProhibitedStateException | ServiceUnavailableException | UnauthorizedOperationException | UnauthorizedResourceAccessException | CommonAwsError
+    | DeactivatingLastSystemUserException
+    | EntityNotExistsException
+    | FailedDependencyException
+    | IllegalUserStateException
+    | InvalidArgumentException
+    | ProhibitedStateException
+    | ServiceUnavailableException
+    | UnauthorizedOperationException
+    | UnauthorizedResourceAccessException
+    | CommonAwsError
   >;
 }
 
@@ -295,7 +579,40 @@ export interface Activity {
 }
 export type ActivityNamesFilterType = string;
 
-export type ActivityType = "DOCUMENT_CHECKED_IN" | "DOCUMENT_CHECKED_OUT" | "DOCUMENT_RENAMED" | "DOCUMENT_VERSION_UPLOADED" | "DOCUMENT_VERSION_DELETED" | "DOCUMENT_VERSION_VIEWED" | "DOCUMENT_VERSION_DOWNLOADED" | "DOCUMENT_RECYCLED" | "DOCUMENT_RESTORED" | "DOCUMENT_REVERTED" | "DOCUMENT_SHARED" | "DOCUMENT_UNSHARED" | "DOCUMENT_SHARE_PERMISSION_CHANGED" | "DOCUMENT_SHAREABLE_LINK_CREATED" | "DOCUMENT_SHAREABLE_LINK_REMOVED" | "DOCUMENT_SHAREABLE_LINK_PERMISSION_CHANGED" | "DOCUMENT_MOVED" | "DOCUMENT_COMMENT_ADDED" | "DOCUMENT_COMMENT_DELETED" | "DOCUMENT_ANNOTATION_ADDED" | "DOCUMENT_ANNOTATION_DELETED" | "FOLDER_CREATED" | "FOLDER_DELETED" | "FOLDER_RENAMED" | "FOLDER_RECYCLED" | "FOLDER_RESTORED" | "FOLDER_SHARED" | "FOLDER_UNSHARED" | "FOLDER_SHARE_PERMISSION_CHANGED" | "FOLDER_SHAREABLE_LINK_CREATED" | "FOLDER_SHAREABLE_LINK_REMOVED" | "FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED" | "FOLDER_MOVED";
+export type ActivityType =
+  | "DOCUMENT_CHECKED_IN"
+  | "DOCUMENT_CHECKED_OUT"
+  | "DOCUMENT_RENAMED"
+  | "DOCUMENT_VERSION_UPLOADED"
+  | "DOCUMENT_VERSION_DELETED"
+  | "DOCUMENT_VERSION_VIEWED"
+  | "DOCUMENT_VERSION_DOWNLOADED"
+  | "DOCUMENT_RECYCLED"
+  | "DOCUMENT_RESTORED"
+  | "DOCUMENT_REVERTED"
+  | "DOCUMENT_SHARED"
+  | "DOCUMENT_UNSHARED"
+  | "DOCUMENT_SHARE_PERMISSION_CHANGED"
+  | "DOCUMENT_SHAREABLE_LINK_CREATED"
+  | "DOCUMENT_SHAREABLE_LINK_REMOVED"
+  | "DOCUMENT_SHAREABLE_LINK_PERMISSION_CHANGED"
+  | "DOCUMENT_MOVED"
+  | "DOCUMENT_COMMENT_ADDED"
+  | "DOCUMENT_COMMENT_DELETED"
+  | "DOCUMENT_ANNOTATION_ADDED"
+  | "DOCUMENT_ANNOTATION_DELETED"
+  | "FOLDER_CREATED"
+  | "FOLDER_DELETED"
+  | "FOLDER_RENAMED"
+  | "FOLDER_RECYCLED"
+  | "FOLDER_RESTORED"
+  | "FOLDER_SHARED"
+  | "FOLDER_UNSHARED"
+  | "FOLDER_SHARE_PERMISSION_CHANGED"
+  | "FOLDER_SHAREABLE_LINK_CREATED"
+  | "FOLDER_SHAREABLE_LINK_REMOVED"
+  | "FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED"
+  | "FOLDER_MOVED";
 export type AdditionalResponseFieldsList = Array<AdditionalResponseFieldType>;
 export type AdditionalResponseFieldType = "WEBURL";
 export interface AddResourcePermissionsRequest {
@@ -348,7 +665,16 @@ export declare class ConflictingOperationException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type ContentCategoryType = "IMAGE" | "DOCUMENT" | "PDF" | "SPREADSHEET" | "PRESENTATION" | "AUDIO" | "VIDEO" | "SOURCE_CODE" | "OTHER";
+export type ContentCategoryType =
+  | "IMAGE"
+  | "DOCUMENT"
+  | "PDF"
+  | "SPREADSHEET"
+  | "PRESENTATION"
+  | "AUDIO"
+  | "VIDEO"
+  | "SOURCE_CODE"
+  | "OTHER";
 export interface CreateCommentRequest {
   AuthenticationToken?: string;
   DocumentId: string;
@@ -368,8 +694,7 @@ export interface CreateCustomMetadataRequest {
   VersionId?: string;
   CustomMetadata: Record<string, string>;
 }
-export interface CreateCustomMetadataResponse {
-}
+export interface CreateCustomMetadataResponse {}
 export interface CreateFolderRequest {
   AuthenticationToken?: string;
   Name?: string;
@@ -383,8 +708,7 @@ export interface CreateLabelsRequest {
   Labels: Array<string>;
   AuthenticationToken?: string;
 }
-export interface CreateLabelsResponse {
-}
+export interface CreateLabelsResponse {}
 export interface CreateNotificationSubscriptionRequest {
   OrganizationId: string;
   Endpoint: string;
@@ -446,8 +770,7 @@ export interface DeleteCustomMetadataRequest {
   Keys?: Array<string>;
   DeleteAll?: boolean;
 }
-export interface DeleteCustomMetadataResponse {
-}
+export interface DeleteCustomMetadataResponse {}
 export interface DeleteDocumentRequest {
   AuthenticationToken?: string;
   DocumentId: string;
@@ -472,8 +795,7 @@ export interface DeleteLabelsRequest {
   Labels?: Array<string>;
   DeleteAll?: boolean;
 }
-export interface DeleteLabelsResponse {
-}
+export interface DeleteLabelsResponse {}
 export interface DeleteNotificationSubscriptionRequest {
   SubscriptionId: string;
   OrganizationId: string;
@@ -813,7 +1135,38 @@ export declare class InvalidPasswordException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type LanguageCodeType = "AR" | "BG" | "BN" | "DA" | "DE" | "CS" | "EL" | "EN" | "ES" | "FA" | "FI" | "FR" | "HI" | "HU" | "ID" | "IT" | "JA" | "KO" | "LT" | "LV" | "NL" | "NO" | "PT" | "RO" | "RU" | "SV" | "SW" | "TH" | "TR" | "ZH" | "DEFAULT";
+export type LanguageCodeType =
+  | "AR"
+  | "BG"
+  | "BN"
+  | "DA"
+  | "DE"
+  | "CS"
+  | "EL"
+  | "EN"
+  | "ES"
+  | "FA"
+  | "FI"
+  | "FR"
+  | "HI"
+  | "HU"
+  | "ID"
+  | "IT"
+  | "JA"
+  | "KO"
+  | "LT"
+  | "LV"
+  | "NL"
+  | "NO"
+  | "PT"
+  | "RO"
+  | "RU"
+  | "SV"
+  | "SW"
+  | "TH"
+  | "TR"
+  | "ZH"
+  | "DEFAULT";
 export declare class LimitExceededException extends Data.TaggedError(
   "LimitExceededException",
 )<{
@@ -821,7 +1174,18 @@ export declare class LimitExceededException extends Data.TaggedError(
 }> {}
 export type LimitType = number;
 
-export type LocaleType = "EN" | "FR" | "KO" | "DE" | "ES" | "JA" | "RU" | "ZH_CN" | "ZH_TW" | "PT_BR" | "DEFAULT";
+export type LocaleType =
+  | "EN"
+  | "FR"
+  | "KO"
+  | "DE"
+  | "ES"
+  | "JA"
+  | "RU"
+  | "ZH_CN"
+  | "ZH_TW"
+  | "PT_BR"
+  | "DEFAULT";
 export interface LongRangeType {
   StartValue?: number;
   EndValue?: number;
@@ -838,7 +1202,12 @@ export interface NotificationOptions {
   SendEmail?: boolean;
   EmailMessage?: string;
 }
-export type OrderByFieldType = "RELEVANCE" | "NAME" | "SIZE" | "CREATED_TIMESTAMP" | "MODIFIED_TIMESTAMP";
+export type OrderByFieldType =
+  | "RELEVANCE"
+  | "NAME"
+  | "SIZE"
+  | "CREATED_TIMESTAMP"
+  | "MODIFIED_TIMESTAMP";
 export type OrderType = "ASCENDING" | "DESCENDING";
 export type OrganizationUserList = Array<User>;
 export type PageMarkerType = string;
@@ -865,7 +1234,12 @@ export interface Principal {
 }
 export type PrincipalList = Array<Principal>;
 export type PrincipalRoleType = "VIEWER" | "CONTRIBUTOR" | "OWNER" | "COOWNER";
-export type PrincipalType = "USER" | "GROUP" | "INVITE" | "ANONYMOUS" | "ORGANIZATION";
+export type PrincipalType =
+  | "USER"
+  | "GROUP"
+  | "INVITE"
+  | "ANONYMOUS"
+  | "ORGANIZATION";
 export declare class ProhibitedStateException extends Data.TaggedError(
   "ProhibitedStateException",
 )<{
@@ -914,7 +1288,11 @@ export interface ResourcePathComponent {
 }
 export type ResourcePathComponentList = Array<ResourcePathComponent>;
 export type ResourceSortType = "DATE" | "NAME";
-export type ResourceStateType = "ACTIVE" | "RESTORING" | "RECYCLING" | "RECYCLED";
+export type ResourceStateType =
+  | "ACTIVE"
+  | "RESTORING"
+  | "RECYCLING"
+  | "RECYCLED";
 export type ResourceType = "FOLDER" | "DOCUMENT";
 export interface ResponseItem {
   ResourceType?: ResponseItemType;
@@ -925,7 +1303,11 @@ export interface ResponseItem {
   DocumentVersionMetadata?: DocumentVersionMetadata;
 }
 export type ResponseItemsList = Array<ResponseItem>;
-export type ResponseItemType = "DOCUMENT" | "FOLDER" | "COMMENT" | "DOCUMENT_VERSION";
+export type ResponseItemType =
+  | "DOCUMENT"
+  | "FOLDER"
+  | "COMMENT"
+  | "DOCUMENT_VERSION";
 export type ResponseItemWebUrl = string;
 
 export interface RestoreDocumentVersionsRequest {
@@ -970,7 +1352,11 @@ export interface SearchResourcesResponse {
   Items?: Array<ResponseItem>;
   Marker?: string;
 }
-export type SearchResourceType = "FOLDER" | "DOCUMENT" | "COMMENT" | "DOCUMENT_VERSION";
+export type SearchResourceType =
+  | "FOLDER"
+  | "DOCUMENT"
+  | "COMMENT"
+  | "DOCUMENT_VERSION";
 export type SearchResourceTypeList = Array<SearchResourceType>;
 export type SearchResultsLimitType = number;
 
@@ -1131,13 +1517,23 @@ export interface UserMetadata {
 export type UserMetadataList = Array<UserMetadata>;
 export type UsernameType = string;
 
-export type UserSortType = "USER_NAME" | "FULL_NAME" | "STORAGE_LIMIT" | "USER_STATUS" | "STORAGE_USED";
+export type UserSortType =
+  | "USER_NAME"
+  | "FULL_NAME"
+  | "STORAGE_LIMIT"
+  | "USER_STATUS"
+  | "STORAGE_USED";
 export type UserStatusType = "ACTIVE" | "INACTIVE" | "PENDING";
 export interface UserStorageMetadata {
   StorageUtilizedInBytes?: number;
   StorageRule?: StorageRuleType;
 }
-export type UserType = "USER" | "ADMIN" | "POWERUSER" | "MINIMALUSER" | "WORKSPACESUSER";
+export type UserType =
+  | "USER"
+  | "ADMIN"
+  | "POWERUSER"
+  | "MINIMALUSER"
+  | "WORKSPACESUSER";
 export declare namespace AbortDocumentVersionUpload {
   export type Input = AbortDocumentVersionUploadRequest;
   export type Output = {};
@@ -1729,4 +2125,3 @@ export declare namespace UpdateUser {
     | UnauthorizedResourceAccessException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.workmailmessageflow#GetRawMessageContent": {
       "type": "operation",
@@ -56,6 +85,14 @@
     },
     "com.amazonaws.workmailmessageflow#GiraffeMessageInTransitService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.workmailmessageflow#GetRawMessageContent"
+        },
+        {
+          "target": "com.amazonaws.workmailmessageflow#PutRawMessageContent"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WorkMailMessageFlow",

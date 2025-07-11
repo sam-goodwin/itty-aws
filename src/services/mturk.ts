@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface MTurkRequesterServiceV20170117 {
   acceptQualificationRequest(
@@ -152,16 +152,16 @@ export interface MTurkRequesterServiceV20170117 {
     ListQualificationTypesResponse,
     RequestError | ServiceFault | CommonAwsError
   >;
-  listReviewPolicyResultsForHIT(
-    input: ListReviewPolicyResultsForHITRequest,
-  ): Effect.Effect<
-    ListReviewPolicyResultsForHITResponse,
-    RequestError | ServiceFault | CommonAwsError
-  >;
   listReviewableHITs(
     input: ListReviewableHITsRequest,
   ): Effect.Effect<
     ListReviewableHITsResponse,
+    RequestError | ServiceFault | CommonAwsError
+  >;
+  listReviewPolicyResultsForHIT(
+    input: ListReviewPolicyResultsForHITRequest,
+  ): Effect.Effect<
+    ListReviewPolicyResultsForHITResponse,
     RequestError | ServiceFault | CommonAwsError
   >;
   listWorkerBlocks(
@@ -244,15 +244,13 @@ export interface AcceptQualificationRequestRequest {
   QualificationRequestId: string;
   IntegerValue?: number;
 }
-export interface AcceptQualificationRequestResponse {
-}
+export interface AcceptQualificationRequestResponse {}
 export interface ApproveAssignmentRequest {
   AssignmentId: string;
   RequesterFeedback?: string;
   OverrideRejection?: boolean;
 }
-export interface ApproveAssignmentResponse {
-}
+export interface ApproveAssignmentResponse {}
 export interface Assignment {
   AssignmentId?: string;
   WorkerId?: string;
@@ -276,8 +274,7 @@ export interface AssociateQualificationWithWorkerRequest {
   IntegerValue?: number;
   SendNotification?: boolean;
 }
-export interface AssociateQualificationWithWorkerResponse {
-}
+export interface AssociateQualificationWithWorkerResponse {}
 export interface BonusPayment {
   WorkerId?: string;
   BonusAmount?: string;
@@ -286,7 +283,17 @@ export interface BonusPayment {
   GrantTime?: Date | string;
 }
 export type BonusPaymentList = Array<BonusPayment>;
-export type Comparator = "LessThan" | "LessThanOrEqualTo" | "GreaterThan" | "GreaterThanOrEqualTo" | "EqualTo" | "NotEqualTo" | "Exists" | "DoesNotExist" | "In" | "NotIn";
+export type Comparator =
+  | "LessThan"
+  | "LessThanOrEqualTo"
+  | "GreaterThan"
+  | "GreaterThanOrEqualTo"
+  | "EqualTo"
+  | "NotEqualTo"
+  | "Exists"
+  | "DoesNotExist"
+  | "In"
+  | "NotIn";
 export type CountryParameters = string;
 
 export interface CreateAdditionalAssignmentsForHITRequest {
@@ -294,8 +301,7 @@ export interface CreateAdditionalAssignmentsForHITRequest {
   NumberOfAdditionalAssignments: number;
   UniqueRequestToken?: string;
 }
-export interface CreateAdditionalAssignmentsForHITResponse {
-}
+export interface CreateAdditionalAssignmentsForHITResponse {}
 export interface CreateHITRequest {
   MaxAssignments?: number;
   AutoApprovalDelayInSeconds?: number;
@@ -363,8 +369,7 @@ export interface CreateWorkerBlockRequest {
   WorkerId: string;
   Reason: string;
 }
-export interface CreateWorkerBlockResponse {
-}
+export interface CreateWorkerBlockResponse {}
 export type CurrencyAmount = string;
 
 export type CustomerId = string;
@@ -373,34 +378,41 @@ export type CustomerIdList = Array<string>;
 export interface DeleteHITRequest {
   HITId: string;
 }
-export interface DeleteHITResponse {
-}
+export interface DeleteHITResponse {}
 export interface DeleteQualificationTypeRequest {
   QualificationTypeId: string;
 }
-export interface DeleteQualificationTypeResponse {
-}
+export interface DeleteQualificationTypeResponse {}
 export interface DeleteWorkerBlockRequest {
   WorkerId: string;
   Reason?: string;
 }
-export interface DeleteWorkerBlockResponse {
-}
+export interface DeleteWorkerBlockResponse {}
 export interface DisassociateQualificationFromWorkerRequest {
   WorkerId: string;
   QualificationTypeId: string;
   Reason?: string;
 }
-export interface DisassociateQualificationFromWorkerResponse {
-}
+export interface DisassociateQualificationFromWorkerResponse {}
 export type EntityId = string;
 
-export type EventType = "AssignmentAccepted" | "AssignmentAbandoned" | "AssignmentReturned" | "AssignmentSubmitted" | "AssignmentRejected" | "AssignmentApproved" | "HITCreated" | "HITExpired" | "HITReviewable" | "HITExtended" | "HITDisposed" | "Ping";
+export type EventType =
+  | "AssignmentAccepted"
+  | "AssignmentAbandoned"
+  | "AssignmentReturned"
+  | "AssignmentSubmitted"
+  | "AssignmentRejected"
+  | "AssignmentApproved"
+  | "HITCreated"
+  | "HITExpired"
+  | "HITReviewable"
+  | "HITExtended"
+  | "HITDisposed"
+  | "Ping";
 export type EventTypeList = Array<EventType>;
 export type ExceptionMessage = string;
 
-export interface GetAccountBalanceRequest {
-}
+export interface GetAccountBalanceRequest {}
 export interface GetAccountBalanceResponse {
   AvailableBalance?: string;
   OnHoldBalance?: string;
@@ -461,15 +473,27 @@ export interface HIT {
   NumberOfAssignmentsAvailable?: number;
   NumberOfAssignmentsCompleted?: number;
 }
-export type HITAccessActions = "Accept" | "PreviewAndAccept" | "DiscoverPreviewAndAccept";
+export type HITAccessActions =
+  | "Accept"
+  | "PreviewAndAccept"
+  | "DiscoverPreviewAndAccept";
 export interface HITLayoutParameter {
   Name: string;
   Value: string;
 }
 export type HITLayoutParameterList = Array<HITLayoutParameter>;
 export type HITList = Array<HIT>;
-export type HITReviewStatus = "NotReviewed" | "MarkedForReview" | "ReviewedAppropriate" | "ReviewedInappropriate";
-export type HITStatus = "Assignable" | "Unassignable" | "Reviewable" | "Reviewing" | "Disposed";
+export type HITReviewStatus =
+  | "NotReviewed"
+  | "MarkedForReview"
+  | "ReviewedAppropriate"
+  | "ReviewedInappropriate";
+export type HITStatus =
+  | "Assignable"
+  | "Unassignable"
+  | "Reviewable"
+  | "Reviewing"
+  | "Disposed";
 export type IdempotencyToken = string;
 
 export type Integer = number;
@@ -676,17 +700,13 @@ export interface RejectAssignmentRequest {
   AssignmentId: string;
   RequesterFeedback: string;
 }
-export interface RejectAssignmentResponse {
-}
+export interface RejectAssignmentResponse {}
 export interface RejectQualificationRequestRequest {
   QualificationRequestId: string;
   Reason?: string;
 }
-export interface RejectQualificationRequestResponse {
-}
-export declare class RequestError extends Data.TaggedError(
-  "RequestError",
-)<{
+export interface RejectQualificationRequestResponse {}
+export declare class RequestError extends Data.TaggedError("RequestError")<{
   readonly Message?: string;
   readonly TurkErrorCode?: string;
 }> {}
@@ -704,7 +724,11 @@ export interface ReviewActionDetail {
   ErrorCode?: string;
 }
 export type ReviewActionDetailList = Array<ReviewActionDetail>;
-export type ReviewActionStatus = "Intended" | "Succeeded" | "Failed" | "Cancelled";
+export type ReviewActionStatus =
+  | "Intended"
+  | "Succeeded"
+  | "Failed"
+  | "Cancelled";
 export interface ReviewPolicy {
   PolicyName: string;
   Parameters?: Array<PolicyParameter>;
@@ -731,17 +755,13 @@ export interface SendBonusRequest {
   Reason: string;
   UniqueRequestToken?: string;
 }
-export interface SendBonusResponse {
-}
+export interface SendBonusResponse {}
 export interface SendTestEventNotificationRequest {
   Notification: NotificationSpecification;
   TestEventType: EventType;
 }
-export interface SendTestEventNotificationResponse {
-}
-export declare class ServiceFault extends Data.TaggedError(
-  "ServiceFault",
-)<{
+export interface SendTestEventNotificationResponse {}
+export declare class ServiceFault extends Data.TaggedError("ServiceFault")<{
   readonly Message?: string;
   readonly TurkErrorCode?: string;
 }> {}
@@ -754,27 +774,23 @@ export interface UpdateExpirationForHITRequest {
   HITId: string;
   ExpireAt: Date | string;
 }
-export interface UpdateExpirationForHITResponse {
-}
+export interface UpdateExpirationForHITResponse {}
 export interface UpdateHITReviewStatusRequest {
   HITId: string;
   Revert?: boolean;
 }
-export interface UpdateHITReviewStatusResponse {
-}
+export interface UpdateHITReviewStatusResponse {}
 export interface UpdateHITTypeOfHITRequest {
   HITId: string;
   HITTypeId: string;
 }
-export interface UpdateHITTypeOfHITResponse {
-}
+export interface UpdateHITTypeOfHITResponse {}
 export interface UpdateNotificationSettingsRequest {
   HITTypeId: string;
   Notification?: NotificationSpecification;
   Active?: boolean;
 }
-export interface UpdateNotificationSettingsResponse {
-}
+export interface UpdateNotificationSettingsResponse {}
 export interface UpdateQualificationTypeRequest {
   QualificationTypeId: string;
   Description?: string;
@@ -797,351 +813,233 @@ export type WorkerBlockList = Array<WorkerBlock>;
 export declare namespace AcceptQualificationRequest {
   export type Input = AcceptQualificationRequestRequest;
   export type Output = AcceptQualificationRequestResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ApproveAssignment {
   export type Input = ApproveAssignmentRequest;
   export type Output = ApproveAssignmentResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace AssociateQualificationWithWorker {
   export type Input = AssociateQualificationWithWorkerRequest;
   export type Output = AssociateQualificationWithWorkerResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace CreateAdditionalAssignmentsForHIT {
   export type Input = CreateAdditionalAssignmentsForHITRequest;
   export type Output = CreateAdditionalAssignmentsForHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace CreateHIT {
   export type Input = CreateHITRequest;
   export type Output = CreateHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace CreateHITType {
   export type Input = CreateHITTypeRequest;
   export type Output = CreateHITTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace CreateHITWithHITType {
   export type Input = CreateHITWithHITTypeRequest;
   export type Output = CreateHITWithHITTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace CreateQualificationType {
   export type Input = CreateQualificationTypeRequest;
   export type Output = CreateQualificationTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace CreateWorkerBlock {
   export type Input = CreateWorkerBlockRequest;
   export type Output = CreateWorkerBlockResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace DeleteHIT {
   export type Input = DeleteHITRequest;
   export type Output = DeleteHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace DeleteQualificationType {
   export type Input = DeleteQualificationTypeRequest;
   export type Output = DeleteQualificationTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace DeleteWorkerBlock {
   export type Input = DeleteWorkerBlockRequest;
   export type Output = DeleteWorkerBlockResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace DisassociateQualificationFromWorker {
   export type Input = DisassociateQualificationFromWorkerRequest;
   export type Output = DisassociateQualificationFromWorkerResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace GetAccountBalance {
   export type Input = GetAccountBalanceRequest;
   export type Output = GetAccountBalanceResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace GetAssignment {
   export type Input = GetAssignmentRequest;
   export type Output = GetAssignmentResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace GetFileUploadURL {
   export type Input = GetFileUploadURLRequest;
   export type Output = GetFileUploadURLResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace GetHIT {
   export type Input = GetHITRequest;
   export type Output = GetHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace GetQualificationScore {
   export type Input = GetQualificationScoreRequest;
   export type Output = GetQualificationScoreResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace GetQualificationType {
   export type Input = GetQualificationTypeRequest;
   export type Output = GetQualificationTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListAssignmentsForHIT {
   export type Input = ListAssignmentsForHITRequest;
   export type Output = ListAssignmentsForHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListBonusPayments {
   export type Input = ListBonusPaymentsRequest;
   export type Output = ListBonusPaymentsResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListHITs {
   export type Input = ListHITsRequest;
   export type Output = ListHITsResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListHITsForQualificationType {
   export type Input = ListHITsForQualificationTypeRequest;
   export type Output = ListHITsForQualificationTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListQualificationRequests {
   export type Input = ListQualificationRequestsRequest;
   export type Output = ListQualificationRequestsResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListQualificationTypes {
   export type Input = ListQualificationTypesRequest;
   export type Output = ListQualificationTypesResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
-}
-
-export declare namespace ListReviewPolicyResultsForHIT {
-  export type Input = ListReviewPolicyResultsForHITRequest;
-  export type Output = ListReviewPolicyResultsForHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListReviewableHITs {
   export type Input = ListReviewableHITsRequest;
   export type Output = ListReviewableHITsResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
+}
+
+export declare namespace ListReviewPolicyResultsForHIT {
+  export type Input = ListReviewPolicyResultsForHITRequest;
+  export type Output = ListReviewPolicyResultsForHITResponse;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListWorkerBlocks {
   export type Input = ListWorkerBlocksRequest;
   export type Output = ListWorkerBlocksResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace ListWorkersWithQualificationType {
   export type Input = ListWorkersWithQualificationTypeRequest;
   export type Output = ListWorkersWithQualificationTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace NotifyWorkers {
   export type Input = NotifyWorkersRequest;
   export type Output = NotifyWorkersResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace RejectAssignment {
   export type Input = RejectAssignmentRequest;
   export type Output = RejectAssignmentResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace RejectQualificationRequest {
   export type Input = RejectQualificationRequestRequest;
   export type Output = RejectQualificationRequestResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace SendBonus {
   export type Input = SendBonusRequest;
   export type Output = SendBonusResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace SendTestEventNotification {
   export type Input = SendTestEventNotificationRequest;
   export type Output = SendTestEventNotificationResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace UpdateExpirationForHIT {
   export type Input = UpdateExpirationForHITRequest;
   export type Output = UpdateExpirationForHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace UpdateHITReviewStatus {
   export type Input = UpdateHITReviewStatusRequest;
   export type Output = UpdateHITReviewStatusResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace UpdateHITTypeOfHIT {
   export type Input = UpdateHITTypeOfHITRequest;
   export type Output = UpdateHITTypeOfHITResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace UpdateNotificationSettings {
   export type Input = UpdateNotificationSettingsRequest;
   export type Output = UpdateNotificationSettingsResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
 
 export declare namespace UpdateQualificationType {
   export type Input = UpdateQualificationTypeRequest;
   export type Output = UpdateQualificationTypeResponse;
-  export type Error =
-    | RequestError
-    | ServiceFault
-    | CommonAwsError;
+  export type Error = RequestError | ServiceFault | CommonAwsError;
 }
-

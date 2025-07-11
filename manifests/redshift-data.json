@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.redshiftdata#ActiveSessionsExceededException": {
       "type": "structure",
@@ -1723,6 +1724,41 @@
     },
     "com.amazonaws.redshiftdata#RedshiftData": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.redshiftdata#BatchExecuteStatement"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#CancelStatement"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#DescribeStatement"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#DescribeTable"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ExecuteStatement"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#GetStatementResult"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#GetStatementResultV2"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ListDatabases"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ListSchemas"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ListStatements"
+        },
+        {
+          "target": "com.amazonaws.redshiftdata#ListTables"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Redshift Data",

@@ -1,7 +1,797 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.glue#AWSGlue": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.glue#BatchCreatePartition"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchDeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchDeletePartition"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchDeleteTable"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchDeleteTableVersion"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetBlueprints"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetCrawlers"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetCustomEntityTypes"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetDataQualityResult"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetDevEndpoints"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetJobs"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetPartition"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetTableOptimizer"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetTriggers"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchGetWorkflows"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchPutDataQualityStatisticAnnotation"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchStopJobRun"
+        },
+        {
+          "target": "com.amazonaws.glue#BatchUpdatePartition"
+        },
+        {
+          "target": "com.amazonaws.glue#CancelDataQualityRuleRecommendationRun"
+        },
+        {
+          "target": "com.amazonaws.glue#CancelDataQualityRulesetEvaluationRun"
+        },
+        {
+          "target": "com.amazonaws.glue#CancelMLTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#CancelStatement"
+        },
+        {
+          "target": "com.amazonaws.glue#CheckSchemaVersionValidity"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateBlueprint"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateCatalog"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateClassifier"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateColumnStatisticsTaskSettings"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateConnection"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateCrawler"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateCustomEntityType"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateDatabase"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateDataQualityRuleset"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateDevEndpoint"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateIntegration"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateIntegrationResourceProperty"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateIntegrationTableProperties"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateJob"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateMLTransform"
+        },
+        {
+          "target": "com.amazonaws.glue#CreatePartition"
+        },
+        {
+          "target": "com.amazonaws.glue#CreatePartitionIndex"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateRegistry"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateSchema"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateScript"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateSecurityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateSession"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateTable"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateTableOptimizer"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateTrigger"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateUsageProfile"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateUserDefinedFunction"
+        },
+        {
+          "target": "com.amazonaws.glue#CreateWorkflow"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteBlueprint"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteCatalog"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteClassifier"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteColumnStatisticsForPartition"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteColumnStatisticsForTable"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteColumnStatisticsTaskSettings"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteCrawler"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteCustomEntityType"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteDatabase"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteDataQualityRuleset"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteDevEndpoint"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteIntegration"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteIntegrationTableProperties"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteJob"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteMLTransform"
+        },
+        {
+          "target": "com.amazonaws.glue#DeletePartition"
+        },
+        {
+          "target": "com.amazonaws.glue#DeletePartitionIndex"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteRegistry"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteSchema"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteSchemaVersions"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteSecurityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteSession"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteTable"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteTableOptimizer"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteTableVersion"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteTrigger"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteUsageProfile"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteUserDefinedFunction"
+        },
+        {
+          "target": "com.amazonaws.glue#DeleteWorkflow"
+        },
+        {
+          "target": "com.amazonaws.glue#DescribeConnectionType"
+        },
+        {
+          "target": "com.amazonaws.glue#DescribeEntity"
+        },
+        {
+          "target": "com.amazonaws.glue#DescribeInboundIntegrations"
+        },
+        {
+          "target": "com.amazonaws.glue#DescribeIntegrations"
+        },
+        {
+          "target": "com.amazonaws.glue#GetBlueprint"
+        },
+        {
+          "target": "com.amazonaws.glue#GetBlueprintRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetBlueprintRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCatalog"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCatalogImportStatus"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCatalogs"
+        },
+        {
+          "target": "com.amazonaws.glue#GetClassifier"
+        },
+        {
+          "target": "com.amazonaws.glue#GetClassifiers"
+        },
+        {
+          "target": "com.amazonaws.glue#GetColumnStatisticsForPartition"
+        },
+        {
+          "target": "com.amazonaws.glue#GetColumnStatisticsForTable"
+        },
+        {
+          "target": "com.amazonaws.glue#GetColumnStatisticsTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetColumnStatisticsTaskRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#GetColumnStatisticsTaskSettings"
+        },
+        {
+          "target": "com.amazonaws.glue#GetConnection"
+        },
+        {
+          "target": "com.amazonaws.glue#GetConnections"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCrawler"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCrawlerMetrics"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCrawlers"
+        },
+        {
+          "target": "com.amazonaws.glue#GetCustomEntityType"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDatabase"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDatabases"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataCatalogEncryptionSettings"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataflowGraph"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataQualityModel"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataQualityModelResult"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataQualityResult"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataQualityRuleRecommendationRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataQualityRuleset"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDataQualityRulesetEvaluationRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDevEndpoint"
+        },
+        {
+          "target": "com.amazonaws.glue#GetDevEndpoints"
+        },
+        {
+          "target": "com.amazonaws.glue#GetEntityRecords"
+        },
+        {
+          "target": "com.amazonaws.glue#GetIntegrationResourceProperty"
+        },
+        {
+          "target": "com.amazonaws.glue#GetIntegrationTableProperties"
+        },
+        {
+          "target": "com.amazonaws.glue#GetJob"
+        },
+        {
+          "target": "com.amazonaws.glue#GetJobBookmark"
+        },
+        {
+          "target": "com.amazonaws.glue#GetJobRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetJobRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#GetJobs"
+        },
+        {
+          "target": "com.amazonaws.glue#GetMapping"
+        },
+        {
+          "target": "com.amazonaws.glue#GetMLTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetMLTaskRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#GetMLTransform"
+        },
+        {
+          "target": "com.amazonaws.glue#GetMLTransforms"
+        },
+        {
+          "target": "com.amazonaws.glue#GetPartition"
+        },
+        {
+          "target": "com.amazonaws.glue#GetPartitionIndexes"
+        },
+        {
+          "target": "com.amazonaws.glue#GetPartitions"
+        },
+        {
+          "target": "com.amazonaws.glue#GetPlan"
+        },
+        {
+          "target": "com.amazonaws.glue#GetRegistry"
+        },
+        {
+          "target": "com.amazonaws.glue#GetResourcePolicies"
+        },
+        {
+          "target": "com.amazonaws.glue#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSchema"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSchemaByDefinition"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSchemaVersionsDiff"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSecurityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSecurityConfigurations"
+        },
+        {
+          "target": "com.amazonaws.glue#GetSession"
+        },
+        {
+          "target": "com.amazonaws.glue#GetStatement"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTable"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTableOptimizer"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTables"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTableVersion"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTableVersions"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTags"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTrigger"
+        },
+        {
+          "target": "com.amazonaws.glue#GetTriggers"
+        },
+        {
+          "target": "com.amazonaws.glue#GetUnfilteredPartitionMetadata"
+        },
+        {
+          "target": "com.amazonaws.glue#GetUnfilteredPartitionsMetadata"
+        },
+        {
+          "target": "com.amazonaws.glue#GetUnfilteredTableMetadata"
+        },
+        {
+          "target": "com.amazonaws.glue#GetUsageProfile"
+        },
+        {
+          "target": "com.amazonaws.glue#GetUserDefinedFunction"
+        },
+        {
+          "target": "com.amazonaws.glue#GetUserDefinedFunctions"
+        },
+        {
+          "target": "com.amazonaws.glue#GetWorkflow"
+        },
+        {
+          "target": "com.amazonaws.glue#GetWorkflowRun"
+        },
+        {
+          "target": "com.amazonaws.glue#GetWorkflowRunProperties"
+        },
+        {
+          "target": "com.amazonaws.glue#GetWorkflowRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#ImportCatalogToGlue"
+        },
+        {
+          "target": "com.amazonaws.glue#ListBlueprints"
+        },
+        {
+          "target": "com.amazonaws.glue#ListColumnStatisticsTaskRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#ListConnectionTypes"
+        },
+        {
+          "target": "com.amazonaws.glue#ListCrawlers"
+        },
+        {
+          "target": "com.amazonaws.glue#ListCrawls"
+        },
+        {
+          "target": "com.amazonaws.glue#ListCustomEntityTypes"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDataQualityResults"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDataQualityRuleRecommendationRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDataQualityRulesetEvaluationRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDataQualityRulesets"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDataQualityStatisticAnnotations"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDataQualityStatistics"
+        },
+        {
+          "target": "com.amazonaws.glue#ListDevEndpoints"
+        },
+        {
+          "target": "com.amazonaws.glue#ListEntities"
+        },
+        {
+          "target": "com.amazonaws.glue#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.glue#ListMLTransforms"
+        },
+        {
+          "target": "com.amazonaws.glue#ListRegistries"
+        },
+        {
+          "target": "com.amazonaws.glue#ListSchemas"
+        },
+        {
+          "target": "com.amazonaws.glue#ListSchemaVersions"
+        },
+        {
+          "target": "com.amazonaws.glue#ListSessions"
+        },
+        {
+          "target": "com.amazonaws.glue#ListStatements"
+        },
+        {
+          "target": "com.amazonaws.glue#ListTableOptimizerRuns"
+        },
+        {
+          "target": "com.amazonaws.glue#ListTriggers"
+        },
+        {
+          "target": "com.amazonaws.glue#ListUsageProfiles"
+        },
+        {
+          "target": "com.amazonaws.glue#ListWorkflows"
+        },
+        {
+          "target": "com.amazonaws.glue#ModifyIntegration"
+        },
+        {
+          "target": "com.amazonaws.glue#PutDataCatalogEncryptionSettings"
+        },
+        {
+          "target": "com.amazonaws.glue#PutDataQualityProfileAnnotation"
+        },
+        {
+          "target": "com.amazonaws.glue#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.glue#PutSchemaVersionMetadata"
+        },
+        {
+          "target": "com.amazonaws.glue#PutWorkflowRunProperties"
+        },
+        {
+          "target": "com.amazonaws.glue#QuerySchemaVersionMetadata"
+        },
+        {
+          "target": "com.amazonaws.glue#RegisterSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.glue#RemoveSchemaVersionMetadata"
+        },
+        {
+          "target": "com.amazonaws.glue#ResetJobBookmark"
+        },
+        {
+          "target": "com.amazonaws.glue#ResumeWorkflowRun"
+        },
+        {
+          "target": "com.amazonaws.glue#RunStatement"
+        },
+        {
+          "target": "com.amazonaws.glue#SearchTables"
+        },
+        {
+          "target": "com.amazonaws.glue#StartBlueprintRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartColumnStatisticsTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartColumnStatisticsTaskRunSchedule"
+        },
+        {
+          "target": "com.amazonaws.glue#StartCrawler"
+        },
+        {
+          "target": "com.amazonaws.glue#StartCrawlerSchedule"
+        },
+        {
+          "target": "com.amazonaws.glue#StartDataQualityRuleRecommendationRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartDataQualityRulesetEvaluationRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartExportLabelsTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartImportLabelsTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartJobRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartMLEvaluationTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartMLLabelingSetGenerationTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StartTrigger"
+        },
+        {
+          "target": "com.amazonaws.glue#StartWorkflowRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StopColumnStatisticsTaskRun"
+        },
+        {
+          "target": "com.amazonaws.glue#StopColumnStatisticsTaskRunSchedule"
+        },
+        {
+          "target": "com.amazonaws.glue#StopCrawler"
+        },
+        {
+          "target": "com.amazonaws.glue#StopCrawlerSchedule"
+        },
+        {
+          "target": "com.amazonaws.glue#StopSession"
+        },
+        {
+          "target": "com.amazonaws.glue#StopTrigger"
+        },
+        {
+          "target": "com.amazonaws.glue#StopWorkflowRun"
+        },
+        {
+          "target": "com.amazonaws.glue#TagResource"
+        },
+        {
+          "target": "com.amazonaws.glue#TestConnection"
+        },
+        {
+          "target": "com.amazonaws.glue#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateBlueprint"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateCatalog"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateClassifier"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateColumnStatisticsForPartition"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateColumnStatisticsForTable"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateColumnStatisticsTaskSettings"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateConnection"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateCrawler"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateCrawlerSchedule"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateDatabase"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateDataQualityRuleset"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateDevEndpoint"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateIntegrationResourceProperty"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateIntegrationTableProperties"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateJob"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateJobFromSourceControl"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateMLTransform"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdatePartition"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateRegistry"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateSchema"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateSourceControlFromJob"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateTable"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateTableOptimizer"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateTrigger"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateUsageProfile"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateUserDefinedFunction"
+        },
+        {
+          "target": "com.amazonaws.glue#UpdateWorkflow"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Glue",

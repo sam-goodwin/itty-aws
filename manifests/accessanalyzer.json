@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.accessanalyzer#Access": {
       "type": "structure",
@@ -31,6 +32,89 @@
     },
     "com.amazonaws.accessanalyzer#AccessAnalyzer": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.accessanalyzer#ApplyArchiveRule"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#CancelPolicyGeneration"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#CheckAccessNotGranted"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#CheckNoNewAccess"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#CheckNoPublicAccess"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#CreateAccessPreview"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GenerateFindingRecommendation"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetAccessPreview"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetAnalyzedResource"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetFinding"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetFindingRecommendation"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetFindingsStatistics"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetFindingV2"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#GetGeneratedPolicy"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListAccessPreviewFindings"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListAccessPreviews"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListAnalyzedResources"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListFindings"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListFindingsV2"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListPolicyGenerations"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#StartPolicyGeneration"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#StartResourceScan"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#TagResource"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#UpdateFindings"
+        },
+        {
+          "target": "com.amazonaws.accessanalyzer#ValidatePolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AccessAnalyzer",

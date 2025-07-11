@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.emr#ActionOnFailure": {
       "type": "enum",
@@ -2787,6 +2816,188 @@
     },
     "com.amazonaws.emr#ElasticMapReduce": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.emr#AddInstanceFleet"
+        },
+        {
+          "target": "com.amazonaws.emr#AddInstanceGroups"
+        },
+        {
+          "target": "com.amazonaws.emr#AddJobFlowSteps"
+        },
+        {
+          "target": "com.amazonaws.emr#AddTags"
+        },
+        {
+          "target": "com.amazonaws.emr#CancelSteps"
+        },
+        {
+          "target": "com.amazonaws.emr#CreatePersistentAppUI"
+        },
+        {
+          "target": "com.amazonaws.emr#CreateSecurityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.emr#CreateStudio"
+        },
+        {
+          "target": "com.amazonaws.emr#CreateStudioSessionMapping"
+        },
+        {
+          "target": "com.amazonaws.emr#DeleteSecurityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.emr#DeleteStudio"
+        },
+        {
+          "target": "com.amazonaws.emr#DeleteStudioSessionMapping"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeCluster"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeJobFlows"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeNotebookExecution"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribePersistentAppUI"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeReleaseLabel"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeSecurityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeStep"
+        },
+        {
+          "target": "com.amazonaws.emr#DescribeStudio"
+        },
+        {
+          "target": "com.amazonaws.emr#GetAutoTerminationPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#GetBlockPublicAccessConfiguration"
+        },
+        {
+          "target": "com.amazonaws.emr#GetClusterSessionCredentials"
+        },
+        {
+          "target": "com.amazonaws.emr#GetManagedScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#GetOnClusterAppUIPresignedURL"
+        },
+        {
+          "target": "com.amazonaws.emr#GetPersistentAppUIPresignedURL"
+        },
+        {
+          "target": "com.amazonaws.emr#GetStudioSessionMapping"
+        },
+        {
+          "target": "com.amazonaws.emr#ListBootstrapActions"
+        },
+        {
+          "target": "com.amazonaws.emr#ListClusters"
+        },
+        {
+          "target": "com.amazonaws.emr#ListInstanceFleets"
+        },
+        {
+          "target": "com.amazonaws.emr#ListInstanceGroups"
+        },
+        {
+          "target": "com.amazonaws.emr#ListInstances"
+        },
+        {
+          "target": "com.amazonaws.emr#ListNotebookExecutions"
+        },
+        {
+          "target": "com.amazonaws.emr#ListReleaseLabels"
+        },
+        {
+          "target": "com.amazonaws.emr#ListSecurityConfigurations"
+        },
+        {
+          "target": "com.amazonaws.emr#ListSteps"
+        },
+        {
+          "target": "com.amazonaws.emr#ListStudios"
+        },
+        {
+          "target": "com.amazonaws.emr#ListStudioSessionMappings"
+        },
+        {
+          "target": "com.amazonaws.emr#ListSupportedInstanceTypes"
+        },
+        {
+          "target": "com.amazonaws.emr#ModifyCluster"
+        },
+        {
+          "target": "com.amazonaws.emr#ModifyInstanceFleet"
+        },
+        {
+          "target": "com.amazonaws.emr#ModifyInstanceGroups"
+        },
+        {
+          "target": "com.amazonaws.emr#PutAutoScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#PutAutoTerminationPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#PutBlockPublicAccessConfiguration"
+        },
+        {
+          "target": "com.amazonaws.emr#PutManagedScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#RemoveAutoScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#RemoveAutoTerminationPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#RemoveManagedScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.emr#RemoveTags"
+        },
+        {
+          "target": "com.amazonaws.emr#RunJobFlow"
+        },
+        {
+          "target": "com.amazonaws.emr#SetKeepJobFlowAliveWhenNoSteps"
+        },
+        {
+          "target": "com.amazonaws.emr#SetTerminationProtection"
+        },
+        {
+          "target": "com.amazonaws.emr#SetUnhealthyNodeReplacement"
+        },
+        {
+          "target": "com.amazonaws.emr#SetVisibleToAllUsers"
+        },
+        {
+          "target": "com.amazonaws.emr#StartNotebookExecution"
+        },
+        {
+          "target": "com.amazonaws.emr#StopNotebookExecution"
+        },
+        {
+          "target": "com.amazonaws.emr#TerminateJobFlows"
+        },
+        {
+          "target": "com.amazonaws.emr#UpdateStudio"
+        },
+        {
+          "target": "com.amazonaws.emr#UpdateStudioSessionMapping"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "EMR",

@@ -1,30 +1,64 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSSSOOIDCService {
   createToken(
     input: CreateTokenRequest,
   ): Effect.Effect<
     CreateTokenResponse,
-    AccessDeniedException | AuthorizationPendingException | ExpiredTokenException | InternalServerException | InvalidClientException | InvalidGrantException | InvalidRequestException | InvalidScopeException | SlowDownException | UnauthorizedClientException | UnsupportedGrantTypeException | CommonAwsError
+    | AccessDeniedException
+    | AuthorizationPendingException
+    | ExpiredTokenException
+    | InternalServerException
+    | InvalidClientException
+    | InvalidGrantException
+    | InvalidRequestException
+    | InvalidScopeException
+    | SlowDownException
+    | UnauthorizedClientException
+    | UnsupportedGrantTypeException
+    | CommonAwsError
   >;
   createTokenWithIAM(
     input: CreateTokenWithIAMRequest,
   ): Effect.Effect<
     CreateTokenWithIAMResponse,
-    AccessDeniedException | AuthorizationPendingException | ExpiredTokenException | InternalServerException | InvalidClientException | InvalidGrantException | InvalidRequestException | InvalidRequestRegionException | InvalidScopeException | SlowDownException | UnauthorizedClientException | UnsupportedGrantTypeException | CommonAwsError
+    | AccessDeniedException
+    | AuthorizationPendingException
+    | ExpiredTokenException
+    | InternalServerException
+    | InvalidClientException
+    | InvalidGrantException
+    | InvalidRequestException
+    | InvalidRequestRegionException
+    | InvalidScopeException
+    | SlowDownException
+    | UnauthorizedClientException
+    | UnsupportedGrantTypeException
+    | CommonAwsError
   >;
   registerClient(
     input: RegisterClientRequest,
   ): Effect.Effect<
     RegisterClientResponse,
-    InternalServerException | InvalidClientMetadataException | InvalidRedirectUriException | InvalidRequestException | InvalidScopeException | UnsupportedGrantTypeException | CommonAwsError
+    | InternalServerException
+    | InvalidClientMetadataException
+    | InvalidRedirectUriException
+    | InvalidRequestException
+    | InvalidScopeException
+    | UnsupportedGrantTypeException
+    | CommonAwsError
   >;
   startDeviceAuthorization(
     input: StartDeviceAuthorizationRequest,
   ): Effect.Effect<
     StartDeviceAuthorizationResponse,
-    InternalServerException | InvalidClientException | InvalidRequestException | SlowDownException | UnauthorizedClientException | CommonAwsError
+    | InternalServerException
+    | InvalidClientException
+    | InvalidRequestException
+    | SlowDownException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
 }
 
@@ -308,4 +342,3 @@ export declare namespace StartDeviceAuthorization {
     | UnauthorizedClientException
     | CommonAwsError;
 }
-

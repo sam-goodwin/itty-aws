@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface GiraffeMessageInTransitService {
   getRawMessageContent(
@@ -12,7 +12,11 @@ export interface GiraffeMessageInTransitService {
     input: PutRawMessageContentRequest,
   ): Effect.Effect<
     PutRawMessageContentResponse,
-    InvalidContentLocation | MessageFrozen | MessageRejected | ResourceNotFoundException | CommonAwsError
+    | InvalidContentLocation
+    | MessageFrozen
+    | MessageRejected
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -33,9 +37,7 @@ export declare class InvalidContentLocation extends Data.TaggedError(
 }> {}
 export type messageContentBlob = Uint8Array | string;
 
-export declare class MessageFrozen extends Data.TaggedError(
-  "MessageFrozen",
-)<{
+export declare class MessageFrozen extends Data.TaggedError("MessageFrozen")<{
   readonly message?: string;
 }> {}
 export type messageIdType = string;
@@ -49,8 +51,7 @@ export interface PutRawMessageContentRequest {
   messageId: string;
   content: RawMessageContent;
 }
-export interface PutRawMessageContentResponse {
-}
+export interface PutRawMessageContentResponse {}
 export interface RawMessageContent {
   s3Reference: S3Reference;
 }
@@ -73,9 +74,7 @@ export type s3VersionType = string;
 export declare namespace GetRawMessageContent {
   export type Input = GetRawMessageContentRequest;
   export type Output = GetRawMessageContentResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace PutRawMessageContent {
@@ -88,4 +87,3 @@ export declare namespace PutRawMessageContent {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

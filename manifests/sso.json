@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.sso#AccessKeyType": {
       "type": "string"
@@ -478,6 +507,20 @@
     },
     "com.amazonaws.sso#SWBPortalService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.sso#GetRoleCredentials"
+        },
+        {
+          "target": "com.amazonaws.sso#ListAccountRoles"
+        },
+        {
+          "target": "com.amazonaws.sso#ListAccounts"
+        },
+        {
+          "target": "com.amazonaws.sso#Logout"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SSO",

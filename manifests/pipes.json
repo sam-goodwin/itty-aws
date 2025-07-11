@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.pipes#Arn": {
       "type": "string",
@@ -3403,6 +3404,17 @@
     },
     "com.amazonaws.pipes#Pipes": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.pipes#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.pipes#TagResource"
+        },
+        {
+          "target": "com.amazonaws.pipes#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Pipes",

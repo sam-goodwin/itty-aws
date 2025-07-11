@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.dynamodbstreams#AttributeMap": {
       "type": "map",
@@ -166,6 +195,20 @@
     },
     "com.amazonaws.dynamodbstreams#DynamoDBStreams_20120810": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.dynamodbstreams#DescribeStream"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#GetRecords"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#GetShardIterator"
+        },
+        {
+          "target": "com.amazonaws.dynamodbstreams#ListStreams"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "DynamoDB Streams",

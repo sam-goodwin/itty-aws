@@ -1,30 +1,45 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface SWBPortalService {
   getRoleCredentials(
     input: GetRoleCredentialsRequest,
   ): Effect.Effect<
     GetRoleCredentialsResponse,
-    InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listAccountRoles(
     input: ListAccountRolesRequest,
   ): Effect.Effect<
     ListAccountRolesResponse,
-    InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listAccounts(
     input: ListAccountsRequest,
   ): Effect.Effect<
     ListAccountsResponse,
-    InvalidRequestException | ResourceNotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   logout(
     input: LogoutRequest,
   ): Effect.Effect<
     {},
-    InvalidRequestException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | InvalidRequestException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -163,4 +178,3 @@ export declare namespace Logout {
     | UnauthorizedException
     | CommonAwsError;
 }
-

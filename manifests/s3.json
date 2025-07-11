@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.s3#AbortDate": {
       "type": "timestamp"
@@ -223,6 +252,305 @@
     },
     "com.amazonaws.s3#AmazonS3": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.s3#AbortMultipartUpload"
+        },
+        {
+          "target": "com.amazonaws.s3#CompleteMultipartUpload"
+        },
+        {
+          "target": "com.amazonaws.s3#CopyObject"
+        },
+        {
+          "target": "com.amazonaws.s3#CreateBucket"
+        },
+        {
+          "target": "com.amazonaws.s3#CreateBucketMetadataTableConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#CreateMultipartUpload"
+        },
+        {
+          "target": "com.amazonaws.s3#CreateSession"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucket"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketAnalyticsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketCors"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketEncryption"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketIntelligentTieringConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketInventoryConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketLifecycle"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketMetadataTableConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketMetricsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketOwnershipControls"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketPolicy"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketReplication"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketTagging"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteBucketWebsite"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteObject"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteObjects"
+        },
+        {
+          "target": "com.amazonaws.s3#DeleteObjectTagging"
+        },
+        {
+          "target": "com.amazonaws.s3#DeletePublicAccessBlock"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketAccelerateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketAcl"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketAnalyticsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketCors"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketEncryption"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketIntelligentTieringConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketInventoryConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketLifecycleConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketLocation"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketLogging"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketMetadataTableConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketMetricsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketNotificationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketOwnershipControls"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketPolicy"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketPolicyStatus"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketReplication"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketRequestPayment"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketTagging"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketVersioning"
+        },
+        {
+          "target": "com.amazonaws.s3#GetBucketWebsite"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObject"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectAcl"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectAttributes"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectLegalHold"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectLockConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectRetention"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectTagging"
+        },
+        {
+          "target": "com.amazonaws.s3#GetObjectTorrent"
+        },
+        {
+          "target": "com.amazonaws.s3#GetPublicAccessBlock"
+        },
+        {
+          "target": "com.amazonaws.s3#HeadBucket"
+        },
+        {
+          "target": "com.amazonaws.s3#HeadObject"
+        },
+        {
+          "target": "com.amazonaws.s3#ListBucketAnalyticsConfigurations"
+        },
+        {
+          "target": "com.amazonaws.s3#ListBucketIntelligentTieringConfigurations"
+        },
+        {
+          "target": "com.amazonaws.s3#ListBucketInventoryConfigurations"
+        },
+        {
+          "target": "com.amazonaws.s3#ListBucketMetricsConfigurations"
+        },
+        {
+          "target": "com.amazonaws.s3#ListBuckets"
+        },
+        {
+          "target": "com.amazonaws.s3#ListDirectoryBuckets"
+        },
+        {
+          "target": "com.amazonaws.s3#ListMultipartUploads"
+        },
+        {
+          "target": "com.amazonaws.s3#ListObjects"
+        },
+        {
+          "target": "com.amazonaws.s3#ListObjectsV2"
+        },
+        {
+          "target": "com.amazonaws.s3#ListObjectVersions"
+        },
+        {
+          "target": "com.amazonaws.s3#ListParts"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketAccelerateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketAcl"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketAnalyticsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketCors"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketEncryption"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketIntelligentTieringConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketInventoryConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketLifecycleConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketLogging"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketMetricsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketNotificationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketOwnershipControls"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketPolicy"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketReplication"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketRequestPayment"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketTagging"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketVersioning"
+        },
+        {
+          "target": "com.amazonaws.s3#PutBucketWebsite"
+        },
+        {
+          "target": "com.amazonaws.s3#PutObject"
+        },
+        {
+          "target": "com.amazonaws.s3#PutObjectAcl"
+        },
+        {
+          "target": "com.amazonaws.s3#PutObjectLegalHold"
+        },
+        {
+          "target": "com.amazonaws.s3#PutObjectLockConfiguration"
+        },
+        {
+          "target": "com.amazonaws.s3#PutObjectRetention"
+        },
+        {
+          "target": "com.amazonaws.s3#PutObjectTagging"
+        },
+        {
+          "target": "com.amazonaws.s3#PutPublicAccessBlock"
+        },
+        {
+          "target": "com.amazonaws.s3#RenameObject"
+        },
+        {
+          "target": "com.amazonaws.s3#RestoreObject"
+        },
+        {
+          "target": "com.amazonaws.s3#SelectObjectContent"
+        },
+        {
+          "target": "com.amazonaws.s3#UploadPart"
+        },
+        {
+          "target": "com.amazonaws.s3#UploadPartCopy"
+        },
+        {
+          "target": "com.amazonaws.s3#WriteGetObjectResponse"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "S3",

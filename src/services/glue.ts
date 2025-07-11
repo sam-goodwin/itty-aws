@@ -1,12 +1,19 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSGlue {
   batchCreatePartition(
     input: BatchCreatePartitionRequest,
   ): Effect.Effect<
     BatchCreatePartitionResponse,
-    AlreadyExistsException | EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   batchDeleteConnection(
     input: BatchDeleteConnectionRequest,
@@ -18,25 +25,42 @@ export interface AWSGlue {
     input: BatchDeletePartitionRequest,
   ): Effect.Effect<
     BatchDeletePartitionResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchDeleteTable(
     input: BatchDeleteTableRequest,
   ): Effect.Effect<
     BatchDeleteTableResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNotReadyException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNotReadyException
+    | CommonAwsError
   >;
   batchDeleteTableVersion(
     input: BatchDeleteTableVersionRequest,
   ): Effect.Effect<
     BatchDeleteTableVersionResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetBlueprints(
     input: BatchGetBlueprintsRequest,
   ): Effect.Effect<
     BatchGetBlueprintsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetCrawlers(
     input: BatchGetCrawlersRequest,
@@ -48,277 +72,547 @@ export interface AWSGlue {
     input: BatchGetCustomEntityTypesRequest,
   ): Effect.Effect<
     BatchGetCustomEntityTypesResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetDataQualityResult(
     input: BatchGetDataQualityResultRequest,
   ): Effect.Effect<
     BatchGetDataQualityResultResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetDevEndpoints(
     input: BatchGetDevEndpointsRequest,
   ): Effect.Effect<
     BatchGetDevEndpointsResponse,
-    AccessDeniedException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetJobs(
     input: BatchGetJobsRequest,
   ): Effect.Effect<
     BatchGetJobsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetPartition(
     input: BatchGetPartitionRequest,
   ): Effect.Effect<
     BatchGetPartitionResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | InvalidStateException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | InvalidStateException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetTableOptimizer(
     input: BatchGetTableOptimizerRequest,
   ): Effect.Effect<
     BatchGetTableOptimizerResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ThrottlingException
+    | CommonAwsError
   >;
   batchGetTriggers(
     input: BatchGetTriggersRequest,
   ): Effect.Effect<
     BatchGetTriggersResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchGetWorkflows(
     input: BatchGetWorkflowsRequest,
   ): Effect.Effect<
     BatchGetWorkflowsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchPutDataQualityStatisticAnnotation(
     input: BatchPutDataQualityStatisticAnnotationRequest,
   ): Effect.Effect<
     BatchPutDataQualityStatisticAnnotationResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | ResourceNumberLimitExceededException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   batchStopJobRun(
     input: BatchStopJobRunRequest,
   ): Effect.Effect<
     BatchStopJobRunResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   batchUpdatePartition(
     input: BatchUpdatePartitionRequest,
   ): Effect.Effect<
     BatchUpdatePartitionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   cancelDataQualityRuleRecommendationRun(
     input: CancelDataQualityRuleRecommendationRunRequest,
   ): Effect.Effect<
     CancelDataQualityRuleRecommendationRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   cancelDataQualityRulesetEvaluationRun(
     input: CancelDataQualityRulesetEvaluationRunRequest,
   ): Effect.Effect<
     CancelDataQualityRulesetEvaluationRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   cancelMLTaskRun(
     input: CancelMLTaskRunRequest,
   ): Effect.Effect<
     CancelMLTaskRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   cancelStatement(
     input: CancelStatementRequest,
   ): Effect.Effect<
     CancelStatementResponse,
-    AccessDeniedException | EntityNotFoundException | IllegalSessionStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | IllegalSessionStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   checkSchemaVersionValidity(
     input: CheckSchemaVersionValidityInput,
   ): Effect.Effect<
     CheckSchemaVersionValidityResponse,
-    AccessDeniedException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   createBlueprint(
     input: CreateBlueprintRequest,
   ): Effect.Effect<
     CreateBlueprintResponse,
-    AlreadyExistsException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createCatalog(
     input: CreateCatalogRequest,
   ): Effect.Effect<
     CreateCatalogResponse,
-    AccessDeniedException | AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | FederatedResourceAlreadyExistsException | FederationSourceException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederatedResourceAlreadyExistsException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createClassifier(
     input: CreateClassifierRequest,
   ): Effect.Effect<
     CreateClassifierResponse,
-    AlreadyExistsException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   createColumnStatisticsTaskSettings(
     input: CreateColumnStatisticsTaskSettingsRequest,
   ): Effect.Effect<
     CreateColumnStatisticsTaskSettingsResponse,
-    AccessDeniedException | AlreadyExistsException | ColumnStatisticsTaskRunningException | EntityNotFoundException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | ColumnStatisticsTaskRunningException
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createConnection(
     input: CreateConnectionRequest,
   ): Effect.Effect<
     CreateConnectionResponse,
-    AlreadyExistsException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createCrawler(
     input: CreateCrawlerRequest,
   ): Effect.Effect<
     CreateCrawlerResponse,
-    AlreadyExistsException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createCustomEntityType(
     input: CreateCustomEntityTypeRequest,
   ): Effect.Effect<
     CreateCustomEntityTypeResponse,
-    AccessDeniedException | AlreadyExistsException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
-  >;
-  createDataQualityRuleset(
-    input: CreateDataQualityRulesetRequest,
-  ): Effect.Effect<
-    CreateDataQualityRulesetResponse,
-    AlreadyExistsException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createDatabase(
     input: CreateDatabaseRequest,
   ): Effect.Effect<
     CreateDatabaseResponse,
-    AlreadyExistsException | ConcurrentModificationException | FederatedResourceAlreadyExistsException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | FederatedResourceAlreadyExistsException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
+  >;
+  createDataQualityRuleset(
+    input: CreateDataQualityRulesetRequest,
+  ): Effect.Effect<
+    CreateDataQualityRulesetResponse,
+    | AlreadyExistsException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createDevEndpoint(
     input: CreateDevEndpointRequest,
   ): Effect.Effect<
     CreateDevEndpointResponse,
-    AccessDeniedException | AlreadyExistsException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createIntegration(
     input: CreateIntegrationRequest,
   ): Effect.Effect<
     CreateIntegrationResponse,
-    AccessDeniedException | ConflictException | EntityNotFoundException | IntegrationConflictOperationFault | IntegrationQuotaExceededFault | InternalServerException | InternalServiceException | InvalidInputException | KMSKeyNotAccessibleFault | ResourceNotFoundException | ResourceNumberLimitExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | EntityNotFoundException
+    | IntegrationConflictOperationFault
+    | IntegrationQuotaExceededFault
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | KMSKeyNotAccessibleFault
+    | ResourceNotFoundException
+    | ResourceNumberLimitExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createIntegrationResourceProperty(
     input: CreateIntegrationResourcePropertyRequest,
   ): Effect.Effect<
     CreateIntegrationResourcePropertyResponse,
-    AccessDeniedException | ConflictException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   createIntegrationTableProperties(
     input: CreateIntegrationTablePropertiesRequest,
   ): Effect.Effect<
     CreateIntegrationTablePropertiesResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   createJob(
     input: CreateJobRequest,
   ): Effect.Effect<
     CreateJobResponse,
-    AlreadyExistsException | ConcurrentModificationException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createMLTransform(
     input: CreateMLTransformRequest,
   ): Effect.Effect<
     CreateMLTransformResponse,
-    AccessDeniedException | AlreadyExistsException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createPartition(
     input: CreatePartitionRequest,
   ): Effect.Effect<
     CreatePartitionResponse,
-    AlreadyExistsException | EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createPartitionIndex(
     input: CreatePartitionIndexRequest,
   ): Effect.Effect<
     CreatePartitionIndexResponse,
-    AlreadyExistsException | EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createRegistry(
     input: CreateRegistryInput,
   ): Effect.Effect<
     CreateRegistryResponse,
-    AccessDeniedException | AlreadyExistsException | ConcurrentModificationException | InternalServiceException | InvalidInputException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createSchema(
     input: CreateSchemaInput,
   ): Effect.Effect<
     CreateSchemaResponse,
-    AccessDeniedException | AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createScript(
     input: CreateScriptRequest,
   ): Effect.Effect<
     CreateScriptResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   createSecurityConfiguration(
     input: CreateSecurityConfigurationRequest,
   ): Effect.Effect<
     CreateSecurityConfigurationResponse,
-    AlreadyExistsException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createSession(
     input: CreateSessionRequest,
   ): Effect.Effect<
     CreateSessionResponse,
-    AccessDeniedException | AlreadyExistsException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createTable(
     input: CreateTableRequest,
   ): Effect.Effect<
     CreateTableResponse,
-    AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNotReadyException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNotReadyException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createTableOptimizer(
     input: CreateTableOptimizerRequest,
   ): Effect.Effect<
     CreateTableOptimizerResponse,
-    AccessDeniedException | AlreadyExistsException | EntityNotFoundException | InternalServiceException | InvalidInputException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createTrigger(
     input: CreateTriggerRequest,
   ): Effect.Effect<
     CreateTriggerResponse,
-    AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createUsageProfile(
     input: CreateUsageProfileRequest,
   ): Effect.Effect<
     CreateUsageProfileResponse,
-    AlreadyExistsException | InternalServiceException | InvalidInputException | OperationNotSupportedException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationNotSupportedException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createUserDefinedFunction(
     input: CreateUserDefinedFunctionRequest,
   ): Effect.Effect<
     CreateUserDefinedFunctionResponse,
-    AlreadyExistsException | EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   createWorkflow(
     input: CreateWorkflowRequest,
   ): Effect.Effect<
     CreateWorkflowResponse,
-    AlreadyExistsException | ConcurrentModificationException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   deleteBlueprint(
     input: DeleteBlueprintRequest,
   ): Effect.Effect<
     DeleteBlueprintResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteCatalog(
     input: DeleteCatalogRequest,
   ): Effect.Effect<
     DeleteCatalogResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | FederationSourceException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteClassifier(
     input: DeleteClassifierRequest,
@@ -330,19 +624,32 @@ export interface AWSGlue {
     input: DeleteColumnStatisticsForPartitionRequest,
   ): Effect.Effect<
     DeleteColumnStatisticsForPartitionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteColumnStatisticsForTable(
     input: DeleteColumnStatisticsForTableRequest,
   ): Effect.Effect<
     DeleteColumnStatisticsForTableResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteColumnStatisticsTaskSettings(
     input: DeleteColumnStatisticsTaskSettingsRequest,
   ): Effect.Effect<
     DeleteColumnStatisticsTaskSettingsResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteConnection(
     input: DeleteConnectionRequest,
@@ -354,193 +661,358 @@ export interface AWSGlue {
     input: DeleteCrawlerRequest,
   ): Effect.Effect<
     DeleteCrawlerResponse,
-    CrawlerRunningException | EntityNotFoundException | OperationTimeoutException | SchedulerTransitioningException | CommonAwsError
+    | CrawlerRunningException
+    | EntityNotFoundException
+    | OperationTimeoutException
+    | SchedulerTransitioningException
+    | CommonAwsError
   >;
   deleteCustomEntityType(
     input: DeleteCustomEntityTypeRequest,
   ): Effect.Effect<
     DeleteCustomEntityTypeResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  deleteDataQualityRuleset(
-    input: DeleteDataQualityRulesetRequest,
-  ): Effect.Effect<
-    DeleteDataQualityRulesetResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteDatabase(
     input: DeleteDatabaseRequest,
   ): Effect.Effect<
     DeleteDatabaseResponse,
-    ConcurrentModificationException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  deleteDataQualityRuleset(
+    input: DeleteDataQualityRulesetRequest,
+  ): Effect.Effect<
+    DeleteDataQualityRulesetResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteDevEndpoint(
     input: DeleteDevEndpointRequest,
   ): Effect.Effect<
     DeleteDevEndpointResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteIntegration(
     input: DeleteIntegrationRequest,
   ): Effect.Effect<
     DeleteIntegrationResponse,
-    AccessDeniedException | ConflictException | EntityNotFoundException | IntegrationConflictOperationFault | IntegrationNotFoundFault | InternalServerException | InternalServiceException | InvalidInputException | InvalidIntegrationStateFault | InvalidStateException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | EntityNotFoundException
+    | IntegrationConflictOperationFault
+    | IntegrationNotFoundFault
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | InvalidIntegrationStateFault
+    | InvalidStateException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteIntegrationTableProperties(
     input: DeleteIntegrationTablePropertiesRequest,
   ): Effect.Effect<
     DeleteIntegrationTablePropertiesResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteJob(
     input: DeleteJobRequest,
   ): Effect.Effect<
     DeleteJobResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteMLTransform(
     input: DeleteMLTransformRequest,
   ): Effect.Effect<
     DeleteMLTransformResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deletePartition(
     input: DeletePartitionRequest,
   ): Effect.Effect<
     DeletePartitionResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deletePartitionIndex(
     input: DeletePartitionIndexRequest,
   ): Effect.Effect<
     DeletePartitionIndexResponse,
-    ConflictException | EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConflictException
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteRegistry(
     input: DeleteRegistryInput,
   ): Effect.Effect<
     DeleteRegistryResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InvalidInputException
+    | CommonAwsError
   >;
   deleteResourcePolicy(
     input: DeleteResourcePolicyRequest,
   ): Effect.Effect<
     DeleteResourcePolicyResponse,
-    ConditionCheckFailureException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConditionCheckFailureException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteSchema(
     input: DeleteSchemaInput,
   ): Effect.Effect<
     DeleteSchemaResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InvalidInputException
+    | CommonAwsError
   >;
   deleteSchemaVersions(
     input: DeleteSchemaVersionsInput,
   ): Effect.Effect<
     DeleteSchemaVersionsResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InvalidInputException
+    | CommonAwsError
   >;
   deleteSecurityConfiguration(
     input: DeleteSecurityConfigurationRequest,
   ): Effect.Effect<
     DeleteSecurityConfigurationResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteSession(
     input: DeleteSessionRequest,
   ): Effect.Effect<
     DeleteSessionResponse,
-    AccessDeniedException | ConcurrentModificationException | IllegalSessionStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | IllegalSessionStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteTable(
     input: DeleteTableRequest,
   ): Effect.Effect<
     DeleteTableResponse,
-    ConcurrentModificationException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNotReadyException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNotReadyException
+    | CommonAwsError
   >;
   deleteTableOptimizer(
     input: DeleteTableOptimizerRequest,
   ): Effect.Effect<
     DeleteTableOptimizerResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteTableVersion(
     input: DeleteTableVersionRequest,
   ): Effect.Effect<
     DeleteTableVersionResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteTrigger(
     input: DeleteTriggerRequest,
   ): Effect.Effect<
     DeleteTriggerResponse,
-    ConcurrentModificationException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteUsageProfile(
     input: DeleteUsageProfileRequest,
   ): Effect.Effect<
     DeleteUsageProfileResponse,
-    InternalServiceException | InvalidInputException | OperationNotSupportedException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationNotSupportedException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteUserDefinedFunction(
     input: DeleteUserDefinedFunctionRequest,
   ): Effect.Effect<
     DeleteUserDefinedFunctionResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   deleteWorkflow(
     input: DeleteWorkflowRequest,
   ): Effect.Effect<
     DeleteWorkflowResponse,
-    ConcurrentModificationException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   describeConnectionType(
     input: DescribeConnectionTypeRequest,
   ): Effect.Effect<
     DescribeConnectionTypeResponse,
-    AccessDeniedException | InternalServiceException | InvalidInputException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidInputException
+    | ValidationException
+    | CommonAwsError
   >;
   describeEntity(
     input: DescribeEntityRequest,
   ): Effect.Effect<
     DescribeEntityResponse,
-    AccessDeniedException | EntityNotFoundException | FederationSourceException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   describeInboundIntegrations(
     input: DescribeInboundIntegrationsRequest,
   ): Effect.Effect<
     DescribeInboundIntegrationsResponse,
-    AccessDeniedException | EntityNotFoundException | IntegrationNotFoundFault | InternalServerException | InternalServiceException | InvalidInputException | OperationNotSupportedException | TargetResourceNotFound | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | IntegrationNotFoundFault
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationNotSupportedException
+    | TargetResourceNotFound
+    | ValidationException
+    | CommonAwsError
   >;
   describeIntegrations(
     input: DescribeIntegrationsRequest,
   ): Effect.Effect<
     DescribeIntegrationsResponse,
-    AccessDeniedException | EntityNotFoundException | IntegrationNotFoundFault | InternalServerException | InternalServiceException | InvalidInputException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | IntegrationNotFoundFault
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ValidationException
+    | CommonAwsError
   >;
   getBlueprint(
     input: GetBlueprintRequest,
   ): Effect.Effect<
     GetBlueprintResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getBlueprintRun(
     input: GetBlueprintRunRequest,
   ): Effect.Effect<
     GetBlueprintRunResponse,
-    EntityNotFoundException | InternalServiceException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getBlueprintRuns(
     input: GetBlueprintRunsRequest,
   ): Effect.Effect<
     GetBlueprintRunsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getCatalog(
     input: GetCatalogRequest,
   ): Effect.Effect<
     GetCatalogResponse,
-    AccessDeniedException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getCatalogImportStatus(
     input: GetCatalogImportStatusRequest,
@@ -552,7 +1024,15 @@ export interface AWSGlue {
     input: GetCatalogsRequest,
   ): Effect.Effect<
     GetCatalogsResponse,
-    AccessDeniedException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getClassifier(
     input: GetClassifierRequest,
@@ -570,19 +1050,32 @@ export interface AWSGlue {
     input: GetColumnStatisticsForPartitionRequest,
   ): Effect.Effect<
     GetColumnStatisticsForPartitionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getColumnStatisticsForTable(
     input: GetColumnStatisticsForTableRequest,
   ): Effect.Effect<
     GetColumnStatisticsForTableResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getColumnStatisticsTaskRun(
     input: GetColumnStatisticsTaskRunRequest,
   ): Effect.Effect<
     GetColumnStatisticsTaskRunResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getColumnStatisticsTaskRuns(
     input: GetColumnStatisticsTaskRunsRequest,
@@ -594,19 +1087,30 @@ export interface AWSGlue {
     input: GetColumnStatisticsTaskSettingsRequest,
   ): Effect.Effect<
     GetColumnStatisticsTaskSettingsResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getConnection(
     input: GetConnectionRequest,
   ): Effect.Effect<
     GetConnectionResponse,
-    EntityNotFoundException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getConnections(
     input: GetConnectionsRequest,
   ): Effect.Effect<
     GetConnectionsResponse,
-    EntityNotFoundException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getCrawler(
     input: GetCrawlerRequest,
@@ -630,355 +1134,642 @@ export interface AWSGlue {
     input: GetCustomEntityTypeRequest,
   ): Effect.Effect<
     GetCustomEntityTypeResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataCatalogEncryptionSettings(
-    input: GetDataCatalogEncryptionSettingsRequest,
-  ): Effect.Effect<
-    GetDataCatalogEncryptionSettingsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataQualityModel(
-    input: GetDataQualityModelRequest,
-  ): Effect.Effect<
-    GetDataQualityModelResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataQualityModelResult(
-    input: GetDataQualityModelResultRequest,
-  ): Effect.Effect<
-    GetDataQualityModelResultResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataQualityResult(
-    input: GetDataQualityResultRequest,
-  ): Effect.Effect<
-    GetDataQualityResultResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataQualityRuleRecommendationRun(
-    input: GetDataQualityRuleRecommendationRunRequest,
-  ): Effect.Effect<
-    GetDataQualityRuleRecommendationRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataQualityRuleset(
-    input: GetDataQualityRulesetRequest,
-  ): Effect.Effect<
-    GetDataQualityRulesetResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getDataQualityRulesetEvaluationRun(
-    input: GetDataQualityRulesetEvaluationRunRequest,
-  ): Effect.Effect<
-    GetDataQualityRulesetEvaluationRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getDatabase(
     input: GetDatabaseRequest,
   ): Effect.Effect<
     GetDatabaseResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getDatabases(
     input: GetDatabasesRequest,
   ): Effect.Effect<
     GetDatabasesResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataCatalogEncryptionSettings(
+    input: GetDataCatalogEncryptionSettingsRequest,
+  ): Effect.Effect<
+    GetDataCatalogEncryptionSettingsResponse,
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getDataflowGraph(
     input: GetDataflowGraphRequest,
   ): Effect.Effect<
     GetDataflowGraphResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataQualityModel(
+    input: GetDataQualityModelRequest,
+  ): Effect.Effect<
+    GetDataQualityModelResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataQualityModelResult(
+    input: GetDataQualityModelResultRequest,
+  ): Effect.Effect<
+    GetDataQualityModelResultResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataQualityResult(
+    input: GetDataQualityResultRequest,
+  ): Effect.Effect<
+    GetDataQualityResultResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataQualityRuleRecommendationRun(
+    input: GetDataQualityRuleRecommendationRunRequest,
+  ): Effect.Effect<
+    GetDataQualityRuleRecommendationRunResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataQualityRuleset(
+    input: GetDataQualityRulesetRequest,
+  ): Effect.Effect<
+    GetDataQualityRulesetResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getDataQualityRulesetEvaluationRun(
+    input: GetDataQualityRulesetEvaluationRunRequest,
+  ): Effect.Effect<
+    GetDataQualityRulesetEvaluationRunResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getDevEndpoint(
     input: GetDevEndpointRequest,
   ): Effect.Effect<
     GetDevEndpointResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getDevEndpoints(
     input: GetDevEndpointsRequest,
   ): Effect.Effect<
     GetDevEndpointsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getEntityRecords(
     input: GetEntityRecordsRequest,
   ): Effect.Effect<
     GetEntityRecordsResponse,
-    AccessDeniedException | EntityNotFoundException | FederationSourceException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   getIntegrationResourceProperty(
     input: GetIntegrationResourcePropertyRequest,
   ): Effect.Effect<
     GetIntegrationResourcePropertyResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   getIntegrationTableProperties(
     input: GetIntegrationTablePropertiesRequest,
   ): Effect.Effect<
     GetIntegrationTablePropertiesResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   getJob(
     input: GetJobRequest,
   ): Effect.Effect<
     GetJobResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getJobBookmark(
     input: GetJobBookmarkRequest,
   ): Effect.Effect<
     GetJobBookmarkResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   getJobRun(
     input: GetJobRunRequest,
   ): Effect.Effect<
     GetJobRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getJobRuns(
     input: GetJobRunsRequest,
   ): Effect.Effect<
     GetJobRunsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getJobs(
     input: GetJobsRequest,
   ): Effect.Effect<
     GetJobsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getMLTaskRun(
-    input: GetMLTaskRunRequest,
-  ): Effect.Effect<
-    GetMLTaskRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getMLTaskRuns(
-    input: GetMLTaskRunsRequest,
-  ): Effect.Effect<
-    GetMLTaskRunsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getMLTransform(
-    input: GetMLTransformRequest,
-  ): Effect.Effect<
-    GetMLTransformResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getMLTransforms(
-    input: GetMLTransformsRequest,
-  ): Effect.Effect<
-    GetMLTransformsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getMapping(
     input: GetMappingRequest,
   ): Effect.Effect<
     GetMappingResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getMLTaskRun(
+    input: GetMLTaskRunRequest,
+  ): Effect.Effect<
+    GetMLTaskRunResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getMLTaskRuns(
+    input: GetMLTaskRunsRequest,
+  ): Effect.Effect<
+    GetMLTaskRunsResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getMLTransform(
+    input: GetMLTransformRequest,
+  ): Effect.Effect<
+    GetMLTransformResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getMLTransforms(
+    input: GetMLTransformsRequest,
+  ): Effect.Effect<
+    GetMLTransformsResponse,
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getPartition(
     input: GetPartitionRequest,
   ): Effect.Effect<
     GetPartitionResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getPartitionIndexes(
     input: GetPartitionIndexesRequest,
   ): Effect.Effect<
     GetPartitionIndexesResponse,
-    ConflictException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConflictException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getPartitions(
     input: GetPartitionsRequest,
   ): Effect.Effect<
     GetPartitionsResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | InvalidStateException | OperationTimeoutException | ResourceNotReadyException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | InvalidStateException
+    | OperationTimeoutException
+    | ResourceNotReadyException
+    | CommonAwsError
   >;
   getPlan(
     input: GetPlanRequest,
   ): Effect.Effect<
     GetPlanResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getRegistry(
     input: GetRegistryInput,
   ): Effect.Effect<
     GetRegistryResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   getResourcePolicies(
     input: GetResourcePoliciesRequest,
   ): Effect.Effect<
     GetResourcePoliciesResponse,
-    GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getResourcePolicy(
     input: GetResourcePolicyRequest,
   ): Effect.Effect<
     GetResourcePolicyResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getSchema(
     input: GetSchemaInput,
   ): Effect.Effect<
     GetSchemaResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   getSchemaByDefinition(
     input: GetSchemaByDefinitionInput,
   ): Effect.Effect<
     GetSchemaByDefinitionResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   getSchemaVersion(
     input: GetSchemaVersionInput,
   ): Effect.Effect<
     GetSchemaVersionResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   getSchemaVersionsDiff(
     input: GetSchemaVersionsDiffInput,
   ): Effect.Effect<
     GetSchemaVersionsDiffResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   getSecurityConfiguration(
     input: GetSecurityConfigurationRequest,
   ): Effect.Effect<
     GetSecurityConfigurationResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getSecurityConfigurations(
     input: GetSecurityConfigurationsRequest,
   ): Effect.Effect<
     GetSecurityConfigurationsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getSession(
     input: GetSessionRequest,
   ): Effect.Effect<
     GetSessionResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getStatement(
     input: GetStatementRequest,
   ): Effect.Effect<
     GetStatementResponse,
-    AccessDeniedException | EntityNotFoundException | IllegalSessionStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | IllegalSessionStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getTable(
     input: GetTableRequest,
   ): Effect.Effect<
     GetTableResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNotReadyException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNotReadyException
+    | CommonAwsError
   >;
   getTableOptimizer(
     input: GetTableOptimizerRequest,
   ): Effect.Effect<
     GetTableOptimizerResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | ThrottlingException | CommonAwsError
-  >;
-  getTableVersion(
-    input: GetTableVersionRequest,
-  ): Effect.Effect<
-    GetTableVersionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
-  >;
-  getTableVersions(
-    input: GetTableVersionsRequest,
-  ): Effect.Effect<
-    GetTableVersionsResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getTables(
     input: GetTablesRequest,
   ): Effect.Effect<
     GetTablesResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getTableVersion(
+    input: GetTableVersionRequest,
+  ): Effect.Effect<
+    GetTableVersionResponse,
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  getTableVersions(
+    input: GetTableVersionsRequest,
+  ): Effect.Effect<
+    GetTableVersionsResponse,
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getTags(
     input: GetTagsRequest,
   ): Effect.Effect<
     GetTagsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getTrigger(
     input: GetTriggerRequest,
   ): Effect.Effect<
     GetTriggerResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getTriggers(
     input: GetTriggersRequest,
   ): Effect.Effect<
     GetTriggersResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getUnfilteredPartitionMetadata(
     input: GetUnfilteredPartitionMetadataRequest,
   ): Effect.Effect<
     GetUnfilteredPartitionMetadataResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | PermissionTypeMismatchException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | PermissionTypeMismatchException
+    | CommonAwsError
   >;
   getUnfilteredPartitionsMetadata(
     input: GetUnfilteredPartitionsMetadataRequest,
   ): Effect.Effect<
     GetUnfilteredPartitionsMetadataResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | PermissionTypeMismatchException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | PermissionTypeMismatchException
+    | CommonAwsError
   >;
   getUnfilteredTableMetadata(
     input: GetUnfilteredTableMetadataRequest,
   ): Effect.Effect<
     GetUnfilteredTableMetadataResponse,
-    EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | PermissionTypeMismatchException | CommonAwsError
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | PermissionTypeMismatchException
+    | CommonAwsError
   >;
   getUsageProfile(
     input: GetUsageProfileRequest,
   ): Effect.Effect<
     GetUsageProfileResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationNotSupportedException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationNotSupportedException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getUserDefinedFunction(
     input: GetUserDefinedFunctionRequest,
   ): Effect.Effect<
     GetUserDefinedFunctionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getUserDefinedFunctions(
     input: GetUserDefinedFunctionsRequest,
   ): Effect.Effect<
     GetUserDefinedFunctionsResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getWorkflow(
     input: GetWorkflowRequest,
   ): Effect.Effect<
     GetWorkflowResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getWorkflowRun(
     input: GetWorkflowRunRequest,
   ): Effect.Effect<
     GetWorkflowRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getWorkflowRunProperties(
     input: GetWorkflowRunPropertiesRequest,
   ): Effect.Effect<
     GetWorkflowRunPropertiesResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   getWorkflowRuns(
     input: GetWorkflowRunsRequest,
   ): Effect.Effect<
     GetWorkflowRunsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   importCatalogToGlue(
     input: ImportCatalogToGlueRequest,
@@ -990,7 +1781,10 @@ export interface AWSGlue {
     input: ListBlueprintsRequest,
   ): Effect.Effect<
     ListBlueprintsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listColumnStatisticsTaskRuns(
     input: ListColumnStatisticsTaskRunsRequest,
@@ -1014,37 +1808,56 @@ export interface AWSGlue {
     input: ListCrawlsRequest,
   ): Effect.Effect<
     ListCrawlsResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listCustomEntityTypes(
     input: ListCustomEntityTypesRequest,
   ): Effect.Effect<
     ListCustomEntityTypesResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listDataQualityResults(
     input: ListDataQualityResultsRequest,
   ): Effect.Effect<
     ListDataQualityResultsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listDataQualityRuleRecommendationRuns(
     input: ListDataQualityRuleRecommendationRunsRequest,
   ): Effect.Effect<
     ListDataQualityRuleRecommendationRunsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listDataQualityRulesetEvaluationRuns(
     input: ListDataQualityRulesetEvaluationRunsRequest,
   ): Effect.Effect<
     ListDataQualityRulesetEvaluationRunsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listDataQualityRulesets(
     input: ListDataQualityRulesetsRequest,
   ): Effect.Effect<
     ListDataQualityRulesetsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listDataQualityStatisticAnnotations(
     input: ListDataQualityStatisticAnnotationsRequest,
@@ -1056,469 +1869,875 @@ export interface AWSGlue {
     input: ListDataQualityStatisticsRequest,
   ): Effect.Effect<
     ListDataQualityStatisticsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   listDevEndpoints(
     input: ListDevEndpointsRequest,
   ): Effect.Effect<
     ListDevEndpointsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listEntities(
     input: ListEntitiesRequest,
   ): Effect.Effect<
     ListEntitiesResponse,
-    AccessDeniedException | EntityNotFoundException | FederationSourceException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   listJobs(
     input: ListJobsRequest,
   ): Effect.Effect<
     ListJobsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listMLTransforms(
     input: ListMLTransformsRequest,
   ): Effect.Effect<
     ListMLTransformsResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listRegistries(
     input: ListRegistriesInput,
   ): Effect.Effect<
     ListRegistriesResponse,
-    AccessDeniedException | InternalServiceException | InvalidInputException | CommonAwsError
-  >;
-  listSchemaVersions(
-    input: ListSchemaVersionsInput,
-  ): Effect.Effect<
-    ListSchemaVersionsResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   listSchemas(
     input: ListSchemasInput,
   ): Effect.Effect<
     ListSchemasResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
+  >;
+  listSchemaVersions(
+    input: ListSchemaVersionsInput,
+  ): Effect.Effect<
+    ListSchemaVersionsResponse,
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   listSessions(
     input: ListSessionsRequest,
   ): Effect.Effect<
     ListSessionsResponse,
-    AccessDeniedException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listStatements(
     input: ListStatementsRequest,
   ): Effect.Effect<
     ListStatementsResponse,
-    AccessDeniedException | EntityNotFoundException | IllegalSessionStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | IllegalSessionStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listTableOptimizerRuns(
     input: ListTableOptimizerRunsRequest,
   ): Effect.Effect<
     ListTableOptimizerRunsResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTriggers(
     input: ListTriggersRequest,
   ): Effect.Effect<
     ListTriggersResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listUsageProfiles(
     input: ListUsageProfilesRequest,
   ): Effect.Effect<
     ListUsageProfilesResponse,
-    InternalServiceException | InvalidInputException | OperationNotSupportedException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationNotSupportedException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   listWorkflows(
     input: ListWorkflowsRequest,
   ): Effect.Effect<
     ListWorkflowsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   modifyIntegration(
     input: ModifyIntegrationRequest,
   ): Effect.Effect<
     ModifyIntegrationResponse,
-    AccessDeniedException | ConflictException | EntityNotFoundException | IntegrationConflictOperationFault | IntegrationNotFoundFault | InternalServerException | InternalServiceException | InvalidInputException | InvalidIntegrationStateFault | InvalidStateException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | EntityNotFoundException
+    | IntegrationConflictOperationFault
+    | IntegrationNotFoundFault
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | InvalidIntegrationStateFault
+    | InvalidStateException
+    | ValidationException
+    | CommonAwsError
   >;
   putDataCatalogEncryptionSettings(
     input: PutDataCatalogEncryptionSettingsRequest,
   ): Effect.Effect<
     PutDataCatalogEncryptionSettingsResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   putDataQualityProfileAnnotation(
     input: PutDataQualityProfileAnnotationRequest,
   ): Effect.Effect<
     PutDataQualityProfileAnnotationResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   putResourcePolicy(
     input: PutResourcePolicyRequest,
   ): Effect.Effect<
     PutResourcePolicyResponse,
-    ConditionCheckFailureException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConditionCheckFailureException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   putSchemaVersionMetadata(
     input: PutSchemaVersionMetadataInput,
   ): Effect.Effect<
     PutSchemaVersionMetadataResponse,
-    AccessDeniedException | AlreadyExistsException | EntityNotFoundException | InvalidInputException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | InvalidInputException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   putWorkflowRunProperties(
     input: PutWorkflowRunPropertiesRequest,
   ): Effect.Effect<
     PutWorkflowRunPropertiesResponse,
-    AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   querySchemaVersionMetadata(
     input: QuerySchemaVersionMetadataInput,
   ): Effect.Effect<
     QuerySchemaVersionMetadataResponse,
-    AccessDeniedException | EntityNotFoundException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InvalidInputException
+    | CommonAwsError
   >;
   registerSchemaVersion(
     input: RegisterSchemaVersionInput,
   ): Effect.Effect<
     RegisterSchemaVersionResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   removeSchemaVersionMetadata(
     input: RemoveSchemaVersionMetadataInput,
   ): Effect.Effect<
     RemoveSchemaVersionMetadataResponse,
-    AccessDeniedException | EntityNotFoundException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InvalidInputException
+    | CommonAwsError
   >;
   resetJobBookmark(
     input: ResetJobBookmarkRequest,
   ): Effect.Effect<
     ResetJobBookmarkResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   resumeWorkflowRun(
     input: ResumeWorkflowRunRequest,
   ): Effect.Effect<
     ResumeWorkflowRunResponse,
-    ConcurrentRunsExceededException | EntityNotFoundException | IllegalWorkflowStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentRunsExceededException
+    | EntityNotFoundException
+    | IllegalWorkflowStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   runStatement(
     input: RunStatementRequest,
   ): Effect.Effect<
     RunStatementResponse,
-    AccessDeniedException | EntityNotFoundException | IllegalSessionStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | IllegalSessionStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   searchTables(
     input: SearchTablesRequest,
   ): Effect.Effect<
     SearchTablesResponse,
-    InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startBlueprintRun(
     input: StartBlueprintRunRequest,
   ): Effect.Effect<
     StartBlueprintRunResponse,
-    EntityNotFoundException | IllegalBlueprintStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | EntityNotFoundException
+    | IllegalBlueprintStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   startColumnStatisticsTaskRun(
     input: StartColumnStatisticsTaskRunRequest,
   ): Effect.Effect<
     StartColumnStatisticsTaskRunResponse,
-    AccessDeniedException | ColumnStatisticsTaskRunningException | EntityNotFoundException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | ColumnStatisticsTaskRunningException
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   startColumnStatisticsTaskRunSchedule(
     input: StartColumnStatisticsTaskRunScheduleRequest,
   ): Effect.Effect<
     StartColumnStatisticsTaskRunScheduleResponse,
-    AccessDeniedException | EntityNotFoundException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startCrawler(
     input: StartCrawlerRequest,
   ): Effect.Effect<
     StartCrawlerResponse,
-    CrawlerRunningException | EntityNotFoundException | OperationTimeoutException | CommonAwsError
+    | CrawlerRunningException
+    | EntityNotFoundException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startCrawlerSchedule(
     input: StartCrawlerScheduleRequest,
   ): Effect.Effect<
     StartCrawlerScheduleResponse,
-    EntityNotFoundException | NoScheduleException | OperationTimeoutException | SchedulerRunningException | SchedulerTransitioningException | CommonAwsError
+    | EntityNotFoundException
+    | NoScheduleException
+    | OperationTimeoutException
+    | SchedulerRunningException
+    | SchedulerTransitioningException
+    | CommonAwsError
   >;
   startDataQualityRuleRecommendationRun(
     input: StartDataQualityRuleRecommendationRunRequest,
   ): Effect.Effect<
     StartDataQualityRuleRecommendationRunResponse,
-    ConflictException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConflictException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startDataQualityRulesetEvaluationRun(
     input: StartDataQualityRulesetEvaluationRunRequest,
   ): Effect.Effect<
     StartDataQualityRulesetEvaluationRunResponse,
-    ConflictException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConflictException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startExportLabelsTaskRun(
     input: StartExportLabelsTaskRunRequest,
   ): Effect.Effect<
     StartExportLabelsTaskRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startImportLabelsTaskRun(
     input: StartImportLabelsTaskRunRequest,
   ): Effect.Effect<
     StartImportLabelsTaskRunResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   startJobRun(
     input: StartJobRunRequest,
   ): Effect.Effect<
     StartJobRunResponse,
-    ConcurrentRunsExceededException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | ConcurrentRunsExceededException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   startMLEvaluationTaskRun(
     input: StartMLEvaluationTaskRunRequest,
   ): Effect.Effect<
     StartMLEvaluationTaskRunResponse,
-    ConcurrentRunsExceededException | EntityNotFoundException | InternalServiceException | InvalidInputException | MLTransformNotReadyException | OperationTimeoutException | CommonAwsError
+    | ConcurrentRunsExceededException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | MLTransformNotReadyException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startMLLabelingSetGenerationTaskRun(
     input: StartMLLabelingSetGenerationTaskRunRequest,
   ): Effect.Effect<
     StartMLLabelingSetGenerationTaskRunResponse,
-    ConcurrentRunsExceededException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentRunsExceededException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   startTrigger(
     input: StartTriggerRequest,
   ): Effect.Effect<
     StartTriggerResponse,
-    ConcurrentRunsExceededException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | ConcurrentRunsExceededException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   startWorkflowRun(
     input: StartWorkflowRunRequest,
   ): Effect.Effect<
     StartWorkflowRunResponse,
-    ConcurrentRunsExceededException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | ConcurrentRunsExceededException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   stopColumnStatisticsTaskRun(
     input: StopColumnStatisticsTaskRunRequest,
   ): Effect.Effect<
     StopColumnStatisticsTaskRunResponse,
-    ColumnStatisticsTaskNotRunningException | ColumnStatisticsTaskStoppingException | EntityNotFoundException | OperationTimeoutException | CommonAwsError
+    | ColumnStatisticsTaskNotRunningException
+    | ColumnStatisticsTaskStoppingException
+    | EntityNotFoundException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   stopColumnStatisticsTaskRunSchedule(
     input: StopColumnStatisticsTaskRunScheduleRequest,
   ): Effect.Effect<
     StopColumnStatisticsTaskRunScheduleResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   stopCrawler(
     input: StopCrawlerRequest,
   ): Effect.Effect<
     StopCrawlerResponse,
-    CrawlerNotRunningException | CrawlerStoppingException | EntityNotFoundException | OperationTimeoutException | CommonAwsError
+    | CrawlerNotRunningException
+    | CrawlerStoppingException
+    | EntityNotFoundException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   stopCrawlerSchedule(
     input: StopCrawlerScheduleRequest,
   ): Effect.Effect<
     StopCrawlerScheduleResponse,
-    EntityNotFoundException | OperationTimeoutException | SchedulerNotRunningException | SchedulerTransitioningException | CommonAwsError
+    | EntityNotFoundException
+    | OperationTimeoutException
+    | SchedulerNotRunningException
+    | SchedulerTransitioningException
+    | CommonAwsError
   >;
   stopSession(
     input: StopSessionRequest,
   ): Effect.Effect<
     StopSessionResponse,
-    AccessDeniedException | ConcurrentModificationException | IllegalSessionStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | IllegalSessionStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   stopTrigger(
     input: StopTriggerRequest,
   ): Effect.Effect<
     StopTriggerResponse,
-    ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   stopWorkflowRun(
     input: StopWorkflowRunRequest,
   ): Effect.Effect<
     StopWorkflowRunResponse,
-    EntityNotFoundException | IllegalWorkflowStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | IllegalWorkflowStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   testConnection(
     input: TestConnectionRequest,
   ): Effect.Effect<
     TestConnectionResponse,
-    AccessDeniedException | ConflictException | EntityNotFoundException | FederationSourceException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | EntityNotFoundException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateBlueprint(
     input: UpdateBlueprintRequest,
   ): Effect.Effect<
     UpdateBlueprintResponse,
-    ConcurrentModificationException | EntityNotFoundException | IllegalBlueprintStateException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | IllegalBlueprintStateException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateCatalog(
     input: UpdateCatalogRequest,
   ): Effect.Effect<
     UpdateCatalogResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | FederationSourceException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateClassifier(
     input: UpdateClassifierRequest,
   ): Effect.Effect<
     UpdateClassifierResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | VersionMismatchException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | VersionMismatchException
+    | CommonAwsError
   >;
   updateColumnStatisticsForPartition(
     input: UpdateColumnStatisticsForPartitionRequest,
   ): Effect.Effect<
     UpdateColumnStatisticsForPartitionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateColumnStatisticsForTable(
     input: UpdateColumnStatisticsForTableRequest,
   ): Effect.Effect<
     UpdateColumnStatisticsForTableResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateColumnStatisticsTaskSettings(
     input: UpdateColumnStatisticsTaskSettingsRequest,
   ): Effect.Effect<
     UpdateColumnStatisticsTaskSettingsResponse,
-    AccessDeniedException | EntityNotFoundException | InvalidInputException | OperationTimeoutException | VersionMismatchException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | VersionMismatchException
+    | CommonAwsError
   >;
   updateConnection(
     input: UpdateConnectionRequest,
   ): Effect.Effect<
     UpdateConnectionResponse,
-    EntityNotFoundException | GlueEncryptionException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateCrawler(
     input: UpdateCrawlerRequest,
   ): Effect.Effect<
     UpdateCrawlerResponse,
-    CrawlerRunningException | EntityNotFoundException | InvalidInputException | OperationTimeoutException | VersionMismatchException | CommonAwsError
+    | CrawlerRunningException
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | VersionMismatchException
+    | CommonAwsError
   >;
   updateCrawlerSchedule(
     input: UpdateCrawlerScheduleRequest,
   ): Effect.Effect<
     UpdateCrawlerScheduleResponse,
-    EntityNotFoundException | InvalidInputException | OperationTimeoutException | SchedulerTransitioningException | VersionMismatchException | CommonAwsError
-  >;
-  updateDataQualityRuleset(
-    input: UpdateDataQualityRulesetRequest,
-  ): Effect.Effect<
-    UpdateDataQualityRulesetResponse,
-    AlreadyExistsException | EntityNotFoundException | IdempotentParameterMismatchException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNumberLimitExceededException | CommonAwsError
+    | EntityNotFoundException
+    | InvalidInputException
+    | OperationTimeoutException
+    | SchedulerTransitioningException
+    | VersionMismatchException
+    | CommonAwsError
   >;
   updateDatabase(
     input: UpdateDatabaseRequest,
   ): Effect.Effect<
     UpdateDatabaseResponse,
-    AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
+  >;
+  updateDataQualityRuleset(
+    input: UpdateDataQualityRulesetRequest,
+  ): Effect.Effect<
+    UpdateDataQualityRulesetResponse,
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   updateDevEndpoint(
     input: UpdateDevEndpointRequest,
   ): Effect.Effect<
     UpdateDevEndpointResponse,
-    EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   updateIntegrationResourceProperty(
     input: UpdateIntegrationResourcePropertyRequest,
   ): Effect.Effect<
     UpdateIntegrationResourcePropertyResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateIntegrationTableProperties(
     input: UpdateIntegrationTablePropertiesRequest,
   ): Effect.Effect<
     UpdateIntegrationTablePropertiesResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServerException | InternalServiceException | InvalidInputException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServerException
+    | InternalServiceException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateJob(
     input: UpdateJobRequest,
   ): Effect.Effect<
     UpdateJobResponse,
-    ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateJobFromSourceControl(
     input: UpdateJobFromSourceControlRequest,
   ): Effect.Effect<
     UpdateJobFromSourceControlResponse,
-    AccessDeniedException | AlreadyExistsException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   updateMLTransform(
     input: UpdateMLTransformRequest,
   ): Effect.Effect<
     UpdateMLTransformResponse,
-    AccessDeniedException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | AccessDeniedException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updatePartition(
     input: UpdatePartitionRequest,
   ): Effect.Effect<
     UpdatePartitionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateRegistry(
     input: UpdateRegistryInput,
   ): Effect.Effect<
     UpdateRegistryResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   updateSchema(
     input: UpdateSchemaInput,
   ): Effect.Effect<
     UpdateSchemaResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | CommonAwsError
   >;
   updateSourceControlFromJob(
     input: UpdateSourceControlFromJobRequest,
   ): Effect.Effect<
     UpdateSourceControlFromJobResponse,
-    AccessDeniedException | AlreadyExistsException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   updateTable(
     input: UpdateTableRequest,
   ): Effect.Effect<
     UpdateTableResponse,
-    AlreadyExistsException | ConcurrentModificationException | EntityNotFoundException | FederationSourceException | FederationSourceRetryableException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | ResourceNotReadyException | ResourceNumberLimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNotReadyException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError
   >;
   updateTableOptimizer(
     input: UpdateTableOptimizerRequest,
   ): Effect.Effect<
     UpdateTableOptimizerResponse,
-    AccessDeniedException | ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateTrigger(
     input: UpdateTriggerRequest,
   ): Effect.Effect<
     UpdateTriggerResponse,
-    ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateUsageProfile(
     input: UpdateUsageProfileRequest,
   ): Effect.Effect<
     UpdateUsageProfileResponse,
-    ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationNotSupportedException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationNotSupportedException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateUserDefinedFunction(
     input: UpdateUserDefinedFunctionRequest,
   ): Effect.Effect<
     UpdateUserDefinedFunctionResponse,
-    EntityNotFoundException | GlueEncryptionException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | EntityNotFoundException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
   updateWorkflow(
     input: UpdateWorkflowRequest,
   ): Effect.Effect<
     UpdateWorkflowResponse,
-    ConcurrentModificationException | EntityNotFoundException | InternalServiceException | InvalidInputException | OperationTimeoutException | CommonAwsError
+    | ConcurrentModificationException
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError
   >;
 }
 
@@ -1546,7 +2765,22 @@ export type AdditionalContextMap = Record<string, string>;
 export type AdditionalOptionKeys = "CacheOption" | "ObservationsOption";
 export type AdditionalOptions = Record<string, string>;
 export type AdditionalPlanOptionsMap = Record<string, string>;
-export type AggFunction = "avg" | "countDistinct" | "count" | "first" | "last" | "kurtosis" | "max" | "min" | "skewness" | "stddev_samp" | "stddev_pop" | "sum" | "sumDistinct" | "var_samp" | "var_pop";
+export type AggFunction =
+  | "avg"
+  | "countDistinct"
+  | "count"
+  | "first"
+  | "last"
+  | "kurtosis"
+  | "max"
+  | "min"
+  | "skewness"
+  | "stddev_samp"
+  | "stddev_pop"
+  | "sum"
+  | "sumDistinct"
+  | "var_samp"
+  | "var_pop";
 export interface Aggregate {
   Name: string;
   Inputs: Array<string>;
@@ -1687,7 +2921,12 @@ export interface BackfillError {
   Code?: BackfillErrorCode;
   Partitions?: Array<PartitionValueList>;
 }
-export type BackfillErrorCode = "ENCRYPTED_PARTITION_ERROR" | "INTERNAL_ERROR" | "INVALID_PARTITION_TYPE_DATA_ERROR" | "MISSING_PARTITION_VALUE_ERROR" | "UNSUPPORTED_PARTITION_CHARACTER_ERROR";
+export type BackfillErrorCode =
+  | "ENCRYPTED_PARTITION_ERROR"
+  | "INTERNAL_ERROR"
+  | "INVALID_PARTITION_TYPE_DATA_ERROR"
+  | "MISSING_PARTITION_VALUE_ERROR"
+  | "UNSUPPORTED_PARTITION_CHARACTER_ERROR";
 export type BackfillErroredPartitionsList = Array<PartitionValueList>;
 export type BackfillErrors = Array<BackfillError>;
 export interface BasicAuthenticationCredentials {
@@ -1869,7 +3108,8 @@ export interface BatchStopJobRunSuccessfulSubmission {
   JobName?: string;
   JobRunId?: string;
 }
-export type BatchStopJobRunSuccessfulSubmissionList = Array<BatchStopJobRunSuccessfulSubmission>;
+export type BatchStopJobRunSuccessfulSubmissionList =
+  Array<BatchStopJobRunSuccessfulSubmission>;
 export interface BatchTableOptimizer {
   catalogId?: string;
   databaseName?: string;
@@ -1881,7 +3121,8 @@ export interface BatchUpdatePartitionFailureEntry {
   PartitionValueList?: Array<string>;
   ErrorDetail?: ErrorDetail;
 }
-export type BatchUpdatePartitionFailureList = Array<BatchUpdatePartitionFailureEntry>;
+export type BatchUpdatePartitionFailureList =
+  Array<BatchUpdatePartitionFailureEntry>;
 export interface BatchUpdatePartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -1892,7 +3133,8 @@ export interface BatchUpdatePartitionRequestEntry {
   PartitionValueList: Array<string>;
   PartitionInput: PartitionInput;
 }
-export type BatchUpdatePartitionRequestEntryList = Array<BatchUpdatePartitionRequestEntry>;
+export type BatchUpdatePartitionRequestEntryList =
+  Array<BatchUpdatePartitionRequestEntry>;
 export interface BatchUpdatePartitionResponse {
   Errors?: Array<BatchUpdatePartitionFailureEntry>;
 }
@@ -1939,7 +3181,11 @@ export interface BlueprintRun {
   RoleArn?: string;
 }
 export type BlueprintRuns = Array<BlueprintRun>;
-export type BlueprintRunState = "RUNNING" | "SUCCEEDED" | "FAILED" | "ROLLING_BACK";
+export type BlueprintRunState =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "ROLLING_BACK";
 export type Blueprints = Array<Blueprint>;
 export type BlueprintStatus = "CREATING" | "ACTIVE" | "UPDATING" | "FAILED";
 export type Bool = boolean;
@@ -1969,13 +3215,11 @@ export type BoxedPositiveInt = number;
 export interface CancelDataQualityRuleRecommendationRunRequest {
   RunId: string;
 }
-export interface CancelDataQualityRuleRecommendationRunResponse {
-}
+export interface CancelDataQualityRuleRecommendationRunResponse {}
 export interface CancelDataQualityRulesetEvaluationRunRequest {
   RunId: string;
 }
-export interface CancelDataQualityRulesetEvaluationRunResponse {
-}
+export interface CancelDataQualityRulesetEvaluationRunResponse {}
 export interface CancelMLTaskRunRequest {
   TransformId: string;
   TaskRunId: string;
@@ -1990,8 +3234,7 @@ export interface CancelStatementRequest {
   Id: number;
   RequestOrigin?: string;
 }
-export interface CancelStatementResponse {
-}
+export interface CancelStatementResponse {}
 export interface Capabilities {
   SupportedAuthenticationTypes: Array<AuthenticationType>;
   SupportedDataOperations: Array<DataOperation>;
@@ -2019,7 +3262,10 @@ export interface CatalogDeltaSource {
   AdditionalDeltaOptions?: Record<string, string>;
   OutputSchemas?: Array<GlueSchema>;
 }
-export type CatalogEncryptionMode = "DISABLED" | "SSEKMS" | "SSEKMSWITHSERVICEROLE";
+export type CatalogEncryptionMode =
+  | "DISABLED"
+  | "SSEKMS"
+  | "SSEKMSWITHSERVICEROLE";
 export type CatalogEntries = Array<CatalogEntry>;
 export interface CatalogEntry {
   DatabaseName: string;
@@ -2203,7 +3449,10 @@ export interface CodeGenConfigurationNode {
   ConnectorDataSource?: ConnectorDataSource;
   ConnectorDataTarget?: ConnectorDataTarget;
 }
-export type CodeGenConfigurationNodes = Record<string, CodeGenConfigurationNode>;
+export type CodeGenConfigurationNodes = Record<
+  string,
+  CodeGenConfigurationNode
+>;
 export interface CodeGenEdge {
   Source: string;
   Target: string;
@@ -2272,7 +3521,12 @@ export interface ColumnStatisticsError {
 }
 export type ColumnStatisticsErrors = Array<ColumnStatisticsError>;
 export type ColumnStatisticsList = Array<ColumnStatistics>;
-export type ColumnStatisticsState = "STARTING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "STOPPED";
+export type ColumnStatisticsState =
+  | "STARTING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "STOPPED";
 export declare class ColumnStatisticsTaskNotRunningException extends Data.TaggedError(
   "ColumnStatisticsTaskNotRunningException",
 )<{
@@ -2324,7 +3578,14 @@ export declare class ColumnStatisticsTaskStoppingException extends Data.TaggedEr
 )<{
   readonly Message?: string;
 }> {}
-export type ColumnStatisticsType = "BOOLEAN" | "DATE" | "DECIMAL" | "DOUBLE" | "LONG" | "STRING" | "BINARY";
+export type ColumnStatisticsType =
+  | "BOOLEAN"
+  | "DATE"
+  | "DECIMAL"
+  | "DOUBLE"
+  | "LONG"
+  | "STRING"
+  | "BINARY";
 export type ColumnTypeString = string;
 
 export type ColumnValuesString = string;
@@ -2341,8 +3602,21 @@ export interface CompactionMetrics {
   IcebergMetrics?: IcebergCompactionMetrics;
 }
 export type CompactionStrategy = "BINPACK" | "SORT" | "ZORDER";
-export type Comparator = "EQUALS" | "GREATER_THAN" | "LESS_THAN" | "GREATER_THAN_EQUALS" | "LESS_THAN_EQUALS";
-export type Compatibility = "NONE" | "DISABLED" | "BACKWARD" | "BACKWARD_ALL" | "FORWARD" | "FORWARD_ALL" | "FULL" | "FULL_ALL";
+export type Comparator =
+  | "EQUALS"
+  | "GREATER_THAN"
+  | "LESS_THAN"
+  | "GREATER_THAN_EQUALS"
+  | "LESS_THAN_EQUALS";
+export type Compatibility =
+  | "NONE"
+  | "DISABLED"
+  | "BACKWARD"
+  | "BACKWARD_ALL"
+  | "FORWARD"
+  | "FORWARD_ALL"
+  | "FULL"
+  | "FULL_ALL";
 export type CompressionType = "GZIP" | "BZIP2";
 export type ComputationType = "FULL" | "INCREMENTAL";
 export type ComputeEnvironment = "SPARK" | "ATHENA" | "PYTHON";
@@ -2359,7 +3633,10 @@ export interface ComputeEnvironmentConfiguration {
 }
 export type ComputeEnvironmentConfigurationDescriptionString = string;
 
-export type ComputeEnvironmentConfigurationMap = Record<string, ComputeEnvironmentConfiguration>;
+export type ComputeEnvironmentConfigurationMap = Record<
+  string,
+  ComputeEnvironmentConfiguration
+>;
 export type ComputeEnvironmentList = Array<ComputeEnvironment>;
 export type ComputeEnvironmentName = string;
 
@@ -2456,7 +3733,56 @@ export interface ConnectionPasswordEncryption {
   AwsKmsKeyId?: string;
 }
 export type ConnectionProperties = Record<ConnectionPropertyKey, string>;
-export type ConnectionPropertyKey = "HOST" | "PORT" | "USER_NAME" | "PASSWORD" | "ENCRYPTED_PASSWORD" | "JDBC_DRIVER_JAR_URI" | "JDBC_DRIVER_CLASS_NAME" | "JDBC_ENGINE" | "JDBC_ENGINE_VERSION" | "CONFIG_FILES" | "INSTANCE_ID" | "JDBC_CONNECTION_URL" | "JDBC_ENFORCE_SSL" | "CUSTOM_JDBC_CERT" | "SKIP_CUSTOM_JDBC_CERT_VALIDATION" | "CUSTOM_JDBC_CERT_STRING" | "CONNECTION_URL" | "KAFKA_BOOTSTRAP_SERVERS" | "KAFKA_SSL_ENABLED" | "KAFKA_CUSTOM_CERT" | "KAFKA_SKIP_CUSTOM_CERT_VALIDATION" | "KAFKA_CLIENT_KEYSTORE" | "KAFKA_CLIENT_KEYSTORE_PASSWORD" | "KAFKA_CLIENT_KEY_PASSWORD" | "ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD" | "ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD" | "KAFKA_SASL_MECHANISM" | "KAFKA_SASL_PLAIN_USERNAME" | "KAFKA_SASL_PLAIN_PASSWORD" | "ENCRYPTED_KAFKA_SASL_PLAIN_PASSWORD" | "KAFKA_SASL_SCRAM_USERNAME" | "KAFKA_SASL_SCRAM_PASSWORD" | "KAFKA_SASL_SCRAM_SECRETS_ARN" | "ENCRYPTED_KAFKA_SASL_SCRAM_PASSWORD" | "KAFKA_SASL_GSSAPI_KEYTAB" | "KAFKA_SASL_GSSAPI_KRB5_CONF" | "KAFKA_SASL_GSSAPI_SERVICE" | "KAFKA_SASL_GSSAPI_PRINCIPAL" | "SECRET_ID" | "CONNECTOR_URL" | "CONNECTOR_TYPE" | "CONNECTOR_CLASS_NAME" | "ENDPOINT" | "ENDPOINT_TYPE" | "ROLE_ARN" | "REGION" | "WORKGROUP_NAME" | "CLUSTER_IDENTIFIER" | "DATABASE";
+export type ConnectionPropertyKey =
+  | "HOST"
+  | "PORT"
+  | "USER_NAME"
+  | "PASSWORD"
+  | "ENCRYPTED_PASSWORD"
+  | "JDBC_DRIVER_JAR_URI"
+  | "JDBC_DRIVER_CLASS_NAME"
+  | "JDBC_ENGINE"
+  | "JDBC_ENGINE_VERSION"
+  | "CONFIG_FILES"
+  | "INSTANCE_ID"
+  | "JDBC_CONNECTION_URL"
+  | "JDBC_ENFORCE_SSL"
+  | "CUSTOM_JDBC_CERT"
+  | "SKIP_CUSTOM_JDBC_CERT_VALIDATION"
+  | "CUSTOM_JDBC_CERT_STRING"
+  | "CONNECTION_URL"
+  | "KAFKA_BOOTSTRAP_SERVERS"
+  | "KAFKA_SSL_ENABLED"
+  | "KAFKA_CUSTOM_CERT"
+  | "KAFKA_SKIP_CUSTOM_CERT_VALIDATION"
+  | "KAFKA_CLIENT_KEYSTORE"
+  | "KAFKA_CLIENT_KEYSTORE_PASSWORD"
+  | "KAFKA_CLIENT_KEY_PASSWORD"
+  | "ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD"
+  | "ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD"
+  | "KAFKA_SASL_MECHANISM"
+  | "KAFKA_SASL_PLAIN_USERNAME"
+  | "KAFKA_SASL_PLAIN_PASSWORD"
+  | "ENCRYPTED_KAFKA_SASL_PLAIN_PASSWORD"
+  | "KAFKA_SASL_SCRAM_USERNAME"
+  | "KAFKA_SASL_SCRAM_PASSWORD"
+  | "KAFKA_SASL_SCRAM_SECRETS_ARN"
+  | "ENCRYPTED_KAFKA_SASL_SCRAM_PASSWORD"
+  | "KAFKA_SASL_GSSAPI_KEYTAB"
+  | "KAFKA_SASL_GSSAPI_KRB5_CONF"
+  | "KAFKA_SASL_GSSAPI_SERVICE"
+  | "KAFKA_SASL_GSSAPI_PRINCIPAL"
+  | "SECRET_ID"
+  | "CONNECTOR_URL"
+  | "CONNECTOR_TYPE"
+  | "CONNECTOR_CLASS_NAME"
+  | "ENDPOINT"
+  | "ENDPOINT_TYPE"
+  | "ROLE_ARN"
+  | "REGION"
+  | "WORKGROUP_NAME"
+  | "CLUSTER_IDENTIFIER"
+  | "DATABASE";
 export type ConnectionSchemaVersion = number;
 
 export interface ConnectionsList {
@@ -2466,7 +3792,36 @@ export type ConnectionStatus = "READY" | "IN_PROGRESS" | "FAILED";
 export type ConnectionString = string;
 
 export type ConnectionStringList = Array<string>;
-export type ConnectionType = "JDBC" | "SFTP" | "MONGODB" | "KAFKA" | "NETWORK" | "MARKETPLACE" | "CUSTOM" | "SALESFORCE" | "VIEW_VALIDATION_REDSHIFT" | "VIEW_VALIDATION_ATHENA" | "GOOGLEADS" | "GOOGLESHEETS" | "GOOGLEANALYTICS4" | "SERVICENOW" | "MARKETO" | "SAPODATA" | "ZENDESK" | "JIRACLOUD" | "NETSUITEERP" | "HUBSPOT" | "FACEBOOKADS" | "INSTAGRAMADS" | "ZOHOCRM" | "SALESFORCEPARDOT" | "SALESFORCEMARKETINGCLOUD" | "SLACK" | "STRIPE" | "INTERCOM" | "SNAPCHATADS";
+export type ConnectionType =
+  | "JDBC"
+  | "SFTP"
+  | "MONGODB"
+  | "KAFKA"
+  | "NETWORK"
+  | "MARKETPLACE"
+  | "CUSTOM"
+  | "SALESFORCE"
+  | "VIEW_VALIDATION_REDSHIFT"
+  | "VIEW_VALIDATION_ATHENA"
+  | "GOOGLEADS"
+  | "GOOGLESHEETS"
+  | "GOOGLEANALYTICS4"
+  | "SERVICENOW"
+  | "MARKETO"
+  | "SAPODATA"
+  | "ZENDESK"
+  | "JIRACLOUD"
+  | "NETSUITEERP"
+  | "HUBSPOT"
+  | "FACEBOOKADS"
+  | "INSTAGRAMADS"
+  | "ZOHOCRM"
+  | "SALESFORCEPARDOT"
+  | "SALESFORCEMARKETINGCLOUD"
+  | "SLACK"
+  | "STRIPE"
+  | "INTERCOM"
+  | "SNAPCHATADS";
 export interface ConnectionTypeBrief {
   ConnectionType?: ConnectionType;
   DisplayName?: string;
@@ -2548,7 +3903,11 @@ export interface CrawlerHistory {
   DPUHour?: number;
 }
 export type CrawlerHistoryList = Array<CrawlerHistory>;
-export type CrawlerHistoryState = "RUNNING" | "COMPLETED" | "FAILED" | "STOPPED";
+export type CrawlerHistoryState =
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPED";
 export type CrawlerLineageSettings = "ENABLE" | "DISABLE";
 export type CrawlerList = Array<Crawler>;
 export interface CrawlerMetrics {
@@ -2603,7 +3962,13 @@ export interface CrawlsFilter {
   FieldValue?: string;
 }
 export type CrawlsFilterList = Array<CrawlsFilter>;
-export type CrawlState = "RUNNING" | "CANCELLING" | "CANCELLED" | "SUCCEEDED" | "FAILED" | "ERROR";
+export type CrawlState =
+  | "RUNNING"
+  | "CANCELLING"
+  | "CANCELLED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "ERROR";
 export interface CreateBlueprintRequest {
   Name: string;
   Description?: string;
@@ -2618,16 +3983,14 @@ export interface CreateCatalogRequest {
   CatalogInput: CatalogInput;
   Tags?: Record<string, string>;
 }
-export interface CreateCatalogResponse {
-}
+export interface CreateCatalogResponse {}
 export interface CreateClassifierRequest {
   GrokClassifier?: CreateGrokClassifierRequest;
   XMLClassifier?: CreateXMLClassifierRequest;
   JsonClassifier?: CreateJsonClassifierRequest;
   CsvClassifier?: CreateCsvClassifierRequest;
 }
-export interface CreateClassifierResponse {
-}
+export interface CreateClassifierResponse {}
 export interface CreateColumnStatisticsTaskSettingsRequest {
   DatabaseName: string;
   TableName: string;
@@ -2639,8 +4002,7 @@ export interface CreateColumnStatisticsTaskSettingsRequest {
   SecurityConfiguration?: string;
   Tags?: Record<string, string>;
 }
-export interface CreateColumnStatisticsTaskSettingsResponse {
-}
+export interface CreateColumnStatisticsTaskSettingsResponse {}
 export interface CreateConnectionRequest {
   CatalogId?: string;
   ConnectionInput: ConnectionInput;
@@ -2666,8 +4028,7 @@ export interface CreateCrawlerRequest {
   CrawlerSecurityConfiguration?: string;
   Tags?: Record<string, string>;
 }
-export interface CreateCrawlerResponse {
-}
+export interface CreateCrawlerResponse {}
 export interface CreateCsvClassifierRequest {
   Name: string;
   Delimiter?: string;
@@ -2694,8 +4055,7 @@ export interface CreateDatabaseRequest {
   DatabaseInput: DatabaseInput;
   Tags?: Record<string, string>;
 }
-export interface CreateDatabaseResponse {
-}
+export interface CreateDatabaseResponse {}
 export interface CreateDataQualityRulesetRequest {
   Name: string;
   Description?: string;
@@ -2803,8 +4163,7 @@ export interface CreateIntegrationTablePropertiesRequest {
   SourceTableConfig?: SourceTableConfig;
   TargetTableConfig?: TargetTableConfig;
 }
-export interface CreateIntegrationTablePropertiesResponse {
-}
+export interface CreateIntegrationTablePropertiesResponse {}
 export interface CreateJobRequest {
   Name: string;
   JobMode?: JobMode;
@@ -2863,16 +4222,14 @@ export interface CreatePartitionIndexRequest {
   TableName: string;
   PartitionIndex: PartitionIndex;
 }
-export interface CreatePartitionIndexResponse {
-}
+export interface CreatePartitionIndexResponse {}
 export interface CreatePartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
   TableName: string;
   PartitionInput: PartitionInput;
 }
-export interface CreatePartitionResponse {
-}
+export interface CreatePartitionResponse {}
 export interface CreateRegistryInput {
   RegistryName: string;
   Description?: string;
@@ -2953,8 +4310,7 @@ export interface CreateTableOptimizerRequest {
   Type: TableOptimizerType;
   TableOptimizerConfiguration: TableOptimizerConfiguration;
 }
-export interface CreateTableOptimizerResponse {
-}
+export interface CreateTableOptimizerResponse {}
 export interface CreateTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -2964,8 +4320,7 @@ export interface CreateTableRequest {
   TransactionId?: string;
   OpenTableFormatInput?: OpenTableFormatInput;
 }
-export interface CreateTableResponse {
-}
+export interface CreateTableResponse {}
 export interface CreateTriggerRequest {
   Name: string;
   WorkflowName?: string;
@@ -2995,8 +4350,7 @@ export interface CreateUserDefinedFunctionRequest {
   DatabaseName: string;
   FunctionInput: UserDefinedFunctionInput;
 }
-export interface CreateUserDefinedFunctionResponse {
-}
+export interface CreateUserDefinedFunctionResponse {}
 export interface CreateWorkflowRequest {
   Name: string;
   Description?: string;
@@ -3193,7 +4547,8 @@ export interface DataQualityResultDescription {
   JobRunId?: string;
   StartedOn?: Date | string;
 }
-export type DataQualityResultDescriptionList = Array<DataQualityResultDescription>;
+export type DataQualityResultDescriptionList =
+  Array<DataQualityResultDescription>;
 export interface DataQualityResultFilterCriteria {
   DataSource?: DataSource;
   JobName?: string;
@@ -3215,7 +4570,8 @@ export interface DataQualityRuleRecommendationRunFilter {
   StartedBefore?: Date | string;
   StartedAfter?: Date | string;
 }
-export type DataQualityRuleRecommendationRunList = Array<DataQualityRuleRecommendationRunDescription>;
+export type DataQualityRuleRecommendationRunList =
+  Array<DataQualityRuleRecommendationRunDescription>;
 export interface DataQualityRuleResult {
   Name?: string;
   Description?: string;
@@ -3240,7 +4596,8 @@ export interface DataQualityRulesetEvaluationRunFilter {
   StartedBefore?: Date | string;
   StartedAfter?: Date | string;
 }
-export type DataQualityRulesetEvaluationRunList = Array<DataQualityRulesetEvaluationRunDescription>;
+export type DataQualityRulesetEvaluationRunList =
+  Array<DataQualityRulesetEvaluationRunDescription>;
 export interface DataQualityRulesetFilterCriteria {
   Name?: string;
   Description?: string;
@@ -3291,7 +4648,10 @@ export interface DecimalNumber {
   UnscaledValue: Uint8Array | string;
   Scale: number;
 }
-export type DeleteBehavior = "LOG" | "DELETE_FROM_DATABASE" | "DEPRECATE_IN_DATABASE";
+export type DeleteBehavior =
+  | "LOG"
+  | "DELETE_FROM_DATABASE"
+  | "DEPRECATE_IN_DATABASE";
 export interface DeleteBlueprintRequest {
   Name: string;
 }
@@ -3301,13 +4661,11 @@ export interface DeleteBlueprintResponse {
 export interface DeleteCatalogRequest {
   CatalogId: string;
 }
-export interface DeleteCatalogResponse {
-}
+export interface DeleteCatalogResponse {}
 export interface DeleteClassifierRequest {
   Name: string;
 }
-export interface DeleteClassifierResponse {
-}
+export interface DeleteClassifierResponse {}
 export interface DeleteColumnStatisticsForPartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -3315,34 +4673,29 @@ export interface DeleteColumnStatisticsForPartitionRequest {
   PartitionValues: Array<string>;
   ColumnName: string;
 }
-export interface DeleteColumnStatisticsForPartitionResponse {
-}
+export interface DeleteColumnStatisticsForPartitionResponse {}
 export interface DeleteColumnStatisticsForTableRequest {
   CatalogId?: string;
   DatabaseName: string;
   TableName: string;
   ColumnName: string;
 }
-export interface DeleteColumnStatisticsForTableResponse {
-}
+export interface DeleteColumnStatisticsForTableResponse {}
 export interface DeleteColumnStatisticsTaskSettingsRequest {
   DatabaseName: string;
   TableName: string;
 }
-export interface DeleteColumnStatisticsTaskSettingsResponse {
-}
+export interface DeleteColumnStatisticsTaskSettingsResponse {}
 export type DeleteConnectionNameList = Array<string>;
 export interface DeleteConnectionRequest {
   CatalogId?: string;
   ConnectionName: string;
 }
-export interface DeleteConnectionResponse {
-}
+export interface DeleteConnectionResponse {}
 export interface DeleteCrawlerRequest {
   Name: string;
 }
-export interface DeleteCrawlerResponse {
-}
+export interface DeleteCrawlerResponse {}
 export interface DeleteCustomEntityTypeRequest {
   Name: string;
 }
@@ -3353,18 +4706,15 @@ export interface DeleteDatabaseRequest {
   CatalogId?: string;
   Name: string;
 }
-export interface DeleteDatabaseResponse {
-}
+export interface DeleteDatabaseResponse {}
 export interface DeleteDataQualityRulesetRequest {
   Name: string;
 }
-export interface DeleteDataQualityRulesetResponse {
-}
+export interface DeleteDataQualityRulesetResponse {}
 export interface DeleteDevEndpointRequest {
   EndpointName: string;
 }
-export interface DeleteDevEndpointResponse {
-}
+export interface DeleteDevEndpointResponse {}
 export interface DeleteIntegrationRequest {
   IntegrationIdentifier: string;
 }
@@ -3386,8 +4736,7 @@ export interface DeleteIntegrationTablePropertiesRequest {
   ResourceArn: string;
   TableName: string;
 }
-export interface DeleteIntegrationTablePropertiesResponse {
-}
+export interface DeleteIntegrationTablePropertiesResponse {}
 export interface DeleteJobRequest {
   JobName: string;
 }
@@ -3406,16 +4755,14 @@ export interface DeletePartitionIndexRequest {
   TableName: string;
   IndexName: string;
 }
-export interface DeletePartitionIndexResponse {
-}
+export interface DeletePartitionIndexResponse {}
 export interface DeletePartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
   TableName: string;
   PartitionValues: Array<string>;
 }
-export interface DeletePartitionResponse {
-}
+export interface DeletePartitionResponse {}
 export interface DeleteRegistryInput {
   RegistryId: RegistryId;
 }
@@ -3428,8 +4775,7 @@ export interface DeleteResourcePolicyRequest {
   PolicyHashCondition?: string;
   ResourceArn?: string;
 }
-export interface DeleteResourcePolicyResponse {
-}
+export interface DeleteResourcePolicyResponse {}
 export interface DeleteSchemaInput {
   SchemaId: SchemaId;
 }
@@ -3448,8 +4794,7 @@ export interface DeleteSchemaVersionsResponse {
 export interface DeleteSecurityConfigurationRequest {
   Name: string;
 }
-export interface DeleteSecurityConfigurationResponse {
-}
+export interface DeleteSecurityConfigurationResponse {}
 export interface DeleteSessionRequest {
   Id: string;
   RequestOrigin?: string;
@@ -3463,24 +4808,21 @@ export interface DeleteTableOptimizerRequest {
   TableName: string;
   Type: TableOptimizerType;
 }
-export interface DeleteTableOptimizerResponse {
-}
+export interface DeleteTableOptimizerResponse {}
 export interface DeleteTableRequest {
   CatalogId?: string;
   DatabaseName: string;
   Name: string;
   TransactionId?: string;
 }
-export interface DeleteTableResponse {
-}
+export interface DeleteTableResponse {}
 export interface DeleteTableVersionRequest {
   CatalogId?: string;
   DatabaseName: string;
   TableName: string;
   VersionId: string;
 }
-export interface DeleteTableVersionResponse {
-}
+export interface DeleteTableVersionResponse {}
 export interface DeleteTriggerRequest {
   Name: string;
 }
@@ -3490,15 +4832,13 @@ export interface DeleteTriggerResponse {
 export interface DeleteUsageProfileRequest {
   Name: string;
 }
-export interface DeleteUsageProfileResponse {
-}
+export interface DeleteUsageProfileResponse {}
 export interface DeleteUserDefinedFunctionRequest {
   CatalogId?: string;
   DatabaseName: string;
   FunctionName: string;
 }
-export interface DeleteUserDefinedFunctionResponse {
-}
+export interface DeleteUserDefinedFunctionResponse {}
 export interface DeleteWorkflowRequest {
   Name: string;
 }
@@ -3523,7 +4863,10 @@ export interface DescribeConnectionTypeResponse {
   ConnectionProperties?: Record<string, Property>;
   ConnectionOptions?: Record<string, Property>;
   AuthenticationConfiguration?: AuthConfiguration;
-  ComputeEnvironmentConfigurations?: Record<string, ComputeEnvironmentConfiguration>;
+  ComputeEnvironmentConfigurations?: Record<
+    string,
+    ComputeEnvironmentConfiguration
+  >;
   PhysicalConnectionRequirements?: Record<string, Property>;
   AthenaConnectionProperties?: Record<string, Property>;
   PythonConnectionProperties?: Record<string, Property>;
@@ -3832,7 +5175,17 @@ export interface FederatedTable {
 }
 export type FederationIdentifier = string;
 
-export type FederationSourceErrorCode = "AccessDeniedException" | "EntityNotFoundException" | "InvalidCredentialsException" | "InvalidInputException" | "InvalidResponseException" | "OperationTimeoutException" | "OperationNotSupportedException" | "InternalServiceException" | "PartialFailureException" | "ThrottlingException";
+export type FederationSourceErrorCode =
+  | "AccessDeniedException"
+  | "EntityNotFoundException"
+  | "InvalidCredentialsException"
+  | "InvalidInputException"
+  | "InvalidResponseException"
+  | "OperationTimeoutException"
+  | "OperationNotSupportedException"
+  | "InternalServiceException"
+  | "PartialFailureException"
+  | "ThrottlingException";
 export declare class FederationSourceException extends Data.TaggedError(
   "FederationSourceException",
 )<{
@@ -3864,14 +5217,44 @@ export interface Field {
   NativeDataType?: string;
   CustomProperties?: Record<string, string>;
 }
-export type FieldDataType = "INT" | "SMALLINT" | "BIGINT" | "FLOAT" | "LONG" | "DATE" | "BOOLEAN" | "MAP" | "ARRAY" | "STRING" | "TIMESTAMP" | "DECIMAL" | "BYTE" | "SHORT" | "DOUBLE" | "STRUCT";
+export type FieldDataType =
+  | "INT"
+  | "SMALLINT"
+  | "BIGINT"
+  | "FLOAT"
+  | "LONG"
+  | "DATE"
+  | "BOOLEAN"
+  | "MAP"
+  | "ARRAY"
+  | "STRING"
+  | "TIMESTAMP"
+  | "DECIMAL"
+  | "BYTE"
+  | "SHORT"
+  | "DOUBLE"
+  | "STRUCT";
 export type FieldDescription = string;
 
-export type FieldFilterOperator = "LESS_THAN" | "GREATER_THAN" | "BETWEEN" | "EQUAL_TO" | "NOT_EQUAL_TO" | "GREATER_THAN_OR_EQUAL_TO" | "LESS_THAN_OR_EQUAL_TO" | "CONTAINS" | "ORDER_BY";
+export type FieldFilterOperator =
+  | "LESS_THAN"
+  | "GREATER_THAN"
+  | "BETWEEN"
+  | "EQUAL_TO"
+  | "NOT_EQUAL_TO"
+  | "GREATER_THAN_OR_EQUAL_TO"
+  | "LESS_THAN_OR_EQUAL_TO"
+  | "CONTAINS"
+  | "ORDER_BY";
 export type FieldFilterOperatorsList = Array<FieldFilterOperator>;
 export type FieldLabel = string;
 
-export type FieldName = "CRAWL_ID" | "STATE" | "START_TIME" | "END_TIME" | "DPU_HOUR";
+export type FieldName =
+  | "CRAWL_ID"
+  | "STATE"
+  | "START_TIME"
+  | "END_TIME"
+  | "DPU_HOUR";
 export type FieldsList = Array<Field>;
 export type FieldType = string;
 
@@ -3894,7 +5277,14 @@ export interface FilterExpression {
 }
 export type FilterExpressions = Array<FilterExpression>;
 export type FilterLogicalOperator = "AND" | "OR";
-export type FilterOperation = "EQ" | "LT" | "GT" | "LTE" | "GTE" | "REGEX" | "ISNULL";
+export type FilterOperation =
+  | "EQ"
+  | "LT"
+  | "GT"
+  | "LTE"
+  | "GTE"
+  | "REGEX"
+  | "ISNULL";
 export type FilterOperator = "GT" | "GE" | "LT" | "LE" | "EQ" | "NE";
 export type FilterPredicate = string;
 
@@ -4742,7 +6132,17 @@ export interface GluePolicy {
   CreateTime?: Date | string;
   UpdateTime?: Date | string;
 }
-export type GlueRecordType = "DATE" | "STRING" | "TIMESTAMP" | "INT" | "FLOAT" | "LONG" | "BIGDECIMAL" | "BYTE" | "SHORT" | "DOUBLE";
+export type GlueRecordType =
+  | "DATE"
+  | "STRING"
+  | "TIMESTAMP"
+  | "INT"
+  | "FLOAT"
+  | "LONG"
+  | "BIGDECIMAL"
+  | "BYTE"
+  | "SHORT"
+  | "DOUBLE";
 export type GlueResourceArn = string;
 
 export interface GlueSchema {
@@ -4802,7 +6202,11 @@ export interface HudiTarget {
   Exclusions?: Array<string>;
   MaximumTraversalDepth?: number;
 }
-export type HudiTargetCompressionType = "GZIP" | "LZO" | "UNCOMPRESSED" | "SNAPPY";
+export type HudiTargetCompressionType =
+  | "GZIP"
+  | "LZO"
+  | "UNCOMPRESSED"
+  | "SNAPPY";
 export type HudiTargetList = Array<HudiTarget>;
 export type HyperTargetCompressionType = "UNCOMPRESSED";
 export type IAMRoleArn = string;
@@ -4898,7 +6302,11 @@ export interface IcebergTarget {
   Exclusions?: Array<string>;
   MaximumTraversalDepth?: number;
 }
-export type IcebergTargetCompressionType = "GZIP" | "LZO" | "UNCOMPRESSED" | "SNAPPY";
+export type IcebergTargetCompressionType =
+  | "GZIP"
+  | "LZO"
+  | "UNCOMPRESSED"
+  | "SNAPPY";
 export type IcebergTargetList = Array<IcebergTarget>;
 export type IcebergTransformString = string;
 
@@ -4929,8 +6337,7 @@ export declare class IllegalWorkflowStateException extends Data.TaggedError(
 export interface ImportCatalogToGlueRequest {
   CatalogId?: string;
 }
-export interface ImportCatalogToGlueResponse {
-}
+export interface ImportCatalogToGlueResponse {}
 export interface ImportLabelsTaskRunProperties {
   InputS3Path?: string;
   Replace?: boolean;
@@ -5014,7 +6421,14 @@ export declare class IntegrationQuotaExceededFault extends Data.TaggedError(
 }> {}
 export type IntegrationsList = Array<Integration>;
 export type IntegrationSourcePropertiesMap = Record<string, string>;
-export type IntegrationStatus = "CREATING" | "ACTIVE" | "MODIFYING" | "FAILED" | "DELETING" | "SYNCING" | "NEEDS_ATTENTION";
+export type IntegrationStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "MODIFYING"
+  | "FAILED"
+  | "DELETING"
+  | "SYNCING"
+  | "NEEDS_ATTENTION";
 export type IntegrationString = string;
 
 export type IntegrationTagsList = Array<Tag>;
@@ -5052,7 +6466,12 @@ export type IsParentEntity = boolean;
 
 export type IsVersionValid = boolean;
 
-export type JDBCConnectionType = "sqlserver" | "mysql" | "oracle" | "postgresql" | "redshift";
+export type JDBCConnectionType =
+  | "sqlserver"
+  | "mysql"
+  | "oracle"
+  | "postgresql"
+  | "redshift";
 export interface JDBCConnectorOptions {
   FilterPredicate?: string;
   PartitionColumn?: string;
@@ -5083,7 +6502,46 @@ export interface JDBCConnectorTarget {
   AdditionalOptions?: Record<string, string>;
   OutputSchemas?: Array<GlueSchema>;
 }
-export type JDBCDataType = "ARRAY" | "BIGINT" | "BINARY" | "BIT" | "BLOB" | "BOOLEAN" | "CHAR" | "CLOB" | "DATALINK" | "DATE" | "DECIMAL" | "DISTINCT" | "DOUBLE" | "FLOAT" | "INTEGER" | "JAVA_OBJECT" | "LONGNVARCHAR" | "LONGVARBINARY" | "LONGVARCHAR" | "NCHAR" | "NCLOB" | "NULL" | "NUMERIC" | "NVARCHAR" | "OTHER" | "REAL" | "REF" | "REF_CURSOR" | "ROWID" | "SMALLINT" | "SQLXML" | "STRUCT" | "TIME" | "TIME_WITH_TIMEZONE" | "TIMESTAMP" | "TIMESTAMP_WITH_TIMEZONE" | "TINYINT" | "VARBINARY" | "VARCHAR";
+export type JDBCDataType =
+  | "ARRAY"
+  | "BIGINT"
+  | "BINARY"
+  | "BIT"
+  | "BLOB"
+  | "BOOLEAN"
+  | "CHAR"
+  | "CLOB"
+  | "DATALINK"
+  | "DATE"
+  | "DECIMAL"
+  | "DISTINCT"
+  | "DOUBLE"
+  | "FLOAT"
+  | "INTEGER"
+  | "JAVA_OBJECT"
+  | "LONGNVARCHAR"
+  | "LONGVARBINARY"
+  | "LONGVARCHAR"
+  | "NCHAR"
+  | "NCLOB"
+  | "NULL"
+  | "NUMERIC"
+  | "NVARCHAR"
+  | "OTHER"
+  | "REAL"
+  | "REF"
+  | "REF_CURSOR"
+  | "ROWID"
+  | "SMALLINT"
+  | "SQLXML"
+  | "STRUCT"
+  | "TIME"
+  | "TIME_WITH_TIMEZONE"
+  | "TIMESTAMP"
+  | "TIMESTAMP_WITH_TIMEZONE"
+  | "TINYINT"
+  | "VARBINARY"
+  | "VARCHAR";
 export type JDBCDataTypeMapping = Record<JDBCDataType, GlueRecordType>;
 export type JdbcMetadataEntry = "COMMENTS" | "RAWTYPES";
 export interface JdbcTarget {
@@ -5182,7 +6640,17 @@ export interface JobRun {
   StateDetail?: string;
 }
 export type JobRunList = Array<JobRun>;
-export type JobRunState = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED" | "SUCCEEDED" | "FAILED" | "TIMEOUT" | "ERROR" | "WAITING" | "EXPIRED";
+export type JobRunState =
+  | "STARTING"
+  | "RUNNING"
+  | "STOPPING"
+  | "STOPPED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMEOUT"
+  | "ERROR"
+  | "WAITING"
+  | "EXPIRED";
 export interface JobUpdate {
   JobMode?: JobMode;
   JobRunQueuingEnabled?: boolean;
@@ -5219,7 +6687,13 @@ export interface JoinColumn {
   Keys: Array<Array<string>>;
 }
 export type JoinColumns = Array<JoinColumn>;
-export type JoinType = "EQUIJOIN" | "LEFT" | "RIGHT" | "OUTER" | "LEFT_SEMI" | "LEFT_ANTI";
+export type JoinType =
+  | "EQUIJOIN"
+  | "LEFT"
+  | "RIGHT"
+  | "OUTER"
+  | "LEFT_SEMI"
+  | "LEFT_ANTI";
 export interface JsonClassifier {
   Name: string;
   CreationTime?: Date | string;
@@ -5815,7 +7289,10 @@ export interface OAuth2Credentials {
   RefreshToken?: string;
   JwtToken?: string;
 }
-export type OAuth2GrantType = "AUTHORIZATION_CODE" | "CLIENT_CREDENTIALS" | "JWT_BEARER";
+export type OAuth2GrantType =
+  | "AUTHORIZATION_CODE"
+  | "CLIENT_CREDENTIALS"
+  | "JWT_BEARER";
 export interface OAuth2Properties {
   OAuth2GrantType?: OAuth2GrantType;
   OAuth2ClientApplication?: OAuth2ClientApplication;
@@ -5917,8 +7394,22 @@ export type ParametersMapValue = string;
 
 export type ParameterValue = string;
 
-export type ParamType = "STR" | "INT" | "FLOAT" | "COMPLEX" | "BOOL" | "LIST" | "NULL";
-export type ParquetCompressionType = "SNAPPY" | "LZO" | "GZIP" | "BROTLI" | "LZ4" | "UNCOMPRESSED" | "NONE";
+export type ParamType =
+  | "STR"
+  | "INT"
+  | "FLOAT"
+  | "COMPLEX"
+  | "BOOL"
+  | "LIST"
+  | "NULL";
+export type ParquetCompressionType =
+  | "SNAPPY"
+  | "LZO"
+  | "GZIP"
+  | "BROTLI"
+  | "LZ4"
+  | "UNCOMPRESSED"
+  | "NONE";
 export interface Partition {
   Values?: Array<string>;
   DatabaseName?: string;
@@ -5947,7 +7438,11 @@ export interface PartitionIndexDescriptor {
 }
 export type PartitionIndexDescriptorList = Array<PartitionIndexDescriptor>;
 export type PartitionIndexList = Array<PartitionIndex>;
-export type PartitionIndexStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED";
+export type PartitionIndexStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED";
 export interface PartitionInput {
   Values?: Array<string>;
   LastAccessTime?: Date | string;
@@ -5965,9 +7460,22 @@ export type Password = string;
 export type Path = string;
 
 export type PathList = Array<string>;
-export type Permission = "ALL" | "SELECT" | "ALTER" | "DROP" | "DELETE" | "INSERT" | "CREATE_DATABASE" | "CREATE_TABLE" | "DATA_LOCATION_ACCESS";
+export type Permission =
+  | "ALL"
+  | "SELECT"
+  | "ALTER"
+  | "DROP"
+  | "DELETE"
+  | "INSERT"
+  | "CREATE_DATABASE"
+  | "CREATE_TABLE"
+  | "DATA_LOCATION_ACCESS";
 export type PermissionList = Array<Permission>;
-export type PermissionType = "COLUMN_PERMISSION" | "CELL_FILTER_PERMISSION" | "NESTED_PERMISSION" | "NESTED_CELL_PERMISSION";
+export type PermissionType =
+  | "COLUMN_PERMISSION"
+  | "CELL_FILTER_PERMISSION"
+  | "NESTED_PERMISSION"
+  | "NESTED_CELL_PERMISSION";
 export type PermissionTypeList = Array<PermissionType>;
 export declare class PermissionTypeMismatchException extends Data.TaggedError(
   "PermissionTypeMismatchException",
@@ -5989,7 +7497,11 @@ export interface PIIDetection {
   ThresholdFraction?: number;
   MaskValue?: string;
 }
-export type PiiType = "RowAudit" | "RowMasking" | "ColumnAudit" | "ColumnMasking";
+export type PiiType =
+  | "RowAudit"
+  | "RowMasking"
+  | "ColumnAudit"
+  | "ColumnMasking";
 export type PolicyJsonString = string;
 
 export type PollingTime = number;
@@ -6056,7 +7568,12 @@ export interface PropertyPredicate {
   Value?: string;
   Comparator?: Comparator;
 }
-export type PropertyType = "USER_INPUT" | "SECRET" | "READ_ONLY" | "UNUSED" | "SECRET_OR_USER_INPUT";
+export type PropertyType =
+  | "USER_INPUT"
+  | "SECRET"
+  | "READ_ONLY"
+  | "UNUSED"
+  | "SECRET_OR_USER_INPUT";
 export type PropertyTypes = Array<PropertyType>;
 export type PropertyValue = string;
 
@@ -6065,14 +7582,12 @@ export interface PutDataCatalogEncryptionSettingsRequest {
   CatalogId?: string;
   DataCatalogEncryptionSettings: DataCatalogEncryptionSettings;
 }
-export interface PutDataCatalogEncryptionSettingsResponse {
-}
+export interface PutDataCatalogEncryptionSettingsResponse {}
 export interface PutDataQualityProfileAnnotationRequest {
   ProfileId: string;
   InclusionAnnotation: InclusionAnnotationValue;
 }
-export interface PutDataQualityProfileAnnotationResponse {
-}
+export interface PutDataQualityProfileAnnotationResponse {}
 export interface PutResourcePolicyRequest {
   PolicyInJson: string;
   ResourceArn?: string;
@@ -6104,8 +7619,7 @@ export interface PutWorkflowRunPropertiesRequest {
   RunId: string;
   RunProperties: Record<string, string>;
 }
-export interface PutWorkflowRunPropertiesResponse {
-}
+export interface PutWorkflowRunPropertiesResponse {}
 export type PythonScript = string;
 
 export type PythonVersionString = string;
@@ -6157,7 +7671,10 @@ export type RecipeVersion = string;
 export type Records = Array<Record>;
 export type RecordsCount = number;
 
-export type RecrawlBehavior = "CRAWL_EVERYTHING" | "CRAWL_NEW_FOLDERS_ONLY" | "CRAWL_EVENT_MODE";
+export type RecrawlBehavior =
+  | "CRAWL_EVERYTHING"
+  | "CRAWL_NEW_FOLDERS_ONLY"
+  | "CRAWL_EVENT_MODE";
 export interface RecrawlPolicy {
   RecrawlBehavior?: RecrawlBehavior;
 }
@@ -6260,7 +7777,12 @@ export declare class ResourceNumberLimitExceededException extends Data.TaggedErr
   readonly Message?: string;
 }> {}
 export type ResourceShareType = "FOREIGN" | "ALL" | "FEDERATED";
-export type ResourceState = "QUEUED" | "IN_PROGRESS" | "SUCCESS" | "STOPPED" | "FAILED";
+export type ResourceState =
+  | "QUEUED"
+  | "IN_PROGRESS"
+  | "SUCCESS"
+  | "STOPPED"
+  | "FAILED";
 export type ResourceType = "JAR" | "FILE" | "ARCHIVE";
 export interface ResourceUri {
   ResourceType?: ResourceType;
@@ -6612,7 +8134,11 @@ export interface SchemaVersionNumber {
   LatestVersion?: boolean;
   VersionNumber?: number;
 }
-export type SchemaVersionStatus = "AVAILABLE" | "PENDING" | "FAILURE" | "DELETING";
+export type SchemaVersionStatus =
+  | "AVAILABLE"
+  | "PENDING"
+  | "FAILURE"
+  | "DELETING";
 export type ScriptLocationString = string;
 
 export type SearchPropertyPredicates = Array<PropertyPredicate>;
@@ -6688,7 +8214,13 @@ export interface SessionCommand {
 }
 export type SessionIdList = Array<string>;
 export type SessionList = Array<Session>;
-export type SessionStatus = "PROVISIONING" | "READY" | "FAILED" | "TIMEOUT" | "STOPPING" | "STOPPED";
+export type SessionStatus =
+  | "PROVISIONING"
+  | "READY"
+  | "FAILED"
+  | "TIMEOUT"
+  | "STOPPING"
+  | "STOPPED";
 export type SettingSource = "CATALOG" | "TABLE";
 export interface SkewedInfo {
   SkewedColumnNames?: Array<string>;
@@ -6735,7 +8267,9 @@ export interface SortCriterion {
   Sort?: Sort;
 }
 export type SortDirectionType = "DESCENDING" | "ASCENDING";
-export type SourceControlAuthStrategy = "PERSONAL_ACCESS_TOKEN" | "AWS_SECRETS_MANAGER";
+export type SourceControlAuthStrategy =
+  | "PERSONAL_ACCESS_TOKEN"
+  | "AWS_SECRETS_MANAGER";
 export interface SourceControlDetails {
   Provider?: SourceControlProvider;
   Repository?: string;
@@ -6746,7 +8280,11 @@ export interface SourceControlDetails {
   AuthStrategy?: SourceControlAuthStrategy;
   AuthToken?: string;
 }
-export type SourceControlProvider = "GITHUB" | "GITLAB" | "BITBUCKET" | "AWS_CODE_COMMIT";
+export type SourceControlProvider =
+  | "GITHUB"
+  | "GITLAB"
+  | "BITBUCKET"
+  | "AWS_CODE_COMMIT";
 export interface SourceProcessingProperties {
   RoleArn?: string;
 }
@@ -6824,18 +8362,15 @@ export interface StartColumnStatisticsTaskRunScheduleRequest {
   DatabaseName: string;
   TableName: string;
 }
-export interface StartColumnStatisticsTaskRunScheduleResponse {
-}
+export interface StartColumnStatisticsTaskRunScheduleResponse {}
 export interface StartCrawlerRequest {
   Name: string;
 }
-export interface StartCrawlerResponse {
-}
+export interface StartCrawlerResponse {}
 export interface StartCrawlerScheduleRequest {
   CrawlerName: string;
 }
-export interface StartCrawlerScheduleResponse {
-}
+export interface StartCrawlerScheduleResponse {}
 export interface StartDataQualityRuleRecommendationRunRequest {
   DataSource: DataSource;
   Role: string;
@@ -6880,7 +8415,11 @@ export interface StartingEventBatchCondition {
   BatchSize?: number;
   BatchWindow?: number;
 }
-export type StartingPosition = "LATEST" | "TRIM_HORIZON" | "EARLIEST" | "TIMESTAMP";
+export type StartingPosition =
+  | "LATEST"
+  | "TRIM_HORIZON"
+  | "EARLIEST"
+  | "TIMESTAMP";
 export interface StartJobRunRequest {
   JobName: string;
   JobRunQueuingEnabled?: boolean;
@@ -6945,7 +8484,13 @@ export interface StatementOutput {
 export interface StatementOutputData {
   TextPlain?: string;
 }
-export type StatementState = "WAITING" | "RUNNING" | "AVAILABLE" | "CANCELLING" | "CANCELLED" | "ERROR";
+export type StatementState =
+  | "WAITING"
+  | "RUNNING"
+  | "AVAILABLE"
+  | "CANCELLING"
+  | "CANCELLED"
+  | "ERROR";
 export interface StatisticAnnotation {
   ProfileId?: string;
   StatisticId?: string;
@@ -6987,24 +8532,20 @@ export interface StopColumnStatisticsTaskRunRequest {
   DatabaseName: string;
   TableName: string;
 }
-export interface StopColumnStatisticsTaskRunResponse {
-}
+export interface StopColumnStatisticsTaskRunResponse {}
 export interface StopColumnStatisticsTaskRunScheduleRequest {
   DatabaseName: string;
   TableName: string;
 }
-export interface StopColumnStatisticsTaskRunScheduleResponse {
-}
+export interface StopColumnStatisticsTaskRunScheduleResponse {}
 export interface StopCrawlerRequest {
   Name: string;
 }
-export interface StopCrawlerResponse {
-}
+export interface StopCrawlerResponse {}
 export interface StopCrawlerScheduleRequest {
   CrawlerName: string;
 }
-export interface StopCrawlerScheduleResponse {
-}
+export interface StopCrawlerScheduleResponse {}
 export interface StopSessionRequest {
   Id: string;
   RequestOrigin?: string;
@@ -7022,8 +8563,7 @@ export interface StopWorkflowRunRequest {
   Name: string;
   RunId: string;
 }
-export interface StopWorkflowRunResponse {
-}
+export interface StopWorkflowRunResponse {}
 export interface StorageDescriptor {
   Columns?: Array<Column>;
   Location?: string;
@@ -7133,7 +8673,11 @@ export interface TableOptimizerConfiguration {
   retentionConfiguration?: RetentionConfiguration;
   orphanFileDeletionConfiguration?: OrphanFileDeletionConfiguration;
 }
-export type TableOptimizerEventType = "STARTING" | "COMPLETED" | "FAILED" | "IN_PROGRESS";
+export type TableOptimizerEventType =
+  | "STARTING"
+  | "COMPLETED"
+  | "FAILED"
+  | "IN_PROGRESS";
 export interface TableOptimizerRun {
   eventType?: TableOptimizerEventType;
   startTimestamp?: Date | string;
@@ -7148,7 +8692,10 @@ export interface TableOptimizerRun {
 export type TableOptimizerRuns = Array<TableOptimizerRun>;
 export type TableOptimizerRunTimestamp = Date | string;
 
-export type TableOptimizerType = "COMPACTION" | "RETENTION" | "ORPHAN_FILE_DELETION";
+export type TableOptimizerType =
+  | "COMPACTION"
+  | "RETENTION"
+  | "ORPHAN_FILE_DELETION";
 export type TableOptimizerVpcConfiguration = { glueConnectionName: string };
 export type TablePrefix = string;
 
@@ -7185,14 +8732,23 @@ export interface TagResourceRequest {
   ResourceArn: string;
   TagsToAdd: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagsMap = Record<string, string>;
 export type TagValue = string;
 
 export type TargetColumn = string;
 
-export type TargetFormat = "JSON" | "CSV" | "AVRO" | "ORC" | "PARQUET" | "HUDI" | "DELTA" | "ICEBERG" | "HYPER" | "XML";
+export type TargetFormat =
+  | "JSON"
+  | "CSV"
+  | "AVRO"
+  | "ORC"
+  | "PARQUET"
+  | "HUDI"
+  | "DELTA"
+  | "ICEBERG"
+  | "HYPER"
+  | "XML";
 export interface TargetProcessingProperties {
   RoleArn?: string;
   KmsArn?: string;
@@ -7243,8 +8799,20 @@ export interface TaskRunSortCriteria {
   Column: TaskRunSortColumnType;
   SortDirection: SortDirectionType;
 }
-export type TaskStatusType = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED" | "SUCCEEDED" | "FAILED" | "TIMEOUT";
-export type TaskType = "EVALUATION" | "LABELING_SET_GENERATION" | "IMPORT_LABELS" | "EXPORT_LABELS" | "FIND_MATCHES";
+export type TaskStatusType =
+  | "STARTING"
+  | "RUNNING"
+  | "STOPPING"
+  | "STOPPED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMEOUT";
+export type TaskType =
+  | "EVALUATION"
+  | "LABELING_SET_GENERATION"
+  | "IMPORT_LABELS"
+  | "EXPORT_LABELS"
+  | "FIND_MATCHES";
 export interface TestConnectionInput {
   ConnectionType: ConnectionType;
   ConnectionProperties: Record<ConnectionPropertyKey, string>;
@@ -7255,8 +8823,7 @@ export interface TestConnectionRequest {
   CatalogId?: string;
   TestConnectionInput?: TestConnectionInput;
 }
-export interface TestConnectionResponse {
-}
+export interface TestConnectionResponse {}
 export declare class ThrottlingException extends Data.TaggedError(
   "ThrottlingException",
 )<{
@@ -7323,7 +8890,12 @@ export interface TransformParameters {
   FindMatchesParameters?: FindMatchesParameters;
 }
 export type TransformSchema = Array<SchemaColumn>;
-export type TransformSortColumnType = "NAME" | "TRANSFORM_TYPE" | "STATUS" | "CREATED" | "LAST_MODIFIED";
+export type TransformSortColumnType =
+  | "NAME"
+  | "TRANSFORM_TYPE"
+  | "STATUS"
+  | "CREATED"
+  | "LAST_MODIFIED";
 export interface TransformSortCriteria {
   Column: TransformSortColumnType;
   SortDirection: SortDirectionType;
@@ -7347,7 +8919,15 @@ export type TriggerNameList = Array<string>;
 export interface TriggerNodeDetails {
   Trigger?: Trigger;
 }
-export type TriggerState = "CREATING" | "CREATED" | "ACTIVATING" | "ACTIVATED" | "DEACTIVATING" | "DEACTIVATED" | "DELETING" | "UPDATING";
+export type TriggerState =
+  | "CREATING"
+  | "CREATED"
+  | "ACTIVATING"
+  | "ACTIVATED"
+  | "DEACTIVATING"
+  | "DEACTIVATED"
+  | "DELETING"
+  | "UPDATING";
 export type TriggerType = "SCHEDULED" | "CONDITIONAL" | "ON_DEMAND" | "EVENT";
 export interface TriggerUpdate {
   Name?: string;
@@ -7377,8 +8957,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagsToRemove: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type UpdateBehavior = "LOG" | "UPDATE_IN_DATABASE";
 export interface UpdateBlueprintRequest {
   Name: string;
@@ -7393,16 +8972,14 @@ export interface UpdateCatalogRequest {
   CatalogId: string;
   CatalogInput: CatalogInput;
 }
-export interface UpdateCatalogResponse {
-}
+export interface UpdateCatalogResponse {}
 export interface UpdateClassifierRequest {
   GrokClassifier?: UpdateGrokClassifierRequest;
   XMLClassifier?: UpdateXMLClassifierRequest;
   JsonClassifier?: UpdateJsonClassifierRequest;
   CsvClassifier?: UpdateCsvClassifierRequest;
 }
-export interface UpdateClassifierResponse {
-}
+export interface UpdateClassifierResponse {}
 export interface UpdateColumnStatisticsForPartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -7433,15 +9010,13 @@ export interface UpdateColumnStatisticsTaskSettingsRequest {
   CatalogID?: string;
   SecurityConfiguration?: string;
 }
-export interface UpdateColumnStatisticsTaskSettingsResponse {
-}
+export interface UpdateColumnStatisticsTaskSettingsResponse {}
 export interface UpdateConnectionRequest {
   CatalogId?: string;
   Name: string;
   ConnectionInput: ConnectionInput;
 }
-export interface UpdateConnectionResponse {
-}
+export interface UpdateConnectionResponse {}
 export interface UpdateCrawlerRequest {
   Name: string;
   Role?: string;
@@ -7458,14 +9033,12 @@ export interface UpdateCrawlerRequest {
   Configuration?: string;
   CrawlerSecurityConfiguration?: string;
 }
-export interface UpdateCrawlerResponse {
-}
+export interface UpdateCrawlerResponse {}
 export interface UpdateCrawlerScheduleRequest {
   CrawlerName: string;
   Schedule?: string;
 }
-export interface UpdateCrawlerScheduleResponse {
-}
+export interface UpdateCrawlerScheduleResponse {}
 export interface UpdateCsvClassifierRequest {
   Name: string;
   Delimiter?: string;
@@ -7483,8 +9056,7 @@ export interface UpdateDatabaseRequest {
   Name: string;
   DatabaseInput: DatabaseInput;
 }
-export interface UpdateDatabaseResponse {
-}
+export interface UpdateDatabaseResponse {}
 export interface UpdateDataQualityRulesetRequest {
   Name: string;
   Description?: string;
@@ -7505,8 +9077,7 @@ export interface UpdateDevEndpointRequest {
   DeleteArguments?: Array<string>;
   AddArguments?: Record<string, string>;
 }
-export interface UpdateDevEndpointResponse {
-}
+export interface UpdateDevEndpointResponse {}
 export type UpdatedTimestamp = string;
 
 export interface UpdateGrokClassifierRequest {
@@ -7537,8 +9108,7 @@ export interface UpdateIntegrationTablePropertiesRequest {
   SourceTableConfig?: SourceTableConfig;
   TargetTableConfig?: TargetTableConfig;
 }
-export interface UpdateIntegrationTablePropertiesResponse {
-}
+export interface UpdateIntegrationTablePropertiesResponse {}
 export interface UpdateJobFromSourceControlRequest {
   JobName?: string;
   Provider?: SourceControlProvider;
@@ -7590,8 +9160,7 @@ export interface UpdatePartitionRequest {
   PartitionValueList: Array<string>;
   PartitionInput: PartitionInput;
 }
-export interface UpdatePartitionResponse {
-}
+export interface UpdatePartitionResponse {}
 export interface UpdateRegistryInput {
   RegistryId: RegistryId;
   Description: string;
@@ -7632,8 +9201,7 @@ export interface UpdateTableOptimizerRequest {
   Type: TableOptimizerType;
   TableOptimizerConfiguration: TableOptimizerConfiguration;
 }
-export interface UpdateTableOptimizerResponse {
-}
+export interface UpdateTableOptimizerResponse {}
 export interface UpdateTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -7646,8 +9214,7 @@ export interface UpdateTableRequest {
   Force?: boolean;
   UpdateOpenTableFormatInput?: UpdateOpenTableFormatInput;
 }
-export interface UpdateTableResponse {
-}
+export interface UpdateTableResponse {}
 export interface UpdateTriggerRequest {
   Name: string;
   TriggerUpdate: TriggerUpdate;
@@ -7669,8 +9236,7 @@ export interface UpdateUserDefinedFunctionRequest {
   FunctionName: string;
   FunctionInput: UserDefinedFunctionInput;
 }
-export interface UpdateUserDefinedFunctionResponse {
-}
+export interface UpdateUserDefinedFunctionResponse {}
 export interface UpdateWorkflowRequest {
   Name: string;
   Description?: string;
@@ -7795,7 +9361,14 @@ export interface ViewValidation {
   Error?: ErrorDetail;
 }
 export type ViewValidationList = Array<ViewValidation>;
-export type WorkerType = "Standard" | "G_1X" | "G_2X" | "G_025X" | "G_4X" | "G_8X" | "Z_2X";
+export type WorkerType =
+  | "Standard"
+  | "G_1X"
+  | "G_2X"
+  | "G_025X"
+  | "G_4X"
+  | "G_8X"
+  | "Z_2X";
 export interface Workflow {
   Name?: string;
   Description?: string;
@@ -7839,7 +9412,12 @@ export interface WorkflowRunStatistics {
   ErroredActions?: number;
   WaitingActions?: number;
 }
-export type WorkflowRunStatus = "RUNNING" | "COMPLETED" | "STOPPING" | "STOPPED" | "ERROR";
+export type WorkflowRunStatus =
+  | "RUNNING"
+  | "COMPLETED"
+  | "STOPPING"
+  | "STOPPED"
+  | "ERROR";
 export type Workflows = Array<Workflow>;
 export interface XMLClassifier {
   Name: string;
@@ -8194,18 +9772,6 @@ export declare namespace CreateCustomEntityType {
     | CommonAwsError;
 }
 
-export declare namespace CreateDataQualityRuleset {
-  export type Input = CreateDataQualityRulesetRequest;
-  export type Output = CreateDataQualityRulesetResponse;
-  export type Error =
-    | AlreadyExistsException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | ResourceNumberLimitExceededException
-    | CommonAwsError;
-}
-
 export declare namespace CreateDatabase {
   export type Input = CreateDatabaseRequest;
   export type Output = CreateDatabaseResponse;
@@ -8216,6 +9782,18 @@ export declare namespace CreateDatabase {
     | FederationSourceException
     | FederationSourceRetryableException
     | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
+    | CommonAwsError;
+}
+
+export declare namespace CreateDataQualityRuleset {
+  export type Input = CreateDataQualityRulesetRequest;
+  export type Output = CreateDataQualityRulesetResponse;
+  export type Error =
+    | AlreadyExistsException
     | InternalServiceException
     | InvalidInputException
     | OperationTimeoutException
@@ -8593,17 +10171,6 @@ export declare namespace DeleteCustomEntityType {
     | CommonAwsError;
 }
 
-export declare namespace DeleteDataQualityRuleset {
-  export type Input = DeleteDataQualityRulesetRequest;
-  export type Output = DeleteDataQualityRulesetResponse;
-  export type Error =
-    | EntityNotFoundException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | CommonAwsError;
-}
-
 export declare namespace DeleteDatabase {
   export type Input = DeleteDatabaseRequest;
   export type Output = DeleteDatabaseResponse;
@@ -8612,6 +10179,17 @@ export declare namespace DeleteDatabase {
     | EntityNotFoundException
     | FederationSourceException
     | FederationSourceRetryableException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError;
+}
+
+export declare namespace DeleteDataQualityRuleset {
+  export type Input = DeleteDataQualityRulesetRequest;
+  export type Output = DeleteDataQualityRulesetResponse;
+  export type Error =
+    | EntityNotFoundException
     | InternalServiceException
     | InvalidInputException
     | OperationTimeoutException
@@ -8995,9 +10573,7 @@ export declare namespace GetClassifier {
 export declare namespace GetClassifiers {
   export type Input = GetClassifiersRequest;
   export type Output = GetClassifiersResponse;
-  export type Error =
-    | OperationTimeoutException
-    | CommonAwsError;
+  export type Error = OperationTimeoutException | CommonAwsError;
 }
 
 export declare namespace GetColumnStatisticsForPartition {
@@ -9037,9 +10613,7 @@ export declare namespace GetColumnStatisticsTaskRun {
 export declare namespace GetColumnStatisticsTaskRuns {
   export type Input = GetColumnStatisticsTaskRunsRequest;
   export type Output = GetColumnStatisticsTaskRunsResponse;
-  export type Error =
-    | OperationTimeoutException
-    | CommonAwsError;
+  export type Error = OperationTimeoutException | CommonAwsError;
 }
 
 export declare namespace GetColumnStatisticsTaskSettings {
@@ -9086,17 +10660,13 @@ export declare namespace GetCrawler {
 export declare namespace GetCrawlerMetrics {
   export type Input = GetCrawlerMetricsRequest;
   export type Output = GetCrawlerMetricsResponse;
-  export type Error =
-    | OperationTimeoutException
-    | CommonAwsError;
+  export type Error = OperationTimeoutException | CommonAwsError;
 }
 
 export declare namespace GetCrawlers {
   export type Input = GetCrawlersRequest;
   export type Output = GetCrawlersResponse;
-  export type Error =
-    | OperationTimeoutException
-    | CommonAwsError;
+  export type Error = OperationTimeoutException | CommonAwsError;
 }
 
 export declare namespace GetCustomEntityType {
@@ -9111,9 +10681,47 @@ export declare namespace GetCustomEntityType {
     | CommonAwsError;
 }
 
+export declare namespace GetDatabase {
+  export type Input = GetDatabaseRequest;
+  export type Output = GetDatabaseResponse;
+  export type Error =
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError;
+}
+
+export declare namespace GetDatabases {
+  export type Input = GetDatabasesRequest;
+  export type Output = GetDatabasesResponse;
+  export type Error =
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError;
+}
+
 export declare namespace GetDataCatalogEncryptionSettings {
   export type Input = GetDataCatalogEncryptionSettingsRequest;
   export type Output = GetDataCatalogEncryptionSettingsResponse;
+  export type Error =
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError;
+}
+
+export declare namespace GetDataflowGraph {
+  export type Input = GetDataflowGraphRequest;
+  export type Output = GetDataflowGraphResponse;
   export type Error =
     | InternalServiceException
     | InvalidInputException
@@ -9181,44 +10789,6 @@ export declare namespace GetDataQualityRulesetEvaluationRun {
   export type Output = GetDataQualityRulesetEvaluationRunResponse;
   export type Error =
     | EntityNotFoundException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | CommonAwsError;
-}
-
-export declare namespace GetDatabase {
-  export type Input = GetDatabaseRequest;
-  export type Output = GetDatabaseResponse;
-  export type Error =
-    | EntityNotFoundException
-    | FederationSourceException
-    | FederationSourceRetryableException
-    | GlueEncryptionException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | CommonAwsError;
-}
-
-export declare namespace GetDatabases {
-  export type Input = GetDatabasesRequest;
-  export type Output = GetDatabasesResponse;
-  export type Error =
-    | EntityNotFoundException
-    | FederationSourceException
-    | FederationSourceRetryableException
-    | GlueEncryptionException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | CommonAwsError;
-}
-
-export declare namespace GetDataflowGraph {
-  export type Input = GetDataflowGraphRequest;
-  export type Output = GetDataflowGraphResponse;
-  export type Error =
     | InternalServiceException
     | InvalidInputException
     | OperationTimeoutException
@@ -9345,6 +10915,17 @@ export declare namespace GetJobs {
     | CommonAwsError;
 }
 
+export declare namespace GetMapping {
+  export type Input = GetMappingRequest;
+  export type Output = GetMappingResponse;
+  export type Error =
+    | EntityNotFoundException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError;
+}
+
 export declare namespace GetMLTaskRun {
   export type Input = GetMLTaskRunRequest;
   export type Output = GetMLTaskRunResponse;
@@ -9381,17 +10962,6 @@ export declare namespace GetMLTransform {
 export declare namespace GetMLTransforms {
   export type Input = GetMLTransformsRequest;
   export type Output = GetMLTransformsResponse;
-  export type Error =
-    | EntityNotFoundException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | CommonAwsError;
-}
-
-export declare namespace GetMapping {
-  export type Input = GetMappingRequest;
-  export type Output = GetMappingResponse;
   export type Error =
     | EntityNotFoundException
     | InternalServiceException
@@ -9603,6 +11173,20 @@ export declare namespace GetTableOptimizer {
     | CommonAwsError;
 }
 
+export declare namespace GetTables {
+  export type Input = GetTablesRequest;
+  export type Output = GetTablesResponse;
+  export type Error =
+    | EntityNotFoundException
+    | FederationSourceException
+    | FederationSourceRetryableException
+    | GlueEncryptionException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | CommonAwsError;
+}
+
 export declare namespace GetTableVersion {
   export type Input = GetTableVersionRequest;
   export type Output = GetTableVersionResponse;
@@ -9620,20 +11204,6 @@ export declare namespace GetTableVersions {
   export type Output = GetTableVersionsResponse;
   export type Error =
     | EntityNotFoundException
-    | GlueEncryptionException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | CommonAwsError;
-}
-
-export declare namespace GetTables {
-  export type Input = GetTablesRequest;
-  export type Output = GetTablesResponse;
-  export type Error =
-    | EntityNotFoundException
-    | FederationSourceException
-    | FederationSourceRetryableException
     | GlueEncryptionException
     | InternalServiceException
     | InvalidInputException
@@ -9821,9 +11391,7 @@ export declare namespace ListBlueprints {
 export declare namespace ListColumnStatisticsTaskRuns {
   export type Input = ListColumnStatisticsTaskRunsRequest;
   export type Output = ListColumnStatisticsTaskRunsResponse;
-  export type Error =
-    | OperationTimeoutException
-    | CommonAwsError;
+  export type Error = OperationTimeoutException | CommonAwsError;
 }
 
 export declare namespace ListConnectionTypes {
@@ -9838,9 +11406,7 @@ export declare namespace ListConnectionTypes {
 export declare namespace ListCrawlers {
   export type Input = ListCrawlersRequest;
   export type Output = ListCrawlersResponse;
-  export type Error =
-    | OperationTimeoutException
-    | CommonAwsError;
+  export type Error = OperationTimeoutException | CommonAwsError;
 }
 
 export declare namespace ListCrawls {
@@ -9980,9 +11546,9 @@ export declare namespace ListRegistries {
     | CommonAwsError;
 }
 
-export declare namespace ListSchemaVersions {
-  export type Input = ListSchemaVersionsInput;
-  export type Output = ListSchemaVersionsResponse;
+export declare namespace ListSchemas {
+  export type Input = ListSchemasInput;
+  export type Output = ListSchemasResponse;
   export type Error =
     | AccessDeniedException
     | EntityNotFoundException
@@ -9991,9 +11557,9 @@ export declare namespace ListSchemaVersions {
     | CommonAwsError;
 }
 
-export declare namespace ListSchemas {
-  export type Input = ListSchemasInput;
-  export type Output = ListSchemasResponse;
+export declare namespace ListSchemaVersions {
+  export type Input = ListSchemaVersionsInput;
+  export type Output = ListSchemaVersionsResponse;
   export type Error =
     | AccessDeniedException
     | EntityNotFoundException
@@ -10626,20 +12192,6 @@ export declare namespace UpdateCrawlerSchedule {
     | CommonAwsError;
 }
 
-export declare namespace UpdateDataQualityRuleset {
-  export type Input = UpdateDataQualityRulesetRequest;
-  export type Output = UpdateDataQualityRulesetResponse;
-  export type Error =
-    | AlreadyExistsException
-    | EntityNotFoundException
-    | IdempotentParameterMismatchException
-    | InternalServiceException
-    | InvalidInputException
-    | OperationTimeoutException
-    | ResourceNumberLimitExceededException
-    | CommonAwsError;
-}
-
 export declare namespace UpdateDatabase {
   export type Input = UpdateDatabaseRequest;
   export type Output = UpdateDatabaseResponse;
@@ -10653,6 +12205,20 @@ export declare namespace UpdateDatabase {
     | InternalServiceException
     | InvalidInputException
     | OperationTimeoutException
+    | CommonAwsError;
+}
+
+export declare namespace UpdateDataQualityRuleset {
+  export type Input = UpdateDataQualityRulesetRequest;
+  export type Output = UpdateDataQualityRulesetResponse;
+  export type Error =
+    | AlreadyExistsException
+    | EntityNotFoundException
+    | IdempotentParameterMismatchException
+    | InternalServiceException
+    | InvalidInputException
+    | OperationTimeoutException
+    | ResourceNumberLimitExceededException
     | CommonAwsError;
 }
 
@@ -10864,4 +12430,3 @@ export declare namespace UpdateWorkflow {
     | OperationTimeoutException
     | CommonAwsError;
 }
-

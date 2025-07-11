@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.chimesdkmessaging#AllowNotifications": {
       "type": "enum",
@@ -1339,6 +1368,161 @@
     },
     "com.amazonaws.chimesdkmessaging#ChimeMessagingService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.chimesdkmessaging#AssociateChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#BatchCreateChannelMembership"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ChannelFlowCallback"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#CreateChannel"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#CreateChannelBan"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#CreateChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#CreateChannelMembership"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#CreateChannelModerator"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteChannel"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteChannelBan"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteChannelMembership"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteChannelMessage"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteChannelModerator"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DeleteMessagingStreamingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannel"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannelBan"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannelMembership"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannelMembershipForAppInstanceUser"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannelModeratedByAppInstanceUser"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DescribeChannelModerator"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#DisassociateChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#GetChannelMembershipPreferences"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#GetChannelMessage"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#GetChannelMessageStatus"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#GetMessagingSessionEndpoint"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#GetMessagingStreamingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelBans"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelFlows"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelMemberships"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelMembershipsForAppInstanceUser"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelMessages"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelModerators"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannels"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelsAssociatedWithChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListChannelsModeratedByAppInstanceUser"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListSubChannels"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#PutChannelExpirationSettings"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#PutChannelMembershipPreferences"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#PutMessagingStreamingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#RedactChannelMessage"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#SearchChannels"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#SendChannelMessage"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#TagResource"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#UpdateChannel"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#UpdateChannelFlow"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#UpdateChannelMessage"
+        },
+        {
+          "target": "com.amazonaws.chimesdkmessaging#UpdateChannelReadMarker"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Chime SDK Messaging",

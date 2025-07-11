@@ -1,7 +1,80 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.health#AWSHealth_20160804": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.health#DescribeAffectedAccountsForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeAffectedEntities"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeAffectedEntitiesForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEntityAggregates"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEntityAggregatesForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEventAggregates"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEventDetails"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEventDetailsForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEventsForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeEventTypes"
+        },
+        {
+          "target": "com.amazonaws.health#DescribeHealthServiceStatusForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#DisableHealthServiceAccessForOrganization"
+        },
+        {
+          "target": "com.amazonaws.health#EnableHealthServiceAccessForOrganization"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Health",

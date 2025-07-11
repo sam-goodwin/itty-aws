@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.personalizeevents#Action": {
       "type": "structure",
@@ -135,6 +164,23 @@
     },
     "com.amazonaws.personalizeevents#AmazonPersonalizeEvents": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.personalizeevents#PutActionInteractions"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#PutActions"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#PutEvents"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#PutItems"
+        },
+        {
+          "target": "com.amazonaws.personalizeevents#PutUsers"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Personalize Events",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.route53resolver#AccessDeniedException": {
       "type": "structure",
@@ -6812,6 +6841,212 @@
     },
     "com.amazonaws.route53resolver#Route53Resolver": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.route53resolver#AssociateFirewallRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#AssociateResolverEndpointIpAddress"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#AssociateResolverQueryLogConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#AssociateResolverRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateFirewallDomainList"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateFirewallRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateFirewallRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateOutpostResolver"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateResolverEndpoint"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateResolverQueryLogConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#CreateResolverRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteFirewallDomainList"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteFirewallRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteFirewallRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteOutpostResolver"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteResolverEndpoint"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteResolverQueryLogConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DeleteResolverRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DisassociateFirewallRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DisassociateResolverEndpointIpAddress"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DisassociateResolverQueryLogConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#DisassociateResolverRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetFirewallConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetFirewallDomainList"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetFirewallRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetFirewallRuleGroupAssociation"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetFirewallRuleGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetOutpostResolver"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverDnssecConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverEndpoint"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverQueryLogConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverQueryLogConfigAssociation"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverQueryLogConfigPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverRuleAssociation"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#GetResolverRulePolicy"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ImportFirewallDomains"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListFirewallConfigs"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListFirewallDomainLists"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListFirewallDomains"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListFirewallRuleGroupAssociations"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListFirewallRuleGroups"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListFirewallRules"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListOutpostResolvers"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverConfigs"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverDnssecConfigs"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverEndpointIpAddresses"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverEndpoints"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverQueryLogConfigAssociations"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverQueryLogConfigs"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverRuleAssociations"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListResolverRules"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#PutFirewallRuleGroupPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#PutResolverQueryLogConfigPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#PutResolverRulePolicy"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#TagResource"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateFirewallConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateFirewallDomains"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateFirewallRule"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateFirewallRuleGroupAssociation"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateOutpostResolver"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateResolverConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateResolverDnssecConfig"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateResolverEndpoint"
+        },
+        {
+          "target": "com.amazonaws.route53resolver#UpdateResolverRule"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Route53Resolver",

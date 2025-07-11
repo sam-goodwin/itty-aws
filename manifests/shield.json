@@ -1,7 +1,146 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.shield#AWSShield_20160616": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.shield#AssociateDRTLogBucket"
+        },
+        {
+          "target": "com.amazonaws.shield#AssociateDRTRole"
+        },
+        {
+          "target": "com.amazonaws.shield#AssociateHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.shield#AssociateProactiveEngagementDetails"
+        },
+        {
+          "target": "com.amazonaws.shield#CreateProtection"
+        },
+        {
+          "target": "com.amazonaws.shield#CreateProtectionGroup"
+        },
+        {
+          "target": "com.amazonaws.shield#CreateSubscription"
+        },
+        {
+          "target": "com.amazonaws.shield#DeleteProtection"
+        },
+        {
+          "target": "com.amazonaws.shield#DeleteProtectionGroup"
+        },
+        {
+          "target": "com.amazonaws.shield#DeleteSubscription"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeAttack"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeAttackStatistics"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeDRTAccess"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeEmergencyContactSettings"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeProtection"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeProtectionGroup"
+        },
+        {
+          "target": "com.amazonaws.shield#DescribeSubscription"
+        },
+        {
+          "target": "com.amazonaws.shield#DisableApplicationLayerAutomaticResponse"
+        },
+        {
+          "target": "com.amazonaws.shield#DisableProactiveEngagement"
+        },
+        {
+          "target": "com.amazonaws.shield#DisassociateDRTLogBucket"
+        },
+        {
+          "target": "com.amazonaws.shield#DisassociateDRTRole"
+        },
+        {
+          "target": "com.amazonaws.shield#DisassociateHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.shield#EnableApplicationLayerAutomaticResponse"
+        },
+        {
+          "target": "com.amazonaws.shield#EnableProactiveEngagement"
+        },
+        {
+          "target": "com.amazonaws.shield#GetSubscriptionState"
+        },
+        {
+          "target": "com.amazonaws.shield#ListAttacks"
+        },
+        {
+          "target": "com.amazonaws.shield#ListProtectionGroups"
+        },
+        {
+          "target": "com.amazonaws.shield#ListProtections"
+        },
+        {
+          "target": "com.amazonaws.shield#ListResourcesInProtectionGroup"
+        },
+        {
+          "target": "com.amazonaws.shield#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.shield#TagResource"
+        },
+        {
+          "target": "com.amazonaws.shield#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.shield#UpdateApplicationLayerAutomaticResponse"
+        },
+        {
+          "target": "com.amazonaws.shield#UpdateEmergencyContactSettings"
+        },
+        {
+          "target": "com.amazonaws.shield#UpdateProtectionGroup"
+        },
+        {
+          "target": "com.amazonaws.shield#UpdateSubscription"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Shield",

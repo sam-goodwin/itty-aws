@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.gamelift#AcceptMatch": {
       "type": "operation",
@@ -11077,6 +11106,362 @@
     },
     "com.amazonaws.gamelift#GameLift": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.gamelift#AcceptMatch"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ClaimGameServer"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateAlias"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateBuild"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateContainerFleet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateContainerGroupDefinition"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateFleet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateFleetLocations"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateGameServerGroup"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateGameSession"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateGameSessionQueue"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateLocation"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateMatchmakingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateMatchmakingRuleSet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreatePlayerSession"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreatePlayerSessions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateScript"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateVpcPeeringAuthorization"
+        },
+        {
+          "target": "com.amazonaws.gamelift#CreateVpcPeeringConnection"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteAlias"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteBuild"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteContainerFleet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteContainerGroupDefinition"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteFleet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteFleetLocations"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteGameServerGroup"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteGameSessionQueue"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteLocation"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteMatchmakingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteMatchmakingRuleSet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteScript"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteVpcPeeringAuthorization"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeleteVpcPeeringConnection"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeregisterCompute"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DeregisterGameServer"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeAlias"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeBuild"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeCompute"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeContainerFleet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeContainerGroupDefinition"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeEC2InstanceLimits"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetAttributes"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetCapacity"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetDeployment"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetEvents"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetLocationAttributes"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetLocationCapacity"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetLocationUtilization"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetPortSettings"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeFleetUtilization"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameServer"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameServerGroup"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameServerInstances"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameSessionDetails"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameSessionPlacement"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameSessionQueues"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeGameSessions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeInstances"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeMatchmaking"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeMatchmakingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeMatchmakingRuleSets"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribePlayerSessions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeRuntimeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeScalingPolicies"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeScript"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeVpcPeeringAuthorizations"
+        },
+        {
+          "target": "com.amazonaws.gamelift#DescribeVpcPeeringConnections"
+        },
+        {
+          "target": "com.amazonaws.gamelift#GetComputeAccess"
+        },
+        {
+          "target": "com.amazonaws.gamelift#GetComputeAuthToken"
+        },
+        {
+          "target": "com.amazonaws.gamelift#GetGameSessionLogUrl"
+        },
+        {
+          "target": "com.amazonaws.gamelift#GetInstanceAccess"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListAliases"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListBuilds"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListCompute"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListContainerFleets"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListContainerGroupDefinitions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListContainerGroupDefinitionVersions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListFleetDeployments"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListFleets"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListGameServerGroups"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListGameServers"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListLocations"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListScripts"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.gamelift#PutScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.gamelift#RegisterCompute"
+        },
+        {
+          "target": "com.amazonaws.gamelift#RegisterGameServer"
+        },
+        {
+          "target": "com.amazonaws.gamelift#RequestUploadCredentials"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ResolveAlias"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ResumeGameServerGroup"
+        },
+        {
+          "target": "com.amazonaws.gamelift#SearchGameSessions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StartFleetActions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StartGameSessionPlacement"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StartMatchBackfill"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StartMatchmaking"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StopFleetActions"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StopGameSessionPlacement"
+        },
+        {
+          "target": "com.amazonaws.gamelift#StopMatchmaking"
+        },
+        {
+          "target": "com.amazonaws.gamelift#SuspendGameServerGroup"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TagResource"
+        },
+        {
+          "target": "com.amazonaws.gamelift#TerminateGameSession"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateAlias"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateBuild"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateContainerFleet"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateContainerGroupDefinition"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateFleetAttributes"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateFleetCapacity"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateFleetPortSettings"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateGameServer"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateGameServerGroup"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateGameSession"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateGameSessionQueue"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateMatchmakingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateRuntimeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.gamelift#UpdateScript"
+        },
+        {
+          "target": "com.amazonaws.gamelift#ValidateMatchmakingRuleSet"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "GameLift",

@@ -1,60 +1,132 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonBedrockFrontendService {
   applyGuardrail(
     input: ApplyGuardrailRequest,
   ): Effect.Effect<
     ApplyGuardrailResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   converse(
     input: ConverseRequest,
   ): Effect.Effect<
     ConverseResponse,
-    AccessDeniedException | InternalServerException | ModelErrorException | ModelNotReadyException | ModelTimeoutException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ModelErrorException
+    | ModelNotReadyException
+    | ModelTimeoutException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   converseStream(
     input: ConverseStreamRequest,
   ): Effect.Effect<
     ConverseStreamResponse,
-    AccessDeniedException | InternalServerException | ModelErrorException | ModelNotReadyException | ModelTimeoutException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ModelErrorException
+    | ModelNotReadyException
+    | ModelTimeoutException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getAsyncInvoke(
     input: GetAsyncInvokeRequest,
   ): Effect.Effect<
     GetAsyncInvokeResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeModel(
     input: InvokeModelRequest,
   ): Effect.Effect<
     InvokeModelResponse,
-    AccessDeniedException | InternalServerException | ModelErrorException | ModelNotReadyException | ModelTimeoutException | ResourceNotFoundException | ServiceQuotaExceededException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ModelErrorException
+    | ModelNotReadyException
+    | ModelTimeoutException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeModelWithBidirectionalStream(
     input: InvokeModelWithBidirectionalStreamRequest,
   ): Effect.Effect<
     InvokeModelWithBidirectionalStreamResponse,
-    AccessDeniedException | InternalServerException | ModelErrorException | ModelNotReadyException | ModelStreamErrorException | ModelTimeoutException | ResourceNotFoundException | ServiceQuotaExceededException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ModelErrorException
+    | ModelNotReadyException
+    | ModelStreamErrorException
+    | ModelTimeoutException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeModelWithResponseStream(
     input: InvokeModelWithResponseStreamRequest,
   ): Effect.Effect<
     InvokeModelWithResponseStreamResponse,
-    AccessDeniedException | InternalServerException | ModelErrorException | ModelNotReadyException | ModelStreamErrorException | ModelTimeoutException | ResourceNotFoundException | ServiceQuotaExceededException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ModelErrorException
+    | ModelNotReadyException
+    | ModelStreamErrorException
+    | ModelTimeoutException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listAsyncInvokes(
     input: ListAsyncInvokesRequest,
   ): Effect.Effect<
     ListAsyncInvokesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   startAsyncInvoke(
     input: StartAsyncInvokeRequest,
   ): Effect.Effect<
     StartAsyncInvokeResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ServiceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -68,8 +140,7 @@ export declare class AccessDeniedException extends Data.TaggedError(
 export type AccountId = string;
 
 export type AdditionalModelResponseFieldPaths = Array<string>;
-export interface AnyToolChoice {
-}
+export interface AnyToolChoice {}
 export interface ApplyGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion: string;
@@ -93,7 +164,9 @@ export type AsyncInvokeIdentifier = string;
 
 export type AsyncInvokeMessage = string;
 
-export type AsyncInvokeOutputDataConfig = { s3OutputDataConfig: AsyncInvokeS3OutputDataConfig };
+export type AsyncInvokeOutputDataConfig = {
+  s3OutputDataConfig: AsyncInvokeS3OutputDataConfig;
+};
 export interface AsyncInvokeS3OutputDataConfig {
   s3Uri: string;
   kmsKeyId?: string;
@@ -112,8 +185,7 @@ export interface AsyncInvokeSummary {
   endTime?: Date | string;
   outputDataConfig: AsyncInvokeOutputDataConfig;
 }
-export interface AutoToolChoice {
-}
+export interface AutoToolChoice {}
 export interface BidirectionalInputPayloadPart {
   bytes?: Uint8Array | string;
 }
@@ -133,7 +205,10 @@ export interface Citation {
 }
 export type CitationGeneratedContent = { text: string };
 export type CitationGeneratedContentList = Array<CitationGeneratedContent>;
-export type CitationLocation = { documentChar: DocumentCharLocation } | { documentPage: DocumentPageLocation } | { documentChunk: DocumentChunkLocation };
+export type CitationLocation =
+  | { documentChar: DocumentCharLocation }
+  | { documentPage: DocumentPageLocation }
+  | { documentChunk: DocumentChunkLocation };
 export type Citations = Array<Citation>;
 export interface CitationsConfig {
   enabled: boolean;
@@ -158,8 +233,22 @@ export declare class ConflictException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type ContentBlock = { text: string } | { image: ImageBlock } | { document: DocumentBlock } | { video: VideoBlock } | { toolUse: ToolUseBlock } | { toolResult: ToolResultBlock } | { guardContent: GuardrailConverseContentBlock } | { cachePoint: CachePointBlock } | { reasoningContent: ReasoningContentBlock } | { citationsContent: CitationsContentBlock };
-export type ContentBlockDelta = { text: string } | { toolUse: ToolUseBlockDelta } | { reasoningContent: ReasoningContentBlockDelta } | { citation: CitationsDelta };
+export type ContentBlock =
+  | { text: string }
+  | { image: ImageBlock }
+  | { document: DocumentBlock }
+  | { video: VideoBlock }
+  | { toolUse: ToolUseBlock }
+  | { toolResult: ToolResultBlock }
+  | { guardContent: GuardrailConverseContentBlock }
+  | { cachePoint: CachePointBlock }
+  | { reasoningContent: ReasoningContentBlock }
+  | { citationsContent: CitationsContentBlock };
+export type ContentBlockDelta =
+  | { text: string }
+  | { toolUse: ToolUseBlockDelta }
+  | { reasoningContent: ReasoningContentBlockDelta }
+  | { citation: CitationsDelta };
 export interface ContentBlockDeltaEvent {
   delta: ContentBlockDelta;
   contentBlockIndex: number;
@@ -211,7 +300,18 @@ export interface ConverseStreamMetadataEvent {
 export interface ConverseStreamMetrics {
   latencyMs: number;
 }
-export type ConverseStreamOutput = { messageStart: MessageStartEvent } | { contentBlockStart: ContentBlockStartEvent } | { contentBlockDelta: ContentBlockDeltaEvent } | { contentBlockStop: ContentBlockStopEvent } | { messageStop: MessageStopEvent } | { metadata: ConverseStreamMetadataEvent } | { internalServerException: InternalServerException } | { modelStreamErrorException: ModelStreamErrorException } | { validationException: ValidationException } | { throttlingException: ThrottlingException } | { serviceUnavailableException: ServiceUnavailableException };
+export type ConverseStreamOutput =
+  | { messageStart: MessageStartEvent }
+  | { contentBlockStart: ContentBlockStartEvent }
+  | { contentBlockDelta: ContentBlockDeltaEvent }
+  | { contentBlockStop: ContentBlockStopEvent }
+  | { messageStop: MessageStopEvent }
+  | { metadata: ConverseStreamMetadataEvent }
+  | { internalServerException: InternalServerException }
+  | { modelStreamErrorException: ModelStreamErrorException }
+  | { validationException: ValidationException }
+  | { throttlingException: ThrottlingException }
+  | { serviceUnavailableException: ServiceUnavailableException };
 export interface ConverseStreamRequest {
   modelId: string;
   messages?: Array<Message>;
@@ -255,13 +355,26 @@ export interface DocumentChunkLocation {
 }
 export type DocumentContentBlock = { text: string };
 export type DocumentContentBlocks = Array<DocumentContentBlock>;
-export type DocumentFormat = "PDF" | "CSV" | "DOC" | "DOCX" | "XLS" | "XLSX" | "HTML" | "TXT" | "MD";
+export type DocumentFormat =
+  | "PDF"
+  | "CSV"
+  | "DOC"
+  | "DOCX"
+  | "XLS"
+  | "XLSX"
+  | "HTML"
+  | "TXT"
+  | "MD";
 export interface DocumentPageLocation {
   documentIndex?: number;
   start?: number;
   end?: number;
 }
-export type DocumentSource = { bytes: Uint8Array | string } | { s3Location: S3Location } | { text: string } | { content: Array<DocumentContentBlock> };
+export type DocumentSource =
+  | { bytes: Uint8Array | string }
+  | { s3Location: S3Location }
+  | { text: string }
+  | { content: Array<DocumentContentBlock> };
 export interface GetAsyncInvokeRequest {
   invocationArn: string;
 }
@@ -286,14 +399,19 @@ export interface GuardrailAssessment {
   invocationMetrics?: GuardrailInvocationMetrics;
 }
 export type GuardrailAssessmentList = Array<GuardrailAssessment>;
-export type GuardrailAssessmentListMap = Record<string, Array<GuardrailAssessment>>;
+export type GuardrailAssessmentListMap = Record<
+  string,
+  Array<GuardrailAssessment>
+>;
 export type GuardrailAssessmentMap = Record<string, GuardrailAssessment>;
 export interface GuardrailConfiguration {
   guardrailIdentifier: string;
   guardrailVersion: string;
   trace?: GuardrailTrace;
 }
-export type GuardrailContentBlock = { text: GuardrailTextBlock } | { image: GuardrailImageBlock };
+export type GuardrailContentBlock =
+  | { text: GuardrailTextBlock }
+  | { image: GuardrailImageBlock };
 export type GuardrailContentBlockList = Array<GuardrailContentBlock>;
 export interface GuardrailContentFilter {
   type: GuardrailContentFilterType;
@@ -302,10 +420,20 @@ export interface GuardrailContentFilter {
   action: GuardrailContentPolicyAction;
   detected?: boolean;
 }
-export type GuardrailContentFilterConfidence = "NONE" | "LOW" | "MEDIUM" | "HIGH";
+export type GuardrailContentFilterConfidence =
+  | "NONE"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH";
 export type GuardrailContentFilterList = Array<GuardrailContentFilter>;
 export type GuardrailContentFilterStrength = "NONE" | "LOW" | "MEDIUM" | "HIGH";
-export type GuardrailContentFilterType = "INSULTS" | "HATE" | "SEXUAL" | "VIOLENCE" | "MISCONDUCT" | "PROMPT_ATTACK";
+export type GuardrailContentFilterType =
+  | "INSULTS"
+  | "HATE"
+  | "SEXUAL"
+  | "VIOLENCE"
+  | "MISCONDUCT"
+  | "PROMPT_ATTACK";
 export type GuardrailContentPolicyAction = "BLOCKED" | "NONE";
 export interface GuardrailContentPolicyAssessment {
   filters: Array<GuardrailContentFilter>;
@@ -314,7 +442,10 @@ export type GuardrailContentPolicyImageUnitsProcessed = number;
 
 export type GuardrailContentPolicyUnitsProcessed = number;
 
-export type GuardrailContentQualifier = "GROUNDING_SOURCE" | "QUERY" | "GUARD_CONTENT";
+export type GuardrailContentQualifier =
+  | "GROUNDING_SOURCE"
+  | "QUERY"
+  | "GUARD_CONTENT";
 export type GuardrailContentQualifierList = Array<GuardrailContentQualifier>;
 export type GuardrailContentSource = "INPUT" | "OUTPUT";
 export interface GuardrailContextualGroundingFilter {
@@ -324,7 +455,8 @@ export interface GuardrailContextualGroundingFilter {
   action: GuardrailContextualGroundingPolicyAction;
   detected?: boolean;
 }
-export type GuardrailContextualGroundingFilters = Array<GuardrailContextualGroundingFilter>;
+export type GuardrailContextualGroundingFilters =
+  Array<GuardrailContextualGroundingFilter>;
 export type GuardrailContextualGroundingFilterType = "GROUNDING" | "RELEVANCE";
 export type GuardrailContextualGroundingPolicyAction = "BLOCKED" | "NONE";
 export interface GuardrailContextualGroundingPolicyAssessment {
@@ -332,9 +464,15 @@ export interface GuardrailContextualGroundingPolicyAssessment {
 }
 export type GuardrailContextualGroundingPolicyUnitsProcessed = number;
 
-export type GuardrailConverseContentBlock = { text: GuardrailConverseTextBlock } | { image: GuardrailConverseImageBlock };
-export type GuardrailConverseContentQualifier = "GROUNDING_SOURCE" | "QUERY" | "GUARD_CONTENT";
-export type GuardrailConverseContentQualifierList = Array<GuardrailConverseContentQualifier>;
+export type GuardrailConverseContentBlock =
+  | { text: GuardrailConverseTextBlock }
+  | { image: GuardrailConverseImageBlock };
+export type GuardrailConverseContentQualifier =
+  | "GROUNDING_SOURCE"
+  | "QUERY"
+  | "GUARD_CONTENT";
+export type GuardrailConverseContentQualifierList =
+  Array<GuardrailConverseContentQualifier>;
 export interface GuardrailConverseImageBlock {
   format: GuardrailConverseImageFormat;
   source: GuardrailConverseImageSource;
@@ -394,7 +532,38 @@ export interface GuardrailPiiEntityFilter {
   detected?: boolean;
 }
 export type GuardrailPiiEntityFilterList = Array<GuardrailPiiEntityFilter>;
-export type GuardrailPiiEntityType = "ADDRESS" | "AGE" | "AWS_ACCESS_KEY" | "AWS_SECRET_KEY" | "CA_HEALTH_NUMBER" | "CA_SOCIAL_INSURANCE_NUMBER" | "CREDIT_DEBIT_CARD_CVV" | "CREDIT_DEBIT_CARD_EXPIRY" | "CREDIT_DEBIT_CARD_NUMBER" | "DRIVER_ID" | "EMAIL" | "INTERNATIONAL_BANK_ACCOUNT_NUMBER" | "IP_ADDRESS" | "LICENSE_PLATE" | "MAC_ADDRESS" | "NAME" | "PASSWORD" | "PHONE" | "PIN" | "SWIFT_CODE" | "UK_NATIONAL_HEALTH_SERVICE_NUMBER" | "UK_NATIONAL_INSURANCE_NUMBER" | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER" | "URL" | "USERNAME" | "US_BANK_ACCOUNT_NUMBER" | "US_BANK_ROUTING_NUMBER" | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER" | "US_PASSPORT_NUMBER" | "US_SOCIAL_SECURITY_NUMBER" | "VEHICLE_IDENTIFICATION_NUMBER";
+export type GuardrailPiiEntityType =
+  | "ADDRESS"
+  | "AGE"
+  | "AWS_ACCESS_KEY"
+  | "AWS_SECRET_KEY"
+  | "CA_HEALTH_NUMBER"
+  | "CA_SOCIAL_INSURANCE_NUMBER"
+  | "CREDIT_DEBIT_CARD_CVV"
+  | "CREDIT_DEBIT_CARD_EXPIRY"
+  | "CREDIT_DEBIT_CARD_NUMBER"
+  | "DRIVER_ID"
+  | "EMAIL"
+  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
+  | "IP_ADDRESS"
+  | "LICENSE_PLATE"
+  | "MAC_ADDRESS"
+  | "NAME"
+  | "PASSWORD"
+  | "PHONE"
+  | "PIN"
+  | "SWIFT_CODE"
+  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
+  | "UK_NATIONAL_INSURANCE_NUMBER"
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+  | "URL"
+  | "USERNAME"
+  | "US_BANK_ACCOUNT_NUMBER"
+  | "US_BANK_ROUTING_NUMBER"
+  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
+  | "US_PASSPORT_NUMBER"
+  | "US_SOCIAL_SECURITY_NUMBER"
+  | "VEHICLE_IDENTIFICATION_NUMBER";
 export type GuardrailProcessingLatency = number;
 
 export interface GuardrailRegexFilter {
@@ -405,7 +574,10 @@ export interface GuardrailRegexFilter {
   detected?: boolean;
 }
 export type GuardrailRegexFilterList = Array<GuardrailRegexFilter>;
-export type GuardrailSensitiveInformationPolicyAction = "ANONYMIZED" | "BLOCKED" | "NONE";
+export type GuardrailSensitiveInformationPolicyAction =
+  | "ANONYMIZED"
+  | "BLOCKED"
+  | "NONE";
 export interface GuardrailSensitiveInformationPolicyAssessment {
   piiEntities: Array<GuardrailPiiEntityFilter>;
   regexes: Array<GuardrailRegexFilter>;
@@ -475,7 +647,9 @@ export interface ImageBlock {
 export type ImageFormat = "PNG" | "JPEG" | "GIF" | "WEBP";
 export type ImagesGuarded = number;
 
-export type ImageSource = { bytes: Uint8Array | string } | { s3Location: S3Location };
+export type ImageSource =
+  | { bytes: Uint8Array | string }
+  | { s3Location: S3Location };
 export type ImagesTotal = number;
 
 export interface InferenceConfiguration {
@@ -510,8 +684,17 @@ export interface InvokeModelResponse {
   contentType: string;
   performanceConfigLatency?: PerformanceConfigLatency;
 }
-export type InvokeModelWithBidirectionalStreamInput = { chunk: BidirectionalInputPayloadPart };
-export type InvokeModelWithBidirectionalStreamOutput = { chunk: BidirectionalOutputPayloadPart } | { internalServerException: InternalServerException } | { modelStreamErrorException: ModelStreamErrorException } | { validationException: ValidationException } | { throttlingException: ThrottlingException } | { modelTimeoutException: ModelTimeoutException } | { serviceUnavailableException: ServiceUnavailableException };
+export type InvokeModelWithBidirectionalStreamInput = {
+  chunk: BidirectionalInputPayloadPart;
+};
+export type InvokeModelWithBidirectionalStreamOutput =
+  | { chunk: BidirectionalOutputPayloadPart }
+  | { internalServerException: InternalServerException }
+  | { modelStreamErrorException: ModelStreamErrorException }
+  | { validationException: ValidationException }
+  | { throttlingException: ThrottlingException }
+  | { modelTimeoutException: ModelTimeoutException }
+  | { serviceUnavailableException: ServiceUnavailableException };
 export interface InvokeModelWithBidirectionalStreamRequest {
   modelId: string;
   body: InvokeModelWithBidirectionalStreamInput;
@@ -613,8 +796,13 @@ export interface PromptRouterTrace {
 }
 export type PromptVariableMap = Record<string, PromptVariableValues>;
 export type PromptVariableValues = { text: string };
-export type ReasoningContentBlock = { reasoningText: ReasoningTextBlock } | { redactedContent: Uint8Array | string };
-export type ReasoningContentBlockDelta = { text: string } | { redactedContent: Uint8Array | string } | { signature: string };
+export type ReasoningContentBlock =
+  | { reasoningText: ReasoningTextBlock }
+  | { redactedContent: Uint8Array | string };
+export type ReasoningContentBlockDelta =
+  | { text: string }
+  | { redactedContent: Uint8Array | string }
+  | { signature: string };
 export interface ReasoningTextBlock {
   text: string;
   signature?: string;
@@ -625,7 +813,14 @@ export declare class ResourceNotFoundException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type ResponseStream = { chunk: PayloadPart } | { internalServerException: InternalServerException } | { modelStreamErrorException: ModelStreamErrorException } | { validationException: ValidationException } | { throttlingException: ThrottlingException } | { modelTimeoutException: ModelTimeoutException } | { serviceUnavailableException: ServiceUnavailableException };
+export type ResponseStream =
+  | { chunk: PayloadPart }
+  | { internalServerException: InternalServerException }
+  | { modelStreamErrorException: ModelStreamErrorException }
+  | { validationException: ValidationException }
+  | { throttlingException: ThrottlingException }
+  | { modelTimeoutException: ModelTimeoutException }
+  | { serviceUnavailableException: ServiceUnavailableException };
 export interface S3Location {
   uri: string;
   bucketOwner?: string;
@@ -659,8 +854,17 @@ export interface StartAsyncInvokeResponse {
 }
 export type StatusCode = number;
 
-export type StopReason = "END_TURN" | "TOOL_USE" | "MAX_TOKENS" | "STOP_SEQUENCE" | "GUARDRAIL_INTERVENED" | "CONTENT_FILTERED";
-export type SystemContentBlock = { text: string } | { guardContent: GuardrailConverseContentBlock } | { cachePoint: CachePointBlock };
+export type StopReason =
+  | "END_TURN"
+  | "TOOL_USE"
+  | "MAX_TOKENS"
+  | "STOP_SEQUENCE"
+  | "GUARDRAIL_INTERVENED"
+  | "CONTENT_FILTERED";
+export type SystemContentBlock =
+  | { text: string }
+  | { guardContent: GuardrailConverseContentBlock }
+  | { cachePoint: CachePointBlock };
 export type SystemContentBlocks = Array<SystemContentBlock>;
 export interface Tag {
   key: string;
@@ -689,8 +893,13 @@ export interface TokenUsage {
   cacheReadInputTokens?: number;
   cacheWriteInputTokens?: number;
 }
-export type Tool = { toolSpec: ToolSpecification } | { cachePoint: CachePointBlock };
-export type ToolChoice = { auto: AutoToolChoice } | { any: AnyToolChoice } | { tool: SpecificToolChoice };
+export type Tool =
+  | { toolSpec: ToolSpecification }
+  | { cachePoint: CachePointBlock };
+export type ToolChoice =
+  | { auto: AutoToolChoice }
+  | { any: AnyToolChoice }
+  | { tool: SpecificToolChoice };
 export interface ToolConfiguration {
   tools: Array<Tool>;
   toolChoice?: ToolChoice;
@@ -703,7 +912,12 @@ export interface ToolResultBlock {
   content: Array<ToolResultContentBlock>;
   status?: ToolResultStatus;
 }
-export type ToolResultContentBlock = { json: _opaque_Document } | { text: string } | { image: ImageBlock } | { document: DocumentBlock } | { video: VideoBlock };
+export type ToolResultContentBlock =
+  | { json: _opaque_Document }
+  | { text: string }
+  | { image: ImageBlock }
+  | { document: DocumentBlock }
+  | { video: VideoBlock };
 export type ToolResultContentBlocks = Array<ToolResultContentBlock>;
 export type ToolResultStatus = "SUCCESS" | "ERROR";
 export type Tools = Array<Tool>;
@@ -736,8 +950,19 @@ export interface VideoBlock {
   format: VideoFormat;
   source: VideoSource;
 }
-export type VideoFormat = "MKV" | "MOV" | "MP4" | "WEBM" | "FLV" | "MPEG" | "MPG" | "WMV" | "THREE_GP";
-export type VideoSource = { bytes: Uint8Array | string } | { s3Location: S3Location };
+export type VideoFormat =
+  | "MKV"
+  | "MOV"
+  | "MP4"
+  | "WEBM"
+  | "FLV"
+  | "MPEG"
+  | "MPG"
+  | "WMV"
+  | "THREE_GP";
+export type VideoSource =
+  | { bytes: Uint8Array | string }
+  | { s3Location: S3Location };
 export declare namespace ApplyGuardrail {
   export type Input = ApplyGuardrailRequest;
   export type Output = ApplyGuardrailResponse;
@@ -872,4 +1097,3 @@ export declare namespace StartAsyncInvoke {
     | ValidationException
     | CommonAwsError;
 }
-

@@ -1,72 +1,128 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface KinesisAnalytics_20150814 {
   addApplicationCloudWatchLoggingOption(
     input: AddApplicationCloudWatchLoggingOptionRequest,
   ): Effect.Effect<
     AddApplicationCloudWatchLoggingOptionResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   addApplicationInput(
     input: AddApplicationInputRequest,
   ): Effect.Effect<
     AddApplicationInputResponse,
-    CodeValidationException | ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | CodeValidationException
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   addApplicationInputProcessingConfiguration(
     input: AddApplicationInputProcessingConfigurationRequest,
   ): Effect.Effect<
     AddApplicationInputProcessingConfigurationResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   addApplicationOutput(
     input: AddApplicationOutputRequest,
   ): Effect.Effect<
     AddApplicationOutputResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   addApplicationReferenceDataSource(
     input: AddApplicationReferenceDataSourceRequest,
   ): Effect.Effect<
     AddApplicationReferenceDataSourceResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   createApplication(
     input: CreateApplicationRequest,
   ): Effect.Effect<
     CreateApplicationResponse,
-    CodeValidationException | ConcurrentModificationException | InvalidArgumentException | LimitExceededException | ResourceInUseException | TooManyTagsException | CommonAwsError
+    | CodeValidationException
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | LimitExceededException
+    | ResourceInUseException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   deleteApplication(
     input: DeleteApplicationRequest,
   ): Effect.Effect<
     DeleteApplicationResponse,
-    ConcurrentModificationException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteApplicationCloudWatchLoggingOption(
     input: DeleteApplicationCloudWatchLoggingOptionRequest,
   ): Effect.Effect<
     DeleteApplicationCloudWatchLoggingOptionResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteApplicationInputProcessingConfiguration(
     input: DeleteApplicationInputProcessingConfigurationRequest,
   ): Effect.Effect<
     DeleteApplicationInputProcessingConfigurationResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteApplicationOutput(
     input: DeleteApplicationOutputRequest,
   ): Effect.Effect<
     DeleteApplicationOutputResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   deleteApplicationReferenceDataSource(
     input: DeleteApplicationReferenceDataSourceRequest,
   ): Effect.Effect<
     DeleteApplicationReferenceDataSourceResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   describeApplication(
     input: DescribeApplicationRequest,
@@ -78,49 +134,77 @@ export interface KinesisAnalytics_20150814 {
     input: DiscoverInputSchemaRequest,
   ): Effect.Effect<
     DiscoverInputSchemaResponse,
-    InvalidArgumentException | ResourceProvisionedThroughputExceededException | ServiceUnavailableException | UnableToDetectSchemaException | CommonAwsError
+    | InvalidArgumentException
+    | ResourceProvisionedThroughputExceededException
+    | ServiceUnavailableException
+    | UnableToDetectSchemaException
+    | CommonAwsError
   >;
   listApplications(
     input: ListApplicationsRequest,
-  ): Effect.Effect<
-    ListApplicationsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListApplicationsResponse, CommonAwsError>;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceNotFoundException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   startApplication(
     input: StartApplicationRequest,
   ): Effect.Effect<
     StartApplicationResponse,
-    InvalidApplicationConfigurationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | InvalidApplicationConfigurationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   stopApplication(
     input: StopApplicationRequest,
   ): Effect.Effect<
     StopApplicationResponse,
-    ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | TooManyTagsException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   updateApplication(
     input: UpdateApplicationRequest,
   ): Effect.Effect<
     UpdateApplicationResponse,
-    CodeValidationException | ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | UnsupportedOperationException | CommonAwsError
+    | CodeValidationException
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
 }
 
@@ -131,37 +215,32 @@ export interface AddApplicationCloudWatchLoggingOptionRequest {
   CurrentApplicationVersionId: number;
   CloudWatchLoggingOption: CloudWatchLoggingOption;
 }
-export interface AddApplicationCloudWatchLoggingOptionResponse {
-}
+export interface AddApplicationCloudWatchLoggingOptionResponse {}
 export interface AddApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   InputId: string;
   InputProcessingConfiguration: InputProcessingConfiguration;
 }
-export interface AddApplicationInputProcessingConfigurationResponse {
-}
+export interface AddApplicationInputProcessingConfigurationResponse {}
 export interface AddApplicationInputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   Input: Input;
 }
-export interface AddApplicationInputResponse {
-}
+export interface AddApplicationInputResponse {}
 export interface AddApplicationOutputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   Output: Output;
 }
-export interface AddApplicationOutputResponse {
-}
+export interface AddApplicationOutputResponse {}
 export interface AddApplicationReferenceDataSourceRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   ReferenceDataSource: ReferenceDataSource;
 }
-export interface AddApplicationReferenceDataSourceResponse {
-}
+export interface AddApplicationReferenceDataSourceResponse {}
 export type ApplicationCode = string;
 
 export type ApplicationDescription = string;
@@ -182,7 +261,13 @@ export interface ApplicationDetail {
 }
 export type ApplicationName = string;
 
-export type ApplicationStatus = "DELETING" | "STARTING" | "STOPPING" | "READY" | "RUNNING" | "UPDATING";
+export type ApplicationStatus =
+  | "DELETING"
+  | "STARTING"
+  | "STOPPING"
+  | "READY"
+  | "RUNNING"
+  | "UPDATING";
 export type ApplicationSummaries = Array<ApplicationSummary>;
 export interface ApplicationSummary {
   ApplicationName: string;
@@ -211,14 +296,16 @@ export interface CloudWatchLoggingOptionDescription {
   LogStreamARN: string;
   RoleARN: string;
 }
-export type CloudWatchLoggingOptionDescriptions = Array<CloudWatchLoggingOptionDescription>;
+export type CloudWatchLoggingOptionDescriptions =
+  Array<CloudWatchLoggingOptionDescription>;
 export type CloudWatchLoggingOptions = Array<CloudWatchLoggingOption>;
 export interface CloudWatchLoggingOptionUpdate {
   CloudWatchLoggingOptionId: string;
   LogStreamARNUpdate?: string;
   RoleARNUpdate?: string;
 }
-export type CloudWatchLoggingOptionUpdates = Array<CloudWatchLoggingOptionUpdate>;
+export type CloudWatchLoggingOptionUpdates =
+  Array<CloudWatchLoggingOptionUpdate>;
 export declare class CodeValidationException extends Data.TaggedError(
   "CodeValidationException",
 )<{
@@ -250,35 +337,30 @@ export interface DeleteApplicationCloudWatchLoggingOptionRequest {
   CurrentApplicationVersionId: number;
   CloudWatchLoggingOptionId: string;
 }
-export interface DeleteApplicationCloudWatchLoggingOptionResponse {
-}
+export interface DeleteApplicationCloudWatchLoggingOptionResponse {}
 export interface DeleteApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   InputId: string;
 }
-export interface DeleteApplicationInputProcessingConfigurationResponse {
-}
+export interface DeleteApplicationInputProcessingConfigurationResponse {}
 export interface DeleteApplicationOutputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   OutputId: string;
 }
-export interface DeleteApplicationOutputResponse {
-}
+export interface DeleteApplicationOutputResponse {}
 export interface DeleteApplicationReferenceDataSourceRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   ReferenceId: string;
 }
-export interface DeleteApplicationReferenceDataSourceResponse {
-}
+export interface DeleteApplicationReferenceDataSourceResponse {}
 export interface DeleteApplicationRequest {
   ApplicationName: string;
   CreateTimestamp: Date | string;
 }
-export interface DeleteApplicationResponse {
-}
+export interface DeleteApplicationResponse {}
 export interface DescribeApplicationRequest {
   ApplicationName: string;
 }
@@ -372,7 +454,10 @@ export interface InputSchemaUpdate {
   RecordEncodingUpdate?: string;
   RecordColumnUpdates?: Array<RecordColumn>;
 }
-export type InputStartingPosition = "NOW" | "TRIM_HORIZON" | "LAST_STOPPED_POINT";
+export type InputStartingPosition =
+  | "NOW"
+  | "TRIM_HORIZON"
+  | "LAST_STOPPED_POINT";
 export interface InputStartingPositionConfiguration {
   InputStartingPosition?: InputStartingPosition;
 }
@@ -560,7 +645,8 @@ export interface ReferenceDataSourceDescription {
   S3ReferenceDataSourceDescription: S3ReferenceDataSourceDescription;
   ReferenceSchema?: SourceSchema;
 }
-export type ReferenceDataSourceDescriptions = Array<ReferenceDataSourceDescription>;
+export type ReferenceDataSourceDescriptions =
+  Array<ReferenceDataSourceDescription>;
 export interface ReferenceDataSourceUpdate {
   ReferenceId: string;
   TableNameUpdate?: string;
@@ -621,13 +707,11 @@ export interface StartApplicationRequest {
   ApplicationName: string;
   InputConfigurations: Array<InputConfiguration>;
 }
-export interface StartApplicationResponse {
-}
+export interface StartApplicationResponse {}
 export interface StopApplicationRequest {
   ApplicationName: string;
 }
-export interface StopApplicationResponse {
-}
+export interface StopApplicationResponse {}
 export interface Tag {
   Key: string;
   Value?: string;
@@ -639,8 +723,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
@@ -667,15 +750,13 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateApplicationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   ApplicationUpdate: ApplicationUpdate;
 }
-export interface UpdateApplicationResponse {
-}
+export interface UpdateApplicationResponse {}
 export declare namespace AddApplicationCloudWatchLoggingOption {
   export type Input = AddApplicationCloudWatchLoggingOptionRequest;
   export type Output = AddApplicationCloudWatchLoggingOptionResponse;
@@ -832,8 +913,7 @@ export declare namespace DiscoverInputSchema {
 export declare namespace ListApplications {
   export type Input = ListApplicationsRequest;
   export type Output = ListApplicationsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
@@ -904,4 +984,3 @@ export declare namespace UpdateApplication {
     | UnsupportedOperationException
     | CommonAwsError;
 }
-

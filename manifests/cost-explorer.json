@@ -1,7 +1,176 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.costexplorer#AWSInsightsIndexService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.costexplorer#CreateAnomalyMonitor"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#CreateAnomalySubscription"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#CreateCostCategoryDefinition"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DeleteAnomalyMonitor"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DeleteAnomalySubscription"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DeleteCostCategoryDefinition"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#DescribeCostCategoryDefinition"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetAnomalies"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetAnomalyMonitors"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetAnomalySubscriptions"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetApproximateUsageRecords"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCommitmentPurchaseAnalysis"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCostAndUsage"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCostAndUsageComparisons"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCostAndUsageWithResources"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCostCategories"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCostComparisonDrivers"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetCostForecast"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetDimensionValues"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetReservationCoverage"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetReservationPurchaseRecommendation"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetReservationUtilization"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetRightsizingRecommendation"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetSavingsPlanPurchaseRecommendationDetails"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetSavingsPlansCoverage"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetSavingsPlansPurchaseRecommendation"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetSavingsPlansUtilization"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetSavingsPlansUtilizationDetails"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetTags"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#GetUsageForecast"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ListCommitmentPurchaseAnalyses"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ListCostAllocationTagBackfillHistory"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ListCostAllocationTags"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ListCostCategoryDefinitions"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ListSavingsPlansPurchaseRecommendationGeneration"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#ProvideAnomalyFeedback"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#StartCommitmentPurchaseAnalysis"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#StartCostAllocationTagBackfill"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#StartSavingsPlansPurchaseRecommendationGeneration"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#TagResource"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UpdateAnomalyMonitor"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UpdateAnomalySubscription"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UpdateCostAllocationTagsStatus"
+        },
+        {
+          "target": "com.amazonaws.costexplorer#UpdateCostCategoryDefinition"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Cost Explorer",

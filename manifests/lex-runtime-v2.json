@@ -1,7 +1,56 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.lexruntimev2#AWSDeepSenseRunTimeServiceApi2_0": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.lexruntimev2#DeleteSession"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#GetSession"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#PutSession"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#RecognizeText"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#RecognizeUtterance"
+        },
+        {
+          "target": "com.amazonaws.lexruntimev2#StartConversation"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Lex Runtime V2",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.synthetics#AccessDeniedException": {
       "type": "structure",
@@ -2874,6 +2903,74 @@
     },
     "com.amazonaws.synthetics#Synthetics": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.synthetics#AssociateResource"
+        },
+        {
+          "target": "com.amazonaws.synthetics#CreateCanary"
+        },
+        {
+          "target": "com.amazonaws.synthetics#CreateGroup"
+        },
+        {
+          "target": "com.amazonaws.synthetics#DeleteCanary"
+        },
+        {
+          "target": "com.amazonaws.synthetics#DeleteGroup"
+        },
+        {
+          "target": "com.amazonaws.synthetics#DescribeCanaries"
+        },
+        {
+          "target": "com.amazonaws.synthetics#DescribeCanariesLastRun"
+        },
+        {
+          "target": "com.amazonaws.synthetics#DescribeRuntimeVersions"
+        },
+        {
+          "target": "com.amazonaws.synthetics#DisassociateResource"
+        },
+        {
+          "target": "com.amazonaws.synthetics#GetCanary"
+        },
+        {
+          "target": "com.amazonaws.synthetics#GetCanaryRuns"
+        },
+        {
+          "target": "com.amazonaws.synthetics#GetGroup"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ListAssociatedGroups"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ListGroupResources"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ListGroups"
+        },
+        {
+          "target": "com.amazonaws.synthetics#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.synthetics#StartCanary"
+        },
+        {
+          "target": "com.amazonaws.synthetics#StartCanaryDryRun"
+        },
+        {
+          "target": "com.amazonaws.synthetics#StopCanary"
+        },
+        {
+          "target": "com.amazonaws.synthetics#TagResource"
+        },
+        {
+          "target": "com.amazonaws.synthetics#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.synthetics#UpdateCanary"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "synthetics",

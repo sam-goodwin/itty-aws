@@ -1,36 +1,55 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface SimpleEmailService {
   cloneReceiptRuleSet(
     input: CloneReceiptRuleSetRequest,
   ): Effect.Effect<
     CloneReceiptRuleSetResponse,
-    AlreadyExistsException | LimitExceededException | RuleSetDoesNotExistException | CommonAwsError
+    | AlreadyExistsException
+    | LimitExceededException
+    | RuleSetDoesNotExistException
+    | CommonAwsError
   >;
   createConfigurationSet(
     input: CreateConfigurationSetRequest,
   ): Effect.Effect<
     CreateConfigurationSetResponse,
-    ConfigurationSetAlreadyExistsException | InvalidConfigurationSetException | LimitExceededException | CommonAwsError
+    | ConfigurationSetAlreadyExistsException
+    | InvalidConfigurationSetException
+    | LimitExceededException
+    | CommonAwsError
   >;
   createConfigurationSetEventDestination(
     input: CreateConfigurationSetEventDestinationRequest,
   ): Effect.Effect<
     CreateConfigurationSetEventDestinationResponse,
-    ConfigurationSetDoesNotExistException | EventDestinationAlreadyExistsException | InvalidCloudWatchDestinationException | InvalidFirehoseDestinationException | InvalidSNSDestinationException | LimitExceededException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | EventDestinationAlreadyExistsException
+    | InvalidCloudWatchDestinationException
+    | InvalidFirehoseDestinationException
+    | InvalidSNSDestinationException
+    | LimitExceededException
+    | CommonAwsError
   >;
   createConfigurationSetTrackingOptions(
     input: CreateConfigurationSetTrackingOptionsRequest,
   ): Effect.Effect<
     CreateConfigurationSetTrackingOptionsResponse,
-    ConfigurationSetDoesNotExistException | InvalidTrackingOptionsException | TrackingOptionsAlreadyExistsException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | InvalidTrackingOptionsException
+    | TrackingOptionsAlreadyExistsException
+    | CommonAwsError
   >;
   createCustomVerificationEmailTemplate(
     input: CreateCustomVerificationEmailTemplateRequest,
   ): Effect.Effect<
     {},
-    CustomVerificationEmailInvalidContentException | CustomVerificationEmailTemplateAlreadyExistsException | FromEmailAddressNotVerifiedException | LimitExceededException | CommonAwsError
+    | CustomVerificationEmailInvalidContentException
+    | CustomVerificationEmailTemplateAlreadyExistsException
+    | FromEmailAddressNotVerifiedException
+    | LimitExceededException
+    | CommonAwsError
   >;
   createReceiptFilter(
     input: CreateReceiptFilterRequest,
@@ -42,7 +61,14 @@ export interface SimpleEmailService {
     input: CreateReceiptRuleRequest,
   ): Effect.Effect<
     CreateReceiptRuleResponse,
-    AlreadyExistsException | InvalidLambdaFunctionException | InvalidS3ConfigurationException | InvalidSnsTopicException | LimitExceededException | RuleDoesNotExistException | RuleSetDoesNotExistException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidLambdaFunctionException
+    | InvalidS3ConfigurationException
+    | InvalidSnsTopicException
+    | LimitExceededException
+    | RuleDoesNotExistException
+    | RuleSetDoesNotExistException
+    | CommonAwsError
   >;
   createReceiptRuleSet(
     input: CreateReceiptRuleSetRequest,
@@ -54,7 +80,10 @@ export interface SimpleEmailService {
     input: CreateTemplateRequest,
   ): Effect.Effect<
     CreateTemplateResponse,
-    AlreadyExistsException | InvalidTemplateException | LimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidTemplateException
+    | LimitExceededException
+    | CommonAwsError
   >;
   deleteConfigurationSet(
     input: DeleteConfigurationSetRequest,
@@ -66,38 +95,30 @@ export interface SimpleEmailService {
     input: DeleteConfigurationSetEventDestinationRequest,
   ): Effect.Effect<
     DeleteConfigurationSetEventDestinationResponse,
-    ConfigurationSetDoesNotExistException | EventDestinationDoesNotExistException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | EventDestinationDoesNotExistException
+    | CommonAwsError
   >;
   deleteConfigurationSetTrackingOptions(
     input: DeleteConfigurationSetTrackingOptionsRequest,
   ): Effect.Effect<
     DeleteConfigurationSetTrackingOptionsResponse,
-    ConfigurationSetDoesNotExistException | TrackingOptionsDoesNotExistException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | TrackingOptionsDoesNotExistException
+    | CommonAwsError
   >;
   deleteCustomVerificationEmailTemplate(
     input: DeleteCustomVerificationEmailTemplateRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteIdentity(
     input: DeleteIdentityRequest,
-  ): Effect.Effect<
-    DeleteIdentityResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DeleteIdentityResponse, CommonAwsError>;
   deleteIdentityPolicy(
     input: DeleteIdentityPolicyRequest,
-  ): Effect.Effect<
-    DeleteIdentityPolicyResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DeleteIdentityPolicyResponse, CommonAwsError>;
   deleteReceiptFilter(
     input: DeleteReceiptFilterRequest,
-  ): Effect.Effect<
-    DeleteReceiptFilterResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DeleteReceiptFilterResponse, CommonAwsError>;
   deleteReceiptRule(
     input: DeleteReceiptRuleRequest,
   ): Effect.Effect<
@@ -112,22 +133,13 @@ export interface SimpleEmailService {
   >;
   deleteTemplate(
     input: DeleteTemplateRequest,
-  ): Effect.Effect<
-    DeleteTemplateResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DeleteTemplateResponse, CommonAwsError>;
   deleteVerifiedEmailAddress(
     input: DeleteVerifiedEmailAddressRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   describeActiveReceiptRuleSet(
     input: DescribeActiveReceiptRuleSetRequest,
-  ): Effect.Effect<
-    DescribeActiveReceiptRuleSetResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeActiveReceiptRuleSetResponse, CommonAwsError>;
   describeConfigurationSet(
     input: DescribeConfigurationSetRequest,
   ): Effect.Effect<
@@ -146,9 +158,7 @@ export interface SimpleEmailService {
     DescribeReceiptRuleSetResponse,
     RuleSetDoesNotExistException | CommonAwsError
   >;
-  getAccountSendingEnabled(
-    input: {},
-  ): Effect.Effect<
+  getAccountSendingEnabled(input: {}): Effect.Effect<
     GetAccountSendingEnabledResponse,
     CommonAwsError
   >;
@@ -160,43 +170,21 @@ export interface SimpleEmailService {
   >;
   getIdentityDkimAttributes(
     input: GetIdentityDkimAttributesRequest,
-  ): Effect.Effect<
-    GetIdentityDkimAttributesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetIdentityDkimAttributesResponse, CommonAwsError>;
   getIdentityMailFromDomainAttributes(
     input: GetIdentityMailFromDomainAttributesRequest,
-  ): Effect.Effect<
-    GetIdentityMailFromDomainAttributesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetIdentityMailFromDomainAttributesResponse, CommonAwsError>;
   getIdentityNotificationAttributes(
     input: GetIdentityNotificationAttributesRequest,
-  ): Effect.Effect<
-    GetIdentityNotificationAttributesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetIdentityNotificationAttributesResponse, CommonAwsError>;
   getIdentityPolicies(
     input: GetIdentityPoliciesRequest,
-  ): Effect.Effect<
-    GetIdentityPoliciesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetIdentityPoliciesResponse, CommonAwsError>;
   getIdentityVerificationAttributes(
     input: GetIdentityVerificationAttributesRequest,
-  ): Effect.Effect<
-    GetIdentityVerificationAttributesResponse,
-    CommonAwsError
-  >;
-  getSendQuota(
-    input: {},
-  ): Effect.Effect<
-    GetSendQuotaResponse,
-    CommonAwsError
-  >;
-  getSendStatistics(
-    input: {},
-  ): Effect.Effect<
+  ): Effect.Effect<GetIdentityVerificationAttributesResponse, CommonAwsError>;
+  getSendQuota(input: {}): Effect.Effect<GetSendQuotaResponse, CommonAwsError>;
+  getSendStatistics(input: {}): Effect.Effect<
     GetSendStatisticsResponse,
     CommonAwsError
   >;
@@ -208,10 +196,7 @@ export interface SimpleEmailService {
   >;
   listConfigurationSets(
     input: ListConfigurationSetsRequest,
-  ): Effect.Effect<
-    ListConfigurationSetsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListConfigurationSetsResponse, CommonAwsError>;
   listCustomVerificationEmailTemplates(
     input: ListCustomVerificationEmailTemplatesRequest,
   ): Effect.Effect<
@@ -220,37 +205,20 @@ export interface SimpleEmailService {
   >;
   listIdentities(
     input: ListIdentitiesRequest,
-  ): Effect.Effect<
-    ListIdentitiesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListIdentitiesResponse, CommonAwsError>;
   listIdentityPolicies(
     input: ListIdentityPoliciesRequest,
-  ): Effect.Effect<
-    ListIdentityPoliciesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListIdentityPoliciesResponse, CommonAwsError>;
   listReceiptFilters(
     input: ListReceiptFiltersRequest,
-  ): Effect.Effect<
-    ListReceiptFiltersResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListReceiptFiltersResponse, CommonAwsError>;
   listReceiptRuleSets(
     input: ListReceiptRuleSetsRequest,
-  ): Effect.Effect<
-    ListReceiptRuleSetsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListReceiptRuleSetsResponse, CommonAwsError>;
   listTemplates(
     input: ListTemplatesRequest,
-  ): Effect.Effect<
-    ListTemplatesResponse,
-    CommonAwsError
-  >;
-  listVerifiedEmailAddresses(
-    input: {},
-  ): Effect.Effect<
+  ): Effect.Effect<ListTemplatesResponse, CommonAwsError>;
+  listVerifiedEmailAddresses(input: {}): Effect.Effect<
     ListVerifiedEmailAddressesResponse,
     CommonAwsError
   >;
@@ -258,7 +226,9 @@ export interface SimpleEmailService {
     input: PutConfigurationSetDeliveryOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetDeliveryOptionsResponse,
-    ConfigurationSetDoesNotExistException | InvalidDeliveryOptionsException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | InvalidDeliveryOptionsException
+    | CommonAwsError
   >;
   putIdentityPolicy(
     input: PutIdentityPolicyRequest,
@@ -274,39 +244,63 @@ export interface SimpleEmailService {
   >;
   sendBounce(
     input: SendBounceRequest,
-  ): Effect.Effect<
-    SendBounceResponse,
-    MessageRejected | CommonAwsError
-  >;
+  ): Effect.Effect<SendBounceResponse, MessageRejected | CommonAwsError>;
   sendBulkTemplatedEmail(
     input: SendBulkTemplatedEmailRequest,
   ): Effect.Effect<
     SendBulkTemplatedEmailResponse,
-    AccountSendingPausedException | ConfigurationSetDoesNotExistException | ConfigurationSetSendingPausedException | MailFromDomainNotVerifiedException | MessageRejected | TemplateDoesNotExistException | CommonAwsError
+    | AccountSendingPausedException
+    | ConfigurationSetDoesNotExistException
+    | ConfigurationSetSendingPausedException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | TemplateDoesNotExistException
+    | CommonAwsError
   >;
   sendCustomVerificationEmail(
     input: SendCustomVerificationEmailRequest,
   ): Effect.Effect<
     SendCustomVerificationEmailResponse,
-    ConfigurationSetDoesNotExistException | CustomVerificationEmailTemplateDoesNotExistException | FromEmailAddressNotVerifiedException | MessageRejected | ProductionAccessNotGrantedException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | CustomVerificationEmailTemplateDoesNotExistException
+    | FromEmailAddressNotVerifiedException
+    | MessageRejected
+    | ProductionAccessNotGrantedException
+    | CommonAwsError
   >;
   sendEmail(
     input: SendEmailRequest,
   ): Effect.Effect<
     SendEmailResponse,
-    AccountSendingPausedException | ConfigurationSetDoesNotExistException | ConfigurationSetSendingPausedException | MailFromDomainNotVerifiedException | MessageRejected | CommonAwsError
+    | AccountSendingPausedException
+    | ConfigurationSetDoesNotExistException
+    | ConfigurationSetSendingPausedException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | CommonAwsError
   >;
   sendRawEmail(
     input: SendRawEmailRequest,
   ): Effect.Effect<
     SendRawEmailResponse,
-    AccountSendingPausedException | ConfigurationSetDoesNotExistException | ConfigurationSetSendingPausedException | MailFromDomainNotVerifiedException | MessageRejected | CommonAwsError
+    | AccountSendingPausedException
+    | ConfigurationSetDoesNotExistException
+    | ConfigurationSetSendingPausedException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | CommonAwsError
   >;
   sendTemplatedEmail(
     input: SendTemplatedEmailRequest,
   ): Effect.Effect<
     SendTemplatedEmailResponse,
-    AccountSendingPausedException | ConfigurationSetDoesNotExistException | ConfigurationSetSendingPausedException | MailFromDomainNotVerifiedException | MessageRejected | TemplateDoesNotExistException | CommonAwsError
+    | AccountSendingPausedException
+    | ConfigurationSetDoesNotExistException
+    | ConfigurationSetSendingPausedException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | TemplateDoesNotExistException
+    | CommonAwsError
   >;
   setActiveReceiptRuleSet(
     input: SetActiveReceiptRuleSetRequest,
@@ -316,10 +310,7 @@ export interface SimpleEmailService {
   >;
   setIdentityDkimEnabled(
     input: SetIdentityDkimEnabledRequest,
-  ): Effect.Effect<
-    SetIdentityDkimEnabledResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<SetIdentityDkimEnabledResponse, CommonAwsError>;
   setIdentityFeedbackForwardingEnabled(
     input: SetIdentityFeedbackForwardingEnabledRequest,
   ): Effect.Effect<
@@ -334,16 +325,10 @@ export interface SimpleEmailService {
   >;
   setIdentityMailFromDomain(
     input: SetIdentityMailFromDomainRequest,
-  ): Effect.Effect<
-    SetIdentityMailFromDomainResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<SetIdentityMailFromDomainResponse, CommonAwsError>;
   setIdentityNotificationTopic(
     input: SetIdentityNotificationTopicRequest,
-  ): Effect.Effect<
-    SetIdentityNotificationTopicResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<SetIdentityNotificationTopicResponse, CommonAwsError>;
   setReceiptRulePosition(
     input: SetReceiptRulePositionRequest,
   ): Effect.Effect<
@@ -354,49 +339,60 @@ export interface SimpleEmailService {
     input: TestRenderTemplateRequest,
   ): Effect.Effect<
     TestRenderTemplateResponse,
-    InvalidRenderingParameterException | MissingRenderingAttributeException | TemplateDoesNotExistException | CommonAwsError
+    | InvalidRenderingParameterException
+    | MissingRenderingAttributeException
+    | TemplateDoesNotExistException
+    | CommonAwsError
   >;
   updateAccountSendingEnabled(
     input: UpdateAccountSendingEnabledRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   updateConfigurationSetEventDestination(
     input: UpdateConfigurationSetEventDestinationRequest,
   ): Effect.Effect<
     UpdateConfigurationSetEventDestinationResponse,
-    ConfigurationSetDoesNotExistException | EventDestinationDoesNotExistException | InvalidCloudWatchDestinationException | InvalidFirehoseDestinationException | InvalidSNSDestinationException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | EventDestinationDoesNotExistException
+    | InvalidCloudWatchDestinationException
+    | InvalidFirehoseDestinationException
+    | InvalidSNSDestinationException
+    | CommonAwsError
   >;
   updateConfigurationSetReputationMetricsEnabled(
     input: UpdateConfigurationSetReputationMetricsEnabledRequest,
-  ): Effect.Effect<
-    {},
-    ConfigurationSetDoesNotExistException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConfigurationSetDoesNotExistException | CommonAwsError>;
   updateConfigurationSetSendingEnabled(
     input: UpdateConfigurationSetSendingEnabledRequest,
-  ): Effect.Effect<
-    {},
-    ConfigurationSetDoesNotExistException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConfigurationSetDoesNotExistException | CommonAwsError>;
   updateConfigurationSetTrackingOptions(
     input: UpdateConfigurationSetTrackingOptionsRequest,
   ): Effect.Effect<
     UpdateConfigurationSetTrackingOptionsResponse,
-    ConfigurationSetDoesNotExistException | InvalidTrackingOptionsException | TrackingOptionsDoesNotExistException | CommonAwsError
+    | ConfigurationSetDoesNotExistException
+    | InvalidTrackingOptionsException
+    | TrackingOptionsDoesNotExistException
+    | CommonAwsError
   >;
   updateCustomVerificationEmailTemplate(
     input: UpdateCustomVerificationEmailTemplateRequest,
   ): Effect.Effect<
     {},
-    CustomVerificationEmailInvalidContentException | CustomVerificationEmailTemplateDoesNotExistException | FromEmailAddressNotVerifiedException | CommonAwsError
+    | CustomVerificationEmailInvalidContentException
+    | CustomVerificationEmailTemplateDoesNotExistException
+    | FromEmailAddressNotVerifiedException
+    | CommonAwsError
   >;
   updateReceiptRule(
     input: UpdateReceiptRuleRequest,
   ): Effect.Effect<
     UpdateReceiptRuleResponse,
-    InvalidLambdaFunctionException | InvalidS3ConfigurationException | InvalidSnsTopicException | LimitExceededException | RuleDoesNotExistException | RuleSetDoesNotExistException | CommonAwsError
+    | InvalidLambdaFunctionException
+    | InvalidS3ConfigurationException
+    | InvalidSnsTopicException
+    | LimitExceededException
+    | RuleDoesNotExistException
+    | RuleSetDoesNotExistException
+    | CommonAwsError
   >;
   updateTemplate(
     input: UpdateTemplateRequest,
@@ -406,28 +402,16 @@ export interface SimpleEmailService {
   >;
   verifyDomainDkim(
     input: VerifyDomainDkimRequest,
-  ): Effect.Effect<
-    VerifyDomainDkimResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<VerifyDomainDkimResponse, CommonAwsError>;
   verifyDomainIdentity(
     input: VerifyDomainIdentityRequest,
-  ): Effect.Effect<
-    VerifyDomainIdentityResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<VerifyDomainIdentityResponse, CommonAwsError>;
   verifyEmailAddress(
     input: VerifyEmailAddressRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   verifyEmailIdentity(
     input: VerifyEmailIdentityRequest,
-  ): Effect.Effect<
-    VerifyEmailIdentityResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<VerifyEmailIdentityResponse, CommonAwsError>;
 }
 
 export type Ses = SimpleEmailService;
@@ -479,7 +463,13 @@ export type BounceSmtpReplyCode = string;
 
 export type BounceStatusCode = string;
 
-export type BounceType = "DoesNotExist" | "MessageTooLarge" | "ExceededQuota" | "ContentRejected" | "Undefined" | "TemporaryFailure";
+export type BounceType =
+  | "DoesNotExist"
+  | "MessageTooLarge"
+  | "ExceededQuota"
+  | "ContentRejected"
+  | "Undefined"
+  | "TemporaryFailure";
 export interface BulkEmailDestination {
   Destination: Destination;
   ReplacementTags?: Array<MessageTag>;
@@ -492,7 +482,21 @@ export interface BulkEmailDestinationStatus {
   MessageId?: string;
 }
 export type BulkEmailDestinationStatusList = Array<BulkEmailDestinationStatus>;
-export type BulkEmailStatus = "Success" | "MessageRejected" | "MailFromDomainNotVerified" | "ConfigurationSetDoesNotExist" | "TemplateDoesNotExist" | "AccountSuspended" | "AccountThrottled" | "AccountDailyQuotaExceeded" | "InvalidSendingPoolName" | "AccountSendingPaused" | "ConfigurationSetSendingPaused" | "InvalidParameterValue" | "TransientFailure" | "Failed";
+export type BulkEmailStatus =
+  | "Success"
+  | "MessageRejected"
+  | "MailFromDomainNotVerified"
+  | "ConfigurationSetDoesNotExist"
+  | "TemplateDoesNotExist"
+  | "AccountSuspended"
+  | "AccountThrottled"
+  | "AccountDailyQuotaExceeded"
+  | "InvalidSendingPoolName"
+  | "AccountSendingPaused"
+  | "ConfigurationSetSendingPaused"
+  | "InvalidParameterValue"
+  | "TransientFailure"
+  | "Failed";
 export declare class CannotDeleteException extends Data.TaggedError(
   "CannotDeleteException",
 )<{
@@ -507,8 +511,7 @@ export interface CloneReceiptRuleSetRequest {
   RuleSetName: string;
   OriginalRuleSetName: string;
 }
-export interface CloneReceiptRuleSetResponse {
-}
+export interface CloneReceiptRuleSetResponse {}
 export interface CloudWatchDestination {
   DimensionConfigurations: Array<CloudWatchDimensionConfiguration>;
 }
@@ -517,7 +520,8 @@ export interface CloudWatchDimensionConfiguration {
   DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
-export type CloudWatchDimensionConfigurations = Array<CloudWatchDimensionConfiguration>;
+export type CloudWatchDimensionConfigurations =
+  Array<CloudWatchDimensionConfiguration>;
 export interface ConfigurationSet {
   Name: string;
 }
@@ -527,7 +531,11 @@ export declare class ConfigurationSetAlreadyExistsException extends Data.TaggedE
   readonly ConfigurationSetName?: string;
   readonly message?: string;
 }> {}
-export type ConfigurationSetAttribute = "EVENT_DESTINATIONS" | "TRACKING_OPTIONS" | "DELIVERY_OPTIONS" | "REPUTATION_OPTIONS";
+export type ConfigurationSetAttribute =
+  | "EVENT_DESTINATIONS"
+  | "TRACKING_OPTIONS"
+  | "DELIVERY_OPTIONS"
+  | "REPUTATION_OPTIONS";
 export type ConfigurationSetAttributeList = Array<ConfigurationSetAttribute>;
 export declare class ConfigurationSetDoesNotExistException extends Data.TaggedError(
   "ConfigurationSetDoesNotExistException",
@@ -560,19 +568,16 @@ export interface CreateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
 }
-export interface CreateConfigurationSetEventDestinationResponse {
-}
+export interface CreateConfigurationSetEventDestinationResponse {}
 export interface CreateConfigurationSetRequest {
   ConfigurationSet: ConfigurationSet;
 }
-export interface CreateConfigurationSetResponse {
-}
+export interface CreateConfigurationSetResponse {}
 export interface CreateConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   TrackingOptions: TrackingOptions;
 }
-export interface CreateConfigurationSetTrackingOptionsResponse {
-}
+export interface CreateConfigurationSetTrackingOptionsResponse {}
 export interface CreateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress: string;
@@ -584,26 +589,26 @@ export interface CreateCustomVerificationEmailTemplateRequest {
 export interface CreateReceiptFilterRequest {
   Filter: ReceiptFilter;
 }
-export interface CreateReceiptFilterResponse {
-}
+export interface CreateReceiptFilterResponse {}
 export interface CreateReceiptRuleRequest {
   RuleSetName: string;
   After?: string;
   Rule: ReceiptRule;
 }
-export interface CreateReceiptRuleResponse {
-}
+export interface CreateReceiptRuleResponse {}
 export interface CreateReceiptRuleSetRequest {
   RuleSetName: string;
 }
-export interface CreateReceiptRuleSetResponse {
-}
+export interface CreateReceiptRuleSetResponse {}
 export interface CreateTemplateRequest {
   Template: Template;
 }
-export interface CreateTemplateResponse {
-}
-export type CustomMailFromStatus = "Pending" | "Success" | "Failed" | "TemporaryFailure";
+export interface CreateTemplateResponse {}
+export type CustomMailFromStatus =
+  | "Pending"
+  | "Success"
+  | "Failed"
+  | "TemporaryFailure";
 export type CustomRedirectDomain = string;
 
 export declare class CustomVerificationEmailInvalidContentException extends Data.TaggedError(
@@ -630,25 +635,23 @@ export declare class CustomVerificationEmailTemplateDoesNotExistException extend
   readonly CustomVerificationEmailTemplateName?: string;
   readonly message?: string;
 }> {}
-export type CustomVerificationEmailTemplates = Array<CustomVerificationEmailTemplate>;
+export type CustomVerificationEmailTemplates =
+  Array<CustomVerificationEmailTemplate>;
 export type DefaultDimensionValue = string;
 
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
 }
-export interface DeleteConfigurationSetEventDestinationResponse {
-}
+export interface DeleteConfigurationSetEventDestinationResponse {}
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
-export interface DeleteConfigurationSetResponse {
-}
+export interface DeleteConfigurationSetResponse {}
 export interface DeleteConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
 }
-export interface DeleteConfigurationSetTrackingOptionsResponse {
-}
+export interface DeleteConfigurationSetTrackingOptionsResponse {}
 export interface DeleteCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
@@ -656,42 +659,35 @@ export interface DeleteIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
 }
-export interface DeleteIdentityPolicyResponse {
-}
+export interface DeleteIdentityPolicyResponse {}
 export interface DeleteIdentityRequest {
   Identity: string;
 }
-export interface DeleteIdentityResponse {
-}
+export interface DeleteIdentityResponse {}
 export interface DeleteReceiptFilterRequest {
   FilterName: string;
 }
-export interface DeleteReceiptFilterResponse {
-}
+export interface DeleteReceiptFilterResponse {}
 export interface DeleteReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
 }
-export interface DeleteReceiptRuleResponse {
-}
+export interface DeleteReceiptRuleResponse {}
 export interface DeleteReceiptRuleSetRequest {
   RuleSetName: string;
 }
-export interface DeleteReceiptRuleSetResponse {
-}
+export interface DeleteReceiptRuleSetResponse {}
 export interface DeleteTemplateRequest {
   TemplateName: string;
 }
-export interface DeleteTemplateResponse {
-}
+export interface DeleteTemplateResponse {}
 export interface DeleteVerifiedEmailAddressRequest {
   EmailAddress: string;
 }
 export interface DeliveryOptions {
   TlsPolicy?: TlsPolicy;
 }
-export interface DescribeActiveReceiptRuleSetRequest {
-}
+export interface DescribeActiveReceiptRuleSetRequest {}
 export interface DescribeActiveReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: Array<ReceiptRule>;
@@ -734,7 +730,12 @@ export type DimensionValueSource = "MESSAGE_TAG" | "EMAIL_HEADER" | "LINK_TAG";
 export type DkimAttributes = Record<string, IdentityDkimAttributes>;
 export type Domain = string;
 
-export type DsnAction = "FAILED" | "DELAYED" | "DELIVERED" | "RELAYED" | "EXPANDED";
+export type DsnAction =
+  | "FAILED"
+  | "DELAYED"
+  | "DELIVERED"
+  | "RELAYED"
+  | "EXPANDED";
 export type DsnStatus = string;
 
 export type Enabled = boolean;
@@ -768,7 +769,15 @@ export declare class EventDestinationDoesNotExistException extends Data.TaggedEr
 export type EventDestinationName = string;
 
 export type EventDestinations = Array<EventDestination>;
-export type EventType = "SEND" | "REJECT" | "BOUNCE" | "COMPLAINT" | "DELIVERY" | "OPEN" | "CLICK" | "RENDERING_FAILURE";
+export type EventType =
+  | "SEND"
+  | "REJECT"
+  | "BOUNCE"
+  | "COMPLAINT"
+  | "DELIVERY"
+  | "OPEN"
+  | "CLICK"
+  | "RENDERING_FAILURE";
 export type EventTypes = Array<EventType>;
 export type Explanation = string;
 
@@ -1006,8 +1015,7 @@ export interface ListIdentityPoliciesRequest {
 export interface ListIdentityPoliciesResponse {
   PolicyNames: Array<string>;
 }
-export interface ListReceiptFiltersRequest {
-}
+export interface ListReceiptFiltersRequest {}
 export interface ListReceiptFiltersResponse {
   Filters?: Array<ReceiptFilter>;
 }
@@ -1029,7 +1037,10 @@ export interface ListTemplatesResponse {
 export interface ListVerifiedEmailAddressesResponse {
   VerifiedEmailAddresses?: Array<string>;
 }
-export type MailFromDomainAttributes = Record<string, IdentityMailFromDomainAttributes>;
+export type MailFromDomainAttributes = Record<
+  string,
+  IdentityMailFromDomainAttributes
+>;
 export type MailFromDomainName = string;
 
 export declare class MailFromDomainNotVerifiedException extends Data.TaggedError(
@@ -1080,7 +1091,10 @@ export declare class MissingRenderingAttributeException extends Data.TaggedError
 }> {}
 export type NextToken = string;
 
-export type NotificationAttributes = Record<string, IdentityNotificationAttributes>;
+export type NotificationAttributes = Record<
+  string,
+  IdentityNotificationAttributes
+>;
 export type NotificationTopic = string;
 
 export type NotificationType = "Bounce" | "Complaint" | "Delivery";
@@ -1099,15 +1113,13 @@ export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   DeliveryOptions?: DeliveryOptions;
 }
-export interface PutConfigurationSetDeliveryOptionsResponse {
-}
+export interface PutConfigurationSetDeliveryOptionsResponse {}
 export interface PutIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
   Policy: string;
 }
-export interface PutIdentityPolicyResponse {
-}
+export interface PutIdentityPolicyResponse {}
 export interface RawMessage {
   Data: Uint8Array | string;
 }
@@ -1175,8 +1187,7 @@ export interface ReorderReceiptRuleSetRequest {
   RuleSetName: string;
   RuleNames: Array<string>;
 }
-export interface ReorderReceiptRuleSetResponse {
-}
+export interface ReorderReceiptRuleSetResponse {}
 export type ReportingMta = string;
 
 export interface ReputationOptions {
@@ -1300,48 +1311,41 @@ export type SentLast24Hours = number;
 export interface SetActiveReceiptRuleSetRequest {
   RuleSetName?: string;
 }
-export interface SetActiveReceiptRuleSetResponse {
-}
+export interface SetActiveReceiptRuleSetResponse {}
 export interface SetIdentityDkimEnabledRequest {
   Identity: string;
   DkimEnabled: boolean;
 }
-export interface SetIdentityDkimEnabledResponse {
-}
+export interface SetIdentityDkimEnabledResponse {}
 export interface SetIdentityFeedbackForwardingEnabledRequest {
   Identity: string;
   ForwardingEnabled: boolean;
 }
-export interface SetIdentityFeedbackForwardingEnabledResponse {
-}
+export interface SetIdentityFeedbackForwardingEnabledResponse {}
 export interface SetIdentityHeadersInNotificationsEnabledRequest {
   Identity: string;
   NotificationType: NotificationType;
   Enabled: boolean;
 }
-export interface SetIdentityHeadersInNotificationsEnabledResponse {
-}
+export interface SetIdentityHeadersInNotificationsEnabledResponse {}
 export interface SetIdentityMailFromDomainRequest {
   Identity: string;
   MailFromDomain?: string;
   BehaviorOnMXFailure?: BehaviorOnMXFailure;
 }
-export interface SetIdentityMailFromDomainResponse {
-}
+export interface SetIdentityMailFromDomainResponse {}
 export interface SetIdentityNotificationTopicRequest {
   Identity: string;
   NotificationType: NotificationType;
   SnsTopic?: string;
 }
-export interface SetIdentityNotificationTopicResponse {
-}
+export interface SetIdentityNotificationTopicResponse {}
 export interface SetReceiptRulePositionRequest {
   RuleSetName: string;
   RuleName: string;
   After?: string;
 }
-export interface SetReceiptRulePositionResponse {
-}
+export interface SetReceiptRulePositionResponse {}
 export interface SNSAction {
   TopicArn: string;
   Encoding?: SNSActionEncoding;
@@ -1418,8 +1422,7 @@ export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
 }
-export interface UpdateConfigurationSetEventDestinationResponse {
-}
+export interface UpdateConfigurationSetEventDestinationResponse {}
 export interface UpdateConfigurationSetReputationMetricsEnabledRequest {
   ConfigurationSetName: string;
   Enabled: boolean;
@@ -1432,8 +1435,7 @@ export interface UpdateConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   TrackingOptions: TrackingOptions;
 }
-export interface UpdateConfigurationSetTrackingOptionsResponse {
-}
+export interface UpdateConfigurationSetTrackingOptionsResponse {}
 export interface UpdateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress?: string;
@@ -1446,15 +1448,21 @@ export interface UpdateReceiptRuleRequest {
   RuleSetName: string;
   Rule: ReceiptRule;
 }
-export interface UpdateReceiptRuleResponse {
-}
+export interface UpdateReceiptRuleResponse {}
 export interface UpdateTemplateRequest {
   Template: Template;
 }
-export interface UpdateTemplateResponse {
-}
-export type VerificationAttributes = Record<string, IdentityVerificationAttributes>;
-export type VerificationStatus = "Pending" | "Success" | "Failed" | "TemporaryFailure" | "NotStarted";
+export interface UpdateTemplateResponse {}
+export type VerificationAttributes = Record<
+  string,
+  IdentityVerificationAttributes
+>;
+export type VerificationStatus =
+  | "Pending"
+  | "Success"
+  | "Failed"
+  | "TemporaryFailure"
+  | "NotStarted";
 export type VerificationToken = string;
 
 export type VerificationTokenList = Array<string>;
@@ -1476,8 +1484,7 @@ export interface VerifyEmailAddressRequest {
 export interface VerifyEmailIdentityRequest {
   EmailAddress: string;
 }
-export interface VerifyEmailIdentityResponse {
-}
+export interface VerifyEmailIdentityResponse {}
 export interface WorkmailAction {
   TopicArn?: string;
   OrganizationArn: string;
@@ -1581,9 +1588,7 @@ export declare namespace CreateTemplate {
 export declare namespace DeleteConfigurationSet {
   export type Input = DeleteConfigurationSetRequest;
   export type Output = DeleteConfigurationSetResponse;
-  export type Error =
-    | ConfigurationSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = ConfigurationSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace DeleteConfigurationSetEventDestination {
@@ -1607,74 +1612,61 @@ export declare namespace DeleteConfigurationSetTrackingOptions {
 export declare namespace DeleteCustomVerificationEmailTemplate {
   export type Input = DeleteCustomVerificationEmailTemplateRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteIdentity {
   export type Input = DeleteIdentityRequest;
   export type Output = DeleteIdentityResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteIdentityPolicy {
   export type Input = DeleteIdentityPolicyRequest;
   export type Output = DeleteIdentityPolicyResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteReceiptFilter {
   export type Input = DeleteReceiptFilterRequest;
   export type Output = DeleteReceiptFilterResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteReceiptRule {
   export type Input = DeleteReceiptRuleRequest;
   export type Output = DeleteReceiptRuleResponse;
-  export type Error =
-    | RuleSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = RuleSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace DeleteReceiptRuleSet {
   export type Input = DeleteReceiptRuleSetRequest;
   export type Output = DeleteReceiptRuleSetResponse;
-  export type Error =
-    | CannotDeleteException
-    | CommonAwsError;
+  export type Error = CannotDeleteException | CommonAwsError;
 }
 
 export declare namespace DeleteTemplate {
   export type Input = DeleteTemplateRequest;
   export type Output = DeleteTemplateResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteVerifiedEmailAddress {
   export type Input = DeleteVerifiedEmailAddressRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeActiveReceiptRuleSet {
   export type Input = DescribeActiveReceiptRuleSetRequest;
   export type Output = DescribeActiveReceiptRuleSetResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeConfigurationSet {
   export type Input = DescribeConfigurationSetRequest;
   export type Output = DescribeConfigurationSetResponse;
-  export type Error =
-    | ConfigurationSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = ConfigurationSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace DescribeReceiptRule {
@@ -1689,16 +1681,13 @@ export declare namespace DescribeReceiptRule {
 export declare namespace DescribeReceiptRuleSet {
   export type Input = DescribeReceiptRuleSetRequest;
   export type Output = DescribeReceiptRuleSetResponse;
-  export type Error =
-    | RuleSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = RuleSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace GetAccountSendingEnabled {
   export type Input = {};
   export type Output = GetAccountSendingEnabledResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetCustomVerificationEmailTemplate {
@@ -1712,114 +1701,97 @@ export declare namespace GetCustomVerificationEmailTemplate {
 export declare namespace GetIdentityDkimAttributes {
   export type Input = GetIdentityDkimAttributesRequest;
   export type Output = GetIdentityDkimAttributesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetIdentityMailFromDomainAttributes {
   export type Input = GetIdentityMailFromDomainAttributesRequest;
   export type Output = GetIdentityMailFromDomainAttributesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetIdentityNotificationAttributes {
   export type Input = GetIdentityNotificationAttributesRequest;
   export type Output = GetIdentityNotificationAttributesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetIdentityPolicies {
   export type Input = GetIdentityPoliciesRequest;
   export type Output = GetIdentityPoliciesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetIdentityVerificationAttributes {
   export type Input = GetIdentityVerificationAttributesRequest;
   export type Output = GetIdentityVerificationAttributesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetSendQuota {
   export type Input = {};
   export type Output = GetSendQuotaResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetSendStatistics {
   export type Input = {};
   export type Output = GetSendStatisticsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetTemplate {
   export type Input = GetTemplateRequest;
   export type Output = GetTemplateResponse;
-  export type Error =
-    | TemplateDoesNotExistException
-    | CommonAwsError;
+  export type Error = TemplateDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace ListConfigurationSets {
   export type Input = ListConfigurationSetsRequest;
   export type Output = ListConfigurationSetsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListCustomVerificationEmailTemplates {
   export type Input = ListCustomVerificationEmailTemplatesRequest;
   export type Output = ListCustomVerificationEmailTemplatesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListIdentities {
   export type Input = ListIdentitiesRequest;
   export type Output = ListIdentitiesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListIdentityPolicies {
   export type Input = ListIdentityPoliciesRequest;
   export type Output = ListIdentityPoliciesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListReceiptFilters {
   export type Input = ListReceiptFiltersRequest;
   export type Output = ListReceiptFiltersResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListReceiptRuleSets {
   export type Input = ListReceiptRuleSetsRequest;
   export type Output = ListReceiptRuleSetsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTemplates {
   export type Input = ListTemplatesRequest;
   export type Output = ListTemplatesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListVerifiedEmailAddresses {
   export type Input = {};
   export type Output = ListVerifiedEmailAddressesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace PutConfigurationSetDeliveryOptions {
@@ -1834,9 +1806,7 @@ export declare namespace PutConfigurationSetDeliveryOptions {
 export declare namespace PutIdentityPolicy {
   export type Input = PutIdentityPolicyRequest;
   export type Output = PutIdentityPolicyResponse;
-  export type Error =
-    | InvalidPolicyException
-    | CommonAwsError;
+  export type Error = InvalidPolicyException | CommonAwsError;
 }
 
 export declare namespace ReorderReceiptRuleSet {
@@ -1851,9 +1821,7 @@ export declare namespace ReorderReceiptRuleSet {
 export declare namespace SendBounce {
   export type Input = SendBounceRequest;
   export type Output = SendBounceResponse;
-  export type Error =
-    | MessageRejected
-    | CommonAwsError;
+  export type Error = MessageRejected | CommonAwsError;
 }
 
 export declare namespace SendBulkTemplatedEmail {
@@ -1921,44 +1889,37 @@ export declare namespace SendTemplatedEmail {
 export declare namespace SetActiveReceiptRuleSet {
   export type Input = SetActiveReceiptRuleSetRequest;
   export type Output = SetActiveReceiptRuleSetResponse;
-  export type Error =
-    | RuleSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = RuleSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace SetIdentityDkimEnabled {
   export type Input = SetIdentityDkimEnabledRequest;
   export type Output = SetIdentityDkimEnabledResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SetIdentityFeedbackForwardingEnabled {
   export type Input = SetIdentityFeedbackForwardingEnabledRequest;
   export type Output = SetIdentityFeedbackForwardingEnabledResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SetIdentityHeadersInNotificationsEnabled {
   export type Input = SetIdentityHeadersInNotificationsEnabledRequest;
   export type Output = SetIdentityHeadersInNotificationsEnabledResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SetIdentityMailFromDomain {
   export type Input = SetIdentityMailFromDomainRequest;
   export type Output = SetIdentityMailFromDomainResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SetIdentityNotificationTopic {
   export type Input = SetIdentityNotificationTopicRequest;
   export type Output = SetIdentityNotificationTopicResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SetReceiptRulePosition {
@@ -1983,8 +1944,7 @@ export declare namespace TestRenderTemplate {
 export declare namespace UpdateAccountSendingEnabled {
   export type Input = UpdateAccountSendingEnabledRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace UpdateConfigurationSetEventDestination {
@@ -2002,17 +1962,13 @@ export declare namespace UpdateConfigurationSetEventDestination {
 export declare namespace UpdateConfigurationSetReputationMetricsEnabled {
   export type Input = UpdateConfigurationSetReputationMetricsEnabledRequest;
   export type Output = {};
-  export type Error =
-    | ConfigurationSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = ConfigurationSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace UpdateConfigurationSetSendingEnabled {
   export type Input = UpdateConfigurationSetSendingEnabledRequest;
   export type Output = {};
-  export type Error =
-    | ConfigurationSetDoesNotExistException
-    | CommonAwsError;
+  export type Error = ConfigurationSetDoesNotExistException | CommonAwsError;
 }
 
 export declare namespace UpdateConfigurationSetTrackingOptions {
@@ -2060,28 +2016,23 @@ export declare namespace UpdateTemplate {
 export declare namespace VerifyDomainDkim {
   export type Input = VerifyDomainDkimRequest;
   export type Output = VerifyDomainDkimResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace VerifyDomainIdentity {
   export type Input = VerifyDomainIdentityRequest;
   export type Output = VerifyDomainIdentityResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace VerifyEmailAddress {
   export type Input = VerifyEmailAddressRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace VerifyEmailIdentity {
   export type Input = VerifyEmailIdentityRequest;
   export type Output = VerifyEmailIdentityResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.codepipeline#AWSRegionName": {
       "type": "string",
@@ -1791,6 +1820,140 @@
     },
     "com.amazonaws.codepipeline#CodePipeline_20150709": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.codepipeline#AcknowledgeJob"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#AcknowledgeThirdPartyJob"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#CreateCustomActionType"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#CreatePipeline"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#DeleteCustomActionType"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#DeletePipeline"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#DeleteWebhook"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#DeregisterWebhookWithThirdParty"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#DisableStageTransition"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#EnableStageTransition"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#GetActionType"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#GetJobDetails"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#GetPipeline"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#GetPipelineExecution"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#GetPipelineState"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#GetThirdPartyJobDetails"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListActionExecutions"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListActionTypes"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListDeployActionExecutionTargets"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListPipelineExecutions"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListPipelines"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListRuleExecutions"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListRuleTypes"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#ListWebhooks"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#OverrideStageCondition"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PollForJobs"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PollForThirdPartyJobs"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutActionRevision"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutApprovalResult"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutJobFailureResult"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutJobSuccessResult"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutThirdPartyJobFailureResult"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutThirdPartyJobSuccessResult"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#PutWebhook"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#RegisterWebhookWithThirdParty"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#RetryStageExecution"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#RollbackStage"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StartPipelineExecution"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#StopPipelineExecution"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#TagResource"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#UpdateActionType"
+        },
+        {
+          "target": "com.amazonaws.codepipeline#UpdatePipeline"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CodePipeline",

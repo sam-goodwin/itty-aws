@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.elasticsearchservice#ARN": {
       "type": "string",
@@ -324,6 +353,161 @@
     },
     "com.amazonaws.elasticsearchservice#AmazonElasticsearchService2015": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.elasticsearchservice#AcceptInboundCrossClusterSearchConnection"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#AddTags"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#AssociatePackage"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#AuthorizeVpcEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#CancelDomainConfigChange"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#CancelElasticsearchServiceSoftwareUpdate"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#CreateElasticsearchDomain"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#CreateOutboundCrossClusterSearchConnection"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#CreatePackage"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#CreateVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DeleteElasticsearchDomain"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DeleteElasticsearchServiceRole"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DeleteInboundCrossClusterSearchConnection"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DeleteOutboundCrossClusterSearchConnection"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DeletePackage"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DeleteVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeDomainAutoTunes"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeDomainChangeProgress"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomain"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomainConfig"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchDomains"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeElasticsearchInstanceTypeLimits"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeInboundCrossClusterSearchConnections"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeOutboundCrossClusterSearchConnections"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribePackages"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstanceOfferings"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeReservedElasticsearchInstances"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DescribeVpcEndpoints"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#DissociatePackage"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#GetCompatibleElasticsearchVersions"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#GetPackageVersionHistory"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#GetUpgradeHistory"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#GetUpgradeStatus"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListDomainNames"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListDomainsForPackage"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListElasticsearchInstanceTypes"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListElasticsearchVersions"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListPackagesForDomain"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListTags"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListVpcEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListVpcEndpoints"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#ListVpcEndpointsForDomain"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#PurchaseReservedElasticsearchInstanceOffering"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#RejectInboundCrossClusterSearchConnection"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#RemoveTags"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#RevokeVpcEndpointAccess"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#StartElasticsearchServiceSoftwareUpdate"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#UpdateElasticsearchDomainConfig"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#UpdatePackage"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#UpdateVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.elasticsearchservice#UpgradeElasticsearchDomain"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Elasticsearch Service",

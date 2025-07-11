@@ -1,204 +1,42 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface GroundStation {
-  cancelContact(
-    input: CancelContactRequest,
-  ): Effect.Effect<
-    ContactIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  createConfig(
-    input: CreateConfigRequest,
-  ): Effect.Effect<
-    ConfigIdResponse,
-    DependencyException | InvalidParameterException | ResourceLimitExceededException | ResourceNotFoundException | CommonAwsError
-  >;
-  createDataflowEndpointGroup(
-    input: CreateDataflowEndpointGroupRequest,
-  ): Effect.Effect<
-    DataflowEndpointGroupIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  createEphemeris(
-    input: CreateEphemerisRequest,
-  ): Effect.Effect<
-    EphemerisIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  createMissionProfile(
-    input: CreateMissionProfileRequest,
-  ): Effect.Effect<
-    MissionProfileIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteConfig(
-    input: DeleteConfigRequest,
-  ): Effect.Effect<
-    ConfigIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteDataflowEndpointGroup(
-    input: DeleteDataflowEndpointGroupRequest,
-  ): Effect.Effect<
-    DataflowEndpointGroupIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteEphemeris(
-    input: DeleteEphemerisRequest,
-  ): Effect.Effect<
-    EphemerisIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteMissionProfile(
-    input: DeleteMissionProfileRequest,
-  ): Effect.Effect<
-    MissionProfileIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  describeContact(
-    input: DescribeContactRequest,
-  ): Effect.Effect<
-    DescribeContactResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  describeEphemeris(
-    input: DescribeEphemerisRequest,
-  ): Effect.Effect<
-    DescribeEphemerisResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  getAgentConfiguration(
-    input: GetAgentConfigurationRequest,
-  ): Effect.Effect<
-    GetAgentConfigurationResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  getConfig(
-    input: GetConfigRequest,
-  ): Effect.Effect<
-    GetConfigResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  getDataflowEndpointGroup(
-    input: GetDataflowEndpointGroupRequest,
-  ): Effect.Effect<
-    GetDataflowEndpointGroupResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
   getMinuteUsage(
     input: GetMinuteUsageRequest,
   ): Effect.Effect<
     GetMinuteUsageResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  getMissionProfile(
-    input: GetMissionProfileRequest,
-  ): Effect.Effect<
-    GetMissionProfileResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  getSatellite(
-    input: GetSatelliteRequest,
-  ): Effect.Effect<
-    GetSatelliteResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listConfigs(
-    input: ListConfigsRequest,
-  ): Effect.Effect<
-    ListConfigsResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listContacts(
-    input: ListContactsRequest,
-  ): Effect.Effect<
-    ListContactsResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listDataflowEndpointGroups(
-    input: ListDataflowEndpointGroupsRequest,
-  ): Effect.Effect<
-    ListDataflowEndpointGroupsResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listEphemerides(
-    input: ListEphemeridesRequest,
-  ): Effect.Effect<
-    ListEphemeridesResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listGroundStations(
-    input: ListGroundStationsRequest,
-  ): Effect.Effect<
-    ListGroundStationsResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listMissionProfiles(
-    input: ListMissionProfilesRequest,
-  ): Effect.Effect<
-    ListMissionProfilesResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listSatellites(
-    input: ListSatellitesRequest,
-  ): Effect.Effect<
-    ListSatellitesResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
+    | DependencyException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  registerAgent(
-    input: RegisterAgentRequest,
-  ): Effect.Effect<
-    RegisterAgentResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  reserveContact(
-    input: ReserveContactRequest,
-  ): Effect.Effect<
-    ContactIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
+    | DependencyException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
+    | DependencyException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  updateAgentStatus(
-    input: UpdateAgentStatusRequest,
-  ): Effect.Effect<
-    UpdateAgentStatusResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  updateConfig(
-    input: UpdateConfigRequest,
-  ): Effect.Effect<
-    ConfigIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  updateEphemeris(
-    input: UpdateEphemerisRequest,
-  ): Effect.Effect<
-    EphemerisIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  updateMissionProfile(
-    input: UpdateMissionProfileRequest,
-  ): Effect.Effect<
-    MissionProfileIdResponse,
-    DependencyException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
+    | DependencyException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -257,7 +95,14 @@ export type CapabilityArn = string;
 
 export type CapabilityArnList = Array<string>;
 export type CapabilityHealth = "HEALTHY" | "UNHEALTHY";
-export type CapabilityHealthReason = "NO_REGISTERED_AGENT" | "INVALID_IP_OWNERSHIP" | "NOT_AUTHORIZED_TO_CREATE_SLR" | "UNVERIFIED_IP_OWNERSHIP" | "INITIALIZING_DATAPLANE" | "DATAPLANE_FAILURE" | "HEALTHY";
+export type CapabilityHealthReason =
+  | "NO_REGISTERED_AGENT"
+  | "INVALID_IP_OWNERSHIP"
+  | "NOT_AUTHORIZED_TO_CREATE_SLR"
+  | "UNVERIFIED_IP_OWNERSHIP"
+  | "INITIALIZING_DATAPLANE"
+  | "DATAPLANE_FAILURE"
+  | "HEALTHY";
 export type CapabilityHealthReasonList = Array<CapabilityHealthReason>;
 export interface ComponentStatusData {
   componentType: string;
@@ -278,8 +123,18 @@ export interface ComponentVersion {
 export type ComponentVersionList = Array<ComponentVersion>;
 export type ConfigArn = string;
 
-export type ConfigCapabilityType = "ANTENNA_DOWNLINK" | "ANTENNA_DOWNLINK_DEMOD_DECODE" | "TRACKING" | "DATAFLOW_ENDPOINT" | "ANTENNA_UPLINK" | "UPLINK_ECHO" | "S3_RECORDING";
-export type ConfigDetails = { endpointDetails: EndpointDetails } | { antennaDemodDecodeDetails: AntennaDemodDecodeDetails } | { s3RecordingDetails: S3RecordingDetails };
+export type ConfigCapabilityType =
+  | "ANTENNA_DOWNLINK"
+  | "ANTENNA_DOWNLINK_DEMOD_DECODE"
+  | "TRACKING"
+  | "DATAFLOW_ENDPOINT"
+  | "ANTENNA_UPLINK"
+  | "UPLINK_ECHO"
+  | "S3_RECORDING";
+export type ConfigDetails =
+  | { endpointDetails: EndpointDetails }
+  | { antennaDemodDecodeDetails: AntennaDemodDecodeDetails }
+  | { s3RecordingDetails: S3RecordingDetails };
 export interface ConfigIdResponse {
   configId?: string;
   configType?: ConfigCapabilityType;
@@ -292,7 +147,14 @@ export interface ConfigListItem {
   configArn?: string;
   name?: string;
 }
-export type ConfigTypeData = { antennaDownlinkConfig: AntennaDownlinkConfig } | { trackingConfig: TrackingConfig } | { dataflowEndpointConfig: DataflowEndpointConfig } | { antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig } | { antennaUplinkConfig: AntennaUplinkConfig } | { uplinkEchoConfig: UplinkEchoConfig } | { s3RecordingConfig: S3RecordingConfig };
+export type ConfigTypeData =
+  | { antennaDownlinkConfig: AntennaDownlinkConfig }
+  | { trackingConfig: TrackingConfig }
+  | { dataflowEndpointConfig: DataflowEndpointConfig }
+  | { antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig }
+  | { antennaUplinkConfig: AntennaUplinkConfig }
+  | { uplinkEchoConfig: UplinkEchoConfig }
+  | { s3RecordingConfig: S3RecordingConfig };
 export interface ConnectionDetails {
   socketAddress: SocketAddress;
   mtu?: number;
@@ -318,7 +180,20 @@ export interface ContactIdResponse {
   contactId?: string;
 }
 export type ContactList = Array<ContactData>;
-export type ContactStatus = "SCHEDULING" | "FAILED_TO_SCHEDULE" | "SCHEDULED" | "CANCELLED" | "AWS_CANCELLED" | "PREPASS" | "PASS" | "POSTPASS" | "COMPLETED" | "FAILED" | "AVAILABLE" | "CANCELLING" | "AWS_FAILED";
+export type ContactStatus =
+  | "SCHEDULING"
+  | "FAILED_TO_SCHEDULE"
+  | "SCHEDULED"
+  | "CANCELLED"
+  | "AWS_CANCELLED"
+  | "PREPASS"
+  | "PASS"
+  | "POSTPASS"
+  | "COMPLETED"
+  | "FAILED"
+  | "AVAILABLE"
+  | "CANCELLING"
+  | "AWS_FAILED";
 export interface CreateConfigRequest {
   name: string;
   configData: ConfigTypeData;
@@ -475,7 +350,12 @@ export interface EndpointDetails {
   healthReasons?: Array<CapabilityHealthReason>;
 }
 export type EndpointDetailsList = Array<EndpointDetails>;
-export type EndpointStatus = "created" | "creating" | "deleted" | "deleting" | "failed";
+export type EndpointStatus =
+  | "created"
+  | "creating"
+  | "deleted"
+  | "deleting"
+  | "failed";
 export type EphemeridesList = Array<EphemerisItem>;
 export type EphemerisData = { tle: TLEEphemeris } | { oem: OEMEphemeris };
 export interface EphemerisDescription {
@@ -485,7 +365,12 @@ export interface EphemerisDescription {
 export interface EphemerisIdResponse {
   ephemerisId?: string;
 }
-export type EphemerisInvalidReason = "METADATA_INVALID" | "TIME_RANGE_INVALID" | "TRAJECTORY_INVALID" | "KMS_KEY_INVALID" | "VALIDATION_ERROR";
+export type EphemerisInvalidReason =
+  | "METADATA_INVALID"
+  | "TIME_RANGE_INVALID"
+  | "TRAJECTORY_INVALID"
+  | "KMS_KEY_INVALID"
+  | "VALIDATION_ERROR";
 export interface EphemerisItem {
   ephemerisId?: string;
   status?: EphemerisStatus;
@@ -504,9 +389,17 @@ export interface EphemerisMetaData {
 export type EphemerisPriority = number;
 
 export type EphemerisSource = "CUSTOMER_PROVIDED" | "SPACE_TRACK";
-export type EphemerisStatus = "VALIDATING" | "INVALID" | "ERROR" | "ENABLED" | "DISABLED" | "EXPIRED";
+export type EphemerisStatus =
+  | "VALIDATING"
+  | "INVALID"
+  | "ERROR"
+  | "ENABLED"
+  | "DISABLED"
+  | "EXPIRED";
 export type EphemerisStatusList = Array<EphemerisStatus>;
-export type EphemerisTypeDescription = { tle: EphemerisDescription } | { oem: EphemerisDescription };
+export type EphemerisTypeDescription =
+  | { tle: EphemerisDescription }
+  | { oem: EphemerisDescription };
 export interface Frequency {
   value: number;
   units: FrequencyUnits;
@@ -618,7 +511,10 @@ export type KeyAliasName = string;
 
 export type KeyArn = string;
 
-export type KmsKey = { kmsKeyArn: string } | { kmsAliasArn: string } | { kmsAliasName: string };
+export type KmsKey =
+  | { kmsKeyArn: string }
+  | { kmsAliasArn: string }
+  | { kmsAliasName: string };
 export interface ListConfigsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -819,8 +715,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagsMap = Record<string, string>;
 export interface TimeRange {
   startTime: Date | string;
@@ -849,8 +744,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAgentStatusRequest {
   agentId: string;
   taskId: string;
@@ -898,147 +792,6 @@ export type VersionString = string;
 export type VersionStringList = Array<string>;
 export type Year = number;
 
-export declare namespace CancelContact {
-  export type Input = CancelContactRequest;
-  export type Output = ContactIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConfig {
-  export type Input = CreateConfigRequest;
-  export type Output = ConfigIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceLimitExceededException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace CreateDataflowEndpointGroup {
-  export type Input = CreateDataflowEndpointGroupRequest;
-  export type Output = DataflowEndpointGroupIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace CreateEphemeris {
-  export type Input = CreateEphemerisRequest;
-  export type Output = EphemerisIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace CreateMissionProfile {
-  export type Input = CreateMissionProfileRequest;
-  export type Output = MissionProfileIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConfig {
-  export type Input = DeleteConfigRequest;
-  export type Output = ConfigIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteDataflowEndpointGroup {
-  export type Input = DeleteDataflowEndpointGroupRequest;
-  export type Output = DataflowEndpointGroupIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteEphemeris {
-  export type Input = DeleteEphemerisRequest;
-  export type Output = EphemerisIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteMissionProfile {
-  export type Input = DeleteMissionProfileRequest;
-  export type Output = MissionProfileIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeContact {
-  export type Input = DescribeContactRequest;
-  export type Output = DescribeContactResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeEphemeris {
-  export type Input = DescribeEphemerisRequest;
-  export type Output = DescribeEphemerisResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetAgentConfiguration {
-  export type Input = GetAgentConfigurationRequest;
-  export type Output = GetAgentConfigurationResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetConfig {
-  export type Input = GetConfigRequest;
-  export type Output = GetConfigResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetDataflowEndpointGroup {
-  export type Input = GetDataflowEndpointGroupRequest;
-  export type Output = GetDataflowEndpointGroupResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
 export declare namespace GetMinuteUsage {
   export type Input = GetMinuteUsageRequest;
   export type Output = GetMinuteUsageResponse;
@@ -1049,119 +802,9 @@ export declare namespace GetMinuteUsage {
     | CommonAwsError;
 }
 
-export declare namespace GetMissionProfile {
-  export type Input = GetMissionProfileRequest;
-  export type Output = GetMissionProfileResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetSatellite {
-  export type Input = GetSatelliteRequest;
-  export type Output = GetSatelliteResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListConfigs {
-  export type Input = ListConfigsRequest;
-  export type Output = ListConfigsResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListContacts {
-  export type Input = ListContactsRequest;
-  export type Output = ListContactsResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListDataflowEndpointGroups {
-  export type Input = ListDataflowEndpointGroupsRequest;
-  export type Output = ListDataflowEndpointGroupsResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListEphemerides {
-  export type Input = ListEphemeridesRequest;
-  export type Output = ListEphemeridesResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListGroundStations {
-  export type Input = ListGroundStationsRequest;
-  export type Output = ListGroundStationsResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListMissionProfiles {
-  export type Input = ListMissionProfilesRequest;
-  export type Output = ListMissionProfilesResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListSatellites {
-  export type Input = ListSatellitesRequest;
-  export type Output = ListSatellitesResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace RegisterAgent {
-  export type Input = RegisterAgentRequest;
-  export type Output = RegisterAgentResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ReserveContact {
-  export type Input = ReserveContactRequest;
-  export type Output = ContactIdResponse;
   export type Error =
     | DependencyException
     | InvalidParameterException
@@ -1188,44 +831,3 @@ export declare namespace UntagResource {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-
-export declare namespace UpdateAgentStatus {
-  export type Input = UpdateAgentStatusRequest;
-  export type Output = UpdateAgentStatusResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConfig {
-  export type Input = UpdateConfigRequest;
-  export type Output = ConfigIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateEphemeris {
-  export type Input = UpdateEphemerisRequest;
-  export type Output = EphemerisIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateMissionProfile {
-  export type Input = UpdateMissionProfileRequest;
-  export type Output = MissionProfileIdResponse;
-  export type Error =
-    | DependencyException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-

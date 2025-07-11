@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface SageMaker {
   addAssociation(
@@ -8,12 +8,7 @@ export interface SageMaker {
     AddAssociationResponse,
     ResourceLimitExceeded | ResourceNotFound | CommonAwsError
   >;
-  addTags(
-    input: AddTagsInput,
-  ): Effect.Effect<
-    AddTagsOutput,
-    CommonAwsError
-  >;
+  addTags(input: AddTagsInput): Effect.Effect<AddTagsOutput, CommonAwsError>;
   associateTrialComponent(
     input: AssociateTrialComponentRequest,
   ): Effect.Effect<
@@ -28,10 +23,7 @@ export interface SageMaker {
   >;
   batchDescribeModelPackage(
     input: BatchDescribeModelPackageInput,
-  ): Effect.Effect<
-    BatchDescribeModelPackageOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<BatchDescribeModelPackageOutput, CommonAwsError>;
   createAction(
     input: CreateActionRequest,
   ): Effect.Effect<
@@ -40,10 +32,7 @@ export interface SageMaker {
   >;
   createAlgorithm(
     input: CreateAlgorithmInput,
-  ): Effect.Effect<
-    CreateAlgorithmOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CreateAlgorithmOutput, CommonAwsError>;
   createApp(
     input: CreateAppRequest,
   ): Effect.Effect<
@@ -88,10 +77,7 @@ export interface SageMaker {
   >;
   createCodeRepository(
     input: CreateCodeRepositoryInput,
-  ): Effect.Effect<
-    CreateCodeRepositoryOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CreateCodeRepositoryOutput, CommonAwsError>;
   createCompilationJob(
     input: CreateCompilationJobRequest,
   ): Effect.Effect<
@@ -118,10 +104,7 @@ export interface SageMaker {
   >;
   createDeviceFleet(
     input: CreateDeviceFleetRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceLimitExceeded | CommonAwsError>;
   createDomain(
     input: CreateDomainRequest,
   ): Effect.Effect<
@@ -136,16 +119,10 @@ export interface SageMaker {
   >;
   createEdgeDeploymentStage(
     input: CreateEdgeDeploymentStageRequest,
-  ): Effect.Effect<
-    {},
-    ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceLimitExceeded | CommonAwsError>;
   createEdgePackagingJob(
     input: CreateEdgePackagingJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceLimitExceeded | CommonAwsError>;
   createEndpoint(
     input: CreateEndpointInput,
   ): Effect.Effect<
@@ -184,10 +161,7 @@ export interface SageMaker {
   >;
   createHubContentPresignedUrls(
     input: CreateHubContentPresignedUrlsRequest,
-  ): Effect.Effect<
-    CreateHubContentPresignedUrlsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CreateHubContentPresignedUrlsResponse, CommonAwsError>;
   createHubContentReference(
     input: CreateHubContentReferenceRequest,
   ): Effect.Effect<
@@ -250,10 +224,7 @@ export interface SageMaker {
   >;
   createModel(
     input: CreateModelInput,
-  ): Effect.Effect<
-    CreateModelOutput,
-    ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<CreateModelOutput, ResourceLimitExceeded | CommonAwsError>;
   createModelBiasJobDefinition(
     input: CreateModelBiasJobDefinitionRequest,
   ): Effect.Effect<
@@ -270,7 +241,10 @@ export interface SageMaker {
     input: CreateModelCardExportJobRequest,
   ): Effect.Effect<
     CreateModelCardExportJobResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   createModelExplainabilityJobDefinition(
     input: CreateModelExplainabilityJobDefinitionRequest,
@@ -336,7 +310,10 @@ export interface SageMaker {
     input: CreatePipelineRequest,
   ): Effect.Effect<
     CreatePipelineResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   createPresignedDomainUrl(
     input: CreatePresignedDomainUrlRequest,
@@ -352,10 +329,7 @@ export interface SageMaker {
   >;
   createPresignedNotebookInstanceUrl(
     input: CreatePresignedNotebookInstanceUrlInput,
-  ): Effect.Effect<
-    CreatePresignedNotebookInstanceUrlOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CreatePresignedNotebookInstanceUrlOutput, CommonAwsError>;
   createProcessingJob(
     input: CreateProcessingJobRequest,
   ): Effect.Effect<
@@ -364,10 +338,7 @@ export interface SageMaker {
   >;
   createProject(
     input: CreateProjectInput,
-  ): Effect.Effect<
-    CreateProjectOutput,
-    ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<CreateProjectOutput, ResourceLimitExceeded | CommonAwsError>;
   createSpace(
     input: CreateSpaceRequest,
   ): Effect.Effect<
@@ -418,10 +389,7 @@ export interface SageMaker {
   >;
   createWorkforce(
     input: CreateWorkforceRequest,
-  ): Effect.Effect<
-    CreateWorkforceResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CreateWorkforceResponse, CommonAwsError>;
   createWorkteam(
     input: CreateWorkteamRequest,
   ): Effect.Effect<
@@ -430,34 +398,19 @@ export interface SageMaker {
   >;
   deleteAction(
     input: DeleteActionRequest,
-  ): Effect.Effect<
-    DeleteActionResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DeleteActionResponse, ResourceNotFound | CommonAwsError>;
   deleteAlgorithm(
     input: DeleteAlgorithmInput,
-  ): Effect.Effect<
-    {},
-    ConflictException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConflictException | CommonAwsError>;
   deleteApp(
     input: DeleteAppRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteAppImageConfig(
     input: DeleteAppImageConfigRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteArtifact(
     input: DeleteArtifactRequest,
-  ): Effect.Effect<
-    DeleteArtifactResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DeleteArtifactResponse, ResourceNotFound | CommonAwsError>;
   deleteAssociation(
     input: DeleteAssociationRequest,
   ): Effect.Effect<
@@ -472,88 +425,44 @@ export interface SageMaker {
   >;
   deleteClusterSchedulerConfig(
     input: DeleteClusterSchedulerConfigRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteCodeRepository(
     input: DeleteCodeRepositoryInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteCompilationJob(
     input: DeleteCompilationJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteComputeQuota(
     input: DeleteComputeQuotaRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteContext(
     input: DeleteContextRequest,
-  ): Effect.Effect<
-    DeleteContextResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DeleteContextResponse, ResourceNotFound | CommonAwsError>;
   deleteDataQualityJobDefinition(
     input: DeleteDataQualityJobDefinitionRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteDeviceFleet(
     input: DeleteDeviceFleetRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | CommonAwsError>;
   deleteDomain(
     input: DeleteDomainRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteEdgeDeploymentPlan(
     input: DeleteEdgeDeploymentPlanRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | CommonAwsError>;
   deleteEdgeDeploymentStage(
     input: DeleteEdgeDeploymentStageRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | CommonAwsError
-  >;
-  deleteEndpoint(
-    input: DeleteEndpointInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | CommonAwsError>;
+  deleteEndpoint(input: DeleteEndpointInput): Effect.Effect<{}, CommonAwsError>;
   deleteEndpointConfig(
     input: DeleteEndpointConfigInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteExperiment(
     input: DeleteExperimentRequest,
-  ): Effect.Effect<
-    DeleteExperimentResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DeleteExperimentResponse, ResourceNotFound | CommonAwsError>;
   deleteFeatureGroup(
     input: DeleteFeatureGroupRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteFlowDefinition(
     input: DeleteFlowDefinitionRequest,
   ): Effect.Effect<
@@ -562,22 +471,13 @@ export interface SageMaker {
   >;
   deleteHub(
     input: DeleteHubRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteHubContent(
     input: DeleteHubContentRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteHubContentReference(
     input: DeleteHubContentReferenceRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteHumanTaskUi(
     input: DeleteHumanTaskUiRequest,
   ): Effect.Effect<
@@ -586,10 +486,7 @@ export interface SageMaker {
   >;
   deleteHyperParameterTuningJob(
     input: DeleteHyperParameterTuningJobRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteImage(
     input: DeleteImageRequest,
   ): Effect.Effect<
@@ -604,10 +501,7 @@ export interface SageMaker {
   >;
   deleteInferenceComponent(
     input: DeleteInferenceComponentInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteInferenceExperiment(
     input: DeleteInferenceExperimentRequest,
   ): Effect.Effect<
@@ -620,78 +514,40 @@ export interface SageMaker {
     DeleteMlflowTrackingServerResponse,
     ResourceNotFound | CommonAwsError
   >;
-  deleteModel(
-    input: DeleteModelInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  deleteModel(input: DeleteModelInput): Effect.Effect<{}, CommonAwsError>;
   deleteModelBiasJobDefinition(
     input: DeleteModelBiasJobDefinitionRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteModelCard(
     input: DeleteModelCardRequest,
-  ): Effect.Effect<
-    {},
-    ConflictException | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConflictException | ResourceNotFound | CommonAwsError>;
   deleteModelExplainabilityJobDefinition(
     input: DeleteModelExplainabilityJobDefinitionRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteModelPackage(
     input: DeleteModelPackageInput,
-  ): Effect.Effect<
-    {},
-    ConflictException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConflictException | CommonAwsError>;
   deleteModelPackageGroup(
     input: DeleteModelPackageGroupInput,
-  ): Effect.Effect<
-    {},
-    ConflictException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConflictException | CommonAwsError>;
   deleteModelPackageGroupPolicy(
     input: DeleteModelPackageGroupPolicyInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteModelQualityJobDefinition(
     input: DeleteModelQualityJobDefinitionRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteMonitoringSchedule(
     input: DeleteMonitoringScheduleRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deleteNotebookInstance(
     input: DeleteNotebookInstanceInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteNotebookInstanceLifecycleConfig(
     input: DeleteNotebookInstanceLifecycleConfigInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deleteOptimizationJob(
     input: DeleteOptimizationJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   deletePartnerApp(
     input: DeletePartnerAppRequest,
   ): Effect.Effect<
@@ -706,34 +562,19 @@ export interface SageMaker {
   >;
   deleteProject(
     input: DeleteProjectInput,
-  ): Effect.Effect<
-    {},
-    ConflictException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ConflictException | CommonAwsError>;
   deleteSpace(
     input: DeleteSpaceRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteStudioLifecycleConfig(
     input: DeleteStudioLifecycleConfigRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteTags(
     input: DeleteTagsInput,
-  ): Effect.Effect<
-    DeleteTagsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DeleteTagsOutput, CommonAwsError>;
   deleteTrial(
     input: DeleteTrialRequest,
-  ): Effect.Effect<
-    DeleteTrialResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DeleteTrialResponse, ResourceNotFound | CommonAwsError>;
   deleteTrialComponent(
     input: DeleteTrialComponentRequest,
   ): Effect.Effect<
@@ -742,16 +583,10 @@ export interface SageMaker {
   >;
   deleteUserProfile(
     input: DeleteUserProfileRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | ResourceNotFound | CommonAwsError>;
   deleteWorkforce(
     input: DeleteWorkforceRequest,
-  ): Effect.Effect<
-    DeleteWorkforceResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DeleteWorkforceResponse, CommonAwsError>;
   deleteWorkteam(
     input: DeleteWorkteamRequest,
   ): Effect.Effect<
@@ -760,28 +595,16 @@ export interface SageMaker {
   >;
   deregisterDevices(
     input: DeregisterDevicesRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   describeAction(
     input: DescribeActionRequest,
-  ): Effect.Effect<
-    DescribeActionResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeActionResponse, ResourceNotFound | CommonAwsError>;
   describeAlgorithm(
     input: DescribeAlgorithmInput,
-  ): Effect.Effect<
-    DescribeAlgorithmOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeAlgorithmOutput, CommonAwsError>;
   describeApp(
     input: DescribeAppRequest,
-  ): Effect.Effect<
-    DescribeAppResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeAppResponse, ResourceNotFound | CommonAwsError>;
   describeAppImageConfig(
     input: DescribeAppImageConfigRequest,
   ): Effect.Effect<
@@ -790,10 +613,7 @@ export interface SageMaker {
   >;
   describeArtifact(
     input: DescribeArtifactRequest,
-  ): Effect.Effect<
-    DescribeArtifactResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeArtifactResponse, ResourceNotFound | CommonAwsError>;
   describeAutoMLJob(
     input: DescribeAutoMLJobRequest,
   ): Effect.Effect<
@@ -808,10 +628,7 @@ export interface SageMaker {
   >;
   describeCluster(
     input: DescribeClusterRequest,
-  ): Effect.Effect<
-    DescribeClusterResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeClusterResponse, ResourceNotFound | CommonAwsError>;
   describeClusterNode(
     input: DescribeClusterNodeRequest,
   ): Effect.Effect<
@@ -826,10 +643,7 @@ export interface SageMaker {
   >;
   describeCodeRepository(
     input: DescribeCodeRepositoryInput,
-  ): Effect.Effect<
-    DescribeCodeRepositoryOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeCodeRepositoryOutput, CommonAwsError>;
   describeCompilationJob(
     input: DescribeCompilationJobRequest,
   ): Effect.Effect<
@@ -844,10 +658,7 @@ export interface SageMaker {
   >;
   describeContext(
     input: DescribeContextRequest,
-  ): Effect.Effect<
-    DescribeContextResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeContextResponse, ResourceNotFound | CommonAwsError>;
   describeDataQualityJobDefinition(
     input: DescribeDataQualityJobDefinitionRequest,
   ): Effect.Effect<
@@ -856,10 +667,7 @@ export interface SageMaker {
   >;
   describeDevice(
     input: DescribeDeviceRequest,
-  ): Effect.Effect<
-    DescribeDeviceResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeDeviceResponse, ResourceNotFound | CommonAwsError>;
   describeDeviceFleet(
     input: DescribeDeviceFleetRequest,
   ): Effect.Effect<
@@ -868,10 +676,7 @@ export interface SageMaker {
   >;
   describeDomain(
     input: DescribeDomainRequest,
-  ): Effect.Effect<
-    DescribeDomainResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeDomainResponse, ResourceNotFound | CommonAwsError>;
   describeEdgeDeploymentPlan(
     input: DescribeEdgeDeploymentPlanRequest,
   ): Effect.Effect<
@@ -886,16 +691,10 @@ export interface SageMaker {
   >;
   describeEndpoint(
     input: DescribeEndpointInput,
-  ): Effect.Effect<
-    DescribeEndpointOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeEndpointOutput, CommonAwsError>;
   describeEndpointConfig(
     input: DescribeEndpointConfigInput,
-  ): Effect.Effect<
-    DescribeEndpointConfigOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeEndpointConfigOutput, CommonAwsError>;
   describeExperiment(
     input: DescribeExperimentRequest,
   ): Effect.Effect<
@@ -922,10 +721,7 @@ export interface SageMaker {
   >;
   describeHub(
     input: DescribeHubRequest,
-  ): Effect.Effect<
-    DescribeHubResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeHubResponse, ResourceNotFound | CommonAwsError>;
   describeHubContent(
     input: DescribeHubContentRequest,
   ): Effect.Effect<
@@ -946,10 +742,7 @@ export interface SageMaker {
   >;
   describeImage(
     input: DescribeImageRequest,
-  ): Effect.Effect<
-    DescribeImageResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeImageResponse, ResourceNotFound | CommonAwsError>;
   describeImageVersion(
     input: DescribeImageVersionRequest,
   ): Effect.Effect<
@@ -958,10 +751,7 @@ export interface SageMaker {
   >;
   describeInferenceComponent(
     input: DescribeInferenceComponentInput,
-  ): Effect.Effect<
-    DescribeInferenceComponentOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeInferenceComponentOutput, CommonAwsError>;
   describeInferenceExperiment(
     input: DescribeInferenceExperimentRequest,
   ): Effect.Effect<
@@ -994,10 +784,7 @@ export interface SageMaker {
   >;
   describeModel(
     input: DescribeModelInput,
-  ): Effect.Effect<
-    DescribeModelOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeModelOutput, CommonAwsError>;
   describeModelBiasJobDefinition(
     input: DescribeModelBiasJobDefinitionRequest,
   ): Effect.Effect<
@@ -1024,16 +811,10 @@ export interface SageMaker {
   >;
   describeModelPackage(
     input: DescribeModelPackageInput,
-  ): Effect.Effect<
-    DescribeModelPackageOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeModelPackageOutput, CommonAwsError>;
   describeModelPackageGroup(
     input: DescribeModelPackageGroupInput,
-  ): Effect.Effect<
-    DescribeModelPackageGroupOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeModelPackageGroupOutput, CommonAwsError>;
   describeModelQualityJobDefinition(
     input: DescribeModelQualityJobDefinitionRequest,
   ): Effect.Effect<
@@ -1048,10 +829,7 @@ export interface SageMaker {
   >;
   describeNotebookInstance(
     input: DescribeNotebookInstanceInput,
-  ): Effect.Effect<
-    DescribeNotebookInstanceOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeNotebookInstanceOutput, CommonAwsError>;
   describeNotebookInstanceLifecycleConfig(
     input: DescribeNotebookInstanceLifecycleConfigInput,
   ): Effect.Effect<
@@ -1072,10 +850,7 @@ export interface SageMaker {
   >;
   describePipeline(
     input: DescribePipelineRequest,
-  ): Effect.Effect<
-    DescribePipelineResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribePipelineResponse, ResourceNotFound | CommonAwsError>;
   describePipelineDefinitionForExecution(
     input: DescribePipelineDefinitionForExecutionRequest,
   ): Effect.Effect<
@@ -1096,16 +871,10 @@ export interface SageMaker {
   >;
   describeProject(
     input: DescribeProjectInput,
-  ): Effect.Effect<
-    DescribeProjectOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeProjectOutput, CommonAwsError>;
   describeSpace(
     input: DescribeSpaceRequest,
-  ): Effect.Effect<
-    DescribeSpaceResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeSpaceResponse, ResourceNotFound | CommonAwsError>;
   describeStudioLifecycleConfig(
     input: DescribeStudioLifecycleConfigRequest,
   ): Effect.Effect<
@@ -1114,10 +883,7 @@ export interface SageMaker {
   >;
   describeSubscribedWorkteam(
     input: DescribeSubscribedWorkteamRequest,
-  ): Effect.Effect<
-    DescribeSubscribedWorkteamResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeSubscribedWorkteamResponse, CommonAwsError>;
   describeTrainingJob(
     input: DescribeTrainingJobRequest,
   ): Effect.Effect<
@@ -1138,10 +904,7 @@ export interface SageMaker {
   >;
   describeTrial(
     input: DescribeTrialRequest,
-  ): Effect.Effect<
-    DescribeTrialResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<DescribeTrialResponse, ResourceNotFound | CommonAwsError>;
   describeTrialComponent(
     input: DescribeTrialComponentRequest,
   ): Effect.Effect<
@@ -1156,16 +919,10 @@ export interface SageMaker {
   >;
   describeWorkforce(
     input: DescribeWorkforceRequest,
-  ): Effect.Effect<
-    DescribeWorkforceResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeWorkforceResponse, CommonAwsError>;
   describeWorkteam(
     input: DescribeWorkteamRequest,
-  ): Effect.Effect<
-    DescribeWorkteamResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeWorkteamResponse, CommonAwsError>;
   disableSagemakerServicecatalogPortfolio(
     input: DisableSagemakerServicecatalogPortfolioInput,
   ): Effect.Effect<
@@ -1186,10 +943,7 @@ export interface SageMaker {
   >;
   getDeviceFleetReport(
     input: GetDeviceFleetReportRequest,
-  ): Effect.Effect<
-    GetDeviceFleetReportResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetDeviceFleetReportResponse, CommonAwsError>;
   getLineageGroupPolicy(
     input: GetLineageGroupPolicyRequest,
   ): Effect.Effect<
@@ -1198,10 +952,7 @@ export interface SageMaker {
   >;
   getModelPackageGroupPolicy(
     input: GetModelPackageGroupPolicyInput,
-  ): Effect.Effect<
-    GetModelPackageGroupPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetModelPackageGroupPolicyOutput, CommonAwsError>;
   getSagemakerServicecatalogPortfolioStatus(
     input: GetSagemakerServicecatalogPortfolioStatusInput,
   ): Effect.Effect<
@@ -1216,10 +967,7 @@ export interface SageMaker {
   >;
   getSearchSuggestions(
     input: GetSearchSuggestionsRequest,
-  ): Effect.Effect<
-    GetSearchSuggestionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetSearchSuggestionsResponse, CommonAwsError>;
   importHubContent(
     input: ImportHubContentRequest,
   ): Effect.Effect<
@@ -1228,52 +976,28 @@ export interface SageMaker {
   >;
   listActions(
     input: ListActionsRequest,
-  ): Effect.Effect<
-    ListActionsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<ListActionsResponse, ResourceNotFound | CommonAwsError>;
   listAlgorithms(
     input: ListAlgorithmsInput,
-  ): Effect.Effect<
-    ListAlgorithmsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListAlgorithmsOutput, CommonAwsError>;
   listAliases(
     input: ListAliasesRequest,
-  ): Effect.Effect<
-    ListAliasesResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<ListAliasesResponse, ResourceNotFound | CommonAwsError>;
   listAppImageConfigs(
     input: ListAppImageConfigsRequest,
-  ): Effect.Effect<
-    ListAppImageConfigsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListAppImageConfigsResponse, CommonAwsError>;
   listApps(
     input: ListAppsRequest,
-  ): Effect.Effect<
-    ListAppsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListAppsResponse, CommonAwsError>;
   listArtifacts(
     input: ListArtifactsRequest,
-  ): Effect.Effect<
-    ListArtifactsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<ListArtifactsResponse, ResourceNotFound | CommonAwsError>;
   listAssociations(
     input: ListAssociationsRequest,
-  ): Effect.Effect<
-    ListAssociationsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<ListAssociationsResponse, ResourceNotFound | CommonAwsError>;
   listAutoMLJobs(
     input: ListAutoMLJobsRequest,
-  ): Effect.Effect<
-    ListAutoMLJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListAutoMLJobsResponse, CommonAwsError>;
   listCandidatesForAutoMLJob(
     input: ListCandidatesForAutoMLJobRequest,
   ): Effect.Effect<
@@ -1282,184 +1006,103 @@ export interface SageMaker {
   >;
   listClusterNodes(
     input: ListClusterNodesRequest,
-  ): Effect.Effect<
-    ListClusterNodesResponse,
-    ResourceNotFound | CommonAwsError
-  >;
-  listClusterSchedulerConfigs(
-    input: ListClusterSchedulerConfigsRequest,
-  ): Effect.Effect<
-    ListClusterSchedulerConfigsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListClusterNodesResponse, ResourceNotFound | CommonAwsError>;
   listClusters(
     input: ListClustersRequest,
-  ): Effect.Effect<
-    ListClustersResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListClustersResponse, CommonAwsError>;
+  listClusterSchedulerConfigs(
+    input: ListClusterSchedulerConfigsRequest,
+  ): Effect.Effect<ListClusterSchedulerConfigsResponse, CommonAwsError>;
   listCodeRepositories(
     input: ListCodeRepositoriesInput,
-  ): Effect.Effect<
-    ListCodeRepositoriesOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListCodeRepositoriesOutput, CommonAwsError>;
   listCompilationJobs(
     input: ListCompilationJobsRequest,
-  ): Effect.Effect<
-    ListCompilationJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListCompilationJobsResponse, CommonAwsError>;
   listComputeQuotas(
     input: ListComputeQuotasRequest,
-  ): Effect.Effect<
-    ListComputeQuotasResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListComputeQuotasResponse, CommonAwsError>;
   listContexts(
     input: ListContextsRequest,
-  ): Effect.Effect<
-    ListContextsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<ListContextsResponse, ResourceNotFound | CommonAwsError>;
   listDataQualityJobDefinitions(
     input: ListDataQualityJobDefinitionsRequest,
-  ): Effect.Effect<
-    ListDataQualityJobDefinitionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListDataQualityJobDefinitionsResponse, CommonAwsError>;
   listDeviceFleets(
     input: ListDeviceFleetsRequest,
-  ): Effect.Effect<
-    ListDeviceFleetsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListDeviceFleetsResponse, CommonAwsError>;
   listDevices(
     input: ListDevicesRequest,
-  ): Effect.Effect<
-    ListDevicesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListDevicesResponse, CommonAwsError>;
   listDomains(
     input: ListDomainsRequest,
-  ): Effect.Effect<
-    ListDomainsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListDomainsResponse, CommonAwsError>;
   listEdgeDeploymentPlans(
     input: ListEdgeDeploymentPlansRequest,
-  ): Effect.Effect<
-    ListEdgeDeploymentPlansResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListEdgeDeploymentPlansResponse, CommonAwsError>;
   listEdgePackagingJobs(
     input: ListEdgePackagingJobsRequest,
-  ): Effect.Effect<
-    ListEdgePackagingJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListEdgePackagingJobsResponse, CommonAwsError>;
   listEndpointConfigs(
     input: ListEndpointConfigsInput,
-  ): Effect.Effect<
-    ListEndpointConfigsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListEndpointConfigsOutput, CommonAwsError>;
   listEndpoints(
     input: ListEndpointsInput,
-  ): Effect.Effect<
-    ListEndpointsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListEndpointsOutput, CommonAwsError>;
   listExperiments(
     input: ListExperimentsRequest,
-  ): Effect.Effect<
-    ListExperimentsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListExperimentsResponse, CommonAwsError>;
   listFeatureGroups(
     input: ListFeatureGroupsRequest,
-  ): Effect.Effect<
-    ListFeatureGroupsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListFeatureGroupsResponse, CommonAwsError>;
   listFlowDefinitions(
     input: ListFlowDefinitionsRequest,
-  ): Effect.Effect<
-    ListFlowDefinitionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListFlowDefinitionsResponse, CommonAwsError>;
+  listHubContents(
+    input: ListHubContentsRequest,
+  ): Effect.Effect<ListHubContentsResponse, ResourceNotFound | CommonAwsError>;
   listHubContentVersions(
     input: ListHubContentVersionsRequest,
   ): Effect.Effect<
     ListHubContentVersionsResponse,
     ResourceNotFound | CommonAwsError
   >;
-  listHubContents(
-    input: ListHubContentsRequest,
-  ): Effect.Effect<
-    ListHubContentsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
   listHubs(
     input: ListHubsRequest,
-  ): Effect.Effect<
-    ListHubsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListHubsResponse, CommonAwsError>;
   listHumanTaskUis(
     input: ListHumanTaskUisRequest,
-  ): Effect.Effect<
-    ListHumanTaskUisResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListHumanTaskUisResponse, CommonAwsError>;
   listHyperParameterTuningJobs(
     input: ListHyperParameterTuningJobsRequest,
-  ): Effect.Effect<
-    ListHyperParameterTuningJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListHyperParameterTuningJobsResponse, CommonAwsError>;
+  listImages(
+    input: ListImagesRequest,
+  ): Effect.Effect<ListImagesResponse, CommonAwsError>;
   listImageVersions(
     input: ListImageVersionsRequest,
   ): Effect.Effect<
     ListImageVersionsResponse,
     ResourceNotFound | CommonAwsError
   >;
-  listImages(
-    input: ListImagesRequest,
-  ): Effect.Effect<
-    ListImagesResponse,
-    CommonAwsError
-  >;
   listInferenceComponents(
     input: ListInferenceComponentsInput,
-  ): Effect.Effect<
-    ListInferenceComponentsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListInferenceComponentsOutput, CommonAwsError>;
   listInferenceExperiments(
     input: ListInferenceExperimentsRequest,
-  ): Effect.Effect<
-    ListInferenceExperimentsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListInferenceExperimentsResponse, CommonAwsError>;
+  listInferenceRecommendationsJobs(
+    input: ListInferenceRecommendationsJobsRequest,
+  ): Effect.Effect<ListInferenceRecommendationsJobsResponse, CommonAwsError>;
   listInferenceRecommendationsJobSteps(
     input: ListInferenceRecommendationsJobStepsRequest,
   ): Effect.Effect<
     ListInferenceRecommendationsJobStepsResponse,
     ResourceNotFound | CommonAwsError
   >;
-  listInferenceRecommendationsJobs(
-    input: ListInferenceRecommendationsJobsRequest,
-  ): Effect.Effect<
-    ListInferenceRecommendationsJobsResponse,
-    CommonAwsError
-  >;
   listLabelingJobs(
     input: ListLabelingJobsRequest,
-  ): Effect.Effect<
-    ListLabelingJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListLabelingJobsResponse, CommonAwsError>;
   listLabelingJobsForWorkteam(
     input: ListLabelingJobsForWorkteamRequest,
   ): Effect.Effect<
@@ -1468,39 +1111,24 @@ export interface SageMaker {
   >;
   listLineageGroups(
     input: ListLineageGroupsRequest,
-  ): Effect.Effect<
-    ListLineageGroupsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListLineageGroupsResponse, CommonAwsError>;
   listMlflowTrackingServers(
     input: ListMlflowTrackingServersRequest,
-  ): Effect.Effect<
-    ListMlflowTrackingServersResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListMlflowTrackingServersResponse, CommonAwsError>;
   listModelBiasJobDefinitions(
     input: ListModelBiasJobDefinitionsRequest,
-  ): Effect.Effect<
-    ListModelBiasJobDefinitionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelBiasJobDefinitionsResponse, CommonAwsError>;
   listModelCardExportJobs(
     input: ListModelCardExportJobsRequest,
-  ): Effect.Effect<
-    ListModelCardExportJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelCardExportJobsResponse, CommonAwsError>;
+  listModelCards(
+    input: ListModelCardsRequest,
+  ): Effect.Effect<ListModelCardsResponse, CommonAwsError>;
   listModelCardVersions(
     input: ListModelCardVersionsRequest,
   ): Effect.Effect<
     ListModelCardVersionsResponse,
     ResourceNotFound | CommonAwsError
-  >;
-  listModelCards(
-    input: ListModelCardsRequest,
-  ): Effect.Effect<
-    ListModelCardsResponse,
-    CommonAwsError
   >;
   listModelExplainabilityJobDefinitions(
     input: ListModelExplainabilityJobDefinitionsRequest,
@@ -1510,34 +1138,19 @@ export interface SageMaker {
   >;
   listModelMetadata(
     input: ListModelMetadataRequest,
-  ): Effect.Effect<
-    ListModelMetadataResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelMetadataResponse, CommonAwsError>;
   listModelPackageGroups(
     input: ListModelPackageGroupsInput,
-  ): Effect.Effect<
-    ListModelPackageGroupsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelPackageGroupsOutput, CommonAwsError>;
   listModelPackages(
     input: ListModelPackagesInput,
-  ): Effect.Effect<
-    ListModelPackagesOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelPackagesOutput, CommonAwsError>;
   listModelQualityJobDefinitions(
     input: ListModelQualityJobDefinitionsRequest,
-  ): Effect.Effect<
-    ListModelQualityJobDefinitionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelQualityJobDefinitionsResponse, CommonAwsError>;
   listModels(
     input: ListModelsInput,
-  ): Effect.Effect<
-    ListModelsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListModelsOutput, CommonAwsError>;
   listMonitoringAlertHistory(
     input: ListMonitoringAlertHistoryRequest,
   ): Effect.Effect<
@@ -1552,50 +1165,32 @@ export interface SageMaker {
   >;
   listMonitoringExecutions(
     input: ListMonitoringExecutionsRequest,
-  ): Effect.Effect<
-    ListMonitoringExecutionsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListMonitoringExecutionsResponse, CommonAwsError>;
   listMonitoringSchedules(
     input: ListMonitoringSchedulesRequest,
-  ): Effect.Effect<
-    ListMonitoringSchedulesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListMonitoringSchedulesResponse, CommonAwsError>;
   listNotebookInstanceLifecycleConfigs(
     input: ListNotebookInstanceLifecycleConfigsInput,
-  ): Effect.Effect<
-    ListNotebookInstanceLifecycleConfigsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListNotebookInstanceLifecycleConfigsOutput, CommonAwsError>;
   listNotebookInstances(
     input: ListNotebookInstancesInput,
-  ): Effect.Effect<
-    ListNotebookInstancesOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListNotebookInstancesOutput, CommonAwsError>;
   listOptimizationJobs(
     input: ListOptimizationJobsRequest,
-  ): Effect.Effect<
-    ListOptimizationJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListOptimizationJobsResponse, CommonAwsError>;
   listPartnerApps(
     input: ListPartnerAppsRequest,
+  ): Effect.Effect<ListPartnerAppsResponse, CommonAwsError>;
+  listPipelineExecutions(
+    input: ListPipelineExecutionsRequest,
   ): Effect.Effect<
-    ListPartnerAppsResponse,
-    CommonAwsError
+    ListPipelineExecutionsResponse,
+    ResourceNotFound | CommonAwsError
   >;
   listPipelineExecutionSteps(
     input: ListPipelineExecutionStepsRequest,
   ): Effect.Effect<
     ListPipelineExecutionStepsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
-  listPipelineExecutions(
-    input: ListPipelineExecutionsRequest,
-  ): Effect.Effect<
-    ListPipelineExecutionsResponse,
     ResourceNotFound | CommonAwsError
   >;
   listPipelineParametersForExecution(
@@ -1606,40 +1201,22 @@ export interface SageMaker {
   >;
   listPipelines(
     input: ListPipelinesRequest,
-  ): Effect.Effect<
-    ListPipelinesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListPipelinesResponse, CommonAwsError>;
   listProcessingJobs(
     input: ListProcessingJobsRequest,
-  ): Effect.Effect<
-    ListProcessingJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListProcessingJobsResponse, CommonAwsError>;
   listProjects(
     input: ListProjectsInput,
-  ): Effect.Effect<
-    ListProjectsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListProjectsOutput, CommonAwsError>;
   listResourceCatalogs(
     input: ListResourceCatalogsRequest,
-  ): Effect.Effect<
-    ListResourceCatalogsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListResourceCatalogsResponse, CommonAwsError>;
   listSpaces(
     input: ListSpacesRequest,
-  ): Effect.Effect<
-    ListSpacesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListSpacesResponse, CommonAwsError>;
   listStageDevices(
     input: ListStageDevicesRequest,
-  ): Effect.Effect<
-    ListStageDevicesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListStageDevicesResponse, CommonAwsError>;
   listStudioLifecycleConfigs(
     input: ListStudioLifecycleConfigsRequest,
   ): Effect.Effect<
@@ -1648,22 +1225,11 @@ export interface SageMaker {
   >;
   listSubscribedWorkteams(
     input: ListSubscribedWorkteamsRequest,
-  ): Effect.Effect<
-    ListSubscribedWorkteamsResponse,
-    CommonAwsError
-  >;
-  listTags(
-    input: ListTagsInput,
-  ): Effect.Effect<
-    ListTagsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListSubscribedWorkteamsResponse, CommonAwsError>;
+  listTags(input: ListTagsInput): Effect.Effect<ListTagsOutput, CommonAwsError>;
   listTrainingJobs(
     input: ListTrainingJobsRequest,
-  ): Effect.Effect<
-    ListTrainingJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListTrainingJobsResponse, CommonAwsError>;
   listTrainingJobsForHyperParameterTuningJob(
     input: ListTrainingJobsForHyperParameterTuningJobRequest,
   ): Effect.Effect<
@@ -1672,16 +1238,10 @@ export interface SageMaker {
   >;
   listTrainingPlans(
     input: ListTrainingPlansRequest,
-  ): Effect.Effect<
-    ListTrainingPlansResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListTrainingPlansResponse, CommonAwsError>;
   listTransformJobs(
     input: ListTransformJobsRequest,
-  ): Effect.Effect<
-    ListTransformJobsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListTransformJobsResponse, CommonAwsError>;
   listTrialComponents(
     input: ListTrialComponentsRequest,
   ): Effect.Effect<
@@ -1690,28 +1250,16 @@ export interface SageMaker {
   >;
   listTrials(
     input: ListTrialsRequest,
-  ): Effect.Effect<
-    ListTrialsResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<ListTrialsResponse, ResourceNotFound | CommonAwsError>;
   listUserProfiles(
     input: ListUserProfilesRequest,
-  ): Effect.Effect<
-    ListUserProfilesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListUserProfilesResponse, CommonAwsError>;
   listWorkforces(
     input: ListWorkforcesRequest,
-  ): Effect.Effect<
-    ListWorkforcesResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListWorkforcesResponse, CommonAwsError>;
   listWorkteams(
     input: ListWorkteamsRequest,
-  ): Effect.Effect<
-    ListWorkteamsResponse,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListWorkteamsResponse, CommonAwsError>;
   putModelPackageGroupPolicy(
     input: PutModelPackageGroupPolicyInput,
   ): Effect.Effect<
@@ -1720,34 +1268,23 @@ export interface SageMaker {
   >;
   queryLineage(
     input: QueryLineageRequest,
-  ): Effect.Effect<
-    QueryLineageResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<QueryLineageResponse, ResourceNotFound | CommonAwsError>;
   registerDevices(
     input: RegisterDevicesRequest,
-  ): Effect.Effect<
-    {},
-    ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceLimitExceeded | CommonAwsError>;
   renderUiTemplate(
     input: RenderUiTemplateRequest,
-  ): Effect.Effect<
-    RenderUiTemplateResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<RenderUiTemplateResponse, ResourceNotFound | CommonAwsError>;
   retryPipelineExecution(
     input: RetryPipelineExecutionRequest,
   ): Effect.Effect<
     RetryPipelineExecutionResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
-  search(
-    input: SearchRequest,
-  ): Effect.Effect<
-    SearchResponse,
-    CommonAwsError
-  >;
+  search(input: SearchRequest): Effect.Effect<SearchResponse, CommonAwsError>;
   searchTrainingPlanOfferings(
     input: SearchTrainingPlanOfferingsRequest,
   ): Effect.Effect<
@@ -1758,20 +1295,23 @@ export interface SageMaker {
     input: SendPipelineExecutionStepFailureRequest,
   ): Effect.Effect<
     SendPipelineExecutionStepFailureResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   sendPipelineExecutionStepSuccess(
     input: SendPipelineExecutionStepSuccessRequest,
   ): Effect.Effect<
     SendPipelineExecutionStepSuccessResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   startEdgeDeploymentStage(
     input: StartEdgeDeploymentStageRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   startInferenceExperiment(
     input: StartInferenceExperimentRequest,
   ): Effect.Effect<
@@ -1786,21 +1326,18 @@ export interface SageMaker {
   >;
   startMonitoringSchedule(
     input: StartMonitoringScheduleRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   startNotebookInstance(
     input: StartNotebookInstanceInput,
-  ): Effect.Effect<
-    {},
-    ResourceLimitExceeded | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceLimitExceeded | CommonAwsError>;
   startPipelineExecution(
     input: StartPipelineExecutionRequest,
   ): Effect.Effect<
     StartPipelineExecutionResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   startSession(
     input: StartSessionRequest,
@@ -1810,34 +1347,19 @@ export interface SageMaker {
   >;
   stopAutoMLJob(
     input: StopAutoMLJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopCompilationJob(
     input: StopCompilationJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopEdgeDeploymentStage(
     input: StopEdgeDeploymentStageRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   stopEdgePackagingJob(
     input: StopEdgePackagingJobRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   stopHyperParameterTuningJob(
     input: StopHyperParameterTuningJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopInferenceExperiment(
     input: StopInferenceExperimentRequest,
   ): Effect.Effect<
@@ -1846,16 +1368,10 @@ export interface SageMaker {
   >;
   stopInferenceRecommendationsJob(
     input: StopInferenceRecommendationsJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopLabelingJob(
     input: StopLabelingJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopMlflowTrackingServer(
     input: StopMlflowTrackingServerRequest,
   ): Effect.Effect<
@@ -1864,22 +1380,13 @@ export interface SageMaker {
   >;
   stopMonitoringSchedule(
     input: StopMonitoringScheduleRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopNotebookInstance(
     input: StopNotebookInstanceInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   stopOptimizationJob(
     input: StopOptimizationJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopPipelineExecution(
     input: StopPipelineExecutionRequest,
   ): Effect.Effect<
@@ -1888,22 +1395,13 @@ export interface SageMaker {
   >;
   stopProcessingJob(
     input: StopProcessingJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopTrainingJob(
     input: StopTrainingJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   stopTransformJob(
     input: StopTransformJobRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   updateAction(
     input: UpdateActionRequest,
   ): Effect.Effect<
@@ -1926,13 +1424,19 @@ export interface SageMaker {
     input: UpdateClusterRequest,
   ): Effect.Effect<
     UpdateClusterResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   updateClusterSchedulerConfig(
     input: UpdateClusterSchedulerConfigRequest,
   ): Effect.Effect<
     UpdateClusterSchedulerConfigResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   updateClusterSoftware(
     input: UpdateClusterSoftwareRequest,
@@ -1950,7 +1454,10 @@ export interface SageMaker {
     input: UpdateComputeQuotaRequest,
   ): Effect.Effect<
     UpdateComputeQuotaResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   updateContext(
     input: UpdateContextRequest,
@@ -1960,16 +1467,8 @@ export interface SageMaker {
   >;
   updateDeviceFleet(
     input: UpdateDeviceFleetRequest,
-  ): Effect.Effect<
-    {},
-    ResourceInUse | CommonAwsError
-  >;
-  updateDevices(
-    input: UpdateDevicesRequest,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceInUse | CommonAwsError>;
+  updateDevices(input: UpdateDevicesRequest): Effect.Effect<{}, CommonAwsError>;
   updateDomain(
     input: UpdateDomainRequest,
   ): Effect.Effect<
@@ -2002,16 +1501,10 @@ export interface SageMaker {
   >;
   updateFeatureMetadata(
     input: UpdateFeatureMetadataRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<{}, ResourceNotFound | CommonAwsError>;
   updateHub(
     input: UpdateHubRequest,
-  ): Effect.Effect<
-    UpdateHubResponse,
-    ResourceNotFound | CommonAwsError
-  >;
+  ): Effect.Effect<UpdateHubResponse, ResourceNotFound | CommonAwsError>;
   updateHubContent(
     input: UpdateHubContentRequest,
   ): Effect.Effect<
@@ -2058,13 +1551,19 @@ export interface SageMaker {
     input: UpdateMlflowTrackingServerRequest,
   ): Effect.Effect<
     UpdateMlflowTrackingServerResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   updateModelCard(
     input: UpdateModelCardRequest,
   ): Effect.Effect<
     UpdateModelCardResponse,
-    ConflictException | ResourceLimitExceeded | ResourceNotFound | CommonAwsError
+    | ConflictException
+    | ResourceLimitExceeded
+    | ResourceNotFound
+    | CommonAwsError
   >;
   updateModelPackage(
     input: UpdateModelPackageInput,
@@ -2116,10 +1615,7 @@ export interface SageMaker {
   >;
   updateProject(
     input: UpdateProjectInput,
-  ): Effect.Effect<
-    UpdateProjectOutput,
-    ConflictException | CommonAwsError
-  >;
+  ): Effect.Effect<UpdateProjectOutput, ConflictException | CommonAwsError>;
   updateSpace(
     input: UpdateSpaceRequest,
   ): Effect.Effect<
@@ -2152,10 +1648,7 @@ export interface SageMaker {
   >;
   updateWorkforce(
     input: UpdateWorkforceRequest,
-  ): Effect.Effect<
-    UpdateWorkforceResponse,
-    ConflictException | CommonAwsError
-  >;
+  ): Effect.Effect<UpdateWorkforceResponse, ConflictException | CommonAwsError>;
   updateWorkteam(
     input: UpdateWorkteamRequest,
   ): Effect.Effect<
@@ -2179,7 +1672,13 @@ export interface ActionSource {
   SourceType?: string;
   SourceId?: string;
 }
-export type ActionStatus = "UNKNOWN" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type ActionStatus =
+  | "UNKNOWN"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export type ActionSummaries = Array<ActionSummary>;
 export interface ActionSummary {
   ActionArn?: string;
@@ -2210,7 +1709,8 @@ export interface AdditionalInferenceSpecificationDefinition {
   SupportedContentTypes?: Array<string>;
   SupportedResponseMIMETypes?: Array<string>;
 }
-export type AdditionalInferenceSpecifications = Array<AdditionalInferenceSpecificationDefinition>;
+export type AdditionalInferenceSpecifications =
+  Array<AdditionalInferenceSpecificationDefinition>;
 export type AdditionalModelChannelName = string;
 
 export interface AdditionalModelDataSource {
@@ -2237,8 +1737,16 @@ export interface AgentVersion {
   AgentCount: number;
 }
 export type AgentVersions = Array<AgentVersion>;
-export type AggregationTransformations = Record<string, AggregationTransformationValue>;
-export type AggregationTransformationValue = "Sum" | "Avg" | "First" | "Min" | "Max";
+export type AggregationTransformations = Record<
+  string,
+  AggregationTransformationValue
+>;
+export type AggregationTransformationValue =
+  | "Sum"
+  | "Avg"
+  | "First"
+  | "Min"
+  | "Max";
 export interface Alarm {
   AlarmName?: string;
 }
@@ -2263,7 +1771,12 @@ export interface AlgorithmSpecification {
   ContainerArguments?: Array<string>;
   TrainingImageConfig?: TrainingImageConfig;
 }
-export type AlgorithmStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "DELETING";
+export type AlgorithmStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "DELETING";
 export interface AlgorithmStatusDetails {
   ValidationStatuses?: Array<AlgorithmStatusItem>;
   ImageScanStatuses?: Array<AlgorithmStatusItem>;
@@ -2325,8 +1838,173 @@ export interface AppImageConfigDetails {
 export type AppImageConfigList = Array<AppImageConfigDetails>;
 export type AppImageConfigName = string;
 
-export type AppImageConfigSortKey = "CreationTime" | "LastModifiedTime" | "Name";
-export type AppInstanceType = "SYSTEM" | "ML_T3_MICRO" | "ML_T3_SMALL" | "ML_T3_MEDIUM" | "ML_T3_LARGE" | "ML_T3_XLARGE" | "ML_T3_2XLARGE" | "ML_M5_LARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_8XLARGE" | "ML_M5_12XLARGE" | "ML_M5_16XLARGE" | "ML_M5_24XLARGE" | "ML_M5D_LARGE" | "ML_M5D_XLARGE" | "ML_M5D_2XLARGE" | "ML_M5D_4XLARGE" | "ML_M5D_8XLARGE" | "ML_M5D_12XLARGE" | "ML_M5D_16XLARGE" | "ML_M5D_24XLARGE" | "ML_C5_LARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_12XLARGE" | "ML_C5_18XLARGE" | "ML_C5_24XLARGE" | "ML_P3_2XLARGE" | "ML_P3_8XLARGE" | "ML_P3_16XLARGE" | "ML_P3DN_24XLARGE" | "ML_G4DN_XLARGE" | "ML_G4DN_2XLARGE" | "ML_G4DN_4XLARGE" | "ML_G4DN_8XLARGE" | "ML_G4DN_12XLARGE" | "ML_G4DN_16XLARGE" | "ML_R5_LARGE" | "ML_R5_XLARGE" | "ML_R5_2XLARGE" | "ML_R5_4XLARGE" | "ML_R5_8XLARGE" | "ML_R5_12XLARGE" | "ML_R5_16XLARGE" | "ML_R5_24XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_16XLARGE" | "ML_G5_12XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_12XLARGE" | "ML_G6_16XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE" | "ML_G6E_XLARGE" | "ML_G6E_2XLARGE" | "ML_G6E_4XLARGE" | "ML_G6E_8XLARGE" | "ML_G6E_12XLARGE" | "ML_G6E_16XLARGE" | "ML_G6E_24XLARGE" | "ML_G6E_48XLARGE" | "ML_GEOSPATIAL_INTERACTIVE" | "ML_P4D_24XLARGE" | "ML_P4DE_24XLARGE" | "ML_TRN1_2XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN1N_32XLARGE" | "ML_P5_48XLARGE" | "ML_P5EN_48XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_C6I_LARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_C7I_LARGE" | "ML_C7I_XLARGE" | "ML_C7I_2XLARGE" | "ML_C7I_4XLARGE" | "ML_C7I_8XLARGE" | "ML_C7I_12XLARGE" | "ML_C7I_16XLARGE" | "ML_C7I_24XLARGE" | "ML_C7I_48XLARGE" | "ML_R6I_LARGE" | "ML_R6I_XLARGE" | "ML_R6I_2XLARGE" | "ML_R6I_4XLARGE" | "ML_R6I_8XLARGE" | "ML_R6I_12XLARGE" | "ML_R6I_16XLARGE" | "ML_R6I_24XLARGE" | "ML_R6I_32XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE" | "ML_M6ID_LARGE" | "ML_M6ID_XLARGE" | "ML_M6ID_2XLARGE" | "ML_M6ID_4XLARGE" | "ML_M6ID_8XLARGE" | "ML_M6ID_12XLARGE" | "ML_M6ID_16XLARGE" | "ML_M6ID_24XLARGE" | "ML_M6ID_32XLARGE" | "ML_C6ID_LARGE" | "ML_C6ID_XLARGE" | "ML_C6ID_2XLARGE" | "ML_C6ID_4XLARGE" | "ML_C6ID_8XLARGE" | "ML_C6ID_12XLARGE" | "ML_C6ID_16XLARGE" | "ML_C6ID_24XLARGE" | "ML_C6ID_32XLARGE" | "ML_R6ID_LARGE" | "ML_R6ID_XLARGE" | "ML_R6ID_2XLARGE" | "ML_R6ID_4XLARGE" | "ML_R6ID_8XLARGE" | "ML_R6ID_12XLARGE" | "ML_R6ID_16XLARGE" | "ML_R6ID_24XLARGE" | "ML_R6ID_32XLARGE";
+export type AppImageConfigSortKey =
+  | "CreationTime"
+  | "LastModifiedTime"
+  | "Name";
+export type AppInstanceType =
+  | "SYSTEM"
+  | "ML_T3_MICRO"
+  | "ML_T3_SMALL"
+  | "ML_T3_MEDIUM"
+  | "ML_T3_LARGE"
+  | "ML_T3_XLARGE"
+  | "ML_T3_2XLARGE"
+  | "ML_M5_LARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_8XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_16XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_M5D_LARGE"
+  | "ML_M5D_XLARGE"
+  | "ML_M5D_2XLARGE"
+  | "ML_M5D_4XLARGE"
+  | "ML_M5D_8XLARGE"
+  | "ML_M5D_12XLARGE"
+  | "ML_M5D_16XLARGE"
+  | "ML_M5D_24XLARGE"
+  | "ML_C5_LARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_12XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_C5_24XLARGE"
+  | "ML_P3_2XLARGE"
+  | "ML_P3_8XLARGE"
+  | "ML_P3_16XLARGE"
+  | "ML_P3DN_24XLARGE"
+  | "ML_G4DN_XLARGE"
+  | "ML_G4DN_2XLARGE"
+  | "ML_G4DN_4XLARGE"
+  | "ML_G4DN_8XLARGE"
+  | "ML_G4DN_12XLARGE"
+  | "ML_G4DN_16XLARGE"
+  | "ML_R5_LARGE"
+  | "ML_R5_XLARGE"
+  | "ML_R5_2XLARGE"
+  | "ML_R5_4XLARGE"
+  | "ML_R5_8XLARGE"
+  | "ML_R5_12XLARGE"
+  | "ML_R5_16XLARGE"
+  | "ML_R5_24XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE"
+  | "ML_G6E_XLARGE"
+  | "ML_G6E_2XLARGE"
+  | "ML_G6E_4XLARGE"
+  | "ML_G6E_8XLARGE"
+  | "ML_G6E_12XLARGE"
+  | "ML_G6E_16XLARGE"
+  | "ML_G6E_24XLARGE"
+  | "ML_G6E_48XLARGE"
+  | "ML_GEOSPATIAL_INTERACTIVE"
+  | "ML_P4D_24XLARGE"
+  | "ML_P4DE_24XLARGE"
+  | "ML_TRN1_2XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN1N_32XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_P5EN_48XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_C6I_LARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_C7I_LARGE"
+  | "ML_C7I_XLARGE"
+  | "ML_C7I_2XLARGE"
+  | "ML_C7I_4XLARGE"
+  | "ML_C7I_8XLARGE"
+  | "ML_C7I_12XLARGE"
+  | "ML_C7I_16XLARGE"
+  | "ML_C7I_24XLARGE"
+  | "ML_C7I_48XLARGE"
+  | "ML_R6I_LARGE"
+  | "ML_R6I_XLARGE"
+  | "ML_R6I_2XLARGE"
+  | "ML_R6I_4XLARGE"
+  | "ML_R6I_8XLARGE"
+  | "ML_R6I_12XLARGE"
+  | "ML_R6I_16XLARGE"
+  | "ML_R6I_24XLARGE"
+  | "ML_R6I_32XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE"
+  | "ML_M6ID_LARGE"
+  | "ML_M6ID_XLARGE"
+  | "ML_M6ID_2XLARGE"
+  | "ML_M6ID_4XLARGE"
+  | "ML_M6ID_8XLARGE"
+  | "ML_M6ID_12XLARGE"
+  | "ML_M6ID_16XLARGE"
+  | "ML_M6ID_24XLARGE"
+  | "ML_M6ID_32XLARGE"
+  | "ML_C6ID_LARGE"
+  | "ML_C6ID_XLARGE"
+  | "ML_C6ID_2XLARGE"
+  | "ML_C6ID_4XLARGE"
+  | "ML_C6ID_8XLARGE"
+  | "ML_C6ID_12XLARGE"
+  | "ML_C6ID_16XLARGE"
+  | "ML_C6ID_24XLARGE"
+  | "ML_C6ID_32XLARGE"
+  | "ML_R6ID_LARGE"
+  | "ML_R6ID_XLARGE"
+  | "ML_R6ID_2XLARGE"
+  | "ML_R6ID_4XLARGE"
+  | "ML_R6ID_8XLARGE"
+  | "ML_R6ID_12XLARGE"
+  | "ML_R6ID_16XLARGE"
+  | "ML_R6ID_24XLARGE"
+  | "ML_R6ID_32XLARGE";
 export interface AppLifecycleManagement {
   IdleSettings?: IdleSettings;
 }
@@ -2345,8 +2023,22 @@ export interface AppSpecification {
   ContainerEntrypoint?: Array<string>;
   ContainerArguments?: Array<string>;
 }
-export type AppStatus = "Deleted" | "Deleting" | "Failed" | "InService" | "Pending";
-export type AppType = "JupyterServer" | "KernelGateway" | "DetailedProfiler" | "TensorBoard" | "CodeEditor" | "JupyterLab" | "RStudioServerPro" | "RSessionGateway" | "Canvas";
+export type AppStatus =
+  | "Deleted"
+  | "Deleting"
+  | "Failed"
+  | "InService"
+  | "Pending";
+export type AppType =
+  | "JupyterServer"
+  | "KernelGateway"
+  | "DetailedProfiler"
+  | "TensorBoard"
+  | "CodeEditor"
+  | "JupyterLab"
+  | "RStudioServerPro"
+  | "RSessionGateway"
+  | "Canvas";
 export type ArnOrName = string;
 
 export type ArtifactArn = string;
@@ -2360,7 +2052,11 @@ export interface ArtifactSource {
   SourceUri: string;
   SourceTypes?: Array<ArtifactSourceType>;
 }
-export type ArtifactSourceIdType = "MD5_HASH" | "S3_ETAG" | "S3_VERSION" | "CUSTOM";
+export type ArtifactSourceIdType =
+  | "MD5_HASH"
+  | "S3_ETAG"
+  | "S3_VERSION"
+  | "CUSTOM";
 export interface ArtifactSourceType {
   SourceIdType: ArtifactSourceIdType;
   Value: string;
@@ -2384,7 +2080,12 @@ export interface AssociateTrialComponentResponse {
   TrialComponentArn?: string;
   TrialArn?: string;
 }
-export type AssociationEdgeType = "CONTRIBUTED_TO" | "ASSOCIATED_WITH" | "DERIVED_FROM" | "PRODUCED" | "SAME_AS";
+export type AssociationEdgeType =
+  | "CONTRIBUTED_TO"
+  | "ASSOCIATED_WITH"
+  | "DERIVED_FROM"
+  | "PRODUCED"
+  | "SAME_AS";
 export type AssociationEntityArn = string;
 
 export type AssociationSummaries = Array<AssociationSummary>;
@@ -2419,7 +2120,9 @@ export interface AsyncInferenceOutputConfig {
   S3FailurePath?: string;
 }
 export type AsyncNotificationTopicTypeList = Array<AsyncNotificationTopicTypes>;
-export type AsyncNotificationTopicTypes = "SUCCESS_NOTIFICATION_TOPIC" | "ERROR_NOTIFICATION_TOPIC";
+export type AsyncNotificationTopicTypes =
+  | "SUCCESS_NOTIFICATION_TOPIC"
+  | "ERROR_NOTIFICATION_TOPIC";
 export type AthenaCatalog = string;
 
 export type AthenaDatabase = string;
@@ -2437,7 +2140,12 @@ export interface AthenaDatasetDefinition {
 export type AthenaQueryString = string;
 
 export type AthenaResultCompressionType = "GZIP" | "SNAPPY" | "ZLIB";
-export type AthenaResultFormat = "PARQUET" | "ORC" | "AVRO" | "JSON" | "TEXTFILE";
+export type AthenaResultFormat =
+  | "PARQUET"
+  | "ORC"
+  | "AVRO"
+  | "JSON"
+  | "TEXTFILE";
 export type AthenaWorkGroup = string;
 
 export type AttributeName = string;
@@ -2456,7 +2164,22 @@ export interface AuthorizedUrl {
 export type AuthorizedUrlConfigs = Array<AuthorizedUrl>;
 export type AutoGenerateEndpointName = boolean;
 
-export type AutoMLAlgorithm = "XGBOOST" | "LINEAR_LEARNER" | "MLP" | "LIGHTGBM" | "CATBOOST" | "RANDOMFOREST" | "EXTRA_TREES" | "NN_TORCH" | "FASTAI" | "CNN_QR" | "DEEPAR" | "PROPHET" | "NPTS" | "ARIMA" | "ETS";
+export type AutoMLAlgorithm =
+  | "XGBOOST"
+  | "LINEAR_LEARNER"
+  | "MLP"
+  | "LIGHTGBM"
+  | "CATBOOST"
+  | "RANDOMFOREST"
+  | "EXTRA_TREES"
+  | "NN_TORCH"
+  | "FASTAI"
+  | "CNN_QR"
+  | "DEEPAR"
+  | "PROPHET"
+  | "NPTS"
+  | "ARIMA"
+  | "ETS";
 export interface AutoMLAlgorithmConfig {
   AutoMLAlgorithms: Array<AutoMLAlgorithm>;
 }
@@ -2474,7 +2197,10 @@ export interface AutoMLCandidate {
   LastModifiedTime: Date | string;
   FailureReason?: string;
   CandidateProperties?: CandidateProperties;
-  InferenceContainerDefinitions?: Record<AutoMLProcessingUnit, Array<AutoMLContainerDefinition>>;
+  InferenceContainerDefinitions?: Record<
+    AutoMLProcessingUnit,
+    Array<AutoMLContainerDefinition>
+  >;
 }
 export interface AutoMLCandidateGenerationConfig {
   FeatureSpecificationS3Uri?: string;
@@ -2512,7 +2238,10 @@ export interface AutoMLDataSplitConfig {
 }
 export type AutoMLFailureReason = string;
 
-export type AutoMLInferenceContainerDefinitions = Record<AutoMLProcessingUnit, Array<AutoMLContainerDefinition>>;
+export type AutoMLInferenceContainerDefinitions = Record<
+  AutoMLProcessingUnit,
+  Array<AutoMLContainerDefinition>
+>;
 export type AutoMLInputDataConfig = Array<AutoMLChannel>;
 export type AutoMLJobArn = string;
 
@@ -2545,8 +2274,32 @@ export interface AutoMLJobObjective {
   MetricName: AutoMLMetricEnum;
 }
 export type AutoMLJobObjectiveType = "MAXIMIZE" | "MINIMIZE";
-export type AutoMLJobSecondaryStatus = "STARTING" | "MAX_CANDIDATES_REACHED" | "FAILED" | "STOPPED" | "MAX_AUTO_ML_JOB_RUNTIME_REACHED" | "STOPPING" | "CANDIDATE_DEFINITIONS_GENERATED" | "COMPLETED" | "EXPLAINABILITY_ERROR" | "DEPLOYING_MODEL" | "MODEL_DEPLOYMENT_ERROR" | "GENERATING_MODEL_INSIGHTS_REPORT" | "MODEL_INSIGHTS_ERROR" | "ANALYZING_DATA" | "FEATURE_ENGINEERING" | "MODEL_TUNING" | "GENERATING_EXPLAINABILITY_REPORT" | "TRAINING_MODELS" | "PRE_TRAINING";
-export type AutoMLJobStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED" | "STOPPED" | "STOPPING";
+export type AutoMLJobSecondaryStatus =
+  | "STARTING"
+  | "MAX_CANDIDATES_REACHED"
+  | "FAILED"
+  | "STOPPED"
+  | "MAX_AUTO_ML_JOB_RUNTIME_REACHED"
+  | "STOPPING"
+  | "CANDIDATE_DEFINITIONS_GENERATED"
+  | "COMPLETED"
+  | "EXPLAINABILITY_ERROR"
+  | "DEPLOYING_MODEL"
+  | "MODEL_DEPLOYMENT_ERROR"
+  | "GENERATING_MODEL_INSIGHTS_REPORT"
+  | "MODEL_INSIGHTS_ERROR"
+  | "ANALYZING_DATA"
+  | "FEATURE_ENGINEERING"
+  | "MODEL_TUNING"
+  | "GENERATING_EXPLAINABILITY_REPORT"
+  | "TRAINING_MODELS"
+  | "PRE_TRAINING";
+export type AutoMLJobStatus =
+  | "COMPLETED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "STOPPED"
+  | "STOPPING";
 export interface AutoMLJobStepMetadata {
   Arn?: string;
 }
@@ -2566,8 +2319,51 @@ export type AutoMLMaxResults = number;
 
 export type AutoMLMaxResultsForTrials = number;
 
-export type AutoMLMetricEnum = "ACCURACY" | "MSE" | "F1" | "F1_MACRO" | "AUC" | "RMSE" | "BALANCED_ACCURACY" | "R2" | "RECALL" | "RECALL_MACRO" | "PRECISION" | "PRECISION_MACRO" | "MAE" | "MAPE" | "MASE" | "WAPE" | "AVERAGE_WEIGHTED_QUANTILE_LOSS";
-export type AutoMLMetricExtendedEnum = "ACCURACY" | "MSE" | "F1" | "F1_MACRO" | "AUC" | "RMSE" | "MAE" | "R2" | "BALANCED_ACCURACY" | "PRECISION" | "PRECISION_MACRO" | "RECALL" | "RECALL_MACRO" | "LogLoss" | "INFERENCE_LATENCY" | "MAPE" | "MASE" | "WAPE" | "AVERAGE_WEIGHTED_QUANTILE_LOSS" | "ROUGE1" | "ROUGE2" | "ROUGEL" | "ROUGEL_SUM" | "PERPLEXITY" | "VALIDATION_LOSS" | "TRAINING_LOSS";
+export type AutoMLMetricEnum =
+  | "ACCURACY"
+  | "MSE"
+  | "F1"
+  | "F1_MACRO"
+  | "AUC"
+  | "RMSE"
+  | "BALANCED_ACCURACY"
+  | "R2"
+  | "RECALL"
+  | "RECALL_MACRO"
+  | "PRECISION"
+  | "PRECISION_MACRO"
+  | "MAE"
+  | "MAPE"
+  | "MASE"
+  | "WAPE"
+  | "AVERAGE_WEIGHTED_QUANTILE_LOSS";
+export type AutoMLMetricExtendedEnum =
+  | "ACCURACY"
+  | "MSE"
+  | "F1"
+  | "F1_MACRO"
+  | "AUC"
+  | "RMSE"
+  | "MAE"
+  | "R2"
+  | "BALANCED_ACCURACY"
+  | "PRECISION"
+  | "PRECISION_MACRO"
+  | "RECALL"
+  | "RECALL_MACRO"
+  | "LogLoss"
+  | "INFERENCE_LATENCY"
+  | "MAPE"
+  | "MASE"
+  | "WAPE"
+  | "AVERAGE_WEIGHTED_QUANTILE_LOSS"
+  | "ROUGE1"
+  | "ROUGE2"
+  | "ROUGEL"
+  | "ROUGEL_SUM"
+  | "PERPLEXITY"
+  | "VALIDATION_LOSS"
+  | "TRAINING_LOSS";
 export type AutoMLMode = "AUTO" | "ENSEMBLING" | "HYPERPARAMETER_TUNING";
 export type AutoMLNameContains = string;
 
@@ -2579,9 +2375,21 @@ export interface AutoMLPartialFailureReason {
   PartialFailureMessage?: string;
 }
 export type AutoMLPartialFailureReasons = Array<AutoMLPartialFailureReason>;
-export type AutoMLProblemTypeConfig = { ImageClassificationJobConfig: ImageClassificationJobConfig } | { TextClassificationJobConfig: TextClassificationJobConfig } | { TimeSeriesForecastingJobConfig: TimeSeriesForecastingJobConfig } | { TabularJobConfig: TabularJobConfig } | { TextGenerationJobConfig: TextGenerationJobConfig };
-export type AutoMLProblemTypeConfigName = "IMAGE_CLASSIFICATION" | "TEXT_CLASSIFICATION" | "TIMESERIES_FORECASTING" | "TABULAR" | "TEXT_GENERATION";
-export type AutoMLProblemTypeResolvedAttributes = { TabularResolvedAttributes: TabularResolvedAttributes } | { TextGenerationResolvedAttributes: TextGenerationResolvedAttributes };
+export type AutoMLProblemTypeConfig =
+  | { ImageClassificationJobConfig: ImageClassificationJobConfig }
+  | { TextClassificationJobConfig: TextClassificationJobConfig }
+  | { TimeSeriesForecastingJobConfig: TimeSeriesForecastingJobConfig }
+  | { TabularJobConfig: TabularJobConfig }
+  | { TextGenerationJobConfig: TextGenerationJobConfig };
+export type AutoMLProblemTypeConfigName =
+  | "IMAGE_CLASSIFICATION"
+  | "TEXT_CLASSIFICATION"
+  | "TIMESERIES_FORECASTING"
+  | "TABULAR"
+  | "TEXT_GENERATION";
+export type AutoMLProblemTypeResolvedAttributes =
+  | { TabularResolvedAttributes: TabularResolvedAttributes }
+  | { TextGenerationResolvedAttributes: TextGenerationResolvedAttributes };
 export type AutoMLProcessingUnit = "CPU" | "GPU";
 export interface AutoMLResolvedAttributes {
   AutoMLJobObjective?: AutoMLJobObjective;
@@ -2592,7 +2400,10 @@ export interface AutoMLS3DataSource {
   S3DataType: AutoMLS3DataType;
   S3Uri: string;
 }
-export type AutoMLS3DataType = "MANIFEST_FILE" | "S3_PREFIX" | "AUGMENTED_MANIFEST_FILE";
+export type AutoMLS3DataType =
+  | "MANIFEST_FILE"
+  | "S3_PREFIX"
+  | "AUGMENTED_MANIFEST_FILE";
 export interface AutoMLSecurityConfig {
   VolumeKmsKeyId?: string;
   EnableInterContainerTrafficEncryption?: boolean;
@@ -2618,7 +2429,9 @@ export type AvailabilityZone = string;
 
 export type AvailableInstanceCount = number;
 
-export type AwsManagedHumanLoopRequestSource = "REKOGNITION_DETECT_MODERATION_LABELS_IMAGE_V3" | "TEXTRACT_ANALYZE_DOCUMENT_FORMS_V1";
+export type AwsManagedHumanLoopRequestSource =
+  | "REKOGNITION_DETECT_MODERATION_LABELS_IMAGE_V3"
+  | "TEXTRACT_ANALYZE_DOCUMENT_FORMS_V1";
 export type BacktestResultsLocation = string;
 
 export type BaseModelName = string;
@@ -2633,8 +2446,12 @@ export interface BatchDeleteClusterNodesError {
   Message: string;
   NodeId: string;
 }
-export type BatchDeleteClusterNodesErrorCode = "NODE_ID_NOT_FOUND" | "INVALID_NODE_STATUS" | "NODE_ID_IN_USE";
-export type BatchDeleteClusterNodesErrorList = Array<BatchDeleteClusterNodesError>;
+export type BatchDeleteClusterNodesErrorCode =
+  | "NODE_ID_NOT_FOUND"
+  | "INVALID_NODE_STATUS"
+  | "NODE_ID_IN_USE";
+export type BatchDeleteClusterNodesErrorList =
+  Array<BatchDeleteClusterNodesError>;
 export interface BatchDeleteClusterNodesRequest {
   ClusterName: string;
   NodeIds: Array<string>;
@@ -2647,13 +2464,19 @@ export interface BatchDescribeModelPackageError {
   ErrorCode: string;
   ErrorResponse: string;
 }
-export type BatchDescribeModelPackageErrorMap = Record<string, BatchDescribeModelPackageError>;
+export type BatchDescribeModelPackageErrorMap = Record<
+  string,
+  BatchDescribeModelPackageError
+>;
 export interface BatchDescribeModelPackageInput {
   ModelPackageArnList: Array<string>;
 }
 export interface BatchDescribeModelPackageOutput {
   ModelPackageSummaries?: Record<string, BatchDescribeModelPackageSummary>;
-  BatchDescribeModelPackageErrorMap?: Record<string, BatchDescribeModelPackageError>;
+  BatchDescribeModelPackageErrorMap?: Record<
+    string,
+    BatchDescribeModelPackageError
+  >;
 }
 export interface BatchDescribeModelPackageSummary {
   ModelPackageGroupName: string;
@@ -2730,8 +2553,16 @@ export interface CandidateProperties {
   CandidateArtifactLocations?: CandidateArtifactLocations;
   CandidateMetrics?: Array<MetricDatum>;
 }
-export type CandidateSortBy = "CreationTime" | "Status" | "FinalObjectiveMetricValue";
-export type CandidateStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED" | "STOPPED" | "STOPPING";
+export type CandidateSortBy =
+  | "CreationTime"
+  | "Status"
+  | "FinalObjectiveMetricValue";
+export type CandidateStatus =
+  | "COMPLETED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "STOPPED"
+  | "STOPPING";
 export type CandidateStepArn = string;
 
 export type CandidateStepName = string;
@@ -2950,7 +2781,67 @@ export interface ClarifyTextConfig {
   Granularity: ClarifyTextGranularity;
 }
 export type ClarifyTextGranularity = "TOKEN" | "SENTENCE" | "PARAGRAPH";
-export type ClarifyTextLanguage = "AFRIKAANS" | "ALBANIAN" | "ARABIC" | "ARMENIAN" | "BASQUE" | "BENGALI" | "BULGARIAN" | "CATALAN" | "CHINESE" | "CROATIAN" | "CZECH" | "DANISH" | "DUTCH" | "ENGLISH" | "ESTONIAN" | "FINNISH" | "FRENCH" | "GERMAN" | "GREEK" | "GUJARATI" | "HEBREW" | "HINDI" | "HUNGARIAN" | "ICELANDIC" | "INDONESIAN" | "IRISH" | "ITALIAN" | "KANNADA" | "KYRGYZ" | "LATVIAN" | "LITHUANIAN" | "LUXEMBOURGISH" | "MACEDONIAN" | "MALAYALAM" | "MARATHI" | "NEPALI" | "NORWEGIAN_BOKMAL" | "PERSIAN" | "POLISH" | "PORTUGUESE" | "ROMANIAN" | "RUSSIAN" | "SANSKRIT" | "SERBIAN" | "SETSWANA" | "SINHALA" | "SLOVAK" | "SLOVENIAN" | "SPANISH" | "SWEDISH" | "TAGALOG" | "TAMIL" | "TATAR" | "TELUGU" | "TURKISH" | "UKRAINIAN" | "URDU" | "YORUBA" | "LIGURIAN" | "MULTI_LANGUAGE";
+export type ClarifyTextLanguage =
+  | "AFRIKAANS"
+  | "ALBANIAN"
+  | "ARABIC"
+  | "ARMENIAN"
+  | "BASQUE"
+  | "BENGALI"
+  | "BULGARIAN"
+  | "CATALAN"
+  | "CHINESE"
+  | "CROATIAN"
+  | "CZECH"
+  | "DANISH"
+  | "DUTCH"
+  | "ENGLISH"
+  | "ESTONIAN"
+  | "FINNISH"
+  | "FRENCH"
+  | "GERMAN"
+  | "GREEK"
+  | "GUJARATI"
+  | "HEBREW"
+  | "HINDI"
+  | "HUNGARIAN"
+  | "ICELANDIC"
+  | "INDONESIAN"
+  | "IRISH"
+  | "ITALIAN"
+  | "KANNADA"
+  | "KYRGYZ"
+  | "LATVIAN"
+  | "LITHUANIAN"
+  | "LUXEMBOURGISH"
+  | "MACEDONIAN"
+  | "MALAYALAM"
+  | "MARATHI"
+  | "NEPALI"
+  | "NORWEGIAN_BOKMAL"
+  | "PERSIAN"
+  | "POLISH"
+  | "PORTUGUESE"
+  | "ROMANIAN"
+  | "RUSSIAN"
+  | "SANSKRIT"
+  | "SERBIAN"
+  | "SETSWANA"
+  | "SINHALA"
+  | "SLOVAK"
+  | "SLOVENIAN"
+  | "SPANISH"
+  | "SWEDISH"
+  | "TAGALOG"
+  | "TAMIL"
+  | "TATAR"
+  | "TELUGU"
+  | "TURKISH"
+  | "UKRAINIAN"
+  | "URDU"
+  | "YORUBA"
+  | "LIGURIAN"
+  | "MULTI_LANGUAGE";
 export type ClientId = string;
 
 export type ClientSecret = string;
@@ -2986,7 +2877,8 @@ export interface ClusterInstanceGroupDetails {
   OverrideVpcConfig?: VpcConfig;
   ScheduledUpdateConfig?: ScheduledUpdateConfig;
 }
-export type ClusterInstanceGroupDetailsList = Array<ClusterInstanceGroupDetails>;
+export type ClusterInstanceGroupDetailsList =
+  Array<ClusterInstanceGroupDetails>;
 export type ClusterInstanceGroupName = string;
 
 export interface ClusterInstanceGroupSpecification {
@@ -3002,20 +2894,141 @@ export interface ClusterInstanceGroupSpecification {
   OverrideVpcConfig?: VpcConfig;
   ScheduledUpdateConfig?: ScheduledUpdateConfig;
 }
-export type ClusterInstanceGroupSpecifications = Array<ClusterInstanceGroupSpecification>;
+export type ClusterInstanceGroupSpecifications =
+  Array<ClusterInstanceGroupSpecification>;
 export type ClusterInstanceGroupsToDelete = Array<string>;
 export interface ClusterInstancePlacement {
   AvailabilityZone?: string;
   AvailabilityZoneId?: string;
 }
-export type ClusterInstanceStatus = "RUNNING" | "FAILURE" | "PENDING" | "SHUTTING_DOWN" | "SYSTEM_UPDATING" | "DEEP_HEALTH_CHECK_IN_PROGRESS";
+export type ClusterInstanceStatus =
+  | "RUNNING"
+  | "FAILURE"
+  | "PENDING"
+  | "SHUTTING_DOWN"
+  | "SYSTEM_UPDATING"
+  | "DEEP_HEALTH_CHECK_IN_PROGRESS";
 export interface ClusterInstanceStatusDetails {
   Status: ClusterInstanceStatus;
   Message?: string;
 }
-export type ClusterInstanceStorageConfig = { EbsVolumeConfig: ClusterEbsVolumeConfig };
+export type ClusterInstanceStorageConfig = {
+  EbsVolumeConfig: ClusterEbsVolumeConfig;
+};
 export type ClusterInstanceStorageConfigs = Array<ClusterInstanceStorageConfig>;
-export type ClusterInstanceType = "ML_P4D_24XLARGE" | "ML_P4DE_24XLARGE" | "ML_P5_48XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN1N_32XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_12XLARGE" | "ML_G5_16XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_C5_LARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_12XLARGE" | "ML_C5_18XLARGE" | "ML_C5_24XLARGE" | "ML_C5N_LARGE" | "ML_C5N_2XLARGE" | "ML_C5N_4XLARGE" | "ML_C5N_9XLARGE" | "ML_C5N_18XLARGE" | "ML_M5_LARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_8XLARGE" | "ML_M5_12XLARGE" | "ML_M5_16XLARGE" | "ML_M5_24XLARGE" | "ML_T3_MEDIUM" | "ML_T3_LARGE" | "ML_T3_XLARGE" | "ML_T3_2XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_16XLARGE" | "ML_G6_12XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE" | "ML_GR6_4XLARGE" | "ML_GR6_8XLARGE" | "ML_G6E_XLARGE" | "ML_G6E_2XLARGE" | "ML_G6E_4XLARGE" | "ML_G6E_8XLARGE" | "ML_G6E_16XLARGE" | "ML_G6E_12XLARGE" | "ML_G6E_24XLARGE" | "ML_G6E_48XLARGE" | "ML_P5E_48XLARGE" | "ML_P5EN_48XLARGE" | "ML_P6_B200_48XLARGE" | "ML_TRN2_48XLARGE" | "ML_C6I_LARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_R6I_LARGE" | "ML_R6I_XLARGE" | "ML_R6I_2XLARGE" | "ML_R6I_4XLARGE" | "ML_R6I_8XLARGE" | "ML_R6I_12XLARGE" | "ML_R6I_16XLARGE" | "ML_R6I_24XLARGE" | "ML_R6I_32XLARGE" | "ML_I3EN_LARGE" | "ML_I3EN_XLARGE" | "ML_I3EN_2XLARGE" | "ML_I3EN_3XLARGE" | "ML_I3EN_6XLARGE" | "ML_I3EN_12XLARGE" | "ML_I3EN_24XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE";
+export type ClusterInstanceType =
+  | "ML_P4D_24XLARGE"
+  | "ML_P4DE_24XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN1N_32XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_C5_LARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_12XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_C5_24XLARGE"
+  | "ML_C5N_LARGE"
+  | "ML_C5N_2XLARGE"
+  | "ML_C5N_4XLARGE"
+  | "ML_C5N_9XLARGE"
+  | "ML_C5N_18XLARGE"
+  | "ML_M5_LARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_8XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_16XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_T3_MEDIUM"
+  | "ML_T3_LARGE"
+  | "ML_T3_XLARGE"
+  | "ML_T3_2XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE"
+  | "ML_GR6_4XLARGE"
+  | "ML_GR6_8XLARGE"
+  | "ML_G6E_XLARGE"
+  | "ML_G6E_2XLARGE"
+  | "ML_G6E_4XLARGE"
+  | "ML_G6E_8XLARGE"
+  | "ML_G6E_16XLARGE"
+  | "ML_G6E_12XLARGE"
+  | "ML_G6E_24XLARGE"
+  | "ML_G6E_48XLARGE"
+  | "ML_P5E_48XLARGE"
+  | "ML_P5EN_48XLARGE"
+  | "ML_P6_B200_48XLARGE"
+  | "ML_TRN2_48XLARGE"
+  | "ML_C6I_LARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_R6I_LARGE"
+  | "ML_R6I_XLARGE"
+  | "ML_R6I_2XLARGE"
+  | "ML_R6I_4XLARGE"
+  | "ML_R6I_8XLARGE"
+  | "ML_R6I_12XLARGE"
+  | "ML_R6I_16XLARGE"
+  | "ML_R6I_24XLARGE"
+  | "ML_R6I_32XLARGE"
+  | "ML_I3EN_LARGE"
+  | "ML_I3EN_XLARGE"
+  | "ML_I3EN_2XLARGE"
+  | "ML_I3EN_3XLARGE"
+  | "ML_I3EN_6XLARGE"
+  | "ML_I3EN_12XLARGE"
+  | "ML_I3EN_24XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE";
 export interface ClusterLifeCycleConfig {
   SourceS3Uri: string;
   OnCreate: string;
@@ -3083,11 +3096,19 @@ export interface ClusterSchedulerConfigSummary {
   Status: SchedulerResourceStatus;
   ClusterArn?: string;
 }
-export type ClusterSchedulerConfigSummaryList = Array<ClusterSchedulerConfigSummary>;
+export type ClusterSchedulerConfigSummaryList =
+  Array<ClusterSchedulerConfigSummary>;
 export type ClusterSchedulerPriorityClassName = string;
 
 export type ClusterSortBy = "CREATION_TIME" | "NAME";
-export type ClusterStatus = "CREATING" | "DELETING" | "FAILED" | "INSERVICE" | "ROLLINGBACK" | "SYSTEMUPDATING" | "UPDATING";
+export type ClusterStatus =
+  | "CREATING"
+  | "DELETING"
+  | "FAILED"
+  | "INSERVICE"
+  | "ROLLINGBACK"
+  | "SYSTEMUPDATING"
+  | "UPDATING";
 export type ClusterSummaries = Array<ClusterSummary>;
 export interface ClusterSummary {
   ClusterArn: string;
@@ -3121,7 +3142,10 @@ export type CodeRepositoryNameContains = string;
 
 export type CodeRepositoryNameOrUrl = string;
 
-export type CodeRepositorySortBy = "NAME" | "CREATION_TIME" | "LAST_MODIFIED_TIME";
+export type CodeRepositorySortBy =
+  | "NAME"
+  | "CREATION_TIME"
+  | "LAST_MODIFIED_TIME";
 export type CodeRepositorySortOrder = "ASCENDING" | "DESCENDING";
 export interface CodeRepositorySummary {
   CodeRepositoryName: string;
@@ -3156,7 +3180,13 @@ export type CollectionParameters = Record<string, string>;
 export type CollectionType = "LIST" | "SET" | "VECTOR";
 export type CompilationJobArn = string;
 
-export type CompilationJobStatus = "INPROGRESS" | "COMPLETED" | "FAILED" | "STARTING" | "STOPPING" | "STOPPED";
+export type CompilationJobStatus =
+  | "INPROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STARTING"
+  | "STOPPING"
+  | "STOPPED";
 export type CompilationJobSummaries = Array<CompilationJobSummary>;
 export interface CompilationJobSummary {
   CompilationJobName: string;
@@ -3253,7 +3283,9 @@ export type ContainerHostname = string;
 export type ContainerImage = string;
 
 export type ContainerMode = "SINGLE_MODEL" | "MULTI_MODEL";
-export type ContentClassifier = "FREE_OF_PERSONALLY_IDENTIFIABLE_INFORMATION" | "FREE_OF_ADULT_CONTENT";
+export type ContentClassifier =
+  | "FREE_OF_PERSONALLY_IDENTIFIABLE_INFORMATION"
+  | "FREE_OF_ADULT_CONTENT";
 export type ContentClassifiers = Array<ContentClassifier>;
 export type ContentColumn = string;
 
@@ -4146,8 +4178,12 @@ export type CustomerMetadataKeyList = Array<string>;
 export type CustomerMetadataMap = Record<string, string>;
 export type CustomerMetadataValue = string;
 
-export type CustomFileSystem = { EFSFileSystem: EFSFileSystem } | { FSxLustreFileSystem: FSxLustreFileSystem };
-export type CustomFileSystemConfig = { EFSFileSystemConfig: EFSFileSystemConfig } | { FSxLustreFileSystemConfig: FSxLustreFileSystemConfig };
+export type CustomFileSystem =
+  | { EFSFileSystem: EFSFileSystem }
+  | { FSxLustreFileSystem: FSxLustreFileSystem };
+export type CustomFileSystemConfig =
+  | { EFSFileSystemConfig: EFSFileSystemConfig }
+  | { FSxLustreFileSystemConfig: FSxLustreFileSystemConfig };
 export type CustomFileSystemConfigs = Array<CustomFileSystemConfig>;
 export type CustomFileSystems = Array<CustomFileSystem>;
 export interface CustomImage {
@@ -4368,8 +4404,7 @@ export interface DeleteFeatureGroupRequest {
 export interface DeleteFlowDefinitionRequest {
   FlowDefinitionName: string;
 }
-export interface DeleteFlowDefinitionResponse {
-}
+export interface DeleteFlowDefinitionResponse {}
 export interface DeleteHubContentReferenceRequest {
   HubName: string;
   HubContentType: HubContentType;
@@ -4387,23 +4422,20 @@ export interface DeleteHubRequest {
 export interface DeleteHumanTaskUiRequest {
   HumanTaskUiName: string;
 }
-export interface DeleteHumanTaskUiResponse {
-}
+export interface DeleteHumanTaskUiResponse {}
 export interface DeleteHyperParameterTuningJobRequest {
   HyperParameterTuningJobName: string;
 }
 export interface DeleteImageRequest {
   ImageName: string;
 }
-export interface DeleteImageResponse {
-}
+export interface DeleteImageResponse {}
 export interface DeleteImageVersionRequest {
   ImageName: string;
   Version?: number;
   Alias?: string;
 }
-export interface DeleteImageVersionResponse {
-}
+export interface DeleteImageVersionResponse {}
 export interface DeleteInferenceComponentInput {
   InferenceComponentName: string;
 }
@@ -4483,8 +4515,7 @@ export interface DeleteTagsInput {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface DeleteTagsOutput {
-}
+export interface DeleteTagsOutput {}
 export interface DeleteTrialComponentRequest {
   TrialComponentName: string;
 }
@@ -4504,8 +4535,7 @@ export interface DeleteUserProfileRequest {
 export interface DeleteWorkforceRequest {
   WorkforceName: string;
 }
-export interface DeleteWorkforceResponse {
-}
+export interface DeleteWorkforceResponse {}
 export interface DeleteWorkteamRequest {
   WorkteamName: string;
 }
@@ -4544,7 +4574,8 @@ export interface DeploymentStage {
 export type DeploymentStageMaxResults = number;
 
 export type DeploymentStages = Array<DeploymentStage>;
-export type DeploymentStageStatusSummaries = Array<DeploymentStageStatusSummary>;
+export type DeploymentStageStatusSummaries =
+  Array<DeploymentStageStatusSummary>;
 export interface DeploymentStageStatusSummary {
   StageName: string;
   DeviceSelectionConfig: DeviceSelectionConfig;
@@ -5781,8 +5812,16 @@ export interface DesiredWeightAndCapacity {
 export type DesiredWeightAndCapacityList = Array<DesiredWeightAndCapacity>;
 export type DestinationS3Uri = string;
 
-export type DetailedAlgorithmStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
-export type DetailedModelPackageStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
+export type DetailedAlgorithmStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED";
+export type DetailedModelPackageStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED";
 export interface Device {
   DeviceName: string;
   Description?: string;
@@ -5790,7 +5829,13 @@ export interface Device {
 }
 export type DeviceArn = string;
 
-export type DeviceDeploymentStatus = "ReadyToDeploy" | "InProgress" | "Deployed" | "Failed" | "Stopping" | "Stopped";
+export type DeviceDeploymentStatus =
+  | "ReadyToDeploy"
+  | "InProgress"
+  | "Deployed"
+  | "Failed"
+  | "Stopping"
+  | "Stopped";
 export type DeviceDeploymentSummaries = Array<DeviceDeploymentSummary>;
 export interface DeviceDeploymentSummary {
   EdgeDeploymentPlanArn: string;
@@ -5856,10 +5901,8 @@ export type DirectoryPath = string;
 
 export type DisableProfiler = boolean;
 
-export interface DisableSagemakerServicecatalogPortfolioInput {
-}
-export interface DisableSagemakerServicecatalogPortfolioOutput {
-}
+export interface DisableSagemakerServicecatalogPortfolioInput {}
+export interface DisableSagemakerServicecatalogPortfolioOutput {}
 export type DisassociateAdditionalCodeRepositories = boolean;
 
 export type DisassociateDefaultCodeRepository = boolean;
@@ -5917,7 +5960,14 @@ export interface DomainSettingsForUpdate {
   AmazonQSettings?: AmazonQSettings;
   UnifiedStudioSettings?: UnifiedStudioSettings;
 }
-export type DomainStatus = "Deleting" | "Failed" | "InService" | "Pending" | "Updating" | "Update_Failed" | "Delete_Failed";
+export type DomainStatus =
+  | "Deleting"
+  | "Failed"
+  | "InService"
+  | "Pending"
+  | "Updating"
+  | "Update_Failed"
+  | "Delete_Failed";
 export type Double = number;
 
 export type DoubleParameterValue = number;
@@ -6027,7 +6077,13 @@ export interface EdgeOutputConfig {
 }
 export type EdgePackagingJobArn = string;
 
-export type EdgePackagingJobStatus = "Starting" | "InProgress" | "Completed" | "Failed" | "Stopping" | "Stopped";
+export type EdgePackagingJobStatus =
+  | "Starting"
+  | "InProgress"
+  | "Completed"
+  | "Failed"
+  | "Stopping"
+  | "Stopped";
 export type EdgePackagingJobSummaries = Array<EdgePackagingJobSummary>;
 export interface EdgePackagingJobSummary {
   EdgePackagingJobArn: string;
@@ -6089,10 +6145,8 @@ export type EnableIotRoleAlias = boolean;
 
 export type EnableRemoteDebug = boolean;
 
-export interface EnableSagemakerServicecatalogPortfolioInput {
-}
-export interface EnableSagemakerServicecatalogPortfolioOutput {
-}
+export interface EnableSagemakerServicecatalogPortfolioInput {}
+export interface EnableSagemakerServicecatalogPortfolioOutput {}
 export type EnableSessionTagChaining = boolean;
 
 export interface Endpoint {
@@ -6174,7 +6228,16 @@ export interface EndpointPerformance {
 export type EndpointPerformances = Array<EndpointPerformance>;
 export type Endpoints = Array<EndpointInfo>;
 export type EndpointSortKey = "Name" | "CreationTime" | "Status";
-export type EndpointStatus = "OUT_OF_SERVICE" | "CREATING" | "UPDATING" | "SYSTEM_UPDATING" | "ROLLING_BACK" | "IN_SERVICE" | "DELETING" | "FAILED" | "UPDATE_ROLLBACK_FAILED";
+export type EndpointStatus =
+  | "OUT_OF_SERVICE"
+  | "CREATING"
+  | "UPDATING"
+  | "SYSTEM_UPDATING"
+  | "ROLLING_BACK"
+  | "IN_SERVICE"
+  | "DELETING"
+  | "FAILED"
+  | "UPDATE_ROLLBACK_FAILED";
 export interface EndpointStepMetadata {
   Arn?: string;
 }
@@ -6212,7 +6275,14 @@ export type ExcludeFeaturesAttribute = string;
 
 export type ExecutionRoleArns = Array<string>;
 export type ExecutionRoleIdentityConfig = "USER_PROFILE_NAME" | "DISABLED";
-export type ExecutionStatus = "PENDING" | "COMPLETED" | "COMPLETED_WITH_VIOLATIONS" | "IN_PROGRESS" | "FAILED" | "STOPPING" | "STOPPED";
+export type ExecutionStatus =
+  | "PENDING"
+  | "COMPLETED"
+  | "COMPLETED_WITH_VIOLATIONS"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export type ExitMessage = string;
 
 export interface Experiment {
@@ -6313,9 +6383,18 @@ export type FeatureGroupNameContains = string;
 
 export type FeatureGroupNameOrArn = string;
 
-export type FeatureGroupSortBy = "NAME" | "FEATURE_GROUP_STATUS" | "OFFLINE_STORE_STATUS" | "CREATION_TIME";
+export type FeatureGroupSortBy =
+  | "NAME"
+  | "FEATURE_GROUP_STATUS"
+  | "OFFLINE_STORE_STATUS"
+  | "CREATION_TIME";
 export type FeatureGroupSortOrder = "ASCENDING" | "DESCENDING";
-export type FeatureGroupStatus = "CREATING" | "CREATED" | "CREATE_FAILED" | "DELETING" | "DELETE_FAILED";
+export type FeatureGroupStatus =
+  | "CREATING"
+  | "CREATED"
+  | "CREATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED";
 export type FeatureGroupSummaries = Array<FeatureGroupSummary>;
 export interface FeatureGroupSummary {
   FeatureGroupName: string;
@@ -6372,10 +6451,21 @@ export type FileSystemPath = string;
 
 export type FileSystemType = "EFS" | "FSXLUSTRE";
 export type FillingTransformationMap = Record<FillingType, string>;
-export type FillingTransformations = Record<string, Record<FillingType, string>>;
+export type FillingTransformations = Record<
+  string,
+  Record<FillingType, string>
+>;
 export type FillingTransformationValue = string;
 
-export type FillingType = "Frontfill" | "Middlefill" | "Backfill" | "Futurefill" | "FrontfillValue" | "MiddlefillValue" | "BackfillValue" | "FuturefillValue";
+export type FillingType =
+  | "Frontfill"
+  | "Middlefill"
+  | "Backfill"
+  | "Futurefill"
+  | "FrontfillValue"
+  | "MiddlefillValue"
+  | "BackfillValue"
+  | "FuturefillValue";
 export interface Filter {
   Name: string;
   Operator?: Operator;
@@ -6407,7 +6497,11 @@ export interface FlowDefinitionOutputConfig {
   S3OutputPath: string;
   KmsKeyId?: string;
 }
-export type FlowDefinitionStatus = "INITIALIZING" | "ACTIVE" | "FAILED" | "DELETING";
+export type FlowDefinitionStatus =
+  | "INITIALIZING"
+  | "ACTIVE"
+  | "FAILED"
+  | "DELETING";
 export type FlowDefinitionSummaries = Array<FlowDefinitionSummary>;
 export interface FlowDefinitionSummary {
   FlowDefinitionName: string;
@@ -6436,7 +6530,16 @@ export type ForecastHorizon = number;
 export type ForecastQuantile = string;
 
 export type ForecastQuantiles = Array<string>;
-export type Framework = "TENSORFLOW" | "KERAS" | "MXNET" | "ONNX" | "PYTORCH" | "XGBOOST" | "TFLITE" | "DARKNET" | "SKLEARN";
+export type Framework =
+  | "TENSORFLOW"
+  | "KERAS"
+  | "MXNET"
+  | "ONNX"
+  | "PYTORCH"
+  | "XGBOOST"
+  | "TFLITE"
+  | "DARKNET"
+  | "SKLEARN";
 export type FrameworkVersion = string;
 
 export interface FSxLustreFileSystem {
@@ -6477,8 +6580,7 @@ export interface GetModelPackageGroupPolicyInput {
 export interface GetModelPackageGroupPolicyOutput {
   ResourcePolicy: string;
 }
-export interface GetSagemakerServicecatalogPortfolioStatusInput {
-}
+export interface GetSagemakerServicecatalogPortfolioStatusInput {}
 export interface GetSagemakerServicecatalogPortfolioStatusOutput {
   Status?: SagemakerServicecatalogStatus;
 }
@@ -6530,7 +6632,8 @@ export interface HiddenSageMakerImage {
   SageMakerImageName?: SageMakerImageName;
   VersionAliases?: Array<string>;
 }
-export type HiddenSageMakerImageVersionAliasesList = Array<HiddenSageMakerImage>;
+export type HiddenSageMakerImageVersionAliasesList =
+  Array<HiddenSageMakerImage>;
 export type HolidayConfig = Array<HolidayConfigAttributes>;
 export interface HolidayConfigAttributes {
   CountryCode?: string;
@@ -6577,8 +6680,16 @@ export type HubContentMarkdown = string;
 export type HubContentName = string;
 
 export type HubContentSearchKeywordList = Array<string>;
-export type HubContentSortBy = "HUB_CONTENT_NAME" | "CREATION_TIME" | "HUB_CONTENT_STATUS";
-export type HubContentStatus = "AVAILABLE" | "IMPORTING" | "DELETING" | "IMPORT_FAILED" | "DELETE_FAILED";
+export type HubContentSortBy =
+  | "HUB_CONTENT_NAME"
+  | "CREATION_TIME"
+  | "HUB_CONTENT_STATUS";
+export type HubContentStatus =
+  | "AVAILABLE"
+  | "IMPORTING"
+  | "DELETING"
+  | "IMPORT_FAILED"
+  | "DELETE_FAILED";
 export type HubContentSupportStatus = "SUPPORTED" | "DEPRECATED" | "RESTRICTED";
 export type HubContentType = "MODEL" | "NOTEBOOK" | "MODEL_REFERENCE";
 export type HubContentVersion = string;
@@ -6608,8 +6719,19 @@ export interface HubS3StorageConfig {
 export type HubSearchKeyword = string;
 
 export type HubSearchKeywordList = Array<string>;
-export type HubSortBy = "HUB_NAME" | "CREATION_TIME" | "HUB_STATUS" | "ACCOUNT_ID_OWNER";
-export type HubStatus = "IN_SERVICE" | "CREATING" | "UPDATING" | "DELETING" | "CREATE_FAILED" | "UPDATE_FAILED" | "DELETE_FAILED";
+export type HubSortBy =
+  | "HUB_NAME"
+  | "CREATION_TIME"
+  | "HUB_STATUS"
+  | "ACCOUNT_ID_OWNER";
+export type HubStatus =
+  | "IN_SERVICE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETE_FAILED";
 export type HumanLoopActivationConditions = string;
 
 export interface HumanLoopActivationConditionsConfig {
@@ -6674,7 +6796,11 @@ export interface HyperParameterAlgorithmSpecification {
 export type HyperParameterKey = string;
 
 export type HyperParameters = Record<string, string>;
-export type HyperParameterScalingType = "AUTO" | "LINEAR" | "LOGARITHMIC" | "REVERSE_LOGARITHMIC";
+export type HyperParameterScalingType =
+  | "AUTO"
+  | "LINEAR"
+  | "LOGARITHMIC"
+  | "REVERSE_LOGARITHMIC";
 export interface HyperParameterSpecification {
   Name: string;
   Description?: string;
@@ -6707,13 +6833,15 @@ export interface HyperParameterTrainingJobDefinition {
 }
 export type HyperParameterTrainingJobDefinitionName = string;
 
-export type HyperParameterTrainingJobDefinitions = Array<HyperParameterTrainingJobDefinition>;
+export type HyperParameterTrainingJobDefinitions =
+  Array<HyperParameterTrainingJobDefinition>;
 export type HyperParameterTrainingJobEnvironmentKey = string;
 
 export type HyperParameterTrainingJobEnvironmentMap = Record<string, string>;
 export type HyperParameterTrainingJobEnvironmentValue = string;
 
-export type HyperParameterTrainingJobSummaries = Array<HyperParameterTrainingJobSummary>;
+export type HyperParameterTrainingJobSummaries =
+  Array<HyperParameterTrainingJobSummary>;
 export interface HyperParameterTrainingJobSummary {
   TrainingJobDefinitionName?: string;
   TrainingJobName: string;
@@ -6734,7 +6862,8 @@ export interface HyperParameterTuningInstanceConfig {
   InstanceCount: number;
   VolumeSizeInGB: number;
 }
-export type HyperParameterTuningInstanceConfigs = Array<HyperParameterTuningInstanceConfig>;
+export type HyperParameterTuningInstanceConfigs =
+  Array<HyperParameterTuningInstanceConfig>;
 export type HyperParameterTuningJobArn = string;
 
 export interface HyperParameterTuningJobCompletionDetails {
@@ -6760,7 +6889,8 @@ export interface HyperParameterTuningJobObjective {
   Type: HyperParameterTuningJobObjectiveType;
   MetricName: string;
 }
-export type HyperParameterTuningJobObjectives = Array<HyperParameterTuningJobObjective>;
+export type HyperParameterTuningJobObjectives =
+  Array<HyperParameterTuningJobObjective>;
 export type HyperParameterTuningJobObjectiveType = "MAXIMIZE" | "MINIMIZE";
 export interface HyperParameterTuningJobSearchEntity {
   HyperParameterTuningJobName?: string;
@@ -6782,13 +6912,28 @@ export interface HyperParameterTuningJobSearchEntity {
   ConsumedResources?: HyperParameterTuningJobConsumedResources;
   Tags?: Array<Tag>;
 }
-export type HyperParameterTuningJobSortByOptions = "Name" | "Status" | "CreationTime";
-export type HyperParameterTuningJobStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED" | "STOPPED" | "STOPPING" | "DELETING" | "DELETE_FAILED";
+export type HyperParameterTuningJobSortByOptions =
+  | "Name"
+  | "Status"
+  | "CreationTime";
+export type HyperParameterTuningJobStatus =
+  | "COMPLETED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "STOPPED"
+  | "STOPPING"
+  | "DELETING"
+  | "DELETE_FAILED";
 export interface HyperParameterTuningJobStrategyConfig {
   HyperbandStrategyConfig?: HyperbandStrategyConfig;
 }
-export type HyperParameterTuningJobStrategyType = "BAYESIAN" | "RANDOM" | "HYPERBAND" | "GRID";
-export type HyperParameterTuningJobSummaries = Array<HyperParameterTuningJobSummary>;
+export type HyperParameterTuningJobStrategyType =
+  | "BAYESIAN"
+  | "RANDOM"
+  | "HYPERBAND"
+  | "GRID";
+export type HyperParameterTuningJobSummaries =
+  Array<HyperParameterTuningJobSummary>;
 export interface HyperParameterTuningJobSummary {
   HyperParameterTuningJobName: string;
   HyperParameterTuningJobArn: string;
@@ -6805,7 +6950,9 @@ export interface HyperParameterTuningJobWarmStartConfig {
   ParentHyperParameterTuningJobs: Array<ParentHyperParameterTuningJob>;
   WarmStartType: HyperParameterTuningJobWarmStartType;
 }
-export type HyperParameterTuningJobWarmStartType = "IDENTICAL_DATA_AND_ALGORITHM" | "TRANSFER_LEARNING";
+export type HyperParameterTuningJobWarmStartType =
+  | "IDENTICAL_DATA_AND_ALGORITHM"
+  | "TRANSFER_LEARNING";
 export type HyperParameterTuningMaxRuntimeInSeconds = number;
 
 export interface HyperParameterTuningResourceConfig {
@@ -6882,7 +7029,14 @@ export type ImageNameContains = string;
 export type Images = Array<Image>;
 export type ImageSortBy = "CREATION_TIME" | "LAST_MODIFIED_TIME" | "IMAGE_NAME";
 export type ImageSortOrder = "ASCENDING" | "DESCENDING";
-export type ImageStatus = "CREATING" | "CREATED" | "CREATE_FAILED" | "UPDATING" | "UPDATE_FAILED" | "DELETING" | "DELETE_FAILED";
+export type ImageStatus =
+  | "CREATING"
+  | "CREATED"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED";
 export type ImageUri = string;
 
 export interface ImageVersion {
@@ -6903,9 +7057,17 @@ export type ImageVersionArn = string;
 export type ImageVersionNumber = number;
 
 export type ImageVersions = Array<ImageVersion>;
-export type ImageVersionSortBy = "CREATION_TIME" | "LAST_MODIFIED_TIME" | "VERSION";
+export type ImageVersionSortBy =
+  | "CREATION_TIME"
+  | "LAST_MODIFIED_TIME"
+  | "VERSION";
 export type ImageVersionSortOrder = "ASCENDING" | "DESCENDING";
-export type ImageVersionStatus = "CREATING" | "CREATED" | "CREATE_FAILED" | "DELETING" | "DELETE_FAILED";
+export type ImageVersionStatus =
+  | "CREATING"
+  | "CREATED"
+  | "CREATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED";
 export interface ImportHubContentRequest {
   HubContentName: string;
   HubContentVersion?: string;
@@ -6930,7 +7092,9 @@ export interface InferenceComponentCapacitySize {
   Type: InferenceComponentCapacitySizeType;
   Value: number;
 }
-export type InferenceComponentCapacitySizeType = "COPY_COUNT" | "CAPACITY_PERCENT";
+export type InferenceComponentCapacitySizeType =
+  | "COPY_COUNT"
+  | "CAPACITY_PERCENT";
 export interface InferenceComponentComputeResourceRequirements {
   NumberOfCpuCoresRequired?: number;
   NumberOfAcceleratorDevicesRequired?: number;
@@ -6989,7 +7153,12 @@ export interface InferenceComponentStartupParameters {
   ModelDataDownloadTimeoutInSeconds?: number;
   ContainerStartupHealthCheckTimeoutInSeconds?: number;
 }
-export type InferenceComponentStatus = "IN_SERVICE" | "CREATING" | "UPDATING" | "FAILED" | "DELETING";
+export type InferenceComponentStatus =
+  | "IN_SERVICE"
+  | "CREATING"
+  | "UPDATING"
+  | "FAILED"
+  | "DELETING";
 export interface InferenceComponentSummary {
   CreationTime: Date | string;
   InferenceComponentArn: string;
@@ -7021,7 +7190,15 @@ export interface InferenceExperimentSchedule {
   StartTime?: Date | string;
   EndTime?: Date | string;
 }
-export type InferenceExperimentStatus = "CREATING" | "CREATED" | "UPDATING" | "RUNNING" | "STARTING" | "STOPPING" | "COMPLETED" | "CANCELLED";
+export type InferenceExperimentStatus =
+  | "CREATING"
+  | "CREATED"
+  | "UPDATING"
+  | "RUNNING"
+  | "STARTING"
+  | "STOPPING"
+  | "COMPLETED"
+  | "CANCELLED";
 export type InferenceExperimentStatusReason = string;
 
 export type InferenceExperimentStopDesiredState = "COMPLETED" | "CANCELLED";
@@ -7078,7 +7255,8 @@ export interface InferenceRecommendationsJobStep {
   Status: RecommendationJobStatus;
   InferenceBenchmark?: RecommendationJobInferenceBenchmark;
 }
-export type InferenceRecommendationsJobSteps = Array<InferenceRecommendationsJobStep>;
+export type InferenceRecommendationsJobSteps =
+  Array<InferenceRecommendationsJobStep>;
 export interface InferenceSpecification {
   Containers: Array<ModelPackageContainerDefinition>;
   SupportedTransformInstanceTypes?: Array<TransformInstanceType>;
@@ -7117,13 +7295,192 @@ export type InstanceGroupName = string;
 
 export type InstanceGroupNames = Array<string>;
 export type InstanceGroups = Array<InstanceGroup>;
-export type InstanceGroupStatus = "INSERVICE" | "CREATING" | "UPDATING" | "FAILED" | "DEGRADED" | "SYSTEMUPDATING" | "DELETING";
+export type InstanceGroupStatus =
+  | "INSERVICE"
+  | "CREATING"
+  | "UPDATING"
+  | "FAILED"
+  | "DEGRADED"
+  | "SYSTEMUPDATING"
+  | "DELETING";
 export type InstanceGroupTrainingPlanStatus = string;
 
 export interface InstanceMetadataServiceConfiguration {
   MinimumInstanceMetadataServiceVersion: string;
 }
-export type InstanceType = "ML_T2_MEDIUM" | "ML_T2_LARGE" | "ML_T2_XLARGE" | "ML_T2_2XLARGE" | "ML_T3_MEDIUM" | "ML_T3_LARGE" | "ML_T3_XLARGE" | "ML_T3_2XLARGE" | "ML_M4_XLARGE" | "ML_M4_2XLARGE" | "ML_M4_4XLARGE" | "ML_M4_10XLARGE" | "ML_M4_16XLARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_12XLARGE" | "ML_M5_24XLARGE" | "ML_M5D_LARGE" | "ML_M5D_XLARGE" | "ML_M5D_2XLARGE" | "ML_M5D_4XLARGE" | "ML_M5D_8XLARGE" | "ML_M5D_12XLARGE" | "ML_M5D_16XLARGE" | "ML_M5D_24XLARGE" | "ML_C4_XLARGE" | "ML_C4_2XLARGE" | "ML_C4_4XLARGE" | "ML_C4_8XLARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_18XLARGE" | "ML_C5D_XLARGE" | "ML_C5D_2XLARGE" | "ML_C5D_4XLARGE" | "ML_C5D_9XLARGE" | "ML_C5D_18XLARGE" | "ML_P2_XLARGE" | "ML_P2_8XLARGE" | "ML_P2_16XLARGE" | "ML_P3_2XLARGE" | "ML_P3_8XLARGE" | "ML_P3_16XLARGE" | "ML_P3DN_24XLARGE" | "ML_G4DN_XLARGE" | "ML_G4DN_2XLARGE" | "ML_G4DN_4XLARGE" | "ML_G4DN_8XLARGE" | "ML_G4DN_12XLARGE" | "ML_G4DN_16XLARGE" | "ML_R5_LARGE" | "ML_R5_XLARGE" | "ML_R5_2XLARGE" | "ML_R5_4XLARGE" | "ML_R5_8XLARGE" | "ML_R5_12XLARGE" | "ML_R5_16XLARGE" | "ML_R5_24XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_16XLARGE" | "ML_G5_12XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_INF1_XLARGE" | "ML_INF1_2XLARGE" | "ML_INF1_6XLARGE" | "ML_INF1_24XLARGE" | "ML_TRN1_2XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN1N_32XLARGE" | "ML_INF2_XLARGE" | "ML_INF2_8XLARGE" | "ML_INF2_24XLARGE" | "ML_INF2_48XLARGE" | "ML_P4D_24XLARGE" | "ML_P4DE_24XLARGE" | "ML_P5_48XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_C6I_LARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_C7I_LARGE" | "ML_C7I_XLARGE" | "ML_C7I_2XLARGE" | "ML_C7I_4XLARGE" | "ML_C7I_8XLARGE" | "ML_C7I_12XLARGE" | "ML_C7I_16XLARGE" | "ML_C7I_24XLARGE" | "ML_C7I_48XLARGE" | "ML_R6I_LARGE" | "ML_R6I_XLARGE" | "ML_R6I_2XLARGE" | "ML_R6I_4XLARGE" | "ML_R6I_8XLARGE" | "ML_R6I_12XLARGE" | "ML_R6I_16XLARGE" | "ML_R6I_24XLARGE" | "ML_R6I_32XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE" | "ML_M6ID_LARGE" | "ML_M6ID_XLARGE" | "ML_M6ID_2XLARGE" | "ML_M6ID_4XLARGE" | "ML_M6ID_8XLARGE" | "ML_M6ID_12XLARGE" | "ML_M6ID_16XLARGE" | "ML_M6ID_24XLARGE" | "ML_M6ID_32XLARGE" | "ML_C6ID_LARGE" | "ML_C6ID_XLARGE" | "ML_C6ID_2XLARGE" | "ML_C6ID_4XLARGE" | "ML_C6ID_8XLARGE" | "ML_C6ID_12XLARGE" | "ML_C6ID_16XLARGE" | "ML_C6ID_24XLARGE" | "ML_C6ID_32XLARGE" | "ML_R6ID_LARGE" | "ML_R6ID_XLARGE" | "ML_R6ID_2XLARGE" | "ML_R6ID_4XLARGE" | "ML_R6ID_8XLARGE" | "ML_R6ID_12XLARGE" | "ML_R6ID_16XLARGE" | "ML_R6ID_24XLARGE" | "ML_R6ID_32XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_12XLARGE" | "ML_G6_16XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE";
+export type InstanceType =
+  | "ML_T2_MEDIUM"
+  | "ML_T2_LARGE"
+  | "ML_T2_XLARGE"
+  | "ML_T2_2XLARGE"
+  | "ML_T3_MEDIUM"
+  | "ML_T3_LARGE"
+  | "ML_T3_XLARGE"
+  | "ML_T3_2XLARGE"
+  | "ML_M4_XLARGE"
+  | "ML_M4_2XLARGE"
+  | "ML_M4_4XLARGE"
+  | "ML_M4_10XLARGE"
+  | "ML_M4_16XLARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_M5D_LARGE"
+  | "ML_M5D_XLARGE"
+  | "ML_M5D_2XLARGE"
+  | "ML_M5D_4XLARGE"
+  | "ML_M5D_8XLARGE"
+  | "ML_M5D_12XLARGE"
+  | "ML_M5D_16XLARGE"
+  | "ML_M5D_24XLARGE"
+  | "ML_C4_XLARGE"
+  | "ML_C4_2XLARGE"
+  | "ML_C4_4XLARGE"
+  | "ML_C4_8XLARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_C5D_XLARGE"
+  | "ML_C5D_2XLARGE"
+  | "ML_C5D_4XLARGE"
+  | "ML_C5D_9XLARGE"
+  | "ML_C5D_18XLARGE"
+  | "ML_P2_XLARGE"
+  | "ML_P2_8XLARGE"
+  | "ML_P2_16XLARGE"
+  | "ML_P3_2XLARGE"
+  | "ML_P3_8XLARGE"
+  | "ML_P3_16XLARGE"
+  | "ML_P3DN_24XLARGE"
+  | "ML_G4DN_XLARGE"
+  | "ML_G4DN_2XLARGE"
+  | "ML_G4DN_4XLARGE"
+  | "ML_G4DN_8XLARGE"
+  | "ML_G4DN_12XLARGE"
+  | "ML_G4DN_16XLARGE"
+  | "ML_R5_LARGE"
+  | "ML_R5_XLARGE"
+  | "ML_R5_2XLARGE"
+  | "ML_R5_4XLARGE"
+  | "ML_R5_8XLARGE"
+  | "ML_R5_12XLARGE"
+  | "ML_R5_16XLARGE"
+  | "ML_R5_24XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_INF1_XLARGE"
+  | "ML_INF1_2XLARGE"
+  | "ML_INF1_6XLARGE"
+  | "ML_INF1_24XLARGE"
+  | "ML_TRN1_2XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN1N_32XLARGE"
+  | "ML_INF2_XLARGE"
+  | "ML_INF2_8XLARGE"
+  | "ML_INF2_24XLARGE"
+  | "ML_INF2_48XLARGE"
+  | "ML_P4D_24XLARGE"
+  | "ML_P4DE_24XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_C6I_LARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_C7I_LARGE"
+  | "ML_C7I_XLARGE"
+  | "ML_C7I_2XLARGE"
+  | "ML_C7I_4XLARGE"
+  | "ML_C7I_8XLARGE"
+  | "ML_C7I_12XLARGE"
+  | "ML_C7I_16XLARGE"
+  | "ML_C7I_24XLARGE"
+  | "ML_C7I_48XLARGE"
+  | "ML_R6I_LARGE"
+  | "ML_R6I_XLARGE"
+  | "ML_R6I_2XLARGE"
+  | "ML_R6I_4XLARGE"
+  | "ML_R6I_8XLARGE"
+  | "ML_R6I_12XLARGE"
+  | "ML_R6I_16XLARGE"
+  | "ML_R6I_24XLARGE"
+  | "ML_R6I_32XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE"
+  | "ML_M6ID_LARGE"
+  | "ML_M6ID_XLARGE"
+  | "ML_M6ID_2XLARGE"
+  | "ML_M6ID_4XLARGE"
+  | "ML_M6ID_8XLARGE"
+  | "ML_M6ID_12XLARGE"
+  | "ML_M6ID_16XLARGE"
+  | "ML_M6ID_24XLARGE"
+  | "ML_M6ID_32XLARGE"
+  | "ML_C6ID_LARGE"
+  | "ML_C6ID_XLARGE"
+  | "ML_C6ID_2XLARGE"
+  | "ML_C6ID_4XLARGE"
+  | "ML_C6ID_8XLARGE"
+  | "ML_C6ID_12XLARGE"
+  | "ML_C6ID_16XLARGE"
+  | "ML_C6ID_24XLARGE"
+  | "ML_C6ID_32XLARGE"
+  | "ML_R6ID_LARGE"
+  | "ML_R6ID_XLARGE"
+  | "ML_R6ID_2XLARGE"
+  | "ML_R6ID_4XLARGE"
+  | "ML_R6ID_8XLARGE"
+  | "ML_R6ID_12XLARGE"
+  | "ML_R6ID_16XLARGE"
+  | "ML_R6ID_24XLARGE"
+  | "ML_R6ID_32XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE";
 export type Integer = number;
 
 export interface IntegerParameterRange {
@@ -7250,7 +7607,8 @@ export interface LabelingJobForWorkteamSummary {
   LabelCounters?: LabelCountersForWorkteam;
   NumberOfHumanWorkersPerDataObject?: number;
 }
-export type LabelingJobForWorkteamSummaryList = Array<LabelingJobForWorkteamSummary>;
+export type LabelingJobForWorkteamSummaryList =
+  Array<LabelingJobForWorkteamSummary>;
 export interface LabelingJobInputConfig {
   DataSource: LabelingJobDataSource;
   DataAttributes?: LabelingJobDataAttributes;
@@ -7276,7 +7634,13 @@ export interface LabelingJobS3DataSource {
 export interface LabelingJobSnsDataSource {
   SnsTopicArn: string;
 }
-export type LabelingJobStatus = "INITIALIZING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type LabelingJobStatus =
+  | "INITIALIZING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export interface LabelingJobStoppingConditions {
   MaxHumanLabeledObjectCount?: number;
   MaxPercentageOfInputDatasetLabeled?: number;
@@ -7586,7 +7950,10 @@ export interface ListDeviceFleetsResponse {
   DeviceFleetSummaries: Array<DeviceFleetSummary>;
   NextToken?: string;
 }
-export type ListDeviceFleetsSortBy = "Name" | "CreationTime" | "LastModifiedTime";
+export type ListDeviceFleetsSortBy =
+  | "Name"
+  | "CreationTime"
+  | "LastModifiedTime";
 export interface ListDevicesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -7622,7 +7989,11 @@ export interface ListEdgeDeploymentPlansResponse {
   EdgeDeploymentPlanSummaries: Array<EdgeDeploymentPlanSummary>;
   NextToken?: string;
 }
-export type ListEdgeDeploymentPlansSortBy = "Name" | "DeviceFleetName" | "CreationTime" | "LastModifiedTime";
+export type ListEdgeDeploymentPlansSortBy =
+  | "Name"
+  | "DeviceFleetName"
+  | "CreationTime"
+  | "LastModifiedTime";
 export interface ListEdgePackagingJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -7640,7 +8011,12 @@ export interface ListEdgePackagingJobsResponse {
   EdgePackagingJobSummaries: Array<EdgePackagingJobSummary>;
   NextToken?: string;
 }
-export type ListEdgePackagingJobsSortBy = "Name" | "ModelName" | "CreationTime" | "LastModifiedTime" | "EdgePackagingJobStatus";
+export type ListEdgePackagingJobsSortBy =
+  | "Name"
+  | "ModelName"
+  | "CreationTime"
+  | "LastModifiedTime"
+  | "EdgePackagingJobStatus";
 export interface ListEndpointConfigsInput {
   SortBy?: EndpointConfigSortKey;
   SortOrder?: OrderKey;
@@ -7866,7 +8242,10 @@ export interface ListInferenceRecommendationsJobsResponse {
   InferenceRecommendationsJobs: Array<InferenceRecommendationsJob>;
   NextToken?: string;
 }
-export type ListInferenceRecommendationsJobsSortBy = "NAME" | "CREATION_TIME" | "STATUS";
+export type ListInferenceRecommendationsJobsSortBy =
+  | "NAME"
+  | "CREATION_TIME"
+  | "STATUS";
 export interface ListInferenceRecommendationsJobStepsRequest {
   JobName: string;
   Status?: RecommendationJobStatus;
@@ -8563,7 +8942,9 @@ export type MetricName = string;
 export type MetricRegex = string;
 
 export type MetricSetSource = "TRAIN" | "VALIDATION" | "TEST";
-export type MetricSpecification = { Predefined: PredefinedMetricSpecification } | { Customized: CustomizedMetricSpecification };
+export type MetricSpecification =
+  | { Predefined: PredefinedMetricSpecification }
+  | { Customized: CustomizedMetricSpecification };
 export interface MetricsSource {
   ContentType: string;
   ContentDigest?: string;
@@ -8579,7 +8960,27 @@ export type MLFramework = string;
 
 export type MlReservationArn = string;
 
-export type MlTools = "DATA_WRANGLER" | "FEATURE_STORE" | "EMR_CLUSTERS" | "AUTO_ML" | "EXPERIMENTS" | "TRAINING" | "MODEL_EVALUATION" | "PIPELINES" | "MODELS" | "JUMP_START" | "INFERENCE_RECOMMENDER" | "ENDPOINTS" | "PROJECTS" | "INFERENCE_OPTIMIZATION" | "PERFORMANCE_EVALUATION" | "LAKERA_GUARD" | "COMET" | "DEEPCHECKS_LLM_EVALUATION" | "FIDDLER" | "HYPER_POD_CLUSTERS";
+export type MlTools =
+  | "DATA_WRANGLER"
+  | "FEATURE_STORE"
+  | "EMR_CLUSTERS"
+  | "AUTO_ML"
+  | "EXPERIMENTS"
+  | "TRAINING"
+  | "MODEL_EVALUATION"
+  | "PIPELINES"
+  | "MODELS"
+  | "JUMP_START"
+  | "INFERENCE_RECOMMENDER"
+  | "ENDPOINTS"
+  | "PROJECTS"
+  | "INFERENCE_OPTIMIZATION"
+  | "PERFORMANCE_EVALUATION"
+  | "LAKERA_GUARD"
+  | "COMET"
+  | "DEEPCHECKS_LLM_EVALUATION"
+  | "FIDDLER"
+  | "HYPER_POD_CLUSTERS";
 export interface Model {
   ModelName?: string;
   PrimaryContainer?: ContainerDefinition;
@@ -8596,7 +8997,10 @@ export interface Model {
 export interface ModelAccessConfig {
   AcceptEula: boolean;
 }
-export type ModelApprovalStatus = "APPROVED" | "REJECTED" | "PENDING_MANUAL_APPROVAL";
+export type ModelApprovalStatus =
+  | "APPROVED"
+  | "REJECTED"
+  | "PENDING_MANUAL_APPROVAL";
 export type ModelArn = string;
 
 export interface ModelArtifacts {
@@ -8660,13 +9064,23 @@ export interface ModelCardExportOutputConfig {
 }
 export type ModelCardNameOrArn = string;
 
-export type ModelCardProcessingStatus = "DELETE_INPROGRESS" | "DELETE_PENDING" | "CONTENT_DELETED" | "EXPORTJOBS_DELETED" | "DELETE_COMPLETED" | "DELETE_FAILED";
+export type ModelCardProcessingStatus =
+  | "DELETE_INPROGRESS"
+  | "DELETE_PENDING"
+  | "CONTENT_DELETED"
+  | "EXPORTJOBS_DELETED"
+  | "DELETE_COMPLETED"
+  | "DELETE_FAILED";
 export interface ModelCardSecurityConfig {
   KmsKeyId?: string;
 }
 export type ModelCardSortBy = "NAME" | "CREATION_TIME";
 export type ModelCardSortOrder = "ASCENDING" | "DESCENDING";
-export type ModelCardStatus = "DRAFT" | "PENDINGREVIEW" | "APPROVED" | "ARCHIVED";
+export type ModelCardStatus =
+  | "DRAFT"
+  | "PENDINGREVIEW"
+  | "APPROVED"
+  | "ARCHIVED";
 export interface ModelCardSummary {
   ModelCardName: string;
   ModelCardArn: string;
@@ -8745,7 +9159,8 @@ export interface ModelDashboardMonitoringSchedule {
   LastMonitoringExecutionSummary?: MonitoringExecutionSummary;
   BatchTransformInput?: BatchTransformInput;
 }
-export type ModelDashboardMonitoringSchedules = Array<ModelDashboardMonitoringSchedule>;
+export type ModelDashboardMonitoringSchedules =
+  Array<ModelDashboardMonitoringSchedule>;
 export interface ModelDataQuality {
   Statistics?: MetricsSource;
   Constraints?: MetricsSource;
@@ -8801,7 +9216,11 @@ export interface ModelMetadataFilter {
   Value: string;
 }
 export type ModelMetadataFilters = Array<ModelMetadataFilter>;
-export type ModelMetadataFilterType = "DOMAIN" | "FRAMEWORK" | "TASK" | "FRAMEWORKVERSION";
+export type ModelMetadataFilterType =
+  | "DOMAIN"
+  | "FRAMEWORK"
+  | "TASK"
+  | "FRAMEWORKVERSION";
 export interface ModelMetadataSearchExpression {
   Filters?: Array<ModelMetadataFilter>;
 }
@@ -8874,7 +9293,8 @@ export interface ModelPackageContainerDefinition {
   AdditionalS3DataSource?: AdditionalS3DataSource;
   ModelDataETag?: string;
 }
-export type ModelPackageContainerDefinitionList = Array<ModelPackageContainerDefinition>;
+export type ModelPackageContainerDefinitionList =
+  Array<ModelPackageContainerDefinition>;
 export type ModelPackageFrameworkVersion = string;
 
 export interface ModelPackageGroup {
@@ -8889,7 +9309,13 @@ export interface ModelPackageGroup {
 export type ModelPackageGroupArn = string;
 
 export type ModelPackageGroupSortBy = "NAME" | "CREATION_TIME";
-export type ModelPackageGroupStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "DELETING" | "DELETE_FAILED";
+export type ModelPackageGroupStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "DELETING"
+  | "DELETE_FAILED";
 export interface ModelPackageGroupSummary {
   ModelPackageGroupName: string;
   ModelPackageGroupArn: string;
@@ -8908,7 +9334,12 @@ export interface ModelPackageSecurityConfig {
 export type ModelPackageSortBy = "NAME" | "CREATION_TIME";
 export type ModelPackageSourceUri = string;
 
-export type ModelPackageStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "DELETING";
+export type ModelPackageStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "DELETING";
 export interface ModelPackageStatusDetails {
   ValidationStatuses: Array<ModelPackageStatusItem>;
   ImageScanStatuses?: Array<ModelPackageStatusItem>;
@@ -8919,7 +9350,10 @@ export interface ModelPackageStatusItem {
   FailureReason?: string;
 }
 export type ModelPackageStatusItemList = Array<ModelPackageStatusItem>;
-export type ModelPackageSummaries = Record<string, BatchDescribeModelPackageSummary>;
+export type ModelPackageSummaries = Record<
+  string,
+  BatchDescribeModelPackageSummary
+>;
 export interface ModelPackageSummary {
   ModelPackageName?: string;
   ModelPackageGroupName?: string;
@@ -8937,7 +9371,8 @@ export interface ModelPackageValidationProfile {
   ProfileName: string;
   TransformJobDefinition: TransformJobDefinition;
 }
-export type ModelPackageValidationProfiles = Array<ModelPackageValidationProfile>;
+export type ModelPackageValidationProfiles =
+  Array<ModelPackageValidationProfile>;
 export interface ModelPackageValidationSpecification {
   ValidationRole: string;
   ValidationProfiles: Array<ModelPackageValidationProfile>;
@@ -9007,7 +9442,12 @@ export interface ModelVariantConfigSummary {
 export type ModelVariantConfigSummaryList = Array<ModelVariantConfigSummary>;
 export type ModelVariantName = string;
 
-export type ModelVariantStatus = "CREATING" | "UPDATING" | "IN_SERVICE" | "DELETING" | "DELETED";
+export type ModelVariantStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "IN_SERVICE"
+  | "DELETING"
+  | "DELETED";
 export interface MonitoringAlertActions {
   ModelDashboardIndicator?: ModelDashboardIndicatorAction;
 }
@@ -9067,7 +9507,10 @@ export interface MonitoringDatasetFormat {
 export type MonitoringEnvironmentMap = Record<string, string>;
 export type MonitoringEvaluationPeriod = number;
 
-export type MonitoringExecutionSortKey = "CREATION_TIME" | "SCHEDULED_TIME" | "STATUS";
+export type MonitoringExecutionSortKey =
+  | "CREATION_TIME"
+  | "SCHEDULED_TIME"
+  | "STATUS";
 export interface MonitoringExecutionSummary {
   MonitoringScheduleName: string;
   ScheduledTime: Date | string;
@@ -9111,7 +9554,8 @@ export interface MonitoringJobDefinitionSummary {
   CreationTime: Date | string;
   EndpointName: string;
 }
-export type MonitoringJobDefinitionSummaryList = Array<MonitoringJobDefinitionSummary>;
+export type MonitoringJobDefinitionSummaryList =
+  Array<MonitoringJobDefinitionSummary>;
 export interface MonitoringJsonDatasetFormat {
   Line?: boolean;
 }
@@ -9130,9 +9574,11 @@ export interface MonitoringOutputConfig {
   KmsKeyId?: string;
 }
 export type MonitoringOutputs = Array<MonitoringOutput>;
-export interface MonitoringParquetDatasetFormat {
-}
-export type MonitoringProblemType = "BINARY_CLASSIFICATION" | "MULTICLASS_CLASSIFICATION" | "REGRESSION";
+export interface MonitoringParquetDatasetFormat {}
+export type MonitoringProblemType =
+  | "BINARY_CLASSIFICATION"
+  | "MULTICLASS_CLASSIFICATION"
+  | "REGRESSION";
 export interface MonitoringResources {
   ClusterConfig: MonitoringClusterConfig;
 }
@@ -9187,7 +9633,11 @@ export interface MonitoringStoppingCondition {
 }
 export type MonitoringTimeOffsetString = string;
 
-export type MonitoringType = "DATA_QUALITY" | "MODEL_QUALITY" | "MODEL_BIAS" | "MODEL_EXPLAINABILITY";
+export type MonitoringType =
+  | "DATA_QUALITY"
+  | "MODEL_QUALITY"
+  | "MODEL_BIAS"
+  | "MODEL_EXPLAINABILITY";
 export type MountPath = string;
 
 export interface MultiModelConfig {
@@ -9226,28 +9676,42 @@ export type NonEmptyString256 = string;
 
 export type NonEmptyString64 = string;
 
-export type NotebookInstanceAcceleratorType = "ML_EIA1_MEDIUM" | "ML_EIA1_LARGE" | "ML_EIA1_XLARGE" | "ML_EIA2_MEDIUM" | "ML_EIA2_LARGE" | "ML_EIA2_XLARGE";
-export type NotebookInstanceAcceleratorTypes = Array<NotebookInstanceAcceleratorType>;
+export type NotebookInstanceAcceleratorType =
+  | "ML_EIA1_MEDIUM"
+  | "ML_EIA1_LARGE"
+  | "ML_EIA1_XLARGE"
+  | "ML_EIA2_MEDIUM"
+  | "ML_EIA2_LARGE"
+  | "ML_EIA2_XLARGE";
+export type NotebookInstanceAcceleratorTypes =
+  Array<NotebookInstanceAcceleratorType>;
 export type NotebookInstanceArn = string;
 
 export type NotebookInstanceLifecycleConfigArn = string;
 
 export type NotebookInstanceLifecycleConfigContent = string;
 
-export type NotebookInstanceLifecycleConfigList = Array<NotebookInstanceLifecycleHook>;
+export type NotebookInstanceLifecycleConfigList =
+  Array<NotebookInstanceLifecycleHook>;
 export type NotebookInstanceLifecycleConfigName = string;
 
 export type NotebookInstanceLifecycleConfigNameContains = string;
 
-export type NotebookInstanceLifecycleConfigSortKey = "NAME" | "CREATION_TIME" | "LAST_MODIFIED_TIME";
-export type NotebookInstanceLifecycleConfigSortOrder = "ASCENDING" | "DESCENDING";
+export type NotebookInstanceLifecycleConfigSortKey =
+  | "NAME"
+  | "CREATION_TIME"
+  | "LAST_MODIFIED_TIME";
+export type NotebookInstanceLifecycleConfigSortOrder =
+  | "ASCENDING"
+  | "DESCENDING";
 export interface NotebookInstanceLifecycleConfigSummary {
   NotebookInstanceLifecycleConfigName: string;
   NotebookInstanceLifecycleConfigArn: string;
   CreationTime?: Date | string;
   LastModifiedTime?: Date | string;
 }
-export type NotebookInstanceLifecycleConfigSummaryList = Array<NotebookInstanceLifecycleConfigSummary>;
+export type NotebookInstanceLifecycleConfigSummaryList =
+  Array<NotebookInstanceLifecycleConfigSummary>;
 export interface NotebookInstanceLifecycleHook {
   Content?: string;
 }
@@ -9257,7 +9721,14 @@ export type NotebookInstanceNameContains = string;
 
 export type NotebookInstanceSortKey = "NAME" | "CREATION_TIME" | "STATUS";
 export type NotebookInstanceSortOrder = "ASCENDING" | "DESCENDING";
-export type NotebookInstanceStatus = "Pending" | "InService" | "Stopping" | "Stopped" | "Failed" | "Deleting" | "Updating";
+export type NotebookInstanceStatus =
+  | "Pending"
+  | "InService"
+  | "Stopping"
+  | "Stopped"
+  | "Failed"
+  | "Deleting"
+  | "Updating";
 export interface NotebookInstanceSummary {
   NotebookInstanceName: string;
   NotebookInstanceArn: string;
@@ -9351,14 +9822,61 @@ export interface OnlineStoreSecurityConfig {
 export type OnlineStoreTotalSizeBytes = number;
 
 export type OnStartDeepHealthChecks = Array<DeepHealthCheckType>;
-export type Operator = "EQUALS" | "NOT_EQUALS" | "GREATER_THAN" | "GREATER_THAN_OR_EQUAL_TO" | "LESS_THAN" | "LESS_THAN_OR_EQUAL_TO" | "CONTAINS" | "EXISTS" | "NOT_EXISTS" | "IN";
-export type OptimizationConfig = { ModelQuantizationConfig: ModelQuantizationConfig } | { ModelCompilationConfig: ModelCompilationConfig } | { ModelShardingConfig: ModelShardingConfig };
+export type Operator =
+  | "EQUALS"
+  | "NOT_EQUALS"
+  | "GREATER_THAN"
+  | "GREATER_THAN_OR_EQUAL_TO"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUAL_TO"
+  | "CONTAINS"
+  | "EXISTS"
+  | "NOT_EXISTS"
+  | "IN";
+export type OptimizationConfig =
+  | { ModelQuantizationConfig: ModelQuantizationConfig }
+  | { ModelCompilationConfig: ModelCompilationConfig }
+  | { ModelShardingConfig: ModelShardingConfig };
 export type OptimizationConfigs = Array<OptimizationConfig>;
 export type OptimizationContainerImage = string;
 
 export type OptimizationJobArn = string;
 
-export type OptimizationJobDeploymentInstanceType = "ML_P4D_24XLARGE" | "ML_P4DE_24XLARGE" | "ML_P5_48XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_12XLARGE" | "ML_G5_16XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_12XLARGE" | "ML_G6_16XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE" | "ML_G6E_XLARGE" | "ML_G6E_2XLARGE" | "ML_G6E_4XLARGE" | "ML_G6E_8XLARGE" | "ML_G6E_12XLARGE" | "ML_G6E_16XLARGE" | "ML_G6E_24XLARGE" | "ML_G6E_48XLARGE" | "ML_INF2_XLARGE" | "ML_INF2_8XLARGE" | "ML_INF2_24XLARGE" | "ML_INF2_48XLARGE" | "ML_TRN1_2XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN1N_32XLARGE";
+export type OptimizationJobDeploymentInstanceType =
+  | "ML_P4D_24XLARGE"
+  | "ML_P4DE_24XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE"
+  | "ML_G6E_XLARGE"
+  | "ML_G6E_2XLARGE"
+  | "ML_G6E_4XLARGE"
+  | "ML_G6E_8XLARGE"
+  | "ML_G6E_12XLARGE"
+  | "ML_G6E_16XLARGE"
+  | "ML_G6E_24XLARGE"
+  | "ML_G6E_48XLARGE"
+  | "ML_INF2_XLARGE"
+  | "ML_INF2_8XLARGE"
+  | "ML_INF2_24XLARGE"
+  | "ML_INF2_48XLARGE"
+  | "ML_TRN1_2XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN1N_32XLARGE";
 export type OptimizationJobEnvironmentVariables = Record<string, string>;
 export interface OptimizationJobModelSource {
   S3?: OptimizationJobModelSourceS3;
@@ -9371,7 +9889,13 @@ export interface OptimizationJobOutputConfig {
   KmsKeyId?: string;
   S3OutputLocation: string;
 }
-export type OptimizationJobStatus = "INPROGRESS" | "COMPLETED" | "FAILED" | "STARTING" | "STOPPING" | "STOPPED";
+export type OptimizationJobStatus =
+  | "INPROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STARTING"
+  | "STOPPING"
+  | "STOPPED";
 export type OptimizationJobSummaries = Array<OptimizationJobSummary>;
 export interface OptimizationJobSummary {
   OptimizationJobName: string;
@@ -9461,7 +9985,11 @@ export interface ParameterRanges {
   CategoricalParameterRanges?: Array<CategoricalParameterRange>;
   AutoParameters?: Array<AutoParameter>;
 }
-export type ParameterType = "INTEGER" | "CONTINUOUS" | "CATEGORICAL" | "FREE_TEXT";
+export type ParameterType =
+  | "INTEGER"
+  | "CONTINUOUS"
+  | "CATEGORICAL"
+  | "FREE_TEXT";
 export type ParameterValue = string;
 
 export type ParameterValues = Array<string>;
@@ -9472,7 +10000,8 @@ export interface Parent {
 export interface ParentHyperParameterTuningJob {
   HyperParameterTuningJobName?: string;
 }
-export type ParentHyperParameterTuningJobs = Array<ParentHyperParameterTuningJob>;
+export type ParentHyperParameterTuningJobs =
+  Array<ParentHyperParameterTuningJob>;
 export type Parents = Array<Parent>;
 export type PartnerAppAdminUserList = Array<string>;
 export type PartnerAppArguments = Record<string, string>;
@@ -9488,7 +10017,14 @@ export interface PartnerAppMaintenanceConfig {
 }
 export type PartnerAppName = string;
 
-export type PartnerAppStatus = "CREATING" | "UPDATING" | "DELETING" | "AVAILABLE" | "FAILED" | "UPDATE_FAILED" | "DELETED";
+export type PartnerAppStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "AVAILABLE"
+  | "FAILED"
+  | "UPDATE_FAILED"
+  | "DELETED";
 export type PartnerAppSummaries = Array<PartnerAppSummary>;
 export interface PartnerAppSummary {
   Arn?: string;
@@ -9497,7 +10033,11 @@ export interface PartnerAppSummary {
   Status?: PartnerAppStatus;
   CreationTime?: Date | string;
 }
-export type PartnerAppType = "LAKERA_GUARD" | "COMET" | "DEEPCHECKS_LLM_EVALUATION" | "FIDDLER";
+export type PartnerAppType =
+  | "LAKERA_GUARD"
+  | "COMET"
+  | "DEEPCHECKS_LLM_EVALUATION"
+  | "FIDDLER";
 export interface PendingDeploymentSummary {
   EndpointConfigName: string;
   ProductionVariants?: Array<PendingProductionVariantSummary>;
@@ -9519,7 +10059,8 @@ export interface PendingProductionVariantSummary {
   ManagedInstanceScaling?: ProductionVariantManagedInstanceScaling;
   RoutingConfig?: ProductionVariantRoutingConfig;
 }
-export type PendingProductionVariantSummaryList = Array<PendingProductionVariantSummary>;
+export type PendingProductionVariantSummaryList =
+  Array<PendingProductionVariantSummary>;
 export type Percentage = number;
 
 export interface Phase {
@@ -9578,7 +10119,12 @@ export type PipelineExecutionFailureReason = string;
 
 export type PipelineExecutionName = string;
 
-export type PipelineExecutionStatus = "EXECUTING" | "STOPPING" | "STOPPED" | "FAILED" | "SUCCEEDED";
+export type PipelineExecutionStatus =
+  | "EXECUTING"
+  | "STOPPING"
+  | "STOPPED"
+  | "FAILED"
+  | "SUCCEEDED";
 export interface PipelineExecutionStep {
   StepName?: string;
   StepDisplayName?: string;
@@ -9665,7 +10211,10 @@ export type PriorityWeight = number;
 
 export type ProbabilityThresholdAttribute = number;
 
-export type ProblemType = "BINARY_CLASSIFICATION" | "MULTICLASS_CLASSIFICATION" | "REGRESSION";
+export type ProblemType =
+  | "BINARY_CLASSIFICATION"
+  | "MULTICLASS_CLASSIFICATION"
+  | "REGRESSION";
 export interface ProcessingClusterConfig {
   InstanceCount: number;
   InstanceType: ProcessingInstanceType;
@@ -9689,7 +10238,127 @@ export interface ProcessingInput {
 export type ProcessingInputs = Array<ProcessingInput>;
 export type ProcessingInstanceCount = number;
 
-export type ProcessingInstanceType = "ML_T3_MEDIUM" | "ML_T3_LARGE" | "ML_T3_XLARGE" | "ML_T3_2XLARGE" | "ML_M4_XLARGE" | "ML_M4_2XLARGE" | "ML_M4_4XLARGE" | "ML_M4_10XLARGE" | "ML_M4_16XLARGE" | "ML_C4_XLARGE" | "ML_C4_2XLARGE" | "ML_C4_4XLARGE" | "ML_C4_8XLARGE" | "ML_P2_XLARGE" | "ML_P2_8XLARGE" | "ML_P2_16XLARGE" | "ML_P3_2XLARGE" | "ML_P3_8XLARGE" | "ML_P3_16XLARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_18XLARGE" | "ML_M5_LARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_12XLARGE" | "ML_M5_24XLARGE" | "ML_R5_LARGE" | "ML_R5_XLARGE" | "ML_R5_2XLARGE" | "ML_R5_4XLARGE" | "ML_R5_8XLARGE" | "ML_R5_12XLARGE" | "ML_R5_16XLARGE" | "ML_R5_24XLARGE" | "ML_G4DN_XLARGE" | "ML_G4DN_2XLARGE" | "ML_G4DN_4XLARGE" | "ML_G4DN_8XLARGE" | "ML_G4DN_12XLARGE" | "ML_G4DN_16XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_16XLARGE" | "ML_G5_12XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_R5D_LARGE" | "ML_R5D_XLARGE" | "ML_R5D_2XLARGE" | "ML_R5D_4XLARGE" | "ML_R5D_8XLARGE" | "ML_R5D_12XLARGE" | "ML_R5D_16XLARGE" | "ML_R5D_24XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_12XLARGE" | "ML_G6_16XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE" | "ML_G6E_XLARGE" | "ML_G6E_2XLARGE" | "ML_G6E_4XLARGE" | "ML_G6E_8XLARGE" | "ML_G6E_12XLARGE" | "ML_G6E_16XLARGE" | "ML_G6E_24XLARGE" | "ML_G6E_48XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_C7I_LARGE" | "ML_C7I_XLARGE" | "ML_C7I_2XLARGE" | "ML_C7I_4XLARGE" | "ML_C7I_8XLARGE" | "ML_C7I_12XLARGE" | "ML_C7I_16XLARGE" | "ML_C7I_24XLARGE" | "ML_C7I_48XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE";
+export type ProcessingInstanceType =
+  | "ML_T3_MEDIUM"
+  | "ML_T3_LARGE"
+  | "ML_T3_XLARGE"
+  | "ML_T3_2XLARGE"
+  | "ML_M4_XLARGE"
+  | "ML_M4_2XLARGE"
+  | "ML_M4_4XLARGE"
+  | "ML_M4_10XLARGE"
+  | "ML_M4_16XLARGE"
+  | "ML_C4_XLARGE"
+  | "ML_C4_2XLARGE"
+  | "ML_C4_4XLARGE"
+  | "ML_C4_8XLARGE"
+  | "ML_P2_XLARGE"
+  | "ML_P2_8XLARGE"
+  | "ML_P2_16XLARGE"
+  | "ML_P3_2XLARGE"
+  | "ML_P3_8XLARGE"
+  | "ML_P3_16XLARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_M5_LARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_R5_LARGE"
+  | "ML_R5_XLARGE"
+  | "ML_R5_2XLARGE"
+  | "ML_R5_4XLARGE"
+  | "ML_R5_8XLARGE"
+  | "ML_R5_12XLARGE"
+  | "ML_R5_16XLARGE"
+  | "ML_R5_24XLARGE"
+  | "ML_G4DN_XLARGE"
+  | "ML_G4DN_2XLARGE"
+  | "ML_G4DN_4XLARGE"
+  | "ML_G4DN_8XLARGE"
+  | "ML_G4DN_12XLARGE"
+  | "ML_G4DN_16XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_R5D_LARGE"
+  | "ML_R5D_XLARGE"
+  | "ML_R5D_2XLARGE"
+  | "ML_R5D_4XLARGE"
+  | "ML_R5D_8XLARGE"
+  | "ML_R5D_12XLARGE"
+  | "ML_R5D_16XLARGE"
+  | "ML_R5D_24XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE"
+  | "ML_G6E_XLARGE"
+  | "ML_G6E_2XLARGE"
+  | "ML_G6E_4XLARGE"
+  | "ML_G6E_8XLARGE"
+  | "ML_G6E_12XLARGE"
+  | "ML_G6E_16XLARGE"
+  | "ML_G6E_24XLARGE"
+  | "ML_G6E_48XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_C7I_LARGE"
+  | "ML_C7I_XLARGE"
+  | "ML_C7I_2XLARGE"
+  | "ML_C7I_4XLARGE"
+  | "ML_C7I_8XLARGE"
+  | "ML_C7I_12XLARGE"
+  | "ML_C7I_16XLARGE"
+  | "ML_C7I_24XLARGE"
+  | "ML_C7I_48XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE";
 export interface ProcessingJob {
   ProcessingInputs?: Array<ProcessingInput>;
   ProcessingOutputConfig?: ProcessingOutputConfig;
@@ -9718,7 +10387,12 @@ export type ProcessingJobArn = string;
 
 export type ProcessingJobName = string;
 
-export type ProcessingJobStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type ProcessingJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export interface ProcessingJobStepMetadata {
   Arn?: string;
 }
@@ -9752,7 +10426,9 @@ export interface ProcessingResources {
   ClusterConfig: ProcessingClusterConfig;
 }
 export type ProcessingS3CompressionType = "NONE" | "GZIP";
-export type ProcessingS3DataDistributionType = "FULLYREPLICATED" | "SHARDEDBYS3KEY";
+export type ProcessingS3DataDistributionType =
+  | "FULLYREPLICATED"
+  | "SHARDEDBYS3KEY";
 export type ProcessingS3DataType = "MANIFEST_FILE" | "S3_PREFIX";
 export interface ProcessingS3Input {
   S3Uri: string;
@@ -9795,7 +10471,13 @@ export interface ProductionVariant {
   InferenceAmiVersion?: ProductionVariantInferenceAmiVersion;
   CapacityReservationConfig?: ProductionVariantCapacityReservationConfig;
 }
-export type ProductionVariantAcceleratorType = "ML_EIA1_MEDIUM" | "ML_EIA1_LARGE" | "ML_EIA1_XLARGE" | "ML_EIA2_MEDIUM" | "ML_EIA2_LARGE" | "ML_EIA2_XLARGE";
+export type ProductionVariantAcceleratorType =
+  | "ML_EIA1_MEDIUM"
+  | "ML_EIA1_LARGE"
+  | "ML_EIA1_XLARGE"
+  | "ML_EIA2_MEDIUM"
+  | "ML_EIA2_LARGE"
+  | "ML_EIA2_XLARGE";
 export interface ProductionVariantCapacityReservationConfig {
   CapacityReservationPreference?: CapacityReservationPreference;
   MlReservationArn?: string;
@@ -9808,14 +10490,282 @@ export interface ProductionVariantCapacityReservationSummary {
   UsedByCurrentEndpoint?: number;
   Ec2CapacityReservations?: Array<Ec2CapacityReservation>;
 }
-export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds = number;
+export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds =
+  number;
 
 export interface ProductionVariantCoreDumpConfig {
   DestinationS3Uri: string;
   KmsKeyId?: string;
 }
-export type ProductionVariantInferenceAmiVersion = "AL2_GPU_2" | "AL2_GPU_2_1" | "AL2_GPU_3_1" | "AL2_NEURON_2";
-export type ProductionVariantInstanceType = "ML_T2_MEDIUM" | "ML_T2_LARGE" | "ML_T2_XLARGE" | "ML_T2_2XLARGE" | "ML_M4_XLARGE" | "ML_M4_2XLARGE" | "ML_M4_4XLARGE" | "ML_M4_10XLARGE" | "ML_M4_16XLARGE" | "ML_M5_LARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_12XLARGE" | "ML_M5_24XLARGE" | "ML_M5D_LARGE" | "ML_M5D_XLARGE" | "ML_M5D_2XLARGE" | "ML_M5D_4XLARGE" | "ML_M5D_12XLARGE" | "ML_M5D_24XLARGE" | "ML_C4_LARGE" | "ML_C4_XLARGE" | "ML_C4_2XLARGE" | "ML_C4_4XLARGE" | "ML_C4_8XLARGE" | "ML_P2_XLARGE" | "ML_P2_8XLARGE" | "ML_P2_16XLARGE" | "ML_P3_2XLARGE" | "ML_P3_8XLARGE" | "ML_P3_16XLARGE" | "ML_C5_LARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_18XLARGE" | "ML_C5D_LARGE" | "ML_C5D_XLARGE" | "ML_C5D_2XLARGE" | "ML_C5D_4XLARGE" | "ML_C5D_9XLARGE" | "ML_C5D_18XLARGE" | "ML_G4DN_XLARGE" | "ML_G4DN_2XLARGE" | "ML_G4DN_4XLARGE" | "ML_G4DN_8XLARGE" | "ML_G4DN_12XLARGE" | "ML_G4DN_16XLARGE" | "ML_R5_LARGE" | "ML_R5_XLARGE" | "ML_R5_2XLARGE" | "ML_R5_4XLARGE" | "ML_R5_12XLARGE" | "ML_R5_24XLARGE" | "ML_R5D_LARGE" | "ML_R5D_XLARGE" | "ML_R5D_2XLARGE" | "ML_R5D_4XLARGE" | "ML_R5D_12XLARGE" | "ML_R5D_24XLARGE" | "ML_INF1_XLARGE" | "ML_INF1_2XLARGE" | "ML_INF1_6XLARGE" | "ML_INF1_24XLARGE" | "ML_DL1_24XLARGE" | "ML_C6I_LARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_R6I_LARGE" | "ML_R6I_XLARGE" | "ML_R6I_2XLARGE" | "ML_R6I_4XLARGE" | "ML_R6I_8XLARGE" | "ML_R6I_12XLARGE" | "ML_R6I_16XLARGE" | "ML_R6I_24XLARGE" | "ML_R6I_32XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_12XLARGE" | "ML_G5_16XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_12XLARGE" | "ML_G6_16XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE" | "ML_R8G_MEDIUM" | "ML_R8G_LARGE" | "ML_R8G_XLARGE" | "ML_R8G_2XLARGE" | "ML_R8G_4XLARGE" | "ML_R8G_8XLARGE" | "ML_R8G_12XLARGE" | "ML_R8G_16XLARGE" | "ML_R8G_24XLARGE" | "ML_R8G_48XLARGE" | "ML_G6E_XLARGE" | "ML_G6E_2XLARGE" | "ML_G6E_4XLARGE" | "ML_G6E_8XLARGE" | "ML_G6E_12XLARGE" | "ML_G6E_16XLARGE" | "ML_G6E_24XLARGE" | "ML_G6E_48XLARGE" | "ML_P4D_24XLARGE" | "ML_C7G_LARGE" | "ML_C7G_XLARGE" | "ML_C7G_2XLARGE" | "ML_C7G_4XLARGE" | "ML_C7G_8XLARGE" | "ML_C7G_12XLARGE" | "ML_C7G_16XLARGE" | "ML_M6G_LARGE" | "ML_M6G_XLARGE" | "ML_M6G_2XLARGE" | "ML_M6G_4XLARGE" | "ML_M6G_8XLARGE" | "ML_M6G_12XLARGE" | "ML_M6G_16XLARGE" | "ML_M6GD_LARGE" | "ML_M6GD_XLARGE" | "ML_M6GD_2XLARGE" | "ML_M6GD_4XLARGE" | "ML_M6GD_8XLARGE" | "ML_M6GD_12XLARGE" | "ML_M6GD_16XLARGE" | "ML_C6G_LARGE" | "ML_C6G_XLARGE" | "ML_C6G_2XLARGE" | "ML_C6G_4XLARGE" | "ML_C6G_8XLARGE" | "ML_C6G_12XLARGE" | "ML_C6G_16XLARGE" | "ML_C6GD_LARGE" | "ML_C6GD_XLARGE" | "ML_C6GD_2XLARGE" | "ML_C6GD_4XLARGE" | "ML_C6GD_8XLARGE" | "ML_C6GD_12XLARGE" | "ML_C6GD_16XLARGE" | "ML_C6GN_LARGE" | "ML_C6GN_XLARGE" | "ML_C6GN_2XLARGE" | "ML_C6GN_4XLARGE" | "ML_C6GN_8XLARGE" | "ML_C6GN_12XLARGE" | "ML_C6GN_16XLARGE" | "ML_R6G_LARGE" | "ML_R6G_XLARGE" | "ML_R6G_2XLARGE" | "ML_R6G_4XLARGE" | "ML_R6G_8XLARGE" | "ML_R6G_12XLARGE" | "ML_R6G_16XLARGE" | "ML_R6GD_LARGE" | "ML_R6GD_XLARGE" | "ML_R6GD_2XLARGE" | "ML_R6GD_4XLARGE" | "ML_R6GD_8XLARGE" | "ML_R6GD_12XLARGE" | "ML_R6GD_16XLARGE" | "ML_P4DE_24XLARGE" | "ML_TRN1_2XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN1N_32XLARGE" | "ML_TRN2_48XLARGE" | "ML_INF2_XLARGE" | "ML_INF2_8XLARGE" | "ML_INF2_24XLARGE" | "ML_INF2_48XLARGE" | "ML_P5_48XLARGE" | "ML_P5E_48XLARGE" | "ML_P5EN_48XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_C7I_LARGE" | "ML_C7I_XLARGE" | "ML_C7I_2XLARGE" | "ML_C7I_4XLARGE" | "ML_C7I_8XLARGE" | "ML_C7I_12XLARGE" | "ML_C7I_16XLARGE" | "ML_C7I_24XLARGE" | "ML_C7I_48XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE" | "ML_C8G_MEDIUM" | "ML_C8G_LARGE" | "ML_C8G_XLARGE" | "ML_C8G_2XLARGE" | "ML_C8G_4XLARGE" | "ML_C8G_8XLARGE" | "ML_C8G_12XLARGE" | "ML_C8G_16XLARGE" | "ML_C8G_24XLARGE" | "ML_C8G_48XLARGE" | "ML_R7GD_MEDIUM" | "ML_R7GD_LARGE" | "ML_R7GD_XLARGE" | "ML_R7GD_2XLARGE" | "ML_R7GD_4XLARGE" | "ML_R7GD_8XLARGE" | "ML_R7GD_12XLARGE" | "ML_R7GD_16XLARGE" | "ML_M8G_MEDIUM" | "ML_M8G_LARGE" | "ML_M8G_XLARGE" | "ML_M8G_2XLARGE" | "ML_M8G_4XLARGE" | "ML_M8G_8XLARGE" | "ML_M8G_12XLARGE" | "ML_M8G_16XLARGE" | "ML_M8G_24XLARGE" | "ML_M8G_48XLARGE" | "ML_C6IN_LARGE" | "ML_C6IN_XLARGE" | "ML_C6IN_2XLARGE" | "ML_C6IN_4XLARGE" | "ML_C6IN_8XLARGE" | "ML_C6IN_12XLARGE" | "ML_C6IN_16XLARGE" | "ML_C6IN_24XLARGE" | "ML_C6IN_32XLARGE" | "ML_P6_B200_48XLARGE" | "ML_P6E_GB200_36XLARGE";
+export type ProductionVariantInferenceAmiVersion =
+  | "AL2_GPU_2"
+  | "AL2_GPU_2_1"
+  | "AL2_GPU_3_1"
+  | "AL2_NEURON_2";
+export type ProductionVariantInstanceType =
+  | "ML_T2_MEDIUM"
+  | "ML_T2_LARGE"
+  | "ML_T2_XLARGE"
+  | "ML_T2_2XLARGE"
+  | "ML_M4_XLARGE"
+  | "ML_M4_2XLARGE"
+  | "ML_M4_4XLARGE"
+  | "ML_M4_10XLARGE"
+  | "ML_M4_16XLARGE"
+  | "ML_M5_LARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_M5D_LARGE"
+  | "ML_M5D_XLARGE"
+  | "ML_M5D_2XLARGE"
+  | "ML_M5D_4XLARGE"
+  | "ML_M5D_12XLARGE"
+  | "ML_M5D_24XLARGE"
+  | "ML_C4_LARGE"
+  | "ML_C4_XLARGE"
+  | "ML_C4_2XLARGE"
+  | "ML_C4_4XLARGE"
+  | "ML_C4_8XLARGE"
+  | "ML_P2_XLARGE"
+  | "ML_P2_8XLARGE"
+  | "ML_P2_16XLARGE"
+  | "ML_P3_2XLARGE"
+  | "ML_P3_8XLARGE"
+  | "ML_P3_16XLARGE"
+  | "ML_C5_LARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_C5D_LARGE"
+  | "ML_C5D_XLARGE"
+  | "ML_C5D_2XLARGE"
+  | "ML_C5D_4XLARGE"
+  | "ML_C5D_9XLARGE"
+  | "ML_C5D_18XLARGE"
+  | "ML_G4DN_XLARGE"
+  | "ML_G4DN_2XLARGE"
+  | "ML_G4DN_4XLARGE"
+  | "ML_G4DN_8XLARGE"
+  | "ML_G4DN_12XLARGE"
+  | "ML_G4DN_16XLARGE"
+  | "ML_R5_LARGE"
+  | "ML_R5_XLARGE"
+  | "ML_R5_2XLARGE"
+  | "ML_R5_4XLARGE"
+  | "ML_R5_12XLARGE"
+  | "ML_R5_24XLARGE"
+  | "ML_R5D_LARGE"
+  | "ML_R5D_XLARGE"
+  | "ML_R5D_2XLARGE"
+  | "ML_R5D_4XLARGE"
+  | "ML_R5D_12XLARGE"
+  | "ML_R5D_24XLARGE"
+  | "ML_INF1_XLARGE"
+  | "ML_INF1_2XLARGE"
+  | "ML_INF1_6XLARGE"
+  | "ML_INF1_24XLARGE"
+  | "ML_DL1_24XLARGE"
+  | "ML_C6I_LARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_R6I_LARGE"
+  | "ML_R6I_XLARGE"
+  | "ML_R6I_2XLARGE"
+  | "ML_R6I_4XLARGE"
+  | "ML_R6I_8XLARGE"
+  | "ML_R6I_12XLARGE"
+  | "ML_R6I_16XLARGE"
+  | "ML_R6I_24XLARGE"
+  | "ML_R6I_32XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE"
+  | "ML_R8G_MEDIUM"
+  | "ML_R8G_LARGE"
+  | "ML_R8G_XLARGE"
+  | "ML_R8G_2XLARGE"
+  | "ML_R8G_4XLARGE"
+  | "ML_R8G_8XLARGE"
+  | "ML_R8G_12XLARGE"
+  | "ML_R8G_16XLARGE"
+  | "ML_R8G_24XLARGE"
+  | "ML_R8G_48XLARGE"
+  | "ML_G6E_XLARGE"
+  | "ML_G6E_2XLARGE"
+  | "ML_G6E_4XLARGE"
+  | "ML_G6E_8XLARGE"
+  | "ML_G6E_12XLARGE"
+  | "ML_G6E_16XLARGE"
+  | "ML_G6E_24XLARGE"
+  | "ML_G6E_48XLARGE"
+  | "ML_P4D_24XLARGE"
+  | "ML_C7G_LARGE"
+  | "ML_C7G_XLARGE"
+  | "ML_C7G_2XLARGE"
+  | "ML_C7G_4XLARGE"
+  | "ML_C7G_8XLARGE"
+  | "ML_C7G_12XLARGE"
+  | "ML_C7G_16XLARGE"
+  | "ML_M6G_LARGE"
+  | "ML_M6G_XLARGE"
+  | "ML_M6G_2XLARGE"
+  | "ML_M6G_4XLARGE"
+  | "ML_M6G_8XLARGE"
+  | "ML_M6G_12XLARGE"
+  | "ML_M6G_16XLARGE"
+  | "ML_M6GD_LARGE"
+  | "ML_M6GD_XLARGE"
+  | "ML_M6GD_2XLARGE"
+  | "ML_M6GD_4XLARGE"
+  | "ML_M6GD_8XLARGE"
+  | "ML_M6GD_12XLARGE"
+  | "ML_M6GD_16XLARGE"
+  | "ML_C6G_LARGE"
+  | "ML_C6G_XLARGE"
+  | "ML_C6G_2XLARGE"
+  | "ML_C6G_4XLARGE"
+  | "ML_C6G_8XLARGE"
+  | "ML_C6G_12XLARGE"
+  | "ML_C6G_16XLARGE"
+  | "ML_C6GD_LARGE"
+  | "ML_C6GD_XLARGE"
+  | "ML_C6GD_2XLARGE"
+  | "ML_C6GD_4XLARGE"
+  | "ML_C6GD_8XLARGE"
+  | "ML_C6GD_12XLARGE"
+  | "ML_C6GD_16XLARGE"
+  | "ML_C6GN_LARGE"
+  | "ML_C6GN_XLARGE"
+  | "ML_C6GN_2XLARGE"
+  | "ML_C6GN_4XLARGE"
+  | "ML_C6GN_8XLARGE"
+  | "ML_C6GN_12XLARGE"
+  | "ML_C6GN_16XLARGE"
+  | "ML_R6G_LARGE"
+  | "ML_R6G_XLARGE"
+  | "ML_R6G_2XLARGE"
+  | "ML_R6G_4XLARGE"
+  | "ML_R6G_8XLARGE"
+  | "ML_R6G_12XLARGE"
+  | "ML_R6G_16XLARGE"
+  | "ML_R6GD_LARGE"
+  | "ML_R6GD_XLARGE"
+  | "ML_R6GD_2XLARGE"
+  | "ML_R6GD_4XLARGE"
+  | "ML_R6GD_8XLARGE"
+  | "ML_R6GD_12XLARGE"
+  | "ML_R6GD_16XLARGE"
+  | "ML_P4DE_24XLARGE"
+  | "ML_TRN1_2XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN1N_32XLARGE"
+  | "ML_TRN2_48XLARGE"
+  | "ML_INF2_XLARGE"
+  | "ML_INF2_8XLARGE"
+  | "ML_INF2_24XLARGE"
+  | "ML_INF2_48XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_P5E_48XLARGE"
+  | "ML_P5EN_48XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_C7I_LARGE"
+  | "ML_C7I_XLARGE"
+  | "ML_C7I_2XLARGE"
+  | "ML_C7I_4XLARGE"
+  | "ML_C7I_8XLARGE"
+  | "ML_C7I_12XLARGE"
+  | "ML_C7I_16XLARGE"
+  | "ML_C7I_24XLARGE"
+  | "ML_C7I_48XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE"
+  | "ML_C8G_MEDIUM"
+  | "ML_C8G_LARGE"
+  | "ML_C8G_XLARGE"
+  | "ML_C8G_2XLARGE"
+  | "ML_C8G_4XLARGE"
+  | "ML_C8G_8XLARGE"
+  | "ML_C8G_12XLARGE"
+  | "ML_C8G_16XLARGE"
+  | "ML_C8G_24XLARGE"
+  | "ML_C8G_48XLARGE"
+  | "ML_R7GD_MEDIUM"
+  | "ML_R7GD_LARGE"
+  | "ML_R7GD_XLARGE"
+  | "ML_R7GD_2XLARGE"
+  | "ML_R7GD_4XLARGE"
+  | "ML_R7GD_8XLARGE"
+  | "ML_R7GD_12XLARGE"
+  | "ML_R7GD_16XLARGE"
+  | "ML_M8G_MEDIUM"
+  | "ML_M8G_LARGE"
+  | "ML_M8G_XLARGE"
+  | "ML_M8G_2XLARGE"
+  | "ML_M8G_4XLARGE"
+  | "ML_M8G_8XLARGE"
+  | "ML_M8G_12XLARGE"
+  | "ML_M8G_16XLARGE"
+  | "ML_M8G_24XLARGE"
+  | "ML_M8G_48XLARGE"
+  | "ML_C6IN_LARGE"
+  | "ML_C6IN_XLARGE"
+  | "ML_C6IN_2XLARGE"
+  | "ML_C6IN_4XLARGE"
+  | "ML_C6IN_8XLARGE"
+  | "ML_C6IN_12XLARGE"
+  | "ML_C6IN_16XLARGE"
+  | "ML_C6IN_24XLARGE"
+  | "ML_C6IN_32XLARGE"
+  | "ML_P6_B200_48XLARGE"
+  | "ML_P6E_GB200_36XLARGE";
 export type ProductionVariantList = Array<ProductionVariant>;
 export interface ProductionVariantManagedInstanceScaling {
   Status?: ManagedInstanceScalingStatus;
@@ -9891,7 +10841,8 @@ export interface ProfilerRuleEvaluationStatus {
   StatusDetails?: string;
   LastModifiedTime?: Date | string;
 }
-export type ProfilerRuleEvaluationStatuses = Array<ProfilerRuleEvaluationStatus>;
+export type ProfilerRuleEvaluationStatuses =
+  Array<ProfilerRuleEvaluationStatus>;
 export type ProfilingIntervalInMilliseconds = number;
 
 export type ProfilingParameters = Record<string, string>;
@@ -9921,7 +10872,17 @@ export type ProjectId = string;
 
 export type ProjectSortBy = "NAME" | "CREATION_TIME";
 export type ProjectSortOrder = "ASCENDING" | "DESCENDING";
-export type ProjectStatus = "PENDING" | "CREATE_IN_PROGRESS" | "CREATE_COMPLETED" | "CREATE_FAILED" | "DELETE_IN_PROGRESS" | "DELETE_FAILED" | "DELETE_COMPLETED" | "UPDATE_IN_PROGRESS" | "UPDATE_COMPLETED" | "UPDATE_FAILED";
+export type ProjectStatus =
+  | "PENDING"
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_COMPLETED"
+  | "CREATE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_FAILED"
+  | "DELETE_COMPLETED"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_COMPLETED"
+  | "UPDATE_FAILED";
 export interface ProjectSummary {
   ProjectName: string;
   ProjectDescription?: string;
@@ -10012,13 +10973,15 @@ export interface RealTimeInferenceConfig {
   InstanceType: InstanceType;
   InstanceCount: number;
 }
-export type RealtimeInferenceInstanceTypes = Array<ProductionVariantInstanceType>;
+export type RealtimeInferenceInstanceTypes =
+  Array<ProductionVariantInstanceType>;
 export interface RealTimeInferenceRecommendation {
   RecommendationId: string;
   InstanceType: ProductionVariantInstanceType;
   Environment?: Record<string, string>;
 }
-export type RealTimeInferenceRecommendations = Array<RealTimeInferenceRecommendation>;
+export type RealTimeInferenceRecommendations =
+  Array<RealTimeInferenceRecommendation>;
 export type RecommendationFailureReason = string;
 
 export type RecommendationJobArn = string;
@@ -10081,7 +11044,15 @@ export interface RecommendationJobResourceLimit {
   MaxNumberOfTests?: number;
   MaxParallelOfTests?: number;
 }
-export type RecommendationJobStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED" | "DELETING" | "DELETED";
+export type RecommendationJobStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED"
+  | "DELETING"
+  | "DELETED";
 export interface RecommendationJobStoppingConditions {
   MaxInvocations?: number;
   ModelLatencyThresholds?: Array<ModelLatencyThreshold>;
@@ -10115,7 +11086,11 @@ export interface RecommendationMetrics {
   MemoryUtilization?: number;
   ModelSetupTime?: number;
 }
-export type RecommendationStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "NOT_APPLICABLE";
+export type RecommendationStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "NOT_APPLICABLE";
 export type RecommendationStepType = "BENCHMARK";
 export type RecordWrapper = "NONE" | "RECORDIO";
 export type RedshiftClusterId = string;
@@ -10135,7 +11110,12 @@ export interface RedshiftDatasetDefinition {
 }
 export type RedshiftQueryString = string;
 
-export type RedshiftResultCompressionType = "NONE" | "GZIP" | "BZIP2" | "ZSTD" | "SNAPPY";
+export type RedshiftResultCompressionType =
+  | "NONE"
+  | "GZIP"
+  | "BZIP2"
+  | "ZSTD"
+  | "SNAPPY";
 export type RedshiftResultFormat = "PARQUET" | "CSV";
 export type RedshiftUserName = string;
 
@@ -10194,7 +11174,14 @@ export type ReservedCapacityDurationMinutes = number;
 
 export type ReservedCapacityInstanceCount = number;
 
-export type ReservedCapacityInstanceType = "ML_P4D_24XLARGE" | "ML_P5_48XLARGE" | "ML_P5E_48XLARGE" | "ML_P5EN_48XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN2_48XLARGE" | "ML_P6_B200_48XLARGE";
+export type ReservedCapacityInstanceType =
+  | "ML_P4D_24XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_P5E_48XLARGE"
+  | "ML_P5EN_48XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN2_48XLARGE"
+  | "ML_P6_B200_48XLARGE";
 export interface ReservedCapacityOffering {
   InstanceType: ReservedCapacityInstanceType;
   InstanceCount: number;
@@ -10205,7 +11192,12 @@ export interface ReservedCapacityOffering {
   EndTime?: Date | string;
 }
 export type ReservedCapacityOfferings = Array<ReservedCapacityOffering>;
-export type ReservedCapacityStatus = "PENDING" | "ACTIVE" | "SCHEDULED" | "EXPIRED" | "FAILED";
+export type ReservedCapacityStatus =
+  | "PENDING"
+  | "ACTIVE"
+  | "SCHEDULED"
+  | "EXPIRED"
+  | "FAILED";
 export type ReservedCapacitySummaries = Array<ReservedCapacitySummary>;
 export interface ReservedCapacitySummary {
   ReservedCapacityArn: string;
@@ -10256,9 +11248,7 @@ export type ResourceId = string;
 
 export type ResourceIdentifier = string;
 
-export declare class ResourceInUse extends Data.TaggedError(
-  "ResourceInUse",
-)<{
+export declare class ResourceInUse extends Data.TaggedError("ResourceInUse")<{
   readonly Message?: string;
 }> {}
 export declare class ResourceLimitExceeded extends Data.TaggedError(
@@ -10294,7 +11284,24 @@ export interface ResourceSpec {
   InstanceType?: AppInstanceType;
   LifecycleConfigArn?: string;
 }
-export type ResourceType = "TRAINING_JOB" | "EXPERIMENT" | "EXPERIMENT_TRIAL" | "EXPERIMENT_TRIAL_COMPONENT" | "ENDPOINT" | "MODEL" | "MODEL_PACKAGE" | "MODEL_PACKAGE_GROUP" | "PIPELINE" | "PIPELINE_EXECUTION" | "FEATURE_GROUP" | "FEATURE_METADATA" | "IMAGE" | "IMAGE_VERSION" | "PROJECT" | "HYPER_PARAMETER_TUNING_JOB" | "MODEL_CARD";
+export type ResourceType =
+  | "TRAINING_JOB"
+  | "EXPERIMENT"
+  | "EXPERIMENT_TRIAL"
+  | "EXPERIMENT_TRIAL_COMPONENT"
+  | "ENDPOINT"
+  | "MODEL"
+  | "MODEL_PACKAGE"
+  | "MODEL_PACKAGE_GROUP"
+  | "PIPELINE"
+  | "PIPELINE_EXECUTION"
+  | "FEATURE_GROUP"
+  | "FEATURE_METADATA"
+  | "IMAGE"
+  | "IMAGE_VERSION"
+  | "PROJECT"
+  | "HYPER_PARAMETER_TUNING_JOB"
+  | "MODEL_CARD";
 export type ResponseMIMEType = string;
 
 export type ResponseMIMETypes = Array<string>;
@@ -10351,7 +11358,13 @@ export interface RStudioServerProDomainSettingsForUpdate {
 export type RStudioServerProUserGroup = "Admin" | "User";
 export type RuleConfigurationName = string;
 
-export type RuleEvaluationStatus = "IN_PROGRESS" | "NO_ISSUES_FOUND" | "ISSUES_FOUND" | "ERROR" | "STOPPING" | "STOPPED";
+export type RuleEvaluationStatus =
+  | "IN_PROGRESS"
+  | "NO_ISSUES_FOUND"
+  | "ISSUES_FOUND"
+  | "ERROR"
+  | "STOPPING"
+  | "STOPPED";
 export type RuleParameters = Record<string, string>;
 export type S3DataDistribution = "FULLY_REPLICATED" | "SHARDED_BY_S3_KEY";
 export interface S3DataSource {
@@ -10363,7 +11376,11 @@ export interface S3DataSource {
   ModelAccessConfig?: ModelAccessConfig;
   HubAccessConfig?: HubAccessConfig;
 }
-export type S3DataType = "MANIFEST_FILE" | "S3_PREFIX" | "AUGMENTED_MANIFEST_FILE" | "CONVERSE";
+export type S3DataType =
+  | "MANIFEST_FILE"
+  | "S3_PREFIX"
+  | "AUGMENTED_MANIFEST_FILE"
+  | "CONVERSE";
 export interface S3ModelDataSource {
   S3Uri: string;
   S3DataType: S3ModelDataType;
@@ -10403,7 +11420,9 @@ export type SampleWeightAttributeName = string;
 export type SamplingPercentage = number;
 
 export type ScalingPolicies = Array<ScalingPolicy>;
-export type ScalingPolicy = { TargetTracking: TargetTrackingScalingPolicyConfiguration };
+export type ScalingPolicy = {
+  TargetTracking: TargetTrackingScalingPolicyConfiguration;
+};
 export interface ScalingPolicyMetric {
   InvocationsPerInstance?: number;
   ModelLatency?: number;
@@ -10427,7 +11446,19 @@ export interface SchedulerConfig {
   PriorityClasses?: Array<PriorityClass>;
   FairShare?: FairShare;
 }
-export type SchedulerResourceStatus = "CREATING" | "CREATE_FAILED" | "CREATE_ROLLBACK_FAILED" | "CREATED" | "UPDATING" | "UPDATE_FAILED" | "UPDATE_ROLLBACK_FAILED" | "UPDATED" | "DELETING" | "DELETE_FAILED" | "DELETE_ROLLBACK_FAILED" | "DELETED";
+export type SchedulerResourceStatus =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "CREATE_ROLLBACK_FAILED"
+  | "CREATED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "UPDATE_ROLLBACK_FAILED"
+  | "UPDATED"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | "DELETE_ROLLBACK_FAILED"
+  | "DELETED";
 export type ScheduleStatus = "PENDING" | "FAILED" | "SCHEDULED" | "STOPPED";
 export type Scope = string;
 
@@ -10483,7 +11514,24 @@ export interface SearchTrainingPlanOfferingsRequest {
 export interface SearchTrainingPlanOfferingsResponse {
   TrainingPlanOfferings: Array<TrainingPlanOffering>;
 }
-export type SecondaryStatus = "STARTING" | "LAUNCHING_ML_INSTANCES" | "PREPARING_TRAINING_STACK" | "DOWNLOADING" | "DOWNLOADING_TRAINING_IMAGE" | "TRAINING" | "UPLOADING" | "STOPPING" | "STOPPED" | "MAX_RUNTIME_EXCEEDED" | "COMPLETED" | "FAILED" | "INTERRUPTED" | "MAX_WAIT_TIME_EXCEEDED" | "UPDATING" | "RESTARTING" | "PENDING";
+export type SecondaryStatus =
+  | "STARTING"
+  | "LAUNCHING_ML_INSTANCES"
+  | "PREPARING_TRAINING_STACK"
+  | "DOWNLOADING"
+  | "DOWNLOADING_TRAINING_IMAGE"
+  | "TRAINING"
+  | "UPLOADING"
+  | "STOPPING"
+  | "STOPPED"
+  | "MAX_RUNTIME_EXCEEDED"
+  | "COMPLETED"
+  | "FAILED"
+  | "INTERRUPTED"
+  | "MAX_WAIT_TIME_EXCEEDED"
+  | "UPDATING"
+  | "RESTARTING"
+  | "PENDING";
 export interface SecondaryStatusTransition {
   Status: SecondaryStatus;
   StartTime: Date | string;
@@ -10581,7 +11629,12 @@ export type SnsTopicArn = string;
 
 export type SortActionsBy = "NAME" | "CREATION_TIME";
 export type SortArtifactsBy = "CREATION_TIME";
-export type SortAssociationsBy = "SOURCE_ARN" | "DESTINATION_ARN" | "SOURCE_TYPE" | "DESTINATION_TYPE" | "CREATION_TIME";
+export type SortAssociationsBy =
+  | "SOURCE_ARN"
+  | "DESTINATION_ARN"
+  | "SOURCE_TYPE"
+  | "DESTINATION_TYPE"
+  | "CREATION_TIME";
 export type SortBy = "NAME" | "CREATION_TIME" | "STATUS";
 export type SortClusterSchedulerConfigBy = "NAME" | "CREATION_TIME" | "STATUS";
 export type SortContextsBy = "NAME" | "CREATION_TIME";
@@ -10589,7 +11642,9 @@ export type SortExperimentsBy = "NAME" | "CREATION_TIME";
 export type SortInferenceExperimentsBy = "NAME" | "CREATION_TIME" | "STATUS";
 export type SortLineageGroupsBy = "NAME" | "CREATION_TIME";
 export type SortOrder = "ASCENDING" | "DESCENDING";
-export type SortPipelineExecutionsBy = "CREATION_TIME" | "PIPELINE_EXECUTION_ARN";
+export type SortPipelineExecutionsBy =
+  | "CREATION_TIME"
+  | "PIPELINE_EXECUTION_ARN";
 export type SortPipelinesBy = "NAME" | "CREATION_TIME";
 export type SortQuotaBy = "NAME" | "CREATION_TIME" | "STATUS" | "CLUSTER_ARN";
 export type SortTrackingServerBy = "NAME" | "CREATION_TIME" | "STATUS";
@@ -10668,7 +11723,14 @@ export interface SpaceSharingSettingsSummary {
   SharingType?: SharingType;
 }
 export type SpaceSortKey = "CreationTime" | "LastModifiedTime";
-export type SpaceStatus = "Deleting" | "Failed" | "InService" | "Pending" | "Updating" | "Update_Failed" | "Delete_Failed";
+export type SpaceStatus =
+  | "Deleting"
+  | "Failed"
+  | "InService"
+  | "Pending"
+  | "Updating"
+  | "Update_Failed"
+  | "Delete_Failed";
 export interface SpaceStorageSettings {
   EbsStorageSettings?: EbsStorageSettings;
 }
@@ -10677,7 +11739,15 @@ export type SpawnRate = number;
 export type SplitType = "NONE" | "LINE" | "RECORDIO" | "TFRECORD";
 export type StageDescription = string;
 
-export type StageStatus = "Creating" | "ReadyToDeploy" | "Starting" | "InProgress" | "Deployed" | "Failed" | "Stopping" | "Stopped";
+export type StageStatus =
+  | "Creating"
+  | "ReadyToDeploy"
+  | "Starting"
+  | "InProgress"
+  | "Deployed"
+  | "Failed"
+  | "Stopping"
+  | "Stopped";
 export interface Stairs {
   DurationInSeconds?: number;
   NumberOfSteps?: number;
@@ -10725,7 +11795,12 @@ export interface StartSessionResponse {
   StreamUrl?: string;
   TokenValue?: string;
 }
-export type Statistic = "AVERAGE" | "MINIMUM" | "MAXIMUM" | "SAMPLE_COUNT" | "SUM";
+export type Statistic =
+  | "AVERAGE"
+  | "MINIMUM"
+  | "MAXIMUM"
+  | "SAMPLE_COUNT"
+  | "SUM";
 export type StatusDetails = string;
 
 export type StatusMessage = string;
@@ -10736,7 +11811,13 @@ export type StepDisplayName = string;
 
 export type StepName = string;
 
-export type StepStatus = "STARTING" | "EXECUTING" | "STOPPING" | "STOPPED" | "FAILED" | "SUCCEEDED";
+export type StepStatus =
+  | "STARTING"
+  | "EXECUTING"
+  | "STOPPING"
+  | "STOPPED"
+  | "FAILED"
+  | "SUCCEEDED";
 export interface StopAutoMLJobRequest {
   AutoMLJobName: string;
 }
@@ -10828,7 +11909,11 @@ export type String8192 = string;
 
 export type StringParameterValue = string;
 
-export type StudioLifecycleConfigAppType = "JupyterServer" | "KernelGateway" | "CodeEditor" | "JupyterLab";
+export type StudioLifecycleConfigAppType =
+  | "JupyterServer"
+  | "KernelGateway"
+  | "CodeEditor"
+  | "JupyterLab";
 export type StudioLifecycleConfigArn = string;
 
 export type StudioLifecycleConfigContent = string;
@@ -10843,7 +11928,10 @@ export interface StudioLifecycleConfigDetails {
 export type StudioLifecycleConfigName = string;
 
 export type StudioLifecycleConfigsList = Array<StudioLifecycleConfigDetails>;
-export type StudioLifecycleConfigSortKey = "CreationTime" | "LastModifiedTime" | "Name";
+export type StudioLifecycleConfigSortKey =
+  | "CreationTime"
+  | "LastModifiedTime"
+  | "Name";
 export type StudioWebPortal = "Enabled" | "Disabled";
 export interface StudioWebPortalSettings {
   HiddenMlTools?: Array<MlTools>;
@@ -10896,7 +11984,44 @@ export type TagValue = string;
 
 export type TargetAttributeName = string;
 
-export type TargetDevice = "LAMBDA" | "ML_M4" | "ML_M5" | "ML_M6G" | "ML_C4" | "ML_C5" | "ML_C6G" | "ML_P2" | "ML_P3" | "ML_G4DN" | "ML_INF1" | "ML_INF2" | "ML_TRN1" | "ML_EIA2" | "JETSON_TX1" | "JETSON_TX2" | "JETSON_NANO" | "JETSON_XAVIER" | "RASP3B" | "RASP4B" | "IMX8QM" | "DEEPLENS" | "RK3399" | "RK3288" | "AISAGE" | "SBE_C" | "QCS605" | "QCS603" | "SITARA_AM57X" | "AMBA_CV2" | "AMBA_CV22" | "AMBA_CV25" | "X86_WIN32" | "X86_WIN64" | "COREML" | "JACINTO_TDA4VM" | "IMX8MPLUS";
+export type TargetDevice =
+  | "LAMBDA"
+  | "ML_M4"
+  | "ML_M5"
+  | "ML_M6G"
+  | "ML_C4"
+  | "ML_C5"
+  | "ML_C6G"
+  | "ML_P2"
+  | "ML_P3"
+  | "ML_G4DN"
+  | "ML_INF1"
+  | "ML_INF2"
+  | "ML_TRN1"
+  | "ML_EIA2"
+  | "JETSON_TX1"
+  | "JETSON_TX2"
+  | "JETSON_NANO"
+  | "JETSON_XAVIER"
+  | "RASP3B"
+  | "RASP4B"
+  | "IMX8QM"
+  | "DEEPLENS"
+  | "RK3399"
+  | "RK3288"
+  | "AISAGE"
+  | "SBE_C"
+  | "QCS605"
+  | "QCS603"
+  | "SITARA_AM57X"
+  | "AMBA_CV2"
+  | "AMBA_CV22"
+  | "AMBA_CV25"
+  | "X86_WIN32"
+  | "X86_WIN64"
+  | "COREML"
+  | "JACINTO_TDA4VM"
+  | "IMX8MPLUS";
 export type TargetLabelColumn = string;
 
 export type TargetObjectiveMetricValue = number;
@@ -10906,8 +12031,17 @@ export interface TargetPlatform {
   Arch: TargetPlatformArch;
   Accelerator?: TargetPlatformAccelerator;
 }
-export type TargetPlatformAccelerator = "INTEL_GRAPHICS" | "MALI" | "NVIDIA" | "NNA";
-export type TargetPlatformArch = "X86_64" | "X86" | "ARM64" | "ARM_EABI" | "ARM_EABIHF";
+export type TargetPlatformAccelerator =
+  | "INTEL_GRAPHICS"
+  | "MALI"
+  | "NVIDIA"
+  | "NNA";
+export type TargetPlatformArch =
+  | "X86_64"
+  | "X86"
+  | "ARM64"
+  | "ARM_EABI"
+  | "ARM_EABIHF";
 export type TargetPlatformOs = "ANDROID" | "LINUX";
 export interface TargetTrackingScalingPolicyConfiguration {
   MetricSpecification?: MetricSpecification;
@@ -11025,11 +12159,31 @@ export type TotalInstanceCount = number;
 
 export type TrackingServerArn = string;
 
-export type TrackingServerMaintenanceStatus = "MAINTENANCE_IN_PROGRESS" | "MAINTENANCE_COMPLETE" | "MAINTENANCE_FAILED";
+export type TrackingServerMaintenanceStatus =
+  | "MAINTENANCE_IN_PROGRESS"
+  | "MAINTENANCE_COMPLETE"
+  | "MAINTENANCE_FAILED";
 export type TrackingServerName = string;
 
 export type TrackingServerSize = "S" | "M" | "L";
-export type TrackingServerStatus = "CREATING" | "CREATED" | "CREATE_FAILED" | "UPDATING" | "UPDATED" | "UPDATE_FAILED" | "DELETING" | "DELETE_FAILED" | "STOPPING" | "STOPPED" | "STOP_FAILED" | "STARTING" | "STARTED" | "START_FAILED" | "MAINTENANCE_IN_PROGRESS" | "MAINTENANCE_COMPLETE" | "MAINTENANCE_FAILED";
+export type TrackingServerStatus =
+  | "CREATING"
+  | "CREATED"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATED"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | "STOPPING"
+  | "STOPPED"
+  | "STOP_FAILED"
+  | "STARTING"
+  | "STARTED"
+  | "START_FAILED"
+  | "MAINTENANCE_IN_PROGRESS"
+  | "MAINTENANCE_COMPLETE"
+  | "MAINTENANCE_FAILED";
 export interface TrackingServerSummary {
   TrackingServerArn?: string;
   TrackingServerName?: string;
@@ -11075,7 +12229,143 @@ export interface TrainingImageConfig {
 export type TrainingInputMode = "PIPE" | "FILE" | "FASTFILE";
 export type TrainingInstanceCount = number;
 
-export type TrainingInstanceType = "ML_M4_XLARGE" | "ML_M4_2XLARGE" | "ML_M4_4XLARGE" | "ML_M4_10XLARGE" | "ML_M4_16XLARGE" | "ML_G4DN_XLARGE" | "ML_G4DN_2XLARGE" | "ML_G4DN_4XLARGE" | "ML_G4DN_8XLARGE" | "ML_G4DN_12XLARGE" | "ML_G4DN_16XLARGE" | "ML_M5_LARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_12XLARGE" | "ML_M5_24XLARGE" | "ML_C4_XLARGE" | "ML_C4_2XLARGE" | "ML_C4_4XLARGE" | "ML_C4_8XLARGE" | "ML_P2_XLARGE" | "ML_P2_8XLARGE" | "ML_P2_16XLARGE" | "ML_P3_2XLARGE" | "ML_P3_8XLARGE" | "ML_P3_16XLARGE" | "ML_P3DN_24XLARGE" | "ML_P4D_24XLARGE" | "ML_P4DE_24XLARGE" | "ML_P5_48XLARGE" | "ML_P5E_48XLARGE" | "ML_P5EN_48XLARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_18XLARGE" | "ML_C5N_XLARGE" | "ML_C5N_2XLARGE" | "ML_C5N_4XLARGE" | "ML_C5N_9XLARGE" | "ML_C5N_18XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_16XLARGE" | "ML_G5_12XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_G6_XLARGE" | "ML_G6_2XLARGE" | "ML_G6_4XLARGE" | "ML_G6_8XLARGE" | "ML_G6_16XLARGE" | "ML_G6_12XLARGE" | "ML_G6_24XLARGE" | "ML_G6_48XLARGE" | "ML_G6E_XLARGE" | "ML_G6E_2XLARGE" | "ML_G6E_4XLARGE" | "ML_G6E_8XLARGE" | "ML_G6E_16XLARGE" | "ML_G6E_12XLARGE" | "ML_G6E_24XLARGE" | "ML_G6E_48XLARGE" | "ML_TRN1_2XLARGE" | "ML_TRN1_32XLARGE" | "ML_TRN1N_32XLARGE" | "ML_TRN2_48XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_R5D_LARGE" | "ML_R5D_XLARGE" | "ML_R5D_2XLARGE" | "ML_R5D_4XLARGE" | "ML_R5D_8XLARGE" | "ML_R5D_12XLARGE" | "ML_R5D_16XLARGE" | "ML_R5D_24XLARGE" | "ML_T3_MEDIUM" | "ML_T3_LARGE" | "ML_T3_XLARGE" | "ML_T3_2XLARGE" | "ML_R5_LARGE" | "ML_R5_XLARGE" | "ML_R5_2XLARGE" | "ML_R5_4XLARGE" | "ML_R5_8XLARGE" | "ML_R5_12XLARGE" | "ML_R5_16XLARGE" | "ML_R5_24XLARGE" | "ML_P6_B200_48XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_C7I_LARGE" | "ML_C7I_XLARGE" | "ML_C7I_2XLARGE" | "ML_C7I_4XLARGE" | "ML_C7I_8XLARGE" | "ML_C7I_12XLARGE" | "ML_C7I_16XLARGE" | "ML_C7I_24XLARGE" | "ML_C7I_48XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE";
+export type TrainingInstanceType =
+  | "ML_M4_XLARGE"
+  | "ML_M4_2XLARGE"
+  | "ML_M4_4XLARGE"
+  | "ML_M4_10XLARGE"
+  | "ML_M4_16XLARGE"
+  | "ML_G4DN_XLARGE"
+  | "ML_G4DN_2XLARGE"
+  | "ML_G4DN_4XLARGE"
+  | "ML_G4DN_8XLARGE"
+  | "ML_G4DN_12XLARGE"
+  | "ML_G4DN_16XLARGE"
+  | "ML_M5_LARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_C4_XLARGE"
+  | "ML_C4_2XLARGE"
+  | "ML_C4_4XLARGE"
+  | "ML_C4_8XLARGE"
+  | "ML_P2_XLARGE"
+  | "ML_P2_8XLARGE"
+  | "ML_P2_16XLARGE"
+  | "ML_P3_2XLARGE"
+  | "ML_P3_8XLARGE"
+  | "ML_P3_16XLARGE"
+  | "ML_P3DN_24XLARGE"
+  | "ML_P4D_24XLARGE"
+  | "ML_P4DE_24XLARGE"
+  | "ML_P5_48XLARGE"
+  | "ML_P5E_48XLARGE"
+  | "ML_P5EN_48XLARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_C5N_XLARGE"
+  | "ML_C5N_2XLARGE"
+  | "ML_C5N_4XLARGE"
+  | "ML_C5N_9XLARGE"
+  | "ML_C5N_18XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_G6_XLARGE"
+  | "ML_G6_2XLARGE"
+  | "ML_G6_4XLARGE"
+  | "ML_G6_8XLARGE"
+  | "ML_G6_16XLARGE"
+  | "ML_G6_12XLARGE"
+  | "ML_G6_24XLARGE"
+  | "ML_G6_48XLARGE"
+  | "ML_G6E_XLARGE"
+  | "ML_G6E_2XLARGE"
+  | "ML_G6E_4XLARGE"
+  | "ML_G6E_8XLARGE"
+  | "ML_G6E_16XLARGE"
+  | "ML_G6E_12XLARGE"
+  | "ML_G6E_24XLARGE"
+  | "ML_G6E_48XLARGE"
+  | "ML_TRN1_2XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_TRN1N_32XLARGE"
+  | "ML_TRN2_48XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_R5D_LARGE"
+  | "ML_R5D_XLARGE"
+  | "ML_R5D_2XLARGE"
+  | "ML_R5D_4XLARGE"
+  | "ML_R5D_8XLARGE"
+  | "ML_R5D_12XLARGE"
+  | "ML_R5D_16XLARGE"
+  | "ML_R5D_24XLARGE"
+  | "ML_T3_MEDIUM"
+  | "ML_T3_LARGE"
+  | "ML_T3_XLARGE"
+  | "ML_T3_2XLARGE"
+  | "ML_R5_LARGE"
+  | "ML_R5_XLARGE"
+  | "ML_R5_2XLARGE"
+  | "ML_R5_4XLARGE"
+  | "ML_R5_8XLARGE"
+  | "ML_R5_12XLARGE"
+  | "ML_R5_16XLARGE"
+  | "ML_R5_24XLARGE"
+  | "ML_P6_B200_48XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_C7I_LARGE"
+  | "ML_C7I_XLARGE"
+  | "ML_C7I_2XLARGE"
+  | "ML_C7I_4XLARGE"
+  | "ML_C7I_8XLARGE"
+  | "ML_C7I_12XLARGE"
+  | "ML_C7I_16XLARGE"
+  | "ML_C7I_24XLARGE"
+  | "ML_C7I_48XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE";
 export type TrainingInstanceTypes = Array<TrainingInstanceType>;
 export interface TrainingJob {
   TrainingJobName?: string;
@@ -11130,8 +12420,17 @@ export interface TrainingJobDefinition {
 export type TrainingJobEarlyStoppingType = "OFF" | "AUTO";
 export type TrainingJobName = string;
 
-export type TrainingJobSortByOptions = "Name" | "CreationTime" | "Status" | "FinalObjectiveMetricValue";
-export type TrainingJobStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type TrainingJobSortByOptions =
+  | "Name"
+  | "CreationTime"
+  | "Status"
+  | "FinalObjectiveMetricValue";
+export type TrainingJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export type TrainingJobStatusCounter = number;
 
 export interface TrainingJobStatusCounters {
@@ -11189,7 +12488,12 @@ export type TrainingPlanOfferingId = string;
 export type TrainingPlanOfferings = Array<TrainingPlanOffering>;
 export type TrainingPlanSortBy = "NAME" | "START_TIME" | "STATUS";
 export type TrainingPlanSortOrder = "ASCENDING" | "DESCENDING";
-export type TrainingPlanStatus = "PENDING" | "ACTIVE" | "SCHEDULED" | "EXPIRED" | "FAILED";
+export type TrainingPlanStatus =
+  | "PENDING"
+  | "ACTIVE"
+  | "SCHEDULED"
+  | "EXPIRED"
+  | "FAILED";
 export type TrainingPlanStatusMessage = string;
 
 export type TrainingPlanSummaries = Array<TrainingPlanSummary>;
@@ -11249,7 +12553,107 @@ export interface TransformInput {
 }
 export type TransformInstanceCount = number;
 
-export type TransformInstanceType = "ML_M4_XLARGE" | "ML_M4_2XLARGE" | "ML_M4_4XLARGE" | "ML_M4_10XLARGE" | "ML_M4_16XLARGE" | "ML_C4_XLARGE" | "ML_C4_2XLARGE" | "ML_C4_4XLARGE" | "ML_C4_8XLARGE" | "ML_P2_XLARGE" | "ML_P2_8XLARGE" | "ML_P2_16XLARGE" | "ML_P3_2XLARGE" | "ML_P3_8XLARGE" | "ML_P3_16XLARGE" | "ML_C5_XLARGE" | "ML_C5_2XLARGE" | "ML_C5_4XLARGE" | "ML_C5_9XLARGE" | "ML_C5_18XLARGE" | "ML_M5_LARGE" | "ML_M5_XLARGE" | "ML_M5_2XLARGE" | "ML_M5_4XLARGE" | "ML_M5_12XLARGE" | "ML_M5_24XLARGE" | "ML_M6I_LARGE" | "ML_M6I_XLARGE" | "ML_M6I_2XLARGE" | "ML_M6I_4XLARGE" | "ML_M6I_8XLARGE" | "ML_M6I_12XLARGE" | "ML_M6I_16XLARGE" | "ML_M6I_24XLARGE" | "ML_M6I_32XLARGE" | "ML_C6I_LARGE" | "ML_C6I_XLARGE" | "ML_C6I_2XLARGE" | "ML_C6I_4XLARGE" | "ML_C6I_8XLARGE" | "ML_C6I_12XLARGE" | "ML_C6I_16XLARGE" | "ML_C6I_24XLARGE" | "ML_C6I_32XLARGE" | "ML_R6I_LARGE" | "ML_R6I_XLARGE" | "ML_R6I_2XLARGE" | "ML_R6I_4XLARGE" | "ML_R6I_8XLARGE" | "ML_R6I_12XLARGE" | "ML_R6I_16XLARGE" | "ML_R6I_24XLARGE" | "ML_R6I_32XLARGE" | "ML_M7I_LARGE" | "ML_M7I_XLARGE" | "ML_M7I_2XLARGE" | "ML_M7I_4XLARGE" | "ML_M7I_8XLARGE" | "ML_M7I_12XLARGE" | "ML_M7I_16XLARGE" | "ML_M7I_24XLARGE" | "ML_M7I_48XLARGE" | "ML_C7I_LARGE" | "ML_C7I_XLARGE" | "ML_C7I_2XLARGE" | "ML_C7I_4XLARGE" | "ML_C7I_8XLARGE" | "ML_C7I_12XLARGE" | "ML_C7I_16XLARGE" | "ML_C7I_24XLARGE" | "ML_C7I_48XLARGE" | "ML_R7I_LARGE" | "ML_R7I_XLARGE" | "ML_R7I_2XLARGE" | "ML_R7I_4XLARGE" | "ML_R7I_8XLARGE" | "ML_R7I_12XLARGE" | "ML_R7I_16XLARGE" | "ML_R7I_24XLARGE" | "ML_R7I_48XLARGE" | "ML_G4DN_XLARGE" | "ML_G4DN_2XLARGE" | "ML_G4DN_4XLARGE" | "ML_G4DN_8XLARGE" | "ML_G4DN_12XLARGE" | "ML_G4DN_16XLARGE" | "ML_G5_XLARGE" | "ML_G5_2XLARGE" | "ML_G5_4XLARGE" | "ML_G5_8XLARGE" | "ML_G5_12XLARGE" | "ML_G5_16XLARGE" | "ML_G5_24XLARGE" | "ML_G5_48XLARGE" | "ML_TRN1_2XLARGE" | "ML_TRN1_32XLARGE" | "ML_INF2_XLARGE" | "ML_INF2_8XLARGE" | "ML_INF2_24XLARGE" | "ML_INF2_48XLARGE";
+export type TransformInstanceType =
+  | "ML_M4_XLARGE"
+  | "ML_M4_2XLARGE"
+  | "ML_M4_4XLARGE"
+  | "ML_M4_10XLARGE"
+  | "ML_M4_16XLARGE"
+  | "ML_C4_XLARGE"
+  | "ML_C4_2XLARGE"
+  | "ML_C4_4XLARGE"
+  | "ML_C4_8XLARGE"
+  | "ML_P2_XLARGE"
+  | "ML_P2_8XLARGE"
+  | "ML_P2_16XLARGE"
+  | "ML_P3_2XLARGE"
+  | "ML_P3_8XLARGE"
+  | "ML_P3_16XLARGE"
+  | "ML_C5_XLARGE"
+  | "ML_C5_2XLARGE"
+  | "ML_C5_4XLARGE"
+  | "ML_C5_9XLARGE"
+  | "ML_C5_18XLARGE"
+  | "ML_M5_LARGE"
+  | "ML_M5_XLARGE"
+  | "ML_M5_2XLARGE"
+  | "ML_M5_4XLARGE"
+  | "ML_M5_12XLARGE"
+  | "ML_M5_24XLARGE"
+  | "ML_M6I_LARGE"
+  | "ML_M6I_XLARGE"
+  | "ML_M6I_2XLARGE"
+  | "ML_M6I_4XLARGE"
+  | "ML_M6I_8XLARGE"
+  | "ML_M6I_12XLARGE"
+  | "ML_M6I_16XLARGE"
+  | "ML_M6I_24XLARGE"
+  | "ML_M6I_32XLARGE"
+  | "ML_C6I_LARGE"
+  | "ML_C6I_XLARGE"
+  | "ML_C6I_2XLARGE"
+  | "ML_C6I_4XLARGE"
+  | "ML_C6I_8XLARGE"
+  | "ML_C6I_12XLARGE"
+  | "ML_C6I_16XLARGE"
+  | "ML_C6I_24XLARGE"
+  | "ML_C6I_32XLARGE"
+  | "ML_R6I_LARGE"
+  | "ML_R6I_XLARGE"
+  | "ML_R6I_2XLARGE"
+  | "ML_R6I_4XLARGE"
+  | "ML_R6I_8XLARGE"
+  | "ML_R6I_12XLARGE"
+  | "ML_R6I_16XLARGE"
+  | "ML_R6I_24XLARGE"
+  | "ML_R6I_32XLARGE"
+  | "ML_M7I_LARGE"
+  | "ML_M7I_XLARGE"
+  | "ML_M7I_2XLARGE"
+  | "ML_M7I_4XLARGE"
+  | "ML_M7I_8XLARGE"
+  | "ML_M7I_12XLARGE"
+  | "ML_M7I_16XLARGE"
+  | "ML_M7I_24XLARGE"
+  | "ML_M7I_48XLARGE"
+  | "ML_C7I_LARGE"
+  | "ML_C7I_XLARGE"
+  | "ML_C7I_2XLARGE"
+  | "ML_C7I_4XLARGE"
+  | "ML_C7I_8XLARGE"
+  | "ML_C7I_12XLARGE"
+  | "ML_C7I_16XLARGE"
+  | "ML_C7I_24XLARGE"
+  | "ML_C7I_48XLARGE"
+  | "ML_R7I_LARGE"
+  | "ML_R7I_XLARGE"
+  | "ML_R7I_2XLARGE"
+  | "ML_R7I_4XLARGE"
+  | "ML_R7I_8XLARGE"
+  | "ML_R7I_12XLARGE"
+  | "ML_R7I_16XLARGE"
+  | "ML_R7I_24XLARGE"
+  | "ML_R7I_48XLARGE"
+  | "ML_G4DN_XLARGE"
+  | "ML_G4DN_2XLARGE"
+  | "ML_G4DN_4XLARGE"
+  | "ML_G4DN_8XLARGE"
+  | "ML_G4DN_12XLARGE"
+  | "ML_G4DN_16XLARGE"
+  | "ML_G5_XLARGE"
+  | "ML_G5_2XLARGE"
+  | "ML_G5_4XLARGE"
+  | "ML_G5_8XLARGE"
+  | "ML_G5_12XLARGE"
+  | "ML_G5_16XLARGE"
+  | "ML_G5_24XLARGE"
+  | "ML_G5_48XLARGE"
+  | "ML_TRN1_2XLARGE"
+  | "ML_TRN1_32XLARGE"
+  | "ML_INF2_XLARGE"
+  | "ML_INF2_8XLARGE"
+  | "ML_INF2_24XLARGE"
+  | "ML_INF2_48XLARGE";
 export type TransformInstanceTypes = Array<TransformInstanceType>;
 export interface TransformJob {
   TransformJobName?: string;
@@ -11288,7 +12692,12 @@ export interface TransformJobDefinition {
 }
 export type TransformJobName = string;
 
-export type TransformJobStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type TransformJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export interface TransformJobStepMetadata {
   Arn?: string;
 }
@@ -11384,9 +12793,19 @@ export interface TrialComponentMetricSummary {
   Avg?: number;
   StdDev?: number;
 }
-export type TrialComponentParameters = Record<string, TrialComponentParameterValue>;
-export type TrialComponentParameterValue = { StringValue: string } | { NumberValue: number };
-export type TrialComponentPrimaryStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "STOPPING" | "STOPPED";
+export type TrialComponentParameters = Record<
+  string,
+  TrialComponentParameterValue
+>;
+export type TrialComponentParameterValue =
+  | { StringValue: string }
+  | { NumberValue: number };
+export type TrialComponentPrimaryStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED";
 export type TrialComponentSimpleSummaries = Array<TrialComponentSimpleSummary>;
 export interface TrialComponentSimpleSummary {
   TrialComponentName?: string;
@@ -11447,7 +12866,12 @@ export interface TtlDuration {
   Unit?: TtlDurationUnit;
   Value?: number;
 }
-export type TtlDurationUnit = "SECONDS" | "MINUTES" | "HOURS" | "DAYS" | "WEEKS";
+export type TtlDurationUnit =
+  | "SECONDS"
+  | "MINUTES"
+  | "HOURS"
+  | "DAYS"
+  | "WEEKS";
 export type TtlDurationValue = number;
 
 export interface TuningJobCompletionCriteria {
@@ -11534,7 +12958,8 @@ export interface UpdateClusterSchedulerConfigResponse {
   ClusterSchedulerConfigArn: string;
   ClusterSchedulerConfigVersion: number;
 }
-export type UpdateClusterSoftwareInstanceGroups = Array<UpdateClusterSoftwareInstanceGroupSpecification>;
+export type UpdateClusterSoftwareInstanceGroups =
+  Array<UpdateClusterSoftwareInstanceGroupSpecification>;
 export interface UpdateClusterSoftwareInstanceGroupSpecification {
   InstanceGroupName: string;
 }
@@ -11800,10 +13225,8 @@ export interface UpdateNotebookInstanceLifecycleConfigInput {
   OnCreate?: Array<NotebookInstanceLifecycleHook>;
   OnStart?: Array<NotebookInstanceLifecycleHook>;
 }
-export interface UpdateNotebookInstanceLifecycleConfigOutput {
-}
-export interface UpdateNotebookInstanceOutput {
-}
+export interface UpdateNotebookInstanceLifecycleConfigOutput {}
+export interface UpdateNotebookInstanceOutput {}
 export interface UpdatePartnerAppRequest {
   Arn: string;
   MaintenanceConfig?: PartnerAppMaintenanceConfig;
@@ -11946,7 +13369,14 @@ export type UserProfileList = Array<UserProfileDetails>;
 export type UserProfileName = string;
 
 export type UserProfileSortKey = "CreationTime" | "LastModifiedTime";
-export type UserProfileStatus = "Deleting" | "Failed" | "InService" | "Pending" | "Updating" | "Update_Failed" | "Delete_Failed";
+export type UserProfileStatus =
+  | "Deleting"
+  | "Failed"
+  | "InService"
+  | "Pending"
+  | "Updating"
+  | "Update_Failed"
+  | "Delete_Failed";
 export interface UserSettings {
   ExecutionRole?: string;
   SecurityGroups?: Array<string>;
@@ -11981,8 +13411,16 @@ export interface VariantProperty {
   VariantPropertyType: VariantPropertyType;
 }
 export type VariantPropertyList = Array<VariantProperty>;
-export type VariantPropertyType = "DesiredInstanceCount" | "DesiredWeight" | "DataCaptureConfig";
-export type VariantStatus = "CREATING" | "UPDATING" | "DELETING" | "ACTIVATING_TRAFFIC" | "BAKING";
+export type VariantPropertyType =
+  | "DesiredInstanceCount"
+  | "DesiredWeight"
+  | "DataCaptureConfig";
+export type VariantStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "ACTIVATING_TRAFFIC"
+  | "BAKING";
 export type VariantStatusMessage = string;
 
 export type VariantWeight = number;
@@ -11990,7 +13428,11 @@ export type VariantWeight = number;
 export interface VectorConfig {
   Dimension: number;
 }
-export type VendorGuidance = "NOT_PROVIDED" | "STABLE" | "TO_BE_ARCHIVED" | "ARCHIVED";
+export type VendorGuidance =
+  | "NOT_PROVIDED"
+  | "STABLE"
+  | "TO_BE_ARCHIVED"
+  | "ARCHIVED";
 export type VersionAliasesList = Array<string>;
 export type VersionedArnOrName = string;
 
@@ -12025,7 +13467,11 @@ export type WaitIntervalInSeconds = number;
 
 export type WaitTimeIntervalInSeconds = number;
 
-export type WarmPoolResourceStatus = "AVAILABLE" | "TERMINATED" | "REUSED" | "INUSE";
+export type WarmPoolResourceStatus =
+  | "AVAILABLE"
+  | "TERMINATED"
+  | "REUSED"
+  | "INUSE";
 export interface WarmPoolStatus {
   Status: WarmPoolResourceStatus;
   ResourceRetainedBillableTimeInSeconds?: number;
@@ -12061,7 +13507,12 @@ export type Workforces = Array<Workforce>;
 export type WorkforceSecurityGroupId = string;
 
 export type WorkforceSecurityGroupIds = Array<string>;
-export type WorkforceStatus = "INITIALIZING" | "UPDATING" | "DELETING" | "FAILED" | "ACTIVE";
+export type WorkforceStatus =
+  | "INITIALIZING"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED"
+  | "ACTIVE";
 export type WorkforceSubnetId = string;
 
 export type WorkforceSubnets = Array<string>;
@@ -12105,108 +13556,79 @@ export type Workteams = Array<Workteam>;
 export declare namespace AddAssociation {
   export type Input = AddAssociationRequest;
   export type Output = AddAssociationResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace AddTags {
   export type Input = AddTagsInput;
   export type Output = AddTagsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace AssociateTrialComponent {
   export type Input = AssociateTrialComponentRequest;
   export type Output = AssociateTrialComponentResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace BatchDeleteClusterNodes {
   export type Input = BatchDeleteClusterNodesRequest;
   export type Output = BatchDeleteClusterNodesResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace BatchDescribeModelPackage {
   export type Input = BatchDescribeModelPackageInput;
   export type Output = BatchDescribeModelPackageOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateAction {
   export type Input = CreateActionRequest;
   export type Output = CreateActionResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateAlgorithm {
   export type Input = CreateAlgorithmInput;
   export type Output = CreateAlgorithmOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateApp {
   export type Input = CreateAppRequest;
   export type Output = CreateAppResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateAppImageConfig {
   export type Input = CreateAppImageConfigRequest;
   export type Output = CreateAppImageConfigResponse;
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace CreateArtifact {
   export type Input = CreateArtifactRequest;
   export type Output = CreateArtifactResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateAutoMLJob {
   export type Input = CreateAutoMLJobRequest;
   export type Output = CreateAutoMLJobResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateAutoMLJobV2 {
   export type Input = CreateAutoMLJobV2Request;
   export type Output = CreateAutoMLJobV2Response;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateCluster {
   export type Input = CreateClusterRequest;
   export type Output = CreateClusterResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateClusterSchedulerConfig {
@@ -12221,17 +13643,13 @@ export declare namespace CreateClusterSchedulerConfig {
 export declare namespace CreateCodeRepository {
   export type Input = CreateCodeRepositoryInput;
   export type Output = CreateCodeRepositoryOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateCompilationJob {
   export type Input = CreateCompilationJobRequest;
   export type Output = CreateCompilationJobResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateComputeQuota {
@@ -12246,118 +13664,85 @@ export declare namespace CreateComputeQuota {
 export declare namespace CreateContext {
   export type Input = CreateContextRequest;
   export type Output = CreateContextResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateDataQualityJobDefinition {
   export type Input = CreateDataQualityJobDefinitionRequest;
   export type Output = CreateDataQualityJobDefinitionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateDeviceFleet {
   export type Input = CreateDeviceFleetRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateDomain {
   export type Input = CreateDomainRequest;
   export type Output = CreateDomainResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateEdgeDeploymentPlan {
   export type Input = CreateEdgeDeploymentPlanRequest;
   export type Output = CreateEdgeDeploymentPlanResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateEdgeDeploymentStage {
   export type Input = CreateEdgeDeploymentStageRequest;
   export type Output = {};
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateEdgePackagingJob {
   export type Input = CreateEdgePackagingJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateEndpoint {
   export type Input = CreateEndpointInput;
   export type Output = CreateEndpointOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateEndpointConfig {
   export type Input = CreateEndpointConfigInput;
   export type Output = CreateEndpointConfigOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateExperiment {
   export type Input = CreateExperimentRequest;
   export type Output = CreateExperimentResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateFeatureGroup {
   export type Input = CreateFeatureGroupRequest;
   export type Output = CreateFeatureGroupResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateFlowDefinition {
   export type Input = CreateFlowDefinitionRequest;
   export type Output = CreateFlowDefinitionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateHub {
   export type Input = CreateHubRequest;
   export type Output = CreateHubResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateHubContentPresignedUrls {
   export type Input = CreateHubContentPresignedUrlsRequest;
   export type Output = CreateHubContentPresignedUrlsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateHubContentReference {
@@ -12373,28 +13758,19 @@ export declare namespace CreateHubContentReference {
 export declare namespace CreateHumanTaskUi {
   export type Input = CreateHumanTaskUiRequest;
   export type Output = CreateHumanTaskUiResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateHyperParameterTuningJob {
   export type Input = CreateHyperParameterTuningJobRequest;
   export type Output = CreateHyperParameterTuningJobResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateImage {
   export type Input = CreateImageRequest;
   export type Output = CreateImageResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateImageVersion {
@@ -12410,61 +13786,43 @@ export declare namespace CreateImageVersion {
 export declare namespace CreateInferenceComponent {
   export type Input = CreateInferenceComponentInput;
   export type Output = CreateInferenceComponentOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateInferenceExperiment {
   export type Input = CreateInferenceExperimentRequest;
   export type Output = CreateInferenceExperimentResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateInferenceRecommendationsJob {
   export type Input = CreateInferenceRecommendationsJobRequest;
   export type Output = CreateInferenceRecommendationsJobResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateLabelingJob {
   export type Input = CreateLabelingJobRequest;
   export type Output = CreateLabelingJobResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateMlflowTrackingServer {
   export type Input = CreateMlflowTrackingServerRequest;
   export type Output = CreateMlflowTrackingServerResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateModel {
   export type Input = CreateModelInput;
   export type Output = CreateModelOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateModelBiasJobDefinition {
   export type Input = CreateModelBiasJobDefinitionRequest;
   export type Output = CreateModelBiasJobDefinitionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateModelCard {
@@ -12489,10 +13847,7 @@ export declare namespace CreateModelCardExportJob {
 export declare namespace CreateModelExplainabilityJobDefinition {
   export type Input = CreateModelExplainabilityJobDefinitionRequest;
   export type Output = CreateModelExplainabilityJobDefinitionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateModelPackage {
@@ -12507,52 +13862,37 @@ export declare namespace CreateModelPackage {
 export declare namespace CreateModelPackageGroup {
   export type Input = CreateModelPackageGroupInput;
   export type Output = CreateModelPackageGroupOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateModelQualityJobDefinition {
   export type Input = CreateModelQualityJobDefinitionRequest;
   export type Output = CreateModelQualityJobDefinitionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateMonitoringSchedule {
   export type Input = CreateMonitoringScheduleRequest;
   export type Output = CreateMonitoringScheduleResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateNotebookInstance {
   export type Input = CreateNotebookInstanceInput;
   export type Output = CreateNotebookInstanceOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateNotebookInstanceLifecycleConfig {
   export type Input = CreateNotebookInstanceLifecycleConfigInput;
   export type Output = CreateNotebookInstanceLifecycleConfigOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateOptimizationJob {
   export type Input = CreateOptimizationJobRequest;
   export type Output = CreateOptimizationJobResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreatePartnerApp {
@@ -12567,9 +13907,7 @@ export declare namespace CreatePartnerApp {
 export declare namespace CreatePartnerAppPresignedUrl {
   export type Input = CreatePartnerAppPresignedUrlRequest;
   export type Output = CreatePartnerAppPresignedUrlResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace CreatePipeline {
@@ -12585,24 +13923,19 @@ export declare namespace CreatePipeline {
 export declare namespace CreatePresignedDomainUrl {
   export type Input = CreatePresignedDomainUrlRequest;
   export type Output = CreatePresignedDomainUrlResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace CreatePresignedMlflowTrackingServerUrl {
   export type Input = CreatePresignedMlflowTrackingServerUrlRequest;
   export type Output = CreatePresignedMlflowTrackingServerUrlResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace CreatePresignedNotebookInstanceUrl {
   export type Input = CreatePresignedNotebookInstanceUrlInput;
   export type Output = CreatePresignedNotebookInstanceUrlOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateProcessingJob {
@@ -12618,26 +13951,19 @@ export declare namespace CreateProcessingJob {
 export declare namespace CreateProject {
   export type Input = CreateProjectInput;
   export type Output = CreateProjectOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateSpace {
   export type Input = CreateSpaceRequest;
   export type Output = CreateSpaceResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateStudioLifecycleConfig {
   export type Input = CreateStudioLifecycleConfigRequest;
   export type Output = CreateStudioLifecycleConfigResponse;
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace CreateTrainingJob {
@@ -12673,1083 +13999,823 @@ export declare namespace CreateTransformJob {
 export declare namespace CreateTrial {
   export type Input = CreateTrialRequest;
   export type Output = CreateTrialResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace CreateTrialComponent {
   export type Input = CreateTrialComponentRequest;
   export type Output = CreateTrialComponentResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateUserProfile {
   export type Input = CreateUserProfileRequest;
   export type Output = CreateUserProfileResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace CreateWorkforce {
   export type Input = CreateWorkforceRequest;
   export type Output = CreateWorkforceResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateWorkteam {
   export type Input = CreateWorkteamRequest;
   export type Output = CreateWorkteamResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace DeleteAction {
   export type Input = DeleteActionRequest;
   export type Output = DeleteActionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteAlgorithm {
   export type Input = DeleteAlgorithmInput;
   export type Output = {};
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace DeleteApp {
   export type Input = DeleteAppRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteAppImageConfig {
   export type Input = DeleteAppImageConfigRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteArtifact {
   export type Input = DeleteArtifactRequest;
   export type Output = DeleteArtifactResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteAssociation {
   export type Input = DeleteAssociationRequest;
   export type Output = DeleteAssociationResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteCluster {
   export type Input = DeleteClusterRequest;
   export type Output = DeleteClusterResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteClusterSchedulerConfig {
   export type Input = DeleteClusterSchedulerConfigRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteCodeRepository {
   export type Input = DeleteCodeRepositoryInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteCompilationJob {
   export type Input = DeleteCompilationJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteComputeQuota {
   export type Input = DeleteComputeQuotaRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteContext {
   export type Input = DeleteContextRequest;
   export type Output = DeleteContextResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteDataQualityJobDefinition {
   export type Input = DeleteDataQualityJobDefinitionRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteDeviceFleet {
   export type Input = DeleteDeviceFleetRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace DeleteDomain {
   export type Input = DeleteDomainRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteEdgeDeploymentPlan {
   export type Input = DeleteEdgeDeploymentPlanRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace DeleteEdgeDeploymentStage {
   export type Input = DeleteEdgeDeploymentStageRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace DeleteEndpoint {
   export type Input = DeleteEndpointInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteEndpointConfig {
   export type Input = DeleteEndpointConfigInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteExperiment {
   export type Input = DeleteExperimentRequest;
   export type Output = DeleteExperimentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteFeatureGroup {
   export type Input = DeleteFeatureGroupRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteFlowDefinition {
   export type Input = DeleteFlowDefinitionRequest;
   export type Output = DeleteFlowDefinitionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteHub {
   export type Input = DeleteHubRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteHubContent {
   export type Input = DeleteHubContentRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteHubContentReference {
   export type Input = DeleteHubContentReferenceRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteHumanTaskUi {
   export type Input = DeleteHumanTaskUiRequest;
   export type Output = DeleteHumanTaskUiResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteHyperParameterTuningJob {
   export type Input = DeleteHyperParameterTuningJobRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteImage {
   export type Input = DeleteImageRequest;
   export type Output = DeleteImageResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteImageVersion {
   export type Input = DeleteImageVersionRequest;
   export type Output = DeleteImageVersionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteInferenceComponent {
   export type Input = DeleteInferenceComponentInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteInferenceExperiment {
   export type Input = DeleteInferenceExperimentRequest;
   export type Output = DeleteInferenceExperimentResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteMlflowTrackingServer {
   export type Input = DeleteMlflowTrackingServerRequest;
   export type Output = DeleteMlflowTrackingServerResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteModel {
   export type Input = DeleteModelInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteModelBiasJobDefinition {
   export type Input = DeleteModelBiasJobDefinitionRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteModelCard {
   export type Input = DeleteModelCardRequest;
   export type Output = {};
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteModelExplainabilityJobDefinition {
   export type Input = DeleteModelExplainabilityJobDefinitionRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteModelPackage {
   export type Input = DeleteModelPackageInput;
   export type Output = {};
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace DeleteModelPackageGroup {
   export type Input = DeleteModelPackageGroupInput;
   export type Output = {};
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace DeleteModelPackageGroupPolicy {
   export type Input = DeleteModelPackageGroupPolicyInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteModelQualityJobDefinition {
   export type Input = DeleteModelQualityJobDefinitionRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteMonitoringSchedule {
   export type Input = DeleteMonitoringScheduleRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteNotebookInstance {
   export type Input = DeleteNotebookInstanceInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteNotebookInstanceLifecycleConfig {
   export type Input = DeleteNotebookInstanceLifecycleConfigInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteOptimizationJob {
   export type Input = DeleteOptimizationJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeletePartnerApp {
   export type Input = DeletePartnerAppRequest;
   export type Output = DeletePartnerAppResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeletePipeline {
   export type Input = DeletePipelineRequest;
   export type Output = DeletePipelineResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteProject {
   export type Input = DeleteProjectInput;
   export type Output = {};
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace DeleteSpace {
   export type Input = DeleteSpaceRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteStudioLifecycleConfig {
   export type Input = DeleteStudioLifecycleConfigRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteTags {
   export type Input = DeleteTagsInput;
   export type Output = DeleteTagsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteTrial {
   export type Input = DeleteTrialRequest;
   export type Output = DeleteTrialResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteTrialComponent {
   export type Input = DeleteTrialComponentRequest;
   export type Output = DeleteTrialComponentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteUserProfile {
   export type Input = DeleteUserProfileRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DeleteWorkforce {
   export type Input = DeleteWorkforceRequest;
   export type Output = DeleteWorkforceResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeleteWorkteam {
   export type Input = DeleteWorkteamRequest;
   export type Output = DeleteWorkteamResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace DeregisterDevices {
   export type Input = DeregisterDevicesRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeAction {
   export type Input = DescribeActionRequest;
   export type Output = DescribeActionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeAlgorithm {
   export type Input = DescribeAlgorithmInput;
   export type Output = DescribeAlgorithmOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeApp {
   export type Input = DescribeAppRequest;
   export type Output = DescribeAppResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeAppImageConfig {
   export type Input = DescribeAppImageConfigRequest;
   export type Output = DescribeAppImageConfigResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeArtifact {
   export type Input = DescribeArtifactRequest;
   export type Output = DescribeArtifactResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeAutoMLJob {
   export type Input = DescribeAutoMLJobRequest;
   export type Output = DescribeAutoMLJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeAutoMLJobV2 {
   export type Input = DescribeAutoMLJobV2Request;
   export type Output = DescribeAutoMLJobV2Response;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeCluster {
   export type Input = DescribeClusterRequest;
   export type Output = DescribeClusterResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeClusterNode {
   export type Input = DescribeClusterNodeRequest;
   export type Output = DescribeClusterNodeResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeClusterSchedulerConfig {
   export type Input = DescribeClusterSchedulerConfigRequest;
   export type Output = DescribeClusterSchedulerConfigResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeCodeRepository {
   export type Input = DescribeCodeRepositoryInput;
   export type Output = DescribeCodeRepositoryOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeCompilationJob {
   export type Input = DescribeCompilationJobRequest;
   export type Output = DescribeCompilationJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeComputeQuota {
   export type Input = DescribeComputeQuotaRequest;
   export type Output = DescribeComputeQuotaResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeContext {
   export type Input = DescribeContextRequest;
   export type Output = DescribeContextResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeDataQualityJobDefinition {
   export type Input = DescribeDataQualityJobDefinitionRequest;
   export type Output = DescribeDataQualityJobDefinitionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeDevice {
   export type Input = DescribeDeviceRequest;
   export type Output = DescribeDeviceResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeDeviceFleet {
   export type Input = DescribeDeviceFleetRequest;
   export type Output = DescribeDeviceFleetResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeDomain {
   export type Input = DescribeDomainRequest;
   export type Output = DescribeDomainResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeEdgeDeploymentPlan {
   export type Input = DescribeEdgeDeploymentPlanRequest;
   export type Output = DescribeEdgeDeploymentPlanResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeEdgePackagingJob {
   export type Input = DescribeEdgePackagingJobRequest;
   export type Output = DescribeEdgePackagingJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeEndpoint {
   export type Input = DescribeEndpointInput;
   export type Output = DescribeEndpointOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeEndpointConfig {
   export type Input = DescribeEndpointConfigInput;
   export type Output = DescribeEndpointConfigOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeExperiment {
   export type Input = DescribeExperimentRequest;
   export type Output = DescribeExperimentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeFeatureGroup {
   export type Input = DescribeFeatureGroupRequest;
   export type Output = DescribeFeatureGroupResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeFeatureMetadata {
   export type Input = DescribeFeatureMetadataRequest;
   export type Output = DescribeFeatureMetadataResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeFlowDefinition {
   export type Input = DescribeFlowDefinitionRequest;
   export type Output = DescribeFlowDefinitionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeHub {
   export type Input = DescribeHubRequest;
   export type Output = DescribeHubResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeHubContent {
   export type Input = DescribeHubContentRequest;
   export type Output = DescribeHubContentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeHumanTaskUi {
   export type Input = DescribeHumanTaskUiRequest;
   export type Output = DescribeHumanTaskUiResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeHyperParameterTuningJob {
   export type Input = DescribeHyperParameterTuningJobRequest;
   export type Output = DescribeHyperParameterTuningJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeImage {
   export type Input = DescribeImageRequest;
   export type Output = DescribeImageResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeImageVersion {
   export type Input = DescribeImageVersionRequest;
   export type Output = DescribeImageVersionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeInferenceComponent {
   export type Input = DescribeInferenceComponentInput;
   export type Output = DescribeInferenceComponentOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeInferenceExperiment {
   export type Input = DescribeInferenceExperimentRequest;
   export type Output = DescribeInferenceExperimentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeInferenceRecommendationsJob {
   export type Input = DescribeInferenceRecommendationsJobRequest;
   export type Output = DescribeInferenceRecommendationsJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeLabelingJob {
   export type Input = DescribeLabelingJobRequest;
   export type Output = DescribeLabelingJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeLineageGroup {
   export type Input = DescribeLineageGroupRequest;
   export type Output = DescribeLineageGroupResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeMlflowTrackingServer {
   export type Input = DescribeMlflowTrackingServerRequest;
   export type Output = DescribeMlflowTrackingServerResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeModel {
   export type Input = DescribeModelInput;
   export type Output = DescribeModelOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeModelBiasJobDefinition {
   export type Input = DescribeModelBiasJobDefinitionRequest;
   export type Output = DescribeModelBiasJobDefinitionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeModelCard {
   export type Input = DescribeModelCardRequest;
   export type Output = DescribeModelCardResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeModelCardExportJob {
   export type Input = DescribeModelCardExportJobRequest;
   export type Output = DescribeModelCardExportJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeModelExplainabilityJobDefinition {
   export type Input = DescribeModelExplainabilityJobDefinitionRequest;
   export type Output = DescribeModelExplainabilityJobDefinitionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeModelPackage {
   export type Input = DescribeModelPackageInput;
   export type Output = DescribeModelPackageOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeModelPackageGroup {
   export type Input = DescribeModelPackageGroupInput;
   export type Output = DescribeModelPackageGroupOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeModelQualityJobDefinition {
   export type Input = DescribeModelQualityJobDefinitionRequest;
   export type Output = DescribeModelQualityJobDefinitionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeMonitoringSchedule {
   export type Input = DescribeMonitoringScheduleRequest;
   export type Output = DescribeMonitoringScheduleResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeNotebookInstance {
   export type Input = DescribeNotebookInstanceInput;
   export type Output = DescribeNotebookInstanceOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeNotebookInstanceLifecycleConfig {
   export type Input = DescribeNotebookInstanceLifecycleConfigInput;
   export type Output = DescribeNotebookInstanceLifecycleConfigOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeOptimizationJob {
   export type Input = DescribeOptimizationJobRequest;
   export type Output = DescribeOptimizationJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribePartnerApp {
   export type Input = DescribePartnerAppRequest;
   export type Output = DescribePartnerAppResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribePipeline {
   export type Input = DescribePipelineRequest;
   export type Output = DescribePipelineResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribePipelineDefinitionForExecution {
   export type Input = DescribePipelineDefinitionForExecutionRequest;
   export type Output = DescribePipelineDefinitionForExecutionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribePipelineExecution {
   export type Input = DescribePipelineExecutionRequest;
   export type Output = DescribePipelineExecutionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeProcessingJob {
   export type Input = DescribeProcessingJobRequest;
   export type Output = DescribeProcessingJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeProject {
   export type Input = DescribeProjectInput;
   export type Output = DescribeProjectOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeSpace {
   export type Input = DescribeSpaceRequest;
   export type Output = DescribeSpaceResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeStudioLifecycleConfig {
   export type Input = DescribeStudioLifecycleConfigRequest;
   export type Output = DescribeStudioLifecycleConfigResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeSubscribedWorkteam {
   export type Input = DescribeSubscribedWorkteamRequest;
   export type Output = DescribeSubscribedWorkteamResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeTrainingJob {
   export type Input = DescribeTrainingJobRequest;
   export type Output = DescribeTrainingJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeTrainingPlan {
   export type Input = DescribeTrainingPlanRequest;
   export type Output = DescribeTrainingPlanResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeTransformJob {
   export type Input = DescribeTransformJobRequest;
   export type Output = DescribeTransformJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeTrial {
   export type Input = DescribeTrialRequest;
   export type Output = DescribeTrialResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeTrialComponent {
   export type Input = DescribeTrialComponentRequest;
   export type Output = DescribeTrialComponentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeUserProfile {
   export type Input = DescribeUserProfileRequest;
   export type Output = DescribeUserProfileResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace DescribeWorkforce {
   export type Input = DescribeWorkforceRequest;
   export type Output = DescribeWorkforceResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeWorkteam {
   export type Input = DescribeWorkteamRequest;
   export type Output = DescribeWorkteamResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DisableSagemakerServicecatalogPortfolio {
   export type Input = DisableSagemakerServicecatalogPortfolioInput;
   export type Output = DisableSagemakerServicecatalogPortfolioOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DisassociateTrialComponent {
   export type Input = DisassociateTrialComponentRequest;
   export type Output = DisassociateTrialComponentResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace EnableSagemakerServicecatalogPortfolio {
   export type Input = EnableSagemakerServicecatalogPortfolioInput;
   export type Output = EnableSagemakerServicecatalogPortfolioOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetDeviceFleetReport {
   export type Input = GetDeviceFleetReportRequest;
   export type Output = GetDeviceFleetReportResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetLineageGroupPolicy {
   export type Input = GetLineageGroupPolicyRequest;
   export type Output = GetLineageGroupPolicyResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace GetModelPackageGroupPolicy {
   export type Input = GetModelPackageGroupPolicyInput;
   export type Output = GetModelPackageGroupPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetSagemakerServicecatalogPortfolioStatus {
   export type Input = GetSagemakerServicecatalogPortfolioStatusInput;
   export type Output = GetSagemakerServicecatalogPortfolioStatusOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetScalingConfigurationRecommendation {
   export type Input = GetScalingConfigurationRecommendationRequest;
   export type Output = GetScalingConfigurationRecommendationResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace GetSearchSuggestions {
   export type Input = GetSearchSuggestionsRequest;
   export type Output = GetSearchSuggestionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ImportHubContent {
@@ -13765,622 +14831,511 @@ export declare namespace ImportHubContent {
 export declare namespace ListActions {
   export type Input = ListActionsRequest;
   export type Output = ListActionsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListAlgorithms {
   export type Input = ListAlgorithmsInput;
   export type Output = ListAlgorithmsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListAliases {
   export type Input = ListAliasesRequest;
   export type Output = ListAliasesResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListAppImageConfigs {
   export type Input = ListAppImageConfigsRequest;
   export type Output = ListAppImageConfigsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListApps {
   export type Input = ListAppsRequest;
   export type Output = ListAppsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListArtifacts {
   export type Input = ListArtifactsRequest;
   export type Output = ListArtifactsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListAssociations {
   export type Input = ListAssociationsRequest;
   export type Output = ListAssociationsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListAutoMLJobs {
   export type Input = ListAutoMLJobsRequest;
   export type Output = ListAutoMLJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListCandidatesForAutoMLJob {
   export type Input = ListCandidatesForAutoMLJobRequest;
   export type Output = ListCandidatesForAutoMLJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListClusterNodes {
   export type Input = ListClusterNodesRequest;
   export type Output = ListClusterNodesResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
-}
-
-export declare namespace ListClusterSchedulerConfigs {
-  export type Input = ListClusterSchedulerConfigsRequest;
-  export type Output = ListClusterSchedulerConfigsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListClusters {
   export type Input = ListClustersRequest;
   export type Output = ListClustersResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListClusterSchedulerConfigs {
+  export type Input = ListClusterSchedulerConfigsRequest;
+  export type Output = ListClusterSchedulerConfigsResponse;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListCodeRepositories {
   export type Input = ListCodeRepositoriesInput;
   export type Output = ListCodeRepositoriesOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListCompilationJobs {
   export type Input = ListCompilationJobsRequest;
   export type Output = ListCompilationJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListComputeQuotas {
   export type Input = ListComputeQuotasRequest;
   export type Output = ListComputeQuotasResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListContexts {
   export type Input = ListContextsRequest;
   export type Output = ListContextsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListDataQualityJobDefinitions {
   export type Input = ListDataQualityJobDefinitionsRequest;
   export type Output = ListDataQualityJobDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListDeviceFleets {
   export type Input = ListDeviceFleetsRequest;
   export type Output = ListDeviceFleetsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListDevices {
   export type Input = ListDevicesRequest;
   export type Output = ListDevicesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListDomains {
   export type Input = ListDomainsRequest;
   export type Output = ListDomainsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListEdgeDeploymentPlans {
   export type Input = ListEdgeDeploymentPlansRequest;
   export type Output = ListEdgeDeploymentPlansResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListEdgePackagingJobs {
   export type Input = ListEdgePackagingJobsRequest;
   export type Output = ListEdgePackagingJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListEndpointConfigs {
   export type Input = ListEndpointConfigsInput;
   export type Output = ListEndpointConfigsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListEndpoints {
   export type Input = ListEndpointsInput;
   export type Output = ListEndpointsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListExperiments {
   export type Input = ListExperimentsRequest;
   export type Output = ListExperimentsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListFeatureGroups {
   export type Input = ListFeatureGroupsRequest;
   export type Output = ListFeatureGroupsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListFlowDefinitions {
   export type Input = ListFlowDefinitionsRequest;
   export type Output = ListFlowDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListHubContentVersions {
-  export type Input = ListHubContentVersionsRequest;
-  export type Output = ListHubContentVersionsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListHubContents {
   export type Input = ListHubContentsRequest;
   export type Output = ListHubContentsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
+}
+
+export declare namespace ListHubContentVersions {
+  export type Input = ListHubContentVersionsRequest;
+  export type Output = ListHubContentVersionsResponse;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListHubs {
   export type Input = ListHubsRequest;
   export type Output = ListHubsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListHumanTaskUis {
   export type Input = ListHumanTaskUisRequest;
   export type Output = ListHumanTaskUisResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListHyperParameterTuningJobs {
   export type Input = ListHyperParameterTuningJobsRequest;
   export type Output = ListHyperParameterTuningJobsResponse;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListImageVersions {
-  export type Input = ListImageVersionsRequest;
-  export type Output = ListImageVersionsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListImages {
   export type Input = ListImagesRequest;
   export type Output = ListImagesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListImageVersions {
+  export type Input = ListImageVersionsRequest;
+  export type Output = ListImageVersionsResponse;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListInferenceComponents {
   export type Input = ListInferenceComponentsInput;
   export type Output = ListInferenceComponentsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListInferenceExperiments {
   export type Input = ListInferenceExperimentsRequest;
   export type Output = ListInferenceExperimentsResponse;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListInferenceRecommendationsJobSteps {
-  export type Input = ListInferenceRecommendationsJobStepsRequest;
-  export type Output = ListInferenceRecommendationsJobStepsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListInferenceRecommendationsJobs {
   export type Input = ListInferenceRecommendationsJobsRequest;
   export type Output = ListInferenceRecommendationsJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListInferenceRecommendationsJobSteps {
+  export type Input = ListInferenceRecommendationsJobStepsRequest;
+  export type Output = ListInferenceRecommendationsJobStepsResponse;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListLabelingJobs {
   export type Input = ListLabelingJobsRequest;
   export type Output = ListLabelingJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListLabelingJobsForWorkteam {
   export type Input = ListLabelingJobsForWorkteamRequest;
   export type Output = ListLabelingJobsForWorkteamResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListLineageGroups {
   export type Input = ListLineageGroupsRequest;
   export type Output = ListLineageGroupsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListMlflowTrackingServers {
   export type Input = ListMlflowTrackingServersRequest;
   export type Output = ListMlflowTrackingServersResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelBiasJobDefinitions {
   export type Input = ListModelBiasJobDefinitionsRequest;
   export type Output = ListModelBiasJobDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelCardExportJobs {
   export type Input = ListModelCardExportJobsRequest;
   export type Output = ListModelCardExportJobsResponse;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListModelCardVersions {
-  export type Input = ListModelCardVersionsRequest;
-  export type Output = ListModelCardVersionsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelCards {
   export type Input = ListModelCardsRequest;
   export type Output = ListModelCardsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListModelCardVersions {
+  export type Input = ListModelCardVersionsRequest;
+  export type Output = ListModelCardVersionsResponse;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListModelExplainabilityJobDefinitions {
   export type Input = ListModelExplainabilityJobDefinitionsRequest;
   export type Output = ListModelExplainabilityJobDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelMetadata {
   export type Input = ListModelMetadataRequest;
   export type Output = ListModelMetadataResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelPackageGroups {
   export type Input = ListModelPackageGroupsInput;
   export type Output = ListModelPackageGroupsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelPackages {
   export type Input = ListModelPackagesInput;
   export type Output = ListModelPackagesOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModelQualityJobDefinitions {
   export type Input = ListModelQualityJobDefinitionsRequest;
   export type Output = ListModelQualityJobDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListModels {
   export type Input = ListModelsInput;
   export type Output = ListModelsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListMonitoringAlertHistory {
   export type Input = ListMonitoringAlertHistoryRequest;
   export type Output = ListMonitoringAlertHistoryResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListMonitoringAlerts {
   export type Input = ListMonitoringAlertsRequest;
   export type Output = ListMonitoringAlertsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListMonitoringExecutions {
   export type Input = ListMonitoringExecutionsRequest;
   export type Output = ListMonitoringExecutionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListMonitoringSchedules {
   export type Input = ListMonitoringSchedulesRequest;
   export type Output = ListMonitoringSchedulesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListNotebookInstanceLifecycleConfigs {
   export type Input = ListNotebookInstanceLifecycleConfigsInput;
   export type Output = ListNotebookInstanceLifecycleConfigsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListNotebookInstances {
   export type Input = ListNotebookInstancesInput;
   export type Output = ListNotebookInstancesOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListOptimizationJobs {
   export type Input = ListOptimizationJobsRequest;
   export type Output = ListOptimizationJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListPartnerApps {
   export type Input = ListPartnerAppsRequest;
   export type Output = ListPartnerAppsResponse;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListPipelineExecutionSteps {
-  export type Input = ListPipelineExecutionStepsRequest;
-  export type Output = ListPipelineExecutionStepsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListPipelineExecutions {
   export type Input = ListPipelineExecutionsRequest;
   export type Output = ListPipelineExecutionsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
+}
+
+export declare namespace ListPipelineExecutionSteps {
+  export type Input = ListPipelineExecutionStepsRequest;
+  export type Output = ListPipelineExecutionStepsResponse;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListPipelineParametersForExecution {
   export type Input = ListPipelineParametersForExecutionRequest;
   export type Output = ListPipelineParametersForExecutionResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListPipelines {
   export type Input = ListPipelinesRequest;
   export type Output = ListPipelinesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListProcessingJobs {
   export type Input = ListProcessingJobsRequest;
   export type Output = ListProcessingJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListProjects {
   export type Input = ListProjectsInput;
   export type Output = ListProjectsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListResourceCatalogs {
   export type Input = ListResourceCatalogsRequest;
   export type Output = ListResourceCatalogsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListSpaces {
   export type Input = ListSpacesRequest;
   export type Output = ListSpacesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListStageDevices {
   export type Input = ListStageDevicesRequest;
   export type Output = ListStageDevicesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListStudioLifecycleConfigs {
   export type Input = ListStudioLifecycleConfigsRequest;
   export type Output = ListStudioLifecycleConfigsResponse;
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace ListSubscribedWorkteams {
   export type Input = ListSubscribedWorkteamsRequest;
   export type Output = ListSubscribedWorkteamsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTags {
   export type Input = ListTagsInput;
   export type Output = ListTagsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTrainingJobs {
   export type Input = ListTrainingJobsRequest;
   export type Output = ListTrainingJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTrainingJobsForHyperParameterTuningJob {
   export type Input = ListTrainingJobsForHyperParameterTuningJobRequest;
   export type Output = ListTrainingJobsForHyperParameterTuningJobResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListTrainingPlans {
   export type Input = ListTrainingPlansRequest;
   export type Output = ListTrainingPlansResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTransformJobs {
   export type Input = ListTransformJobsRequest;
   export type Output = ListTransformJobsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTrialComponents {
   export type Input = ListTrialComponentsRequest;
   export type Output = ListTrialComponentsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListTrials {
   export type Input = ListTrialsRequest;
   export type Output = ListTrialsResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace ListUserProfiles {
   export type Input = ListUserProfilesRequest;
   export type Output = ListUserProfilesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListWorkforces {
   export type Input = ListWorkforcesRequest;
   export type Output = ListWorkforcesResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListWorkteams {
   export type Input = ListWorkteamsRequest;
   export type Output = ListWorkteamsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace PutModelPackageGroupPolicy {
   export type Input = PutModelPackageGroupPolicyInput;
   export type Output = PutModelPackageGroupPolicyOutput;
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace QueryLineage {
   export type Input = QueryLineageRequest;
   export type Output = QueryLineageResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace RegisterDevices {
   export type Input = RegisterDevicesRequest;
   export type Output = {};
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace RenderUiTemplate {
   export type Input = RenderUiTemplateRequest;
   export type Output = RenderUiTemplateResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace RetryPipelineExecution {
@@ -14396,16 +15351,13 @@ export declare namespace RetryPipelineExecution {
 export declare namespace Search {
   export type Input = SearchRequest;
   export type Output = SearchResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SearchTrainingPlanOfferings {
   export type Input = SearchTrainingPlanOfferingsRequest;
   export type Output = SearchTrainingPlanOfferingsResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace SendPipelineExecutionStepFailure {
@@ -14431,42 +15383,31 @@ export declare namespace SendPipelineExecutionStepSuccess {
 export declare namespace StartEdgeDeploymentStage {
   export type Input = StartEdgeDeploymentStageRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace StartInferenceExperiment {
   export type Input = StartInferenceExperimentRequest;
   export type Output = StartInferenceExperimentResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StartMlflowTrackingServer {
   export type Input = StartMlflowTrackingServerRequest;
   export type Output = StartMlflowTrackingServerResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StartMonitoringSchedule {
   export type Input = StartMonitoringScheduleRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StartNotebookInstance {
   export type Input = StartNotebookInstanceInput;
   export type Output = {};
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace StartPipelineExecution {
@@ -14482,164 +15423,121 @@ export declare namespace StartPipelineExecution {
 export declare namespace StartSession {
   export type Input = StartSessionRequest;
   export type Output = StartSessionResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopAutoMLJob {
   export type Input = StopAutoMLJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopCompilationJob {
   export type Input = StopCompilationJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopEdgeDeploymentStage {
   export type Input = StopEdgeDeploymentStageRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace StopEdgePackagingJob {
   export type Input = StopEdgePackagingJobRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace StopHyperParameterTuningJob {
   export type Input = StopHyperParameterTuningJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopInferenceExperiment {
   export type Input = StopInferenceExperimentRequest;
   export type Output = StopInferenceExperimentResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopInferenceRecommendationsJob {
   export type Input = StopInferenceRecommendationsJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopLabelingJob {
   export type Input = StopLabelingJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopMlflowTrackingServer {
   export type Input = StopMlflowTrackingServerRequest;
   export type Output = StopMlflowTrackingServerResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopMonitoringSchedule {
   export type Input = StopMonitoringScheduleRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopNotebookInstance {
   export type Input = StopNotebookInstanceInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace StopOptimizationJob {
   export type Input = StopOptimizationJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopPipelineExecution {
   export type Input = StopPipelineExecutionRequest;
   export type Output = StopPipelineExecutionResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopProcessingJob {
   export type Input = StopProcessingJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopTrainingJob {
   export type Input = StopTrainingJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace StopTransformJob {
   export type Input = StopTransformJobRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateAction {
   export type Input = UpdateActionRequest;
   export type Output = UpdateActionResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateAppImageConfig {
   export type Input = UpdateAppImageConfigRequest;
   export type Output = UpdateAppImageConfigResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateArtifact {
   export type Input = UpdateArtifactRequest;
   export type Output = UpdateArtifactResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateCluster {
@@ -14665,18 +15563,13 @@ export declare namespace UpdateClusterSchedulerConfig {
 export declare namespace UpdateClusterSoftware {
   export type Input = UpdateClusterSoftwareRequest;
   export type Output = UpdateClusterSoftwareResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateCodeRepository {
   export type Input = UpdateCodeRepositoryInput;
   export type Output = UpdateCodeRepositoryOutput;
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace UpdateComputeQuota {
@@ -14692,25 +15585,19 @@ export declare namespace UpdateComputeQuota {
 export declare namespace UpdateContext {
   export type Input = UpdateContextRequest;
   export type Output = UpdateContextResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateDeviceFleet {
   export type Input = UpdateDeviceFleetRequest;
   export type Output = {};
-  export type Error =
-    | ResourceInUse
-    | CommonAwsError;
+  export type Error = ResourceInUse | CommonAwsError;
 }
 
 export declare namespace UpdateDevices {
   export type Input = UpdateDevicesRequest;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace UpdateDomain {
@@ -14726,112 +15613,79 @@ export declare namespace UpdateDomain {
 export declare namespace UpdateEndpoint {
   export type Input = UpdateEndpointInput;
   export type Output = UpdateEndpointOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace UpdateEndpointWeightsAndCapacities {
   export type Input = UpdateEndpointWeightsAndCapacitiesInput;
   export type Output = UpdateEndpointWeightsAndCapacitiesOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace UpdateExperiment {
   export type Input = UpdateExperimentRequest;
   export type Output = UpdateExperimentResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateFeatureGroup {
   export type Input = UpdateFeatureGroupRequest;
   export type Output = UpdateFeatureGroupResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateFeatureMetadata {
   export type Input = UpdateFeatureMetadataRequest;
   export type Output = {};
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateHub {
   export type Input = UpdateHubRequest;
   export type Output = UpdateHubResponse;
-  export type Error =
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateHubContent {
   export type Input = UpdateHubContentRequest;
   export type Output = UpdateHubContentResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateHubContentReference {
   export type Input = UpdateHubContentReferenceRequest;
   export type Output = UpdateHubContentReferenceResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateImage {
   export type Input = UpdateImageRequest;
   export type Output = UpdateImageResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateImageVersion {
   export type Input = UpdateImageVersionRequest;
   export type Output = UpdateImageVersionResponse;
-  export type Error =
-    | ResourceInUse
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceInUse | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateInferenceComponent {
   export type Input = UpdateInferenceComponentInput;
   export type Output = UpdateInferenceComponentOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace UpdateInferenceComponentRuntimeConfig {
   export type Input = UpdateInferenceComponentRuntimeConfigInput;
   export type Output = UpdateInferenceComponentRuntimeConfigOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace UpdateInferenceExperiment {
   export type Input = UpdateInferenceExperimentRequest;
   export type Output = UpdateInferenceExperimentResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateMlflowTrackingServer {
@@ -14857,78 +15711,55 @@ export declare namespace UpdateModelCard {
 export declare namespace UpdateModelPackage {
   export type Input = UpdateModelPackageInput;
   export type Output = UpdateModelPackageOutput;
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace UpdateMonitoringAlert {
   export type Input = UpdateMonitoringAlertRequest;
   export type Output = UpdateMonitoringAlertResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateMonitoringSchedule {
   export type Input = UpdateMonitoringScheduleRequest;
   export type Output = UpdateMonitoringScheduleResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateNotebookInstance {
   export type Input = UpdateNotebookInstanceInput;
   export type Output = UpdateNotebookInstanceOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace UpdateNotebookInstanceLifecycleConfig {
   export type Input = UpdateNotebookInstanceLifecycleConfigInput;
   export type Output = UpdateNotebookInstanceLifecycleConfigOutput;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
 
 export declare namespace UpdatePartnerApp {
   export type Input = UpdatePartnerAppRequest;
   export type Output = UpdatePartnerAppResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdatePipeline {
   export type Input = UpdatePipelineRequest;
   export type Output = UpdatePipelineResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdatePipelineExecution {
   export type Input = UpdatePipelineExecutionRequest;
   export type Output = UpdatePipelineExecutionResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateProject {
   export type Input = UpdateProjectInput;
   export type Output = UpdateProjectOutput;
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace UpdateSpace {
@@ -14944,28 +15775,19 @@ export declare namespace UpdateSpace {
 export declare namespace UpdateTrainingJob {
   export type Input = UpdateTrainingJobRequest;
   export type Output = UpdateTrainingJobResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateTrial {
   export type Input = UpdateTrialRequest;
   export type Output = UpdateTrialResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateTrialComponent {
   export type Input = UpdateTrialComponentRequest;
   export type Output = UpdateTrialComponentResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFound
-    | CommonAwsError;
+  export type Error = ConflictException | ResourceNotFound | CommonAwsError;
 }
 
 export declare namespace UpdateUserProfile {
@@ -14981,16 +15803,11 @@ export declare namespace UpdateUserProfile {
 export declare namespace UpdateWorkforce {
   export type Input = UpdateWorkforceRequest;
   export type Output = UpdateWorkforceResponse;
-  export type Error =
-    | ConflictException
-    | CommonAwsError;
+  export type Error = ConflictException | CommonAwsError;
 }
 
 export declare namespace UpdateWorkteam {
   export type Input = UpdateWorkteamRequest;
   export type Output = UpdateWorkteamResponse;
-  export type Error =
-    | ResourceLimitExceeded
-    | CommonAwsError;
+  export type Error = ResourceLimitExceeded | CommonAwsError;
 }
-

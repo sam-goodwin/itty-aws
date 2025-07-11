@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.necco.coral#CfnSshPublicKeys": {
       "type": "list",
@@ -8888,6 +8889,95 @@
     },
     "com.amazonaws.transfer#TransferService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.transfer#CreateAccess"
+        },
+        {
+          "target": "com.amazonaws.transfer#DeleteAccess"
+        },
+        {
+          "target": "com.amazonaws.transfer#DeleteHostKey"
+        },
+        {
+          "target": "com.amazonaws.transfer#DeleteSshPublicKey"
+        },
+        {
+          "target": "com.amazonaws.transfer#DescribeAccess"
+        },
+        {
+          "target": "com.amazonaws.transfer#DescribeExecution"
+        },
+        {
+          "target": "com.amazonaws.transfer#DescribeHostKey"
+        },
+        {
+          "target": "com.amazonaws.transfer#DescribeSecurityPolicy"
+        },
+        {
+          "target": "com.amazonaws.transfer#ImportHostKey"
+        },
+        {
+          "target": "com.amazonaws.transfer#ImportSshPublicKey"
+        },
+        {
+          "target": "com.amazonaws.transfer#ListAccesses"
+        },
+        {
+          "target": "com.amazonaws.transfer#ListExecutions"
+        },
+        {
+          "target": "com.amazonaws.transfer#ListFileTransferResults"
+        },
+        {
+          "target": "com.amazonaws.transfer#ListHostKeys"
+        },
+        {
+          "target": "com.amazonaws.transfer#ListSecurityPolicies"
+        },
+        {
+          "target": "com.amazonaws.transfer#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.transfer#SendWorkflowStepState"
+        },
+        {
+          "target": "com.amazonaws.transfer#StartDirectoryListing"
+        },
+        {
+          "target": "com.amazonaws.transfer#StartFileTransfer"
+        },
+        {
+          "target": "com.amazonaws.transfer#StartRemoteDelete"
+        },
+        {
+          "target": "com.amazonaws.transfer#StartRemoteMove"
+        },
+        {
+          "target": "com.amazonaws.transfer#StartServer"
+        },
+        {
+          "target": "com.amazonaws.transfer#StopServer"
+        },
+        {
+          "target": "com.amazonaws.transfer#TagResource"
+        },
+        {
+          "target": "com.amazonaws.transfer#TestConnection"
+        },
+        {
+          "target": "com.amazonaws.transfer#TestIdentityProvider"
+        },
+        {
+          "target": "com.amazonaws.transfer#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.transfer#UpdateAccess"
+        },
+        {
+          "target": "com.amazonaws.transfer#UpdateHostKey"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Transfer",

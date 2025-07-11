@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.codebuild#AccountLimitExceededException": {
       "type": "structure",
@@ -1640,6 +1669,185 @@
     },
     "com.amazonaws.codebuild#CodeBuild_20161006": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.codebuild#BatchDeleteBuilds"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetBuildBatches"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetBuilds"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetCommandExecutions"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetFleets"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetProjects"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetReportGroups"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetReports"
+        },
+        {
+          "target": "com.amazonaws.codebuild#BatchGetSandboxes"
+        },
+        {
+          "target": "com.amazonaws.codebuild#CreateFleet"
+        },
+        {
+          "target": "com.amazonaws.codebuild#CreateProject"
+        },
+        {
+          "target": "com.amazonaws.codebuild#CreateReportGroup"
+        },
+        {
+          "target": "com.amazonaws.codebuild#CreateWebhook"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteBuildBatch"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteFleet"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteProject"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteReport"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteReportGroup"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteSourceCredentials"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DeleteWebhook"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DescribeCodeCoverages"
+        },
+        {
+          "target": "com.amazonaws.codebuild#DescribeTestCases"
+        },
+        {
+          "target": "com.amazonaws.codebuild#GetReportGroupTrend"
+        },
+        {
+          "target": "com.amazonaws.codebuild#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ImportSourceCredentials"
+        },
+        {
+          "target": "com.amazonaws.codebuild#InvalidateProjectCache"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListBuildBatches"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListBuildBatchesForProject"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListBuilds"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListBuildsForProject"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListCommandExecutionsForSandbox"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListCuratedEnvironmentImages"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListFleets"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListProjects"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListReportGroups"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListReports"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListReportsForReportGroup"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListSandboxes"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListSandboxesForProject"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListSharedProjects"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListSharedReportGroups"
+        },
+        {
+          "target": "com.amazonaws.codebuild#ListSourceCredentials"
+        },
+        {
+          "target": "com.amazonaws.codebuild#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.codebuild#RetryBuild"
+        },
+        {
+          "target": "com.amazonaws.codebuild#RetryBuildBatch"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StartBuild"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StartBuildBatch"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StartCommandExecution"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StartSandbox"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StartSandboxConnection"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StopBuild"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StopBuildBatch"
+        },
+        {
+          "target": "com.amazonaws.codebuild#StopSandbox"
+        },
+        {
+          "target": "com.amazonaws.codebuild#UpdateFleet"
+        },
+        {
+          "target": "com.amazonaws.codebuild#UpdateProject"
+        },
+        {
+          "target": "com.amazonaws.codebuild#UpdateProjectVisibility"
+        },
+        {
+          "target": "com.amazonaws.codebuild#UpdateReportGroup"
+        },
+        {
+          "target": "com.amazonaws.codebuild#UpdateWebhook"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CodeBuild",

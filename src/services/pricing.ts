@@ -1,122 +1,220 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSPriceListService {
   describeServices(
     input: DescribeServicesRequest,
   ): Effect.Effect<
-    {},
-    ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    DescribeServicesResponse,
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getAttributeValues(
     input: GetAttributeValuesRequest,
   ): Effect.Effect<
-    {},
-    ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    GetAttributeValuesResponse,
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getPriceListFileUrl(
     input: GetPriceListFileUrlRequest,
   ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    GetPriceListFileUrlResponse,
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getProducts(
     input: GetProductsRequest,
   ): Effect.Effect<
-    {},
-    ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    GetProductsResponse,
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listPriceLists(
     input: ListPriceListsRequest,
   ): Effect.Effect<
-    {},
-    AccessDeniedException | ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    ListPriceListsResponse,
+    | AccessDeniedException
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
 export type Pricing = AWSPriceListService;
 
-export interface AccessDeniedException {
-}
-export type AttributeNameList = Array<unknown>;
+export declare class AccessDeniedException extends Data.TaggedError(
+  "AccessDeniedException",
+)<{
+  readonly Message?: string;
+}> {}
+export type AttributeNameList = Array<string>;
 export interface AttributeValue {
+  Value?: string;
 }
-export type AttributeValueList = Array<unknown>;
+export type AttributeValueList = Array<AttributeValue>;
 export type BoxedInteger = number;
 
 export type CurrencyCode = string;
 
 export interface DescribeServicesRequest {
+  ServiceCode?: string;
+  FormatVersion?: string;
+  NextToken?: string;
+  MaxResults?: number;
 }
 export interface DescribeServicesResponse {
+  Services?: Array<Service>;
+  FormatVersion?: string;
+  NextToken?: string;
 }
 export type EffectiveDate = Date | string;
 
 export type errorMessage = string;
 
-export interface ExpiredNextTokenException {
-}
+export declare class ExpiredNextTokenException extends Data.TaggedError(
+  "ExpiredNextTokenException",
+)<{
+  readonly Message?: string;
+}> {}
 export type Field = string;
 
 export type FileFormat = string;
 
-export type FileFormats = Array<unknown>;
+export type FileFormats = Array<string>;
 export interface Filter {
+  Type: FilterType;
+  Field: string;
+  Value: string;
 }
-export type Filters = Array<unknown>;
-export type FilterType = never;
+export type Filters = Array<Filter>;
+export type FilterType = "TERM_MATCH";
 export type FormatVersion = string;
 
 export interface GetAttributeValuesRequest {
+  ServiceCode: string;
+  AttributeName: string;
+  NextToken?: string;
+  MaxResults?: number;
 }
 export interface GetAttributeValuesResponse {
+  AttributeValues?: Array<AttributeValue>;
+  NextToken?: string;
 }
 export interface GetPriceListFileUrlRequest {
+  PriceListArn: string;
+  FileFormat: string;
 }
 export interface GetPriceListFileUrlResponse {
+  Url?: string;
 }
 export interface GetProductsRequest {
+  ServiceCode: string;
+  Filters?: Array<Filter>;
+  FormatVersion?: string;
+  NextToken?: string;
+  MaxResults?: number;
 }
 export interface GetProductsResponse {
+  FormatVersion?: string;
+  PriceList?: Array<string>;
+  NextToken?: string;
 }
-export interface InternalErrorException {
-}
-export interface InvalidNextTokenException {
-}
-export interface InvalidParameterException {
-}
+export declare class InternalErrorException extends Data.TaggedError(
+  "InternalErrorException",
+)<{
+  readonly Message?: string;
+}> {}
+export declare class InvalidNextTokenException extends Data.TaggedError(
+  "InvalidNextTokenException",
+)<{
+  readonly Message?: string;
+}> {}
+export declare class InvalidParameterException extends Data.TaggedError(
+  "InvalidParameterException",
+)<{
+  readonly Message?: string;
+}> {}
 export interface ListPriceListsRequest {
+  ServiceCode: string;
+  EffectiveDate: Date | string;
+  RegionCode?: string;
+  CurrencyCode: string;
+  NextToken?: string;
+  MaxResults?: number;
 }
 export interface ListPriceListsResponse {
+  PriceLists?: Array<PriceList>;
+  NextToken?: string;
 }
 export type MaxResults = number;
 
-export interface NotFoundException {
-}
+export declare class NotFoundException extends Data.TaggedError(
+  "NotFoundException",
+)<{
+  readonly Message?: string;
+}> {}
 export interface PriceList {
+  PriceListArn?: string;
+  RegionCode?: string;
+  CurrencyCode?: string;
+  FileFormats?: Array<string>;
 }
 export type PriceListArn = string;
 
-export type PriceListJsonItems = Array<unknown>;
-export type PriceLists = Array<unknown>;
+export type PriceListJsonItems = Array<string>;
+export type PriceLists = Array<PriceList>;
 export type RegionCode = string;
 
-export interface ResourceNotFoundException {
-}
+export declare class ResourceNotFoundException extends Data.TaggedError(
+  "ResourceNotFoundException",
+)<{
+  readonly Message?: string;
+}> {}
 export interface Service {
+  ServiceCode: string;
+  AttributeNames?: Array<string>;
 }
 export type ServiceCode = string;
 
-export type ServiceList = Array<unknown>;
+export type ServiceList = Array<Service>;
 export type SynthesizedJsonPriceListJsonItem = string;
 
-export interface ThrottlingException {
-}
+export declare class ThrottlingException extends Data.TaggedError(
+  "ThrottlingException",
+)<{
+  readonly Message?: string;
+}> {}
 export type Value = string;
 
 export declare namespace DescribeServices {
   export type Input = DescribeServicesRequest;
-  export type Output = {};
+  export type Output = DescribeServicesResponse;
   export type Error =
     | ExpiredNextTokenException
     | InternalErrorException
@@ -129,7 +227,7 @@ export declare namespace DescribeServices {
 
 export declare namespace GetAttributeValues {
   export type Input = GetAttributeValuesRequest;
-  export type Output = {};
+  export type Output = GetAttributeValuesResponse;
   export type Error =
     | ExpiredNextTokenException
     | InternalErrorException
@@ -142,7 +240,7 @@ export declare namespace GetAttributeValues {
 
 export declare namespace GetPriceListFileUrl {
   export type Input = GetPriceListFileUrlRequest;
-  export type Output = {};
+  export type Output = GetPriceListFileUrlResponse;
   export type Error =
     | AccessDeniedException
     | InternalErrorException
@@ -155,7 +253,7 @@ export declare namespace GetPriceListFileUrl {
 
 export declare namespace GetProducts {
   export type Input = GetProductsRequest;
-  export type Output = {};
+  export type Output = GetProductsResponse;
   export type Error =
     | ExpiredNextTokenException
     | InternalErrorException
@@ -168,7 +266,7 @@ export declare namespace GetProducts {
 
 export declare namespace ListPriceLists {
   export type Input = ListPriceListsRequest;
-  export type Output = {};
+  export type Output = ListPriceListsResponse;
   export type Error =
     | AccessDeniedException
     | ExpiredNextTokenException
@@ -180,4 +278,3 @@ export declare namespace ListPriceLists {
     | ThrottlingException
     | CommonAwsError;
 }
-

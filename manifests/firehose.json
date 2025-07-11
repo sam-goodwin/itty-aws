@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.firehose#AWSKMSKeyARN": {
       "type": "string",
@@ -3065,6 +3094,44 @@
     },
     "com.amazonaws.firehose#Firehose_20150804": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.firehose#CreateDeliveryStream"
+        },
+        {
+          "target": "com.amazonaws.firehose#DeleteDeliveryStream"
+        },
+        {
+          "target": "com.amazonaws.firehose#DescribeDeliveryStream"
+        },
+        {
+          "target": "com.amazonaws.firehose#ListDeliveryStreams"
+        },
+        {
+          "target": "com.amazonaws.firehose#ListTagsForDeliveryStream"
+        },
+        {
+          "target": "com.amazonaws.firehose#PutRecord"
+        },
+        {
+          "target": "com.amazonaws.firehose#PutRecordBatch"
+        },
+        {
+          "target": "com.amazonaws.firehose#StartDeliveryStreamEncryption"
+        },
+        {
+          "target": "com.amazonaws.firehose#StopDeliveryStreamEncryption"
+        },
+        {
+          "target": "com.amazonaws.firehose#TagDeliveryStream"
+        },
+        {
+          "target": "com.amazonaws.firehose#UntagDeliveryStream"
+        },
+        {
+          "target": "com.amazonaws.firehose#UpdateDestination"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Firehose",

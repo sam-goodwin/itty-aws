@@ -1,7 +1,80 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.codegurureviewer#AWSGuruFrontendService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.codegurureviewer#AssociateRepository"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#CreateCodeReview"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#DescribeCodeReview"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#DescribeRecommendationFeedback"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#DescribeRepositoryAssociation"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#DisassociateRepository"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ListCodeReviews"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ListRecommendationFeedback"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ListRecommendations"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ListRepositoryAssociations"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#PutRecommendationFeedback"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#TagResource"
+        },
+        {
+          "target": "com.amazonaws.codegurureviewer#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CodeGuru Reviewer",

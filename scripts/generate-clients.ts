@@ -259,11 +259,11 @@ const generateMapType = (name: string, shape: Extract<Shape, { type: "map" }>, m
 const generateServiceCode = (serviceName: string, manifest: Manifest) =>
   Effect.gen(function* () {
 
-    let code = `import type { Effect, Data } from "effect";\n`;
-    code += `import type { CommonAwsError } from "../client.ts";\n\n`;
-
     // Helper to determine if we need void type
     let needsVoid = false;
+    
+    // Check if we need Data import (only if there are error classes)
+    let needsDataImport = false;
 
     // Find service shape and extract metadata
     const serviceShapeEntry = Object.entries(manifest.shapes).find(([, shape]) => shape.type === "service");
@@ -295,13 +295,44 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     // For AWS JSON protocols, the targetPrefix is the service name itself
     const targetPrefix = protocol === "json" ? serviceShapeName : "";
 
-    // Find operations (they are separate shapes with type "operation")
-    const operations = Object.entries(manifest.shapes)
-      .filter(([, shape]) => shape.type === "operation")
-      .map(([shapeId, shape]) => ({
-        name: extractShapeName(shapeId),
-        shape: shape as any
-      }));
+    // Find operations using the new Smithy 2.0 format
+    let operations: Array<{ name: string; shape: any }> = [];
+    
+    if (serviceShape.type === "service" && serviceShape.operations) {
+      // Smithy 2.0 format: operations are referenced in service.operations array
+      operations = serviceShape.operations
+        .map(opRef => {
+          const operationShape = manifest.shapes[opRef.target];
+          if (operationShape && operationShape.type === "operation") {
+            return {
+              name: extractShapeName(opRef.target),
+              shape: operationShape
+            };
+          }
+          return null;
+        })
+        .filter(op => op !== null);
+    } else {
+      // Fallback: look for operations as separate shapes (old format)
+      operations = Object.entries(manifest.shapes)
+        .filter(([, shape]) => shape.type === "operation")
+        .map(([shapeId, shape]) => ({
+          name: extractShapeName(shapeId),
+          shape: shape as any
+        }));
+    }
+
+    // Check if we need Data import by looking for error shapes
+    for (const [shapeId, shape] of Object.entries(manifest.shapes)) {
+      if (shape.type === "structure" && shape.traits && "smithy.api#error" in shape.traits) {
+        needsDataImport = true;
+        break;
+      }
+    }
+
+    // Generate imports
+    let code = `import type { Effect${needsDataImport ? ", Data" : ""} } from "effect";\n`;
+    code += `import type { CommonAwsError } from "../error.ts";\n\n`;
 
     // Generate service interface first at the top
     code += `export interface ${serviceShapeName} {\n`;
@@ -313,10 +344,10 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       const inputType = operation.shape.input ? 
         (operation.shape.input.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.input.target)) : "{}";
       const outputType = operation.shape.output ? 
-        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "void";
+        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "{}";
       
       // Check if output is void
-      if (outputType === "void" || outputType === "Unit" || !operation.shape.output) {
+      if (!operation.shape.output || operation.shape.output.target === "smithy.api#Unit") {
         needsVoid = true;
       }
       
@@ -326,7 +357,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       errorTypes.push("CommonAwsError");
       
       const errorUnion = errorTypes.length > 1 ? errorTypes.join(" | ") : errorTypes[0];
-      const effectOutputType = (outputType === "void" || outputType === "Unit" || !operation.shape.output) ? "{}" : outputType;
+      const effectOutputType = !operation.shape.output || operation.shape.output.target === "smithy.api#Unit" ? "{}" : outputType;
 
       code += `  ${methodName}(\n`;
       code += `    input: ${inputType},\n`;
@@ -398,8 +429,9 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         case "timestamp":
         case "blob":
           // Generate type alias for simple types that might have traits/constraints
-          // Skip generating aliases for types that conflict with global types
-          if (shapeName === "Date" || shapeName === "String" || shapeName === "Number" || shapeName === "Boolean") {
+          // Skip generating aliases for types that conflict with global types (both capitalized and lowercase)
+          if (shapeName === "Date" || shapeName === "String" || shapeName === "Number" || shapeName === "Boolean" ||
+              shapeName === "date" || shapeName === "string" || shapeName === "number" || shapeName === "boolean") {
             // Skip generating these to avoid conflicts with global types
             break;
           }
@@ -419,7 +451,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       const inputType = operation.shape.input ? 
         (operation.shape.input.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.input.target)) : "{}";
       const outputType = operation.shape.output ? 
-        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "void";
+        (operation.shape.output.target === "smithy.api#Unit" ? "{}" : extractShapeName(operation.shape.output.target)) : "{}";
       
       // Generate error union type
       const errors = operation.shape.errors || [];
@@ -427,7 +459,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
       errorTypes.push("CommonAwsError");
       
       const errorUnion = errorTypes.map(type => `    | ${type}`).join("\n");
-      const effectOutputType = (outputType === "void" || outputType === "Unit" || !operation.shape.output) ? "{}" : outputType;
+      const effectOutputType = !operation.shape.output || operation.shape.output.target === "smithy.api#Unit" ? "{}" : outputType;
 
       code += `export declare namespace ${operation.name} {\n`;
       code += `  export type Input = ${inputType};\n`;

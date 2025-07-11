@@ -1,48 +1,98 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface IotMoonrakerService {
   deleteThingShadow(
     input: DeleteThingShadowRequest,
   ): Effect.Effect<
     DeleteThingShadowResponse,
-    InternalFailureException | InvalidRequestException | MethodNotAllowedException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | UnauthorizedException | UnsupportedDocumentEncodingException | CommonAwsError
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | UnauthorizedException
+    | UnsupportedDocumentEncodingException
+    | CommonAwsError
   >;
   getRetainedMessage(
     input: GetRetainedMessageRequest,
   ): Effect.Effect<
     GetRetainedMessageResponse,
-    InternalFailureException | InvalidRequestException | MethodNotAllowedException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | UnauthorizedException | CommonAwsError
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getThingShadow(
     input: GetThingShadowRequest,
   ): Effect.Effect<
     GetThingShadowResponse,
-    InternalFailureException | InvalidRequestException | MethodNotAllowedException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | UnauthorizedException | UnsupportedDocumentEncodingException | CommonAwsError
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | UnauthorizedException
+    | UnsupportedDocumentEncodingException
+    | CommonAwsError
   >;
   listNamedShadowsForThing(
     input: ListNamedShadowsForThingRequest,
   ): Effect.Effect<
     ListNamedShadowsForThingResponse,
-    InternalFailureException | InvalidRequestException | MethodNotAllowedException | ResourceNotFoundException | ServiceUnavailableException | ThrottlingException | UnauthorizedException | CommonAwsError
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listRetainedMessages(
     input: ListRetainedMessagesRequest,
   ): Effect.Effect<
     ListRetainedMessagesResponse,
-    InternalFailureException | InvalidRequestException | MethodNotAllowedException | ServiceUnavailableException | ThrottlingException | UnauthorizedException | CommonAwsError
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   publish(
     input: PublishRequest,
   ): Effect.Effect<
     {},
-    InternalFailureException | InvalidRequestException | MethodNotAllowedException | ThrottlingException | UnauthorizedException | CommonAwsError
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateThingShadow(
     input: UpdateThingShadowRequest,
   ): Effect.Effect<
     UpdateThingShadowResponse,
-    ConflictException | InternalFailureException | InvalidRequestException | MethodNotAllowedException | RequestEntityTooLargeException | ServiceUnavailableException | ThrottlingException | UnauthorizedException | UnsupportedDocumentEncodingException | CommonAwsError
+    | ConflictException
+    | InternalFailureException
+    | InvalidRequestException
+    | MethodNotAllowedException
+    | RequestEntityTooLargeException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | UnauthorizedException
+    | UnsupportedDocumentEncodingException
+    | CommonAwsError
   >;
 }
 
@@ -305,4 +355,3 @@ export declare namespace UpdateThingShadow {
     | UnsupportedDocumentEncodingException
     | CommonAwsError;
 }
-

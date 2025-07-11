@@ -1,36 +1,63 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface S3Outposts {
   createEndpoint(
     input: CreateEndpointRequest,
   ): Effect.Effect<
     CreateEndpointResult,
-    AccessDeniedException | ConflictException | InternalServerException | OutpostOfflineException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | OutpostOfflineException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteEndpoint(
     input: DeleteEndpointRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | OutpostOfflineException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | OutpostOfflineException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listEndpoints(
     input: ListEndpointsRequest,
   ): Effect.Effect<
     ListEndpointsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listOutpostsWithS3(
     input: ListOutpostsWithS3Request,
   ): Effect.Effect<
     ListOutpostsWithS3Result,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listSharedEndpoints(
     input: ListSharedEndpointsRequest,
   ): Effect.Effect<
     ListSharedEndpointsResult,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -90,7 +117,12 @@ export type EndpointArn = string;
 export type EndpointId = string;
 
 export type Endpoints = Array<Endpoint>;
-export type EndpointStatus = "PENDING" | "AVAILABLE" | "DELETING" | "CREATE_FAILED" | "DELETE_FAILED";
+export type EndpointStatus =
+  | "PENDING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "CREATE_FAILED"
+  | "DELETE_FAILED";
 export type ErrorCode = string;
 
 export type ErrorMessage = string;
@@ -242,4 +274,3 @@ export declare namespace ListSharedEndpoints {
     | ValidationException
     | CommonAwsError;
 }
-

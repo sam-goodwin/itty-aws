@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.appintegrations#AccessDeniedException": {
       "type": "structure",
@@ -15,6 +44,77 @@
     },
     "com.amazonaws.appintegrations#AmazonAppIntegrationService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.appintegrations#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#CreateDataIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#CreateDataIntegrationAssociation"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#CreateEventIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#DeleteDataIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#DeleteEventIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#GetApplication"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#GetDataIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#GetEventIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListApplicationAssociations"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListApplications"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListDataIntegrationAssociations"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListDataIntegrations"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListEventIntegrationAssociations"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListEventIntegrations"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#TagResource"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UpdateApplication"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UpdateDataIntegration"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UpdateDataIntegrationAssociation"
+        },
+        {
+          "target": "com.amazonaws.appintegrations#UpdateEventIntegration"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AppIntegrations",

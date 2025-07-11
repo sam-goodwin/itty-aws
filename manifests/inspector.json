@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.inspector#AccessDeniedErrorCode": {
       "type": "enum",
@@ -3301,6 +3330,119 @@
     },
     "com.amazonaws.inspector#InspectorService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.inspector#AddAttributesToFindings"
+        },
+        {
+          "target": "com.amazonaws.inspector#CreateAssessmentTarget"
+        },
+        {
+          "target": "com.amazonaws.inspector#CreateAssessmentTemplate"
+        },
+        {
+          "target": "com.amazonaws.inspector#CreateExclusionsPreview"
+        },
+        {
+          "target": "com.amazonaws.inspector#CreateResourceGroup"
+        },
+        {
+          "target": "com.amazonaws.inspector#DeleteAssessmentRun"
+        },
+        {
+          "target": "com.amazonaws.inspector#DeleteAssessmentTarget"
+        },
+        {
+          "target": "com.amazonaws.inspector#DeleteAssessmentTemplate"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeAssessmentRuns"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeAssessmentTargets"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeAssessmentTemplates"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeCrossAccountAccessRole"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeExclusions"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeFindings"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeResourceGroups"
+        },
+        {
+          "target": "com.amazonaws.inspector#DescribeRulesPackages"
+        },
+        {
+          "target": "com.amazonaws.inspector#GetAssessmentReport"
+        },
+        {
+          "target": "com.amazonaws.inspector#GetExclusionsPreview"
+        },
+        {
+          "target": "com.amazonaws.inspector#GetTelemetryMetadata"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListAssessmentRunAgents"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListAssessmentRuns"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListAssessmentTargets"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListAssessmentTemplates"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListEventSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListExclusions"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListFindings"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListRulesPackages"
+        },
+        {
+          "target": "com.amazonaws.inspector#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.inspector#PreviewAgents"
+        },
+        {
+          "target": "com.amazonaws.inspector#RegisterCrossAccountAccessRole"
+        },
+        {
+          "target": "com.amazonaws.inspector#RemoveAttributesFromFindings"
+        },
+        {
+          "target": "com.amazonaws.inspector#SetTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.inspector#StartAssessmentRun"
+        },
+        {
+          "target": "com.amazonaws.inspector#StopAssessmentRun"
+        },
+        {
+          "target": "com.amazonaws.inspector#SubscribeToEvent"
+        },
+        {
+          "target": "com.amazonaws.inspector#UnsubscribeFromEvent"
+        },
+        {
+          "target": "com.amazonaws.inspector#UpdateAssessmentTarget"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Inspector",

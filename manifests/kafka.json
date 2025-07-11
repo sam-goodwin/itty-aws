@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.kafka#AmazonMskCluster": {
       "type": "structure",
@@ -3866,6 +3895,164 @@
     },
     "com.amazonaws.kafka#Kafka": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kafka#BatchAssociateScramSecret"
+        },
+        {
+          "target": "com.amazonaws.kafka#BatchDisassociateScramSecret"
+        },
+        {
+          "target": "com.amazonaws.kafka#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.kafka#CreateClusterV2"
+        },
+        {
+          "target": "com.amazonaws.kafka#CreateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafka#CreateReplicator"
+        },
+        {
+          "target": "com.amazonaws.kafka#CreateVpcConnection"
+        },
+        {
+          "target": "com.amazonaws.kafka#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.kafka#DeleteClusterPolicy"
+        },
+        {
+          "target": "com.amazonaws.kafka#DeleteConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafka#DeleteReplicator"
+        },
+        {
+          "target": "com.amazonaws.kafka#DeleteVpcConnection"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeCluster"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeClusterOperation"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeClusterOperationV2"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeClusterV2"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeConfigurationRevision"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeReplicator"
+        },
+        {
+          "target": "com.amazonaws.kafka#DescribeVpcConnection"
+        },
+        {
+          "target": "com.amazonaws.kafka#GetBootstrapBrokers"
+        },
+        {
+          "target": "com.amazonaws.kafka#GetClusterPolicy"
+        },
+        {
+          "target": "com.amazonaws.kafka#GetCompatibleKafkaVersions"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListClientVpcConnections"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListClusterOperations"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListClusterOperationsV2"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListClusters"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListClustersV2"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListConfigurationRevisions"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListConfigurations"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListKafkaVersions"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListNodes"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListReplicators"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListScramSecrets"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.kafka#ListVpcConnections"
+        },
+        {
+          "target": "com.amazonaws.kafka#PutClusterPolicy"
+        },
+        {
+          "target": "com.amazonaws.kafka#RebootBroker"
+        },
+        {
+          "target": "com.amazonaws.kafka#RejectClientVpcConnection"
+        },
+        {
+          "target": "com.amazonaws.kafka#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kafka#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateBrokerCount"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateBrokerStorage"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateBrokerType"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateClusterConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateClusterKafkaVersion"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateConnectivity"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateMonitoring"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateReplicationInfo"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateSecurity"
+        },
+        {
+          "target": "com.amazonaws.kafka#UpdateStorage"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Kafka",

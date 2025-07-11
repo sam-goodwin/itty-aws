@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.frauddetector#ATIMetricDataPoint": {
       "type": "structure",
@@ -74,6 +103,227 @@
     },
     "com.amazonaws.frauddetector#AWSHawksNestServiceFacade": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.frauddetector#BatchCreateVariable"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#BatchGetVariable"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CancelBatchImportJob"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CancelBatchPredictionJob"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateBatchImportJob"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateBatchPredictionJob"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateDetectorVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateList"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateModel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateModelVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateRule"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#CreateVariable"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteBatchImportJob"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteBatchPredictionJob"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteDetector"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteDetectorVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteEntityType"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteEvent"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteEventsByEventType"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteEventType"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteExternalModel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteLabel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteList"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteModel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteModelVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteOutcome"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteRule"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DeleteVariable"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DescribeDetector"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#DescribeModelVersions"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetBatchImportJobs"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetBatchPredictionJobs"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetDeleteEventsByEventTypeStatus"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetDetectors"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetDetectorVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetEntityTypes"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetEvent"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetEventPrediction"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetEventPredictionMetadata"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetEventTypes"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetExternalModels"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetKMSEncryptionKey"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetLabels"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetListElements"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetListsMetadata"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetModels"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetModelVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetOutcomes"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetRules"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#GetVariables"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ListEventPredictions"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutDetector"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutEntityType"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutEventType"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutExternalModel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutKMSEncryptionKey"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutLabel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#PutOutcome"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#SendEvent"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#TagResource"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateDetectorVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateDetectorVersionMetadata"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateDetectorVersionStatus"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateEventLabel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateList"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateModel"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateModelVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateModelVersionStatus"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateRuleMetadata"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateRuleVersion"
+        },
+        {
+          "target": "com.amazonaws.frauddetector#UpdateVariable"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "FraudDetector",

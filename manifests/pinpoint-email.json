@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.pinpointemail#AccountSuspendedException": {
       "type": "structure",
@@ -28,6 +57,134 @@
     },
     "com.amazonaws.pinpointemail#AmazonPinpointEmailService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.pinpointemail#CreateConfigurationSet"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#CreateConfigurationSetEventDestination"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#CreateDedicatedIpPool"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#CreateDeliverabilityTestReport"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#CreateEmailIdentity"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#DeleteConfigurationSet"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#DeleteConfigurationSetEventDestination"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#DeleteDedicatedIpPool"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#DeleteEmailIdentity"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetAccount"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetBlacklistReports"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetConfigurationSet"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetConfigurationSetEventDestinations"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetDedicatedIp"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetDedicatedIps"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetDeliverabilityDashboardOptions"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetDeliverabilityTestReport"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetDomainDeliverabilityCampaign"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetDomainStatisticsReport"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#GetEmailIdentity"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ListConfigurationSets"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ListDedicatedIpPools"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ListDeliverabilityTestReports"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ListDomainDeliverabilityCampaigns"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ListEmailIdentities"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutAccountDedicatedIpWarmupAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutAccountSendingAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutConfigurationSetDeliveryOptions"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutConfigurationSetReputationOptions"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutConfigurationSetSendingOptions"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutConfigurationSetTrackingOptions"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutDedicatedIpInPool"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutDedicatedIpWarmupAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutDeliverabilityDashboardOption"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutEmailIdentityDkimAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutEmailIdentityFeedbackAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#PutEmailIdentityMailFromAttributes"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#SendEmail"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#TagResource"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.pinpointemail#UpdateConfigurationSetEventDestination"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Pinpoint Email",

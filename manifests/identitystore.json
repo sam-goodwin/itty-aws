@@ -1,7 +1,25 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.identitystore#AWSIdentityStore": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.identitystore#GetGroupId"
+        },
+        {
+          "target": "com.amazonaws.identitystore#GetGroupMembershipId"
+        },
+        {
+          "target": "com.amazonaws.identitystore#GetUserId"
+        },
+        {
+          "target": "com.amazonaws.identitystore#IsMemberInGroups"
+        },
+        {
+          "target": "com.amazonaws.identitystore#ListGroupMembershipsForMember"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "identitystore",

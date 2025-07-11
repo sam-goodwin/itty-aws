@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.medialive#AacCodingMode": {
       "type": "enum",
@@ -24832,6 +24861,368 @@
     },
     "com.amazonaws.medialive#MediaLive": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.medialive#AcceptInputDeviceTransfer"
+        },
+        {
+          "target": "com.amazonaws.medialive#BatchDelete"
+        },
+        {
+          "target": "com.amazonaws.medialive#BatchStart"
+        },
+        {
+          "target": "com.amazonaws.medialive#BatchStop"
+        },
+        {
+          "target": "com.amazonaws.medialive#BatchUpdateSchedule"
+        },
+        {
+          "target": "com.amazonaws.medialive#CancelInputDeviceTransfer"
+        },
+        {
+          "target": "com.amazonaws.medialive#ClaimDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateChannel"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateChannelPlacementGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateCloudWatchAlarmTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateCloudWatchAlarmTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateEventBridgeRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateEventBridgeRuleTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateInput"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateInputSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateMultiplex"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateMultiplexProgram"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateNetwork"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateNode"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateNodeRegistrationScript"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreatePartnerInput"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateSdiSource"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateSignalMap"
+        },
+        {
+          "target": "com.amazonaws.medialive#CreateTags"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteChannel"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteChannelPlacementGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteCloudWatchAlarmTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteCloudWatchAlarmTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteEventBridgeRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteEventBridgeRuleTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteInput"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteInputSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteMultiplex"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteMultiplexProgram"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteNetwork"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteNode"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteReservation"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteSchedule"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteSdiSource"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteSignalMap"
+        },
+        {
+          "target": "com.amazonaws.medialive#DeleteTags"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeAccountConfiguration"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeChannel"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeChannelPlacementGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeCluster"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeInput"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeInputDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeInputDeviceThumbnail"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeInputSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeMultiplex"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeMultiplexProgram"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeNetwork"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeNode"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeOffering"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeReservation"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeSchedule"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeSdiSource"
+        },
+        {
+          "target": "com.amazonaws.medialive#DescribeThumbnails"
+        },
+        {
+          "target": "com.amazonaws.medialive#GetCloudWatchAlarmTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#GetCloudWatchAlarmTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#GetEventBridgeRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#GetEventBridgeRuleTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#GetSignalMap"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListChannelPlacementGroups"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListChannels"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListCloudWatchAlarmTemplateGroups"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListCloudWatchAlarmTemplates"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListClusters"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListEventBridgeRuleTemplateGroups"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListEventBridgeRuleTemplates"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListInputDevices"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListInputDeviceTransfers"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListInputs"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListInputSecurityGroups"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListMultiplexes"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListMultiplexPrograms"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListNetworks"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListNodes"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListOfferings"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListReservations"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListSdiSources"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListSignalMaps"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.medialive#ListVersions"
+        },
+        {
+          "target": "com.amazonaws.medialive#PurchaseOffering"
+        },
+        {
+          "target": "com.amazonaws.medialive#RebootInputDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#RejectInputDeviceTransfer"
+        },
+        {
+          "target": "com.amazonaws.medialive#RestartChannelPipelines"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartChannel"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartDeleteMonitorDeployment"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartInputDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartInputDeviceMaintenanceWindow"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartMonitorDeployment"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartMultiplex"
+        },
+        {
+          "target": "com.amazonaws.medialive#StartUpdateSignalMap"
+        },
+        {
+          "target": "com.amazonaws.medialive#StopChannel"
+        },
+        {
+          "target": "com.amazonaws.medialive#StopInputDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#StopMultiplex"
+        },
+        {
+          "target": "com.amazonaws.medialive#TransferInputDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateAccountConfiguration"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateChannel"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateChannelClass"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateChannelPlacementGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateCloudWatchAlarmTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateCloudWatchAlarmTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateCluster"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateEventBridgeRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateEventBridgeRuleTemplateGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateInput"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateInputDevice"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateInputSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateMultiplex"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateMultiplexProgram"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateNetwork"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateNode"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateNodeState"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateReservation"
+        },
+        {
+          "target": "com.amazonaws.medialive#UpdateSdiSource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MediaLive",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.robomaker#Architecture": {
       "type": "enum",
@@ -9346,6 +9375,179 @@
     },
     "com.amazonaws.robomaker#robomaker": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.robomaker#BatchDeleteWorlds"
+        },
+        {
+          "target": "com.amazonaws.robomaker#BatchDescribeSimulationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CancelDeploymentJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CancelSimulationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CancelSimulationJobBatch"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CancelWorldExportJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CancelWorldGenerationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateDeploymentJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateFleet"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateRobot"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateRobotApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateRobotApplicationVersion"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateSimulationApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateSimulationApplicationVersion"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateSimulationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateWorldExportJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateWorldGenerationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#CreateWorldTemplate"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DeleteFleet"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DeleteRobot"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DeleteRobotApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DeleteSimulationApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DeleteWorldTemplate"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DeregisterRobot"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeDeploymentJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeFleet"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeRobot"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeRobotApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeSimulationApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeSimulationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeSimulationJobBatch"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeWorld"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeWorldExportJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeWorldGenerationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#DescribeWorldTemplate"
+        },
+        {
+          "target": "com.amazonaws.robomaker#GetWorldTemplateBody"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListDeploymentJobs"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListFleets"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListRobotApplications"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListRobots"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListSimulationApplications"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListSimulationJobBatches"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListSimulationJobs"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListWorldExportJobs"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListWorldGenerationJobs"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListWorlds"
+        },
+        {
+          "target": "com.amazonaws.robomaker#ListWorldTemplates"
+        },
+        {
+          "target": "com.amazonaws.robomaker#RegisterRobot"
+        },
+        {
+          "target": "com.amazonaws.robomaker#RestartSimulationJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#StartSimulationJobBatch"
+        },
+        {
+          "target": "com.amazonaws.robomaker#SyncDeploymentJob"
+        },
+        {
+          "target": "com.amazonaws.robomaker#TagResource"
+        },
+        {
+          "target": "com.amazonaws.robomaker#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.robomaker#UpdateRobotApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#UpdateSimulationApplication"
+        },
+        {
+          "target": "com.amazonaws.robomaker#UpdateWorldTemplate"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "RoboMaker",

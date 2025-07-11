@@ -1,7 +1,13 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.appconfigdata#AppConfigData": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.appconfigdata#GetLatestConfiguration"
+        }
+      ],
       "traits": {
         "aws.api#dataPlane": {},
         "aws.api#service": {

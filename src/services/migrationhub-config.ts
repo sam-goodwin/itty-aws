@@ -1,30 +1,51 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSMigrationHubMultiAccountService {
   createHomeRegionControl(
     input: CreateHomeRegionControlRequest,
   ): Effect.Effect<
     CreateHomeRegionControlResult,
-    AccessDeniedException | DryRunOperation | InternalServerError | InvalidInputException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | DryRunOperation
+    | InternalServerError
+    | InvalidInputException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteHomeRegionControl(
     input: DeleteHomeRegionControlRequest,
   ): Effect.Effect<
     DeleteHomeRegionControlResult,
-    AccessDeniedException | InternalServerError | InvalidInputException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidInputException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeHomeRegionControls(
     input: DescribeHomeRegionControlsRequest,
   ): Effect.Effect<
     DescribeHomeRegionControlsResult,
-    AccessDeniedException | InternalServerError | InvalidInputException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidInputException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getHomeRegion(
     input: GetHomeRegionRequest,
   ): Effect.Effect<
     GetHomeRegionResult,
-    AccessDeniedException | InternalServerError | InvalidInputException | ServiceUnavailableException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidInputException
+    | ServiceUnavailableException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
@@ -48,8 +69,7 @@ export interface CreateHomeRegionControlResult {
 export interface DeleteHomeRegionControlRequest {
   ControlId: string;
 }
-export interface DeleteHomeRegionControlResult {
-}
+export interface DeleteHomeRegionControlResult {}
 export type DescribeHomeRegionControlsMaxResults = number;
 
 export interface DescribeHomeRegionControlsRequest {
@@ -72,8 +92,7 @@ export declare class DryRunOperation extends Data.TaggedError(
 }> {}
 export type ErrorMessage = string;
 
-export interface GetHomeRegionRequest {
-}
+export interface GetHomeRegionRequest {}
 export interface GetHomeRegionResult {
   HomeRegion?: string;
 }
@@ -168,4 +187,3 @@ export declare namespace GetHomeRegion {
     | ThrottlingException
     | CommonAwsError;
 }
-

@@ -1,204 +1,48 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonPrometheusService {
-  createAlertManagerDefinition(
-    input: CreateAlertManagerDefinitionRequest,
-  ): Effect.Effect<
-    CreateAlertManagerDefinitionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createLoggingConfiguration(
-    input: CreateLoggingConfigurationRequest,
-  ): Effect.Effect<
-    CreateLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  createQueryLoggingConfiguration(
-    input: CreateQueryLoggingConfigurationRequest,
-  ): Effect.Effect<
-    CreateQueryLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  createRuleGroupsNamespace(
-    input: CreateRuleGroupsNamespaceRequest,
-  ): Effect.Effect<
-    CreateRuleGroupsNamespaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createScraper(
-    input: CreateScraperRequest,
-  ): Effect.Effect<
-    CreateScraperResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createWorkspace(
-    input: CreateWorkspaceRequest,
-  ): Effect.Effect<
-    CreateWorkspaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteAlertManagerDefinition(
-    input: DeleteAlertManagerDefinitionRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteLoggingConfiguration(
-    input: DeleteLoggingConfigurationRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteQueryLoggingConfiguration(
-    input: DeleteQueryLoggingConfigurationRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  deleteRuleGroupsNamespace(
-    input: DeleteRuleGroupsNamespaceRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteScraper(
-    input: DeleteScraperRequest,
-  ): Effect.Effect<
-    DeleteScraperResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteWorkspace(
-    input: DeleteWorkspaceRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeAlertManagerDefinition(
-    input: DescribeAlertManagerDefinitionRequest,
-  ): Effect.Effect<
-    DescribeAlertManagerDefinitionResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeLoggingConfiguration(
-    input: DescribeLoggingConfigurationRequest,
-  ): Effect.Effect<
-    DescribeLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  describeQueryLoggingConfiguration(
-    input: DescribeQueryLoggingConfigurationRequest,
-  ): Effect.Effect<
-    DescribeQueryLoggingConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  describeRuleGroupsNamespace(
-    input: DescribeRuleGroupsNamespaceRequest,
-  ): Effect.Effect<
-    DescribeRuleGroupsNamespaceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeScraper(
-    input: DescribeScraperRequest,
-  ): Effect.Effect<
-    DescribeScraperResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeWorkspace(
-    input: DescribeWorkspaceRequest,
-  ): Effect.Effect<
-    DescribeWorkspaceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  describeWorkspaceConfiguration(
-    input: DescribeWorkspaceConfigurationRequest,
-  ): Effect.Effect<
-    DescribeWorkspaceConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
   getDefaultScraperConfiguration(
     input: GetDefaultScraperConfigurationRequest,
   ): Effect.Effect<
     GetDefaultScraperConfigurationResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | CommonAwsError
-  >;
-  listRuleGroupsNamespaces(
-    input: ListRuleGroupsNamespacesRequest,
-  ): Effect.Effect<
-    ListRuleGroupsNamespacesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listScrapers(
-    input: ListScrapersRequest,
-  ): Effect.Effect<
-    ListScrapersResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listWorkspaces(
-    input: ListWorkspacesRequest,
-  ): Effect.Effect<
-    ListWorkspacesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  putAlertManagerDefinition(
-    input: PutAlertManagerDefinitionRequest,
-  ): Effect.Effect<
-    PutAlertManagerDefinitionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  putRuleGroupsNamespace(
-    input: PutRuleGroupsNamespaceRequest,
-  ): Effect.Effect<
-    PutRuleGroupsNamespaceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateLoggingConfiguration(
-    input: UpdateLoggingConfigurationRequest,
-  ): Effect.Effect<
-    UpdateLoggingConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateQueryLoggingConfiguration(
-    input: UpdateQueryLoggingConfigurationRequest,
-  ): Effect.Effect<
-    UpdateQueryLoggingConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateScraper(
-    input: UpdateScraperRequest,
-  ): Effect.Effect<
-    UpdateScraperResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateWorkspaceAlias(
-    input: UpdateWorkspaceAliasRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateWorkspaceConfiguration(
-    input: UpdateWorkspaceConfigurationRequest,
-  ): Effect.Effect<
-    UpdateWorkspaceConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -386,8 +230,7 @@ export type FilterKey = string;
 export type FilterValue = string;
 
 export type FilterValues = Array<string>;
-export interface GetDefaultScraperConfigurationRequest {
-}
+export interface GetDefaultScraperConfigurationRequest {}
 export interface GetDefaultScraperConfigurationResponse {
   configuration: Uint8Array | string;
 }
@@ -618,8 +461,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -634,8 +476,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateLoggingConfigurationRequest {
   workspaceId: string;
   logGroupArn: string;
@@ -738,241 +579,6 @@ export interface WorkspaceSummary {
   kmsKeyArn?: string;
 }
 export type WorkspaceSummaryList = Array<WorkspaceSummary>;
-export declare namespace CreateAlertManagerDefinition {
-  export type Input = CreateAlertManagerDefinitionRequest;
-  export type Output = CreateAlertManagerDefinitionResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateLoggingConfiguration {
-  export type Input = CreateLoggingConfigurationRequest;
-  export type Output = CreateLoggingConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateQueryLoggingConfiguration {
-  export type Input = CreateQueryLoggingConfigurationRequest;
-  export type Output = CreateQueryLoggingConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateRuleGroupsNamespace {
-  export type Input = CreateRuleGroupsNamespaceRequest;
-  export type Output = CreateRuleGroupsNamespaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateScraper {
-  export type Input = CreateScraperRequest;
-  export type Output = CreateScraperResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateWorkspace {
-  export type Input = CreateWorkspaceRequest;
-  export type Output = CreateWorkspaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteAlertManagerDefinition {
-  export type Input = DeleteAlertManagerDefinitionRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteLoggingConfiguration {
-  export type Input = DeleteLoggingConfigurationRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteQueryLoggingConfiguration {
-  export type Input = DeleteQueryLoggingConfigurationRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteRuleGroupsNamespace {
-  export type Input = DeleteRuleGroupsNamespaceRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteScraper {
-  export type Input = DeleteScraperRequest;
-  export type Output = DeleteScraperResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteWorkspace {
-  export type Input = DeleteWorkspaceRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeAlertManagerDefinition {
-  export type Input = DescribeAlertManagerDefinitionRequest;
-  export type Output = DescribeAlertManagerDefinitionResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeLoggingConfiguration {
-  export type Input = DescribeLoggingConfigurationRequest;
-  export type Output = DescribeLoggingConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeQueryLoggingConfiguration {
-  export type Input = DescribeQueryLoggingConfigurationRequest;
-  export type Output = DescribeQueryLoggingConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeRuleGroupsNamespace {
-  export type Input = DescribeRuleGroupsNamespaceRequest;
-  export type Output = DescribeRuleGroupsNamespaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeScraper {
-  export type Input = DescribeScraperRequest;
-  export type Output = DescribeScraperResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeWorkspace {
-  export type Input = DescribeWorkspaceRequest;
-  export type Output = DescribeWorkspaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeWorkspaceConfiguration {
-  export type Input = DescribeWorkspaceConfigurationRequest;
-  export type Output = DescribeWorkspaceConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace GetDefaultScraperConfiguration {
   export type Input = GetDefaultScraperConfigurationRequest;
   export type Output = GetDefaultScraperConfigurationResponse;
@@ -983,29 +589,6 @@ export declare namespace GetDefaultScraperConfiguration {
     | CommonAwsError;
 }
 
-export declare namespace ListRuleGroupsNamespaces {
-  export type Input = ListRuleGroupsNamespacesRequest;
-  export type Output = ListRuleGroupsNamespacesResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListScrapers {
-  export type Input = ListScrapersRequest;
-  export type Output = ListScrapersResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
@@ -1013,45 +596,6 @@ export declare namespace ListTagsForResource {
     | AccessDeniedException
     | InternalServerException
     | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListWorkspaces {
-  export type Input = ListWorkspacesRequest;
-  export type Output = ListWorkspacesResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PutAlertManagerDefinition {
-  export type Input = PutAlertManagerDefinitionRequest;
-  export type Output = PutAlertManagerDefinitionResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PutRuleGroupsNamespace {
-  export type Input = PutRuleGroupsNamespaceRequest;
-  export type Output = PutRuleGroupsNamespaceResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -1080,70 +624,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateLoggingConfiguration {
-  export type Input = UpdateLoggingConfigurationRequest;
-  export type Output = UpdateLoggingConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateQueryLoggingConfiguration {
-  export type Input = UpdateQueryLoggingConfigurationRequest;
-  export type Output = UpdateQueryLoggingConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateScraper {
-  export type Input = UpdateScraperRequest;
-  export type Output = UpdateScraperResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateWorkspaceAlias {
-  export type Input = UpdateWorkspaceAliasRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateWorkspaceConfiguration {
-  export type Input = UpdateWorkspaceConfigurationRequest;
-  export type Output = UpdateWorkspaceConfigurationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-

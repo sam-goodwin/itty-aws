@@ -1,60 +1,95 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface RedshiftData {
   batchExecuteStatement(
     input: BatchExecuteStatementInput,
   ): Effect.Effect<
     BatchExecuteStatementOutput,
-    ActiveSessionsExceededException | ActiveStatementsExceededException | BatchExecuteStatementException | InternalServerException | ValidationException | CommonAwsError
+    | ActiveSessionsExceededException
+    | ActiveStatementsExceededException
+    | BatchExecuteStatementException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   cancelStatement(
     input: CancelStatementRequest,
   ): Effect.Effect<
     CancelStatementResponse,
-    DatabaseConnectionException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | DatabaseConnectionException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeStatement(
     input: DescribeStatementRequest,
   ): Effect.Effect<
     DescribeStatementResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeTable(
     input: DescribeTableRequest,
   ): Effect.Effect<
     DescribeTableResponse,
-    DatabaseConnectionException | InternalServerException | QueryTimeoutException | ValidationException | CommonAwsError
+    | DatabaseConnectionException
+    | InternalServerException
+    | QueryTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   executeStatement(
     input: ExecuteStatementInput,
   ): Effect.Effect<
     ExecuteStatementOutput,
-    ActiveSessionsExceededException | ActiveStatementsExceededException | ExecuteStatementException | InternalServerException | ValidationException | CommonAwsError
+    | ActiveSessionsExceededException
+    | ActiveStatementsExceededException
+    | ExecuteStatementException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   getStatementResult(
     input: GetStatementResultRequest,
   ): Effect.Effect<
     GetStatementResultResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   getStatementResultV2(
     input: GetStatementResultV2Request,
   ): Effect.Effect<
     GetStatementResultV2Response,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listDatabases(
     input: ListDatabasesRequest,
   ): Effect.Effect<
     ListDatabasesResponse,
-    DatabaseConnectionException | InternalServerException | QueryTimeoutException | ValidationException | CommonAwsError
+    | DatabaseConnectionException
+    | InternalServerException
+    | QueryTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   listSchemas(
     input: ListSchemasRequest,
   ): Effect.Effect<
     ListSchemasResponse,
-    DatabaseConnectionException | InternalServerException | QueryTimeoutException | ValidationException | CommonAwsError
+    | DatabaseConnectionException
+    | InternalServerException
+    | QueryTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
   listStatements(
     input: ListStatementsRequest,
@@ -66,7 +101,11 @@ export interface RedshiftData {
     input: ListTablesRequest,
   ): Effect.Effect<
     ListTablesResponse,
-    DatabaseConnectionException | InternalServerException | QueryTimeoutException | ValidationException | CommonAwsError
+    | DatabaseConnectionException
+    | InternalServerException
+    | QueryTimeoutException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -230,7 +269,13 @@ export interface ExecuteStatementOutput {
   WorkgroupName?: string;
   SessionId?: string;
 }
-export type Field = { isNull: boolean } | { booleanValue: boolean } | { longValue: number } | { doubleValue: number } | { stringValue: string } | { blobValue: Uint8Array | string };
+export type Field =
+  | { isNull: boolean }
+  | { booleanValue: boolean }
+  | { longValue: number }
+  | { doubleValue: number }
+  | { stringValue: string }
+  | { blobValue: Uint8Array | string };
 export type FieldList = Array<Field>;
 export type FormattedSqlRecords = Array<QueryRecords>;
 export interface GetStatementResultRequest {
@@ -525,4 +570,3 @@ export declare namespace ListTables {
     | ValidationException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.glacier#AbortMultipartUpload": {
       "type": "operation",
@@ -1810,6 +1839,107 @@
     },
     "com.amazonaws.glacier#Glacier": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.glacier#AbortMultipartUpload"
+        },
+        {
+          "target": "com.amazonaws.glacier#AbortVaultLock"
+        },
+        {
+          "target": "com.amazonaws.glacier#AddTagsToVault"
+        },
+        {
+          "target": "com.amazonaws.glacier#CompleteMultipartUpload"
+        },
+        {
+          "target": "com.amazonaws.glacier#CompleteVaultLock"
+        },
+        {
+          "target": "com.amazonaws.glacier#CreateVault"
+        },
+        {
+          "target": "com.amazonaws.glacier#DeleteArchive"
+        },
+        {
+          "target": "com.amazonaws.glacier#DeleteVault"
+        },
+        {
+          "target": "com.amazonaws.glacier#DeleteVaultAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.glacier#DeleteVaultNotifications"
+        },
+        {
+          "target": "com.amazonaws.glacier#DescribeJob"
+        },
+        {
+          "target": "com.amazonaws.glacier#DescribeVault"
+        },
+        {
+          "target": "com.amazonaws.glacier#GetDataRetrievalPolicy"
+        },
+        {
+          "target": "com.amazonaws.glacier#GetJobOutput"
+        },
+        {
+          "target": "com.amazonaws.glacier#GetVaultAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.glacier#GetVaultLock"
+        },
+        {
+          "target": "com.amazonaws.glacier#GetVaultNotifications"
+        },
+        {
+          "target": "com.amazonaws.glacier#InitiateJob"
+        },
+        {
+          "target": "com.amazonaws.glacier#InitiateMultipartUpload"
+        },
+        {
+          "target": "com.amazonaws.glacier#InitiateVaultLock"
+        },
+        {
+          "target": "com.amazonaws.glacier#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.glacier#ListMultipartUploads"
+        },
+        {
+          "target": "com.amazonaws.glacier#ListParts"
+        },
+        {
+          "target": "com.amazonaws.glacier#ListProvisionedCapacity"
+        },
+        {
+          "target": "com.amazonaws.glacier#ListTagsForVault"
+        },
+        {
+          "target": "com.amazonaws.glacier#ListVaults"
+        },
+        {
+          "target": "com.amazonaws.glacier#PurchaseProvisionedCapacity"
+        },
+        {
+          "target": "com.amazonaws.glacier#RemoveTagsFromVault"
+        },
+        {
+          "target": "com.amazonaws.glacier#SetDataRetrievalPolicy"
+        },
+        {
+          "target": "com.amazonaws.glacier#SetVaultAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.glacier#SetVaultNotifications"
+        },
+        {
+          "target": "com.amazonaws.glacier#UploadArchive"
+        },
+        {
+          "target": "com.amazonaws.glacier#UploadMultipartPart"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Glacier",

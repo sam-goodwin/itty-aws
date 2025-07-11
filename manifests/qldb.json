@@ -1,7 +1,98 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.qldb#AmazonQLDB": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.qldb#CancelJournalKinesisStream"
+        },
+        {
+          "target": "com.amazonaws.qldb#CreateLedger"
+        },
+        {
+          "target": "com.amazonaws.qldb#DeleteLedger"
+        },
+        {
+          "target": "com.amazonaws.qldb#DescribeJournalKinesisStream"
+        },
+        {
+          "target": "com.amazonaws.qldb#DescribeJournalS3Export"
+        },
+        {
+          "target": "com.amazonaws.qldb#DescribeLedger"
+        },
+        {
+          "target": "com.amazonaws.qldb#ExportJournalToS3"
+        },
+        {
+          "target": "com.amazonaws.qldb#GetBlock"
+        },
+        {
+          "target": "com.amazonaws.qldb#GetDigest"
+        },
+        {
+          "target": "com.amazonaws.qldb#GetRevision"
+        },
+        {
+          "target": "com.amazonaws.qldb#ListJournalKinesisStreamsForLedger"
+        },
+        {
+          "target": "com.amazonaws.qldb#ListJournalS3Exports"
+        },
+        {
+          "target": "com.amazonaws.qldb#ListJournalS3ExportsForLedger"
+        },
+        {
+          "target": "com.amazonaws.qldb#ListLedgers"
+        },
+        {
+          "target": "com.amazonaws.qldb#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.qldb#StreamJournalToKinesis"
+        },
+        {
+          "target": "com.amazonaws.qldb#TagResource"
+        },
+        {
+          "target": "com.amazonaws.qldb#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.qldb#UpdateLedger"
+        },
+        {
+          "target": "com.amazonaws.qldb#UpdateLedgerPermissionsMode"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "QLDB",

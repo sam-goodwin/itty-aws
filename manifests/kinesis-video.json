@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.kinesisvideo#APIName": {
       "type": "enum",
@@ -1700,6 +1729,98 @@
     },
     "com.amazonaws.kinesisvideo#KinesisVideo_20170930": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kinesisvideo#CreateSignalingChannel"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#CreateStream"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DeleteEdgeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DeleteSignalingChannel"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DeleteStream"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeEdgeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeImageGenerationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeMappedResourceConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeMediaStorageConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeNotificationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeSignalingChannel"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#DescribeStream"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#GetDataEndpoint"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#GetSignalingChannelEndpoint"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ListEdgeAgentConfigurations"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ListSignalingChannels"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ListStreams"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#ListTagsForStream"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#StartEdgeConfigurationUpdate"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#TagStream"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UntagStream"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UpdateDataRetention"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UpdateImageGenerationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UpdateMediaStorageConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UpdateNotificationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UpdateSignalingChannel"
+        },
+        {
+          "target": "com.amazonaws.kinesisvideo#UpdateStream"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Kinesis Video",

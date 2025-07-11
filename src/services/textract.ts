@@ -1,156 +1,377 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Textract {
   analyzeDocument(
     input: AnalyzeDocumentRequest,
   ): Effect.Effect<
     AnalyzeDocumentResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | HumanLoopQuotaExceededException | InternalServerError | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | HumanLoopQuotaExceededException
+    | InternalServerError
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   analyzeExpense(
     input: AnalyzeExpenseRequest,
   ): Effect.Effect<
     AnalyzeExpenseResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | InternalServerError | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | InternalServerError
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   analyzeID(
     input: AnalyzeIDRequest,
   ): Effect.Effect<
     AnalyzeIDResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | InternalServerError | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | InternalServerError
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   createAdapter(
     input: CreateAdapterRequest,
   ): Effect.Effect<
     CreateAdapterResponse,
-    AccessDeniedException | ConflictException | IdempotentParameterMismatchException | InternalServerError | InvalidParameterException | LimitExceededException | ProvisionedThroughputExceededException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | IdempotentParameterMismatchException
+    | InternalServerError
+    | InvalidParameterException
+    | LimitExceededException
+    | ProvisionedThroughputExceededException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createAdapterVersion(
     input: CreateAdapterVersionRequest,
   ): Effect.Effect<
     CreateAdapterVersionResponse,
-    AccessDeniedException | ConflictException | IdempotentParameterMismatchException | InternalServerError | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | LimitExceededException | ProvisionedThroughputExceededException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | IdempotentParameterMismatchException
+    | InternalServerError
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | LimitExceededException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteAdapter(
     input: DeleteAdapterRequest,
   ): Effect.Effect<
     DeleteAdapterResponse,
-    AccessDeniedException | ConflictException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteAdapterVersion(
     input: DeleteAdapterVersionRequest,
   ): Effect.Effect<
     DeleteAdapterVersionResponse,
-    AccessDeniedException | ConflictException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   detectDocumentText(
     input: DetectDocumentTextRequest,
   ): Effect.Effect<
     DetectDocumentTextResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | InternalServerError | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | InternalServerError
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   getAdapter(
     input: GetAdapterRequest,
   ): Effect.Effect<
     GetAdapterResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getAdapterVersion(
     input: GetAdapterVersionRequest,
   ): Effect.Effect<
     GetAdapterVersionResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getDocumentAnalysis(
     input: GetDocumentAnalysisRequest,
   ): Effect.Effect<
     GetDocumentAnalysisResponse,
-    AccessDeniedException | InternalServerError | InvalidJobIdException | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidJobIdException
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getDocumentTextDetection(
     input: GetDocumentTextDetectionRequest,
   ): Effect.Effect<
     GetDocumentTextDetectionResponse,
-    AccessDeniedException | InternalServerError | InvalidJobIdException | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidJobIdException
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getExpenseAnalysis(
     input: GetExpenseAnalysisRequest,
   ): Effect.Effect<
     GetExpenseAnalysisResponse,
-    AccessDeniedException | InternalServerError | InvalidJobIdException | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidJobIdException
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getLendingAnalysis(
     input: GetLendingAnalysisRequest,
   ): Effect.Effect<
     GetLendingAnalysisResponse,
-    AccessDeniedException | InternalServerError | InvalidJobIdException | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidJobIdException
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getLendingAnalysisSummary(
     input: GetLendingAnalysisSummaryRequest,
   ): Effect.Effect<
     GetLendingAnalysisSummaryResponse,
-    AccessDeniedException | InternalServerError | InvalidJobIdException | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | ProvisionedThroughputExceededException | ThrottlingException | CommonAwsError
-  >;
-  listAdapterVersions(
-    input: ListAdapterVersionsRequest,
-  ): Effect.Effect<
-    ListAdapterVersionsResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidJobIdException
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listAdapters(
     input: ListAdaptersRequest,
   ): Effect.Effect<
     ListAdaptersResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listAdapterVersions(
+    input: ListAdapterVersionsRequest,
+  ): Effect.Effect<
+    ListAdapterVersionsResponse,
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   startDocumentAnalysis(
     input: StartDocumentAnalysisRequest,
   ): Effect.Effect<
     StartDocumentAnalysisResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | IdempotentParameterMismatchException | InternalServerError | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | LimitExceededException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | IdempotentParameterMismatchException
+    | InternalServerError
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | LimitExceededException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   startDocumentTextDetection(
     input: StartDocumentTextDetectionRequest,
   ): Effect.Effect<
     StartDocumentTextDetectionResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | IdempotentParameterMismatchException | InternalServerError | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | LimitExceededException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | IdempotentParameterMismatchException
+    | InternalServerError
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | LimitExceededException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   startExpenseAnalysis(
     input: StartExpenseAnalysisRequest,
   ): Effect.Effect<
     StartExpenseAnalysisResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | IdempotentParameterMismatchException | InternalServerError | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | LimitExceededException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | IdempotentParameterMismatchException
+    | InternalServerError
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | LimitExceededException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   startLendingAnalysis(
     input: StartLendingAnalysisRequest,
   ): Effect.Effect<
     StartLendingAnalysisResponse,
-    AccessDeniedException | BadDocumentException | DocumentTooLargeException | IdempotentParameterMismatchException | InternalServerError | InvalidKMSKeyException | InvalidParameterException | InvalidS3ObjectException | LimitExceededException | ProvisionedThroughputExceededException | ThrottlingException | UnsupportedDocumentException | CommonAwsError
+    | AccessDeniedException
+    | BadDocumentException
+    | DocumentTooLargeException
+    | IdempotentParameterMismatchException
+    | InternalServerError
+    | InvalidKMSKeyException
+    | InvalidParameterException
+    | InvalidS3ObjectException
+    | LimitExceededException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | UnsupportedDocumentException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateAdapter(
     input: UpdateAdapterRequest,
   ): Effect.Effect<
     UpdateAdapterResponse,
-    AccessDeniedException | ConflictException | InternalServerError | InvalidParameterException | ProvisionedThroughputExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -195,7 +416,8 @@ export interface AdapterVersionEvaluationMetric {
   AdapterVersion?: EvaluationMetric;
   FeatureType?: FeatureType;
 }
-export type AdapterVersionEvaluationMetrics = Array<AdapterVersionEvaluationMetric>;
+export type AdapterVersionEvaluationMetrics =
+  Array<AdapterVersionEvaluationMetric>;
 export type AdapterVersionList = Array<AdapterVersionOverview>;
 export interface AdapterVersionOverview {
   AdapterId?: string;
@@ -205,7 +427,12 @@ export interface AdapterVersionOverview {
   Status?: AdapterVersionStatus;
   StatusMessage?: string;
 }
-export type AdapterVersionStatus = "ACTIVE" | "AT_RISK" | "DEPRECATED" | "CREATION_ERROR" | "CREATION_IN_PROGRESS";
+export type AdapterVersionStatus =
+  | "ACTIVE"
+  | "AT_RISK"
+  | "DEPRECATED"
+  | "CREATION_ERROR"
+  | "CREATION_IN_PROGRESS";
 export type AdapterVersionStatusMessage = string;
 
 export type AmazonResourceName = string;
@@ -270,7 +497,31 @@ export interface Block {
   Query?: Query;
 }
 export type BlockList = Array<Block>;
-export type BlockType = "KEY_VALUE_SET" | "PAGE" | "LINE" | "WORD" | "TABLE" | "CELL" | "SELECTION_ELEMENT" | "MERGED_CELL" | "TITLE" | "QUERY" | "QUERY_RESULT" | "SIGNATURE" | "TABLE_TITLE" | "TABLE_FOOTER" | "LAYOUT_TEXT" | "LAYOUT_TITLE" | "LAYOUT_HEADER" | "LAYOUT_FOOTER" | "LAYOUT_SECTION_HEADER" | "LAYOUT_PAGE_NUMBER" | "LAYOUT_LIST" | "LAYOUT_FIGURE" | "LAYOUT_TABLE" | "LAYOUT_KEY_VALUE";
+export type BlockType =
+  | "KEY_VALUE_SET"
+  | "PAGE"
+  | "LINE"
+  | "WORD"
+  | "TABLE"
+  | "CELL"
+  | "SELECTION_ELEMENT"
+  | "MERGED_CELL"
+  | "TITLE"
+  | "QUERY"
+  | "QUERY_RESULT"
+  | "SIGNATURE"
+  | "TABLE_TITLE"
+  | "TABLE_FOOTER"
+  | "LAYOUT_TEXT"
+  | "LAYOUT_TITLE"
+  | "LAYOUT_HEADER"
+  | "LAYOUT_FOOTER"
+  | "LAYOUT_SECTION_HEADER"
+  | "LAYOUT_PAGE_NUMBER"
+  | "LAYOUT_LIST"
+  | "LAYOUT_FIGURE"
+  | "LAYOUT_TABLE"
+  | "LAYOUT_KEY_VALUE";
 export interface BoundingBox {
   Width?: number;
   Height?: number;
@@ -285,7 +536,9 @@ export declare class ConflictException extends Data.TaggedError(
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export type ContentClassifier = "FREE_OF_PERSONALLY_IDENTIFIABLE_INFORMATION" | "FREE_OF_ADULT_CONTENT";
+export type ContentClassifier =
+  | "FREE_OF_PERSONALLY_IDENTIFIABLE_INFORMATION"
+  | "FREE_OF_ADULT_CONTENT";
 export type ContentClassifiers = Array<ContentClassifier>;
 export interface CreateAdapterRequest {
   AdapterName: string;
@@ -315,14 +568,12 @@ export type DateTime = Date | string;
 export interface DeleteAdapterRequest {
   AdapterId: string;
 }
-export interface DeleteAdapterResponse {
-}
+export interface DeleteAdapterResponse {}
 export interface DeleteAdapterVersionRequest {
   AdapterId: string;
   AdapterVersion: string;
 }
-export interface DeleteAdapterVersionResponse {
-}
+export interface DeleteAdapterVersionResponse {}
 export interface DetectDocumentTextRequest {
   Document: Document;
 }
@@ -359,7 +610,16 @@ export declare class DocumentTooLargeException extends Data.TaggedError(
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export type EntityType = "KEY" | "VALUE" | "COLUMN_HEADER" | "TABLE_TITLE" | "TABLE_FOOTER" | "TABLE_SECTION_TITLE" | "TABLE_SUMMARY" | "STRUCTURED_TABLE" | "SEMI_STRUCTURED_TABLE";
+export type EntityType =
+  | "KEY"
+  | "VALUE"
+  | "COLUMN_HEADER"
+  | "TABLE_TITLE"
+  | "TABLE_FOOTER"
+  | "TABLE_SECTION_TITLE"
+  | "TABLE_SUMMARY"
+  | "STRUCTURED_TABLE"
+  | "SEMI_STRUCTURED_TABLE";
 export type EntityTypes = Array<EntityType>;
 export type ErrorCode = string;
 
@@ -408,7 +668,12 @@ export interface Extraction {
   IdentityDocument?: IdentityDocument;
 }
 export type ExtractionList = Array<Extraction>;
-export type FeatureType = "TABLES" | "FORMS" | "QUERIES" | "SIGNATURES" | "LAYOUT";
+export type FeatureType =
+  | "TABLES"
+  | "FORMS"
+  | "QUERIES"
+  | "SIGNATURES"
+  | "LAYOUT";
 export type FeatureTypes = Array<FeatureType>;
 export type Float = number;
 
@@ -596,7 +861,11 @@ export declare class InvalidS3ObjectException extends Data.TaggedError(
 }> {}
 export type JobId = string;
 
-export type JobStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "PARTIAL_SUCCESS";
+export type JobStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "PARTIAL_SUCCESS";
 export type JobTag = string;
 
 export type KMSKeyId = string;
@@ -731,7 +1000,16 @@ export interface Relationship {
   Ids?: Array<string>;
 }
 export type RelationshipList = Array<Relationship>;
-export type RelationshipType = "VALUE" | "CHILD" | "COMPLEX_FEATURES" | "MERGED_CELL" | "TITLE" | "ANSWER" | "TABLE" | "TABLE_TITLE" | "TABLE_FOOTER";
+export type RelationshipType =
+  | "VALUE"
+  | "CHILD"
+  | "COMPLEX_FEATURES"
+  | "MERGED_CELL"
+  | "TITLE"
+  | "ANSWER"
+  | "TABLE"
+  | "TABLE_TITLE"
+  | "TABLE_FOOTER";
 export declare class ResourceNotFoundException extends Data.TaggedError(
   "ResourceNotFoundException",
 )<{
@@ -820,7 +1098,8 @@ export interface StartLendingAnalysisResponse {
 export type StatusMessage = string;
 
 export type StringList = Array<string>;
-export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults = string;
+export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults =
+  string;
 
 export type TagKey = string;
 
@@ -830,8 +1109,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TextType = "HANDWRITING" | "PRINTED";
@@ -858,8 +1136,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAdapterRequest {
   AdapterId: string;
   Description?: string;
@@ -1121,6 +1398,19 @@ export declare namespace GetLendingAnalysisSummary {
     | CommonAwsError;
 }
 
+export declare namespace ListAdapters {
+  export type Input = ListAdaptersRequest;
+  export type Output = ListAdaptersResponse;
+  export type Error =
+    | AccessDeniedException
+    | InternalServerError
+    | InvalidParameterException
+    | ProvisionedThroughputExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError;
+}
+
 export declare namespace ListAdapterVersions {
   export type Input = ListAdapterVersionsRequest;
   export type Output = ListAdapterVersionsResponse;
@@ -1130,19 +1420,6 @@ export declare namespace ListAdapterVersions {
     | InvalidParameterException
     | ProvisionedThroughputExceededException
     | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListAdapters {
-  export type Input = ListAdaptersRequest;
-  export type Output = ListAdaptersResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerError
-    | InvalidParameterException
-    | ProvisionedThroughputExceededException
     | ThrottlingException
     | ValidationException
     | CommonAwsError;
@@ -1281,4 +1558,3 @@ export declare namespace UpdateAdapter {
     | ValidationException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.comprehend#AnyLengthString": {
       "type": "string"
@@ -1113,6 +1142,263 @@
     },
     "com.amazonaws.comprehend#Comprehend_20171127": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.comprehend#BatchDetectDominantLanguage"
+        },
+        {
+          "target": "com.amazonaws.comprehend#BatchDetectEntities"
+        },
+        {
+          "target": "com.amazonaws.comprehend#BatchDetectKeyPhrases"
+        },
+        {
+          "target": "com.amazonaws.comprehend#BatchDetectSentiment"
+        },
+        {
+          "target": "com.amazonaws.comprehend#BatchDetectSyntax"
+        },
+        {
+          "target": "com.amazonaws.comprehend#BatchDetectTargetedSentiment"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ClassifyDocument"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ContainsPiiEntities"
+        },
+        {
+          "target": "com.amazonaws.comprehend#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.comprehend#CreateDocumentClassifier"
+        },
+        {
+          "target": "com.amazonaws.comprehend#CreateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.comprehend#CreateEntityRecognizer"
+        },
+        {
+          "target": "com.amazonaws.comprehend#CreateFlywheel"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DeleteDocumentClassifier"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DeleteEndpoint"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DeleteEntityRecognizer"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DeleteFlywheel"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeDocumentClassificationJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeDocumentClassifier"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeDominantLanguageDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeEndpoint"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeEntitiesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeEntityRecognizer"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeEventsDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeFlywheel"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeFlywheelIteration"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeKeyPhrasesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribePiiEntitiesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeSentimentDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeTargetedSentimentDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DescribeTopicsDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectDominantLanguage"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectEntities"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectKeyPhrases"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectPiiEntities"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectSentiment"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectSyntax"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectTargetedSentiment"
+        },
+        {
+          "target": "com.amazonaws.comprehend#DetectToxicContent"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ImportModel"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListDocumentClassificationJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListDocumentClassifiers"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListDocumentClassifierSummaries"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListDominantLanguageDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListEndpoints"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListEntitiesDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListEntityRecognizers"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListEntityRecognizerSummaries"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListEventsDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListFlywheelIterationHistory"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListFlywheels"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListKeyPhrasesDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListPiiEntitiesDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListSentimentDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListTargetedSentimentDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#ListTopicsDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehend#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartDocumentClassificationJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartDominantLanguageDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartEntitiesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartEventsDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartFlywheelIteration"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartKeyPhrasesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartPiiEntitiesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartSentimentDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartTargetedSentimentDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StartTopicsDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopDominantLanguageDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopEntitiesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopEventsDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopKeyPhrasesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopPiiEntitiesDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopSentimentDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopTargetedSentimentDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopTrainingDocumentClassifier"
+        },
+        {
+          "target": "com.amazonaws.comprehend#StopTrainingEntityRecognizer"
+        },
+        {
+          "target": "com.amazonaws.comprehend#TagResource"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UpdateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.comprehend#UpdateFlywheel"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Comprehend",

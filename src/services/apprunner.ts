@@ -1,126 +1,190 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AppRunner {
   associateCustomDomain(
     input: AssociateCustomDomainRequest,
   ): Effect.Effect<
     AssociateCustomDomainResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | CommonAwsError
   >;
   createAutoScalingConfiguration(
     input: CreateAutoScalingConfigurationRequest,
   ): Effect.Effect<
     CreateAutoScalingConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ServiceQuotaExceededException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   createConnection(
     input: CreateConnectionRequest,
   ): Effect.Effect<
     CreateConnectionResponse,
-    InternalServiceErrorException | InvalidRequestException | ServiceQuotaExceededException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   createObservabilityConfiguration(
     input: CreateObservabilityConfigurationRequest,
   ): Effect.Effect<
     CreateObservabilityConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ServiceQuotaExceededException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   createService(
     input: CreateServiceRequest,
   ): Effect.Effect<
     CreateServiceResponse,
-    InternalServiceErrorException | InvalidRequestException | ServiceQuotaExceededException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   createVpcConnector(
     input: CreateVpcConnectorRequest,
   ): Effect.Effect<
     CreateVpcConnectorResponse,
-    InternalServiceErrorException | InvalidRequestException | ServiceQuotaExceededException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   createVpcIngressConnection(
     input: CreateVpcIngressConnectionRequest,
   ): Effect.Effect<
     CreateVpcIngressConnectionResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ServiceQuotaExceededException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   deleteAutoScalingConfiguration(
     input: DeleteAutoScalingConfigurationRequest,
   ): Effect.Effect<
     DeleteAutoScalingConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteConnection(
     input: DeleteConnectionRequest,
   ): Effect.Effect<
     DeleteConnectionResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteObservabilityConfiguration(
     input: DeleteObservabilityConfigurationRequest,
   ): Effect.Effect<
     DeleteObservabilityConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteService(
     input: DeleteServiceRequest,
   ): Effect.Effect<
     DeleteServiceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteVpcConnector(
     input: DeleteVpcConnectorRequest,
   ): Effect.Effect<
     DeleteVpcConnectorResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteVpcIngressConnection(
     input: DeleteVpcIngressConnectionRequest,
   ): Effect.Effect<
     DeleteVpcIngressConnectionResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeAutoScalingConfiguration(
     input: DescribeAutoScalingConfigurationRequest,
   ): Effect.Effect<
     DescribeAutoScalingConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeCustomDomains(
     input: DescribeCustomDomainsRequest,
   ): Effect.Effect<
     DescribeCustomDomainsResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeObservabilityConfiguration(
     input: DescribeObservabilityConfigurationRequest,
   ): Effect.Effect<
     DescribeObservabilityConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeService(
     input: DescribeServiceRequest,
   ): Effect.Effect<
     DescribeServiceResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeVpcConnector(
     input: DescribeVpcConnectorRequest,
   ): Effect.Effect<
     DescribeVpcConnectorResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeVpcIngressConnection(
     input: DescribeVpcIngressConnectionRequest,
   ): Effect.Effect<
     DescribeVpcIngressConnectionResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateCustomDomain(
     input: DisassociateCustomDomainRequest,
   ): Effect.Effect<
     DisassociateCustomDomainResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAutoScalingConfigurations(
     input: ListAutoScalingConfigurationsRequest,
@@ -144,7 +208,10 @@ export interface AppRunner {
     input: ListOperationsRequest,
   ): Effect.Effect<
     ListOperationsResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listServices(
     input: ListServicesRequest,
@@ -156,13 +223,20 @@ export interface AppRunner {
     input: ListServicesForAutoScalingConfigurationRequest,
   ): Effect.Effect<
     ListServicesForAutoScalingConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listVpcConnectors(
     input: ListVpcConnectorsRequest,
@@ -180,49 +254,79 @@ export interface AppRunner {
     input: PauseServiceRequest,
   ): Effect.Effect<
     PauseServiceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   resumeService(
     input: ResumeServiceRequest,
   ): Effect.Effect<
     ResumeServiceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   startDeployment(
     input: StartDeploymentRequest,
   ): Effect.Effect<
     StartDeploymentResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateDefaultAutoScalingConfiguration(
     input: UpdateDefaultAutoScalingConfigurationRequest,
   ): Effect.Effect<
     UpdateDefaultAutoScalingConfigurationResponse,
-    InternalServiceErrorException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateService(
     input: UpdateServiceRequest,
   ): Effect.Effect<
     UpdateServiceResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateVpcIngressConnection(
     input: UpdateVpcIngressConnectionRequest,
   ): Effect.Effect<
     UpdateVpcIngressConnectionResponse,
-    InternalServiceErrorException | InvalidRequestException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidRequestException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -279,7 +383,8 @@ export interface AutoScalingConfigurationSummary {
   HasAssociatedService?: boolean;
   IsDefault?: boolean;
 }
-export type AutoScalingConfigurationSummaryList = Array<AutoScalingConfigurationSummary>;
+export type AutoScalingConfigurationSummaryList =
+  Array<AutoScalingConfigurationSummary>;
 export type BuildCommand = string;
 
 export interface CertificateValidationRecord {
@@ -288,8 +393,12 @@ export interface CertificateValidationRecord {
   Value?: string;
   Status?: CertificateValidationRecordStatus;
 }
-export type CertificateValidationRecordList = Array<CertificateValidationRecord>;
-export type CertificateValidationRecordStatus = "PENDING_VALIDATION" | "SUCCESS" | "FAILED";
+export type CertificateValidationRecordList =
+  Array<CertificateValidationRecord>;
+export type CertificateValidationRecordStatus =
+  | "PENDING_VALIDATION"
+  | "SUCCESS"
+  | "FAILED";
 export interface CodeConfiguration {
   ConfigurationSource: ConfigurationSource;
   CodeConfigurationValues?: CodeConfigurationValues;
@@ -318,7 +427,11 @@ export interface Connection {
 }
 export type ConnectionName = string;
 
-export type ConnectionStatus = "PENDING_HANDSHAKE" | "AVAILABLE" | "ERROR" | "DELETED";
+export type ConnectionStatus =
+  | "PENDING_HANDSHAKE"
+  | "AVAILABLE"
+  | "ERROR"
+  | "DELETED";
 export interface ConnectionSummary {
   ConnectionName?: string;
   ConnectionArn?: string;
@@ -394,7 +507,14 @@ export interface CustomDomain {
   CertificateValidationRecords?: Array<CertificateValidationRecord>;
   Status: CustomDomainAssociationStatus;
 }
-export type CustomDomainAssociationStatus = "CREATING" | "CREATE_FAILED" | "ACTIVE" | "DELETING" | "DELETE_FAILED" | "PENDING_CERTIFICATE_DNS_VALIDATION" | "BINDING_CERTIFICATE";
+export type CustomDomainAssociationStatus =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "ACTIVE"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | "PENDING_CERTIFICATE_DNS_VALIDATION"
+  | "BINDING_CERTIFICATE";
 export type CustomDomainList = Array<CustomDomain>;
 export type CustomerAccountId = string;
 
@@ -694,8 +814,16 @@ export interface ObservabilityConfigurationSummary {
   ObservabilityConfigurationName?: string;
   ObservabilityConfigurationRevision?: number;
 }
-export type ObservabilityConfigurationSummaryList = Array<ObservabilityConfigurationSummary>;
-export type OperationStatus = "PENDING" | "IN_PROGRESS" | "FAILED" | "SUCCEEDED" | "ROLLBACK_IN_PROGRESS" | "ROLLBACK_FAILED" | "ROLLBACK_SUCCEEDED";
+export type ObservabilityConfigurationSummaryList =
+  Array<ObservabilityConfigurationSummary>;
+export type OperationStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "ROLLBACK_IN_PROGRESS"
+  | "ROLLBACK_FAILED"
+  | "ROLLBACK_SUCCEEDED";
 export interface OperationSummary {
   Id?: string;
   Type?: OperationType;
@@ -706,7 +834,13 @@ export interface OperationSummary {
   UpdatedAt?: Date | string;
 }
 export type OperationSummaryList = Array<OperationSummary>;
-export type OperationType = "START_DEPLOYMENT" | "CREATE_SERVICE" | "PAUSE_SERVICE" | "RESUME_SERVICE" | "DELETE_SERVICE" | "UPDATE_SERVICE";
+export type OperationType =
+  | "START_DEPLOYMENT"
+  | "CREATE_SERVICE"
+  | "PAUSE_SERVICE"
+  | "RESUME_SERVICE"
+  | "DELETE_SERVICE"
+  | "UPDATE_SERVICE";
 export interface PauseServiceRequest {
   ServiceArn: string;
 }
@@ -729,7 +863,20 @@ export interface ResumeServiceResponse {
 }
 export type RoleArn = string;
 
-export type Runtime = "PYTHON_3" | "NODEJS_12" | "NODEJS_14" | "CORRETTO_8" | "CORRETTO_11" | "NODEJS_16" | "GO_1" | "DOTNET_6" | "PHP_81" | "RUBY_31" | "PYTHON_311" | "NODEJS_18" | "NODEJS_22";
+export type Runtime =
+  | "PYTHON_3"
+  | "NODEJS_12"
+  | "NODEJS_14"
+  | "CORRETTO_8"
+  | "CORRETTO_11"
+  | "NODEJS_16"
+  | "GO_1"
+  | "DOTNET_6"
+  | "PHP_81"
+  | "RUBY_31"
+  | "PYTHON_311"
+  | "NODEJS_18"
+  | "NODEJS_22";
 export type RuntimeEnvironmentSecrets = Record<string, string>;
 export type RuntimeEnvironmentSecretsName = string;
 
@@ -773,7 +920,13 @@ export declare class ServiceQuotaExceededException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type ServiceStatus = "CREATE_FAILED" | "RUNNING" | "DELETED" | "DELETE_FAILED" | "PAUSED" | "OPERATION_IN_PROGRESS";
+export type ServiceStatus =
+  | "CREATE_FAILED"
+  | "RUNNING"
+  | "DELETED"
+  | "DELETE_FAILED"
+  | "PAUSED"
+  | "OPERATION_IN_PROGRESS";
 export interface ServiceSummary {
   ServiceName?: string;
   ServiceId?: string;
@@ -818,8 +971,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type Timestamp = Date | string;
@@ -832,8 +984,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateDefaultAutoScalingConfigurationRequest {
   AutoScalingConfigurationArn: string;
 }
@@ -895,12 +1046,21 @@ export interface VpcIngressConnection {
 }
 export type VpcIngressConnectionName = string;
 
-export type VpcIngressConnectionStatus = "AVAILABLE" | "PENDING_CREATION" | "PENDING_UPDATE" | "PENDING_DELETION" | "FAILED_CREATION" | "FAILED_UPDATE" | "FAILED_DELETION" | "DELETED";
+export type VpcIngressConnectionStatus =
+  | "AVAILABLE"
+  | "PENDING_CREATION"
+  | "PENDING_UPDATE"
+  | "PENDING_DELETION"
+  | "FAILED_CREATION"
+  | "FAILED_UPDATE"
+  | "FAILED_DELETION"
+  | "DELETED";
 export interface VpcIngressConnectionSummary {
   VpcIngressConnectionArn?: string;
   ServiceArn?: string;
 }
-export type VpcIngressConnectionSummaryList = Array<VpcIngressConnectionSummary>;
+export type VpcIngressConnectionSummaryList =
+  Array<VpcIngressConnectionSummary>;
 export declare namespace AssociateCustomDomain {
   export type Input = AssociateCustomDomainRequest;
   export type Output = AssociateCustomDomainResponse;
@@ -1275,4 +1435,3 @@ export declare namespace UpdateVpcIngressConnection {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

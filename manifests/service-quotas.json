@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.servicequotas#AWSServiceAccessNotEnabledException": {
       "type": "structure",
@@ -2326,6 +2355,68 @@
     },
     "com.amazonaws.servicequotas#ServiceQuotasV20190624": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.servicequotas#AssociateServiceQuotaTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#CreateSupportCase"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DeleteServiceQuotaIncreaseRequestFromTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#DisassociateServiceQuotaTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#GetAssociationForServiceQuotaTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#GetAWSDefaultServiceQuota"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#GetRequestedServiceQuotaChange"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#GetServiceQuota"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#GetServiceQuotaIncreaseRequestFromTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListAWSDefaultServiceQuotas"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistory"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListRequestedServiceQuotaChangeHistoryByQuota"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListServiceQuotaIncreaseRequestsInTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListServiceQuotas"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListServices"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#PutServiceQuotaIncreaseRequestIntoTemplate"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#RequestServiceQuotaIncrease"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#TagResource"
+        },
+        {
+          "target": "com.amazonaws.servicequotas#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Service Quotas",

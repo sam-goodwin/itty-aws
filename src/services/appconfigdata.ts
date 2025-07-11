@@ -1,24 +1,24 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AppConfigData {
   getLatestConfiguration(
     input: GetLatestConfigurationRequest,
   ): Effect.Effect<
     GetLatestConfigurationResponse,
-    BadRequestException | InternalServerException | ResourceNotFoundException | ThrottlingException | CommonAwsError
-  >;
-  startConfigurationSession(
-    input: StartConfigurationSessionRequest,
-  ): Effect.Effect<
-    StartConfigurationSessionResponse,
-    BadRequestException | InternalServerException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | BadRequestException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
 export type Appconfigdata = AppConfigData;
 
-export type BadRequestDetails = { InvalidParameters: Record<string, InvalidParameterDetail> };
+export type BadRequestDetails = {
+  InvalidParameters: Record<string, InvalidParameterDetail>;
+};
 export declare class BadRequestException extends Data.TaggedError(
   "BadRequestException",
 )<{
@@ -95,15 +95,3 @@ export declare namespace GetLatestConfiguration {
     | ThrottlingException
     | CommonAwsError;
 }
-
-export declare namespace StartConfigurationSession {
-  export type Input = StartConfigurationSessionRequest;
-  export type Output = StartConfigurationSessionResponse;
-  export type Error =
-    | BadRequestException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | CommonAwsError;
-}
-

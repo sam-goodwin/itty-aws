@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.fms#AWSAccountId": {
       "type": "string",
@@ -18,6 +47,134 @@
     },
     "com.amazonaws.fms#AWSFMS_20180101": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.fms#AssociateAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.fms#AssociateThirdPartyFirewall"
+        },
+        {
+          "target": "com.amazonaws.fms#BatchAssociateResource"
+        },
+        {
+          "target": "com.amazonaws.fms#BatchDisassociateResource"
+        },
+        {
+          "target": "com.amazonaws.fms#DeleteAppsList"
+        },
+        {
+          "target": "com.amazonaws.fms#DeleteNotificationChannel"
+        },
+        {
+          "target": "com.amazonaws.fms#DeletePolicy"
+        },
+        {
+          "target": "com.amazonaws.fms#DeleteProtocolsList"
+        },
+        {
+          "target": "com.amazonaws.fms#DeleteResourceSet"
+        },
+        {
+          "target": "com.amazonaws.fms#DisassociateAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.fms#DisassociateThirdPartyFirewall"
+        },
+        {
+          "target": "com.amazonaws.fms#GetAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.fms#GetAdminScope"
+        },
+        {
+          "target": "com.amazonaws.fms#GetAppsList"
+        },
+        {
+          "target": "com.amazonaws.fms#GetComplianceDetail"
+        },
+        {
+          "target": "com.amazonaws.fms#GetNotificationChannel"
+        },
+        {
+          "target": "com.amazonaws.fms#GetPolicy"
+        },
+        {
+          "target": "com.amazonaws.fms#GetProtectionStatus"
+        },
+        {
+          "target": "com.amazonaws.fms#GetProtocolsList"
+        },
+        {
+          "target": "com.amazonaws.fms#GetResourceSet"
+        },
+        {
+          "target": "com.amazonaws.fms#GetThirdPartyFirewallAssociationStatus"
+        },
+        {
+          "target": "com.amazonaws.fms#GetViolationDetails"
+        },
+        {
+          "target": "com.amazonaws.fms#ListAdminAccountsForOrganization"
+        },
+        {
+          "target": "com.amazonaws.fms#ListAdminsManagingAccount"
+        },
+        {
+          "target": "com.amazonaws.fms#ListAppsLists"
+        },
+        {
+          "target": "com.amazonaws.fms#ListComplianceStatus"
+        },
+        {
+          "target": "com.amazonaws.fms#ListDiscoveredResources"
+        },
+        {
+          "target": "com.amazonaws.fms#ListMemberAccounts"
+        },
+        {
+          "target": "com.amazonaws.fms#ListPolicies"
+        },
+        {
+          "target": "com.amazonaws.fms#ListProtocolsLists"
+        },
+        {
+          "target": "com.amazonaws.fms#ListResourceSetResources"
+        },
+        {
+          "target": "com.amazonaws.fms#ListResourceSets"
+        },
+        {
+          "target": "com.amazonaws.fms#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.fms#ListThirdPartyFirewallFirewallPolicies"
+        },
+        {
+          "target": "com.amazonaws.fms#PutAdminAccount"
+        },
+        {
+          "target": "com.amazonaws.fms#PutAppsList"
+        },
+        {
+          "target": "com.amazonaws.fms#PutNotificationChannel"
+        },
+        {
+          "target": "com.amazonaws.fms#PutPolicy"
+        },
+        {
+          "target": "com.amazonaws.fms#PutProtocolsList"
+        },
+        {
+          "target": "com.amazonaws.fms#PutResourceSet"
+        },
+        {
+          "target": "com.amazonaws.fms#TagResource"
+        },
+        {
+          "target": "com.amazonaws.fms#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "FMS",

@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.simspaceweaver#AccessDeniedException": {
       "type": "structure",
@@ -1055,6 +1056,17 @@
     },
     "com.amazonaws.simspaceweaver#SimSpaceWeaver": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.simspaceweaver#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#TagResource"
+        },
+        {
+          "target": "com.amazonaws.simspaceweaver#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SimSpaceWeaver",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.comprehendmedical#AnyLengthString": {
       "type": "string"
@@ -301,6 +330,86 @@
     },
     "com.amazonaws.comprehendmedical#ComprehendMedical_20181030": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.comprehendmedical#DescribeEntitiesDetectionV2Job"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DescribeICD10CMInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DescribePHIDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DescribeRxNormInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DescribeSNOMEDCTInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DetectEntities"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DetectEntitiesV2"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#DetectPHI"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InferICD10CM"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InferRxNorm"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#InferSNOMEDCT"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ListEntitiesDetectionV2Jobs"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ListICD10CMInferenceJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ListPHIDetectionJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ListRxNormInferenceJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#ListSNOMEDCTInferenceJobs"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StartEntitiesDetectionV2Job"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StartICD10CMInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StartPHIDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StartRxNormInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StartSNOMEDCTInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StopEntitiesDetectionV2Job"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StopICD10CMInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StopPHIDetectionJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StopRxNormInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.comprehendmedical#StopSNOMEDCTInferenceJob"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ComprehendMedical",

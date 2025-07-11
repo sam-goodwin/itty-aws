@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.opensearchserverless#AccessPolicy": {
       "type": "resource",
@@ -2978,6 +2979,47 @@
     },
     "com.amazonaws.opensearchserverless#OpenSearchServerless": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.opensearchserverless#BatchGetCollection"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#BatchGetEffectiveLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#BatchGetLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#BatchGetVpcEndpoint"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#CreateLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#CreateSecurityPolicy"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#GetAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#GetPoliciesStats"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#TagResource"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#UpdateAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.opensearchserverless#UpdateVpcEndpoint"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "OpenSearchServerless",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.ecs#AccessDeniedException": {
       "type": "structure",
@@ -58,6 +87,188 @@
     },
     "com.amazonaws.ecs#AmazonEC2ContainerServiceV20141113": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ecs#CreateCapacityProvider"
+        },
+        {
+          "target": "com.amazonaws.ecs#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.ecs#CreateService"
+        },
+        {
+          "target": "com.amazonaws.ecs#CreateTaskSet"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteAccountSetting"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteAttributes"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteCapacityProvider"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteService"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteTaskDefinitions"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeleteTaskSet"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeregisterContainerInstance"
+        },
+        {
+          "target": "com.amazonaws.ecs#DeregisterTaskDefinition"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeCapacityProviders"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeClusters"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeContainerInstances"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeServiceDeployments"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeServiceRevisions"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeServices"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeTaskDefinition"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeTasks"
+        },
+        {
+          "target": "com.amazonaws.ecs#DescribeTaskSets"
+        },
+        {
+          "target": "com.amazonaws.ecs#DiscoverPollEndpoint"
+        },
+        {
+          "target": "com.amazonaws.ecs#ExecuteCommand"
+        },
+        {
+          "target": "com.amazonaws.ecs#GetTaskProtection"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListAttributes"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListClusters"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListContainerInstances"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListServiceDeployments"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListServices"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListServicesByNamespace"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListTaskDefinitionFamilies"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListTaskDefinitions"
+        },
+        {
+          "target": "com.amazonaws.ecs#ListTasks"
+        },
+        {
+          "target": "com.amazonaws.ecs#PutAccountSetting"
+        },
+        {
+          "target": "com.amazonaws.ecs#PutAccountSettingDefault"
+        },
+        {
+          "target": "com.amazonaws.ecs#PutAttributes"
+        },
+        {
+          "target": "com.amazonaws.ecs#PutClusterCapacityProviders"
+        },
+        {
+          "target": "com.amazonaws.ecs#RegisterContainerInstance"
+        },
+        {
+          "target": "com.amazonaws.ecs#RegisterTaskDefinition"
+        },
+        {
+          "target": "com.amazonaws.ecs#RunTask"
+        },
+        {
+          "target": "com.amazonaws.ecs#StartTask"
+        },
+        {
+          "target": "com.amazonaws.ecs#StopServiceDeployment"
+        },
+        {
+          "target": "com.amazonaws.ecs#StopTask"
+        },
+        {
+          "target": "com.amazonaws.ecs#SubmitAttachmentStateChanges"
+        },
+        {
+          "target": "com.amazonaws.ecs#SubmitContainerStateChange"
+        },
+        {
+          "target": "com.amazonaws.ecs#SubmitTaskStateChange"
+        },
+        {
+          "target": "com.amazonaws.ecs#TagResource"
+        },
+        {
+          "target": "com.amazonaws.ecs#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateCapacityProvider"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateCluster"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateClusterSettings"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateContainerAgent"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateContainerInstancesState"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateService"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateServicePrimaryTaskSet"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateTaskProtection"
+        },
+        {
+          "target": "com.amazonaws.ecs#UpdateTaskSet"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ECS",

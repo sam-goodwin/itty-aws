@@ -1,7 +1,218 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.lakeformation#AWSLakeFormation": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.lakeformation#AddLFTagsToResource"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#AssumeDecoratedRoleWithSAML"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#BatchGrantPermissions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#BatchRevokePermissions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CancelTransaction"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CommitTransaction"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CreateDataCellsFilter"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CreateLakeFormationIdentityCenterConfiguration"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CreateLakeFormationOptIn"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CreateLFTag"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#CreateLFTagExpression"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeleteDataCellsFilter"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeleteLakeFormationIdentityCenterConfiguration"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeleteLakeFormationOptIn"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeleteLFTag"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeleteLFTagExpression"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeleteObjectsOnCancel"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DeregisterResource"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DescribeLakeFormationIdentityCenterConfiguration"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DescribeResource"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#DescribeTransaction"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ExtendTransaction"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetDataCellsFilter"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetDataLakePrincipal"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetDataLakeSettings"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetEffectivePermissionsForPath"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetLFTag"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetLFTagExpression"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetQueryState"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetQueryStatistics"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetResourceLFTags"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetTableObjects"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetTemporaryGluePartitionCredentials"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetTemporaryGlueTableCredentials"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetWorkUnitResults"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GetWorkUnits"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#GrantPermissions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListDataCellsFilter"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListLakeFormationOptIns"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListLFTagExpressions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListLFTags"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListPermissions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListResources"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListTableStorageOptimizers"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#ListTransactions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#PutDataLakeSettings"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#RegisterResource"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#RemoveLFTagsFromResource"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#RevokePermissions"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#SearchDatabasesByLFTags"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#SearchTablesByLFTags"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#StartQueryPlanning"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#StartTransaction"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateDataCellsFilter"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateLakeFormationIdentityCenterConfiguration"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateLFTag"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateLFTagExpression"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateResource"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateTableObjects"
+        },
+        {
+          "target": "com.amazonaws.lakeformation#UpdateTableStorageOptimizer"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "LakeFormation",

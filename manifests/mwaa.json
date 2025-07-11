@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.mwaa#AccessDeniedException": {
       "type": "structure",
@@ -46,6 +47,44 @@
     },
     "com.amazonaws.mwaa#AmazonMWAA": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mwaa#CreateCliToken"
+        },
+        {
+          "target": "com.amazonaws.mwaa#CreateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.mwaa#CreateWebLoginToken"
+        },
+        {
+          "target": "com.amazonaws.mwaa#DeleteEnvironment"
+        },
+        {
+          "target": "com.amazonaws.mwaa#GetEnvironment"
+        },
+        {
+          "target": "com.amazonaws.mwaa#InvokeRestApi"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ListEnvironments"
+        },
+        {
+          "target": "com.amazonaws.mwaa#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mwaa#PublishMetrics"
+        },
+        {
+          "target": "com.amazonaws.mwaa#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mwaa#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.mwaa#UpdateEnvironment"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MWAA",

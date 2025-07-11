@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.textract#AccessDeniedException": {
       "type": "structure",
@@ -4662,6 +4691,83 @@
     },
     "com.amazonaws.textract#Textract": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.textract#AnalyzeDocument"
+        },
+        {
+          "target": "com.amazonaws.textract#AnalyzeExpense"
+        },
+        {
+          "target": "com.amazonaws.textract#AnalyzeID"
+        },
+        {
+          "target": "com.amazonaws.textract#CreateAdapter"
+        },
+        {
+          "target": "com.amazonaws.textract#CreateAdapterVersion"
+        },
+        {
+          "target": "com.amazonaws.textract#DeleteAdapter"
+        },
+        {
+          "target": "com.amazonaws.textract#DeleteAdapterVersion"
+        },
+        {
+          "target": "com.amazonaws.textract#DetectDocumentText"
+        },
+        {
+          "target": "com.amazonaws.textract#GetAdapter"
+        },
+        {
+          "target": "com.amazonaws.textract#GetAdapterVersion"
+        },
+        {
+          "target": "com.amazonaws.textract#GetDocumentAnalysis"
+        },
+        {
+          "target": "com.amazonaws.textract#GetDocumentTextDetection"
+        },
+        {
+          "target": "com.amazonaws.textract#GetExpenseAnalysis"
+        },
+        {
+          "target": "com.amazonaws.textract#GetLendingAnalysis"
+        },
+        {
+          "target": "com.amazonaws.textract#GetLendingAnalysisSummary"
+        },
+        {
+          "target": "com.amazonaws.textract#ListAdapters"
+        },
+        {
+          "target": "com.amazonaws.textract#ListAdapterVersions"
+        },
+        {
+          "target": "com.amazonaws.textract#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.textract#StartDocumentAnalysis"
+        },
+        {
+          "target": "com.amazonaws.textract#StartDocumentTextDetection"
+        },
+        {
+          "target": "com.amazonaws.textract#StartExpenseAnalysis"
+        },
+        {
+          "target": "com.amazonaws.textract#StartLendingAnalysis"
+        },
+        {
+          "target": "com.amazonaws.textract#TagResource"
+        },
+        {
+          "target": "com.amazonaws.textract#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.textract#UpdateAdapter"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Textract",

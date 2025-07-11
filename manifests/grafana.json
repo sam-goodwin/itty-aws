@@ -1,7 +1,22 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.grafana#AWSGrafanaControlPlane": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.grafana#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.grafana#ListVersions"
+        },
+        {
+          "target": "com.amazonaws.grafana#TagResource"
+        },
+        {
+          "target": "com.amazonaws.grafana#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#controlPlane": {},
         "aws.api#service": {

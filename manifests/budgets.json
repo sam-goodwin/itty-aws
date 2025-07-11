@@ -1,7 +1,116 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.budgets#AWSBudgetServiceGateway": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.budgets#CreateBudget"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreateBudgetAction"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreateNotification"
+        },
+        {
+          "target": "com.amazonaws.budgets#CreateSubscriber"
+        },
+        {
+          "target": "com.amazonaws.budgets#DeleteBudget"
+        },
+        {
+          "target": "com.amazonaws.budgets#DeleteBudgetAction"
+        },
+        {
+          "target": "com.amazonaws.budgets#DeleteNotification"
+        },
+        {
+          "target": "com.amazonaws.budgets#DeleteSubscriber"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudget"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgetAction"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgetActionHistories"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgetActionsForAccount"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgetActionsForBudget"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgetNotificationsForAccount"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgetPerformanceHistory"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeBudgets"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeNotificationsForBudget"
+        },
+        {
+          "target": "com.amazonaws.budgets#DescribeSubscribersForNotification"
+        },
+        {
+          "target": "com.amazonaws.budgets#ExecuteBudgetAction"
+        },
+        {
+          "target": "com.amazonaws.budgets#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.budgets#TagResource"
+        },
+        {
+          "target": "com.amazonaws.budgets#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.budgets#UpdateBudget"
+        },
+        {
+          "target": "com.amazonaws.budgets#UpdateBudgetAction"
+        },
+        {
+          "target": "com.amazonaws.budgets#UpdateNotification"
+        },
+        {
+          "target": "com.amazonaws.budgets#UpdateSubscriber"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Budgets",

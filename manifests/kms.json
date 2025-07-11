@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.kms#AWSAccountIdType": {
       "type": "string"
@@ -7434,6 +7463,167 @@
     },
     "com.amazonaws.kms#TrentService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kms#CancelKeyDeletion"
+        },
+        {
+          "target": "com.amazonaws.kms#ConnectCustomKeyStore"
+        },
+        {
+          "target": "com.amazonaws.kms#CreateAlias"
+        },
+        {
+          "target": "com.amazonaws.kms#CreateCustomKeyStore"
+        },
+        {
+          "target": "com.amazonaws.kms#CreateGrant"
+        },
+        {
+          "target": "com.amazonaws.kms#CreateKey"
+        },
+        {
+          "target": "com.amazonaws.kms#Decrypt"
+        },
+        {
+          "target": "com.amazonaws.kms#DeleteAlias"
+        },
+        {
+          "target": "com.amazonaws.kms#DeleteCustomKeyStore"
+        },
+        {
+          "target": "com.amazonaws.kms#DeleteImportedKeyMaterial"
+        },
+        {
+          "target": "com.amazonaws.kms#DeriveSharedSecret"
+        },
+        {
+          "target": "com.amazonaws.kms#DescribeCustomKeyStores"
+        },
+        {
+          "target": "com.amazonaws.kms#DescribeKey"
+        },
+        {
+          "target": "com.amazonaws.kms#DisableKey"
+        },
+        {
+          "target": "com.amazonaws.kms#DisableKeyRotation"
+        },
+        {
+          "target": "com.amazonaws.kms#DisconnectCustomKeyStore"
+        },
+        {
+          "target": "com.amazonaws.kms#EnableKey"
+        },
+        {
+          "target": "com.amazonaws.kms#EnableKeyRotation"
+        },
+        {
+          "target": "com.amazonaws.kms#Encrypt"
+        },
+        {
+          "target": "com.amazonaws.kms#GenerateDataKey"
+        },
+        {
+          "target": "com.amazonaws.kms#GenerateDataKeyPair"
+        },
+        {
+          "target": "com.amazonaws.kms#GenerateDataKeyPairWithoutPlaintext"
+        },
+        {
+          "target": "com.amazonaws.kms#GenerateDataKeyWithoutPlaintext"
+        },
+        {
+          "target": "com.amazonaws.kms#GenerateMac"
+        },
+        {
+          "target": "com.amazonaws.kms#GenerateRandom"
+        },
+        {
+          "target": "com.amazonaws.kms#GetKeyPolicy"
+        },
+        {
+          "target": "com.amazonaws.kms#GetKeyRotationStatus"
+        },
+        {
+          "target": "com.amazonaws.kms#GetParametersForImport"
+        },
+        {
+          "target": "com.amazonaws.kms#GetPublicKey"
+        },
+        {
+          "target": "com.amazonaws.kms#ImportKeyMaterial"
+        },
+        {
+          "target": "com.amazonaws.kms#ListAliases"
+        },
+        {
+          "target": "com.amazonaws.kms#ListGrants"
+        },
+        {
+          "target": "com.amazonaws.kms#ListKeyPolicies"
+        },
+        {
+          "target": "com.amazonaws.kms#ListKeyRotations"
+        },
+        {
+          "target": "com.amazonaws.kms#ListKeys"
+        },
+        {
+          "target": "com.amazonaws.kms#ListResourceTags"
+        },
+        {
+          "target": "com.amazonaws.kms#ListRetirableGrants"
+        },
+        {
+          "target": "com.amazonaws.kms#PutKeyPolicy"
+        },
+        {
+          "target": "com.amazonaws.kms#ReEncrypt"
+        },
+        {
+          "target": "com.amazonaws.kms#ReplicateKey"
+        },
+        {
+          "target": "com.amazonaws.kms#RetireGrant"
+        },
+        {
+          "target": "com.amazonaws.kms#RevokeGrant"
+        },
+        {
+          "target": "com.amazonaws.kms#RotateKeyOnDemand"
+        },
+        {
+          "target": "com.amazonaws.kms#ScheduleKeyDeletion"
+        },
+        {
+          "target": "com.amazonaws.kms#Sign"
+        },
+        {
+          "target": "com.amazonaws.kms#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kms#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kms#UpdateAlias"
+        },
+        {
+          "target": "com.amazonaws.kms#UpdateCustomKeyStore"
+        },
+        {
+          "target": "com.amazonaws.kms#UpdateKeyDescription"
+        },
+        {
+          "target": "com.amazonaws.kms#UpdatePrimaryRegion"
+        },
+        {
+          "target": "com.amazonaws.kms#Verify"
+        },
+        {
+          "target": "com.amazonaws.kms#VerifyMac"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "KMS",

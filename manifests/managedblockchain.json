@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.managedblockchain#AccessDeniedException": {
       "type": "structure",
@@ -3790,6 +3819,89 @@
     },
     "com.amazonaws.managedblockchain#TaigaWebService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.managedblockchain#CreateAccessor"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#CreateMember"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#CreateNetwork"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#CreateNode"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#CreateProposal"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#DeleteAccessor"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#DeleteMember"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#DeleteNode"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#GetAccessor"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#GetMember"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#GetNetwork"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#GetNode"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#GetProposal"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListAccessors"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListInvitations"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListMembers"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListNetworks"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListNodes"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListProposals"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListProposalVotes"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#RejectInvitation"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#TagResource"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#UpdateMember"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#UpdateNode"
+        },
+        {
+          "target": "com.amazonaws.managedblockchain#VoteOnProposal"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ManagedBlockchain",

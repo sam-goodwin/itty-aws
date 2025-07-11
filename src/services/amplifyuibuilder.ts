@@ -1,126 +1,29 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmplifyUIBuilder {
-  createComponent(
-    input: CreateComponentRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceConflictException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  createForm(
-    input: CreateFormRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceConflictException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  createTheme(
-    input: CreateThemeRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceConflictException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  deleteComponent(
-    input: DeleteComponentRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteForm(
-    input: DeleteFormRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  deleteTheme(
-    input: DeleteThemeRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
   exchangeCodeForToken(
     input: ExchangeCodeForTokenRequest,
   ): Effect.Effect<
-    {},
+    ExchangeCodeForTokenResponse,
     InvalidParameterException | CommonAwsError
-  >;
-  exportComponents(
-    input: ExportComponentsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | CommonAwsError
-  >;
-  exportForms(
-    input: ExportFormsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | CommonAwsError
-  >;
-  exportThemes(
-    input: ExportThemesRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | CommonAwsError
-  >;
-  getCodegenJob(
-    input: GetCodegenJobRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | CommonAwsError
-  >;
-  getComponent(
-    input: GetComponentRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  getForm(
-    input: GetFormRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
   >;
   getMetadata(
     input: GetMetadataRequest,
   ): Effect.Effect<
-    {},
+    GetMetadataResponse,
     InvalidParameterException | UnauthorizedException | CommonAwsError
-  >;
-  getTheme(
-    input: GetThemeRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | CommonAwsError
-  >;
-  listCodegenJobs(
-    input: ListCodegenJobsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
-  >;
-  listComponents(
-    input: ListComponentsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | CommonAwsError
-  >;
-  listForms(
-    input: ListFormsRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | UnauthorizedException | CommonAwsError
-  >;
-  listThemes(
-    input: ListThemesRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | CommonAwsError
+    ListTagsForResourceResponse,
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putMetadataFlag(
     input: PutMetadataFlagRequest,
@@ -131,575 +34,885 @@ export interface AmplifyUIBuilder {
   refreshToken(
     input: RefreshTokenRequest,
   ): Effect.Effect<
-    {},
+    RefreshTokenResponse,
     InvalidParameterException | CommonAwsError
-  >;
-  startCodegenJob(
-    input: StartCodegenJobRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ThrottlingException | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | UnauthorizedException | CommonAwsError
+    TagResourceResponse,
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceNotFoundException | ThrottlingException | UnauthorizedException | CommonAwsError
-  >;
-  updateComponent(
-    input: UpdateComponentRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceConflictException | CommonAwsError
-  >;
-  updateForm(
-    input: UpdateFormRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceConflictException | CommonAwsError
-  >;
-  updateTheme(
-    input: UpdateThemeRequest,
-  ): Effect.Effect<
-    {},
-    InternalServerException | InvalidParameterException | ResourceConflictException | CommonAwsError
+    UntagResourceResponse,
+    | InternalServerException
+    | InvalidParameterException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
 export type Amplifyuibuilder = AmplifyUIBuilder;
 
 export interface ActionParameters {
+  type?: ComponentProperty;
+  url?: ComponentProperty;
+  anchor?: ComponentProperty;
+  target?: ComponentProperty;
+  global?: ComponentProperty;
+  model?: string;
+  id?: ComponentProperty;
+  fields?: Record<string, ComponentProperty>;
+  state?: MutationActionSetStateParameter;
 }
-export type ApiConfiguration = never;
+export type ApiConfiguration =
+  | { graphQLConfig: GraphQLRenderConfig }
+  | { dataStoreConfig: DataStoreRenderConfig }
+  | { noApiConfig: NoApiRenderConfig };
 export type AppId = string;
 
-export type AssociatedFieldsList = Array<unknown>;
-export type CodegenDependencies = Array<unknown>;
+export type AssociatedFieldsList = Array<string>;
+export type CodegenDependencies = Array<CodegenDependency>;
 export interface CodegenDependency {
+  name?: string;
+  supportedVersion?: string;
+  isSemVer?: boolean;
+  reason?: string;
 }
 export interface CodegenFeatureFlags {
+  isRelationshipSupported?: boolean;
+  isNonModelSupported?: boolean;
 }
 export interface CodegenGenericDataEnum {
+  values: Array<string>;
 }
-export type CodegenGenericDataEnums = Record<string, unknown>;
-export type CodegenGenericDataEnumValuesList = Array<unknown>;
+export type CodegenGenericDataEnums = Record<string, CodegenGenericDataEnum>;
+export type CodegenGenericDataEnumValuesList = Array<string>;
 export interface CodegenGenericDataField {
+  dataType: CodegenGenericDataFieldDataType;
+  dataTypeValue: string;
+  required: boolean;
+  readOnly: boolean;
+  isArray: boolean;
+  relationship?: CodegenGenericDataRelationshipType;
 }
-export type CodegenGenericDataFieldDataType = never;
-export type CodegenGenericDataFields = Record<string, unknown>;
+export type CodegenGenericDataFieldDataType =
+  | "ID"
+  | "STRING"
+  | "INT"
+  | "FLOAT"
+  | "AWS_DATE"
+  | "AWS_TIME"
+  | "AWS_DATE_TIME"
+  | "AWS_TIMESTAMP"
+  | "AWS_EMAIL"
+  | "AWS_URL"
+  | "AWS_IP_ADDRESS"
+  | "BOOLEAN"
+  | "AWS_JSON"
+  | "AWS_PHONE"
+  | "ENUM"
+  | "MODEL"
+  | "NON_MODEL";
+export type CodegenGenericDataFields = Record<string, CodegenGenericDataField>;
 export interface CodegenGenericDataModel {
+  fields: Record<string, CodegenGenericDataField>;
+  isJoinTable?: boolean;
+  primaryKeys: Array<string>;
 }
-export type CodegenGenericDataModels = Record<string, unknown>;
+export type CodegenGenericDataModels = Record<string, CodegenGenericDataModel>;
 export interface CodegenGenericDataNonModel {
+  fields: Record<string, CodegenGenericDataField>;
 }
-export type CodegenGenericDataNonModelFields = Record<string, unknown>;
-export type CodegenGenericDataNonModels = Record<string, unknown>;
+export type CodegenGenericDataNonModelFields = Record<
+  string,
+  CodegenGenericDataField
+>;
+export type CodegenGenericDataNonModels = Record<
+  string,
+  CodegenGenericDataNonModel
+>;
 export interface CodegenGenericDataRelationshipType {
+  type: GenericDataRelationshipType;
+  relatedModelName: string;
+  relatedModelFields?: Array<string>;
+  canUnlinkAssociatedModel?: boolean;
+  relatedJoinFieldName?: string;
+  relatedJoinTableName?: string;
+  belongsToFieldOnRelatedModel?: string;
+  associatedFields?: Array<string>;
+  isHasManyIndex?: boolean;
 }
 export interface CodegenJob {
+  id: string;
+  appId: string;
+  environmentName: string;
+  renderConfig?: CodegenJobRenderConfig;
+  genericDataSchema?: CodegenJobGenericDataSchema;
+  autoGenerateForms?: boolean;
+  features?: CodegenFeatureFlags;
+  status?: CodegenJobStatus;
+  statusMessage?: string;
+  asset?: CodegenJobAsset;
+  tags?: Record<string, string>;
+  createdAt?: Date | string;
+  modifiedAt?: Date | string;
+  dependencies?: Array<CodegenDependency>;
 }
 export interface CodegenJobAsset {
+  downloadUrl?: string;
 }
 export interface CodegenJobGenericDataSchema {
+  dataSourceType: CodegenJobGenericDataSourceType;
+  models: Record<string, CodegenGenericDataModel>;
+  enums: Record<string, CodegenGenericDataEnum>;
+  nonModels: Record<string, CodegenGenericDataNonModel>;
 }
-export type CodegenJobGenericDataSourceType = never;
-export type CodegenJobRenderConfig = never;
-export type CodegenJobStatus = never;
+export type CodegenJobGenericDataSourceType = "DATA_STORE";
+export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
+export type CodegenJobStatus = "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
 export interface CodegenJobSummary {
+  appId: string;
+  environmentName: string;
+  id: string;
+  createdAt?: Date | string;
+  modifiedAt?: Date | string;
 }
-export type CodegenJobSummaryList = Array<unknown>;
-export type CodegenPrimaryKeysList = Array<unknown>;
+export type CodegenJobSummaryList = Array<CodegenJobSummary>;
+export type CodegenPrimaryKeysList = Array<string>;
 export interface Component {
+  appId: string;
+  environmentName: string;
+  sourceId?: string;
+  id: string;
+  name: string;
+  componentType: string;
+  properties: Record<string, ComponentProperty>;
+  children?: Array<ComponentChild>;
+  variants: Array<ComponentVariant>;
+  overrides: Record<string, Record<string, string>>;
+  bindingProperties: Record<string, ComponentBindingPropertiesValue>;
+  collectionProperties?: Record<string, ComponentDataConfiguration>;
+  createdAt: Date | string;
+  modifiedAt?: Date | string;
+  tags?: Record<string, string>;
+  events?: Record<string, ComponentEvent>;
+  schemaVersion?: string;
 }
-export type ComponentBindingProperties = Record<string, unknown>;
+export type ComponentBindingProperties = Record<
+  string,
+  ComponentBindingPropertiesValue
+>;
 export interface ComponentBindingPropertiesValue {
+  type?: string;
+  bindingProperties?: ComponentBindingPropertiesValueProperties;
+  defaultValue?: string;
 }
 export interface ComponentBindingPropertiesValueProperties {
+  model?: string;
+  field?: string;
+  predicates?: Array<Predicate>;
+  userAttribute?: string;
+  bucket?: string;
+  key?: string;
+  defaultValue?: string;
+  slotName?: string;
 }
 export interface ComponentChild {
+  componentType: string;
+  name: string;
+  properties: Record<string, ComponentProperty>;
+  children?: Array<ComponentChild>;
+  events?: Record<string, ComponentEvent>;
+  sourceId?: string;
 }
-export type ComponentChildList = Array<unknown>;
-export type ComponentCollectionProperties = Record<string, unknown>;
+export type ComponentChildList = Array<ComponentChild>;
+export type ComponentCollectionProperties = Record<
+  string,
+  ComponentDataConfiguration
+>;
 export interface ComponentConditionProperty {
+  property?: string;
+  field?: string;
+  operator?: string;
+  operand?: string;
+  then?: ComponentProperty;
+  else?: ComponentProperty;
+  operandType?: string;
 }
 export interface ComponentDataConfiguration {
+  model: string;
+  sort?: Array<SortProperty>;
+  predicate?: Predicate;
+  identifiers?: Array<string>;
 }
 export interface ComponentEvent {
+  action?: string;
+  parameters?: ActionParameters;
+  bindingEvent?: string;
 }
-export type ComponentEvents = Record<string, unknown>;
-export type ComponentList = Array<unknown>;
+export type ComponentEvents = Record<string, ComponentEvent>;
+export type ComponentList = Array<Component>;
 export type ComponentName = string;
 
-export type ComponentOverrides = Record<string, unknown>;
-export type ComponentOverridesValue = Record<string, unknown>;
-export type ComponentProperties = Record<string, unknown>;
+export type ComponentOverrides = Record<string, Record<string, string>>;
+export type ComponentOverridesValue = Record<string, string>;
+export type ComponentProperties = Record<string, ComponentProperty>;
 export interface ComponentProperty {
+  value?: string;
+  bindingProperties?: ComponentPropertyBindingProperties;
+  collectionBindingProperties?: ComponentPropertyBindingProperties;
+  defaultValue?: string;
+  model?: string;
+  bindings?: Record<string, FormBindingElement>;
+  event?: string;
+  userAttribute?: string;
+  concat?: Array<ComponentProperty>;
+  condition?: ComponentConditionProperty;
+  configured?: boolean;
+  type?: string;
+  importedValue?: string;
+  componentName?: string;
+  property?: string;
 }
 export interface ComponentPropertyBindingProperties {
+  property: string;
+  field?: string;
 }
-export type ComponentPropertyList = Array<unknown>;
+export type ComponentPropertyList = Array<ComponentProperty>;
 export interface ComponentSummary {
+  appId: string;
+  environmentName: string;
+  id: string;
+  name: string;
+  componentType: string;
 }
-export type ComponentSummaryList = Array<unknown>;
+export type ComponentSummaryList = Array<ComponentSummary>;
 export type ComponentType = string;
 
 export interface ComponentVariant {
+  variantValues?: Record<string, string>;
+  overrides?: Record<string, Record<string, string>>;
 }
-export type ComponentVariants = Array<unknown>;
-export type ComponentVariantValues = Record<string, unknown>;
+export type ComponentVariants = Array<ComponentVariant>;
+export type ComponentVariantValues = Record<string, string>;
 export interface CreateComponentData {
+  name: string;
+  sourceId?: string;
+  componentType: string;
+  properties: Record<string, ComponentProperty>;
+  children?: Array<ComponentChild>;
+  variants: Array<ComponentVariant>;
+  overrides: Record<string, Record<string, string>>;
+  bindingProperties: Record<string, ComponentBindingPropertiesValue>;
+  collectionProperties?: Record<string, ComponentDataConfiguration>;
+  tags?: Record<string, string>;
+  events?: Record<string, ComponentEvent>;
+  schemaVersion?: string;
 }
 export interface CreateComponentRequest {
+  appId: string;
+  environmentName: string;
+  clientToken?: string;
+  componentToCreate: CreateComponentData;
 }
 export interface CreateComponentResponse {
+  entity?: Component;
 }
 export interface CreateFormData {
+  name: string;
+  dataType: FormDataTypeConfig;
+  formActionType: FormActionType;
+  fields: Record<string, FieldConfig>;
+  style: FormStyle;
+  sectionalElements: Record<string, SectionalElement>;
+  schemaVersion: string;
+  cta?: FormCTA;
+  tags?: Record<string, string>;
+  labelDecorator?: string;
 }
 export interface CreateFormRequest {
+  appId: string;
+  environmentName: string;
+  clientToken?: string;
+  formToCreate: CreateFormData;
 }
 export interface CreateFormResponse {
+  entity?: Form;
 }
 export interface CreateThemeData {
+  name: string;
+  values: Array<ThemeValues>;
+  overrides?: Array<ThemeValues>;
+  tags?: Record<string, string>;
 }
 export interface CreateThemeRequest {
+  appId: string;
+  environmentName: string;
+  clientToken?: string;
+  themeToCreate: CreateThemeData;
 }
 export interface CreateThemeResponse {
+  entity?: Theme;
 }
-export interface DataStoreRenderConfig {
-}
+export interface DataStoreRenderConfig {}
 export interface DeleteComponentRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface DeleteFormRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface DeleteThemeRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface ExchangeCodeForTokenRequest {
+  provider: string;
+  request: ExchangeCodeForTokenRequestBody;
 }
 export interface ExchangeCodeForTokenRequestBody {
+  code: string;
+  redirectUri: string;
+  clientId?: string;
 }
 export interface ExchangeCodeForTokenResponse {
+  accessToken: string;
+  expiresIn: number;
+  refreshToken: string;
 }
 export interface ExportComponentsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
 }
 export interface ExportComponentsResponse {
+  entities: Array<Component>;
+  nextToken?: string;
 }
 export interface ExportFormsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
 }
 export interface ExportFormsResponse {
+  entities: Array<Form>;
+  nextToken?: string;
 }
 export interface ExportThemesRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
 }
 export interface ExportThemesResponse {
+  entities: Array<Theme>;
+  nextToken?: string;
 }
-export type FeaturesMap = Record<string, unknown>;
+export type FeaturesMap = Record<string, string>;
 export interface FieldConfig {
+  label?: string;
+  position?: FieldPosition;
+  excluded?: boolean;
+  inputType?: FieldInputConfig;
+  validations?: Array<FieldValidationConfiguration>;
 }
 export interface FieldInputConfig {
+  type: string;
+  required?: boolean;
+  readOnly?: boolean;
+  placeholder?: string;
+  defaultValue?: string;
+  descriptiveText?: string;
+  defaultChecked?: boolean;
+  defaultCountryCode?: string;
+  valueMappings?: ValueMappings;
+  name?: string;
+  minValue?: number;
+  maxValue?: number;
+  step?: number;
+  value?: string;
+  isArray?: boolean;
+  fileUploaderConfig?: FileUploaderFieldConfig;
 }
-export type FieldPosition = never;
-export type FieldsMap = Record<string, unknown>;
+export type FieldPosition =
+  | { fixed: FixedPosition }
+  | { rightOf: string }
+  | { below: string };
+export type FieldsMap = Record<string, FieldConfig>;
 export interface FieldValidationConfiguration {
+  type: string;
+  strValues?: Array<string>;
+  numValues?: Array<number>;
+  validationMessage?: string;
 }
 export interface FileUploaderFieldConfig {
+  accessLevel: StorageAccessLevel;
+  acceptedFileTypes: Array<string>;
+  showThumbnails?: boolean;
+  isResumable?: boolean;
+  maxFileCount?: number;
+  maxSize?: number;
 }
-export type FixedPosition = never;
+export type FixedPosition = "FIRST";
 export interface Form {
+  appId: string;
+  environmentName: string;
+  id: string;
+  name: string;
+  formActionType: FormActionType;
+  style: FormStyle;
+  dataType: FormDataTypeConfig;
+  fields: Record<string, FieldConfig>;
+  sectionalElements: Record<string, SectionalElement>;
+  schemaVersion: string;
+  tags?: Record<string, string>;
+  cta?: FormCTA;
+  labelDecorator?: string;
 }
-export type FormActionType = never;
+export type FormActionType = "CREATE" | "UPDATE";
 export interface FormBindingElement {
+  element: string;
+  property: string;
 }
-export type FormBindings = Record<string, unknown>;
+export type FormBindings = Record<string, FormBindingElement>;
 export interface FormButton {
+  excluded?: boolean;
+  children?: string;
+  position?: FieldPosition;
 }
-export type FormButtonsPosition = never;
+export type FormButtonsPosition = "TOP" | "BOTTOM" | "TOP_AND_BOTTOM";
 export interface FormCTA {
+  position?: FormButtonsPosition;
+  clear?: FormButton;
+  cancel?: FormButton;
+  submit?: FormButton;
 }
 export type FormDataSourceType = string;
 
 export interface FormDataTypeConfig {
+  dataSourceType: string;
+  dataTypeName: string;
 }
-export type FormInputBindingProperties = Record<string, unknown>;
+export type FormInputBindingProperties = Record<
+  string,
+  FormInputBindingPropertiesValue
+>;
 export interface FormInputBindingPropertiesValue {
+  type?: string;
+  bindingProperties?: FormInputBindingPropertiesValueProperties;
 }
 export interface FormInputBindingPropertiesValueProperties {
+  model?: string;
 }
 export interface FormInputValueProperty {
+  value?: string;
+  bindingProperties?: FormInputValuePropertyBindingProperties;
+  concat?: Array<FormInputValueProperty>;
 }
 export interface FormInputValuePropertyBindingProperties {
+  property: string;
+  field?: string;
 }
-export type FormInputValuePropertyList = Array<unknown>;
-export type FormList = Array<unknown>;
+export type FormInputValuePropertyList = Array<FormInputValueProperty>;
+export type FormList = Array<Form>;
 export type FormName = string;
 
 export interface FormStyle {
+  horizontalGap?: FormStyleConfig;
+  verticalGap?: FormStyleConfig;
+  outerPadding?: FormStyleConfig;
 }
-export type FormStyleConfig = never;
+export type FormStyleConfig = { tokenReference: string } | { value: string };
 export interface FormSummary {
+  appId: string;
+  dataType: FormDataTypeConfig;
+  environmentName: string;
+  formActionType: FormActionType;
+  id: string;
+  name: string;
 }
-export type FormSummaryList = Array<unknown>;
-export type GenericDataRelationshipType = never;
+export type FormSummaryList = Array<FormSummary>;
+export type GenericDataRelationshipType = "HAS_MANY" | "HAS_ONE" | "BELONGS_TO";
 export interface GetCodegenJobRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface GetCodegenJobResponse {
+  job?: CodegenJob;
 }
 export interface GetComponentRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface GetComponentResponse {
+  component?: Component;
 }
 export interface GetFormRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface GetFormResponse {
+  form?: Form;
 }
 export interface GetMetadataRequest {
+  appId: string;
+  environmentName: string;
 }
 export interface GetMetadataResponse {
+  features: Record<string, string>;
 }
 export interface GetThemeRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
 }
 export interface GetThemeResponse {
+  theme?: Theme;
 }
 export interface GraphQLRenderConfig {
+  typesFilePath: string;
+  queriesFilePath: string;
+  mutationsFilePath: string;
+  subscriptionsFilePath: string;
+  fragmentsFilePath: string;
 }
-export type IdentifierList = Array<unknown>;
-export interface InternalServerException {
-}
-export interface InvalidParameterException {
-}
-export type JSModule = never;
-export type JSScript = never;
-export type JSTarget = never;
+export type IdentifierList = Array<string>;
+export declare class InternalServerException extends Data.TaggedError(
+  "InternalServerException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidParameterException extends Data.TaggedError(
+  "InvalidParameterException",
+)<{
+  readonly message?: string;
+}> {}
+export type JSModule = "ES2020" | "ESNEXT";
+export type JSScript = "JSX" | "TSX" | "JS";
+export type JSTarget = "ES2015" | "ES2020";
 export type LabelDecorator = string;
 
 export type ListCodegenJobsLimit = number;
 
 export interface ListCodegenJobsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListCodegenJobsResponse {
+  entities: Array<CodegenJobSummary>;
+  nextToken?: string;
 }
 export interface ListComponentsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListComponentsResponse {
+  entities: Array<ComponentSummary>;
+  nextToken?: string;
 }
 export type ListEntityLimit = number;
 
 export interface ListFormsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListFormsResponse {
+  entities: Array<FormSummary>;
+  nextToken?: string;
 }
 export interface ListTagsForResourceRequest {
+  resourceArn: string;
 }
 export interface ListTagsForResourceResponse {
+  tags: Record<string, string>;
 }
 export interface ListThemesRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListThemesResponse {
+  entities: Array<ThemeSummary>;
+  nextToken?: string;
 }
 export interface MutationActionSetStateParameter {
+  componentName: string;
+  property: string;
+  set: ComponentProperty;
 }
-export interface NoApiRenderConfig {
-}
-export type NumValues = Array<unknown>;
+export interface NoApiRenderConfig {}
+export type NumValues = Array<number>;
 export type OperandType = string;
 
 export interface Predicate {
+  or?: Array<Predicate>;
+  and?: Array<Predicate>;
+  field?: string;
+  operator?: string;
+  operand?: string;
+  operandType?: string;
 }
-export type PredicateList = Array<unknown>;
+export type PredicateList = Array<Predicate>;
 export interface PutMetadataFlagBody {
+  newValue: string;
 }
 export interface PutMetadataFlagRequest {
+  appId: string;
+  environmentName: string;
+  featureName: string;
+  body: PutMetadataFlagBody;
 }
-export type ReactCodegenDependencies = Record<string, unknown>;
+export type ReactCodegenDependencies = Record<string, string>;
 export interface ReactStartCodegenJobData {
+  module?: JSModule;
+  target?: JSTarget;
+  script?: JSScript;
+  renderTypeDeclarations?: boolean;
+  inlineSourceMap?: boolean;
+  apiConfiguration?: ApiConfiguration;
+  dependencies?: Record<string, string>;
 }
 export interface RefreshTokenRequest {
+  provider: string;
+  refreshTokenBody: RefreshTokenRequestBody;
 }
 export interface RefreshTokenRequestBody {
+  token: string;
+  clientId?: string;
 }
 export interface RefreshTokenResponse {
+  accessToken: string;
+  expiresIn: number;
 }
-export type RelatedModelFieldsList = Array<unknown>;
-export interface ResourceConflictException {
-}
-export interface ResourceNotFoundException {
-}
+export type RelatedModelFieldsList = Array<string>;
+export declare class ResourceConflictException extends Data.TaggedError(
+  "ResourceConflictException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class ResourceNotFoundException extends Data.TaggedError(
+  "ResourceNotFoundException",
+)<{
+  readonly message?: string;
+}> {}
 export interface SectionalElement {
+  type: string;
+  position?: FieldPosition;
+  text?: string;
+  level?: number;
+  orientation?: string;
+  excluded?: boolean;
 }
-export type SectionalElementMap = Record<string, unknown>;
+export type SectionalElementMap = Record<string, SectionalElement>;
 export type SensitiveString = string;
 
-export interface ServiceQuotaExceededException {
-}
-export type SortDirection = never;
+export declare class ServiceQuotaExceededException extends Data.TaggedError(
+  "ServiceQuotaExceededException",
+)<{
+  readonly message?: string;
+}> {}
+export type SortDirection = "ASC" | "DESC";
 export interface SortProperty {
+  field: string;
+  direction: SortDirection;
 }
-export type SortPropertyList = Array<unknown>;
+export type SortPropertyList = Array<SortProperty>;
 export interface StartCodegenJobData {
+  renderConfig: CodegenJobRenderConfig;
+  genericDataSchema?: CodegenJobGenericDataSchema;
+  autoGenerateForms?: boolean;
+  features?: CodegenFeatureFlags;
+  tags?: Record<string, string>;
 }
 export interface StartCodegenJobRequest {
+  appId: string;
+  environmentName: string;
+  clientToken?: string;
+  codegenJobToCreate: StartCodegenJobData;
 }
 export interface StartCodegenJobResponse {
+  entity?: CodegenJob;
 }
-export type StorageAccessLevel = never;
-export type StrValues = Array<unknown>;
+export type StorageAccessLevel = "PUBLIC" | "PROTECTED" | "PRIVATE";
+export type StrValues = Array<string>;
 export type TagKey = string;
 
-export type TagKeyList = Array<unknown>;
+export type TagKeyList = Array<string>;
 export interface TagResourceRequest {
+  resourceArn: string;
+  tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
-export type Tags = Record<string, unknown>;
+export interface TagResourceResponse {}
+export type Tags = Record<string, string>;
 export type TagValue = string;
 
 export interface Theme {
+  appId: string;
+  environmentName: string;
+  id: string;
+  name: string;
+  createdAt: Date | string;
+  modifiedAt?: Date | string;
+  values: Array<ThemeValues>;
+  overrides?: Array<ThemeValues>;
+  tags?: Record<string, string>;
 }
-export type ThemeList = Array<unknown>;
+export type ThemeList = Array<Theme>;
 export type ThemeName = string;
 
 export interface ThemeSummary {
+  appId: string;
+  environmentName: string;
+  id: string;
+  name: string;
 }
-export type ThemeSummaryList = Array<unknown>;
+export type ThemeSummaryList = Array<ThemeSummary>;
 export interface ThemeValue {
+  value?: string;
+  children?: Array<ThemeValues>;
 }
 export interface ThemeValues {
+  key?: string;
+  value?: ThemeValue;
 }
-export type ThemeValuesList = Array<unknown>;
-export interface ThrottlingException {
-}
+export type ThemeValuesList = Array<ThemeValues>;
+export declare class ThrottlingException extends Data.TaggedError(
+  "ThrottlingException",
+)<{
+  readonly message?: string;
+}> {}
 export type TokenProviders = string;
 
-export interface UnauthorizedException {
-}
+export declare class UnauthorizedException extends Data.TaggedError(
+  "UnauthorizedException",
+)<{
+  readonly message?: string;
+}> {}
 export interface UntagResourceRequest {
+  resourceArn: string;
+  tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateComponentData {
+  id?: string;
+  name?: string;
+  sourceId?: string;
+  componentType?: string;
+  properties?: Record<string, ComponentProperty>;
+  children?: Array<ComponentChild>;
+  variants?: Array<ComponentVariant>;
+  overrides?: Record<string, Record<string, string>>;
+  bindingProperties?: Record<string, ComponentBindingPropertiesValue>;
+  collectionProperties?: Record<string, ComponentDataConfiguration>;
+  events?: Record<string, ComponentEvent>;
+  schemaVersion?: string;
 }
 export interface UpdateComponentRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+  clientToken?: string;
+  updatedComponent: UpdateComponentData;
 }
 export interface UpdateComponentResponse {
+  entity?: Component;
 }
 export interface UpdateFormData {
+  name?: string;
+  dataType?: FormDataTypeConfig;
+  formActionType?: FormActionType;
+  fields?: Record<string, FieldConfig>;
+  style?: FormStyle;
+  sectionalElements?: Record<string, SectionalElement>;
+  schemaVersion?: string;
+  cta?: FormCTA;
+  labelDecorator?: string;
 }
 export interface UpdateFormRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+  clientToken?: string;
+  updatedForm: UpdateFormData;
 }
 export interface UpdateFormResponse {
+  entity?: Form;
 }
 export interface UpdateThemeData {
+  id?: string;
+  name?: string;
+  values: Array<ThemeValues>;
+  overrides?: Array<ThemeValues>;
 }
 export interface UpdateThemeRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+  clientToken?: string;
+  updatedTheme: UpdateThemeData;
 }
 export interface UpdateThemeResponse {
+  entity?: Theme;
 }
 export type Uuid = string;
 
-export type ValidationsList = Array<unknown>;
+export type ValidationsList = Array<FieldValidationConfiguration>;
 export interface ValueMapping {
+  displayValue?: FormInputValueProperty;
+  value: FormInputValueProperty;
 }
-export type ValueMappingList = Array<unknown>;
+export type ValueMappingList = Array<ValueMapping>;
 export interface ValueMappings {
+  values: Array<ValueMapping>;
+  bindingProperties?: Record<string, FormInputBindingPropertiesValue>;
 }
-export declare namespace CreateComponent {
-  export type Input = CreateComponentRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceConflictException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace CreateForm {
-  export type Input = CreateFormRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceConflictException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace CreateTheme {
-  export type Input = CreateThemeRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceConflictException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteComponent {
-  export type Input = DeleteComponentRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteForm {
-  export type Input = DeleteFormRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteTheme {
-  export type Input = DeleteThemeRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
 export declare namespace ExchangeCodeForToken {
   export type Input = ExchangeCodeForTokenRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidParameterException
-    | CommonAwsError;
-}
-
-export declare namespace ExportComponents {
-  export type Input = ExportComponentsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | CommonAwsError;
-}
-
-export declare namespace ExportForms {
-  export type Input = ExportFormsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | CommonAwsError;
-}
-
-export declare namespace ExportThemes {
-  export type Input = ExportThemesRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | CommonAwsError;
-}
-
-export declare namespace GetCodegenJob {
-  export type Input = GetCodegenJobRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | CommonAwsError;
-}
-
-export declare namespace GetComponent {
-  export type Input = GetComponentRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetForm {
-  export type Input = GetFormRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Output = ExchangeCodeForTokenResponse;
+  export type Error = InvalidParameterException | CommonAwsError;
 }
 
 export declare namespace GetMetadata {
   export type Input = GetMetadataRequest;
-  export type Output = {};
+  export type Output = GetMetadataResponse;
   export type Error =
     | InvalidParameterException
     | UnauthorizedException
-    | CommonAwsError;
-}
-
-export declare namespace GetTheme {
-  export type Input = GetThemeRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListCodegenJobs {
-  export type Input = ListCodegenJobsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ThrottlingException
-    | CommonAwsError;
-}
-
-export declare namespace ListComponents {
-  export type Input = ListComponentsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | CommonAwsError;
-}
-
-export declare namespace ListForms {
-  export type Input = ListFormsRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
     | CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
-  export type Output = {};
+  export type Output = ListTagsForResourceResponse;
   export type Error =
     | InternalServerException
     | InvalidParameterException
     | ResourceNotFoundException
     | ThrottlingException
     | UnauthorizedException
-    | CommonAwsError;
-}
-
-export declare namespace ListThemes {
-  export type Input = ListThemesRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
     | CommonAwsError;
 }
 
@@ -714,25 +927,13 @@ export declare namespace PutMetadataFlag {
 
 export declare namespace RefreshToken {
   export type Input = RefreshTokenRequest;
-  export type Output = {};
-  export type Error =
-    | InvalidParameterException
-    | CommonAwsError;
-}
-
-export declare namespace StartCodegenJob {
-  export type Input = StartCodegenJobRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ThrottlingException
-    | CommonAwsError;
+  export type Output = RefreshTokenResponse;
+  export type Error = InvalidParameterException | CommonAwsError;
 }
 
 export declare namespace TagResource {
   export type Input = TagResourceRequest;
-  export type Output = {};
+  export type Output = TagResourceResponse;
   export type Error =
     | InternalServerException
     | InvalidParameterException
@@ -744,7 +945,7 @@ export declare namespace TagResource {
 
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
-  export type Output = {};
+  export type Output = UntagResourceResponse;
   export type Error =
     | InternalServerException
     | InvalidParameterException
@@ -753,34 +954,3 @@ export declare namespace UntagResource {
     | UnauthorizedException
     | CommonAwsError;
 }
-
-export declare namespace UpdateComponent {
-  export type Input = UpdateComponentRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceConflictException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateForm {
-  export type Input = UpdateFormRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceConflictException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateTheme {
-  export type Input = UpdateThemeRequest;
-  export type Output = {};
-  export type Error =
-    | InternalServerException
-    | InvalidParameterException
-    | ResourceConflictException
-    | CommonAwsError;
-}
-

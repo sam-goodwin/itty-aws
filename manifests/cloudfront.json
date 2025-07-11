@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.cloudfront#AccessControlAllowHeadersList": {
       "type": "list",
@@ -1368,6 +1369,449 @@
     },
     "com.amazonaws.cloudfront#Cloudfront2020_05_31": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudfront#AssociateAlias"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#AssociateDistributionTenantWebACL"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#AssociateDistributionWebACL"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CopyDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateAnycastIpList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateCloudFrontOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateConnectionGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateDistributionWithTags"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateInvalidation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateInvalidationForDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateKeyValueStore"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateMonitoringSubscription"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreatePublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateStreamingDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateStreamingDistributionWithTags"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#CreateVpcOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteAnycastIpList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteCloudFrontOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteConnectionGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteKeyValueStore"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteMonitoringSubscription"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeletePublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteStreamingDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DeleteVpcOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DescribeFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DescribeKeyValueStore"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DisassociateDistributionTenantWebACL"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#DisassociateDistributionWebACL"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetAnycastIpList"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetCachePolicyConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetCloudFrontOriginAccessIdentityConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetConnectionGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetConnectionGroupByRoutingEndpoint"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetContinuousDeploymentPolicyConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetDistributionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetDistributionTenantByDomain"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetFieldLevelEncryption"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetFieldLevelEncryptionProfileConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetInvalidation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetInvalidationForDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetKeyGroupConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetManagedCertificateDetails"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetMonitoringSubscription"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetOriginAccessControlConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetOriginRequestPolicyConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetPublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetPublicKeyConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetResponseHeadersPolicyConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetStreamingDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetStreamingDistributionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#GetVpcOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListAnycastIpLists"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListCachePolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListCloudFrontOriginAccessIdentities"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListConflictingAliases"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListConnectionGroups"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListContinuousDeploymentPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByAnycastIpListId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByCachePolicyId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByConnectionMode"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByOriginRequestPolicyId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByResponseHeadersPolicyId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByVpcOriginId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionsByWebACLId"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionTenants"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDistributionTenantsByCustomization"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListDomainConflicts"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListFieldLevelEncryptionConfigs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListFieldLevelEncryptionProfiles"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListFunctions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListInvalidations"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListInvalidationsForDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListKeyGroups"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListKeyValueStores"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListOriginAccessControls"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListOriginRequestPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListPublicKeys"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListRealtimeLogConfigs"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListResponseHeadersPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListStreamingDistributions"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#ListVpcOrigins"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#PublishFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#TestFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateCachePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateCloudFrontOriginAccessIdentity"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateConnectionGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateContinuousDeploymentPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateDistributionTenant"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateDistributionWithStagingConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateDomainAssociation"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateFieldLevelEncryptionProfile"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateFunction"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateKeyGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateKeyValueStore"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateOriginAccessControl"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateOriginRequestPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdatePublicKey"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateRealtimeLogConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateResponseHeadersPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateStreamingDistribution"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#UpdateVpcOrigin"
+        },
+        {
+          "target": "com.amazonaws.cloudfront#VerifyDnsConfiguration"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudFront",

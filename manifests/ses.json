@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.ses#AccountSendingPausedException": {
       "type": "structure",
@@ -6237,6 +6266,221 @@
     },
     "com.amazonaws.ses#SimpleEmailService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ses#CloneReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateConfigurationSet"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateConfigurationSetEventDestination"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateConfigurationSetTrackingOptions"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateCustomVerificationEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateReceiptFilter"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateReceiptRule"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#CreateTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteConfigurationSet"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteConfigurationSetEventDestination"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteConfigurationSetTrackingOptions"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteCustomVerificationEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteIdentity"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteIdentityPolicy"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteReceiptFilter"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteReceiptRule"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#DeleteVerifiedEmailAddress"
+        },
+        {
+          "target": "com.amazonaws.ses#DescribeActiveReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#DescribeConfigurationSet"
+        },
+        {
+          "target": "com.amazonaws.ses#DescribeReceiptRule"
+        },
+        {
+          "target": "com.amazonaws.ses#DescribeReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#GetAccountSendingEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#GetCustomVerificationEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#GetIdentityDkimAttributes"
+        },
+        {
+          "target": "com.amazonaws.ses#GetIdentityMailFromDomainAttributes"
+        },
+        {
+          "target": "com.amazonaws.ses#GetIdentityNotificationAttributes"
+        },
+        {
+          "target": "com.amazonaws.ses#GetIdentityPolicies"
+        },
+        {
+          "target": "com.amazonaws.ses#GetIdentityVerificationAttributes"
+        },
+        {
+          "target": "com.amazonaws.ses#GetSendQuota"
+        },
+        {
+          "target": "com.amazonaws.ses#GetSendStatistics"
+        },
+        {
+          "target": "com.amazonaws.ses#GetTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#ListConfigurationSets"
+        },
+        {
+          "target": "com.amazonaws.ses#ListCustomVerificationEmailTemplates"
+        },
+        {
+          "target": "com.amazonaws.ses#ListIdentities"
+        },
+        {
+          "target": "com.amazonaws.ses#ListIdentityPolicies"
+        },
+        {
+          "target": "com.amazonaws.ses#ListReceiptFilters"
+        },
+        {
+          "target": "com.amazonaws.ses#ListReceiptRuleSets"
+        },
+        {
+          "target": "com.amazonaws.ses#ListTemplates"
+        },
+        {
+          "target": "com.amazonaws.ses#ListVerifiedEmailAddresses"
+        },
+        {
+          "target": "com.amazonaws.ses#PutConfigurationSetDeliveryOptions"
+        },
+        {
+          "target": "com.amazonaws.ses#PutIdentityPolicy"
+        },
+        {
+          "target": "com.amazonaws.ses#ReorderReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#SendBounce"
+        },
+        {
+          "target": "com.amazonaws.ses#SendBulkTemplatedEmail"
+        },
+        {
+          "target": "com.amazonaws.ses#SendCustomVerificationEmail"
+        },
+        {
+          "target": "com.amazonaws.ses#SendEmail"
+        },
+        {
+          "target": "com.amazonaws.ses#SendRawEmail"
+        },
+        {
+          "target": "com.amazonaws.ses#SendTemplatedEmail"
+        },
+        {
+          "target": "com.amazonaws.ses#SetActiveReceiptRuleSet"
+        },
+        {
+          "target": "com.amazonaws.ses#SetIdentityDkimEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#SetIdentityFeedbackForwardingEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#SetIdentityHeadersInNotificationsEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#SetIdentityMailFromDomain"
+        },
+        {
+          "target": "com.amazonaws.ses#SetIdentityNotificationTopic"
+        },
+        {
+          "target": "com.amazonaws.ses#SetReceiptRulePosition"
+        },
+        {
+          "target": "com.amazonaws.ses#TestRenderTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateAccountSendingEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateConfigurationSetEventDestination"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateConfigurationSetReputationMetricsEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateConfigurationSetSendingEnabled"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateConfigurationSetTrackingOptions"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateCustomVerificationEmailTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateReceiptRule"
+        },
+        {
+          "target": "com.amazonaws.ses#UpdateTemplate"
+        },
+        {
+          "target": "com.amazonaws.ses#VerifyDomainDkim"
+        },
+        {
+          "target": "com.amazonaws.ses#VerifyDomainIdentity"
+        },
+        {
+          "target": "com.amazonaws.ses#VerifyEmailAddress"
+        },
+        {
+          "target": "com.amazonaws.ses#VerifyEmailIdentity"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SES",

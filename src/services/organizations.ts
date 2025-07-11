@@ -1,336 +1,770 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSOrganizationsV20161128 {
   acceptHandshake(
     input: AcceptHandshakeRequest,
   ): Effect.Effect<
     AcceptHandshakeResponse,
-    AccessDeniedException | AccessDeniedForDependencyException | AWSOrganizationsNotInUseException | ConcurrentModificationException | HandshakeAlreadyInStateException | HandshakeConstraintViolationException | HandshakeNotFoundException | InvalidHandshakeTransitionException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AccessDeniedForDependencyException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | HandshakeAlreadyInStateException
+    | HandshakeConstraintViolationException
+    | HandshakeNotFoundException
+    | InvalidHandshakeTransitionException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   attachPolicy(
     input: AttachPolicyRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | DuplicatePolicyAttachmentException | InvalidInputException | PolicyChangesInProgressException | PolicyNotFoundException | PolicyTypeNotEnabledException | ServiceException | TargetNotFoundException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | DuplicatePolicyAttachmentException
+    | InvalidInputException
+    | PolicyChangesInProgressException
+    | PolicyNotFoundException
+    | PolicyTypeNotEnabledException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   cancelHandshake(
     input: CancelHandshakeRequest,
   ): Effect.Effect<
     CancelHandshakeResponse,
-    AccessDeniedException | ConcurrentModificationException | HandshakeAlreadyInStateException | HandshakeNotFoundException | InvalidHandshakeTransitionException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | HandshakeAlreadyInStateException
+    | HandshakeNotFoundException
+    | InvalidHandshakeTransitionException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   closeAccount(
     input: CloseAccountRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AccountAlreadyClosedException | AccountNotFoundException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConflictException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AccountAlreadyClosedException
+    | AccountNotFoundException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConflictException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   createAccount(
     input: CreateAccountRequest,
   ): Effect.Effect<
     CreateAccountResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | FinalizingOrganizationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | FinalizingOrganizationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   createGovCloudAccount(
     input: CreateGovCloudAccountRequest,
   ): Effect.Effect<
     CreateGovCloudAccountResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | FinalizingOrganizationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | FinalizingOrganizationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   createOrganization(
     input: CreateOrganizationRequest,
   ): Effect.Effect<
     CreateOrganizationResponse,
-    AccessDeniedException | AccessDeniedForDependencyException | AlreadyInOrganizationException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AccessDeniedForDependencyException
+    | AlreadyInOrganizationException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createOrganizationalUnit(
     input: CreateOrganizationalUnitRequest,
   ): Effect.Effect<
     CreateOrganizationalUnitResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | DuplicateOrganizationalUnitException | InvalidInputException | ParentNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | DuplicateOrganizationalUnitException
+    | InvalidInputException
+    | ParentNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createPolicy(
     input: CreatePolicyRequest,
   ): Effect.Effect<
     CreatePolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | DuplicatePolicyException | InvalidInputException | MalformedPolicyDocumentException | PolicyTypeNotAvailableForOrganizationException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | DuplicatePolicyException
+    | InvalidInputException
+    | MalformedPolicyDocumentException
+    | PolicyTypeNotAvailableForOrganizationException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   declineHandshake(
     input: DeclineHandshakeRequest,
   ): Effect.Effect<
     DeclineHandshakeResponse,
-    AccessDeniedException | ConcurrentModificationException | HandshakeAlreadyInStateException | HandshakeNotFoundException | InvalidHandshakeTransitionException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | HandshakeAlreadyInStateException
+    | HandshakeNotFoundException
+    | InvalidHandshakeTransitionException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
-  deleteOrganization(
-    input: {},
-  ): Effect.Effect<
+  deleteOrganization(input: {}): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | InvalidInputException | OrganizationNotEmptyException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | InvalidInputException
+    | OrganizationNotEmptyException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteOrganizationalUnit(
     input: DeleteOrganizationalUnitRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | InvalidInputException | OrganizationalUnitNotEmptyException | OrganizationalUnitNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | InvalidInputException
+    | OrganizationalUnitNotEmptyException
+    | OrganizationalUnitNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deletePolicy(
     input: DeletePolicyRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | InvalidInputException | PolicyInUseException | PolicyNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | InvalidInputException
+    | PolicyInUseException
+    | PolicyNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
-  deleteResourcePolicy(
-    input: {},
-  ): Effect.Effect<
+  deleteResourcePolicy(input: {}): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | ResourcePolicyNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | ResourcePolicyNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   deregisterDelegatedAdministrator(
     input: DeregisterDelegatedAdministratorRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AccountNotFoundException | AccountNotRegisteredException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AccountNotFoundException
+    | AccountNotRegisteredException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   describeAccount(
     input: DescribeAccountRequest,
   ): Effect.Effect<
     DescribeAccountResponse,
-    AccessDeniedException | AccountNotFoundException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AccountNotFoundException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeCreateAccountStatus(
     input: DescribeCreateAccountStatusRequest,
   ): Effect.Effect<
     DescribeCreateAccountStatusResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | CreateAccountStatusNotFoundException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | CreateAccountStatusNotFoundException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   describeEffectivePolicy(
     input: DescribeEffectivePolicyRequest,
   ): Effect.Effect<
     DescribeEffectivePolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConstraintViolationException | EffectivePolicyNotFoundException | InvalidInputException | ServiceException | TargetNotFoundException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConstraintViolationException
+    | EffectivePolicyNotFoundException
+    | InvalidInputException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   describeHandshake(
     input: DescribeHandshakeRequest,
   ): Effect.Effect<
     DescribeHandshakeResponse,
-    AccessDeniedException | ConcurrentModificationException | HandshakeNotFoundException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | HandshakeNotFoundException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
-  describeOrganization(
-    input: {},
-  ): Effect.Effect<
+  describeOrganization(input: {}): Effect.Effect<
     DescribeOrganizationResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeOrganizationalUnit(
     input: DescribeOrganizationalUnitRequest,
   ): Effect.Effect<
     DescribeOrganizationalUnitResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | OrganizationalUnitNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | OrganizationalUnitNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describePolicy(
     input: DescribePolicyRequest,
   ): Effect.Effect<
     DescribePolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | PolicyNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | PolicyNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
-  describeResourcePolicy(
-    input: {},
-  ): Effect.Effect<
+  describeResourcePolicy(input: {}): Effect.Effect<
     DescribeResourcePolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConstraintViolationException | ResourcePolicyNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConstraintViolationException
+    | ResourcePolicyNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   detachPolicy(
     input: DetachPolicyRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | PolicyChangesInProgressException | PolicyNotAttachedException | PolicyNotFoundException | ServiceException | TargetNotFoundException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | PolicyChangesInProgressException
+    | PolicyNotAttachedException
+    | PolicyNotFoundException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   disableAWSServiceAccess(
     input: DisableAWSServiceAccessRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   disablePolicyType(
     input: DisablePolicyTypeRequest,
   ): Effect.Effect<
     DisablePolicyTypeResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | PolicyChangesInProgressException | PolicyTypeNotEnabledException | RootNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
-  >;
-  enableAWSServiceAccess(
-    input: EnableAWSServiceAccessRequest,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | PolicyChangesInProgressException
+    | PolicyTypeNotEnabledException
+    | RootNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   enableAllFeatures(
     input: EnableAllFeaturesRequest,
   ): Effect.Effect<
     EnableAllFeaturesResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | HandshakeConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | HandshakeConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  enableAWSServiceAccess(
+    input: EnableAWSServiceAccessRequest,
+  ): Effect.Effect<
+    {},
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   enablePolicyType(
     input: EnablePolicyTypeRequest,
   ): Effect.Effect<
     EnablePolicyTypeResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | PolicyChangesInProgressException | PolicyTypeAlreadyEnabledException | PolicyTypeNotAvailableForOrganizationException | RootNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | PolicyChangesInProgressException
+    | PolicyTypeAlreadyEnabledException
+    | PolicyTypeNotAvailableForOrganizationException
+    | RootNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   inviteAccountToOrganization(
     input: InviteAccountToOrganizationRequest,
   ): Effect.Effect<
     InviteAccountToOrganizationResponse,
-    AccessDeniedException | AccountOwnerNotVerifiedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | DuplicateHandshakeException | FinalizingOrganizationException | HandshakeConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AccountOwnerNotVerifiedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | DuplicateHandshakeException
+    | FinalizingOrganizationException
+    | HandshakeConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
-  leaveOrganization(
-    input: {},
-  ): Effect.Effect<
+  leaveOrganization(input: {}): Effect.Effect<
     {},
-    AccessDeniedException | AccountNotFoundException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | MasterCannotLeaveOrganizationException | ServiceException | TooManyRequestsException | CommonAwsError
-  >;
-  listAWSServiceAccessForOrganization(
-    input: ListAWSServiceAccessForOrganizationRequest,
-  ): Effect.Effect<
-    ListAWSServiceAccessForOrganizationResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AccountNotFoundException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | MasterCannotLeaveOrganizationException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listAccounts(
     input: ListAccountsRequest,
   ): Effect.Effect<
     ListAccountsResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listAccountsForParent(
     input: ListAccountsForParentRequest,
   ): Effect.Effect<
     ListAccountsForParentResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ParentNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ParentNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  listAWSServiceAccessForOrganization(
+    input: ListAWSServiceAccessForOrganizationRequest,
+  ): Effect.Effect<
+    ListAWSServiceAccessForOrganizationResponse,
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   listChildren(
     input: ListChildrenRequest,
   ): Effect.Effect<
     ListChildrenResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ParentNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ParentNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listCreateAccountStatus(
     input: ListCreateAccountStatusRequest,
   ): Effect.Effect<
     ListCreateAccountStatusResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   listDelegatedAdministrators(
     input: ListDelegatedAdministratorsRequest,
   ): Effect.Effect<
     ListDelegatedAdministratorsResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   listDelegatedServicesForAccount(
     input: ListDelegatedServicesForAccountRequest,
   ): Effect.Effect<
     ListDelegatedServicesForAccountResponse,
-    AccessDeniedException | AccountNotFoundException | AccountNotRegisteredException | AWSOrganizationsNotInUseException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AccountNotFoundException
+    | AccountNotRegisteredException
+    | AWSOrganizationsNotInUseException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   listHandshakesForAccount(
     input: ListHandshakesForAccountRequest,
   ): Effect.Effect<
     ListHandshakesForAccountResponse,
-    AccessDeniedException | ConcurrentModificationException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | ConcurrentModificationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listHandshakesForOrganization(
     input: ListHandshakesForOrganizationRequest,
   ): Effect.Effect<
     ListHandshakesForOrganizationResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listOrganizationalUnitsForParent(
     input: ListOrganizationalUnitsForParentRequest,
   ): Effect.Effect<
     ListOrganizationalUnitsForParentResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ParentNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ParentNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listParents(
     input: ListParentsRequest,
   ): Effect.Effect<
     ListParentsResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ChildNotFoundException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ChildNotFoundException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listPolicies(
     input: ListPoliciesRequest,
   ): Effect.Effect<
     ListPoliciesResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   listPoliciesForTarget(
     input: ListPoliciesForTargetRequest,
   ): Effect.Effect<
     ListPoliciesForTargetResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TargetNotFoundException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   listRoots(
     input: ListRootsRequest,
   ): Effect.Effect<
     ListRootsResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | ServiceException | TargetNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTargetsForPolicy(
     input: ListTargetsForPolicyRequest,
   ): Effect.Effect<
     ListTargetsForPolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | InvalidInputException | PolicyNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | InvalidInputException
+    | PolicyNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   moveAccount(
     input: MoveAccountRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AccountNotFoundException | AWSOrganizationsNotInUseException | ConcurrentModificationException | DestinationParentNotFoundException | DuplicateAccountException | InvalidInputException | ServiceException | SourceParentNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AccountNotFoundException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | DestinationParentNotFoundException
+    | DuplicateAccountException
+    | InvalidInputException
+    | ServiceException
+    | SourceParentNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putResourcePolicy(
     input: PutResourcePolicyRequest,
   ): Effect.Effect<
     PutResourcePolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   registerDelegatedAdministrator(
     input: RegisterDelegatedAdministratorRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AccountAlreadyRegisteredException | AccountNotFoundException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AccountAlreadyRegisteredException
+    | AccountNotFoundException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
   removeAccountFromOrganization(
     input: RemoveAccountFromOrganizationRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AccountNotFoundException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | MasterCannotLeaveOrganizationException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AccountNotFoundException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | MasterCannotLeaveOrganizationException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TargetNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | InvalidInputException | ServiceException | TargetNotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TargetNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateOrganizationalUnit(
     input: UpdateOrganizationalUnitRequest,
   ): Effect.Effect<
     UpdateOrganizationalUnitResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | DuplicateOrganizationalUnitException | InvalidInputException | OrganizationalUnitNotFoundException | ServiceException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | DuplicateOrganizationalUnitException
+    | InvalidInputException
+    | OrganizationalUnitNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updatePolicy(
     input: UpdatePolicyRequest,
   ): Effect.Effect<
     UpdatePolicyResponse,
-    AccessDeniedException | AWSOrganizationsNotInUseException | ConcurrentModificationException | ConstraintViolationException | DuplicatePolicyException | InvalidInputException | MalformedPolicyDocumentException | PolicyChangesInProgressException | PolicyNotFoundException | ServiceException | TooManyRequestsException | UnsupportedAPIEndpointException | CommonAwsError
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | DuplicatePolicyException
+    | InvalidInputException
+    | MalformedPolicyDocumentException
+    | PolicyChangesInProgressException
+    | PolicyNotFoundException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
+    | CommonAwsError
   >;
 }
 
@@ -353,7 +787,8 @@ export declare class AccessDeniedForDependencyException extends Data.TaggedError
   readonly Message?: string;
   readonly Reason?: AccessDeniedForDependencyExceptionReason;
 }> {}
-export type AccessDeniedForDependencyExceptionReason = "ACCESS_DENIED_DURING_CREATE_SERVICE_LINKED_ROLE";
+export type AccessDeniedForDependencyExceptionReason =
+  "ACCESS_DENIED_DURING_CREATE_SERVICE_LINKED_ROLE";
 export interface Account {
   Id?: string;
   Arn?: string;
@@ -397,7 +832,11 @@ export declare class AccountOwnerNotVerifiedException extends Data.TaggedError(
 }> {}
 export type Accounts = Array<Account>;
 export type AccountStatus = "ACTIVE" | "SUSPENDED" | "PENDING_CLOSURE";
-export type ActionType = "INVITE_ACCOUNT_TO_ORGANIZATION" | "ENABLE_ALL_FEATURES" | "APPROVE_ALL_FEATURES" | "ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE";
+export type ActionType =
+  | "INVITE_ACCOUNT_TO_ORGANIZATION"
+  | "ENABLE_ALL_FEATURES"
+  | "APPROVE_ALL_FEATURES"
+  | "ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE";
 export declare class AlreadyInOrganizationException extends Data.TaggedError(
   "AlreadyInOrganizationException",
 )<{
@@ -452,8 +891,60 @@ export declare class ConstraintViolationException extends Data.TaggedError(
   readonly Message?: string;
   readonly Reason?: ConstraintViolationExceptionReason;
 }> {}
-export type ConstraintViolationExceptionReason = "ACCOUNT_NUMBER_LIMIT_EXCEEDED" | "HANDSHAKE_RATE_LIMIT_EXCEEDED" | "OU_NUMBER_LIMIT_EXCEEDED" | "OU_DEPTH_LIMIT_EXCEEDED" | "POLICY_NUMBER_LIMIT_EXCEEDED" | "POLICY_CONTENT_LIMIT_EXCEEDED" | "MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED" | "MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED" | "ACCOUNT_CANNOT_LEAVE_ORGANIZATION" | "ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA" | "ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION" | "MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED" | "MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED" | "ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED" | "MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE" | "MASTER_ACCOUNT_MISSING_CONTACT_INFO" | "MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED" | "ORGANIZATION_NOT_IN_ALL_FEATURES_MODE" | "CREATE_ORGANIZATION_IN_BILLING_MODE_UNSUPPORTED_REGION" | "EMAIL_VERIFICATION_CODE_EXPIRED" | "WAIT_PERIOD_ACTIVE" | "MAX_TAG_LIMIT_EXCEEDED" | "TAG_POLICY_VIOLATION" | "MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED" | "CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR" | "CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG" | "DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE" | "POLICY_TYPE_ENABLED_FOR_THIS_SERVICE" | "MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE" | "CANNOT_CLOSE_MANAGEMENT_ACCOUNT" | "CLOSE_ACCOUNT_QUOTA_EXCEEDED" | "CLOSE_ACCOUNT_REQUESTS_LIMIT_EXCEEDED" | "SERVICE_ACCESS_NOT_ENABLED" | "INVALID_PAYMENT_INSTRUMENT" | "ACCOUNT_CREATION_NOT_COMPLETE" | "CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR" | "ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED";
-export type CreateAccountFailureReason = "ACCOUNT_LIMIT_EXCEEDED" | "EMAIL_ALREADY_EXISTS" | "INVALID_ADDRESS" | "INVALID_EMAIL" | "CONCURRENT_ACCOUNT_MODIFICATION" | "INTERNAL_FAILURE" | "GOVCLOUD_ACCOUNT_ALREADY_EXISTS" | "MISSING_BUSINESS_VALIDATION" | "FAILED_BUSINESS_VALIDATION" | "PENDING_BUSINESS_VALIDATIONv" | "INVALID_IDENTITY_FOR_BUSINESS_VALIDATION" | "UNKNOWN_BUSINESS_VALIDATION" | "MISSING_PAYMENT_INSTRUMENT" | "INVALID_PAYMENT_INSTRUMENT" | "UPDATE_EXISTING_RESOURCE_POLICY_WITH_TAGS_NOT_SUPPORTED";
+export type ConstraintViolationExceptionReason =
+  | "ACCOUNT_NUMBER_LIMIT_EXCEEDED"
+  | "HANDSHAKE_RATE_LIMIT_EXCEEDED"
+  | "OU_NUMBER_LIMIT_EXCEEDED"
+  | "OU_DEPTH_LIMIT_EXCEEDED"
+  | "POLICY_NUMBER_LIMIT_EXCEEDED"
+  | "POLICY_CONTENT_LIMIT_EXCEEDED"
+  | "MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED"
+  | "MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED"
+  | "ACCOUNT_CANNOT_LEAVE_ORGANIZATION"
+  | "ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA"
+  | "ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION"
+  | "MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED"
+  | "MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED"
+  | "ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED"
+  | "MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE"
+  | "MASTER_ACCOUNT_MISSING_CONTACT_INFO"
+  | "MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED"
+  | "ORGANIZATION_NOT_IN_ALL_FEATURES_MODE"
+  | "CREATE_ORGANIZATION_IN_BILLING_MODE_UNSUPPORTED_REGION"
+  | "EMAIL_VERIFICATION_CODE_EXPIRED"
+  | "WAIT_PERIOD_ACTIVE"
+  | "MAX_TAG_LIMIT_EXCEEDED"
+  | "TAG_POLICY_VIOLATION"
+  | "MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED"
+  | "CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR"
+  | "CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG"
+  | "DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE"
+  | "POLICY_TYPE_ENABLED_FOR_THIS_SERVICE"
+  | "MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE"
+  | "CANNOT_CLOSE_MANAGEMENT_ACCOUNT"
+  | "CLOSE_ACCOUNT_QUOTA_EXCEEDED"
+  | "CLOSE_ACCOUNT_REQUESTS_LIMIT_EXCEEDED"
+  | "SERVICE_ACCESS_NOT_ENABLED"
+  | "INVALID_PAYMENT_INSTRUMENT"
+  | "ACCOUNT_CREATION_NOT_COMPLETE"
+  | "CANNOT_REGISTER_SUSPENDED_ACCOUNT_AS_DELEGATED_ADMINISTRATOR"
+  | "ALL_FEATURES_MIGRATION_ORGANIZATION_SIZE_LIMIT_EXCEEDED";
+export type CreateAccountFailureReason =
+  | "ACCOUNT_LIMIT_EXCEEDED"
+  | "EMAIL_ALREADY_EXISTS"
+  | "INVALID_ADDRESS"
+  | "INVALID_EMAIL"
+  | "CONCURRENT_ACCOUNT_MODIFICATION"
+  | "INTERNAL_FAILURE"
+  | "GOVCLOUD_ACCOUNT_ALREADY_EXISTS"
+  | "MISSING_BUSINESS_VALIDATION"
+  | "FAILED_BUSINESS_VALIDATION"
+  | "PENDING_BUSINESS_VALIDATIONv"
+  | "INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"
+  | "UNKNOWN_BUSINESS_VALIDATION"
+  | "MISSING_PAYMENT_INSTRUMENT"
+  | "INVALID_PAYMENT_INSTRUMENT"
+  | "UPDATE_EXISTING_RESOURCE_POLICY_WITH_TAGS_NOT_SUPPORTED";
 export type CreateAccountName = string;
 
 export interface CreateAccountRequest {
@@ -650,11 +1141,16 @@ export declare class EffectivePolicyNotFoundException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type EffectivePolicyType = "TAG_POLICY" | "BACKUP_POLICY" | "AISERVICES_OPT_OUT_POLICY" | "CHATBOT_POLICY" | "DECLARATIVE_POLICY_EC2" | "SECURITYHUB_POLICY";
+export type EffectivePolicyType =
+  | "TAG_POLICY"
+  | "BACKUP_POLICY"
+  | "AISERVICES_OPT_OUT_POLICY"
+  | "CHATBOT_POLICY"
+  | "DECLARATIVE_POLICY_EC2"
+  | "SECURITYHUB_POLICY";
 export type Email = string;
 
-export interface EnableAllFeaturesRequest {
-}
+export interface EnableAllFeaturesRequest {}
 export interface EnableAllFeaturesResponse {
   Handshake?: Handshake;
 }
@@ -707,7 +1203,17 @@ export declare class HandshakeConstraintViolationException extends Data.TaggedEr
   readonly Message?: string;
   readonly Reason?: HandshakeConstraintViolationExceptionReason;
 }> {}
-export type HandshakeConstraintViolationExceptionReason = "ACCOUNT_NUMBER_LIMIT_EXCEEDED" | "HANDSHAKE_RATE_LIMIT_EXCEEDED" | "ALREADY_IN_AN_ORGANIZATION" | "ORGANIZATION_ALREADY_HAS_ALL_FEATURES" | "ORGANIZATION_IS_ALREADY_PENDING_ALL_FEATURES_MIGRATION" | "INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES" | "PAYMENT_INSTRUMENT_REQUIRED" | "ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD" | "ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED" | "MANAGEMENT_ACCOUNT_EMAIL_NOT_VERIFIED";
+export type HandshakeConstraintViolationExceptionReason =
+  | "ACCOUNT_NUMBER_LIMIT_EXCEEDED"
+  | "HANDSHAKE_RATE_LIMIT_EXCEEDED"
+  | "ALREADY_IN_AN_ORGANIZATION"
+  | "ORGANIZATION_ALREADY_HAS_ALL_FEATURES"
+  | "ORGANIZATION_IS_ALREADY_PENDING_ALL_FEATURES_MIGRATION"
+  | "INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES"
+  | "PAYMENT_INSTRUMENT_REQUIRED"
+  | "ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD"
+  | "ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED"
+  | "MANAGEMENT_ACCOUNT_EMAIL_NOT_VERIFIED";
 export interface HandshakeFilter {
   ActionType?: ActionType;
   ParentHandshakeId?: string;
@@ -735,11 +1241,25 @@ export interface HandshakeResource {
   Resources?: Array<HandshakeResource>;
 }
 export type HandshakeResources = Array<HandshakeResource>;
-export type HandshakeResourceType = "ACCOUNT" | "ORGANIZATION" | "ORGANIZATION_FEATURE_SET" | "EMAIL" | "MASTER_EMAIL" | "MASTER_NAME" | "NOTES" | "PARENT_HANDSHAKE";
+export type HandshakeResourceType =
+  | "ACCOUNT"
+  | "ORGANIZATION"
+  | "ORGANIZATION_FEATURE_SET"
+  | "EMAIL"
+  | "MASTER_EMAIL"
+  | "MASTER_NAME"
+  | "NOTES"
+  | "PARENT_HANDSHAKE";
 export type HandshakeResourceValue = string;
 
 export type Handshakes = Array<Handshake>;
-export type HandshakeState = "REQUESTED" | "OPEN" | "CANCELED" | "ACCEPTED" | "DECLINED" | "EXPIRED";
+export type HandshakeState =
+  | "REQUESTED"
+  | "OPEN"
+  | "CANCELED"
+  | "ACCEPTED"
+  | "DECLINED"
+  | "EXPIRED";
 export type IAMUserAccessToBilling = "ALLOW" | "DENY";
 export declare class InvalidHandshakeTransitionException extends Data.TaggedError(
   "InvalidHandshakeTransitionException",
@@ -752,7 +1272,37 @@ export declare class InvalidInputException extends Data.TaggedError(
   readonly Message?: string;
   readonly Reason?: InvalidInputExceptionReason;
 }> {}
-export type InvalidInputExceptionReason = "INVALID_PARTY_TYPE_TARGET" | "INVALID_SYNTAX_ORGANIZATION" | "INVALID_SYNTAX_POLICY" | "INVALID_ENUM" | "INVALID_ENUM_POLICY_TYPE" | "INVALID_LIST_MEMBER" | "MAX_LENGTH_EXCEEDED" | "MAX_VALUE_EXCEEDED" | "MIN_LENGTH_EXCEEDED" | "MIN_VALUE_EXCEEDED" | "IMMUTABLE_POLICY" | "INVALID_PATTERN" | "INVALID_PATTERN_TARGET_ID" | "INPUT_REQUIRED" | "INVALID_PAGINATION_TOKEN" | "MAX_FILTER_LIMIT_EXCEEDED" | "MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS" | "INVALID_FULL_NAME_TARGET" | "UNRECOGNIZED_SERVICE_PRINCIPAL" | "INVALID_ROLE_NAME" | "INVALID_SYSTEM_TAGS_PARAMETER" | "DUPLICATE_TAG_KEY" | "TARGET_NOT_SUPPORTED" | "INVALID_EMAIL_ADDRESS_TARGET" | "INVALID_RESOURCE_POLICY_JSON" | "INVALID_PRINCIPAL" | "UNSUPPORTED_ACTION_IN_RESOURCE_POLICY" | "UNSUPPORTED_POLICY_TYPE_IN_RESOURCE_POLICY" | "UNSUPPORTED_RESOURCE_IN_RESOURCE_POLICY" | "NON_DETACHABLE_POLICY";
+export type InvalidInputExceptionReason =
+  | "INVALID_PARTY_TYPE_TARGET"
+  | "INVALID_SYNTAX_ORGANIZATION"
+  | "INVALID_SYNTAX_POLICY"
+  | "INVALID_ENUM"
+  | "INVALID_ENUM_POLICY_TYPE"
+  | "INVALID_LIST_MEMBER"
+  | "MAX_LENGTH_EXCEEDED"
+  | "MAX_VALUE_EXCEEDED"
+  | "MIN_LENGTH_EXCEEDED"
+  | "MIN_VALUE_EXCEEDED"
+  | "IMMUTABLE_POLICY"
+  | "INVALID_PATTERN"
+  | "INVALID_PATTERN_TARGET_ID"
+  | "INPUT_REQUIRED"
+  | "INVALID_PAGINATION_TOKEN"
+  | "MAX_FILTER_LIMIT_EXCEEDED"
+  | "MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS"
+  | "INVALID_FULL_NAME_TARGET"
+  | "UNRECOGNIZED_SERVICE_PRINCIPAL"
+  | "INVALID_ROLE_NAME"
+  | "INVALID_SYSTEM_TAGS_PARAMETER"
+  | "DUPLICATE_TAG_KEY"
+  | "TARGET_NOT_SUPPORTED"
+  | "INVALID_EMAIL_ADDRESS_TARGET"
+  | "INVALID_RESOURCE_POLICY_JSON"
+  | "INVALID_PRINCIPAL"
+  | "UNSUPPORTED_ACTION_IN_RESOURCE_POLICY"
+  | "UNSUPPORTED_POLICY_TYPE_IN_RESOURCE_POLICY"
+  | "UNSUPPORTED_RESOURCE_IN_RESOURCE_POLICY"
+  | "NON_DETACHABLE_POLICY";
 export interface InviteAccountToOrganizationRequest {
   Target: HandshakeParty;
   Notes?: string;
@@ -1028,7 +1578,15 @@ export interface PolicyTargetSummary {
   Name?: string;
   Type?: TargetType;
 }
-export type PolicyType = "SERVICE_CONTROL_POLICY" | "RESOURCE_CONTROL_POLICY" | "TAG_POLICY" | "BACKUP_POLICY" | "AISERVICES_OPT_OUT_POLICY" | "CHATBOT_POLICY" | "DECLARATIVE_POLICY_EC2" | "SECURITYHUB_POLICY";
+export type PolicyType =
+  | "SERVICE_CONTROL_POLICY"
+  | "RESOURCE_CONTROL_POLICY"
+  | "TAG_POLICY"
+  | "BACKUP_POLICY"
+  | "AISERVICES_OPT_OUT_POLICY"
+  | "CHATBOT_POLICY"
+  | "DECLARATIVE_POLICY_EC2"
+  | "SECURITYHUB_POLICY";
 export declare class PolicyTypeAlreadyEnabledException extends Data.TaggedError(
   "PolicyTypeAlreadyEnabledException",
 )<{
@@ -1577,21 +2135,6 @@ export declare namespace DisablePolicyType {
     | CommonAwsError;
 }
 
-export declare namespace EnableAWSServiceAccess {
-  export type Input = EnableAWSServiceAccessRequest;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | AWSOrganizationsNotInUseException
-    | ConcurrentModificationException
-    | ConstraintViolationException
-    | InvalidInputException
-    | ServiceException
-    | TooManyRequestsException
-    | UnsupportedAPIEndpointException
-    | CommonAwsError;
-}
-
 export declare namespace EnableAllFeatures {
   export type Input = EnableAllFeaturesRequest;
   export type Output = EnableAllFeaturesResponse;
@@ -1604,6 +2147,21 @@ export declare namespace EnableAllFeatures {
     | InvalidInputException
     | ServiceException
     | TooManyRequestsException
+    | CommonAwsError;
+}
+
+export declare namespace EnableAWSServiceAccess {
+  export type Input = EnableAWSServiceAccessRequest;
+  export type Output = {};
+  export type Error =
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConcurrentModificationException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
     | CommonAwsError;
 }
 
@@ -1660,20 +2218,6 @@ export declare namespace LeaveOrganization {
     | CommonAwsError;
 }
 
-export declare namespace ListAWSServiceAccessForOrganization {
-  export type Input = ListAWSServiceAccessForOrganizationRequest;
-  export type Output = ListAWSServiceAccessForOrganizationResponse;
-  export type Error =
-    | AccessDeniedException
-    | AWSOrganizationsNotInUseException
-    | ConstraintViolationException
-    | InvalidInputException
-    | ServiceException
-    | TooManyRequestsException
-    | UnsupportedAPIEndpointException
-    | CommonAwsError;
-}
-
 export declare namespace ListAccounts {
   export type Input = ListAccountsRequest;
   export type Output = ListAccountsResponse;
@@ -1696,6 +2240,20 @@ export declare namespace ListAccountsForParent {
     | ParentNotFoundException
     | ServiceException
     | TooManyRequestsException
+    | CommonAwsError;
+}
+
+export declare namespace ListAWSServiceAccessForOrganization {
+  export type Input = ListAWSServiceAccessForOrganizationRequest;
+  export type Output = ListAWSServiceAccessForOrganizationResponse;
+  export type Error =
+    | AccessDeniedException
+    | AWSOrganizationsNotInUseException
+    | ConstraintViolationException
+    | InvalidInputException
+    | ServiceException
+    | TooManyRequestsException
+    | UnsupportedAPIEndpointException
     | CommonAwsError;
 }
 
@@ -2000,4 +2558,3 @@ export declare namespace UpdatePolicy {
     | UnsupportedAPIEndpointException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.ecr#AccountSettingName": {
       "type": "string",
@@ -14,6 +43,155 @@
     },
     "com.amazonaws.ecr#AmazonEC2ContainerRegistry_V20150921": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ecr#BatchCheckLayerAvailability"
+        },
+        {
+          "target": "com.amazonaws.ecr#BatchDeleteImage"
+        },
+        {
+          "target": "com.amazonaws.ecr#BatchGetImage"
+        },
+        {
+          "target": "com.amazonaws.ecr#BatchGetRepositoryScanningConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ecr#CompleteLayerUpload"
+        },
+        {
+          "target": "com.amazonaws.ecr#CreatePullThroughCacheRule"
+        },
+        {
+          "target": "com.amazonaws.ecr#CreateRepository"
+        },
+        {
+          "target": "com.amazonaws.ecr#CreateRepositoryCreationTemplate"
+        },
+        {
+          "target": "com.amazonaws.ecr#DeleteLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#DeletePullThroughCacheRule"
+        },
+        {
+          "target": "com.amazonaws.ecr#DeleteRegistryPolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#DeleteRepository"
+        },
+        {
+          "target": "com.amazonaws.ecr#DeleteRepositoryCreationTemplate"
+        },
+        {
+          "target": "com.amazonaws.ecr#DeleteRepositoryPolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribeImageReplicationStatus"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribeImages"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribeImageScanFindings"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribePullThroughCacheRules"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribeRegistry"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribeRepositories"
+        },
+        {
+          "target": "com.amazonaws.ecr#DescribeRepositoryCreationTemplates"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetAccountSetting"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetAuthorizationToken"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetDownloadUrlForLayer"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetLifecyclePolicyPreview"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetRegistryPolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetRegistryScanningConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ecr#GetRepositoryPolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#InitiateLayerUpload"
+        },
+        {
+          "target": "com.amazonaws.ecr#ListImages"
+        },
+        {
+          "target": "com.amazonaws.ecr#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutAccountSetting"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutImage"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutImageScanningConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutImageTagMutability"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutRegistryPolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutRegistryScanningConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ecr#PutReplicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ecr#SetRepositoryPolicy"
+        },
+        {
+          "target": "com.amazonaws.ecr#StartImageScan"
+        },
+        {
+          "target": "com.amazonaws.ecr#StartLifecyclePolicyPreview"
+        },
+        {
+          "target": "com.amazonaws.ecr#TagResource"
+        },
+        {
+          "target": "com.amazonaws.ecr#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.ecr#UpdatePullThroughCacheRule"
+        },
+        {
+          "target": "com.amazonaws.ecr#UpdateRepositoryCreationTemplate"
+        },
+        {
+          "target": "com.amazonaws.ecr#UploadLayerPart"
+        },
+        {
+          "target": "com.amazonaws.ecr#ValidatePullThroughCacheRule"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ECR",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.polly#Alphabet": {
       "type": "string"
@@ -1195,6 +1224,35 @@
     },
     "com.amazonaws.polly#Parrot_v1": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.polly#DeleteLexicon"
+        },
+        {
+          "target": "com.amazonaws.polly#DescribeVoices"
+        },
+        {
+          "target": "com.amazonaws.polly#GetLexicon"
+        },
+        {
+          "target": "com.amazonaws.polly#GetSpeechSynthesisTask"
+        },
+        {
+          "target": "com.amazonaws.polly#ListLexicons"
+        },
+        {
+          "target": "com.amazonaws.polly#ListSpeechSynthesisTasks"
+        },
+        {
+          "target": "com.amazonaws.polly#PutLexicon"
+        },
+        {
+          "target": "com.amazonaws.polly#StartSpeechSynthesisTask"
+        },
+        {
+          "target": "com.amazonaws.polly#SynthesizeSpeech"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Polly",

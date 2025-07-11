@@ -1,7 +1,308 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.servicecatalog#AWS242ServiceCatalogService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.servicecatalog#AcceptPortfolioShare"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#AssociateBudgetWithResource"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#AssociatePrincipalWithPortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#AssociateProductWithPortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#AssociateServiceActionWithProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#AssociateTagOptionWithResource"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#BatchAssociateServiceActionWithProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#BatchDisassociateServiceActionFromProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CopyProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreateConstraint"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreatePortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreatePortfolioShare"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreateProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreateProvisionedProductPlan"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreateProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreateServiceAction"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#CreateTagOption"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeleteConstraint"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeletePortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeletePortfolioShare"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeleteProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeleteProvisionedProductPlan"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeleteProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeleteServiceAction"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DeleteTagOption"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeConstraint"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeCopyProductStatus"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribePortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribePortfolioShares"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribePortfolioShareStatus"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProductAsAdmin"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProductView"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProvisionedProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProvisionedProductPlan"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeProvisioningParameters"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeRecord"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeServiceAction"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeServiceActionExecutionParameters"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DescribeTagOption"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DisableAWSOrganizationsAccess"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DisassociateBudgetFromResource"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DisassociatePrincipalFromPortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DisassociateProductFromPortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DisassociateServiceActionFromProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#DisassociateTagOptionFromResource"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#EnableAWSOrganizationsAccess"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ExecuteProvisionedProductPlan"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ExecuteProvisionedProductServiceAction"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#GetAWSOrganizationsAccessStatus"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#GetProvisionedProductOutputs"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ImportAsProvisionedProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListAcceptedPortfolioShares"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListBudgetsForResource"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListConstraintsForPortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListLaunchPaths"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListOrganizationPortfolioAccess"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListPortfolioAccess"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListPortfolios"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListPortfoliosForProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListPrincipalsForPortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListProvisionedProductPlans"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListProvisioningArtifacts"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListProvisioningArtifactsForServiceAction"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListRecordHistory"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListResourcesForTagOption"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListServiceActions"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListServiceActionsForProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListStackInstancesForProvisionedProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ListTagOptions"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#NotifyProvisionProductEngineWorkflowResult"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#NotifyTerminateProvisionedProductEngineWorkflowResult"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#NotifyUpdateProvisionedProductEngineWorkflowResult"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ProvisionProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#RejectPortfolioShare"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#ScanProvisionedProducts"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#SearchProducts"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#SearchProductsAsAdmin"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#SearchProvisionedProducts"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#TerminateProvisionedProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateConstraint"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdatePortfolio"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdatePortfolioShare"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateProvisionedProduct"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateProvisionedProductProperties"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateProvisioningArtifact"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateServiceAction"
+        },
+        {
+          "target": "com.amazonaws.servicecatalog#UpdateTagOption"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Service Catalog",

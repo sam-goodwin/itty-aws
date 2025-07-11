@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.mq#ActionRequired": {
       "type": "structure",
@@ -3996,6 +4025,80 @@
     },
     "com.amazonaws.mq#mq": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mq#CreateBroker"
+        },
+        {
+          "target": "com.amazonaws.mq#CreateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.mq#CreateTags"
+        },
+        {
+          "target": "com.amazonaws.mq#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.mq#DeleteBroker"
+        },
+        {
+          "target": "com.amazonaws.mq#DeleteConfiguration"
+        },
+        {
+          "target": "com.amazonaws.mq#DeleteTags"
+        },
+        {
+          "target": "com.amazonaws.mq#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.mq#DescribeBroker"
+        },
+        {
+          "target": "com.amazonaws.mq#DescribeBrokerEngineTypes"
+        },
+        {
+          "target": "com.amazonaws.mq#DescribeBrokerInstanceOptions"
+        },
+        {
+          "target": "com.amazonaws.mq#DescribeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.mq#DescribeConfigurationRevision"
+        },
+        {
+          "target": "com.amazonaws.mq#DescribeUser"
+        },
+        {
+          "target": "com.amazonaws.mq#ListBrokers"
+        },
+        {
+          "target": "com.amazonaws.mq#ListConfigurationRevisions"
+        },
+        {
+          "target": "com.amazonaws.mq#ListConfigurations"
+        },
+        {
+          "target": "com.amazonaws.mq#ListTags"
+        },
+        {
+          "target": "com.amazonaws.mq#ListUsers"
+        },
+        {
+          "target": "com.amazonaws.mq#Promote"
+        },
+        {
+          "target": "com.amazonaws.mq#RebootBroker"
+        },
+        {
+          "target": "com.amazonaws.mq#UpdateBroker"
+        },
+        {
+          "target": "com.amazonaws.mq#UpdateConfiguration"
+        },
+        {
+          "target": "com.amazonaws.mq#UpdateUser"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "mq",

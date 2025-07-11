@@ -1,7 +1,50 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.migrationhubconfig#AWSMigrationHubMultiAccountService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.migrationhubconfig#CreateHomeRegionControl"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#DeleteHomeRegionControl"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#DescribeHomeRegionControls"
+        },
+        {
+          "target": "com.amazonaws.migrationhubconfig#GetHomeRegion"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MigrationHub Config",

@@ -1,12 +1,15 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSMPEntitlementService {
   getEntitlements(
     input: GetEntitlementsRequest,
   ): Effect.Effect<
     GetEntitlementsResult,
-    InternalServiceErrorException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | InternalServiceErrorException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
@@ -34,8 +37,14 @@ export type ErrorMessage = string;
 export type FilterValue = string;
 
 export type FilterValueList = Array<string>;
-export type GetEntitlementFilterName = "CUSTOMER_IDENTIFIER" | "DIMENSION" | "CUSTOMER_AWS_ACCOUNT_ID";
-export type GetEntitlementFilters = Record<GetEntitlementFilterName, Array<string>>;
+export type GetEntitlementFilterName =
+  | "CUSTOMER_IDENTIFIER"
+  | "DIMENSION"
+  | "CUSTOMER_AWS_ACCOUNT_ID";
+export type GetEntitlementFilters = Record<
+  GetEntitlementFilterName,
+  Array<string>
+>;
 export interface GetEntitlementsRequest {
   ProductCode: string;
   Filter?: Record<GetEntitlementFilterName, Array<string>>;
@@ -80,4 +89,3 @@ export declare namespace GetEntitlements {
     | ThrottlingException
     | CommonAwsError;
 }
-

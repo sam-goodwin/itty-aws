@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.keyspaces#ARN": {
       "type": "string",
@@ -1487,6 +1488,65 @@
     },
     "com.amazonaws.keyspaces#KeyspacesService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.keyspaces#CreateKeyspace"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#CreateTable"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#CreateType"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#DeleteKeyspace"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#DeleteTable"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#DeleteType"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#GetKeyspace"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#GetTable"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#GetTableAutoScalingSettings"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#GetType"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ListKeyspaces"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ListTables"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#ListTypes"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#RestoreTable"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#TagResource"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#UpdateKeyspace"
+        },
+        {
+          "target": "com.amazonaws.keyspaces#UpdateTable"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Keyspaces",

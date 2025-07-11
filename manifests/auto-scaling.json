@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.autoscaling#AcceleratorCountRequest": {
       "type": "structure",
@@ -1121,6 +1150,203 @@
     },
     "com.amazonaws.autoscaling#AutoScaling_2011_01_01": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.autoscaling#AttachInstances"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#AttachLoadBalancers"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#AttachLoadBalancerTargetGroups"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#AttachTrafficSources"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#BatchDeleteScheduledAction"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#BatchPutScheduledUpdateGroupAction"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#CancelInstanceRefresh"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#CompleteLifecycleAction"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#CreateAutoScalingGroup"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#CreateLaunchConfiguration"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#CreateOrUpdateTags"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteAutoScalingGroup"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteLaunchConfiguration"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteLifecycleHook"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteNotificationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeletePolicy"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteScheduledAction"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteTags"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DeleteWarmPool"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeAccountLimits"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeAdjustmentTypes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeAutoScalingGroups"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeAutoScalingInstances"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeAutoScalingNotificationTypes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeInstanceRefreshes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeLaunchConfigurations"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeLifecycleHooks"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeLifecycleHookTypes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeLoadBalancers"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeLoadBalancerTargetGroups"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeMetricCollectionTypes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeNotificationConfigurations"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribePolicies"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeScalingActivities"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeScalingProcessTypes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeScheduledActions"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeTags"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeTerminationPolicyTypes"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeTrafficSources"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DescribeWarmPool"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DetachInstances"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DetachLoadBalancers"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DetachLoadBalancerTargetGroups"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DetachTrafficSources"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#DisableMetricsCollection"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#EnableMetricsCollection"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#EnterStandby"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ExecutePolicy"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ExitStandby"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#GetPredictiveScalingForecast"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#PutLifecycleHook"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#PutNotificationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#PutScalingPolicy"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#PutScheduledUpdateGroupAction"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#PutWarmPool"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#RecordLifecycleActionHeartbeat"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#ResumeProcesses"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#RollbackInstanceRefresh"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#SetDesiredCapacity"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#SetInstanceHealth"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#SetInstanceProtection"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#StartInstanceRefresh"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#SuspendProcesses"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#TerminateInstanceInAutoScalingGroup"
+        },
+        {
+          "target": "com.amazonaws.autoscaling#UpdateAutoScalingGroup"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Auto Scaling",

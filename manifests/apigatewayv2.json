@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.apigatewayv2#AccessDeniedException": {
       "type": "structure",
@@ -172,6 +201,239 @@
     },
     "com.amazonaws.apigatewayv2#ApiGatewayV2": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateApiMapping"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateModel"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateRoute"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateRouteResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateRoutingRule"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateStage"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#CreateVpcLink"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteAccessLogSettings"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteApiMapping"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteCorsConfiguration"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteModel"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteRoute"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteRouteRequestParameter"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteRouteResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteRouteSettings"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteRoutingRule"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteStage"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#DeleteVpcLink"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ExportApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetApiMapping"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetApiMappings"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetApis"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetAuthorizers"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetDeployments"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetDomainNames"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetIntegrationResponses"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetIntegrations"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetModel"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetModels"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetModelTemplate"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetRoute"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetRouteResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetRouteResponses"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetRoutes"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetRoutingRule"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetStage"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetStages"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetTags"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetVpcLink"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#GetVpcLinks"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ImportApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ListRoutingRules"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#PutRoutingRule"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ReimportApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#ResetAuthorizersCache"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#TagResource"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateApi"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateApiMapping"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateModel"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateRoute"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateRouteResponse"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateStage"
+        },
+        {
+          "target": "com.amazonaws.apigatewayv2#UpdateVpcLink"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ApiGatewayV2",

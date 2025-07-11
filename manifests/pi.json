@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.pi#AcceptLanguage": {
       "type": "enum",
@@ -1870,6 +1899,47 @@
     },
     "com.amazonaws.pi#PerformanceInsightsv20180227": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.pi#CreatePerformanceAnalysisReport"
+        },
+        {
+          "target": "com.amazonaws.pi#DeletePerformanceAnalysisReport"
+        },
+        {
+          "target": "com.amazonaws.pi#DescribeDimensionKeys"
+        },
+        {
+          "target": "com.amazonaws.pi#GetDimensionKeyDetails"
+        },
+        {
+          "target": "com.amazonaws.pi#GetPerformanceAnalysisReport"
+        },
+        {
+          "target": "com.amazonaws.pi#GetResourceMetadata"
+        },
+        {
+          "target": "com.amazonaws.pi#GetResourceMetrics"
+        },
+        {
+          "target": "com.amazonaws.pi#ListAvailableResourceDimensions"
+        },
+        {
+          "target": "com.amazonaws.pi#ListAvailableResourceMetrics"
+        },
+        {
+          "target": "com.amazonaws.pi#ListPerformanceAnalysisReports"
+        },
+        {
+          "target": "com.amazonaws.pi#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.pi#TagResource"
+        },
+        {
+          "target": "com.amazonaws.pi#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "PI",

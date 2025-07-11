@@ -1,402 +1,785 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSKendraFrontendService {
   associateEntitiesToExperience(
     input: AssociateEntitiesToExperienceRequest,
   ): Effect.Effect<
     AssociateEntitiesToExperienceResponse,
-    AccessDeniedException | InternalServerException | ResourceAlreadyExistException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceAlreadyExistException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   associatePersonasToEntities(
     input: AssociatePersonasToEntitiesRequest,
   ): Effect.Effect<
     AssociatePersonasToEntitiesResponse,
-    AccessDeniedException | InternalServerException | ResourceAlreadyExistException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceAlreadyExistException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   batchDeleteDocument(
     input: BatchDeleteDocumentRequest,
   ): Effect.Effect<
     BatchDeleteDocumentResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   batchDeleteFeaturedResultsSet(
     input: BatchDeleteFeaturedResultsSetRequest,
   ): Effect.Effect<
     BatchDeleteFeaturedResultsSetResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   batchGetDocumentStatus(
     input: BatchGetDocumentStatusRequest,
   ): Effect.Effect<
     BatchGetDocumentStatusResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   batchPutDocument(
     input: BatchPutDocumentRequest,
   ): Effect.Effect<
     BatchPutDocumentResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   clearQuerySuggestions(
     input: ClearQuerySuggestionsRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createAccessControlConfiguration(
     input: CreateAccessControlConfigurationRequest,
   ): Effect.Effect<
     CreateAccessControlConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createDataSource(
     input: CreateDataSourceRequest,
   ): Effect.Effect<
     CreateDataSourceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceAlreadyExistException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceAlreadyExistException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createExperience(
     input: CreateExperienceRequest,
   ): Effect.Effect<
     CreateExperienceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createFaq(
     input: CreateFaqRequest,
   ): Effect.Effect<
     CreateFaqResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createFeaturedResultsSet(
     input: CreateFeaturedResultsSetRequest,
   ): Effect.Effect<
     CreateFeaturedResultsSetResponse,
-    AccessDeniedException | ConflictException | FeaturedResultsConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | FeaturedResultsConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createIndex(
     input: CreateIndexRequest,
   ): Effect.Effect<
     CreateIndexResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceAlreadyExistException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceAlreadyExistException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createQuerySuggestionsBlockList(
     input: CreateQuerySuggestionsBlockListRequest,
   ): Effect.Effect<
     CreateQuerySuggestionsBlockListResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createThesaurus(
     input: CreateThesaurusRequest,
   ): Effect.Effect<
     CreateThesaurusResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteAccessControlConfiguration(
     input: DeleteAccessControlConfigurationRequest,
   ): Effect.Effect<
     DeleteAccessControlConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteDataSource(
     input: DeleteDataSourceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteExperience(
     input: DeleteExperienceRequest,
   ): Effect.Effect<
     DeleteExperienceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteFaq(
     input: DeleteFaqRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteIndex(
     input: DeleteIndexRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deletePrincipalMapping(
     input: DeletePrincipalMappingRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteQuerySuggestionsBlockList(
     input: DeleteQuerySuggestionsBlockListRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteThesaurus(
     input: DeleteThesaurusRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeAccessControlConfiguration(
     input: DescribeAccessControlConfigurationRequest,
   ): Effect.Effect<
     DescribeAccessControlConfigurationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeDataSource(
     input: DescribeDataSourceRequest,
   ): Effect.Effect<
     DescribeDataSourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeExperience(
     input: DescribeExperienceRequest,
   ): Effect.Effect<
     DescribeExperienceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeFaq(
     input: DescribeFaqRequest,
   ): Effect.Effect<
     DescribeFaqResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeFeaturedResultsSet(
     input: DescribeFeaturedResultsSetRequest,
   ): Effect.Effect<
     DescribeFeaturedResultsSetResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeIndex(
     input: DescribeIndexRequest,
   ): Effect.Effect<
     DescribeIndexResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describePrincipalMapping(
     input: DescribePrincipalMappingRequest,
   ): Effect.Effect<
     DescribePrincipalMappingResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeQuerySuggestionsBlockList(
     input: DescribeQuerySuggestionsBlockListRequest,
   ): Effect.Effect<
     DescribeQuerySuggestionsBlockListResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeQuerySuggestionsConfig(
     input: DescribeQuerySuggestionsConfigRequest,
   ): Effect.Effect<
     DescribeQuerySuggestionsConfigResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   describeThesaurus(
     input: DescribeThesaurusRequest,
   ): Effect.Effect<
     DescribeThesaurusResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   disassociateEntitiesFromExperience(
     input: DisassociateEntitiesFromExperienceRequest,
   ): Effect.Effect<
     DisassociateEntitiesFromExperienceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   disassociatePersonasFromEntities(
     input: DisassociatePersonasFromEntitiesRequest,
   ): Effect.Effect<
     DisassociatePersonasFromEntitiesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getQuerySuggestions(
     input: GetQuerySuggestionsRequest,
   ): Effect.Effect<
     GetQuerySuggestionsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getSnapshots(
     input: GetSnapshotsRequest,
   ): Effect.Effect<
     GetSnapshotsResponse,
-    AccessDeniedException | InternalServerException | InvalidRequestException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAccessControlConfigurations(
     input: ListAccessControlConfigurationsRequest,
   ): Effect.Effect<
     ListAccessControlConfigurationsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listDataSourceSyncJobs(
-    input: ListDataSourceSyncJobsRequest,
-  ): Effect.Effect<
-    ListDataSourceSyncJobsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listDataSources(
     input: ListDataSourcesRequest,
   ): Effect.Effect<
     ListDataSourcesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
+  >;
+  listDataSourceSyncJobs(
+    input: ListDataSourceSyncJobsRequest,
+  ): Effect.Effect<
+    ListDataSourceSyncJobsResponse,
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listEntityPersonas(
     input: ListEntityPersonasRequest,
   ): Effect.Effect<
     ListEntityPersonasResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listExperienceEntities(
     input: ListExperienceEntitiesRequest,
   ): Effect.Effect<
     ListExperienceEntitiesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listExperiences(
     input: ListExperiencesRequest,
   ): Effect.Effect<
     ListExperiencesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFaqs(
     input: ListFaqsRequest,
   ): Effect.Effect<
     ListFaqsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFeaturedResultsSets(
     input: ListFeaturedResultsSetsRequest,
   ): Effect.Effect<
     ListFeaturedResultsSetsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listGroupsOlderThanOrderingId(
     input: ListGroupsOlderThanOrderingIdRequest,
   ): Effect.Effect<
     ListGroupsOlderThanOrderingIdResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listIndices(
     input: ListIndicesRequest,
   ): Effect.Effect<
     ListIndicesResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listQuerySuggestionsBlockLists(
     input: ListQuerySuggestionsBlockListsRequest,
   ): Effect.Effect<
     ListQuerySuggestionsBlockListsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listThesauri(
     input: ListThesauriRequest,
   ): Effect.Effect<
     ListThesauriResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putPrincipalMapping(
     input: PutPrincipalMappingRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   query(
     input: QueryRequest,
   ): Effect.Effect<
     QueryResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   retrieve(
     input: RetrieveRequest,
   ): Effect.Effect<
     RetrieveResult,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   startDataSourceSyncJob(
     input: StartDataSourceSyncJobRequest,
   ): Effect.Effect<
     StartDataSourceSyncJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceInUseException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   stopDataSourceSyncJob(
     input: StopDataSourceSyncJobRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   submitFeedback(
     input: SubmitFeedbackRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ResourceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ResourceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceUnavailableException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceUnavailableException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateAccessControlConfiguration(
     input: UpdateAccessControlConfigurationRequest,
   ): Effect.Effect<
     UpdateAccessControlConfigurationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateDataSource(
     input: UpdateDataSourceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateExperience(
     input: UpdateExperienceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateFeaturedResultsSet(
     input: UpdateFeaturedResultsSetRequest,
   ): Effect.Effect<
     UpdateFeaturedResultsSetResponse,
-    AccessDeniedException | FeaturedResultsConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FeaturedResultsConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateIndex(
     input: UpdateIndexRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateQuerySuggestionsBlockList(
     input: UpdateQuerySuggestionsBlockListRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateQuerySuggestionsConfig(
     input: UpdateQuerySuggestionsConfigRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateThesaurus(
     input: UpdateThesaurusRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -409,7 +792,8 @@ export type AccessControlConfigurationName = string;
 export interface AccessControlConfigurationSummary {
   Id: string;
 }
-export type AccessControlConfigurationSummaryList = Array<AccessControlConfigurationSummary>;
+export type AccessControlConfigurationSummaryList =
+  Array<AccessControlConfigurationSummary>;
 export interface AccessControlListConfiguration {
   KeyPath?: string;
 }
@@ -503,7 +887,8 @@ export interface BasicAuthenticationConfiguration {
   Port: number;
   Credentials: string;
 }
-export type BasicAuthenticationConfigurationList = Array<BasicAuthenticationConfiguration>;
+export type BasicAuthenticationConfigurationList =
+  Array<BasicAuthenticationConfiguration>;
 export interface BatchDeleteDocumentRequest {
   IndexId: string;
   DocumentIdList: Array<string>;
@@ -518,13 +903,15 @@ export interface BatchDeleteDocumentResponseFailedDocument {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export type BatchDeleteDocumentResponseFailedDocuments = Array<BatchDeleteDocumentResponseFailedDocument>;
+export type BatchDeleteDocumentResponseFailedDocuments =
+  Array<BatchDeleteDocumentResponseFailedDocument>;
 export interface BatchDeleteFeaturedResultsSetError {
   Id: string;
   ErrorCode: ErrorCode;
   ErrorMessage: string;
 }
-export type BatchDeleteFeaturedResultsSetErrors = Array<BatchDeleteFeaturedResultsSetError>;
+export type BatchDeleteFeaturedResultsSetErrors =
+  Array<BatchDeleteFeaturedResultsSetError>;
 export interface BatchDeleteFeaturedResultsSetRequest {
   IndexId: string;
   FeaturedResultsSetIds: Array<string>;
@@ -546,7 +933,8 @@ export interface BatchGetDocumentStatusResponseError {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export type BatchGetDocumentStatusResponseErrors = Array<BatchGetDocumentStatusResponseError>;
+export type BatchGetDocumentStatusResponseErrors =
+  Array<BatchGetDocumentStatusResponseError>;
 export interface BatchPutDocumentRequest {
   IndexId: string;
   RoleArn?: string;
@@ -562,7 +950,8 @@ export interface BatchPutDocumentResponseFailedDocument {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export type BatchPutDocumentResponseFailedDocuments = Array<BatchPutDocumentResponseFailedDocument>;
+export type BatchPutDocumentResponseFailedDocuments =
+  Array<BatchPutDocumentResponseFailedDocument>;
 export type Blob = Uint8Array | string;
 
 export interface BoxConfiguration {
@@ -617,7 +1006,18 @@ export interface ColumnConfiguration {
 }
 export type ColumnName = string;
 
-export type ConditionOperator = "GreaterThan" | "GreaterThanOrEquals" | "LessThan" | "LessThanOrEquals" | "Equals" | "NotEquals" | "Contains" | "NotContains" | "Exists" | "NotExists" | "BeginsWith";
+export type ConditionOperator =
+  | "GreaterThan"
+  | "GreaterThanOrEquals"
+  | "LessThan"
+  | "LessThanOrEquals"
+  | "Equals"
+  | "NotEquals"
+  | "Contains"
+  | "NotContains"
+  | "Exists"
+  | "NotExists"
+  | "BeginsWith";
 export declare class ConflictException extends Data.TaggedError(
   "ConflictException",
 )<{
@@ -633,8 +1033,20 @@ export interface ConfluenceAttachmentConfiguration {
   CrawlAttachments?: boolean;
   AttachmentFieldMappings?: Array<ConfluenceAttachmentToIndexFieldMapping>;
 }
-export type ConfluenceAttachmentFieldMappingsList = Array<ConfluenceAttachmentToIndexFieldMapping>;
-export type ConfluenceAttachmentFieldName = "AUTHOR" | "CONTENT_TYPE" | "CREATED_DATE" | "DISPLAY_URL" | "FILE_SIZE" | "ITEM_TYPE" | "PARENT_ID" | "SPACE_KEY" | "SPACE_NAME" | "URL" | "VERSION";
+export type ConfluenceAttachmentFieldMappingsList =
+  Array<ConfluenceAttachmentToIndexFieldMapping>;
+export type ConfluenceAttachmentFieldName =
+  | "AUTHOR"
+  | "CONTENT_TYPE"
+  | "CREATED_DATE"
+  | "DISPLAY_URL"
+  | "FILE_SIZE"
+  | "ITEM_TYPE"
+  | "PARENT_ID"
+  | "SPACE_KEY"
+  | "SPACE_NAME"
+  | "URL"
+  | "VERSION";
 export interface ConfluenceAttachmentToIndexFieldMapping {
   DataSourceFieldName?: ConfluenceAttachmentFieldName;
   DateFieldFormat?: string;
@@ -644,8 +1056,18 @@ export type ConfluenceAuthenticationType = "HTTP_BASIC" | "PAT";
 export interface ConfluenceBlogConfiguration {
   BlogFieldMappings?: Array<ConfluenceBlogToIndexFieldMapping>;
 }
-export type ConfluenceBlogFieldMappingsList = Array<ConfluenceBlogToIndexFieldMapping>;
-export type ConfluenceBlogFieldName = "AUTHOR" | "DISPLAY_URL" | "ITEM_TYPE" | "LABELS" | "PUBLISH_DATE" | "SPACE_KEY" | "SPACE_NAME" | "URL" | "VERSION";
+export type ConfluenceBlogFieldMappingsList =
+  Array<ConfluenceBlogToIndexFieldMapping>;
+export type ConfluenceBlogFieldName =
+  | "AUTHOR"
+  | "DISPLAY_URL"
+  | "ITEM_TYPE"
+  | "LABELS"
+  | "PUBLISH_DATE"
+  | "SPACE_KEY"
+  | "SPACE_NAME"
+  | "URL"
+  | "VERSION";
 export interface ConfluenceBlogToIndexFieldMapping {
   DataSourceFieldName?: ConfluenceBlogFieldName;
   DateFieldFormat?: string;
@@ -668,8 +1090,21 @@ export interface ConfluenceConfiguration {
 export interface ConfluencePageConfiguration {
   PageFieldMappings?: Array<ConfluencePageToIndexFieldMapping>;
 }
-export type ConfluencePageFieldMappingsList = Array<ConfluencePageToIndexFieldMapping>;
-export type ConfluencePageFieldName = "AUTHOR" | "CONTENT_STATUS" | "CREATED_DATE" | "DISPLAY_URL" | "ITEM_TYPE" | "LABELS" | "MODIFIED_DATE" | "PARENT_ID" | "SPACE_KEY" | "SPACE_NAME" | "URL" | "VERSION";
+export type ConfluencePageFieldMappingsList =
+  Array<ConfluencePageToIndexFieldMapping>;
+export type ConfluencePageFieldName =
+  | "AUTHOR"
+  | "CONTENT_STATUS"
+  | "CREATED_DATE"
+  | "DISPLAY_URL"
+  | "ITEM_TYPE"
+  | "LABELS"
+  | "MODIFIED_DATE"
+  | "PARENT_ID"
+  | "SPACE_KEY"
+  | "SPACE_NAME"
+  | "URL"
+  | "VERSION";
 export interface ConfluencePageToIndexFieldMapping {
   DataSourceFieldName?: ConfluencePageFieldName;
   DateFieldFormat?: string;
@@ -682,8 +1117,13 @@ export interface ConfluenceSpaceConfiguration {
   ExcludeSpaces?: Array<string>;
   SpaceFieldMappings?: Array<ConfluenceSpaceToIndexFieldMapping>;
 }
-export type ConfluenceSpaceFieldMappingsList = Array<ConfluenceSpaceToIndexFieldMapping>;
-export type ConfluenceSpaceFieldName = "DISPLAY_URL" | "ITEM_TYPE" | "SPACE_KEY" | "URL";
+export type ConfluenceSpaceFieldMappingsList =
+  Array<ConfluenceSpaceToIndexFieldMapping>;
+export type ConfluenceSpaceFieldName =
+  | "DISPLAY_URL"
+  | "ITEM_TYPE"
+  | "SPACE_KEY"
+  | "URL";
 export type ConfluenceSpaceIdentifier = string;
 
 export type ConfluenceSpaceList = Array<string>;
@@ -707,7 +1147,19 @@ export interface ContentSourceConfiguration {
   FaqIds?: Array<string>;
   DirectPutContent?: boolean;
 }
-export type ContentType = "PDF" | "HTML" | "MS_WORD" | "PLAIN_TEXT" | "PPT" | "RTF" | "XML" | "XSLT" | "MS_EXCEL" | "CSV" | "JSON" | "MD";
+export type ContentType =
+  | "PDF"
+  | "HTML"
+  | "MS_WORD"
+  | "PLAIN_TEXT"
+  | "PPT"
+  | "RTF"
+  | "XML"
+  | "XSLT"
+  | "MS_EXCEL"
+  | "CSV"
+  | "JSON"
+  | "MD";
 export interface Correction {
   BeginOffset?: number;
   EndOffset?: number;
@@ -836,7 +1288,11 @@ export interface DatabaseConfiguration {
   AclConfiguration?: AclConfiguration;
   SqlConfiguration?: SqlConfiguration;
 }
-export type DatabaseEngineType = "RDS_AURORA_MYSQL" | "RDS_AURORA_POSTGRESQL" | "RDS_MYSQL" | "RDS_POSTGRESQL";
+export type DatabaseEngineType =
+  | "RDS_AURORA_MYSQL"
+  | "RDS_AURORA_POSTGRESQL"
+  | "RDS_MYSQL"
+  | "RDS_POSTGRESQL";
 export type DatabaseHost = string;
 
 export type DatabaseName = string;
@@ -880,7 +1336,12 @@ export type DataSourceInclusionsExclusionsStringsMember = string;
 
 export type DataSourceName = string;
 
-export type DataSourceStatus = "CREATING" | "DELETING" | "FAILED" | "UPDATING" | "ACTIVE";
+export type DataSourceStatus =
+  | "CREATING"
+  | "DELETING"
+  | "FAILED"
+  | "UPDATING"
+  | "ACTIVE";
 export interface DataSourceSummary {
   Name?: string;
   Id?: string;
@@ -915,14 +1376,41 @@ export interface DataSourceSyncJobMetricTarget {
   DataSourceId: string;
   DataSourceSyncJobId?: string;
 }
-export type DataSourceSyncJobStatus = "FAILED" | "SUCCEEDED" | "SYNCING" | "INCOMPLETE" | "STOPPING" | "ABORTED" | "SYNCING_INDEXING";
+export type DataSourceSyncJobStatus =
+  | "FAILED"
+  | "SUCCEEDED"
+  | "SYNCING"
+  | "INCOMPLETE"
+  | "STOPPING"
+  | "ABORTED"
+  | "SYNCING_INDEXING";
 export interface DataSourceToIndexFieldMapping {
   DataSourceFieldName: string;
   DateFieldFormat?: string;
   IndexFieldName: string;
 }
-export type DataSourceToIndexFieldMappingList = Array<DataSourceToIndexFieldMapping>;
-export type DataSourceType = "S3" | "SHAREPOINT" | "DATABASE" | "SALESFORCE" | "ONEDRIVE" | "SERVICENOW" | "CUSTOM" | "CONFLUENCE" | "GOOGLEDRIVE" | "WEBCRAWLER" | "WORKDOCS" | "FSX" | "SLACK" | "BOX" | "QUIP" | "JIRA" | "GITHUB" | "ALFRESCO" | "TEMPLATE";
+export type DataSourceToIndexFieldMappingList =
+  Array<DataSourceToIndexFieldMapping>;
+export type DataSourceType =
+  | "S3"
+  | "SHAREPOINT"
+  | "DATABASE"
+  | "SALESFORCE"
+  | "ONEDRIVE"
+  | "SERVICENOW"
+  | "CUSTOM"
+  | "CONFLUENCE"
+  | "GOOGLEDRIVE"
+  | "WEBCRAWLER"
+  | "WORKDOCS"
+  | "FSX"
+  | "SLACK"
+  | "BOX"
+  | "QUIP"
+  | "JIRA"
+  | "GITHUB"
+  | "ALFRESCO"
+  | "TEMPLATE";
 export interface DataSourceVpcConfiguration {
   SubnetIds: Array<string>;
   SecurityGroupIds: Array<string>;
@@ -931,8 +1419,7 @@ export interface DeleteAccessControlConfigurationRequest {
   IndexId: string;
   Id: string;
 }
-export interface DeleteAccessControlConfigurationResponse {
-}
+export interface DeleteAccessControlConfigurationResponse {}
 export interface DeleteDataSourceRequest {
   Id: string;
   IndexId: string;
@@ -941,8 +1428,7 @@ export interface DeleteExperienceRequest {
   Id: string;
   IndexId: string;
 }
-export interface DeleteExperienceResponse {
-}
+export interface DeleteExperienceResponse {}
 export interface DeleteFaqRequest {
   Id: string;
   IndexId: string;
@@ -1192,8 +1678,13 @@ export interface DocumentAttributeValueCountPair {
   Count?: number;
   FacetResults?: Array<FacetResult>;
 }
-export type DocumentAttributeValueCountPairList = Array<DocumentAttributeValueCountPair>;
-export type DocumentAttributeValueType = "STRING_VALUE" | "STRING_LIST_VALUE" | "LONG_VALUE" | "DATE_VALUE";
+export type DocumentAttributeValueCountPairList =
+  Array<DocumentAttributeValueCountPair>;
+export type DocumentAttributeValueType =
+  | "STRING_VALUE"
+  | "STRING_LIST_VALUE"
+  | "LONG_VALUE"
+  | "DATE_VALUE";
 export type DocumentId = string;
 
 export type DocumentIdList = Array<string>;
@@ -1211,18 +1702,26 @@ export interface DocumentMetadataConfiguration {
   Relevance?: Relevance;
   Search?: Search;
 }
-export type DocumentMetadataConfigurationList = Array<DocumentMetadataConfiguration>;
+export type DocumentMetadataConfigurationList =
+  Array<DocumentMetadataConfiguration>;
 export type DocumentMetadataConfigurationName = string;
 
 export interface DocumentRelevanceConfiguration {
   Name: string;
   Relevance: Relevance;
 }
-export type DocumentRelevanceOverrideConfigurationList = Array<DocumentRelevanceConfiguration>;
+export type DocumentRelevanceOverrideConfigurationList =
+  Array<DocumentRelevanceConfiguration>;
 export interface DocumentsMetadataConfiguration {
   S3Prefix?: string;
 }
-export type DocumentStatus = "NOT_FOUND" | "PROCESSING" | "INDEXED" | "UPDATED" | "FAILED" | "UPDATE_FAILED";
+export type DocumentStatus =
+  | "NOT_FOUND"
+  | "PROCESSING"
+  | "INDEXED"
+  | "UPDATED"
+  | "FAILED"
+  | "UPDATE_FAILED";
 export type DocumentStatusList = Array<Status>;
 export type DocumentTitle = string;
 
@@ -1331,7 +1830,12 @@ export type FaqName = string;
 export interface FaqStatistics {
   IndexedQuestionAnswersCount: number;
 }
-export type FaqStatus = "CREATING" | "UPDATING" | "ACTIVE" | "DELETING" | "FAILED";
+export type FaqStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED";
 export interface FaqSummary {
   Id?: string;
   Name?: string;
@@ -1355,7 +1859,8 @@ export interface FeaturedDocumentWithMetadata {
   Title?: string;
   URI?: string;
 }
-export type FeaturedDocumentWithMetadataList = Array<FeaturedDocumentWithMetadata>;
+export type FeaturedDocumentWithMetadataList =
+  Array<FeaturedDocumentWithMetadata>;
 export declare class FeaturedResultsConflictException extends Data.TaggedError(
   "FeaturedResultsConflictException",
 )<{
@@ -1537,7 +2042,10 @@ export interface IndexConfigurationSummary {
   Status: IndexStatus;
 }
 export type IndexConfigurationSummaryList = Array<IndexConfigurationSummary>;
-export type IndexEdition = "DEVELOPER_EDITION" | "ENTERPRISE_EDITION" | "GEN_AI_ENTERPRISE_EDITION";
+export type IndexEdition =
+  | "DEVELOPER_EDITION"
+  | "ENTERPRISE_EDITION"
+  | "GEN_AI_ENTERPRISE_EDITION";
 export type IndexedQuestionAnswersCount = number;
 
 export type IndexedTextBytes = number;
@@ -1554,13 +2062,20 @@ export interface IndexStatistics {
   FaqStatistics: FaqStatistics;
   TextDocumentStatistics: TextDocumentStatistics;
 }
-export type IndexStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED" | "UPDATING" | "SYSTEM_UPDATING";
+export type IndexStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED"
+  | "UPDATING"
+  | "SYSTEM_UPDATING";
 export interface InlineCustomDocumentEnrichmentConfiguration {
   Condition?: DocumentAttributeCondition;
   Target?: DocumentAttributeTarget;
   DocumentContentDeletion?: boolean;
 }
-export type InlineCustomDocumentEnrichmentConfigurationList = Array<InlineCustomDocumentEnrichmentConfiguration>;
+export type InlineCustomDocumentEnrichmentConfigurationList =
+  Array<InlineCustomDocumentEnrichmentConfiguration>;
 export type Integer = number;
 
 export declare class InternalServerException extends Data.TaggedError(
@@ -1568,7 +2083,13 @@ export declare class InternalServerException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type Interval = "THIS_MONTH" | "THIS_WEEK" | "ONE_WEEK_AGO" | "TWO_WEEKS_AGO" | "ONE_MONTH_AGO" | "TWO_MONTHS_AGO";
+export type Interval =
+  | "THIS_MONTH"
+  | "THIS_WEEK"
+  | "ONE_WEEK_AGO"
+  | "TWO_WEEKS_AGO"
+  | "ONE_MONTH_AGO"
+  | "TWO_MONTHS_AGO";
 export declare class InvalidRequestException extends Data.TaggedError(
   "InvalidRequestException",
 )<{
@@ -1780,7 +2301,13 @@ export interface MemberUser {
   UserId: string;
 }
 export type MemberUsers = Array<MemberUser>;
-export type MetricType = "QUERIES_BY_COUNT" | "QUERIES_BY_ZERO_CLICK_RATE" | "QUERIES_BY_ZERO_RESULT_RATE" | "DOCS_BY_CLICK_COUNT" | "AGG_QUERY_DOC_METRICS" | "TREND_QUERY_DOC_METRICS";
+export type MetricType =
+  | "QUERIES_BY_COUNT"
+  | "QUERIES_BY_ZERO_CLICK_RATE"
+  | "QUERIES_BY_ZERO_RESULT_RATE"
+  | "DOCS_BY_CLICK_COUNT"
+  | "AGG_QUERY_DOC_METRICS"
+  | "TREND_QUERY_DOC_METRICS";
 export type MetricValue = string;
 
 export type MimeType = string;
@@ -1840,7 +2367,12 @@ export interface Principal {
   DataSourceId?: string;
 }
 export type PrincipalList = Array<Principal>;
-export type PrincipalMappingStatus = "FAILED" | "SUCCEEDED" | "PROCESSING" | "DELETING" | "DELETED";
+export type PrincipalMappingStatus =
+  | "FAILED"
+  | "SUCCEEDED"
+  | "PROCESSING"
+  | "DELETING"
+  | "DELETED";
 export type PrincipalName = string;
 
 export type PrincipalOrderingId = number;
@@ -1915,7 +2447,13 @@ export type QuerySuggestionsBlockListId = string;
 
 export type QuerySuggestionsBlockListName = string;
 
-export type QuerySuggestionsBlockListStatus = "ACTIVE" | "CREATING" | "DELETING" | "UPDATING" | "ACTIVE_BUT_UPDATE_FAILED" | "FAILED";
+export type QuerySuggestionsBlockListStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING"
+  | "UPDATING"
+  | "ACTIVE_BUT_UPDATE_FAILED"
+  | "FAILED";
 export interface QuerySuggestionsBlockListSummary {
   Id?: string;
   Name?: string;
@@ -1924,7 +2462,8 @@ export interface QuerySuggestionsBlockListSummary {
   UpdatedAt?: Date | string;
   ItemCount?: number;
 }
-export type QuerySuggestionsBlockListSummaryItems = Array<QuerySuggestionsBlockListSummary>;
+export type QuerySuggestionsBlockListSummaryItems =
+  Array<QuerySuggestionsBlockListSummary>;
 export type QuerySuggestionsId = string;
 
 export type QuerySuggestionsStatus = "ACTIVE" | "UPDATING";
@@ -2036,8 +2575,11 @@ export interface SalesforceChatterFeedConfiguration {
   FieldMappings?: Array<DataSourceToIndexFieldMapping>;
   IncludeFilterTypes?: Array<SalesforceChatterFeedIncludeFilterType>;
 }
-export type SalesforceChatterFeedIncludeFilterType = "ACTIVE_USER" | "STANDARD_USER";
-export type SalesforceChatterFeedIncludeFilterTypes = Array<SalesforceChatterFeedIncludeFilterType>;
+export type SalesforceChatterFeedIncludeFilterType =
+  | "ACTIVE_USER"
+  | "STANDARD_USER";
+export type SalesforceChatterFeedIncludeFilterTypes =
+  Array<SalesforceChatterFeedIncludeFilterType>;
 export interface SalesforceConfiguration {
   ServerUrl: string;
   SecretArn: string;
@@ -2055,7 +2597,8 @@ export interface SalesforceCustomKnowledgeArticleTypeConfiguration {
   DocumentTitleFieldName?: string;
   FieldMappings?: Array<DataSourceToIndexFieldMapping>;
 }
-export type SalesforceCustomKnowledgeArticleTypeConfigurationList = Array<SalesforceCustomKnowledgeArticleTypeConfiguration>;
+export type SalesforceCustomKnowledgeArticleTypeConfigurationList =
+  Array<SalesforceCustomKnowledgeArticleTypeConfiguration>;
 export type SalesforceCustomKnowledgeArticleTypeName = string;
 
 export interface SalesforceKnowledgeArticleConfiguration {
@@ -2063,8 +2606,12 @@ export interface SalesforceKnowledgeArticleConfiguration {
   StandardKnowledgeArticleTypeConfiguration?: SalesforceStandardKnowledgeArticleTypeConfiguration;
   CustomKnowledgeArticleTypeConfigurations?: Array<SalesforceCustomKnowledgeArticleTypeConfiguration>;
 }
-export type SalesforceKnowledgeArticleState = "DRAFT" | "PUBLISHED" | "ARCHIVED";
-export type SalesforceKnowledgeArticleStateList = Array<SalesforceKnowledgeArticleState>;
+export type SalesforceKnowledgeArticleState =
+  | "DRAFT"
+  | "PUBLISHED"
+  | "ARCHIVED";
+export type SalesforceKnowledgeArticleStateList =
+  Array<SalesforceKnowledgeArticleState>;
 export interface SalesforceStandardKnowledgeArticleTypeConfiguration {
   DocumentDataFieldName: string;
   DocumentTitleFieldName?: string;
@@ -2080,14 +2627,37 @@ export interface SalesforceStandardObjectConfiguration {
   DocumentTitleFieldName?: string;
   FieldMappings?: Array<DataSourceToIndexFieldMapping>;
 }
-export type SalesforceStandardObjectConfigurationList = Array<SalesforceStandardObjectConfiguration>;
-export type SalesforceStandardObjectName = "ACCOUNT" | "CAMPAIGN" | "CASE" | "CONTACT" | "CONTRACT" | "DOCUMENT" | "GROUP" | "IDEA" | "LEAD" | "OPPORTUNITY" | "PARTNER" | "PRICEBOOK" | "PRODUCT" | "PROFILE" | "SOLUTION" | "TASK" | "USER";
+export type SalesforceStandardObjectConfigurationList =
+  Array<SalesforceStandardObjectConfiguration>;
+export type SalesforceStandardObjectName =
+  | "ACCOUNT"
+  | "CAMPAIGN"
+  | "CASE"
+  | "CONTACT"
+  | "CONTRACT"
+  | "DOCUMENT"
+  | "GROUP"
+  | "IDEA"
+  | "LEAD"
+  | "OPPORTUNITY"
+  | "PARTNER"
+  | "PRICEBOOK"
+  | "PRODUCT"
+  | "PROFILE"
+  | "SOLUTION"
+  | "TASK"
+  | "USER";
 export type ScanSchedule = string;
 
 export interface ScoreAttributes {
   ScoreConfidence?: ScoreConfidence;
 }
-export type ScoreConfidence = "VERY_HIGH" | "HIGH" | "MEDIUM" | "LOW" | "NOT_AVAILABLE";
+export type ScoreConfidence =
+  | "VERY_HIGH"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "NOT_AVAILABLE";
 export interface Search {
   Facetable?: boolean;
   Searchable?: boolean;
@@ -2163,7 +2733,11 @@ export interface SharePointConfiguration {
 }
 export type SharePointOnlineAuthenticationType = "HTTP_BASIC" | "OAUTH2";
 export type SharePointUrlList = Array<string>;
-export type SharePointVersion = "SHAREPOINT_2013" | "SHAREPOINT_2016" | "SHAREPOINT_ONLINE" | "SHAREPOINT_2019";
+export type SharePointVersion =
+  | "SHAREPOINT_2013"
+  | "SHAREPOINT_2016"
+  | "SHAREPOINT_ONLINE"
+  | "SHAREPOINT_2019";
 export type SinceCrawlDate = string;
 
 export type SiteId = string;
@@ -2192,7 +2766,11 @@ export interface SlackConfiguration {
   ExclusionPatterns?: Array<string>;
   FieldMappings?: Array<DataSourceToIndexFieldMapping>;
 }
-export type SlackEntity = "PUBLIC_CHANNEL" | "PRIVATE_CHANNEL" | "GROUP_MESSAGE" | "DIRECT_MESSAGE";
+export type SlackEntity =
+  | "PUBLIC_CHANNEL"
+  | "PRIVATE_CHANNEL"
+  | "GROUP_MESSAGE"
+  | "DIRECT_MESSAGE";
 export type SlackEntityList = Array<SlackEntity>;
 export type SnapshotsDataHeaderFields = Array<string>;
 export type SnapshotsDataRecord = Array<string>;
@@ -2307,8 +2885,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TeamId = string;
@@ -2330,7 +2907,13 @@ export type ThesaurusId = string;
 
 export type ThesaurusName = string;
 
-export type ThesaurusStatus = "CREATING" | "ACTIVE" | "DELETING" | "UPDATING" | "ACTIVE_BUT_UPDATE_FAILED" | "FAILED";
+export type ThesaurusStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "UPDATING"
+  | "ACTIVE_BUT_UPDATE_FAILED"
+  | "FAILED";
 export interface ThesaurusSummary {
   Id?: string;
   Name?: string;
@@ -2361,8 +2944,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAccessControlConfigurationRequest {
   IndexId: string;
   Id: string;
@@ -2371,8 +2953,7 @@ export interface UpdateAccessControlConfigurationRequest {
   AccessControlList?: Array<Principal>;
   HierarchicalAccessControlList?: Array<HierarchicalPrincipal>;
 }
-export interface UpdateAccessControlConfigurationResponse {
-}
+export interface UpdateAccessControlConfigurationResponse {}
 export interface UpdateDataSourceRequest {
   Id: string;
   Name?: string;
@@ -3001,12 +3582,11 @@ export declare namespace ListAccessControlConfigurations {
     | CommonAwsError;
 }
 
-export declare namespace ListDataSourceSyncJobs {
-  export type Input = ListDataSourceSyncJobsRequest;
-  export type Output = ListDataSourceSyncJobsResponse;
+export declare namespace ListDataSources {
+  export type Input = ListDataSourcesRequest;
+  export type Output = ListDataSourcesResponse;
   export type Error =
     | AccessDeniedException
-    | ConflictException
     | InternalServerException
     | ResourceNotFoundException
     | ThrottlingException
@@ -3014,11 +3594,12 @@ export declare namespace ListDataSourceSyncJobs {
     | CommonAwsError;
 }
 
-export declare namespace ListDataSources {
-  export type Input = ListDataSourcesRequest;
-  export type Output = ListDataSourcesResponse;
+export declare namespace ListDataSourceSyncJobs {
+  export type Input = ListDataSourceSyncJobsRequest;
+  export type Output = ListDataSourceSyncJobsResponse;
   export type Error =
     | AccessDeniedException
+    | ConflictException
     | InternalServerException
     | ResourceNotFoundException
     | ThrottlingException
@@ -3356,4 +3937,3 @@ export declare namespace UpdateThesaurus {
     | ValidationException
     | CommonAwsError;
 }
-

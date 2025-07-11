@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.rum#AccessDeniedException": {
       "type": "structure",
@@ -2316,6 +2317,20 @@
     },
     "com.amazonaws.rum#RUM": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.rum#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.rum#PutRumEvents"
+        },
+        {
+          "target": "com.amazonaws.rum#TagResource"
+        },
+        {
+          "target": "com.amazonaws.rum#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "RUM",

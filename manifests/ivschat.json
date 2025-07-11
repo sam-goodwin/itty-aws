@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.ivschat#AccessDeniedException": {
       "type": "structure",
@@ -18,6 +19,59 @@
     },
     "com.amazonaws.ivschat#AmazonInteractiveVideoServiceChat": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ivschat#CreateChatToken"
+        },
+        {
+          "target": "com.amazonaws.ivschat#CreateLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ivschat#CreateRoom"
+        },
+        {
+          "target": "com.amazonaws.ivschat#DeleteLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ivschat#DeleteMessage"
+        },
+        {
+          "target": "com.amazonaws.ivschat#DeleteRoom"
+        },
+        {
+          "target": "com.amazonaws.ivschat#DisconnectUser"
+        },
+        {
+          "target": "com.amazonaws.ivschat#GetLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ivschat#GetRoom"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ListLoggingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ListRooms"
+        },
+        {
+          "target": "com.amazonaws.ivschat#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.ivschat#SendEvent"
+        },
+        {
+          "target": "com.amazonaws.ivschat#TagResource"
+        },
+        {
+          "target": "com.amazonaws.ivschat#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.ivschat#UpdateLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.ivschat#UpdateRoom"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ivschat",

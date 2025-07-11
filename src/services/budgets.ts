@@ -1,162 +1,319 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSBudgetServiceGateway {
   createBudget(
     input: CreateBudgetRequest,
   ): Effect.Effect<
     CreateBudgetResponse,
-    AccessDeniedException | CreationLimitExceededException | DuplicateRecordException | InternalErrorException | InvalidParameterException | ServiceQuotaExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | CreationLimitExceededException
+    | DuplicateRecordException
+    | InternalErrorException
+    | InvalidParameterException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createBudgetAction(
     input: CreateBudgetActionRequest,
   ): Effect.Effect<
     CreateBudgetActionResponse,
-    AccessDeniedException | CreationLimitExceededException | DuplicateRecordException | InternalErrorException | InvalidParameterException | NotFoundException | ServiceQuotaExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | CreationLimitExceededException
+    | DuplicateRecordException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createNotification(
     input: CreateNotificationRequest,
   ): Effect.Effect<
     CreateNotificationResponse,
-    AccessDeniedException | CreationLimitExceededException | DuplicateRecordException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | CreationLimitExceededException
+    | DuplicateRecordException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createSubscriber(
     input: CreateSubscriberRequest,
   ): Effect.Effect<
     CreateSubscriberResponse,
-    AccessDeniedException | CreationLimitExceededException | DuplicateRecordException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | CreationLimitExceededException
+    | DuplicateRecordException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteBudget(
     input: DeleteBudgetRequest,
   ): Effect.Effect<
     DeleteBudgetResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteBudgetAction(
     input: DeleteBudgetActionRequest,
   ): Effect.Effect<
     DeleteBudgetActionResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ResourceLockedException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ResourceLockedException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteNotification(
     input: DeleteNotificationRequest,
   ): Effect.Effect<
     DeleteNotificationResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteSubscriber(
     input: DeleteSubscriberRequest,
   ): Effect.Effect<
     DeleteSubscriberResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudget(
     input: DescribeBudgetRequest,
   ): Effect.Effect<
     DescribeBudgetResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgetAction(
     input: DescribeBudgetActionRequest,
   ): Effect.Effect<
     DescribeBudgetActionResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgetActionHistories(
     input: DescribeBudgetActionHistoriesRequest,
   ): Effect.Effect<
     DescribeBudgetActionHistoriesResponse,
-    AccessDeniedException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgetActionsForAccount(
     input: DescribeBudgetActionsForAccountRequest,
   ): Effect.Effect<
     DescribeBudgetActionsForAccountResponse,
-    AccessDeniedException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgetActionsForBudget(
     input: DescribeBudgetActionsForBudgetRequest,
   ): Effect.Effect<
     DescribeBudgetActionsForBudgetResponse,
-    AccessDeniedException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgetNotificationsForAccount(
     input: DescribeBudgetNotificationsForAccountRequest,
   ): Effect.Effect<
     DescribeBudgetNotificationsForAccountResponse,
-    AccessDeniedException | ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgetPerformanceHistory(
     input: DescribeBudgetPerformanceHistoryRequest,
   ): Effect.Effect<
     DescribeBudgetPerformanceHistoryResponse,
-    AccessDeniedException | ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeBudgets(
     input: DescribeBudgetsRequest,
   ): Effect.Effect<
     DescribeBudgetsResponse,
-    AccessDeniedException | ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeNotificationsForBudget(
     input: DescribeNotificationsForBudgetRequest,
   ): Effect.Effect<
     DescribeNotificationsForBudgetResponse,
-    AccessDeniedException | ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   describeSubscribersForNotification(
     input: DescribeSubscribersForNotificationRequest,
   ): Effect.Effect<
     DescribeSubscribersForNotificationResponse,
-    AccessDeniedException | ExpiredNextTokenException | InternalErrorException | InvalidNextTokenException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | ExpiredNextTokenException
+    | InternalErrorException
+    | InvalidNextTokenException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   executeBudgetAction(
     input: ExecuteBudgetActionRequest,
   ): Effect.Effect<
     ExecuteBudgetActionResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ResourceLockedException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ResourceLockedException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ServiceQuotaExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateBudget(
     input: UpdateBudgetRequest,
   ): Effect.Effect<
     UpdateBudgetResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateBudgetAction(
     input: UpdateBudgetActionRequest,
   ): Effect.Effect<
     UpdateBudgetActionResponse,
-    AccessDeniedException | InternalErrorException | InvalidParameterException | NotFoundException | ResourceLockedException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ResourceLockedException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateNotification(
     input: UpdateNotificationRequest,
   ): Effect.Effect<
     UpdateNotificationResponse,
-    AccessDeniedException | DuplicateRecordException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | DuplicateRecordException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateSubscriber(
     input: UpdateSubscriberRequest,
   ): Effect.Effect<
     UpdateSubscriberResponse,
-    AccessDeniedException | DuplicateRecordException | InternalErrorException | InvalidParameterException | NotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | DuplicateRecordException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
@@ -195,7 +352,17 @@ export interface ActionHistoryDetails {
 export type ActionId = string;
 
 export type Actions = Array<Action>;
-export type ActionStatus = "Standby" | "Pending" | "Execution_In_Progress" | "Execution_Success" | "Execution_Failure" | "Reverse_In_Progress" | "Reverse_Success" | "Reverse_Failure" | "Reset_In_Progress" | "Reset_Failure";
+export type ActionStatus =
+  | "Standby"
+  | "Pending"
+  | "Execution_In_Progress"
+  | "Execution_Success"
+  | "Execution_Failure"
+  | "Reverse_In_Progress"
+  | "Reverse_Success"
+  | "Reverse_Failure"
+  | "Reset_In_Progress"
+  | "Reset_Failure";
 export type ActionSubType = "STOP_EC2" | "STOP_RDS";
 export interface ActionThreshold {
   ActionThresholdValue: number;
@@ -240,7 +407,8 @@ export interface BudgetNotificationsForAccount {
   Notifications?: Array<Notification>;
   BudgetName?: string;
 }
-export type BudgetNotificationsForAccountList = Array<BudgetNotificationsForAccount>;
+export type BudgetNotificationsForAccountList =
+  Array<BudgetNotificationsForAccount>;
 export interface BudgetPerformanceHistory {
   BudgetName?: string;
   BudgetType?: BudgetType;
@@ -250,7 +418,13 @@ export interface BudgetPerformanceHistory {
   BudgetedAndActualAmountsList?: Array<BudgetedAndActualAmounts>;
 }
 export type Budgets = Array<Budget>;
-export type BudgetType = "Usage" | "Cost" | "RIUtilization" | "RICoverage" | "SPUtilization" | "SPCoverage";
+export type BudgetType =
+  | "Usage"
+  | "Cost"
+  | "RIUtilization"
+  | "RICoverage"
+  | "SPUtilization"
+  | "SPCoverage";
 export interface CalculatedSpend {
   ActualSpend: Spend;
   ForecastedSpend?: Spend;
@@ -300,24 +474,21 @@ export interface CreateBudgetRequest {
   NotificationsWithSubscribers?: Array<NotificationWithSubscribers>;
   ResourceTags?: Array<ResourceTag>;
 }
-export interface CreateBudgetResponse {
-}
+export interface CreateBudgetResponse {}
 export interface CreateNotificationRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
   Subscribers: Array<Subscriber>;
 }
-export interface CreateNotificationResponse {
-}
+export interface CreateNotificationResponse {}
 export interface CreateSubscriberRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
   Subscriber: Subscriber;
 }
-export interface CreateSubscriberResponse {
-}
+export interface CreateSubscriberResponse {}
 export declare class CreationLimitExceededException extends Data.TaggedError(
   "CreationLimitExceededException",
 )<{
@@ -342,23 +513,20 @@ export interface DeleteBudgetRequest {
   AccountId: string;
   BudgetName: string;
 }
-export interface DeleteBudgetResponse {
-}
+export interface DeleteBudgetResponse {}
 export interface DeleteNotificationRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
 }
-export interface DeleteNotificationResponse {
-}
+export interface DeleteNotificationResponse {}
 export interface DeleteSubscriberRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
   Subscriber: Subscriber;
 }
-export interface DeleteSubscriberResponse {
-}
+export interface DeleteSubscriberResponse {}
 export interface DescribeBudgetActionHistoriesRequest {
   AccountId: string;
   BudgetName: string;
@@ -459,7 +627,40 @@ export interface DescribeSubscribersForNotificationResponse {
   Subscribers?: Array<Subscriber>;
   NextToken?: string;
 }
-export type Dimension = "AZ" | "INSTANCE_TYPE" | "LINKED_ACCOUNT" | "LINKED_ACCOUNT_NAME" | "OPERATION" | "PURCHASE_TYPE" | "REGION" | "SERVICE" | "SERVICE_CODE" | "USAGE_TYPE" | "USAGE_TYPE_GROUP" | "RECORD_TYPE" | "OPERATING_SYSTEM" | "TENANCY" | "SCOPE" | "PLATFORM" | "SUBSCRIPTION_ID" | "LEGAL_ENTITY_NAME" | "INVOICING_ENTITY" | "DEPLOYMENT_OPTION" | "DATABASE_ENGINE" | "CACHE_ENGINE" | "INSTANCE_TYPE_FAMILY" | "BILLING_ENTITY" | "RESERVATION_ID" | "RESOURCE_ID" | "RIGHTSIZING_TYPE" | "SAVINGS_PLANS_TYPE" | "SAVINGS_PLAN_ARN" | "PAYMENT_OPTION" | "RESERVATION_MODIFIED" | "TAG_KEY" | "COST_CATEGORY_NAME";
+export type Dimension =
+  | "AZ"
+  | "INSTANCE_TYPE"
+  | "LINKED_ACCOUNT"
+  | "LINKED_ACCOUNT_NAME"
+  | "OPERATION"
+  | "PURCHASE_TYPE"
+  | "REGION"
+  | "SERVICE"
+  | "SERVICE_CODE"
+  | "USAGE_TYPE"
+  | "USAGE_TYPE_GROUP"
+  | "RECORD_TYPE"
+  | "OPERATING_SYSTEM"
+  | "TENANCY"
+  | "SCOPE"
+  | "PLATFORM"
+  | "SUBSCRIPTION_ID"
+  | "LEGAL_ENTITY_NAME"
+  | "INVOICING_ENTITY"
+  | "DEPLOYMENT_OPTION"
+  | "DATABASE_ENGINE"
+  | "CACHE_ENGINE"
+  | "INSTANCE_TYPE_FAMILY"
+  | "BILLING_ENTITY"
+  | "RESERVATION_ID"
+  | "RESOURCE_ID"
+  | "RIGHTSIZING_TYPE"
+  | "SAVINGS_PLANS_TYPE"
+  | "SAVINGS_PLAN_ARN"
+  | "PAYMENT_OPTION"
+  | "RESERVATION_MODIFIED"
+  | "TAG_KEY"
+  | "COST_CATEGORY_NAME";
 export type DimensionValue = string;
 
 export type DimensionValues = Array<string>;
@@ -470,7 +671,12 @@ export declare class DuplicateRecordException extends Data.TaggedError(
 }> {}
 export type errorMessage = string;
 
-export type EventType = "System" | "CreateAction" | "DeleteAction" | "UpdateAction" | "ExecuteAction";
+export type EventType =
+  | "System"
+  | "CreateAction"
+  | "DeleteAction"
+  | "UpdateAction"
+  | "ExecuteAction";
 export interface ExecuteBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -483,7 +689,11 @@ export interface ExecuteBudgetActionResponse {
   ActionId: string;
   ExecutionType: ExecutionType;
 }
-export type ExecutionType = "ApproveBudgetAction" | "RetryBudgetAction" | "ReverseBudgetAction" | "ResetBudgetAction";
+export type ExecutionType =
+  | "ApproveBudgetAction"
+  | "RetryBudgetAction"
+  | "ReverseBudgetAction"
+  | "ResetBudgetAction";
 export declare class ExpiredNextTokenException extends Data.TaggedError(
   "ExpiredNextTokenException",
 )<{
@@ -544,7 +754,15 @@ export interface ListTagsForResourceRequest {
 export interface ListTagsForResourceResponse {
   ResourceTags?: Array<ResourceTag>;
 }
-export type MatchOption = "EQUALS" | "ABSENT" | "STARTS_WITH" | "ENDS_WITH" | "CONTAINS" | "GREATER_THAN_OR_EQUAL" | "CASE_SENSITIVE" | "CASE_INSENSITIVE";
+export type MatchOption =
+  | "EQUALS"
+  | "ABSENT"
+  | "STARTS_WITH"
+  | "ENDS_WITH"
+  | "CONTAINS"
+  | "GREATER_THAN_OR_EQUAL"
+  | "CASE_SENSITIVE"
+  | "CASE_INSENSITIVE";
 export type MatchOptions = Array<MatchOption>;
 export type MaxResults = number;
 
@@ -552,7 +770,15 @@ export type MaxResultsBudgetNotifications = number;
 
 export type MaxResultsDescribeBudgets = number;
 
-export type Metric = "BLENDED_COST" | "UNBLENDED_COST" | "AMORTIZED_COST" | "NET_UNBLENDED_COST" | "NET_AMORTIZED_COST" | "USAGE_QUANTITY" | "NORMALIZED_USAGE_AMOUNT" | "HOURS";
+export type Metric =
+  | "BLENDED_COST"
+  | "UNBLENDED_COST"
+  | "AMORTIZED_COST"
+  | "NET_UNBLENDED_COST"
+  | "NET_AMORTIZED_COST"
+  | "USAGE_QUANTITY"
+  | "NORMALIZED_USAGE_AMOUNT"
+  | "HOURS";
 export type Metrics = Array<Metric>;
 export declare class NotFoundException extends Data.TaggedError(
   "NotFoundException",
@@ -575,7 +801,8 @@ export interface NotificationWithSubscribers {
   Notification: Notification;
   Subscribers: Array<Subscriber>;
 }
-export type NotificationWithSubscribersList = Array<NotificationWithSubscribers>;
+export type NotificationWithSubscribersList =
+  Array<NotificationWithSubscribers>;
 export type NullableBoolean = boolean;
 
 export type NumericValue = string;
@@ -639,8 +866,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   ResourceTags: Array<ResourceTag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export interface TagValues {
   Key?: string;
   Values?: Array<string>;
@@ -666,8 +892,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   ResourceTagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -689,16 +914,14 @@ export interface UpdateBudgetRequest {
   AccountId: string;
   NewBudget: Budget;
 }
-export interface UpdateBudgetResponse {
-}
+export interface UpdateBudgetResponse {}
 export interface UpdateNotificationRequest {
   AccountId: string;
   BudgetName: string;
   OldNotification: Notification;
   NewNotification: Notification;
 }
-export interface UpdateNotificationResponse {
-}
+export interface UpdateNotificationResponse {}
 export interface UpdateSubscriberRequest {
   AccountId: string;
   BudgetName: string;
@@ -706,8 +929,7 @@ export interface UpdateSubscriberRequest {
   OldSubscriber: Subscriber;
   NewSubscriber: Subscriber;
 }
-export interface UpdateSubscriberResponse {
-}
+export interface UpdateSubscriberResponse {}
 export type User = string;
 
 export type Users = Array<string>;
@@ -1052,4 +1274,3 @@ export declare namespace UpdateSubscriber {
     | ThrottlingException
     | CommonAwsError;
 }
-

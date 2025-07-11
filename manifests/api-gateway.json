@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.apigateway#AccessAssociationSourceType": {
       "type": "enum",
@@ -352,6 +381,380 @@
     },
     "com.amazonaws.apigateway#BackplaneControlService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.apigateway#CreateApiKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateBasePathMapping"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateDocumentationPart"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateDocumentationVersion"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateDomainNameAccessAssociation"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateModel"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateRequestValidator"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateResource"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateRestApi"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateStage"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateUsagePlan"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateUsagePlanKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#CreateVpcLink"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteApiKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteBasePathMapping"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteClientCertificate"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteDocumentationPart"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteDocumentationVersion"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteDomainNameAccessAssociation"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteGatewayResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteMethod"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteMethodResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteModel"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteRequestValidator"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteResource"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteRestApi"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteStage"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteUsagePlan"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteUsagePlanKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#DeleteVpcLink"
+        },
+        {
+          "target": "com.amazonaws.apigateway#FlushStageAuthorizersCache"
+        },
+        {
+          "target": "com.amazonaws.apigateway#FlushStageCache"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GenerateClientCertificate"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetAccount"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetApiKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetApiKeys"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetAuthorizers"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetBasePathMapping"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetBasePathMappings"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetClientCertificate"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetClientCertificates"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDeployments"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDocumentationPart"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDocumentationParts"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDocumentationVersion"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDocumentationVersions"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDomainNameAccessAssociations"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetDomainNames"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetExport"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetGatewayResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetGatewayResponses"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetMethod"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetMethodResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetModel"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetModels"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetModelTemplate"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetRequestValidator"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetRequestValidators"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetResource"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetResources"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetRestApi"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetRestApis"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetSdk"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetSdkType"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetSdkTypes"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetStage"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetStages"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetTags"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetUsage"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetUsagePlan"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetUsagePlanKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetUsagePlanKeys"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetUsagePlans"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetVpcLink"
+        },
+        {
+          "target": "com.amazonaws.apigateway#GetVpcLinks"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ImportApiKeys"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ImportDocumentationParts"
+        },
+        {
+          "target": "com.amazonaws.apigateway#ImportRestApi"
+        },
+        {
+          "target": "com.amazonaws.apigateway#PutGatewayResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#PutIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigateway#PutIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#PutMethod"
+        },
+        {
+          "target": "com.amazonaws.apigateway#PutMethodResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#PutRestApi"
+        },
+        {
+          "target": "com.amazonaws.apigateway#RejectDomainNameAccessAssociation"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TagResource"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TestInvokeAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigateway#TestInvokeMethod"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateAccount"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateApiKey"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateAuthorizer"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateBasePathMapping"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateClientCertificate"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateDeployment"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateDocumentationPart"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateDocumentationVersion"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateDomainName"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateGatewayResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateIntegration"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateIntegrationResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateMethod"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateMethodResponse"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateModel"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateRequestValidator"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateResource"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateRestApi"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateStage"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateUsage"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateUsagePlan"
+        },
+        {
+          "target": "com.amazonaws.apigateway#UpdateVpcLink"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "API Gateway",

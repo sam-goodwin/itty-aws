@@ -1,156 +1,249 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSFMS_20180101 {
   associateAdminAccount(
     input: AssociateAdminAccountRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateThirdPartyFirewall(
     input: AssociateThirdPartyFirewallRequest,
   ): Effect.Effect<
     AssociateThirdPartyFirewallResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   batchAssociateResource(
     input: BatchAssociateResourceRequest,
   ): Effect.Effect<
     BatchAssociateResourceResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   batchDisassociateResource(
     input: BatchDisassociateResourceRequest,
   ): Effect.Effect<
     BatchDisassociateResourceResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteAppsList(
     input: DeleteAppsListRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteNotificationChannel(
     input: DeleteNotificationChannelRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deletePolicy(
     input: DeletePolicyRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteProtocolsList(
     input: DeleteProtocolsListRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteResourceSet(
     input: DeleteResourceSetRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateAdminAccount(
     input: DisassociateAdminAccountRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateThirdPartyFirewall(
     input: DisassociateThirdPartyFirewallRequest,
   ): Effect.Effect<
     DisassociateThirdPartyFirewallResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getAdminAccount(
     input: GetAdminAccountRequest,
   ): Effect.Effect<
     GetAdminAccountResponse,
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getAdminScope(
     input: GetAdminScopeRequest,
   ): Effect.Effect<
     GetAdminScopeResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getAppsList(
     input: GetAppsListRequest,
   ): Effect.Effect<
     GetAppsListResponse,
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getComplianceDetail(
     input: GetComplianceDetailRequest,
   ): Effect.Effect<
     GetComplianceDetailResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getNotificationChannel(
     input: GetNotificationChannelRequest,
   ): Effect.Effect<
     GetNotificationChannelResponse,
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getPolicy(
     input: GetPolicyRequest,
   ): Effect.Effect<
     GetPolicyResponse,
-    InternalErrorException | InvalidOperationException | InvalidTypeException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | InvalidTypeException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getProtectionStatus(
     input: GetProtectionStatusRequest,
   ): Effect.Effect<
     GetProtectionStatusResponse,
-    InternalErrorException | InvalidInputException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getProtocolsList(
     input: GetProtocolsListRequest,
   ): Effect.Effect<
     GetProtocolsListResponse,
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getResourceSet(
     input: GetResourceSetRequest,
   ): Effect.Effect<
     GetResourceSetResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getThirdPartyFirewallAssociationStatus(
     input: GetThirdPartyFirewallAssociationStatusRequest,
   ): Effect.Effect<
     GetThirdPartyFirewallAssociationStatusResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getViolationDetails(
     input: GetViolationDetailsRequest,
   ): Effect.Effect<
     GetViolationDetailsResponse,
-    InternalErrorException | InvalidInputException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAdminAccountsForOrganization(
     input: ListAdminAccountsForOrganizationRequest,
   ): Effect.Effect<
     ListAdminAccountsForOrganizationResponse,
-    InternalErrorException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAdminsManagingAccount(
     input: ListAdminsManagingAccountRequest,
   ): Effect.Effect<
     ListAdminsManagingAccountResponse,
-    InternalErrorException | InvalidInputException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAppsLists(
     input: ListAppsListsRequest,
   ): Effect.Effect<
     ListAppsListsResponse,
-    InternalErrorException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listComplianceStatus(
     input: ListComplianceStatusRequest,
@@ -162,7 +255,10 @@ export interface AWSFMS_20180101 {
     input: ListDiscoveredResourcesRequest,
   ): Effect.Effect<
     ListDiscoveredResourcesResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | CommonAwsError
   >;
   listMemberAccounts(
     input: ListMemberAccountsRequest,
@@ -174,92 +270,155 @@ export interface AWSFMS_20180101 {
     input: ListPoliciesRequest,
   ): Effect.Effect<
     ListPoliciesResponse,
-    InternalErrorException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listProtocolsLists(
     input: ListProtocolsListsRequest,
   ): Effect.Effect<
     ListProtocolsListsResponse,
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listResourceSetResources(
     input: ListResourceSetResourcesRequest,
   ): Effect.Effect<
     ListResourceSetResourcesResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listResourceSets(
     input: ListResourceSetsRequest,
   ): Effect.Effect<
     ListResourceSetsResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listThirdPartyFirewallFirewallPolicies(
     input: ListThirdPartyFirewallFirewallPoliciesRequest,
   ): Effect.Effect<
     ListThirdPartyFirewallFirewallPoliciesResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putAdminAccount(
     input: PutAdminAccountRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | CommonAwsError
   >;
   putAppsList(
     input: PutAppsListRequest,
   ): Effect.Effect<
     PutAppsListResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putNotificationChannel(
     input: PutNotificationChannelRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putPolicy(
     input: PutPolicyRequest,
   ): Effect.Effect<
     PutPolicyResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | InvalidTypeException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | InvalidTypeException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putProtocolsList(
     input: PutProtocolsListRequest,
   ): Effect.Effect<
     PutProtocolsListResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putResourceSet(
     input: PutResourceSetRequest,
   ): Effect.Effect<
     PutResourceSetResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalErrorException | InvalidInputException | InvalidOperationException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidInputException
+    | InvalidOperationException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
 export type Fms = AWSFMS_20180101;
 
 export type AccountIdList = Array<string>;
-export type AccountRoleStatus = "Ready" | "Creating" | "PendingDeletion" | "Deleting" | "Deleted";
+export type AccountRoleStatus =
+  | "Ready"
+  | "Creating"
+  | "PendingDeletion"
+  | "Deleting"
+  | "Deleted";
 export interface AccountScope {
   Accounts?: Array<string>;
   AllAccountsEnabled?: boolean;
@@ -323,7 +482,8 @@ export interface AwsEc2NetworkInterfaceViolation {
   ViolationTarget?: string;
   ViolatingSecurityGroups?: Array<string>;
 }
-export type AwsEc2NetworkInterfaceViolations = Array<AwsEc2NetworkInterfaceViolation>;
+export type AwsEc2NetworkInterfaceViolations =
+  Array<AwsEc2NetworkInterfaceViolation>;
 export type AWSRegion = string;
 
 export type AWSRegionList = Array<string>;
@@ -380,7 +540,10 @@ export type CustomerPolicyScopeId = string;
 
 export type CustomerPolicyScopeIdList = Array<string>;
 export type CustomerPolicyScopeIdType = "ACCOUNT" | "ORG_UNIT";
-export type CustomerPolicyScopeMap = Record<CustomerPolicyScopeIdType, Array<string>>;
+export type CustomerPolicyScopeMap = Record<
+  CustomerPolicyScopeIdType,
+  Array<string>
+>;
 export type CustomerPolicyStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE";
 export interface DeleteAppsListRequest {
   ListId: string;
@@ -391,8 +554,7 @@ export interface DeleteNetworkAclEntriesAction {
   NetworkAclEntriesToBeDeleted?: Array<EntryDescription>;
   FMSCanRemediate?: boolean;
 }
-export interface DeleteNotificationChannelRequest {
-}
+export interface DeleteNotificationChannelRequest {}
 export interface DeletePolicyRequest {
   PolicyId: string;
   DeleteAllPolicyResources?: boolean;
@@ -403,14 +565,17 @@ export interface DeleteProtocolsListRequest {
 export interface DeleteResourceSetRequest {
   Identifier: string;
 }
-export type DependentServiceName = "AWSConfig" | "AWSWAF" | "AWSShieldAdvanced" | "AWSVirtualPrivateCloud";
+export type DependentServiceName =
+  | "AWSConfig"
+  | "AWSWAF"
+  | "AWSShieldAdvanced"
+  | "AWSVirtualPrivateCloud";
 export type Description = string;
 
 export type DestinationType = "IPV4" | "IPV6" | "PrefixList";
 export type DetailedInfo = string;
 
-export interface DisassociateAdminAccountRequest {
-}
+export interface DisassociateAdminAccountRequest {}
 export interface DisassociateThirdPartyFirewallRequest {
   ThirdPartyFirewall: ThirdPartyFirewall;
 }
@@ -494,7 +659,10 @@ export interface EntryDescription {
   EntryRuleNumber?: number;
   EntryType?: EntryType;
 }
-export type EntryType = "FMSManagedFirstEntry" | "FMSManagedLastEntry" | "CustomEntry";
+export type EntryType =
+  | "FMSManagedFirstEntry"
+  | "FMSManagedLastEntry"
+  | "CustomEntry";
 export interface EntryViolation {
   ExpectedEntry?: EntryDescription;
   ExpectedEvaluationOrder?: string;
@@ -503,7 +671,10 @@ export interface EntryViolation {
   EntriesWithConflicts?: Array<EntryDescription>;
   EntryViolationReasons?: Array<EntryViolationReason>;
 }
-export type EntryViolationReason = "MissingExpectedEntry" | "IncorrectEntryOrder" | "EntryConflict";
+export type EntryViolationReason =
+  | "MissingExpectedEntry"
+  | "IncorrectEntryOrder"
+  | "EntryConflict";
 export type EntryViolationReasons = Array<EntryViolationReason>;
 export type EntryViolations = Array<EntryViolation>;
 export type ErrorMessage = string;
@@ -528,7 +699,13 @@ export interface FailedItem {
   Reason?: FailedItemReason;
 }
 export type FailedItemList = Array<FailedItem>;
-export type FailedItemReason = "NotValidArn" | "NotValidPartition" | "NotValidRegion" | "NotValidService" | "NotValidResourceType" | "NotValidAccountId";
+export type FailedItemReason =
+  | "NotValidArn"
+  | "NotValidPartition"
+  | "NotValidRegion"
+  | "NotValidService"
+  | "NotValidResourceType"
+  | "NotValidAccountId";
 export type FirewallDeploymentModel = "CENTRALIZED" | "DISTRIBUTED";
 export type FirewallPolicyId = string;
 
@@ -551,8 +728,7 @@ export interface FMSPolicyUpdateFirewallCreationConfigAction {
   Description?: string;
   FirewallCreationConfig?: string;
 }
-export interface GetAdminAccountRequest {
-}
+export interface GetAdminAccountRequest {}
 export interface GetAdminAccountResponse {
   AdminAccount?: string;
   RoleStatus?: AccountRoleStatus;
@@ -579,8 +755,7 @@ export interface GetComplianceDetailRequest {
 export interface GetComplianceDetailResponse {
   PolicyComplianceDetail?: PolicyComplianceDetail;
 }
-export interface GetNotificationChannelRequest {
-}
+export interface GetNotificationChannelRequest {}
 export interface GetNotificationChannelResponse {
   SnsTopicArn?: string;
   SnsRoleName?: string;
@@ -791,7 +966,10 @@ export interface ListThirdPartyFirewallFirewallPoliciesResponse {
 }
 export type ManagedServiceData = string;
 
-export type MarketplaceSubscriptionOnboardingStatus = "NO_SUBSCRIPTION" | "NOT_COMPLETE" | "COMPLETE";
+export type MarketplaceSubscriptionOnboardingStatus =
+  | "NO_SUBSCRIPTION"
+  | "NOT_COMPLETE"
+  | "COMPLETE";
 export type MemberAccounts = Array<string>;
 export type Name = string;
 
@@ -936,7 +1114,11 @@ export interface OrganizationalUnitScope {
   AllOrganizationalUnitsEnabled?: boolean;
   ExcludeSpecifiedOrganizationalUnits?: boolean;
 }
-export type OrganizationStatus = "Onboarding" | "OnboardingComplete" | "Offboarding" | "OffboardingComplete";
+export type OrganizationStatus =
+  | "Onboarding"
+  | "OnboardingComplete"
+  | "Offboarding"
+  | "OffboardingComplete";
 export type PaginationMaxResults = number;
 
 export type PaginationToken = string;
@@ -1230,7 +1412,8 @@ export interface SecurityGroupRemediationAction {
   RemediationResult?: SecurityGroupRuleDescription;
   IsDefaultAction?: boolean;
 }
-export type SecurityGroupRemediationActions = Array<SecurityGroupRemediationAction>;
+export type SecurityGroupRemediationActions =
+  Array<SecurityGroupRemediationAction>;
 export interface SecurityGroupRuleDescription {
   IPV4Range?: string;
   IPV6Range?: string;
@@ -1244,7 +1427,18 @@ export interface SecurityServicePolicyData {
   ManagedServiceData?: string;
   PolicyOption?: PolicyOption;
 }
-export type SecurityServiceType = "WAF" | "WAFV2" | "SHIELD_ADVANCED" | "SECURITY_GROUPS_COMMON" | "SECURITY_GROUPS_CONTENT_AUDIT" | "SECURITY_GROUPS_USAGE_AUDIT" | "NETWORK_FIREWALL" | "DNS_FIREWALL" | "THIRD_PARTY_FIREWALL" | "IMPORT_NETWORK_FIREWALL" | "NETWORK_ACL_COMMON";
+export type SecurityServiceType =
+  | "WAF"
+  | "WAFV2"
+  | "SHIELD_ADVANCED"
+  | "SECURITY_GROUPS_COMMON"
+  | "SECURITY_GROUPS_CONTENT_AUDIT"
+  | "SECURITY_GROUPS_USAGE_AUDIT"
+  | "NETWORK_FIREWALL"
+  | "DNS_FIREWALL"
+  | "THIRD_PARTY_FIREWALL"
+  | "IMPORT_NETWORK_FIREWALL"
+  | "NETWORK_ACL_COMMON";
 export type SecurityServiceTypeList = Array<SecurityServiceType>;
 export interface StatefulEngineOptions {
   RuleOrder?: RuleOrder;
@@ -1265,7 +1459,11 @@ export interface StatelessRuleGroup {
 export type StatelessRuleGroupList = Array<StatelessRuleGroup>;
 export type StatelessRuleGroupPriority = number;
 
-export type StreamExceptionPolicy = "DROP" | "CONTINUE" | "REJECT" | "FMS_IGNORE";
+export type StreamExceptionPolicy =
+  | "DROP"
+  | "CONTINUE"
+  | "REJECT"
+  | "FMS_IGNORE";
 export interface Tag {
   Key: string;
   Value: string;
@@ -1278,17 +1476,34 @@ export interface TagResourceRequest {
   ResourceArn: string;
   TagList: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
-export type TargetType = "Gateway" | "CarrierGateway" | "Instance" | "LocalGateway" | "NatGateway" | "NetworkInterface" | "VPCEndpoint" | "VPCPeeringConnection" | "EgressOnlyInternetGateway" | "TransitGateway";
+export type TargetType =
+  | "Gateway"
+  | "CarrierGateway"
+  | "Instance"
+  | "LocalGateway"
+  | "NatGateway"
+  | "NetworkInterface"
+  | "VPCEndpoint"
+  | "VPCPeeringConnection"
+  | "EgressOnlyInternetGateway"
+  | "TransitGateway";
 export type TargetViolationReason = string;
 
 export type TargetViolationReasons = Array<string>;
-export type ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW" | "FORTIGATE_CLOUD_NATIVE_FIREWALL";
-export type ThirdPartyFirewallAssociationStatus = "ONBOARDING" | "ONBOARD_COMPLETE" | "OFFBOARDING" | "OFFBOARD_COMPLETE" | "NOT_EXIST";
-export type ThirdPartyFirewallFirewallPolicies = Array<ThirdPartyFirewallFirewallPolicy>;
+export type ThirdPartyFirewall =
+  | "PALO_ALTO_NETWORKS_CLOUD_NGFW"
+  | "FORTIGATE_CLOUD_NATIVE_FIREWALL";
+export type ThirdPartyFirewallAssociationStatus =
+  | "ONBOARDING"
+  | "ONBOARD_COMPLETE"
+  | "OFFBOARDING"
+  | "OFFBOARD_COMPLETE"
+  | "NOT_EXIST";
+export type ThirdPartyFirewallFirewallPolicies =
+  Array<ThirdPartyFirewallFirewallPolicy>;
 export interface ThirdPartyFirewallFirewallPolicy {
   FirewallPolicyId?: string;
   FirewallPolicyName?: string;
@@ -1321,8 +1536,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type UpdateToken = string;
 
 export interface ViolationDetail {
@@ -1334,7 +1548,37 @@ export interface ViolationDetail {
   ResourceTags?: Array<Tag>;
   ResourceDescription?: string;
 }
-export type ViolationReason = "WebAclMissingRuleGroup" | "ResourceMissingWebAcl" | "ResourceIncorrectWebAcl" | "ResourceMissingShieldProtection" | "ResourceMissingWebaclOrShieldProtection" | "ResourceMissingSecurityGroup" | "ResourceViolatesAuditSecurityGroup" | "SecurityGroupUnused" | "SecurityGroupRedundant" | "FMSCreatedSecurityGroupEdited" | "MissingFirewall" | "MissingFirewallSubnetInAZ" | "MissingExpectedRouteTable" | "NetworkFirewallPolicyModified" | "FirewallSubnetIsOutOfScope" | "InternetGatewayMissingExpectedRoute" | "FirewallSubnetMissingExpectedRoute" | "UnexpectedFirewallRoutes" | "UnexpectedTargetGatewayRoutes" | "TrafficInspectionCrossesAZBoundary" | "InvalidRouteConfiguration" | "MissingTargetGateway" | "InternetTrafficNotInspected" | "BlackHoleRouteDetected" | "BlackHoleRouteDetectedInFirewallSubnet" | "ResourceMissingDnsFirewall" | "RouteHasOutOfScopeEndpoint" | "FirewallSubnetMissingVPCEndpoint" | "InvalidNetworkAclEntry" | "WebACLConfigurationOrScopeOfUse";
+export type ViolationReason =
+  | "WebAclMissingRuleGroup"
+  | "ResourceMissingWebAcl"
+  | "ResourceIncorrectWebAcl"
+  | "ResourceMissingShieldProtection"
+  | "ResourceMissingWebaclOrShieldProtection"
+  | "ResourceMissingSecurityGroup"
+  | "ResourceViolatesAuditSecurityGroup"
+  | "SecurityGroupUnused"
+  | "SecurityGroupRedundant"
+  | "FMSCreatedSecurityGroupEdited"
+  | "MissingFirewall"
+  | "MissingFirewallSubnetInAZ"
+  | "MissingExpectedRouteTable"
+  | "NetworkFirewallPolicyModified"
+  | "FirewallSubnetIsOutOfScope"
+  | "InternetGatewayMissingExpectedRoute"
+  | "FirewallSubnetMissingExpectedRoute"
+  | "UnexpectedFirewallRoutes"
+  | "UnexpectedTargetGatewayRoutes"
+  | "TrafficInspectionCrossesAZBoundary"
+  | "InvalidRouteConfiguration"
+  | "MissingTargetGateway"
+  | "InternetTrafficNotInspected"
+  | "BlackHoleRouteDetected"
+  | "BlackHoleRouteDetectedInFirewallSubnet"
+  | "ResourceMissingDnsFirewall"
+  | "RouteHasOutOfScopeEndpoint"
+  | "FirewallSubnetMissingVPCEndpoint"
+  | "InvalidNetworkAclEntry"
+  | "WebACLConfigurationOrScopeOfUse";
 export type ViolationTarget = string;
 
 export interface WebACLHasIncompatibleConfigurationViolation {
@@ -1796,4 +2040,3 @@ export declare namespace UntagResource {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

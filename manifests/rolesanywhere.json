@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.rolesanywhere#AccessDeniedException": {
       "type": "structure",
@@ -1874,6 +1875,23 @@
     },
     "com.amazonaws.rolesanywhere#RolesAnywhere": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.rolesanywhere#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#PutNotificationSettings"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#ResetNotificationSettings"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#TagResource"
+        },
+        {
+          "target": "com.amazonaws.rolesanywhere#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "RolesAnywhere",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.mediaconvert#AacAudioDescriptionBroadcasterMix": {
       "type": "enum",
@@ -18056,6 +18085,101 @@
     },
     "com.amazonaws.mediaconvert#MediaConvert": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mediaconvert#AssociateCertificate"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#CancelJob"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#CreateJob"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#CreateJobTemplate"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#CreatePreset"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#CreateQueue"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#DeleteJobTemplate"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#DeletePolicy"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#DeletePreset"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#DeleteQueue"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#DescribeEndpoints"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#DisassociateCertificate"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#GetJob"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#GetJobTemplate"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#GetPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#GetPreset"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#GetQueue"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ListJobTemplates"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ListPresets"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ListQueues"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#ListVersions"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#Probe"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#PutPolicy"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#SearchJobs"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#UpdateJobTemplate"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#UpdatePreset"
+        },
+        {
+          "target": "com.amazonaws.mediaconvert#UpdateQueue"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MediaConvert",

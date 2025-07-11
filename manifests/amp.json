@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.amp#AccessDeniedException": {
       "type": "structure",
@@ -129,6 +130,20 @@
     },
     "com.amazonaws.amp#AmazonPrometheusService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.amp#GetDefaultScraperConfiguration"
+        },
+        {
+          "target": "com.amazonaws.amp#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.amp#TagResource"
+        },
+        {
+          "target": "com.amazonaws.amp#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "amp",

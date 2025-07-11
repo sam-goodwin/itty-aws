@@ -1,7 +1,44 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.forecastquery#AmazonForecastRuntime": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.forecastquery#QueryForecast"
+        },
+        {
+          "target": "com.amazonaws.forecastquery#QueryWhatIfForecast"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "forecastquery",

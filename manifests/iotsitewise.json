@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.iotsitewise#ARN": {
       "type": "string",
@@ -12,6 +41,278 @@
     },
     "com.amazonaws.iotsitewise#AWSIoTSiteWise": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iotsitewise#AssociateAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#AssociateTimeSeriesToAssetProperty"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#BatchAssociateProjectAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#BatchDisassociateProjectAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#BatchGetAssetPropertyAggregates"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#BatchGetAssetPropertyValue"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#BatchGetAssetPropertyValueHistory"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#BatchPutAssetPropertyValue"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateAsset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateAssetModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateAssetModelCompositeModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateBulkImportJob"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateDashboard"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateGateway"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreatePortal"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#CreateProject"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteAsset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteAssetModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteAssetModelCompositeModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteDashboard"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteGateway"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeletePortal"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteProject"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DeleteTimeSeries"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAction"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAsset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAssetCompositeModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAssetModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAssetModelCompositeModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeAssetProperty"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeBulkImportJob"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeDashboard"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeDefaultEncryptionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeGateway"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeGatewayCapabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeLoggingOptions"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribePortal"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeProject"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeStorageConfiguration"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DescribeTimeSeries"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DisassociateAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#DisassociateTimeSeriesFromAssetProperty"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ExecuteAction"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ExecuteQuery"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#GetAssetPropertyAggregates"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#GetAssetPropertyValue"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#GetAssetPropertyValueHistory"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#GetInterpolatedAssetPropertyValues"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#InvokeAssistant"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAccessPolicies"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListActions"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssetModelCompositeModels"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssetModelProperties"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssetModels"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssetProperties"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssetRelationships"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListAssociatedAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListBulkImportJobs"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListCompositionRelationships"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListDashboards"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListGateways"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListPortals"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListProjectAssets"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListProjects"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#ListTimeSeries"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PutDefaultEncryptionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PutLoggingOptions"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#PutStorageConfiguration"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#TagResource"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateAsset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateAssetModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateAssetModelCompositeModel"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateAssetProperty"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateDashboard"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateDataset"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateGateway"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateGatewayCapabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdatePortal"
+        },
+        {
+          "target": "com.amazonaws.iotsitewise#UpdateProject"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IoTSiteWise",

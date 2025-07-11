@@ -1,36 +1,31 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSElasticBeanstalkService {
   abortEnvironmentUpdate(
     input: AbortEnvironmentUpdateMessage,
-  ): Effect.Effect<
-    {},
-    InsufficientPrivilegesException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InsufficientPrivilegesException | CommonAwsError>;
   applyEnvironmentManagedAction(
     input: ApplyEnvironmentManagedActionRequest,
   ): Effect.Effect<
     ApplyEnvironmentManagedActionResult,
-    ElasticBeanstalkServiceException | ManagedActionInvalidStateException | CommonAwsError
+    | ElasticBeanstalkServiceException
+    | ManagedActionInvalidStateException
+    | CommonAwsError
   >;
   associateEnvironmentOperationsRole(
     input: AssociateEnvironmentOperationsRoleMessage,
-  ): Effect.Effect<
-    {},
-    InsufficientPrivilegesException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InsufficientPrivilegesException | CommonAwsError>;
   checkDNSAvailability(
     input: CheckDNSAvailabilityMessage,
-  ): Effect.Effect<
-    CheckDNSAvailabilityResultMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CheckDNSAvailabilityResultMessage, CommonAwsError>;
   composeEnvironments(
     input: ComposeEnvironmentsMessage,
   ): Effect.Effect<
     EnvironmentDescriptionsMessage,
-    InsufficientPrivilegesException | TooManyEnvironmentsException | CommonAwsError
+    | InsufficientPrivilegesException
+    | TooManyEnvironmentsException
+    | CommonAwsError
   >;
   createApplication(
     input: CreateApplicationMessage,
@@ -42,80 +37,85 @@ export interface AWSElasticBeanstalkService {
     input: CreateApplicationVersionMessage,
   ): Effect.Effect<
     ApplicationVersionDescriptionMessage,
-    CodeBuildNotInServiceRegionException | InsufficientPrivilegesException | S3LocationNotInServiceRegionException | TooManyApplicationsException | TooManyApplicationVersionsException | CommonAwsError
+    | CodeBuildNotInServiceRegionException
+    | InsufficientPrivilegesException
+    | S3LocationNotInServiceRegionException
+    | TooManyApplicationsException
+    | TooManyApplicationVersionsException
+    | CommonAwsError
   >;
   createConfigurationTemplate(
     input: CreateConfigurationTemplateMessage,
   ): Effect.Effect<
     ConfigurationSettingsDescription,
-    InsufficientPrivilegesException | TooManyBucketsException | TooManyConfigurationTemplatesException | CommonAwsError
+    | InsufficientPrivilegesException
+    | TooManyBucketsException
+    | TooManyConfigurationTemplatesException
+    | CommonAwsError
   >;
   createEnvironment(
     input: CreateEnvironmentMessage,
   ): Effect.Effect<
     EnvironmentDescription,
-    InsufficientPrivilegesException | TooManyEnvironmentsException | CommonAwsError
+    | InsufficientPrivilegesException
+    | TooManyEnvironmentsException
+    | CommonAwsError
   >;
   createPlatformVersion(
     input: CreatePlatformVersionRequest,
   ): Effect.Effect<
     CreatePlatformVersionResult,
-    ElasticBeanstalkServiceException | InsufficientPrivilegesException | TooManyPlatformsException | CommonAwsError
+    | ElasticBeanstalkServiceException
+    | InsufficientPrivilegesException
+    | TooManyPlatformsException
+    | CommonAwsError
   >;
-  createStorageLocation(
-    input: {},
-  ): Effect.Effect<
+  createStorageLocation(input: {}): Effect.Effect<
     CreateStorageLocationResultMessage,
-    InsufficientPrivilegesException | S3SubscriptionRequiredException | TooManyBucketsException | CommonAwsError
+    | InsufficientPrivilegesException
+    | S3SubscriptionRequiredException
+    | TooManyBucketsException
+    | CommonAwsError
   >;
   deleteApplication(
     input: DeleteApplicationMessage,
-  ): Effect.Effect<
-    {},
-    OperationInProgressException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, OperationInProgressException | CommonAwsError>;
   deleteApplicationVersion(
     input: DeleteApplicationVersionMessage,
   ): Effect.Effect<
     {},
-    InsufficientPrivilegesException | OperationInProgressException | S3LocationNotInServiceRegionException | SourceBundleDeletionException | CommonAwsError
+    | InsufficientPrivilegesException
+    | OperationInProgressException
+    | S3LocationNotInServiceRegionException
+    | SourceBundleDeletionException
+    | CommonAwsError
   >;
   deleteConfigurationTemplate(
     input: DeleteConfigurationTemplateMessage,
-  ): Effect.Effect<
-    {},
-    OperationInProgressException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, OperationInProgressException | CommonAwsError>;
   deleteEnvironmentConfiguration(
     input: DeleteEnvironmentConfigurationMessage,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   deletePlatformVersion(
     input: DeletePlatformVersionRequest,
   ): Effect.Effect<
     DeletePlatformVersionResult,
-    ElasticBeanstalkServiceException | InsufficientPrivilegesException | OperationInProgressException | PlatformVersionStillReferencedException | CommonAwsError
+    | ElasticBeanstalkServiceException
+    | InsufficientPrivilegesException
+    | OperationInProgressException
+    | PlatformVersionStillReferencedException
+    | CommonAwsError
   >;
-  describeAccountAttributes(
-    input: {},
-  ): Effect.Effect<
+  describeAccountAttributes(input: {}): Effect.Effect<
     DescribeAccountAttributesResult,
     InsufficientPrivilegesException | CommonAwsError
   >;
-  describeApplicationVersions(
-    input: DescribeApplicationVersionsMessage,
-  ): Effect.Effect<
-    ApplicationVersionDescriptionsMessage,
-    CommonAwsError
-  >;
   describeApplications(
     input: DescribeApplicationsMessage,
-  ): Effect.Effect<
-    ApplicationDescriptionsMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ApplicationDescriptionsMessage, CommonAwsError>;
+  describeApplicationVersions(
+    input: DescribeApplicationVersionsMessage,
+  ): Effect.Effect<ApplicationVersionDescriptionsMessage, CommonAwsError>;
   describeConfigurationOptions(
     input: DescribeConfigurationOptionsMessage,
   ): Effect.Effect<
@@ -154,16 +154,10 @@ export interface AWSElasticBeanstalkService {
   >;
   describeEnvironments(
     input: DescribeEnvironmentsMessage,
-  ): Effect.Effect<
-    EnvironmentDescriptionsMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<EnvironmentDescriptionsMessage, CommonAwsError>;
   describeEvents(
     input: DescribeEventsMessage,
-  ): Effect.Effect<
-    EventDescriptionsMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<EventDescriptionsMessage, CommonAwsError>;
   describeInstancesHealth(
     input: DescribeInstancesHealthRequest,
   ): Effect.Effect<
@@ -174,68 +168,52 @@ export interface AWSElasticBeanstalkService {
     input: DescribePlatformVersionRequest,
   ): Effect.Effect<
     DescribePlatformVersionResult,
-    ElasticBeanstalkServiceException | InsufficientPrivilegesException | CommonAwsError
+    | ElasticBeanstalkServiceException
+    | InsufficientPrivilegesException
+    | CommonAwsError
   >;
   disassociateEnvironmentOperationsRole(
     input: DisassociateEnvironmentOperationsRoleMessage,
-  ): Effect.Effect<
-    {},
-    InsufficientPrivilegesException | CommonAwsError
-  >;
-  listAvailableSolutionStacks(
-    input: {},
-  ): Effect.Effect<
+  ): Effect.Effect<{}, InsufficientPrivilegesException | CommonAwsError>;
+  listAvailableSolutionStacks(input: {}): Effect.Effect<
     ListAvailableSolutionStacksResultMessage,
     CommonAwsError
   >;
   listPlatformBranches(
     input: ListPlatformBranchesRequest,
-  ): Effect.Effect<
-    ListPlatformBranchesResult,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListPlatformBranchesResult, CommonAwsError>;
   listPlatformVersions(
     input: ListPlatformVersionsRequest,
   ): Effect.Effect<
     ListPlatformVersionsResult,
-    ElasticBeanstalkServiceException | InsufficientPrivilegesException | CommonAwsError
+    | ElasticBeanstalkServiceException
+    | InsufficientPrivilegesException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceMessage,
   ): Effect.Effect<
     ResourceTagsDescriptionMessage,
-    InsufficientPrivilegesException | ResourceNotFoundException | ResourceTypeNotSupportedException | CommonAwsError
+    | InsufficientPrivilegesException
+    | ResourceNotFoundException
+    | ResourceTypeNotSupportedException
+    | CommonAwsError
   >;
   rebuildEnvironment(
     input: RebuildEnvironmentMessage,
-  ): Effect.Effect<
-    {},
-    InsufficientPrivilegesException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InsufficientPrivilegesException | CommonAwsError>;
   requestEnvironmentInfo(
     input: RequestEnvironmentInfoMessage,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   restartAppServer(
     input: RestartAppServerMessage,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   retrieveEnvironmentInfo(
     input: RetrieveEnvironmentInfoMessage,
-  ): Effect.Effect<
-    RetrieveEnvironmentInfoResultMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<RetrieveEnvironmentInfoResultMessage, CommonAwsError>;
   swapEnvironmentCNAMEs(
     input: SwapEnvironmentCNAMEsMessage,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   terminateEnvironment(
     input: TerminateEnvironmentMessage,
   ): Effect.Effect<
@@ -244,10 +222,7 @@ export interface AWSElasticBeanstalkService {
   >;
   updateApplication(
     input: UpdateApplicationMessage,
-  ): Effect.Effect<
-    ApplicationDescriptionMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ApplicationDescriptionMessage, CommonAwsError>;
   updateApplicationResourceLifecycle(
     input: UpdateApplicationResourceLifecycleMessage,
   ): Effect.Effect<
@@ -256,10 +231,7 @@ export interface AWSElasticBeanstalkService {
   >;
   updateApplicationVersion(
     input: UpdateApplicationVersionMessage,
-  ): Effect.Effect<
-    ApplicationVersionDescriptionMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ApplicationVersionDescriptionMessage, CommonAwsError>;
   updateConfigurationTemplate(
     input: UpdateConfigurationTemplateMessage,
   ): Effect.Effect<
@@ -276,7 +248,12 @@ export interface AWSElasticBeanstalkService {
     input: UpdateTagsForResourceMessage,
   ): Effect.Effect<
     {},
-    InsufficientPrivilegesException | OperationInProgressException | ResourceNotFoundException | ResourceTypeNotSupportedException | TooManyTagsException | CommonAwsError
+    | InsufficientPrivilegesException
+    | OperationInProgressException
+    | ResourceNotFoundException
+    | ResourceTypeNotSupportedException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   validateConfigurationSettings(
     input: ValidateConfigurationSettingsMessage,
@@ -347,7 +324,8 @@ export interface ApplicationVersionDescription {
   DateUpdated?: Date | string;
   Status?: ApplicationVersionStatus;
 }
-export type ApplicationVersionDescriptionList = Array<ApplicationVersionDescription>;
+export type ApplicationVersionDescriptionList =
+  Array<ApplicationVersionDescription>;
 export interface ApplicationVersionDescriptionMessage {
   ApplicationVersion?: ApplicationVersionDescription;
 }
@@ -361,7 +339,12 @@ export interface ApplicationVersionLifecycleConfig {
 }
 export type ApplicationVersionProccess = boolean;
 
-export type ApplicationVersionStatus = "Processed" | "Unprocessed" | "Failed" | "Processing" | "Building";
+export type ApplicationVersionStatus =
+  | "Processed"
+  | "Unprocessed"
+  | "Failed"
+  | "Processing"
+  | "Building";
 export interface ApplyEnvironmentManagedActionRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
@@ -427,7 +410,10 @@ export interface ComposeEnvironmentsMessage {
   GroupName?: string;
   VersionLabels?: Array<string>;
 }
-export type ComputeType = "BUILD_GENERAL1_SMALL" | "BUILD_GENERAL1_MEDIUM" | "BUILD_GENERAL1_LARGE";
+export type ComputeType =
+  | "BUILD_GENERAL1_SMALL"
+  | "BUILD_GENERAL1_MEDIUM"
+  | "BUILD_GENERAL1_LARGE";
 export type ConfigurationDeploymentStatus = "deployed" | "pending" | "failed";
 export type ConfigurationOptionDefaultValue = string;
 
@@ -444,7 +430,8 @@ export interface ConfigurationOptionDescription {
   MaxLength?: number;
   Regex?: OptionRestrictionRegex;
 }
-export type ConfigurationOptionDescriptionsList = Array<ConfigurationOptionDescription>;
+export type ConfigurationOptionDescriptionsList =
+  Array<ConfigurationOptionDescription>;
 export type ConfigurationOptionName = string;
 
 export type ConfigurationOptionPossibleValue = string;
@@ -479,7 +466,8 @@ export interface ConfigurationSettingsDescription {
   DateUpdated?: Date | string;
   OptionSettings?: Array<ConfigurationOptionSetting>;
 }
-export type ConfigurationSettingsDescriptionList = Array<ConfigurationSettingsDescription>;
+export type ConfigurationSettingsDescriptionList =
+  Array<ConfigurationSettingsDescription>;
 export interface ConfigurationSettingsDescriptions {
   ConfigurationSettings?: Array<ConfigurationSettingsDescription>;
 }
@@ -750,9 +738,26 @@ export interface EnvironmentDescriptionsMessage {
   NextToken?: string;
 }
 export type EnvironmentHealth = "Green" | "Yellow" | "Red" | "Grey";
-export type EnvironmentHealthAttribute = "Status" | "Color" | "Causes" | "ApplicationMetrics" | "InstancesHealth" | "All" | "HealthStatus" | "RefreshedAt";
+export type EnvironmentHealthAttribute =
+  | "Status"
+  | "Color"
+  | "Causes"
+  | "ApplicationMetrics"
+  | "InstancesHealth"
+  | "All"
+  | "HealthStatus"
+  | "RefreshedAt";
 export type EnvironmentHealthAttributes = Array<EnvironmentHealthAttribute>;
-export type EnvironmentHealthStatus = "NoData" | "Unknown" | "Pending" | "Ok" | "Info" | "Warning" | "Degraded" | "Severe" | "Suspended";
+export type EnvironmentHealthStatus =
+  | "NoData"
+  | "Unknown"
+  | "Pending"
+  | "Ok"
+  | "Info"
+  | "Warning"
+  | "Degraded"
+  | "Severe"
+  | "Suspended";
 export type EnvironmentId = string;
 
 export type EnvironmentIdList = Array<string>;
@@ -788,7 +793,15 @@ export interface EnvironmentResourceDescriptionsMessage {
 export interface EnvironmentResourcesDescription {
   LoadBalancer?: LoadBalancerDescription;
 }
-export type EnvironmentStatus = "Aborting" | "Launching" | "Updating" | "LinkingFrom" | "LinkingTo" | "Ready" | "Terminating" | "Terminated";
+export type EnvironmentStatus =
+  | "Aborting"
+  | "Launching"
+  | "Updating"
+  | "LinkingFrom"
+  | "LinkingTo"
+  | "Ready"
+  | "Terminating"
+  | "Terminated";
 export interface EnvironmentTier {
   Name?: string;
   Type?: string;
@@ -814,10 +827,23 @@ export interface EventDescriptionsMessage {
 }
 export type EventMessage = string;
 
-export type EventSeverity = "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL";
+export type EventSeverity =
+  | "TRACE"
+  | "DEBUG"
+  | "INFO"
+  | "WARN"
+  | "ERROR"
+  | "FATAL";
 export type ExceptionMessage = string;
 
-export type FailureType = "UpdateCancelled" | "CancellationFailed" | "RollbackFailed" | "RollbackSuccessful" | "InternalFailure" | "InvalidEnvironmentState" | "PermissionsError";
+export type FailureType =
+  | "UpdateCancelled"
+  | "CancellationFailed"
+  | "RollbackFailed"
+  | "RollbackSuccessful"
+  | "InternalFailure"
+  | "InvalidEnvironmentState"
+  | "PermissionsError";
 export type FileTypeExtension = string;
 
 export type ForceTerminate = boolean;
@@ -847,7 +873,18 @@ export interface InstanceHealthSummary {
 export type InstanceId = string;
 
 export type InstanceList = Array<Instance>;
-export type InstancesHealthAttribute = "HealthStatus" | "Color" | "Causes" | "ApplicationMetrics" | "RefreshedAt" | "LaunchedAt" | "System" | "Deployment" | "AvailabilityZone" | "InstanceType" | "All";
+export type InstancesHealthAttribute =
+  | "HealthStatus"
+  | "Color"
+  | "Causes"
+  | "ApplicationMetrics"
+  | "RefreshedAt"
+  | "LaunchedAt"
+  | "System"
+  | "Deployment"
+  | "AvailabilityZone"
+  | "InstanceType"
+  | "All";
 export type InstancesHealthAttributes = Array<InstancesHealthAttribute>;
 export declare class InsufficientPrivilegesException extends Data.TaggedError(
   "InsufficientPrivilegesException",
@@ -1074,7 +1111,12 @@ export interface PlatformProgrammingLanguage {
   Version?: string;
 }
 export type PlatformProgrammingLanguages = Array<PlatformProgrammingLanguage>;
-export type PlatformStatus = "Creating" | "Failed" | "Ready" | "Deleting" | "Deleted";
+export type PlatformStatus =
+  | "Creating"
+  | "Failed"
+  | "Ready"
+  | "Deleting"
+  | "Deleted";
 export interface PlatformSummary {
   PlatformArn?: string;
   PlatformOwner?: string;
@@ -1391,9 +1433,7 @@ export type VirtualizationType = string;
 export declare namespace AbortEnvironmentUpdate {
   export type Input = AbortEnvironmentUpdateMessage;
   export type Output = {};
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace ApplyEnvironmentManagedAction {
@@ -1408,16 +1448,13 @@ export declare namespace ApplyEnvironmentManagedAction {
 export declare namespace AssociateEnvironmentOperationsRole {
   export type Input = AssociateEnvironmentOperationsRoleMessage;
   export type Output = {};
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace CheckDNSAvailability {
   export type Input = CheckDNSAvailabilityMessage;
   export type Output = CheckDNSAvailabilityResultMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ComposeEnvironments {
@@ -1432,9 +1469,7 @@ export declare namespace ComposeEnvironments {
 export declare namespace CreateApplication {
   export type Input = CreateApplicationMessage;
   export type Output = ApplicationDescriptionMessage;
-  export type Error =
-    | TooManyApplicationsException
-    | CommonAwsError;
+  export type Error = TooManyApplicationsException | CommonAwsError;
 }
 
 export declare namespace CreateApplicationVersion {
@@ -1491,9 +1526,7 @@ export declare namespace CreateStorageLocation {
 export declare namespace DeleteApplication {
   export type Input = DeleteApplicationMessage;
   export type Output = {};
-  export type Error =
-    | OperationInProgressException
-    | CommonAwsError;
+  export type Error = OperationInProgressException | CommonAwsError;
 }
 
 export declare namespace DeleteApplicationVersion {
@@ -1510,16 +1543,13 @@ export declare namespace DeleteApplicationVersion {
 export declare namespace DeleteConfigurationTemplate {
   export type Input = DeleteConfigurationTemplateMessage;
   export type Output = {};
-  export type Error =
-    | OperationInProgressException
-    | CommonAwsError;
+  export type Error = OperationInProgressException | CommonAwsError;
 }
 
 export declare namespace DeleteEnvironmentConfiguration {
   export type Input = DeleteEnvironmentConfigurationMessage;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DeletePlatformVersion {
@@ -1536,39 +1566,31 @@ export declare namespace DeletePlatformVersion {
 export declare namespace DescribeAccountAttributes {
   export type Input = {};
   export type Output = DescribeAccountAttributesResult;
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeApplicationVersions {
-  export type Input = DescribeApplicationVersionsMessage;
-  export type Output = ApplicationVersionDescriptionsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace DescribeApplications {
   export type Input = DescribeApplicationsMessage;
   export type Output = ApplicationDescriptionsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace DescribeApplicationVersions {
+  export type Input = DescribeApplicationVersionsMessage;
+  export type Output = ApplicationVersionDescriptionsMessage;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeConfigurationOptions {
   export type Input = DescribeConfigurationOptionsMessage;
   export type Output = ConfigurationOptionsDescription;
-  export type Error =
-    | TooManyBucketsException
-    | CommonAwsError;
+  export type Error = TooManyBucketsException | CommonAwsError;
 }
 
 export declare namespace DescribeConfigurationSettings {
   export type Input = DescribeConfigurationSettingsMessage;
   export type Output = ConfigurationSettingsDescriptions;
-  export type Error =
-    | TooManyBucketsException
-    | CommonAwsError;
+  export type Error = TooManyBucketsException | CommonAwsError;
 }
 
 export declare namespace DescribeEnvironmentHealth {
@@ -1583,39 +1605,31 @@ export declare namespace DescribeEnvironmentHealth {
 export declare namespace DescribeEnvironmentManagedActionHistory {
   export type Input = DescribeEnvironmentManagedActionHistoryRequest;
   export type Output = DescribeEnvironmentManagedActionHistoryResult;
-  export type Error =
-    | ElasticBeanstalkServiceException
-    | CommonAwsError;
+  export type Error = ElasticBeanstalkServiceException | CommonAwsError;
 }
 
 export declare namespace DescribeEnvironmentManagedActions {
   export type Input = DescribeEnvironmentManagedActionsRequest;
   export type Output = DescribeEnvironmentManagedActionsResult;
-  export type Error =
-    | ElasticBeanstalkServiceException
-    | CommonAwsError;
+  export type Error = ElasticBeanstalkServiceException | CommonAwsError;
 }
 
 export declare namespace DescribeEnvironmentResources {
   export type Input = DescribeEnvironmentResourcesMessage;
   export type Output = EnvironmentResourceDescriptionsMessage;
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace DescribeEnvironments {
   export type Input = DescribeEnvironmentsMessage;
   export type Output = EnvironmentDescriptionsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeEvents {
   export type Input = DescribeEventsMessage;
   export type Output = EventDescriptionsMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeInstancesHealth {
@@ -1639,23 +1653,19 @@ export declare namespace DescribePlatformVersion {
 export declare namespace DisassociateEnvironmentOperationsRole {
   export type Input = DisassociateEnvironmentOperationsRoleMessage;
   export type Output = {};
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace ListAvailableSolutionStacks {
   export type Input = {};
   export type Output = ListAvailableSolutionStacksResultMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListPlatformBranches {
   export type Input = ListPlatformBranchesRequest;
   export type Output = ListPlatformBranchesResult;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListPlatformVersions {
@@ -1680,67 +1690,55 @@ export declare namespace ListTagsForResource {
 export declare namespace RebuildEnvironment {
   export type Input = RebuildEnvironmentMessage;
   export type Output = {};
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace RequestEnvironmentInfo {
   export type Input = RequestEnvironmentInfoMessage;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace RestartAppServer {
   export type Input = RestartAppServerMessage;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace RetrieveEnvironmentInfo {
   export type Input = RetrieveEnvironmentInfoMessage;
   export type Output = RetrieveEnvironmentInfoResultMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SwapEnvironmentCNAMEs {
   export type Input = SwapEnvironmentCNAMEsMessage;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace TerminateEnvironment {
   export type Input = TerminateEnvironmentMessage;
   export type Output = EnvironmentDescription;
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace UpdateApplication {
   export type Input = UpdateApplicationMessage;
   export type Output = ApplicationDescriptionMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace UpdateApplicationResourceLifecycle {
   export type Input = UpdateApplicationResourceLifecycleMessage;
   export type Output = ApplicationResourceLifecycleDescriptionMessage;
-  export type Error =
-    | InsufficientPrivilegesException
-    | CommonAwsError;
+  export type Error = InsufficientPrivilegesException | CommonAwsError;
 }
 
 export declare namespace UpdateApplicationVersion {
   export type Input = UpdateApplicationVersionMessage;
   export type Output = ApplicationVersionDescriptionMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace UpdateConfigurationTemplate {
@@ -1781,4 +1779,3 @@ export declare namespace ValidateConfigurationSettings {
     | TooManyBucketsException
     | CommonAwsError;
 }
-

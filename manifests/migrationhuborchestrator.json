@@ -1,7 +1,19 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.migrationhuborchestrator#AWSMigrationHubOrchestrator": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#TagResource"
+        },
+        {
+          "target": "com.amazonaws.migrationhuborchestrator#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MigrationHubOrchestrator",

@@ -1,7 +1,170 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.workdocs#AWSGorillaBoyService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.workdocs#AbortDocumentVersionUpload"
+        },
+        {
+          "target": "com.amazonaws.workdocs#ActivateUser"
+        },
+        {
+          "target": "com.amazonaws.workdocs#AddResourcePermissions"
+        },
+        {
+          "target": "com.amazonaws.workdocs#CreateComment"
+        },
+        {
+          "target": "com.amazonaws.workdocs#CreateCustomMetadata"
+        },
+        {
+          "target": "com.amazonaws.workdocs#CreateFolder"
+        },
+        {
+          "target": "com.amazonaws.workdocs#CreateLabels"
+        },
+        {
+          "target": "com.amazonaws.workdocs#CreateNotificationSubscription"
+        },
+        {
+          "target": "com.amazonaws.workdocs#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeactivateUser"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteComment"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteCustomMetadata"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteDocument"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteFolder"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteFolderContents"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteLabels"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteNotificationSubscription"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeActivities"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeComments"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeDocumentVersions"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeFolderContents"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeGroups"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeNotificationSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeResourcePermissions"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeRootFolders"
+        },
+        {
+          "target": "com.amazonaws.workdocs#DescribeUsers"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetCurrentUser"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetDocument"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetDocumentPath"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetFolder"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetFolderPath"
+        },
+        {
+          "target": "com.amazonaws.workdocs#GetResources"
+        },
+        {
+          "target": "com.amazonaws.workdocs#InitiateDocumentVersionUpload"
+        },
+        {
+          "target": "com.amazonaws.workdocs#RemoveAllResourcePermissions"
+        },
+        {
+          "target": "com.amazonaws.workdocs#RemoveResourcePermission"
+        },
+        {
+          "target": "com.amazonaws.workdocs#RestoreDocumentVersions"
+        },
+        {
+          "target": "com.amazonaws.workdocs#SearchResources"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UpdateDocument"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UpdateDocumentVersion"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UpdateFolder"
+        },
+        {
+          "target": "com.amazonaws.workdocs#UpdateUser"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WorkDocs",

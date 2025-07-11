@@ -1,7 +1,131 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.batch#AWSBatchV20160810": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.batch#CancelJob"
+        },
+        {
+          "target": "com.amazonaws.batch#CreateComputeEnvironment"
+        },
+        {
+          "target": "com.amazonaws.batch#CreateConsumableResource"
+        },
+        {
+          "target": "com.amazonaws.batch#CreateJobQueue"
+        },
+        {
+          "target": "com.amazonaws.batch#CreateSchedulingPolicy"
+        },
+        {
+          "target": "com.amazonaws.batch#DeleteComputeEnvironment"
+        },
+        {
+          "target": "com.amazonaws.batch#DeleteConsumableResource"
+        },
+        {
+          "target": "com.amazonaws.batch#DeleteJobQueue"
+        },
+        {
+          "target": "com.amazonaws.batch#DeleteSchedulingPolicy"
+        },
+        {
+          "target": "com.amazonaws.batch#DeregisterJobDefinition"
+        },
+        {
+          "target": "com.amazonaws.batch#DescribeComputeEnvironments"
+        },
+        {
+          "target": "com.amazonaws.batch#DescribeConsumableResource"
+        },
+        {
+          "target": "com.amazonaws.batch#DescribeJobDefinitions"
+        },
+        {
+          "target": "com.amazonaws.batch#DescribeJobQueues"
+        },
+        {
+          "target": "com.amazonaws.batch#DescribeJobs"
+        },
+        {
+          "target": "com.amazonaws.batch#DescribeSchedulingPolicies"
+        },
+        {
+          "target": "com.amazonaws.batch#GetJobQueueSnapshot"
+        },
+        {
+          "target": "com.amazonaws.batch#ListConsumableResources"
+        },
+        {
+          "target": "com.amazonaws.batch#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.batch#ListJobsByConsumableResource"
+        },
+        {
+          "target": "com.amazonaws.batch#ListSchedulingPolicies"
+        },
+        {
+          "target": "com.amazonaws.batch#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.batch#RegisterJobDefinition"
+        },
+        {
+          "target": "com.amazonaws.batch#SubmitJob"
+        },
+        {
+          "target": "com.amazonaws.batch#TagResource"
+        },
+        {
+          "target": "com.amazonaws.batch#TerminateJob"
+        },
+        {
+          "target": "com.amazonaws.batch#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.batch#UpdateComputeEnvironment"
+        },
+        {
+          "target": "com.amazonaws.batch#UpdateConsumableResource"
+        },
+        {
+          "target": "com.amazonaws.batch#UpdateJobQueue"
+        },
+        {
+          "target": "com.amazonaws.batch#UpdateSchedulingPolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Batch",

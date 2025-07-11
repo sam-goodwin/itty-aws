@@ -1,228 +1,392 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Amplify {
   createApp(
     input: CreateAppRequest,
   ): Effect.Effect<
     CreateAppResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createBackendEnvironment(
     input: CreateBackendEnvironmentRequest,
   ): Effect.Effect<
     CreateBackendEnvironmentResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createBranch(
     input: CreateBranchRequest,
   ): Effect.Effect<
     CreateBranchResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDeployment(
     input: CreateDeploymentRequest,
   ): Effect.Effect<
     CreateDeploymentResult,
-    BadRequestException | InternalFailureException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDomainAssociation(
     input: CreateDomainAssociationRequest,
   ): Effect.Effect<
     CreateDomainAssociationResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createWebhook(
     input: CreateWebhookRequest,
   ): Effect.Effect<
     CreateWebhookResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteApp(
     input: DeleteAppRequest,
   ): Effect.Effect<
     DeleteAppResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteBackendEnvironment(
     input: DeleteBackendEnvironmentRequest,
   ): Effect.Effect<
     DeleteBackendEnvironmentResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteBranch(
     input: DeleteBranchRequest,
   ): Effect.Effect<
     DeleteBranchResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDomainAssociation(
     input: DeleteDomainAssociationRequest,
   ): Effect.Effect<
     DeleteDomainAssociationResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteJob(
     input: DeleteJobRequest,
   ): Effect.Effect<
     DeleteJobResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteWebhook(
     input: DeleteWebhookRequest,
   ): Effect.Effect<
     DeleteWebhookResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   generateAccessLogs(
     input: GenerateAccessLogsRequest,
   ): Effect.Effect<
     GenerateAccessLogsResult,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getApp(
     input: GetAppRequest,
   ): Effect.Effect<
     GetAppResult,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getArtifactUrl(
     input: GetArtifactUrlRequest,
   ): Effect.Effect<
     GetArtifactUrlResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getBackendEnvironment(
     input: GetBackendEnvironmentRequest,
   ): Effect.Effect<
     GetBackendEnvironmentResult,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getBranch(
     input: GetBranchRequest,
   ): Effect.Effect<
     GetBranchResult,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDomainAssociation(
     input: GetDomainAssociationRequest,
   ): Effect.Effect<
     GetDomainAssociationResult,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getJob(
     input: GetJobRequest,
   ): Effect.Effect<
     GetJobResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getWebhook(
     input: GetWebhookRequest,
   ): Effect.Effect<
     GetWebhookResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listApps(
     input: ListAppsRequest,
   ): Effect.Effect<
     ListAppsResult,
-    BadRequestException | InternalFailureException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listArtifacts(
     input: ListArtifactsRequest,
   ): Effect.Effect<
     ListArtifactsResult,
-    BadRequestException | InternalFailureException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listBackendEnvironments(
     input: ListBackendEnvironmentsRequest,
   ): Effect.Effect<
     ListBackendEnvironmentsResult,
-    BadRequestException | InternalFailureException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listBranches(
     input: ListBranchesRequest,
   ): Effect.Effect<
     ListBranchesResult,
-    BadRequestException | InternalFailureException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listDomainAssociations(
     input: ListDomainAssociationsRequest,
   ): Effect.Effect<
     ListDomainAssociationsResult,
-    BadRequestException | InternalFailureException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listJobs(
     input: ListJobsRequest,
   ): Effect.Effect<
     ListJobsResult,
-    BadRequestException | InternalFailureException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | InternalFailureException | ResourceNotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listWebhooks(
     input: ListWebhooksRequest,
   ): Effect.Effect<
     ListWebhooksResult,
-    BadRequestException | InternalFailureException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startDeployment(
     input: StartDeploymentRequest,
   ): Effect.Effect<
     StartDeploymentResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startJob(
     input: StartJobRequest,
   ): Effect.Effect<
     StartJobResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   stopJob(
     input: StopJobRequest,
   ): Effect.Effect<
     StopJobResult,
-    BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    BadRequestException | InternalFailureException | ResourceNotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    BadRequestException | InternalFailureException | ResourceNotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateApp(
     input: UpdateAppRequest,
   ): Effect.Effect<
     UpdateAppResult,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateBranch(
     input: UpdateBranchRequest,
   ): Effect.Effect<
     UpdateBranchResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDomainAssociation(
     input: UpdateDomainAssociationRequest,
   ): Effect.Effect<
     UpdateDomainAssociationResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateWebhook(
     input: UpdateWebhookRequest,
   ): Effect.Effect<
     UpdateWebhookResult,
-    BadRequestException | DependentServiceFailureException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | DependentServiceFailureException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -577,7 +741,17 @@ export type DomainName = string;
 
 export type DomainPrefix = string;
 
-export type DomainStatus = "PENDING_VERIFICATION" | "IN_PROGRESS" | "AVAILABLE" | "IMPORTING_CUSTOM_CERTIFICATE" | "PENDING_DEPLOYMENT" | "AWAITING_APP_CNAME" | "FAILED" | "CREATING" | "REQUESTING_CERTIFICATE" | "UPDATING";
+export type DomainStatus =
+  | "PENDING_VERIFICATION"
+  | "IN_PROGRESS"
+  | "AVAILABLE"
+  | "IMPORTING_CUSTOM_CERTIFICATE"
+  | "PENDING_DEPLOYMENT"
+  | "AWAITING_APP_CNAME"
+  | "FAILED"
+  | "CREATING"
+  | "REQUESTING_CERTIFICATE"
+  | "UPDATING";
 export type EnableAutoBranchCreation = boolean;
 
 export type EnableAutoBuild = boolean;
@@ -690,7 +864,15 @@ export type JobId = string;
 
 export type JobReason = string;
 
-export type JobStatus = "CREATED" | "PENDING" | "PROVISIONING" | "RUNNING" | "FAILED" | "SUCCEED" | "CANCELLING" | "CANCELLED";
+export type JobStatus =
+  | "CREATED"
+  | "PENDING"
+  | "PROVISIONING"
+  | "RUNNING"
+  | "FAILED"
+  | "SUCCEED"
+  | "CANCELLING"
+  | "CANCELLED";
 export type JobSummaries = Array<JobSummary>;
 export interface JobSummary {
   jobArn: string;
@@ -836,7 +1018,12 @@ export type StackArn = string;
 
 export type StackName = string;
 
-export type Stage = "PRODUCTION" | "BETA" | "DEVELOPMENT" | "EXPERIMENTAL" | "PULL_REQUEST";
+export type Stage =
+  | "PRODUCTION"
+  | "BETA"
+  | "DEVELOPMENT"
+  | "EXPERIMENTAL"
+  | "PULL_REQUEST";
 export interface StartDeploymentRequest {
   appId: string;
   branchName: string;
@@ -909,8 +1096,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type Target = string;
@@ -936,8 +1122,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAppRequest {
   appId: string;
   name?: string;
@@ -1002,7 +1187,14 @@ export interface UpdateDomainAssociationRequest {
 export interface UpdateDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export type UpdateStatus = "REQUESTING_CERTIFICATE" | "PENDING_VERIFICATION" | "IMPORTING_CUSTOM_CERTIFICATE" | "PENDING_DEPLOYMENT" | "AWAITING_APP_CNAME" | "UPDATE_COMPLETE" | "UPDATE_FAILED";
+export type UpdateStatus =
+  | "REQUESTING_CERTIFICATE"
+  | "PENDING_VERIFICATION"
+  | "IMPORTING_CUSTOM_CERTIFICATE"
+  | "PENDING_DEPLOYMENT"
+  | "AWAITING_APP_CNAME"
+  | "UPDATE_COMPLETE"
+  | "UPDATE_FAILED";
 export type UpdateTime = Date | string;
 
 export interface UpdateWebhookRequest {
@@ -1022,7 +1214,12 @@ export interface WafConfiguration {
   wafStatus?: WafStatus;
   statusReason?: string;
 }
-export type WafStatus = "ASSOCIATING" | "ASSOCIATION_FAILED" | "ASSOCIATION_SUCCESS" | "DISASSOCIATING" | "DISASSOCIATION_FAILED";
+export type WafStatus =
+  | "ASSOCIATING"
+  | "ASSOCIATION_FAILED"
+  | "ASSOCIATION_SUCCESS"
+  | "DISASSOCIATING"
+  | "DISASSOCIATION_FAILED";
 export type WebAclArn = string;
 
 export interface Webhook {
@@ -1466,4 +1663,3 @@ export declare namespace UpdateWebhook {
     | UnauthorizedException
     | CommonAwsError;
 }
-

@@ -1,78 +1,127 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface ApiGatewayV2 {
   createApi(
     input: CreateApiRequest,
   ): Effect.Effect<
     CreateApiResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createApiMapping(
     input: CreateApiMappingRequest,
   ): Effect.Effect<
     CreateApiMappingResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createAuthorizer(
     input: CreateAuthorizerRequest,
   ): Effect.Effect<
     CreateAuthorizerResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createDeployment(
     input: CreateDeploymentRequest,
   ): Effect.Effect<
     CreateDeploymentResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createDomainName(
     input: CreateDomainNameRequest,
   ): Effect.Effect<
     CreateDomainNameResponse,
-    AccessDeniedException | BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createIntegration(
     input: CreateIntegrationRequest,
   ): Effect.Effect<
     CreateIntegrationResult,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createIntegrationResponse(
     input: CreateIntegrationResponseRequest,
   ): Effect.Effect<
     CreateIntegrationResponseResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createModel(
     input: CreateModelRequest,
   ): Effect.Effect<
     CreateModelResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createRoute(
     input: CreateRouteRequest,
   ): Effect.Effect<
     CreateRouteResult,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createRouteResponse(
     input: CreateRouteResponseRequest,
   ): Effect.Effect<
     CreateRouteResponseResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createRoutingRule(
     input: CreateRoutingRuleRequest,
   ): Effect.Effect<
     CreateRoutingRuleResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createStage(
     input: CreateStageRequest,
   ): Effect.Effect<
     CreateStageResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createVpcLink(
     input: CreateVpcLinkRequest,
@@ -96,7 +145,10 @@ export interface ApiGatewayV2 {
     input: DeleteApiMappingRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteAuthorizer(
     input: DeleteAuthorizerRequest,
@@ -168,7 +220,10 @@ export interface ApiGatewayV2 {
     input: DeleteRoutingRuleRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteStage(
     input: DeleteStageRequest,
@@ -186,7 +241,10 @@ export interface ApiGatewayV2 {
     input: ExportApiRequest,
   ): Effect.Effect<
     ExportApiResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApi(
     input: GetApiRequest,
@@ -198,19 +256,28 @@ export interface ApiGatewayV2 {
     input: GetApiMappingRequest,
   ): Effect.Effect<
     GetApiMappingResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApiMappings(
     input: GetApiMappingsRequest,
   ): Effect.Effect<
     GetApiMappingsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApis(
     input: GetApisRequest,
   ): Effect.Effect<
     GetApisResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getAuthorizer(
     input: GetAuthorizerRequest,
@@ -222,7 +289,10 @@ export interface ApiGatewayV2 {
     input: GetAuthorizersRequest,
   ): Effect.Effect<
     GetAuthorizersResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDeployment(
     input: GetDeploymentRequest,
@@ -234,7 +304,10 @@ export interface ApiGatewayV2 {
     input: GetDeploymentsRequest,
   ): Effect.Effect<
     GetDeploymentsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDomainName(
     input: GetDomainNameRequest,
@@ -246,7 +319,10 @@ export interface ApiGatewayV2 {
     input: GetDomainNamesRequest,
   ): Effect.Effect<
     GetDomainNamesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getIntegration(
     input: GetIntegrationRequest,
@@ -264,13 +340,19 @@ export interface ApiGatewayV2 {
     input: GetIntegrationResponsesRequest,
   ): Effect.Effect<
     GetIntegrationResponsesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getIntegrations(
     input: GetIntegrationsRequest,
   ): Effect.Effect<
     GetIntegrationsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getModel(
     input: GetModelRequest,
@@ -278,17 +360,20 @@ export interface ApiGatewayV2 {
     GetModelResponse,
     NotFoundException | TooManyRequestsException | CommonAwsError
   >;
+  getModels(
+    input: GetModelsRequest,
+  ): Effect.Effect<
+    GetModelsResponse,
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
   getModelTemplate(
     input: GetModelTemplateRequest,
   ): Effect.Effect<
     GetModelTemplateResponse,
     NotFoundException | TooManyRequestsException | CommonAwsError
-  >;
-  getModels(
-    input: GetModelsRequest,
-  ): Effect.Effect<
-    GetModelsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
   >;
   getRoute(
     input: GetRouteRequest,
@@ -306,19 +391,28 @@ export interface ApiGatewayV2 {
     input: GetRouteResponsesRequest,
   ): Effect.Effect<
     GetRouteResponsesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getRoutes(
     input: GetRoutesRequest,
   ): Effect.Effect<
     GetRoutesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getRoutingRule(
     input: GetRoutingRuleRequest,
   ): Effect.Effect<
     GetRoutingRuleResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getStage(
     input: GetStageRequest,
@@ -330,13 +424,20 @@ export interface ApiGatewayV2 {
     input: GetStagesRequest,
   ): Effect.Effect<
     GetStagesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getTags(
     input: GetTagsRequest,
   ): Effect.Effect<
     GetTagsResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getVpcLink(
     input: GetVpcLinkRequest,
@@ -354,25 +455,40 @@ export interface ApiGatewayV2 {
     input: ImportApiRequest,
   ): Effect.Effect<
     ImportApiResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listRoutingRules(
     input: ListRoutingRulesRequest,
   ): Effect.Effect<
     ListRoutingRulesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putRoutingRule(
     input: PutRoutingRuleRequest,
   ): Effect.Effect<
     PutRoutingRuleResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   reimportApi(
     input: ReimportApiRequest,
   ): Effect.Effect<
     ReimportApiResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   resetAuthorizersCache(
     input: ResetAuthorizersCacheRequest,
@@ -384,85 +500,140 @@ export interface ApiGatewayV2 {
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApi(
     input: UpdateApiRequest,
   ): Effect.Effect<
     UpdateApiResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApiMapping(
     input: UpdateApiMappingRequest,
   ): Effect.Effect<
     UpdateApiMappingResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateAuthorizer(
     input: UpdateAuthorizerRequest,
   ): Effect.Effect<
     UpdateAuthorizerResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateDeployment(
     input: UpdateDeploymentRequest,
   ): Effect.Effect<
     UpdateDeploymentResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateDomainName(
     input: UpdateDomainNameRequest,
   ): Effect.Effect<
     UpdateDomainNameResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateIntegration(
     input: UpdateIntegrationRequest,
   ): Effect.Effect<
     UpdateIntegrationResult,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateIntegrationResponse(
     input: UpdateIntegrationResponseRequest,
   ): Effect.Effect<
     UpdateIntegrationResponseResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateModel(
     input: UpdateModelRequest,
   ): Effect.Effect<
     UpdateModelResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateRoute(
     input: UpdateRouteRequest,
   ): Effect.Effect<
     UpdateRouteResult,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateRouteResponse(
     input: UpdateRouteResponseRequest,
   ): Effect.Effect<
     UpdateRouteResponseResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateStage(
     input: UpdateStageRequest,
   ): Effect.Effect<
     UpdateStageResponse,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateVpcLink(
     input: UpdateVpcLinkRequest,
   ): Effect.Effect<
     UpdateVpcLinkResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -488,7 +659,8 @@ export type __listOfRouteResponse = Array<RouteResponse>;
 export type __listOfRoutingRule = Array<RoutingRule>;
 export type __listOfRoutingRuleAction = Array<RoutingRuleAction>;
 export type __listOfRoutingRuleCondition = Array<RoutingRuleCondition>;
-export type __listOfRoutingRuleMatchHeaderValue = Array<RoutingRuleMatchHeaderValue>;
+export type __listOfRoutingRuleMatchHeaderValue =
+  Array<RoutingRuleMatchHeaderValue>;
 export type __listOfSelectionKey = Array<string>;
 export type __listOfStage = Array<Stage>;
 export type __listOfVpcLink = Array<VpcLink>;
@@ -919,8 +1091,7 @@ export interface DeleteStageRequest {
 export interface DeleteVpcLinkRequest {
   VpcLinkId: string;
 }
-export interface DeleteVpcLinkResponse {
-}
+export interface DeleteVpcLinkResponse {}
 export interface Deployment {
   AutoDeployed?: boolean;
   CreatedDate?: Date | string;
@@ -953,7 +1124,11 @@ export interface DomainNameConfiguration {
   OwnershipVerificationCertificateArn?: string;
 }
 export type DomainNameConfigurations = Array<DomainNameConfiguration>;
-export type DomainNameStatus = "AVAILABLE" | "UPDATING" | "PENDING_CERTIFICATE_REIMPORT" | "PENDING_OWNERSHIP_VERIFICATION";
+export type DomainNameStatus =
+  | "AVAILABLE"
+  | "UPDATING"
+  | "PENDING_CERTIFICATE_REIMPORT"
+  | "PENDING_OWNERSHIP_VERIFICATION";
 export type EndpointType = "REGIONAL" | "EDGE";
 export interface ExportApiRequest {
   ApiId: string;
@@ -1352,7 +1527,12 @@ export interface IntegrationResponse {
   ResponseTemplates?: Record<string, string>;
   TemplateSelectionExpression?: string;
 }
-export type IntegrationType = "AWS" | "HTTP" | "MOCK" | "HTTP_PROXY" | "AWS_PROXY";
+export type IntegrationType =
+  | "AWS"
+  | "HTTP"
+  | "MOCK"
+  | "HTTP_PROXY"
+  | "AWS_PROXY";
 export type IpAddressType = "ipv4" | "dualstack";
 export interface JWTConfiguration {
   Audience?: Array<string>;
@@ -1398,7 +1578,10 @@ export declare class NotFoundException extends Data.TaggedError(
 export interface ParameterConstraints {
   Required?: boolean;
 }
-export type PassthroughBehavior = "WHEN_NO_MATCH" | "NEVER" | "WHEN_NO_TEMPLATES";
+export type PassthroughBehavior =
+  | "WHEN_NO_MATCH"
+  | "NEVER"
+  | "WHEN_NO_TEMPLATES";
 export type ProtocolType = "WEBSOCKET" | "HTTP";
 export interface PutRoutingRuleRequest {
   Actions: Array<RoutingRuleAction>;
@@ -1477,7 +1660,10 @@ export interface RouteSettings {
   ThrottlingRateLimit?: number;
 }
 export type RouteSettingsMap = Record<string, RouteSettings>;
-export type RoutingMode = "API_MAPPING_ONLY" | "ROUTING_RULE_ONLY" | "ROUTING_RULE_THEN_API_MAPPING";
+export type RoutingMode =
+  | "API_MAPPING_ONLY"
+  | "ROUTING_RULE_ONLY"
+  | "ROUTING_RULE_THEN_API_MAPPING";
 export interface RoutingRule {
   Actions?: Array<RoutingRuleAction>;
   Conditions?: Array<RoutingRuleCondition>;
@@ -1555,8 +1741,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Record<string, string>;
 export type TemplateMap = Record<string, string>;
 export interface TlsConfig {
@@ -1855,7 +2040,12 @@ export interface VpcLink {
   VpcLinkStatusMessage?: string;
   VpcLinkVersion?: VpcLinkVersion;
 }
-export type VpcLinkStatus = "PENDING" | "AVAILABLE" | "DELETING" | "FAILED" | "INACTIVE";
+export type VpcLinkStatus =
+  | "PENDING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "FAILED"
+  | "INACTIVE";
 export type VpcLinkVersion = "V2";
 export declare namespace CreateApi {
   export type Input = CreateApiRequest;
@@ -2307,20 +2497,20 @@ export declare namespace GetModel {
     | CommonAwsError;
 }
 
-export declare namespace GetModelTemplate {
-  export type Input = GetModelTemplateRequest;
-  export type Output = GetModelTemplateResponse;
-  export type Error =
-    | NotFoundException
-    | TooManyRequestsException
-    | CommonAwsError;
-}
-
 export declare namespace GetModels {
   export type Input = GetModelsRequest;
   export type Output = GetModelsResponse;
   export type Error =
     | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
+export declare namespace GetModelTemplate {
+  export type Input = GetModelTemplateRequest;
+  export type Output = GetModelTemplateResponse;
+  export type Error =
     | NotFoundException
     | TooManyRequestsException
     | CommonAwsError;
@@ -2626,4 +2816,3 @@ export declare namespace UpdateVpcLink {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.servicediscovery#AmazonResourceName": {
       "type": "string",
@@ -3329,6 +3358,98 @@
     },
     "com.amazonaws.servicediscovery#Route53AutoNaming_v20170314": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.servicediscovery#CreateHttpNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#CreatePrivateDnsNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#CreatePublicDnsNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#CreateService"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#DeleteNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#DeleteService"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#DeleteServiceAttributes"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#DeregisterInstance"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#DiscoverInstances"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#DiscoverInstancesRevision"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#GetInstance"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#GetInstancesHealthStatus"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#GetNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#GetOperation"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#GetService"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#GetServiceAttributes"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ListInstances"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ListNamespaces"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ListOperations"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ListServices"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#RegisterInstance"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#TagResource"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UpdateHttpNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UpdateInstanceCustomHealthStatus"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UpdatePrivateDnsNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UpdatePublicDnsNamespace"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UpdateService"
+        },
+        {
+          "target": "com.amazonaws.servicediscovery#UpdateServiceAttributes"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ServiceDiscovery",

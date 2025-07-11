@@ -1,12 +1,16 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Firehose_20150804 {
   createDeliveryStream(
     input: CreateDeliveryStreamInput,
   ): Effect.Effect<
     CreateDeliveryStreamOutput,
-    InvalidArgumentException | InvalidKMSResourceException | LimitExceededException | ResourceInUseException | CommonAwsError
+    | InvalidArgumentException
+    | InvalidKMSResourceException
+    | LimitExceededException
+    | ResourceInUseException
+    | CommonAwsError
   >;
   deleteDeliveryStream(
     input: DeleteDeliveryStreamInput,
@@ -22,57 +26,88 @@ export interface Firehose_20150804 {
   >;
   listDeliveryStreams(
     input: ListDeliveryStreamsInput,
-  ): Effect.Effect<
-    ListDeliveryStreamsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListDeliveryStreamsOutput, CommonAwsError>;
   listTagsForDeliveryStream(
     input: ListTagsForDeliveryStreamInput,
   ): Effect.Effect<
     ListTagsForDeliveryStreamOutput,
-    InvalidArgumentException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidArgumentException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   putRecord(
     input: PutRecordInput,
   ): Effect.Effect<
     PutRecordOutput,
-    InvalidArgumentException | InvalidKMSResourceException | InvalidSourceException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidArgumentException
+    | InvalidKMSResourceException
+    | InvalidSourceException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   putRecordBatch(
     input: PutRecordBatchInput,
   ): Effect.Effect<
     PutRecordBatchOutput,
-    InvalidArgumentException | InvalidKMSResourceException | InvalidSourceException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidArgumentException
+    | InvalidKMSResourceException
+    | InvalidSourceException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   startDeliveryStreamEncryption(
     input: StartDeliveryStreamEncryptionInput,
   ): Effect.Effect<
     StartDeliveryStreamEncryptionOutput,
-    InvalidArgumentException | InvalidKMSResourceException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidArgumentException
+    | InvalidKMSResourceException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   stopDeliveryStreamEncryption(
     input: StopDeliveryStreamEncryptionInput,
   ): Effect.Effect<
     StopDeliveryStreamEncryptionOutput,
-    InvalidArgumentException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidArgumentException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   tagDeliveryStream(
     input: TagDeliveryStreamInput,
   ): Effect.Effect<
     TagDeliveryStreamOutput,
-    InvalidArgumentException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidArgumentException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagDeliveryStream(
     input: UntagDeliveryStreamInput,
   ): Effect.Effect<
     UntagDeliveryStreamOutput,
-    InvalidArgumentException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidArgumentException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateDestination(
     input: UpdateDestinationInput,
   ): Effect.Effect<
     UpdateDestinationOutput,
-    ConcurrentModificationException | InvalidArgumentException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | ConcurrentModificationException
+    | InvalidArgumentException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -129,7 +164,9 @@ export type AmazonOpenSearchServerlessRetryDurationInSeconds = number;
 export interface AmazonOpenSearchServerlessRetryOptions {
   DurationInSeconds?: number;
 }
-export type AmazonOpenSearchServerlessS3BackupMode = "FailedDocumentsOnly" | "AllDocuments";
+export type AmazonOpenSearchServerlessS3BackupMode =
+  | "FailedDocumentsOnly"
+  | "AllDocuments";
 export interface AmazonopensearchserviceBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
@@ -190,13 +227,20 @@ export type AmazonopensearchserviceDomainARN = string;
 
 export type AmazonopensearchserviceIndexName = string;
 
-export type AmazonopensearchserviceIndexRotationPeriod = "NoRotation" | "OneHour" | "OneDay" | "OneWeek" | "OneMonth";
+export type AmazonopensearchserviceIndexRotationPeriod =
+  | "NoRotation"
+  | "OneHour"
+  | "OneDay"
+  | "OneWeek"
+  | "OneMonth";
 export type AmazonopensearchserviceRetryDurationInSeconds = number;
 
 export interface AmazonopensearchserviceRetryOptions {
   DurationInSeconds?: number;
 }
-export type AmazonopensearchserviceS3BackupMode = "FailedDocumentsOnly" | "AllDocuments";
+export type AmazonopensearchserviceS3BackupMode =
+  | "FailedDocumentsOnly"
+  | "AllDocuments";
 export type AmazonopensearchserviceTypeName = string;
 
 export interface AuthenticationConfiguration {
@@ -227,7 +271,12 @@ export interface CloudWatchLoggingOptions {
 export type ClusterJDBCURL = string;
 
 export type ColumnToJsonKeyMappings = Record<string, string>;
-export type CompressionFormat = "UNCOMPRESSED" | "GZIP" | "ZIP" | "SNAPPY" | "HADOOP_SNAPPY";
+export type CompressionFormat =
+  | "UNCOMPRESSED"
+  | "GZIP"
+  | "ZIP"
+  | "SNAPPY"
+  | "HADOOP_SNAPPY";
 export declare class ConcurrentModificationException extends Data.TaggedError(
   "ConcurrentModificationException",
 )<{
@@ -353,8 +402,7 @@ export interface DeleteDeliveryStreamInput {
   DeliveryStreamName: string;
   AllowForceDelete?: boolean;
 }
-export interface DeleteDeliveryStreamOutput {
-}
+export interface DeleteDeliveryStreamOutput {}
 export type DeliveryStartTimestamp = Date | string;
 
 export type DeliveryStreamARN = string;
@@ -383,13 +431,45 @@ export interface DeliveryStreamEncryptionConfigurationInput {
   KeyARN?: string;
   KeyType: KeyType;
 }
-export type DeliveryStreamEncryptionStatus = "ENABLED" | "ENABLING" | "ENABLING_FAILED" | "DISABLED" | "DISABLING" | "DISABLING_FAILED";
-export type DeliveryStreamFailureType = "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND" | "VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED" | "RETIRE_KMS_GRANT_FAILED" | "CREATE_KMS_GRANT_FAILED" | "KMS_ACCESS_DENIED" | "DISABLED_KMS_KEY" | "INVALID_KMS_KEY" | "KMS_KEY_NOT_FOUND" | "KMS_OPT_IN_REQUIRED" | "CREATE_ENI_FAILED" | "DELETE_ENI_FAILED" | "SUBNET_NOT_FOUND" | "SECURITY_GROUP_NOT_FOUND" | "ENI_ACCESS_DENIED" | "SUBNET_ACCESS_DENIED" | "SECURITY_GROUP_ACCESS_DENIED" | "UNKNOWN_ERROR";
+export type DeliveryStreamEncryptionStatus =
+  | "ENABLED"
+  | "ENABLING"
+  | "ENABLING_FAILED"
+  | "DISABLED"
+  | "DISABLING"
+  | "DISABLING_FAILED";
+export type DeliveryStreamFailureType =
+  | "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND"
+  | "VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED"
+  | "RETIRE_KMS_GRANT_FAILED"
+  | "CREATE_KMS_GRANT_FAILED"
+  | "KMS_ACCESS_DENIED"
+  | "DISABLED_KMS_KEY"
+  | "INVALID_KMS_KEY"
+  | "KMS_KEY_NOT_FOUND"
+  | "KMS_OPT_IN_REQUIRED"
+  | "CREATE_ENI_FAILED"
+  | "DELETE_ENI_FAILED"
+  | "SUBNET_NOT_FOUND"
+  | "SECURITY_GROUP_NOT_FOUND"
+  | "ENI_ACCESS_DENIED"
+  | "SUBNET_ACCESS_DENIED"
+  | "SECURITY_GROUP_ACCESS_DENIED"
+  | "UNKNOWN_ERROR";
 export type DeliveryStreamName = string;
 
 export type DeliveryStreamNameList = Array<string>;
-export type DeliveryStreamStatus = "CREATING" | "CREATING_FAILED" | "DELETING" | "DELETING_FAILED" | "ACTIVE";
-export type DeliveryStreamType = "DirectPut" | "KinesisStreamAsSource" | "MSKAsSource" | "DatabaseAsSource";
+export type DeliveryStreamStatus =
+  | "CREATING"
+  | "CREATING_FAILED"
+  | "DELETING"
+  | "DELETING_FAILED"
+  | "ACTIVE";
+export type DeliveryStreamType =
+  | "DirectPut"
+  | "KinesisStreamAsSource"
+  | "MSKAsSource"
+  | "DatabaseAsSource";
 export type DeliveryStreamVersionId = string;
 
 export interface DescribeDeliveryStreamInput {
@@ -429,7 +509,8 @@ export interface DestinationTableConfiguration {
   PartitionSpec?: PartitionSpec;
   S3ErrorOutputPrefix?: string;
 }
-export type DestinationTableConfigurationList = Array<DestinationTableConfiguration>;
+export type DestinationTableConfigurationList =
+  Array<DestinationTableConfiguration>;
 export interface DirectPutSourceConfiguration {
   ThroughputHintInMBs: number;
 }
@@ -503,7 +584,12 @@ export type ElasticsearchDomainARN = string;
 
 export type ElasticsearchIndexName = string;
 
-export type ElasticsearchIndexRotationPeriod = "NoRotation" | "OneHour" | "OneDay" | "OneWeek" | "OneMonth";
+export type ElasticsearchIndexRotationPeriod =
+  | "NoRotation"
+  | "OneHour"
+  | "OneDay"
+  | "OneWeek"
+  | "OneMonth";
 export type ElasticsearchRetryDurationInSeconds = number;
 
 export interface ElasticsearchRetryOptions {
@@ -609,7 +695,8 @@ export interface HttpEndpointCommonAttribute {
   AttributeName: string;
   AttributeValue: string;
 }
-export type HttpEndpointCommonAttributesList = Array<HttpEndpointCommonAttribute>;
+export type HttpEndpointCommonAttributesList =
+  Array<HttpEndpointCommonAttribute>;
 export interface HttpEndpointConfiguration {
   Url: string;
   Name?: string;
@@ -868,10 +955,27 @@ export interface ProcessorParameter {
   ParameterValue: string;
 }
 export type ProcessorParameterList = Array<ProcessorParameter>;
-export type ProcessorParameterName = "LAMBDA_ARN" | "LAMBDA_NUMBER_OF_RETRIES" | "METADATA_EXTRACTION_QUERY" | "JSON_PARSING_ENGINE" | "ROLE_ARN" | "BUFFER_SIZE_IN_MB" | "BUFFER_INTERVAL_IN_SECONDS" | "SUB_RECORD_TYPE" | "Delimiter" | "COMPRESSION_FORMAT" | "DATA_MESSAGE_EXTRACTION";
+export type ProcessorParameterName =
+  | "LAMBDA_ARN"
+  | "LAMBDA_NUMBER_OF_RETRIES"
+  | "METADATA_EXTRACTION_QUERY"
+  | "JSON_PARSING_ENGINE"
+  | "ROLE_ARN"
+  | "BUFFER_SIZE_IN_MB"
+  | "BUFFER_INTERVAL_IN_SECONDS"
+  | "SUB_RECORD_TYPE"
+  | "Delimiter"
+  | "COMPRESSION_FORMAT"
+  | "DATA_MESSAGE_EXTRACTION";
 export type ProcessorParameterValue = string;
 
-export type ProcessorType = "RecordDeAggregation" | "Decompression" | "CloudWatchLogProcessing" | "Lambda" | "MetadataExtraction" | "AppendDelimiterToRecord";
+export type ProcessorType =
+  | "RecordDeAggregation"
+  | "Decompression"
+  | "CloudWatchLogProcessing"
+  | "Lambda"
+  | "MetadataExtraction"
+  | "AppendDelimiterToRecord";
 export type Proportion = number;
 
 export interface PutRecordBatchInput {
@@ -889,7 +993,8 @@ export interface PutRecordBatchResponseEntry {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export type PutRecordBatchResponseEntryList = Array<PutRecordBatchResponseEntry>;
+export type PutRecordBatchResponseEntryList =
+  Array<PutRecordBatchResponseEntry>;
 export interface PutRecordInput {
   DeliveryStreamName: string;
   Record: Record;
@@ -1046,7 +1151,10 @@ export type SnowflakeContentColumnName = string;
 
 export type SnowflakeDatabase = string;
 
-export type SnowflakeDataLoadingOption = "JSON_MAPPING" | "VARIANT_CONTENT_MAPPING" | "VARIANT_CONTENT_AND_METADATA_MAPPING";
+export type SnowflakeDataLoadingOption =
+  | "JSON_MAPPING"
+  | "VARIANT_CONTENT_MAPPING"
+  | "VARIANT_CONTENT_AND_METADATA_MAPPING";
 export interface SnowflakeDestinationConfiguration {
   AccountUrl: string;
   PrivateKey?: string;
@@ -1203,13 +1311,11 @@ export interface StartDeliveryStreamEncryptionInput {
   DeliveryStreamName: string;
   DeliveryStreamEncryptionConfigurationInput?: DeliveryStreamEncryptionConfigurationInput;
 }
-export interface StartDeliveryStreamEncryptionOutput {
-}
+export interface StartDeliveryStreamEncryptionOutput {}
 export interface StopDeliveryStreamEncryptionInput {
   DeliveryStreamName: string;
 }
-export interface StopDeliveryStreamEncryptionOutput {
-}
+export interface StopDeliveryStreamEncryptionOutput {}
 export type StringWithLettersDigitsUnderscoresDots = string;
 
 export type SubnetIdList = Array<string>;
@@ -1225,8 +1331,7 @@ export interface TagDeliveryStreamInput {
   Tags: Array<Tag>;
 }
 export type TagDeliveryStreamInputTagList = Array<Tag>;
-export interface TagDeliveryStreamOutput {
-}
+export interface TagDeliveryStreamOutput {}
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;
@@ -1242,8 +1347,7 @@ export interface UntagDeliveryStreamInput {
   DeliveryStreamName: string;
   TagKeys: Array<string>;
 }
-export interface UntagDeliveryStreamOutput {
-}
+export interface UntagDeliveryStreamOutput {}
 export interface UpdateDestinationInput {
   DeliveryStreamName: string;
   CurrentDeliveryStreamVersionId: string;
@@ -1259,8 +1363,7 @@ export interface UpdateDestinationInput {
   SnowflakeDestinationUpdate?: SnowflakeDestinationUpdate;
   IcebergDestinationUpdate?: IcebergDestinationUpdate;
 }
-export interface UpdateDestinationOutput {
-}
+export interface UpdateDestinationOutput {}
 export type Username = string;
 
 export interface VpcConfiguration {
@@ -1301,16 +1404,13 @@ export declare namespace DeleteDeliveryStream {
 export declare namespace DescribeDeliveryStream {
   export type Input = DescribeDeliveryStreamInput;
   export type Output = DescribeDeliveryStreamOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace ListDeliveryStreams {
   export type Input = ListDeliveryStreamsInput;
   export type Output = ListDeliveryStreamsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTagsForDeliveryStream {
@@ -1402,4 +1502,3 @@ export declare namespace UpdateDestination {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

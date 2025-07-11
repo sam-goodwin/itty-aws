@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudhsm#AZ": {
       "type": "string",
@@ -140,6 +169,68 @@
     },
     "com.amazonaws.cloudhsm#CloudHsmFrontendService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudhsm#AddTagsToResource"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CreateHapg"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CreateHsm"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#CreateLunaClient"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#DeleteHapg"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#DeleteHsm"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#DeleteLunaClient"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#DescribeHapg"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#DescribeHsm"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#DescribeLunaClient"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#GetConfig"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ListAvailableZones"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ListHapgs"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ListHsms"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ListLunaClients"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ModifyHapg"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ModifyHsm"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#ModifyLunaClient"
+        },
+        {
+          "target": "com.amazonaws.cloudhsm#RemoveTagsFromResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudHSM",

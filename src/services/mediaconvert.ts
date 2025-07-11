@@ -1,192 +1,378 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface MediaConvert {
   associateCertificate(
     input: AssociateCertificateRequest,
   ): Effect.Effect<
     AssociateCertificateResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   cancelJob(
     input: CancelJobRequest,
   ): Effect.Effect<
     CancelJobResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createJob(
     input: CreateJobRequest,
   ): Effect.Effect<
     CreateJobResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createJobTemplate(
     input: CreateJobTemplateRequest,
   ): Effect.Effect<
     CreateJobTemplateResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createPreset(
     input: CreatePresetRequest,
   ): Effect.Effect<
     CreatePresetResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createQueue(
     input: CreateQueueRequest,
   ): Effect.Effect<
     CreateQueueResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteJobTemplate(
     input: DeleteJobTemplateRequest,
   ): Effect.Effect<
     DeleteJobTemplateResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deletePolicy(
     input: DeletePolicyRequest,
   ): Effect.Effect<
     DeletePolicyResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deletePreset(
     input: DeletePresetRequest,
   ): Effect.Effect<
     DeletePresetResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteQueue(
     input: DeleteQueueRequest,
   ): Effect.Effect<
     DeleteQueueResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeEndpoints(
     input: DescribeEndpointsRequest,
   ): Effect.Effect<
     DescribeEndpointsResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   disassociateCertificate(
     input: DisassociateCertificateRequest,
   ): Effect.Effect<
     DisassociateCertificateResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJob(
     input: GetJobRequest,
   ): Effect.Effect<
     GetJobResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getJobTemplate(
     input: GetJobTemplateRequest,
   ): Effect.Effect<
     GetJobTemplateResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getPolicy(
     input: GetPolicyRequest,
   ): Effect.Effect<
     GetPolicyResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getPreset(
     input: GetPresetRequest,
   ): Effect.Effect<
     GetPresetResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getQueue(
     input: GetQueueRequest,
   ): Effect.Effect<
     GetQueueResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
-  >;
-  listJobTemplates(
-    input: ListJobTemplatesRequest,
-  ): Effect.Effect<
-    ListJobTemplatesResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listJobs(
     input: ListJobsRequest,
   ): Effect.Effect<
     ListJobsResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  listJobTemplates(
+    input: ListJobTemplatesRequest,
+  ): Effect.Effect<
+    ListJobTemplatesResponse,
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listPresets(
     input: ListPresetsRequest,
   ): Effect.Effect<
     ListPresetsResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listQueues(
     input: ListQueuesRequest,
   ): Effect.Effect<
     ListQueuesResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listVersions(
     input: ListVersionsRequest,
   ): Effect.Effect<
     ListVersionsResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   probe(
     input: ProbeRequest,
   ): Effect.Effect<
     ProbeResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putPolicy(
     input: PutPolicyRequest,
   ): Effect.Effect<
     PutPolicyResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   searchJobs(
     input: SearchJobsRequest,
   ): Effect.Effect<
     SearchJobsResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateJobTemplate(
     input: UpdateJobTemplateRequest,
   ): Effect.Effect<
     UpdateJobTemplateResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updatePreset(
     input: UpdatePresetRequest,
   ): Effect.Effect<
     UpdatePresetResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateQueue(
     input: UpdateQueueRequest,
   ): Effect.Effect<
     UpdateQueueResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -427,8 +613,10 @@ export type __listOf__integerMin32Max8182 = Array<number>;
 export type __listOf__integerMinNegative60Max6 = Array<number>;
 export type __listOf__string = Array<string>;
 export type __listOf__stringMin1 = Array<string>;
-export type __listOf__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 = Array<string>;
-export type __listOf__stringPattern09aFAF809aFAF409aFAF409aFAF409aFAF12 = Array<string>;
+export type __listOf__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 =
+  Array<string>;
+export type __listOf__stringPattern09aFAF809aFAF409aFAF409aFAF409aFAF12 =
+  Array<string>;
 export type __listOf__stringPatternS3ASSETMAPXml = Array<string>;
 export type __listOfAllowedRenditionSize = Array<AllowedRenditionSize>;
 export type __listOfAudioChannelTag = Array<AudioChannelTag>;
@@ -437,14 +625,17 @@ export type __listOfAutomatedAbrRule = Array<AutomatedAbrRule>;
 export type __listOfCaptionDescription = Array<CaptionDescription>;
 export type __listOfCaptionDescriptionPreset = Array<CaptionDescriptionPreset>;
 export type __listOfCmafAdditionalManifest = Array<CmafAdditionalManifest>;
-export type __listOfColorConversion3DLUTSetting = Array<ColorConversion3DLUTSetting>;
+export type __listOfColorConversion3DLUTSetting =
+  Array<ColorConversion3DLUTSetting>;
 export type __listOfDashAdditionalManifest = Array<DashAdditionalManifest>;
 export type __listOfEndpoint = Array<Endpoint>;
-export type __listOfForceIncludeRenditionSize = Array<ForceIncludeRenditionSize>;
+export type __listOfForceIncludeRenditionSize =
+  Array<ForceIncludeRenditionSize>;
 export type __listOfFrameMetricType = Array<FrameMetricType>;
 export type __listOfHlsAdditionalManifest = Array<HlsAdditionalManifest>;
 export type __listOfHlsAdMarkers = Array<HlsAdMarkers>;
-export type __listOfHlsCaptionLanguageMapping = Array<HlsCaptionLanguageMapping>;
+export type __listOfHlsCaptionLanguageMapping =
+  Array<HlsCaptionLanguageMapping>;
 export type __listOfHopDestination = Array<HopDestination>;
 export type __listOfId3Insertion = Array<Id3Insertion>;
 export type __listOfInput = Array<Input>;
@@ -454,7 +645,8 @@ export type __listOfInsertableImage = Array<InsertableImage>;
 export type __listOfJob = Array<Job>;
 export type __listOfJobEngineVersion = Array<JobEngineVersion>;
 export type __listOfJobTemplate = Array<JobTemplate>;
-export type __listOfMsSmoothAdditionalManifest = Array<MsSmoothAdditionalManifest>;
+export type __listOfMsSmoothAdditionalManifest =
+  Array<MsSmoothAdditionalManifest>;
 export type __listOfOutput = Array<Output>;
 export type __listOfOutputChannelMapping = Array<OutputChannelMapping>;
 export type __listOfOutputDetail = Array<OutputDetail>;
@@ -470,7 +662,8 @@ export type __listOfTeletextPageType = Array<TeletextPageType>;
 export type __listOfTrack = Array<Track>;
 export type __listOfTrackMapping = Array<TrackMapping>;
 export type __listOfVideoOverlay = Array<VideoOverlay>;
-export type __listOfVideoOverlayInputClipping = Array<VideoOverlayInputClipping>;
+export type __listOfVideoOverlayInputClipping =
+  Array<VideoOverlayInputClipping>;
 export type __listOfVideoOverlayTransition = Array<VideoOverlayTransition>;
 export type __listOfWarningGroup = Array<WarningGroup>;
 export type __long = number;
@@ -498,13 +691,15 @@ export type __stringMin11Max11Pattern01D20305D205D = string;
 
 export type __stringMin14PatternS3BmpBMPPngPNGHttpsBmpBMPPngPNG = string;
 
-export type __stringMin14PatternS3BmpBMPPngPNGTgaTGAHttpsBmpBMPPngPNGTgaTGA = string;
+export type __stringMin14PatternS3BmpBMPPngPNGTgaTGAHttpsBmpBMPPngPNGTgaTGA =
+  string;
 
 export type __stringMin14PatternS3CubeCUBEHttpsCubeCUBE = string;
 
 export type __stringMin14PatternS3Mov09PngHttpsMov09Png = string;
 
-export type __stringMin14PatternS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMIVttVTTWebvttWEBVTTHttpsSccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMIVttVTTWebvttWEBVTT = string;
+export type __stringMin14PatternS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMIVttVTTWebvttWEBVTTHttpsSccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMIVttVTTWebvttWEBVTT =
+  string;
 
 export type __stringMin14PatternS3XmlXMLHttpsXmlXML = string;
 
@@ -514,7 +709,8 @@ export type __stringMin1Max100000 = string;
 
 export type __stringMin1Max20 = string;
 
-export type __stringMin1Max2048PatternArnAZSecretsmanagerWD12SecretAZAZ09 = string;
+export type __stringMin1Max2048PatternArnAZSecretsmanagerWD12SecretAZAZ09 =
+  string;
 
 export type __stringMin1Max256 = string;
 
@@ -522,13 +718,15 @@ export type __stringMin1Max50 = string;
 
 export type __stringMin1Max50PatternAZAZ09 = string;
 
-export type __stringMin1PatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932 = string;
+export type __stringMin1PatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932 =
+  string;
 
 export type __stringMin24Max512PatternAZaZ0902 = string;
 
 export type __stringMin32Max32Pattern09aFAF32 = string;
 
-export type __stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 = string;
+export type __stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 =
+  string;
 
 export type __stringMin3Max3Pattern1809aFAF09aEAE = string;
 
@@ -536,7 +734,8 @@ export type __stringMin3Max3PatternAZaZ3 = string;
 
 export type __stringMin6Max8Pattern09aFAF609aFAF2 = string;
 
-export type __stringMin9Max19PatternAZ26EastWestCentralNorthSouthEastWest1912 = string;
+export type __stringMin9Max19PatternAZ26EastWestCentralNorthSouthEastWest1912 =
+  string;
 
 export type __stringPattern = string;
 
@@ -554,7 +753,8 @@ export type __stringPattern0xAFaF0908190908 = string;
 
 export type __stringPatternArnAwsUsGovAcm = string;
 
-export type __stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932 = string;
+export type __stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932 =
+  string;
 
 export type __stringPatternAZaZ0902 = string;
 
@@ -592,9 +792,16 @@ export type __stringPatternWS = string;
 
 export type __timestampUnix = Date | string;
 
-export type AacAudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD" | "NORMAL";
+export type AacAudioDescriptionBroadcasterMix =
+  | "BROADCASTER_MIXED_AD"
+  | "NORMAL";
 export type AacCodecProfile = "LC" | "HEV1" | "HEV2";
-export type AacCodingMode = "AD_RECEIVER_MIX" | "CODING_MODE_1_0" | "CODING_MODE_1_1" | "CODING_MODE_2_0" | "CODING_MODE_5_1";
+export type AacCodingMode =
+  | "AD_RECEIVER_MIX"
+  | "CODING_MODE_1_0"
+  | "CODING_MODE_1_1"
+  | "CODING_MODE_2_0"
+  | "CODING_MODE_5_1";
 export type AacRateControlMode = "CBR" | "VBR";
 export type AacRawFormat = "LATM_LOAS" | "NONE";
 export interface AacSettings {
@@ -610,11 +817,35 @@ export interface AacSettings {
 }
 export type AacSpecification = "MPEG2" | "MPEG4";
 export type AacVbrQuality = "LOW" | "MEDIUM_LOW" | "MEDIUM_HIGH" | "HIGH";
-export type Ac3BitstreamMode = "COMPLETE_MAIN" | "COMMENTARY" | "DIALOGUE" | "EMERGENCY" | "HEARING_IMPAIRED" | "MUSIC_AND_EFFECTS" | "VISUALLY_IMPAIRED" | "VOICE_OVER";
-export type Ac3CodingMode = "CODING_MODE_1_0" | "CODING_MODE_1_1" | "CODING_MODE_2_0" | "CODING_MODE_3_2_LFE";
-export type Ac3DynamicRangeCompressionLine = "FILM_STANDARD" | "FILM_LIGHT" | "MUSIC_STANDARD" | "MUSIC_LIGHT" | "SPEECH" | "NONE";
+export type Ac3BitstreamMode =
+  | "COMPLETE_MAIN"
+  | "COMMENTARY"
+  | "DIALOGUE"
+  | "EMERGENCY"
+  | "HEARING_IMPAIRED"
+  | "MUSIC_AND_EFFECTS"
+  | "VISUALLY_IMPAIRED"
+  | "VOICE_OVER";
+export type Ac3CodingMode =
+  | "CODING_MODE_1_0"
+  | "CODING_MODE_1_1"
+  | "CODING_MODE_2_0"
+  | "CODING_MODE_3_2_LFE";
+export type Ac3DynamicRangeCompressionLine =
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH"
+  | "NONE";
 export type Ac3DynamicRangeCompressionProfile = "FILM_STANDARD" | "NONE";
-export type Ac3DynamicRangeCompressionRf = "FILM_STANDARD" | "FILM_LIGHT" | "MUSIC_STANDARD" | "MUSIC_LIGHT" | "SPEECH" | "NONE";
+export type Ac3DynamicRangeCompressionRf =
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH"
+  | "NONE";
 export type Ac3LfeFilter = "ENABLED" | "DISABLED";
 export type Ac3MetadataControl = "FOLLOW_INPUT" | "USE_CONFIGURED";
 export interface Ac3Settings {
@@ -633,7 +864,11 @@ export type AccelerationMode = "DISABLED" | "ENABLED" | "PREFERRED";
 export interface AccelerationSettings {
   Mode: AccelerationMode;
 }
-export type AccelerationStatus = "NOT_APPLICABLE" | "IN_PROGRESS" | "ACCELERATED" | "NOT_ACCELERATED";
+export type AccelerationStatus =
+  | "NOT_APPLICABLE"
+  | "IN_PROGRESS"
+  | "ACCELERATED"
+  | "NOT_ACCELERATED";
 export type AdvancedInputFilter = "ENABLED" | "DISABLED";
 export type AdvancedInputFilterAddTexture = "ENABLED" | "DISABLED";
 export interface AdvancedInputFilterSettings {
@@ -664,14 +899,53 @@ export type AntiAlias = "DISABLED" | "ENABLED";
 export interface AssociateCertificateRequest {
   Arn: string;
 }
-export interface AssociateCertificateResponse {
-}
-export type AudioChannelTag = "L" | "R" | "C" | "LFE" | "LS" | "RS" | "LC" | "RC" | "CS" | "LSD" | "RSD" | "TCS" | "VHL" | "VHC" | "VHR" | "TBL" | "TBC" | "TBR" | "RSL" | "RSR" | "LW" | "RW" | "LFE2" | "LT" | "RT" | "HI" | "NAR" | "M";
+export interface AssociateCertificateResponse {}
+export type AudioChannelTag =
+  | "L"
+  | "R"
+  | "C"
+  | "LFE"
+  | "LS"
+  | "RS"
+  | "LC"
+  | "RC"
+  | "CS"
+  | "LSD"
+  | "RSD"
+  | "TCS"
+  | "VHL"
+  | "VHC"
+  | "VHR"
+  | "TBL"
+  | "TBC"
+  | "TBR"
+  | "RSL"
+  | "RSR"
+  | "LW"
+  | "RW"
+  | "LFE2"
+  | "LT"
+  | "RT"
+  | "HI"
+  | "NAR"
+  | "M";
 export interface AudioChannelTaggingSettings {
   ChannelTag?: AudioChannelTag;
   ChannelTags?: Array<AudioChannelTag>;
 }
-export type AudioCodec = "AAC" | "MP2" | "MP3" | "WAV" | "AIFF" | "AC3" | "EAC3" | "EAC3_ATMOS" | "VORBIS" | "OPUS" | "PASSTHROUGH" | "FLAC";
+export type AudioCodec =
+  | "AAC"
+  | "MP2"
+  | "MP3"
+  | "WAV"
+  | "AIFF"
+  | "AC3"
+  | "EAC3"
+  | "EAC3_ATMOS"
+  | "VORBIS"
+  | "OPUS"
+  | "PASSTHROUGH"
+  | "FLAC";
 export interface AudioCodecSettings {
   AacSettings?: AacSettings;
   Ac3Settings?: Ac3Settings;
@@ -700,10 +974,21 @@ export interface AudioDescription {
   RemixSettings?: RemixSettings;
   StreamName?: string;
 }
-export type AudioDurationCorrection = "DISABLED" | "AUTO" | "TRACK" | "FRAME" | "FORCE";
+export type AudioDurationCorrection =
+  | "DISABLED"
+  | "AUTO"
+  | "TRACK"
+  | "FRAME"
+  | "FORCE";
 export type AudioLanguageCodeControl = "FOLLOW_INPUT" | "USE_CONFIGURED";
-export type AudioNormalizationAlgorithm = "ITU_BS_1770_1" | "ITU_BS_1770_2" | "ITU_BS_1770_3" | "ITU_BS_1770_4";
-export type AudioNormalizationAlgorithmControl = "CORRECT_AUDIO" | "MEASURE_ONLY";
+export type AudioNormalizationAlgorithm =
+  | "ITU_BS_1770_1"
+  | "ITU_BS_1770_2"
+  | "ITU_BS_1770_3"
+  | "ITU_BS_1770_4";
+export type AudioNormalizationAlgorithmControl =
+  | "CORRECT_AUDIO"
+  | "MEASURE_ONLY";
 export type AudioNormalizationLoudnessLogging = "LOG" | "DONT_LOG";
 export type AudioNormalizationPeakCalculation = "TRUE_PEAK" | "NONE";
 export interface AudioNormalizationSettings {
@@ -740,7 +1025,12 @@ export interface AudioSelector {
 export interface AudioSelectorGroup {
   AudioSelectorNames?: Array<string>;
 }
-export type AudioSelectorType = "PID" | "TRACK" | "LANGUAGE_CODE" | "HLS_RENDITION_GROUP" | "ALL_PCM";
+export type AudioSelectorType =
+  | "PID"
+  | "TRACK"
+  | "LANGUAGE_CODE"
+  | "HLS_RENDITION_GROUP"
+  | "ALL_PCM";
 export type AudioTypeControl = "FOLLOW_INPUT" | "USE_CONFIGURED";
 export interface AutomatedAbrRule {
   AllowedRenditions?: Array<AllowedRenditionSize>;
@@ -759,11 +1049,21 @@ export interface AutomatedAbrSettings {
 export interface AutomatedEncodingSettings {
   AbrSettings?: AutomatedAbrSettings;
 }
-export type Av1AdaptiveQuantization = "OFF" | "LOW" | "MEDIUM" | "HIGH" | "HIGHER" | "MAX";
+export type Av1AdaptiveQuantization =
+  | "OFF"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "HIGHER"
+  | "MAX";
 export type Av1BitDepth = "BIT_8" | "BIT_10";
 export type Av1FilmGrainSynthesis = "DISABLED" | "ENABLED";
 export type Av1FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type Av1FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type Av1FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export interface Av1QvbrSettings {
   QvbrQualityLevel?: number;
   QvbrQualityLevelFineTune?: number;
@@ -790,11 +1090,26 @@ export type Av1SpatialAdaptiveQuantization = "DISABLED" | "ENABLED";
 export interface AvailBlanking {
   AvailBlankingImage?: string;
 }
-export type AvcIntraClass = "CLASS_50" | "CLASS_100" | "CLASS_200" | "CLASS_4K_2K";
+export type AvcIntraClass =
+  | "CLASS_50"
+  | "CLASS_100"
+  | "CLASS_200"
+  | "CLASS_4K_2K";
 export type AvcIntraFramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type AvcIntraFramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
-export type AvcIntraInterlaceMode = "PROGRESSIVE" | "TOP_FIELD" | "BOTTOM_FIELD" | "FOLLOW_TOP_FIELD" | "FOLLOW_BOTTOM_FIELD";
-export type AvcIntraScanTypeConversionMode = "INTERLACED" | "INTERLACED_OPTIMIZE";
+export type AvcIntraFramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
+export type AvcIntraInterlaceMode =
+  | "PROGRESSIVE"
+  | "TOP_FIELD"
+  | "BOTTOM_FIELD"
+  | "FOLLOW_TOP_FIELD"
+  | "FOLLOW_BOTTOM_FIELD";
+export type AvcIntraScanTypeConversionMode =
+  | "INTERLACED"
+  | "INTERLACED_OPTIMIZE";
 export interface AvcIntraSettings {
   AvcIntraClass?: AvcIntraClass;
   AvcIntraUhdSettings?: AvcIntraUhdSettings;
@@ -823,8 +1138,17 @@ export interface BandwidthReductionFilter {
   Sharpening?: BandwidthReductionFilterSharpening;
   Strength?: BandwidthReductionFilterStrength;
 }
-export type BandwidthReductionFilterSharpening = "LOW" | "MEDIUM" | "HIGH" | "OFF";
-export type BandwidthReductionFilterStrength = "LOW" | "MEDIUM" | "HIGH" | "AUTO" | "OFF";
+export type BandwidthReductionFilterSharpening =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "OFF";
+export type BandwidthReductionFilterStrength =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "AUTO"
+  | "OFF";
 export type BillingTagsSource = "QUEUE" | "PRESET" | "JOB_TEMPLATE" | "JOB";
 export interface BurninDestinationSettings {
   Alignment?: BurninSubtitleAlignment;
@@ -857,17 +1181,39 @@ export interface BurninDestinationSettings {
 export type BurninSubtitleAlignment = "CENTERED" | "LEFT" | "AUTO";
 export type BurninSubtitleApplyFontColor = "WHITE_TEXT_ONLY" | "ALL_TEXT";
 export type BurninSubtitleBackgroundColor = "NONE" | "BLACK" | "WHITE" | "AUTO";
-export type BurninSubtitleFallbackFont = "BEST_MATCH" | "MONOSPACED_SANSSERIF" | "MONOSPACED_SERIF" | "PROPORTIONAL_SANSSERIF" | "PROPORTIONAL_SERIF";
-export type BurninSubtitleFontColor = "WHITE" | "BLACK" | "YELLOW" | "RED" | "GREEN" | "BLUE" | "HEX" | "AUTO";
-export type BurninSubtitleOutlineColor = "BLACK" | "WHITE" | "YELLOW" | "RED" | "GREEN" | "BLUE" | "AUTO";
+export type BurninSubtitleFallbackFont =
+  | "BEST_MATCH"
+  | "MONOSPACED_SANSSERIF"
+  | "MONOSPACED_SERIF"
+  | "PROPORTIONAL_SANSSERIF"
+  | "PROPORTIONAL_SERIF";
+export type BurninSubtitleFontColor =
+  | "WHITE"
+  | "BLACK"
+  | "YELLOW"
+  | "RED"
+  | "GREEN"
+  | "BLUE"
+  | "HEX"
+  | "AUTO";
+export type BurninSubtitleOutlineColor =
+  | "BLACK"
+  | "WHITE"
+  | "YELLOW"
+  | "RED"
+  | "GREEN"
+  | "BLUE"
+  | "AUTO";
 export type BurninSubtitleShadowColor = "NONE" | "BLACK" | "WHITE" | "AUTO";
 export type BurnInSubtitleStylePassthrough = "ENABLED" | "DISABLED";
-export type BurninSubtitleTeletextSpacing = "FIXED_GRID" | "PROPORTIONAL" | "AUTO";
+export type BurninSubtitleTeletextSpacing =
+  | "FIXED_GRID"
+  | "PROPORTIONAL"
+  | "AUTO";
 export interface CancelJobRequest {
   Id: string;
 }
-export interface CancelJobResponse {
-}
+export interface CancelJobResponse {}
 export interface CaptionDescription {
   CaptionSelectorName?: string;
   CustomLanguageCode?: string;
@@ -893,7 +1239,19 @@ export interface CaptionDestinationSettings {
   TtmlDestinationSettings?: TtmlDestinationSettings;
   WebvttDestinationSettings?: WebvttDestinationSettings;
 }
-export type CaptionDestinationType = "BURN_IN" | "DVB_SUB" | "EMBEDDED" | "EMBEDDED_PLUS_SCTE20" | "IMSC" | "SCTE20_PLUS_EMBEDDED" | "SCC" | "SRT" | "SMI" | "TELETEXT" | "TTML" | "WEBVTT";
+export type CaptionDestinationType =
+  | "BURN_IN"
+  | "DVB_SUB"
+  | "EMBEDDED"
+  | "EMBEDDED_PLUS_SCTE20"
+  | "IMSC"
+  | "SCTE20_PLUS_EMBEDDED"
+  | "SCC"
+  | "SRT"
+  | "SMI"
+  | "TELETEXT"
+  | "TTML"
+  | "WEBVTT";
 export interface CaptionSelector {
   CustomLanguageCode?: string;
   LanguageCode?: LanguageCode;
@@ -915,7 +1273,21 @@ export interface CaptionSourceSettings {
   TrackSourceSettings?: TrackSourceSettings;
   WebvttHlsSourceSettings?: WebvttHlsSourceSettings;
 }
-export type CaptionSourceType = "ANCILLARY" | "DVB_SUB" | "EMBEDDED" | "SCTE20" | "SCC" | "TTML" | "STL" | "SRT" | "SMI" | "SMPTE_TT" | "TELETEXT" | "NULL_SOURCE" | "IMSC" | "WEBVTT";
+export type CaptionSourceType =
+  | "ANCILLARY"
+  | "DVB_SUB"
+  | "EMBEDDED"
+  | "SCTE20"
+  | "SCC"
+  | "TTML"
+  | "STL"
+  | "SRT"
+  | "SMI"
+  | "SMPTE_TT"
+  | "TELETEXT"
+  | "NULL_SOURCE"
+  | "IMSC"
+  | "WEBVTT";
 export type CaptionSourceUpconvertSTLToTeletext = "UPCONVERT" | "DISABLED";
 export interface ChannelMapping {
   OutputChannels?: Array<OutputChannelMapping>;
@@ -972,7 +1344,11 @@ export interface CmafGroupSettings {
   WriteHlsManifest?: CmafWriteHLSManifest;
   WriteSegmentTimelineInRepresentation?: CmafWriteSegmentTimelineInRepresentation;
 }
-export type CmafImageBasedTrickPlay = "NONE" | "THUMBNAIL" | "THUMBNAIL_AND_FULLFRAME" | "ADVANCED";
+export type CmafImageBasedTrickPlay =
+  | "NONE"
+  | "THUMBNAIL"
+  | "THUMBNAIL_AND_FULLFRAME"
+  | "ADVANCED";
 export interface CmafImageBasedTrickPlaySettings {
   IntervalCadence?: CmafIntervalCadence;
   ThumbnailHeight?: number;
@@ -988,7 +1364,9 @@ export type CmafManifestCompression = "GZIP" | "NONE";
 export type CmafManifestDurationFormat = "FLOATING_POINT" | "INTEGER";
 export type CmafMpdManifestBandwidthType = "AVERAGE" | "MAX";
 export type CmafMpdProfile = "MAIN_PROFILE" | "ON_DEMAND_PROFILE";
-export type CmafPtsOffsetHandlingForBFrames = "ZERO_BASED" | "MATCH_INITIAL_PTS";
+export type CmafPtsOffsetHandlingForBFrames =
+  | "ZERO_BASED"
+  | "MATCH_INITIAL_PTS";
 export type CmafSegmentControl = "SINGLE_FILE" | "SEGMENTED_FILES";
 export type CmafSegmentLengthControl = "EXACT" | "GOP_MULTIPLE" | "MATCH";
 export type CmafStreamInfResolution = "INCLUDE" | "EXCLUDE";
@@ -997,8 +1375,14 @@ export type CmafVideoCompositionOffsets = "SIGNED" | "UNSIGNED";
 export type CmafWriteDASHManifest = "DISABLED" | "ENABLED";
 export type CmafWriteHLSManifest = "DISABLED" | "ENABLED";
 export type CmafWriteSegmentTimelineInRepresentation = "ENABLED" | "DISABLED";
-export type CmfcAudioDuration = "DEFAULT_CODEC_DURATION" | "MATCH_VIDEO_DURATION";
-export type CmfcAudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT" | "ALTERNATE_AUDIO_AUTO_SELECT" | "ALTERNATE_AUDIO_NOT_AUTO_SELECT" | "AUDIO_ONLY_VARIANT_STREAM";
+export type CmfcAudioDuration =
+  | "DEFAULT_CODEC_DURATION"
+  | "MATCH_VIDEO_DURATION";
+export type CmfcAudioTrackType =
+  | "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"
+  | "ALTERNATE_AUDIO_AUTO_SELECT"
+  | "ALTERNATE_AUDIO_NOT_AUTO_SELECT"
+  | "AUDIO_ONLY_VARIANT_STREAM";
 export type CmfcDescriptiveVideoServiceFlag = "DONT_FLAG" | "FLAG";
 export type CmfcIFrameOnlyManifest = "INCLUDE" | "EXCLUDE";
 export type CmfcKlvMetadata = "PASSTHROUGH" | "NONE";
@@ -1023,7 +1407,29 @@ export interface CmfcSettings {
 }
 export type CmfcTimedMetadata = "PASSTHROUGH" | "NONE";
 export type CmfcTimedMetadataBoxVersion = "VERSION_0" | "VERSION_1";
-export type Codec = "UNKNOWN" | "AAC" | "AC3" | "EAC3" | "FLAC" | "MP3" | "OPUS" | "PCM" | "VORBIS" | "AV1" | "AVC" | "HEVC" | "MJPEG" | "MP4V" | "MPEG2" | "PRORES" | "THEORA" | "VP8" | "VP9" | "C608" | "C708" | "WEBVTT";
+export type Codec =
+  | "UNKNOWN"
+  | "AAC"
+  | "AC3"
+  | "EAC3"
+  | "FLAC"
+  | "MP3"
+  | "OPUS"
+  | "PCM"
+  | "VORBIS"
+  | "AV1"
+  | "AVC"
+  | "HEVC"
+  | "MJPEG"
+  | "MP4V"
+  | "MPEG2"
+  | "PRORES"
+  | "THEORA"
+  | "VP8"
+  | "VP9"
+  | "C608"
+  | "C708"
+  | "WEBVTT";
 export interface ColorConversion3DLUTSetting {
   FileInput?: string;
   InputColorSpace?: ColorSpace;
@@ -1045,9 +1451,41 @@ export interface ColorCorrector {
   SdrReferenceWhiteLevel?: number;
 }
 export type ColorMetadata = "IGNORE" | "INSERT";
-export type ColorPrimaries = "ITU_709" | "UNSPECIFIED" | "RESERVED" | "ITU_470M" | "ITU_470BG" | "SMPTE_170M" | "SMPTE_240M" | "GENERIC_FILM" | "ITU_2020" | "SMPTE_428_1" | "SMPTE_431_2" | "SMPTE_EG_432_1" | "IPT" | "SMPTE_2067XYZ" | "EBU_3213_E" | "LAST";
-export type ColorSpace = "FOLLOW" | "REC_601" | "REC_709" | "HDR10" | "HLG_2020" | "P3DCI" | "P3D65_SDR" | "P3D65_HDR";
-export type ColorSpaceConversion = "NONE" | "FORCE_601" | "FORCE_709" | "FORCE_HDR10" | "FORCE_HLG_2020" | "FORCE_P3DCI" | "FORCE_P3D65_SDR" | "FORCE_P3D65_HDR";
+export type ColorPrimaries =
+  | "ITU_709"
+  | "UNSPECIFIED"
+  | "RESERVED"
+  | "ITU_470M"
+  | "ITU_470BG"
+  | "SMPTE_170M"
+  | "SMPTE_240M"
+  | "GENERIC_FILM"
+  | "ITU_2020"
+  | "SMPTE_428_1"
+  | "SMPTE_431_2"
+  | "SMPTE_EG_432_1"
+  | "IPT"
+  | "SMPTE_2067XYZ"
+  | "EBU_3213_E"
+  | "LAST";
+export type ColorSpace =
+  | "FOLLOW"
+  | "REC_601"
+  | "REC_709"
+  | "HDR10"
+  | "HLG_2020"
+  | "P3DCI"
+  | "P3D65_SDR"
+  | "P3D65_HDR";
+export type ColorSpaceConversion =
+  | "NONE"
+  | "FORCE_601"
+  | "FORCE_709"
+  | "FORCE_HDR10"
+  | "FORCE_HLG_2020"
+  | "FORCE_P3DCI"
+  | "FORCE_P3D65_SDR"
+  | "FORCE_P3D65_HDR";
 export type ColorSpaceUsage = "FORCE" | "FALLBACK";
 export type Commitment = "ONE_YEAR";
 export declare class ConflictException extends Data.TaggedError(
@@ -1071,7 +1509,21 @@ export interface ContainerSettings {
   MpdSettings?: MpdSettings;
   MxfSettings?: MxfSettings;
 }
-export type ContainerType = "F4V" | "GIF" | "ISMV" | "M2TS" | "M3U8" | "CMFC" | "MOV" | "MP4" | "MPD" | "MXF" | "OGG" | "WEBM" | "RAW" | "Y4M";
+export type ContainerType =
+  | "F4V"
+  | "GIF"
+  | "ISMV"
+  | "M2TS"
+  | "M3U8"
+  | "CMFC"
+  | "MOV"
+  | "MP4"
+  | "MPD"
+  | "MXF"
+  | "OGG"
+  | "WEBM"
+  | "RAW"
+  | "Y4M";
 export type CopyProtectionAction = "PASSTHROUGH" | "STRIP";
 export interface CreateJobRequest {
   AccelerationSettings?: AccelerationSettings;
@@ -1137,7 +1589,9 @@ export interface DashIsoEncryptionSettings {
   PlaybackDeviceCompatibility?: DashIsoPlaybackDeviceCompatibility;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export type DashIsoGroupAudioChannelConfigSchemeIdUri = "MPEG_CHANNEL_CONFIGURATION" | "DOLBY_CHANNEL_CONFIGURATION";
+export type DashIsoGroupAudioChannelConfigSchemeIdUri =
+  | "MPEG_CHANNEL_CONFIGURATION"
+  | "DOLBY_CHANNEL_CONFIGURATION";
 export interface DashIsoGroupSettings {
   AdditionalManifests?: Array<DashAdditionalManifest>;
   AudioChannelConfigSchemeIdUri?: DashIsoGroupAudioChannelConfigSchemeIdUri;
@@ -1163,7 +1617,11 @@ export interface DashIsoGroupSettings {
   WriteSegmentTimelineInRepresentation?: DashIsoWriteSegmentTimelineInRepresentation;
 }
 export type DashIsoHbbtvCompliance = "HBBTV_1_5" | "NONE";
-export type DashIsoImageBasedTrickPlay = "NONE" | "THUMBNAIL" | "THUMBNAIL_AND_FULLFRAME" | "ADVANCED";
+export type DashIsoImageBasedTrickPlay =
+  | "NONE"
+  | "THUMBNAIL"
+  | "THUMBNAIL_AND_FULLFRAME"
+  | "ADVANCED";
 export interface DashIsoImageBasedTrickPlaySettings {
   IntervalCadence?: DashIsoIntervalCadence;
   ThumbnailHeight?: number;
@@ -1176,17 +1634,26 @@ export type DashIsoIntervalCadence = "FOLLOW_IFRAME" | "FOLLOW_CUSTOM";
 export type DashIsoMpdManifestBandwidthType = "AVERAGE" | "MAX";
 export type DashIsoMpdProfile = "MAIN_PROFILE" | "ON_DEMAND_PROFILE";
 export type DashIsoPlaybackDeviceCompatibility = "CENC_V1" | "UNENCRYPTED_SEI";
-export type DashIsoPtsOffsetHandlingForBFrames = "ZERO_BASED" | "MATCH_INITIAL_PTS";
+export type DashIsoPtsOffsetHandlingForBFrames =
+  | "ZERO_BASED"
+  | "MATCH_INITIAL_PTS";
 export type DashIsoSegmentControl = "SINGLE_FILE" | "SEGMENTED_FILES";
 export type DashIsoSegmentLengthControl = "EXACT" | "GOP_MULTIPLE" | "MATCH";
 export type DashIsoVideoCompositionOffsets = "SIGNED" | "UNSIGNED";
-export type DashIsoWriteSegmentTimelineInRepresentation = "ENABLED" | "DISABLED";
+export type DashIsoWriteSegmentTimelineInRepresentation =
+  | "ENABLED"
+  | "DISABLED";
 export type DashManifestStyle = "BASIC" | "COMPACT" | "DISTINCT";
 export interface DataProperties {
   LanguageCode?: string;
 }
 export type DecryptionMode = "AES_CTR" | "AES_CBC" | "AES_GCM";
-export type DeinterlaceAlgorithm = "INTERPOLATE" | "INTERPOLATE_TICKER" | "BLEND" | "BLEND_TICKER" | "LINEAR_INTERPOLATION";
+export type DeinterlaceAlgorithm =
+  | "INTERPOLATE"
+  | "INTERPOLATE_TICKER"
+  | "BLEND"
+  | "BLEND_TICKER"
+  | "LINEAR_INTERPOLATION";
 export interface Deinterlacer {
   Algorithm?: DeinterlaceAlgorithm;
   Control?: DeinterlacerControl;
@@ -1197,22 +1664,17 @@ export type DeinterlacerMode = "DEINTERLACE" | "INVERSE_TELECINE" | "ADAPTIVE";
 export interface DeleteJobTemplateRequest {
   Name: string;
 }
-export interface DeleteJobTemplateResponse {
-}
-export interface DeletePolicyRequest {
-}
-export interface DeletePolicyResponse {
-}
+export interface DeleteJobTemplateResponse {}
+export interface DeletePolicyRequest {}
+export interface DeletePolicyResponse {}
 export interface DeletePresetRequest {
   Name: string;
 }
-export interface DeletePresetResponse {
-}
+export interface DeletePresetResponse {}
 export interface DeleteQueueRequest {
   Name: string;
 }
-export interface DeleteQueueResponse {
-}
+export interface DeleteQueueResponse {}
 export type DescribeEndpointsMode = "DEFAULT" | "GET_ONLY";
 export interface DescribeEndpointsRequest {
   MaxResults?: number;
@@ -1229,8 +1691,7 @@ export interface DestinationSettings {
 export interface DisassociateCertificateRequest {
   Arn: string;
 }
-export interface DisassociateCertificateResponse {
-}
+export interface DisassociateCertificateResponse {}
 export interface DolbyVision {
   L6Metadata?: DolbyVisionLevel6Metadata;
   L6Mode?: DolbyVisionLevel6Mode;
@@ -1245,7 +1706,11 @@ export type DolbyVisionLevel6Mode = "PASSTHROUGH" | "RECALCULATE" | "SPECIFY";
 export type DolbyVisionMapping = "HDR10_NOMAP" | "HDR10_1000";
 export type DolbyVisionProfile = "PROFILE_5" | "PROFILE_8_1";
 export type DropFrameTimecode = "DISABLED" | "ENABLED";
-export type DvbddsHandling = "NONE" | "SPECIFIED" | "NO_DISPLAY_WINDOW" | "SPECIFIED_OPTIMAL";
+export type DvbddsHandling =
+  | "NONE"
+  | "SPECIFIED"
+  | "NO_DISPLAY_WINDOW"
+  | "SPECIFIED_OPTIMAL";
 export interface DvbNitSettings {
   NetworkId?: number;
   NetworkName?: string;
@@ -1293,12 +1758,32 @@ export interface DvbSubDestinationSettings {
 export interface DvbSubSourceSettings {
   Pid?: number;
 }
-export type DvbSubSubtitleFallbackFont = "BEST_MATCH" | "MONOSPACED_SANSSERIF" | "MONOSPACED_SERIF" | "PROPORTIONAL_SANSSERIF" | "PROPORTIONAL_SERIF";
+export type DvbSubSubtitleFallbackFont =
+  | "BEST_MATCH"
+  | "MONOSPACED_SANSSERIF"
+  | "MONOSPACED_SERIF"
+  | "PROPORTIONAL_SANSSERIF"
+  | "PROPORTIONAL_SERIF";
 export type DvbSubtitleAlignment = "CENTERED" | "LEFT" | "AUTO";
 export type DvbSubtitleApplyFontColor = "WHITE_TEXT_ONLY" | "ALL_TEXT";
 export type DvbSubtitleBackgroundColor = "NONE" | "BLACK" | "WHITE" | "AUTO";
-export type DvbSubtitleFontColor = "WHITE" | "BLACK" | "YELLOW" | "RED" | "GREEN" | "BLUE" | "HEX" | "AUTO";
-export type DvbSubtitleOutlineColor = "BLACK" | "WHITE" | "YELLOW" | "RED" | "GREEN" | "BLUE" | "AUTO";
+export type DvbSubtitleFontColor =
+  | "WHITE"
+  | "BLACK"
+  | "YELLOW"
+  | "RED"
+  | "GREEN"
+  | "BLUE"
+  | "HEX"
+  | "AUTO";
+export type DvbSubtitleOutlineColor =
+  | "BLACK"
+  | "WHITE"
+  | "YELLOW"
+  | "RED"
+  | "GREEN"
+  | "BLUE"
+  | "AUTO";
 export type DvbSubtitleShadowColor = "NONE" | "BLACK" | "WHITE" | "AUTO";
 export type DvbSubtitleStylePassthrough = "ENABLED" | "DISABLED";
 export type DvbSubtitleTeletextSpacing = "FIXED_GRID" | "PROPORTIONAL" | "AUTO";
@@ -1315,13 +1800,36 @@ export interface DynamicAudioSelector {
 }
 export type DynamicAudioSelectorType = "ALL_TRACKS" | "LANGUAGE_CODE";
 export type Eac3AtmosBitstreamMode = "COMPLETE_MAIN";
-export type Eac3AtmosCodingMode = "CODING_MODE_AUTO" | "CODING_MODE_5_1_4" | "CODING_MODE_7_1_4" | "CODING_MODE_9_1_6";
+export type Eac3AtmosCodingMode =
+  | "CODING_MODE_AUTO"
+  | "CODING_MODE_5_1_4"
+  | "CODING_MODE_7_1_4"
+  | "CODING_MODE_9_1_6";
 export type Eac3AtmosDialogueIntelligence = "ENABLED" | "DISABLED";
 export type Eac3AtmosDownmixControl = "SPECIFIED" | "INITIALIZE_FROM_SOURCE";
-export type Eac3AtmosDynamicRangeCompressionLine = "NONE" | "FILM_STANDARD" | "FILM_LIGHT" | "MUSIC_STANDARD" | "MUSIC_LIGHT" | "SPEECH";
-export type Eac3AtmosDynamicRangeCompressionRf = "NONE" | "FILM_STANDARD" | "FILM_LIGHT" | "MUSIC_STANDARD" | "MUSIC_LIGHT" | "SPEECH";
-export type Eac3AtmosDynamicRangeControl = "SPECIFIED" | "INITIALIZE_FROM_SOURCE";
-export type Eac3AtmosMeteringMode = "LEQ_A" | "ITU_BS_1770_1" | "ITU_BS_1770_2" | "ITU_BS_1770_3" | "ITU_BS_1770_4";
+export type Eac3AtmosDynamicRangeCompressionLine =
+  | "NONE"
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH";
+export type Eac3AtmosDynamicRangeCompressionRf =
+  | "NONE"
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH";
+export type Eac3AtmosDynamicRangeControl =
+  | "SPECIFIED"
+  | "INITIALIZE_FROM_SOURCE";
+export type Eac3AtmosMeteringMode =
+  | "LEQ_A"
+  | "ITU_BS_1770_1"
+  | "ITU_BS_1770_2"
+  | "ITU_BS_1770_3"
+  | "ITU_BS_1770_4";
 export interface Eac3AtmosSettings {
   Bitrate?: number;
   BitstreamMode?: Eac3AtmosBitstreamMode;
@@ -1341,14 +1849,38 @@ export interface Eac3AtmosSettings {
   StereoDownmix?: Eac3AtmosStereoDownmix;
   SurroundExMode?: Eac3AtmosSurroundExMode;
 }
-export type Eac3AtmosStereoDownmix = "NOT_INDICATED" | "STEREO" | "SURROUND" | "DPL2";
+export type Eac3AtmosStereoDownmix =
+  | "NOT_INDICATED"
+  | "STEREO"
+  | "SURROUND"
+  | "DPL2";
 export type Eac3AtmosSurroundExMode = "NOT_INDICATED" | "ENABLED" | "DISABLED";
 export type Eac3AttenuationControl = "ATTENUATE_3_DB" | "NONE";
-export type Eac3BitstreamMode = "COMPLETE_MAIN" | "COMMENTARY" | "EMERGENCY" | "HEARING_IMPAIRED" | "VISUALLY_IMPAIRED";
-export type Eac3CodingMode = "CODING_MODE_1_0" | "CODING_MODE_2_0" | "CODING_MODE_3_2";
+export type Eac3BitstreamMode =
+  | "COMPLETE_MAIN"
+  | "COMMENTARY"
+  | "EMERGENCY"
+  | "HEARING_IMPAIRED"
+  | "VISUALLY_IMPAIRED";
+export type Eac3CodingMode =
+  | "CODING_MODE_1_0"
+  | "CODING_MODE_2_0"
+  | "CODING_MODE_3_2";
 export type Eac3DcFilter = "ENABLED" | "DISABLED";
-export type Eac3DynamicRangeCompressionLine = "NONE" | "FILM_STANDARD" | "FILM_LIGHT" | "MUSIC_STANDARD" | "MUSIC_LIGHT" | "SPEECH";
-export type Eac3DynamicRangeCompressionRf = "NONE" | "FILM_STANDARD" | "FILM_LIGHT" | "MUSIC_STANDARD" | "MUSIC_LIGHT" | "SPEECH";
+export type Eac3DynamicRangeCompressionLine =
+  | "NONE"
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH";
+export type Eac3DynamicRangeCompressionRf =
+  | "NONE"
+  | "FILM_STANDARD"
+  | "FILM_LIGHT"
+  | "MUSIC_STANDARD"
+  | "MUSIC_LIGHT"
+  | "SPEECH";
 export type Eac3LfeControl = "LFE" | "NO_LFE";
 export type Eac3LfeFilter = "ENABLED" | "DISABLED";
 export type Eac3MetadataControl = "FOLLOW_INPUT" | "USE_CONFIGURED";
@@ -1457,7 +1989,13 @@ export interface FrameCaptureSettings {
   MaxCaptures?: number;
   Quality?: number;
 }
-export type FrameMetricType = "PSNR" | "SSIM" | "MS_SSIM" | "PSNR_HVS" | "VMAF" | "QVBR";
+export type FrameMetricType =
+  | "PSNR"
+  | "SSIM"
+  | "MS_SSIM"
+  | "PSNR_HVS"
+  | "VMAF"
+  | "QVBR";
 export interface FrameRate {
   Denominator?: number;
   Numerator?: number;
@@ -1474,8 +2012,7 @@ export interface GetJobTemplateRequest {
 export interface GetJobTemplateResponse {
   JobTemplate?: JobTemplate;
 }
-export interface GetPolicyRequest {
-}
+export interface GetPolicyRequest {}
 export interface GetPolicyResponse {
   Policy?: Policy;
 }
@@ -1499,21 +2036,63 @@ export interface GifSettings {
   FramerateDenominator?: number;
   FramerateNumerator?: number;
 }
-export type H264AdaptiveQuantization = "OFF" | "AUTO" | "LOW" | "MEDIUM" | "HIGH" | "HIGHER" | "MAX";
-export type H264CodecLevel = "AUTO" | "LEVEL_1" | "LEVEL_1_1" | "LEVEL_1_2" | "LEVEL_1_3" | "LEVEL_2" | "LEVEL_2_1" | "LEVEL_2_2" | "LEVEL_3" | "LEVEL_3_1" | "LEVEL_3_2" | "LEVEL_4" | "LEVEL_4_1" | "LEVEL_4_2" | "LEVEL_5" | "LEVEL_5_1" | "LEVEL_5_2";
-export type H264CodecProfile = "BASELINE" | "HIGH" | "HIGH_10BIT" | "HIGH_422" | "HIGH_422_10BIT" | "MAIN";
+export type H264AdaptiveQuantization =
+  | "OFF"
+  | "AUTO"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "HIGHER"
+  | "MAX";
+export type H264CodecLevel =
+  | "AUTO"
+  | "LEVEL_1"
+  | "LEVEL_1_1"
+  | "LEVEL_1_2"
+  | "LEVEL_1_3"
+  | "LEVEL_2"
+  | "LEVEL_2_1"
+  | "LEVEL_2_2"
+  | "LEVEL_3"
+  | "LEVEL_3_1"
+  | "LEVEL_3_2"
+  | "LEVEL_4"
+  | "LEVEL_4_1"
+  | "LEVEL_4_2"
+  | "LEVEL_5"
+  | "LEVEL_5_1"
+  | "LEVEL_5_2";
+export type H264CodecProfile =
+  | "BASELINE"
+  | "HIGH"
+  | "HIGH_10BIT"
+  | "HIGH_422"
+  | "HIGH_422_10BIT"
+  | "MAIN";
 export type H264DynamicSubGop = "ADAPTIVE" | "STATIC";
 export type H264EndOfStreamMarkers = "INCLUDE" | "SUPPRESS";
 export type H264EntropyEncoding = "CABAC" | "CAVLC";
 export type H264FieldEncoding = "PAFF" | "FORCE_FIELD" | "MBAFF";
 export type H264FlickerAdaptiveQuantization = "DISABLED" | "ENABLED";
 export type H264FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type H264FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type H264FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type H264GopBReference = "DISABLED" | "ENABLED";
 export type H264GopSizeUnits = "FRAMES" | "SECONDS" | "AUTO";
-export type H264InterlaceMode = "PROGRESSIVE" | "TOP_FIELD" | "BOTTOM_FIELD" | "FOLLOW_TOP_FIELD" | "FOLLOW_BOTTOM_FIELD";
+export type H264InterlaceMode =
+  | "PROGRESSIVE"
+  | "TOP_FIELD"
+  | "BOTTOM_FIELD"
+  | "FOLLOW_TOP_FIELD"
+  | "FOLLOW_BOTTOM_FIELD";
 export type H264ParControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type H264QualityTuningLevel = "SINGLE_PASS" | "SINGLE_PASS_HQ" | "MULTI_PASS_HQ";
+export type H264QualityTuningLevel =
+  | "SINGLE_PASS"
+  | "SINGLE_PASS_HQ"
+  | "MULTI_PASS_HQ";
 export interface H264QvbrSettings {
   MaxAverageBitrate?: number;
   QvbrQualityLevel?: number;
@@ -1523,7 +2102,10 @@ export type H264RateControlMode = "VBR" | "CBR" | "QVBR";
 export type H264RepeatPps = "DISABLED" | "ENABLED";
 export type H264SaliencyAwareEncoding = "DISABLED" | "PREFERRED";
 export type H264ScanTypeConversionMode = "INTERLACED" | "INTERLACED_OPTIMIZE";
-export type H264SceneChangeDetect = "DISABLED" | "ENABLED" | "TRANSITION_DETECTION";
+export type H264SceneChangeDetect =
+  | "DISABLED"
+  | "ENABLED"
+  | "TRANSITION_DETECTION";
 export interface H264Settings {
   AdaptiveQuantization?: H264AdaptiveQuantization;
   BandwidthReductionFilter?: BandwidthReductionFilter;
@@ -1579,21 +2161,62 @@ export type H264Telecine = "NONE" | "SOFT" | "HARD";
 export type H264TemporalAdaptiveQuantization = "DISABLED" | "ENABLED";
 export type H264UnregisteredSeiTimecode = "DISABLED" | "ENABLED";
 export type H264WriteMp4PackagingType = "AVC1" | "AVC3";
-export type H265AdaptiveQuantization = "OFF" | "LOW" | "MEDIUM" | "HIGH" | "HIGHER" | "MAX" | "AUTO";
+export type H265AdaptiveQuantization =
+  | "OFF"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "HIGHER"
+  | "MAX"
+  | "AUTO";
 export type H265AlternateTransferFunctionSei = "DISABLED" | "ENABLED";
-export type H265CodecLevel = "AUTO" | "LEVEL_1" | "LEVEL_2" | "LEVEL_2_1" | "LEVEL_3" | "LEVEL_3_1" | "LEVEL_4" | "LEVEL_4_1" | "LEVEL_5" | "LEVEL_5_1" | "LEVEL_5_2" | "LEVEL_6" | "LEVEL_6_1" | "LEVEL_6_2";
-export type H265CodecProfile = "MAIN_MAIN" | "MAIN_HIGH" | "MAIN10_MAIN" | "MAIN10_HIGH" | "MAIN_422_8BIT_MAIN" | "MAIN_422_8BIT_HIGH" | "MAIN_422_10BIT_MAIN" | "MAIN_422_10BIT_HIGH";
+export type H265CodecLevel =
+  | "AUTO"
+  | "LEVEL_1"
+  | "LEVEL_2"
+  | "LEVEL_2_1"
+  | "LEVEL_3"
+  | "LEVEL_3_1"
+  | "LEVEL_4"
+  | "LEVEL_4_1"
+  | "LEVEL_5"
+  | "LEVEL_5_1"
+  | "LEVEL_5_2"
+  | "LEVEL_6"
+  | "LEVEL_6_1"
+  | "LEVEL_6_2";
+export type H265CodecProfile =
+  | "MAIN_MAIN"
+  | "MAIN_HIGH"
+  | "MAIN10_MAIN"
+  | "MAIN10_HIGH"
+  | "MAIN_422_8BIT_MAIN"
+  | "MAIN_422_8BIT_HIGH"
+  | "MAIN_422_10BIT_MAIN"
+  | "MAIN_422_10BIT_HIGH";
 export type H265Deblocking = "ENABLED" | "DISABLED";
 export type H265DynamicSubGop = "ADAPTIVE" | "STATIC";
 export type H265EndOfStreamMarkers = "INCLUDE" | "SUPPRESS";
 export type H265FlickerAdaptiveQuantization = "DISABLED" | "ENABLED";
 export type H265FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type H265FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type H265FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type H265GopBReference = "DISABLED" | "ENABLED";
 export type H265GopSizeUnits = "FRAMES" | "SECONDS" | "AUTO";
-export type H265InterlaceMode = "PROGRESSIVE" | "TOP_FIELD" | "BOTTOM_FIELD" | "FOLLOW_TOP_FIELD" | "FOLLOW_BOTTOM_FIELD";
+export type H265InterlaceMode =
+  | "PROGRESSIVE"
+  | "TOP_FIELD"
+  | "BOTTOM_FIELD"
+  | "FOLLOW_TOP_FIELD"
+  | "FOLLOW_BOTTOM_FIELD";
 export type H265ParControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type H265QualityTuningLevel = "SINGLE_PASS" | "SINGLE_PASS_HQ" | "MULTI_PASS_HQ";
+export type H265QualityTuningLevel =
+  | "SINGLE_PASS"
+  | "SINGLE_PASS_HQ"
+  | "MULTI_PASS_HQ";
 export interface H265QvbrSettings {
   MaxAverageBitrate?: number;
   QvbrQualityLevel?: number;
@@ -1602,7 +2225,10 @@ export interface H265QvbrSettings {
 export type H265RateControlMode = "VBR" | "CBR" | "QVBR";
 export type H265SampleAdaptiveOffsetFilterMode = "DEFAULT" | "ADAPTIVE" | "OFF";
 export type H265ScanTypeConversionMode = "INTERLACED" | "INTERLACED_OPTIMIZE";
-export type H265SceneChangeDetect = "DISABLED" | "ENABLED" | "TRANSITION_DETECTION";
+export type H265SceneChangeDetect =
+  | "DISABLED"
+  | "ENABLED"
+  | "TRANSITION_DETECTION";
 export interface H265Settings {
   AdaptiveQuantization?: H265AdaptiveQuantization;
   AlternateTransferFunctionSei?: H265AlternateTransferFunctionSei;
@@ -1684,7 +2310,11 @@ export interface HlsAdditionalManifest {
 export type HlsAdMarkers = "ELEMENTAL" | "ELEMENTAL_SCTE35";
 export type HlsAudioOnlyContainer = "AUTOMATIC" | "M2TS";
 export type HlsAudioOnlyHeader = "INCLUDE" | "EXCLUDE";
-export type HlsAudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT" | "ALTERNATE_AUDIO_AUTO_SELECT" | "ALTERNATE_AUDIO_NOT_AUTO_SELECT" | "AUDIO_ONLY_VARIANT_STREAM";
+export type HlsAudioTrackType =
+  | "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"
+  | "ALTERNATE_AUDIO_AUTO_SELECT"
+  | "ALTERNATE_AUDIO_NOT_AUTO_SELECT"
+  | "AUDIO_ONLY_VARIANT_STREAM";
 export interface HlsCaptionLanguageMapping {
   CaptionChannel?: number;
   CustomLanguageCode?: string;
@@ -1696,7 +2326,9 @@ export type HlsCaptionSegmentLengthControl = "LARGE_SEGMENTS" | "MATCH_VIDEO";
 export type HlsClientCache = "DISABLED" | "ENABLED";
 export type HlsCodecSpecification = "RFC_6381" | "RFC_4281";
 export type HlsDescriptiveVideoServiceFlag = "DONT_FLAG" | "FLAG";
-export type HlsDirectoryStructure = "SINGLE_DIRECTORY" | "SUBDIRECTORY_PER_STREAM";
+export type HlsDirectoryStructure =
+  | "SINGLE_DIRECTORY"
+  | "SUBDIRECTORY_PER_STREAM";
 export interface HlsEncryptionSettings {
   ConstantInitializationVector?: string;
   EncryptionMethod?: HlsEncryptionType;
@@ -1742,7 +2374,11 @@ export interface HlsGroupSettings {
   TimestampDeltaMilliseconds?: number;
 }
 export type HlsIFrameOnlyManifest = "INCLUDE" | "EXCLUDE";
-export type HlsImageBasedTrickPlay = "NONE" | "THUMBNAIL" | "THUMBNAIL_AND_FULLFRAME" | "ADVANCED";
+export type HlsImageBasedTrickPlay =
+  | "NONE"
+  | "THUMBNAIL"
+  | "THUMBNAIL_AND_FULLFRAME"
+  | "ADVANCED";
 export interface HlsImageBasedTrickPlaySettings {
   IntervalCadence?: HlsIntervalCadence;
   ThumbnailHeight?: number;
@@ -1841,7 +2477,12 @@ export type InputDenoiseFilter = "ENABLED" | "DISABLED";
 export type InputFilterEnable = "AUTO" | "DISABLE" | "FORCE";
 export type InputPolicy = "ALLOWED" | "DISALLOWED";
 export type InputPsiControl = "IGNORE_PSI" | "USE_PSI";
-export type InputRotate = "DEGREE_0" | "DEGREES_90" | "DEGREES_180" | "DEGREES_270" | "AUTO";
+export type InputRotate =
+  | "DEGREE_0"
+  | "DEGREES_90"
+  | "DEGREES_180"
+  | "DEGREES_270"
+  | "AUTO";
 export type InputSampleRange = "FOLLOW" | "FULL_RANGE" | "LIMITED_RANGE";
 export type InputScanType = "AUTO" | "PSF";
 export interface InputTemplate {
@@ -1950,7 +2591,12 @@ export interface JobSettings {
   TimecodeConfig?: TimecodeConfig;
   TimedMetadataInsertion?: TimedMetadataInsertion;
 }
-export type JobStatus = "SUBMITTED" | "PROGRESSING" | "COMPLETE" | "CANCELED" | "ERROR";
+export type JobStatus =
+  | "SUBMITTED"
+  | "PROGRESSING"
+  | "COMPLETE"
+  | "CANCELED"
+  | "ERROR";
 export interface JobTemplate {
   AccelerationSettings?: AccelerationSettings;
   Arn?: string;
@@ -1998,7 +2644,199 @@ export interface KantarWatermarkSettings {
   Metadata7?: string;
   Metadata8?: string;
 }
-export type LanguageCode = "ENG" | "SPA" | "FRA" | "DEU" | "GER" | "ZHO" | "ARA" | "HIN" | "JPN" | "RUS" | "POR" | "ITA" | "URD" | "VIE" | "KOR" | "PAN" | "ABK" | "AAR" | "AFR" | "AKA" | "SQI" | "AMH" | "ARG" | "HYE" | "ASM" | "AVA" | "AVE" | "AYM" | "AZE" | "BAM" | "BAK" | "EUS" | "BEL" | "BEN" | "BIH" | "BIS" | "BOS" | "BRE" | "BUL" | "MYA" | "CAT" | "KHM" | "CHA" | "CHE" | "NYA" | "CHU" | "CHV" | "COR" | "COS" | "CRE" | "HRV" | "CES" | "DAN" | "DIV" | "NLD" | "DZO" | "ENM" | "EPO" | "EST" | "EWE" | "FAO" | "FIJ" | "FIN" | "FRM" | "FUL" | "GLA" | "GLG" | "LUG" | "KAT" | "ELL" | "GRN" | "GUJ" | "HAT" | "HAU" | "HEB" | "HER" | "HMO" | "HUN" | "ISL" | "IDO" | "IBO" | "IND" | "INA" | "ILE" | "IKU" | "IPK" | "GLE" | "JAV" | "KAL" | "KAN" | "KAU" | "KAS" | "KAZ" | "KIK" | "KIN" | "KIR" | "KOM" | "KON" | "KUA" | "KUR" | "LAO" | "LAT" | "LAV" | "LIM" | "LIN" | "LIT" | "LUB" | "LTZ" | "MKD" | "MLG" | "MSA" | "MAL" | "MLT" | "GLV" | "MRI" | "MAR" | "MAH" | "MON" | "NAU" | "NAV" | "NDE" | "NBL" | "NDO" | "NEP" | "SME" | "NOR" | "NOB" | "NNO" | "OCI" | "OJI" | "ORI" | "ORM" | "OSS" | "PLI" | "FAS" | "POL" | "PUS" | "QUE" | "QAA" | "RON" | "ROH" | "RUN" | "SMO" | "SAG" | "SAN" | "SRD" | "SRB" | "SNA" | "III" | "SND" | "SIN" | "SLK" | "SLV" | "SOM" | "SOT" | "SUN" | "SWA" | "SSW" | "SWE" | "TGL" | "TAH" | "TGK" | "TAM" | "TAT" | "TEL" | "THA" | "BOD" | "TIR" | "TON" | "TSO" | "TSN" | "TUR" | "TUK" | "TWI" | "UIG" | "UKR" | "UZB" | "VEN" | "VOL" | "WLN" | "CYM" | "FRY" | "WOL" | "XHO" | "YID" | "YOR" | "ZHA" | "ZUL" | "ORJ" | "QPC" | "TNG" | "SRP";
+export type LanguageCode =
+  | "ENG"
+  | "SPA"
+  | "FRA"
+  | "DEU"
+  | "GER"
+  | "ZHO"
+  | "ARA"
+  | "HIN"
+  | "JPN"
+  | "RUS"
+  | "POR"
+  | "ITA"
+  | "URD"
+  | "VIE"
+  | "KOR"
+  | "PAN"
+  | "ABK"
+  | "AAR"
+  | "AFR"
+  | "AKA"
+  | "SQI"
+  | "AMH"
+  | "ARG"
+  | "HYE"
+  | "ASM"
+  | "AVA"
+  | "AVE"
+  | "AYM"
+  | "AZE"
+  | "BAM"
+  | "BAK"
+  | "EUS"
+  | "BEL"
+  | "BEN"
+  | "BIH"
+  | "BIS"
+  | "BOS"
+  | "BRE"
+  | "BUL"
+  | "MYA"
+  | "CAT"
+  | "KHM"
+  | "CHA"
+  | "CHE"
+  | "NYA"
+  | "CHU"
+  | "CHV"
+  | "COR"
+  | "COS"
+  | "CRE"
+  | "HRV"
+  | "CES"
+  | "DAN"
+  | "DIV"
+  | "NLD"
+  | "DZO"
+  | "ENM"
+  | "EPO"
+  | "EST"
+  | "EWE"
+  | "FAO"
+  | "FIJ"
+  | "FIN"
+  | "FRM"
+  | "FUL"
+  | "GLA"
+  | "GLG"
+  | "LUG"
+  | "KAT"
+  | "ELL"
+  | "GRN"
+  | "GUJ"
+  | "HAT"
+  | "HAU"
+  | "HEB"
+  | "HER"
+  | "HMO"
+  | "HUN"
+  | "ISL"
+  | "IDO"
+  | "IBO"
+  | "IND"
+  | "INA"
+  | "ILE"
+  | "IKU"
+  | "IPK"
+  | "GLE"
+  | "JAV"
+  | "KAL"
+  | "KAN"
+  | "KAU"
+  | "KAS"
+  | "KAZ"
+  | "KIK"
+  | "KIN"
+  | "KIR"
+  | "KOM"
+  | "KON"
+  | "KUA"
+  | "KUR"
+  | "LAO"
+  | "LAT"
+  | "LAV"
+  | "LIM"
+  | "LIN"
+  | "LIT"
+  | "LUB"
+  | "LTZ"
+  | "MKD"
+  | "MLG"
+  | "MSA"
+  | "MAL"
+  | "MLT"
+  | "GLV"
+  | "MRI"
+  | "MAR"
+  | "MAH"
+  | "MON"
+  | "NAU"
+  | "NAV"
+  | "NDE"
+  | "NBL"
+  | "NDO"
+  | "NEP"
+  | "SME"
+  | "NOR"
+  | "NOB"
+  | "NNO"
+  | "OCI"
+  | "OJI"
+  | "ORI"
+  | "ORM"
+  | "OSS"
+  | "PLI"
+  | "FAS"
+  | "POL"
+  | "PUS"
+  | "QUE"
+  | "QAA"
+  | "RON"
+  | "ROH"
+  | "RUN"
+  | "SMO"
+  | "SAG"
+  | "SAN"
+  | "SRD"
+  | "SRB"
+  | "SNA"
+  | "III"
+  | "SND"
+  | "SIN"
+  | "SLK"
+  | "SLV"
+  | "SOM"
+  | "SOT"
+  | "SUN"
+  | "SWA"
+  | "SSW"
+  | "SWE"
+  | "TGL"
+  | "TAH"
+  | "TGK"
+  | "TAM"
+  | "TAT"
+  | "TEL"
+  | "THA"
+  | "BOD"
+  | "TIR"
+  | "TON"
+  | "TSO"
+  | "TSN"
+  | "TUR"
+  | "TUK"
+  | "TWI"
+  | "UIG"
+  | "UKR"
+  | "UZB"
+  | "VEN"
+  | "VOL"
+  | "WLN"
+  | "CYM"
+  | "FRY"
+  | "WOL"
+  | "XHO"
+  | "YID"
+  | "YOR"
+  | "ZHA"
+  | "ZUL"
+  | "ORJ"
+  | "QPC"
+  | "TNG"
+  | "SRP";
 export interface ListJobsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2059,10 +2897,14 @@ export interface ListVersionsResponse {
   Versions?: Array<JobEngineVersion>;
 }
 export type M2tsAudioBufferModel = "DVB" | "ATSC";
-export type M2tsAudioDuration = "DEFAULT_CODEC_DURATION" | "MATCH_VIDEO_DURATION";
+export type M2tsAudioDuration =
+  | "DEFAULT_CODEC_DURATION"
+  | "MATCH_VIDEO_DURATION";
 export type M2tsBufferModel = "MULTIPLEX" | "NONE";
 export type M2tsDataPtsControl = "AUTO" | "ALIGN_TO_VIDEO";
-export type M2tsEbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS" | "VIDEO_INTERVAL";
+export type M2tsEbpAudioInterval =
+  | "VIDEO_AND_FIXED_INTERVALS"
+  | "VIDEO_INTERVAL";
 export type M2tsEbpPlacement = "VIDEO_AND_AUDIO_PIDS" | "VIDEO_PID";
 export type M2tsEsRateInPes = "INCLUDE" | "EXCLUDE";
 export type M2tsForceTsVideoEbpOrder = "FORCE" | "DEFAULT";
@@ -2075,7 +2917,13 @@ export interface M2tsScte35Esam {
   Scte35EsamPid?: number;
 }
 export type M2tsScte35Source = "PASSTHROUGH" | "NONE";
-export type M2tsSegmentationMarkers = "NONE" | "RAI_SEGSTART" | "RAI_ADAPT" | "PSI_SEGSTART" | "EBP" | "EBP_LEGACY";
+export type M2tsSegmentationMarkers =
+  | "NONE"
+  | "RAI_SEGSTART"
+  | "RAI_ADAPT"
+  | "PSI_SEGSTART"
+  | "EBP"
+  | "EBP_LEGACY";
 export type M2tsSegmentationStyle = "MAINTAIN_CADENCE" | "RESET_CADENCE";
 export interface M2tsSettings {
   AudioBufferModel?: M2tsAudioBufferModel;
@@ -2122,7 +2970,9 @@ export interface M2tsSettings {
   TransportStreamId?: number;
   VideoPid?: number;
 }
-export type M3u8AudioDuration = "DEFAULT_CODEC_DURATION" | "MATCH_VIDEO_DURATION";
+export type M3u8AudioDuration =
+  | "DEFAULT_CODEC_DURATION"
+  | "MATCH_VIDEO_DURATION";
 export type M3u8DataPtsControl = "AUTO" | "ALIGN_TO_VIDEO";
 export type M3u8NielsenId3 = "INSERT" | "NONE";
 export type M3u8PcrControl = "PCR_EVERY_PES_PACKET" | "CONFIGURED_PCR_PERIOD";
@@ -2151,7 +3001,25 @@ export interface M3u8Settings {
   TransportStreamId?: number;
   VideoPid?: number;
 }
-export type MatrixCoefficients = "RGB" | "ITU_709" | "UNSPECIFIED" | "RESERVED" | "FCC" | "ITU_470BG" | "SMPTE_170M" | "SMPTE_240M" | "YCgCo" | "ITU_2020_NCL" | "ITU_2020_CL" | "SMPTE_2085" | "CD_NCL" | "CD_CL" | "ITU_2100ICtCp" | "IPT" | "EBU3213" | "LAST";
+export type MatrixCoefficients =
+  | "RGB"
+  | "ITU_709"
+  | "UNSPECIFIED"
+  | "RESERVED"
+  | "FCC"
+  | "ITU_470BG"
+  | "SMPTE_170M"
+  | "SMPTE_240M"
+  | "YCgCo"
+  | "ITU_2020_NCL"
+  | "ITU_2020_CL"
+  | "SMPTE_2085"
+  | "CD_NCL"
+  | "CD_CL"
+  | "ITU_2100ICtCp"
+  | "IPT"
+  | "EBU3213"
+  | "LAST";
 export interface Metadata {
   ETag?: string;
   FileSize?: number;
@@ -2225,7 +3093,9 @@ export interface Mp4Settings {
   SigningKmsKey?: string;
 }
 export type MpdAccessibilityCaptionHints = "INCLUDE" | "EXCLUDE";
-export type MpdAudioDuration = "DEFAULT_CODEC_DURATION" | "MATCH_VIDEO_DURATION";
+export type MpdAudioDuration =
+  | "DEFAULT_CODEC_DURATION"
+  | "MATCH_VIDEO_DURATION";
 export type MpdCaptionContainerType = "RAW" | "FRAGMENTED_MP4";
 export type MpdKlvMetadata = "NONE" | "PASSTHROUGH";
 export type MpdManifestMetadataSignaling = "ENABLED" | "DISABLED";
@@ -2251,10 +3121,24 @@ export type Mpeg2CodecLevel = "AUTO" | "LOW" | "MAIN" | "HIGH1440" | "HIGH";
 export type Mpeg2CodecProfile = "MAIN" | "PROFILE_422";
 export type Mpeg2DynamicSubGop = "ADAPTIVE" | "STATIC";
 export type Mpeg2FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type Mpeg2FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type Mpeg2FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type Mpeg2GopSizeUnits = "FRAMES" | "SECONDS";
-export type Mpeg2InterlaceMode = "PROGRESSIVE" | "TOP_FIELD" | "BOTTOM_FIELD" | "FOLLOW_TOP_FIELD" | "FOLLOW_BOTTOM_FIELD";
-export type Mpeg2IntraDcPrecision = "AUTO" | "INTRA_DC_PRECISION_8" | "INTRA_DC_PRECISION_9" | "INTRA_DC_PRECISION_10" | "INTRA_DC_PRECISION_11";
+export type Mpeg2InterlaceMode =
+  | "PROGRESSIVE"
+  | "TOP_FIELD"
+  | "BOTTOM_FIELD"
+  | "FOLLOW_TOP_FIELD"
+  | "FOLLOW_BOTTOM_FIELD";
+export type Mpeg2IntraDcPrecision =
+  | "AUTO"
+  | "INTRA_DC_PRECISION_8"
+  | "INTRA_DC_PRECISION_9"
+  | "INTRA_DC_PRECISION_10"
+  | "INTRA_DC_PRECISION_11";
 export type Mpeg2ParControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
 export type Mpeg2QualityTuningLevel = "SINGLE_PASS" | "MULTI_PASS";
 export type Mpeg2RateControlMode = "VBR" | "CBR";
@@ -2328,7 +3212,9 @@ export interface MxfSettings {
   Profile?: MxfProfile;
   XavcProfileSettings?: MxfXavcProfileSettings;
 }
-export type MxfXavcDurationMode = "ALLOW_ANY_DURATION" | "DROP_FRAMES_FOR_COMPLIANCE";
+export type MxfXavcDurationMode =
+  | "ALLOW_ANY_DURATION"
+  | "DROP_FRAMES_FOR_COMPLIANCE";
 export interface MxfXavcProfileSettings {
   DurationMode?: MxfXavcDurationMode;
   MaxAncDataSize?: number;
@@ -2339,7 +3225,10 @@ export interface NexGuardFileMarkerSettings {
   Preset?: string;
   Strength?: WatermarkingStrength;
 }
-export type NielsenActiveWatermarkProcessType = "NAES2_AND_NW" | "CBET" | "NAES2_AND_NW_AND_CBET";
+export type NielsenActiveWatermarkProcessType =
+  | "NAES2_AND_NW"
+  | "CBET"
+  | "NAES2_AND_NW_AND_CBET";
 export interface NielsenConfiguration {
   BreakoutCode?: number;
   DistributorId?: string;
@@ -2358,16 +3247,29 @@ export interface NielsenNonLinearWatermarkSettings {
   UniqueTicPerAudioTrack?: NielsenUniqueTicPerAudioTrackType;
 }
 export type NielsenSourceWatermarkStatusType = "CLEAN" | "WATERMARKED";
-export type NielsenUniqueTicPerAudioTrackType = "RESERVE_UNIQUE_TICS_PER_TRACK" | "SAME_TICS_PER_TRACK";
+export type NielsenUniqueTicPerAudioTrackType =
+  | "RESERVE_UNIQUE_TICS_PER_TRACK"
+  | "SAME_TICS_PER_TRACK";
 export type NoiseFilterPostTemporalSharpening = "DISABLED" | "ENABLED" | "AUTO";
-export type NoiseFilterPostTemporalSharpeningStrength = "LOW" | "MEDIUM" | "HIGH";
+export type NoiseFilterPostTemporalSharpeningStrength =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH";
 export interface NoiseReducer {
   Filter?: NoiseReducerFilter;
   FilterSettings?: NoiseReducerFilterSettings;
   SpatialFilterSettings?: NoiseReducerSpatialFilterSettings;
   TemporalFilterSettings?: NoiseReducerTemporalFilterSettings;
 }
-export type NoiseReducerFilter = "BILATERAL" | "MEAN" | "GAUSSIAN" | "LANCZOS" | "SHARPEN" | "CONSERVE" | "SPATIAL" | "TEMPORAL";
+export type NoiseReducerFilter =
+  | "BILATERAL"
+  | "MEAN"
+  | "GAUSSIAN"
+  | "LANCZOS"
+  | "SHARPEN"
+  | "CONSERVE"
+  | "SPATIAL"
+  | "TEMPORAL";
 export interface NoiseReducerFilterSettings {
   Strength?: number;
 }
@@ -2431,8 +3333,17 @@ export interface OutputGroupSettings {
   PerFrameMetrics?: Array<FrameMetricType>;
   Type?: OutputGroupType;
 }
-export type OutputGroupType = "HLS_GROUP_SETTINGS" | "DASH_ISO_GROUP_SETTINGS" | "FILE_GROUP_SETTINGS" | "MS_SMOOTH_GROUP_SETTINGS" | "CMAF_GROUP_SETTINGS";
-export type OutputSdt = "SDT_FOLLOW" | "SDT_FOLLOW_IF_PRESENT" | "SDT_MANUAL" | "SDT_NONE";
+export type OutputGroupType =
+  | "HLS_GROUP_SETTINGS"
+  | "DASH_ISO_GROUP_SETTINGS"
+  | "FILE_GROUP_SETTINGS"
+  | "MS_SMOOTH_GROUP_SETTINGS"
+  | "CMAF_GROUP_SETTINGS";
+export type OutputSdt =
+  | "SDT_FOLLOW"
+  | "SDT_FOLLOW_IF_PRESENT"
+  | "SDT_MANUAL"
+  | "SDT_NONE";
 export interface OutputSettings {
   HlsSettings?: HlsSettings;
 }
@@ -2462,8 +3373,23 @@ export interface PresetSettings {
   ContainerSettings?: ContainerSettings;
   VideoDescription?: VideoDescription;
 }
-export type PresetSpeke20Audio = "PRESET_AUDIO_1" | "PRESET_AUDIO_2" | "PRESET_AUDIO_3" | "SHARED" | "UNENCRYPTED";
-export type PresetSpeke20Video = "PRESET_VIDEO_1" | "PRESET_VIDEO_2" | "PRESET_VIDEO_3" | "PRESET_VIDEO_4" | "PRESET_VIDEO_5" | "PRESET_VIDEO_6" | "PRESET_VIDEO_7" | "PRESET_VIDEO_8" | "SHARED" | "UNENCRYPTED";
+export type PresetSpeke20Audio =
+  | "PRESET_AUDIO_1"
+  | "PRESET_AUDIO_2"
+  | "PRESET_AUDIO_3"
+  | "SHARED"
+  | "UNENCRYPTED";
+export type PresetSpeke20Video =
+  | "PRESET_VIDEO_1"
+  | "PRESET_VIDEO_2"
+  | "PRESET_VIDEO_3"
+  | "PRESET_VIDEO_4"
+  | "PRESET_VIDEO_5"
+  | "PRESET_VIDEO_6"
+  | "PRESET_VIDEO_7"
+  | "PRESET_VIDEO_8"
+  | "SHARED"
+  | "UNENCRYPTED";
 export type PricingPlan = "ON_DEMAND" | "RESERVED";
 export interface ProbeInputFile {
   FileUrl?: string;
@@ -2480,10 +3406,25 @@ export interface ProbeResult {
   TrackMappings?: Array<TrackMapping>;
 }
 export type ProresChromaSampling = "PRESERVE_444_SAMPLING" | "SUBSAMPLE_TO_422";
-export type ProresCodecProfile = "APPLE_PRORES_422" | "APPLE_PRORES_422_HQ" | "APPLE_PRORES_422_LT" | "APPLE_PRORES_422_PROXY" | "APPLE_PRORES_4444" | "APPLE_PRORES_4444_XQ";
+export type ProresCodecProfile =
+  | "APPLE_PRORES_422"
+  | "APPLE_PRORES_422_HQ"
+  | "APPLE_PRORES_422_LT"
+  | "APPLE_PRORES_422_PROXY"
+  | "APPLE_PRORES_4444"
+  | "APPLE_PRORES_4444_XQ";
 export type ProresFramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type ProresFramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
-export type ProresInterlaceMode = "PROGRESSIVE" | "TOP_FIELD" | "BOTTOM_FIELD" | "FOLLOW_TOP_FIELD" | "FOLLOW_BOTTOM_FIELD";
+export type ProresFramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
+export type ProresInterlaceMode =
+  | "PROGRESSIVE"
+  | "TOP_FIELD"
+  | "BOTTOM_FIELD"
+  | "FOLLOW_TOP_FIELD"
+  | "FOLLOW_BOTTOM_FIELD";
 export type ProresParControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
 export type ProresScanTypeConversionMode = "INTERLACED" | "INTERLACED_OPTIMIZE";
 export interface ProresSettings {
@@ -2567,7 +3508,11 @@ export interface ResourceTags {
   Tags?: Record<string, string>;
 }
 export type RespondToAfd = "NONE" | "RESPOND" | "PASSTHROUGH";
-export type RuleType = "MIN_TOP_RENDITION_SIZE" | "MIN_BOTTOM_RENDITION_SIZE" | "FORCE_INCLUDE_RENDITIONS" | "ALLOWED_RENDITIONS";
+export type RuleType =
+  | "MIN_TOP_RENDITION_SIZE"
+  | "MIN_BOTTOM_RENDITION_SIZE"
+  | "FORCE_INCLUDE_RENDITIONS"
+  | "ALLOWED_RENDITIONS";
 export interface S3DestinationAccessControl {
   CannedAcl?: S3ObjectCannedAcl;
 }
@@ -2581,12 +3526,38 @@ export interface S3EncryptionSettings {
   KmsEncryptionContext?: string;
   KmsKeyArn?: string;
 }
-export type S3ObjectCannedAcl = "PUBLIC_READ" | "AUTHENTICATED_READ" | "BUCKET_OWNER_READ" | "BUCKET_OWNER_FULL_CONTROL";
-export type S3ServerSideEncryptionType = "SERVER_SIDE_ENCRYPTION_S3" | "SERVER_SIDE_ENCRYPTION_KMS";
-export type S3StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA" | "ONEZONE_IA" | "INTELLIGENT_TIERING" | "GLACIER" | "DEEP_ARCHIVE";
-export type SampleRangeConversion = "LIMITED_RANGE_SQUEEZE" | "NONE" | "LIMITED_RANGE_CLIP";
-export type ScalingBehavior = "DEFAULT" | "STRETCH_TO_OUTPUT" | "FIT" | "FIT_NO_UPSCALE" | "FILL";
-export type SccDestinationFramerate = "FRAMERATE_23_97" | "FRAMERATE_24" | "FRAMERATE_25" | "FRAMERATE_29_97_DROPFRAME" | "FRAMERATE_29_97_NON_DROPFRAME";
+export type S3ObjectCannedAcl =
+  | "PUBLIC_READ"
+  | "AUTHENTICATED_READ"
+  | "BUCKET_OWNER_READ"
+  | "BUCKET_OWNER_FULL_CONTROL";
+export type S3ServerSideEncryptionType =
+  | "SERVER_SIDE_ENCRYPTION_S3"
+  | "SERVER_SIDE_ENCRYPTION_KMS";
+export type S3StorageClass =
+  | "STANDARD"
+  | "REDUCED_REDUNDANCY"
+  | "STANDARD_IA"
+  | "ONEZONE_IA"
+  | "INTELLIGENT_TIERING"
+  | "GLACIER"
+  | "DEEP_ARCHIVE";
+export type SampleRangeConversion =
+  | "LIMITED_RANGE_SQUEEZE"
+  | "NONE"
+  | "LIMITED_RANGE_CLIP";
+export type ScalingBehavior =
+  | "DEFAULT"
+  | "STRETCH_TO_OUTPUT"
+  | "FIT"
+  | "FIT_NO_UPSCALE"
+  | "FILL";
+export type SccDestinationFramerate =
+  | "FRAMERATE_23_97"
+  | "FRAMERATE_24"
+  | "FRAMERATE_25"
+  | "FRAMERATE_29_97_DROPFRAME"
+  | "FRAMERATE_29_97_NON_DROPFRAME";
 export interface SccDestinationSettings {
   Framerate?: SccDestinationFramerate;
 }
@@ -2634,18 +3605,37 @@ export interface StaticKeyProvider {
   StaticKeyValue?: string;
   Url?: string;
 }
-export type StatusUpdateInterval = "SECONDS_10" | "SECONDS_12" | "SECONDS_15" | "SECONDS_20" | "SECONDS_30" | "SECONDS_60" | "SECONDS_120" | "SECONDS_180" | "SECONDS_240" | "SECONDS_300" | "SECONDS_360" | "SECONDS_420" | "SECONDS_480" | "SECONDS_540" | "SECONDS_600";
+export type StatusUpdateInterval =
+  | "SECONDS_10"
+  | "SECONDS_12"
+  | "SECONDS_15"
+  | "SECONDS_20"
+  | "SECONDS_30"
+  | "SECONDS_60"
+  | "SECONDS_120"
+  | "SECONDS_180"
+  | "SECONDS_240"
+  | "SECONDS_300"
+  | "SECONDS_360"
+  | "SECONDS_420"
+  | "SECONDS_480"
+  | "SECONDS_540"
+  | "SECONDS_600";
 export interface TagResourceRequest {
   Arn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export interface TeletextDestinationSettings {
   PageNumber?: string;
   PageTypes?: Array<TeletextPageType>;
 }
-export type TeletextPageType = "PAGE_TYPE_INITIAL" | "PAGE_TYPE_SUBTITLE" | "PAGE_TYPE_ADDL_INFO" | "PAGE_TYPE_PROGRAM_SCHEDULE" | "PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE";
+export type TeletextPageType =
+  | "PAGE_TYPE_INITIAL"
+  | "PAGE_TYPE_SUBTITLE"
+  | "PAGE_TYPE_ADDL_INFO"
+  | "PAGE_TYPE_PROGRAM_SCHEDULE"
+  | "PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE";
 export interface TeletextSourceSettings {
   PageNumber?: string;
 }
@@ -2654,7 +3644,16 @@ export interface TimecodeBurnin {
   Position?: TimecodeBurninPosition;
   Prefix?: string;
 }
-export type TimecodeBurninPosition = "TOP_CENTER" | "TOP_LEFT" | "TOP_RIGHT" | "MIDDLE_LEFT" | "MIDDLE_CENTER" | "MIDDLE_RIGHT" | "BOTTOM_LEFT" | "BOTTOM_CENTER" | "BOTTOM_RIGHT";
+export type TimecodeBurninPosition =
+  | "TOP_CENTER"
+  | "TOP_LEFT"
+  | "TOP_RIGHT"
+  | "MIDDLE_LEFT"
+  | "MIDDLE_CENTER"
+  | "MIDDLE_RIGHT"
+  | "BOTTOM_LEFT"
+  | "BOTTOM_CENTER"
+  | "BOTTOM_RIGHT";
 export interface TimecodeConfig {
   Anchor?: string;
   Source?: TimecodeSource;
@@ -2695,7 +3694,26 @@ export interface TrackSourceSettings {
   TrackNumber?: number;
 }
 export type TrackType = "video" | "audio" | "data";
-export type TransferCharacteristics = "ITU_709" | "UNSPECIFIED" | "RESERVED" | "ITU_470M" | "ITU_470BG" | "SMPTE_170M" | "SMPTE_240M" | "LINEAR" | "LOG10_2" | "LOC10_2_5" | "IEC_61966_2_4" | "ITU_1361" | "IEC_61966_2_1" | "ITU_2020_10bit" | "ITU_2020_12bit" | "SMPTE_2084" | "SMPTE_428_1" | "ARIB_B67" | "LAST";
+export type TransferCharacteristics =
+  | "ITU_709"
+  | "UNSPECIFIED"
+  | "RESERVED"
+  | "ITU_470M"
+  | "ITU_470BG"
+  | "SMPTE_170M"
+  | "SMPTE_240M"
+  | "LINEAR"
+  | "LOG10_2"
+  | "LOC10_2_5"
+  | "IEC_61966_2_4"
+  | "ITU_1361"
+  | "IEC_61966_2_1"
+  | "ITU_2020_10bit"
+  | "ITU_2020_12bit"
+  | "SMPTE_2084"
+  | "SMPTE_428_1"
+  | "ARIB_B67"
+  | "LAST";
 export type TsPtsOffset = "AUTO" | "SECONDS" | "MILLISECONDS";
 export interface TtmlDestinationSettings {
   StylePassthrough?: TtmlStylePassthrough;
@@ -2703,10 +3721,18 @@ export interface TtmlDestinationSettings {
 export type TtmlStylePassthrough = "ENABLED" | "DISABLED";
 export type Type = "SYSTEM" | "CUSTOM";
 export type UncompressedFourcc = "I420" | "I422" | "I444";
-export type UncompressedFramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type UncompressedFramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type UncompressedFramerateControl =
+  | "INITIALIZE_FROM_SOURCE"
+  | "SPECIFIED";
+export type UncompressedFramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type UncompressedInterlaceMode = "INTERLACED" | "PROGRESSIVE";
-export type UncompressedScanTypeConversionMode = "INTERLACED" | "INTERLACED_OPTIMIZE";
+export type UncompressedScanTypeConversionMode =
+  | "INTERLACED"
+  | "INTERLACED_OPTIMIZE";
 export interface UncompressedSettings {
   Fourcc?: UncompressedFourcc;
   FramerateControl?: UncompressedFramerateControl;
@@ -2724,8 +3750,7 @@ export interface UntagResourceRequest {
   Arn: string;
   TagKeys?: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateJobTemplateRequest {
   AccelerationSettings?: AccelerationSettings;
   Category?: string;
@@ -2761,7 +3786,11 @@ export interface UpdateQueueResponse {
 }
 export type Vc3Class = "CLASS_145_8BIT" | "CLASS_220_8BIT" | "CLASS_220_10BIT";
 export type Vc3FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type Vc3FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type Vc3FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type Vc3InterlaceMode = "INTERLACED" | "PROGRESSIVE";
 export type Vc3ScanTypeConversionMode = "INTERLACED" | "INTERLACED_OPTIMIZE";
 export interface Vc3Settings {
@@ -2778,7 +3807,21 @@ export interface Vc3Settings {
 export type Vc3SlowPal = "DISABLED" | "ENABLED";
 export type Vc3Telecine = "NONE" | "HARD";
 export type VchipAction = "PASSTHROUGH" | "STRIP";
-export type VideoCodec = "AV1" | "AVC_INTRA" | "FRAME_CAPTURE" | "GIF" | "H_264" | "H_265" | "MPEG2" | "PASSTHROUGH" | "PRORES" | "UNCOMPRESSED" | "VC3" | "VP8" | "VP9" | "XAVC";
+export type VideoCodec =
+  | "AV1"
+  | "AVC_INTRA"
+  | "FRAME_CAPTURE"
+  | "GIF"
+  | "H_264"
+  | "H_265"
+  | "MPEG2"
+  | "PASSTHROUGH"
+  | "PRORES"
+  | "UNCOMPRESSED"
+  | "VC3"
+  | "VP8"
+  | "VP9"
+  | "XAVC";
 export interface VideoCodecSettings {
   Av1Settings?: Av1Settings;
   AvcIntraSettings?: AvcIntraSettings;
@@ -2898,7 +3941,11 @@ export interface VorbisSettings {
   VbrQuality?: number;
 }
 export type Vp8FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type Vp8FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type Vp8FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type Vp8ParControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
 export type Vp8QualityTuningLevel = "MULTI_PASS" | "MULTI_PASS_HQ";
 export type Vp8RateControlMode = "VBR";
@@ -2918,7 +3965,11 @@ export interface Vp8Settings {
   RateControlMode?: Vp8RateControlMode;
 }
 export type Vp9FramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type Vp9FramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type Vp9FramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type Vp9ParControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
 export type Vp9QualityTuningLevel = "MULTI_PASS" | "MULTI_PASS_HQ";
 export type Vp9RateControlMode = "VBR";
@@ -2941,7 +3992,12 @@ export interface WarningGroup {
   Code: number;
   Count: number;
 }
-export type WatermarkingStrength = "LIGHTEST" | "LIGHTER" | "DEFAULT" | "STRONGER" | "STRONGEST";
+export type WatermarkingStrength =
+  | "LIGHTEST"
+  | "LIGHTER"
+  | "DEFAULT"
+  | "STRONGER"
+  | "STRONGEST";
 export type WavFormat = "RIFF" | "RF64" | "EXTENSIBLE";
 export interface WavSettings {
   BitDepth?: number;
@@ -2959,18 +4015,34 @@ export interface WebvttHlsSourceSettings {
   RenditionLanguageCode?: LanguageCode;
   RenditionName?: string;
 }
-export type WebvttStylePassthrough = "ENABLED" | "DISABLED" | "STRICT" | "MERGE";
-export type Xavc4kIntraCbgProfileClass = "CLASS_100" | "CLASS_300" | "CLASS_480";
+export type WebvttStylePassthrough =
+  | "ENABLED"
+  | "DISABLED"
+  | "STRICT"
+  | "MERGE";
+export type Xavc4kIntraCbgProfileClass =
+  | "CLASS_100"
+  | "CLASS_300"
+  | "CLASS_480";
 export interface Xavc4kIntraCbgProfileSettings {
   XavcClass?: Xavc4kIntraCbgProfileClass;
 }
-export type Xavc4kIntraVbrProfileClass = "CLASS_100" | "CLASS_300" | "CLASS_480";
+export type Xavc4kIntraVbrProfileClass =
+  | "CLASS_100"
+  | "CLASS_300"
+  | "CLASS_480";
 export interface Xavc4kIntraVbrProfileSettings {
   XavcClass?: Xavc4kIntraVbrProfileClass;
 }
-export type Xavc4kProfileBitrateClass = "BITRATE_CLASS_100" | "BITRATE_CLASS_140" | "BITRATE_CLASS_200";
+export type Xavc4kProfileBitrateClass =
+  | "BITRATE_CLASS_100"
+  | "BITRATE_CLASS_140"
+  | "BITRATE_CLASS_200";
 export type Xavc4kProfileCodecProfile = "HIGH" | "HIGH_422";
-export type Xavc4kProfileQualityTuningLevel = "SINGLE_PASS" | "SINGLE_PASS_HQ" | "MULTI_PASS_HQ";
+export type Xavc4kProfileQualityTuningLevel =
+  | "SINGLE_PASS"
+  | "SINGLE_PASS_HQ"
+  | "MULTI_PASS_HQ";
 export interface Xavc4kProfileSettings {
   BitrateClass?: Xavc4kProfileBitrateClass;
   CodecProfile?: Xavc4kProfileCodecProfile;
@@ -2981,18 +4053,35 @@ export interface Xavc4kProfileSettings {
   QualityTuningLevel?: Xavc4kProfileQualityTuningLevel;
   Slices?: number;
 }
-export type XavcAdaptiveQuantization = "OFF" | "AUTO" | "LOW" | "MEDIUM" | "HIGH" | "HIGHER" | "MAX";
+export type XavcAdaptiveQuantization =
+  | "OFF"
+  | "AUTO"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "HIGHER"
+  | "MAX";
 export type XavcEntropyEncoding = "AUTO" | "CABAC" | "CAVLC";
 export type XavcFlickerAdaptiveQuantization = "DISABLED" | "ENABLED";
 export type XavcFramerateControl = "INITIALIZE_FROM_SOURCE" | "SPECIFIED";
-export type XavcFramerateConversionAlgorithm = "DUPLICATE_DROP" | "INTERPOLATE" | "FRAMEFORMER" | "MAINTAIN_FRAME_COUNT";
+export type XavcFramerateConversionAlgorithm =
+  | "DUPLICATE_DROP"
+  | "INTERPOLATE"
+  | "FRAMEFORMER"
+  | "MAINTAIN_FRAME_COUNT";
 export type XavcGopBReference = "DISABLED" | "ENABLED";
 export type XavcHdIntraCbgProfileClass = "CLASS_50" | "CLASS_100" | "CLASS_200";
 export interface XavcHdIntraCbgProfileSettings {
   XavcClass?: XavcHdIntraCbgProfileClass;
 }
-export type XavcHdProfileBitrateClass = "BITRATE_CLASS_25" | "BITRATE_CLASS_35" | "BITRATE_CLASS_50";
-export type XavcHdProfileQualityTuningLevel = "SINGLE_PASS" | "SINGLE_PASS_HQ" | "MULTI_PASS_HQ";
+export type XavcHdProfileBitrateClass =
+  | "BITRATE_CLASS_25"
+  | "BITRATE_CLASS_35"
+  | "BITRATE_CLASS_50";
+export type XavcHdProfileQualityTuningLevel =
+  | "SINGLE_PASS"
+  | "SINGLE_PASS_HQ"
+  | "MULTI_PASS_HQ";
 export interface XavcHdProfileSettings {
   BitrateClass?: XavcHdProfileBitrateClass;
   FlickerAdaptiveQuantization?: XavcFlickerAdaptiveQuantization;
@@ -3005,8 +4094,18 @@ export interface XavcHdProfileSettings {
   Telecine?: XavcHdProfileTelecine;
 }
 export type XavcHdProfileTelecine = "NONE" | "HARD";
-export type XavcInterlaceMode = "PROGRESSIVE" | "TOP_FIELD" | "BOTTOM_FIELD" | "FOLLOW_TOP_FIELD" | "FOLLOW_BOTTOM_FIELD";
-export type XavcProfile = "XAVC_HD_INTRA_CBG" | "XAVC_4K_INTRA_CBG" | "XAVC_4K_INTRA_VBR" | "XAVC_HD" | "XAVC_4K";
+export type XavcInterlaceMode =
+  | "PROGRESSIVE"
+  | "TOP_FIELD"
+  | "BOTTOM_FIELD"
+  | "FOLLOW_TOP_FIELD"
+  | "FOLLOW_BOTTOM_FIELD";
+export type XavcProfile =
+  | "XAVC_HD_INTRA_CBG"
+  | "XAVC_4K_INTRA_CBG"
+  | "XAVC_4K_INTRA_VBR"
+  | "XAVC_HD"
+  | "XAVC_4K";
 export interface XavcSettings {
   AdaptiveQuantization?: XavcAdaptiveQuantization;
   EntropyEncoding?: XavcEntropyEncoding;
@@ -3250,9 +4349,9 @@ export declare namespace GetQueue {
     | CommonAwsError;
 }
 
-export declare namespace ListJobTemplates {
-  export type Input = ListJobTemplatesRequest;
-  export type Output = ListJobTemplatesResponse;
+export declare namespace ListJobs {
+  export type Input = ListJobsRequest;
+  export type Output = ListJobsResponse;
   export type Error =
     | BadRequestException
     | ConflictException
@@ -3263,9 +4362,9 @@ export declare namespace ListJobTemplates {
     | CommonAwsError;
 }
 
-export declare namespace ListJobs {
-  export type Input = ListJobsRequest;
-  export type Output = ListJobsResponse;
+export declare namespace ListJobTemplates {
+  export type Input = ListJobTemplatesRequest;
+  export type Output = ListJobTemplatesResponse;
   export type Error =
     | BadRequestException
     | ConflictException
@@ -3431,4 +4530,3 @@ export declare namespace UpdateQueue {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSBatchV20160810 {
   cancelJob(
@@ -239,10 +239,15 @@ export interface CancelJobRequest {
   jobId: string;
   reason: string;
 }
-export interface CancelJobResponse {
-}
+export interface CancelJobResponse {}
 export type CEState = "ENABLED" | "DISABLED";
-export type CEStatus = "CREATING" | "UPDATING" | "DELETING" | "DELETED" | "VALID" | "INVALID";
+export type CEStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "DELETED"
+  | "VALID"
+  | "INVALID";
 export type CEType = "MANAGED" | "UNMANAGED";
 export declare class ClientException extends Data.TaggedError(
   "ClientException",
@@ -399,7 +404,11 @@ export interface ContainerSummary {
   exitCode?: number;
   reason?: string;
 }
-export type CRAllocationStrategy = "BEST_FIT" | "BEST_FIT_PROGRESSIVE" | "SPOT_CAPACITY_OPTIMIZED" | "SPOT_PRICE_CAPACITY_OPTIMIZED";
+export type CRAllocationStrategy =
+  | "BEST_FIT"
+  | "BEST_FIT_PROGRESSIVE"
+  | "SPOT_CAPACITY_OPTIMIZED"
+  | "SPOT_PRICE_CAPACITY_OPTIMIZED";
 export interface CreateComputeEnvironmentRequest {
   computeEnvironmentName: string;
   type: CEType;
@@ -448,32 +457,30 @@ export interface CreateSchedulingPolicyResponse {
   arn: string;
 }
 export type CRType = "EC2" | "SPOT" | "FARGATE" | "FARGATE_SPOT";
-export type CRUpdateAllocationStrategy = "BEST_FIT_PROGRESSIVE" | "SPOT_CAPACITY_OPTIMIZED" | "SPOT_PRICE_CAPACITY_OPTIMIZED";
+export type CRUpdateAllocationStrategy =
+  | "BEST_FIT_PROGRESSIVE"
+  | "SPOT_CAPACITY_OPTIMIZED"
+  | "SPOT_PRICE_CAPACITY_OPTIMIZED";
 export interface DeleteComputeEnvironmentRequest {
   computeEnvironment: string;
 }
-export interface DeleteComputeEnvironmentResponse {
-}
+export interface DeleteComputeEnvironmentResponse {}
 export interface DeleteConsumableResourceRequest {
   consumableResource: string;
 }
-export interface DeleteConsumableResourceResponse {
-}
+export interface DeleteConsumableResourceResponse {}
 export interface DeleteJobQueueRequest {
   jobQueue: string;
 }
-export interface DeleteJobQueueResponse {
-}
+export interface DeleteJobQueueResponse {}
 export interface DeleteSchedulingPolicyRequest {
   arn: string;
 }
-export interface DeleteSchedulingPolicyResponse {
-}
+export interface DeleteSchedulingPolicyResponse {}
 export interface DeregisterJobDefinitionRequest {
   jobDefinition: string;
 }
-export interface DeregisterJobDefinitionResponse {
-}
+export interface DeregisterJobDefinitionResponse {}
 export interface DescribeComputeEnvironmentsRequest {
   computeEnvironments?: Array<string>;
   maxResults?: number;
@@ -645,7 +652,8 @@ export interface EksContainerEnvironmentVariable {
   name: string;
   value?: string;
 }
-export type EksContainerEnvironmentVariables = Array<EksContainerEnvironmentVariable>;
+export type EksContainerEnvironmentVariables =
+  Array<EksContainerEnvironmentVariable>;
 export interface EksContainerOverride {
   name?: string;
   image?: string;
@@ -883,7 +891,14 @@ export interface JobStateTimeLimitAction {
 export type JobStateTimeLimitActions = Array<JobStateTimeLimitAction>;
 export type JobStateTimeLimitActionsAction = "CANCEL";
 export type JobStateTimeLimitActionsState = "RUNNABLE";
-export type JobStatus = "SUBMITTED" | "PENDING" | "RUNNABLE" | "STARTING" | "RUNNING" | "SUCCEEDED" | "FAILED";
+export type JobStatus =
+  | "SUBMITTED"
+  | "PENDING"
+  | "RUNNABLE"
+  | "STARTING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED";
 export interface JobSummary {
   jobArn?: string;
   jobId: string;
@@ -903,7 +918,13 @@ export interface JobTimeout {
   attemptDurationSeconds?: number;
 }
 export type JQState = "ENABLED" | "DISABLED";
-export type JQStatus = "CREATING" | "UPDATING" | "DELETING" | "DELETED" | "VALID" | "INVALID";
+export type JQStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "DELETED"
+  | "VALID"
+  | "INVALID";
 export interface KeyValuePair {
   name?: string;
   value?: string;
@@ -928,7 +949,8 @@ export interface LaunchTemplateSpecificationOverride {
   targetInstanceTypes?: Array<string>;
   userdataType?: UserdataType;
 }
-export type LaunchTemplateSpecificationOverrideList = Array<LaunchTemplateSpecificationOverride>;
+export type LaunchTemplateSpecificationOverrideList =
+  Array<LaunchTemplateSpecificationOverride>;
 export interface LinuxParameters {
   devices?: Array<Device>;
   initProcessEnabled?: boolean;
@@ -938,7 +960,8 @@ export interface LinuxParameters {
   swappiness?: number;
 }
 export type ListAttemptEcsTaskDetails = Array<AttemptEcsTaskDetails>;
-export type ListAttemptTaskContainerDetails = Array<AttemptTaskContainerDetails>;
+export type ListAttemptTaskContainerDetails =
+  Array<AttemptTaskContainerDetails>;
 export type ListConsumableResourcesFilterList = Array<KeyValuesPair>;
 export interface ListConsumableResourcesRequest {
   filters?: Array<KeyValuesPair>;
@@ -975,7 +998,8 @@ export interface ListJobsByConsumableResourceSummary {
   createdAt: number;
   consumableResourceProperties: ConsumableResourceProperties;
 }
-export type ListJobsByConsumableResourceSummaryList = Array<ListJobsByConsumableResourceSummary>;
+export type ListJobsByConsumableResourceSummaryList =
+  Array<ListJobsByConsumableResourceSummary>;
 export type ListJobsFilterList = Array<KeyValuesPair>;
 export interface ListJobsRequest {
   jobQueue?: string;
@@ -1014,7 +1038,15 @@ export interface LogConfiguration {
   secretOptions?: Array<Secret>;
 }
 export type LogConfigurationOptionsMap = Record<string, string>;
-export type LogDriver = "JSON_FILE" | "SYSLOG" | "JOURNALD" | "GELF" | "FLUENTD" | "AWSLOGS" | "SPLUNK" | "AWSFIRELENS";
+export type LogDriver =
+  | "JSON_FILE"
+  | "SYSLOG"
+  | "JOURNALD"
+  | "GELF"
+  | "FLUENTD"
+  | "AWSLOGS"
+  | "SPLUNK"
+  | "AWSFIRELENS";
 export type Long = number;
 
 export interface MountPoint {
@@ -1123,7 +1155,8 @@ export type SchedulingPolicyDetailList = Array<SchedulingPolicyDetail>;
 export interface SchedulingPolicyListingDetail {
   arn: string;
 }
-export type SchedulingPolicyListingDetailList = Array<SchedulingPolicyListingDetail>;
+export type SchedulingPolicyListingDetailList =
+  Array<SchedulingPolicyListingDetail>;
 export interface Secret {
   name: string;
   valueFrom: string;
@@ -1171,8 +1204,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagrisTagsMap = Record<string, string>;
 export type TagsMap = Record<string, string>;
 export type TagValue = string;
@@ -1237,8 +1269,7 @@ export interface TerminateJobRequest {
   jobId: string;
   reason: string;
 }
-export interface TerminateJobResponse {
-}
+export interface TerminateJobResponse {}
 export interface Tmpfs {
   containerPath: string;
   size: number;
@@ -1255,8 +1286,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateComputeEnvironmentRequest {
   computeEnvironment: string;
   state?: CEState;
@@ -1301,8 +1331,7 @@ export interface UpdateSchedulingPolicyRequest {
   arn: string;
   fairsharePolicy?: FairsharePolicy;
 }
-export interface UpdateSchedulingPolicyResponse {
-}
+export interface UpdateSchedulingPolicyResponse {}
 export type UserdataType = "EKS_BOOTSTRAP_SH" | "EKS_NODEADM";
 export interface Volume {
   host?: Host;
@@ -1313,279 +1342,185 @@ export type Volumes = Array<Volume>;
 export declare namespace CancelJob {
   export type Input = CancelJobRequest;
   export type Output = CancelJobResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace CreateComputeEnvironment {
   export type Input = CreateComputeEnvironmentRequest;
   export type Output = CreateComputeEnvironmentResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace CreateConsumableResource {
   export type Input = CreateConsumableResourceRequest;
   export type Output = CreateConsumableResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace CreateJobQueue {
   export type Input = CreateJobQueueRequest;
   export type Output = CreateJobQueueResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace CreateSchedulingPolicy {
   export type Input = CreateSchedulingPolicyRequest;
   export type Output = CreateSchedulingPolicyResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DeleteComputeEnvironment {
   export type Input = DeleteComputeEnvironmentRequest;
   export type Output = DeleteComputeEnvironmentResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DeleteConsumableResource {
   export type Input = DeleteConsumableResourceRequest;
   export type Output = DeleteConsumableResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DeleteJobQueue {
   export type Input = DeleteJobQueueRequest;
   export type Output = DeleteJobQueueResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DeleteSchedulingPolicy {
   export type Input = DeleteSchedulingPolicyRequest;
   export type Output = DeleteSchedulingPolicyResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DeregisterJobDefinition {
   export type Input = DeregisterJobDefinitionRequest;
   export type Output = DeregisterJobDefinitionResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DescribeComputeEnvironments {
   export type Input = DescribeComputeEnvironmentsRequest;
   export type Output = DescribeComputeEnvironmentsResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DescribeConsumableResource {
   export type Input = DescribeConsumableResourceRequest;
   export type Output = DescribeConsumableResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DescribeJobDefinitions {
   export type Input = DescribeJobDefinitionsRequest;
   export type Output = DescribeJobDefinitionsResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DescribeJobQueues {
   export type Input = DescribeJobQueuesRequest;
   export type Output = DescribeJobQueuesResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DescribeJobs {
   export type Input = DescribeJobsRequest;
   export type Output = DescribeJobsResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace DescribeSchedulingPolicies {
   export type Input = DescribeSchedulingPoliciesRequest;
   export type Output = DescribeSchedulingPoliciesResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace GetJobQueueSnapshot {
   export type Input = GetJobQueueSnapshotRequest;
   export type Output = GetJobQueueSnapshotResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace ListConsumableResources {
   export type Input = ListConsumableResourcesRequest;
   export type Output = ListConsumableResourcesResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace ListJobs {
   export type Input = ListJobsRequest;
   export type Output = ListJobsResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace ListJobsByConsumableResource {
   export type Input = ListJobsByConsumableResourceRequest;
   export type Output = ListJobsByConsumableResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace ListSchedulingPolicies {
   export type Input = ListSchedulingPoliciesRequest;
   export type Output = ListSchedulingPoliciesResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace RegisterJobDefinition {
   export type Input = RegisterJobDefinitionRequest;
   export type Output = RegisterJobDefinitionResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace SubmitJob {
   export type Input = SubmitJobRequest;
   export type Output = SubmitJobResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace TagResource {
   export type Input = TagResourceRequest;
   export type Output = TagResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace TerminateJob {
   export type Input = TerminateJobRequest;
   export type Output = TerminateJobResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
   export type Output = UntagResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace UpdateComputeEnvironment {
   export type Input = UpdateComputeEnvironmentRequest;
   export type Output = UpdateComputeEnvironmentResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace UpdateConsumableResource {
   export type Input = UpdateConsumableResourceRequest;
   export type Output = UpdateConsumableResourceResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace UpdateJobQueue {
   export type Input = UpdateJobQueueRequest;
   export type Output = UpdateJobQueueResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
 
 export declare namespace UpdateSchedulingPolicy {
   export type Input = UpdateSchedulingPolicyRequest;
   export type Output = UpdateSchedulingPolicyResponse;
-  export type Error =
-    | ClientException
-    | ServerException
-    | CommonAwsError;
+  export type Error = ClientException | ServerException | CommonAwsError;
 }
-

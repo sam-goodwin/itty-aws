@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.amplifybackend#AdditionalConstraintsElement": {
       "type": "enum",
@@ -31,6 +60,101 @@
     },
     "com.amazonaws.amplifybackend#AmplifyBackend": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.amplifybackend#CloneBackend"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#CreateBackend"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#CreateBackendAPI"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#CreateBackendAuth"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#CreateBackendConfig"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#CreateBackendStorage"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#CreateToken"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#DeleteBackend"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#DeleteBackendAPI"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#DeleteBackendAuth"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#DeleteBackendStorage"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#DeleteToken"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GenerateBackendAPIModels"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetBackend"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetBackendAPI"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetBackendAPIModels"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetBackendAuth"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetBackendJob"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetBackendStorage"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#GetToken"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#ImportBackendAuth"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#ImportBackendStorage"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#ListBackendJobs"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#ListS3Buckets"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#RemoveAllBackends"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#RemoveBackendConfig"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#UpdateBackendAPI"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#UpdateBackendAuth"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#UpdateBackendConfig"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#UpdateBackendJob"
+        },
+        {
+          "target": "com.amazonaws.amplifybackend#UpdateBackendStorage"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AmplifyBackend",

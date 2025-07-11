@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.bedrockruntime#AccessDeniedException": {
       "type": "structure",

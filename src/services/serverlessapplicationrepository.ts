@@ -1,90 +1,160 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface ServerlessApplicationRepository {
   createApplication(
     input: CreateApplicationRequest,
   ): Effect.Effect<
     CreateApplicationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createApplicationVersion(
     input: CreateApplicationVersionRequest,
   ): Effect.Effect<
     CreateApplicationVersionResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createCloudFormationChangeSet(
     input: CreateCloudFormationChangeSetRequest,
   ): Effect.Effect<
     CreateCloudFormationChangeSetResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createCloudFormationTemplate(
     input: CreateCloudFormationTemplateRequest,
   ): Effect.Effect<
     CreateCloudFormationTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteApplication(
     input: DeleteApplicationRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApplication(
     input: GetApplicationRequest,
   ): Effect.Effect<
     GetApplicationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getApplicationPolicy(
     input: GetApplicationPolicyRequest,
   ): Effect.Effect<
     GetApplicationPolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCloudFormationTemplate(
     input: GetCloudFormationTemplateRequest,
   ): Effect.Effect<
     GetCloudFormationTemplateResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listApplicationDependencies(
     input: ListApplicationDependenciesRequest,
   ): Effect.Effect<
     ListApplicationDependenciesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
-  >;
-  listApplicationVersions(
-    input: ListApplicationVersionsRequest,
-  ): Effect.Effect<
-    ListApplicationVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listApplications(
     input: ListApplicationsRequest,
   ): Effect.Effect<
     ListApplicationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
+  >;
+  listApplicationVersions(
+    input: ListApplicationVersionsRequest,
+  ): Effect.Effect<
+    ListApplicationVersionsResponse,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putApplicationPolicy(
     input: PutApplicationPolicyRequest,
   ): Effect.Effect<
     PutApplicationPolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   unshareApplication(
     input: UnshareApplicationRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateApplication(
     input: UpdateApplicationRequest,
   ): Effect.Effect<
     UpdateApplicationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -95,8 +165,10 @@ export type __boolean = boolean;
 export type __integer = number;
 
 export type __listOf__string = Array<string>;
-export type __listOfApplicationDependencySummary = Array<ApplicationDependencySummary>;
-export type __listOfApplicationPolicyStatement = Array<ApplicationPolicyStatement>;
+export type __listOfApplicationDependencySummary =
+  Array<ApplicationDependencySummary>;
+export type __listOfApplicationPolicyStatement =
+  Array<ApplicationPolicyStatement>;
 export type __listOfApplicationSummary = Array<ApplicationSummary>;
 export type __listOfCapability = Array<Capability>;
 export type __listOfParameterDefinition = Array<ParameterDefinition>;
@@ -132,7 +204,11 @@ export declare class BadRequestException extends Data.TaggedError(
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
-export type Capability = "CAPABILITY_IAM" | "CAPABILITY_NAMED_IAM" | "CAPABILITY_AUTO_EXPAND" | "CAPABILITY_RESOURCE_POLICY";
+export type Capability =
+  | "CAPABILITY_IAM"
+  | "CAPABILITY_NAMED_IAM"
+  | "CAPABILITY_AUTO_EXPAND"
+  | "CAPABILITY_RESOURCE_POLICY";
 export declare class ConflictException extends Data.TaggedError(
   "ConflictException",
 )<{
@@ -510,6 +586,17 @@ export declare namespace ListApplicationDependencies {
     | CommonAwsError;
 }
 
+export declare namespace ListApplications {
+  export type Input = ListApplicationsRequest;
+  export type Output = ListApplicationsResponse;
+  export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError;
+}
+
 export declare namespace ListApplicationVersions {
   export type Input = ListApplicationVersionsRequest;
   export type Output = ListApplicationVersionsResponse;
@@ -519,17 +606,6 @@ export declare namespace ListApplicationVersions {
     | InternalServerErrorException
     | NotFoundException
     | TooManyRequestsException
-    | CommonAwsError;
-}
-
-export declare namespace ListApplications {
-  export type Input = ListApplicationsRequest;
-  export type Output = ListApplicationsResponse;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
-    | NotFoundException
     | CommonAwsError;
 }
 
@@ -569,4 +645,3 @@ export declare namespace UpdateApplication {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

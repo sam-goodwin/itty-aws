@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.s3outposts#AccessDeniedException": {
       "type": "structure",
@@ -786,6 +815,23 @@
     },
     "com.amazonaws.s3outposts#S3Outposts": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.s3outposts#CreateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#DeleteEndpoint"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ListEndpoints"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ListOutpostsWithS3"
+        },
+        {
+          "target": "com.amazonaws.s3outposts#ListSharedEndpoints"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "S3Outposts",

@@ -1,7 +1,28 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.billingconductor#AWSBillingConductor": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.billingconductor#GetBillingGroupCostReport"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ListAccountAssociations"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ListBillingGroupCostReports"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#TagResource"
+        },
+        {
+          "target": "com.amazonaws.billingconductor#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "billingconductor",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.personalize#AccountId": {
       "type": "string",
@@ -100,6 +129,221 @@
     },
     "com.amazonaws.personalize#AmazonPersonalize": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.personalize#CreateBatchInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateBatchSegmentJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateCampaign"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateDataDeletionJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateDatasetExportJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateDatasetGroup"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateDatasetImportJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateEventTracker"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateFilter"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateMetricAttribution"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateRecommender"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateSchema"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateSolution"
+        },
+        {
+          "target": "com.amazonaws.personalize#CreateSolutionVersion"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteCampaign"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteDatasetGroup"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteEventTracker"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteFilter"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteMetricAttribution"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteRecommender"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteSchema"
+        },
+        {
+          "target": "com.amazonaws.personalize#DeleteSolution"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeAlgorithm"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeBatchInferenceJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeBatchSegmentJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeCampaign"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeDataDeletionJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeDatasetExportJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeDatasetGroup"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeDatasetImportJob"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeEventTracker"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeFeatureTransformation"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeFilter"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeMetricAttribution"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeRecipe"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeRecommender"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeSchema"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeSolution"
+        },
+        {
+          "target": "com.amazonaws.personalize#DescribeSolutionVersion"
+        },
+        {
+          "target": "com.amazonaws.personalize#GetSolutionMetrics"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListBatchInferenceJobs"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListBatchSegmentJobs"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListCampaigns"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListDataDeletionJobs"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListDatasetExportJobs"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListDatasetGroups"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListDatasetImportJobs"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListEventTrackers"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListFilters"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListMetricAttributionMetrics"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListMetricAttributions"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListRecipes"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListRecommenders"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListSchemas"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListSolutions"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListSolutionVersions"
+        },
+        {
+          "target": "com.amazonaws.personalize#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.personalize#StartRecommender"
+        },
+        {
+          "target": "com.amazonaws.personalize#StopRecommender"
+        },
+        {
+          "target": "com.amazonaws.personalize#StopSolutionVersionCreation"
+        },
+        {
+          "target": "com.amazonaws.personalize#TagResource"
+        },
+        {
+          "target": "com.amazonaws.personalize#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.personalize#UpdateCampaign"
+        },
+        {
+          "target": "com.amazonaws.personalize#UpdateDataset"
+        },
+        {
+          "target": "com.amazonaws.personalize#UpdateMetricAttribution"
+        },
+        {
+          "target": "com.amazonaws.personalize#UpdateRecommender"
+        },
+        {
+          "target": "com.amazonaws.personalize#UpdateSolution"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Personalize",

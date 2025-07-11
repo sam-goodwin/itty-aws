@@ -1,10 +1,182 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.elasticbeanstalk#ARN": {
       "type": "string"
     },
     "com.amazonaws.elasticbeanstalk#AWSElasticBeanstalkService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.elasticbeanstalk#AbortEnvironmentUpdate"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ApplyEnvironmentManagedAction"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#AssociateEnvironmentOperationsRole"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CheckDNSAvailability"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ComposeEnvironments"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CreateApplicationVersion"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CreateConfigurationTemplate"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CreateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CreatePlatformVersion"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#CreateStorageLocation"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DeleteApplicationVersion"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DeleteConfigurationTemplate"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DeleteEnvironmentConfiguration"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DeletePlatformVersion"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeAccountAttributes"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeApplications"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeApplicationVersions"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeConfigurationOptions"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeConfigurationSettings"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentHealth"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActionHistory"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentManagedActions"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironmentResources"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeEnvironments"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribeInstancesHealth"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DescribePlatformVersion"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#DisassociateEnvironmentOperationsRole"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ListAvailableSolutionStacks"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ListPlatformBranches"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ListPlatformVersions"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#RebuildEnvironment"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#RequestEnvironmentInfo"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#RestartAppServer"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#RetrieveEnvironmentInfo"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#SwapEnvironmentCNAMEs"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#TerminateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#UpdateApplication"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#UpdateApplicationResourceLifecycle"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#UpdateApplicationVersion"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#UpdateConfigurationTemplate"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#UpdateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#UpdateTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.elasticbeanstalk#ValidateConfigurationSettings"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Elastic Beanstalk",

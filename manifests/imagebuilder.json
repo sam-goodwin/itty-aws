@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.imagebuilder#AccountAggregation": {
       "type": "structure",
@@ -13938,6 +13967,233 @@
     },
     "com.amazonaws.imagebuilder#imagebuilder": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.imagebuilder#CancelImageCreation"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CancelLifecycleExecution"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateComponent"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateContainerRecipe"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateDistributionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateImage"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateImagePipeline"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateImageRecipe"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateInfrastructureConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#CreateWorkflow"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteComponent"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteContainerRecipe"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteDistributionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteImage"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteImagePipeline"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteImageRecipe"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteInfrastructureConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#DeleteWorkflow"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetComponent"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetComponentPolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetContainerRecipe"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetContainerRecipePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetDistributionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetImage"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetImagePipeline"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetImagePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetImageRecipe"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetImageRecipePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetInfrastructureConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetLifecycleExecution"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetMarketplaceResource"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetWorkflow"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetWorkflowExecution"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#GetWorkflowStepExecution"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ImportComponent"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ImportDiskImage"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ImportVmImage"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListComponentBuildVersions"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListComponents"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListContainerRecipes"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListDistributionConfigurations"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImageBuildVersions"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImagePackages"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImagePipelineImages"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImagePipelines"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImageRecipes"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImages"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImageScanFindingAggregations"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListImageScanFindings"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListInfrastructureConfigurations"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListLifecycleExecutionResources"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListLifecycleExecutions"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListLifecyclePolicies"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListWaitingWorkflowSteps"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListWorkflowBuildVersions"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListWorkflowExecutions"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListWorkflows"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#ListWorkflowStepExecutions"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#PutComponentPolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#PutContainerRecipePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#PutImagePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#PutImageRecipePolicy"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#SendWorkflowStepAction"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#StartImagePipelineExecution"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#StartResourceStateUpdate"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#TagResource"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#UpdateDistributionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#UpdateImagePipeline"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#UpdateInfrastructureConfiguration"
+        },
+        {
+          "target": "com.amazonaws.imagebuilder#UpdateLifecyclePolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "imagebuilder",

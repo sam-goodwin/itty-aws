@@ -1,126 +1,44 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface RUM {
-  batchCreateRumMetricDefinitions(
-    input: BatchCreateRumMetricDefinitionsRequest,
-  ): Effect.Effect<
-    BatchCreateRumMetricDefinitionsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  batchDeleteRumMetricDefinitions(
-    input: BatchDeleteRumMetricDefinitionsRequest,
-  ): Effect.Effect<
-    BatchDeleteRumMetricDefinitionsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  batchGetRumMetricDefinitions(
-    input: BatchGetRumMetricDefinitionsRequest,
-  ): Effect.Effect<
-    BatchGetRumMetricDefinitionsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  createAppMonitor(
-    input: CreateAppMonitorRequest,
-  ): Effect.Effect<
-    CreateAppMonitorResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteAppMonitor(
-    input: DeleteAppMonitorRequest,
-  ): Effect.Effect<
-    DeleteAppMonitorResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteResourcePolicy(
-    input: DeleteResourcePolicyRequest,
-  ): Effect.Effect<
-    DeleteResourcePolicyResponse,
-    AccessDeniedException | ConflictException | InternalServerException | InvalidPolicyRevisionIdException | PolicyNotFoundException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteRumMetricsDestination(
-    input: DeleteRumMetricsDestinationRequest,
-  ): Effect.Effect<
-    DeleteRumMetricsDestinationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getAppMonitor(
-    input: GetAppMonitorRequest,
-  ): Effect.Effect<
-    GetAppMonitorResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getAppMonitorData(
-    input: GetAppMonitorDataRequest,
-  ): Effect.Effect<
-    GetAppMonitorDataResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getResourcePolicy(
-    input: GetResourcePolicyRequest,
-  ): Effect.Effect<
-    GetResourcePolicyResponse,
-    AccessDeniedException | ConflictException | InternalServerException | PolicyNotFoundException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listAppMonitors(
-    input: ListAppMonitorsRequest,
-  ): Effect.Effect<
-    ListAppMonitorsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listRumMetricsDestinations(
-    input: ListRumMetricsDestinationsRequest,
-  ): Effect.Effect<
-    ListRumMetricsDestinationsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  putResourcePolicy(
-    input: PutResourcePolicyRequest,
-  ): Effect.Effect<
-    PutResourcePolicyResponse,
-    AccessDeniedException | ConflictException | InternalServerException | InvalidPolicyRevisionIdException | MalformedPolicyDocumentException | PolicySizeLimitExceededException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   putRumEvents(
     input: PutRumEventsRequest,
   ): Effect.Effect<
     PutRumEventsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  putRumMetricsDestination(
-    input: PutRumMetricsDestinationRequest,
-  ): Effect.Effect<
-    PutRumMetricsDestinationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateAppMonitor(
-    input: UpdateAppMonitorRequest,
-  ): Effect.Effect<
-    UpdateAppMonitorResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateRumMetricDefinition(
-    input: UpdateRumMetricDefinitionRequest,
-  ): Effect.Effect<
-    UpdateRumMetricDefinitionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -185,7 +103,8 @@ export interface BatchCreateRumMetricDefinitionsError {
   ErrorCode: string;
   ErrorMessage: string;
 }
-export type BatchCreateRumMetricDefinitionsErrors = Array<BatchCreateRumMetricDefinitionsError>;
+export type BatchCreateRumMetricDefinitionsErrors =
+  Array<BatchCreateRumMetricDefinitionsError>;
 export interface BatchCreateRumMetricDefinitionsRequest {
   AppMonitorName: string;
   Destination: string;
@@ -201,7 +120,8 @@ export interface BatchDeleteRumMetricDefinitionsError {
   ErrorCode: string;
   ErrorMessage: string;
 }
-export type BatchDeleteRumMetricDefinitionsErrors = Array<BatchDeleteRumMetricDefinitionsError>;
+export type BatchDeleteRumMetricDefinitionsErrors =
+  Array<BatchDeleteRumMetricDefinitionsError>;
 export interface BatchDeleteRumMetricDefinitionsRequest {
   AppMonitorName: string;
   Destination: string;
@@ -258,8 +178,7 @@ export interface DataStorage {
 export interface DeleteAppMonitorRequest {
   Name: string;
 }
-export interface DeleteAppMonitorResponse {
-}
+export interface DeleteAppMonitorResponse {}
 export interface DeleteResourcePolicyRequest {
   Name: string;
   PolicyRevisionId?: string;
@@ -272,8 +191,7 @@ export interface DeleteRumMetricsDestinationRequest {
   Destination: string;
   DestinationArn?: string;
 }
-export interface DeleteRumMetricsDestinationResponse {
-}
+export interface DeleteRumMetricsDestinationResponse {}
 export interface DeobfuscationConfiguration {
   JavaScriptSourceMaps?: JavaScriptSourceMaps;
 }
@@ -438,16 +356,14 @@ export interface PutRumEventsRequest {
   RumEvents: Array<RumEvent>;
   Alias?: string;
 }
-export interface PutRumEventsResponse {
-}
+export interface PutRumEventsResponse {}
 export interface PutRumMetricsDestinationRequest {
   AppMonitorName: string;
   Destination: string;
   DestinationArn?: string;
   IamRoleArn?: string;
 }
-export interface PutRumMetricsDestinationResponse {
-}
+export interface PutRumMetricsDestinationResponse {}
 export interface QueryFilter {
   Name?: string;
   Values?: Array<string>;
@@ -492,8 +408,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type Telemetries = Array<string>;
@@ -519,8 +434,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateAppMonitorRequest {
   Name: string;
   Domain?: string;
@@ -530,8 +444,7 @@ export interface UpdateAppMonitorRequest {
   CustomEvents?: CustomEvents;
   DeobfuscationConfiguration?: DeobfuscationConfiguration;
 }
-export interface UpdateAppMonitorResponse {
-}
+export interface UpdateAppMonitorResponse {}
 export interface UpdateRumMetricDefinitionRequest {
   AppMonitorName: string;
   Destination: string;
@@ -539,8 +452,7 @@ export interface UpdateRumMetricDefinitionRequest {
   MetricDefinition: MetricDefinitionRequest;
   MetricDefinitionId: string;
 }
-export interface UpdateRumMetricDefinitionResponse {
-}
+export interface UpdateRumMetricDefinitionResponse {}
 export type Url = string;
 
 export interface UserDetails {
@@ -554,159 +466,6 @@ export declare class ValidationException extends Data.TaggedError(
 }> {}
 export type ValueKey = string;
 
-export declare namespace BatchCreateRumMetricDefinitions {
-  export type Input = BatchCreateRumMetricDefinitionsRequest;
-  export type Output = BatchCreateRumMetricDefinitionsResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace BatchDeleteRumMetricDefinitions {
-  export type Input = BatchDeleteRumMetricDefinitionsRequest;
-  export type Output = BatchDeleteRumMetricDefinitionsResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace BatchGetRumMetricDefinitions {
-  export type Input = BatchGetRumMetricDefinitionsRequest;
-  export type Output = BatchGetRumMetricDefinitionsResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateAppMonitor {
-  export type Input = CreateAppMonitorRequest;
-  export type Output = CreateAppMonitorResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteAppMonitor {
-  export type Input = DeleteAppMonitorRequest;
-  export type Output = DeleteAppMonitorResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteResourcePolicy {
-  export type Input = DeleteResourcePolicyRequest;
-  export type Output = DeleteResourcePolicyResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | InvalidPolicyRevisionIdException
-    | PolicyNotFoundException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteRumMetricsDestination {
-  export type Input = DeleteRumMetricsDestinationRequest;
-  export type Output = DeleteRumMetricsDestinationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetAppMonitor {
-  export type Input = GetAppMonitorRequest;
-  export type Output = GetAppMonitorResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetAppMonitorData {
-  export type Input = GetAppMonitorDataRequest;
-  export type Output = GetAppMonitorDataResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetResourcePolicy {
-  export type Input = GetResourcePolicyRequest;
-  export type Output = GetResourcePolicyResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | PolicyNotFoundException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListAppMonitors {
-  export type Input = ListAppMonitorsRequest;
-  export type Output = ListAppMonitorsResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListRumMetricsDestinations {
-  export type Input = ListRumMetricsDestinationsRequest;
-  export type Output = ListRumMetricsDestinationsResponse;
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
@@ -717,40 +476,11 @@ export declare namespace ListTagsForResource {
     | CommonAwsError;
 }
 
-export declare namespace PutResourcePolicy {
-  export type Input = PutResourcePolicyRequest;
-  export type Output = PutResourcePolicyResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | InvalidPolicyRevisionIdException
-    | MalformedPolicyDocumentException
-    | PolicySizeLimitExceededException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
 export declare namespace PutRumEvents {
   export type Input = PutRumEventsRequest;
   export type Output = PutRumEventsResponse;
   export type Error =
     | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PutRumMetricsDestination {
-  export type Input = PutRumMetricsDestinationRequest;
-  export type Output = PutRumMetricsDestinationResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
     | InternalServerException
     | ResourceNotFoundException
     | ThrottlingException
@@ -777,31 +507,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateAppMonitor {
-  export type Input = UpdateAppMonitorRequest;
-  export type Output = UpdateAppMonitorResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateRumMetricDefinition {
-  export type Input = UpdateRumMetricDefinitionRequest;
-  export type Output = UpdateRumMetricDefinitionResponse;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-

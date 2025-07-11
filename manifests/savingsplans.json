@@ -1,7 +1,68 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.savingsplans#AWSSavingsPlan": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.savingsplans#CreateSavingsPlan"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#DeleteQueuedSavingsPlan"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#DescribeSavingsPlanRates"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#DescribeSavingsPlans"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#DescribeSavingsPlansOfferingRates"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#DescribeSavingsPlansOfferings"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#ReturnSavingsPlan"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#TagResource"
+        },
+        {
+          "target": "com.amazonaws.savingsplans#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "savingsplans",

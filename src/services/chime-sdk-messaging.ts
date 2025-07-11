@@ -1,312 +1,654 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface ChimeMessagingService {
   associateChannelFlow(
     input: AssociateChannelFlowRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchCreateChannelMembership(
     input: BatchCreateChannelMembershipRequest,
   ): Effect.Effect<
     BatchCreateChannelMembershipResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   channelFlowCallback(
     input: ChannelFlowCallbackRequest,
   ): Effect.Effect<
     ChannelFlowCallbackResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createChannel(
     input: CreateChannelRequest,
   ): Effect.Effect<
     CreateChannelResponse,
-    BadRequestException | ConflictException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createChannelBan(
     input: CreateChannelBanRequest,
   ): Effect.Effect<
     CreateChannelBanResponse,
-    BadRequestException | ConflictException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createChannelFlow(
     input: CreateChannelFlowRequest,
   ): Effect.Effect<
     CreateChannelFlowResponse,
-    BadRequestException | ConflictException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createChannelMembership(
     input: CreateChannelMembershipRequest,
   ): Effect.Effect<
     CreateChannelMembershipResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createChannelModerator(
     input: CreateChannelModeratorRequest,
   ): Effect.Effect<
     CreateChannelModeratorResponse,
-    BadRequestException | ConflictException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteChannel(
     input: DeleteChannelRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteChannelBan(
     input: DeleteChannelBanRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteChannelFlow(
     input: DeleteChannelFlowRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteChannelMembership(
     input: DeleteChannelMembershipRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteChannelMessage(
     input: DeleteChannelMessageRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteChannelModerator(
     input: DeleteChannelModeratorRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteMessagingStreamingConfigurations(
     input: DeleteMessagingStreamingConfigurationsRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannel(
     input: DescribeChannelRequest,
   ): Effect.Effect<
     DescribeChannelResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannelBan(
     input: DescribeChannelBanRequest,
   ): Effect.Effect<
     DescribeChannelBanResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannelFlow(
     input: DescribeChannelFlowRequest,
   ): Effect.Effect<
     DescribeChannelFlowResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannelMembership(
     input: DescribeChannelMembershipRequest,
   ): Effect.Effect<
     DescribeChannelMembershipResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannelMembershipForAppInstanceUser(
     input: DescribeChannelMembershipForAppInstanceUserRequest,
   ): Effect.Effect<
     DescribeChannelMembershipForAppInstanceUserResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannelModeratedByAppInstanceUser(
     input: DescribeChannelModeratedByAppInstanceUserRequest,
   ): Effect.Effect<
     DescribeChannelModeratedByAppInstanceUserResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   describeChannelModerator(
     input: DescribeChannelModeratorRequest,
   ): Effect.Effect<
     DescribeChannelModeratorResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   disassociateChannelFlow(
     input: DisassociateChannelFlowRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getChannelMembershipPreferences(
     input: GetChannelMembershipPreferencesRequest,
   ): Effect.Effect<
     GetChannelMembershipPreferencesResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getChannelMessage(
     input: GetChannelMessageRequest,
   ): Effect.Effect<
     GetChannelMessageResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getChannelMessageStatus(
     input: GetChannelMessageStatusRequest,
   ): Effect.Effect<
     GetChannelMessageStatusResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getMessagingSessionEndpoint(
     input: GetMessagingSessionEndpointRequest,
   ): Effect.Effect<
     GetMessagingSessionEndpointResponse,
-    ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getMessagingStreamingConfigurations(
     input: GetMessagingStreamingConfigurationsRequest,
   ): Effect.Effect<
     GetMessagingStreamingConfigurationsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelBans(
     input: ListChannelBansRequest,
   ): Effect.Effect<
     ListChannelBansResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelFlows(
     input: ListChannelFlowsRequest,
   ): Effect.Effect<
     ListChannelFlowsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelMemberships(
     input: ListChannelMembershipsRequest,
   ): Effect.Effect<
     ListChannelMembershipsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelMembershipsForAppInstanceUser(
     input: ListChannelMembershipsForAppInstanceUserRequest,
   ): Effect.Effect<
     ListChannelMembershipsForAppInstanceUserResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelMessages(
     input: ListChannelMessagesRequest,
   ): Effect.Effect<
     ListChannelMessagesResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelModerators(
     input: ListChannelModeratorsRequest,
   ): Effect.Effect<
     ListChannelModeratorsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannels(
     input: ListChannelsRequest,
   ): Effect.Effect<
     ListChannelsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelsAssociatedWithChannelFlow(
     input: ListChannelsAssociatedWithChannelFlowRequest,
   ): Effect.Effect<
     ListChannelsAssociatedWithChannelFlowResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listChannelsModeratedByAppInstanceUser(
     input: ListChannelsModeratedByAppInstanceUserRequest,
   ): Effect.Effect<
     ListChannelsModeratedByAppInstanceUserResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listSubChannels(
     input: ListSubChannelsRequest,
   ): Effect.Effect<
     ListSubChannelsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   putChannelExpirationSettings(
     input: PutChannelExpirationSettingsRequest,
   ): Effect.Effect<
     PutChannelExpirationSettingsResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   putChannelMembershipPreferences(
     input: PutChannelMembershipPreferencesRequest,
   ): Effect.Effect<
     PutChannelMembershipPreferencesResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   putMessagingStreamingConfigurations(
     input: PutMessagingStreamingConfigurationsRequest,
   ): Effect.Effect<
     PutMessagingStreamingConfigurationsResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   redactChannelMessage(
     input: RedactChannelMessageRequest,
   ): Effect.Effect<
     RedactChannelMessageResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   searchChannels(
     input: SearchChannelsRequest,
   ): Effect.Effect<
     SearchChannelsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   sendChannelMessage(
     input: SendChannelMessageRequest,
   ): Effect.Effect<
     SendChannelMessageResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateChannel(
     input: UpdateChannelRequest,
   ): Effect.Effect<
     UpdateChannelResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateChannelFlow(
     input: UpdateChannelFlowRequest,
   ): Effect.Effect<
     UpdateChannelFlowResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateChannelMessage(
     input: UpdateChannelMessageRequest,
   ): Effect.Effect<
     UpdateChannelMessageResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateChannelReadMarker(
     input: UpdateChannelReadMarkerRequest,
   ): Effect.Effect<
     UpdateChannelReadMarkerResponse,
-    BadRequestException | ConflictException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
 }
 
@@ -341,7 +683,8 @@ export interface BatchCreateChannelMembershipError {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export type BatchCreateChannelMembershipErrors = Array<BatchCreateChannelMembershipError>;
+export type BatchCreateChannelMembershipErrors =
+  Array<BatchCreateChannelMembershipError>;
 export interface BatchCreateChannelMembershipRequest {
   ChannelArn: string;
   Type?: ChannelMembershipType;
@@ -376,7 +719,8 @@ export interface ChannelAssociatedWithFlowSummary {
   Privacy?: ChannelPrivacy;
   Metadata?: string;
 }
-export type ChannelAssociatedWithFlowSummaryList = Array<ChannelAssociatedWithFlowSummary>;
+export type ChannelAssociatedWithFlowSummaryList =
+  Array<ChannelAssociatedWithFlowSummary>;
 export interface ChannelBan {
   Member?: Identity;
   ChannelArn?: string;
@@ -428,7 +772,8 @@ export interface ChannelMembershipForAppInstanceUserSummary {
   ChannelSummary?: ChannelSummary;
   AppInstanceUserMembershipSummary?: AppInstanceUserMembershipSummary;
 }
-export type ChannelMembershipForAppInstanceUserSummaryList = Array<ChannelMembershipForAppInstanceUserSummary>;
+export type ChannelMembershipForAppInstanceUserSummaryList =
+  Array<ChannelMembershipForAppInstanceUserSummary>;
 export interface ChannelMembershipPreferences {
   PushNotifications?: PushNotificationPreferences;
 }
@@ -491,7 +836,8 @@ export type ChannelMode = "UNRESTRICTED" | "RESTRICTED";
 export interface ChannelModeratedByAppInstanceUserSummary {
   ChannelSummary?: ChannelSummary;
 }
-export type ChannelModeratedByAppInstanceUserSummaryList = Array<ChannelModeratedByAppInstanceUserSummary>;
+export type ChannelModeratedByAppInstanceUserSummaryList =
+  Array<ChannelModeratedByAppInstanceUserSummary>;
 export interface ChannelModerator {
   Moderator?: Identity;
   ChannelArn?: string;
@@ -681,8 +1027,25 @@ export interface ElasticChannelConfiguration {
   TargetMembershipsPerSubChannel: number;
   MinimumMembershipPercentage: number;
 }
-export type ErrorCode = "BadRequest" | "Conflict" | "Forbidden" | "NotFound" | "PreconditionFailed" | "ResourceLimitExceeded" | "ServiceFailure" | "AccessDenied" | "ServiceUnavailable" | "Throttled" | "Throttling" | "Unauthorized" | "Unprocessable" | "VoiceConnectorGroupAssociationsExist" | "PhoneNumberAssociationsExist";
-export type ExpirationCriterion = "CREATED_TIMESTAMP" | "LAST_MESSAGE_TIMESTAMP";
+export type ErrorCode =
+  | "BadRequest"
+  | "Conflict"
+  | "Forbidden"
+  | "NotFound"
+  | "PreconditionFailed"
+  | "ResourceLimitExceeded"
+  | "ServiceFailure"
+  | "AccessDenied"
+  | "ServiceUnavailable"
+  | "Throttled"
+  | "Throttling"
+  | "Unauthorized"
+  | "Unprocessable"
+  | "VoiceConnectorGroupAssociationsExist"
+  | "PhoneNumberAssociationsExist";
+export type ExpirationCriterion =
+  | "CREATED_TIMESTAMP"
+  | "LAST_MESSAGE_TIMESTAMP";
 export type ExpirationDays = number;
 
 export interface ExpirationSettings {
@@ -726,8 +1089,7 @@ export interface GetChannelMessageStatusRequest {
 export interface GetChannelMessageStatusResponse {
   Status?: ChannelMessageStatusStructure;
 }
-export interface GetMessagingSessionEndpointRequest {
-}
+export interface GetMessagingSessionEndpointRequest {}
 export interface GetMessagingSessionEndpointResponse {
   Endpoint?: MessagingSessionEndpoint;
 }
@@ -1822,4 +2184,3 @@ export declare namespace UpdateChannelReadMarker {
     | UnauthorizedClientException
     | CommonAwsError;
 }
-

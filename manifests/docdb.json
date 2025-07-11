@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.docdb#AddSourceIdentifierToSubscription": {
       "type": "operation",
@@ -106,6 +135,173 @@
     },
     "com.amazonaws.docdb#AmazonRDSv19": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.docdb#AddSourceIdentifierToSubscription"
+        },
+        {
+          "target": "com.amazonaws.docdb#AddTagsToResource"
+        },
+        {
+          "target": "com.amazonaws.docdb#ApplyPendingMaintenanceAction"
+        },
+        {
+          "target": "com.amazonaws.docdb#CopyDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#CopyDBClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateDBCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateDBClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateDBInstance"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateDBSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.docdb#CreateGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteDBCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteDBClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteDBInstance"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteDBSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.docdb#DeleteGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeCertificates"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBClusterParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBClusterParameters"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBClusters"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBClusterSnapshotAttributes"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBClusterSnapshots"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBEngineVersions"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBInstances"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeDBSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeEngineDefaultClusterParameters"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeEventCategories"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeEventSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeGlobalClusters"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribeOrderableDBInstanceOptions"
+        },
+        {
+          "target": "com.amazonaws.docdb#DescribePendingMaintenanceActions"
+        },
+        {
+          "target": "com.amazonaws.docdb#FailoverDBCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#FailoverGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyDBCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyDBClusterSnapshotAttribute"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyDBInstance"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyDBSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.docdb#ModifyGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#RebootDBInstance"
+        },
+        {
+          "target": "com.amazonaws.docdb#RemoveFromGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#RemoveSourceIdentifierFromSubscription"
+        },
+        {
+          "target": "com.amazonaws.docdb#RemoveTagsFromResource"
+        },
+        {
+          "target": "com.amazonaws.docdb#ResetDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.docdb#RestoreDBClusterFromSnapshot"
+        },
+        {
+          "target": "com.amazonaws.docdb#RestoreDBClusterToPointInTime"
+        },
+        {
+          "target": "com.amazonaws.docdb#StartDBCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#StopDBCluster"
+        },
+        {
+          "target": "com.amazonaws.docdb#SwitchoverGlobalCluster"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "DocDB",

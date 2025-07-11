@@ -1,84 +1,123 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface PerformanceInsightsv20180227 {
   createPerformanceAnalysisReport(
     input: CreatePerformanceAnalysisReportRequest,
   ): Effect.Effect<
     CreatePerformanceAnalysisReportResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   deletePerformanceAnalysisReport(
     input: DeletePerformanceAnalysisReportRequest,
   ): Effect.Effect<
     DeletePerformanceAnalysisReportResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   describeDimensionKeys(
     input: DescribeDimensionKeysRequest,
   ): Effect.Effect<
     DescribeDimensionKeysResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   getDimensionKeyDetails(
     input: GetDimensionKeyDetailsRequest,
   ): Effect.Effect<
     GetDimensionKeyDetailsResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   getPerformanceAnalysisReport(
     input: GetPerformanceAnalysisReportRequest,
   ): Effect.Effect<
     GetPerformanceAnalysisReportResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   getResourceMetadata(
     input: GetResourceMetadataRequest,
   ): Effect.Effect<
     GetResourceMetadataResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   getResourceMetrics(
     input: GetResourceMetricsRequest,
   ): Effect.Effect<
     GetResourceMetricsResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   listAvailableResourceDimensions(
     input: ListAvailableResourceDimensionsRequest,
   ): Effect.Effect<
     ListAvailableResourceDimensionsResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   listAvailableResourceMetrics(
     input: ListAvailableResourceMetricsRequest,
   ): Effect.Effect<
     ListAvailableResourceMetricsResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   listPerformanceAnalysisReports(
     input: ListPerformanceAnalysisReportsRequest,
   ): Effect.Effect<
     ListPerformanceAnalysisReportsResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServiceError | InvalidArgumentException | NotAuthorizedException | CommonAwsError
+    | InternalServiceError
+    | InvalidArgumentException
+    | NotAuthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -137,8 +176,7 @@ export interface DeletePerformanceAnalysisReportRequest {
   Identifier: string;
   AnalysisReportId: string;
 }
-export interface DeletePerformanceAnalysisReportResponse {
-}
+export interface DeletePerformanceAnalysisReportResponse {}
 export interface DescribeDimensionKeysRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -203,8 +241,17 @@ export interface FeatureMetadata {
   Status?: FeatureStatus;
 }
 export type FeatureMetadataMap = Record<string, FeatureMetadata>;
-export type FeatureStatus = "ENABLED" | "DISABLED" | "UNSUPPORTED" | "ENABLED_PENDING_REBOOT" | "DISABLED_PENDING_REBOOT" | "UNKNOWN";
-export type FineGrainedAction = "DESCRIBE_DIMENSION_KEYS" | "GET_DIMENSION_KEY_DETAILS" | "GET_RESOURCE_METRICS";
+export type FeatureStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "UNSUPPORTED"
+  | "ENABLED_PENDING_REBOOT"
+  | "DISABLED_PENDING_REBOOT"
+  | "UNKNOWN";
+export type FineGrainedAction =
+  | "DESCRIBE_DIMENSION_KEYS"
+  | "GET_DIMENSION_KEY_DETAILS"
+  | "GET_RESOURCE_METRICS";
 export interface GetDimensionKeyDetailsRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -402,8 +449,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TextFormat = "PLAIN_TEXT" | "MARKDOWN";
@@ -412,8 +458,7 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export declare namespace CreatePerformanceAnalysisReport {
   export type Input = CreatePerformanceAnalysisReportRequest;
   export type Output = CreatePerformanceAnalysisReportResponse;
@@ -543,4 +588,3 @@ export declare namespace UntagResource {
     | NotAuthorizedException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.neptune#AddRoleToDBCluster": {
       "type": "operation",
@@ -160,6 +189,218 @@
     },
     "com.amazonaws.neptune#AmazonRDSv19": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.neptune#AddRoleToDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#AddSourceIdentifierToSubscription"
+        },
+        {
+          "target": "com.amazonaws.neptune#AddTagsToResource"
+        },
+        {
+          "target": "com.amazonaws.neptune#ApplyPendingMaintenanceAction"
+        },
+        {
+          "target": "com.amazonaws.neptune#CopyDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#CopyDBClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.neptune#CopyDBParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBClusterEndpoint"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBInstance"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateDBSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.neptune#CreateGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBClusterEndpoint"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBClusterSnapshot"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBInstance"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteDBSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.neptune#DeleteGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBClusterEndpoints"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBClusterParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBClusterParameters"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBClusters"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBClusterSnapshotAttributes"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBClusterSnapshots"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBEngineVersions"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBInstances"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBParameters"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeDBSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeEngineDefaultClusterParameters"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeEngineDefaultParameters"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeEventCategories"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeEventSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeGlobalClusters"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeOrderableDBInstanceOptions"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribePendingMaintenanceActions"
+        },
+        {
+          "target": "com.amazonaws.neptune#DescribeValidDBInstanceModifications"
+        },
+        {
+          "target": "com.amazonaws.neptune#FailoverDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#FailoverGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBClusterEndpoint"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBClusterSnapshotAttribute"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBInstance"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyDBSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.neptune#ModifyGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#PromoteReadReplicaDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#RebootDBInstance"
+        },
+        {
+          "target": "com.amazonaws.neptune#RemoveFromGlobalCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#RemoveRoleFromDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#RemoveSourceIdentifierFromSubscription"
+        },
+        {
+          "target": "com.amazonaws.neptune#RemoveTagsFromResource"
+        },
+        {
+          "target": "com.amazonaws.neptune#ResetDBClusterParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#ResetDBParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.neptune#RestoreDBClusterFromSnapshot"
+        },
+        {
+          "target": "com.amazonaws.neptune#RestoreDBClusterToPointInTime"
+        },
+        {
+          "target": "com.amazonaws.neptune#StartDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#StopDBCluster"
+        },
+        {
+          "target": "com.amazonaws.neptune#SwitchoverGlobalCluster"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Neptune",

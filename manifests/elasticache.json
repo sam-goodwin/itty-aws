@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.elasticache#APICallRateForCustomerExceededFault": {
       "type": "structure",
@@ -191,6 +220,233 @@
     },
     "com.amazonaws.elasticache#AmazonElastiCacheV9": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.elasticache#AddTagsToResource"
+        },
+        {
+          "target": "com.amazonaws.elasticache#AuthorizeCacheSecurityGroupIngress"
+        },
+        {
+          "target": "com.amazonaws.elasticache#BatchApplyUpdateAction"
+        },
+        {
+          "target": "com.amazonaws.elasticache#BatchStopUpdateAction"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CompleteMigration"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CopyServerlessCacheSnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CopySnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateCacheCluster"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateCacheParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateCacheSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateCacheSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateServerlessCache"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateServerlessCacheSnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateSnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.elasticache#CreateUserGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DecreaseNodeGroupsInGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DecreaseReplicaCount"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteCacheCluster"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteCacheParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteCacheSecurityGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteCacheSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteServerlessCache"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteServerlessCacheSnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteSnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DeleteUserGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeCacheClusters"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeCacheEngineVersions"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeCacheParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeCacheParameters"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeCacheSecurityGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeCacheSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeEngineDefaultParameters"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeGlobalReplicationGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeReplicationGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeReservedCacheNodes"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeReservedCacheNodesOfferings"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeServerlessCaches"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeServerlessCacheSnapshots"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeServiceUpdates"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeSnapshots"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeUpdateActions"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeUserGroups"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DescribeUsers"
+        },
+        {
+          "target": "com.amazonaws.elasticache#DisassociateGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ExportServerlessCacheSnapshot"
+        },
+        {
+          "target": "com.amazonaws.elasticache#FailoverGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#IncreaseNodeGroupsInGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#IncreaseReplicaCount"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ListAllowedNodeTypeModifications"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyCacheCluster"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyCacheParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyCacheSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyReplicationGroupShardConfiguration"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyServerlessCache"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyUser"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ModifyUserGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#PurchaseReservedCacheNodesOffering"
+        },
+        {
+          "target": "com.amazonaws.elasticache#RebalanceSlotsInGlobalReplicationGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#RebootCacheCluster"
+        },
+        {
+          "target": "com.amazonaws.elasticache#RemoveTagsFromResource"
+        },
+        {
+          "target": "com.amazonaws.elasticache#ResetCacheParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.elasticache#RevokeCacheSecurityGroupIngress"
+        },
+        {
+          "target": "com.amazonaws.elasticache#StartMigration"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TestFailover"
+        },
+        {
+          "target": "com.amazonaws.elasticache#TestMigration"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ElastiCache",

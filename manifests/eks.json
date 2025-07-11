@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.eks#AMITypes": {
       "type": "enum",
@@ -121,6 +150,179 @@
     },
     "com.amazonaws.eks#AWSWesleyFrontend": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.eks#AssociateAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.eks#AssociateEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.eks#AssociateIdentityProviderConfig"
+        },
+        {
+          "target": "com.amazonaws.eks#CreateAccessEntry"
+        },
+        {
+          "target": "com.amazonaws.eks#CreateAddon"
+        },
+        {
+          "target": "com.amazonaws.eks#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.eks#CreateEksAnywhereSubscription"
+        },
+        {
+          "target": "com.amazonaws.eks#CreateFargateProfile"
+        },
+        {
+          "target": "com.amazonaws.eks#CreateNodegroup"
+        },
+        {
+          "target": "com.amazonaws.eks#CreatePodIdentityAssociation"
+        },
+        {
+          "target": "com.amazonaws.eks#DeleteAccessEntry"
+        },
+        {
+          "target": "com.amazonaws.eks#DeleteAddon"
+        },
+        {
+          "target": "com.amazonaws.eks#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.eks#DeleteEksAnywhereSubscription"
+        },
+        {
+          "target": "com.amazonaws.eks#DeleteFargateProfile"
+        },
+        {
+          "target": "com.amazonaws.eks#DeleteNodegroup"
+        },
+        {
+          "target": "com.amazonaws.eks#DeletePodIdentityAssociation"
+        },
+        {
+          "target": "com.amazonaws.eks#DeregisterCluster"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeAccessEntry"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeAddon"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeAddonConfiguration"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeAddonVersions"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeCluster"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeClusterVersions"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeEksAnywhereSubscription"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeFargateProfile"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeIdentityProviderConfig"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeInsight"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeNodegroup"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribePodIdentityAssociation"
+        },
+        {
+          "target": "com.amazonaws.eks#DescribeUpdate"
+        },
+        {
+          "target": "com.amazonaws.eks#DisassociateAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.eks#DisassociateIdentityProviderConfig"
+        },
+        {
+          "target": "com.amazonaws.eks#ListAccessEntries"
+        },
+        {
+          "target": "com.amazonaws.eks#ListAccessPolicies"
+        },
+        {
+          "target": "com.amazonaws.eks#ListAddons"
+        },
+        {
+          "target": "com.amazonaws.eks#ListAssociatedAccessPolicies"
+        },
+        {
+          "target": "com.amazonaws.eks#ListClusters"
+        },
+        {
+          "target": "com.amazonaws.eks#ListEksAnywhereSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.eks#ListFargateProfiles"
+        },
+        {
+          "target": "com.amazonaws.eks#ListIdentityProviderConfigs"
+        },
+        {
+          "target": "com.amazonaws.eks#ListInsights"
+        },
+        {
+          "target": "com.amazonaws.eks#ListNodegroups"
+        },
+        {
+          "target": "com.amazonaws.eks#ListPodIdentityAssociations"
+        },
+        {
+          "target": "com.amazonaws.eks#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.eks#ListUpdates"
+        },
+        {
+          "target": "com.amazonaws.eks#RegisterCluster"
+        },
+        {
+          "target": "com.amazonaws.eks#TagResource"
+        },
+        {
+          "target": "com.amazonaws.eks#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateAccessEntry"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateAddon"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateClusterConfig"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateClusterVersion"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateEksAnywhereSubscription"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateNodegroupConfig"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdateNodegroupVersion"
+        },
+        {
+          "target": "com.amazonaws.eks#UpdatePodIdentityAssociation"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "EKS",

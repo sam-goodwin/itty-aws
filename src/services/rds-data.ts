@@ -1,42 +1,123 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface RdsDataService {
   batchExecuteStatement(
     input: BatchExecuteStatementRequest,
   ): Effect.Effect<
     BatchExecuteStatementResponse,
-    AccessDeniedException | BadRequestException | DatabaseErrorException | DatabaseNotFoundException | DatabaseResumingException | DatabaseUnavailableException | ForbiddenException | HttpEndpointNotEnabledException | InternalServerErrorException | InvalidResourceStateException | InvalidSecretException | SecretsErrorException | ServiceUnavailableError | StatementTimeoutException | TransactionNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | DatabaseErrorException
+    | DatabaseNotFoundException
+    | DatabaseResumingException
+    | DatabaseUnavailableException
+    | ForbiddenException
+    | HttpEndpointNotEnabledException
+    | InternalServerErrorException
+    | InvalidResourceStateException
+    | InvalidSecretException
+    | SecretsErrorException
+    | ServiceUnavailableError
+    | StatementTimeoutException
+    | TransactionNotFoundException
+    | CommonAwsError
   >;
   beginTransaction(
     input: BeginTransactionRequest,
   ): Effect.Effect<
     BeginTransactionResponse,
-    AccessDeniedException | BadRequestException | DatabaseErrorException | DatabaseNotFoundException | DatabaseResumingException | DatabaseUnavailableException | ForbiddenException | HttpEndpointNotEnabledException | InternalServerErrorException | InvalidResourceStateException | InvalidSecretException | SecretsErrorException | ServiceUnavailableError | StatementTimeoutException | TransactionNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | DatabaseErrorException
+    | DatabaseNotFoundException
+    | DatabaseResumingException
+    | DatabaseUnavailableException
+    | ForbiddenException
+    | HttpEndpointNotEnabledException
+    | InternalServerErrorException
+    | InvalidResourceStateException
+    | InvalidSecretException
+    | SecretsErrorException
+    | ServiceUnavailableError
+    | StatementTimeoutException
+    | TransactionNotFoundException
+    | CommonAwsError
   >;
   commitTransaction(
     input: CommitTransactionRequest,
   ): Effect.Effect<
     CommitTransactionResponse,
-    AccessDeniedException | BadRequestException | DatabaseErrorException | DatabaseNotFoundException | DatabaseUnavailableException | ForbiddenException | HttpEndpointNotEnabledException | InternalServerErrorException | InvalidResourceStateException | InvalidSecretException | NotFoundException | SecretsErrorException | ServiceUnavailableError | StatementTimeoutException | TransactionNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | DatabaseErrorException
+    | DatabaseNotFoundException
+    | DatabaseUnavailableException
+    | ForbiddenException
+    | HttpEndpointNotEnabledException
+    | InternalServerErrorException
+    | InvalidResourceStateException
+    | InvalidSecretException
+    | NotFoundException
+    | SecretsErrorException
+    | ServiceUnavailableError
+    | StatementTimeoutException
+    | TransactionNotFoundException
+    | CommonAwsError
   >;
   executeSql(
     input: ExecuteSqlRequest,
   ): Effect.Effect<
     ExecuteSqlResponse,
-    AccessDeniedException | BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableError | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableError
+    | CommonAwsError
   >;
   executeStatement(
     input: ExecuteStatementRequest,
   ): Effect.Effect<
     ExecuteStatementResponse,
-    AccessDeniedException | BadRequestException | DatabaseErrorException | DatabaseNotFoundException | DatabaseResumingException | DatabaseUnavailableException | ForbiddenException | HttpEndpointNotEnabledException | InternalServerErrorException | InvalidResourceStateException | InvalidSecretException | SecretsErrorException | ServiceUnavailableError | StatementTimeoutException | TransactionNotFoundException | UnsupportedResultException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | DatabaseErrorException
+    | DatabaseNotFoundException
+    | DatabaseResumingException
+    | DatabaseUnavailableException
+    | ForbiddenException
+    | HttpEndpointNotEnabledException
+    | InternalServerErrorException
+    | InvalidResourceStateException
+    | InvalidSecretException
+    | SecretsErrorException
+    | ServiceUnavailableError
+    | StatementTimeoutException
+    | TransactionNotFoundException
+    | UnsupportedResultException
+    | CommonAwsError
   >;
   rollbackTransaction(
     input: RollbackTransactionRequest,
   ): Effect.Effect<
     RollbackTransactionResponse,
-    AccessDeniedException | BadRequestException | DatabaseErrorException | DatabaseNotFoundException | DatabaseUnavailableException | ForbiddenException | HttpEndpointNotEnabledException | InternalServerErrorException | InvalidResourceStateException | InvalidSecretException | NotFoundException | SecretsErrorException | ServiceUnavailableError | StatementTimeoutException | TransactionNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | DatabaseErrorException
+    | DatabaseNotFoundException
+    | DatabaseUnavailableException
+    | ForbiddenException
+    | HttpEndpointNotEnabledException
+    | InternalServerErrorException
+    | InvalidResourceStateException
+    | InvalidSecretException
+    | NotFoundException
+    | SecretsErrorException
+    | ServiceUnavailableError
+    | StatementTimeoutException
+    | TransactionNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -50,7 +131,12 @@ export declare class AccessDeniedException extends Data.TaggedError(
 export type Arn = string;
 
 export type ArrayOfArray = Array<ArrayValue>;
-export type ArrayValue = { booleanValues: Array<boolean> } | { longValues: Array<number> } | { doubleValues: Array<number> } | { stringValues: Array<string> } | { arrayValues: Array<ArrayValue> };
+export type ArrayValue =
+  | { booleanValues: Array<boolean> }
+  | { longValues: Array<number> }
+  | { doubleValues: Array<number> }
+  | { stringValues: Array<string> }
+  | { arrayValues: Array<ArrayValue> };
 export type ArrayValueList = Array<Value>;
 export declare class BadRequestException extends Data.TaggedError(
   "BadRequestException",
@@ -132,8 +218,7 @@ export declare class DatabaseResumingException extends Data.TaggedError(
 }> {}
 export declare class DatabaseUnavailableException extends Data.TaggedError(
   "DatabaseUnavailableException",
-)<{
-}> {}
+)<{}> {}
 export type DbName = string;
 
 export type DecimalReturnType = string;
@@ -171,7 +256,14 @@ export interface ExecuteStatementResponse {
   generatedFields?: Array<Field>;
   formattedRecords?: string;
 }
-export type Field = { isNull: boolean } | { booleanValue: boolean } | { longValue: number } | { doubleValue: number } | { stringValue: string } | { blobValue: Uint8Array | string } | { arrayValue: ArrayValue };
+export type Field =
+  | { isNull: boolean }
+  | { booleanValue: boolean }
+  | { longValue: number }
+  | { doubleValue: number }
+  | { stringValue: string }
+  | { blobValue: Uint8Array | string }
+  | { arrayValue: ArrayValue };
 export type FieldList = Array<Field>;
 export declare class ForbiddenException extends Data.TaggedError(
   "ForbiddenException",
@@ -191,8 +283,7 @@ export type Integer = number;
 
 export declare class InternalServerErrorException extends Data.TaggedError(
   "InternalServerErrorException",
-)<{
-}> {}
+)<{}> {}
 export declare class InvalidResourceStateException extends Data.TaggedError(
   "InvalidResourceStateException",
 )<{
@@ -252,8 +343,7 @@ export declare class SecretsErrorException extends Data.TaggedError(
 }> {}
 export declare class ServiceUnavailableError extends Data.TaggedError(
   "ServiceUnavailableError",
-)<{
-}> {}
+)<{}> {}
 export interface SqlParameter {
   name?: string;
   value?: Field;
@@ -297,7 +387,17 @@ export interface UpdateResult {
   generatedFields?: Array<Field>;
 }
 export type UpdateResults = Array<UpdateResult>;
-export type Value = { isNull: boolean } | { bitValue: boolean } | { bigIntValue: number } | { intValue: number } | { doubleValue: number } | { realValue: number } | { stringValue: string } | { blobValue: Uint8Array | string } | { arrayValues: Array<Value> } | { structValue: StructValue };
+export type Value =
+  | { isNull: boolean }
+  | { bitValue: boolean }
+  | { bigIntValue: number }
+  | { intValue: number }
+  | { doubleValue: number }
+  | { realValue: number }
+  | { stringValue: string }
+  | { blobValue: Uint8Array | string }
+  | { arrayValues: Array<Value> }
+  | { structValue: StructValue };
 export declare namespace BatchExecuteStatement {
   export type Input = BatchExecuteStatementRequest;
   export type Output = BatchExecuteStatementResponse;
@@ -420,4 +520,3 @@ export declare namespace RollbackTransaction {
     | TransactionNotFoundException
     | CommonAwsError;
 }
-

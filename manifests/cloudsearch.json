@@ -1,7 +1,116 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudsearch#A9SearchCloudConfigService2013": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudsearch#BuildSuggesters"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#CreateDomain"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DefineAnalysisScheme"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DefineExpression"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DefineIndexField"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DefineSuggester"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DeleteAnalysisScheme"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DeleteDomain"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DeleteExpression"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DeleteIndexField"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DeleteSuggester"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeAnalysisSchemes"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeAvailabilityOptions"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeDomainEndpointOptions"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeDomains"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeExpressions"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeIndexFields"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeScalingParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeServiceAccessPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#DescribeSuggesters"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#IndexDocuments"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#ListDomainNames"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#UpdateAvailabilityOptions"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#UpdateDomainEndpointOptions"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#UpdateScalingParameters"
+        },
+        {
+          "target": "com.amazonaws.cloudsearch#UpdateServiceAccessPolicies"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudSearch",

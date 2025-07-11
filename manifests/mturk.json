@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.mturk#AcceptQualificationRequest": {
       "type": "operation",
@@ -2662,6 +2691,125 @@
     },
     "com.amazonaws.mturk#MTurkRequesterServiceV20170117": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mturk#AcceptQualificationRequest"
+        },
+        {
+          "target": "com.amazonaws.mturk#ApproveAssignment"
+        },
+        {
+          "target": "com.amazonaws.mturk#AssociateQualificationWithWorker"
+        },
+        {
+          "target": "com.amazonaws.mturk#CreateAdditionalAssignmentsForHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#CreateHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#CreateHITType"
+        },
+        {
+          "target": "com.amazonaws.mturk#CreateHITWithHITType"
+        },
+        {
+          "target": "com.amazonaws.mturk#CreateQualificationType"
+        },
+        {
+          "target": "com.amazonaws.mturk#CreateWorkerBlock"
+        },
+        {
+          "target": "com.amazonaws.mturk#DeleteHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#DeleteQualificationType"
+        },
+        {
+          "target": "com.amazonaws.mturk#DeleteWorkerBlock"
+        },
+        {
+          "target": "com.amazonaws.mturk#DisassociateQualificationFromWorker"
+        },
+        {
+          "target": "com.amazonaws.mturk#GetAccountBalance"
+        },
+        {
+          "target": "com.amazonaws.mturk#GetAssignment"
+        },
+        {
+          "target": "com.amazonaws.mturk#GetFileUploadURL"
+        },
+        {
+          "target": "com.amazonaws.mturk#GetHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#GetQualificationScore"
+        },
+        {
+          "target": "com.amazonaws.mturk#GetQualificationType"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListAssignmentsForHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListBonusPayments"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListHITs"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListHITsForQualificationType"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListQualificationRequests"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListQualificationTypes"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListReviewableHITs"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListReviewPolicyResultsForHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListWorkerBlocks"
+        },
+        {
+          "target": "com.amazonaws.mturk#ListWorkersWithQualificationType"
+        },
+        {
+          "target": "com.amazonaws.mturk#NotifyWorkers"
+        },
+        {
+          "target": "com.amazonaws.mturk#RejectAssignment"
+        },
+        {
+          "target": "com.amazonaws.mturk#RejectQualificationRequest"
+        },
+        {
+          "target": "com.amazonaws.mturk#SendBonus"
+        },
+        {
+          "target": "com.amazonaws.mturk#SendTestEventNotification"
+        },
+        {
+          "target": "com.amazonaws.mturk#UpdateExpirationForHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#UpdateHITReviewStatus"
+        },
+        {
+          "target": "com.amazonaws.mturk#UpdateHITTypeOfHIT"
+        },
+        {
+          "target": "com.amazonaws.mturk#UpdateNotificationSettings"
+        },
+        {
+          "target": "com.amazonaws.mturk#UpdateQualificationType"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MTurk",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.networkmanager#AWSAccountId": {
       "type": "string",
@@ -8893,6 +8922,272 @@
     },
     "com.amazonaws.networkmanager#NetworkManager": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.networkmanager#AcceptAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#AssociateConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#AssociateCustomerGateway"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#AssociateLink"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#AssociateTransitGatewayConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateConnectAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateConnection"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateCoreNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateDevice"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateDirectConnectGatewayAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateGlobalNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateLink"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateSite"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateSiteToSiteVpnAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateTransitGatewayPeering"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateTransitGatewayRouteTableAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#CreateVpcAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteCoreNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteCoreNetworkPolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteDevice"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteGlobalNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteLink"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeletePeering"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeleteSite"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DeregisterTransitGateway"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DescribeGlobalNetworks"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DisassociateConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DisassociateCustomerGateway"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DisassociateLink"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#DisassociateTransitGatewayConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ExecuteCoreNetworkChangeSet"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetConnectAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetConnections"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetConnectPeer"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetConnectPeerAssociations"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetCoreNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetCoreNetworkChangeEvents"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetCoreNetworkChangeSet"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetCoreNetworkPolicy"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetCustomerGatewayAssociations"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetDevices"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetDirectConnectGatewayAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetLinkAssociations"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetLinks"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetNetworkResourceCounts"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetNetworkResourceRelationships"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetNetworkResources"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetNetworkRoutes"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetNetworkTelemetry"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetRouteAnalysis"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetSites"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetSiteToSiteVpnAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetTransitGatewayConnectPeerAssociations"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetTransitGatewayPeering"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetTransitGatewayRegistrations"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetTransitGatewayRouteTableAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#GetVpcAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListAttachments"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListConnectPeers"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListCoreNetworkPolicyVersions"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListCoreNetworks"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListOrganizationServiceAccessStatus"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListPeerings"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#PutCoreNetworkPolicy"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#RegisterTransitGateway"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#RejectAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#RestoreCoreNetworkPolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#StartOrganizationServiceAccessUpdate"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#StartRouteAnalysis"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#TagResource"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateConnection"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateCoreNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateDevice"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateDirectConnectGatewayAttachment"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateGlobalNetwork"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateLink"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateNetworkResourceMetadata"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateSite"
+        },
+        {
+          "target": "com.amazonaws.networkmanager#UpdateVpcAttachment"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "NetworkManager",

@@ -21,6 +21,11 @@ const Member = Schema.Struct({
 
 const Members = Schema.Record({ key: Schema.String, value: Member });
 
+// Operation reference for service operations arrays
+const OperationReference = Schema.Struct({
+  target: Schema.String,
+});
+
 // Enhanced shape definitions with members support
 const OperationShape = Schema.Struct({
   type: Schema.Literal("operation"),
@@ -32,6 +37,7 @@ const OperationShape = Schema.Struct({
 
 const ServiceShape = Schema.Struct({
   type: Schema.Literal("service"),
+  operations: Schema.optional(Schema.Array(OperationReference)),
   traits: Schema.optional(Traits),
 });
 
@@ -129,7 +135,19 @@ const Shape = Schema.Union(
 );
 export type Shape = Schema.Schema.Type<typeof Shape>;
 
+// Metadata suppression for Smithy 2.0
+const MetadataSuppression = Schema.Struct({
+  id: Schema.String,
+  namespace: Schema.String,
+});
+
+const Metadata = Schema.Struct({
+  suppressions: Schema.optional(Schema.Array(MetadataSuppression)),
+});
+
 export class Manifest extends Schema.Class<Manifest>("Manifest")({
+  smithy: Schema.optional(Schema.String), // Support Smithy version
+  metadata: Schema.optional(Metadata), // Support metadata
   shapes: Schema.Record({ key: Schema.String, value: Shape }),
 }) {}
 

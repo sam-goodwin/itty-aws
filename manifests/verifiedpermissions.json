@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.verifiedpermissions#AccessDeniedException": {
       "type": "structure",
@@ -6526,6 +6527,17 @@
     },
     "com.amazonaws.verifiedpermissions#VerifiedPermissions": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.verifiedpermissions#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#TagResource"
+        },
+        {
+          "target": "com.amazonaws.verifiedpermissions#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "VerifiedPermissions",

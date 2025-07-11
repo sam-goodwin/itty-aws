@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.rekognition#AccessDeniedException": {
       "type": "structure",
@@ -11151,6 +11180,233 @@
     },
     "com.amazonaws.rekognition#RekognitionService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.rekognition#AssociateFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CompareFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CopyProjectVersion"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateCollection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateFaceLivenessSession"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateProject"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateProjectVersion"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateStreamProcessor"
+        },
+        {
+          "target": "com.amazonaws.rekognition#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteCollection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteProject"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteProjectPolicy"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteProjectVersion"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteStreamProcessor"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DescribeCollection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DescribeProjects"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DescribeProjectVersions"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DescribeStreamProcessor"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DetectCustomLabels"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DetectFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DetectLabels"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DetectModerationLabels"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DetectProtectiveEquipment"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DetectText"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DisassociateFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#DistributeDatasetEntries"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetCelebrityInfo"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetCelebrityRecognition"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetContentModeration"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetFaceDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetFaceLivenessSessionResults"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetFaceSearch"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetLabelDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetMediaAnalysisJob"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetPersonTracking"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetSegmentDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#GetTextDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#IndexFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListCollections"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListDatasetEntries"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListDatasetLabels"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListMediaAnalysisJobs"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListProjectPolicies"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListStreamProcessors"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.rekognition#ListUsers"
+        },
+        {
+          "target": "com.amazonaws.rekognition#PutProjectPolicy"
+        },
+        {
+          "target": "com.amazonaws.rekognition#RecognizeCelebrities"
+        },
+        {
+          "target": "com.amazonaws.rekognition#SearchFaces"
+        },
+        {
+          "target": "com.amazonaws.rekognition#SearchFacesByImage"
+        },
+        {
+          "target": "com.amazonaws.rekognition#SearchUsers"
+        },
+        {
+          "target": "com.amazonaws.rekognition#SearchUsersByImage"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartCelebrityRecognition"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartContentModeration"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartFaceDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartFaceSearch"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartLabelDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartMediaAnalysisJob"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartPersonTracking"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartProjectVersion"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartSegmentDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartStreamProcessor"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StartTextDetection"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StopProjectVersion"
+        },
+        {
+          "target": "com.amazonaws.rekognition#StopStreamProcessor"
+        },
+        {
+          "target": "com.amazonaws.rekognition#TagResource"
+        },
+        {
+          "target": "com.amazonaws.rekognition#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.rekognition#UpdateDatasetEntries"
+        },
+        {
+          "target": "com.amazonaws.rekognition#UpdateStreamProcessor"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Rekognition",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudformation#AcceptTermsAndConditions": {
       "type": "boolean"
@@ -1070,6 +1099,272 @@
     },
     "com.amazonaws.cloudformation#CloudFormation": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudformation#ActivateOrganizationsAccess"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ActivateType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#BatchDescribeTypeConfigurations"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CancelUpdateStack"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ContinueUpdateRollback"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CreateChangeSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CreateGeneratedTemplate"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CreateStack"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CreateStackInstances"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CreateStackRefactor"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#CreateStackSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeactivateOrganizationsAccess"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeactivateType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeleteChangeSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeleteGeneratedTemplate"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeleteStack"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeleteStackInstances"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeleteStackSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DeregisterType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeAccountLimits"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeChangeSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeChangeSetHooks"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeGeneratedTemplate"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeOrganizationsAccess"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribePublisher"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeResourceScan"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackDriftDetectionStatus"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackInstance"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackRefactor"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackResource"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackResourceDrifts"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackResources"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStacks"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeStackSetOperation"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DescribeTypeRegistration"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DetectStackDrift"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DetectStackResourceDrift"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#DetectStackSetDrift"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#EstimateTemplateCost"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ExecuteChangeSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ExecuteStackRefactor"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#GetGeneratedTemplate"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#GetStackPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#GetTemplate"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#GetTemplateSummary"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ImportStacksToStackSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListChangeSets"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListExports"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListGeneratedTemplates"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListHookResults"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListImports"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListResourceScanRelatedResources"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListResourceScanResources"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListResourceScans"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackInstanceResourceDrifts"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackInstances"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackRefactorActions"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackRefactors"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackResources"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStacks"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackSetAutoDeploymentTargets"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackSetOperationResults"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackSetOperations"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListStackSets"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListTypeRegistrations"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListTypes"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ListTypeVersions"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#PublishType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#RecordHandlerProgress"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#RegisterPublisher"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#RegisterType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#RollbackStack"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#SetStackPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#SetTypeConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#SetTypeDefaultVersion"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#SignalResource"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StartResourceScan"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#StopStackSetOperation"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#TestType"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#UpdateGeneratedTemplate"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#UpdateStack"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#UpdateStackInstances"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#UpdateStackSet"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#UpdateTerminationProtection"
+        },
+        {
+          "target": "com.amazonaws.cloudformation#ValidateTemplate"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudFormation",

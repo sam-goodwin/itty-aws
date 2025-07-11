@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudwatch#AccountId": {
       "type": "string",
@@ -2571,6 +2600,122 @@
     },
     "com.amazonaws.cloudwatch#GraniteServiceVersion20100801": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudwatch#DeleteAlarms"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DeleteAnomalyDetector"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DeleteDashboards"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DeleteInsightRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DeleteMetricStream"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DescribeAlarmHistory"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DescribeAlarms"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DescribeAlarmsForMetric"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DescribeAnomalyDetectors"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DescribeInsightRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DisableAlarmActions"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#DisableInsightRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#EnableAlarmActions"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#EnableInsightRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#GetDashboard"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#GetInsightRuleReport"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#GetMetricData"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#GetMetricStatistics"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#GetMetricStream"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#GetMetricWidgetImage"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ListDashboards"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ListManagedInsightRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ListMetrics"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ListMetricStreams"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutAnomalyDetector"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutCompositeAlarm"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutDashboard"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutInsightRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutManagedInsightRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutMetricAlarm"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutMetricData"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#PutMetricStream"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#SetAlarmState"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#StartMetricStreams"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#StopMetricStreams"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#TagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatch#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudWatch",

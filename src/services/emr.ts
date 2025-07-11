@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface ElasticMapReduce {
   addInstanceFleet(
@@ -16,10 +16,7 @@ export interface ElasticMapReduce {
   >;
   addJobFlowSteps(
     input: AddJobFlowStepsInput,
-  ): Effect.Effect<
-    AddJobFlowStepsOutput,
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<AddJobFlowStepsOutput, InternalServerError | CommonAwsError>;
   addTags(
     input: AddTagsInput,
   ): Effect.Effect<
@@ -124,10 +121,7 @@ export interface ElasticMapReduce {
   >;
   getAutoTerminationPolicy(
     input: GetAutoTerminationPolicyInput,
-  ): Effect.Effect<
-    GetAutoTerminationPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetAutoTerminationPolicyOutput, CommonAwsError>;
   getBlockPublicAccessConfiguration(
     input: GetBlockPublicAccessConfigurationInput,
   ): Effect.Effect<
@@ -142,10 +136,7 @@ export interface ElasticMapReduce {
   >;
   getManagedScalingPolicy(
     input: GetManagedScalingPolicyInput,
-  ): Effect.Effect<
-    GetManagedScalingPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetManagedScalingPolicyOutput, CommonAwsError>;
   getOnClusterAppUIPresignedURL(
     input: GetOnClusterAppUIPresignedURLInput,
   ): Effect.Effect<
@@ -218,17 +209,17 @@ export interface ElasticMapReduce {
     ListStepsOutput,
     InternalServerException | InvalidRequestException | CommonAwsError
   >;
-  listStudioSessionMappings(
-    input: ListStudioSessionMappingsInput,
-  ): Effect.Effect<
-    ListStudioSessionMappingsOutput,
-    InternalServerError | InvalidRequestException | CommonAwsError
-  >;
   listStudios(
     input: ListStudiosInput,
   ): Effect.Effect<
     ListStudiosOutput,
     InternalServerException | InvalidRequestException | CommonAwsError
+  >;
+  listStudioSessionMappings(
+    input: ListStudioSessionMappingsInput,
+  ): Effect.Effect<
+    ListStudioSessionMappingsOutput,
+    InternalServerError | InvalidRequestException | CommonAwsError
   >;
   listSupportedInstanceTypes(
     input: ListSupportedInstanceTypesInput,
@@ -250,22 +241,13 @@ export interface ElasticMapReduce {
   >;
   modifyInstanceGroups(
     input: ModifyInstanceGroupsInput,
-  ): Effect.Effect<
-    {},
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InternalServerError | CommonAwsError>;
   putAutoScalingPolicy(
     input: PutAutoScalingPolicyInput,
-  ): Effect.Effect<
-    PutAutoScalingPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<PutAutoScalingPolicyOutput, CommonAwsError>;
   putAutoTerminationPolicy(
     input: PutAutoTerminationPolicyInput,
-  ): Effect.Effect<
-    PutAutoTerminationPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<PutAutoTerminationPolicyOutput, CommonAwsError>;
   putBlockPublicAccessConfiguration(
     input: PutBlockPublicAccessConfigurationInput,
   ): Effect.Effect<
@@ -274,28 +256,16 @@ export interface ElasticMapReduce {
   >;
   putManagedScalingPolicy(
     input: PutManagedScalingPolicyInput,
-  ): Effect.Effect<
-    PutManagedScalingPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<PutManagedScalingPolicyOutput, CommonAwsError>;
   removeAutoScalingPolicy(
     input: RemoveAutoScalingPolicyInput,
-  ): Effect.Effect<
-    RemoveAutoScalingPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<RemoveAutoScalingPolicyOutput, CommonAwsError>;
   removeAutoTerminationPolicy(
     input: RemoveAutoTerminationPolicyInput,
-  ): Effect.Effect<
-    RemoveAutoTerminationPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<RemoveAutoTerminationPolicyOutput, CommonAwsError>;
   removeManagedScalingPolicy(
     input: RemoveManagedScalingPolicyInput,
-  ): Effect.Effect<
-    RemoveManagedScalingPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<RemoveManagedScalingPolicyOutput, CommonAwsError>;
   removeTags(
     input: RemoveTagsInput,
   ): Effect.Effect<
@@ -304,34 +274,19 @@ export interface ElasticMapReduce {
   >;
   runJobFlow(
     input: RunJobFlowInput,
-  ): Effect.Effect<
-    RunJobFlowOutput,
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<RunJobFlowOutput, InternalServerError | CommonAwsError>;
   setKeepJobFlowAliveWhenNoSteps(
     input: SetKeepJobFlowAliveWhenNoStepsInput,
-  ): Effect.Effect<
-    {},
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InternalServerError | CommonAwsError>;
   setTerminationProtection(
     input: SetTerminationProtectionInput,
-  ): Effect.Effect<
-    {},
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InternalServerError | CommonAwsError>;
   setUnhealthyNodeReplacement(
     input: SetUnhealthyNodeReplacementInput,
-  ): Effect.Effect<
-    {},
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InternalServerError | CommonAwsError>;
   setVisibleToAllUsers(
     input: SetVisibleToAllUsersInput,
-  ): Effect.Effect<
-    {},
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InternalServerError | CommonAwsError>;
   startNotebookExecution(
     input: StartNotebookExecutionInput,
   ): Effect.Effect<
@@ -346,10 +301,7 @@ export interface ElasticMapReduce {
   >;
   terminateJobFlows(
     input: TerminateJobFlowsInput,
-  ): Effect.Effect<
-    {},
-    InternalServerError | CommonAwsError
-  >;
+  ): Effect.Effect<{}, InternalServerError | CommonAwsError>;
   updateStudio(
     input: UpdateStudioInput,
   ): Effect.Effect<
@@ -366,7 +318,11 @@ export interface ElasticMapReduce {
 
 export type Emr = ElasticMapReduce;
 
-export type ActionOnFailure = "TERMINATE_JOB_FLOW" | "TERMINATE_CLUSTER" | "CANCEL_AND_WAIT" | "CONTINUE";
+export type ActionOnFailure =
+  | "TERMINATE_JOB_FLOW"
+  | "TERMINATE_CLUSTER"
+  | "CANCEL_AND_WAIT"
+  | "CONTINUE";
 export interface AddInstanceFleetInput {
   ClusterId: string;
   InstanceFleet: InstanceFleetConfig;
@@ -397,9 +353,11 @@ export interface AddTagsInput {
   ResourceId: string;
   Tags: Array<Tag>;
 }
-export interface AddTagsOutput {
-}
-export type AdjustmentType = "CHANGE_IN_CAPACITY" | "PERCENT_CHANGE_IN_CAPACITY" | "EXACT_CAPACITY";
+export interface AddTagsOutput {}
+export type AdjustmentType =
+  | "CHANGE_IN_CAPACITY"
+  | "PERCENT_CHANGE_IN_CAPACITY"
+  | "EXACT_CAPACITY";
 export interface Application {
   Name?: string;
   Version?: string;
@@ -419,12 +377,21 @@ export interface AutoScalingPolicyDescription {
   Constraints?: ScalingConstraints;
   Rules?: Array<ScalingRule>;
 }
-export type AutoScalingPolicyState = "PENDING" | "ATTACHING" | "ATTACHED" | "DETACHING" | "DETACHED" | "FAILED";
+export type AutoScalingPolicyState =
+  | "PENDING"
+  | "ATTACHING"
+  | "ATTACHED"
+  | "DETACHING"
+  | "DETACHED"
+  | "FAILED";
 export interface AutoScalingPolicyStateChangeReason {
   Code?: AutoScalingPolicyStateChangeReasonCode;
   Message?: string;
 }
-export type AutoScalingPolicyStateChangeReasonCode = "USER_REQUEST" | "PROVISION_FAILURE" | "CLEANUP_FAILURE";
+export type AutoScalingPolicyStateChangeReasonCode =
+  | "USER_REQUEST"
+  | "PROVISION_FAILURE"
+  | "CLEANUP_FAILURE";
 export interface AutoScalingPolicyStatus {
   State?: AutoScalingPolicyState;
   StateChangeReason?: AutoScalingPolicyStateChangeReason;
@@ -518,12 +485,27 @@ export interface Cluster {
 }
 export type ClusterId = string;
 
-export type ClusterState = "STARTING" | "BOOTSTRAPPING" | "RUNNING" | "WAITING" | "TERMINATING" | "TERMINATED" | "TERMINATED_WITH_ERRORS";
+export type ClusterState =
+  | "STARTING"
+  | "BOOTSTRAPPING"
+  | "RUNNING"
+  | "WAITING"
+  | "TERMINATING"
+  | "TERMINATED"
+  | "TERMINATED_WITH_ERRORS";
 export interface ClusterStateChangeReason {
   Code?: ClusterStateChangeReasonCode;
   Message?: string;
 }
-export type ClusterStateChangeReasonCode = "INTERNAL_ERROR" | "VALIDATION_ERROR" | "INSTANCE_FAILURE" | "INSTANCE_FLEET_TIMEOUT" | "BOOTSTRAP_FAILURE" | "USER_REQUEST" | "STEP_FAILURE" | "ALL_STEPS_COMPLETED";
+export type ClusterStateChangeReasonCode =
+  | "INTERNAL_ERROR"
+  | "VALIDATION_ERROR"
+  | "INSTANCE_FAILURE"
+  | "INSTANCE_FLEET_TIMEOUT"
+  | "BOOTSTRAP_FAILURE"
+  | "USER_REQUEST"
+  | "STEP_FAILURE"
+  | "ALL_STEPS_COMPLETED";
 export type ClusterStateList = Array<ClusterState>;
 export interface ClusterStatus {
   State?: ClusterState;
@@ -551,7 +533,11 @@ export interface Command {
   Args?: Array<string>;
 }
 export type CommandList = Array<Command>;
-export type ComparisonOperator = "GREATER_THAN_OR_EQUAL" | "GREATER_THAN" | "LESS_THAN" | "LESS_THAN_OR_EQUAL";
+export type ComparisonOperator =
+  | "GREATER_THAN_OR_EQUAL"
+  | "GREATER_THAN"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUAL";
 export interface ComputeLimits {
   UnitType: ComputeLimitsUnitType;
   MinimumCapacityUnits: number;
@@ -619,8 +605,7 @@ export type Credentials = { UsernamePassword: UsernamePassword };
 export interface DeleteSecurityConfigurationInput {
   Name: string;
 }
-export interface DeleteSecurityConfigurationOutput {
-}
+export interface DeleteSecurityConfigurationOutput {}
 export interface DeleteStudioInput {
   StudioId: string;
 }
@@ -758,8 +743,7 @@ export interface GetAutoTerminationPolicyInput {
 export interface GetAutoTerminationPolicyOutput {
   AutoTerminationPolicy?: AutoTerminationPolicy;
 }
-export interface GetBlockPublicAccessConfigurationInput {
-}
+export interface GetBlockPublicAccessConfigurationInput {}
 export interface GetBlockPublicAccessConfigurationOutput {
   BlockPublicAccessConfiguration: BlockPublicAccessConfiguration;
   BlockPublicAccessConfigurationMetadata: BlockPublicAccessConfigurationMetadata;
@@ -884,12 +868,23 @@ export interface InstanceFleetResizingSpecifications {
   SpotResizeSpecification?: SpotResizingSpecification;
   OnDemandResizeSpecification?: OnDemandResizingSpecification;
 }
-export type InstanceFleetState = "PROVISIONING" | "BOOTSTRAPPING" | "RUNNING" | "RESIZING" | "SUSPENDED" | "TERMINATING" | "TERMINATED";
+export type InstanceFleetState =
+  | "PROVISIONING"
+  | "BOOTSTRAPPING"
+  | "RUNNING"
+  | "RESIZING"
+  | "SUSPENDED"
+  | "TERMINATING"
+  | "TERMINATED";
 export interface InstanceFleetStateChangeReason {
   Code?: InstanceFleetStateChangeReasonCode;
   Message?: string;
 }
-export type InstanceFleetStateChangeReasonCode = "INTERNAL_ERROR" | "VALIDATION_ERROR" | "INSTANCE_FAILURE" | "CLUSTER_TERMINATED";
+export type InstanceFleetStateChangeReasonCode =
+  | "INTERNAL_ERROR"
+  | "VALIDATION_ERROR"
+  | "INSTANCE_FAILURE"
+  | "CLUSTER_TERMINATED";
 export interface InstanceFleetStatus {
   State?: InstanceFleetState;
   StateChangeReason?: InstanceFleetStateChangeReason;
@@ -965,12 +960,27 @@ export interface InstanceGroupModifyConfig {
   Configurations?: Array<Configuration>;
 }
 export type InstanceGroupModifyConfigList = Array<InstanceGroupModifyConfig>;
-export type InstanceGroupState = "PROVISIONING" | "BOOTSTRAPPING" | "RUNNING" | "RECONFIGURING" | "RESIZING" | "SUSPENDED" | "TERMINATING" | "TERMINATED" | "ARRESTED" | "SHUTTING_DOWN" | "ENDED";
+export type InstanceGroupState =
+  | "PROVISIONING"
+  | "BOOTSTRAPPING"
+  | "RUNNING"
+  | "RECONFIGURING"
+  | "RESIZING"
+  | "SUSPENDED"
+  | "TERMINATING"
+  | "TERMINATED"
+  | "ARRESTED"
+  | "SHUTTING_DOWN"
+  | "ENDED";
 export interface InstanceGroupStateChangeReason {
   Code?: InstanceGroupStateChangeReasonCode;
   Message?: string;
 }
-export type InstanceGroupStateChangeReasonCode = "INTERNAL_ERROR" | "VALIDATION_ERROR" | "INSTANCE_FAILURE" | "CLUSTER_TERMINATED";
+export type InstanceGroupStateChangeReasonCode =
+  | "INTERNAL_ERROR"
+  | "VALIDATION_ERROR"
+  | "INSTANCE_FAILURE"
+  | "CLUSTER_TERMINATED";
 export interface InstanceGroupStatus {
   State?: InstanceGroupState;
   StateChangeReason?: InstanceGroupStateChangeReason;
@@ -992,12 +1002,22 @@ export interface InstanceResizePolicy {
   InstanceTerminationTimeout?: number;
 }
 export type InstanceRoleType = "MASTER" | "CORE" | "TASK";
-export type InstanceState = "AWAITING_FULFILLMENT" | "PROVISIONING" | "BOOTSTRAPPING" | "RUNNING" | "TERMINATED";
+export type InstanceState =
+  | "AWAITING_FULFILLMENT"
+  | "PROVISIONING"
+  | "BOOTSTRAPPING"
+  | "RUNNING"
+  | "TERMINATED";
 export interface InstanceStateChangeReason {
   Code?: InstanceStateChangeReasonCode;
   Message?: string;
 }
-export type InstanceStateChangeReasonCode = "INTERNAL_ERROR" | "VALIDATION_ERROR" | "INSTANCE_FAILURE" | "BOOTSTRAP_FAILURE" | "CLUSTER_TERMINATED";
+export type InstanceStateChangeReasonCode =
+  | "INTERNAL_ERROR"
+  | "VALIDATION_ERROR"
+  | "INSTANCE_FAILURE"
+  | "BOOTSTRAP_FAILURE"
+  | "CLUSTER_TERMINATED";
 export type InstanceStateList = Array<InstanceState>;
 export interface InstanceStatus {
   State?: InstanceState;
@@ -1038,8 +1058,7 @@ export type Integer = number;
 
 export declare class InternalServerError extends Data.TaggedError(
   "InternalServerError",
-)<{
-}> {}
+)<{}> {}
 export declare class InternalServerException extends Data.TaggedError(
   "InternalServerException",
 )<{
@@ -1069,7 +1088,15 @@ export interface JobFlowDetail {
   ScaleDownBehavior?: ScaleDownBehavior;
 }
 export type JobFlowDetailList = Array<JobFlowDetail>;
-export type JobFlowExecutionState = "STARTING" | "BOOTSTRAPPING" | "RUNNING" | "WAITING" | "SHUTTING_DOWN" | "TERMINATED" | "COMPLETED" | "FAILED";
+export type JobFlowExecutionState =
+  | "STARTING"
+  | "BOOTSTRAPPING"
+  | "RUNNING"
+  | "WAITING"
+  | "SHUTTING_DOWN"
+  | "TERMINATED"
+  | "COMPLETED"
+  | "FAILED";
 export type JobFlowExecutionStateList = Array<JobFlowExecutionState>;
 export interface JobFlowExecutionStatusDetail {
   State: JobFlowExecutionState;
@@ -1290,7 +1317,17 @@ export interface NotebookExecution {
   OutputNotebookFormat?: OutputNotebookFormat;
   EnvironmentVariables?: Record<string, string>;
 }
-export type NotebookExecutionStatus = "START_PENDING" | "STARTING" | "RUNNING" | "FINISHING" | "FINISHED" | "FAILING" | "FAILED" | "STOP_PENDING" | "STOPPING" | "STOPPED";
+export type NotebookExecutionStatus =
+  | "START_PENDING"
+  | "STARTING"
+  | "RUNNING"
+  | "FINISHING"
+  | "FINISHED"
+  | "FAILING"
+  | "FAILED"
+  | "STOP_PENDING"
+  | "STOPPING"
+  | "STOPPED";
 export interface NotebookExecutionSummary {
   NotebookExecutionId?: string;
   EditorId?: string;
@@ -1310,15 +1347,24 @@ export interface NotebookS3LocationFromInput {
   Bucket?: string;
   Key?: string;
 }
-export type OnClusterAppUIType = "SparkHistoryServer" | "YarnTimelineService" | "TezUI" | "ApplicationMaster" | "JobHistoryServer" | "ResourceManager";
+export type OnClusterAppUIType =
+  | "SparkHistoryServer"
+  | "YarnTimelineService"
+  | "TezUI"
+  | "ApplicationMaster"
+  | "JobHistoryServer"
+  | "ResourceManager";
 export interface OnDemandCapacityReservationOptions {
   UsageStrategy?: OnDemandCapacityReservationUsageStrategy;
   CapacityReservationPreference?: OnDemandCapacityReservationPreference;
   CapacityReservationResourceGroupArn?: string;
 }
 export type OnDemandCapacityReservationPreference = "OPEN" | "NONE";
-export type OnDemandCapacityReservationUsageStrategy = "USE_CAPACITY_RESERVATIONS_FIRST";
-export type OnDemandProvisioningAllocationStrategy = "LOWEST_PRICE" | "PRIORITIZED";
+export type OnDemandCapacityReservationUsageStrategy =
+  "USE_CAPACITY_RESERVATIONS_FIRST";
+export type OnDemandProvisioningAllocationStrategy =
+  | "LOWEST_PRICE"
+  | "PRIORITIZED";
 export interface OnDemandProvisioningSpecification {
   AllocationStrategy: OnDemandProvisioningAllocationStrategy;
   CapacityReservationOptions?: OnDemandCapacityReservationOptions;
@@ -1360,7 +1406,11 @@ export interface PlacementGroupConfig {
   PlacementStrategy?: PlacementGroupStrategy;
 }
 export type PlacementGroupConfigList = Array<PlacementGroupConfig>;
-export type PlacementGroupStrategy = "SPREAD" | "PARTITION" | "CLUSTER" | "NONE";
+export type PlacementGroupStrategy =
+  | "SPREAD"
+  | "PARTITION"
+  | "CLUSTER"
+  | "NONE";
 export interface PlacementType {
   AvailabilityZone?: string;
   AvailabilityZones?: Array<string>;
@@ -1388,19 +1438,16 @@ export interface PutAutoTerminationPolicyInput {
   ClusterId: string;
   AutoTerminationPolicy?: AutoTerminationPolicy;
 }
-export interface PutAutoTerminationPolicyOutput {
-}
+export interface PutAutoTerminationPolicyOutput {}
 export interface PutBlockPublicAccessConfigurationInput {
   BlockPublicAccessConfiguration: BlockPublicAccessConfiguration;
 }
-export interface PutBlockPublicAccessConfigurationOutput {
-}
+export interface PutBlockPublicAccessConfigurationOutput {}
 export interface PutManagedScalingPolicyInput {
   ClusterId: string;
   ManagedScalingPolicy: ManagedScalingPolicy;
 }
-export interface PutManagedScalingPolicyOutput {
-}
+export interface PutManagedScalingPolicyOutput {}
 export type ReconfigurationType = "OVERWRITE" | "MERGE";
 export interface ReleaseLabelFilter {
   Prefix?: string;
@@ -1410,24 +1457,20 @@ export interface RemoveAutoScalingPolicyInput {
   ClusterId: string;
   InstanceGroupId: string;
 }
-export interface RemoveAutoScalingPolicyOutput {
-}
+export interface RemoveAutoScalingPolicyOutput {}
 export interface RemoveAutoTerminationPolicyInput {
   ClusterId: string;
 }
-export interface RemoveAutoTerminationPolicyOutput {
-}
+export interface RemoveAutoTerminationPolicyOutput {}
 export interface RemoveManagedScalingPolicyInput {
   ClusterId: string;
 }
-export interface RemoveManagedScalingPolicyOutput {
-}
+export interface RemoveManagedScalingPolicyOutput {}
 export interface RemoveTagsInput {
   ResourceId: string;
   TagKeys: Array<string>;
 }
-export interface RemoveTagsOutput {
-}
+export interface RemoveTagsOutput {}
 export type RepoUpgradeOnBoot = "SECURITY" | "NONE";
 export type ResourceId = string;
 
@@ -1468,7 +1511,9 @@ export interface RunJobFlowOutput {
   JobFlowId?: string;
   ClusterArn?: string;
 }
-export type ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR" | "TERMINATE_AT_TASK_COMPLETION";
+export type ScaleDownBehavior =
+  | "TERMINATE_AT_INSTANCE_HOUR"
+  | "TERMINATE_AT_TASK_COMPLETION";
 export interface ScalingAction {
   Market?: MarketType;
   SimpleScalingPolicyConfiguration: SimpleScalingPolicyConfiguration;
@@ -1546,14 +1591,21 @@ export interface SimplifiedApplication {
   Version?: string;
 }
 export type SimplifiedApplicationList = Array<SimplifiedApplication>;
-export type SpotProvisioningAllocationStrategy = "CAPACITY_OPTIMIZED" | "PRICE_CAPACITY_OPTIMIZED" | "LOWEST_PRICE" | "DIVERSIFIED" | "CAPACITY_OPTIMIZED_PRIORITIZED";
+export type SpotProvisioningAllocationStrategy =
+  | "CAPACITY_OPTIMIZED"
+  | "PRICE_CAPACITY_OPTIMIZED"
+  | "LOWEST_PRICE"
+  | "DIVERSIFIED"
+  | "CAPACITY_OPTIMIZED_PRIORITIZED";
 export interface SpotProvisioningSpecification {
   TimeoutDurationMinutes: number;
   TimeoutAction: SpotProvisioningTimeoutAction;
   BlockDurationMinutes?: number;
   AllocationStrategy?: SpotProvisioningAllocationStrategy;
 }
-export type SpotProvisioningTimeoutAction = "SWITCH_TO_ON_DEMAND" | "TERMINATE_CLUSTER";
+export type SpotProvisioningTimeoutAction =
+  | "SWITCH_TO_ON_DEMAND"
+  | "TERMINATE_CLUSTER";
 export interface SpotResizingSpecification {
   TimeoutDurationMinutes?: number;
   AllocationStrategy?: SpotProvisioningAllocationStrategy;
@@ -1575,7 +1627,12 @@ export interface StartNotebookExecutionInput {
 export interface StartNotebookExecutionOutput {
   NotebookExecutionId?: string;
 }
-export type Statistic = "SAMPLE_COUNT" | "AVERAGE" | "SUM" | "MINIMUM" | "MAXIMUM";
+export type Statistic =
+  | "SAMPLE_COUNT"
+  | "AVERAGE"
+  | "SUM"
+  | "MINIMUM"
+  | "MAXIMUM";
 export interface Step {
   Id?: string;
   Name?: string;
@@ -1596,7 +1653,14 @@ export interface StepDetail {
   ExecutionStatusDetail: StepExecutionStatusDetail;
 }
 export type StepDetailList = Array<StepDetail>;
-export type StepExecutionState = "PENDING" | "RUNNING" | "CONTINUE" | "COMPLETED" | "CANCELLED" | "FAILED" | "INTERRUPTED";
+export type StepExecutionState =
+  | "PENDING"
+  | "RUNNING"
+  | "CONTINUE"
+  | "COMPLETED"
+  | "CANCELLED"
+  | "FAILED"
+  | "INTERRUPTED";
 export interface StepExecutionStatusDetail {
   State: StepExecutionState;
   CreationDateTime: Date | string;
@@ -1607,7 +1671,14 @@ export interface StepExecutionStatusDetail {
 export type StepId = string;
 
 export type StepIdsList = Array<string>;
-export type StepState = "PENDING" | "CANCEL_PENDING" | "RUNNING" | "COMPLETED" | "CANCELLED" | "FAILED" | "INTERRUPTED";
+export type StepState =
+  | "PENDING"
+  | "CANCEL_PENDING"
+  | "RUNNING"
+  | "COMPLETED"
+  | "CANCELLED"
+  | "FAILED"
+  | "INTERRUPTED";
 export interface StepStateChangeReason {
   Code?: StepStateChangeReasonCode;
   Message?: string;
@@ -1750,17 +1821,13 @@ export declare namespace AddInstanceFleet {
 export declare namespace AddInstanceGroups {
   export type Input = AddInstanceGroupsInput;
   export type Output = AddInstanceGroupsOutput;
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace AddJobFlowSteps {
   export type Input = AddJobFlowStepsInput;
   export type Output = AddJobFlowStepsOutput;
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace AddTags {
@@ -1856,9 +1923,7 @@ export declare namespace DescribeCluster {
 export declare namespace DescribeJobFlows {
   export type Input = DescribeJobFlowsInput;
   export type Output = DescribeJobFlowsOutput;
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace DescribeNotebookExecution {
@@ -1918,8 +1983,7 @@ export declare namespace DescribeStudio {
 export declare namespace GetAutoTerminationPolicy {
   export type Input = GetAutoTerminationPolicyInput;
   export type Output = GetAutoTerminationPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetBlockPublicAccessConfiguration {
@@ -1943,8 +2007,7 @@ export declare namespace GetClusterSessionCredentials {
 export declare namespace GetManagedScalingPolicy {
   export type Input = GetManagedScalingPolicyInput;
   export type Output = GetManagedScalingPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetOnClusterAppUIPresignedURL {
@@ -2055,20 +2118,20 @@ export declare namespace ListSteps {
     | CommonAwsError;
 }
 
-export declare namespace ListStudioSessionMappings {
-  export type Input = ListStudioSessionMappingsInput;
-  export type Output = ListStudioSessionMappingsOutput;
-  export type Error =
-    | InternalServerError
-    | InvalidRequestException
-    | CommonAwsError;
-}
-
 export declare namespace ListStudios {
   export type Input = ListStudiosInput;
   export type Output = ListStudiosOutput;
   export type Error =
     | InternalServerException
+    | InvalidRequestException
+    | CommonAwsError;
+}
+
+export declare namespace ListStudioSessionMappings {
+  export type Input = ListStudioSessionMappingsInput;
+  export type Output = ListStudioSessionMappingsOutput;
+  export type Error =
+    | InternalServerError
     | InvalidRequestException
     | CommonAwsError;
 }
@@ -2103,23 +2166,19 @@ export declare namespace ModifyInstanceFleet {
 export declare namespace ModifyInstanceGroups {
   export type Input = ModifyInstanceGroupsInput;
   export type Output = {};
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace PutAutoScalingPolicy {
   export type Input = PutAutoScalingPolicyInput;
   export type Output = PutAutoScalingPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace PutAutoTerminationPolicy {
   export type Input = PutAutoTerminationPolicyInput;
   export type Output = PutAutoTerminationPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace PutBlockPublicAccessConfiguration {
@@ -2134,29 +2193,25 @@ export declare namespace PutBlockPublicAccessConfiguration {
 export declare namespace PutManagedScalingPolicy {
   export type Input = PutManagedScalingPolicyInput;
   export type Output = PutManagedScalingPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace RemoveAutoScalingPolicy {
   export type Input = RemoveAutoScalingPolicyInput;
   export type Output = RemoveAutoScalingPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace RemoveAutoTerminationPolicy {
   export type Input = RemoveAutoTerminationPolicyInput;
   export type Output = RemoveAutoTerminationPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace RemoveManagedScalingPolicy {
   export type Input = RemoveManagedScalingPolicyInput;
   export type Output = RemoveManagedScalingPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace RemoveTags {
@@ -2171,41 +2226,31 @@ export declare namespace RemoveTags {
 export declare namespace RunJobFlow {
   export type Input = RunJobFlowInput;
   export type Output = RunJobFlowOutput;
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace SetKeepJobFlowAliveWhenNoSteps {
   export type Input = SetKeepJobFlowAliveWhenNoStepsInput;
   export type Output = {};
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace SetTerminationProtection {
   export type Input = SetTerminationProtectionInput;
   export type Output = {};
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace SetUnhealthyNodeReplacement {
   export type Input = SetUnhealthyNodeReplacementInput;
   export type Output = {};
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace SetVisibleToAllUsers {
   export type Input = SetVisibleToAllUsersInput;
   export type Output = {};
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace StartNotebookExecution {
@@ -2229,9 +2274,7 @@ export declare namespace StopNotebookExecution {
 export declare namespace TerminateJobFlows {
   export type Input = TerminateJobFlowsInput;
   export type Output = {};
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace UpdateStudio {
@@ -2251,4 +2294,3 @@ export declare namespace UpdateStudioSessionMapping {
     | InvalidRequestException
     | CommonAwsError;
 }
-

@@ -1,90 +1,156 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Account {
   acceptPrimaryEmailUpdate(
     input: AcceptPrimaryEmailUpdateRequest,
   ): Effect.Effect<
     AcceptPrimaryEmailUpdateResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteAlternateContact(
     input: DeleteAlternateContactRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   disableRegion(
     input: DisableRegionRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   enableRegion(
     input: EnableRegionRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getAccountInformation(
     input: GetAccountInformationRequest,
   ): Effect.Effect<
     GetAccountInformationResponse,
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getAlternateContact(
     input: GetAlternateContactRequest,
   ): Effect.Effect<
     GetAlternateContactResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getContactInformation(
     input: GetContactInformationRequest,
   ): Effect.Effect<
     GetContactInformationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getPrimaryEmail(
     input: GetPrimaryEmailRequest,
   ): Effect.Effect<
     GetPrimaryEmailResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getRegionOptStatus(
     input: GetRegionOptStatusRequest,
   ): Effect.Effect<
     GetRegionOptStatusResponse,
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listRegions(
     input: ListRegionsRequest,
   ): Effect.Effect<
     ListRegionsResponse,
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   putAccountName(
     input: PutAccountNameRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   putAlternateContact(
     input: PutAlternateContactRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   putContactInformation(
     input: PutContactInformationRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   startPrimaryEmailUpdate(
     input: StartPrimaryEmailUpdateRequest,
   ): Effect.Effect<
     StartPrimaryEmailUpdateResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -458,4 +524,3 @@ export declare namespace StartPrimaryEmailUpdate {
     | ValidationException
     | CommonAwsError;
 }
-

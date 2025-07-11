@@ -1,7 +1,62 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.iotfleethub#AWSIoTFleetHub": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iotfleethub#CreateApplication"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#DeleteApplication"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#DescribeApplication"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ListApplications"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#TagResource"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.iotfleethub#UpdateApplication"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IoTFleetHub",

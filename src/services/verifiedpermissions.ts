@@ -1,186 +1,37 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface VerifiedPermissions {
-  batchGetPolicy(
-    input: BatchGetPolicyInput,
-  ): Effect.Effect<
-    BatchGetPolicyOutput,
-    CommonAwsError
-  >;
-  batchIsAuthorized(
-    input: BatchIsAuthorizedInput,
-  ): Effect.Effect<
-    BatchIsAuthorizedOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  batchIsAuthorizedWithToken(
-    input: BatchIsAuthorizedWithTokenInput,
-  ): Effect.Effect<
-    BatchIsAuthorizedWithTokenOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  createIdentitySource(
-    input: CreateIdentitySourceInput,
-  ): Effect.Effect<
-    CreateIdentitySourceOutput,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  createPolicy(
-    input: CreatePolicyInput,
-  ): Effect.Effect<
-    CreatePolicyOutput,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  createPolicyStore(
-    input: CreatePolicyStoreInput,
-  ): Effect.Effect<
-    CreatePolicyStoreOutput,
-    ConflictException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  createPolicyTemplate(
-    input: CreatePolicyTemplateInput,
-  ): Effect.Effect<
-    CreatePolicyTemplateOutput,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  deleteIdentitySource(
-    input: DeleteIdentitySourceInput,
-  ): Effect.Effect<
-    DeleteIdentitySourceOutput,
-    ConflictException | ResourceNotFoundException | CommonAwsError
-  >;
-  deletePolicy(
-    input: DeletePolicyInput,
-  ): Effect.Effect<
-    DeletePolicyOutput,
-    ConflictException | ResourceNotFoundException | CommonAwsError
-  >;
-  deletePolicyStore(
-    input: DeletePolicyStoreInput,
-  ): Effect.Effect<
-    DeletePolicyStoreOutput,
-    InvalidStateException | CommonAwsError
-  >;
-  deletePolicyTemplate(
-    input: DeletePolicyTemplateInput,
-  ): Effect.Effect<
-    DeletePolicyTemplateOutput,
-    ConflictException | ResourceNotFoundException | CommonAwsError
-  >;
-  getIdentitySource(
-    input: GetIdentitySourceInput,
-  ): Effect.Effect<
-    GetIdentitySourceOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  getPolicy(
-    input: GetPolicyInput,
-  ): Effect.Effect<
-    GetPolicyOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  getPolicyStore(
-    input: GetPolicyStoreInput,
-  ): Effect.Effect<
-    GetPolicyStoreOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  getPolicyTemplate(
-    input: GetPolicyTemplateInput,
-  ): Effect.Effect<
-    GetPolicyTemplateOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  getSchema(
-    input: GetSchemaInput,
-  ): Effect.Effect<
-    GetSchemaOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  isAuthorized(
-    input: IsAuthorizedInput,
-  ): Effect.Effect<
-    IsAuthorizedOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  isAuthorizedWithToken(
-    input: IsAuthorizedWithTokenInput,
-  ): Effect.Effect<
-    IsAuthorizedWithTokenOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  listIdentitySources(
-    input: ListIdentitySourcesInput,
-  ): Effect.Effect<
-    ListIdentitySourcesOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  listPolicies(
-    input: ListPoliciesInput,
-  ): Effect.Effect<
-    ListPoliciesOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
-  listPolicyStores(
-    input: ListPolicyStoresInput,
-  ): Effect.Effect<
-    ListPolicyStoresOutput,
-    CommonAwsError
-  >;
-  listPolicyTemplates(
-    input: ListPolicyTemplatesInput,
-  ): Effect.Effect<
-    ListPolicyTemplatesOutput,
-    ResourceNotFoundException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
     ListTagsForResourceOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | CommonAwsError
-  >;
-  putSchema(
-    input: PutSchemaInput,
-  ): Effect.Effect<
-    PutSchemaOutput,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
     TagResourceOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | TooManyTagsException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
     UntagResourceOutput,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | CommonAwsError
-  >;
-  updateIdentitySource(
-    input: UpdateIdentitySourceInput,
-  ): Effect.Effect<
-    UpdateIdentitySourceOutput,
-    ConflictException | ResourceNotFoundException | CommonAwsError
-  >;
-  updatePolicy(
-    input: UpdatePolicyInput,
-  ): Effect.Effect<
-    UpdatePolicyOutput,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | CommonAwsError
-  >;
-  updatePolicyStore(
-    input: UpdatePolicyStoreInput,
-  ): Effect.Effect<
-    UpdatePolicyStoreOutput,
-    ConflictException | ResourceNotFoundException | CommonAwsError
-  >;
-  updatePolicyTemplate(
-    input: UpdatePolicyTemplateInput,
-  ): Effect.Effect<
-    UpdatePolicyTemplateOutput,
-    ConflictException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
@@ -202,11 +53,21 @@ export type ActionType = string;
 
 export type AmazonResourceName = string;
 
-export type AttributeValue = { boolean: boolean } | { entityIdentifier: EntityIdentifier } | { long: number } | { string: string } | { set: Array<AttributeValue> } | { record: Record<string, AttributeValue> } | { ipaddr: string } | { decimal: string };
+export type AttributeValue =
+  | { boolean: boolean }
+  | { entityIdentifier: EntityIdentifier }
+  | { long: number }
+  | { string: string }
+  | { set: Array<AttributeValue> }
+  | { record: Record<string, AttributeValue> }
+  | { ipaddr: string }
+  | { decimal: string };
 export type Audience = string;
 
 export type Audiences = Array<string>;
-export type BatchGetPolicyErrorCode = "POLICY_STORE_NOT_FOUND" | "POLICY_NOT_FOUND";
+export type BatchGetPolicyErrorCode =
+  | "POLICY_STORE_NOT_FOUND"
+  | "POLICY_NOT_FOUND";
 export interface BatchGetPolicyErrorItem {
   code: BatchGetPolicyErrorCode;
   policyStoreId: string;
@@ -269,7 +130,8 @@ export interface BatchIsAuthorizedWithTokenInputItem {
   resource?: EntityIdentifier;
   context?: ContextDefinition;
 }
-export type BatchIsAuthorizedWithTokenInputList = Array<BatchIsAuthorizedWithTokenInputItem>;
+export type BatchIsAuthorizedWithTokenInputList =
+  Array<BatchIsAuthorizedWithTokenInputItem>;
 export interface BatchIsAuthorizedWithTokenOutput {
   principal?: EntityIdentifier;
   results: Array<BatchIsAuthorizedWithTokenOutputItem>;
@@ -280,7 +142,8 @@ export interface BatchIsAuthorizedWithTokenOutputItem {
   determiningPolicies: Array<DeterminingPolicyItem>;
   errors: Array<EvaluationErrorItem>;
 }
-export type BatchIsAuthorizedWithTokenOutputList = Array<BatchIsAuthorizedWithTokenOutputItem>;
+export type BatchIsAuthorizedWithTokenOutputList =
+  Array<BatchIsAuthorizedWithTokenOutputItem>;
 export type BooleanAttribute = boolean;
 
 export type CedarJson = string;
@@ -317,16 +180,24 @@ export interface CognitoUserPoolConfigurationItem {
   issuer: string;
   groupConfiguration?: CognitoGroupConfigurationItem;
 }
-export type Configuration = { cognitoUserPoolConfiguration: CognitoUserPoolConfiguration } | { openIdConnectConfiguration: OpenIdConnectConfiguration };
-export type ConfigurationDetail = { cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail } | { openIdConnectConfiguration: OpenIdConnectConfigurationDetail };
-export type ConfigurationItem = { cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem } | { openIdConnectConfiguration: OpenIdConnectConfigurationItem };
+export type Configuration =
+  | { cognitoUserPoolConfiguration: CognitoUserPoolConfiguration }
+  | { openIdConnectConfiguration: OpenIdConnectConfiguration };
+export type ConfigurationDetail =
+  | { cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail }
+  | { openIdConnectConfiguration: OpenIdConnectConfigurationDetail };
+export type ConfigurationItem =
+  | { cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem }
+  | { openIdConnectConfiguration: OpenIdConnectConfigurationItem };
 export declare class ConflictException extends Data.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
   readonly resources: Array<ResourceConflict>;
 }> {}
-export type ContextDefinition = { contextMap: Record<string, AttributeValue> } | { cedarJson: string };
+export type ContextDefinition =
+  | { contextMap: Record<string, AttributeValue> }
+  | { cedarJson: string };
 export type ContextMap = Record<string, AttributeValue>;
 export interface CreateIdentitySourceInput {
   clientToken?: string;
@@ -388,25 +259,21 @@ export interface DeleteIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
 }
-export interface DeleteIdentitySourceOutput {
-}
+export interface DeleteIdentitySourceOutput {}
 export interface DeletePolicyInput {
   policyStoreId: string;
   policyId: string;
 }
-export interface DeletePolicyOutput {
-}
+export interface DeletePolicyOutput {}
 export interface DeletePolicyStoreInput {
   policyStoreId: string;
 }
-export interface DeletePolicyStoreOutput {
-}
+export interface DeletePolicyStoreOutput {}
 export interface DeletePolicyTemplateInput {
   policyStoreId: string;
   policyTemplateId: string;
 }
-export interface DeletePolicyTemplateOutput {
-}
+export interface DeletePolicyTemplateOutput {}
 export type DeletionProtection = "ENABLED" | "DISABLED";
 export interface DeterminingPolicyItem {
   policyId: string;
@@ -414,7 +281,9 @@ export interface DeterminingPolicyItem {
 export type DeterminingPolicyList = Array<DeterminingPolicyItem>;
 export type DiscoveryUrl = string;
 
-export type EntitiesDefinition = { entityList: Array<EntityItem> } | { cedarJson: string };
+export type EntitiesDefinition =
+  | { entityList: Array<EntityItem> }
+  | { cedarJson: string };
 export type EntityAttributes = Record<string, AttributeValue>;
 export type EntityId = string;
 
@@ -430,7 +299,9 @@ export interface EntityItem {
   parents?: Array<EntityIdentifier>;
 }
 export type EntityList = Array<EntityItem>;
-export type EntityReference = { unspecified: boolean } | { identifier: EntityIdentifier };
+export type EntityReference =
+  | { unspecified: boolean }
+  | { identifier: EntityIdentifier };
 export type EntityType = string;
 
 export interface EvaluationErrorItem {
@@ -685,14 +556,26 @@ export interface OpenIdConnectIdentityTokenConfigurationItem {
   principalIdClaim?: string;
   clientIds?: Array<string>;
 }
-export type OpenIdConnectTokenSelection = { accessTokenOnly: OpenIdConnectAccessTokenConfiguration } | { identityTokenOnly: OpenIdConnectIdentityTokenConfiguration };
-export type OpenIdConnectTokenSelectionDetail = { accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail } | { identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail };
-export type OpenIdConnectTokenSelectionItem = { accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem } | { identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem };
+export type OpenIdConnectTokenSelection =
+  | { accessTokenOnly: OpenIdConnectAccessTokenConfiguration }
+  | { identityTokenOnly: OpenIdConnectIdentityTokenConfiguration };
+export type OpenIdConnectTokenSelectionDetail =
+  | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail }
+  | { identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail };
+export type OpenIdConnectTokenSelectionItem =
+  | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem }
+  | { identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem };
 export type OpenIdIssuer = "COGNITO";
 export type ParentList = Array<EntityIdentifier>;
-export type PolicyDefinition = { static: StaticPolicyDefinition } | { templateLinked: TemplateLinkedPolicyDefinition };
-export type PolicyDefinitionDetail = { static: StaticPolicyDefinitionDetail } | { templateLinked: TemplateLinkedPolicyDefinitionDetail };
-export type PolicyDefinitionItem = { static: StaticPolicyDefinitionItem } | { templateLinked: TemplateLinkedPolicyDefinitionItem };
+export type PolicyDefinition =
+  | { static: StaticPolicyDefinition }
+  | { templateLinked: TemplateLinkedPolicyDefinition };
+export type PolicyDefinitionDetail =
+  | { static: StaticPolicyDefinitionDetail }
+  | { templateLinked: TemplateLinkedPolicyDefinitionDetail };
+export type PolicyDefinitionItem =
+  | { static: StaticPolicyDefinitionItem }
+  | { templateLinked: TemplateLinkedPolicyDefinitionItem };
 export type PolicyEffect = "PERMIT" | "FORBID";
 export interface PolicyFilter {
   principal?: EntityReference;
@@ -769,7 +652,12 @@ export declare class ResourceNotFoundException extends Data.TaggedError(
   readonly resourceId: string;
   readonly resourceType: ResourceType;
 }> {}
-export type ResourceType = "IDENTITY_SOURCE" | "POLICY_STORE" | "POLICY" | "POLICY_TEMPLATE" | "SCHEMA";
+export type ResourceType =
+  | "IDENTITY_SOURCE"
+  | "POLICY_STORE"
+  | "POLICY"
+  | "POLICY_TEMPLATE"
+  | "SCHEMA";
 export type SchemaDefinition = { cedarJson: string };
 export type SchemaJson = string;
 
@@ -806,8 +694,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceOutput {
-}
+export interface TagResourceOutput {}
 export type TagValue = string;
 
 export interface TemplateLinkedPolicyDefinition {
@@ -846,8 +733,7 @@ export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceOutput {
-}
+export interface UntagResourceOutput {}
 export interface UpdateCognitoGroupConfiguration {
   groupEntityType: string;
 }
@@ -856,7 +742,9 @@ export interface UpdateCognitoUserPoolConfiguration {
   clientIds?: Array<string>;
   groupConfiguration?: UpdateCognitoGroupConfiguration;
 }
-export type UpdateConfiguration = { cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration } | { openIdConnectConfiguration: UpdateOpenIdConnectConfiguration };
+export type UpdateConfiguration =
+  | { cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration }
+  | { openIdConnectConfiguration: UpdateOpenIdConnectConfiguration };
 export interface UpdateIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
@@ -887,7 +775,9 @@ export interface UpdateOpenIdConnectIdentityTokenConfiguration {
   principalIdClaim?: string;
   clientIds?: Array<string>;
 }
-export type UpdateOpenIdConnectTokenSelection = { accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration } | { identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration };
+export type UpdateOpenIdConnectTokenSelection =
+  | { accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration }
+  | { identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration };
 export type UpdatePolicyDefinition = { static: UpdateStaticPolicyDefinition };
 export interface UpdatePolicyInput {
   policyStoreId: string;
@@ -950,190 +840,6 @@ export type ValidationMode = "OFF" | "STRICT";
 export interface ValidationSettings {
   mode: ValidationMode;
 }
-export declare namespace BatchGetPolicy {
-  export type Input = BatchGetPolicyInput;
-  export type Output = BatchGetPolicyOutput;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace BatchIsAuthorized {
-  export type Input = BatchIsAuthorizedInput;
-  export type Output = BatchIsAuthorizedOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace BatchIsAuthorizedWithToken {
-  export type Input = BatchIsAuthorizedWithTokenInput;
-  export type Output = BatchIsAuthorizedWithTokenOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace CreateIdentitySource {
-  export type Input = CreateIdentitySourceInput;
-  export type Output = CreateIdentitySourceOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace CreatePolicy {
-  export type Input = CreatePolicyInput;
-  export type Output = CreatePolicyOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace CreatePolicyStore {
-  export type Input = CreatePolicyStoreInput;
-  export type Output = CreatePolicyStoreOutput;
-  export type Error =
-    | ConflictException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace CreatePolicyTemplate {
-  export type Input = CreatePolicyTemplateInput;
-  export type Output = CreatePolicyTemplateOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteIdentitySource {
-  export type Input = DeleteIdentitySourceInput;
-  export type Output = DeleteIdentitySourceOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeletePolicy {
-  export type Input = DeletePolicyInput;
-  export type Output = DeletePolicyOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DeletePolicyStore {
-  export type Input = DeletePolicyStoreInput;
-  export type Output = DeletePolicyStoreOutput;
-  export type Error =
-    | InvalidStateException
-    | CommonAwsError;
-}
-
-export declare namespace DeletePolicyTemplate {
-  export type Input = DeletePolicyTemplateInput;
-  export type Output = DeletePolicyTemplateOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetIdentitySource {
-  export type Input = GetIdentitySourceInput;
-  export type Output = GetIdentitySourceOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetPolicy {
-  export type Input = GetPolicyInput;
-  export type Output = GetPolicyOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetPolicyStore {
-  export type Input = GetPolicyStoreInput;
-  export type Output = GetPolicyStoreOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetPolicyTemplate {
-  export type Input = GetPolicyTemplateInput;
-  export type Output = GetPolicyTemplateOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace GetSchema {
-  export type Input = GetSchemaInput;
-  export type Output = GetSchemaOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace IsAuthorized {
-  export type Input = IsAuthorizedInput;
-  export type Output = IsAuthorizedOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace IsAuthorizedWithToken {
-  export type Input = IsAuthorizedWithTokenInput;
-  export type Output = IsAuthorizedWithTokenOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListIdentitySources {
-  export type Input = ListIdentitySourcesInput;
-  export type Output = ListIdentitySourcesOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListPolicies {
-  export type Input = ListPoliciesInput;
-  export type Output = ListPoliciesOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace ListPolicyStores {
-  export type Input = ListPolicyStoresInput;
-  export type Output = ListPolicyStoresOutput;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListPolicyTemplates {
-  export type Input = ListPolicyTemplatesInput;
-  export type Output = ListPolicyTemplatesOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceInput;
   export type Output = ListTagsForResourceOutput;
@@ -1142,16 +848,6 @@ export declare namespace ListTagsForResource {
     | InternalServerException
     | ResourceNotFoundException
     | ThrottlingException
-    | CommonAwsError;
-}
-
-export declare namespace PutSchema {
-  export type Input = PutSchemaInput;
-  export type Output = PutSchemaOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
     | CommonAwsError;
 }
 
@@ -1177,41 +873,3 @@ export declare namespace UntagResource {
     | ThrottlingException
     | CommonAwsError;
 }
-
-export declare namespace UpdateIdentitySource {
-  export type Input = UpdateIdentitySourceInput;
-  export type Output = UpdateIdentitySourceOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace UpdatePolicy {
-  export type Input = UpdatePolicyInput;
-  export type Output = UpdatePolicyOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | CommonAwsError;
-}
-
-export declare namespace UpdatePolicyStore {
-  export type Input = UpdatePolicyStoreInput;
-  export type Output = UpdatePolicyStoreOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace UpdatePolicyTemplate {
-  export type Input = UpdatePolicyTemplateInput;
-  export type Output = UpdatePolicyTemplateOutput;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-

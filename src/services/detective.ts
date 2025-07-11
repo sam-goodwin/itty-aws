@@ -1,180 +1,305 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonDetective {
   acceptInvitation(
     input: AcceptInvitationRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   batchGetGraphMemberDatasources(
     input: BatchGetGraphMemberDatasourcesRequest,
   ): Effect.Effect<
     BatchGetGraphMemberDatasourcesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   batchGetMembershipDatasources(
     input: BatchGetMembershipDatasourcesRequest,
   ): Effect.Effect<
     BatchGetMembershipDatasourcesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   createGraph(
     input: CreateGraphRequest,
   ): Effect.Effect<
     CreateGraphResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | CommonAwsError
   >;
   createMembers(
     input: CreateMembersRequest,
   ): Effect.Effect<
     CreateMembersResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteGraph(
     input: DeleteGraphRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteMembers(
     input: DeleteMembersRequest,
   ): Effect.Effect<
     DeleteMembersResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeOrganizationConfiguration(
     input: DescribeOrganizationConfigurationRequest,
   ): Effect.Effect<
     DescribeOrganizationConfigurationResponse,
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
-  disableOrganizationAdminAccount(
-    input: {},
-  ): Effect.Effect<
+  disableOrganizationAdminAccount(input: {}): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   disassociateMembership(
     input: DisassociateMembershipRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   enableOrganizationAdminAccount(
     input: EnableOrganizationAdminAccountRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getInvestigation(
     input: GetInvestigationRequest,
   ): Effect.Effect<
     GetInvestigationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   getMembers(
     input: GetMembersRequest,
   ): Effect.Effect<
     GetMembersResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listDatasourcePackages(
     input: ListDatasourcePackagesRequest,
   ): Effect.Effect<
     ListDatasourcePackagesResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listGraphs(
     input: ListGraphsRequest,
   ): Effect.Effect<
     ListGraphsResponse,
-    AccessDeniedException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listIndicators(
     input: ListIndicatorsRequest,
   ): Effect.Effect<
     ListIndicatorsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listInvestigations(
     input: ListInvestigationsRequest,
   ): Effect.Effect<
     ListInvestigationsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listInvitations(
     input: ListInvitationsRequest,
   ): Effect.Effect<
     ListInvitationsResponse,
-    AccessDeniedException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listMembers(
     input: ListMembersRequest,
   ): Effect.Effect<
     ListMembersResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listOrganizationAdminAccounts(
     input: ListOrganizationAdminAccountsRequest,
   ): Effect.Effect<
     ListOrganizationAdminAccountsResponse,
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   rejectInvitation(
     input: RejectInvitationRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   startInvestigation(
     input: StartInvestigationRequest,
   ): Effect.Effect<
     StartInvestigationResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   startMonitoringMember(
     input: StartMonitoringMemberRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateDatasourcePackages(
     input: UpdateDatasourcePackagesRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   updateInvestigationState(
     input: UpdateInvestigationStateRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
   updateOrganizationConfiguration(
     input: UpdateOrganizationConfigurationRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | TooManyRequestsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | TooManyRequestsException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -255,15 +380,30 @@ export interface CreateMembersResponse {
   Members?: Array<MemberDetail>;
   UnprocessedAccounts?: Array<UnprocessedAccount>;
 }
-export type DatasourcePackage = "DETECTIVE_CORE" | "EKS_AUDIT" | "ASFF_SECURITYHUB_FINDING";
+export type DatasourcePackage =
+  | "DETECTIVE_CORE"
+  | "EKS_AUDIT"
+  | "ASFF_SECURITYHUB_FINDING";
 export interface DatasourcePackageIngestDetail {
   DatasourcePackageIngestState?: DatasourcePackageIngestState;
-  LastIngestStateChange?: Record<DatasourcePackageIngestState, TimestampForCollection>;
+  LastIngestStateChange?: Record<
+    DatasourcePackageIngestState,
+    TimestampForCollection
+  >;
 }
-export type DatasourcePackageIngestDetails = Record<DatasourcePackage, DatasourcePackageIngestDetail>;
-export type DatasourcePackageIngestHistory = Record<DatasourcePackage, Record<DatasourcePackageIngestState, TimestampForCollection>>;
+export type DatasourcePackageIngestDetails = Record<
+  DatasourcePackage,
+  DatasourcePackageIngestDetail
+>;
+export type DatasourcePackageIngestHistory = Record<
+  DatasourcePackage,
+  Record<DatasourcePackageIngestState, TimestampForCollection>
+>;
 export type DatasourcePackageIngestState = "STARTED" | "STOPPED" | "DISABLED";
-export type DatasourcePackageIngestStates = Record<DatasourcePackage, DatasourcePackageIngestState>;
+export type DatasourcePackageIngestStates = Record<
+  DatasourcePackage,
+  DatasourcePackageIngestState
+>;
 export type DatasourcePackageList = Array<DatasourcePackage>;
 export interface DatasourcePackageUsageInfo {
   VolumeUsageInBytes?: number;
@@ -303,7 +443,10 @@ export interface EnableOrganizationAdminAccountRequest {
 export type EntityArn = string;
 
 export type EntityType = "IAM_ROLE" | "IAM_USER";
-export type ErrorCode = "InvalidGraphArn" | "InvalidRequestBody" | "InternalError";
+export type ErrorCode =
+  | "InvalidGraphArn"
+  | "InvalidRequestBody"
+  | "InternalError";
 export type ErrorCodeReason = string;
 
 export type ErrorMessage = string;
@@ -378,7 +521,15 @@ export interface IndicatorDetail {
   RelatedFindingGroupDetail?: RelatedFindingGroupDetail;
 }
 export type Indicators = Array<Indicator>;
-export type IndicatorType = "TTP_OBSERVED" | "IMPOSSIBLE_TRAVEL" | "FLAGGED_IP_ADDRESS" | "NEW_GEOLOCATION" | "NEW_ASO" | "NEW_USER_AGENT" | "RELATED_FINDING" | "RELATED_FINDING_GROUP";
+export type IndicatorType =
+  | "TTP_OBSERVED"
+  | "IMPOSSIBLE_TRAVEL"
+  | "FLAGGED_IP_ADDRESS"
+  | "NEW_GEOLOCATION"
+  | "NEW_ASO"
+  | "NEW_USER_AGENT"
+  | "RELATED_FINDING"
+  | "RELATED_FINDING_GROUP";
 export declare class InternalServerException extends Data.TaggedError(
   "InternalServerException",
 )<{
@@ -401,7 +552,10 @@ export type IpAddress = string;
 
 export type IsNewForEntireAccount = boolean;
 
-export type LastIngestStateChangeDates = Record<DatasourcePackageIngestState, TimestampForCollection>;
+export type LastIngestStateChangeDates = Record<
+  DatasourcePackageIngestState,
+  TimestampForCollection
+>;
 export interface ListDatasourcePackagesRequest {
   GraphArn: string;
   NextToken?: string;
@@ -493,8 +647,14 @@ export interface MemberDetail {
   PercentOfGraphUtilization?: number;
   PercentOfGraphUtilizationUpdatedTime?: Date | string;
   InvitationType?: InvitationType;
-  VolumeUsageByDatasourcePackage?: Record<DatasourcePackage, DatasourcePackageUsageInfo>;
-  DatasourcePackageIngestStates?: Record<DatasourcePackage, DatasourcePackageIngestState>;
+  VolumeUsageByDatasourcePackage?: Record<
+    DatasourcePackage,
+    DatasourcePackageUsageInfo
+  >;
+  DatasourcePackageIngestStates?: Record<
+    DatasourcePackage,
+    DatasourcePackageIngestState
+  >;
 }
 export type MemberDetailList = Array<MemberDetail>;
 export type MemberDisabledReason = "VOLUME_TOO_HIGH" | "VOLUME_UNKNOWN";
@@ -503,10 +663,18 @@ export type MemberResultsLimit = number;
 export interface MembershipDatasources {
   AccountId?: string;
   GraphArn?: string;
-  DatasourcePackageIngestHistory?: Record<DatasourcePackage, Record<DatasourcePackageIngestState, TimestampForCollection>>;
+  DatasourcePackageIngestHistory?: Record<
+    DatasourcePackage,
+    Record<DatasourcePackageIngestState, TimestampForCollection>
+  >;
 }
 export type MembershipDatasourcesList = Array<MembershipDatasources>;
-export type MemberStatus = "INVITED" | "VERIFICATION_IN_PROGRESS" | "VERIFICATION_FAILED" | "ENABLED" | "ACCEPTED_BUT_DISABLED";
+export type MemberStatus =
+  | "INVITED"
+  | "VERIFICATION_IN_PROGRESS"
+  | "VERIFICATION_FAILED"
+  | "ENABLED"
+  | "ACCEPTED_BUT_DISABLED";
 export interface NewAsoDetail {
   Aso?: string;
   IsNewForEntireAccount?: boolean;
@@ -586,8 +754,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type Technique = string;
@@ -629,8 +796,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateDatasourcePackagesRequest {
   GraphArn: string;
   DatasourcePackages: Array<DatasourcePackage>;
@@ -655,7 +821,10 @@ export declare class ValidationException extends Data.TaggedError(
 }> {}
 export type Value = string;
 
-export type VolumeUsageByDatasourcePackage = Record<DatasourcePackage, DatasourcePackageUsageInfo>;
+export type VolumeUsageByDatasourcePackage = Record<
+  DatasourcePackage,
+  DatasourcePackageUsageInfo
+>;
 export declare namespace AcceptInvitation {
   export type Input = AcceptInvitationRequest;
   export type Output = {};
@@ -985,4 +1154,3 @@ export declare namespace UpdateOrganizationConfiguration {
     | ValidationException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudtrail#AccessDeniedException": {
       "type": "structure",
@@ -647,6 +676,185 @@
     },
     "com.amazonaws.cloudtrail#CloudTrail_20131101": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudtrail#AddTags"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CancelQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CreateChannel"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CreateDashboard"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CreateEventDataStore"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#CreateTrail"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DeleteChannel"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DeleteDashboard"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DeleteEventDataStore"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DeleteTrail"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DeregisterOrganizationDelegatedAdmin"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DescribeQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DescribeTrails"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#DisableFederation"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#EnableFederation"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GenerateQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetChannel"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetDashboard"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetEventConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetEventDataStore"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetEventSelectors"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetImport"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetInsightSelectors"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetQueryResults"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetTrail"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#GetTrailStatus"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListChannels"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListDashboards"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListEventDataStores"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListImportFailures"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListImports"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListInsightsMetricData"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListPublicKeys"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListQueries"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListTags"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#ListTrails"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#LookupEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#PutEventConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#PutEventSelectors"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#PutInsightSelectors"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#RegisterOrganizationDelegatedAdmin"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#RemoveTags"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#RestoreEventDataStore"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#SearchSampleQueries"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StartDashboardRefresh"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StartEventDataStoreIngestion"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StartImport"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StartLogging"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StartQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StopEventDataStoreIngestion"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StopImport"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#StopLogging"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UpdateChannel"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UpdateDashboard"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UpdateEventDataStore"
+        },
+        {
+          "target": "com.amazonaws.cloudtrail#UpdateTrail"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudTrail",

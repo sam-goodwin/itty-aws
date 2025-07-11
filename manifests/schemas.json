@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.schemas#BadRequestException": {
       "type": "structure",
@@ -3443,6 +3472,101 @@
     },
     "com.amazonaws.schemas#schemas": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.schemas#CreateDiscoverer"
+        },
+        {
+          "target": "com.amazonaws.schemas#CreateRegistry"
+        },
+        {
+          "target": "com.amazonaws.schemas#CreateSchema"
+        },
+        {
+          "target": "com.amazonaws.schemas#DeleteDiscoverer"
+        },
+        {
+          "target": "com.amazonaws.schemas#DeleteRegistry"
+        },
+        {
+          "target": "com.amazonaws.schemas#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.schemas#DeleteSchema"
+        },
+        {
+          "target": "com.amazonaws.schemas#DeleteSchemaVersion"
+        },
+        {
+          "target": "com.amazonaws.schemas#DescribeCodeBinding"
+        },
+        {
+          "target": "com.amazonaws.schemas#DescribeDiscoverer"
+        },
+        {
+          "target": "com.amazonaws.schemas#DescribeRegistry"
+        },
+        {
+          "target": "com.amazonaws.schemas#DescribeSchema"
+        },
+        {
+          "target": "com.amazonaws.schemas#ExportSchema"
+        },
+        {
+          "target": "com.amazonaws.schemas#GetCodeBindingSource"
+        },
+        {
+          "target": "com.amazonaws.schemas#GetDiscoveredSchema"
+        },
+        {
+          "target": "com.amazonaws.schemas#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.schemas#ListDiscoverers"
+        },
+        {
+          "target": "com.amazonaws.schemas#ListRegistries"
+        },
+        {
+          "target": "com.amazonaws.schemas#ListSchemas"
+        },
+        {
+          "target": "com.amazonaws.schemas#ListSchemaVersions"
+        },
+        {
+          "target": "com.amazonaws.schemas#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.schemas#PutCodeBinding"
+        },
+        {
+          "target": "com.amazonaws.schemas#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.schemas#SearchSchemas"
+        },
+        {
+          "target": "com.amazonaws.schemas#StartDiscoverer"
+        },
+        {
+          "target": "com.amazonaws.schemas#StopDiscoverer"
+        },
+        {
+          "target": "com.amazonaws.schemas#TagResource"
+        },
+        {
+          "target": "com.amazonaws.schemas#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.schemas#UpdateDiscoverer"
+        },
+        {
+          "target": "com.amazonaws.schemas#UpdateRegistry"
+        },
+        {
+          "target": "com.amazonaws.schemas#UpdateSchema"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "schemas",

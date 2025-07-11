@@ -1,30 +1,68 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface MagnolioAPIService_v20150201 {
   createAccessPoint(
     input: CreateAccessPointRequest,
   ): Effect.Effect<
     AccessPointDescription,
-    AccessPointAlreadyExists | AccessPointLimitExceeded | BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InternalServerError | ThrottlingException | CommonAwsError
+    | AccessPointAlreadyExists
+    | AccessPointLimitExceeded
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InternalServerError
+    | ThrottlingException
+    | CommonAwsError
   >;
   createFileSystem(
     input: CreateFileSystemRequest,
   ): Effect.Effect<
     FileSystemDescription,
-    BadRequest | FileSystemAlreadyExists | FileSystemLimitExceeded | InsufficientThroughputCapacity | InternalServerError | ThroughputLimitExceeded | UnsupportedAvailabilityZone | CommonAwsError
+    | BadRequest
+    | FileSystemAlreadyExists
+    | FileSystemLimitExceeded
+    | InsufficientThroughputCapacity
+    | InternalServerError
+    | ThroughputLimitExceeded
+    | UnsupportedAvailabilityZone
+    | CommonAwsError
   >;
   createMountTarget(
     input: CreateMountTargetRequest,
   ): Effect.Effect<
     MountTargetDescription,
-    AvailabilityZonesMismatch | BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InternalServerError | IpAddressInUse | MountTargetConflict | NetworkInterfaceLimitExceeded | NoFreeAddressesInSubnet | SecurityGroupLimitExceeded | SecurityGroupNotFound | SubnetNotFound | UnsupportedAvailabilityZone | CommonAwsError
+    | AvailabilityZonesMismatch
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InternalServerError
+    | IpAddressInUse
+    | MountTargetConflict
+    | NetworkInterfaceLimitExceeded
+    | NoFreeAddressesInSubnet
+    | SecurityGroupLimitExceeded
+    | SecurityGroupNotFound
+    | SubnetNotFound
+    | UnsupportedAvailabilityZone
+    | CommonAwsError
   >;
   createReplicationConfiguration(
     input: CreateReplicationConfigurationRequest,
   ): Effect.Effect<
     ReplicationConfigurationDescription,
-    BadRequest | ConflictException | FileSystemLimitExceeded | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InsufficientThroughputCapacity | InternalServerError | ReplicationNotFound | ThroughputLimitExceeded | UnsupportedAvailabilityZone | ValidationException | CommonAwsError
+    | BadRequest
+    | ConflictException
+    | FileSystemLimitExceeded
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InsufficientThroughputCapacity
+    | InternalServerError
+    | ReplicationNotFound
+    | ThroughputLimitExceeded
+    | UnsupportedAvailabilityZone
+    | ValidationException
+    | CommonAwsError
   >;
   createTags(
     input: CreateTagsRequest,
@@ -42,25 +80,41 @@ export interface MagnolioAPIService_v20150201 {
     input: DeleteFileSystemRequest,
   ): Effect.Effect<
     {},
-    BadRequest | FileSystemInUse | FileSystemNotFound | InternalServerError | CommonAwsError
+    | BadRequest
+    | FileSystemInUse
+    | FileSystemNotFound
+    | InternalServerError
+    | CommonAwsError
   >;
   deleteFileSystemPolicy(
     input: DeleteFileSystemPolicyRequest,
   ): Effect.Effect<
     {},
-    BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InternalServerError | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InternalServerError
+    | CommonAwsError
   >;
   deleteMountTarget(
     input: DeleteMountTargetRequest,
   ): Effect.Effect<
     {},
-    BadRequest | DependencyTimeout | InternalServerError | MountTargetNotFound | CommonAwsError
+    | BadRequest
+    | DependencyTimeout
+    | InternalServerError
+    | MountTargetNotFound
+    | CommonAwsError
   >;
   deleteReplicationConfiguration(
     input: DeleteReplicationConfigurationRequest,
   ): Effect.Effect<
     {},
-    BadRequest | FileSystemNotFound | InternalServerError | ReplicationNotFound | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | ReplicationNotFound
+    | CommonAwsError
   >;
   deleteTags(
     input: DeleteTagsRequest,
@@ -72,7 +126,11 @@ export interface MagnolioAPIService_v20150201 {
     input: DescribeAccessPointsRequest,
   ): Effect.Effect<
     DescribeAccessPointsResponse,
-    AccessPointNotFound | BadRequest | FileSystemNotFound | InternalServerError | CommonAwsError
+    | AccessPointNotFound
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | CommonAwsError
   >;
   describeAccountPreferences(
     input: DescribeAccountPreferencesRequest,
@@ -84,13 +142,22 @@ export interface MagnolioAPIService_v20150201 {
     input: DescribeBackupPolicyRequest,
   ): Effect.Effect<
     BackupPolicyDescription,
-    BadRequest | FileSystemNotFound | InternalServerError | PolicyNotFound | ValidationException | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | PolicyNotFound
+    | ValidationException
+    | CommonAwsError
   >;
   describeFileSystemPolicy(
     input: DescribeFileSystemPolicyRequest,
   ): Effect.Effect<
     FileSystemPolicyDescription,
-    BadRequest | FileSystemNotFound | InternalServerError | PolicyNotFound | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | PolicyNotFound
+    | CommonAwsError
   >;
   describeFileSystems(
     input: DescribeFileSystemsRequest,
@@ -104,23 +171,37 @@ export interface MagnolioAPIService_v20150201 {
     LifecycleConfigurationDescription,
     BadRequest | FileSystemNotFound | InternalServerError | CommonAwsError
   >;
-  describeMountTargetSecurityGroups(
-    input: DescribeMountTargetSecurityGroupsRequest,
-  ): Effect.Effect<
-    DescribeMountTargetSecurityGroupsResponse,
-    BadRequest | IncorrectMountTargetState | InternalServerError | MountTargetNotFound | CommonAwsError
-  >;
   describeMountTargets(
     input: DescribeMountTargetsRequest,
   ): Effect.Effect<
     DescribeMountTargetsResponse,
-    AccessPointNotFound | BadRequest | FileSystemNotFound | InternalServerError | MountTargetNotFound | CommonAwsError
+    | AccessPointNotFound
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | MountTargetNotFound
+    | CommonAwsError
+  >;
+  describeMountTargetSecurityGroups(
+    input: DescribeMountTargetSecurityGroupsRequest,
+  ): Effect.Effect<
+    DescribeMountTargetSecurityGroupsResponse,
+    | BadRequest
+    | IncorrectMountTargetState
+    | InternalServerError
+    | MountTargetNotFound
+    | CommonAwsError
   >;
   describeReplicationConfigurations(
     input: DescribeReplicationConfigurationsRequest,
   ): Effect.Effect<
     DescribeReplicationConfigurationsResponse,
-    BadRequest | FileSystemNotFound | InternalServerError | ReplicationNotFound | ValidationException | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | ReplicationNotFound
+    | ValidationException
+    | CommonAwsError
   >;
   describeTags(
     input: DescribeTagsRequest,
@@ -132,13 +213,23 @@ export interface MagnolioAPIService_v20150201 {
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessPointNotFound | BadRequest | FileSystemNotFound | InternalServerError | CommonAwsError
+    | AccessPointNotFound
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | CommonAwsError
   >;
   modifyMountTargetSecurityGroups(
     input: ModifyMountTargetSecurityGroupsRequest,
   ): Effect.Effect<
     {},
-    BadRequest | IncorrectMountTargetState | InternalServerError | MountTargetNotFound | SecurityGroupLimitExceeded | SecurityGroupNotFound | CommonAwsError
+    | BadRequest
+    | IncorrectMountTargetState
+    | InternalServerError
+    | MountTargetNotFound
+    | SecurityGroupLimitExceeded
+    | SecurityGroupNotFound
+    | CommonAwsError
   >;
   putAccountPreferences(
     input: PutAccountPreferencesRequest,
@@ -150,43 +241,80 @@ export interface MagnolioAPIService_v20150201 {
     input: PutBackupPolicyRequest,
   ): Effect.Effect<
     BackupPolicyDescription,
-    BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InternalServerError | ValidationException | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InternalServerError
+    | ValidationException
+    | CommonAwsError
   >;
   putFileSystemPolicy(
     input: PutFileSystemPolicyRequest,
   ): Effect.Effect<
     FileSystemPolicyDescription,
-    BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InternalServerError | InvalidPolicyException | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InternalServerError
+    | InvalidPolicyException
+    | CommonAwsError
   >;
   putLifecycleConfiguration(
     input: PutLifecycleConfigurationRequest,
   ): Effect.Effect<
     LifecycleConfigurationDescription,
-    BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InternalServerError | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InternalServerError
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    AccessPointNotFound | BadRequest | FileSystemNotFound | InternalServerError | CommonAwsError
+    | AccessPointNotFound
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    AccessPointNotFound | BadRequest | FileSystemNotFound | InternalServerError | CommonAwsError
+    | AccessPointNotFound
+    | BadRequest
+    | FileSystemNotFound
+    | InternalServerError
+    | CommonAwsError
   >;
   updateFileSystem(
     input: UpdateFileSystemRequest,
   ): Effect.Effect<
     FileSystemDescription,
-    BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InsufficientThroughputCapacity | InternalServerError | ThroughputLimitExceeded | TooManyRequests | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InsufficientThroughputCapacity
+    | InternalServerError
+    | ThroughputLimitExceeded
+    | TooManyRequests
+    | CommonAwsError
   >;
   updateFileSystemProtection(
     input: UpdateFileSystemProtectionRequest,
   ): Effect.Effect<
     FileSystemProtectionDescription,
-    BadRequest | FileSystemNotFound | IncorrectFileSystemLifeCycleState | InsufficientThroughputCapacity | InternalServerError | ReplicationAlreadyExists | ThroughputLimitExceeded | TooManyRequests | CommonAwsError
+    | BadRequest
+    | FileSystemNotFound
+    | IncorrectFileSystemLifeCycleState
+    | InsufficientThroughputCapacity
+    | InternalServerError
+    | ReplicationAlreadyExists
+    | ThroughputLimitExceeded
+    | TooManyRequests
+    | CommonAwsError
   >;
 }
 
@@ -248,9 +376,7 @@ export interface BackupPolicy {
 export interface BackupPolicyDescription {
   BackupPolicy?: BackupPolicy;
 }
-export declare class BadRequest extends Data.TaggedError(
-  "BadRequest",
-)<{
+export declare class BadRequest extends Data.TaggedError("BadRequest")<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
@@ -533,9 +659,7 @@ export declare class InvalidPolicyException extends Data.TaggedError(
 }> {}
 export type IpAddress = string;
 
-export declare class IpAddressInUse extends Data.TaggedError(
-  "IpAddressInUse",
-)<{
+export declare class IpAddressInUse extends Data.TaggedError("IpAddressInUse")<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
@@ -553,7 +677,13 @@ export interface LifecyclePolicy {
   TransitionToPrimaryStorageClass?: TransitionToPrimaryStorageClassRules;
   TransitionToArchive?: TransitionToArchiveRules;
 }
-export type LifeCycleState = "CREATING" | "AVAILABLE" | "UPDATING" | "DELETING" | "DELETED" | "ERROR";
+export type LifeCycleState =
+  | "CREATING"
+  | "AVAILABLE"
+  | "UPDATING"
+  | "DELETING"
+  | "DELETED"
+  | "ERROR";
 export interface ListTagsForResourceRequest {
   ResourceId: string;
   MaxResults?: number;
@@ -630,9 +760,7 @@ export type Permissions = string;
 
 export type Policy = string;
 
-export declare class PolicyNotFound extends Data.TaggedError(
-  "PolicyNotFound",
-)<{
+export declare class PolicyNotFound extends Data.TaggedError("PolicyNotFound")<{
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
@@ -679,15 +807,25 @@ export interface ReplicationConfigurationDescription {
   Destinations: Array<Destination>;
   SourceFileSystemOwnerId?: string;
 }
-export type ReplicationConfigurationDescriptions = Array<ReplicationConfigurationDescription>;
+export type ReplicationConfigurationDescriptions =
+  Array<ReplicationConfigurationDescription>;
 export declare class ReplicationNotFound extends Data.TaggedError(
   "ReplicationNotFound",
 )<{
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
-export type ReplicationOverwriteProtection = "ENABLED" | "DISABLED" | "REPLICATING";
-export type ReplicationStatus = "ENABLED" | "ENABLING" | "DELETING" | "ERROR" | "PAUSED" | "PAUSING";
+export type ReplicationOverwriteProtection =
+  | "ENABLED"
+  | "DISABLED"
+  | "REPLICATING";
+export type ReplicationStatus =
+  | "ENABLED"
+  | "ENABLING"
+  | "DELETING"
+  | "ERROR"
+  | "PAUSED"
+  | "PAUSING";
 export type Resource = "FileSystem" | "MountTarget";
 export type ResourceId = string;
 
@@ -724,9 +862,7 @@ export type StatusMessage = string;
 
 export type SubnetId = string;
 
-export declare class SubnetNotFound extends Data.TaggedError(
-  "SubnetNotFound",
-)<{
+export declare class SubnetNotFound extends Data.TaggedError("SubnetNotFound")<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
@@ -767,8 +903,26 @@ export declare class TooManyRequests extends Data.TaggedError(
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export type TransitionToArchiveRules = "AFTER_1_DAY" | "AFTER_7_DAYS" | "AFTER_14_DAYS" | "AFTER_30_DAYS" | "AFTER_60_DAYS" | "AFTER_90_DAYS" | "AFTER_180_DAYS" | "AFTER_270_DAYS" | "AFTER_365_DAYS";
-export type TransitionToIARules = "AFTER_7_DAYS" | "AFTER_14_DAYS" | "AFTER_30_DAYS" | "AFTER_60_DAYS" | "AFTER_90_DAYS" | "AFTER_1_DAY" | "AFTER_180_DAYS" | "AFTER_270_DAYS" | "AFTER_365_DAYS";
+export type TransitionToArchiveRules =
+  | "AFTER_1_DAY"
+  | "AFTER_7_DAYS"
+  | "AFTER_14_DAYS"
+  | "AFTER_30_DAYS"
+  | "AFTER_60_DAYS"
+  | "AFTER_90_DAYS"
+  | "AFTER_180_DAYS"
+  | "AFTER_270_DAYS"
+  | "AFTER_365_DAYS";
+export type TransitionToIARules =
+  | "AFTER_7_DAYS"
+  | "AFTER_14_DAYS"
+  | "AFTER_30_DAYS"
+  | "AFTER_60_DAYS"
+  | "AFTER_90_DAYS"
+  | "AFTER_1_DAY"
+  | "AFTER_180_DAYS"
+  | "AFTER_270_DAYS"
+  | "AFTER_365_DAYS";
 export type TransitionToPrimaryStorageClassRules = "AFTER_1_ACCESS";
 export type Uid = number;
 
@@ -953,9 +1107,7 @@ export declare namespace DescribeAccessPoints {
 export declare namespace DescribeAccountPreferences {
   export type Input = DescribeAccountPreferencesRequest;
   export type Output = DescribeAccountPreferencesResponse;
-  export type Error =
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = InternalServerError | CommonAwsError;
 }
 
 export declare namespace DescribeBackupPolicy {
@@ -1001,17 +1153,6 @@ export declare namespace DescribeLifecycleConfiguration {
     | CommonAwsError;
 }
 
-export declare namespace DescribeMountTargetSecurityGroups {
-  export type Input = DescribeMountTargetSecurityGroupsRequest;
-  export type Output = DescribeMountTargetSecurityGroupsResponse;
-  export type Error =
-    | BadRequest
-    | IncorrectMountTargetState
-    | InternalServerError
-    | MountTargetNotFound
-    | CommonAwsError;
-}
-
 export declare namespace DescribeMountTargets {
   export type Input = DescribeMountTargetsRequest;
   export type Output = DescribeMountTargetsResponse;
@@ -1019,6 +1160,17 @@ export declare namespace DescribeMountTargets {
     | AccessPointNotFound
     | BadRequest
     | FileSystemNotFound
+    | InternalServerError
+    | MountTargetNotFound
+    | CommonAwsError;
+}
+
+export declare namespace DescribeMountTargetSecurityGroups {
+  export type Input = DescribeMountTargetSecurityGroupsRequest;
+  export type Output = DescribeMountTargetSecurityGroupsResponse;
+  export type Error =
+    | BadRequest
+    | IncorrectMountTargetState
     | InternalServerError
     | MountTargetNotFound
     | CommonAwsError;
@@ -1073,10 +1225,7 @@ export declare namespace ModifyMountTargetSecurityGroups {
 export declare namespace PutAccountPreferences {
   export type Input = PutAccountPreferencesRequest;
   export type Output = PutAccountPreferencesResponse;
-  export type Error =
-    | BadRequest
-    | InternalServerError
-    | CommonAwsError;
+  export type Error = BadRequest | InternalServerError | CommonAwsError;
 }
 
 export declare namespace PutBackupPolicy {
@@ -1164,4 +1313,3 @@ export declare namespace UpdateFileSystemProtection {
     | TooManyRequests
     | CommonAwsError;
 }
-

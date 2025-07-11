@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.iotdataplane#ConflictException": {
       "type": "structure",
@@ -337,6 +366,29 @@
     },
     "com.amazonaws.iotdataplane#IotMoonrakerService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.iotdataplane#DeleteThingShadow"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#GetRetainedMessage"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#GetThingShadow"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ListNamedShadowsForThing"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#ListRetainedMessages"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#Publish"
+        },
+        {
+          "target": "com.amazonaws.iotdataplane#UpdateThingShadow"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "IoT Data Plane",

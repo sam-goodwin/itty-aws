@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface GuardDutyAPIService {
   acceptAdministratorInvitation(
@@ -42,7 +42,11 @@ export interface GuardDutyAPIService {
     input: CreateMalwareProtectionPlanRequest,
   ): Effect.Effect<
     CreateMalwareProtectionPlanResponse,
-    AccessDeniedException | BadRequestException | ConflictException | InternalServerErrorException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConflictException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   createMembers(
     input: CreateMembersRequest,
@@ -86,23 +90,27 @@ export interface GuardDutyAPIService {
     DeleteFilterResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
-  deleteIPSet(
-    input: DeleteIPSetRequest,
-  ): Effect.Effect<
-    DeleteIPSetResponse,
-    BadRequestException | InternalServerErrorException | CommonAwsError
-  >;
   deleteInvitations(
     input: DeleteInvitationsRequest,
   ): Effect.Effect<
     DeleteInvitationsResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
+  deleteIPSet(
+    input: DeleteIPSetRequest,
+  ): Effect.Effect<
+    DeleteIPSetResponse,
+    BadRequestException | InternalServerErrorException | CommonAwsError
+  >;
   deleteMalwareProtectionPlan(
     input: DeleteMalwareProtectionPlanRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | BadRequestException | InternalServerErrorException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteMembers(
     input: DeleteMembersRequest,
@@ -206,23 +214,27 @@ export interface GuardDutyAPIService {
     GetFindingsStatisticsResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
-  getIPSet(
-    input: GetIPSetRequest,
-  ): Effect.Effect<
-    GetIPSetResponse,
-    BadRequestException | InternalServerErrorException | CommonAwsError
-  >;
   getInvitationsCount(
     input: GetInvitationsCountRequest,
   ): Effect.Effect<
     GetInvitationsCountResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
+  getIPSet(
+    input: GetIPSetRequest,
+  ): Effect.Effect<
+    GetIPSetResponse,
+    BadRequestException | InternalServerErrorException | CommonAwsError
+  >;
   getMalwareProtectionPlan(
     input: GetMalwareProtectionPlanRequest,
   ): Effect.Effect<
     GetMalwareProtectionPlanResponse,
-    AccessDeniedException | BadRequestException | InternalServerErrorException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getMalwareScanSettings(
     input: GetMalwareScanSettingsRequest,
@@ -248,9 +260,7 @@ export interface GuardDutyAPIService {
     GetMembersResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
-  getOrganizationStatistics(
-    input: {},
-  ): Effect.Effect<
+  getOrganizationStatistics(input: {}): Effect.Effect<
     GetOrganizationStatisticsResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
@@ -302,23 +312,26 @@ export interface GuardDutyAPIService {
     ListFindingsResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
-  listIPSets(
-    input: ListIPSetsRequest,
-  ): Effect.Effect<
-    ListIPSetsResponse,
-    BadRequestException | InternalServerErrorException | CommonAwsError
-  >;
   listInvitations(
     input: ListInvitationsRequest,
   ): Effect.Effect<
     ListInvitationsResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
+  listIPSets(
+    input: ListIPSetsRequest,
+  ): Effect.Effect<
+    ListIPSetsResponse,
+    BadRequestException | InternalServerErrorException | CommonAwsError
+  >;
   listMalwareProtectionPlans(
     input: ListMalwareProtectionPlansRequest,
   ): Effect.Effect<
     ListMalwareProtectionPlansResponse,
-    AccessDeniedException | BadRequestException | InternalServerErrorException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   listMembers(
     input: ListMembersRequest,
@@ -342,7 +355,10 @@ export interface GuardDutyAPIService {
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | BadRequestException | InternalServerErrorException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   listThreatIntelSets(
     input: ListThreatIntelSetsRequest,
@@ -354,7 +370,10 @@ export interface GuardDutyAPIService {
     input: StartMalwareScanRequest,
   ): Effect.Effect<
     StartMalwareScanResponse,
-    BadRequestException | ConflictException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   startMonitoringMembers(
     input: StartMonitoringMembersRequest,
@@ -372,7 +391,10 @@ export interface GuardDutyAPIService {
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | BadRequestException | InternalServerErrorException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   unarchiveFindings(
     input: UnarchiveFindingsRequest,
@@ -384,7 +406,10 @@ export interface GuardDutyAPIService {
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | BadRequestException | InternalServerErrorException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   updateDetector(
     input: UpdateDetectorRequest,
@@ -414,7 +439,11 @@ export interface GuardDutyAPIService {
     input: UpdateMalwareProtectionPlanRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | BadRequestException | InternalServerErrorException | ResourceNotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalServerErrorException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateMalwareScanSettings(
     input: UpdateMalwareScanSettingsRequest,
@@ -455,15 +484,13 @@ export interface AcceptAdministratorInvitationRequest {
   AdministratorId: string;
   InvitationId: string;
 }
-export interface AcceptAdministratorInvitationResponse {
-}
+export interface AcceptAdministratorInvitationResponse {}
 export interface AcceptInvitationRequest {
   DetectorId: string;
   MasterId: string;
   InvitationId: string;
 }
-export interface AcceptInvitationResponse {
-}
+export interface AcceptInvitationResponse {}
 export interface AccessControlList {
   AllowsPublicReadAccess?: boolean;
   AllowsPublicWriteAccess?: boolean;
@@ -568,7 +595,10 @@ export interface AnomalyObject {
 }
 export type AnomalyProfileFeatureObjects = Array<AnomalyObject>;
 export type AnomalyProfileFeatures = Record<string, Array<AnomalyObject>>;
-export type AnomalyProfiles = Record<string, Record<string, Array<AnomalyObject>>>;
+export type AnomalyProfiles = Record<
+  string,
+  Record<string, Array<AnomalyObject>>
+>;
 export interface AnomalyUnusual {
   Behavior?: Record<string, Record<string, AnomalyObject>>;
 }
@@ -577,8 +607,7 @@ export interface ArchiveFindingsRequest {
   DetectorId: string;
   FindingIds: Array<string>;
 }
-export interface ArchiveFindingsResponse {
-}
+export interface ArchiveFindingsResponse {}
 export type AutoEnableMembers = "NEW" | "ALL" | "NONE";
 export interface AutonomousSystem {
   Name: string;
@@ -625,7 +654,13 @@ export type ClientToken = string;
 export interface CloudTrailConfigurationResult {
   Status: DataSourceStatus;
 }
-export type ClusterStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED" | "UPDATING" | "PENDING";
+export type ClusterStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED"
+  | "UPDATING"
+  | "PENDING";
 export interface Condition {
   Eq?: Array<string>;
   Neq?: Array<string>;
@@ -706,7 +741,18 @@ export interface CoverageFilterCriterion {
   CriterionKey?: CoverageFilterCriterionKey;
   FilterCondition?: CoverageFilterCondition;
 }
-export type CoverageFilterCriterionKey = "ACCOUNT_ID" | "CLUSTER_NAME" | "RESOURCE_TYPE" | "COVERAGE_STATUS" | "ADDON_VERSION" | "MANAGEMENT_TYPE" | "EKS_CLUSTER_NAME" | "ECS_CLUSTER_NAME" | "AGENT_VERSION" | "INSTANCE_ID" | "CLUSTER_ARN";
+export type CoverageFilterCriterionKey =
+  | "ACCOUNT_ID"
+  | "CLUSTER_NAME"
+  | "RESOURCE_TYPE"
+  | "COVERAGE_STATUS"
+  | "ADDON_VERSION"
+  | "MANAGEMENT_TYPE"
+  | "EKS_CLUSTER_NAME"
+  | "ECS_CLUSTER_NAME"
+  | "AGENT_VERSION"
+  | "INSTANCE_ID"
+  | "CLUSTER_ARN";
 export type CoverageFilterCriterionList = Array<CoverageFilterCriterion>;
 export interface CoverageResource {
   ResourceId?: string;
@@ -728,12 +774,23 @@ export interface CoverageSortCriteria {
   AttributeName?: CoverageSortKey;
   OrderBy?: OrderBy;
 }
-export type CoverageSortKey = "ACCOUNT_ID" | "CLUSTER_NAME" | "COVERAGE_STATUS" | "ISSUE" | "ADDON_VERSION" | "UPDATED_AT" | "EKS_CLUSTER_NAME" | "ECS_CLUSTER_NAME" | "INSTANCE_ID";
+export type CoverageSortKey =
+  | "ACCOUNT_ID"
+  | "CLUSTER_NAME"
+  | "COVERAGE_STATUS"
+  | "ISSUE"
+  | "ADDON_VERSION"
+  | "UPDATED_AT"
+  | "EKS_CLUSTER_NAME"
+  | "ECS_CLUSTER_NAME"
+  | "INSTANCE_ID";
 export interface CoverageStatistics {
   CountByResourceType?: Record<ResourceType, number>;
   CountByCoverageStatus?: Record<CoverageStatus, number>;
 }
-export type CoverageStatisticsType = "COUNT_BY_RESOURCE_TYPE" | "COUNT_BY_COVERAGE_STATUS";
+export type CoverageStatisticsType =
+  | "COUNT_BY_RESOURCE_TYPE"
+  | "COUNT_BY_COVERAGE_STATUS";
 export type CoverageStatisticsTypeList = Array<CoverageStatisticsType>;
 export type CoverageStatus = "HEALTHY" | "UNHEALTHY";
 export interface CreateDetectorRequest {
@@ -810,8 +867,7 @@ export interface CreateSampleFindingsRequest {
   DetectorId: string;
   FindingTypes?: Array<string>;
 }
-export interface CreateSampleFindingsResponse {
-}
+export interface CreateSampleFindingsResponse {}
 export interface CreateThreatIntelSetRequest {
   DetectorId: string;
   Name: string;
@@ -825,8 +881,21 @@ export interface CreateThreatIntelSetResponse {
   ThreatIntelSetId: string;
 }
 export type Criterion = Record<string, Condition>;
-export type CriterionKey = "EC2_INSTANCE_ARN" | "SCAN_ID" | "ACCOUNT_ID" | "GUARDDUTY_FINDING_ID" | "SCAN_START_TIME" | "SCAN_STATUS" | "SCAN_TYPE";
-export type DataSource = "FLOW_LOGS" | "CLOUD_TRAIL" | "DNS_LOGS" | "S3_LOGS" | "KUBERNETES_AUDIT_LOGS" | "EC2_MALWARE_SCAN";
+export type CriterionKey =
+  | "EC2_INSTANCE_ARN"
+  | "SCAN_ID"
+  | "ACCOUNT_ID"
+  | "GUARDDUTY_FINDING_ID"
+  | "SCAN_START_TIME"
+  | "SCAN_STATUS"
+  | "SCAN_TYPE";
+export type DataSource =
+  | "FLOW_LOGS"
+  | "CLOUD_TRAIL"
+  | "DNS_LOGS"
+  | "S3_LOGS"
+  | "KUBERNETES_AUDIT_LOGS"
+  | "EC2_MALWARE_SCAN";
 export interface DataSourceConfigurations {
   S3Logs?: S3LogsConfiguration;
   Kubernetes?: KubernetesConfiguration;
@@ -872,14 +941,12 @@ export interface DefaultServerSideEncryption {
 export interface DeleteDetectorRequest {
   DetectorId: string;
 }
-export interface DeleteDetectorResponse {
-}
+export interface DeleteDetectorResponse {}
 export interface DeleteFilterRequest {
   DetectorId: string;
   FilterName: string;
 }
-export interface DeleteFilterResponse {
-}
+export interface DeleteFilterResponse {}
 export interface DeleteInvitationsRequest {
   AccountIds: Array<string>;
 }
@@ -890,8 +957,7 @@ export interface DeleteIPSetRequest {
   DetectorId: string;
   IpSetId: string;
 }
-export interface DeleteIPSetResponse {
-}
+export interface DeleteIPSetResponse {}
 export interface DeleteMalwareProtectionPlanRequest {
   MalwareProtectionPlanId: string;
 }
@@ -906,14 +972,12 @@ export interface DeletePublishingDestinationRequest {
   DetectorId: string;
   DestinationId: string;
 }
-export interface DeletePublishingDestinationResponse {
-}
+export interface DeletePublishingDestinationResponse {}
 export interface DeleteThreatIntelSetRequest {
   DetectorId: string;
   ThreatIntelSetId: string;
 }
-export interface DeleteThreatIntelSetResponse {
-}
+export interface DeleteThreatIntelSetResponse {}
 export interface DescribeMalwareScansRequest {
   DetectorId: string;
   NextToken?: string;
@@ -973,9 +1037,18 @@ export interface DetectorAdditionalConfigurationResult {
   Status?: FeatureStatus;
   UpdatedAt?: Date | string;
 }
-export type DetectorAdditionalConfigurationResults = Array<DetectorAdditionalConfigurationResult>;
-export type DetectorAdditionalConfigurations = Array<DetectorAdditionalConfiguration>;
-export type DetectorFeature = "S3_DATA_EVENTS" | "EKS_AUDIT_LOGS" | "EBS_MALWARE_PROTECTION" | "RDS_LOGIN_EVENTS" | "EKS_RUNTIME_MONITORING" | "LAMBDA_NETWORK_LOGS" | "RUNTIME_MONITORING";
+export type DetectorAdditionalConfigurationResults =
+  Array<DetectorAdditionalConfigurationResult>;
+export type DetectorAdditionalConfigurations =
+  Array<DetectorAdditionalConfiguration>;
+export type DetectorFeature =
+  | "S3_DATA_EVENTS"
+  | "EKS_AUDIT_LOGS"
+  | "EBS_MALWARE_PROTECTION"
+  | "RDS_LOGIN_EVENTS"
+  | "EKS_RUNTIME_MONITORING"
+  | "LAMBDA_NETWORK_LOGS"
+  | "RUNTIME_MONITORING";
 export interface DetectorFeatureConfiguration {
   Name?: DetectorFeature;
   Status?: FeatureStatus;
@@ -988,8 +1061,19 @@ export interface DetectorFeatureConfigurationResult {
   AdditionalConfiguration?: Array<DetectorAdditionalConfigurationResult>;
 }
 export type DetectorFeatureConfigurations = Array<DetectorFeatureConfiguration>;
-export type DetectorFeatureConfigurationsResults = Array<DetectorFeatureConfigurationResult>;
-export type DetectorFeatureResult = "FLOW_LOGS" | "CLOUD_TRAIL" | "DNS_LOGS" | "S3_DATA_EVENTS" | "EKS_AUDIT_LOGS" | "EBS_MALWARE_PROTECTION" | "RDS_LOGIN_EVENTS" | "EKS_RUNTIME_MONITORING" | "LAMBDA_NETWORK_LOGS" | "RUNTIME_MONITORING";
+export type DetectorFeatureConfigurationsResults =
+  Array<DetectorFeatureConfigurationResult>;
+export type DetectorFeatureResult =
+  | "FLOW_LOGS"
+  | "CLOUD_TRAIL"
+  | "DNS_LOGS"
+  | "S3_DATA_EVENTS"
+  | "EKS_AUDIT_LOGS"
+  | "EBS_MALWARE_PROTECTION"
+  | "RDS_LOGIN_EVENTS"
+  | "EKS_RUNTIME_MONITORING"
+  | "LAMBDA_NETWORK_LOGS"
+  | "RUNTIME_MONITORING";
 export type DetectorId = string;
 
 export type DetectorIds = Array<string>;
@@ -997,18 +1081,15 @@ export type DetectorStatus = "ENABLED" | "DISABLED";
 export interface DisableOrganizationAdminAccountRequest {
   AdminAccountId: string;
 }
-export interface DisableOrganizationAdminAccountResponse {
-}
+export interface DisableOrganizationAdminAccountResponse {}
 export interface DisassociateFromAdministratorAccountRequest {
   DetectorId: string;
 }
-export interface DisassociateFromAdministratorAccountResponse {
-}
+export interface DisassociateFromAdministratorAccountResponse {}
 export interface DisassociateFromMasterAccountRequest {
   DetectorId: string;
 }
-export interface DisassociateFromMasterAccountResponse {
-}
+export interface DisassociateFromMasterAccountResponse {}
 export interface DisassociateMembersRequest {
   DetectorId: string;
   AccountIds: Array<string>;
@@ -1114,8 +1195,7 @@ export type Email = string;
 export interface EnableOrganizationAdminAccountRequest {
   AdminAccountId: string;
 }
-export interface EnableOrganizationAdminAccountResponse {
-}
+export interface EnableOrganizationAdminAccountResponse {}
 export type EndpointIds = Array<string>;
 export type Eq = Array<string>;
 export type Equals = Array<string>;
@@ -1126,7 +1206,10 @@ export interface FargateDetails {
   Issues?: Array<string>;
   ManagementType?: ManagementType;
 }
-export type FeatureAdditionalConfiguration = "EKS_ADDON_MANAGEMENT" | "ECS_FARGATE_AGENT_MANAGEMENT" | "EC2_AGENT_MANAGEMENT";
+export type FeatureAdditionalConfiguration =
+  | "EKS_ADDON_MANAGEMENT"
+  | "ECS_FARGATE_AGENT_MANAGEMENT"
+  | "EC2_AGENT_MANAGEMENT";
 export type FeatureStatus = "ENABLED" | "DISABLED";
 export type Feedback = "USEFUL" | "NOT_USEFUL";
 export type FilePaths = Array<ScanFilePath>;
@@ -1175,8 +1258,19 @@ export interface FindingCriteria {
 export type FindingId = string;
 
 export type FindingIds = Array<string>;
-export type FindingPublishingFrequency = "FIFTEEN_MINUTES" | "ONE_HOUR" | "SIX_HOURS";
-export type FindingResourceType = "EC2_INSTANCE" | "EC2_NETWORK_INTERFACE" | "S3_BUCKET" | "S3_OBJECT" | "ACCESS_KEY" | "EKS_CLUSTER" | "KUBERNETES_WORKLOAD" | "CONTAINER";
+export type FindingPublishingFrequency =
+  | "FIFTEEN_MINUTES"
+  | "ONE_HOUR"
+  | "SIX_HOURS";
+export type FindingResourceType =
+  | "EC2_INSTANCE"
+  | "EC2_NETWORK_INTERFACE"
+  | "S3_BUCKET"
+  | "S3_OBJECT"
+  | "ACCESS_KEY"
+  | "EKS_CLUSTER"
+  | "KUBERNETES_WORKLOAD"
+  | "CONTAINER";
 export type Findings = Array<Finding>;
 export interface FindingStatistics {
   CountBySeverity?: Record<string, number>;
@@ -1204,8 +1298,20 @@ export interface FreeTrialFeatureConfigurationResult {
   Name?: FreeTrialFeatureResult;
   FreeTrialDaysRemaining?: number;
 }
-export type FreeTrialFeatureConfigurationsResults = Array<FreeTrialFeatureConfigurationResult>;
-export type FreeTrialFeatureResult = "FLOW_LOGS" | "CLOUD_TRAIL" | "DNS_LOGS" | "S3_DATA_EVENTS" | "EKS_AUDIT_LOGS" | "EBS_MALWARE_PROTECTION" | "RDS_LOGIN_EVENTS" | "EKS_RUNTIME_MONITORING" | "LAMBDA_NETWORK_LOGS" | "FARGATE_RUNTIME_MONITORING" | "EC2_RUNTIME_MONITORING";
+export type FreeTrialFeatureConfigurationsResults =
+  Array<FreeTrialFeatureConfigurationResult>;
+export type FreeTrialFeatureResult =
+  | "FLOW_LOGS"
+  | "CLOUD_TRAIL"
+  | "DNS_LOGS"
+  | "S3_DATA_EVENTS"
+  | "EKS_AUDIT_LOGS"
+  | "EBS_MALWARE_PROTECTION"
+  | "RDS_LOGIN_EVENTS"
+  | "EKS_RUNTIME_MONITORING"
+  | "LAMBDA_NETWORK_LOGS"
+  | "FARGATE_RUNTIME_MONITORING"
+  | "EC2_RUNTIME_MONITORING";
 export interface GeoLocation {
   Lat?: number;
   Lon?: number;
@@ -1269,8 +1375,7 @@ export interface GetFindingsStatisticsResponse {
   FindingStatistics: FindingStatistics;
   NextToken?: string;
 }
-export interface GetInvitationsCountRequest {
-}
+export interface GetInvitationsCountRequest {}
 export interface GetInvitationsCountResponse {
   InvitationsCount?: number;
 }
@@ -1361,7 +1466,12 @@ export interface GetUsageStatisticsResponse {
   UsageStatistics?: UsageStatistics;
   NextToken?: string;
 }
-export type GroupByType = "ACCOUNT" | "DATE" | "FINDING_TYPE" | "RESOURCE" | "SEVERITY";
+export type GroupByType =
+  | "ACCOUNT"
+  | "DATE"
+  | "FINDING_TYPE"
+  | "RESOURCE"
+  | "SEVERITY";
 export type GroupedByAccount = Array<AccountStatistics>;
 export type GroupedByDate = Array<DateStatistics>;
 export type GroupedByFindingType = Array<FindingTypeStatistics>;
@@ -1394,7 +1504,23 @@ export interface Indicator {
 export type Indicators = Array<Indicator>;
 export type IndicatorTitle = string;
 
-export type IndicatorType = "SUSPICIOUS_USER_AGENT" | "SUSPICIOUS_NETWORK" | "MALICIOUS_IP" | "TOR_IP" | "ATTACK_TACTIC" | "HIGH_RISK_API" | "ATTACK_TECHNIQUE" | "UNUSUAL_API_FOR_ACCOUNT" | "UNUSUAL_ASN_FOR_ACCOUNT" | "UNUSUAL_ASN_FOR_USER" | "SUSPICIOUS_PROCESS" | "MALICIOUS_DOMAIN" | "MALICIOUS_PROCESS" | "CRYPTOMINING_IP" | "CRYPTOMINING_DOMAIN" | "CRYPTOMINING_PROCESS";
+export type IndicatorType =
+  | "SUSPICIOUS_USER_AGENT"
+  | "SUSPICIOUS_NETWORK"
+  | "MALICIOUS_IP"
+  | "TOR_IP"
+  | "ATTACK_TACTIC"
+  | "HIGH_RISK_API"
+  | "ATTACK_TECHNIQUE"
+  | "UNUSUAL_API_FOR_ACCOUNT"
+  | "UNUSUAL_ASN_FOR_ACCOUNT"
+  | "UNUSUAL_ASN_FOR_USER"
+  | "SUSPICIOUS_PROCESS"
+  | "MALICIOUS_DOMAIN"
+  | "MALICIOUS_PROCESS"
+  | "CRYPTOMINING_IP"
+  | "CRYPTOMINING_DOMAIN"
+  | "CRYPTOMINING_PROCESS";
 export type IndicatorValues = Array<string>;
 export type IndicatorValueString = string;
 
@@ -1441,9 +1567,22 @@ export interface InviteMembersRequest {
 export interface InviteMembersResponse {
   UnprocessedAccounts: Array<UnprocessedAccount>;
 }
-export type IpSetFormat = "TXT" | "STIX" | "OTX_CSV" | "ALIEN_VAULT" | "PROOF_POINT" | "FIRE_EYE";
+export type IpSetFormat =
+  | "TXT"
+  | "STIX"
+  | "OTX_CSV"
+  | "ALIEN_VAULT"
+  | "PROOF_POINT"
+  | "FIRE_EYE";
 export type IpSetIds = Array<string>;
-export type IpSetStatus = "INACTIVE" | "ACTIVATING" | "ACTIVE" | "DEACTIVATING" | "ERROR" | "DELETE_PENDING" | "DELETED";
+export type IpSetStatus =
+  | "INACTIVE"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "DEACTIVATING"
+  | "ERROR"
+  | "DELETE_PENDING"
+  | "DELETED";
 export type Ipv6Addresses = Array<string>;
 export type Issues = Array<string>;
 export interface ItemPath {
@@ -1489,7 +1628,15 @@ export interface KubernetesPermissionCheckedDetails {
   Namespace?: string;
   Allowed?: boolean;
 }
-export type KubernetesResourcesTypes = "PODS" | "JOBS" | "CRONJOBS" | "DEPLOYMENTS" | "DAEMONSETS" | "STATEFULSETS" | "REPLICASETS" | "REPLICATIONCONTROLLERS";
+export type KubernetesResourcesTypes =
+  | "PODS"
+  | "JOBS"
+  | "CRONJOBS"
+  | "DEPLOYMENTS"
+  | "DAEMONSETS"
+  | "STATEFULSETS"
+  | "REPLICASETS"
+  | "REPLICATIONCONTROLLERS";
 export interface KubernetesRoleBindingDetails {
   Kind?: string;
   Name?: string;
@@ -1695,7 +1842,8 @@ export interface MalwareProtectionPlanStatusReason {
   Code?: string;
   Message?: string;
 }
-export type MalwareProtectionPlanStatusReasonsList = Array<MalwareProtectionPlanStatusReason>;
+export type MalwareProtectionPlanStatusReasonsList =
+  Array<MalwareProtectionPlanStatusReason>;
 export interface MalwareProtectionPlanSummary {
   MalwareProtectionPlanId?: string;
 }
@@ -1737,14 +1885,17 @@ export interface MemberAdditionalConfigurationResult {
   Status?: FeatureStatus;
   UpdatedAt?: Date | string;
 }
-export type MemberAdditionalConfigurationResults = Array<MemberAdditionalConfigurationResult>;
-export type MemberAdditionalConfigurations = Array<MemberAdditionalConfiguration>;
+export type MemberAdditionalConfigurationResults =
+  Array<MemberAdditionalConfigurationResult>;
+export type MemberAdditionalConfigurations =
+  Array<MemberAdditionalConfiguration>;
 export interface MemberDataSourceConfiguration {
   AccountId: string;
   DataSources?: DataSourceConfigurationsResult;
   Features?: Array<MemberFeaturesConfigurationResult>;
 }
-export type MemberDataSourceConfigurations = Array<MemberDataSourceConfiguration>;
+export type MemberDataSourceConfigurations =
+  Array<MemberDataSourceConfiguration>;
 export interface MemberFeaturesConfiguration {
   Name?: OrgFeature;
   Status?: FeatureStatus;
@@ -1757,7 +1908,8 @@ export interface MemberFeaturesConfigurationResult {
   AdditionalConfiguration?: Array<MemberAdditionalConfigurationResult>;
 }
 export type MemberFeaturesConfigurations = Array<MemberFeaturesConfiguration>;
-export type MemberFeaturesConfigurationsResults = Array<MemberFeaturesConfigurationResult>;
+export type MemberFeaturesConfigurationsResults =
+  Array<MemberFeaturesConfigurationResult>;
 export type Members = Array<Member>;
 export type MemoryRegionsList = Array<string>;
 export type MfaStatus = "ENABLED" | "DISABLED";
@@ -1829,8 +1981,10 @@ export interface OrganizationAdditionalConfigurationResult {
   Name?: OrgFeatureAdditionalConfiguration;
   AutoEnable?: OrgFeatureStatus;
 }
-export type OrganizationAdditionalConfigurationResults = Array<OrganizationAdditionalConfigurationResult>;
-export type OrganizationAdditionalConfigurations = Array<OrganizationAdditionalConfiguration>;
+export type OrganizationAdditionalConfigurationResults =
+  Array<OrganizationAdditionalConfigurationResult>;
+export type OrganizationAdditionalConfigurations =
+  Array<OrganizationAdditionalConfiguration>;
 export interface OrganizationDataSourceConfigurations {
   S3Logs?: OrganizationS3LogsConfiguration;
   Kubernetes?: OrganizationKubernetesConfiguration;
@@ -1861,8 +2015,10 @@ export interface OrganizationFeatureConfigurationResult {
   AutoEnable?: OrgFeatureStatus;
   AdditionalConfiguration?: Array<OrganizationAdditionalConfigurationResult>;
 }
-export type OrganizationFeaturesConfigurations = Array<OrganizationFeatureConfiguration>;
-export type OrganizationFeaturesConfigurationsResults = Array<OrganizationFeatureConfigurationResult>;
+export type OrganizationFeaturesConfigurations =
+  Array<OrganizationFeatureConfiguration>;
+export type OrganizationFeaturesConfigurationsResults =
+  Array<OrganizationFeatureConfigurationResult>;
 export interface OrganizationFeatureStatistics {
   Name?: OrgFeature;
   EnabledAccountsCount?: number;
@@ -1872,8 +2028,10 @@ export interface OrganizationFeatureStatisticsAdditionalConfiguration {
   Name?: OrgFeatureAdditionalConfiguration;
   EnabledAccountsCount?: number;
 }
-export type OrganizationFeatureStatisticsAdditionalConfigurations = Array<OrganizationFeatureStatisticsAdditionalConfiguration>;
-export type OrganizationFeatureStatisticsResults = Array<OrganizationFeatureStatistics>;
+export type OrganizationFeatureStatisticsAdditionalConfigurations =
+  Array<OrganizationFeatureStatisticsAdditionalConfiguration>;
+export type OrganizationFeatureStatisticsResults =
+  Array<OrganizationFeatureStatistics>;
 export interface OrganizationKubernetesAuditLogsConfiguration {
   AutoEnable: boolean;
 }
@@ -1911,8 +2069,18 @@ export interface OrganizationStatistics {
   EnabledAccountsCount?: number;
   CountByFeature?: Array<OrganizationFeatureStatistics>;
 }
-export type OrgFeature = "S3_DATA_EVENTS" | "EKS_AUDIT_LOGS" | "EBS_MALWARE_PROTECTION" | "RDS_LOGIN_EVENTS" | "EKS_RUNTIME_MONITORING" | "LAMBDA_NETWORK_LOGS" | "RUNTIME_MONITORING";
-export type OrgFeatureAdditionalConfiguration = "EKS_ADDON_MANAGEMENT" | "ECS_FARGATE_AGENT_MANAGEMENT" | "EC2_AGENT_MANAGEMENT";
+export type OrgFeature =
+  | "S3_DATA_EVENTS"
+  | "EKS_AUDIT_LOGS"
+  | "EBS_MALWARE_PROTECTION"
+  | "RDS_LOGIN_EVENTS"
+  | "EKS_RUNTIME_MONITORING"
+  | "LAMBDA_NETWORK_LOGS"
+  | "RUNTIME_MONITORING";
+export type OrgFeatureAdditionalConfiguration =
+  | "EKS_ADDON_MANAGEMENT"
+  | "ECS_FARGATE_AGENT_MANAGEMENT"
+  | "EC2_AGENT_MANAGEMENT";
 export type OrgFeatureStatus = "NEW" | "NONE" | "ALL";
 export interface Owner {
   Id?: string;
@@ -1979,7 +2147,11 @@ export interface PublicAccessConfiguration {
 export type PublicAccessStatus = "BLOCKED" | "ALLOWED";
 export type PublicAclIgnoreBehavior = "IGNORED" | "NOT_IGNORED";
 export type PublicBucketRestrictBehavior = "RESTRICTED" | "NOT_RESTRICTED";
-export type PublishingStatus = "PENDING_VERIFICATION" | "PUBLISHING" | "UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY" | "STOPPED";
+export type PublishingStatus =
+  | "PENDING_VERIFICATION"
+  | "PUBLISHING"
+  | "UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"
+  | "STOPPED";
 export interface RdsDbInstanceDetails {
   DbInstanceIdentifier?: string;
   Engine?: string;
@@ -2300,7 +2472,14 @@ export interface Signal {
 export type SignalDescription = string;
 
 export type Signals = Array<Signal>;
-export type SignalType = "FINDING" | "CLOUD_TRAIL" | "S3_DATA_EVENTS" | "EKS_AUDIT_LOGS" | "FLOW_LOGS" | "DNS_LOGS" | "RUNTIME_MONITORING";
+export type SignalType =
+  | "FINDING"
+  | "CLOUD_TRAIL"
+  | "S3_DATA_EVENTS"
+  | "EKS_AUDIT_LOGS"
+  | "FLOW_LOGS"
+  | "DNS_LOGS"
+  | "RUNTIME_MONITORING";
 export interface SortCriteria {
   AttributeName?: string;
   OrderBy?: OrderBy;
@@ -2340,8 +2519,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
@@ -2362,9 +2540,22 @@ export interface ThreatIntelligenceDetail {
   ThreatFileSha256?: string;
 }
 export type ThreatIntelligenceDetails = Array<ThreatIntelligenceDetail>;
-export type ThreatIntelSetFormat = "TXT" | "STIX" | "OTX_CSV" | "ALIEN_VAULT" | "PROOF_POINT" | "FIRE_EYE";
+export type ThreatIntelSetFormat =
+  | "TXT"
+  | "STIX"
+  | "OTX_CSV"
+  | "ALIEN_VAULT"
+  | "PROOF_POINT"
+  | "FIRE_EYE";
 export type ThreatIntelSetIds = Array<string>;
-export type ThreatIntelSetStatus = "INACTIVE" | "ACTIVATING" | "ACTIVE" | "DEACTIVATING" | "ERROR" | "DELETE_PENDING" | "DELETED";
+export type ThreatIntelSetStatus =
+  | "INACTIVE"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "DEACTIVATING"
+  | "ERROR"
+  | "DELETE_PENDING"
+  | "DELETED";
 export type ThreatNames = Array<string>;
 export type Threats = Array<Threat>;
 export interface ThreatsDetectedItemCount {
@@ -2384,8 +2575,7 @@ export interface UnarchiveFindingsRequest {
   DetectorId: string;
   FindingIds: Array<string>;
 }
-export interface UnarchiveFindingsResponse {
-}
+export interface UnarchiveFindingsResponse {}
 export interface UnprocessedAccount {
   AccountId: string;
   Result: string;
@@ -2398,8 +2588,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateDetectorRequest {
   DetectorId: string;
   Enable?: boolean;
@@ -2407,8 +2596,7 @@ export interface UpdateDetectorRequest {
   DataSources?: DataSourceConfigurations;
   Features?: Array<DetectorFeatureConfiguration>;
 }
-export interface UpdateDetectorResponse {
-}
+export interface UpdateDetectorResponse {}
 export interface UpdateFilterRequest {
   DetectorId: string;
   FilterName: string;
@@ -2426,8 +2614,7 @@ export interface UpdateFindingsFeedbackRequest {
   Feedback: Feedback;
   Comments?: string;
 }
-export interface UpdateFindingsFeedbackResponse {
-}
+export interface UpdateFindingsFeedbackResponse {}
 export interface UpdateIPSetRequest {
   DetectorId: string;
   IpSetId: string;
@@ -2435,8 +2622,7 @@ export interface UpdateIPSetRequest {
   Location?: string;
   Activate?: boolean;
 }
-export interface UpdateIPSetResponse {
-}
+export interface UpdateIPSetResponse {}
 export interface UpdateMalwareProtectionPlanRequest {
   MalwareProtectionPlanId: string;
   Role?: string;
@@ -2448,8 +2634,7 @@ export interface UpdateMalwareScanSettingsRequest {
   ScanResourceCriteria?: ScanResourceCriteria;
   EbsSnapshotPreservation?: EbsSnapshotPreservation;
 }
-export interface UpdateMalwareScanSettingsResponse {
-}
+export interface UpdateMalwareScanSettingsResponse {}
 export interface UpdateMemberDetectorsRequest {
   DetectorId: string;
   AccountIds: Array<string>;
@@ -2466,8 +2651,7 @@ export interface UpdateOrganizationConfigurationRequest {
   Features?: Array<OrganizationFeatureConfiguration>;
   AutoEnableOrganizationMembers?: AutoEnableMembers;
 }
-export interface UpdateOrganizationConfigurationResponse {
-}
+export interface UpdateOrganizationConfigurationResponse {}
 export interface UpdateProtectedResource {
   S3Bucket?: UpdateS3BucketResource;
 }
@@ -2476,8 +2660,7 @@ export interface UpdatePublishingDestinationRequest {
   DestinationId: string;
   DestinationProperties?: DestinationProperties;
 }
-export interface UpdatePublishingDestinationResponse {
-}
+export interface UpdatePublishingDestinationResponse {}
 export interface UpdateS3BucketResource {
   ObjectPrefixes?: Array<string>;
 }
@@ -2488,8 +2671,7 @@ export interface UpdateThreatIntelSetRequest {
   Location?: string;
   Activate?: boolean;
 }
-export interface UpdateThreatIntelSetResponse {
-}
+export interface UpdateThreatIntelSetResponse {}
 export interface UsageAccountResult {
   AccountId?: string;
   Total?: Total;
@@ -2506,7 +2688,20 @@ export interface UsageDataSourceResult {
   Total?: Total;
 }
 export type UsageDataSourceResultList = Array<UsageDataSourceResult>;
-export type UsageFeature = "FLOW_LOGS" | "CLOUD_TRAIL" | "DNS_LOGS" | "S3_DATA_EVENTS" | "EKS_AUDIT_LOGS" | "EBS_MALWARE_PROTECTION" | "RDS_LOGIN_EVENTS" | "LAMBDA_NETWORK_LOGS" | "EKS_RUNTIME_MONITORING" | "FARGATE_RUNTIME_MONITORING" | "EC2_RUNTIME_MONITORING" | "RDS_DBI_PROTECTION_PROVISIONED" | "RDS_DBI_PROTECTION_SERVERLESS";
+export type UsageFeature =
+  | "FLOW_LOGS"
+  | "CLOUD_TRAIL"
+  | "DNS_LOGS"
+  | "S3_DATA_EVENTS"
+  | "EKS_AUDIT_LOGS"
+  | "EBS_MALWARE_PROTECTION"
+  | "RDS_LOGIN_EVENTS"
+  | "LAMBDA_NETWORK_LOGS"
+  | "EKS_RUNTIME_MONITORING"
+  | "FARGATE_RUNTIME_MONITORING"
+  | "EC2_RUNTIME_MONITORING"
+  | "RDS_DBI_PROTECTION_PROVISIONED"
+  | "RDS_DBI_PROTECTION_SERVERLESS";
 export type UsageFeatureList = Array<UsageFeature>;
 export interface UsageFeatureResult {
   Feature?: UsageFeature;
@@ -2526,7 +2721,13 @@ export interface UsageStatistics {
   TopResources?: Array<UsageResourceResult>;
   SumByFeature?: Array<UsageFeatureResult>;
 }
-export type UsageStatisticType = "SUM_BY_ACCOUNT" | "SUM_BY_DATA_SOURCE" | "SUM_BY_RESOURCE" | "TOP_RESOURCES" | "SUM_BY_FEATURES" | "TOP_ACCOUNTS_BY_FEATURE";
+export type UsageStatisticType =
+  | "SUM_BY_ACCOUNT"
+  | "SUM_BY_DATA_SOURCE"
+  | "SUM_BY_RESOURCE"
+  | "TOP_RESOURCES"
+  | "SUM_BY_FEATURES"
+  | "TOP_ACCOUNTS_BY_FEATURE";
 export interface UsageTopAccountResult {
   AccountId?: string;
   Total?: Total;
@@ -2697,18 +2898,18 @@ export declare namespace DeleteFilter {
     | CommonAwsError;
 }
 
-export declare namespace DeleteIPSet {
-  export type Input = DeleteIPSetRequest;
-  export type Output = DeleteIPSetResponse;
+export declare namespace DeleteInvitations {
+  export type Input = DeleteInvitationsRequest;
+  export type Output = DeleteInvitationsResponse;
   export type Error =
     | BadRequestException
     | InternalServerErrorException
     | CommonAwsError;
 }
 
-export declare namespace DeleteInvitations {
-  export type Input = DeleteInvitationsRequest;
-  export type Output = DeleteInvitationsResponse;
+export declare namespace DeleteIPSet {
+  export type Input = DeleteIPSetRequest;
+  export type Output = DeleteIPSetResponse;
   export type Error =
     | BadRequestException
     | InternalServerErrorException
@@ -2879,18 +3080,18 @@ export declare namespace GetFindingsStatistics {
     | CommonAwsError;
 }
 
-export declare namespace GetIPSet {
-  export type Input = GetIPSetRequest;
-  export type Output = GetIPSetResponse;
+export declare namespace GetInvitationsCount {
+  export type Input = GetInvitationsCountRequest;
+  export type Output = GetInvitationsCountResponse;
   export type Error =
     | BadRequestException
     | InternalServerErrorException
     | CommonAwsError;
 }
 
-export declare namespace GetInvitationsCount {
-  export type Input = GetInvitationsCountRequest;
-  export type Output = GetInvitationsCountResponse;
+export declare namespace GetIPSet {
+  export type Input = GetIPSetRequest;
+  export type Output = GetIPSetResponse;
   export type Error =
     | BadRequestException
     | InternalServerErrorException
@@ -3025,18 +3226,18 @@ export declare namespace ListFindings {
     | CommonAwsError;
 }
 
-export declare namespace ListIPSets {
-  export type Input = ListIPSetsRequest;
-  export type Output = ListIPSetsResponse;
+export declare namespace ListInvitations {
+  export type Input = ListInvitationsRequest;
+  export type Output = ListInvitationsResponse;
   export type Error =
     | BadRequestException
     | InternalServerErrorException
     | CommonAwsError;
 }
 
-export declare namespace ListInvitations {
-  export type Input = ListInvitationsRequest;
-  export type Output = ListInvitationsResponse;
+export declare namespace ListIPSets {
+  export type Input = ListIPSetsRequest;
+  export type Output = ListIPSetsResponse;
   export type Error =
     | BadRequestException
     | InternalServerErrorException
@@ -3247,4 +3448,3 @@ export declare namespace UpdateThreatIntelSet {
     | InternalServerErrorException
     | CommonAwsError;
 }
-

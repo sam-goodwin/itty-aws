@@ -1,18 +1,24 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSIESnowballJobManagementService {
   cancelCluster(
     input: CancelClusterRequest,
   ): Effect.Effect<
     CancelClusterResult,
-    InvalidJobStateException | InvalidResourceException | KMSRequestFailedException | CommonAwsError
+    | InvalidJobStateException
+    | InvalidResourceException
+    | KMSRequestFailedException
+    | CommonAwsError
   >;
   cancelJob(
     input: CancelJobRequest,
   ): Effect.Effect<
     CancelJobResult,
-    InvalidJobStateException | InvalidResourceException | KMSRequestFailedException | CommonAwsError
+    | InvalidJobStateException
+    | InvalidResourceException
+    | KMSRequestFailedException
+    | CommonAwsError
   >;
   createAddress(
     input: CreateAddressRequest,
@@ -24,13 +30,22 @@ export interface AWSIESnowballJobManagementService {
     input: CreateClusterRequest,
   ): Effect.Effect<
     CreateClusterResult,
-    Ec2RequestFailedException | InvalidInputCombinationException | InvalidResourceException | KMSRequestFailedException | CommonAwsError
+    | Ec2RequestFailedException
+    | InvalidInputCombinationException
+    | InvalidResourceException
+    | KMSRequestFailedException
+    | CommonAwsError
   >;
   createJob(
     input: CreateJobRequest,
   ): Effect.Effect<
     CreateJobResult,
-    ClusterLimitExceededException | Ec2RequestFailedException | InvalidInputCombinationException | InvalidResourceException | KMSRequestFailedException | CommonAwsError
+    | ClusterLimitExceededException
+    | Ec2RequestFailedException
+    | InvalidInputCombinationException
+    | InvalidResourceException
+    | KMSRequestFailedException
+    | CommonAwsError
   >;
   createLongTermPricing(
     input: CreateLongTermPricingRequest,
@@ -42,7 +57,12 @@ export interface AWSIESnowballJobManagementService {
     input: CreateReturnShippingLabelRequest,
   ): Effect.Effect<
     CreateReturnShippingLabelResult,
-    ConflictException | InvalidInputCombinationException | InvalidJobStateException | InvalidResourceException | ReturnShippingLabelAlreadyExistsException | CommonAwsError
+    | ConflictException
+    | InvalidInputCombinationException
+    | InvalidJobStateException
+    | InvalidResourceException
+    | ReturnShippingLabelAlreadyExistsException
+    | CommonAwsError
   >;
   describeAddress(
     input: DescribeAddressRequest,
@@ -72,7 +92,10 @@ export interface AWSIESnowballJobManagementService {
     input: DescribeReturnShippingLabelRequest,
   ): Effect.Effect<
     DescribeReturnShippingLabelResult,
-    ConflictException | InvalidJobStateException | InvalidResourceException | CommonAwsError
+    | ConflictException
+    | InvalidJobStateException
+    | InvalidResourceException
+    | CommonAwsError
   >;
   getJobManifest(
     input: GetJobManifestRequest,
@@ -88,10 +111,7 @@ export interface AWSIESnowballJobManagementService {
   >;
   getSnowballUsage(
     input: GetSnowballUsageRequest,
-  ): Effect.Effect<
-    GetSnowballUsageResult,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetSnowballUsageResult, CommonAwsError>;
   getSoftwareUpdates(
     input: GetSoftwareUpdatesRequest,
   ): Effect.Effect<
@@ -118,10 +138,7 @@ export interface AWSIESnowballJobManagementService {
   >;
   listJobs(
     input: ListJobsRequest,
-  ): Effect.Effect<
-    ListJobsResult,
-    InvalidNextTokenException | CommonAwsError
-  >;
+  ): Effect.Effect<ListJobsResult, InvalidNextTokenException | CommonAwsError>;
   listLongTermPricing(
     input: ListLongTermPricingRequest,
   ): Effect.Effect<
@@ -144,13 +161,24 @@ export interface AWSIESnowballJobManagementService {
     input: UpdateClusterRequest,
   ): Effect.Effect<
     UpdateClusterResult,
-    Ec2RequestFailedException | InvalidInputCombinationException | InvalidJobStateException | InvalidResourceException | KMSRequestFailedException | CommonAwsError
+    | Ec2RequestFailedException
+    | InvalidInputCombinationException
+    | InvalidJobStateException
+    | InvalidResourceException
+    | KMSRequestFailedException
+    | CommonAwsError
   >;
   updateJob(
     input: UpdateJobRequest,
   ): Effect.Effect<
     UpdateJobResult,
-    ClusterLimitExceededException | Ec2RequestFailedException | InvalidInputCombinationException | InvalidJobStateException | InvalidResourceException | KMSRequestFailedException | CommonAwsError
+    | ClusterLimitExceededException
+    | Ec2RequestFailedException
+    | InvalidInputCombinationException
+    | InvalidJobStateException
+    | InvalidResourceException
+    | KMSRequestFailedException
+    | CommonAwsError
   >;
   updateJobShipmentState(
     input: UpdateJobShipmentStateRequest,
@@ -194,13 +222,11 @@ export type AmiId = string;
 export interface CancelClusterRequest {
   ClusterId: string;
 }
-export interface CancelClusterResult {
-}
+export interface CancelClusterResult {}
 export interface CancelJobRequest {
   JobId: string;
 }
-export interface CancelJobResult {
-}
+export interface CancelJobResult {}
 export type ClusterId = string;
 
 export declare class ClusterLimitExceededException extends Data.TaggedError(
@@ -232,7 +258,12 @@ export interface ClusterMetadata {
   TaxDocuments?: TaxDocuments;
   OnDeviceServiceConfiguration?: OnDeviceServiceConfiguration;
 }
-export type ClusterState = "AWAITING_QUORUM" | "PENDING" | "IN_USE" | "COMPLETE" | "CANCELLED";
+export type ClusterState =
+  | "AWAITING_QUORUM"
+  | "PENDING"
+  | "IN_USE"
+  | "COMPLETE"
+  | "CANCELLED";
 export interface CompatibleImage {
   AmiId?: string;
   Name?: string;
@@ -363,7 +394,9 @@ export interface DeviceConfiguration {
 }
 export type DevicePickupId = string;
 
-export type DeviceServiceName = "NFS_ON_DEVICE_SERVICE" | "S3_ON_DEVICE_SERVICE";
+export type DeviceServiceName =
+  | "NFS_ON_DEVICE_SERVICE"
+  | "S3_ON_DEVICE_SERVICE";
 export interface Ec2AmiResource {
   AmiId: string;
   SnowballAmiId?: string;
@@ -396,8 +429,7 @@ export interface GetJobUnlockCodeRequest {
 export interface GetJobUnlockCodeResult {
   UnlockCode?: string;
 }
-export interface GetSnowballUsageRequest {
-}
+export interface GetSnowballUsageRequest {}
 export interface GetSnowballUsageResult {
   SnowballLimit?: number;
   SnowballsInUse?: number;
@@ -496,7 +528,20 @@ export interface JobResource {
   LambdaResources?: Array<LambdaResource>;
   Ec2AmiResources?: Array<Ec2AmiResource>;
 }
-export type JobState = "NEW" | "PREPARING_APPLIANCE" | "PREPARING_SHIPMENT" | "IN_TRANSIT_TO_CUSTOMER" | "WITH_CUSTOMER" | "IN_TRANSIT_TO_AWS" | "WITH_AWS_SORTING_FACILITY" | "WITH_AWS" | "IN_PROGRESS" | "COMPLETE" | "CANCELLED" | "LISTING" | "PENDING";
+export type JobState =
+  | "NEW"
+  | "PREPARING_APPLIANCE"
+  | "PREPARING_SHIPMENT"
+  | "IN_TRANSIT_TO_CUSTOMER"
+  | "WITH_CUSTOMER"
+  | "IN_TRANSIT_TO_AWS"
+  | "WITH_AWS_SORTING_FACILITY"
+  | "WITH_AWS"
+  | "IN_PROGRESS"
+  | "COMPLETE"
+  | "CANCELLED"
+  | "LISTING"
+  | "PENDING";
 export type JobStateList = Array<JobState>;
 export type JobType = "IMPORT" | "EXPORT" | "LOCAL_USE";
 export interface KeyRange {
@@ -627,7 +672,10 @@ export interface PickupDetails {
   IdentificationIssuingOrg?: string;
   DevicePickupId?: string;
 }
-export type RemoteManagement = "INSTALLED_ONLY" | "INSTALLED_AUTOSTART" | "NOT_INSTALLED";
+export type RemoteManagement =
+  | "INSTALLED_ONLY"
+  | "INSTALLED_AUTOSTART"
+  | "NOT_INSTALLED";
 export type ResourceARN = string;
 
 export declare class ReturnShippingLabelAlreadyExistsException extends Data.TaggedError(
@@ -668,10 +716,35 @@ export interface ShippingDetails {
   InboundShipment?: Shipment;
   OutboundShipment?: Shipment;
 }
-export type ShippingLabelStatus = "IN_PROGRESS" | "TIMED_OUT" | "SUCCEEDED" | "FAILED";
+export type ShippingLabelStatus =
+  | "IN_PROGRESS"
+  | "TIMED_OUT"
+  | "SUCCEEDED"
+  | "FAILED";
 export type ShippingOption = "SECOND_DAY" | "NEXT_DAY" | "EXPRESS" | "STANDARD";
-export type SnowballCapacity = "T50" | "T80" | "T100" | "T42" | "T98" | "T8" | "T14" | "T32" | "NO_PREFERENCE" | "T240" | "T13";
-export type SnowballType = "STANDARD" | "EDGE" | "EDGE_C" | "EDGE_CG" | "EDGE_S" | "SNC1_HDD" | "SNC1_SSD" | "V3_5C" | "V3_5S" | "RACK_5U_C";
+export type SnowballCapacity =
+  | "T50"
+  | "T80"
+  | "T100"
+  | "T42"
+  | "T98"
+  | "T8"
+  | "T14"
+  | "T32"
+  | "NO_PREFERENCE"
+  | "T240"
+  | "T13";
+export type SnowballType =
+  | "STANDARD"
+  | "EDGE"
+  | "EDGE_C"
+  | "EDGE_CG"
+  | "EDGE_S"
+  | "SNC1_HDD"
+  | "SNC1_SSD"
+  | "V3_5C"
+  | "V3_5S"
+  | "RACK_5U_C";
 export interface SnowconeDeviceConfiguration {
   WirelessConnection?: WirelessConnection;
 }
@@ -711,8 +784,7 @@ export interface UpdateClusterRequest {
   Notification?: Notification;
   ForwardingAddressId?: string;
 }
-export interface UpdateClusterResult {
-}
+export interface UpdateClusterResult {}
 export interface UpdateJobRequest {
   JobId: string;
   RoleARN?: string;
@@ -726,21 +798,18 @@ export interface UpdateJobRequest {
   ForwardingAddressId?: string;
   PickupDetails?: PickupDetails;
 }
-export interface UpdateJobResult {
-}
+export interface UpdateJobResult {}
 export interface UpdateJobShipmentStateRequest {
   JobId: string;
   ShipmentState: ShipmentState;
 }
-export interface UpdateJobShipmentStateResult {
-}
+export interface UpdateJobShipmentStateResult {}
 export interface UpdateLongTermPricingRequest {
   LongTermPricingId: string;
   ReplacementJob?: string;
   IsLongTermPricingAutoRenew?: boolean;
 }
-export interface UpdateLongTermPricingResult {
-}
+export interface UpdateLongTermPricingResult {}
 export interface WirelessConnection {
   IsWifiEnabled?: boolean;
 }
@@ -799,9 +868,7 @@ export declare namespace CreateJob {
 export declare namespace CreateLongTermPricing {
   export type Input = CreateLongTermPricingRequest;
   export type Output = CreateLongTermPricingResult;
-  export type Error =
-    | InvalidResourceException
-    | CommonAwsError;
+  export type Error = InvalidResourceException | CommonAwsError;
 }
 
 export declare namespace CreateReturnShippingLabel {
@@ -819,9 +886,7 @@ export declare namespace CreateReturnShippingLabel {
 export declare namespace DescribeAddress {
   export type Input = DescribeAddressRequest;
   export type Output = DescribeAddressResult;
-  export type Error =
-    | InvalidResourceException
-    | CommonAwsError;
+  export type Error = InvalidResourceException | CommonAwsError;
 }
 
 export declare namespace DescribeAddresses {
@@ -836,17 +901,13 @@ export declare namespace DescribeAddresses {
 export declare namespace DescribeCluster {
   export type Input = DescribeClusterRequest;
   export type Output = DescribeClusterResult;
-  export type Error =
-    | InvalidResourceException
-    | CommonAwsError;
+  export type Error = InvalidResourceException | CommonAwsError;
 }
 
 export declare namespace DescribeJob {
   export type Input = DescribeJobRequest;
   export type Output = DescribeJobResult;
-  export type Error =
-    | InvalidResourceException
-    | CommonAwsError;
+  export type Error = InvalidResourceException | CommonAwsError;
 }
 
 export declare namespace DescribeReturnShippingLabel {
@@ -880,8 +941,7 @@ export declare namespace GetJobUnlockCode {
 export declare namespace GetSnowballUsage {
   export type Input = GetSnowballUsageRequest;
   export type Output = GetSnowballUsageResult;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetSoftwareUpdates {
@@ -905,9 +965,7 @@ export declare namespace ListClusterJobs {
 export declare namespace ListClusters {
   export type Input = ListClustersRequest;
   export type Output = ListClustersResult;
-  export type Error =
-    | InvalidNextTokenException
-    | CommonAwsError;
+  export type Error = InvalidNextTokenException | CommonAwsError;
 }
 
 export declare namespace ListCompatibleImages {
@@ -922,9 +980,7 @@ export declare namespace ListCompatibleImages {
 export declare namespace ListJobs {
   export type Input = ListJobsRequest;
   export type Output = ListJobsResult;
-  export type Error =
-    | InvalidNextTokenException
-    | CommonAwsError;
+  export type Error = InvalidNextTokenException | CommonAwsError;
 }
 
 export declare namespace ListLongTermPricing {
@@ -939,9 +995,7 @@ export declare namespace ListLongTermPricing {
 export declare namespace ListPickupLocations {
   export type Input = ListPickupLocationsRequest;
   export type Output = ListPickupLocationsResult;
-  export type Error =
-    | InvalidResourceException
-    | CommonAwsError;
+  export type Error = InvalidResourceException | CommonAwsError;
 }
 
 export declare namespace ListServiceVersions {
@@ -990,8 +1044,5 @@ export declare namespace UpdateJobShipmentState {
 export declare namespace UpdateLongTermPricing {
   export type Input = UpdateLongTermPricingRequest;
   export type Output = UpdateLongTermPricingResult;
-  export type Error =
-    | InvalidResourceException
-    | CommonAwsError;
+  export type Error = InvalidResourceException | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.memorydb#ACL": {
       "type": "structure",
@@ -204,6 +233,137 @@
     },
     "com.amazonaws.memorydb#AmazonMemoryDB": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.memorydb#BatchUpdateCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CopySnapshot"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateACL"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateMultiRegionCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateSnapshot"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteACL"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteMultiRegionCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteSnapshot"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeACLs"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeClusters"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeEngineVersions"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeMultiRegionClusters"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeParameters"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeReservedNodes"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeReservedNodesOfferings"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeServiceUpdates"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeSnapshots"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.memorydb#DescribeUsers"
+        },
+        {
+          "target": "com.amazonaws.memorydb#FailoverShard"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ListAllowedMultiRegionClusterUpdates"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ListAllowedNodeTypeUpdates"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ListTags"
+        },
+        {
+          "target": "com.amazonaws.memorydb#PurchaseReservedNodesOffering"
+        },
+        {
+          "target": "com.amazonaws.memorydb#ResetParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#TagResource"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UpdateACL"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UpdateCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UpdateMultiRegionCluster"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UpdateParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UpdateSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.memorydb#UpdateUser"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "MemoryDB",

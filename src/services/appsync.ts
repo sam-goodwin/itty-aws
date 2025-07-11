@@ -1,450 +1,805 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSDeepdishControlPlaneService {
   associateApi(
     input: AssociateApiRequest,
   ): Effect.Effect<
     AssociateApiResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   associateMergedGraphqlApi(
     input: AssociateMergedGraphqlApiRequest,
   ): Effect.Effect<
     AssociateMergedGraphqlApiResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   associateSourceGraphqlApi(
     input: AssociateSourceGraphqlApiRequest,
   ): Effect.Effect<
     AssociateSourceGraphqlApiResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createApi(
     input: CreateApiRequest,
   ): Effect.Effect<
     CreateApiResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | ServiceQuotaExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | ServiceQuotaExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createApiCache(
     input: CreateApiCacheRequest,
   ): Effect.Effect<
     CreateApiCacheResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createApiKey(
     input: CreateApiKeyRequest,
   ): Effect.Effect<
     CreateApiKeyResponse,
-    ApiKeyLimitExceededException | ApiKeyValidityOutOfBoundsException | BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ApiKeyLimitExceededException
+    | ApiKeyValidityOutOfBoundsException
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createChannelNamespace(
     input: CreateChannelNamespaceRequest,
   ): Effect.Effect<
     CreateChannelNamespaceResponse,
-    BadRequestException | ConcurrentModificationException | ConflictException | InternalFailureException | NotFoundException | ServiceQuotaExceededException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | ConflictException
+    | InternalFailureException
+    | NotFoundException
+    | ServiceQuotaExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDataSource(
     input: CreateDataSourceRequest,
   ): Effect.Effect<
     CreateDataSourceResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDomainName(
     input: CreateDomainNameRequest,
   ): Effect.Effect<
     CreateDomainNameResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | CommonAwsError
   >;
   createFunction(
     input: CreateFunctionRequest,
   ): Effect.Effect<
     CreateFunctionResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createGraphqlApi(
     input: CreateGraphqlApiRequest,
   ): Effect.Effect<
     CreateGraphqlApiResponse,
-    ApiLimitExceededException | BadRequestException | ConcurrentModificationException | InternalFailureException | LimitExceededException | UnauthorizedException | CommonAwsError
+    | ApiLimitExceededException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | LimitExceededException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createResolver(
     input: CreateResolverRequest,
   ): Effect.Effect<
     CreateResolverResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createType(
     input: CreateTypeRequest,
   ): Effect.Effect<
     CreateTypeResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteApi(
     input: DeleteApiRequest,
   ): Effect.Effect<
     DeleteApiResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteApiCache(
     input: DeleteApiCacheRequest,
   ): Effect.Effect<
     DeleteApiCacheResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteApiKey(
     input: DeleteApiKeyRequest,
   ): Effect.Effect<
     DeleteApiKeyResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteChannelNamespace(
     input: DeleteChannelNamespaceRequest,
   ): Effect.Effect<
     DeleteChannelNamespaceResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDataSource(
     input: DeleteDataSourceRequest,
   ): Effect.Effect<
     DeleteDataSourceResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDomainName(
     input: DeleteDomainNameRequest,
   ): Effect.Effect<
     DeleteDomainNameResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteFunction(
     input: DeleteFunctionRequest,
   ): Effect.Effect<
     DeleteFunctionResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteGraphqlApi(
     input: DeleteGraphqlApiRequest,
   ): Effect.Effect<
     DeleteGraphqlApiResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteResolver(
     input: DeleteResolverRequest,
   ): Effect.Effect<
     DeleteResolverResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteType(
     input: DeleteTypeRequest,
   ): Effect.Effect<
     DeleteTypeResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   disassociateApi(
     input: DisassociateApiRequest,
   ): Effect.Effect<
     DisassociateApiResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   disassociateMergedGraphqlApi(
     input: DisassociateMergedGraphqlApiRequest,
   ): Effect.Effect<
     DisassociateMergedGraphqlApiResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   disassociateSourceGraphqlApi(
     input: DisassociateSourceGraphqlApiRequest,
   ): Effect.Effect<
     DisassociateSourceGraphqlApiResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   evaluateCode(
     input: EvaluateCodeRequest,
   ): Effect.Effect<
     EvaluateCodeResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | CommonAwsError
   >;
   evaluateMappingTemplate(
     input: EvaluateMappingTemplateRequest,
   ): Effect.Effect<
     EvaluateMappingTemplateResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | CommonAwsError
   >;
   flushApiCache(
     input: FlushApiCacheRequest,
   ): Effect.Effect<
     FlushApiCacheResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getApi(
     input: GetApiRequest,
   ): Effect.Effect<
     GetApiResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getApiAssociation(
     input: GetApiAssociationRequest,
   ): Effect.Effect<
     GetApiAssociationResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   getApiCache(
     input: GetApiCacheRequest,
   ): Effect.Effect<
     GetApiCacheResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getChannelNamespace(
     input: GetChannelNamespaceRequest,
   ): Effect.Effect<
     GetChannelNamespaceResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDataSource(
     input: GetDataSourceRequest,
   ): Effect.Effect<
     GetDataSourceResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDataSourceIntrospection(
     input: GetDataSourceIntrospectionRequest,
   ): Effect.Effect<
     GetDataSourceIntrospectionResponse,
-    BadRequestException | InternalFailureException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   getDomainName(
     input: GetDomainNameRequest,
   ): Effect.Effect<
     GetDomainNameResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   getFunction(
     input: GetFunctionRequest,
   ): Effect.Effect<
     GetFunctionResponse,
-    ConcurrentModificationException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ConcurrentModificationException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getGraphqlApi(
     input: GetGraphqlApiRequest,
   ): Effect.Effect<
     GetGraphqlApiResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getGraphqlApiEnvironmentVariables(
     input: GetGraphqlApiEnvironmentVariablesRequest,
   ): Effect.Effect<
     GetGraphqlApiEnvironmentVariablesResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getIntrospectionSchema(
     input: GetIntrospectionSchemaRequest,
   ): Effect.Effect<
     GetIntrospectionSchemaResponse,
-    GraphQLSchemaException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | GraphQLSchemaException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getResolver(
     input: GetResolverRequest,
   ): Effect.Effect<
     GetResolverResponse,
-    ConcurrentModificationException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ConcurrentModificationException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getSchemaCreationStatus(
     input: GetSchemaCreationStatusRequest,
   ): Effect.Effect<
     GetSchemaCreationStatusResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getSourceApiAssociation(
     input: GetSourceApiAssociationRequest,
   ): Effect.Effect<
     GetSourceApiAssociationResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getType(
     input: GetTypeRequest,
   ): Effect.Effect<
     GetTypeResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listApiKeys(
     input: ListApiKeysRequest,
   ): Effect.Effect<
     ListApiKeysResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listApis(
     input: ListApisRequest,
   ): Effect.Effect<
     ListApisResponse,
-    BadRequestException | InternalFailureException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listChannelNamespaces(
     input: ListChannelNamespacesRequest,
   ): Effect.Effect<
     ListChannelNamespacesResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listDataSources(
     input: ListDataSourcesRequest,
   ): Effect.Effect<
     ListDataSourcesResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listDomainNames(
     input: ListDomainNamesRequest,
   ): Effect.Effect<
     ListDomainNamesResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | CommonAwsError
   >;
   listFunctions(
     input: ListFunctionsRequest,
   ): Effect.Effect<
     ListFunctionsResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listGraphqlApis(
     input: ListGraphqlApisRequest,
   ): Effect.Effect<
     ListGraphqlApisResponse,
-    BadRequestException | InternalFailureException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listResolvers(
     input: ListResolversRequest,
   ): Effect.Effect<
     ListResolversResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listResolversByFunction(
     input: ListResolversByFunctionRequest,
   ): Effect.Effect<
     ListResolversByFunctionResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listSourceApiAssociations(
     input: ListSourceApiAssociationsRequest,
   ): Effect.Effect<
     ListSourceApiAssociationsResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTypes(
     input: ListTypesRequest,
   ): Effect.Effect<
     ListTypesResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTypesByAssociation(
     input: ListTypesByAssociationRequest,
   ): Effect.Effect<
     ListTypesByAssociationResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putGraphqlApiEnvironmentVariables(
     input: PutGraphqlApiEnvironmentVariablesRequest,
   ): Effect.Effect<
     PutGraphqlApiEnvironmentVariablesResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startDataSourceIntrospection(
     input: StartDataSourceIntrospectionRequest,
   ): Effect.Effect<
     StartDataSourceIntrospectionResponse,
-    BadRequestException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startSchemaCreation(
     input: StartSchemaCreationRequest,
   ): Effect.Effect<
     StartSchemaCreationResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startSchemaMerge(
     input: StartSchemaMergeRequest,
   ): Effect.Effect<
     StartSchemaMergeResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateApi(
     input: UpdateApiRequest,
   ): Effect.Effect<
     UpdateApiResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateApiCache(
     input: UpdateApiCacheRequest,
   ): Effect.Effect<
     UpdateApiCacheResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateApiKey(
     input: UpdateApiKeyRequest,
   ): Effect.Effect<
     UpdateApiKeyResponse,
-    ApiKeyValidityOutOfBoundsException | BadRequestException | InternalFailureException | LimitExceededException | NotFoundException | UnauthorizedException | CommonAwsError
+    | ApiKeyValidityOutOfBoundsException
+    | BadRequestException
+    | InternalFailureException
+    | LimitExceededException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateChannelNamespace(
     input: UpdateChannelNamespaceRequest,
   ): Effect.Effect<
     UpdateChannelNamespaceResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDataSource(
     input: UpdateDataSourceRequest,
   ): Effect.Effect<
     UpdateDataSourceResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDomainName(
     input: UpdateDomainNameRequest,
   ): Effect.Effect<
     UpdateDomainNameResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateFunction(
     input: UpdateFunctionRequest,
   ): Effect.Effect<
     UpdateFunctionResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateGraphqlApi(
     input: UpdateGraphqlApiRequest,
   ): Effect.Effect<
     UpdateGraphqlApiResponse,
-    AccessDeniedException | BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateResolver(
     input: UpdateResolverRequest,
   ): Effect.Effect<
     UpdateResolverResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateSourceApiAssociation(
     input: UpdateSourceApiAssociationRequest,
   ): Effect.Effect<
     UpdateSourceApiAssociationResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateType(
     input: UpdateTypeRequest,
   ): Effect.Effect<
     UpdateTypeResponse,
-    BadRequestException | ConcurrentModificationException | InternalFailureException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | InternalFailureException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -461,7 +816,8 @@ export interface AdditionalAuthenticationProvider {
   userPoolConfig?: CognitoUserPoolConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
 }
-export type AdditionalAuthenticationProviders = Array<AdditionalAuthenticationProvider>;
+export type AdditionalAuthenticationProviders =
+  Array<AdditionalAuthenticationProvider>;
 export interface Api {
   apiId?: string;
   name?: string;
@@ -489,9 +845,32 @@ export interface ApiCache {
   status?: ApiCacheStatus;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
-export type ApiCacheStatus = "AVAILABLE" | "CREATING" | "DELETING" | "MODIFYING" | "FAILED";
-export type ApiCacheType = "T2_SMALL" | "T2_MEDIUM" | "R4_LARGE" | "R4_XLARGE" | "R4_2XLARGE" | "R4_4XLARGE" | "R4_8XLARGE" | "SMALL" | "MEDIUM" | "LARGE" | "XLARGE" | "LARGE_2X" | "LARGE_4X" | "LARGE_8X" | "LARGE_12X";
-export type ApiCachingBehavior = "FULL_REQUEST_CACHING" | "PER_RESOLVER_CACHING" | "OPERATION_LEVEL_CACHING";
+export type ApiCacheStatus =
+  | "AVAILABLE"
+  | "CREATING"
+  | "DELETING"
+  | "MODIFYING"
+  | "FAILED";
+export type ApiCacheType =
+  | "T2_SMALL"
+  | "T2_MEDIUM"
+  | "R4_LARGE"
+  | "R4_XLARGE"
+  | "R4_2XLARGE"
+  | "R4_4XLARGE"
+  | "R4_8XLARGE"
+  | "SMALL"
+  | "MEDIUM"
+  | "LARGE"
+  | "XLARGE"
+  | "LARGE_2X"
+  | "LARGE_4X"
+  | "LARGE_8X"
+  | "LARGE_12X";
+export type ApiCachingBehavior =
+  | "FULL_REQUEST_CACHING"
+  | "PER_RESOLVER_CACHING"
+  | "OPERATION_LEVEL_CACHING";
 export interface ApiKey {
   id?: string;
   description?: string;
@@ -547,7 +926,12 @@ export interface AssociateSourceGraphqlApiResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
 export type AssociationStatus = "Processing" | "Failed" | "Success";
-export type AuthenticationType = "API_KEY" | "AWS_IAM" | "AMAZON_COGNITO_USER_POOLS" | "OPENID_CONNECT" | "AWS_LAMBDA";
+export type AuthenticationType =
+  | "API_KEY"
+  | "AWS_IAM"
+  | "AMAZON_COGNITO_USER_POOLS"
+  | "OPENID_CONNECT"
+  | "AWS_LAMBDA";
 export interface AuthMode {
   authType: AuthenticationType;
 }
@@ -644,7 +1028,11 @@ export declare class ConflictException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type ConflictHandlerType = "OPTIMISTIC_CONCURRENCY" | "LAMBDA" | "AUTOMERGE" | "NONE";
+export type ConflictHandlerType =
+  | "OPTIMISTIC_CONCURRENCY"
+  | "LAMBDA"
+  | "AUTOMERGE"
+  | "NONE";
 export type Context = string;
 
 export interface CreateApiCacheRequest {
@@ -807,7 +1195,8 @@ export interface DataSourceIntrospectionModelField {
   type?: DataSourceIntrospectionModelFieldType;
   length?: number;
 }
-export type DataSourceIntrospectionModelFields = Array<DataSourceIntrospectionModelField>;
+export type DataSourceIntrospectionModelFields =
+  Array<DataSourceIntrospectionModelField>;
 export interface DataSourceIntrospectionModelFieldType {
   kind?: string;
   name?: string;
@@ -819,7 +1208,8 @@ export interface DataSourceIntrospectionModelIndex {
   name?: string;
   fields?: Array<string>;
 }
-export type DataSourceIntrospectionModelIndexes = Array<DataSourceIntrospectionModelIndex>;
+export type DataSourceIntrospectionModelIndexes =
+  Array<DataSourceIntrospectionModelIndex>;
 export type DataSourceIntrospectionModelIndexFields = Array<string>;
 export type DataSourceIntrospectionModels = Array<DataSourceIntrospectionModel>;
 export interface DataSourceIntrospectionResult {
@@ -827,68 +1217,69 @@ export interface DataSourceIntrospectionResult {
   nextToken?: string;
 }
 export type DataSourceIntrospectionStatus = "PROCESSING" | "FAILED" | "SUCCESS";
-export type DataSourceLevelMetricsBehavior = "FULL_REQUEST_DATA_SOURCE_METRICS" | "PER_DATA_SOURCE_METRICS";
+export type DataSourceLevelMetricsBehavior =
+  | "FULL_REQUEST_DATA_SOURCE_METRICS"
+  | "PER_DATA_SOURCE_METRICS";
 export type DataSourceLevelMetricsConfig = "ENABLED" | "DISABLED";
 export type DataSources = Array<DataSource>;
-export type DataSourceType = "AWS_LAMBDA" | "AMAZON_DYNAMODB" | "AMAZON_ELASTICSEARCH" | "NONE" | "HTTP" | "RELATIONAL_DATABASE" | "AMAZON_OPENSEARCH_SERVICE" | "AMAZON_EVENTBRIDGE" | "AMAZON_BEDROCK_RUNTIME";
+export type DataSourceType =
+  | "AWS_LAMBDA"
+  | "AMAZON_DYNAMODB"
+  | "AMAZON_ELASTICSEARCH"
+  | "NONE"
+  | "HTTP"
+  | "RELATIONAL_DATABASE"
+  | "AMAZON_OPENSEARCH_SERVICE"
+  | "AMAZON_EVENTBRIDGE"
+  | "AMAZON_BEDROCK_RUNTIME";
 export type DefaultAction = "ALLOW" | "DENY";
 export interface DeleteApiCacheRequest {
   apiId: string;
 }
-export interface DeleteApiCacheResponse {
-}
+export interface DeleteApiCacheResponse {}
 export interface DeleteApiKeyRequest {
   apiId: string;
   id: string;
 }
-export interface DeleteApiKeyResponse {
-}
+export interface DeleteApiKeyResponse {}
 export interface DeleteApiRequest {
   apiId: string;
 }
-export interface DeleteApiResponse {
-}
+export interface DeleteApiResponse {}
 export interface DeleteChannelNamespaceRequest {
   apiId: string;
   name: string;
 }
-export interface DeleteChannelNamespaceResponse {
-}
+export interface DeleteChannelNamespaceResponse {}
 export interface DeleteDataSourceRequest {
   apiId: string;
   name: string;
 }
-export interface DeleteDataSourceResponse {
-}
+export interface DeleteDataSourceResponse {}
 export interface DeleteDomainNameRequest {
   domainName: string;
 }
-export interface DeleteDomainNameResponse {
-}
+export interface DeleteDomainNameResponse {}
 export interface DeleteFunctionRequest {
   apiId: string;
   functionId: string;
 }
-export interface DeleteFunctionResponse {
-}
+export interface DeleteFunctionResponse {}
 export interface DeleteGraphqlApiRequest {
   apiId: string;
 }
-export interface DeleteGraphqlApiResponse {
-}
+export interface DeleteGraphqlApiResponse {}
 export interface DeleteResolverRequest {
   apiId: string;
   typeName: string;
   fieldName: string;
 }
-export interface DeleteResolverResponse {
-}
+export interface DeleteResolverResponse {}
 export interface DeleteTypeRequest {
   apiId: string;
   typeName: string;
 }
-export interface DeleteTypeResponse {
-}
+export interface DeleteTypeResponse {}
 export interface DeltaSyncConfig {
   baseTableTTL?: number;
   deltaSyncTableName?: string;
@@ -899,8 +1290,7 @@ export type Description = string;
 export interface DisassociateApiRequest {
   domainName: string;
 }
-export interface DisassociateApiResponse {
-}
+export interface DisassociateApiResponse {}
 export interface DisassociateMergedGraphqlApiRequest {
   sourceApiIdentifier: string;
   associationId: string;
@@ -1002,8 +1392,7 @@ export type FieldLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG";
 export interface FlushApiCacheRequest {
   apiId: string;
 }
-export interface FlushApiCacheResponse {
-}
+export interface FlushApiCacheResponse {}
 export interface FunctionConfiguration {
   functionId?: string;
   functionArn?: string;
@@ -1417,7 +1806,9 @@ export interface Resolver {
 export type ResolverCountLimit = number;
 
 export type ResolverKind = "UNIT" | "PIPELINE";
-export type ResolverLevelMetricsBehavior = "FULL_REQUEST_RESOLVER_METRICS" | "PER_RESOLVER_METRICS";
+export type ResolverLevelMetricsBehavior =
+  | "FULL_REQUEST_RESOLVER_METRICS"
+  | "PER_RESOLVER_METRICS";
 export type ResolverLevelMetricsConfig = "ENABLED" | "DISABLED";
 export type Resolvers = Array<Resolver>;
 export type ResourceArn = string;
@@ -1425,7 +1816,13 @@ export type ResourceArn = string;
 export type ResourceName = string;
 
 export type RuntimeName = "APPSYNC_JS";
-export type SchemaStatus = "Processing" | "Active" | "Deleting" | "Failed" | "Success" | "NotApplicable";
+export type SchemaStatus =
+  | "Processing"
+  | "Active"
+  | "Deleting"
+  | "Failed"
+  | "Success"
+  | "NotApplicable";
 export declare class ServiceQuotaExceededException extends Data.TaggedError(
   "ServiceQuotaExceededException",
 )<{
@@ -1447,7 +1844,15 @@ export interface SourceApiAssociation {
 export interface SourceApiAssociationConfig {
   mergeType?: MergeType;
 }
-export type SourceApiAssociationStatus = "MERGE_SCHEDULED" | "MERGE_FAILED" | "MERGE_SUCCESS" | "MERGE_IN_PROGRESS" | "AUTO_MERGE_SCHEDULE_FAILED" | "DELETION_SCHEDULED" | "DELETION_IN_PROGRESS" | "DELETION_FAILED";
+export type SourceApiAssociationStatus =
+  | "MERGE_SCHEDULED"
+  | "MERGE_FAILED"
+  | "MERGE_SUCCESS"
+  | "MERGE_IN_PROGRESS"
+  | "AUTO_MERGE_SCHEDULE_FAILED"
+  | "DELETION_SCHEDULED"
+  | "DELETION_IN_PROGRESS"
+  | "DELETION_FAILED";
 export interface SourceApiAssociationSummary {
   associationId?: string;
   associationArn?: string;
@@ -1457,7 +1862,8 @@ export interface SourceApiAssociationSummary {
   mergedApiArn?: string;
   description?: string;
 }
-export type SourceApiAssociationSummaryList = Array<SourceApiAssociationSummary>;
+export type SourceApiAssociationSummaryList =
+  Array<SourceApiAssociationSummary>;
 export interface StartDataSourceIntrospectionRequest {
   rdsDataApiConfig?: RdsDataApiConfig;
 }
@@ -1495,8 +1901,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type Template = string;
@@ -1523,8 +1928,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateApiCacheRequest {
   apiId: string;
   ttl: number;
@@ -2541,4 +2945,3 @@ export declare namespace UpdateType {
     | UnauthorizedException
     | CommonAwsError;
 }
-

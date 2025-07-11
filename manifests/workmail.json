@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.workmail#AccessControlRule": {
       "type": "structure",
@@ -10159,6 +10188,284 @@
     },
     "com.amazonaws.workmail#WorkMailService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.workmail#AssociateDelegateToResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#AssociateMemberToGroup"
+        },
+        {
+          "target": "com.amazonaws.workmail#AssumeImpersonationRole"
+        },
+        {
+          "target": "com.amazonaws.workmail#CancelMailboxExportJob"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateAlias"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateAvailabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateGroup"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateIdentityCenterApplication"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateImpersonationRole"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateMobileDeviceAccessRule"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateOrganization"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#CreateUser"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteAccessControlRule"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteAlias"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteAvailabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteEmailMonitoringConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteGroup"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteIdentityCenterApplication"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteIdentityProviderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteImpersonationRole"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteMailboxPermissions"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteMobileDeviceAccessOverride"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteMobileDeviceAccessRule"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteOrganization"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeletePersonalAccessToken"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteRetentionPolicy"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeleteUser"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeregisterFromWorkMail"
+        },
+        {
+          "target": "com.amazonaws.workmail#DeregisterMailDomain"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeEmailMonitoringConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeEntity"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeGroup"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeIdentityProviderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeInboundDmarcSettings"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeMailboxExportJob"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeOrganization"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#DescribeUser"
+        },
+        {
+          "target": "com.amazonaws.workmail#DisassociateDelegateFromResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#DisassociateMemberFromGroup"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetAccessControlEffect"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetDefaultRetentionPolicy"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetImpersonationRole"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetImpersonationRoleEffect"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetMailboxDetails"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetMailDomain"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetMobileDeviceAccessEffect"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetMobileDeviceAccessOverride"
+        },
+        {
+          "target": "com.amazonaws.workmail#GetPersonalAccessTokenMetadata"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListAccessControlRules"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListAliases"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListAvailabilityConfigurations"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListGroupMembers"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListGroups"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListGroupsForEntity"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListImpersonationRoles"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListMailboxExportJobs"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListMailboxPermissions"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListMailDomains"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListMobileDeviceAccessOverrides"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListMobileDeviceAccessRules"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListOrganizations"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListPersonalAccessTokens"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListResourceDelegates"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListResources"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#ListUsers"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutAccessControlRule"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutEmailMonitoringConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutIdentityProviderConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutInboundDmarcSettings"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutMailboxPermissions"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutMobileDeviceAccessOverride"
+        },
+        {
+          "target": "com.amazonaws.workmail#PutRetentionPolicy"
+        },
+        {
+          "target": "com.amazonaws.workmail#RegisterMailDomain"
+        },
+        {
+          "target": "com.amazonaws.workmail#RegisterToWorkMail"
+        },
+        {
+          "target": "com.amazonaws.workmail#ResetPassword"
+        },
+        {
+          "target": "com.amazonaws.workmail#StartMailboxExportJob"
+        },
+        {
+          "target": "com.amazonaws.workmail#TagResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#TestAvailabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateAvailabilityConfiguration"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateDefaultMailDomain"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateGroup"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateImpersonationRole"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateMailboxQuota"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateMobileDeviceAccessRule"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdatePrimaryEmailAddress"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateResource"
+        },
+        {
+          "target": "com.amazonaws.workmail#UpdateUser"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WorkMail",

@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.groundstation#AWSRegion": {
       "type": "string",
@@ -3160,6 +3161,20 @@
     },
     "com.amazonaws.groundstation#GroundStation": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.groundstation#GetMinuteUsage"
+        },
+        {
+          "target": "com.amazonaws.groundstation#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.groundstation#TagResource"
+        },
+        {
+          "target": "com.amazonaws.groundstation#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "GroundStation",

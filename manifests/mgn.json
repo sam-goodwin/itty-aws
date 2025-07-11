@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.mgn#ARN": {
       "type": "string",
@@ -320,6 +321,23 @@
     },
     "com.amazonaws.mgn#ApplicationMigrationService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.mgn#InitializeService"
+        },
+        {
+          "target": "com.amazonaws.mgn#ListManagedAccounts"
+        },
+        {
+          "target": "com.amazonaws.mgn#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.mgn#TagResource"
+        },
+        {
+          "target": "com.amazonaws.mgn#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "mgn",

@@ -1,318 +1,607 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Kafka {
   batchAssociateScramSecret(
     input: BatchAssociateScramSecretRequest,
   ): Effect.Effect<
     BatchAssociateScramSecretResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   batchDisassociateScramSecret(
     input: BatchDisassociateScramSecretRequest,
   ): Effect.Effect<
     BatchDisassociateScramSecretResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createCluster(
     input: CreateClusterRequest,
   ): Effect.Effect<
     CreateClusterResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createClusterV2(
     input: CreateClusterV2Request,
   ): Effect.Effect<
     CreateClusterV2Response,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createConfiguration(
     input: CreateConfigurationRequest,
   ): Effect.Effect<
     CreateConfigurationResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createReplicator(
     input: CreateReplicatorRequest,
   ): Effect.Effect<
     CreateReplicatorResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createVpcConnection(
     input: CreateVpcConnectionRequest,
   ): Effect.Effect<
     CreateVpcConnectionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteCluster(
     input: DeleteClusterRequest,
   ): Effect.Effect<
     DeleteClusterResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteClusterPolicy(
     input: DeleteClusterPolicyRequest,
   ): Effect.Effect<
     DeleteClusterPolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteConfiguration(
     input: DeleteConfigurationRequest,
   ): Effect.Effect<
     DeleteConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteReplicator(
     input: DeleteReplicatorRequest,
   ): Effect.Effect<
     DeleteReplicatorResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteVpcConnection(
     input: DeleteVpcConnectionRequest,
   ): Effect.Effect<
     DeleteVpcConnectionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   describeCluster(
     input: DescribeClusterRequest,
   ): Effect.Effect<
     DescribeClusterResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeClusterOperation(
     input: DescribeClusterOperationRequest,
   ): Effect.Effect<
     DescribeClusterOperationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeClusterOperationV2(
     input: DescribeClusterOperationV2Request,
   ): Effect.Effect<
     DescribeClusterOperationV2Response,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeClusterV2(
     input: DescribeClusterV2Request,
   ): Effect.Effect<
     DescribeClusterV2Response,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeConfiguration(
     input: DescribeConfigurationRequest,
   ): Effect.Effect<
     DescribeConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeConfigurationRevision(
     input: DescribeConfigurationRevisionRequest,
   ): Effect.Effect<
     DescribeConfigurationRevisionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeReplicator(
     input: DescribeReplicatorRequest,
   ): Effect.Effect<
     DescribeReplicatorResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   describeVpcConnection(
     input: DescribeVpcConnectionRequest,
   ): Effect.Effect<
     DescribeVpcConnectionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getBootstrapBrokers(
     input: GetBootstrapBrokersRequest,
   ): Effect.Effect<
     GetBootstrapBrokersResponse,
-    BadRequestException | ConflictException | ForbiddenException | InternalServerErrorException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | InternalServerErrorException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getClusterPolicy(
     input: GetClusterPolicyRequest,
   ): Effect.Effect<
     GetClusterPolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   getCompatibleKafkaVersions(
     input: GetCompatibleKafkaVersionsRequest,
   ): Effect.Effect<
     GetCompatibleKafkaVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listClientVpcConnections(
     input: ListClientVpcConnectionsRequest,
   ): Effect.Effect<
     ListClientVpcConnectionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listClusterOperations(
     input: ListClusterOperationsRequest,
   ): Effect.Effect<
     ListClusterOperationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listClusterOperationsV2(
     input: ListClusterOperationsV2Request,
   ): Effect.Effect<
     ListClusterOperationsV2Response,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listClusters(
     input: ListClustersRequest,
   ): Effect.Effect<
     ListClustersResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listClustersV2(
     input: ListClustersV2Request,
   ): Effect.Effect<
     ListClustersV2Response,
-    BadRequestException | ForbiddenException | InternalServerErrorException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listConfigurationRevisions(
     input: ListConfigurationRevisionsRequest,
   ): Effect.Effect<
     ListConfigurationRevisionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listConfigurations(
     input: ListConfigurationsRequest,
   ): Effect.Effect<
     ListConfigurationsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listKafkaVersions(
     input: ListKafkaVersionsRequest,
   ): Effect.Effect<
     ListKafkaVersionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listNodes(
     input: ListNodesRequest,
   ): Effect.Effect<
     ListNodesResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   listReplicators(
     input: ListReplicatorsRequest,
   ): Effect.Effect<
     ListReplicatorsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listScramSecrets(
     input: ListScramSecretsRequest,
   ): Effect.Effect<
     ListScramSecretsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   listVpcConnections(
     input: ListVpcConnectionsRequest,
   ): Effect.Effect<
     ListVpcConnectionsResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putClusterPolicy(
     input: PutClusterPolicyRequest,
   ): Effect.Effect<
     PutClusterPolicyResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | CommonAwsError
   >;
   rebootBroker(
     input: RebootBrokerRequest,
   ): Effect.Effect<
     RebootBrokerResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   rejectClientVpcConnection(
     input: RejectClientVpcConnectionRequest,
   ): Effect.Effect<
     RejectClientVpcConnectionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | InternalServerErrorException | NotFoundException | CommonAwsError
+    | BadRequestException
+    | InternalServerErrorException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateBrokerCount(
     input: UpdateBrokerCountRequest,
   ): Effect.Effect<
     UpdateBrokerCountResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateBrokerStorage(
     input: UpdateBrokerStorageRequest,
   ): Effect.Effect<
     UpdateBrokerStorageResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateBrokerType(
     input: UpdateBrokerTypeRequest,
   ): Effect.Effect<
     UpdateBrokerTypeResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateClusterConfiguration(
     input: UpdateClusterConfigurationRequest,
   ): Effect.Effect<
     UpdateClusterConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateClusterKafkaVersion(
     input: UpdateClusterKafkaVersionRequest,
   ): Effect.Effect<
     UpdateClusterKafkaVersionResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateConfiguration(
     input: UpdateConfigurationRequest,
   ): Effect.Effect<
     UpdateConfigurationResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateConnectivity(
     input: UpdateConnectivityRequest,
   ): Effect.Effect<
     UpdateConnectivityResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateMonitoring(
     input: UpdateMonitoringRequest,
   ): Effect.Effect<
     UpdateMonitoringResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | ServiceUnavailableException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | ServiceUnavailableException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateReplicationInfo(
     input: UpdateReplicationInfoRequest,
   ): Effect.Effect<
     UpdateReplicationInfoResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateSecurity(
     input: UpdateSecurityRequest,
   ): Effect.Effect<
     UpdateSecurityResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateStorage(
     input: UpdateStorageRequest,
   ): Effect.Effect<
     UpdateStorageResponse,
-    BadRequestException | ForbiddenException | InternalServerErrorException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -338,7 +627,8 @@ export type __listOfCluster = Array<Cluster>;
 export type __listOfClusterInfo = Array<ClusterInfo>;
 export type __listOfClusterOperationInfo = Array<ClusterOperationInfo>;
 export type __listOfClusterOperationStep = Array<ClusterOperationStep>;
-export type __listOfClusterOperationV2Summary = Array<ClusterOperationV2Summary>;
+export type __listOfClusterOperationV2Summary =
+  Array<ClusterOperationV2Summary>;
 export type __listOfCompatibleKafkaVersion = Array<CompatibleKafkaVersion>;
 export type __listOfConfiguration = Array<Configuration>;
 export type __listOfConfigurationRevision = Array<ConfigurationRevision>;
@@ -348,7 +638,8 @@ export type __listOfKafkaClusterSummary = Array<KafkaClusterSummary>;
 export type __listOfKafkaVersion = Array<KafkaVersion>;
 export type __listOfNodeInfo = Array<NodeInfo>;
 export type __listOfReplicationInfo = Array<ReplicationInfo>;
-export type __listOfReplicationInfoDescription = Array<ReplicationInfoDescription>;
+export type __listOfReplicationInfoDescription =
+  Array<ReplicationInfoDescription>;
 export type __listOfReplicationInfoSummary = Array<ReplicationInfoSummary>;
 export type __listOfReplicatorSummary = Array<ReplicatorSummary>;
 export type __listOfUnprocessedScramSecret = Array<UnprocessedScramSecret>;
@@ -540,7 +831,15 @@ export interface ClusterOperationV2Summary {
   OperationState?: string;
   OperationType?: string;
 }
-export type ClusterState = "ACTIVE" | "CREATING" | "DELETING" | "FAILED" | "HEALING" | "MAINTENANCE" | "REBOOTING_BROKER" | "UPDATING";
+export type ClusterState =
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING"
+  | "FAILED"
+  | "HEALING"
+  | "MAINTENANCE"
+  | "REBOOTING_BROKER"
+  | "UPDATING";
 export type ClusterType = "PROVISIONED" | "SERVERLESS";
 export interface CompatibleKafkaVersion {
   SourceVersion?: string;
@@ -665,12 +964,14 @@ export interface CreateVpcConnectionResponse {
   CreationTime?: Date | string;
   Tags?: Record<string, string>;
 }
-export type CustomerActionStatus = "CRITICAL_ACTION_REQUIRED" | "ACTION_RECOMMENDED" | "NONE";
+export type CustomerActionStatus =
+  | "CRITICAL_ACTION_REQUIRED"
+  | "ACTION_RECOMMENDED"
+  | "NONE";
 export interface DeleteClusterPolicyRequest {
   ClusterArn: string;
 }
-export interface DeleteClusterPolicyResponse {
-}
+export interface DeleteClusterPolicyResponse {}
 export interface DeleteClusterRequest {
   ClusterArn: string;
   CurrentVersion?: string;
@@ -795,7 +1096,11 @@ export interface EncryptionInTransit {
   ClientBroker?: ClientBroker;
   InCluster?: boolean;
 }
-export type EnhancedMonitoring = "DEFAULT" | "PER_BROKER" | "PER_TOPIC_PER_BROKER" | "PER_TOPIC_PER_PARTITION";
+export type EnhancedMonitoring =
+  | "DEFAULT"
+  | "PER_BROKER"
+  | "PER_TOPIC_PER_BROKER"
+  | "PER_TOPIC_PER_PARTITION";
 export interface ErrorInfo {
   ErrorCode?: string;
   ErrorString?: string;
@@ -1096,8 +1401,7 @@ export interface RejectClientVpcConnectionRequest {
   ClusterArn: string;
   VpcConnectionArn: string;
 }
-export interface RejectClientVpcConnectionResponse {
-}
+export interface RejectClientVpcConnectionResponse {}
 export interface ReplicationInfo {
   ConsumerGroupReplication: ConsumerGroupReplication;
   SourceKafkaClusterArn: string;
@@ -1127,8 +1431,15 @@ export interface ReplicationStateInfo {
 export interface ReplicationTopicNameConfiguration {
   Type?: ReplicationTopicNameConfigurationType;
 }
-export type ReplicationTopicNameConfigurationType = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS" | "IDENTICAL";
-export type ReplicatorState = "RUNNING" | "CREATING" | "UPDATING" | "DELETING" | "FAILED";
+export type ReplicationTopicNameConfigurationType =
+  | "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
+  | "IDENTICAL";
+export type ReplicatorState =
+  | "RUNNING"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED";
 export interface ReplicatorSummary {
   CreationTime?: Date | string;
   CurrentVersion?: string;
@@ -1366,7 +1677,15 @@ export interface VpcConnectionInfoServerless {
   UserIdentity?: UserIdentity;
   VpcConnectionArn?: string;
 }
-export type VpcConnectionState = "CREATING" | "AVAILABLE" | "INACTIVE" | "DEACTIVATING" | "DELETING" | "FAILED" | "REJECTED" | "REJECTING";
+export type VpcConnectionState =
+  | "CREATING"
+  | "AVAILABLE"
+  | "INACTIVE"
+  | "DEACTIVATING"
+  | "DELETING"
+  | "FAILED"
+  | "REJECTED"
+  | "REJECTING";
 export interface VpcConnectivity {
   ClientAuthentication?: VpcConnectivityClientAuthentication;
 }
@@ -2046,4 +2365,3 @@ export declare namespace UpdateStorage {
     | UnauthorizedException
     | CommonAwsError;
 }
-

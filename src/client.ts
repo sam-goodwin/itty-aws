@@ -1,6 +1,17 @@
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import { AwsClient } from "aws4fetch";
-import { Data, Effect } from "effect";
+import { Effect } from "effect";
+import {
+  AccessDeniedException,
+  RequestTimeout,
+  ServiceUnavailable,
+  ThrottlingException,
+  UnauthorizedException,
+  UnknownError,
+  ValidationException,
+  type AwsErrorMeta,
+  type CommonAwsError,
+} from "./error.ts";
 import type { DynamoDB } from "./services/dynamodb.ts";
 import { serviceMetadata } from "./services/metadata.ts";
 
@@ -13,49 +24,12 @@ export interface AwsCredentials {
   readonly sessionToken?: string;
 }
 
-export interface AwsErrorMeta {
-  readonly statusCode: number;
-  readonly requestId?: string;
-}
-
 // Client configuration options
 export interface AWSClientConfig {
   readonly region?: string;
   readonly credentials?: AwsCredentials;
   readonly endpoint?: string;
 }
-
-// Common AWS errors that can occur across all services
-export class ThrottlingException extends Data.TaggedError(
-  "ThrottlingException",
-)<AwsErrorMeta> {}
-export class ServiceUnavailable extends Data.TaggedError(
-  "ServiceUnavailable",
-)<AwsErrorMeta> {}
-export class RequestTimeout extends Data.TaggedError(
-  "RequestTimeout",
-)<AwsErrorMeta> {}
-export class UnknownError extends Data.TaggedError("UnknownError")<
-  AwsErrorMeta & { message: string }
-> {}
-export class AccessDeniedException extends Data.TaggedError(
-  "AccessDeniedException",
-)<AwsErrorMeta> {}
-export class UnauthorizedException extends Data.TaggedError(
-  "UnauthorizedException",
-)<AwsErrorMeta> {}
-export class ValidationException extends Data.TaggedError(
-  "ValidationException",
-)<AwsErrorMeta> {}
-
-export type CommonAwsError =
-  | ThrottlingException
-  | ServiceUnavailable
-  | RequestTimeout
-  | UnknownError
-  | AccessDeniedException
-  | UnauthorizedException
-  | ValidationException;
 
 // Service client map
 export interface ServiceClientMap {

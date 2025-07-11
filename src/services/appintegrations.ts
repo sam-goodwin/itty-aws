@@ -1,144 +1,259 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonAppIntegrationService {
   createApplication(
     input: CreateApplicationRequest,
   ): Effect.Effect<
     CreateApplicationResponse,
-    AccessDeniedException | DuplicateResourceException | InternalServiceError | InvalidRequestException | ResourceQuotaExceededException | ThrottlingException | UnsupportedOperationException | CommonAwsError
+    | AccessDeniedException
+    | DuplicateResourceException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceQuotaExceededException
+    | ThrottlingException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   createDataIntegration(
     input: CreateDataIntegrationRequest,
   ): Effect.Effect<
     CreateDataIntegrationResponse,
-    AccessDeniedException | DuplicateResourceException | InternalServiceError | InvalidRequestException | ResourceQuotaExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | DuplicateResourceException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceQuotaExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createDataIntegrationAssociation(
     input: CreateDataIntegrationAssociationRequest,
   ): Effect.Effect<
     CreateDataIntegrationAssociationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ResourceQuotaExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ResourceQuotaExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   createEventIntegration(
     input: CreateEventIntegrationRequest,
   ): Effect.Effect<
     CreateEventIntegrationResponse,
-    AccessDeniedException | DuplicateResourceException | InternalServiceError | InvalidRequestException | ResourceQuotaExceededException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | DuplicateResourceException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceQuotaExceededException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteApplication(
     input: DeleteApplicationRequest,
   ): Effect.Effect<
     DeleteApplicationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteDataIntegration(
     input: DeleteDataIntegrationRequest,
   ): Effect.Effect<
     DeleteDataIntegrationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   deleteEventIntegration(
     input: DeleteEventIntegrationRequest,
   ): Effect.Effect<
     DeleteEventIntegrationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getApplication(
     input: GetApplicationRequest,
   ): Effect.Effect<
     GetApplicationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getDataIntegration(
     input: GetDataIntegrationRequest,
   ): Effect.Effect<
     GetDataIntegrationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   getEventIntegration(
     input: GetEventIntegrationRequest,
   ): Effect.Effect<
     GetEventIntegrationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listApplicationAssociations(
     input: ListApplicationAssociationsRequest,
   ): Effect.Effect<
     ListApplicationAssociationsResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listApplications(
     input: ListApplicationsRequest,
   ): Effect.Effect<
     ListApplicationsResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listDataIntegrationAssociations(
     input: ListDataIntegrationAssociationsRequest,
   ): Effect.Effect<
     ListDataIntegrationAssociationsResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listDataIntegrations(
     input: ListDataIntegrationsRequest,
   ): Effect.Effect<
     ListDataIntegrationsResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listEventIntegrationAssociations(
     input: ListEventIntegrationAssociationsRequest,
   ): Effect.Effect<
     ListEventIntegrationAssociationsResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listEventIntegrations(
     input: ListEventIntegrationsRequest,
   ): Effect.Effect<
     ListEventIntegrationsResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ThrottlingException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateApplication(
     input: UpdateApplicationRequest,
   ): Effect.Effect<
     UpdateApplicationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | UnsupportedOperationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | UnsupportedOperationException
+    | CommonAwsError
   >;
   updateDataIntegration(
     input: UpdateDataIntegrationRequest,
   ): Effect.Effect<
     UpdateDataIntegrationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateDataIntegrationAssociation(
     input: UpdateDataIntegrationAssociationRequest,
   ): Effect.Effect<
     UpdateDataIntegrationAssociationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
   updateEventIntegration(
     input: UpdateEventIntegrationRequest,
   ): Effect.Effect<
     UpdateEventIntegrationResponse,
-    AccessDeniedException | InternalServiceError | InvalidRequestException | ResourceNotFoundException | ThrottlingException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceError
+    | InvalidRequestException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | CommonAwsError
   >;
 }
 
@@ -244,7 +359,8 @@ export interface CreateEventIntegrationRequest {
 export interface CreateEventIntegrationResponse {
   EventIntegrationArn?: string;
 }
-export type DataIntegrationAssociationsList = Array<DataIntegrationAssociationSummary>;
+export type DataIntegrationAssociationsList =
+  Array<DataIntegrationAssociationSummary>;
 export interface DataIntegrationAssociationSummary {
   DataIntegrationAssociationArn?: string;
   DataIntegrationArn?: string;
@@ -262,18 +378,15 @@ export interface DataIntegrationSummary {
 export interface DeleteApplicationRequest {
   Arn: string;
 }
-export interface DeleteApplicationResponse {
-}
+export interface DeleteApplicationResponse {}
 export interface DeleteDataIntegrationRequest {
   DataIntegrationIdentifier: string;
 }
-export interface DeleteDataIntegrationResponse {
-}
+export interface DeleteDataIntegrationResponse {}
 export interface DeleteEventIntegrationRequest {
   Name: string;
 }
-export interface DeleteEventIntegrationResponse {
-}
+export interface DeleteEventIntegrationResponse {}
 export type Description = string;
 
 export type DestinationURI = string;
@@ -308,7 +421,8 @@ export interface EventIntegrationAssociation {
   EventBridgeRuleName?: string;
   ClientAssociationMetadata?: Record<string, string>;
 }
-export type EventIntegrationAssociationsList = Array<EventIntegrationAssociation>;
+export type EventIntegrationAssociationsList =
+  Array<EventIntegrationAssociation>;
 export type EventIntegrationsList = Array<EventIntegration>;
 export type EventName = string;
 
@@ -510,8 +624,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export declare class ThrottlingException extends Data.TaggedError(
@@ -530,8 +643,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateApplicationRequest {
   Arn: string;
   Name?: string;
@@ -541,28 +653,24 @@ export interface UpdateApplicationRequest {
   Publications?: Array<Publication>;
   Permissions?: Array<string>;
 }
-export interface UpdateApplicationResponse {
-}
+export interface UpdateApplicationResponse {}
 export interface UpdateDataIntegrationAssociationRequest {
   DataIntegrationIdentifier: string;
   DataIntegrationAssociationIdentifier: string;
   ExecutionConfiguration: ExecutionConfiguration;
 }
-export interface UpdateDataIntegrationAssociationResponse {
-}
+export interface UpdateDataIntegrationAssociationResponse {}
 export interface UpdateDataIntegrationRequest {
   Identifier: string;
   Name?: string;
   Description?: string;
 }
-export interface UpdateDataIntegrationResponse {
-}
+export interface UpdateDataIntegrationResponse {}
 export interface UpdateEventIntegrationRequest {
   Name: string;
   Description?: string;
 }
-export interface UpdateEventIntegrationResponse {
-}
+export interface UpdateEventIntegrationResponse {}
 export type URL = string;
 
 export type UUID = string;
@@ -842,4 +950,3 @@ export declare namespace UpdateEventIntegration {
     | ThrottlingException
     | CommonAwsError;
 }
-

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.transcribe#AbsoluteTimeRange": {
       "type": "structure",
@@ -6107,6 +6136,137 @@
     },
     "com.amazonaws.transcribe#Transcribe": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.transcribe#CreateCallAnalyticsCategory"
+        },
+        {
+          "target": "com.amazonaws.transcribe#CreateLanguageModel"
+        },
+        {
+          "target": "com.amazonaws.transcribe#CreateMedicalVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#CreateVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#CreateVocabularyFilter"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteCallAnalyticsCategory"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteCallAnalyticsJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteLanguageModel"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteMedicalScribeJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteMedicalTranscriptionJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteMedicalVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteTranscriptionJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DeleteVocabularyFilter"
+        },
+        {
+          "target": "com.amazonaws.transcribe#DescribeLanguageModel"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetCallAnalyticsCategory"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetCallAnalyticsJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetMedicalScribeJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetMedicalTranscriptionJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetMedicalVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetTranscriptionJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#GetVocabularyFilter"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListCallAnalyticsCategories"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListCallAnalyticsJobs"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListLanguageModels"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListMedicalScribeJobs"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListMedicalTranscriptionJobs"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListMedicalVocabularies"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListTranscriptionJobs"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListVocabularies"
+        },
+        {
+          "target": "com.amazonaws.transcribe#ListVocabularyFilters"
+        },
+        {
+          "target": "com.amazonaws.transcribe#StartCallAnalyticsJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#StartMedicalScribeJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#StartMedicalTranscriptionJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#StartTranscriptionJob"
+        },
+        {
+          "target": "com.amazonaws.transcribe#TagResource"
+        },
+        {
+          "target": "com.amazonaws.transcribe#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.transcribe#UpdateCallAnalyticsCategory"
+        },
+        {
+          "target": "com.amazonaws.transcribe#UpdateMedicalVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#UpdateVocabulary"
+        },
+        {
+          "target": "com.amazonaws.transcribe#UpdateVocabularyFilter"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Transcribe",

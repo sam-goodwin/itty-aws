@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonMWAA {
   createCliToken(
@@ -18,25 +18,41 @@ export interface AmazonMWAA {
     input: CreateWebLoginTokenRequest,
   ): Effect.Effect<
     CreateWebLoginTokenResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteEnvironment(
     input: DeleteEnvironmentInput,
   ): Effect.Effect<
     DeleteEnvironmentOutput,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   getEnvironment(
     input: GetEnvironmentInput,
   ): Effect.Effect<
     GetEnvironmentOutput,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeRestApi(
     input: InvokeRestApiRequest,
   ): Effect.Effect<
     InvokeRestApiResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | RestApiClientException | RestApiServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | RestApiClientException
+    | RestApiServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listEnvironments(
     input: ListEnvironmentsInput,
@@ -48,7 +64,10 @@ export interface AmazonMWAA {
     input: ListTagsForResourceInput,
   ): Effect.Effect<
     ListTagsForResourceOutput,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   publishMetrics(
     input: PublishMetricsInput,
@@ -60,19 +79,28 @@ export interface AmazonMWAA {
     input: TagResourceInput,
   ): Effect.Effect<
     TagResourceOutput,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
     UntagResourceOutput,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateEnvironment(
     input: UpdateEnvironmentInput,
   ): Effect.Effect<
     UpdateEnvironmentOutput,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -147,8 +175,7 @@ export interface CreateWebLoginTokenResponse {
 export interface DeleteEnvironmentInput {
   Name: string;
 }
-export interface DeleteEnvironmentOutput {
-}
+export interface DeleteEnvironmentOutput {}
 export interface Dimension {
   Name: string;
   Value: string;
@@ -310,8 +337,7 @@ export interface PublishMetricsInput {
   EnvironmentName: string;
   MetricData: Array<MetricDatum>;
 }
-export interface PublishMetricsOutput {
-}
+export interface PublishMetricsOutput {}
 export type RelativePath = string;
 
 export declare class ResourceNotFoundException extends Data.TaggedError(
@@ -361,8 +387,7 @@ export interface TagResourceInput {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceOutput {
-}
+export interface TagResourceOutput {}
 export type TagValue = string;
 
 export type Token = string;
@@ -371,8 +396,7 @@ export interface UntagResourceInput {
   ResourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceOutput {
-}
+export interface UntagResourceOutput {}
 export type UpdateCreatedAt = Date | string;
 
 export interface UpdateEnvironmentInput {
@@ -432,9 +456,7 @@ export type WorkerReplacementStrategy = string;
 export declare namespace CreateCliToken {
   export type Input = CreateCliTokenRequest;
   export type Output = CreateCliTokenResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace CreateEnvironment {
@@ -547,4 +569,3 @@ export declare namespace UpdateEnvironment {
     | ValidationException
     | CommonAwsError;
 }
-

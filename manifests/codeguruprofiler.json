@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.codeguruprofiler#ActionGroup": {
       "type": "string",
@@ -497,6 +498,20 @@
     },
     "com.amazonaws.codeguruprofiler#CodeGuruProfiler": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.codeguruprofiler#GetFindingsReportAccountSummary"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#TagResource"
+        },
+        {
+          "target": "com.amazonaws.codeguruprofiler#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CodeGuruProfiler",

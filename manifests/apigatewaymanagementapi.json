@@ -1,7 +1,47 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.apigatewaymanagementapi#ApiGatewayManagementApi": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#GetConnection"
+        },
+        {
+          "target": "com.amazonaws.apigatewaymanagementapi#PostToConnection"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ApiGatewayManagementApi",

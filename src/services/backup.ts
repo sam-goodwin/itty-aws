@@ -1,132 +1,239 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface CryoControllerUserManager {
   associateBackupVaultMpaApprovalTeam(
     input: AssociateBackupVaultMpaApprovalTeamInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   cancelLegalHold(
     input: CancelLegalHoldInput,
   ): Effect.Effect<
     CancelLegalHoldOutput,
-    InvalidParameterValueException | InvalidResourceStateException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidResourceStateException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createBackupPlan(
     input: CreateBackupPlanInput,
   ): Effect.Effect<
     CreateBackupPlanOutput,
-    AlreadyExistsException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createBackupSelection(
     input: CreateBackupSelectionInput,
   ): Effect.Effect<
     CreateBackupSelectionOutput,
-    AlreadyExistsException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createBackupVault(
     input: CreateBackupVaultInput,
   ): Effect.Effect<
     CreateBackupVaultOutput,
-    AlreadyExistsException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createFramework(
     input: CreateFrameworkInput,
   ): Effect.Effect<
     CreateFrameworkOutput,
-    AlreadyExistsException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createLegalHold(
     input: CreateLegalHoldInput,
   ): Effect.Effect<
     CreateLegalHoldOutput,
-    InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createLogicallyAirGappedBackupVault(
     input: CreateLogicallyAirGappedBackupVaultInput,
   ): Effect.Effect<
     CreateLogicallyAirGappedBackupVaultOutput,
-    AlreadyExistsException | InvalidParameterValueException | InvalidRequestException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createReportPlan(
     input: CreateReportPlanInput,
   ): Effect.Effect<
     CreateReportPlanOutput,
-    AlreadyExistsException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createRestoreAccessBackupVault(
     input: CreateRestoreAccessBackupVaultInput,
   ): Effect.Effect<
     CreateRestoreAccessBackupVaultOutput,
-    AlreadyExistsException | InvalidParameterValueException | InvalidRequestException | LimitExceededException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createRestoreTestingPlan(
     input: CreateRestoreTestingPlanInput,
   ): Effect.Effect<
     CreateRestoreTestingPlanOutput,
-    AlreadyExistsException | ConflictException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | ConflictException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   createRestoreTestingSelection(
     input: CreateRestoreTestingSelectionInput,
   ): Effect.Effect<
     CreateRestoreTestingSelectionOutput,
-    AlreadyExistsException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteBackupPlan(
     input: DeleteBackupPlanInput,
   ): Effect.Effect<
     DeleteBackupPlanOutput,
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteBackupSelection(
     input: DeleteBackupSelectionInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteBackupVault(
     input: DeleteBackupVaultInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteBackupVaultAccessPolicy(
     input: DeleteBackupVaultAccessPolicyInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteBackupVaultLockConfiguration(
     input: DeleteBackupVaultLockConfigurationInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteBackupVaultNotifications(
     input: DeleteBackupVaultNotificationsInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteFramework(
     input: DeleteFrameworkInput,
   ): Effect.Effect<
     {},
-    ConflictException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | ConflictException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteRecoveryPoint(
     input: DeleteRecoveryPointInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | InvalidResourceStateException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | InvalidResourceStateException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteReportPlan(
     input: DeleteReportPlanInput,
   ): Effect.Effect<
     {},
-    ConflictException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | ConflictException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   deleteRestoreTestingPlan(
     input: DeleteRestoreTestingPlanInput,
@@ -144,25 +251,42 @@ export interface CryoControllerUserManager {
     input: DescribeBackupJobInput,
   ): Effect.Effect<
     DescribeBackupJobOutput,
-    DependencyFailureException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | DependencyFailureException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeBackupVault(
     input: DescribeBackupVaultInput,
   ): Effect.Effect<
     DescribeBackupVaultOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeCopyJob(
     input: DescribeCopyJobInput,
   ): Effect.Effect<
     DescribeCopyJobOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeFramework(
     input: DescribeFrameworkInput,
   ): Effect.Effect<
     DescribeFrameworkOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeGlobalSettings(
     input: DescribeGlobalSettingsInput,
@@ -174,13 +298,21 @@ export interface CryoControllerUserManager {
     input: DescribeProtectedResourceInput,
   ): Effect.Effect<
     DescribeProtectedResourceOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeRecoveryPoint(
     input: DescribeRecoveryPointInput,
   ): Effect.Effect<
     DescribeRecoveryPointOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeRegionSettings(
     input: DescribeRegionSettingsInput,
@@ -192,109 +324,186 @@ export interface CryoControllerUserManager {
     input: DescribeReportJobInput,
   ): Effect.Effect<
     DescribeReportJobOutput,
-    MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeReportPlan(
     input: DescribeReportPlanInput,
   ): Effect.Effect<
     DescribeReportPlanOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   describeRestoreJob(
     input: DescribeRestoreJobInput,
   ): Effect.Effect<
     DescribeRestoreJobOutput,
-    DependencyFailureException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | DependencyFailureException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   disassociateBackupVaultMpaApprovalTeam(
     input: DisassociateBackupVaultMpaApprovalTeamInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   disassociateRecoveryPoint(
     input: DisassociateRecoveryPointInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | InvalidResourceStateException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | InvalidResourceStateException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   disassociateRecoveryPointFromParent(
     input: DisassociateRecoveryPointFromParentInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   exportBackupPlanTemplate(
     input: ExportBackupPlanTemplateInput,
   ): Effect.Effect<
     ExportBackupPlanTemplateOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getBackupPlan(
     input: GetBackupPlanInput,
   ): Effect.Effect<
     GetBackupPlanOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getBackupPlanFromJSON(
     input: GetBackupPlanFromJSONInput,
   ): Effect.Effect<
     GetBackupPlanFromJSONOutput,
-    InvalidParameterValueException | InvalidRequestException | LimitExceededException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getBackupPlanFromTemplate(
     input: GetBackupPlanFromTemplateInput,
   ): Effect.Effect<
     GetBackupPlanFromTemplateOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getBackupSelection(
     input: GetBackupSelectionInput,
   ): Effect.Effect<
     GetBackupSelectionOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getBackupVaultAccessPolicy(
     input: GetBackupVaultAccessPolicyInput,
   ): Effect.Effect<
     GetBackupVaultAccessPolicyOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getBackupVaultNotifications(
     input: GetBackupVaultNotificationsInput,
   ): Effect.Effect<
     GetBackupVaultNotificationsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getLegalHold(
     input: GetLegalHoldInput,
   ): Effect.Effect<
     GetLegalHoldOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getRecoveryPointIndexDetails(
     input: GetRecoveryPointIndexDetailsInput,
   ): Effect.Effect<
     GetRecoveryPointIndexDetailsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getRecoveryPointRestoreMetadata(
     input: GetRecoveryPointRestoreMetadataInput,
   ): Effect.Effect<
     GetRecoveryPointRestoreMetadataOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getRestoreJobMetadata(
     input: GetRestoreJobMetadataInput,
   ): Effect.Effect<
     GetRestoreJobMetadataOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getRestoreTestingInferredMetadata(
     input: GetRestoreTestingInferredMetadataInput,
   ): Effect.Effect<
     GetRestoreTestingInferredMetadataOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   getRestoreTestingPlan(
     input: GetRestoreTestingPlanInput,
@@ -308,293 +517,471 @@ export interface CryoControllerUserManager {
     GetRestoreTestingSelectionOutput,
     ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
   >;
-  getSupportedResourceTypes(
-    input: {},
-  ): Effect.Effect<
+  getSupportedResourceTypes(input: {}): Effect.Effect<
     GetSupportedResourceTypesOutput,
     ServiceUnavailableException | CommonAwsError
-  >;
-  listBackupJobSummaries(
-    input: ListBackupJobSummariesInput,
-  ): Effect.Effect<
-    ListBackupJobSummariesOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
   >;
   listBackupJobs(
     input: ListBackupJobsInput,
   ): Effect.Effect<
     ListBackupJobsOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
-  listBackupPlanTemplates(
-    input: ListBackupPlanTemplatesInput,
+  listBackupJobSummaries(
+    input: ListBackupJobSummariesInput,
   ): Effect.Effect<
-    ListBackupPlanTemplatesOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
-  >;
-  listBackupPlanVersions(
-    input: ListBackupPlanVersionsInput,
-  ): Effect.Effect<
-    ListBackupPlanVersionsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    ListBackupJobSummariesOutput,
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listBackupPlans(
     input: ListBackupPlansInput,
   ): Effect.Effect<
     ListBackupPlansOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
+  >;
+  listBackupPlanTemplates(
+    input: ListBackupPlanTemplatesInput,
+  ): Effect.Effect<
+    ListBackupPlanTemplatesOutput,
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
+  >;
+  listBackupPlanVersions(
+    input: ListBackupPlanVersionsInput,
+  ): Effect.Effect<
+    ListBackupPlanVersionsOutput,
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listBackupSelections(
     input: ListBackupSelectionsInput,
   ): Effect.Effect<
     ListBackupSelectionsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listBackupVaults(
     input: ListBackupVaultsInput,
   ): Effect.Effect<
     ListBackupVaultsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
-  >;
-  listCopyJobSummaries(
-    input: ListCopyJobSummariesInput,
-  ): Effect.Effect<
-    ListCopyJobSummariesOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listCopyJobs(
     input: ListCopyJobsInput,
   ): Effect.Effect<
     ListCopyJobsOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
+  >;
+  listCopyJobSummaries(
+    input: ListCopyJobSummariesInput,
+  ): Effect.Effect<
+    ListCopyJobSummariesOutput,
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listFrameworks(
     input: ListFrameworksInput,
   ): Effect.Effect<
     ListFrameworksOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listIndexedRecoveryPoints(
     input: ListIndexedRecoveryPointsInput,
   ): Effect.Effect<
     ListIndexedRecoveryPointsOutput,
-    InvalidParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listLegalHolds(
     input: ListLegalHoldsInput,
   ): Effect.Effect<
     ListLegalHoldsOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listProtectedResources(
     input: ListProtectedResourcesInput,
   ): Effect.Effect<
     ListProtectedResourcesOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listProtectedResourcesByBackupVault(
     input: ListProtectedResourcesByBackupVaultInput,
   ): Effect.Effect<
     ListProtectedResourcesByBackupVaultOutput,
-    InvalidParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRecoveryPointsByBackupVault(
     input: ListRecoveryPointsByBackupVaultInput,
   ): Effect.Effect<
     ListRecoveryPointsByBackupVaultOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRecoveryPointsByLegalHold(
     input: ListRecoveryPointsByLegalHoldInput,
   ): Effect.Effect<
     ListRecoveryPointsByLegalHoldOutput,
-    InvalidParameterValueException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRecoveryPointsByResource(
     input: ListRecoveryPointsByResourceInput,
   ): Effect.Effect<
     ListRecoveryPointsByResourceOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listReportJobs(
     input: ListReportJobsInput,
   ): Effect.Effect<
     ListReportJobsOutput,
-    InvalidParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listReportPlans(
     input: ListReportPlansInput,
   ): Effect.Effect<
     ListReportPlansOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRestoreAccessBackupVaults(
     input: ListRestoreAccessBackupVaultsInput,
   ): Effect.Effect<
     ListRestoreAccessBackupVaultsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
-  >;
-  listRestoreJobSummaries(
-    input: ListRestoreJobSummariesInput,
-  ): Effect.Effect<
-    ListRestoreJobSummariesOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRestoreJobs(
     input: ListRestoreJobsInput,
   ): Effect.Effect<
     ListRestoreJobsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRestoreJobsByProtectedResource(
     input: ListRestoreJobsByProtectedResourceInput,
   ): Effect.Effect<
     ListRestoreJobsByProtectedResourceOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
+  >;
+  listRestoreJobSummaries(
+    input: ListRestoreJobSummariesInput,
+  ): Effect.Effect<
+    ListRestoreJobSummariesOutput,
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRestoreTestingPlans(
     input: ListRestoreTestingPlansInput,
   ): Effect.Effect<
     ListRestoreTestingPlansOutput,
-    InvalidParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listRestoreTestingSelections(
     input: ListRestoreTestingSelectionsInput,
   ): Effect.Effect<
     ListRestoreTestingSelectionsOutput,
-    InvalidParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   listTags(
     input: ListTagsInput,
   ): Effect.Effect<
     ListTagsOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   putBackupVaultAccessPolicy(
     input: PutBackupVaultAccessPolicyInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   putBackupVaultLockConfiguration(
     input: PutBackupVaultLockConfigurationInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   putBackupVaultNotifications(
     input: PutBackupVaultNotificationsInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   putRestoreValidationResult(
     input: PutRestoreValidationResultInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   revokeRestoreAccessBackupVault(
     input: RevokeRestoreAccessBackupVaultInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   startBackupJob(
     input: StartBackupJobInput,
   ): Effect.Effect<
     StartBackupJobOutput,
-    InvalidParameterValueException | InvalidRequestException | LimitExceededException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   startCopyJob(
     input: StartCopyJobInput,
   ): Effect.Effect<
     StartCopyJobOutput,
-    InvalidParameterValueException | InvalidRequestException | LimitExceededException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   startReportJob(
     input: StartReportJobInput,
   ): Effect.Effect<
     StartReportJobOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   startRestoreJob(
     input: StartRestoreJobInput,
   ): Effect.Effect<
     StartRestoreJobOutput,
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   stopBackupJob(
     input: StopBackupJobInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateBackupPlan(
     input: UpdateBackupPlanInput,
   ): Effect.Effect<
     UpdateBackupPlanOutput,
-    InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateFramework(
     input: UpdateFrameworkInput,
   ): Effect.Effect<
     UpdateFrameworkOutput,
-    AlreadyExistsException | ConflictException | InvalidParameterValueException | LimitExceededException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | AlreadyExistsException
+    | ConflictException
+    | InvalidParameterValueException
+    | LimitExceededException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateGlobalSettings(
     input: UpdateGlobalSettingsInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateRecoveryPointIndexSettings(
     input: UpdateRecoveryPointIndexSettingsInput,
   ): Effect.Effect<
     UpdateRecoveryPointIndexSettingsOutput,
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateRecoveryPointLifecycle(
     input: UpdateRecoveryPointLifecycleInput,
   ): Effect.Effect<
     UpdateRecoveryPointLifecycleOutput,
-    InvalidParameterValueException | InvalidRequestException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidRequestException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateRegionSettings(
     input: UpdateRegionSettingsInput,
   ): Effect.Effect<
     {},
-    InvalidParameterValueException | MissingParameterValueException | ServiceUnavailableException | CommonAwsError
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateReportPlan(
     input: UpdateReportPlanInput,
   ): Effect.Effect<
     UpdateReportPlanOutput,
-    ConflictException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | ConflictException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateRestoreTestingPlan(
     input: UpdateRestoreTestingPlanInput,
   ): Effect.Effect<
     UpdateRestoreTestingPlanOutput,
-    ConflictException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | ConflictException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
   updateRestoreTestingSelection(
     input: UpdateRestoreTestingSelectionInput,
   ): Effect.Effect<
     UpdateRestoreTestingSelectionOutput,
-    ConflictException | InvalidParameterValueException | MissingParameterValueException | ResourceNotFoundException | ServiceUnavailableException | CommonAwsError
+    | ConflictException
+    | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError
   >;
 }
 
@@ -654,8 +1041,28 @@ export interface BackupJob {
 }
 export type BackupJobChildJobsInState = Record<BackupJobState, number>;
 export type BackupJobsList = Array<BackupJob>;
-export type BackupJobState = "CREATED" | "PENDING" | "RUNNING" | "ABORTING" | "ABORTED" | "COMPLETED" | "FAILED" | "EXPIRED" | "PARTIAL";
-export type BackupJobStatus = "CREATED" | "PENDING" | "RUNNING" | "ABORTING" | "ABORTED" | "COMPLETED" | "FAILED" | "EXPIRED" | "PARTIAL" | "AGGREGATE_ALL" | "ANY";
+export type BackupJobState =
+  | "CREATED"
+  | "PENDING"
+  | "RUNNING"
+  | "ABORTING"
+  | "ABORTED"
+  | "COMPLETED"
+  | "FAILED"
+  | "EXPIRED"
+  | "PARTIAL";
+export type BackupJobStatus =
+  | "CREATED"
+  | "PENDING"
+  | "RUNNING"
+  | "ABORTING"
+  | "ABORTED"
+  | "COMPLETED"
+  | "FAILED"
+  | "EXPIRED"
+  | "PARTIAL"
+  | "AGGREGATE_ALL"
+  | "ANY";
 export interface BackupJobSummary {
   Region?: string;
   AccountId?: string;
@@ -752,7 +1159,28 @@ export interface BackupSelectionsListMember {
   CreatorRequestId?: string;
   IamRoleArn?: string;
 }
-export type BackupVaultEvent = "BACKUP_JOB_STARTED" | "BACKUP_JOB_COMPLETED" | "BACKUP_JOB_SUCCESSFUL" | "BACKUP_JOB_FAILED" | "BACKUP_JOB_EXPIRED" | "RESTORE_JOB_STARTED" | "RESTORE_JOB_COMPLETED" | "RESTORE_JOB_SUCCESSFUL" | "RESTORE_JOB_FAILED" | "COPY_JOB_STARTED" | "COPY_JOB_SUCCESSFUL" | "COPY_JOB_FAILED" | "RECOVERY_POINT_MODIFIED" | "BACKUP_PLAN_CREATED" | "BACKUP_PLAN_MODIFIED" | "S3_BACKUP_OBJECT_FAILED" | "S3_RESTORE_OBJECT_FAILED" | "CONTINUOUS_BACKUP_INTERRUPTED" | "RECOVERY_POINT_INDEX_COMPLETED" | "RECOVERY_POINT_INDEX_DELETED" | "RECOVERY_POINT_INDEXING_FAILED";
+export type BackupVaultEvent =
+  | "BACKUP_JOB_STARTED"
+  | "BACKUP_JOB_COMPLETED"
+  | "BACKUP_JOB_SUCCESSFUL"
+  | "BACKUP_JOB_FAILED"
+  | "BACKUP_JOB_EXPIRED"
+  | "RESTORE_JOB_STARTED"
+  | "RESTORE_JOB_COMPLETED"
+  | "RESTORE_JOB_SUCCESSFUL"
+  | "RESTORE_JOB_FAILED"
+  | "COPY_JOB_STARTED"
+  | "COPY_JOB_SUCCESSFUL"
+  | "COPY_JOB_FAILED"
+  | "RECOVERY_POINT_MODIFIED"
+  | "BACKUP_PLAN_CREATED"
+  | "BACKUP_PLAN_MODIFIED"
+  | "S3_BACKUP_OBJECT_FAILED"
+  | "S3_RESTORE_OBJECT_FAILED"
+  | "CONTINUOUS_BACKUP_INTERRUPTED"
+  | "RECOVERY_POINT_INDEX_COMPLETED"
+  | "RECOVERY_POINT_INDEX_DELETED"
+  | "RECOVERY_POINT_INDEXING_FAILED";
 export type BackupVaultEvents = Array<BackupVaultEvent>;
 export type BackupVaultList = Array<BackupVaultListMember>;
 export interface BackupVaultListMember {
@@ -782,8 +1210,7 @@ export interface CancelLegalHoldInput {
   CancelDescription: string;
   RetainRecordInDays?: number;
 }
-export interface CancelLegalHoldOutput {
-}
+export interface CancelLegalHoldOutput {}
 export type ComplianceResourceIdList = Array<string>;
 export interface Condition {
   ConditionType: ConditionType;
@@ -857,8 +1284,24 @@ export interface CopyJob {
 }
 export type CopyJobChildJobsInState = Record<CopyJobState, number>;
 export type CopyJobsList = Array<CopyJob>;
-export type CopyJobState = "CREATED" | "RUNNING" | "COMPLETED" | "FAILED" | "PARTIAL";
-export type CopyJobStatus = "CREATED" | "RUNNING" | "ABORTING" | "ABORTED" | "COMPLETING" | "COMPLETED" | "FAILING" | "FAILED" | "PARTIAL" | "AGGREGATE_ALL" | "ANY";
+export type CopyJobState =
+  | "CREATED"
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | "PARTIAL";
+export type CopyJobStatus =
+  | "CREATED"
+  | "RUNNING"
+  | "ABORTING"
+  | "ABORTED"
+  | "COMPLETING"
+  | "COMPLETED"
+  | "FAILING"
+  | "FAILED"
+  | "PARTIAL"
+  | "AGGREGATE_ALL"
+  | "ANY";
 export interface CopyJobSummary {
   Region?: string;
   AccountId?: string;
@@ -1119,8 +1562,7 @@ export interface DescribeFrameworkOutput {
   FrameworkStatus?: string;
   IdempotencyToken?: string;
 }
-export interface DescribeGlobalSettingsInput {
-}
+export interface DescribeGlobalSettingsInput {}
 export interface DescribeGlobalSettingsOutput {
   GlobalSettings?: Record<string, string>;
   LastUpdateTime?: Date | string;
@@ -1173,8 +1615,7 @@ export interface DescribeRecoveryPointOutput {
   IndexStatus?: IndexStatus;
   IndexStatusMessage?: string;
 }
-export interface DescribeRegionSettingsInput {
-}
+export interface DescribeRegionSettingsInput {}
 export interface DescribeRegionSettingsOutput {
   ResourceTypeOptInPreference?: Record<string, boolean>;
   ResourceTypeManagementPreference?: Record<string, boolean>;
@@ -1897,7 +2338,14 @@ export interface RecoveryPointSelection {
   DateRange?: DateRange;
 }
 export type RecoveryPointsList = Array<RecoveryPointMember>;
-export type RecoveryPointStatus = "COMPLETED" | "PARTIAL" | "DELETING" | "EXPIRED" | "AVAILABLE" | "STOPPED" | "CREATING";
+export type RecoveryPointStatus =
+  | "COMPLETED"
+  | "PARTIAL"
+  | "DELETING"
+  | "EXPIRED"
+  | "AVAILABLE"
+  | "STOPPED"
+  | "CREATING";
 export type Region = string;
 
 export interface ReportDeliveryChannel {
@@ -1964,7 +2412,8 @@ export type ResourceTypeList = Array<string>;
 export type ResourceTypeManagementPreference = Record<string, boolean>;
 export type ResourceTypeOptInPreference = Record<string, boolean>;
 export type ResourceTypes = Array<string>;
-export type RestoreAccessBackupVaultList = Array<RestoreAccessBackupVaultListMember>;
+export type RestoreAccessBackupVaultList =
+  Array<RestoreAccessBackupVaultListMember>;
 export interface RestoreAccessBackupVaultListMember {
   RestoreAccessBackupVaultArn?: string;
   CreationDate?: Date | string;
@@ -2000,8 +2449,21 @@ export interface RestoreJobsListMember {
   DeletionStatus?: RestoreDeletionStatus;
   DeletionStatusMessage?: string;
 }
-export type RestoreJobState = "CREATED" | "PENDING" | "RUNNING" | "ABORTED" | "COMPLETED" | "FAILED" | "AGGREGATE_ALL" | "ANY";
-export type RestoreJobStatus = "PENDING" | "RUNNING" | "COMPLETED" | "ABORTED" | "FAILED";
+export type RestoreJobState =
+  | "CREATED"
+  | "PENDING"
+  | "RUNNING"
+  | "ABORTED"
+  | "COMPLETED"
+  | "FAILED"
+  | "AGGREGATE_ALL"
+  | "ANY";
+export type RestoreJobStatus =
+  | "PENDING"
+  | "RUNNING"
+  | "COMPLETED"
+  | "ABORTED"
+  | "FAILED";
 export interface RestoreJobSummary {
   Region?: string;
   AccountId?: string;
@@ -2055,9 +2517,12 @@ export interface RestoreTestingRecoveryPointSelection {
   RecoveryPointTypes?: Array<RestoreTestingRecoveryPointType>;
   SelectionWindowDays?: number;
 }
-export type RestoreTestingRecoveryPointSelectionAlgorithm = "LATEST_WITHIN_WINDOW" | "RANDOM_WITHIN_WINDOW";
+export type RestoreTestingRecoveryPointSelectionAlgorithm =
+  | "LATEST_WITHIN_WINDOW"
+  | "RANDOM_WITHIN_WINDOW";
 export type RestoreTestingRecoveryPointType = "CONTINUOUS" | "SNAPSHOT";
-export type RestoreTestingRecoveryPointTypeList = Array<RestoreTestingRecoveryPointType>;
+export type RestoreTestingRecoveryPointTypeList =
+  Array<RestoreTestingRecoveryPointType>;
 export interface RestoreTestingSelectionForCreate {
   IamRoleArn: string;
   ProtectedResourceArns?: Array<string>;
@@ -2095,7 +2560,11 @@ export interface RestoreTestingSelectionForUpdate {
   ValidationWindowHours?: number;
 }
 export type RestoreTestingSelections = Array<RestoreTestingSelectionForList>;
-export type RestoreValidationStatus = "FAILED" | "SUCCESSFUL" | "TIMED_OUT" | "VALIDATING";
+export type RestoreValidationStatus =
+  | "FAILED"
+  | "SUCCESSFUL"
+  | "TIMED_OUT"
+  | "VALIDATING";
 export interface RevokeRestoreAccessBackupVaultInput {
   BackupVaultName: string;
   RestoreAccessBackupVaultArn: string;
@@ -2163,8 +2632,6 @@ export interface StopBackupJobInput {
   BackupJobId: string;
 }
 export type StorageClass = "WARM" | "COLD" | "DELETED";
-export type string = string;
-
 export type stringList = Array<string>;
 export type stringMap = Record<string, string>;
 export type TagKey = string;
@@ -2273,7 +2740,10 @@ export interface UpdateRestoreTestingSelectionOutput {
 }
 export type VaultNames = Array<string>;
 export type VaultState = "CREATING" | "AVAILABLE" | "FAILED";
-export type VaultType = "BACKUP_VAULT" | "LOGICALLY_AIR_GAPPED_BACKUP_VAULT" | "RESTORE_ACCESS_BACKUP_VAULT";
+export type VaultType =
+  | "BACKUP_VAULT"
+  | "LOGICALLY_AIR_GAPPED_BACKUP_VAULT"
+  | "RESTORE_ACCESS_BACKUP_VAULT";
 export type WindowMinutes = number;
 
 export declare namespace AssociateBackupVaultMpaApprovalTeam {
@@ -2627,9 +3097,7 @@ export declare namespace DescribeRecoveryPoint {
 export declare namespace DescribeRegionSettings {
   export type Input = DescribeRegionSettingsInput;
   export type Output = DescribeRegionSettingsOutput;
-  export type Error =
-    | ServiceUnavailableException
-    | CommonAwsError;
+  export type Error = ServiceUnavailableException | CommonAwsError;
 }
 
 export declare namespace DescribeReportJob {
@@ -2856,7 +3324,14 @@ export declare namespace GetRestoreTestingSelection {
 export declare namespace GetSupportedResourceTypes {
   export type Input = {};
   export type Output = GetSupportedResourceTypesOutput;
+  export type Error = ServiceUnavailableException | CommonAwsError;
+}
+
+export declare namespace ListBackupJobs {
+  export type Input = ListBackupJobsInput;
+  export type Output = ListBackupJobsOutput;
   export type Error =
+    | InvalidParameterValueException
     | ServiceUnavailableException
     | CommonAwsError;
 }
@@ -2870,11 +3345,13 @@ export declare namespace ListBackupJobSummaries {
     | CommonAwsError;
 }
 
-export declare namespace ListBackupJobs {
-  export type Input = ListBackupJobsInput;
-  export type Output = ListBackupJobsOutput;
+export declare namespace ListBackupPlans {
+  export type Input = ListBackupPlansInput;
+  export type Output = ListBackupPlansOutput;
   export type Error =
     | InvalidParameterValueException
+    | MissingParameterValueException
+    | ResourceNotFoundException
     | ServiceUnavailableException
     | CommonAwsError;
 }
@@ -2893,17 +3370,6 @@ export declare namespace ListBackupPlanTemplates {
 export declare namespace ListBackupPlanVersions {
   export type Input = ListBackupPlanVersionsInput;
   export type Output = ListBackupPlanVersionsOutput;
-  export type Error =
-    | InvalidParameterValueException
-    | MissingParameterValueException
-    | ResourceNotFoundException
-    | ServiceUnavailableException
-    | CommonAwsError;
-}
-
-export declare namespace ListBackupPlans {
-  export type Input = ListBackupPlansInput;
-  export type Output = ListBackupPlansOutput;
   export type Error =
     | InvalidParameterValueException
     | MissingParameterValueException
@@ -2934,18 +3400,18 @@ export declare namespace ListBackupVaults {
     | CommonAwsError;
 }
 
-export declare namespace ListCopyJobSummaries {
-  export type Input = ListCopyJobSummariesInput;
-  export type Output = ListCopyJobSummariesOutput;
+export declare namespace ListCopyJobs {
+  export type Input = ListCopyJobsInput;
+  export type Output = ListCopyJobsOutput;
   export type Error =
     | InvalidParameterValueException
     | ServiceUnavailableException
     | CommonAwsError;
 }
 
-export declare namespace ListCopyJobs {
-  export type Input = ListCopyJobsInput;
-  export type Output = ListCopyJobsOutput;
+export declare namespace ListCopyJobSummaries {
+  export type Input = ListCopyJobSummariesInput;
+  export type Output = ListCopyJobSummariesOutput;
   export type Error =
     | InvalidParameterValueException
     | ServiceUnavailableException
@@ -3061,15 +3527,6 @@ export declare namespace ListRestoreAccessBackupVaults {
     | CommonAwsError;
 }
 
-export declare namespace ListRestoreJobSummaries {
-  export type Input = ListRestoreJobSummariesInput;
-  export type Output = ListRestoreJobSummariesOutput;
-  export type Error =
-    | InvalidParameterValueException
-    | ServiceUnavailableException
-    | CommonAwsError;
-}
-
 export declare namespace ListRestoreJobs {
   export type Input = ListRestoreJobsInput;
   export type Output = ListRestoreJobsOutput;
@@ -3088,6 +3545,15 @@ export declare namespace ListRestoreJobsByProtectedResource {
     | InvalidParameterValueException
     | MissingParameterValueException
     | ResourceNotFoundException
+    | ServiceUnavailableException
+    | CommonAwsError;
+}
+
+export declare namespace ListRestoreJobSummaries {
+  export type Input = ListRestoreJobSummariesInput;
+  export type Output = ListRestoreJobSummariesOutput;
+  export type Error =
+    | InvalidParameterValueException
     | ServiceUnavailableException
     | CommonAwsError;
 }
@@ -3369,4 +3835,3 @@ export declare namespace UpdateRestoreTestingSelection {
     | ServiceUnavailableException
     | CommonAwsError;
 }
-

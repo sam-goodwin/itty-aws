@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.databasemigrationservice#AccessDeniedFault": {
       "type": "structure",
@@ -118,6 +147,344 @@
     },
     "com.amazonaws.databasemigrationservice#AmazonDMSv20160101": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.databasemigrationservice#AddTagsToResource"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ApplyPendingMaintenanceAction"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#BatchStartRecommendations"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CancelReplicationTaskAssessmentRun"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateDataMigration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateDataProvider"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateFleetAdvisorCollector"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateMigrationProject"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateReplicationConfig"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateReplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateReplicationSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#CreateReplicationTask"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteCertificate"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteDataMigration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteDataProvider"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteEndpoint"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorCollector"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteFleetAdvisorDatabases"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteMigrationProject"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteReplicationConfig"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteReplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteReplicationSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteReplicationTask"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DeleteReplicationTaskAssessmentRun"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeAccountAttributes"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeApplicableIndividualAssessments"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeCertificates"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeConnections"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeConversionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeDataMigrations"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeDataProviders"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEndpoints"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEndpointSettings"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEndpointTypes"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEngineVersions"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEventCategories"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeEventSubscriptions"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeExtensionPackAssociations"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorCollectors"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorDatabases"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorLsaAnalysis"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemaObjectSummary"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeFleetAdvisorSchemas"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeInstanceProfiles"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelAssessments"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelConversions"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsAsScript"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelExportsToTarget"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeMetadataModelImports"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeMigrationProjects"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeOrderableReplicationInstances"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribePendingMaintenanceActions"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeRecommendationLimitations"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeRecommendations"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeRefreshSchemasStatus"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationConfigs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationInstances"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationInstanceTaskLogs"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplications"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTableStatistics"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentResults"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTaskAssessmentRuns"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTaskIndividualAssessments"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeReplicationTasks"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeSchemas"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#DescribeTableStatistics"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ExportMetadataModelAssessment"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ImportCertificate"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyConversionConfiguration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyDataMigration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyDataProvider"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyEndpoint"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyEventSubscription"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyMigrationProject"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyReplicationConfig"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyReplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyReplicationSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ModifyReplicationTask"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#MoveReplicationTask"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#RebootReplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#RefreshSchemas"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReloadReplicationTables"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#ReloadTables"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#RemoveTagsFromResource"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#RunFleetAdvisorLsaAnalysis"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartDataMigration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartExtensionPackAssociation"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartMetadataModelAssessment"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartMetadataModelConversion"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartMetadataModelExportAsScript"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartMetadataModelExportToTarget"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartMetadataModelImport"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartRecommendations"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartReplication"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartReplicationTask"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessment"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StartReplicationTaskAssessmentRun"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StopDataMigration"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StopReplication"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#StopReplicationTask"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#TestConnection"
+        },
+        {
+          "target": "com.amazonaws.databasemigrationservice#UpdateSubscriptionsToEventBridge"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Database Migration Service",

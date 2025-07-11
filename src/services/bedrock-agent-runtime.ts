@@ -1,192 +1,404 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonBedrockAgentRunTimeService {
   createInvocation(
     input: CreateInvocationRequest,
   ): Effect.Effect<
     CreateInvocationResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   createSession(
     input: CreateSessionRequest,
   ): Effect.Effect<
     CreateSessionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteAgentMemory(
     input: DeleteAgentMemoryRequest,
   ): Effect.Effect<
     DeleteAgentMemoryResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteSession(
     input: DeleteSessionRequest,
   ): Effect.Effect<
     DeleteSessionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   endSession(
     input: EndSessionRequest,
   ): Effect.Effect<
     EndSessionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   generateQuery(
     input: GenerateQueryRequest,
   ): Effect.Effect<
     GenerateQueryResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getAgentMemory(
     input: GetAgentMemoryRequest,
   ): Effect.Effect<
     GetAgentMemoryResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getExecutionFlowSnapshot(
     input: GetExecutionFlowSnapshotRequest,
   ): Effect.Effect<
     GetExecutionFlowSnapshotResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getFlowExecution(
     input: GetFlowExecutionRequest,
   ): Effect.Effect<
     GetFlowExecutionResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getInvocationStep(
     input: GetInvocationStepRequest,
   ): Effect.Effect<
     GetInvocationStepResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   getSession(
     input: GetSessionRequest,
   ): Effect.Effect<
     GetSessionResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeAgent(
     input: InvokeAgentRequest,
   ): Effect.Effect<
     InvokeAgentResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ModelNotReadyException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ModelNotReadyException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeFlow(
     input: InvokeFlowRequest,
   ): Effect.Effect<
     InvokeFlowResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   invokeInlineAgent(
     input: InvokeInlineAgentRequest,
   ): Effect.Effect<
     InvokeInlineAgentResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFlowExecutionEvents(
     input: ListFlowExecutionEventsRequest,
   ): Effect.Effect<
     ListFlowExecutionEventsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listFlowExecutions(
     input: ListFlowExecutionsRequest,
   ): Effect.Effect<
     ListFlowExecutionsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listInvocationSteps(
     input: ListInvocationStepsRequest,
   ): Effect.Effect<
     ListInvocationStepsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listInvocations(
     input: ListInvocationsRequest,
   ): Effect.Effect<
     ListInvocationsResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listSessions(
     input: ListSessionsRequest,
   ): Effect.Effect<
     ListSessionsResponse,
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   optimizePrompt(
     input: OptimizePromptRequest,
   ): Effect.Effect<
     OptimizePromptResponse,
-    AccessDeniedException | BadGatewayException | DependencyFailedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | DependencyFailedException
+    | InternalServerException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   putInvocationStep(
     input: PutInvocationStepRequest,
   ): Effect.Effect<
     PutInvocationStepResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   rerank(
     input: RerankRequest,
   ): Effect.Effect<
     RerankResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   retrieve(
     input: RetrieveRequest,
   ): Effect.Effect<
     RetrieveResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   retrieveAndGenerate(
     input: RetrieveAndGenerateRequest,
   ): Effect.Effect<
     RetrieveAndGenerateResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   retrieveAndGenerateStream(
     input: RetrieveAndGenerateStreamRequest,
   ): Effect.Effect<
     RetrieveAndGenerateStreamResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   startFlowExecution(
     input: StartFlowExecutionRequest,
   ): Effect.Effect<
     StartFlowExecutionResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   stopFlowExecution(
     input: StopFlowExecutionRequest,
   ): Effect.Effect<
     StopFlowExecutionResponse,
-    AccessDeniedException | BadGatewayException | ConflictException | DependencyFailedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BadGatewayException
+    | ConflictException
+    | DependencyFailedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ServiceQuotaExceededException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   updateSession(
     input: UpdateSessionRequest,
   ): Effect.Effect<
     UpdateSessionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -197,7 +409,9 @@ export declare class AccessDeniedException extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type ActionGroupExecutor = { lambda: string } | { customControl: CustomControlMethod };
+export type ActionGroupExecutor =
+  | { lambda: string }
+  | { customControl: CustomControlMethod };
 export interface ActionGroupInvocationInput {
   actionGroupName?: string;
   verb?: string;
@@ -216,10 +430,21 @@ export type ActionGroupName = string;
 
 export type ActionGroupOutputString = string;
 
-export type ActionGroupSignature = "AMAZON_USERINPUT" | "AMAZON_CODEINTERPRETER" | "ANTHROPIC_COMPUTER" | "ANTHROPIC_BASH" | "ANTHROPIC_TEXTEDITOR";
+export type ActionGroupSignature =
+  | "AMAZON_USERINPUT"
+  | "AMAZON_CODEINTERPRETER"
+  | "ANTHROPIC_COMPUTER"
+  | "ANTHROPIC_BASH"
+  | "ANTHROPIC_TEXTEDITOR";
 export type ActionGroupSignatureParams = Record<string, string>;
-export type ActionInvocationType = "RESULT" | "USER_CONFIRMATION" | "USER_CONFIRMATION_AND_RESULT";
-export type AdditionalModelRequestFields = Record<string, AdditionalModelRequestFieldsValue>;
+export type ActionInvocationType =
+  | "RESULT"
+  | "USER_CONFIRMATION"
+  | "USER_CONFIRMATION_AND_RESULT";
+export type AdditionalModelRequestFields = Record<
+  string,
+  AdditionalModelRequestFieldsValue
+>;
 export type AdditionalModelRequestFieldsKey = string;
 
 export interface AgentActionGroup {
@@ -236,7 +461,10 @@ export type AgentAliasArn = string;
 
 export type AgentAliasId = string;
 
-export type AgentCollaboration = "SUPERVISOR" | "SUPERVISOR_ROUTER" | "DISABLED";
+export type AgentCollaboration =
+  | "SUPERVISOR"
+  | "SUPERVISOR_ROUTER"
+  | "DISABLED";
 export interface AgentCollaboratorInputPayload {
   type?: PayloadType;
   text?: string;
@@ -327,9 +555,14 @@ export type BedrockRerankingModelArn = string;
 
 export interface BedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
 }
-export type BedrockSessionContentBlock = { text: string } | { image: ImageBlock };
+export type BedrockSessionContentBlock =
+  | { text: string }
+  | { image: ImageBlock };
 export type BedrockSessionContentBlocks = Array<BedrockSessionContentBlock>;
 export type ByteContentBlob = Uint8Array | string;
 
@@ -453,13 +686,11 @@ export interface DeleteAgentMemoryRequest {
   memoryId?: string;
   sessionId?: string;
 }
-export interface DeleteAgentMemoryResponse {
-}
+export interface DeleteAgentMemoryResponse {}
 export interface DeleteSessionRequest {
   sessionIdentifier: string;
 }
-export interface DeleteSessionResponse {
-}
+export interface DeleteSessionResponse {}
 export declare class DependencyFailedException extends Data.TaggedError(
   "DependencyFailedException",
 )<{
@@ -485,7 +716,10 @@ export interface ExternalSourcesGenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   inferenceConfig?: InferenceConfig;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
   performanceConfig?: PerformanceConfiguration;
 }
 export interface ExternalSourcesRetrieveAndGenerateConfiguration {
@@ -537,7 +771,10 @@ export interface FlowCompletionEvent {
   completionReason: FlowCompletionReason;
 }
 export type FlowCompletionReason = "SUCCESS" | "INPUT_REQUIRED";
-export type FlowErrorCode = "VALIDATION" | "INTERNAL_SERVER" | "NODE_EXECUTION_FAILED";
+export type FlowErrorCode =
+  | "VALIDATION"
+  | "INTERNAL_SERVER"
+  | "NODE_EXECUTION_FAILED";
 export type FlowExecutionContent = { document: _opaque_Document };
 export interface FlowExecutionError {
   nodeName?: string;
@@ -546,7 +783,14 @@ export interface FlowExecutionError {
 }
 export type FlowExecutionErrors = Array<FlowExecutionError>;
 export type FlowExecutionErrorType = "TIMED_OUT";
-export type FlowExecutionEvent = { flowInputEvent: FlowExecutionInputEvent } | { flowOutputEvent: FlowExecutionOutputEvent } | { nodeInputEvent: NodeInputEvent } | { nodeOutputEvent: NodeOutputEvent } | { conditionResultEvent: ConditionResultEvent } | { nodeFailureEvent: NodeFailureEvent } | { flowFailureEvent: FlowFailureEvent };
+export type FlowExecutionEvent =
+  | { flowInputEvent: FlowExecutionInputEvent }
+  | { flowOutputEvent: FlowExecutionOutputEvent }
+  | { nodeInputEvent: NodeInputEvent }
+  | { nodeOutputEvent: NodeOutputEvent }
+  | { conditionResultEvent: ConditionResultEvent }
+  | { nodeFailureEvent: NodeFailureEvent }
+  | { flowFailureEvent: FlowFailureEvent };
 export type FlowExecutionEvents = Array<FlowExecutionEvent>;
 export type FlowExecutionEventType = "NODE" | "FLOW";
 export type FlowExecutionId = string;
@@ -567,7 +811,12 @@ export interface FlowExecutionOutputEvent {
 }
 export type FlowExecutionRoleArn = string;
 
-export type FlowExecutionStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "TIMED_OUT" | "ABORTED";
+export type FlowExecutionStatus =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMED_OUT"
+  | "ABORTED";
 export type FlowExecutionSummaries = Array<FlowExecutionSummary>;
 export interface FlowExecutionSummary {
   executionArn: string;
@@ -615,8 +864,25 @@ export interface FlowOutputField {
   content: FlowExecutionContent;
 }
 export type FlowOutputFields = Array<FlowOutputField>;
-export type FlowResponseStream = { flowOutputEvent: FlowOutputEvent } | { flowCompletionEvent: FlowCompletionEvent } | { flowTraceEvent: FlowTraceEvent } | { internalServerException: InternalServerException } | { validationException: ValidationException } | { resourceNotFoundException: ResourceNotFoundException } | { serviceQuotaExceededException: ServiceQuotaExceededException } | { throttlingException: ThrottlingException } | { accessDeniedException: AccessDeniedException } | { conflictException: ConflictException } | { dependencyFailedException: DependencyFailedException } | { badGatewayException: BadGatewayException } | { flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent };
-export type FlowTrace = { nodeInputTrace: FlowTraceNodeInputEvent } | { nodeOutputTrace: FlowTraceNodeOutputEvent } | { conditionNodeResultTrace: FlowTraceConditionNodeResultEvent } | { nodeActionTrace: FlowTraceNodeActionEvent };
+export type FlowResponseStream =
+  | { flowOutputEvent: FlowOutputEvent }
+  | { flowCompletionEvent: FlowCompletionEvent }
+  | { flowTraceEvent: FlowTraceEvent }
+  | { internalServerException: InternalServerException }
+  | { validationException: ValidationException }
+  | { resourceNotFoundException: ResourceNotFoundException }
+  | { serviceQuotaExceededException: ServiceQuotaExceededException }
+  | { throttlingException: ThrottlingException }
+  | { accessDeniedException: AccessDeniedException }
+  | { conflictException: ConflictException }
+  | { dependencyFailedException: DependencyFailedException }
+  | { badGatewayException: BadGatewayException }
+  | { flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent };
+export type FlowTrace =
+  | { nodeInputTrace: FlowTraceNodeInputEvent }
+  | { nodeOutputTrace: FlowTraceNodeOutputEvent }
+  | { conditionNodeResultTrace: FlowTraceConditionNodeResultEvent }
+  | { nodeActionTrace: FlowTraceNodeActionEvent };
 export interface FlowTraceCondition {
   conditionName: string;
 }
@@ -712,7 +978,10 @@ export interface GenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   inferenceConfig?: InferenceConfig;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
   performanceConfig?: PerformanceConfiguration;
 }
 export interface GetAgentMemoryRequest {
@@ -797,9 +1066,19 @@ export interface GuardrailContentFilter {
   confidence?: GuardrailContentFilterConfidence;
   action?: GuardrailContentPolicyAction;
 }
-export type GuardrailContentFilterConfidence = "NONE" | "LOW" | "MEDIUM" | "HIGH";
+export type GuardrailContentFilterConfidence =
+  | "NONE"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH";
 export type GuardrailContentFilterList = Array<GuardrailContentFilter>;
-export type GuardrailContentFilterType = "INSULTS" | "HATE" | "SEXUAL" | "VIOLENCE" | "MISCONDUCT" | "PROMPT_ATTACK";
+export type GuardrailContentFilterType =
+  | "INSULTS"
+  | "HATE"
+  | "SEXUAL"
+  | "VIOLENCE"
+  | "MISCONDUCT"
+  | "PROMPT_ATTACK";
 export type GuardrailContentPolicyAction = "BLOCKED";
 export interface GuardrailContentPolicyAssessment {
   filters?: Array<GuardrailContentFilter>;
@@ -827,7 +1106,38 @@ export interface GuardrailPiiEntityFilter {
   action?: GuardrailSensitiveInformationPolicyAction;
 }
 export type GuardrailPiiEntityFilterList = Array<GuardrailPiiEntityFilter>;
-export type GuardrailPiiEntityType = "ADDRESS" | "AGE" | "AWS_ACCESS_KEY" | "AWS_SECRET_KEY" | "CA_HEALTH_NUMBER" | "CA_SOCIAL_INSURANCE_NUMBER" | "CREDIT_DEBIT_CARD_CVV" | "CREDIT_DEBIT_CARD_EXPIRY" | "CREDIT_DEBIT_CARD_NUMBER" | "DRIVER_ID" | "EMAIL" | "INTERNATIONAL_BANK_ACCOUNT_NUMBER" | "IP_ADDRESS" | "LICENSE_PLATE" | "MAC_ADDRESS" | "NAME" | "PASSWORD" | "PHONE" | "PIN" | "SWIFT_CODE" | "UK_NATIONAL_HEALTH_SERVICE_NUMBER" | "UK_NATIONAL_INSURANCE_NUMBER" | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER" | "URL" | "USERNAME" | "US_BANK_ACCOUNT_NUMBER" | "US_BANK_ROUTING_NUMBER" | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER" | "US_PASSPORT_NUMBER" | "US_SOCIAL_SECURITY_NUMBER" | "VEHICLE_IDENTIFICATION_NUMBER";
+export type GuardrailPiiEntityType =
+  | "ADDRESS"
+  | "AGE"
+  | "AWS_ACCESS_KEY"
+  | "AWS_SECRET_KEY"
+  | "CA_HEALTH_NUMBER"
+  | "CA_SOCIAL_INSURANCE_NUMBER"
+  | "CREDIT_DEBIT_CARD_CVV"
+  | "CREDIT_DEBIT_CARD_EXPIRY"
+  | "CREDIT_DEBIT_CARD_NUMBER"
+  | "DRIVER_ID"
+  | "EMAIL"
+  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
+  | "IP_ADDRESS"
+  | "LICENSE_PLATE"
+  | "MAC_ADDRESS"
+  | "NAME"
+  | "PASSWORD"
+  | "PHONE"
+  | "PIN"
+  | "SWIFT_CODE"
+  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
+  | "UK_NATIONAL_INSURANCE_NUMBER"
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+  | "URL"
+  | "USERNAME"
+  | "US_BANK_ACCOUNT_NUMBER"
+  | "US_BANK_ROUTING_NUMBER"
+  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
+  | "US_PASSPORT_NUMBER"
+  | "US_SOCIAL_SECURITY_NUMBER"
+  | "VEHICLE_IDENTIFICATION_NUMBER";
 export interface GuardrailRegexFilter {
   name?: string;
   regex?: string;
@@ -835,7 +1145,9 @@ export interface GuardrailRegexFilter {
   action?: GuardrailSensitiveInformationPolicyAction;
 }
 export type GuardrailRegexFilterList = Array<GuardrailRegexFilter>;
-export type GuardrailSensitiveInformationPolicyAction = "BLOCKED" | "ANONYMIZED";
+export type GuardrailSensitiveInformationPolicyAction =
+  | "BLOCKED"
+  | "ANONYMIZED";
 export interface GuardrailSensitiveInformationPolicyAssessment {
   piiEntities?: Array<GuardrailPiiEntityFilter>;
   regexes?: Array<GuardrailRegexFilter>;
@@ -879,7 +1191,9 @@ export interface ImageInput {
 export type ImageInputFormat = "PNG" | "JPEG" | "GIF" | "WEBP";
 export type ImageInputs = Array<ImageInput>;
 export type ImageInputSource = { bytes: Uint8Array | string };
-export type ImageSource = { bytes: Uint8Array | string } | { s3Location: S3Location };
+export type ImageSource =
+  | { bytes: Uint8Array | string }
+  | { s3Location: S3Location };
 export interface ImplicitFilterConfiguration {
   metadataAttributes: Array<MetadataAttributeSchema>;
   modelArn: string;
@@ -901,7 +1215,20 @@ export interface InlineAgentPayloadPart {
   bytes?: Uint8Array | string;
   attribution?: Attribution;
 }
-export type InlineAgentResponseStream = { chunk: InlineAgentPayloadPart } | { trace: InlineAgentTracePart } | { returnControl: InlineAgentReturnControlPayload } | { internalServerException: InternalServerException } | { validationException: ValidationException } | { resourceNotFoundException: ResourceNotFoundException } | { serviceQuotaExceededException: ServiceQuotaExceededException } | { throttlingException: ThrottlingException } | { accessDeniedException: AccessDeniedException } | { conflictException: ConflictException } | { dependencyFailedException: DependencyFailedException } | { badGatewayException: BadGatewayException } | { files: InlineAgentFilePart };
+export type InlineAgentResponseStream =
+  | { chunk: InlineAgentPayloadPart }
+  | { trace: InlineAgentTracePart }
+  | { returnControl: InlineAgentReturnControlPayload }
+  | { internalServerException: InternalServerException }
+  | { validationException: ValidationException }
+  | { resourceNotFoundException: ResourceNotFoundException }
+  | { serviceQuotaExceededException: ServiceQuotaExceededException }
+  | { throttlingException: ThrottlingException }
+  | { accessDeniedException: AccessDeniedException }
+  | { conflictException: ConflictException }
+  | { dependencyFailedException: DependencyFailedException }
+  | { badGatewayException: BadGatewayException }
+  | { files: InlineAgentFilePart };
 export interface InlineAgentReturnControlPayload {
   invocationInputs?: Array<InvocationInputMember>;
   invocationId?: string;
@@ -954,9 +1281,13 @@ export interface InvocationInput {
   codeInterpreterInvocationInput?: CodeInterpreterInvocationInput;
   agentCollaboratorInvocationInput?: AgentCollaboratorInvocationInput;
 }
-export type InvocationInputMember = { apiInvocationInput: ApiInvocationInput } | { functionInvocationInput: FunctionInvocationInput };
+export type InvocationInputMember =
+  | { apiInvocationInput: ApiInvocationInput }
+  | { functionInvocationInput: FunctionInvocationInput };
 export type InvocationInputs = Array<InvocationInputMember>;
-export type InvocationResultMember = { apiResult: ApiResult } | { functionResult: FunctionResult };
+export type InvocationResultMember =
+  | { apiResult: ApiResult }
+  | { functionResult: FunctionResult };
 export interface InvocationStep {
   sessionId: string;
   invocationId: string;
@@ -964,7 +1295,9 @@ export interface InvocationStep {
   invocationStepTime: Date | string;
   payload: InvocationStepPayload;
 }
-export type InvocationStepPayload = { contentBlocks: Array<BedrockSessionContentBlock> };
+export type InvocationStepPayload = {
+  contentBlocks: Array<BedrockSessionContentBlock>;
+};
 export type InvocationStepSummaries = Array<InvocationStepSummary>;
 export interface InvocationStepSummary {
   sessionId: string;
@@ -978,7 +1311,12 @@ export interface InvocationSummary {
   invocationId: string;
   createdAt: Date | string;
 }
-export type InvocationType = "ACTION_GROUP" | "KNOWLEDGE_BASE" | "FINISH" | "ACTION_GROUP_CODE_INTERPRETER" | "AGENT_COLLABORATOR";
+export type InvocationType =
+  | "ACTION_GROUP"
+  | "KNOWLEDGE_BASE"
+  | "FINISH"
+  | "ACTION_GROUP_CODE_INTERPRETER"
+  | "AGENT_COLLABORATOR";
 export interface InvokeAgentRequest {
   sessionState?: SessionState;
   agentId: string;
@@ -1220,7 +1558,11 @@ export type Name = string;
 
 export type NextToken = string;
 
-export type NodeErrorCode = "VALIDATION" | "DEPENDENCY_FAILED" | "BAD_GATEWAY" | "INTERNAL_SERVER";
+export type NodeErrorCode =
+  | "VALIDATION"
+  | "DEPENDENCY_FAILED"
+  | "BAD_GATEWAY"
+  | "INTERNAL_SERVER";
 export type NodeExecutionContent = { document: _opaque_Document };
 export interface NodeFailureEvent {
   nodeName: string;
@@ -1254,7 +1596,14 @@ export interface NodeOutputField {
 export type NodeOutputFields = Array<NodeOutputField>;
 export type NodeOutputName = string;
 
-export type NodeType = "FLOW_INPUT_NODE" | "FLOW_OUTPUT_NODE" | "LAMBDA_FUNCTION_NODE" | "KNOWLEDGE_BASE_NODE" | "PROMPT_NODE" | "CONDITION_NODE" | "LEX_NODE";
+export type NodeType =
+  | "FLOW_INPUT_NODE"
+  | "FLOW_OUTPUT_NODE"
+  | "LAMBDA_FUNCTION_NODE"
+  | "KNOWLEDGE_BASE_NODE"
+  | "PROMPT_NODE"
+  | "CONDITION_NODE"
+  | "LEX_NODE";
 export type NonBlankString = string;
 
 export interface Observation {
@@ -1271,7 +1620,15 @@ export type OptimizedPrompt = { textPrompt: TextPrompt };
 export interface OptimizedPromptEvent {
   optimizedPrompt?: OptimizedPrompt;
 }
-export type OptimizedPromptStream = { optimizedPromptEvent: OptimizedPromptEvent } | { analyzePromptEvent: AnalyzePromptEvent } | { internalServerException: InternalServerException } | { throttlingException: ThrottlingException } | { validationException: ValidationException } | { dependencyFailedException: DependencyFailedException } | { accessDeniedException: AccessDeniedException } | { badGatewayException: BadGatewayException };
+export type OptimizedPromptStream =
+  | { optimizedPromptEvent: OptimizedPromptEvent }
+  | { analyzePromptEvent: AnalyzePromptEvent }
+  | { internalServerException: InternalServerException }
+  | { throttlingException: ThrottlingException }
+  | { validationException: ValidationException }
+  | { dependencyFailedException: DependencyFailedException }
+  | { accessDeniedException: AccessDeniedException }
+  | { badGatewayException: BadGatewayException };
 export interface OptimizePromptRequest {
   input: InputPrompt;
   targetModelId: string;
@@ -1282,7 +1639,10 @@ export interface OptimizePromptResponse {
 export interface OrchestrationConfiguration {
   promptTemplate?: PromptTemplate;
   inferenceConfig?: InferenceConfig;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
   queryTransformationConfiguration?: QueryTransformationConfiguration;
   performanceConfig?: PerformanceConfiguration;
 }
@@ -1293,7 +1653,12 @@ export interface OrchestrationModelInvocationOutput {
   metadata?: Metadata;
   reasoningContent?: ReasoningContentBlock;
 }
-export type OrchestrationTrace = { rationale: Rationale } | { invocationInput: InvocationInput } | { observation: Observation } | { modelInvocationInput: ModelInvocationInput } | { modelInvocationOutput: OrchestrationModelInvocationOutput };
+export type OrchestrationTrace =
+  | { rationale: Rationale }
+  | { invocationInput: InvocationInput }
+  | { observation: Observation }
+  | { modelInvocationInput: ModelInvocationInput }
+  | { modelInvocationOutput: OrchestrationModelInvocationOutput };
 export type OrchestrationType = "DEFAULT" | "CUSTOM_ORCHESTRATION";
 export interface OutputFile {
   name?: string;
@@ -1320,7 +1685,12 @@ export type ParameterMap = Record<string, ParameterDetail>;
 export type ParameterName = string;
 
 export type Parameters = Array<Parameter>;
-export type ParameterType = "STRING" | "NUMBER" | "INTEGER" | "BOOLEAN" | "ARRAY";
+export type ParameterType =
+  | "STRING"
+  | "NUMBER"
+  | "INTEGER"
+  | "BOOLEAN"
+  | "ARRAY";
 export type PartBody = Uint8Array | string;
 
 export type Payload = string;
@@ -1344,7 +1714,9 @@ export interface PostProcessingModelInvocationOutput {
 export interface PostProcessingParsedResponse {
   text?: string;
 }
-export type PostProcessingTrace = { modelInvocationInput: ModelInvocationInput } | { modelInvocationOutput: PostProcessingModelInvocationOutput };
+export type PostProcessingTrace =
+  | { modelInvocationInput: ModelInvocationInput }
+  | { modelInvocationOutput: PostProcessingModelInvocationOutput };
 export interface PreProcessingModelInvocationOutput {
   traceId?: string;
   parsedResponse?: PreProcessingParsedResponse;
@@ -1356,7 +1728,9 @@ export interface PreProcessingParsedResponse {
   rationale?: string;
   isValid?: boolean;
 }
-export type PreProcessingTrace = { modelInvocationInput: ModelInvocationInput } | { modelInvocationOutput: PreProcessingModelInvocationOutput };
+export type PreProcessingTrace =
+  | { modelInvocationInput: ModelInvocationInput }
+  | { modelInvocationOutput: PreProcessingModelInvocationOutput };
 export interface PromptConfiguration {
   promptType?: PromptType;
   promptCreationMode?: CreationMode;
@@ -1383,7 +1757,12 @@ export interface PromptTemplate {
 }
 export type PromptText = string;
 
-export type PromptType = "PRE_PROCESSING" | "ORCHESTRATION" | "KNOWLEDGE_BASE_RESPONSE_GENERATION" | "POST_PROCESSING" | "ROUTING_CLASSIFIER";
+export type PromptType =
+  | "PRE_PROCESSING"
+  | "ORCHESTRATION"
+  | "KNOWLEDGE_BASE_RESPONSE_GENERATION"
+  | "POST_PROCESSING"
+  | "ROUTING_CLASSIFIER";
 export interface PropertyParameters {
   properties?: Array<Parameter>;
 }
@@ -1416,7 +1795,9 @@ export type RationaleString = string;
 export interface RawResponse {
   content?: string;
 }
-export type ReasoningContentBlock = { reasoningText: ReasoningTextBlock } | { redactedContent: Uint8Array | string };
+export type ReasoningContentBlock =
+  | { reasoningText: ReasoningTextBlock }
+  | { redactedContent: Uint8Array | string };
 export interface ReasoningTextBlock {
   text: string;
   signature?: string;
@@ -1442,7 +1823,9 @@ export interface RerankingConfiguration {
 }
 export type RerankingConfigurationType = "BEDROCK_RERANKING_MODEL";
 export type RerankingMetadataSelectionMode = "SELECTIVE" | "ALL";
-export type RerankingMetadataSelectiveModeConfiguration = { fieldsToInclude: Array<FieldForReranking> } | { fieldsToExclude: Array<FieldForReranking> };
+export type RerankingMetadataSelectiveModeConfiguration =
+  | { fieldsToInclude: Array<FieldForReranking> }
+  | { fieldsToExclude: Array<FieldForReranking> };
 export type RerankQueriesList = Array<RerankQuery>;
 export interface RerankQuery {
   type: RerankQueryContentType;
@@ -1485,8 +1868,35 @@ export declare class ResourceNotFoundException extends Data.TaggedError(
 }> {}
 export type ResponseBody = Record<string, ContentBody>;
 export type ResponseState = "FAILURE" | "REPROMPT";
-export type ResponseStream = { chunk: PayloadPart } | { trace: TracePart } | { returnControl: ReturnControlPayload } | { internalServerException: InternalServerException } | { validationException: ValidationException } | { resourceNotFoundException: ResourceNotFoundException } | { serviceQuotaExceededException: ServiceQuotaExceededException } | { throttlingException: ThrottlingException } | { accessDeniedException: AccessDeniedException } | { conflictException: ConflictException } | { dependencyFailedException: DependencyFailedException } | { badGatewayException: BadGatewayException } | { modelNotReadyException: ModelNotReadyException } | { files: FilePart };
-export type RetrievalFilter = { equals: FilterAttribute } | { notEquals: FilterAttribute } | { greaterThan: FilterAttribute } | { greaterThanOrEquals: FilterAttribute } | { lessThan: FilterAttribute } | { lessThanOrEquals: FilterAttribute } | { in: FilterAttribute } | { notIn: FilterAttribute } | { startsWith: FilterAttribute } | { listContains: FilterAttribute } | { stringContains: FilterAttribute } | { andAll: Array<RetrievalFilter> } | { orAll: Array<RetrievalFilter> };
+export type ResponseStream =
+  | { chunk: PayloadPart }
+  | { trace: TracePart }
+  | { returnControl: ReturnControlPayload }
+  | { internalServerException: InternalServerException }
+  | { validationException: ValidationException }
+  | { resourceNotFoundException: ResourceNotFoundException }
+  | { serviceQuotaExceededException: ServiceQuotaExceededException }
+  | { throttlingException: ThrottlingException }
+  | { accessDeniedException: AccessDeniedException }
+  | { conflictException: ConflictException }
+  | { dependencyFailedException: DependencyFailedException }
+  | { badGatewayException: BadGatewayException }
+  | { modelNotReadyException: ModelNotReadyException }
+  | { files: FilePart };
+export type RetrievalFilter =
+  | { equals: FilterAttribute }
+  | { notEquals: FilterAttribute }
+  | { greaterThan: FilterAttribute }
+  | { greaterThanOrEquals: FilterAttribute }
+  | { lessThan: FilterAttribute }
+  | { lessThanOrEquals: FilterAttribute }
+  | { in: FilterAttribute }
+  | { notIn: FilterAttribute }
+  | { startsWith: FilterAttribute }
+  | { listContains: FilterAttribute }
+  | { stringContains: FilterAttribute }
+  | { andAll: Array<RetrievalFilter> }
+  | { orAll: Array<RetrievalFilter> };
 export type RetrievalFilterList = Array<RetrievalFilter>;
 export interface RetrievalResultConfluenceLocation {
   url?: string;
@@ -1502,7 +1912,13 @@ export interface RetrievalResultContentColumn {
   columnValue?: string;
   type?: RetrievalResultContentColumnType;
 }
-export type RetrievalResultContentColumnType = "BLOB" | "BOOLEAN" | "DOUBLE" | "NULL" | "LONG" | "STRING";
+export type RetrievalResultContentColumnType =
+  | "BLOB"
+  | "BOOLEAN"
+  | "DOUBLE"
+  | "NULL"
+  | "LONG"
+  | "STRING";
 export type RetrievalResultContentRow = Array<RetrievalResultContentColumn>;
 export type RetrievalResultContentType = "TEXT" | "IMAGE" | "ROW";
 export interface RetrievalResultCustomDocumentLocation {
@@ -1522,8 +1938,19 @@ export interface RetrievalResultLocation {
   kendraDocumentLocation?: RetrievalResultKendraDocumentLocation;
   sqlLocation?: RetrievalResultSqlLocation;
 }
-export type RetrievalResultLocationType = "S3" | "WEB" | "CONFLUENCE" | "SALESFORCE" | "SHAREPOINT" | "CUSTOM" | "KENDRA" | "SQL";
-export type RetrievalResultMetadata = Record<string, RetrievalResultMetadataValue>;
+export type RetrievalResultLocationType =
+  | "S3"
+  | "WEB"
+  | "CONFLUENCE"
+  | "SALESFORCE"
+  | "SHAREPOINT"
+  | "CUSTOM"
+  | "KENDRA"
+  | "SQL";
+export type RetrievalResultMetadata = Record<
+  string,
+  RetrievalResultMetadataValue
+>;
 export type RetrievalResultMetadataKey = string;
 
 export interface RetrievalResultS3Location {
@@ -1580,7 +2007,19 @@ export interface RetrieveAndGenerateStreamResponse {
   stream: RetrieveAndGenerateStreamResponseOutput;
   sessionId: string;
 }
-export type RetrieveAndGenerateStreamResponseOutput = { output: RetrieveAndGenerateOutputEvent } | { citation: CitationEvent } | { guardrail: GuardrailEvent } | { internalServerException: InternalServerException } | { validationException: ValidationException } | { resourceNotFoundException: ResourceNotFoundException } | { serviceQuotaExceededException: ServiceQuotaExceededException } | { throttlingException: ThrottlingException } | { accessDeniedException: AccessDeniedException } | { conflictException: ConflictException } | { dependencyFailedException: DependencyFailedException } | { badGatewayException: BadGatewayException };
+export type RetrieveAndGenerateStreamResponseOutput =
+  | { output: RetrieveAndGenerateOutputEvent }
+  | { citation: CitationEvent }
+  | { guardrail: GuardrailEvent }
+  | { internalServerException: InternalServerException }
+  | { validationException: ValidationException }
+  | { resourceNotFoundException: ResourceNotFoundException }
+  | { serviceQuotaExceededException: ServiceQuotaExceededException }
+  | { throttlingException: ThrottlingException }
+  | { accessDeniedException: AccessDeniedException }
+  | { conflictException: ConflictException }
+  | { dependencyFailedException: DependencyFailedException }
+  | { badGatewayException: BadGatewayException };
 export type RetrieveAndGenerateType = "KNOWLEDGE_BASE" | "EXTERNAL_SOURCES";
 export interface RetrievedReference {
   content?: RetrievalResultContent;
@@ -1614,7 +2053,11 @@ export interface RoutingClassifierModelInvocationOutput {
   rawResponse?: RawResponse;
   metadata?: Metadata;
 }
-export type RoutingClassifierTrace = { invocationInput: InvocationInput } | { observation: Observation } | { modelInvocationInput: ModelInvocationInput } | { modelInvocationOutput: RoutingClassifierModelInvocationOutput };
+export type RoutingClassifierTrace =
+  | { invocationInput: InvocationInput }
+  | { observation: Observation }
+  | { modelInvocationInput: ModelInvocationInput }
+  | { modelInvocationOutput: RoutingClassifierModelInvocationOutput };
 export type S3BucketName = string;
 
 export interface S3Identifier {
@@ -1716,8 +2159,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagsMap = Record<string, string>;
 export type TagValue = string;
 
@@ -1755,7 +2197,14 @@ export type TopK = number;
 
 export type TopP = number;
 
-export type Trace = { guardrailTrace: GuardrailTrace } | { preProcessingTrace: PreProcessingTrace } | { orchestrationTrace: OrchestrationTrace } | { postProcessingTrace: PostProcessingTrace } | { routingClassifierTrace: RoutingClassifierTrace } | { failureTrace: FailureTrace } | { customOrchestrationTrace: CustomOrchestrationTrace };
+export type Trace =
+  | { guardrailTrace: GuardrailTrace }
+  | { preProcessingTrace: PreProcessingTrace }
+  | { orchestrationTrace: OrchestrationTrace }
+  | { postProcessingTrace: PostProcessingTrace }
+  | { routingClassifierTrace: RoutingClassifierTrace }
+  | { failureTrace: FailureTrace }
+  | { customOrchestrationTrace: CustomOrchestrationTrace };
 export type TraceId = string;
 
 export type TraceKnowledgeBaseId = string;
@@ -1774,13 +2223,18 @@ export interface TransformationConfiguration {
   mode: QueryTransformationMode;
   textToSqlConfiguration?: TextToSqlConfiguration;
 }
-export type Type = "ACTION_GROUP" | "AGENT_COLLABORATOR" | "KNOWLEDGE_BASE" | "FINISH" | "ASK_USER" | "REPROMPT";
+export type Type =
+  | "ACTION_GROUP"
+  | "AGENT_COLLABORATOR"
+  | "KNOWLEDGE_BASE"
+  | "FINISH"
+  | "ASK_USER"
+  | "REPROMPT";
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateSessionRequest {
   sessionMetadata?: Record<string, string>;
   sessionIdentifier: string;
@@ -1810,7 +2264,10 @@ export interface VectorSearchBedrockRerankingConfiguration {
 }
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
-  additionalModelRequestFields?: Record<string, AdditionalModelRequestFieldsValue>;
+  additionalModelRequestFields?: Record<
+    string,
+    AdditionalModelRequestFieldsValue
+  >;
 }
 export interface VectorSearchRerankingConfiguration {
   type: VectorSearchRerankingConfigurationType;
@@ -2249,4 +2706,3 @@ export declare namespace UpdateSession {
     | ValidationException
     | CommonAwsError;
 }
-

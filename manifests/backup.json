@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.backup#ARN": {
       "type": "string"
@@ -2910,6 +2939,305 @@
     },
     "com.amazonaws.backup#CryoControllerUserManager": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.backup#AssociateBackupVaultMpaApprovalTeam"
+        },
+        {
+          "target": "com.amazonaws.backup#CancelLegalHold"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateBackupPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateBackupSelection"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateFramework"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateLegalHold"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateLogicallyAirGappedBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateReportPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateRestoreAccessBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateRestoreTestingPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#CreateRestoreTestingSelection"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteBackupPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteBackupSelection"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteBackupVaultAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteBackupVaultLockConfiguration"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteBackupVaultNotifications"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteFramework"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteRecoveryPoint"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteReportPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteRestoreTestingPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#DeleteRestoreTestingSelection"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeBackupJob"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeCopyJob"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeFramework"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeGlobalSettings"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeProtectedResource"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeRecoveryPoint"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeRegionSettings"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeReportJob"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeReportPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#DescribeRestoreJob"
+        },
+        {
+          "target": "com.amazonaws.backup#DisassociateBackupVaultMpaApprovalTeam"
+        },
+        {
+          "target": "com.amazonaws.backup#DisassociateRecoveryPoint"
+        },
+        {
+          "target": "com.amazonaws.backup#DisassociateRecoveryPointFromParent"
+        },
+        {
+          "target": "com.amazonaws.backup#ExportBackupPlanTemplate"
+        },
+        {
+          "target": "com.amazonaws.backup#GetBackupPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#GetBackupPlanFromJSON"
+        },
+        {
+          "target": "com.amazonaws.backup#GetBackupPlanFromTemplate"
+        },
+        {
+          "target": "com.amazonaws.backup#GetBackupSelection"
+        },
+        {
+          "target": "com.amazonaws.backup#GetBackupVaultAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.backup#GetBackupVaultNotifications"
+        },
+        {
+          "target": "com.amazonaws.backup#GetLegalHold"
+        },
+        {
+          "target": "com.amazonaws.backup#GetRecoveryPointIndexDetails"
+        },
+        {
+          "target": "com.amazonaws.backup#GetRecoveryPointRestoreMetadata"
+        },
+        {
+          "target": "com.amazonaws.backup#GetRestoreJobMetadata"
+        },
+        {
+          "target": "com.amazonaws.backup#GetRestoreTestingInferredMetadata"
+        },
+        {
+          "target": "com.amazonaws.backup#GetRestoreTestingPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#GetRestoreTestingSelection"
+        },
+        {
+          "target": "com.amazonaws.backup#GetSupportedResourceTypes"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupJobs"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupJobSummaries"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupPlans"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupPlanTemplates"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupPlanVersions"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupSelections"
+        },
+        {
+          "target": "com.amazonaws.backup#ListBackupVaults"
+        },
+        {
+          "target": "com.amazonaws.backup#ListCopyJobs"
+        },
+        {
+          "target": "com.amazonaws.backup#ListCopyJobSummaries"
+        },
+        {
+          "target": "com.amazonaws.backup#ListFrameworks"
+        },
+        {
+          "target": "com.amazonaws.backup#ListIndexedRecoveryPoints"
+        },
+        {
+          "target": "com.amazonaws.backup#ListLegalHolds"
+        },
+        {
+          "target": "com.amazonaws.backup#ListProtectedResources"
+        },
+        {
+          "target": "com.amazonaws.backup#ListProtectedResourcesByBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRecoveryPointsByBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRecoveryPointsByLegalHold"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRecoveryPointsByResource"
+        },
+        {
+          "target": "com.amazonaws.backup#ListReportJobs"
+        },
+        {
+          "target": "com.amazonaws.backup#ListReportPlans"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRestoreAccessBackupVaults"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRestoreJobs"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRestoreJobsByProtectedResource"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRestoreJobSummaries"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRestoreTestingPlans"
+        },
+        {
+          "target": "com.amazonaws.backup#ListRestoreTestingSelections"
+        },
+        {
+          "target": "com.amazonaws.backup#ListTags"
+        },
+        {
+          "target": "com.amazonaws.backup#PutBackupVaultAccessPolicy"
+        },
+        {
+          "target": "com.amazonaws.backup#PutBackupVaultLockConfiguration"
+        },
+        {
+          "target": "com.amazonaws.backup#PutBackupVaultNotifications"
+        },
+        {
+          "target": "com.amazonaws.backup#PutRestoreValidationResult"
+        },
+        {
+          "target": "com.amazonaws.backup#RevokeRestoreAccessBackupVault"
+        },
+        {
+          "target": "com.amazonaws.backup#StartBackupJob"
+        },
+        {
+          "target": "com.amazonaws.backup#StartCopyJob"
+        },
+        {
+          "target": "com.amazonaws.backup#StartReportJob"
+        },
+        {
+          "target": "com.amazonaws.backup#StartRestoreJob"
+        },
+        {
+          "target": "com.amazonaws.backup#StopBackupJob"
+        },
+        {
+          "target": "com.amazonaws.backup#TagResource"
+        },
+        {
+          "target": "com.amazonaws.backup#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateBackupPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateFramework"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateGlobalSettings"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateRecoveryPointIndexSettings"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateRecoveryPointLifecycle"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateRegionSettings"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateReportPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateRestoreTestingPlan"
+        },
+        {
+          "target": "com.amazonaws.backup#UpdateRestoreTestingSelection"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Backup",

@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.ram#AcceptResourceShareInvitation": {
       "type": "operation",
@@ -92,6 +121,110 @@
     },
     "com.amazonaws.ram#AmazonResourceSharing": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ram#AcceptResourceShareInvitation"
+        },
+        {
+          "target": "com.amazonaws.ram#AssociateResourceShare"
+        },
+        {
+          "target": "com.amazonaws.ram#AssociateResourceSharePermission"
+        },
+        {
+          "target": "com.amazonaws.ram#CreatePermission"
+        },
+        {
+          "target": "com.amazonaws.ram#CreatePermissionVersion"
+        },
+        {
+          "target": "com.amazonaws.ram#CreateResourceShare"
+        },
+        {
+          "target": "com.amazonaws.ram#DeletePermission"
+        },
+        {
+          "target": "com.amazonaws.ram#DeletePermissionVersion"
+        },
+        {
+          "target": "com.amazonaws.ram#DeleteResourceShare"
+        },
+        {
+          "target": "com.amazonaws.ram#DisassociateResourceShare"
+        },
+        {
+          "target": "com.amazonaws.ram#DisassociateResourceSharePermission"
+        },
+        {
+          "target": "com.amazonaws.ram#EnableSharingWithAwsOrganization"
+        },
+        {
+          "target": "com.amazonaws.ram#GetPermission"
+        },
+        {
+          "target": "com.amazonaws.ram#GetResourcePolicies"
+        },
+        {
+          "target": "com.amazonaws.ram#GetResourceShareAssociations"
+        },
+        {
+          "target": "com.amazonaws.ram#GetResourceShareInvitations"
+        },
+        {
+          "target": "com.amazonaws.ram#GetResourceShares"
+        },
+        {
+          "target": "com.amazonaws.ram#ListPendingInvitationResources"
+        },
+        {
+          "target": "com.amazonaws.ram#ListPermissionAssociations"
+        },
+        {
+          "target": "com.amazonaws.ram#ListPermissions"
+        },
+        {
+          "target": "com.amazonaws.ram#ListPermissionVersions"
+        },
+        {
+          "target": "com.amazonaws.ram#ListPrincipals"
+        },
+        {
+          "target": "com.amazonaws.ram#ListReplacePermissionAssociationsWork"
+        },
+        {
+          "target": "com.amazonaws.ram#ListResources"
+        },
+        {
+          "target": "com.amazonaws.ram#ListResourceSharePermissions"
+        },
+        {
+          "target": "com.amazonaws.ram#ListResourceTypes"
+        },
+        {
+          "target": "com.amazonaws.ram#PromotePermissionCreatedFromPolicy"
+        },
+        {
+          "target": "com.amazonaws.ram#PromoteResourceShareCreatedFromPolicy"
+        },
+        {
+          "target": "com.amazonaws.ram#RejectResourceShareInvitation"
+        },
+        {
+          "target": "com.amazonaws.ram#ReplacePermissionAssociations"
+        },
+        {
+          "target": "com.amazonaws.ram#SetDefaultPermissionVersion"
+        },
+        {
+          "target": "com.amazonaws.ram#TagResource"
+        },
+        {
+          "target": "com.amazonaws.ram#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.ram#UpdateResourceShare"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "RAM",

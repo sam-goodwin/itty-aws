@@ -1,7 +1,77 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloud9#AWSCloud9WorkspaceManagementService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloud9#CreateEnvironmentEC2"
+        },
+        {
+          "target": "com.amazonaws.cloud9#CreateEnvironmentMembership"
+        },
+        {
+          "target": "com.amazonaws.cloud9#DeleteEnvironment"
+        },
+        {
+          "target": "com.amazonaws.cloud9#DeleteEnvironmentMembership"
+        },
+        {
+          "target": "com.amazonaws.cloud9#DescribeEnvironmentMemberships"
+        },
+        {
+          "target": "com.amazonaws.cloud9#DescribeEnvironments"
+        },
+        {
+          "target": "com.amazonaws.cloud9#DescribeEnvironmentStatus"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ListEnvironments"
+        },
+        {
+          "target": "com.amazonaws.cloud9#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.cloud9#TagResource"
+        },
+        {
+          "target": "com.amazonaws.cloud9#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.cloud9#UpdateEnvironment"
+        },
+        {
+          "target": "com.amazonaws.cloud9#UpdateEnvironmentMembership"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Cloud9",

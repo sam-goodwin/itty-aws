@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.organizations#AWSOrganizationsNotInUseException": {
       "type": "structure",
@@ -15,6 +44,173 @@
     },
     "com.amazonaws.organizations#AWSOrganizationsV20161128": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.organizations#AcceptHandshake"
+        },
+        {
+          "target": "com.amazonaws.organizations#AttachPolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#CancelHandshake"
+        },
+        {
+          "target": "com.amazonaws.organizations#CloseAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#CreateAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#CreateGovCloudAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#CreateOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#CreateOrganizationalUnit"
+        },
+        {
+          "target": "com.amazonaws.organizations#CreatePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DeclineHandshake"
+        },
+        {
+          "target": "com.amazonaws.organizations#DeleteOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#DeleteOrganizationalUnit"
+        },
+        {
+          "target": "com.amazonaws.organizations#DeletePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DeregisterDelegatedAdministrator"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeCreateAccountStatus"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeEffectivePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeHandshake"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeOrganizationalUnit"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DescribeResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DetachPolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#DisableAWSServiceAccess"
+        },
+        {
+          "target": "com.amazonaws.organizations#DisablePolicyType"
+        },
+        {
+          "target": "com.amazonaws.organizations#EnableAllFeatures"
+        },
+        {
+          "target": "com.amazonaws.organizations#EnableAWSServiceAccess"
+        },
+        {
+          "target": "com.amazonaws.organizations#EnablePolicyType"
+        },
+        {
+          "target": "com.amazonaws.organizations#InviteAccountToOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#LeaveOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListAccounts"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListAccountsForParent"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListAWSServiceAccessForOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListChildren"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListCreateAccountStatus"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListDelegatedAdministrators"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListDelegatedServicesForAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListHandshakesForAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListHandshakesForOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListOrganizationalUnitsForParent"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListParents"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListPolicies"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListPoliciesForTarget"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListRoots"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.organizations#ListTargetsForPolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#MoveAccount"
+        },
+        {
+          "target": "com.amazonaws.organizations#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.organizations#RegisterDelegatedAdministrator"
+        },
+        {
+          "target": "com.amazonaws.organizations#RemoveAccountFromOrganization"
+        },
+        {
+          "target": "com.amazonaws.organizations#TagResource"
+        },
+        {
+          "target": "com.amazonaws.organizations#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.organizations#UpdateOrganizationalUnit"
+        },
+        {
+          "target": "com.amazonaws.organizations#UpdatePolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Organizations",

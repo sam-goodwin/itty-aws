@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface SimpleWorkflowService {
   countClosedWorkflowExecutions(
@@ -30,31 +30,46 @@ export interface SimpleWorkflowService {
     input: DeleteActivityTypeInput,
   ): Effect.Effect<
     {},
-    OperationNotPermittedFault | TypeNotDeprecatedFault | UnknownResourceFault | CommonAwsError
+    | OperationNotPermittedFault
+    | TypeNotDeprecatedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   deleteWorkflowType(
     input: DeleteWorkflowTypeInput,
   ): Effect.Effect<
     {},
-    OperationNotPermittedFault | TypeNotDeprecatedFault | UnknownResourceFault | CommonAwsError
+    | OperationNotPermittedFault
+    | TypeNotDeprecatedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   deprecateActivityType(
     input: DeprecateActivityTypeInput,
   ): Effect.Effect<
     {},
-    OperationNotPermittedFault | TypeDeprecatedFault | UnknownResourceFault | CommonAwsError
+    | OperationNotPermittedFault
+    | TypeDeprecatedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   deprecateDomain(
     input: DeprecateDomainInput,
   ): Effect.Effect<
     {},
-    DomainDeprecatedFault | OperationNotPermittedFault | UnknownResourceFault | CommonAwsError
+    | DomainDeprecatedFault
+    | OperationNotPermittedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   deprecateWorkflowType(
     input: DeprecateWorkflowTypeInput,
   ): Effect.Effect<
     {},
-    OperationNotPermittedFault | TypeDeprecatedFault | UnknownResourceFault | CommonAwsError
+    | OperationNotPermittedFault
+    | TypeDeprecatedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   describeActivityType(
     input: DescribeActivityTypeInput,
@@ -100,10 +115,7 @@ export interface SimpleWorkflowService {
   >;
   listDomains(
     input: ListDomainsInput,
-  ): Effect.Effect<
-    DomainInfos,
-    OperationNotPermittedFault | CommonAwsError
-  >;
+  ): Effect.Effect<DomainInfos, OperationNotPermittedFault | CommonAwsError>;
   listOpenWorkflowExecutions(
     input: ListOpenWorkflowExecutionsInput,
   ): Effect.Effect<
@@ -114,7 +126,10 @@ export interface SimpleWorkflowService {
     input: ListTagsForResourceInput,
   ): Effect.Effect<
     ListTagsForResourceOutput,
-    LimitExceededFault | OperationNotPermittedFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   listWorkflowTypes(
     input: ListWorkflowTypesInput,
@@ -126,13 +141,19 @@ export interface SimpleWorkflowService {
     input: PollForActivityTaskInput,
   ): Effect.Effect<
     ActivityTask,
-    LimitExceededFault | OperationNotPermittedFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   pollForDecisionTask(
     input: PollForDecisionTaskInput,
   ): Effect.Effect<
     DecisionTask,
-    LimitExceededFault | OperationNotPermittedFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   recordActivityTaskHeartbeat(
     input: RecordActivityTaskHeartbeatInput,
@@ -144,19 +165,31 @@ export interface SimpleWorkflowService {
     input: RegisterActivityTypeInput,
   ): Effect.Effect<
     {},
-    LimitExceededFault | OperationNotPermittedFault | TypeAlreadyExistsFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | TypeAlreadyExistsFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   registerDomain(
     input: RegisterDomainInput,
   ): Effect.Effect<
     {},
-    DomainAlreadyExistsFault | LimitExceededFault | OperationNotPermittedFault | TooManyTagsFault | CommonAwsError
+    | DomainAlreadyExistsFault
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | TooManyTagsFault
+    | CommonAwsError
   >;
   registerWorkflowType(
     input: RegisterWorkflowTypeInput,
   ): Effect.Effect<
     {},
-    LimitExceededFault | OperationNotPermittedFault | TypeAlreadyExistsFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | TypeAlreadyExistsFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   requestCancelWorkflowExecution(
     input: RequestCancelWorkflowExecutionInput,
@@ -198,13 +231,23 @@ export interface SimpleWorkflowService {
     input: StartWorkflowExecutionInput,
   ): Effect.Effect<
     Run,
-    DefaultUndefinedFault | LimitExceededFault | OperationNotPermittedFault | TypeDeprecatedFault | UnknownResourceFault | WorkflowExecutionAlreadyStartedFault | CommonAwsError
+    | DefaultUndefinedFault
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | TypeDeprecatedFault
+    | UnknownResourceFault
+    | WorkflowExecutionAlreadyStartedFault
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
     {},
-    LimitExceededFault | OperationNotPermittedFault | TooManyTagsFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | TooManyTagsFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   terminateWorkflowExecution(
     input: TerminateWorkflowExecutionInput,
@@ -216,25 +259,37 @@ export interface SimpleWorkflowService {
     input: UndeprecateActivityTypeInput,
   ): Effect.Effect<
     {},
-    OperationNotPermittedFault | TypeAlreadyExistsFault | UnknownResourceFault | CommonAwsError
+    | OperationNotPermittedFault
+    | TypeAlreadyExistsFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   undeprecateDomain(
     input: UndeprecateDomainInput,
   ): Effect.Effect<
     {},
-    DomainAlreadyExistsFault | OperationNotPermittedFault | UnknownResourceFault | CommonAwsError
+    | DomainAlreadyExistsFault
+    | OperationNotPermittedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   undeprecateWorkflowType(
     input: UndeprecateWorkflowTypeInput,
   ): Effect.Effect<
     {},
-    OperationNotPermittedFault | TypeAlreadyExistsFault | UnknownResourceFault | CommonAwsError
+    | OperationNotPermittedFault
+    | TypeAlreadyExistsFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
     {},
-    LimitExceededFault | OperationNotPermittedFault | UnknownResourceFault | CommonAwsError
+    | LimitExceededFault
+    | OperationNotPermittedFault
+    | UnknownResourceFault
+    | CommonAwsError
   >;
 }
 
@@ -297,7 +352,11 @@ export interface ActivityTaskTimedOutEventAttributes {
   startedEventId: number;
   details?: string;
 }
-export type ActivityTaskTimeoutType = "START_TO_CLOSE" | "SCHEDULE_TO_START" | "SCHEDULE_TO_CLOSE" | "HEARTBEAT";
+export type ActivityTaskTimeoutType =
+  | "START_TO_CLOSE"
+  | "SCHEDULE_TO_START"
+  | "SCHEDULE_TO_CLOSE"
+  | "HEARTBEAT";
 export interface ActivityType {
   name: string;
   version: string;
@@ -333,7 +392,9 @@ export type Canceled = boolean;
 export interface CancelTimerDecisionAttributes {
   timerId: string;
 }
-export type CancelTimerFailedCause = "TIMER_ID_UNKNOWN" | "OPERATION_NOT_PERMITTED";
+export type CancelTimerFailedCause =
+  | "TIMER_ID_UNKNOWN"
+  | "OPERATION_NOT_PERMITTED";
 export interface CancelTimerFailedEventAttributes {
   timerId: string;
   cause: CancelTimerFailedCause;
@@ -342,7 +403,9 @@ export interface CancelTimerFailedEventAttributes {
 export interface CancelWorkflowExecutionDecisionAttributes {
   details?: string;
 }
-export type CancelWorkflowExecutionFailedCause = "UNHANDLED_DECISION" | "OPERATION_NOT_PERMITTED";
+export type CancelWorkflowExecutionFailedCause =
+  | "UNHANDLED_DECISION"
+  | "OPERATION_NOT_PERMITTED";
 export interface CancelWorkflowExecutionFailedEventAttributes {
   cause: CancelWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -390,14 +453,22 @@ export interface ChildWorkflowExecutionTimedOutEventAttributes {
   initiatedEventId: number;
   startedEventId: number;
 }
-export type CloseStatus = "COMPLETED" | "FAILED" | "CANCELED" | "TERMINATED" | "CONTINUED_AS_NEW" | "TIMED_OUT";
+export type CloseStatus =
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELED"
+  | "TERMINATED"
+  | "CONTINUED_AS_NEW"
+  | "TIMED_OUT";
 export interface CloseStatusFilter {
   status: CloseStatus;
 }
 export interface CompleteWorkflowExecutionDecisionAttributes {
   result?: string;
 }
-export type CompleteWorkflowExecutionFailedCause = "UNHANDLED_DECISION" | "OPERATION_NOT_PERMITTED";
+export type CompleteWorkflowExecutionFailedCause =
+  | "UNHANDLED_DECISION"
+  | "OPERATION_NOT_PERMITTED";
 export interface CompleteWorkflowExecutionFailedEventAttributes {
   cause: CompleteWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -413,7 +484,16 @@ export interface ContinueAsNewWorkflowExecutionDecisionAttributes {
   workflowTypeVersion?: string;
   lambdaRole?: string;
 }
-export type ContinueAsNewWorkflowExecutionFailedCause = "UNHANDLED_DECISION" | "WORKFLOW_TYPE_DEPRECATED" | "WORKFLOW_TYPE_DOES_NOT_EXIST" | "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED" | "DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED" | "DEFAULT_TASK_LIST_UNDEFINED" | "DEFAULT_CHILD_POLICY_UNDEFINED" | "CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED" | "OPERATION_NOT_PERMITTED";
+export type ContinueAsNewWorkflowExecutionFailedCause =
+  | "UNHANDLED_DECISION"
+  | "WORKFLOW_TYPE_DEPRECATED"
+  | "WORKFLOW_TYPE_DOES_NOT_EXIST"
+  | "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+  | "DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+  | "DEFAULT_TASK_LIST_UNDEFINED"
+  | "DEFAULT_CHILD_POLICY_UNDEFINED"
+  | "CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"
+  | "OPERATION_NOT_PERMITTED";
 export interface ContinueAsNewWorkflowExecutionFailedEventAttributes {
   cause: ContinueAsNewWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -495,7 +575,20 @@ export interface DecisionTaskTimedOutEventAttributes {
   startedEventId: number;
 }
 export type DecisionTaskTimeoutType = "START_TO_CLOSE" | "SCHEDULE_TO_START";
-export type DecisionType = "ScheduleActivityTask" | "RequestCancelActivityTask" | "CompleteWorkflowExecution" | "FailWorkflowExecution" | "CancelWorkflowExecution" | "ContinueAsNewWorkflowExecution" | "RecordMarker" | "StartTimer" | "CancelTimer" | "SignalExternalWorkflowExecution" | "RequestCancelExternalWorkflowExecution" | "StartChildWorkflowExecution" | "ScheduleLambdaFunction";
+export type DecisionType =
+  | "ScheduleActivityTask"
+  | "RequestCancelActivityTask"
+  | "CompleteWorkflowExecution"
+  | "FailWorkflowExecution"
+  | "CancelWorkflowExecution"
+  | "ContinueAsNewWorkflowExecution"
+  | "RecordMarker"
+  | "StartTimer"
+  | "CancelTimer"
+  | "SignalExternalWorkflowExecution"
+  | "RequestCancelExternalWorkflowExecution"
+  | "StartChildWorkflowExecution"
+  | "ScheduleLambdaFunction";
 export declare class DefaultUndefinedFault extends Data.TaggedError(
   "DefaultUndefinedFault",
 )<{
@@ -577,7 +670,61 @@ export type ErrorMessage = string;
 
 export type EventId = number;
 
-export type EventType = "WorkflowExecutionStarted" | "WorkflowExecutionCancelRequested" | "WorkflowExecutionCompleted" | "CompleteWorkflowExecutionFailed" | "WorkflowExecutionFailed" | "FailWorkflowExecutionFailed" | "WorkflowExecutionTimedOut" | "WorkflowExecutionCanceled" | "CancelWorkflowExecutionFailed" | "WorkflowExecutionContinuedAsNew" | "ContinueAsNewWorkflowExecutionFailed" | "WorkflowExecutionTerminated" | "DecisionTaskScheduled" | "DecisionTaskStarted" | "DecisionTaskCompleted" | "DecisionTaskTimedOut" | "ActivityTaskScheduled" | "ScheduleActivityTaskFailed" | "ActivityTaskStarted" | "ActivityTaskCompleted" | "ActivityTaskFailed" | "ActivityTaskTimedOut" | "ActivityTaskCanceled" | "ActivityTaskCancelRequested" | "RequestCancelActivityTaskFailed" | "WorkflowExecutionSignaled" | "MarkerRecorded" | "RecordMarkerFailed" | "TimerStarted" | "StartTimerFailed" | "TimerFired" | "TimerCanceled" | "CancelTimerFailed" | "StartChildWorkflowExecutionInitiated" | "StartChildWorkflowExecutionFailed" | "ChildWorkflowExecutionStarted" | "ChildWorkflowExecutionCompleted" | "ChildWorkflowExecutionFailed" | "ChildWorkflowExecutionTimedOut" | "ChildWorkflowExecutionCanceled" | "ChildWorkflowExecutionTerminated" | "SignalExternalWorkflowExecutionInitiated" | "SignalExternalWorkflowExecutionFailed" | "ExternalWorkflowExecutionSignaled" | "RequestCancelExternalWorkflowExecutionInitiated" | "RequestCancelExternalWorkflowExecutionFailed" | "ExternalWorkflowExecutionCancelRequested" | "LambdaFunctionScheduled" | "LambdaFunctionStarted" | "LambdaFunctionCompleted" | "LambdaFunctionFailed" | "LambdaFunctionTimedOut" | "ScheduleLambdaFunctionFailed" | "StartLambdaFunctionFailed";
+export type EventType =
+  | "WorkflowExecutionStarted"
+  | "WorkflowExecutionCancelRequested"
+  | "WorkflowExecutionCompleted"
+  | "CompleteWorkflowExecutionFailed"
+  | "WorkflowExecutionFailed"
+  | "FailWorkflowExecutionFailed"
+  | "WorkflowExecutionTimedOut"
+  | "WorkflowExecutionCanceled"
+  | "CancelWorkflowExecutionFailed"
+  | "WorkflowExecutionContinuedAsNew"
+  | "ContinueAsNewWorkflowExecutionFailed"
+  | "WorkflowExecutionTerminated"
+  | "DecisionTaskScheduled"
+  | "DecisionTaskStarted"
+  | "DecisionTaskCompleted"
+  | "DecisionTaskTimedOut"
+  | "ActivityTaskScheduled"
+  | "ScheduleActivityTaskFailed"
+  | "ActivityTaskStarted"
+  | "ActivityTaskCompleted"
+  | "ActivityTaskFailed"
+  | "ActivityTaskTimedOut"
+  | "ActivityTaskCanceled"
+  | "ActivityTaskCancelRequested"
+  | "RequestCancelActivityTaskFailed"
+  | "WorkflowExecutionSignaled"
+  | "MarkerRecorded"
+  | "RecordMarkerFailed"
+  | "TimerStarted"
+  | "StartTimerFailed"
+  | "TimerFired"
+  | "TimerCanceled"
+  | "CancelTimerFailed"
+  | "StartChildWorkflowExecutionInitiated"
+  | "StartChildWorkflowExecutionFailed"
+  | "ChildWorkflowExecutionStarted"
+  | "ChildWorkflowExecutionCompleted"
+  | "ChildWorkflowExecutionFailed"
+  | "ChildWorkflowExecutionTimedOut"
+  | "ChildWorkflowExecutionCanceled"
+  | "ChildWorkflowExecutionTerminated"
+  | "SignalExternalWorkflowExecutionInitiated"
+  | "SignalExternalWorkflowExecutionFailed"
+  | "ExternalWorkflowExecutionSignaled"
+  | "RequestCancelExternalWorkflowExecutionInitiated"
+  | "RequestCancelExternalWorkflowExecutionFailed"
+  | "ExternalWorkflowExecutionCancelRequested"
+  | "LambdaFunctionScheduled"
+  | "LambdaFunctionStarted"
+  | "LambdaFunctionCompleted"
+  | "LambdaFunctionFailed"
+  | "LambdaFunctionTimedOut"
+  | "ScheduleLambdaFunctionFailed"
+  | "StartLambdaFunctionFailed";
 export type ExecutionStatus = "OPEN" | "CLOSED";
 export interface ExecutionTimeFilter {
   oldestDate: Date | string;
@@ -597,7 +744,9 @@ export interface FailWorkflowExecutionDecisionAttributes {
   reason?: string;
   details?: string;
 }
-export type FailWorkflowExecutionFailedCause = "UNHANDLED_DECISION" | "OPERATION_NOT_PERMITTED";
+export type FailWorkflowExecutionFailedCause =
+  | "UNHANDLED_DECISION"
+  | "OPERATION_NOT_PERMITTED";
 export interface FailWorkflowExecutionFailedEventAttributes {
   cause: FailWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -852,7 +1001,9 @@ export type RegistrationStatus = "REGISTERED" | "DEPRECATED";
 export interface RequestCancelActivityTaskDecisionAttributes {
   activityId: string;
 }
-export type RequestCancelActivityTaskFailedCause = "ACTIVITY_ID_UNKNOWN" | "OPERATION_NOT_PERMITTED";
+export type RequestCancelActivityTaskFailedCause =
+  | "ACTIVITY_ID_UNKNOWN"
+  | "OPERATION_NOT_PERMITTED";
 export interface RequestCancelActivityTaskFailedEventAttributes {
   activityId: string;
   cause: RequestCancelActivityTaskFailedCause;
@@ -863,7 +1014,10 @@ export interface RequestCancelExternalWorkflowExecutionDecisionAttributes {
   runId?: string;
   control?: string;
 }
-export type RequestCancelExternalWorkflowExecutionFailedCause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION" | "REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED" | "OPERATION_NOT_PERMITTED";
+export type RequestCancelExternalWorkflowExecutionFailedCause =
+  | "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
+  | "REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
+  | "OPERATION_NOT_PERMITTED";
 export interface RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -930,7 +1084,18 @@ export interface ScheduleActivityTaskDecisionAttributes {
   startToCloseTimeout?: string;
   heartbeatTimeout?: string;
 }
-export type ScheduleActivityTaskFailedCause = "ACTIVITY_TYPE_DEPRECATED" | "ACTIVITY_TYPE_DOES_NOT_EXIST" | "ACTIVITY_ID_ALREADY_IN_USE" | "OPEN_ACTIVITIES_LIMIT_EXCEEDED" | "ACTIVITY_CREATION_RATE_EXCEEDED" | "DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED" | "DEFAULT_TASK_LIST_UNDEFINED" | "DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED" | "DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED" | "DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED" | "OPERATION_NOT_PERMITTED";
+export type ScheduleActivityTaskFailedCause =
+  | "ACTIVITY_TYPE_DEPRECATED"
+  | "ACTIVITY_TYPE_DOES_NOT_EXIST"
+  | "ACTIVITY_ID_ALREADY_IN_USE"
+  | "OPEN_ACTIVITIES_LIMIT_EXCEEDED"
+  | "ACTIVITY_CREATION_RATE_EXCEEDED"
+  | "DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED"
+  | "DEFAULT_TASK_LIST_UNDEFINED"
+  | "DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED"
+  | "DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+  | "DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED"
+  | "OPERATION_NOT_PERMITTED";
 export interface ScheduleActivityTaskFailedEventAttributes {
   activityType: ActivityType;
   activityId: string;
@@ -944,7 +1109,11 @@ export interface ScheduleLambdaFunctionDecisionAttributes {
   input?: string;
   startToCloseTimeout?: string;
 }
-export type ScheduleLambdaFunctionFailedCause = "ID_ALREADY_IN_USE" | "OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED" | "LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED" | "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION";
+export type ScheduleLambdaFunctionFailedCause =
+  | "ID_ALREADY_IN_USE"
+  | "OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"
+  | "LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"
+  | "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION";
 export interface ScheduleLambdaFunctionFailedEventAttributes {
   id: string;
   name: string;
@@ -958,7 +1127,10 @@ export interface SignalExternalWorkflowExecutionDecisionAttributes {
   input?: string;
   control?: string;
 }
-export type SignalExternalWorkflowExecutionFailedCause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION" | "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED" | "OPERATION_NOT_PERMITTED";
+export type SignalExternalWorkflowExecutionFailedCause =
+  | "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
+  | "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
+  | "OPERATION_NOT_PERMITTED";
 export interface SignalExternalWorkflowExecutionFailedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -999,7 +1171,18 @@ export interface StartChildWorkflowExecutionDecisionAttributes {
   tagList?: Array<string>;
   lambdaRole?: string;
 }
-export type StartChildWorkflowExecutionFailedCause = "WORKFLOW_TYPE_DOES_NOT_EXIST" | "WORKFLOW_TYPE_DEPRECATED" | "OPEN_CHILDREN_LIMIT_EXCEEDED" | "OPEN_WORKFLOWS_LIMIT_EXCEEDED" | "CHILD_CREATION_RATE_EXCEEDED" | "WORKFLOW_ALREADY_RUNNING" | "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED" | "DEFAULT_TASK_LIST_UNDEFINED" | "DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED" | "DEFAULT_CHILD_POLICY_UNDEFINED" | "OPERATION_NOT_PERMITTED";
+export type StartChildWorkflowExecutionFailedCause =
+  | "WORKFLOW_TYPE_DOES_NOT_EXIST"
+  | "WORKFLOW_TYPE_DEPRECATED"
+  | "OPEN_CHILDREN_LIMIT_EXCEEDED"
+  | "OPEN_WORKFLOWS_LIMIT_EXCEEDED"
+  | "CHILD_CREATION_RATE_EXCEEDED"
+  | "WORKFLOW_ALREADY_RUNNING"
+  | "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+  | "DEFAULT_TASK_LIST_UNDEFINED"
+  | "DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+  | "DEFAULT_CHILD_POLICY_UNDEFINED"
+  | "OPERATION_NOT_PERMITTED";
 export interface StartChildWorkflowExecutionFailedEventAttributes {
   workflowType: WorkflowType;
   cause: StartChildWorkflowExecutionFailedCause;
@@ -1033,7 +1216,11 @@ export interface StartTimerDecisionAttributes {
   control?: string;
   startToFireTimeout: string;
 }
-export type StartTimerFailedCause = "TIMER_ID_ALREADY_IN_USE" | "OPEN_TIMERS_LIMIT_EXCEEDED" | "TIMER_CREATION_RATE_EXCEEDED" | "OPERATION_NOT_PERMITTED";
+export type StartTimerFailedCause =
+  | "TIMER_ID_ALREADY_IN_USE"
+  | "OPEN_TIMERS_LIMIT_EXCEEDED"
+  | "TIMER_CREATION_RATE_EXCEEDED"
+  | "OPERATION_NOT_PERMITTED";
 export interface StartTimerFailedEventAttributes {
   timerId: string;
   cause: StartTimerFailedCause;
@@ -1250,7 +1437,10 @@ export interface WorkflowExecutionStartedEventAttributes {
   parentInitiatedEventId?: number;
   lambdaRole?: string;
 }
-export type WorkflowExecutionTerminatedCause = "CHILD_POLICY_APPLIED" | "EVENT_LIMIT_EXCEEDED" | "OPERATOR_INITIATED";
+export type WorkflowExecutionTerminatedCause =
+  | "CHILD_POLICY_APPLIED"
+  | "EVENT_LIMIT_EXCEEDED"
+  | "OPERATOR_INITIATED";
 export interface WorkflowExecutionTerminatedEventAttributes {
   reason?: string;
   details?: string;
@@ -1452,9 +1642,7 @@ export declare namespace ListClosedWorkflowExecutions {
 export declare namespace ListDomains {
   export type Input = ListDomainsInput;
   export type Output = DomainInfos;
-  export type Error =
-    | OperationNotPermittedFault
-    | CommonAwsError;
+  export type Error = OperationNotPermittedFault | CommonAwsError;
 }
 
 export declare namespace ListOpenWorkflowExecutions {
@@ -1673,4 +1861,3 @@ export declare namespace UntagResource {
     | UnknownResourceFault
     | CommonAwsError;
 }
-

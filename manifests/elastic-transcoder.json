@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.elastictranscoder#AccessControl": {
       "type": "string",
@@ -1175,6 +1204,59 @@
     },
     "com.amazonaws.elastictranscoder#EtsCustomerService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.elastictranscoder#CancelJob"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#CreateJob"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#CreatePipeline"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#CreatePreset"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#DeletePipeline"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#DeletePreset"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ListJobsByPipeline"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ListJobsByStatus"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ListPipelines"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ListPresets"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ReadJob"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ReadPipeline"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#ReadPreset"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#TestRole"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#UpdatePipeline"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#UpdatePipelineNotifications"
+        },
+        {
+          "target": "com.amazonaws.elastictranscoder#UpdatePipelineStatus"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Elastic Transcoder",

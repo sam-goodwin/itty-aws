@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.workspaces#AGAModeForDirectoryEnum": {
       "type": "enum",
@@ -12310,6 +12339,275 @@
     },
     "com.amazonaws.workspaces#WorkspacesService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.workspaces#AcceptAccountLinkInvitation"
+        },
+        {
+          "target": "com.amazonaws.workspaces#AssociateConnectionAlias"
+        },
+        {
+          "target": "com.amazonaws.workspaces#AssociateIpGroups"
+        },
+        {
+          "target": "com.amazonaws.workspaces#AssociateWorkspaceApplication"
+        },
+        {
+          "target": "com.amazonaws.workspaces#AuthorizeIpRules"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CopyWorkspaceImage"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateAccountLinkInvitation"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateConnectClientAddIn"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateConnectionAlias"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateIpGroup"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateStandbyWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateTags"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateUpdatedWorkspaceImage"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateWorkspaceBundle"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateWorkspaceImage"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#CreateWorkspacesPool"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteAccountLinkInvitation"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteClientBranding"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteConnectClientAddIn"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteConnectionAlias"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteIpGroup"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteTags"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteWorkspaceBundle"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeleteWorkspaceImage"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeployWorkspaceApplications"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DeregisterWorkspaceDirectory"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeAccount"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeAccountModifications"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeApplicationAssociations"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeApplications"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeBundleAssociations"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeClientBranding"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeClientProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeConnectClientAddIns"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeConnectionAliases"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeConnectionAliasPermissions"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeImageAssociations"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeIpGroups"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeTags"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaceAssociations"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaceBundles"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaceDirectories"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaceImagePermissions"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaceImages"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspacesConnectionStatus"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspaceSnapshots"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspacesPools"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DescribeWorkspacesPoolSessions"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DisassociateConnectionAlias"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DisassociateIpGroups"
+        },
+        {
+          "target": "com.amazonaws.workspaces#DisassociateWorkspaceApplication"
+        },
+        {
+          "target": "com.amazonaws.workspaces#GetAccountLink"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ImportClientBranding"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ImportWorkspaceImage"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ListAccountLinks"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ListAvailableManagementCidrRanges"
+        },
+        {
+          "target": "com.amazonaws.workspaces#MigrateWorkspace"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyAccount"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyCertificateBasedAuthProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyClientProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyEndpointEncryptionMode"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifySamlProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifySelfservicePermissions"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyStreamingProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyWorkspaceAccessProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyWorkspaceCreationProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyWorkspaceProperties"
+        },
+        {
+          "target": "com.amazonaws.workspaces#ModifyWorkspaceState"
+        },
+        {
+          "target": "com.amazonaws.workspaces#RebootWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#RebuildWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#RegisterWorkspaceDirectory"
+        },
+        {
+          "target": "com.amazonaws.workspaces#RejectAccountLinkInvitation"
+        },
+        {
+          "target": "com.amazonaws.workspaces#RestoreWorkspace"
+        },
+        {
+          "target": "com.amazonaws.workspaces#RevokeIpRules"
+        },
+        {
+          "target": "com.amazonaws.workspaces#StartWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#StartWorkspacesPool"
+        },
+        {
+          "target": "com.amazonaws.workspaces#StopWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#StopWorkspacesPool"
+        },
+        {
+          "target": "com.amazonaws.workspaces#TerminateWorkspaces"
+        },
+        {
+          "target": "com.amazonaws.workspaces#TerminateWorkspacesPool"
+        },
+        {
+          "target": "com.amazonaws.workspaces#TerminateWorkspacesPoolSession"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UpdateConnectClientAddIn"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UpdateConnectionAliasPermission"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UpdateRulesOfIpGroup"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UpdateWorkspaceBundle"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UpdateWorkspaceImagePermission"
+        },
+        {
+          "target": "com.amazonaws.workspaces#UpdateWorkspacesPool"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WorkSpaces",

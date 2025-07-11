@@ -1,144 +1,279 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSCognitoIdentityService {
   createIdentityPool(
     input: CreateIdentityPoolInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | LimitExceededException | NotAuthorizedException | ResourceConflictException | TooManyRequestsException | CommonAwsError
+    IdentityPool,
+    | InternalErrorException
+    | InvalidParameterException
+    | LimitExceededException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteIdentities(
     input: DeleteIdentitiesInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | TooManyRequestsException | CommonAwsError
+    DeleteIdentitiesResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteIdentityPool(
     input: DeleteIdentityPoolInput,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeIdentity(
     input: DescribeIdentityInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    IdentityDescription,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeIdentityPool(
     input: DescribeIdentityPoolInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    IdentityPool,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCredentialsForIdentity(
     input: GetCredentialsForIdentityInput,
   ): Effect.Effect<
-    {},
-    ExternalServiceException | InternalErrorException | InvalidIdentityPoolConfigurationException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    GetCredentialsForIdentityResponse,
+    | ExternalServiceException
+    | InternalErrorException
+    | InvalidIdentityPoolConfigurationException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getId(
     input: GetIdInput,
   ): Effect.Effect<
-    {},
-    ExternalServiceException | InternalErrorException | InvalidParameterException | LimitExceededException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    GetIdResponse,
+    | ExternalServiceException
+    | InternalErrorException
+    | InvalidParameterException
+    | LimitExceededException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getIdentityPoolRoles(
     input: GetIdentityPoolRolesInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    GetIdentityPoolRolesResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getOpenIdToken(
     input: GetOpenIdTokenInput,
   ): Effect.Effect<
-    {},
-    ExternalServiceException | InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    GetOpenIdTokenResponse,
+    | ExternalServiceException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getOpenIdTokenForDeveloperIdentity(
     input: GetOpenIdTokenForDeveloperIdentityInput,
   ): Effect.Effect<
-    {},
-    DeveloperUserAlreadyRegisteredException | InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    GetOpenIdTokenForDeveloperIdentityResponse,
+    | DeveloperUserAlreadyRegisteredException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getPrincipalTagAttributeMap(
     input: GetPrincipalTagAttributeMapInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    GetPrincipalTagAttributeMapResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listIdentities(
     input: ListIdentitiesInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    ListIdentitiesResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listIdentityPools(
     input: ListIdentityPoolsInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    ListIdentityPoolsResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    ListTagsForResourceResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   lookupDeveloperIdentity(
     input: LookupDeveloperIdentityInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    LookupDeveloperIdentityResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   mergeDeveloperIdentities(
     input: MergeDeveloperIdentitiesInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    MergeDeveloperIdentitiesResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   setIdentityPoolRoles(
     input: SetIdentityPoolRolesInput,
   ): Effect.Effect<
     {},
-    ConcurrentModificationException | InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | ConcurrentModificationException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   setPrincipalTagAttributeMap(
     input: SetPrincipalTagAttributeMapInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    SetPrincipalTagAttributeMapResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    TagResourceResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   unlinkDeveloperIdentity(
     input: UnlinkDeveloperIdentityInput,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   unlinkIdentity(
     input: UnlinkIdentityInput,
   ): Effect.Effect<
     {},
-    ExternalServiceException | InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | ExternalServiceException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
-    {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    UntagResourceResponse,
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateIdentityPool(
     input: IdentityPool,
   ): Effect.Effect<
-    {},
-    ConcurrentModificationException | InternalErrorException | InvalidParameterException | LimitExceededException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    IdentityPool,
+    | ConcurrentModificationException
+    | InternalErrorException
+    | InvalidParameterException
+    | LimitExceededException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -148,7 +283,7 @@ export type AccessKeyString = string;
 
 export type AccountId = string;
 
-export type AmbiguousRoleResolutionType = never;
+export type AmbiguousRoleResolutionType = "AUTHENTICATED_ROLE" | "DENY";
 export type ARNString = string;
 
 export type ClaimName = string;
@@ -158,194 +293,354 @@ export type ClaimValue = string;
 export type ClassicFlow = boolean;
 
 export interface CognitoIdentityProvider {
+  ProviderName?: string;
+  ClientId?: string;
+  ServerSideTokenCheck?: boolean;
 }
 export type CognitoIdentityProviderClientId = string;
 
-export type CognitoIdentityProviderList = Array<unknown>;
+export type CognitoIdentityProviderList = Array<CognitoIdentityProvider>;
 export type CognitoIdentityProviderName = string;
 
 export type CognitoIdentityProviderTokenCheck = boolean;
 
-export interface ConcurrentModificationException {
-}
+export declare class ConcurrentModificationException extends Data.TaggedError(
+  "ConcurrentModificationException",
+)<{
+  readonly message?: string;
+}> {}
 export interface CreateIdentityPoolInput {
+  IdentityPoolName: string;
+  AllowUnauthenticatedIdentities: boolean;
+  AllowClassicFlow?: boolean;
+  SupportedLoginProviders?: Record<string, string>;
+  DeveloperProviderName?: string;
+  OpenIdConnectProviderARNs?: Array<string>;
+  CognitoIdentityProviders?: Array<CognitoIdentityProvider>;
+  SamlProviderARNs?: Array<string>;
+  IdentityPoolTags?: Record<string, string>;
 }
 export interface Credentials {
+  AccessKeyId?: string;
+  SecretKey?: string;
+  SessionToken?: string;
+  Expiration?: Date | string;
 }
 export type DateType = Date | string;
 
 export interface DeleteIdentitiesInput {
+  IdentityIdsToDelete: Array<string>;
 }
 export interface DeleteIdentitiesResponse {
+  UnprocessedIdentityIds?: Array<UnprocessedIdentityId>;
 }
 export interface DeleteIdentityPoolInput {
+  IdentityPoolId: string;
 }
 export interface DescribeIdentityInput {
+  IdentityId: string;
 }
 export interface DescribeIdentityPoolInput {
+  IdentityPoolId: string;
 }
 export type DeveloperProviderName = string;
 
-export interface DeveloperUserAlreadyRegisteredException {
-}
+export declare class DeveloperUserAlreadyRegisteredException extends Data.TaggedError(
+  "DeveloperUserAlreadyRegisteredException",
+)<{
+  readonly message?: string;
+}> {}
 export type DeveloperUserIdentifier = string;
 
-export type DeveloperUserIdentifierList = Array<unknown>;
-export type ErrorCode = never;
-export interface ExternalServiceException {
-}
+export type DeveloperUserIdentifierList = Array<string>;
+export type ErrorCode = "ACCESS_DENIED" | "INTERNAL_SERVER_ERROR";
+export declare class ExternalServiceException extends Data.TaggedError(
+  "ExternalServiceException",
+)<{
+  readonly message?: string;
+}> {}
 export interface GetCredentialsForIdentityInput {
+  IdentityId: string;
+  Logins?: Record<string, string>;
+  CustomRoleArn?: string;
 }
 export interface GetCredentialsForIdentityResponse {
+  IdentityId?: string;
+  Credentials?: Credentials;
 }
 export interface GetIdentityPoolRolesInput {
+  IdentityPoolId: string;
 }
 export interface GetIdentityPoolRolesResponse {
+  IdentityPoolId?: string;
+  Roles?: Record<string, string>;
+  RoleMappings?: Record<string, RoleMapping>;
 }
 export interface GetIdInput {
+  AccountId?: string;
+  IdentityPoolId: string;
+  Logins?: Record<string, string>;
 }
 export interface GetIdResponse {
+  IdentityId?: string;
 }
 export interface GetOpenIdTokenForDeveloperIdentityInput {
+  IdentityPoolId: string;
+  IdentityId?: string;
+  Logins: Record<string, string>;
+  PrincipalTags?: Record<string, string>;
+  TokenDuration?: number;
 }
 export interface GetOpenIdTokenForDeveloperIdentityResponse {
+  IdentityId?: string;
+  Token?: string;
 }
 export interface GetOpenIdTokenInput {
+  IdentityId: string;
+  Logins?: Record<string, string>;
 }
 export interface GetOpenIdTokenResponse {
+  IdentityId?: string;
+  Token?: string;
 }
 export interface GetPrincipalTagAttributeMapInput {
+  IdentityPoolId: string;
+  IdentityProviderName: string;
 }
 export interface GetPrincipalTagAttributeMapResponse {
+  IdentityPoolId?: string;
+  IdentityProviderName?: string;
+  UseDefaults?: boolean;
+  PrincipalTags?: Record<string, string>;
 }
 export type HideDisabled = boolean;
 
-export type IdentitiesList = Array<unknown>;
+export type IdentitiesList = Array<IdentityDescription>;
 export interface IdentityDescription {
+  IdentityId?: string;
+  Logins?: Array<string>;
+  CreationDate?: Date | string;
+  LastModifiedDate?: Date | string;
 }
 export type IdentityId = string;
 
-export type IdentityIdList = Array<unknown>;
+export type IdentityIdList = Array<string>;
 export interface IdentityPool {
+  IdentityPoolId: string;
+  IdentityPoolName: string;
+  AllowUnauthenticatedIdentities: boolean;
+  AllowClassicFlow?: boolean;
+  SupportedLoginProviders?: Record<string, string>;
+  DeveloperProviderName?: string;
+  OpenIdConnectProviderARNs?: Array<string>;
+  CognitoIdentityProviders?: Array<CognitoIdentityProvider>;
+  SamlProviderARNs?: Array<string>;
+  IdentityPoolTags?: Record<string, string>;
 }
 export type IdentityPoolId = string;
 
 export type IdentityPoolName = string;
 
 export interface IdentityPoolShortDescription {
+  IdentityPoolId?: string;
+  IdentityPoolName?: string;
 }
-export type IdentityPoolsList = Array<unknown>;
-export type IdentityPoolTagsListType = Array<unknown>;
-export type IdentityPoolTagsType = Record<string, unknown>;
+export type IdentityPoolsList = Array<IdentityPoolShortDescription>;
+export type IdentityPoolTagsListType = Array<string>;
+export type IdentityPoolTagsType = Record<string, string>;
 export type IdentityPoolUnauthenticated = boolean;
 
 export type IdentityProviderId = string;
 
 export type IdentityProviderName = string;
 
-export type IdentityProviders = Record<string, unknown>;
+export type IdentityProviders = Record<string, string>;
 export type IdentityProviderToken = string;
 
-export interface InternalErrorException {
-}
-export interface InvalidIdentityPoolConfigurationException {
-}
-export interface InvalidParameterException {
-}
-export interface LimitExceededException {
-}
+export declare class InternalErrorException extends Data.TaggedError(
+  "InternalErrorException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidIdentityPoolConfigurationException extends Data.TaggedError(
+  "InvalidIdentityPoolConfigurationException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class InvalidParameterException extends Data.TaggedError(
+  "InvalidParameterException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class LimitExceededException extends Data.TaggedError(
+  "LimitExceededException",
+)<{
+  readonly message?: string;
+}> {}
 export interface ListIdentitiesInput {
+  IdentityPoolId: string;
+  MaxResults: number;
+  NextToken?: string;
+  HideDisabled?: boolean;
 }
 export interface ListIdentitiesResponse {
+  IdentityPoolId?: string;
+  Identities?: Array<IdentityDescription>;
+  NextToken?: string;
 }
 export interface ListIdentityPoolsInput {
+  MaxResults: number;
+  NextToken?: string;
 }
 export interface ListIdentityPoolsResponse {
+  IdentityPools?: Array<IdentityPoolShortDescription>;
+  NextToken?: string;
 }
 export interface ListTagsForResourceInput {
+  ResourceArn: string;
 }
 export interface ListTagsForResourceResponse {
+  Tags?: Record<string, string>;
 }
-export type LoginsList = Array<unknown>;
-export type LoginsMap = Record<string, unknown>;
+export type LoginsList = Array<string>;
+export type LoginsMap = Record<string, string>;
 export interface LookupDeveloperIdentityInput {
+  IdentityPoolId: string;
+  IdentityId?: string;
+  DeveloperUserIdentifier?: string;
+  MaxResults?: number;
+  NextToken?: string;
 }
 export interface LookupDeveloperIdentityResponse {
+  IdentityId?: string;
+  DeveloperUserIdentifierList?: Array<string>;
+  NextToken?: string;
 }
 export interface MappingRule {
+  Claim: string;
+  MatchType: MappingRuleMatchType;
+  Value: string;
+  RoleARN: string;
 }
-export type MappingRuleMatchType = never;
-export type MappingRulesList = Array<unknown>;
+export type MappingRuleMatchType =
+  | "EQUALS"
+  | "CONTAINS"
+  | "STARTS_WITH"
+  | "NOT_EQUAL";
+export type MappingRulesList = Array<MappingRule>;
 export interface MergeDeveloperIdentitiesInput {
+  SourceUserIdentifier: string;
+  DestinationUserIdentifier: string;
+  DeveloperProviderName: string;
+  IdentityPoolId: string;
 }
 export interface MergeDeveloperIdentitiesResponse {
+  IdentityId?: string;
 }
-export interface NotAuthorizedException {
-}
-export type OIDCProviderList = Array<unknown>;
+export declare class NotAuthorizedException extends Data.TaggedError(
+  "NotAuthorizedException",
+)<{
+  readonly message?: string;
+}> {}
+export type OIDCProviderList = Array<string>;
 export type OIDCToken = string;
 
 export type PaginationKey = string;
 
 export type PrincipalTagID = string;
 
-export type PrincipalTags = Record<string, unknown>;
+export type PrincipalTags = Record<string, string>;
 export type PrincipalTagValue = string;
 
 export type QueryLimit = number;
 
-export interface ResourceConflictException {
-}
-export interface ResourceNotFoundException {
-}
+export declare class ResourceConflictException extends Data.TaggedError(
+  "ResourceConflictException",
+)<{
+  readonly message?: string;
+}> {}
+export declare class ResourceNotFoundException extends Data.TaggedError(
+  "ResourceNotFoundException",
+)<{
+  readonly message?: string;
+}> {}
 export interface RoleMapping {
+  Type: RoleMappingType;
+  AmbiguousRoleResolution?: AmbiguousRoleResolutionType;
+  RulesConfiguration?: RulesConfigurationType;
 }
-export type RoleMappingMap = Record<string, unknown>;
-export type RoleMappingType = never;
-export type RolesMap = Record<string, unknown>;
+export type RoleMappingMap = Record<string, RoleMapping>;
+export type RoleMappingType = "TOKEN" | "RULES";
+export type RolesMap = Record<string, string>;
 export type RoleType = string;
 
 export interface RulesConfigurationType {
+  Rules: Array<MappingRule>;
 }
-export type SAMLProviderList = Array<unknown>;
+export type SAMLProviderList = Array<string>;
 export type SecretKeyString = string;
 
 export type SessionTokenString = string;
 
 export interface SetIdentityPoolRolesInput {
+  IdentityPoolId: string;
+  Roles: Record<string, string>;
+  RoleMappings?: Record<string, RoleMapping>;
 }
 export interface SetPrincipalTagAttributeMapInput {
+  IdentityPoolId: string;
+  IdentityProviderName: string;
+  UseDefaults?: boolean;
+  PrincipalTags?: Record<string, string>;
 }
 export interface SetPrincipalTagAttributeMapResponse {
+  IdentityPoolId?: string;
+  IdentityProviderName?: string;
+  UseDefaults?: boolean;
+  PrincipalTags?: Record<string, string>;
 }
 export type TagKeysType = string;
 
 export interface TagResourceInput {
+  ResourceArn: string;
+  Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValueType = string;
 
 export type TokenDuration = number;
 
-export interface TooManyRequestsException {
-}
+export declare class TooManyRequestsException extends Data.TaggedError(
+  "TooManyRequestsException",
+)<{
+  readonly message?: string;
+}> {}
 export interface UnlinkDeveloperIdentityInput {
+  IdentityId: string;
+  IdentityPoolId: string;
+  DeveloperProviderName: string;
+  DeveloperUserIdentifier: string;
 }
 export interface UnlinkIdentityInput {
+  IdentityId: string;
+  Logins: Record<string, string>;
+  LoginsToRemove: Array<string>;
 }
 export interface UnprocessedIdentityId {
+  IdentityId?: string;
+  ErrorCode?: ErrorCode;
 }
-export type UnprocessedIdentityIdList = Array<unknown>;
+export type UnprocessedIdentityIdList = Array<UnprocessedIdentityId>;
 export interface UntagResourceInput {
+  ResourceArn: string;
+  TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type UseDefaults = boolean;
 
 export declare namespace CreateIdentityPool {
   export type Input = CreateIdentityPoolInput;
-  export type Output = {};
+  export type Output = IdentityPool;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -358,7 +653,7 @@ export declare namespace CreateIdentityPool {
 
 export declare namespace DeleteIdentities {
   export type Input = DeleteIdentitiesInput;
-  export type Output = {};
+  export type Output = DeleteIdentitiesResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -380,7 +675,7 @@ export declare namespace DeleteIdentityPool {
 
 export declare namespace DescribeIdentity {
   export type Input = DescribeIdentityInput;
-  export type Output = {};
+  export type Output = IdentityDescription;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -392,7 +687,7 @@ export declare namespace DescribeIdentity {
 
 export declare namespace DescribeIdentityPool {
   export type Input = DescribeIdentityPoolInput;
-  export type Output = {};
+  export type Output = IdentityPool;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -404,7 +699,7 @@ export declare namespace DescribeIdentityPool {
 
 export declare namespace GetCredentialsForIdentity {
   export type Input = GetCredentialsForIdentityInput;
-  export type Output = {};
+  export type Output = GetCredentialsForIdentityResponse;
   export type Error =
     | ExternalServiceException
     | InternalErrorException
@@ -419,7 +714,7 @@ export declare namespace GetCredentialsForIdentity {
 
 export declare namespace GetId {
   export type Input = GetIdInput;
-  export type Output = {};
+  export type Output = GetIdResponse;
   export type Error =
     | ExternalServiceException
     | InternalErrorException
@@ -434,7 +729,7 @@ export declare namespace GetId {
 
 export declare namespace GetIdentityPoolRoles {
   export type Input = GetIdentityPoolRolesInput;
-  export type Output = {};
+  export type Output = GetIdentityPoolRolesResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -447,7 +742,7 @@ export declare namespace GetIdentityPoolRoles {
 
 export declare namespace GetOpenIdToken {
   export type Input = GetOpenIdTokenInput;
-  export type Output = {};
+  export type Output = GetOpenIdTokenResponse;
   export type Error =
     | ExternalServiceException
     | InternalErrorException
@@ -461,7 +756,7 @@ export declare namespace GetOpenIdToken {
 
 export declare namespace GetOpenIdTokenForDeveloperIdentity {
   export type Input = GetOpenIdTokenForDeveloperIdentityInput;
-  export type Output = {};
+  export type Output = GetOpenIdTokenForDeveloperIdentityResponse;
   export type Error =
     | DeveloperUserAlreadyRegisteredException
     | InternalErrorException
@@ -475,7 +770,7 @@ export declare namespace GetOpenIdTokenForDeveloperIdentity {
 
 export declare namespace GetPrincipalTagAttributeMap {
   export type Input = GetPrincipalTagAttributeMapInput;
-  export type Output = {};
+  export type Output = GetPrincipalTagAttributeMapResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -487,7 +782,7 @@ export declare namespace GetPrincipalTagAttributeMap {
 
 export declare namespace ListIdentities {
   export type Input = ListIdentitiesInput;
-  export type Output = {};
+  export type Output = ListIdentitiesResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -499,7 +794,7 @@ export declare namespace ListIdentities {
 
 export declare namespace ListIdentityPools {
   export type Input = ListIdentityPoolsInput;
-  export type Output = {};
+  export type Output = ListIdentityPoolsResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -511,7 +806,7 @@ export declare namespace ListIdentityPools {
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceInput;
-  export type Output = {};
+  export type Output = ListTagsForResourceResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -523,7 +818,7 @@ export declare namespace ListTagsForResource {
 
 export declare namespace LookupDeveloperIdentity {
   export type Input = LookupDeveloperIdentityInput;
-  export type Output = {};
+  export type Output = LookupDeveloperIdentityResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -536,7 +831,7 @@ export declare namespace LookupDeveloperIdentity {
 
 export declare namespace MergeDeveloperIdentities {
   export type Input = MergeDeveloperIdentitiesInput;
-  export type Output = {};
+  export type Output = MergeDeveloperIdentitiesResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -563,7 +858,7 @@ export declare namespace SetIdentityPoolRoles {
 
 export declare namespace SetPrincipalTagAttributeMap {
   export type Input = SetPrincipalTagAttributeMapInput;
-  export type Output = {};
+  export type Output = SetPrincipalTagAttributeMapResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -575,7 +870,7 @@ export declare namespace SetPrincipalTagAttributeMap {
 
 export declare namespace TagResource {
   export type Input = TagResourceInput;
-  export type Output = {};
+  export type Output = TagResourceResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -614,7 +909,7 @@ export declare namespace UnlinkIdentity {
 
 export declare namespace UntagResource {
   export type Input = UntagResourceInput;
-  export type Output = {};
+  export type Output = UntagResourceResponse;
   export type Error =
     | InternalErrorException
     | InvalidParameterException
@@ -626,7 +921,7 @@ export declare namespace UntagResource {
 
 export declare namespace UpdateIdentityPool {
   export type Input = IdentityPool;
-  export type Output = {};
+  export type Output = IdentityPool;
   export type Error =
     | ConcurrentModificationException
     | InternalErrorException
@@ -638,4 +933,3 @@ export declare namespace UpdateIdentityPool {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

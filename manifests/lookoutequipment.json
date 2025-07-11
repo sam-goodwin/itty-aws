@@ -1,7 +1,185 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.lookoutequipment#AWSLookoutEquipmentFrontendService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.lookoutequipment#CreateDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#CreateInferenceScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#CreateLabel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#CreateLabelGroup"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#CreateModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#CreateRetrainingScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteInferenceScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteLabel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteLabelGroup"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DeleteRetrainingScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeDataIngestionJob"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeInferenceScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeLabel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeLabelGroup"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeModelVersion"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#DescribeRetrainingScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ImportDataset"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ImportModelVersion"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListDataIngestionJobs"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListDatasets"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListInferenceEvents"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListInferenceExecutions"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListInferenceSchedulers"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListLabelGroups"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListLabels"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListModels"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListModelVersions"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListRetrainingSchedulers"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListSensorStatistics"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#StartDataIngestionJob"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#StartInferenceScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#StartRetrainingScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#StopInferenceScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#StopRetrainingScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#TagResource"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#UpdateActiveModelVersion"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#UpdateInferenceScheduler"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#UpdateLabelGroup"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#UpdateModel"
+        },
+        {
+          "target": "com.amazonaws.lookoutequipment#UpdateRetrainingScheduler"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "LookoutEquipment",

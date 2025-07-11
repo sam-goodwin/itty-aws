@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.route53#ARN": {
       "type": "string",
@@ -15,6 +44,218 @@
     },
     "com.amazonaws.route53#AWSDnsV20130401": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.route53#ActivateKeySigningKey"
+        },
+        {
+          "target": "com.amazonaws.route53#AssociateVPCWithHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#ChangeCidrCollection"
+        },
+        {
+          "target": "com.amazonaws.route53#ChangeResourceRecordSets"
+        },
+        {
+          "target": "com.amazonaws.route53#ChangeTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateCidrCollection"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateKeySigningKey"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateQueryLoggingConfig"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateReusableDelegationSet"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateTrafficPolicyInstance"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateTrafficPolicyVersion"
+        },
+        {
+          "target": "com.amazonaws.route53#CreateVPCAssociationAuthorization"
+        },
+        {
+          "target": "com.amazonaws.route53#DeactivateKeySigningKey"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteCidrCollection"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteKeySigningKey"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteQueryLoggingConfig"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteReusableDelegationSet"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteTrafficPolicyInstance"
+        },
+        {
+          "target": "com.amazonaws.route53#DeleteVPCAssociationAuthorization"
+        },
+        {
+          "target": "com.amazonaws.route53#DisableHostedZoneDNSSEC"
+        },
+        {
+          "target": "com.amazonaws.route53#DisassociateVPCFromHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#EnableHostedZoneDNSSEC"
+        },
+        {
+          "target": "com.amazonaws.route53#GetAccountLimit"
+        },
+        {
+          "target": "com.amazonaws.route53#GetChange"
+        },
+        {
+          "target": "com.amazonaws.route53#GetCheckerIpRanges"
+        },
+        {
+          "target": "com.amazonaws.route53#GetDNSSEC"
+        },
+        {
+          "target": "com.amazonaws.route53#GetGeoLocation"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHealthCheckCount"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHealthCheckLastFailureReason"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHealthCheckStatus"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHostedZoneCount"
+        },
+        {
+          "target": "com.amazonaws.route53#GetHostedZoneLimit"
+        },
+        {
+          "target": "com.amazonaws.route53#GetQueryLoggingConfig"
+        },
+        {
+          "target": "com.amazonaws.route53#GetReusableDelegationSet"
+        },
+        {
+          "target": "com.amazonaws.route53#GetReusableDelegationSetLimit"
+        },
+        {
+          "target": "com.amazonaws.route53#GetTrafficPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#GetTrafficPolicyInstance"
+        },
+        {
+          "target": "com.amazonaws.route53#GetTrafficPolicyInstanceCount"
+        },
+        {
+          "target": "com.amazonaws.route53#ListCidrBlocks"
+        },
+        {
+          "target": "com.amazonaws.route53#ListCidrCollections"
+        },
+        {
+          "target": "com.amazonaws.route53#ListCidrLocations"
+        },
+        {
+          "target": "com.amazonaws.route53#ListGeoLocations"
+        },
+        {
+          "target": "com.amazonaws.route53#ListHealthChecks"
+        },
+        {
+          "target": "com.amazonaws.route53#ListHostedZones"
+        },
+        {
+          "target": "com.amazonaws.route53#ListHostedZonesByName"
+        },
+        {
+          "target": "com.amazonaws.route53#ListHostedZonesByVPC"
+        },
+        {
+          "target": "com.amazonaws.route53#ListQueryLoggingConfigs"
+        },
+        {
+          "target": "com.amazonaws.route53#ListResourceRecordSets"
+        },
+        {
+          "target": "com.amazonaws.route53#ListReusableDelegationSets"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTagsForResources"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTrafficPolicies"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTrafficPolicyInstances"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTrafficPolicyInstancesByHostedZone"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTrafficPolicyInstancesByPolicy"
+        },
+        {
+          "target": "com.amazonaws.route53#ListTrafficPolicyVersions"
+        },
+        {
+          "target": "com.amazonaws.route53#ListVPCAssociationAuthorizations"
+        },
+        {
+          "target": "com.amazonaws.route53#TestDNSAnswer"
+        },
+        {
+          "target": "com.amazonaws.route53#UpdateHealthCheck"
+        },
+        {
+          "target": "com.amazonaws.route53#UpdateHostedZoneComment"
+        },
+        {
+          "target": "com.amazonaws.route53#UpdateTrafficPolicyComment"
+        },
+        {
+          "target": "com.amazonaws.route53#UpdateTrafficPolicyInstance"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Route 53",

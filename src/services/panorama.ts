@@ -1,108 +1,186 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface OmniCloudServiceLambda {
   createApplicationInstance(
     input: CreateApplicationInstanceRequest,
   ): Effect.Effect<
     CreateApplicationInstanceResponse,
-    AccessDeniedException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   createJobForDevices(
     input: CreateJobForDevicesRequest,
   ): Effect.Effect<
     CreateJobForDevicesResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   createNodeFromTemplateJob(
     input: CreateNodeFromTemplateJobRequest,
   ): Effect.Effect<
     CreateNodeFromTemplateJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   createPackage(
     input: CreatePackageRequest,
   ): Effect.Effect<
     CreatePackageResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   createPackageImportJob(
     input: CreatePackageImportJobRequest,
   ): Effect.Effect<
     CreatePackageImportJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteDevice(
     input: DeleteDeviceRequest,
   ): Effect.Effect<
     DeleteDeviceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   deletePackage(
     input: DeletePackageRequest,
   ): Effect.Effect<
     DeletePackageResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   deregisterPackageVersion(
     input: DeregisterPackageVersionRequest,
   ): Effect.Effect<
     DeregisterPackageVersionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeApplicationInstance(
     input: DescribeApplicationInstanceRequest,
   ): Effect.Effect<
     DescribeApplicationInstanceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeApplicationInstanceDetails(
     input: DescribeApplicationInstanceDetailsRequest,
   ): Effect.Effect<
     DescribeApplicationInstanceDetailsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeDevice(
     input: DescribeDeviceRequest,
   ): Effect.Effect<
     DescribeDeviceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeDeviceJob(
     input: DescribeDeviceJobRequest,
   ): Effect.Effect<
     DescribeDeviceJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeNode(
     input: DescribeNodeRequest,
   ): Effect.Effect<
     DescribeNodeResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describeNodeFromTemplateJob(
     input: DescribeNodeFromTemplateJobRequest,
   ): Effect.Effect<
     DescribeNodeFromTemplateJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   describePackage(
     input: DescribePackageRequest,
   ): Effect.Effect<
     DescribePackageResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   describePackageImportJob(
     input: DescribePackageImportJobRequest,
   ): Effect.Effect<
     DescribePackageImportJobResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   describePackageVersion(
     input: DescribePackageVersionRequest,
   ): Effect.Effect<
     DescribePackageVersionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listApplicationInstanceDependencies(
     input: ListApplicationInstanceDependenciesRequest,
@@ -126,85 +204,142 @@ export interface OmniCloudServiceLambda {
     input: ListDevicesRequest,
   ): Effect.Effect<
     ListDevicesResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listDevicesJobs(
     input: ListDevicesJobsRequest,
   ): Effect.Effect<
     ListDevicesJobsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listNodeFromTemplateJobs(
     input: ListNodeFromTemplateJobsRequest,
   ): Effect.Effect<
     ListNodeFromTemplateJobsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listNodes(
     input: ListNodesRequest,
   ): Effect.Effect<
     ListNodesResponse,
-    ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listPackageImportJobs(
     input: ListPackageImportJobsRequest,
   ): Effect.Effect<
     ListPackageImportJobsResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   listPackages(
     input: ListPackagesRequest,
   ): Effect.Effect<
     ListPackagesResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   provisionDevice(
     input: ProvisionDeviceRequest,
   ): Effect.Effect<
     ProvisionDeviceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   registerPackageVersion(
     input: RegisterPackageVersionRequest,
   ): Effect.Effect<
     RegisterPackageVersionResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ValidationException
+    | CommonAwsError
   >;
   removeApplicationInstance(
     input: RemoveApplicationInstanceRequest,
   ): Effect.Effect<
     RemoveApplicationInstanceResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   signalApplicationInstanceNodeInstances(
     input: SignalApplicationInstanceNodeInstancesRequest,
   ): Effect.Effect<
     SignalApplicationInstanceNodeInstancesResponse,
-    AccessDeniedException | InternalServerException | ServiceQuotaExceededException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ServiceQuotaExceededException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   updateDeviceMetadata(
     input: UpdateDeviceMetadataRequest,
   ): Effect.Effect<
     UpdateDeviceMetadataResponse,
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | ConflictException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -267,7 +402,8 @@ export interface ConflictExceptionErrorArgument {
   Name: string;
   Value: string;
 }
-export type ConflictExceptionErrorArgumentList = Array<ConflictExceptionErrorArgument>;
+export type ConflictExceptionErrorArgumentList =
+  Array<ConflictExceptionErrorArgument>;
 export type ConnectionType = string;
 
 export interface CreateApplicationInstanceRequest {
@@ -340,8 +476,7 @@ export interface DeletePackageRequest {
   PackageId: string;
   ForceDelete?: boolean;
 }
-export interface DeletePackageResponse {
-}
+export interface DeletePackageResponse {}
 export interface DeregisterPackageVersionRequest {
   OwnerAccount?: string;
   PackageId: string;
@@ -349,8 +484,7 @@ export interface DeregisterPackageVersionRequest {
   PatchVersion: string;
   UpdatedLatestPatchVersion?: string;
 }
-export interface DeregisterPackageVersionResponse {
-}
+export interface DeregisterPackageVersionResponse {}
 export interface DescribeApplicationInstanceDetailsRequest {
   ApplicationInstanceId: string;
 }
@@ -934,13 +1068,11 @@ export interface RegisterPackageVersionRequest {
   PatchVersion: string;
   MarkLatest?: boolean;
 }
-export interface RegisterPackageVersionResponse {
-}
+export interface RegisterPackageVersionResponse {}
 export interface RemoveApplicationInstanceRequest {
   ApplicationInstanceId: string;
 }
-export interface RemoveApplicationInstanceResponse {
-}
+export interface RemoveApplicationInstanceResponse {}
 export interface ReportedRuntimeContextState {
   DesiredState: string;
   RuntimeContextName: string;
@@ -1009,8 +1141,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TemplateKey = string;
@@ -1028,8 +1159,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type UpdateCreatedTime = Date | string;
 
 export interface UpdateDeviceMetadataRequest {
@@ -1054,7 +1184,8 @@ export interface ValidationExceptionErrorArgument {
   Name: string;
   Value: string;
 }
-export type ValidationExceptionErrorArgumentList = Array<ValidationExceptionErrorArgument>;
+export type ValidationExceptionErrorArgumentList =
+  Array<ValidationExceptionErrorArgument>;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
@@ -1442,4 +1573,3 @@ export declare namespace UpdateDeviceMetadata {
     | ValidationException
     | CommonAwsError;
 }
-

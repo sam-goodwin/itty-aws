@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.sqs#AWSAccountIdList": {
       "type": "list",
@@ -87,6 +116,77 @@
     },
     "com.amazonaws.sqs#AmazonSQS": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.sqs#AddPermission"
+        },
+        {
+          "target": "com.amazonaws.sqs#CancelMessageMoveTask"
+        },
+        {
+          "target": "com.amazonaws.sqs#ChangeMessageVisibility"
+        },
+        {
+          "target": "com.amazonaws.sqs#ChangeMessageVisibilityBatch"
+        },
+        {
+          "target": "com.amazonaws.sqs#CreateQueue"
+        },
+        {
+          "target": "com.amazonaws.sqs#DeleteMessage"
+        },
+        {
+          "target": "com.amazonaws.sqs#DeleteMessageBatch"
+        },
+        {
+          "target": "com.amazonaws.sqs#DeleteQueue"
+        },
+        {
+          "target": "com.amazonaws.sqs#GetQueueAttributes"
+        },
+        {
+          "target": "com.amazonaws.sqs#GetQueueUrl"
+        },
+        {
+          "target": "com.amazonaws.sqs#ListDeadLetterSourceQueues"
+        },
+        {
+          "target": "com.amazonaws.sqs#ListMessageMoveTasks"
+        },
+        {
+          "target": "com.amazonaws.sqs#ListQueues"
+        },
+        {
+          "target": "com.amazonaws.sqs#ListQueueTags"
+        },
+        {
+          "target": "com.amazonaws.sqs#PurgeQueue"
+        },
+        {
+          "target": "com.amazonaws.sqs#ReceiveMessage"
+        },
+        {
+          "target": "com.amazonaws.sqs#RemovePermission"
+        },
+        {
+          "target": "com.amazonaws.sqs#SendMessage"
+        },
+        {
+          "target": "com.amazonaws.sqs#SendMessageBatch"
+        },
+        {
+          "target": "com.amazonaws.sqs#SetQueueAttributes"
+        },
+        {
+          "target": "com.amazonaws.sqs#StartMessageMoveTask"
+        },
+        {
+          "target": "com.amazonaws.sqs#TagQueue"
+        },
+        {
+          "target": "com.amazonaws.sqs#UntagQueue"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SQS",

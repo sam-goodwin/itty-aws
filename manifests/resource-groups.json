@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.resourcegroups#AccountSettings": {
       "type": "structure",
@@ -53,6 +82,77 @@
     },
     "com.amazonaws.resourcegroups#Ardi": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.resourcegroups#CancelTagSyncTask"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#CreateGroup"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#DeleteGroup"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GetAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GetGroup"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GetGroupConfiguration"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GetGroupQuery"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GetTags"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GetTagSyncTask"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#GroupResources"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ListGroupingStatuses"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ListGroupResources"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ListGroups"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#ListTagSyncTasks"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#PutGroupConfiguration"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#SearchResources"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#StartTagSyncTask"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#Tag"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UngroupResources"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#Untag"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UpdateAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UpdateGroup"
+        },
+        {
+          "target": "com.amazonaws.resourcegroups#UpdateGroupQuery"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Resource Groups",

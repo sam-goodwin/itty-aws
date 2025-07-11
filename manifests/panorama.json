@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.panorama#AccessDeniedException": {
       "type": "structure",
@@ -4439,6 +4440,110 @@
     },
     "com.amazonaws.panorama#OmniCloudServiceLambda": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.panorama#CreateApplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.panorama#CreateJobForDevices"
+        },
+        {
+          "target": "com.amazonaws.panorama#CreateNodeFromTemplateJob"
+        },
+        {
+          "target": "com.amazonaws.panorama#CreatePackage"
+        },
+        {
+          "target": "com.amazonaws.panorama#CreatePackageImportJob"
+        },
+        {
+          "target": "com.amazonaws.panorama#DeleteDevice"
+        },
+        {
+          "target": "com.amazonaws.panorama#DeletePackage"
+        },
+        {
+          "target": "com.amazonaws.panorama#DeregisterPackageVersion"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribeApplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribeApplicationInstanceDetails"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribeDevice"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribeDeviceJob"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribeNode"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribeNodeFromTemplateJob"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribePackage"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribePackageImportJob"
+        },
+        {
+          "target": "com.amazonaws.panorama#DescribePackageVersion"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListApplicationInstanceDependencies"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListApplicationInstanceNodeInstances"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListApplicationInstances"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListDevices"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListDevicesJobs"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListNodeFromTemplateJobs"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListNodes"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListPackageImportJobs"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListPackages"
+        },
+        {
+          "target": "com.amazonaws.panorama#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.panorama#ProvisionDevice"
+        },
+        {
+          "target": "com.amazonaws.panorama#RegisterPackageVersion"
+        },
+        {
+          "target": "com.amazonaws.panorama#RemoveApplicationInstance"
+        },
+        {
+          "target": "com.amazonaws.panorama#SignalApplicationInstanceNodeInstances"
+        },
+        {
+          "target": "com.amazonaws.panorama#TagResource"
+        },
+        {
+          "target": "com.amazonaws.panorama#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.panorama#UpdateDeviceMetadata"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Panorama",

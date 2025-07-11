@@ -1,378 +1,815 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface UCBuzzConsoleService {
   associatePhoneNumberWithUser(
     input: AssociatePhoneNumberWithUserRequest,
   ): Effect.Effect<
     AssociatePhoneNumberWithUserResponse,
-    AccessDeniedException | BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   associateSigninDelegateGroupsWithAccount(
     input: AssociateSigninDelegateGroupsWithAccountRequest,
   ): Effect.Effect<
     AssociateSigninDelegateGroupsWithAccountResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchCreateRoomMembership(
     input: BatchCreateRoomMembershipRequest,
   ): Effect.Effect<
     BatchCreateRoomMembershipResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchDeletePhoneNumber(
     input: BatchDeletePhoneNumberRequest,
   ): Effect.Effect<
     BatchDeletePhoneNumberResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchSuspendUser(
     input: BatchSuspendUserRequest,
   ): Effect.Effect<
     BatchSuspendUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchUnsuspendUser(
     input: BatchUnsuspendUserRequest,
   ): Effect.Effect<
     BatchUnsuspendUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchUpdatePhoneNumber(
     input: BatchUpdatePhoneNumberRequest,
   ): Effect.Effect<
     BatchUpdatePhoneNumberResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   batchUpdateUser(
     input: BatchUpdateUserRequest,
   ): Effect.Effect<
     BatchUpdateUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createAccount(
     input: CreateAccountRequest,
   ): Effect.Effect<
     CreateAccountResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createBot(
     input: CreateBotRequest,
   ): Effect.Effect<
     CreateBotResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createMeetingDialOut(
     input: CreateMeetingDialOutRequest,
   ): Effect.Effect<
     CreateMeetingDialOutResponse,
-    AccessDeniedException | BadRequestException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createPhoneNumberOrder(
     input: CreatePhoneNumberOrderRequest,
   ): Effect.Effect<
     CreatePhoneNumberOrderResponse,
-    AccessDeniedException | BadRequestException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createRoom(
     input: CreateRoomRequest,
   ): Effect.Effect<
     CreateRoomResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createRoomMembership(
     input: CreateRoomMembershipRequest,
   ): Effect.Effect<
     CreateRoomMembershipResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   createUser(
     input: CreateUserRequest,
   ): Effect.Effect<
     CreateUserResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteAccount(
     input: DeleteAccountRequest,
   ): Effect.Effect<
     DeleteAccountResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | UnprocessableEntityException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | UnprocessableEntityException
+    | CommonAwsError
   >;
   deleteEventsConfiguration(
     input: DeleteEventsConfigurationRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deletePhoneNumber(
     input: DeletePhoneNumberRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteRoom(
     input: DeleteRoomRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   deleteRoomMembership(
     input: DeleteRoomMembershipRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   disassociatePhoneNumberFromUser(
     input: DisassociatePhoneNumberFromUserRequest,
   ): Effect.Effect<
     DisassociatePhoneNumberFromUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   disassociateSigninDelegateGroupsFromAccount(
     input: DisassociateSigninDelegateGroupsFromAccountRequest,
   ): Effect.Effect<
     DisassociateSigninDelegateGroupsFromAccountResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getAccount(
     input: GetAccountRequest,
   ): Effect.Effect<
     GetAccountResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getAccountSettings(
     input: GetAccountSettingsRequest,
   ): Effect.Effect<
     GetAccountSettingsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getBot(
     input: GetBotRequest,
   ): Effect.Effect<
     GetBotResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getEventsConfiguration(
     input: GetEventsConfigurationRequest,
   ): Effect.Effect<
     GetEventsConfigurationResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
-  getGlobalSettings(
-    input: {},
-  ): Effect.Effect<
+  getGlobalSettings(input: {}): Effect.Effect<
     GetGlobalSettingsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getPhoneNumber(
     input: GetPhoneNumberRequest,
   ): Effect.Effect<
     GetPhoneNumberResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getPhoneNumberOrder(
     input: GetPhoneNumberOrderRequest,
   ): Effect.Effect<
     GetPhoneNumberOrderResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
-  getPhoneNumberSettings(
-    input: {},
-  ): Effect.Effect<
+  getPhoneNumberSettings(input: {}): Effect.Effect<
     GetPhoneNumberSettingsResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getRetentionSettings(
     input: GetRetentionSettingsRequest,
   ): Effect.Effect<
     GetRetentionSettingsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getRoom(
     input: GetRoomRequest,
   ): Effect.Effect<
     GetRoomResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getUser(
     input: GetUserRequest,
   ): Effect.Effect<
     GetUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   getUserSettings(
     input: GetUserSettingsRequest,
   ): Effect.Effect<
     GetUserSettingsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   inviteUsers(
     input: InviteUsersRequest,
   ): Effect.Effect<
     InviteUsersResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listAccounts(
     input: ListAccountsRequest,
   ): Effect.Effect<
     ListAccountsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listBots(
     input: ListBotsRequest,
   ): Effect.Effect<
     ListBotsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listPhoneNumberOrders(
     input: ListPhoneNumberOrdersRequest,
   ): Effect.Effect<
     ListPhoneNumberOrdersResponse,
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listPhoneNumbers(
     input: ListPhoneNumbersRequest,
   ): Effect.Effect<
     ListPhoneNumbersResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listRoomMemberships(
     input: ListRoomMembershipsRequest,
   ): Effect.Effect<
     ListRoomMembershipsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listRooms(
     input: ListRoomsRequest,
   ): Effect.Effect<
     ListRoomsResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listSupportedPhoneNumberCountries(
     input: ListSupportedPhoneNumberCountriesRequest,
   ): Effect.Effect<
     ListSupportedPhoneNumberCountriesResponse,
-    AccessDeniedException | BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   listUsers(
     input: ListUsersRequest,
   ): Effect.Effect<
     ListUsersResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   logoutUser(
     input: LogoutUserRequest,
   ): Effect.Effect<
     LogoutUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   putEventsConfiguration(
     input: PutEventsConfigurationRequest,
   ): Effect.Effect<
     PutEventsConfigurationResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   putRetentionSettings(
     input: PutRetentionSettingsRequest,
   ): Effect.Effect<
     PutRetentionSettingsResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   redactConversationMessage(
     input: RedactConversationMessageRequest,
   ): Effect.Effect<
     RedactConversationMessageResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   redactRoomMessage(
     input: RedactRoomMessageRequest,
   ): Effect.Effect<
     RedactRoomMessageResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   regenerateSecurityToken(
     input: RegenerateSecurityTokenRequest,
   ): Effect.Effect<
     RegenerateSecurityTokenResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   resetPersonalPIN(
     input: ResetPersonalPINRequest,
   ): Effect.Effect<
     ResetPersonalPINResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   restorePhoneNumber(
     input: RestorePhoneNumberRequest,
   ): Effect.Effect<
     RestorePhoneNumberResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ResourceLimitExceededException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ResourceLimitExceededException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   searchAvailablePhoneNumbers(
     input: SearchAvailablePhoneNumbersRequest,
   ): Effect.Effect<
     SearchAvailablePhoneNumbersResponse,
-    AccessDeniedException | BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | AccessDeniedException
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateAccount(
     input: UpdateAccountRequest,
   ): Effect.Effect<
     UpdateAccountResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateAccountSettings(
     input: UpdateAccountSettingsRequest,
   ): Effect.Effect<
     UpdateAccountSettingsResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateBot(
     input: UpdateBotRequest,
   ): Effect.Effect<
     UpdateBotResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateGlobalSettings(
     input: UpdateGlobalSettingsRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updatePhoneNumber(
     input: UpdatePhoneNumberRequest,
   ): Effect.Effect<
     UpdatePhoneNumberResponse,
-    BadRequestException | ConflictException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updatePhoneNumberSettings(
     input: UpdatePhoneNumberSettingsRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateRoom(
     input: UpdateRoomRequest,
   ): Effect.Effect<
     UpdateRoomResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateRoomMembership(
     input: UpdateRoomMembershipRequest,
   ): Effect.Effect<
     UpdateRoomMembershipResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateUser(
     input: UpdateUserRequest,
   ): Effect.Effect<
     UpdateUserResponse,
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
   updateUserSettings(
     input: UpdateUserSettingsRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | NotFoundException | ServiceFailureException | ServiceUnavailableException | ThrottledClientException | UnauthorizedClientException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | NotFoundException
+    | ServiceFailureException
+    | ServiceUnavailableException
+    | ThrottledClientException
+    | UnauthorizedClientException
+    | CommonAwsError
   >;
 }
 
@@ -403,7 +840,11 @@ export interface AccountSettings {
   EnableDialOut?: boolean;
 }
 export type AccountStatus = "Suspended" | "Active";
-export type AccountType = "Team" | "EnterpriseDirectory" | "EnterpriseLWA" | "EnterpriseOIDC";
+export type AccountType =
+  | "Team"
+  | "EnterpriseDirectory"
+  | "EnterpriseLWA"
+  | "EnterpriseOIDC";
 export interface AlexaForBusinessMetadata {
   IsAlexaForBusinessEnabled?: boolean;
   AlexaForBusinessRoomArn?: string;
@@ -415,14 +856,12 @@ export interface AssociatePhoneNumberWithUserRequest {
   UserId: string;
   E164PhoneNumber: string;
 }
-export interface AssociatePhoneNumberWithUserResponse {
-}
+export interface AssociatePhoneNumberWithUserResponse {}
 export interface AssociateSigninDelegateGroupsWithAccountRequest {
   AccountId: string;
   SigninDelegateGroups: Array<SigninDelegateGroup>;
 }
-export interface AssociateSigninDelegateGroupsWithAccountResponse {
-}
+export interface AssociateSigninDelegateGroupsWithAccountResponse {}
 export declare class BadRequestException extends Data.TaggedError(
   "BadRequestException",
 )<{
@@ -488,7 +927,11 @@ export interface BusinessCallingSettings {
 }
 export type CallingName = string;
 
-export type CallingNameStatus = "Unassigned" | "UpdateInProgress" | "UpdateSucceeded" | "UpdateFailed";
+export type CallingNameStatus =
+  | "Unassigned"
+  | "UpdateInProgress"
+  | "UpdateSucceeded"
+  | "UpdateFailed";
 export type ClientRequestToken = string;
 
 export declare class ConflictException extends Data.TaggedError(
@@ -559,8 +1002,7 @@ export interface CreateUserResponse {
 export interface DeleteAccountRequest {
   AccountId: string;
 }
-export interface DeleteAccountResponse {
-}
+export interface DeleteAccountResponse {}
 export interface DeleteEventsConfigurationRequest {
   AccountId: string;
   BotId: string;
@@ -581,21 +1023,34 @@ export interface DisassociatePhoneNumberFromUserRequest {
   AccountId: string;
   UserId: string;
 }
-export interface DisassociatePhoneNumberFromUserResponse {
-}
+export interface DisassociatePhoneNumberFromUserResponse {}
 export interface DisassociateSigninDelegateGroupsFromAccountRequest {
   AccountId: string;
   GroupNames: Array<string>;
 }
-export interface DisassociateSigninDelegateGroupsFromAccountResponse {
-}
+export interface DisassociateSigninDelegateGroupsFromAccountResponse {}
 export type E164PhoneNumber = string;
 
 export type E164PhoneNumberList = Array<string>;
 export type EmailAddress = string;
 
 export type EmailStatus = "NotSent" | "Sent" | "Failed";
-export type ErrorCode = "BadRequest" | "Conflict" | "Forbidden" | "NotFound" | "PreconditionFailed" | "ResourceLimitExceeded" | "ServiceFailure" | "AccessDenied" | "ServiceUnavailable" | "Throttled" | "Throttling" | "Unauthorized" | "Unprocessable" | "VoiceConnectorGroupAssociationsExist" | "PhoneNumberAssociationsExist";
+export type ErrorCode =
+  | "BadRequest"
+  | "Conflict"
+  | "Forbidden"
+  | "NotFound"
+  | "PreconditionFailed"
+  | "ResourceLimitExceeded"
+  | "ServiceFailure"
+  | "AccessDenied"
+  | "ServiceUnavailable"
+  | "Throttled"
+  | "Throttling"
+  | "Unauthorized"
+  | "Unprocessable"
+  | "VoiceConnectorGroupAssociationsExist"
+  | "PhoneNumberAssociationsExist";
 export interface EventsConfiguration {
   BotId?: string;
   OutboundEventsHTTPSEndpoint?: string;
@@ -785,8 +1240,7 @@ export interface LogoutUserRequest {
   AccountId: string;
   UserId: string;
 }
-export interface LogoutUserResponse {
-}
+export interface LogoutUserResponse {}
 export interface Member {
   MemberId?: string;
   MemberType?: MemberType;
@@ -844,7 +1298,12 @@ export interface PhoneNumberAssociation {
   AssociatedTimestamp?: Date | string;
 }
 export type PhoneNumberAssociationList = Array<PhoneNumberAssociation>;
-export type PhoneNumberAssociationName = "AccountId" | "UserId" | "VoiceConnectorId" | "VoiceConnectorGroupId" | "SipRuleId";
+export type PhoneNumberAssociationName =
+  | "AccountId"
+  | "UserId"
+  | "VoiceConnectorId"
+  | "VoiceConnectorGroupId"
+  | "SipRuleId";
 export interface PhoneNumberCapabilities {
   InboundCall?: boolean;
   OutboundCall?: boolean;
@@ -876,9 +1335,24 @@ export interface PhoneNumberOrder {
   UpdatedTimestamp?: Date | string;
 }
 export type PhoneNumberOrderList = Array<PhoneNumberOrder>;
-export type PhoneNumberOrderStatus = "Processing" | "Successful" | "Failed" | "Partial";
-export type PhoneNumberProductType = "BusinessCalling" | "VoiceConnector" | "SipMediaApplicationDialIn";
-export type PhoneNumberStatus = "AcquireInProgress" | "AcquireFailed" | "Unassigned" | "Assigned" | "ReleaseInProgress" | "DeleteInProgress" | "ReleaseFailed" | "DeleteFailed";
+export type PhoneNumberOrderStatus =
+  | "Processing"
+  | "Successful"
+  | "Failed"
+  | "Partial";
+export type PhoneNumberProductType =
+  | "BusinessCalling"
+  | "VoiceConnector"
+  | "SipMediaApplicationDialIn";
+export type PhoneNumberStatus =
+  | "AcquireInProgress"
+  | "AcquireFailed"
+  | "Unassigned"
+  | "Assigned"
+  | "ReleaseInProgress"
+  | "DeleteInProgress"
+  | "ReleaseFailed"
+  | "DeleteFailed";
 export type PhoneNumberType = "Local" | "TollFree";
 export type PhoneNumberTypeList = Array<PhoneNumberType>;
 export type ProfileServiceMaxResults = number;
@@ -905,15 +1379,13 @@ export interface RedactConversationMessageRequest {
   ConversationId: string;
   MessageId: string;
 }
-export interface RedactConversationMessageResponse {
-}
+export interface RedactConversationMessageResponse {}
 export interface RedactRoomMessageRequest {
   AccountId: string;
   RoomId: string;
   MessageId: string;
 }
-export interface RedactRoomMessageResponse {
-}
+export interface RedactRoomMessageResponse {}
 export interface RegenerateSecurityTokenRequest {
   AccountId: string;
   BotId: string;
@@ -1039,8 +1511,7 @@ export interface UpdateAccountSettingsRequest {
   AccountId: string;
   AccountSettings: AccountSettings;
 }
-export interface UpdateAccountSettingsResponse {
-}
+export interface UpdateAccountSettingsResponse {}
 export interface UpdateBotRequest {
   AccountId: string;
   BotId: string;
@@ -1063,7 +1534,8 @@ export interface UpdatePhoneNumberRequestItem {
   ProductType?: PhoneNumberProductType;
   CallingName?: string;
 }
-export type UpdatePhoneNumberRequestItemList = Array<UpdatePhoneNumberRequestItem>;
+export type UpdatePhoneNumberRequestItemList =
+  Array<UpdatePhoneNumberRequestItem>;
 export interface UpdatePhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
@@ -2014,4 +2486,3 @@ export declare namespace UpdateUserSettings {
     | UnauthorizedClientException
     | CommonAwsError;
 }
-

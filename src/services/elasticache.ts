@@ -1,18 +1,39 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonElastiCacheV9 {
   addTagsToResource(
     input: AddTagsToResourceMessage,
   ): Effect.Effect<
     TagListMessage,
-    CacheClusterNotFoundFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | CacheSubnetGroupNotFoundFault | InvalidARNFault | InvalidReplicationGroupStateFault | InvalidServerlessCacheSnapshotStateFault | InvalidServerlessCacheStateFault | ReplicationGroupNotFoundFault | ReservedCacheNodeNotFoundFault | ServerlessCacheNotFoundFault | ServerlessCacheSnapshotNotFoundFault | SnapshotNotFoundFault | TagQuotaPerResourceExceeded | UserGroupNotFoundFault | UserNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | CacheSubnetGroupNotFoundFault
+    | InvalidARNFault
+    | InvalidReplicationGroupStateFault
+    | InvalidServerlessCacheSnapshotStateFault
+    | InvalidServerlessCacheStateFault
+    | ReplicationGroupNotFoundFault
+    | ReservedCacheNodeNotFoundFault
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | SnapshotNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | UserGroupNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   authorizeCacheSecurityGroupIngress(
     input: AuthorizeCacheSecurityGroupIngressMessage,
   ): Effect.Effect<
     AuthorizeCacheSecurityGroupIngressResult,
-    AuthorizationAlreadyExistsFault | CacheSecurityGroupNotFoundFault | InvalidCacheSecurityGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | AuthorizationAlreadyExistsFault
+    | CacheSecurityGroupNotFoundFault
+    | InvalidCacheSecurityGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   batchApplyUpdateAction(
     input: BatchApplyUpdateActionMessage,
@@ -30,115 +51,263 @@ export interface AmazonElastiCacheV9 {
     input: CompleteMigrationMessage,
   ): Effect.Effect<
     CompleteMigrationResponse,
-    InvalidReplicationGroupStateFault | ReplicationGroupNotFoundFault | ReplicationGroupNotUnderMigrationFault | CommonAwsError
+    | InvalidReplicationGroupStateFault
+    | ReplicationGroupNotFoundFault
+    | ReplicationGroupNotUnderMigrationFault
+    | CommonAwsError
   >;
   copyServerlessCacheSnapshot(
     input: CopyServerlessCacheSnapshotRequest,
   ): Effect.Effect<
     CopyServerlessCacheSnapshotResponse,
-    InvalidParameterCombinationException | InvalidParameterValueException | InvalidServerlessCacheSnapshotStateFault | ServerlessCacheSnapshotAlreadyExistsFault | ServerlessCacheSnapshotNotFoundFault | ServerlessCacheSnapshotQuotaExceededFault | ServiceLinkedRoleNotFoundFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidServerlessCacheSnapshotStateFault
+    | ServerlessCacheSnapshotAlreadyExistsFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | ServerlessCacheSnapshotQuotaExceededFault
+    | ServiceLinkedRoleNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   copySnapshot(
     input: CopySnapshotMessage,
   ): Effect.Effect<
     CopySnapshotResult,
-    InvalidParameterCombinationException | InvalidParameterValueException | InvalidSnapshotStateFault | SnapshotAlreadyExistsFault | SnapshotNotFoundFault | SnapshotQuotaExceededFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidSnapshotStateFault
+    | SnapshotAlreadyExistsFault
+    | SnapshotNotFoundFault
+    | SnapshotQuotaExceededFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createCacheCluster(
     input: CreateCacheClusterMessage,
   ): Effect.Effect<
     CreateCacheClusterResult,
-    CacheClusterAlreadyExistsFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | CacheSubnetGroupNotFoundFault | ClusterQuotaForCustomerExceededFault | InsufficientCacheClusterCapacityFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | InvalidVPCNetworkStateFault | NodeQuotaForClusterExceededFault | NodeQuotaForCustomerExceededFault | ReplicationGroupNotFoundFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | CacheClusterAlreadyExistsFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | CacheSubnetGroupNotFoundFault
+    | ClusterQuotaForCustomerExceededFault
+    | InsufficientCacheClusterCapacityFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | NodeQuotaForClusterExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | ReplicationGroupNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createCacheParameterGroup(
     input: CreateCacheParameterGroupMessage,
   ): Effect.Effect<
     CreateCacheParameterGroupResult,
-    CacheParameterGroupAlreadyExistsFault | CacheParameterGroupQuotaExceededFault | InvalidCacheParameterGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | TagQuotaPerResourceExceeded | CommonAwsError
+    | CacheParameterGroupAlreadyExistsFault
+    | CacheParameterGroupQuotaExceededFault
+    | InvalidCacheParameterGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createCacheSecurityGroup(
     input: CreateCacheSecurityGroupMessage,
   ): Effect.Effect<
     CreateCacheSecurityGroupResult,
-    CacheSecurityGroupAlreadyExistsFault | CacheSecurityGroupQuotaExceededFault | InvalidParameterCombinationException | InvalidParameterValueException | TagQuotaPerResourceExceeded | CommonAwsError
+    | CacheSecurityGroupAlreadyExistsFault
+    | CacheSecurityGroupQuotaExceededFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createCacheSubnetGroup(
     input: CreateCacheSubnetGroupMessage,
   ): Effect.Effect<
     CreateCacheSubnetGroupResult,
-    CacheSubnetGroupAlreadyExistsFault | CacheSubnetGroupQuotaExceededFault | CacheSubnetQuotaExceededFault | InvalidSubnet | SubnetNotAllowedFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | CacheSubnetGroupAlreadyExistsFault
+    | CacheSubnetGroupQuotaExceededFault
+    | CacheSubnetQuotaExceededFault
+    | InvalidSubnet
+    | SubnetNotAllowedFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createGlobalReplicationGroup(
     input: CreateGlobalReplicationGroupMessage,
   ): Effect.Effect<
     CreateGlobalReplicationGroupResult,
-    GlobalReplicationGroupAlreadyExistsFault | InvalidParameterValueException | InvalidReplicationGroupStateFault | ReplicationGroupNotFoundFault | ServiceLinkedRoleNotFoundFault | CommonAwsError
+    | GlobalReplicationGroupAlreadyExistsFault
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | ReplicationGroupNotFoundFault
+    | ServiceLinkedRoleNotFoundFault
+    | CommonAwsError
   >;
   createReplicationGroup(
     input: CreateReplicationGroupMessage,
   ): Effect.Effect<
     CreateReplicationGroupResult,
-    CacheClusterNotFoundFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | CacheSubnetGroupNotFoundFault | ClusterQuotaForCustomerExceededFault | GlobalReplicationGroupNotFoundFault | InsufficientCacheClusterCapacityFault | InvalidCacheClusterStateFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidUserGroupStateFault | InvalidVPCNetworkStateFault | NodeGroupsPerReplicationGroupQuotaExceededFault | NodeQuotaForClusterExceededFault | NodeQuotaForCustomerExceededFault | ReplicationGroupAlreadyExistsFault | TagQuotaPerResourceExceeded | UserGroupNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | CacheSubnetGroupNotFoundFault
+    | ClusterQuotaForCustomerExceededFault
+    | GlobalReplicationGroupNotFoundFault
+    | InsufficientCacheClusterCapacityFault
+    | InvalidCacheClusterStateFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidUserGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | NodeGroupsPerReplicationGroupQuotaExceededFault
+    | NodeQuotaForClusterExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | ReplicationGroupAlreadyExistsFault
+    | TagQuotaPerResourceExceeded
+    | UserGroupNotFoundFault
+    | CommonAwsError
   >;
   createServerlessCache(
     input: CreateServerlessCacheRequest,
   ): Effect.Effect<
     CreateServerlessCacheResponse,
-    InvalidCredentialsException | InvalidParameterCombinationException | InvalidParameterValueException | InvalidServerlessCacheStateFault | InvalidUserGroupStateFault | ServerlessCacheAlreadyExistsFault | ServerlessCacheNotFoundFault | ServerlessCacheQuotaForCustomerExceededFault | ServiceLinkedRoleNotFoundFault | TagQuotaPerResourceExceeded | UserGroupNotFoundFault | CommonAwsError
+    | InvalidCredentialsException
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidServerlessCacheStateFault
+    | InvalidUserGroupStateFault
+    | ServerlessCacheAlreadyExistsFault
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheQuotaForCustomerExceededFault
+    | ServiceLinkedRoleNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | UserGroupNotFoundFault
+    | CommonAwsError
   >;
   createServerlessCacheSnapshot(
     input: CreateServerlessCacheSnapshotRequest,
   ): Effect.Effect<
     CreateServerlessCacheSnapshotResponse,
-    InvalidParameterCombinationException | InvalidParameterValueException | InvalidServerlessCacheStateFault | ServerlessCacheNotFoundFault | ServerlessCacheSnapshotAlreadyExistsFault | ServerlessCacheSnapshotQuotaExceededFault | ServiceLinkedRoleNotFoundFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidServerlessCacheStateFault
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheSnapshotAlreadyExistsFault
+    | ServerlessCacheSnapshotQuotaExceededFault
+    | ServiceLinkedRoleNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createSnapshot(
     input: CreateSnapshotMessage,
   ): Effect.Effect<
     CreateSnapshotResult,
-    CacheClusterNotFoundFault | InvalidCacheClusterStateFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | ReplicationGroupNotFoundFault | SnapshotAlreadyExistsFault | SnapshotFeatureNotSupportedFault | SnapshotQuotaExceededFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | CacheClusterNotFoundFault
+    | InvalidCacheClusterStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | ReplicationGroupNotFoundFault
+    | SnapshotAlreadyExistsFault
+    | SnapshotFeatureNotSupportedFault
+    | SnapshotQuotaExceededFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   createUser(
     input: CreateUserMessage,
   ): Effect.Effect<
     User,
-    DuplicateUserNameFault | InvalidParameterCombinationException | InvalidParameterValueException | ServiceLinkedRoleNotFoundFault | TagQuotaPerResourceExceeded | UserAlreadyExistsFault | UserQuotaExceededFault | CommonAwsError
+    | DuplicateUserNameFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ServiceLinkedRoleNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | UserAlreadyExistsFault
+    | UserQuotaExceededFault
+    | CommonAwsError
   >;
   createUserGroup(
     input: CreateUserGroupMessage,
   ): Effect.Effect<
     UserGroup,
-    DefaultUserRequired | DuplicateUserNameFault | InvalidParameterValueException | ServiceLinkedRoleNotFoundFault | TagQuotaPerResourceExceeded | UserGroupAlreadyExistsFault | UserGroupQuotaExceededFault | UserNotFoundFault | CommonAwsError
+    | DefaultUserRequired
+    | DuplicateUserNameFault
+    | InvalidParameterValueException
+    | ServiceLinkedRoleNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | UserGroupAlreadyExistsFault
+    | UserGroupQuotaExceededFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   decreaseNodeGroupsInGlobalReplicationGroup(
     input: DecreaseNodeGroupsInGlobalReplicationGroupMessage,
   ): Effect.Effect<
     DecreaseNodeGroupsInGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   decreaseReplicaCount(
     input: DecreaseReplicaCountMessage,
   ): Effect.Effect<
     DecreaseReplicaCountResult,
-    ClusterQuotaForCustomerExceededFault | InsufficientCacheClusterCapacityFault | InvalidCacheClusterStateFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | InvalidVPCNetworkStateFault | NodeGroupsPerReplicationGroupQuotaExceededFault | NodeQuotaForCustomerExceededFault | NoOperationFault | ReplicationGroupNotFoundFault | ServiceLinkedRoleNotFoundFault | CommonAwsError
+    | ClusterQuotaForCustomerExceededFault
+    | InsufficientCacheClusterCapacityFault
+    | InvalidCacheClusterStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | NodeGroupsPerReplicationGroupQuotaExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | NoOperationFault
+    | ReplicationGroupNotFoundFault
+    | ServiceLinkedRoleNotFoundFault
+    | CommonAwsError
   >;
   deleteCacheCluster(
     input: DeleteCacheClusterMessage,
   ): Effect.Effect<
     DeleteCacheClusterResult,
-    CacheClusterNotFoundFault | InvalidCacheClusterStateFault | InvalidParameterCombinationException | InvalidParameterValueException | SnapshotAlreadyExistsFault | SnapshotFeatureNotSupportedFault | SnapshotQuotaExceededFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | InvalidCacheClusterStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | SnapshotAlreadyExistsFault
+    | SnapshotFeatureNotSupportedFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   deleteCacheParameterGroup(
     input: DeleteCacheParameterGroupMessage,
   ): Effect.Effect<
     {},
-    CacheParameterGroupNotFoundFault | InvalidCacheParameterGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheParameterGroupNotFoundFault
+    | InvalidCacheParameterGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   deleteCacheSecurityGroup(
     input: DeleteCacheSecurityGroupMessage,
   ): Effect.Effect<
     {},
-    CacheSecurityGroupNotFoundFault | InvalidCacheSecurityGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheSecurityGroupNotFoundFault
+    | InvalidCacheSecurityGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   deleteCacheSubnetGroup(
     input: DeleteCacheSubnetGroupMessage,
@@ -150,73 +319,116 @@ export interface AmazonElastiCacheV9 {
     input: DeleteGlobalReplicationGroupMessage,
   ): Effect.Effect<
     DeleteGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   deleteReplicationGroup(
     input: DeleteReplicationGroupMessage,
   ): Effect.Effect<
     DeleteReplicationGroupResult,
-    InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | ReplicationGroupNotFoundFault | SnapshotAlreadyExistsFault | SnapshotFeatureNotSupportedFault | SnapshotQuotaExceededFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | ReplicationGroupNotFoundFault
+    | SnapshotAlreadyExistsFault
+    | SnapshotFeatureNotSupportedFault
+    | SnapshotQuotaExceededFault
+    | CommonAwsError
   >;
   deleteServerlessCache(
     input: DeleteServerlessCacheRequest,
   ): Effect.Effect<
     DeleteServerlessCacheResponse,
-    InvalidCredentialsException | InvalidParameterCombinationException | InvalidParameterValueException | InvalidServerlessCacheStateFault | ServerlessCacheNotFoundFault | ServerlessCacheSnapshotAlreadyExistsFault | ServiceLinkedRoleNotFoundFault | CommonAwsError
+    | InvalidCredentialsException
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidServerlessCacheStateFault
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheSnapshotAlreadyExistsFault
+    | ServiceLinkedRoleNotFoundFault
+    | CommonAwsError
   >;
   deleteServerlessCacheSnapshot(
     input: DeleteServerlessCacheSnapshotRequest,
   ): Effect.Effect<
     DeleteServerlessCacheSnapshotResponse,
-    InvalidParameterValueException | InvalidServerlessCacheSnapshotStateFault | ServerlessCacheSnapshotNotFoundFault | ServiceLinkedRoleNotFoundFault | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidServerlessCacheSnapshotStateFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | ServiceLinkedRoleNotFoundFault
+    | CommonAwsError
   >;
   deleteSnapshot(
     input: DeleteSnapshotMessage,
   ): Effect.Effect<
     DeleteSnapshotResult,
-    InvalidParameterCombinationException | InvalidParameterValueException | InvalidSnapshotStateFault | SnapshotNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidSnapshotStateFault
+    | SnapshotNotFoundFault
+    | CommonAwsError
   >;
   deleteUser(
     input: DeleteUserMessage,
   ): Effect.Effect<
     User,
-    DefaultUserAssociatedToUserGroupFault | InvalidParameterValueException | InvalidUserStateFault | ServiceLinkedRoleNotFoundFault | UserNotFoundFault | CommonAwsError
+    | DefaultUserAssociatedToUserGroupFault
+    | InvalidParameterValueException
+    | InvalidUserStateFault
+    | ServiceLinkedRoleNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   deleteUserGroup(
     input: DeleteUserGroupMessage,
   ): Effect.Effect<
     UserGroup,
-    InvalidParameterValueException | InvalidUserGroupStateFault | ServiceLinkedRoleNotFoundFault | UserGroupNotFoundFault | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidUserGroupStateFault
+    | ServiceLinkedRoleNotFoundFault
+    | UserGroupNotFoundFault
+    | CommonAwsError
   >;
   describeCacheClusters(
     input: DescribeCacheClustersMessage,
   ): Effect.Effect<
     CacheClusterMessage,
-    CacheClusterNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheClusterNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeCacheEngineVersions(
     input: DescribeCacheEngineVersionsMessage,
-  ): Effect.Effect<
-    CacheEngineVersionMessage,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CacheEngineVersionMessage, CommonAwsError>;
   describeCacheParameterGroups(
     input: DescribeCacheParameterGroupsMessage,
   ): Effect.Effect<
     CacheParameterGroupsMessage,
-    CacheParameterGroupNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheParameterGroupNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeCacheParameters(
     input: DescribeCacheParametersMessage,
   ): Effect.Effect<
     CacheParameterGroupDetails,
-    CacheParameterGroupNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheParameterGroupNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeCacheSecurityGroups(
     input: DescribeCacheSecurityGroupsMessage,
   ): Effect.Effect<
     CacheSecurityGroupMessage,
-    CacheSecurityGroupNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheSecurityGroupNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeCacheSubnetGroups(
     input: DescribeCacheSubnetGroupsMessage,
@@ -228,187 +440,351 @@ export interface AmazonElastiCacheV9 {
     input: DescribeEngineDefaultParametersMessage,
   ): Effect.Effect<
     DescribeEngineDefaultParametersResult,
-    InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeEvents(
     input: DescribeEventsMessage,
   ): Effect.Effect<
     EventsMessage,
-    InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeGlobalReplicationGroups(
     input: DescribeGlobalReplicationGroupsMessage,
   ): Effect.Effect<
     DescribeGlobalReplicationGroupsResult,
-    GlobalReplicationGroupNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeReplicationGroups(
     input: DescribeReplicationGroupsMessage,
   ): Effect.Effect<
     ReplicationGroupMessage,
-    InvalidParameterCombinationException | InvalidParameterValueException | ReplicationGroupNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ReplicationGroupNotFoundFault
+    | CommonAwsError
   >;
   describeReservedCacheNodes(
     input: DescribeReservedCacheNodesMessage,
   ): Effect.Effect<
     ReservedCacheNodeMessage,
-    InvalidParameterCombinationException | InvalidParameterValueException | ReservedCacheNodeNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ReservedCacheNodeNotFoundFault
+    | CommonAwsError
   >;
   describeReservedCacheNodesOfferings(
     input: DescribeReservedCacheNodesOfferingsMessage,
   ): Effect.Effect<
     ReservedCacheNodesOfferingMessage,
-    InvalidParameterCombinationException | InvalidParameterValueException | ReservedCacheNodesOfferingNotFoundFault | CommonAwsError
-  >;
-  describeServerlessCacheSnapshots(
-    input: DescribeServerlessCacheSnapshotsRequest,
-  ): Effect.Effect<
-    DescribeServerlessCacheSnapshotsResponse,
-    InvalidParameterCombinationException | InvalidParameterValueException | ServerlessCacheNotFoundFault | ServerlessCacheSnapshotNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ReservedCacheNodesOfferingNotFoundFault
+    | CommonAwsError
   >;
   describeServerlessCaches(
     input: DescribeServerlessCachesRequest,
   ): Effect.Effect<
     DescribeServerlessCachesResponse,
-    InvalidParameterCombinationException | InvalidParameterValueException | ServerlessCacheNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ServerlessCacheNotFoundFault
+    | CommonAwsError
+  >;
+  describeServerlessCacheSnapshots(
+    input: DescribeServerlessCacheSnapshotsRequest,
+  ): Effect.Effect<
+    DescribeServerlessCacheSnapshotsResponse,
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | CommonAwsError
   >;
   describeServiceUpdates(
     input: DescribeServiceUpdatesMessage,
   ): Effect.Effect<
     ServiceUpdatesMessage,
-    InvalidParameterCombinationException | InvalidParameterValueException | ServiceUpdateNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ServiceUpdateNotFoundFault
+    | CommonAwsError
   >;
   describeSnapshots(
     input: DescribeSnapshotsMessage,
   ): Effect.Effect<
     DescribeSnapshotsListMessage,
-    CacheClusterNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | SnapshotNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | SnapshotNotFoundFault
+    | CommonAwsError
   >;
   describeUpdateActions(
     input: DescribeUpdateActionsMessage,
   ): Effect.Effect<
     UpdateActionsMessage,
-    InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   describeUserGroups(
     input: DescribeUserGroupsMessage,
   ): Effect.Effect<
     DescribeUserGroupsResult,
-    InvalidParameterCombinationException | ServiceLinkedRoleNotFoundFault | UserGroupNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | ServiceLinkedRoleNotFoundFault
+    | UserGroupNotFoundFault
+    | CommonAwsError
   >;
   describeUsers(
     input: DescribeUsersMessage,
   ): Effect.Effect<
     DescribeUsersResult,
-    InvalidParameterCombinationException | ServiceLinkedRoleNotFoundFault | UserNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | ServiceLinkedRoleNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   disassociateGlobalReplicationGroup(
     input: DisassociateGlobalReplicationGroupMessage,
   ): Effect.Effect<
     DisassociateGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   exportServerlessCacheSnapshot(
     input: ExportServerlessCacheSnapshotRequest,
   ): Effect.Effect<
     ExportServerlessCacheSnapshotResponse,
-    InvalidParameterValueException | InvalidServerlessCacheSnapshotStateFault | ServerlessCacheSnapshotNotFoundFault | ServiceLinkedRoleNotFoundFault | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidServerlessCacheSnapshotStateFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | ServiceLinkedRoleNotFoundFault
+    | CommonAwsError
   >;
   failoverGlobalReplicationGroup(
     input: FailoverGlobalReplicationGroupMessage,
   ): Effect.Effect<
     FailoverGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   increaseNodeGroupsInGlobalReplicationGroup(
     input: IncreaseNodeGroupsInGlobalReplicationGroupMessage,
   ): Effect.Effect<
     IncreaseNodeGroupsInGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   increaseReplicaCount(
     input: IncreaseReplicaCountMessage,
   ): Effect.Effect<
     IncreaseReplicaCountResult,
-    ClusterQuotaForCustomerExceededFault | InsufficientCacheClusterCapacityFault | InvalidCacheClusterStateFault | InvalidKMSKeyFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | InvalidVPCNetworkStateFault | NodeGroupsPerReplicationGroupQuotaExceededFault | NodeQuotaForCustomerExceededFault | NoOperationFault | ReplicationGroupNotFoundFault | CommonAwsError
+    | ClusterQuotaForCustomerExceededFault
+    | InsufficientCacheClusterCapacityFault
+    | InvalidCacheClusterStateFault
+    | InvalidKMSKeyFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | NodeGroupsPerReplicationGroupQuotaExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | NoOperationFault
+    | ReplicationGroupNotFoundFault
+    | CommonAwsError
   >;
   listAllowedNodeTypeModifications(
     input: ListAllowedNodeTypeModificationsMessage,
   ): Effect.Effect<
     AllowedNodeTypeModificationsMessage,
-    CacheClusterNotFoundFault | InvalidParameterCombinationException | InvalidParameterValueException | ReplicationGroupNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ReplicationGroupNotFoundFault
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceMessage,
   ): Effect.Effect<
     TagListMessage,
-    CacheClusterNotFoundFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | CacheSubnetGroupNotFoundFault | InvalidARNFault | InvalidReplicationGroupStateFault | InvalidServerlessCacheSnapshotStateFault | InvalidServerlessCacheStateFault | ReplicationGroupNotFoundFault | ReservedCacheNodeNotFoundFault | ServerlessCacheNotFoundFault | ServerlessCacheSnapshotNotFoundFault | SnapshotNotFoundFault | UserGroupNotFoundFault | UserNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | CacheSubnetGroupNotFoundFault
+    | InvalidARNFault
+    | InvalidReplicationGroupStateFault
+    | InvalidServerlessCacheSnapshotStateFault
+    | InvalidServerlessCacheStateFault
+    | ReplicationGroupNotFoundFault
+    | ReservedCacheNodeNotFoundFault
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | SnapshotNotFoundFault
+    | UserGroupNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   modifyCacheCluster(
     input: ModifyCacheClusterMessage,
   ): Effect.Effect<
     ModifyCacheClusterResult,
-    CacheClusterNotFoundFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | InsufficientCacheClusterCapacityFault | InvalidCacheClusterStateFault | InvalidCacheSecurityGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidVPCNetworkStateFault | NodeQuotaForClusterExceededFault | NodeQuotaForCustomerExceededFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | InsufficientCacheClusterCapacityFault
+    | InvalidCacheClusterStateFault
+    | InvalidCacheSecurityGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidVPCNetworkStateFault
+    | NodeQuotaForClusterExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | CommonAwsError
   >;
   modifyCacheParameterGroup(
     input: ModifyCacheParameterGroupMessage,
   ): Effect.Effect<
     CacheParameterGroupNameMessage,
-    CacheParameterGroupNotFoundFault | InvalidCacheParameterGroupStateFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheParameterGroupNotFoundFault
+    | InvalidCacheParameterGroupStateFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   modifyCacheSubnetGroup(
     input: ModifyCacheSubnetGroupMessage,
   ): Effect.Effect<
     ModifyCacheSubnetGroupResult,
-    CacheSubnetGroupNotFoundFault | CacheSubnetQuotaExceededFault | InvalidSubnet | SubnetInUse | SubnetNotAllowedFault | CommonAwsError
+    | CacheSubnetGroupNotFoundFault
+    | CacheSubnetQuotaExceededFault
+    | InvalidSubnet
+    | SubnetInUse
+    | SubnetNotAllowedFault
+    | CommonAwsError
   >;
   modifyGlobalReplicationGroup(
     input: ModifyGlobalReplicationGroupMessage,
   ): Effect.Effect<
     ModifyGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   modifyReplicationGroup(
     input: ModifyReplicationGroupMessage,
   ): Effect.Effect<
     ModifyReplicationGroupResult,
-    CacheClusterNotFoundFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | InsufficientCacheClusterCapacityFault | InvalidCacheClusterStateFault | InvalidCacheSecurityGroupStateFault | InvalidKMSKeyFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | InvalidUserGroupStateFault | InvalidVPCNetworkStateFault | NodeQuotaForClusterExceededFault | NodeQuotaForCustomerExceededFault | ReplicationGroupNotFoundFault | UserGroupNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | InsufficientCacheClusterCapacityFault
+    | InvalidCacheClusterStateFault
+    | InvalidCacheSecurityGroupStateFault
+    | InvalidKMSKeyFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | InvalidUserGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | NodeQuotaForClusterExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | ReplicationGroupNotFoundFault
+    | UserGroupNotFoundFault
+    | CommonAwsError
   >;
   modifyReplicationGroupShardConfiguration(
     input: ModifyReplicationGroupShardConfigurationMessage,
   ): Effect.Effect<
     ModifyReplicationGroupShardConfigurationResult,
-    InsufficientCacheClusterCapacityFault | InvalidCacheClusterStateFault | InvalidKMSKeyFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | InvalidVPCNetworkStateFault | NodeGroupsPerReplicationGroupQuotaExceededFault | NodeQuotaForCustomerExceededFault | ReplicationGroupNotFoundFault | CommonAwsError
+    | InsufficientCacheClusterCapacityFault
+    | InvalidCacheClusterStateFault
+    | InvalidKMSKeyFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | InvalidVPCNetworkStateFault
+    | NodeGroupsPerReplicationGroupQuotaExceededFault
+    | NodeQuotaForCustomerExceededFault
+    | ReplicationGroupNotFoundFault
+    | CommonAwsError
   >;
   modifyServerlessCache(
     input: ModifyServerlessCacheRequest,
   ): Effect.Effect<
     ModifyServerlessCacheResponse,
-    InvalidCredentialsException | InvalidParameterCombinationException | InvalidParameterValueException | InvalidServerlessCacheStateFault | InvalidUserGroupStateFault | ServerlessCacheNotFoundFault | ServiceLinkedRoleNotFoundFault | UserGroupNotFoundFault | CommonAwsError
+    | InvalidCredentialsException
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidServerlessCacheStateFault
+    | InvalidUserGroupStateFault
+    | ServerlessCacheNotFoundFault
+    | ServiceLinkedRoleNotFoundFault
+    | UserGroupNotFoundFault
+    | CommonAwsError
   >;
   modifyUser(
     input: ModifyUserMessage,
   ): Effect.Effect<
     User,
-    InvalidParameterCombinationException | InvalidParameterValueException | InvalidUserStateFault | ServiceLinkedRoleNotFoundFault | UserNotFoundFault | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidUserStateFault
+    | ServiceLinkedRoleNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   modifyUserGroup(
     input: ModifyUserGroupMessage,
   ): Effect.Effect<
     UserGroup,
-    DefaultUserRequired | DuplicateUserNameFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidUserGroupStateFault | ServiceLinkedRoleNotFoundFault | UserGroupNotFoundFault | UserNotFoundFault | CommonAwsError
+    | DefaultUserRequired
+    | DuplicateUserNameFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidUserGroupStateFault
+    | ServiceLinkedRoleNotFoundFault
+    | UserGroupNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   purchaseReservedCacheNodesOffering(
     input: PurchaseReservedCacheNodesOfferingMessage,
   ): Effect.Effect<
     PurchaseReservedCacheNodesOfferingResult,
-    InvalidParameterCombinationException | InvalidParameterValueException | ReservedCacheNodeAlreadyExistsFault | ReservedCacheNodeQuotaExceededFault | ReservedCacheNodesOfferingNotFoundFault | TagQuotaPerResourceExceeded | CommonAwsError
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ReservedCacheNodeAlreadyExistsFault
+    | ReservedCacheNodeQuotaExceededFault
+    | ReservedCacheNodesOfferingNotFoundFault
+    | TagQuotaPerResourceExceeded
+    | CommonAwsError
   >;
   rebalanceSlotsInGlobalReplicationGroup(
     input: RebalanceSlotsInGlobalReplicationGroupMessage,
   ): Effect.Effect<
     RebalanceSlotsInGlobalReplicationGroupResult,
-    GlobalReplicationGroupNotFoundFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterValueException | CommonAwsError
+    | GlobalReplicationGroupNotFoundFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   rebootCacheCluster(
     input: RebootCacheClusterMessage,
@@ -420,37 +796,80 @@ export interface AmazonElastiCacheV9 {
     input: RemoveTagsFromResourceMessage,
   ): Effect.Effect<
     TagListMessage,
-    CacheClusterNotFoundFault | CacheParameterGroupNotFoundFault | CacheSecurityGroupNotFoundFault | CacheSubnetGroupNotFoundFault | InvalidARNFault | InvalidReplicationGroupStateFault | InvalidServerlessCacheSnapshotStateFault | InvalidServerlessCacheStateFault | ReplicationGroupNotFoundFault | ReservedCacheNodeNotFoundFault | ServerlessCacheNotFoundFault | ServerlessCacheSnapshotNotFoundFault | SnapshotNotFoundFault | TagNotFoundFault | UserGroupNotFoundFault | UserNotFoundFault | CommonAwsError
+    | CacheClusterNotFoundFault
+    | CacheParameterGroupNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | CacheSubnetGroupNotFoundFault
+    | InvalidARNFault
+    | InvalidReplicationGroupStateFault
+    | InvalidServerlessCacheSnapshotStateFault
+    | InvalidServerlessCacheStateFault
+    | ReplicationGroupNotFoundFault
+    | ReservedCacheNodeNotFoundFault
+    | ServerlessCacheNotFoundFault
+    | ServerlessCacheSnapshotNotFoundFault
+    | SnapshotNotFoundFault
+    | TagNotFoundFault
+    | UserGroupNotFoundFault
+    | UserNotFoundFault
+    | CommonAwsError
   >;
   resetCacheParameterGroup(
     input: ResetCacheParameterGroupMessage,
   ): Effect.Effect<
     CacheParameterGroupNameMessage,
-    CacheParameterGroupNotFoundFault | InvalidCacheParameterGroupStateFault | InvalidGlobalReplicationGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | CacheParameterGroupNotFoundFault
+    | InvalidCacheParameterGroupStateFault
+    | InvalidGlobalReplicationGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   revokeCacheSecurityGroupIngress(
     input: RevokeCacheSecurityGroupIngressMessage,
   ): Effect.Effect<
     RevokeCacheSecurityGroupIngressResult,
-    AuthorizationNotFoundFault | CacheSecurityGroupNotFoundFault | InvalidCacheSecurityGroupStateFault | InvalidParameterCombinationException | InvalidParameterValueException | CommonAwsError
+    | AuthorizationNotFoundFault
+    | CacheSecurityGroupNotFoundFault
+    | InvalidCacheSecurityGroupStateFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | CommonAwsError
   >;
   startMigration(
     input: StartMigrationMessage,
   ): Effect.Effect<
     StartMigrationResponse,
-    InvalidParameterValueException | InvalidReplicationGroupStateFault | ReplicationGroupAlreadyUnderMigrationFault | ReplicationGroupNotFoundFault | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | ReplicationGroupAlreadyUnderMigrationFault
+    | ReplicationGroupNotFoundFault
+    | CommonAwsError
   >;
   testFailover(
     input: TestFailoverMessage,
   ): Effect.Effect<
     TestFailoverResult,
-    APICallRateForCustomerExceededFault | InvalidCacheClusterStateFault | InvalidKMSKeyFault | InvalidParameterCombinationException | InvalidParameterValueException | InvalidReplicationGroupStateFault | NodeGroupNotFoundFault | ReplicationGroupNotFoundFault | TestFailoverNotAvailableFault | CommonAwsError
+    | APICallRateForCustomerExceededFault
+    | InvalidCacheClusterStateFault
+    | InvalidKMSKeyFault
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | NodeGroupNotFoundFault
+    | ReplicationGroupNotFoundFault
+    | TestFailoverNotAvailableFault
+    | CommonAwsError
   >;
   testMigration(
     input: TestMigrationMessage,
   ): Effect.Effect<
     TestMigrationResponse,
-    InvalidParameterValueException | InvalidReplicationGroupStateFault | ReplicationGroupAlreadyUnderMigrationFault | ReplicationGroupNotFoundFault | CommonAwsError
+    | InvalidParameterValueException
+    | InvalidReplicationGroupStateFault
+    | ReplicationGroupAlreadyUnderMigrationFault
+    | ReplicationGroupNotFoundFault
+    | CommonAwsError
   >;
 }
 
@@ -502,7 +921,11 @@ export interface AuthorizeCacheSecurityGroupIngressResult {
 }
 export type AuthTokenUpdateStatus = "SETTING" | "ROTATING";
 export type AuthTokenUpdateStrategyType = "SET" | "ROTATE" | "DELETE";
-export type AutomaticFailoverStatus = "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING";
+export type AutomaticFailoverStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "ENABLING"
+  | "DISABLING";
 export interface AvailabilityZone {
   Name?: string;
 }
@@ -608,7 +1031,8 @@ export interface CacheNodeTypeSpecificParameter {
   CacheNodeTypeSpecificValues?: Array<CacheNodeTypeSpecificValue>;
   ChangeType?: ChangeType;
 }
-export type CacheNodeTypeSpecificParametersList = Array<CacheNodeTypeSpecificParameter>;
+export type CacheNodeTypeSpecificParametersList =
+  Array<CacheNodeTypeSpecificParameter>;
 export interface CacheNodeTypeSpecificValue {
   CacheNodeType?: string;
   Value?: string;
@@ -681,7 +1105,8 @@ export interface CacheSecurityGroupMembership {
   CacheSecurityGroupName?: string;
   Status?: string;
 }
-export type CacheSecurityGroupMembershipList = Array<CacheSecurityGroupMembership>;
+export type CacheSecurityGroupMembershipList =
+  Array<CacheSecurityGroupMembership>;
 export interface CacheSecurityGroupMessage {
   Marker?: string;
   CacheSecurityGroups?: Array<CacheSecurityGroup>;
@@ -1323,7 +1748,8 @@ export interface GlobalReplicationGroupMember {
   AutomaticFailover?: AutomaticFailoverStatus;
   Status?: string;
 }
-export type GlobalReplicationGroupMemberList = Array<GlobalReplicationGroupMember>;
+export type GlobalReplicationGroupMemberList =
+  Array<GlobalReplicationGroupMember>;
 export declare class GlobalReplicationGroupNotFoundFault extends Data.TaggedError(
   "GlobalReplicationGroupNotFoundFault",
 )<{
@@ -1422,9 +1848,7 @@ export declare class InvalidSnapshotStateFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSubnet extends Data.TaggedError(
-  "InvalidSubnet",
-)<{
+export declare class InvalidSubnet extends Data.TaggedError("InvalidSubnet")<{
   readonly message?: string;
 }> {}
 export declare class InvalidUserGroupStateFault extends Data.TaggedError(
@@ -1470,8 +1894,14 @@ export interface LogDeliveryConfigurationRequest {
   LogFormat?: LogFormat;
   Enabled?: boolean;
 }
-export type LogDeliveryConfigurationRequestList = Array<LogDeliveryConfigurationRequest>;
-export type LogDeliveryConfigurationStatus = "ACTIVE" | "ENABLING" | "MODIFYING" | "DISABLING" | "ERROR";
+export type LogDeliveryConfigurationRequestList =
+  Array<LogDeliveryConfigurationRequest>;
+export type LogDeliveryConfigurationStatus =
+  | "ACTIVE"
+  | "ENABLING"
+  | "MODIFYING"
+  | "DISABLING"
+  | "ERROR";
 export type LogFormat = "TEXT" | "JSON";
 export type LogType = "SLOW_LOG" | "ENGINE_LOG";
 export interface ModifyCacheClusterMessage {
@@ -1645,7 +2075,8 @@ export interface NodeGroupMemberUpdateStatus {
   NodeUpdateInitiatedDate?: Date | string;
   NodeUpdateStatusModifiedDate?: Date | string;
 }
-export type NodeGroupMemberUpdateStatusList = Array<NodeGroupMemberUpdateStatus>;
+export type NodeGroupMemberUpdateStatusList =
+  Array<NodeGroupMemberUpdateStatus>;
 export declare class NodeGroupNotFoundFault extends Data.TaggedError(
   "NodeGroupNotFoundFault",
 )<{
@@ -1685,7 +2116,13 @@ export interface NodeSnapshot {
 export type NodeSnapshotList = Array<NodeSnapshot>;
 export type NodeTypeList = Array<string>;
 export type NodeUpdateInitiatedBy = "SYSTEM" | "CUSTOMER";
-export type NodeUpdateStatus = "NOT_APPLIED" | "WAITING_TO_START" | "IN_PROGRESS" | "STOPPING" | "STOPPED" | "COMPLETE";
+export type NodeUpdateStatus =
+  | "NOT_APPLIED"
+  | "WAITING_TO_START"
+  | "IN_PROGRESS"
+  | "STOPPING"
+  | "STOPPED"
+  | "COMPLETE";
 export declare class NoOperationFault extends Data.TaggedError(
   "NoOperationFault",
 )<{
@@ -1722,7 +2159,8 @@ export interface PendingLogDeliveryConfiguration {
   DestinationDetails?: DestinationDetails;
   LogFormat?: LogFormat;
 }
-export type PendingLogDeliveryConfigurationList = Array<PendingLogDeliveryConfiguration>;
+export type PendingLogDeliveryConfigurationList =
+  Array<PendingLogDeliveryConfiguration>;
 export interface PendingModifiedValues {
   NumCacheNodes?: number;
   CacheNodeIdsToRemove?: Array<string>;
@@ -2097,7 +2535,16 @@ export declare class SnapshotQuotaExceededFault extends Data.TaggedError(
 )<{
   readonly message?: string;
 }> {}
-export type SourceType = "cache_cluster" | "cache_parameter_group" | "cache_security_group" | "cache_subnet_group" | "replication_group" | "serverless_cache" | "serverless_cache_snapshot" | "user" | "user_group";
+export type SourceType =
+  | "cache_cluster"
+  | "cache_parameter_group"
+  | "cache_security_group"
+  | "cache_subnet_group"
+  | "replication_group"
+  | "serverless_cache"
+  | "serverless_cache_snapshot"
+  | "user"
+  | "user_group";
 export interface StartMigrationMessage {
   ReplicationGroupId: string;
   CustomerNodeEndpointList: Array<CustomerNodeEndpoint>;
@@ -2113,9 +2560,7 @@ export interface Subnet {
 }
 export type SubnetIdentifierList = Array<string>;
 export type SubnetIdsList = Array<string>;
-export declare class SubnetInUse extends Data.TaggedError(
-  "SubnetInUse",
-)<{
+export declare class SubnetInUse extends Data.TaggedError("SubnetInUse")<{
   readonly message?: string;
 }> {}
 export type SubnetList = Array<Subnet>;
@@ -2209,7 +2654,16 @@ export interface UpdateActionsMessage {
   Marker?: string;
   UpdateActions?: Array<UpdateAction>;
 }
-export type UpdateActionStatus = "NOT_APPLIED" | "WAITING_TO_START" | "IN_PROGRESS" | "STOPPING" | "STOPPED" | "COMPLETE" | "SCHEDULING" | "SCHEDULED" | "NOT_APPLICABLE";
+export type UpdateActionStatus =
+  | "NOT_APPLIED"
+  | "WAITING_TO_START"
+  | "IN_PROGRESS"
+  | "STOPPING"
+  | "STOPPED"
+  | "COMPLETE"
+  | "SCHEDULING"
+  | "SCHEDULED"
+  | "NOT_APPLICABLE";
 export type UpdateActionStatusList = Array<UpdateActionStatus>;
 export interface User {
   UserId?: string;
@@ -2722,8 +3176,7 @@ export declare namespace DescribeCacheClusters {
 export declare namespace DescribeCacheEngineVersions {
   export type Input = DescribeCacheEngineVersionsMessage;
   export type Output = CacheEngineVersionMessage;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeCacheParameterGroups {
@@ -2759,9 +3212,7 @@ export declare namespace DescribeCacheSecurityGroups {
 export declare namespace DescribeCacheSubnetGroups {
   export type Input = DescribeCacheSubnetGroupsMessage;
   export type Output = CacheSubnetGroupMessage;
-  export type Error =
-    | CacheSubnetGroupNotFoundFault
-    | CommonAwsError;
+  export type Error = CacheSubnetGroupNotFoundFault | CommonAwsError;
 }
 
 export declare namespace DescribeEngineDefaultParameters {
@@ -2822,6 +3273,16 @@ export declare namespace DescribeReservedCacheNodesOfferings {
     | CommonAwsError;
 }
 
+export declare namespace DescribeServerlessCaches {
+  export type Input = DescribeServerlessCachesRequest;
+  export type Output = DescribeServerlessCachesResponse;
+  export type Error =
+    | InvalidParameterCombinationException
+    | InvalidParameterValueException
+    | ServerlessCacheNotFoundFault
+    | CommonAwsError;
+}
+
 export declare namespace DescribeServerlessCacheSnapshots {
   export type Input = DescribeServerlessCacheSnapshotsRequest;
   export type Output = DescribeServerlessCacheSnapshotsResponse;
@@ -2830,16 +3291,6 @@ export declare namespace DescribeServerlessCacheSnapshots {
     | InvalidParameterValueException
     | ServerlessCacheNotFoundFault
     | ServerlessCacheSnapshotNotFoundFault
-    | CommonAwsError;
-}
-
-export declare namespace DescribeServerlessCaches {
-  export type Input = DescribeServerlessCachesRequest;
-  export type Output = DescribeServerlessCachesResponse;
-  export type Error =
-    | InvalidParameterCombinationException
-    | InvalidParameterValueException
-    | ServerlessCacheNotFoundFault
     | CommonAwsError;
 }
 
@@ -3238,4 +3689,3 @@ export declare namespace TestMigration {
     | ReplicationGroupNotFoundFault
     | CommonAwsError;
 }
-

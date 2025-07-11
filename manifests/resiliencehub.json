@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.resiliencehub#AcceptGroupingRecommendationEntries": {
       "type": "list",
@@ -1248,6 +1249,197 @@
     },
     "com.amazonaws.resiliencehub#AwsResilienceHub": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.resiliencehub#AcceptResourceGroupingRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#AddDraftAppVersionResourceMappings"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#BatchUpdateRecommendationStatus"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#CreateApp"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#CreateAppVersionAppComponent"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#CreateAppVersionResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#CreateRecommendationTemplate"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#CreateResiliencyPolicy"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteApp"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteAppAssessment"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteAppInputSource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteAppVersionAppComponent"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteAppVersionResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteRecommendationTemplate"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DeleteResiliencyPolicy"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeApp"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeAppAssessment"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeAppVersion"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeAppVersionAppComponent"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeAppVersionResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeAppVersionResourcesResolutionStatus"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeAppVersionTemplate"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeDraftAppVersionResourcesImportStatus"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeMetricsExport"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeResiliencyPolicy"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#DescribeResourceGroupingRecommendationTask"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ImportResourcesToDraftAppVersion"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAlarmRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppAssessmentComplianceDrifts"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppAssessmentResourceDrifts"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppAssessments"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppComponentCompliances"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppComponentRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppInputSources"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListApps"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppVersionAppComponents"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppVersionResourceMappings"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppVersionResources"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListAppVersions"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListMetrics"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListRecommendationTemplates"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListResiliencyPolicies"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListResourceGroupingRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListSopRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListSuggestedResiliencyPolicies"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListTestRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ListUnsupportedAppVersionResources"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#PublishAppVersion"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#PutDraftAppVersionTemplate"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#RejectResourceGroupingRecommendations"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#RemoveDraftAppVersionResourceMappings"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#ResolveAppVersionResources"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#StartAppAssessment"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#StartMetricsExport"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#StartResourceGroupingRecommendationTask"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#TagResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#UpdateApp"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#UpdateAppVersion"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#UpdateAppVersionAppComponent"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#UpdateAppVersionResource"
+        },
+        {
+          "target": "com.amazonaws.resiliencehub#UpdateResiliencyPolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "resiliencehub",

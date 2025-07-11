@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.swf#ActivityId": {
       "type": "string",
@@ -5642,6 +5671,125 @@
     },
     "com.amazonaws.swf#SimpleWorkflowService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.swf#CountClosedWorkflowExecutions"
+        },
+        {
+          "target": "com.amazonaws.swf#CountOpenWorkflowExecutions"
+        },
+        {
+          "target": "com.amazonaws.swf#CountPendingActivityTasks"
+        },
+        {
+          "target": "com.amazonaws.swf#CountPendingDecisionTasks"
+        },
+        {
+          "target": "com.amazonaws.swf#DeleteActivityType"
+        },
+        {
+          "target": "com.amazonaws.swf#DeleteWorkflowType"
+        },
+        {
+          "target": "com.amazonaws.swf#DeprecateActivityType"
+        },
+        {
+          "target": "com.amazonaws.swf#DeprecateDomain"
+        },
+        {
+          "target": "com.amazonaws.swf#DeprecateWorkflowType"
+        },
+        {
+          "target": "com.amazonaws.swf#DescribeActivityType"
+        },
+        {
+          "target": "com.amazonaws.swf#DescribeDomain"
+        },
+        {
+          "target": "com.amazonaws.swf#DescribeWorkflowExecution"
+        },
+        {
+          "target": "com.amazonaws.swf#DescribeWorkflowType"
+        },
+        {
+          "target": "com.amazonaws.swf#GetWorkflowExecutionHistory"
+        },
+        {
+          "target": "com.amazonaws.swf#ListActivityTypes"
+        },
+        {
+          "target": "com.amazonaws.swf#ListClosedWorkflowExecutions"
+        },
+        {
+          "target": "com.amazonaws.swf#ListDomains"
+        },
+        {
+          "target": "com.amazonaws.swf#ListOpenWorkflowExecutions"
+        },
+        {
+          "target": "com.amazonaws.swf#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.swf#ListWorkflowTypes"
+        },
+        {
+          "target": "com.amazonaws.swf#PollForActivityTask"
+        },
+        {
+          "target": "com.amazonaws.swf#PollForDecisionTask"
+        },
+        {
+          "target": "com.amazonaws.swf#RecordActivityTaskHeartbeat"
+        },
+        {
+          "target": "com.amazonaws.swf#RegisterActivityType"
+        },
+        {
+          "target": "com.amazonaws.swf#RegisterDomain"
+        },
+        {
+          "target": "com.amazonaws.swf#RegisterWorkflowType"
+        },
+        {
+          "target": "com.amazonaws.swf#RequestCancelWorkflowExecution"
+        },
+        {
+          "target": "com.amazonaws.swf#RespondActivityTaskCanceled"
+        },
+        {
+          "target": "com.amazonaws.swf#RespondActivityTaskCompleted"
+        },
+        {
+          "target": "com.amazonaws.swf#RespondActivityTaskFailed"
+        },
+        {
+          "target": "com.amazonaws.swf#RespondDecisionTaskCompleted"
+        },
+        {
+          "target": "com.amazonaws.swf#SignalWorkflowExecution"
+        },
+        {
+          "target": "com.amazonaws.swf#StartWorkflowExecution"
+        },
+        {
+          "target": "com.amazonaws.swf#TagResource"
+        },
+        {
+          "target": "com.amazonaws.swf#TerminateWorkflowExecution"
+        },
+        {
+          "target": "com.amazonaws.swf#UndeprecateActivityType"
+        },
+        {
+          "target": "com.amazonaws.swf#UndeprecateDomain"
+        },
+        {
+          "target": "com.amazonaws.swf#UndeprecateWorkflowType"
+        },
+        {
+          "target": "com.amazonaws.swf#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "SWF",

@@ -1,42 +1,65 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWS242ServiceCatalogService {
   acceptPortfolioShare(
     input: AcceptPortfolioShareInput,
   ): Effect.Effect<
     AcceptPortfolioShareOutput,
-    InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateBudgetWithResource(
     input: AssociateBudgetWithResourceInput,
   ): Effect.Effect<
     AssociateBudgetWithResourceOutput,
-    DuplicateResourceException | InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associatePrincipalWithPortfolio(
     input: AssociatePrincipalWithPortfolioInput,
   ): Effect.Effect<
     AssociatePrincipalWithPortfolioOutput,
-    InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateProductWithPortfolio(
     input: AssociateProductWithPortfolioInput,
   ): Effect.Effect<
     AssociateProductWithPortfolioOutput,
-    InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateServiceActionWithProvisioningArtifact(
     input: AssociateServiceActionWithProvisioningArtifactInput,
   ): Effect.Effect<
     AssociateServiceActionWithProvisioningArtifactOutput,
-    DuplicateResourceException | InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   associateTagOptionWithResource(
     input: AssociateTagOptionWithResourceInput,
   ): Effect.Effect<
     AssociateTagOptionWithResourceOutput,
-    DuplicateResourceException | InvalidParametersException | InvalidStateException | LimitExceededException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | InvalidStateException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   batchAssociateServiceActionWithProvisioningArtifact(
     input: BatchAssociateServiceActionWithProvisioningArtifactInput,
@@ -60,37 +83,58 @@ export interface AWS242ServiceCatalogService {
     input: CreateConstraintInput,
   ): Effect.Effect<
     CreateConstraintOutput,
-    DuplicateResourceException | InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createPortfolio(
     input: CreatePortfolioInput,
   ): Effect.Effect<
     CreatePortfolioOutput,
-    InvalidParametersException | LimitExceededException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   createPortfolioShare(
     input: CreatePortfolioShareInput,
   ): Effect.Effect<
     CreatePortfolioShareOutput,
-    InvalidParametersException | InvalidStateException | LimitExceededException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | LimitExceededException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createProduct(
     input: CreateProductInput,
   ): Effect.Effect<
     CreateProductOutput,
-    InvalidParametersException | LimitExceededException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   createProvisionedProductPlan(
     input: CreateProvisionedProductPlanInput,
   ): Effect.Effect<
     CreateProvisionedProductPlanOutput,
-    InvalidParametersException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createProvisioningArtifact(
     input: CreateProvisioningArtifactInput,
   ): Effect.Effect<
     CreateProvisioningArtifactOutput,
-    InvalidParametersException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createServiceAction(
     input: CreateServiceActionInput,
@@ -102,7 +146,10 @@ export interface AWS242ServiceCatalogService {
     input: CreateTagOptionInput,
   ): Effect.Effect<
     CreateTagOptionOutput,
-    DuplicateResourceException | LimitExceededException | TagOptionNotMigratedException | CommonAwsError
+    | DuplicateResourceException
+    | LimitExceededException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   deleteConstraint(
     input: DeleteConstraintInput,
@@ -114,19 +161,31 @@ export interface AWS242ServiceCatalogService {
     input: DeletePortfolioInput,
   ): Effect.Effect<
     DeletePortfolioOutput,
-    InvalidParametersException | ResourceInUseException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   deletePortfolioShare(
     input: DeletePortfolioShareInput,
   ): Effect.Effect<
     DeletePortfolioShareOutput,
-    InvalidParametersException | InvalidStateException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteProduct(
     input: DeleteProductInput,
   ): Effect.Effect<
     DeleteProductOutput,
-    InvalidParametersException | ResourceInUseException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   deleteProvisionedProductPlan(
     input: DeleteProvisionedProductPlanInput,
@@ -138,19 +197,28 @@ export interface AWS242ServiceCatalogService {
     input: DeleteProvisioningArtifactInput,
   ): Effect.Effect<
     DeleteProvisioningArtifactOutput,
-    InvalidParametersException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteServiceAction(
     input: DeleteServiceActionInput,
   ): Effect.Effect<
     DeleteServiceActionOutput,
-    InvalidParametersException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteTagOption(
     input: DeleteTagOptionInput,
   ): Effect.Effect<
     DeleteTagOptionOutput,
-    ResourceInUseException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   describeConstraint(
     input: DescribeConstraintInput,
@@ -170,17 +238,20 @@ export interface AWS242ServiceCatalogService {
     DescribePortfolioOutput,
     ResourceNotFoundException | CommonAwsError
   >;
-  describePortfolioShareStatus(
-    input: DescribePortfolioShareStatusInput,
-  ): Effect.Effect<
-    DescribePortfolioShareStatusOutput,
-    InvalidParametersException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
-  >;
   describePortfolioShares(
     input: DescribePortfolioSharesInput,
   ): Effect.Effect<
     DescribePortfolioSharesOutput,
     InvalidParametersException | ResourceNotFoundException | CommonAwsError
+  >;
+  describePortfolioShareStatus(
+    input: DescribePortfolioShareStatusInput,
+  ): Effect.Effect<
+    DescribePortfolioShareStatusOutput,
+    | InvalidParametersException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeProduct(
     input: DescribeProductInput,
@@ -252,7 +323,10 @@ export interface AWS242ServiceCatalogService {
     input: DisableAWSOrganizationsAccessInput,
   ): Effect.Effect<
     DisableAWSOrganizationsAccessOutput,
-    InvalidStateException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
+    | InvalidStateException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateBudgetFromResource(
     input: DisassociateBudgetFromResourceInput,
@@ -270,7 +344,10 @@ export interface AWS242ServiceCatalogService {
     input: DisassociateProductFromPortfolioInput,
   ): Effect.Effect<
     DisassociateProductFromPortfolioOutput,
-    InvalidParametersException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   disassociateServiceActionFromProvisioningArtifact(
     input: DisassociateServiceActionFromProvisioningArtifactInput,
@@ -288,19 +365,28 @@ export interface AWS242ServiceCatalogService {
     input: EnableAWSOrganizationsAccessInput,
   ): Effect.Effect<
     EnableAWSOrganizationsAccessOutput,
-    InvalidStateException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
+    | InvalidStateException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   executeProvisionedProductPlan(
     input: ExecuteProvisionedProductPlanInput,
   ): Effect.Effect<
     ExecuteProvisionedProductPlanOutput,
-    InvalidParametersException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   executeProvisionedProductServiceAction(
     input: ExecuteProvisionedProductServiceActionInput,
   ): Effect.Effect<
     ExecuteProvisionedProductServiceActionOutput,
-    InvalidParametersException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getAWSOrganizationsAccessStatus(
     input: GetAWSOrganizationsAccessStatusInput,
@@ -318,7 +404,11 @@ export interface AWS242ServiceCatalogService {
     input: ImportAsProvisionedProductInput,
   ): Effect.Effect<
     ImportAsProvisionedProductOutput,
-    DuplicateResourceException | InvalidParametersException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listAcceptedPortfolioShares(
     input: ListAcceptedPortfolioSharesInput,
@@ -348,7 +438,10 @@ export interface AWS242ServiceCatalogService {
     input: ListOrganizationPortfolioAccessInput,
   ): Effect.Effect<
     ListOrganizationPortfolioAccessOutput,
-    InvalidParametersException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listPortfolioAccess(
     input: ListPortfolioAccessInput,
@@ -402,7 +495,10 @@ export interface AWS242ServiceCatalogService {
     input: ListResourcesForTagOptionInput,
   ): Effect.Effect<
     ListResourcesForTagOptionOutput,
-    InvalidParametersException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   listServiceActions(
     input: ListServiceActionsInput,
@@ -450,7 +546,10 @@ export interface AWS242ServiceCatalogService {
     input: ProvisionProductInput,
   ): Effect.Effect<
     ProvisionProductOutput,
-    DuplicateResourceException | InvalidParametersException | ResourceNotFoundException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   rejectPortfolioShare(
     input: RejectPortfolioShareInput,
@@ -498,19 +597,30 @@ export interface AWS242ServiceCatalogService {
     input: UpdatePortfolioInput,
   ): Effect.Effect<
     UpdatePortfolioOutput,
-    InvalidParametersException | LimitExceededException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   updatePortfolioShare(
     input: UpdatePortfolioShareInput,
   ): Effect.Effect<
     UpdatePortfolioShareOutput,
-    InvalidParametersException | InvalidStateException | OperationNotSupportedException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | OperationNotSupportedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateProduct(
     input: UpdateProductInput,
   ): Effect.Effect<
     UpdateProductOutput,
-    InvalidParametersException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | InvalidParametersException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
   updateProvisionedProduct(
     input: UpdateProvisionedProductInput,
@@ -522,7 +632,10 @@ export interface AWS242ServiceCatalogService {
     input: UpdateProvisionedProductPropertiesInput,
   ): Effect.Effect<
     UpdateProvisionedProductPropertiesOutput,
-    InvalidParametersException | InvalidStateException | ResourceNotFoundException | CommonAwsError
+    | InvalidParametersException
+    | InvalidStateException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   updateProvisioningArtifact(
     input: UpdateProvisioningArtifactInput,
@@ -540,7 +653,11 @@ export interface AWS242ServiceCatalogService {
     input: UpdateTagOptionInput,
   ): Effect.Effect<
     UpdateTagOptionOutput,
-    DuplicateResourceException | InvalidParametersException | ResourceNotFoundException | TagOptionNotMigratedException | CommonAwsError
+    | DuplicateResourceException
+    | InvalidParametersException
+    | ResourceNotFoundException
+    | TagOptionNotMigratedException
+    | CommonAwsError
   >;
 }
 
@@ -553,8 +670,7 @@ export interface AcceptPortfolioShareInput {
   PortfolioId: string;
   PortfolioShareType?: PortfolioShareType;
 }
-export interface AcceptPortfolioShareOutput {
-}
+export interface AcceptPortfolioShareOutput {}
 export interface AccessLevelFilter {
   Key?: AccessLevelFilterKey;
   Value?: string;
@@ -574,24 +690,21 @@ export interface AssociateBudgetWithResourceInput {
   BudgetName: string;
   ResourceId: string;
 }
-export interface AssociateBudgetWithResourceOutput {
-}
+export interface AssociateBudgetWithResourceOutput {}
 export interface AssociatePrincipalWithPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
   PrincipalARN: string;
   PrincipalType: PrincipalType;
 }
-export interface AssociatePrincipalWithPortfolioOutput {
-}
+export interface AssociatePrincipalWithPortfolioOutput {}
 export interface AssociateProductWithPortfolioInput {
   AcceptLanguage?: string;
   ProductId: string;
   PortfolioId: string;
   SourcePortfolioId?: string;
 }
-export interface AssociateProductWithPortfolioOutput {
-}
+export interface AssociateProductWithPortfolioOutput {}
 export interface AssociateServiceActionWithProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
@@ -599,14 +712,12 @@ export interface AssociateServiceActionWithProvisioningArtifactInput {
   AcceptLanguage?: string;
   IdempotencyToken?: string;
 }
-export interface AssociateServiceActionWithProvisioningArtifactOutput {
-}
+export interface AssociateServiceActionWithProvisioningArtifactOutput {}
 export interface AssociateTagOptionWithResourceInput {
   ResourceId: string;
   TagOptionId: string;
 }
-export interface AssociateTagOptionWithResourceOutput {
-}
+export interface AssociateTagOptionWithResourceOutput {}
 export type AttributeValue = string;
 
 export interface BatchAssociateServiceActionWithProvisioningArtifactInput {
@@ -673,7 +784,9 @@ export interface CopyProductInput {
   SourceProductArn: string;
   TargetProductId?: string;
   TargetProductName?: string;
-  SourceProvisioningArtifactIdentifiers?: Array<Record<ProvisioningArtifactPropertyName, string>>;
+  SourceProvisioningArtifactIdentifiers?: Array<
+    Record<ProvisioningArtifactPropertyName, string>
+  >;
   CopyOptions?: Array<CopyOption>;
   IdempotencyToken: string;
 }
@@ -797,14 +910,12 @@ export interface DeleteConstraintInput {
   AcceptLanguage?: string;
   Id: string;
 }
-export interface DeleteConstraintOutput {
-}
+export interface DeleteConstraintOutput {}
 export interface DeletePortfolioInput {
   AcceptLanguage?: string;
   Id: string;
 }
-export interface DeletePortfolioOutput {
-}
+export interface DeletePortfolioOutput {}
 export interface DeletePortfolioShareInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -818,34 +929,29 @@ export interface DeleteProductInput {
   AcceptLanguage?: string;
   Id: string;
 }
-export interface DeleteProductOutput {
-}
+export interface DeleteProductOutput {}
 export interface DeleteProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanId: string;
   IgnoreErrors?: boolean;
 }
-export interface DeleteProvisionedProductPlanOutput {
-}
+export interface DeleteProvisionedProductPlanOutput {}
 export interface DeleteProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProductId: string;
   ProvisioningArtifactId: string;
 }
-export interface DeleteProvisioningArtifactOutput {
-}
+export interface DeleteProvisioningArtifactOutput {}
 export interface DeleteServiceActionInput {
   Id: string;
   AcceptLanguage?: string;
   IdempotencyToken?: string;
 }
-export interface DeleteServiceActionOutput {
-}
+export interface DeleteServiceActionOutput {}
 export interface DeleteTagOptionInput {
   Id: string;
 }
-export interface DeleteTagOptionOutput {
-}
+export interface DeleteTagOptionOutput {}
 export interface DescribeConstraintInput {
   AcceptLanguage?: string;
   Id: string;
@@ -894,7 +1000,11 @@ export interface DescribePortfolioShareStatusOutput {
   Status?: ShareStatus;
   ShareDetails?: ShareDetails;
 }
-export type DescribePortfolioShareType = "ACCOUNT" | "ORGANIZATION" | "ORGANIZATIONAL_UNIT" | "ORGANIZATION_MEMBER_ACCOUNT";
+export type DescribePortfolioShareType =
+  | "ACCOUNT"
+  | "ORGANIZATION"
+  | "ORGANIZATIONAL_UNIT"
+  | "ORGANIZATION_MEMBER_ACCOUNT";
 export interface DescribeProductAsAdminInput {
   AcceptLanguage?: string;
   Id?: string;
@@ -1014,33 +1124,28 @@ export interface DescribeTagOptionOutput {
 }
 export type Description = string;
 
-export interface DisableAWSOrganizationsAccessInput {
-}
-export interface DisableAWSOrganizationsAccessOutput {
-}
+export interface DisableAWSOrganizationsAccessInput {}
+export interface DisableAWSOrganizationsAccessOutput {}
 export type DisableTemplateValidation = boolean;
 
 export interface DisassociateBudgetFromResourceInput {
   BudgetName: string;
   ResourceId: string;
 }
-export interface DisassociateBudgetFromResourceOutput {
-}
+export interface DisassociateBudgetFromResourceOutput {}
 export interface DisassociatePrincipalFromPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
   PrincipalARN: string;
   PrincipalType?: PrincipalType;
 }
-export interface DisassociatePrincipalFromPortfolioOutput {
-}
+export interface DisassociatePrincipalFromPortfolioOutput {}
 export interface DisassociateProductFromPortfolioInput {
   AcceptLanguage?: string;
   ProductId: string;
   PortfolioId: string;
 }
-export interface DisassociateProductFromPortfolioOutput {
-}
+export interface DisassociateProductFromPortfolioOutput {}
 export interface DisassociateServiceActionFromProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
@@ -1048,23 +1153,19 @@ export interface DisassociateServiceActionFromProvisioningArtifactInput {
   AcceptLanguage?: string;
   IdempotencyToken?: string;
 }
-export interface DisassociateServiceActionFromProvisioningArtifactOutput {
-}
+export interface DisassociateServiceActionFromProvisioningArtifactOutput {}
 export interface DisassociateTagOptionFromResourceInput {
   ResourceId: string;
   TagOptionId: string;
 }
-export interface DisassociateTagOptionFromResourceOutput {
-}
+export interface DisassociateTagOptionFromResourceOutput {}
 export declare class DuplicateResourceException extends Data.TaggedError(
   "DuplicateResourceException",
 )<{
   readonly Message?: string;
 }> {}
-export interface EnableAWSOrganizationsAccessInput {
-}
-export interface EnableAWSOrganizationsAccessOutput {
-}
+export interface EnableAWSOrganizationsAccessInput {}
+export interface EnableAWSOrganizationsAccessOutput {}
 export type EngineWorkflowFailureReason = string;
 
 export interface EngineWorkflowResourceIdentifier {
@@ -1121,9 +1222,9 @@ export interface FailedServiceActionAssociation {
   ErrorCode?: ServiceActionAssociationErrorCode;
   ErrorMessage?: string;
 }
-export type FailedServiceActionAssociations = Array<FailedServiceActionAssociation>;
-export interface GetAWSOrganizationsAccessStatusInput {
-}
+export type FailedServiceActionAssociations =
+  Array<FailedServiceActionAssociation>;
+export interface GetAWSOrganizationsAccessStatusInput {}
 export interface GetAWSOrganizationsAccessStatusOutput {
   AccessStatus?: AccessStatus;
 }
@@ -1414,8 +1515,7 @@ export interface NotifyProvisionProductEngineWorkflowResultInput {
   Outputs?: Array<RecordOutput>;
   IdempotencyToken: string;
 }
-export interface NotifyProvisionProductEngineWorkflowResultOutput {
-}
+export interface NotifyProvisionProductEngineWorkflowResultOutput {}
 export interface NotifyTerminateProvisionedProductEngineWorkflowResultInput {
   WorkflowToken: string;
   RecordId: string;
@@ -1423,8 +1523,7 @@ export interface NotifyTerminateProvisionedProductEngineWorkflowResultInput {
   FailureReason?: string;
   IdempotencyToken: string;
 }
-export interface NotifyTerminateProvisionedProductEngineWorkflowResultOutput {
-}
+export interface NotifyTerminateProvisionedProductEngineWorkflowResultOutput {}
 export interface NotifyUpdateProvisionedProductEngineWorkflowResultInput {
   WorkflowToken: string;
   RecordId: string;
@@ -1433,8 +1532,7 @@ export interface NotifyUpdateProvisionedProductEngineWorkflowResultInput {
   Outputs?: Array<RecordOutput>;
   IdempotencyToken: string;
 }
-export interface NotifyUpdateProvisionedProductEngineWorkflowResultOutput {
-}
+export interface NotifyUpdateProvisionedProductEngineWorkflowResultOutput {}
 export type NullableBoolean = boolean;
 
 export declare class OperationNotSupportedException extends Data.TaggedError(
@@ -1447,7 +1545,10 @@ export interface OrganizationNode {
   Value?: string;
 }
 export type OrganizationNodes = Array<OrganizationNode>;
-export type OrganizationNodeType = "ORGANIZATION" | "ORGANIZATIONAL_UNIT" | "ACCOUNT";
+export type OrganizationNodeType =
+  | "ORGANIZATION"
+  | "ORGANIZATIONAL_UNIT"
+  | "ACCOUNT";
 export type OrganizationNodeValue = string;
 
 export type OutputDescription = string;
@@ -1509,7 +1610,10 @@ export interface PortfolioShareDetail {
   SharePrincipals?: boolean;
 }
 export type PortfolioShareDetails = Array<PortfolioShareDetail>;
-export type PortfolioShareType = "IMPORTED" | "AWS_SERVICECATALOG" | "AWS_ORGANIZATIONS";
+export type PortfolioShareType =
+  | "IMPORTED"
+  | "AWS_SERVICECATALOG"
+  | "AWS_ORGANIZATIONS";
 export interface Principal {
   PrincipalARN?: string;
   PrincipalType?: PrincipalType;
@@ -1521,8 +1625,16 @@ export type PrincipalType = "IAM" | "IAM_PATTERN";
 export type ProductArn = string;
 
 export type ProductSource = "ACCOUNT";
-export type ProductType = "CLOUD_FORMATION_TEMPLATE" | "MARKETPLACE" | "TERRAFORM_OPEN_SOURCE" | "TERRAFORM_CLOUD" | "EXTERNAL";
-export type ProductViewAggregations = Record<string, Array<ProductViewAggregationValue>>;
+export type ProductType =
+  | "CLOUD_FORMATION_TEMPLATE"
+  | "MARKETPLACE"
+  | "TERRAFORM_OPEN_SOURCE"
+  | "TERRAFORM_CLOUD"
+  | "EXTERNAL";
+export type ProductViewAggregations = Record<
+  string,
+  Array<ProductViewAggregationValue>
+>;
 export type ProductViewAggregationType = string;
 
 export interface ProductViewAggregationValue {
@@ -1540,7 +1652,11 @@ export interface ProductViewDetail {
 export type ProductViewDetails = Array<ProductViewDetail>;
 export type ProductViewDistributor = string;
 
-export type ProductViewFilterBy = "FullTextSearch" | "Owner" | "ProductType" | "SourceProductId";
+export type ProductViewFilterBy =
+  | "FullTextSearch"
+  | "Owner"
+  | "ProductType"
+  | "SourceProductId";
 export type ProductViewFilters = Record<ProductViewFilterBy, Array<string>>;
 export type ProductViewFilterValue = string;
 
@@ -1612,7 +1728,10 @@ export interface ProvisionedProductDetail {
   LaunchRoleArn?: string;
 }
 export type ProvisionedProductDetails = Array<ProvisionedProductDetail>;
-export type ProvisionedProductFilters = Record<ProvisionedProductViewFilterBy, Array<string>>;
+export type ProvisionedProductFilters = Record<
+  ProvisionedProductViewFilterBy,
+  Array<string>
+>;
 export type ProvisionedProductId = string;
 
 export type ProvisionedProductName = string;
@@ -1639,7 +1758,13 @@ export interface ProvisionedProductPlanDetails {
 export type ProvisionedProductPlanName = string;
 
 export type ProvisionedProductPlans = Array<ProvisionedProductPlanSummary>;
-export type ProvisionedProductPlanStatus = "CREATE_IN_PROGRESS" | "CREATE_SUCCESS" | "CREATE_FAILED" | "EXECUTE_IN_PROGRESS" | "EXECUTE_SUCCESS" | "EXECUTE_FAILED";
+export type ProvisionedProductPlanStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_SUCCESS"
+  | "CREATE_FAILED"
+  | "EXECUTE_IN_PROGRESS"
+  | "EXECUTE_SUCCESS"
+  | "EXECUTE_FAILED";
 export interface ProvisionedProductPlanSummary {
   PlanName?: string;
   PlanId?: string;
@@ -1650,7 +1775,12 @@ export interface ProvisionedProductPlanSummary {
 }
 export type ProvisionedProductPlanType = "CLOUDFORMATION";
 export type ProvisionedProductProperties = Record<PropertyKey, string>;
-export type ProvisionedProductStatus = "AVAILABLE" | "UNDER_CHANGE" | "TAINTED" | "ERROR" | "PLAN_IN_PROGRESS";
+export type ProvisionedProductStatus =
+  | "AVAILABLE"
+  | "UNDER_CHANGE"
+  | "TAINTED"
+  | "ERROR"
+  | "PLAN_IN_PROGRESS";
 export type ProvisionedProductStatusMessage = string;
 
 export type ProvisionedProductType = string;
@@ -1706,7 +1836,8 @@ export interface ProvisioningArtifactParameter {
   Description?: string;
   ParameterConstraints?: ParameterConstraints;
 }
-export type ProvisioningArtifactParameters = Array<ProvisioningArtifactParameter>;
+export type ProvisioningArtifactParameters =
+  Array<ProvisioningArtifactParameter>;
 export interface ProvisioningArtifactPreferences {
   StackSetAccounts?: Array<string>;
   StackSetRegions?: Array<string>;
@@ -1730,7 +1861,13 @@ export interface ProvisioningArtifactSummary {
   CreatedTime?: Date | string;
   ProvisioningArtifactMetadata?: Record<string, string>;
 }
-export type ProvisioningArtifactType = "CLOUD_FORMATION_TEMPLATE" | "MARKETPLACE_AMI" | "MARKETPLACE_CAR" | "TERRAFORM_OPEN_SOURCE" | "TERRAFORM_CLOUD" | "EXTERNAL";
+export type ProvisioningArtifactType =
+  | "CLOUD_FORMATION_TEMPLATE"
+  | "MARKETPLACE_AMI"
+  | "MARKETPLACE_CAR"
+  | "TERRAFORM_OPEN_SOURCE"
+  | "TERRAFORM_CLOUD"
+  | "EXTERNAL";
 export interface ProvisioningArtifactView {
   ProductViewSummary?: ProductViewSummary;
   ProvisioningArtifact?: ProvisioningArtifact;
@@ -1795,7 +1932,12 @@ export interface RecordOutput {
   Description?: string;
 }
 export type RecordOutputs = Array<RecordOutput>;
-export type RecordStatus = "CREATED" | "IN_PROGRESS" | "IN_PROGRESS_IN_ERROR" | "SUCCEEDED" | "FAILED";
+export type RecordStatus =
+  | "CREATED"
+  | "IN_PROGRESS"
+  | "IN_PROGRESS_IN_ERROR"
+  | "SUCCEEDED"
+  | "FAILED";
 export interface RecordTag {
   Key?: string;
   Value?: string;
@@ -1814,8 +1956,7 @@ export interface RejectPortfolioShareInput {
   PortfolioId: string;
   PortfolioShareType?: PortfolioShareType;
 }
-export interface RejectPortfolioShareOutput {
-}
+export interface RejectPortfolioShareOutput {}
 export type Replacement = "TRUE" | "FALSE" | "CONDITIONAL";
 export type Repository = string;
 
@@ -1826,7 +1967,13 @@ export type RepositoryBranch = string;
 export type RequiresRecreation = "NEVER" | "CONDITIONALLY" | "ALWAYS";
 export type ResourceARN = string;
 
-export type ResourceAttribute = "PROPERTIES" | "METADATA" | "CREATIONPOLICY" | "UPDATEPOLICY" | "DELETIONPOLICY" | "TAGS";
+export type ResourceAttribute =
+  | "PROPERTIES"
+  | "METADATA"
+  | "CREATIONPOLICY"
+  | "UPDATEPOLICY"
+  | "DELETIONPOLICY"
+  | "TAGS";
 export interface ResourceChange {
   Action?: ChangeAction;
   LogicalResourceId?: string;
@@ -1947,12 +2094,25 @@ export interface ServiceActionAssociation {
   ProductId: string;
   ProvisioningArtifactId: string;
 }
-export type ServiceActionAssociationErrorCode = "DuplicateResourceException" | "InternalFailure" | "LimitExceededException" | "ResourceNotFoundException" | "ThrottlingException" | "InvalidParameterException";
+export type ServiceActionAssociationErrorCode =
+  | "DuplicateResourceException"
+  | "InternalFailure"
+  | "LimitExceededException"
+  | "ResourceNotFoundException"
+  | "ThrottlingException"
+  | "InvalidParameterException";
 export type ServiceActionAssociationErrorMessage = string;
 
 export type ServiceActionAssociations = Array<ServiceActionAssociation>;
-export type ServiceActionDefinitionKey = "Name" | "Version" | "AssumeRole" | "Parameters";
-export type ServiceActionDefinitionMap = Record<ServiceActionDefinitionKey, string>;
+export type ServiceActionDefinitionKey =
+  | "Name"
+  | "Version"
+  | "AssumeRole"
+  | "Parameters";
+export type ServiceActionDefinitionMap = Record<
+  ServiceActionDefinitionKey,
+  string
+>;
 export type ServiceActionDefinitionType = "SsmAutomation";
 export type ServiceActionDefinitionValue = string;
 
@@ -1981,7 +2141,12 @@ export interface ShareError {
   Error?: string;
 }
 export type ShareErrors = Array<ShareError>;
-export type ShareStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "COMPLETED_WITH_ERRORS" | "ERROR";
+export type ShareStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "COMPLETED_WITH_ERRORS"
+  | "ERROR";
 export type SortField = string;
 
 export type SortOrder = "ASCENDING" | "DESCENDING";
@@ -1997,8 +2162,13 @@ export interface SourceConnectionDetail {
 export interface SourceConnectionParameters {
   CodeStar?: CodeStarParameters;
 }
-export type SourceProvisioningArtifactProperties = Array<Record<ProvisioningArtifactPropertyName, string>>;
-export type SourceProvisioningArtifactPropertiesMap = Record<ProvisioningArtifactPropertyName, string>;
+export type SourceProvisioningArtifactProperties = Array<
+  Record<ProvisioningArtifactPropertyName, string>
+>;
+export type SourceProvisioningArtifactPropertiesMap = Record<
+  ProvisioningArtifactPropertyName,
+  string
+>;
 export type SourceRevision = string;
 
 export type SourceType = "CODESTAR";
@@ -2303,18 +2473,17 @@ export declare namespace AssociateTagOptionWithResource {
 
 export declare namespace BatchAssociateServiceActionWithProvisioningArtifact {
   export type Input = BatchAssociateServiceActionWithProvisioningArtifactInput;
-  export type Output = BatchAssociateServiceActionWithProvisioningArtifactOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Output =
+    BatchAssociateServiceActionWithProvisioningArtifactOutput;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace BatchDisassociateServiceActionFromProvisioningArtifact {
-  export type Input = BatchDisassociateServiceActionFromProvisioningArtifactInput;
-  export type Output = BatchDisassociateServiceActionFromProvisioningArtifactOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Input =
+    BatchDisassociateServiceActionFromProvisioningArtifactInput;
+  export type Output =
+    BatchDisassociateServiceActionFromProvisioningArtifactOutput;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace CopyProduct {
@@ -2492,23 +2661,26 @@ export declare namespace DeleteTagOption {
 export declare namespace DescribeConstraint {
   export type Input = DescribeConstraintInput;
   export type Output = DescribeConstraintOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeCopyProductStatus {
   export type Input = DescribeCopyProductStatusInput;
   export type Output = DescribeCopyProductStatusOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribePortfolio {
   export type Input = DescribePortfolioInput;
   export type Output = DescribePortfolioOutput;
+  export type Error = ResourceNotFoundException | CommonAwsError;
+}
+
+export declare namespace DescribePortfolioShares {
+  export type Input = DescribePortfolioSharesInput;
+  export type Output = DescribePortfolioSharesOutput;
   export type Error =
+    | InvalidParametersException
     | ResourceNotFoundException
     | CommonAwsError;
 }
@@ -2519,15 +2691,6 @@ export declare namespace DescribePortfolioShareStatus {
   export type Error =
     | InvalidParametersException
     | OperationNotSupportedException
-    | ResourceNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DescribePortfolioShares {
-  export type Input = DescribePortfolioSharesInput;
-  export type Output = DescribePortfolioSharesOutput;
-  export type Error =
-    | InvalidParametersException
     | ResourceNotFoundException
     | CommonAwsError;
 }
@@ -2598,17 +2761,13 @@ export declare namespace DescribeProvisioningParameters {
 export declare namespace DescribeRecord {
   export type Input = DescribeRecordInput;
   export type Output = DescribeRecordOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeServiceAction {
   export type Input = DescribeServiceActionInput;
   export type Output = DescribeServiceActionOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeServiceActionExecutionParameters {
@@ -2642,9 +2801,7 @@ export declare namespace DisableAWSOrganizationsAccess {
 export declare namespace DisassociateBudgetFromResource {
   export type Input = DisassociateBudgetFromResourceInput;
   export type Output = DisassociateBudgetFromResourceOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace DisassociatePrincipalFromPortfolio {
@@ -2801,9 +2958,7 @@ export declare namespace ListPortfolioAccess {
 export declare namespace ListPortfolios {
   export type Input = ListPortfoliosInput;
   export type Output = ListPortfoliosOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace ListPortfoliosForProduct {
@@ -2854,9 +3009,7 @@ export declare namespace ListProvisioningArtifactsForServiceAction {
 export declare namespace ListRecordHistory {
   export type Input = ListRecordHistoryInput;
   export type Output = ListRecordHistoryOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace ListResourcesForTagOption {
@@ -2872,9 +3025,7 @@ export declare namespace ListResourcesForTagOption {
 export declare namespace ListServiceActions {
   export type Input = ListServiceActionsInput;
   export type Output = ListServiceActionsOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace ListServiceActionsForProvisioningArtifact {
@@ -2914,8 +3065,10 @@ export declare namespace NotifyProvisionProductEngineWorkflowResult {
 }
 
 export declare namespace NotifyTerminateProvisionedProductEngineWorkflowResult {
-  export type Input = NotifyTerminateProvisionedProductEngineWorkflowResultInput;
-  export type Output = NotifyTerminateProvisionedProductEngineWorkflowResultOutput;
+  export type Input =
+    NotifyTerminateProvisionedProductEngineWorkflowResultInput;
+  export type Output =
+    NotifyTerminateProvisionedProductEngineWorkflowResultOutput;
   export type Error =
     | InvalidParametersException
     | ResourceNotFoundException
@@ -2944,25 +3097,19 @@ export declare namespace ProvisionProduct {
 export declare namespace RejectPortfolioShare {
   export type Input = RejectPortfolioShareInput;
   export type Output = RejectPortfolioShareOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace ScanProvisionedProducts {
   export type Input = ScanProvisionedProductsInput;
   export type Output = ScanProvisionedProductsOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace SearchProducts {
   export type Input = SearchProductsInput;
   export type Output = SearchProductsOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace SearchProductsAsAdmin {
@@ -2977,17 +3124,13 @@ export declare namespace SearchProductsAsAdmin {
 export declare namespace SearchProvisionedProducts {
   export type Input = SearchProvisionedProductsInput;
   export type Output = SearchProvisionedProductsOutput;
-  export type Error =
-    | InvalidParametersException
-    | CommonAwsError;
+  export type Error = InvalidParametersException | CommonAwsError;
 }
 
 export declare namespace TerminateProvisionedProduct {
   export type Input = TerminateProvisionedProductInput;
   export type Output = TerminateProvisionedProductOutput;
-  export type Error =
-    | ResourceNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceNotFoundException | CommonAwsError;
 }
 
 export declare namespace UpdateConstraint {
@@ -3078,4 +3221,3 @@ export declare namespace UpdateTagOption {
     | TagOptionNotMigratedException
     | CommonAwsError;
 }
-

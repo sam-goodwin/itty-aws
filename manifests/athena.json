@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.athena#AclConfiguration": {
       "type": "structure",
@@ -34,6 +63,212 @@
     },
     "com.amazonaws.athena#AmazonAthena": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.athena#BatchGetNamedQuery"
+        },
+        {
+          "target": "com.amazonaws.athena#BatchGetPreparedStatement"
+        },
+        {
+          "target": "com.amazonaws.athena#BatchGetQueryExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#CancelCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.athena#CreateCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.athena#CreateDataCatalog"
+        },
+        {
+          "target": "com.amazonaws.athena#CreateNamedQuery"
+        },
+        {
+          "target": "com.amazonaws.athena#CreateNotebook"
+        },
+        {
+          "target": "com.amazonaws.athena#CreatePreparedStatement"
+        },
+        {
+          "target": "com.amazonaws.athena#CreatePresignedNotebookUrl"
+        },
+        {
+          "target": "com.amazonaws.athena#CreateWorkGroup"
+        },
+        {
+          "target": "com.amazonaws.athena#DeleteCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.athena#DeleteDataCatalog"
+        },
+        {
+          "target": "com.amazonaws.athena#DeleteNamedQuery"
+        },
+        {
+          "target": "com.amazonaws.athena#DeleteNotebook"
+        },
+        {
+          "target": "com.amazonaws.athena#DeletePreparedStatement"
+        },
+        {
+          "target": "com.amazonaws.athena#DeleteWorkGroup"
+        },
+        {
+          "target": "com.amazonaws.athena#ExportNotebook"
+        },
+        {
+          "target": "com.amazonaws.athena#GetCalculationExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#GetCalculationExecutionCode"
+        },
+        {
+          "target": "com.amazonaws.athena#GetCalculationExecutionStatus"
+        },
+        {
+          "target": "com.amazonaws.athena#GetCapacityAssignmentConfiguration"
+        },
+        {
+          "target": "com.amazonaws.athena#GetCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.athena#GetDatabase"
+        },
+        {
+          "target": "com.amazonaws.athena#GetDataCatalog"
+        },
+        {
+          "target": "com.amazonaws.athena#GetNamedQuery"
+        },
+        {
+          "target": "com.amazonaws.athena#GetNotebookMetadata"
+        },
+        {
+          "target": "com.amazonaws.athena#GetPreparedStatement"
+        },
+        {
+          "target": "com.amazonaws.athena#GetQueryExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#GetQueryResults"
+        },
+        {
+          "target": "com.amazonaws.athena#GetQueryRuntimeStatistics"
+        },
+        {
+          "target": "com.amazonaws.athena#GetSession"
+        },
+        {
+          "target": "com.amazonaws.athena#GetSessionStatus"
+        },
+        {
+          "target": "com.amazonaws.athena#GetTableMetadata"
+        },
+        {
+          "target": "com.amazonaws.athena#GetWorkGroup"
+        },
+        {
+          "target": "com.amazonaws.athena#ImportNotebook"
+        },
+        {
+          "target": "com.amazonaws.athena#ListApplicationDPUSizes"
+        },
+        {
+          "target": "com.amazonaws.athena#ListCalculationExecutions"
+        },
+        {
+          "target": "com.amazonaws.athena#ListCapacityReservations"
+        },
+        {
+          "target": "com.amazonaws.athena#ListDatabases"
+        },
+        {
+          "target": "com.amazonaws.athena#ListDataCatalogs"
+        },
+        {
+          "target": "com.amazonaws.athena#ListEngineVersions"
+        },
+        {
+          "target": "com.amazonaws.athena#ListExecutors"
+        },
+        {
+          "target": "com.amazonaws.athena#ListNamedQueries"
+        },
+        {
+          "target": "com.amazonaws.athena#ListNotebookMetadata"
+        },
+        {
+          "target": "com.amazonaws.athena#ListNotebookSessions"
+        },
+        {
+          "target": "com.amazonaws.athena#ListPreparedStatements"
+        },
+        {
+          "target": "com.amazonaws.athena#ListQueryExecutions"
+        },
+        {
+          "target": "com.amazonaws.athena#ListSessions"
+        },
+        {
+          "target": "com.amazonaws.athena#ListTableMetadata"
+        },
+        {
+          "target": "com.amazonaws.athena#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.athena#ListWorkGroups"
+        },
+        {
+          "target": "com.amazonaws.athena#PutCapacityAssignmentConfiguration"
+        },
+        {
+          "target": "com.amazonaws.athena#StartCalculationExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#StartQueryExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#StartSession"
+        },
+        {
+          "target": "com.amazonaws.athena#StopCalculationExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#StopQueryExecution"
+        },
+        {
+          "target": "com.amazonaws.athena#TagResource"
+        },
+        {
+          "target": "com.amazonaws.athena#TerminateSession"
+        },
+        {
+          "target": "com.amazonaws.athena#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdateCapacityReservation"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdateDataCatalog"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdateNamedQuery"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdateNotebook"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdateNotebookMetadata"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdatePreparedStatement"
+        },
+        {
+          "target": "com.amazonaws.athena#UpdateWorkGroup"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Athena",

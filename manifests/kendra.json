@@ -1,7 +1,236 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.kendra#AWSKendraFrontendService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kendra#AssociateEntitiesToExperience"
+        },
+        {
+          "target": "com.amazonaws.kendra#AssociatePersonasToEntities"
+        },
+        {
+          "target": "com.amazonaws.kendra#BatchDeleteDocument"
+        },
+        {
+          "target": "com.amazonaws.kendra#BatchDeleteFeaturedResultsSet"
+        },
+        {
+          "target": "com.amazonaws.kendra#BatchGetDocumentStatus"
+        },
+        {
+          "target": "com.amazonaws.kendra#BatchPutDocument"
+        },
+        {
+          "target": "com.amazonaws.kendra#ClearQuerySuggestions"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateAccessControlConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateDataSource"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateExperience"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateFaq"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateFeaturedResultsSet"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateIndex"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateQuerySuggestionsBlockList"
+        },
+        {
+          "target": "com.amazonaws.kendra#CreateThesaurus"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteAccessControlConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteDataSource"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteExperience"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteFaq"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteIndex"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeletePrincipalMapping"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteQuerySuggestionsBlockList"
+        },
+        {
+          "target": "com.amazonaws.kendra#DeleteThesaurus"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeAccessControlConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeDataSource"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeExperience"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeFaq"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeFeaturedResultsSet"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeIndex"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribePrincipalMapping"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeQuerySuggestionsBlockList"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeQuerySuggestionsConfig"
+        },
+        {
+          "target": "com.amazonaws.kendra#DescribeThesaurus"
+        },
+        {
+          "target": "com.amazonaws.kendra#DisassociateEntitiesFromExperience"
+        },
+        {
+          "target": "com.amazonaws.kendra#DisassociatePersonasFromEntities"
+        },
+        {
+          "target": "com.amazonaws.kendra#GetQuerySuggestions"
+        },
+        {
+          "target": "com.amazonaws.kendra#GetSnapshots"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListAccessControlConfigurations"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListDataSources"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListDataSourceSyncJobs"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListEntityPersonas"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListExperienceEntities"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListExperiences"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListFaqs"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListFeaturedResultsSets"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListGroupsOlderThanOrderingId"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListIndices"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListQuerySuggestionsBlockLists"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.kendra#ListThesauri"
+        },
+        {
+          "target": "com.amazonaws.kendra#PutPrincipalMapping"
+        },
+        {
+          "target": "com.amazonaws.kendra#Query"
+        },
+        {
+          "target": "com.amazonaws.kendra#Retrieve"
+        },
+        {
+          "target": "com.amazonaws.kendra#StartDataSourceSyncJob"
+        },
+        {
+          "target": "com.amazonaws.kendra#StopDataSourceSyncJob"
+        },
+        {
+          "target": "com.amazonaws.kendra#SubmitFeedback"
+        },
+        {
+          "target": "com.amazonaws.kendra#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kendra#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateAccessControlConfiguration"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateDataSource"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateExperience"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateFeaturedResultsSet"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateIndex"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateQuerySuggestionsBlockList"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateQuerySuggestionsConfig"
+        },
+        {
+          "target": "com.amazonaws.kendra#UpdateThesaurus"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "kendra",

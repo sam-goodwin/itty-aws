@@ -1,7 +1,260 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.appsync#AWSDeepdishControlPlaneService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.appsync#AssociateApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#AssociateMergedGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#AssociateSourceGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateApiCache"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateApiKey"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateChannelNamespace"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateDataSource"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateDomainName"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateFunction"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateResolver"
+        },
+        {
+          "target": "com.amazonaws.appsync#CreateType"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteApiCache"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteApiKey"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteChannelNamespace"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteDataSource"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteDomainName"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteFunction"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteResolver"
+        },
+        {
+          "target": "com.amazonaws.appsync#DeleteType"
+        },
+        {
+          "target": "com.amazonaws.appsync#DisassociateApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#DisassociateMergedGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#DisassociateSourceGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#EvaluateCode"
+        },
+        {
+          "target": "com.amazonaws.appsync#EvaluateMappingTemplate"
+        },
+        {
+          "target": "com.amazonaws.appsync#FlushApiCache"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetApiAssociation"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetApiCache"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetChannelNamespace"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetDataSource"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetDataSourceIntrospection"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetDomainName"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetFunction"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetGraphqlApiEnvironmentVariables"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetIntrospectionSchema"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetResolver"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetSchemaCreationStatus"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetSourceApiAssociation"
+        },
+        {
+          "target": "com.amazonaws.appsync#GetType"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListApiKeys"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListApis"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListChannelNamespaces"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListDataSources"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListDomainNames"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListFunctions"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListGraphqlApis"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListResolvers"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListResolversByFunction"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListSourceApiAssociations"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListTypes"
+        },
+        {
+          "target": "com.amazonaws.appsync#ListTypesByAssociation"
+        },
+        {
+          "target": "com.amazonaws.appsync#PutGraphqlApiEnvironmentVariables"
+        },
+        {
+          "target": "com.amazonaws.appsync#StartDataSourceIntrospection"
+        },
+        {
+          "target": "com.amazonaws.appsync#StartSchemaCreation"
+        },
+        {
+          "target": "com.amazonaws.appsync#StartSchemaMerge"
+        },
+        {
+          "target": "com.amazonaws.appsync#TagResource"
+        },
+        {
+          "target": "com.amazonaws.appsync#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateApiCache"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateApiKey"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateChannelNamespace"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateDataSource"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateDomainName"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateFunction"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateGraphqlApi"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateResolver"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateSourceApiAssociation"
+        },
+        {
+          "target": "com.amazonaws.appsync#UpdateType"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "AppSync",

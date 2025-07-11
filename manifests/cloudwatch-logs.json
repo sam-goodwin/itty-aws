@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudwatchlogs#AccessDeniedException": {
       "type": "structure",
@@ -7015,6 +7044,278 @@
     },
     "com.amazonaws.cloudwatchlogs#Logs_20140328": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudwatchlogs#AssociateKmsKey"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#CancelExportTask"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#CreateDelivery"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#CreateExportTask"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#CreateLogAnomalyDetector"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#CreateLogGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#CreateLogStream"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteAccountPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteDataProtectionPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteDelivery"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteDeliveryDestinationPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteDeliverySource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteIndexPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteIntegration"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteLogAnomalyDetector"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteLogGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteLogStream"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteMetricFilter"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteQueryDefinition"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteRetentionPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteSubscriptionFilter"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DeleteTransformer"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeAccountPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeConfigurationTemplates"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeDeliveries"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeDeliveryDestinations"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeDeliverySources"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeDestinations"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeExportTasks"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeFieldIndexes"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeIndexPolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeLogGroups"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeLogStreams"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeMetricFilters"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeQueries"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeQueryDefinitions"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeResourcePolicies"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DescribeSubscriptionFilters"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#DisassociateKmsKey"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#FilterLogEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetDataProtectionPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetDelivery"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetDeliveryDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetDeliveryDestinationPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetDeliverySource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetIntegration"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetLogAnomalyDetector"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetLogEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetLogGroupFields"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetLogRecord"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetQueryResults"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#GetTransformer"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListAnomalies"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListIntegrations"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListLogAnomalyDetectors"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListLogGroups"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListLogGroupsForQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#ListTagsLogGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutAccountPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutDataProtectionPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutDeliveryDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutDeliveryDestinationPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutDeliverySource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutDestinationPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutIndexPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutIntegration"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutLogEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutMetricFilter"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutQueryDefinition"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutRetentionPolicy"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutSubscriptionFilter"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#PutTransformer"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#StartLiveTail"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#StartQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#StopQuery"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#TagLogGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#TagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#TestMetricFilter"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#TestTransformer"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#UntagLogGroup"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#UpdateAnomaly"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#UpdateDeliveryConfiguration"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchlogs#UpdateLogAnomalyDetector"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudWatch Logs",

@@ -1,750 +1,1375 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface BackplaneControlService {
   createApiKey(
     input: CreateApiKeyRequest,
   ): Effect.Effect<
     ApiKey,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createAuthorizer(
     input: CreateAuthorizerRequest,
   ): Effect.Effect<
     Authorizer,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createBasePathMapping(
     input: CreateBasePathMappingRequest,
   ): Effect.Effect<
     BasePathMapping,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDeployment(
     input: CreateDeploymentRequest,
   ): Effect.Effect<
     Deployment,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDocumentationPart(
     input: CreateDocumentationPartRequest,
   ): Effect.Effect<
     DocumentationPart,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDocumentationVersion(
     input: CreateDocumentationVersionRequest,
   ): Effect.Effect<
     DocumentationVersion,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDomainName(
     input: CreateDomainNameRequest,
   ): Effect.Effect<
     DomainName,
-    BadRequestException | ConflictException | LimitExceededException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createDomainNameAccessAssociation(
     input: CreateDomainNameAccessAssociationRequest,
   ): Effect.Effect<
     DomainNameAccessAssociation,
-    BadRequestException | ConflictException | LimitExceededException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createModel(
     input: CreateModelRequest,
   ): Effect.Effect<
     Model,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createRequestValidator(
     input: CreateRequestValidatorRequest,
   ): Effect.Effect<
     RequestValidator,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createResource(
     input: CreateResourceRequest,
   ): Effect.Effect<
     Resource,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createRestApi(
     input: CreateRestApiRequest,
   ): Effect.Effect<
     RestApi,
-    BadRequestException | ConflictException | LimitExceededException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createStage(
     input: CreateStageRequest,
   ): Effect.Effect<
     Stage,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createUsagePlan(
     input: CreateUsagePlanRequest,
   ): Effect.Effect<
     UsagePlan,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createUsagePlanKey(
     input: CreateUsagePlanKeyRequest,
   ): Effect.Effect<
     UsagePlanKey,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createVpcLink(
     input: CreateVpcLinkRequest,
   ): Effect.Effect<
     VpcLink,
-    BadRequestException | ConflictException | LimitExceededException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteApiKey(
     input: DeleteApiKeyRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteAuthorizer(
     input: DeleteAuthorizerRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteBasePathMapping(
     input: DeleteBasePathMappingRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteClientCertificate(
     input: DeleteClientCertificateRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDeployment(
     input: DeleteDeploymentRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDocumentationPart(
     input: DeleteDocumentationPartRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDocumentationVersion(
     input: DeleteDocumentationVersionRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDomainName(
     input: DeleteDomainNameRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteDomainNameAccessAssociation(
     input: DeleteDomainNameAccessAssociationRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteGatewayResponse(
     input: DeleteGatewayResponseRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteIntegration(
     input: DeleteIntegrationRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteIntegrationResponse(
     input: DeleteIntegrationResponseRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteMethod(
     input: DeleteMethodRequest,
   ): Effect.Effect<
     {},
-    ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteMethodResponse(
     input: DeleteMethodResponseRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteModel(
     input: DeleteModelRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteRequestValidator(
     input: DeleteRequestValidatorRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteResource(
     input: DeleteResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteRestApi(
     input: DeleteRestApiRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteStage(
     input: DeleteStageRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteUsagePlan(
     input: DeleteUsagePlanRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteUsagePlanKey(
     input: DeleteUsagePlanKeyRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   deleteVpcLink(
     input: DeleteVpcLinkRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   flushStageAuthorizersCache(
     input: FlushStageAuthorizersCacheRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   flushStageCache(
     input: FlushStageCacheRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   generateClientCertificate(
     input: GenerateClientCertificateRequest,
   ): Effect.Effect<
     ClientCertificate,
-    BadRequestException | ConflictException | LimitExceededException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getAccount(
     input: GetAccountRequest,
   ): Effect.Effect<
     Account,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getApiKey(
     input: GetApiKeyRequest,
   ): Effect.Effect<
     ApiKey,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getApiKeys(
     input: GetApiKeysRequest,
   ): Effect.Effect<
     ApiKeys,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getAuthorizer(
     input: GetAuthorizerRequest,
   ): Effect.Effect<
     Authorizer,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getAuthorizers(
     input: GetAuthorizersRequest,
   ): Effect.Effect<
     Authorizers,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getBasePathMapping(
     input: GetBasePathMappingRequest,
   ): Effect.Effect<
     BasePathMapping,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getBasePathMappings(
     input: GetBasePathMappingsRequest,
   ): Effect.Effect<
     BasePathMappings,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getClientCertificate(
     input: GetClientCertificateRequest,
   ): Effect.Effect<
     ClientCertificate,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getClientCertificates(
     input: GetClientCertificatesRequest,
   ): Effect.Effect<
     ClientCertificates,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDeployment(
     input: GetDeploymentRequest,
   ): Effect.Effect<
     Deployment,
-    BadRequestException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDeployments(
     input: GetDeploymentsRequest,
   ): Effect.Effect<
     Deployments,
-    BadRequestException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDocumentationPart(
     input: GetDocumentationPartRequest,
   ): Effect.Effect<
     DocumentationPart,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDocumentationParts(
     input: GetDocumentationPartsRequest,
   ): Effect.Effect<
     DocumentationParts,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDocumentationVersion(
     input: GetDocumentationVersionRequest,
   ): Effect.Effect<
     DocumentationVersion,
-    NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDocumentationVersions(
     input: GetDocumentationVersionsRequest,
   ): Effect.Effect<
     DocumentationVersions,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDomainName(
     input: GetDomainNameRequest,
   ): Effect.Effect<
     DomainName,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDomainNameAccessAssociations(
     input: GetDomainNameAccessAssociationsRequest,
   ): Effect.Effect<
     DomainNameAccessAssociations,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getDomainNames(
     input: GetDomainNamesRequest,
   ): Effect.Effect<
     DomainNames,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getExport(
     input: GetExportRequest,
   ): Effect.Effect<
     ExportResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getGatewayResponse(
     input: GetGatewayResponseRequest,
   ): Effect.Effect<
     GatewayResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getGatewayResponses(
     input: GetGatewayResponsesRequest,
   ): Effect.Effect<
     GatewayResponses,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getIntegration(
     input: GetIntegrationRequest,
   ): Effect.Effect<
     Integration,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getIntegrationResponse(
     input: GetIntegrationResponseRequest,
   ): Effect.Effect<
     IntegrationResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getMethod(
     input: GetMethodRequest,
   ): Effect.Effect<
     Method,
-    NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getMethodResponse(
     input: GetMethodResponseRequest,
   ): Effect.Effect<
     MethodResponse,
-    NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getModel(
     input: GetModelRequest,
   ): Effect.Effect<
     Model,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
-  >;
-  getModelTemplate(
-    input: GetModelTemplateRequest,
-  ): Effect.Effect<
-    Template,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getModels(
     input: GetModelsRequest,
   ): Effect.Effect<
     Models,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
+  >;
+  getModelTemplate(
+    input: GetModelTemplateRequest,
+  ): Effect.Effect<
+    Template,
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getRequestValidator(
     input: GetRequestValidatorRequest,
   ): Effect.Effect<
     RequestValidator,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getRequestValidators(
     input: GetRequestValidatorsRequest,
   ): Effect.Effect<
     RequestValidators,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getResource(
     input: GetResourceRequest,
   ): Effect.Effect<
     Resource,
-    NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getResources(
     input: GetResourcesRequest,
   ): Effect.Effect<
     Resources,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getRestApi(
     input: GetRestApiRequest,
   ): Effect.Effect<
     RestApi,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getRestApis(
     input: GetRestApisRequest,
   ): Effect.Effect<
     RestApis,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getSdk(
     input: GetSdkRequest,
   ): Effect.Effect<
     SdkResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getSdkType(
     input: GetSdkTypeRequest,
   ): Effect.Effect<
     SdkType,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getSdkTypes(
     input: GetSdkTypesRequest,
   ): Effect.Effect<
     SdkTypes,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getStage(
     input: GetStageRequest,
   ): Effect.Effect<
     Stage,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getStages(
     input: GetStagesRequest,
   ): Effect.Effect<
     Stages,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getTags(
     input: GetTagsRequest,
   ): Effect.Effect<
     Tags,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getUsage(
     input: GetUsageRequest,
   ): Effect.Effect<
     Usage,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getUsagePlan(
     input: GetUsagePlanRequest,
   ): Effect.Effect<
     UsagePlan,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getUsagePlanKey(
     input: GetUsagePlanKeyRequest,
   ): Effect.Effect<
     UsagePlanKey,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getUsagePlanKeys(
     input: GetUsagePlanKeysRequest,
   ): Effect.Effect<
     UsagePlanKeys,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getUsagePlans(
     input: GetUsagePlansRequest,
   ): Effect.Effect<
     UsagePlans,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getVpcLink(
     input: GetVpcLinkRequest,
   ): Effect.Effect<
     VpcLink,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   getVpcLinks(
     input: GetVpcLinksRequest,
   ): Effect.Effect<
     VpcLinks,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   importApiKeys(
     input: ImportApiKeysRequest,
   ): Effect.Effect<
     ApiKeyIds,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   importDocumentationParts(
     input: ImportDocumentationPartsRequest,
   ): Effect.Effect<
     DocumentationPartIds,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   importRestApi(
     input: ImportRestApiRequest,
   ): Effect.Effect<
     RestApi,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putGatewayResponse(
     input: PutGatewayResponseRequest,
   ): Effect.Effect<
     GatewayResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putIntegration(
     input: PutIntegrationRequest,
   ): Effect.Effect<
     Integration,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putIntegrationResponse(
     input: PutIntegrationResponseRequest,
   ): Effect.Effect<
     IntegrationResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putMethod(
     input: PutMethodRequest,
   ): Effect.Effect<
     Method,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putMethodResponse(
     input: PutMethodResponseRequest,
   ): Effect.Effect<
     MethodResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putRestApi(
     input: PutRestApiRequest,
   ): Effect.Effect<
     RestApi,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   rejectDomainNameAccessAssociation(
     input: RejectDomainNameAccessAssociationRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   testInvokeAuthorizer(
     input: TestInvokeAuthorizerRequest,
   ): Effect.Effect<
     TestInvokeAuthorizerResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   testInvokeMethod(
     input: TestInvokeMethodRequest,
   ): Effect.Effect<
     TestInvokeMethodResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateAccount(
     input: UpdateAccountRequest,
   ): Effect.Effect<
     Account,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateApiKey(
     input: UpdateApiKeyRequest,
   ): Effect.Effect<
     ApiKey,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateAuthorizer(
     input: UpdateAuthorizerRequest,
   ): Effect.Effect<
     Authorizer,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateBasePathMapping(
     input: UpdateBasePathMappingRequest,
   ): Effect.Effect<
     BasePathMapping,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateClientCertificate(
     input: UpdateClientCertificateRequest,
   ): Effect.Effect<
     ClientCertificate,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDeployment(
     input: UpdateDeploymentRequest,
   ): Effect.Effect<
     Deployment,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | ServiceUnavailableException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceUnavailableException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDocumentationPart(
     input: UpdateDocumentationPartRequest,
   ): Effect.Effect<
     DocumentationPart,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDocumentationVersion(
     input: UpdateDocumentationVersionRequest,
   ): Effect.Effect<
     DocumentationVersion,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateDomainName(
     input: UpdateDomainNameRequest,
   ): Effect.Effect<
     DomainName,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateGatewayResponse(
     input: UpdateGatewayResponseRequest,
   ): Effect.Effect<
     GatewayResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateIntegration(
     input: UpdateIntegrationRequest,
   ): Effect.Effect<
     Integration,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateIntegrationResponse(
     input: UpdateIntegrationResponseRequest,
   ): Effect.Effect<
     IntegrationResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateMethod(
     input: UpdateMethodRequest,
   ): Effect.Effect<
     Method,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateMethodResponse(
     input: UpdateMethodResponseRequest,
   ): Effect.Effect<
     MethodResponse,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateModel(
     input: UpdateModelRequest,
   ): Effect.Effect<
     Model,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateRequestValidator(
     input: UpdateRequestValidatorRequest,
   ): Effect.Effect<
     RequestValidator,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateResource(
     input: UpdateResourceRequest,
   ): Effect.Effect<
     Resource,
-    BadRequestException | ConflictException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateRestApi(
     input: UpdateRestApiRequest,
   ): Effect.Effect<
     RestApi,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateStage(
     input: UpdateStageRequest,
   ): Effect.Effect<
     Stage,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateUsage(
     input: UpdateUsageRequest,
   ): Effect.Effect<
     Usage,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateUsagePlan(
     input: UpdateUsagePlanRequest,
   ): Effect.Effect<
     UsagePlan,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   updateVpcLink(
     input: UpdateVpcLinkRequest,
   ): Effect.Effect<
     VpcLink,
-    BadRequestException | ConflictException | LimitExceededException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
 }
 
@@ -822,8 +1447,21 @@ export interface BasePathMappings {
 }
 export type Blob = Uint8Array | string;
 
-export type CacheClusterSize = "SIZE_0_POINT_5_GB" | "SIZE_1_POINT_6_GB" | "SIZE_6_POINT_1_GB" | "SIZE_13_POINT_5_GB" | "SIZE_28_POINT_4_GB" | "SIZE_58_POINT_2_GB" | "SIZE_118_GB" | "SIZE_237_GB";
-export type CacheClusterStatus = "CREATE_IN_PROGRESS" | "AVAILABLE" | "DELETE_IN_PROGRESS" | "NOT_AVAILABLE" | "FLUSH_IN_PROGRESS";
+export type CacheClusterSize =
+  | "SIZE_0_POINT_5_GB"
+  | "SIZE_1_POINT_6_GB"
+  | "SIZE_6_POINT_1_GB"
+  | "SIZE_13_POINT_5_GB"
+  | "SIZE_28_POINT_4_GB"
+  | "SIZE_58_POINT_2_GB"
+  | "SIZE_118_GB"
+  | "SIZE_237_GB";
+export type CacheClusterStatus =
+  | "CREATE_IN_PROGRESS"
+  | "AVAILABLE"
+  | "DELETE_IN_PROGRESS"
+  | "NOT_AVAILABLE"
+  | "FLUSH_IN_PROGRESS";
 export interface CanarySettings {
   percentTraffic?: number;
   deploymentId?: string;
@@ -1112,7 +1750,19 @@ export interface DocumentationParts {
   items?: Array<DocumentationPart>;
   position?: string;
 }
-export type DocumentationPartType = "API" | "AUTHORIZER" | "MODEL" | "RESOURCE" | "METHOD" | "PATH_PARAMETER" | "QUERY_PARAMETER" | "REQUEST_HEADER" | "REQUEST_BODY" | "RESPONSE" | "RESPONSE_HEADER" | "RESPONSE_BODY";
+export type DocumentationPartType =
+  | "API"
+  | "AUTHORIZER"
+  | "MODEL"
+  | "RESOURCE"
+  | "METHOD"
+  | "PATH_PARAMETER"
+  | "QUERY_PARAMETER"
+  | "REQUEST_HEADER"
+  | "REQUEST_BODY"
+  | "RESPONSE"
+  | "RESPONSE_HEADER"
+  | "RESPONSE_BODY";
 export interface DocumentationVersion {
   version?: string;
   createdDate?: Date | string;
@@ -1161,7 +1811,12 @@ export interface DomainNames {
   items?: Array<DomainName>;
   position?: string;
 }
-export type DomainNameStatus = "AVAILABLE" | "UPDATING" | "PENDING" | "PENDING_CERTIFICATE_REIMPORT" | "PENDING_OWNERSHIP_VERIFICATION";
+export type DomainNameStatus =
+  | "AVAILABLE"
+  | "UPDATING"
+  | "PENDING"
+  | "PENDING_CERTIFICATE_REIMPORT"
+  | "PENDING_OWNERSHIP_VERIFICATION";
 export type Double = number;
 
 export interface EndpointConfiguration {
@@ -1194,13 +1849,33 @@ export interface GatewayResponses {
   items?: Array<GatewayResponse>;
   position?: string;
 }
-export type GatewayResponseType = "DEFAULT_4XX" | "DEFAULT_5XX" | "RESOURCE_NOT_FOUND" | "UNAUTHORIZED" | "INVALID_API_KEY" | "ACCESS_DENIED" | "AUTHORIZER_FAILURE" | "AUTHORIZER_CONFIGURATION_ERROR" | "INVALID_SIGNATURE" | "EXPIRED_TOKEN" | "MISSING_AUTHENTICATION_TOKEN" | "INTEGRATION_FAILURE" | "INTEGRATION_TIMEOUT" | "API_CONFIGURATION_ERROR" | "UNSUPPORTED_MEDIA_TYPE" | "BAD_REQUEST_PARAMETERS" | "BAD_REQUEST_BODY" | "REQUEST_TOO_LARGE" | "THROTTLED" | "QUOTA_EXCEEDED" | "WAF_FILTERED";
+export type GatewayResponseType =
+  | "DEFAULT_4XX"
+  | "DEFAULT_5XX"
+  | "RESOURCE_NOT_FOUND"
+  | "UNAUTHORIZED"
+  | "INVALID_API_KEY"
+  | "ACCESS_DENIED"
+  | "AUTHORIZER_FAILURE"
+  | "AUTHORIZER_CONFIGURATION_ERROR"
+  | "INVALID_SIGNATURE"
+  | "EXPIRED_TOKEN"
+  | "MISSING_AUTHENTICATION_TOKEN"
+  | "INTEGRATION_FAILURE"
+  | "INTEGRATION_TIMEOUT"
+  | "API_CONFIGURATION_ERROR"
+  | "UNSUPPORTED_MEDIA_TYPE"
+  | "BAD_REQUEST_PARAMETERS"
+  | "BAD_REQUEST_BODY"
+  | "REQUEST_TOO_LARGE"
+  | "THROTTLED"
+  | "QUOTA_EXCEEDED"
+  | "WAF_FILTERED";
 export interface GenerateClientCertificateRequest {
   description?: string;
   tags?: Record<string, string>;
 }
-export interface GetAccountRequest {
-}
+export interface GetAccountRequest {}
 export interface GetApiKeyRequest {
   apiKey: string;
   includeValue?: boolean;
@@ -1465,7 +2140,12 @@ export interface IntegrationResponse {
   responseTemplates?: Record<string, string>;
   contentHandling?: ContentHandlingStrategy;
 }
-export type IntegrationType = "HTTP" | "AWS" | "MOCK" | "HTTP_PROXY" | "AWS_PROXY";
+export type IntegrationType =
+  | "HTTP"
+  | "AWS"
+  | "MOCK"
+  | "HTTP_PROXY"
+  | "AWS_PROXY";
 export type IpAddressType = "ipv4" | "dualstack";
 export declare class LimitExceededException extends Data.TaggedError(
   "LimitExceededException",
@@ -1483,7 +2163,8 @@ export type ListOfDeployment = Array<Deployment>;
 export type ListOfDocumentationPart = Array<DocumentationPart>;
 export type ListOfDocumentationVersion = Array<DocumentationVersion>;
 export type ListOfDomainName = Array<DomainName>;
-export type ListOfDomainNameAccessAssociation = Array<DomainNameAccessAssociation>;
+export type ListOfDomainNameAccessAssociation =
+  Array<DomainNameAccessAssociation>;
 export type ListOfEndpointType = Array<EndpointType>;
 export type ListOfGatewayResponse = Array<GatewayResponse>;
 export type ListOfLong = Array<number>;
@@ -1584,7 +2265,10 @@ export interface PatchOperation {
   value?: string;
   from?: string;
 }
-export type PathToMapOfMethodSnapshot = Record<string, Record<string, MethodSnapshot>>;
+export type PathToMapOfMethodSnapshot = Record<
+  string,
+  Record<string, MethodSnapshot>
+>;
 export type ProviderARN = string;
 
 export interface PutGatewayResponseRequest {
@@ -1704,7 +2388,10 @@ export interface RestApis {
   items?: Array<RestApi>;
   position?: string;
 }
-export type RoutingMode = "BASE_PATH_MAPPING_ONLY" | "ROUTING_RULE_ONLY" | "ROUTING_RULE_THEN_BASE_PATH_MAPPING";
+export type RoutingMode =
+  | "BASE_PATH_MAPPING_ONLY"
+  | "ROUTING_RULE_ONLY"
+  | "ROUTING_RULE_THEN_BASE_PATH_MAPPING";
 export interface SdkConfigurationProperty {
   name?: string;
   friendlyName?: string;
@@ -1824,7 +2511,10 @@ export declare class TooManyRequestsException extends Data.TaggedError(
   readonly retryAfterSeconds?: string;
   readonly message?: string;
 }> {}
-export type UnauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403" | "SUCCEED_WITH_RESPONSE_HEADER" | "SUCCEED_WITHOUT_RESPONSE_HEADER";
+export type UnauthorizedCacheControlHeaderStrategy =
+  | "FAIL_WITH_403"
+  | "SUCCEED_WITH_RESPONSE_HEADER"
+  | "SUCCEED_WITHOUT_RESPONSE_HEADER";
 export declare class UnauthorizedException extends Data.TaggedError(
   "UnauthorizedException",
 )<{
@@ -2784,9 +3474,9 @@ export declare namespace GetModel {
     | CommonAwsError;
 }
 
-export declare namespace GetModelTemplate {
-  export type Input = GetModelTemplateRequest;
-  export type Output = Template;
+export declare namespace GetModels {
+  export type Input = GetModelsRequest;
+  export type Output = Models;
   export type Error =
     | BadRequestException
     | NotFoundException
@@ -2795,9 +3485,9 @@ export declare namespace GetModelTemplate {
     | CommonAwsError;
 }
 
-export declare namespace GetModels {
-  export type Input = GetModelsRequest;
-  export type Output = Models;
+export declare namespace GetModelTemplate {
+  export type Input = GetModelTemplateRequest;
+  export type Output = Template;
   export type Error =
     | BadRequestException
     | NotFoundException
@@ -3481,4 +4171,3 @@ export declare namespace UpdateVpcLink {
     | UnauthorizedException
     | CommonAwsError;
 }
-

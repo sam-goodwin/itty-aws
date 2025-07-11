@@ -1,4 +1,41 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      },
+      {
+        "id": "RuleSetAwsBuiltIn.AWS::Auth::AccountIdEndpointMode",
+        "namespace": "*"
+      },
+      {
+        "id": "RuleSetAwsBuiltIn.AWS::Auth::AccountId",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.dynamodb#ApproximateCreationDateTimePrecision": {
       "type": "enum",
@@ -3733,6 +3770,179 @@
     },
     "com.amazonaws.dynamodb#DynamoDB_20120810": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.dynamodb#BatchExecuteStatement"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#BatchGetItem"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#BatchWriteItem"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#CreateBackup"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#CreateGlobalTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#CreateTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DeleteBackup"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DeleteItem"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DeleteTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeBackup"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeContinuousBackups"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeContributorInsights"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeEndpoints"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeExport"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeGlobalTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeGlobalTableSettings"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeImport"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeKinesisStreamingDestination"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeLimits"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeTableReplicaAutoScaling"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DescribeTimeToLive"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#DisableKinesisStreamingDestination"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#EnableKinesisStreamingDestination"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ExecuteStatement"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ExecuteTransaction"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ExportTableToPointInTime"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#GetItem"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ImportTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListBackups"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListContributorInsights"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListExports"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListGlobalTables"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListImports"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListTables"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#ListTagsOfResource"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PutItem"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#Query"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RestoreTableFromBackup"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#RestoreTableToPointInTime"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#Scan"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TagResource"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactGetItems"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#TransactWriteItems"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateContinuousBackups"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateContributorInsights"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateGlobalTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateGlobalTableSettings"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateItem"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateKinesisStreamingDestination"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateTable"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateTableReplicaAutoScaling"
+        },
+        {
+          "target": "com.amazonaws.dynamodb#UpdateTimeToLive"
+        }
+      ],
       "traits": {
         "aws.api#clientEndpointDiscovery": {
           "operation": "com.amazonaws.dynamodb#DescribeEndpoints",

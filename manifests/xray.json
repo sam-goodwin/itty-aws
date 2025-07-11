@@ -1,7 +1,152 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.xray#AWSXRay": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.xray#BatchGetTraces"
+        },
+        {
+          "target": "com.amazonaws.xray#CancelTraceRetrieval"
+        },
+        {
+          "target": "com.amazonaws.xray#CreateGroup"
+        },
+        {
+          "target": "com.amazonaws.xray#CreateSamplingRule"
+        },
+        {
+          "target": "com.amazonaws.xray#DeleteGroup"
+        },
+        {
+          "target": "com.amazonaws.xray#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.xray#DeleteSamplingRule"
+        },
+        {
+          "target": "com.amazonaws.xray#GetEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.xray#GetGroup"
+        },
+        {
+          "target": "com.amazonaws.xray#GetGroups"
+        },
+        {
+          "target": "com.amazonaws.xray#GetIndexingRules"
+        },
+        {
+          "target": "com.amazonaws.xray#GetInsight"
+        },
+        {
+          "target": "com.amazonaws.xray#GetInsightEvents"
+        },
+        {
+          "target": "com.amazonaws.xray#GetInsightImpactGraph"
+        },
+        {
+          "target": "com.amazonaws.xray#GetInsightSummaries"
+        },
+        {
+          "target": "com.amazonaws.xray#GetRetrievedTracesGraph"
+        },
+        {
+          "target": "com.amazonaws.xray#GetSamplingRules"
+        },
+        {
+          "target": "com.amazonaws.xray#GetSamplingStatisticSummaries"
+        },
+        {
+          "target": "com.amazonaws.xray#GetSamplingTargets"
+        },
+        {
+          "target": "com.amazonaws.xray#GetServiceGraph"
+        },
+        {
+          "target": "com.amazonaws.xray#GetTimeSeriesServiceStatistics"
+        },
+        {
+          "target": "com.amazonaws.xray#GetTraceGraph"
+        },
+        {
+          "target": "com.amazonaws.xray#GetTraceSegmentDestination"
+        },
+        {
+          "target": "com.amazonaws.xray#GetTraceSummaries"
+        },
+        {
+          "target": "com.amazonaws.xray#ListResourcePolicies"
+        },
+        {
+          "target": "com.amazonaws.xray#ListRetrievedTraces"
+        },
+        {
+          "target": "com.amazonaws.xray#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.xray#PutEncryptionConfig"
+        },
+        {
+          "target": "com.amazonaws.xray#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.xray#PutTelemetryRecords"
+        },
+        {
+          "target": "com.amazonaws.xray#PutTraceSegments"
+        },
+        {
+          "target": "com.amazonaws.xray#StartTraceRetrieval"
+        },
+        {
+          "target": "com.amazonaws.xray#TagResource"
+        },
+        {
+          "target": "com.amazonaws.xray#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.xray#UpdateGroup"
+        },
+        {
+          "target": "com.amazonaws.xray#UpdateIndexingRule"
+        },
+        {
+          "target": "com.amazonaws.xray#UpdateSamplingRule"
+        },
+        {
+          "target": "com.amazonaws.xray#UpdateTraceSegmentDestination"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "XRay",

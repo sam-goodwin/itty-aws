@@ -1,7 +1,86 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.support#AWSSupport_20130415": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.support#AddAttachmentsToSet"
+        },
+        {
+          "target": "com.amazonaws.support#AddCommunicationToCase"
+        },
+        {
+          "target": "com.amazonaws.support#CreateCase"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeAttachment"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeCases"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeCommunications"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeCreateCaseOptions"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeServices"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeSeverityLevels"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeSupportedLanguages"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeTrustedAdvisorCheckRefreshStatuses"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeTrustedAdvisorCheckResult"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeTrustedAdvisorChecks"
+        },
+        {
+          "target": "com.amazonaws.support#DescribeTrustedAdvisorCheckSummaries"
+        },
+        {
+          "target": "com.amazonaws.support#RefreshTrustedAdvisorCheck"
+        },
+        {
+          "target": "com.amazonaws.support#ResolveCase"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Support",

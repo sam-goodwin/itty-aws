@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.codecommit#AccountId": {
       "type": "string"
@@ -1566,6 +1595,245 @@
     },
     "com.amazonaws.codecommit#CodeCommit_20150413": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.codecommit#AssociateApprovalRuleTemplateWithRepository"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BatchAssociateApprovalRuleTemplateWithRepositories"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BatchDescribeMergeConflicts"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BatchDisassociateApprovalRuleTemplateFromRepositories"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BatchGetCommits"
+        },
+        {
+          "target": "com.amazonaws.codecommit#BatchGetRepositories"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreateApprovalRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreateBranch"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreateCommit"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreatePullRequest"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreatePullRequestApprovalRule"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreateRepository"
+        },
+        {
+          "target": "com.amazonaws.codecommit#CreateUnreferencedMergeCommit"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DeleteApprovalRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DeleteBranch"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DeleteCommentContent"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DeleteFile"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DeletePullRequestApprovalRule"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DeleteRepository"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DescribeMergeConflicts"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DescribePullRequestEvents"
+        },
+        {
+          "target": "com.amazonaws.codecommit#DisassociateApprovalRuleTemplateFromRepository"
+        },
+        {
+          "target": "com.amazonaws.codecommit#EvaluatePullRequestApprovalRules"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetApprovalRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetBlob"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetBranch"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetComment"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetCommentReactions"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetCommentsForComparedCommit"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetCommentsForPullRequest"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetCommit"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetDifferences"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetFile"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetFolder"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetMergeCommit"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetMergeConflicts"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetMergeOptions"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetPullRequest"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetPullRequestApprovalStates"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetPullRequestOverrideState"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetRepository"
+        },
+        {
+          "target": "com.amazonaws.codecommit#GetRepositoryTriggers"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListApprovalRuleTemplates"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListAssociatedApprovalRuleTemplatesForRepository"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListBranches"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListFileCommitHistory"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListPullRequests"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListRepositories"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListRepositoriesForApprovalRuleTemplate"
+        },
+        {
+          "target": "com.amazonaws.codecommit#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeBranchesByFastForward"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeBranchesBySquash"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergeBranchesByThreeWay"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergePullRequestByFastForward"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergePullRequestBySquash"
+        },
+        {
+          "target": "com.amazonaws.codecommit#MergePullRequestByThreeWay"
+        },
+        {
+          "target": "com.amazonaws.codecommit#OverridePullRequestApprovalRules"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PostCommentForComparedCommit"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PostCommentForPullRequest"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PostCommentReply"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PutCommentReaction"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PutFile"
+        },
+        {
+          "target": "com.amazonaws.codecommit#PutRepositoryTriggers"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TagResource"
+        },
+        {
+          "target": "com.amazonaws.codecommit#TestRepositoryTriggers"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateApprovalRuleTemplateContent"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateApprovalRuleTemplateDescription"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateApprovalRuleTemplateName"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateComment"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateDefaultBranch"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdatePullRequestApprovalRuleContent"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdatePullRequestApprovalState"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdatePullRequestDescription"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdatePullRequestStatus"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdatePullRequestTitle"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateRepositoryDescription"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateRepositoryEncryptionKey"
+        },
+        {
+          "target": "com.amazonaws.codecommit#UpdateRepositoryName"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CodeCommit",

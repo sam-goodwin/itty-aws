@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.acm#AccessDeniedException": {
       "type": "structure",
@@ -325,6 +326,56 @@
     },
     "com.amazonaws.acm#CertificateManager": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.acm#AddTagsToCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#DeleteCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#DescribeCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#ExportCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#GetAccountConfiguration"
+        },
+        {
+          "target": "com.amazonaws.acm#GetCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#ImportCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#ListCertificates"
+        },
+        {
+          "target": "com.amazonaws.acm#ListTagsForCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#PutAccountConfiguration"
+        },
+        {
+          "target": "com.amazonaws.acm#RemoveTagsFromCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#RenewCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#RequestCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#ResendValidationEmail"
+        },
+        {
+          "target": "com.amazonaws.acm#RevokeCertificate"
+        },
+        {
+          "target": "com.amazonaws.acm#UpdateCertificateOptions"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "ACM",

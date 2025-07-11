@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.devicefarm#AWSAccountNumber": {
       "type": "string",
@@ -2083,6 +2112,239 @@
     },
     "com.amazonaws.devicefarm#DeviceFarm_20150623": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.devicefarm#CreateDevicePool"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateNetworkProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateRemoteAccessSession"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateTestGridProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateTestGridUrl"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateUpload"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#CreateVPCEConfiguration"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteDevicePool"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteNetworkProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteRemoteAccessSession"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteRun"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteTestGridProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteUpload"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#DeleteVPCEConfiguration"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetAccountSettings"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetDevice"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetDeviceInstance"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetDevicePool"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetDevicePoolCompatibility"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetJob"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetNetworkProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetOfferingStatus"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetRemoteAccessSession"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetRun"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetSuite"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetTest"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetTestGridProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetTestGridSession"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetUpload"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#GetVPCEConfiguration"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#InstallToRemoteAccessSession"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListArtifacts"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListDeviceInstances"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListDevicePools"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListDevices"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListInstanceProfiles"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListJobs"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListNetworkProfiles"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListOfferingPromotions"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListOfferings"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListOfferingTransactions"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListProjects"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListRemoteAccessSessions"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListRuns"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListSamples"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListSuites"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListTestGridProjects"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListTestGridSessionActions"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListTestGridSessionArtifacts"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListTestGridSessions"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListTests"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListUniqueProblems"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListUploads"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ListVPCEConfigurations"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#PurchaseOffering"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#RenewOffering"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#ScheduleRun"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#StopJob"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#StopRemoteAccessSession"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#StopRun"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#TagResource"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateDeviceInstance"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateDevicePool"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateInstanceProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateNetworkProfile"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateTestGridProject"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateUpload"
+        },
+        {
+          "target": "com.amazonaws.devicefarm#UpdateVPCEConfiguration"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Device Farm",

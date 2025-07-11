@@ -1,108 +1,199 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSCognitoSyncService {
   bulkPublish(
     input: BulkPublishRequest,
   ): Effect.Effect<
     BulkPublishResponse,
-    AlreadyStreamedException | DuplicateRequestException | InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | CommonAwsError
+    | AlreadyStreamedException
+    | DuplicateRequestException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteDataset(
     input: DeleteDatasetRequest,
   ): Effect.Effect<
     DeleteDatasetResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeDataset(
     input: DescribeDatasetRequest,
   ): Effect.Effect<
     DescribeDatasetResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeIdentityPoolUsage(
     input: DescribeIdentityPoolUsageRequest,
   ): Effect.Effect<
     DescribeIdentityPoolUsageResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   describeIdentityUsage(
     input: DescribeIdentityUsageRequest,
   ): Effect.Effect<
     DescribeIdentityUsageResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getBulkPublishDetails(
     input: GetBulkPublishDetailsRequest,
   ): Effect.Effect<
     GetBulkPublishDetailsResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   getCognitoEvents(
     input: GetCognitoEventsRequest,
   ): Effect.Effect<
     GetCognitoEventsResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getIdentityPoolConfiguration(
     input: GetIdentityPoolConfigurationRequest,
   ): Effect.Effect<
     GetIdentityPoolConfigurationResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listDatasets(
     input: ListDatasetsRequest,
   ): Effect.Effect<
     ListDatasetsResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listIdentityPoolUsage(
     input: ListIdentityPoolUsageRequest,
   ): Effect.Effect<
     ListIdentityPoolUsageResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listRecords(
     input: ListRecordsRequest,
   ): Effect.Effect<
     ListRecordsResponse,
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   registerDevice(
     input: RegisterDeviceRequest,
   ): Effect.Effect<
     RegisterDeviceResponse,
-    InternalErrorException | InvalidConfigurationException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidConfigurationException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   setCognitoEvents(
     input: SetCognitoEventsRequest,
   ): Effect.Effect<
     {},
-    InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   setIdentityPoolConfiguration(
     input: SetIdentityPoolConfigurationRequest,
   ): Effect.Effect<
     SetIdentityPoolConfigurationResponse,
-    ConcurrentModificationException | InternalErrorException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | ConcurrentModificationException
+    | InternalErrorException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   subscribeToDataset(
     input: SubscribeToDatasetRequest,
   ): Effect.Effect<
     SubscribeToDatasetResponse,
-    InternalErrorException | InvalidConfigurationException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidConfigurationException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   unsubscribeFromDataset(
     input: UnsubscribeFromDatasetRequest,
   ): Effect.Effect<
     UnsubscribeFromDatasetResponse,
-    InternalErrorException | InvalidConfigurationException | InvalidParameterException | NotAuthorizedException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidConfigurationException
+    | InvalidParameterException
+    | NotAuthorizedException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateRecords(
     input: UpdateRecordsRequest,
   ): Effect.Effect<
     UpdateRecordsResponse,
-    InternalErrorException | InvalidLambdaFunctionOutputException | InvalidParameterException | LambdaThrottledException | LimitExceededException | NotAuthorizedException | ResourceConflictException | ResourceNotFoundException | TooManyRequestsException | CommonAwsError
+    | InternalErrorException
+    | InvalidLambdaFunctionOutputException
+    | InvalidParameterException
+    | LambdaThrottledException
+    | LimitExceededException
+    | NotAuthorizedException
+    | ResourceConflictException
+    | ResourceNotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -124,7 +215,11 @@ export interface BulkPublishRequest {
 export interface BulkPublishResponse {
   IdentityPoolId?: string;
 }
-export type BulkPublishStatus = "NOT_STARTED" | "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
+export type BulkPublishStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "SUCCEEDED";
 export type ClientContext = string;
 
 export type CognitoEventType = string;
@@ -388,8 +483,7 @@ export interface SubscribeToDatasetRequest {
   DatasetName: string;
   DeviceId: string;
 }
-export interface SubscribeToDatasetResponse {
-}
+export interface SubscribeToDatasetResponse {}
 export type SyncSessionToken = string;
 
 export declare class TooManyRequestsException extends Data.TaggedError(
@@ -403,8 +497,7 @@ export interface UnsubscribeFromDatasetRequest {
   DatasetName: string;
   DeviceId: string;
 }
-export interface UnsubscribeFromDatasetResponse {
-}
+export interface UnsubscribeFromDatasetResponse {}
 export interface UpdateRecordsRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -626,4 +719,3 @@ export declare namespace UpdateRecords {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

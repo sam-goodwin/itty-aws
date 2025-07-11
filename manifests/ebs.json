@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.ebs#AccessDeniedException": {
       "type": "structure",
@@ -321,6 +350,26 @@
     },
     "com.amazonaws.ebs#Ebs": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.ebs#CompleteSnapshot"
+        },
+        {
+          "target": "com.amazonaws.ebs#GetSnapshotBlock"
+        },
+        {
+          "target": "com.amazonaws.ebs#ListChangedBlocks"
+        },
+        {
+          "target": "com.amazonaws.ebs#ListSnapshotBlocks"
+        },
+        {
+          "target": "com.amazonaws.ebs#PutSnapshotBlock"
+        },
+        {
+          "target": "com.amazonaws.ebs#StartSnapshot"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "EBS",

@@ -1,402 +1,985 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonCloudDirectory_20170111 {
   addFacetToObject(
     input: AddFacetToObjectRequest,
   ): Effect.Effect<
     AddFacetToObjectResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   applySchema(
     input: ApplySchemaRequest,
   ): Effect.Effect<
     ApplySchemaResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidAttachmentException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | SchemaAlreadyExistsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidAttachmentException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | SchemaAlreadyExistsException
+    | ValidationException
+    | CommonAwsError
   >;
   attachObject(
     input: AttachObjectRequest,
   ): Effect.Effect<
     AttachObjectResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidAttachmentException | LimitExceededException | LinkNameAlreadyInUseException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidAttachmentException
+    | LimitExceededException
+    | LinkNameAlreadyInUseException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   attachPolicy(
     input: AttachPolicyRequest,
   ): Effect.Effect<
     AttachPolicyResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | NotPolicyException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | NotPolicyException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   attachToIndex(
     input: AttachToIndexRequest,
   ): Effect.Effect<
     AttachToIndexResponse,
-    AccessDeniedException | DirectoryNotEnabledException | IndexedAttributeMissingException | InternalServiceException | InvalidArnException | InvalidAttachmentException | LimitExceededException | LinkNameAlreadyInUseException | NotIndexException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | IndexedAttributeMissingException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidAttachmentException
+    | LimitExceededException
+    | LinkNameAlreadyInUseException
+    | NotIndexException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   attachTypedLink(
     input: AttachTypedLinkRequest,
   ): Effect.Effect<
     AttachTypedLinkResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidAttachmentException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidAttachmentException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   batchRead(
     input: BatchReadRequest,
   ): Effect.Effect<
     BatchReadResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   batchWrite(
     input: BatchWriteRequest,
   ): Effect.Effect<
     BatchWriteResponse,
-    AccessDeniedException | BatchWriteException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | BatchWriteException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   createDirectory(
     input: CreateDirectoryRequest,
   ): Effect.Effect<
     CreateDirectoryResponse,
-    AccessDeniedException | DirectoryAlreadyExistsException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryAlreadyExistsException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   createFacet(
     input: CreateFacetRequest,
   ): Effect.Effect<
     CreateFacetResponse,
-    AccessDeniedException | FacetAlreadyExistsException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidRuleException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetAlreadyExistsException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidRuleException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   createIndex(
     input: CreateIndexRequest,
   ): Effect.Effect<
     CreateIndexResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | LinkNameAlreadyInUseException | ResourceNotFoundException | RetryableConflictException | UnsupportedIndexTypeException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | LinkNameAlreadyInUseException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | UnsupportedIndexTypeException
+    | ValidationException
+    | CommonAwsError
   >;
   createObject(
     input: CreateObjectRequest,
   ): Effect.Effect<
     CreateObjectResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | LinkNameAlreadyInUseException | ResourceNotFoundException | RetryableConflictException | UnsupportedIndexTypeException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | LinkNameAlreadyInUseException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | UnsupportedIndexTypeException
+    | ValidationException
+    | CommonAwsError
   >;
   createSchema(
     input: CreateSchemaRequest,
   ): Effect.Effect<
     CreateSchemaResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | RetryableConflictException | SchemaAlreadyExistsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | RetryableConflictException
+    | SchemaAlreadyExistsException
+    | ValidationException
+    | CommonAwsError
   >;
   createTypedLinkFacet(
     input: CreateTypedLinkFacetRequest,
   ): Effect.Effect<
     CreateTypedLinkFacetResponse,
-    AccessDeniedException | FacetAlreadyExistsException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidRuleException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetAlreadyExistsException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidRuleException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteDirectory(
     input: DeleteDirectoryRequest,
   ): Effect.Effect<
     DeleteDirectoryResponse,
-    AccessDeniedException | DirectoryDeletedException | DirectoryNotDisabledException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryDeletedException
+    | DirectoryNotDisabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteFacet(
     input: DeleteFacetRequest,
   ): Effect.Effect<
     DeleteFacetResponse,
-    AccessDeniedException | FacetInUseException | FacetNotFoundException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetInUseException
+    | FacetNotFoundException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteObject(
     input: DeleteObjectRequest,
   ): Effect.Effect<
     DeleteObjectResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | ObjectNotDetachedException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ObjectNotDetachedException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteSchema(
     input: DeleteSchemaRequest,
   ): Effect.Effect<
     DeleteSchemaResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | StillContainsLinksException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | StillContainsLinksException
+    | ValidationException
+    | CommonAwsError
   >;
   deleteTypedLinkFacet(
     input: DeleteTypedLinkFacetRequest,
   ): Effect.Effect<
     DeleteTypedLinkFacetResponse,
-    AccessDeniedException | FacetNotFoundException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   detachFromIndex(
     input: DetachFromIndexRequest,
   ): Effect.Effect<
     DetachFromIndexResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | NotIndexException | ObjectAlreadyDetachedException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | NotIndexException
+    | ObjectAlreadyDetachedException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   detachObject(
     input: DetachObjectRequest,
   ): Effect.Effect<
     DetachObjectResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | NotNodeException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | NotNodeException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   detachPolicy(
     input: DetachPolicyRequest,
   ): Effect.Effect<
     DetachPolicyResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | NotPolicyException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | NotPolicyException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   detachTypedLink(
     input: DetachTypedLinkRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   disableDirectory(
     input: DisableDirectoryRequest,
   ): Effect.Effect<
     DisableDirectoryResponse,
-    AccessDeniedException | DirectoryDeletedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryDeletedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   enableDirectory(
     input: EnableDirectoryRequest,
   ): Effect.Effect<
     EnableDirectoryResponse,
-    AccessDeniedException | DirectoryDeletedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryDeletedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getAppliedSchemaVersion(
     input: GetAppliedSchemaVersionRequest,
   ): Effect.Effect<
     GetAppliedSchemaVersionResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getDirectory(
     input: GetDirectoryRequest,
   ): Effect.Effect<
     GetDirectoryResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getFacet(
     input: GetFacetRequest,
   ): Effect.Effect<
     GetFacetResponse,
-    AccessDeniedException | FacetNotFoundException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getLinkAttributes(
     input: GetLinkAttributesRequest,
   ): Effect.Effect<
     GetLinkAttributesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getObjectAttributes(
     input: GetObjectAttributesRequest,
   ): Effect.Effect<
     GetObjectAttributesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getObjectInformation(
     input: GetObjectInformationRequest,
   ): Effect.Effect<
     GetObjectInformationResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getSchemaAsJson(
     input: GetSchemaAsJsonRequest,
   ): Effect.Effect<
     GetSchemaAsJsonResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   getTypedLinkFacetInformation(
     input: GetTypedLinkFacetInformationRequest,
   ): Effect.Effect<
     GetTypedLinkFacetInformationResponse,
-    AccessDeniedException | FacetNotFoundException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listAppliedSchemaArns(
     input: ListAppliedSchemaArnsRequest,
   ): Effect.Effect<
     ListAppliedSchemaArnsResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listAttachedIndices(
     input: ListAttachedIndicesRequest,
   ): Effect.Effect<
     ListAttachedIndicesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listDevelopmentSchemaArns(
     input: ListDevelopmentSchemaArnsRequest,
   ): Effect.Effect<
     ListDevelopmentSchemaArnsResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listDirectories(
     input: ListDirectoriesRequest,
   ): Effect.Effect<
     ListDirectoriesResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listFacetAttributes(
     input: ListFacetAttributesRequest,
   ): Effect.Effect<
     ListFacetAttributesResponse,
-    AccessDeniedException | FacetNotFoundException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listFacetNames(
     input: ListFacetNamesRequest,
   ): Effect.Effect<
     ListFacetNamesResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listIncomingTypedLinks(
     input: ListIncomingTypedLinksRequest,
   ): Effect.Effect<
     ListIncomingTypedLinksResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listIndex(
     input: ListIndexRequest,
   ): Effect.Effect<
     ListIndexResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | NotIndexException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | NotIndexException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listManagedSchemaArns(
     input: ListManagedSchemaArnsRequest,
   ): Effect.Effect<
     ListManagedSchemaArnsResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | ResourceNotFoundException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | ResourceNotFoundException
+    | ValidationException
+    | CommonAwsError
   >;
   listObjectAttributes(
     input: ListObjectAttributesRequest,
   ): Effect.Effect<
     ListObjectAttributesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listObjectChildren(
     input: ListObjectChildrenRequest,
   ): Effect.Effect<
     ListObjectChildrenResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | NotNodeException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | NotNodeException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listObjectParentPaths(
     input: ListObjectParentPathsRequest,
   ): Effect.Effect<
     ListObjectParentPathsResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listObjectParents(
     input: ListObjectParentsRequest,
   ): Effect.Effect<
     ListObjectParentsResponse,
-    AccessDeniedException | CannotListParentOfRootException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | CannotListParentOfRootException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listObjectPolicies(
     input: ListObjectPoliciesRequest,
   ): Effect.Effect<
     ListObjectPoliciesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listOutgoingTypedLinks(
     input: ListOutgoingTypedLinksRequest,
   ): Effect.Effect<
     ListOutgoingTypedLinksResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listPolicyAttachments(
     input: ListPolicyAttachmentsRequest,
   ): Effect.Effect<
     ListPolicyAttachmentsResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | NotPolicyException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | NotPolicyException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listPublishedSchemaArns(
     input: ListPublishedSchemaArnsRequest,
   ): Effect.Effect<
     ListPublishedSchemaArnsResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidTaggingRequestException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidTaggingRequestException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listTypedLinkFacetAttributes(
     input: ListTypedLinkFacetAttributesRequest,
   ): Effect.Effect<
     ListTypedLinkFacetAttributesResponse,
-    AccessDeniedException | FacetNotFoundException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   listTypedLinkFacetNames(
     input: ListTypedLinkFacetNamesRequest,
   ): Effect.Effect<
     ListTypedLinkFacetNamesResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   lookupPolicy(
     input: LookupPolicyRequest,
   ): Effect.Effect<
     LookupPolicyResponse,
-    AccessDeniedException | DirectoryNotEnabledException | InternalServiceException | InvalidArnException | InvalidNextTokenException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidNextTokenException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   publishSchema(
     input: PublishSchemaRequest,
   ): Effect.Effect<
     PublishSchemaResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | SchemaAlreadyPublishedException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | SchemaAlreadyPublishedException
+    | ValidationException
+    | CommonAwsError
   >;
   putSchemaFromJson(
     input: PutSchemaFromJsonRequest,
   ): Effect.Effect<
     PutSchemaFromJsonResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidRuleException | InvalidSchemaDocException | LimitExceededException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidRuleException
+    | InvalidSchemaDocException
+    | LimitExceededException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   removeFacetFromObject(
     input: RemoveFacetFromObjectRequest,
   ): Effect.Effect<
     RemoveFacetFromObjectResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidTaggingRequestException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidTaggingRequestException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | InvalidTaggingRequestException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidTaggingRequestException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   updateFacet(
     input: UpdateFacetRequest,
   ): Effect.Effect<
     UpdateFacetResponse,
-    AccessDeniedException | FacetNotFoundException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidFacetUpdateException | InvalidRuleException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidFacetUpdateException
+    | InvalidRuleException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   updateLinkAttributes(
     input: UpdateLinkAttributesRequest,
   ): Effect.Effect<
     UpdateLinkAttributesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   updateObjectAttributes(
     input: UpdateObjectAttributesRequest,
   ): Effect.Effect<
     UpdateObjectAttributesResponse,
-    AccessDeniedException | DirectoryNotEnabledException | FacetValidationException | InternalServiceException | InvalidArnException | LimitExceededException | LinkNameAlreadyInUseException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | DirectoryNotEnabledException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | LinkNameAlreadyInUseException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   updateSchema(
     input: UpdateSchemaRequest,
   ): Effect.Effect<
     UpdateSchemaResponse,
-    AccessDeniedException | InternalServiceException | InvalidArnException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServiceException
+    | InvalidArnException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   updateTypedLinkFacet(
     input: UpdateTypedLinkFacetRequest,
   ): Effect.Effect<
     UpdateTypedLinkFacetResponse,
-    AccessDeniedException | FacetNotFoundException | FacetValidationException | InternalServiceException | InvalidArnException | InvalidFacetUpdateException | InvalidRuleException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | FacetNotFoundException
+    | FacetValidationException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidFacetUpdateException
+    | InvalidRuleException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
   upgradeAppliedSchema(
     input: UpgradeAppliedSchemaRequest,
   ): Effect.Effect<
     UpgradeAppliedSchemaResponse,
-    AccessDeniedException | IncompatibleSchemaException | InternalServiceException | InvalidArnException | InvalidAttachmentException | ResourceNotFoundException | RetryableConflictException | SchemaAlreadyExistsException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | IncompatibleSchemaException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidAttachmentException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | SchemaAlreadyExistsException
+    | ValidationException
+    | CommonAwsError
   >;
   upgradePublishedSchema(
     input: UpgradePublishedSchemaRequest,
   ): Effect.Effect<
     UpgradePublishedSchemaResponse,
-    AccessDeniedException | IncompatibleSchemaException | InternalServiceException | InvalidArnException | InvalidAttachmentException | LimitExceededException | ResourceNotFoundException | RetryableConflictException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | IncompatibleSchemaException
+    | InternalServiceException
+    | InvalidArnException
+    | InvalidAttachmentException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | RetryableConflictException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -413,8 +996,7 @@ export interface AddFacetToObjectRequest {
   ObjectAttributeList?: Array<AttributeKeyAndValue>;
   ObjectReference: ObjectReference;
 }
-export interface AddFacetToObjectResponse {
-}
+export interface AddFacetToObjectResponse {}
 export interface ApplySchemaRequest {
   PublishedSchemaArn: string;
   DirectoryArn: string;
@@ -440,8 +1022,7 @@ export interface AttachPolicyRequest {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-export interface AttachPolicyResponse {
-}
+export interface AttachPolicyResponse {}
 export interface AttachToIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
@@ -484,8 +1065,7 @@ export interface BatchAddFacetToObject {
   ObjectAttributeList: Array<AttributeKeyAndValue>;
   ObjectReference: ObjectReference;
 }
-export interface BatchAddFacetToObjectResponse {
-}
+export interface BatchAddFacetToObjectResponse {}
 export interface BatchAttachObject {
   ParentReference: ObjectReference;
   ChildReference: ObjectReference;
@@ -498,8 +1078,7 @@ export interface BatchAttachPolicy {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-export interface BatchAttachPolicyResponse {
-}
+export interface BatchAttachPolicyResponse {}
 export interface BatchAttachToIndex {
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
@@ -539,8 +1118,7 @@ export interface BatchCreateObjectResponse {
 export interface BatchDeleteObject {
   ObjectReference: ObjectReference;
 }
-export interface BatchDeleteObjectResponse {
-}
+export interface BatchDeleteObjectResponse {}
 export interface BatchDetachFromIndex {
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
@@ -560,13 +1138,11 @@ export interface BatchDetachPolicy {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-export interface BatchDetachPolicyResponse {
-}
+export interface BatchDetachPolicyResponse {}
 export interface BatchDetachTypedLink {
   TypedLinkSpecifier: TypedLinkSpecifier;
 }
-export interface BatchDetachTypedLinkResponse {
-}
+export interface BatchDetachTypedLinkResponse {}
 export interface BatchGetLinkAttributes {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeNames: Array<string>;
@@ -700,7 +1276,20 @@ export interface BatchReadException {
   Type?: BatchReadExceptionType;
   Message?: string;
 }
-export type BatchReadExceptionType = "ValidationException" | "InvalidArnException" | "ResourceNotFoundException" | "InvalidNextTokenException" | "AccessDeniedException" | "NotNodeException" | "FacetValidationException" | "CannotListParentOfRootException" | "NotIndexException" | "NotPolicyException" | "DirectoryNotEnabledException" | "LimitExceededException" | "InternalServiceException";
+export type BatchReadExceptionType =
+  | "ValidationException"
+  | "InvalidArnException"
+  | "ResourceNotFoundException"
+  | "InvalidNextTokenException"
+  | "AccessDeniedException"
+  | "NotNodeException"
+  | "FacetValidationException"
+  | "CannotListParentOfRootException"
+  | "NotIndexException"
+  | "NotPolicyException"
+  | "DirectoryNotEnabledException"
+  | "LimitExceededException"
+  | "InternalServiceException";
 export interface BatchReadOperation {
   ListObjectAttributes?: BatchListObjectAttributes;
   ListObjectChildren?: BatchListObjectChildren;
@@ -753,14 +1342,12 @@ export interface BatchRemoveFacetFromObject {
   SchemaFacet: SchemaFacet;
   ObjectReference: ObjectReference;
 }
-export interface BatchRemoveFacetFromObjectResponse {
-}
+export interface BatchRemoveFacetFromObjectResponse {}
 export interface BatchUpdateLinkAttributes {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeUpdates: Array<LinkAttributeUpdate>;
 }
-export interface BatchUpdateLinkAttributesResponse {
-}
+export interface BatchUpdateLinkAttributesResponse {}
 export interface BatchUpdateObjectAttributes {
   ObjectReference: ObjectReference;
   AttributeUpdates: Array<ObjectAttributeUpdate>;
@@ -775,7 +1362,25 @@ export declare class BatchWriteException extends Data.TaggedError(
   readonly Type?: BatchWriteExceptionType;
   readonly Message?: string;
 }> {}
-export type BatchWriteExceptionType = "InternalServiceException" | "ValidationException" | "InvalidArnException" | "LinkNameAlreadyInUseException" | "StillContainsLinksException" | "FacetValidationException" | "ObjectNotDetachedException" | "ResourceNotFoundException" | "AccessDeniedException" | "InvalidAttachmentException" | "NotIndexException" | "NotNodeException" | "IndexedAttributeMissingException" | "ObjectAlreadyDetachedException" | "NotPolicyException" | "DirectoryNotEnabledException" | "LimitExceededException" | "UnsupportedIndexTypeException";
+export type BatchWriteExceptionType =
+  | "InternalServiceException"
+  | "ValidationException"
+  | "InvalidArnException"
+  | "LinkNameAlreadyInUseException"
+  | "StillContainsLinksException"
+  | "FacetValidationException"
+  | "ObjectNotDetachedException"
+  | "ResourceNotFoundException"
+  | "AccessDeniedException"
+  | "InvalidAttachmentException"
+  | "NotIndexException"
+  | "NotNodeException"
+  | "IndexedAttributeMissingException"
+  | "ObjectAlreadyDetachedException"
+  | "NotPolicyException"
+  | "DirectoryNotEnabledException"
+  | "LimitExceededException"
+  | "UnsupportedIndexTypeException";
 export interface BatchWriteOperation {
   CreateObject?: BatchCreateObject;
   AttachObject?: BatchAttachObject;
@@ -811,7 +1416,8 @@ export interface BatchWriteOperationResponse {
   DetachTypedLink?: BatchDetachTypedLinkResponse;
   UpdateLinkAttributes?: BatchUpdateLinkAttributesResponse;
 }
-export type BatchWriteOperationResponseList = Array<BatchWriteOperationResponse>;
+export type BatchWriteOperationResponseList =
+  Array<BatchWriteOperationResponse>;
 export interface BatchWriteRequest {
   DirectoryArn: string;
   Operations: Array<BatchWriteOperation>;
@@ -848,8 +1454,7 @@ export interface CreateFacetRequest {
   ObjectType?: ObjectType;
   FacetStyle?: FacetStyle;
 }
-export interface CreateFacetResponse {
-}
+export interface CreateFacetResponse {}
 export interface CreateIndexRequest {
   DirectoryArn: string;
   OrderedIndexedAttributeList: Array<AttributeKey>;
@@ -880,8 +1485,7 @@ export interface CreateTypedLinkFacetRequest {
   SchemaArn: string;
   Facet: TypedLinkFacet;
 }
-export interface CreateTypedLinkFacetResponse {
-}
+export interface CreateTypedLinkFacetResponse {}
 export type DatetimeAttributeValue = Date | string;
 
 export interface DeleteDirectoryRequest {
@@ -894,14 +1498,12 @@ export interface DeleteFacetRequest {
   SchemaArn: string;
   Name: string;
 }
-export interface DeleteFacetResponse {
-}
+export interface DeleteFacetResponse {}
 export interface DeleteObjectRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
 }
-export interface DeleteObjectResponse {
-}
+export interface DeleteObjectResponse {}
 export interface DeleteSchemaRequest {
   SchemaArn: string;
 }
@@ -912,8 +1514,7 @@ export interface DeleteTypedLinkFacetRequest {
   SchemaArn: string;
   Name: string;
 }
-export interface DeleteTypedLinkFacetResponse {
-}
+export interface DeleteTypedLinkFacetResponse {}
 export interface DetachFromIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
@@ -935,8 +1536,7 @@ export interface DetachPolicyRequest {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-export interface DetachPolicyResponse {
-}
+export interface DetachPolicyResponse {}
 export interface DetachTypedLinkRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
@@ -1014,7 +1614,13 @@ export interface FacetAttributeReference {
   TargetFacetName: string;
   TargetAttributeName: string;
 }
-export type FacetAttributeType = "STRING" | "BINARY" | "BOOLEAN" | "NUMBER" | "DATETIME" | "VARIANT";
+export type FacetAttributeType =
+  | "STRING"
+  | "BINARY"
+  | "BOOLEAN"
+  | "NUMBER"
+  | "DATETIME"
+  | "VARIANT";
 export interface FacetAttributeUpdate {
   Attribute?: FacetAttribute;
   Action?: UpdateActionType;
@@ -1438,7 +2044,8 @@ export interface ObjectAttributeUpdate {
 export type ObjectAttributeUpdateList = Array<ObjectAttributeUpdate>;
 export type ObjectIdentifier = string;
 
-export type ObjectIdentifierAndLinkNameList = Array<ObjectIdentifierAndLinkNameTuple>;
+export type ObjectIdentifierAndLinkNameList =
+  Array<ObjectIdentifierAndLinkNameTuple>;
 export interface ObjectIdentifierAndLinkNameTuple {
   ObjectIdentifier?: string;
   LinkName?: string;
@@ -1490,14 +2097,18 @@ export interface PutSchemaFromJsonRequest {
 export interface PutSchemaFromJsonResponse {
   Arn?: string;
 }
-export type RangeMode = "FIRST" | "LAST" | "LAST_BEFORE_MISSING_VALUES" | "INCLUSIVE" | "EXCLUSIVE";
+export type RangeMode =
+  | "FIRST"
+  | "LAST"
+  | "LAST_BEFORE_MISSING_VALUES"
+  | "INCLUSIVE"
+  | "EXCLUSIVE";
 export interface RemoveFacetFromObjectRequest {
   DirectoryArn: string;
   SchemaFacet: SchemaFacet;
   ObjectReference: ObjectReference;
 }
-export interface RemoveFacetFromObjectResponse {
-}
+export interface RemoveFacetFromObjectResponse {}
 export type RequiredAttributeBehavior = "REQUIRED_ALWAYS" | "NOT_REQUIRED";
 export declare class ResourceNotFoundException extends Data.TaggedError(
   "ResourceNotFoundException",
@@ -1521,7 +2132,11 @@ export type RuleParameterKey = string;
 export type RuleParameterMap = Record<string, string>;
 export type RuleParameterValue = string;
 
-export type RuleType = "BINARY_LENGTH" | "NUMBER_COMPARISON" | "STRING_FROM_SET" | "STRING_LENGTH";
+export type RuleType =
+  | "BINARY_LENGTH"
+  | "NUMBER_COMPARISON"
+  | "STRING_FROM_SET"
+  | "STRING_LENGTH";
 export declare class SchemaAlreadyExistsException extends Data.TaggedError(
   "SchemaAlreadyExistsException",
 )<{
@@ -1562,13 +2177,17 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagsNumberResults = number;
 
 export type TagValue = string;
 
-export type TypedAttributeValue = { StringValue: string } | { BinaryValue: Uint8Array | string } | { BooleanValue: boolean } | { NumberValue: string } | { DatetimeValue: Date | string };
+export type TypedAttributeValue =
+  | { StringValue: string }
+  | { BinaryValue: Uint8Array | string }
+  | { BooleanValue: boolean }
+  | { NumberValue: string }
+  | { DatetimeValue: Date | string };
 export interface TypedAttributeValueRange {
   StartMode: RangeMode;
   StartValue?: TypedAttributeValue;
@@ -1583,7 +2202,8 @@ export interface TypedLinkAttributeDefinition {
   Rules?: Record<string, Rule>;
   RequiredBehavior: RequiredAttributeBehavior;
 }
-export type TypedLinkAttributeDefinitionList = Array<TypedLinkAttributeDefinition>;
+export type TypedLinkAttributeDefinitionList =
+  Array<TypedLinkAttributeDefinition>;
 export interface TypedLinkAttributeRange {
   AttributeName?: string;
   Range: TypedAttributeValueRange;
@@ -1598,7 +2218,8 @@ export interface TypedLinkFacetAttributeUpdate {
   Attribute: TypedLinkAttributeDefinition;
   Action: UpdateActionType;
 }
-export type TypedLinkFacetAttributeUpdateList = Array<TypedLinkFacetAttributeUpdate>;
+export type TypedLinkFacetAttributeUpdateList =
+  Array<TypedLinkFacetAttributeUpdate>;
 export type TypedLinkName = string;
 
 export type TypedLinkNameList = Array<string>;
@@ -1622,8 +2243,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE";
 export interface UpdateFacetRequest {
   SchemaArn: string;
@@ -1631,15 +2251,13 @@ export interface UpdateFacetRequest {
   AttributeUpdates?: Array<FacetAttributeUpdate>;
   ObjectType?: ObjectType;
 }
-export interface UpdateFacetResponse {
-}
+export interface UpdateFacetResponse {}
 export interface UpdateLinkAttributesRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeUpdates: Array<LinkAttributeUpdate>;
 }
-export interface UpdateLinkAttributesResponse {
-}
+export interface UpdateLinkAttributesResponse {}
 export interface UpdateObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1661,8 +2279,7 @@ export interface UpdateTypedLinkFacetRequest {
   AttributeUpdates: Array<TypedLinkFacetAttributeUpdate>;
   IdentityAttributeOrder: Array<string>;
 }
-export interface UpdateTypedLinkFacetResponse {
-}
+export interface UpdateTypedLinkFacetResponse {}
 export interface UpgradeAppliedSchemaRequest {
   PublishedSchemaArn: string;
   DirectoryArn: string;
@@ -2732,4 +3349,3 @@ export declare namespace UpgradePublishedSchema {
     | ValidationException
     | CommonAwsError;
 }
-

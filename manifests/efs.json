@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.efs#AccessPointAlreadyExists": {
       "type": "structure",
@@ -2751,6 +2780,101 @@
     },
     "com.amazonaws.efs#MagnolioAPIService_v20150201": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.efs#CreateAccessPoint"
+        },
+        {
+          "target": "com.amazonaws.efs#CreateFileSystem"
+        },
+        {
+          "target": "com.amazonaws.efs#CreateMountTarget"
+        },
+        {
+          "target": "com.amazonaws.efs#CreateReplicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.efs#CreateTags"
+        },
+        {
+          "target": "com.amazonaws.efs#DeleteAccessPoint"
+        },
+        {
+          "target": "com.amazonaws.efs#DeleteFileSystem"
+        },
+        {
+          "target": "com.amazonaws.efs#DeleteFileSystemPolicy"
+        },
+        {
+          "target": "com.amazonaws.efs#DeleteMountTarget"
+        },
+        {
+          "target": "com.amazonaws.efs#DeleteReplicationConfiguration"
+        },
+        {
+          "target": "com.amazonaws.efs#DeleteTags"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeAccessPoints"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeAccountPreferences"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeBackupPolicy"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeFileSystemPolicy"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeFileSystems"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeLifecycleConfiguration"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeMountTargets"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeMountTargetSecurityGroups"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeReplicationConfigurations"
+        },
+        {
+          "target": "com.amazonaws.efs#DescribeTags"
+        },
+        {
+          "target": "com.amazonaws.efs#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.efs#ModifyMountTargetSecurityGroups"
+        },
+        {
+          "target": "com.amazonaws.efs#PutAccountPreferences"
+        },
+        {
+          "target": "com.amazonaws.efs#PutBackupPolicy"
+        },
+        {
+          "target": "com.amazonaws.efs#PutFileSystemPolicy"
+        },
+        {
+          "target": "com.amazonaws.efs#PutLifecycleConfiguration"
+        },
+        {
+          "target": "com.amazonaws.efs#TagResource"
+        },
+        {
+          "target": "com.amazonaws.efs#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.efs#UpdateFileSystem"
+        },
+        {
+          "target": "com.amazonaws.efs#UpdateFileSystemProtection"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "EFS",

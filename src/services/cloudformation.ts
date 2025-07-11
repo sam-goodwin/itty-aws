@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface CloudFormation {
   activateOrganizationsAccess(
@@ -22,10 +22,7 @@ export interface CloudFormation {
   >;
   cancelUpdateStack(
     input: CancelUpdateStackInput,
-  ): Effect.Effect<
-    {},
-    TokenAlreadyExistsException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, TokenAlreadyExistsException | CommonAwsError>;
   continueUpdateRollback(
     input: ContinueUpdateRollbackInput,
   ): Effect.Effect<
@@ -36,37 +33,53 @@ export interface CloudFormation {
     input: CreateChangeSetInput,
   ): Effect.Effect<
     CreateChangeSetOutput,
-    AlreadyExistsException | InsufficientCapabilitiesException | LimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | InsufficientCapabilitiesException
+    | LimitExceededException
+    | CommonAwsError
   >;
   createGeneratedTemplate(
     input: CreateGeneratedTemplateInput,
   ): Effect.Effect<
     CreateGeneratedTemplateOutput,
-    AlreadyExistsException | ConcurrentResourcesLimitExceededException | LimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | ConcurrentResourcesLimitExceededException
+    | LimitExceededException
+    | CommonAwsError
   >;
   createStack(
     input: CreateStackInput,
   ): Effect.Effect<
     CreateStackOutput,
-    AlreadyExistsException | InsufficientCapabilitiesException | LimitExceededException | TokenAlreadyExistsException | CommonAwsError
+    | AlreadyExistsException
+    | InsufficientCapabilitiesException
+    | LimitExceededException
+    | TokenAlreadyExistsException
+    | CommonAwsError
   >;
   createStackInstances(
     input: CreateStackInstancesInput,
   ): Effect.Effect<
     CreateStackInstancesOutput,
-    InvalidOperationException | LimitExceededException | OperationIdAlreadyExistsException | OperationInProgressException | StackSetNotFoundException | StaleRequestException | CommonAwsError
+    | InvalidOperationException
+    | LimitExceededException
+    | OperationIdAlreadyExistsException
+    | OperationInProgressException
+    | StackSetNotFoundException
+    | StaleRequestException
+    | CommonAwsError
   >;
   createStackRefactor(
     input: CreateStackRefactorInput,
-  ): Effect.Effect<
-    CreateStackRefactorOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<CreateStackRefactorOutput, CommonAwsError>;
   createStackSet(
     input: CreateStackSetInput,
   ): Effect.Effect<
     CreateStackSetOutput,
-    CreatedButModifiedException | LimitExceededException | NameAlreadyExistsException | CommonAwsError
+    | CreatedButModifiedException
+    | LimitExceededException
+    | NameAlreadyExistsException
+    | CommonAwsError
   >;
   deactivateOrganizationsAccess(
     input: DeactivateOrganizationsAccessInput,
@@ -90,19 +103,23 @@ export interface CloudFormation {
     input: DeleteGeneratedTemplateInput,
   ): Effect.Effect<
     {},
-    ConcurrentResourcesLimitExceededException | GeneratedTemplateNotFoundException | CommonAwsError
+    | ConcurrentResourcesLimitExceededException
+    | GeneratedTemplateNotFoundException
+    | CommonAwsError
   >;
   deleteStack(
     input: DeleteStackInput,
-  ): Effect.Effect<
-    {},
-    TokenAlreadyExistsException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, TokenAlreadyExistsException | CommonAwsError>;
   deleteStackInstances(
     input: DeleteStackInstancesInput,
   ): Effect.Effect<
     DeleteStackInstancesOutput,
-    InvalidOperationException | OperationIdAlreadyExistsException | OperationInProgressException | StackSetNotFoundException | StaleRequestException | CommonAwsError
+    | InvalidOperationException
+    | OperationIdAlreadyExistsException
+    | OperationInProgressException
+    | StackSetNotFoundException
+    | StaleRequestException
+    | CommonAwsError
   >;
   deleteStackSet(
     input: DeleteStackSetInput,
@@ -118,10 +135,7 @@ export interface CloudFormation {
   >;
   describeAccountLimits(
     input: DescribeAccountLimitsInput,
-  ): Effect.Effect<
-    DescribeAccountLimitsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeAccountLimitsOutput, CommonAwsError>;
   describeChangeSet(
     input: DescribeChangeSetInput,
   ): Effect.Effect<
@@ -160,16 +174,10 @@ export interface CloudFormation {
   >;
   describeStackDriftDetectionStatus(
     input: DescribeStackDriftDetectionStatusInput,
-  ): Effect.Effect<
-    DescribeStackDriftDetectionStatusOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeStackDriftDetectionStatusOutput, CommonAwsError>;
   describeStackEvents(
     input: DescribeStackEventsInput,
-  ): Effect.Effect<
-    DescribeStackEventsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeStackEventsOutput, CommonAwsError>;
   describeStackInstance(
     input: DescribeStackInstanceInput,
   ): Effect.Effect<
@@ -184,22 +192,16 @@ export interface CloudFormation {
   >;
   describeStackResource(
     input: DescribeStackResourceInput,
-  ): Effect.Effect<
-    DescribeStackResourceOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeStackResourceOutput, CommonAwsError>;
   describeStackResourceDrifts(
     input: DescribeStackResourceDriftsInput,
-  ): Effect.Effect<
-    DescribeStackResourceDriftsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeStackResourceDriftsOutput, CommonAwsError>;
   describeStackResources(
     input: DescribeStackResourcesInput,
-  ): Effect.Effect<
-    DescribeStackResourcesOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DescribeStackResourcesOutput, CommonAwsError>;
+  describeStacks(
+    input: DescribeStacksInput,
+  ): Effect.Effect<DescribeStacksOutput, CommonAwsError>;
   describeStackSet(
     input: DescribeStackSetInput,
   ): Effect.Effect<
@@ -211,12 +213,6 @@ export interface CloudFormation {
   ): Effect.Effect<
     DescribeStackSetOperationOutput,
     OperationNotFoundException | StackSetNotFoundException | CommonAwsError
-  >;
-  describeStacks(
-    input: DescribeStacksInput,
-  ): Effect.Effect<
-    DescribeStacksOutput,
-    CommonAwsError
   >;
   describeType(
     input: DescribeTypeInput,
@@ -232,40 +228,35 @@ export interface CloudFormation {
   >;
   detectStackDrift(
     input: DetectStackDriftInput,
-  ): Effect.Effect<
-    DetectStackDriftOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DetectStackDriftOutput, CommonAwsError>;
   detectStackResourceDrift(
     input: DetectStackResourceDriftInput,
-  ): Effect.Effect<
-    DetectStackResourceDriftOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<DetectStackResourceDriftOutput, CommonAwsError>;
   detectStackSetDrift(
     input: DetectStackSetDriftInput,
   ): Effect.Effect<
     DetectStackSetDriftOutput,
-    InvalidOperationException | OperationInProgressException | StackSetNotFoundException | CommonAwsError
+    | InvalidOperationException
+    | OperationInProgressException
+    | StackSetNotFoundException
+    | CommonAwsError
   >;
   estimateTemplateCost(
     input: EstimateTemplateCostInput,
-  ): Effect.Effect<
-    EstimateTemplateCostOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<EstimateTemplateCostOutput, CommonAwsError>;
   executeChangeSet(
     input: ExecuteChangeSetInput,
   ): Effect.Effect<
     ExecuteChangeSetOutput,
-    ChangeSetNotFoundException | InsufficientCapabilitiesException | InvalidChangeSetStatusException | TokenAlreadyExistsException | CommonAwsError
+    | ChangeSetNotFoundException
+    | InsufficientCapabilitiesException
+    | InvalidChangeSetStatusException
+    | TokenAlreadyExistsException
+    | CommonAwsError
   >;
   executeStackRefactor(
     input: ExecuteStackRefactorInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  ): Effect.Effect<{}, CommonAwsError>;
   getGeneratedTemplate(
     input: GetGeneratedTemplateInput,
   ): Effect.Effect<
@@ -274,10 +265,7 @@ export interface CloudFormation {
   >;
   getStackPolicy(
     input: GetStackPolicyInput,
-  ): Effect.Effect<
-    GetStackPolicyOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<GetStackPolicyOutput, CommonAwsError>;
   getTemplate(
     input: GetTemplateInput,
   ): Effect.Effect<
@@ -294,26 +282,24 @@ export interface CloudFormation {
     input: ImportStacksToStackSetInput,
   ): Effect.Effect<
     ImportStacksToStackSetOutput,
-    InvalidOperationException | LimitExceededException | OperationIdAlreadyExistsException | OperationInProgressException | StackNotFoundException | StackSetNotFoundException | StaleRequestException | CommonAwsError
+    | InvalidOperationException
+    | LimitExceededException
+    | OperationIdAlreadyExistsException
+    | OperationInProgressException
+    | StackNotFoundException
+    | StackSetNotFoundException
+    | StaleRequestException
+    | CommonAwsError
   >;
   listChangeSets(
     input: ListChangeSetsInput,
-  ): Effect.Effect<
-    ListChangeSetsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListChangeSetsOutput, CommonAwsError>;
   listExports(
     input: ListExportsInput,
-  ): Effect.Effect<
-    ListExportsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListExportsOutput, CommonAwsError>;
   listGeneratedTemplates(
     input: ListGeneratedTemplatesInput,
-  ): Effect.Effect<
-    ListGeneratedTemplatesOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListGeneratedTemplatesOutput, CommonAwsError>;
   listHookResults(
     input: ListHookResultsInput,
   ): Effect.Effect<
@@ -322,33 +308,34 @@ export interface CloudFormation {
   >;
   listImports(
     input: ListImportsInput,
-  ): Effect.Effect<
-    ListImportsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListImportsOutput, CommonAwsError>;
   listResourceScanRelatedResources(
     input: ListResourceScanRelatedResourcesInput,
   ): Effect.Effect<
     ListResourceScanRelatedResourcesOutput,
-    ResourceScanInProgressException | ResourceScanNotFoundException | CommonAwsError
+    | ResourceScanInProgressException
+    | ResourceScanNotFoundException
+    | CommonAwsError
   >;
   listResourceScanResources(
     input: ListResourceScanResourcesInput,
   ): Effect.Effect<
     ListResourceScanResourcesOutput,
-    ResourceScanInProgressException | ResourceScanNotFoundException | CommonAwsError
+    | ResourceScanInProgressException
+    | ResourceScanNotFoundException
+    | CommonAwsError
   >;
   listResourceScans(
     input: ListResourceScansInput,
-  ): Effect.Effect<
-    ListResourceScansOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListResourceScansOutput, CommonAwsError>;
   listStackInstanceResourceDrifts(
     input: ListStackInstanceResourceDriftsInput,
   ): Effect.Effect<
     ListStackInstanceResourceDriftsOutput,
-    OperationNotFoundException | StackInstanceNotFoundException | StackSetNotFoundException | CommonAwsError
+    | OperationNotFoundException
+    | StackInstanceNotFoundException
+    | StackSetNotFoundException
+    | CommonAwsError
   >;
   listStackInstances(
     input: ListStackInstancesInput,
@@ -358,22 +345,16 @@ export interface CloudFormation {
   >;
   listStackRefactorActions(
     input: ListStackRefactorActionsInput,
-  ): Effect.Effect<
-    ListStackRefactorActionsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListStackRefactorActionsOutput, CommonAwsError>;
   listStackRefactors(
     input: ListStackRefactorsInput,
-  ): Effect.Effect<
-    ListStackRefactorsOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListStackRefactorsOutput, CommonAwsError>;
   listStackResources(
     input: ListStackResourcesInput,
-  ): Effect.Effect<
-    ListStackResourcesOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListStackResourcesOutput, CommonAwsError>;
+  listStacks(
+    input: ListStacksInput,
+  ): Effect.Effect<ListStacksOutput, CommonAwsError>;
   listStackSetAutoDeploymentTargets(
     input: ListStackSetAutoDeploymentTargetsInput,
   ): Effect.Effect<
@@ -394,32 +375,20 @@ export interface CloudFormation {
   >;
   listStackSets(
     input: ListStackSetsInput,
-  ): Effect.Effect<
-    ListStackSetsOutput,
-    CommonAwsError
-  >;
-  listStacks(
-    input: ListStacksInput,
-  ): Effect.Effect<
-    ListStacksOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ListStackSetsOutput, CommonAwsError>;
   listTypeRegistrations(
     input: ListTypeRegistrationsInput,
   ): Effect.Effect<
     ListTypeRegistrationsOutput,
     CFNRegistryException | CommonAwsError
   >;
+  listTypes(
+    input: ListTypesInput,
+  ): Effect.Effect<ListTypesOutput, CFNRegistryException | CommonAwsError>;
   listTypeVersions(
     input: ListTypeVersionsInput,
   ): Effect.Effect<
     ListTypeVersionsOutput,
-    CFNRegistryException | CommonAwsError
-  >;
-  listTypes(
-    input: ListTypesInput,
-  ): Effect.Effect<
-    ListTypesOutput,
     CFNRegistryException | CommonAwsError
   >;
   publishType(
@@ -432,7 +401,9 @@ export interface CloudFormation {
     input: RecordHandlerProgressInput,
   ): Effect.Effect<
     RecordHandlerProgressOutput,
-    InvalidStateTransitionException | OperationStatusCheckFailedException | CommonAwsError
+    | InvalidStateTransitionException
+    | OperationStatusCheckFailedException
+    | CommonAwsError
   >;
   registerPublisher(
     input: RegisterPublisherInput,
@@ -442,22 +413,14 @@ export interface CloudFormation {
   >;
   registerType(
     input: RegisterTypeInput,
-  ): Effect.Effect<
-    RegisterTypeOutput,
-    CFNRegistryException | CommonAwsError
-  >;
+  ): Effect.Effect<RegisterTypeOutput, CFNRegistryException | CommonAwsError>;
   rollbackStack(
     input: RollbackStackInput,
   ): Effect.Effect<
     RollbackStackOutput,
     TokenAlreadyExistsException | CommonAwsError
   >;
-  setStackPolicy(
-    input: SetStackPolicyInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  setStackPolicy(input: SetStackPolicyInput): Effect.Effect<{}, CommonAwsError>;
   setTypeConfiguration(
     input: SetTypeConfigurationInput,
   ): Effect.Effect<
@@ -470,23 +433,23 @@ export interface CloudFormation {
     SetTypeDefaultVersionOutput,
     CFNRegistryException | TypeNotFoundException | CommonAwsError
   >;
-  signalResource(
-    input: SignalResourceInput,
-  ): Effect.Effect<
-    {},
-    CommonAwsError
-  >;
+  signalResource(input: SignalResourceInput): Effect.Effect<{}, CommonAwsError>;
   startResourceScan(
     input: StartResourceScanInput,
   ): Effect.Effect<
     StartResourceScanOutput,
-    ResourceScanInProgressException | ResourceScanLimitExceededException | CommonAwsError
+    | ResourceScanInProgressException
+    | ResourceScanLimitExceededException
+    | CommonAwsError
   >;
   stopStackSetOperation(
     input: StopStackSetOperationInput,
   ): Effect.Effect<
     StopStackSetOperationOutput,
-    InvalidOperationException | OperationNotFoundException | StackSetNotFoundException | CommonAwsError
+    | InvalidOperationException
+    | OperationNotFoundException
+    | StackSetNotFoundException
+    | CommonAwsError
   >;
   testType(
     input: TestTypeInput,
@@ -498,38 +461,49 @@ export interface CloudFormation {
     input: UpdateGeneratedTemplateInput,
   ): Effect.Effect<
     UpdateGeneratedTemplateOutput,
-    AlreadyExistsException | GeneratedTemplateNotFoundException | LimitExceededException | CommonAwsError
+    | AlreadyExistsException
+    | GeneratedTemplateNotFoundException
+    | LimitExceededException
+    | CommonAwsError
   >;
   updateStack(
     input: UpdateStackInput,
   ): Effect.Effect<
     UpdateStackOutput,
-    InsufficientCapabilitiesException | TokenAlreadyExistsException | CommonAwsError
+    | InsufficientCapabilitiesException
+    | TokenAlreadyExistsException
+    | CommonAwsError
   >;
   updateStackInstances(
     input: UpdateStackInstancesInput,
   ): Effect.Effect<
     UpdateStackInstancesOutput,
-    InvalidOperationException | OperationIdAlreadyExistsException | OperationInProgressException | StackInstanceNotFoundException | StackSetNotFoundException | StaleRequestException | CommonAwsError
+    | InvalidOperationException
+    | OperationIdAlreadyExistsException
+    | OperationInProgressException
+    | StackInstanceNotFoundException
+    | StackSetNotFoundException
+    | StaleRequestException
+    | CommonAwsError
   >;
   updateStackSet(
     input: UpdateStackSetInput,
   ): Effect.Effect<
     UpdateStackSetOutput,
-    InvalidOperationException | OperationIdAlreadyExistsException | OperationInProgressException | StackInstanceNotFoundException | StackSetNotFoundException | StaleRequestException | CommonAwsError
+    | InvalidOperationException
+    | OperationIdAlreadyExistsException
+    | OperationInProgressException
+    | StackInstanceNotFoundException
+    | StackSetNotFoundException
+    | StaleRequestException
+    | CommonAwsError
   >;
   updateTerminationProtection(
     input: UpdateTerminationProtectionInput,
-  ): Effect.Effect<
-    UpdateTerminationProtectionOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<UpdateTerminationProtectionOutput, CommonAwsError>;
   validateTemplate(
     input: ValidateTemplateInput,
-  ): Effect.Effect<
-    ValidateTemplateOutput,
-    CommonAwsError
-  >;
+  ): Effect.Effect<ValidateTemplateOutput, CommonAwsError>;
 }
 
 export type Cloudformation = CloudFormation;
@@ -538,7 +512,11 @@ export type AcceptTermsAndConditions = boolean;
 
 export type Account = string;
 
-export type AccountFilterType = "NONE" | "INTERSECTION" | "DIFFERENCE" | "UNION";
+export type AccountFilterType =
+  | "NONE"
+  | "INTERSECTION"
+  | "DIFFERENCE"
+  | "UNION";
 export interface AccountGateResult {
   Status?: AccountGateStatus;
   StatusReason?: string;
@@ -554,10 +532,8 @@ export type AccountLimitList = Array<AccountLimit>;
 export type AccountList = Array<string>;
 export type AccountsUrl = string;
 
-export interface ActivateOrganizationsAccessInput {
-}
-export interface ActivateOrganizationsAccessOutput {
-}
+export interface ActivateOrganizationsAccessInput {}
+export interface ActivateOrganizationsAccessOutput {}
 export interface ActivateTypeInput {
   Type?: ThirdPartyType;
   PublicTypeArn?: string;
@@ -601,7 +577,8 @@ export interface BatchDescribeTypeConfigurationsError {
   ErrorMessage?: string;
   TypeConfigurationIdentifier?: TypeConfigurationIdentifier;
 }
-export type BatchDescribeTypeConfigurationsErrors = Array<BatchDescribeTypeConfigurationsError>;
+export type BatchDescribeTypeConfigurationsErrors =
+  Array<BatchDescribeTypeConfigurationsError>;
 export interface BatchDescribeTypeConfigurationsInput {
   TypeConfigurationIdentifiers: Array<TypeConfigurationIdentifier>;
 }
@@ -626,7 +603,10 @@ export interface CancelUpdateStackInput {
 export type Capabilities = Array<Capability>;
 export type CapabilitiesReason = string;
 
-export type Capability = "CAPABILITY_IAM" | "CAPABILITY_NAMED_IAM" | "CAPABILITY_AUTO_EXPAND";
+export type Capability =
+  | "CAPABILITY_IAM"
+  | "CAPABILITY_NAMED_IAM"
+  | "CAPABILITY_AUTO_EXPAND";
 export type Category = "REGISTERED" | "ACTIVATED" | "THIRD_PARTY" | "AWS_TYPES";
 export type CausingEntity = string;
 
@@ -672,7 +652,15 @@ export declare class ChangeSetNotFoundException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type ChangeSetStatus = "CREATE_PENDING" | "CREATE_IN_PROGRESS" | "CREATE_COMPLETE" | "DELETE_PENDING" | "DELETE_IN_PROGRESS" | "DELETE_COMPLETE" | "DELETE_FAILED" | "FAILED";
+export type ChangeSetStatus =
+  | "CREATE_PENDING"
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_COMPLETE"
+  | "DELETE_PENDING"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_COMPLETE"
+  | "DELETE_FAILED"
+  | "FAILED";
 export type ChangeSetStatusReason = string;
 
 export type ChangeSetSummaries = Array<ChangeSetSummary>;
@@ -692,13 +680,20 @@ export interface ChangeSetSummary {
   ImportExistingResources?: boolean;
 }
 export type ChangeSetType = "CREATE" | "UPDATE" | "IMPORT";
-export type ChangeSource = "ResourceReference" | "ParameterReference" | "ResourceAttribute" | "DirectModification" | "Automatic";
+export type ChangeSource =
+  | "ResourceReference"
+  | "ParameterReference"
+  | "ResourceAttribute"
+  | "DirectModification"
+  | "Automatic";
 export type ChangeType = "Resource";
 export type ClientRequestToken = string;
 
 export type ClientToken = string;
 
-export type ConcurrencyMode = "STRICT_FAILURE_TOLERANCE" | "SOFT_FAILURE_TOLERANCE";
+export type ConcurrencyMode =
+  | "STRICT_FAILURE_TOLERANCE"
+  | "SOFT_FAILURE_TOLERANCE";
 export declare class ConcurrentResourcesLimitExceededException extends Data.TaggedError(
   "ConcurrentResourcesLimitExceededException",
 )<{
@@ -714,8 +709,7 @@ export interface ContinueUpdateRollbackInput {
   ResourcesToSkip?: Array<string>;
   ClientRequestToken?: string;
 }
-export interface ContinueUpdateRollbackOutput {
-}
+export interface ContinueUpdateRollbackOutput {}
 export interface CreateChangeSetInput {
   StackName: string;
   TemplateBody?: string;
@@ -822,23 +816,19 @@ export interface CreateStackSetOutput {
 }
 export type CreationTime = Date | string;
 
-export interface DeactivateOrganizationsAccessInput {
-}
-export interface DeactivateOrganizationsAccessOutput {
-}
+export interface DeactivateOrganizationsAccessInput {}
+export interface DeactivateOrganizationsAccessOutput {}
 export interface DeactivateTypeInput {
   TypeName?: string;
   Type?: ThirdPartyType;
   Arn?: string;
 }
-export interface DeactivateTypeOutput {
-}
+export interface DeactivateTypeOutput {}
 export interface DeleteChangeSetInput {
   ChangeSetName: string;
   StackName?: string;
 }
-export interface DeleteChangeSetOutput {
-}
+export interface DeleteChangeSetOutput {}
 export interface DeleteGeneratedTemplateInput {
   GeneratedTemplateName: string;
 }
@@ -866,8 +856,7 @@ export interface DeleteStackSetInput {
   StackSetName: string;
   CallAs?: CallAs;
 }
-export interface DeleteStackSetOutput {
-}
+export interface DeleteStackSetOutput {}
 export type DeletionMode = "STANDARD" | "FORCE_DELETE_STACK";
 export type DeletionTime = Date | string;
 
@@ -884,8 +873,7 @@ export interface DeregisterTypeInput {
   TypeName?: string;
   VersionId?: string;
 }
-export interface DeregisterTypeOutput {
-}
+export interface DeregisterTypeOutput {}
 export interface DescribeAccountLimitsInput {
   NextToken?: string;
 }
@@ -1177,14 +1165,19 @@ export interface ExecuteChangeSetInput {
   DisableRollback?: boolean;
   RetainExceptOnCreate?: boolean;
 }
-export interface ExecuteChangeSetOutput {
-}
+export interface ExecuteChangeSetOutput {}
 export interface ExecuteStackRefactorInput {
   StackRefactorId: string;
 }
 export type ExecutionRoleName = string;
 
-export type ExecutionStatus = "UNAVAILABLE" | "AVAILABLE" | "EXECUTE_IN_PROGRESS" | "EXECUTE_COMPLETE" | "EXECUTE_FAILED" | "OBSOLETE";
+export type ExecutionStatus =
+  | "UNAVAILABLE"
+  | "AVAILABLE"
+  | "EXECUTE_IN_PROGRESS"
+  | "EXECUTE_COMPLETE"
+  | "EXECUTE_FAILED"
+  | "OBSOLETE";
 export type ExecutionStatusReason = string;
 
 export interface Export {
@@ -1213,8 +1206,20 @@ export declare class GeneratedTemplateNotFoundException extends Data.TaggedError
 )<{
   readonly Message?: string;
 }> {}
-export type GeneratedTemplateResourceStatus = "PENDING" | "IN_PROGRESS" | "FAILED" | "COMPLETE";
-export type GeneratedTemplateStatus = "CREATE_PENDING" | "UPDATE_PENDING" | "DELETE_PENDING" | "CREATE_IN_PROGRESS" | "UPDATE_IN_PROGRESS" | "DELETE_IN_PROGRESS" | "FAILED" | "COMPLETE";
+export type GeneratedTemplateResourceStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "COMPLETE";
+export type GeneratedTemplateStatus =
+  | "CREATE_PENDING"
+  | "UPDATE_PENDING"
+  | "DELETE_PENDING"
+  | "CREATE_IN_PROGRESS"
+  | "UPDATE_IN_PROGRESS"
+  | "DELETE_IN_PROGRESS"
+  | "FAILED"
+  | "COMPLETE";
 export type GeneratedTemplateUpdateReplacePolicy = "DELETE" | "RETAIN";
 export interface GetGeneratedTemplateInput {
   Format?: TemplateFormat;
@@ -1259,7 +1264,26 @@ export interface GetTemplateSummaryOutput {
   ResourceIdentifierSummaries?: Array<ResourceIdentifierSummary>;
   Warnings?: Warnings;
 }
-export type HandlerErrorCode = "NotUpdatable" | "InvalidRequest" | "AccessDenied" | "InvalidCredentials" | "AlreadyExists" | "NotFound" | "ResourceConflict" | "Throttling" | "ServiceLimitExceeded" | "ServiceTimeout" | "GeneralServiceException" | "ServiceInternalError" | "NetworkFailure" | "InternalFailure" | "InvalidTypeConfiguration" | "HandlerInternalFailure" | "NonCompliant" | "Unknown" | "UnsupportedTarget";
+export type HandlerErrorCode =
+  | "NotUpdatable"
+  | "InvalidRequest"
+  | "AccessDenied"
+  | "InvalidCredentials"
+  | "AlreadyExists"
+  | "NotFound"
+  | "ResourceConflict"
+  | "Throttling"
+  | "ServiceLimitExceeded"
+  | "ServiceTimeout"
+  | "GeneralServiceException"
+  | "ServiceInternalError"
+  | "NetworkFailure"
+  | "InternalFailure"
+  | "InvalidTypeConfiguration"
+  | "HandlerInternalFailure"
+  | "NonCompliant"
+  | "Unknown"
+  | "UnsupportedTarget";
 export type HookFailureMode = "FAIL" | "WARN";
 export type HookInvocationCount = number;
 
@@ -1281,7 +1305,11 @@ export interface HookResultSummary {
   Status?: HookStatus;
   HookStatusReason?: string;
 }
-export type HookStatus = "HOOK_IN_PROGRESS" | "HOOK_COMPLETE_SUCCEEDED" | "HOOK_COMPLETE_FAILED" | "HOOK_FAILED";
+export type HookStatus =
+  | "HOOK_IN_PROGRESS"
+  | "HOOK_COMPLETE_SUCCEEDED"
+  | "HOOK_COMPLETE_FAILED"
+  | "HOOK_FAILED";
 export type HookStatusReason = string;
 
 export type HookTargetType = "RESOURCE";
@@ -1398,7 +1426,11 @@ export interface ListHookResultsOutput {
   HookResults?: Array<HookResultSummary>;
   NextToken?: string;
 }
-export type ListHookResultsTargetType = "CHANGE_SET" | "STACK" | "RESOURCE" | "CLOUD_CONTROL";
+export type ListHookResultsTargetType =
+  | "CHANGE_SET"
+  | "STACK"
+  | "RESOURCE"
+  | "CLOUD_CONTROL";
 export interface ListImportsInput {
   ExportName: string;
   NextToken?: string;
@@ -1664,7 +1696,10 @@ export type OptionalSecureUrl = string;
 export type OrganizationalUnitId = string;
 
 export type OrganizationalUnitIdList = Array<string>;
-export type OrganizationStatus = "ENABLED" | "DISABLED" | "DISABLED_PERMANENTLY";
+export type OrganizationStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "DISABLED_PERMANENTLY";
 export interface Output {
   OutputKey?: string;
   OutputValue?: string;
@@ -1706,12 +1741,19 @@ export type PercentageCompleted = number;
 export type PermissionModels = "SERVICE_MANAGED" | "SELF_MANAGED";
 export type PhysicalResourceId = string;
 
-export type PhysicalResourceIdContext = Array<PhysicalResourceIdContextKeyValuePair>;
+export type PhysicalResourceIdContext =
+  Array<PhysicalResourceIdContextKeyValuePair>;
 export interface PhysicalResourceIdContextKeyValuePair {
   Key: string;
   Value: string;
 }
-export type PolicyAction = "Delete" | "Retain" | "Snapshot" | "ReplaceAndDelete" | "ReplaceAndRetain" | "ReplaceAndSnapshot";
+export type PolicyAction =
+  | "Delete"
+  | "Retain"
+  | "Snapshot"
+  | "ReplaceAndDelete"
+  | "ReplaceAndRetain"
+  | "ReplaceAndSnapshot";
 export type PrivateTypeArn = string;
 
 export type Properties = string;
@@ -1731,7 +1773,10 @@ export type PropertyPath = string;
 
 export type PropertyValue = string;
 
-export type ProvisioningType = "NON_PROVISIONABLE" | "IMMUTABLE" | "FULLY_MUTABLE";
+export type ProvisioningType =
+  | "NON_PROVISIONABLE"
+  | "IMMUTABLE"
+  | "FULLY_MUTABLE";
 export type PublicVersionNumber = string;
 
 export type PublisherId = string;
@@ -1761,8 +1806,7 @@ export interface RecordHandlerProgressInput {
   ResourceModel?: string;
   ClientRequestToken?: string;
 }
-export interface RecordHandlerProgressOutput {
-}
+export interface RecordHandlerProgressOutput {}
 export type RefreshAllResources = boolean;
 
 export type Region = string;
@@ -1806,7 +1850,14 @@ export type RequiredActivatedTypes = Array<RequiredActivatedType>;
 export type RequiredProperty = boolean;
 
 export type RequiresRecreation = "Never" | "Conditionally" | "Always";
-export type ResourceAttribute = "Properties" | "Metadata" | "CreationPolicy" | "UpdatePolicy" | "DeletionPolicy" | "UpdateReplacePolicy" | "Tags";
+export type ResourceAttribute =
+  | "Properties"
+  | "Metadata"
+  | "CreationPolicy"
+  | "UpdatePolicy"
+  | "DeletionPolicy"
+  | "UpdateReplacePolicy"
+  | "Tags";
 export interface ResourceChange {
   PolicyAction?: PolicyAction;
   Action?: ChangeAction;
@@ -1891,7 +1942,11 @@ export declare class ResourceScanNotFoundException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type ResourceScanStatus = "IN_PROGRESS" | "FAILED" | "COMPLETE" | "EXPIRED";
+export type ResourceScanStatus =
+  | "IN_PROGRESS"
+  | "FAILED"
+  | "COMPLETE"
+  | "EXPIRED";
 export type ResourceScanStatusReason = string;
 
 export type ResourceScanSummaries = Array<ResourceScanSummary>;
@@ -1919,7 +1974,35 @@ export type ResourcesScanned = number;
 
 export type ResourcesSucceeded = number;
 
-export type ResourceStatus = "CREATE_IN_PROGRESS" | "CREATE_FAILED" | "CREATE_COMPLETE" | "DELETE_IN_PROGRESS" | "DELETE_FAILED" | "DELETE_COMPLETE" | "DELETE_SKIPPED" | "UPDATE_IN_PROGRESS" | "UPDATE_FAILED" | "UPDATE_COMPLETE" | "IMPORT_FAILED" | "IMPORT_COMPLETE" | "IMPORT_IN_PROGRESS" | "IMPORT_ROLLBACK_IN_PROGRESS" | "IMPORT_ROLLBACK_FAILED" | "IMPORT_ROLLBACK_COMPLETE" | "EXPORT_FAILED" | "EXPORT_COMPLETE" | "EXPORT_IN_PROGRESS" | "EXPORT_ROLLBACK_IN_PROGRESS" | "EXPORT_ROLLBACK_FAILED" | "EXPORT_ROLLBACK_COMPLETE" | "UPDATE_ROLLBACK_IN_PROGRESS" | "UPDATE_ROLLBACK_COMPLETE" | "UPDATE_ROLLBACK_FAILED" | "ROLLBACK_IN_PROGRESS" | "ROLLBACK_COMPLETE" | "ROLLBACK_FAILED";
+export type ResourceStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "CREATE_COMPLETE"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_FAILED"
+  | "DELETE_COMPLETE"
+  | "DELETE_SKIPPED"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED"
+  | "UPDATE_COMPLETE"
+  | "IMPORT_FAILED"
+  | "IMPORT_COMPLETE"
+  | "IMPORT_IN_PROGRESS"
+  | "IMPORT_ROLLBACK_IN_PROGRESS"
+  | "IMPORT_ROLLBACK_FAILED"
+  | "IMPORT_ROLLBACK_COMPLETE"
+  | "EXPORT_FAILED"
+  | "EXPORT_COMPLETE"
+  | "EXPORT_IN_PROGRESS"
+  | "EXPORT_ROLLBACK_IN_PROGRESS"
+  | "EXPORT_ROLLBACK_FAILED"
+  | "EXPORT_ROLLBACK_COMPLETE"
+  | "UPDATE_ROLLBACK_IN_PROGRESS"
+  | "UPDATE_ROLLBACK_COMPLETE"
+  | "UPDATE_ROLLBACK_FAILED"
+  | "ROLLBACK_IN_PROGRESS"
+  | "ROLLBACK_COMPLETE"
+  | "ROLLBACK_FAILED";
 export type ResourceStatusReason = string;
 
 export type ResourcesToImport = Array<ResourceToImport>;
@@ -2021,8 +2104,7 @@ export interface SetTypeDefaultVersionInput {
   TypeName?: string;
   VersionId?: string;
 }
-export interface SetTypeDefaultVersionOutput {
-}
+export interface SetTypeDefaultVersionOutput {}
 export interface SignalResourceInput {
   StackName: string;
   LogicalResourceId: string;
@@ -2064,7 +2146,10 @@ export interface StackDefinition {
 export type StackDefinitions = Array<StackDefinition>;
 export type StackDriftDetectionId = string;
 
-export type StackDriftDetectionStatus = "DETECTION_IN_PROGRESS" | "DETECTION_FAILED" | "DETECTION_COMPLETE";
+export type StackDriftDetectionStatus =
+  | "DETECTION_IN_PROGRESS"
+  | "DETECTION_FAILED"
+  | "DETECTION_COMPLETE";
 export type StackDriftDetectionStatusReason = string;
 
 export interface StackDriftInformation {
@@ -2075,7 +2160,11 @@ export interface StackDriftInformationSummary {
   StackDriftStatus: StackDriftStatus;
   LastCheckTimestamp?: Date | string;
 }
-export type StackDriftStatus = "DRIFTED" | "IN_SYNC" | "UNKNOWN" | "NOT_CHECKED";
+export type StackDriftStatus =
+  | "DRIFTED"
+  | "IN_SYNC"
+  | "UNKNOWN"
+  | "NOT_CHECKED";
 export interface StackEvent {
   StackId: string;
   EventId: string;
@@ -2119,12 +2208,23 @@ export interface StackInstance {
 export interface StackInstanceComprehensiveStatus {
   DetailedStatus?: StackInstanceDetailedStatus;
 }
-export type StackInstanceDetailedStatus = "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLED" | "INOPERABLE" | "SKIPPED_SUSPENDED_ACCOUNT" | "FAILED_IMPORT";
+export type StackInstanceDetailedStatus =
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLED"
+  | "INOPERABLE"
+  | "SKIPPED_SUSPENDED_ACCOUNT"
+  | "FAILED_IMPORT";
 export interface StackInstanceFilter {
   Name?: StackInstanceFilterName;
   Values?: string;
 }
-export type StackInstanceFilterName = "DETAILED_STATUS" | "LAST_OPERATION_ID" | "DRIFT_STATUS";
+export type StackInstanceFilterName =
+  | "DETAILED_STATUS"
+  | "LAST_OPERATION_ID"
+  | "DRIFT_STATUS";
 export type StackInstanceFilters = Array<StackInstanceFilter>;
 export type StackInstanceFilterValues = string;
 
@@ -2133,7 +2233,8 @@ export declare class StackInstanceNotFoundException extends Data.TaggedError(
 )<{
   readonly Message?: string;
 }> {}
-export type StackInstanceResourceDriftsSummaries = Array<StackInstanceResourceDriftsSummary>;
+export type StackInstanceResourceDriftsSummaries =
+  Array<StackInstanceResourceDriftsSummary>;
 export interface StackInstanceResourceDriftsSummary {
   StackId: string;
   LogicalResourceId: string;
@@ -2192,8 +2293,18 @@ export type StackRefactorActionEntity = "RESOURCE" | "STACK";
 export type StackRefactorActions = Array<StackRefactorAction>;
 export type StackRefactorActionType = "MOVE" | "CREATE";
 export type StackRefactorDetection = "AUTO" | "MANUAL";
-export type StackRefactorExecutionStatus = "UNAVAILABLE" | "AVAILABLE" | "OBSOLETE" | "EXECUTE_IN_PROGRESS" | "EXECUTE_COMPLETE" | "EXECUTE_FAILED" | "ROLLBACK_IN_PROGRESS" | "ROLLBACK_COMPLETE" | "ROLLBACK_FAILED";
-export type StackRefactorExecutionStatusFilter = Array<StackRefactorExecutionStatus>;
+export type StackRefactorExecutionStatus =
+  | "UNAVAILABLE"
+  | "AVAILABLE"
+  | "OBSOLETE"
+  | "EXECUTE_IN_PROGRESS"
+  | "EXECUTE_COMPLETE"
+  | "EXECUTE_FAILED"
+  | "ROLLBACK_IN_PROGRESS"
+  | "ROLLBACK_COMPLETE"
+  | "ROLLBACK_FAILED";
+export type StackRefactorExecutionStatusFilter =
+  Array<StackRefactorExecutionStatus>;
 export type StackRefactorId = string;
 
 export declare class StackRefactorNotFoundException extends Data.TaggedError(
@@ -2203,7 +2314,13 @@ export declare class StackRefactorNotFoundException extends Data.TaggedError(
 }> {}
 export type StackRefactorResourceIdentifier = string;
 
-export type StackRefactorStatus = "CREATE_IN_PROGRESS" | "CREATE_COMPLETE" | "CREATE_FAILED" | "DELETE_IN_PROGRESS" | "DELETE_COMPLETE" | "DELETE_FAILED";
+export type StackRefactorStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_COMPLETE"
+  | "CREATE_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_COMPLETE"
+  | "DELETE_FAILED";
 export type StackRefactorStatusReason = string;
 
 export type StackRefactorSummaries = Array<StackRefactorSummary>;
@@ -2267,7 +2384,12 @@ export interface StackResourceDriftInformationSummary {
   LastCheckTimestamp?: Date | string;
 }
 export type StackResourceDrifts = Array<StackResourceDrift>;
-export type StackResourceDriftStatus = "IN_SYNC" | "MODIFIED" | "DELETED" | "NOT_CHECKED" | "UNKNOWN";
+export type StackResourceDriftStatus =
+  | "IN_SYNC"
+  | "MODIFIED"
+  | "DELETED"
+  | "NOT_CHECKED"
+  | "UNKNOWN";
 export type StackResourceDriftStatusFilters = Array<StackResourceDriftStatus>;
 export type StackResourceDriftStatusReason = string;
 
@@ -2305,7 +2427,8 @@ export interface StackSet {
 }
 export type StackSetARN = string;
 
-export type StackSetAutoDeploymentTargetSummaries = Array<StackSetAutoDeploymentTargetSummary>;
+export type StackSetAutoDeploymentTargetSummaries =
+  Array<StackSetAutoDeploymentTargetSummary>;
 export interface StackSetAutoDeploymentTargetSummary {
   OrganizationalUnitId?: string;
   Regions?: Array<string>;
@@ -2320,7 +2443,12 @@ export interface StackSetDriftDetectionDetails {
   InProgressStackInstancesCount?: number;
   FailedStackInstancesCount?: number;
 }
-export type StackSetDriftDetectionStatus = "COMPLETED" | "FAILED" | "PARTIAL_SUCCESS" | "IN_PROGRESS" | "STOPPED";
+export type StackSetDriftDetectionStatus =
+  | "COMPLETED"
+  | "FAILED"
+  | "PARTIAL_SUCCESS"
+  | "IN_PROGRESS"
+  | "STOPPED";
 export type StackSetDriftStatus = "DRIFTED" | "IN_SYNC" | "NOT_CHECKED";
 export type StackSetId = string;
 
@@ -2354,7 +2482,11 @@ export interface StackSetOperation {
   StatusReason?: string;
   StatusDetails?: StackSetOperationStatusDetails;
 }
-export type StackSetOperationAction = "CREATE" | "UPDATE" | "DELETE" | "DETECT_DRIFT";
+export type StackSetOperationAction =
+  | "CREATE"
+  | "UPDATE"
+  | "DELETE"
+  | "DETECT_DRIFT";
 export interface StackSetOperationPreferences {
   RegionConcurrencyType?: RegionConcurrencyType;
   RegionOrder?: Array<string>;
@@ -2364,8 +2496,14 @@ export interface StackSetOperationPreferences {
   MaxConcurrentPercentage?: number;
   ConcurrencyMode?: ConcurrencyMode;
 }
-export type StackSetOperationResultStatus = "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLED";
-export type StackSetOperationResultSummaries = Array<StackSetOperationResultSummary>;
+export type StackSetOperationResultStatus =
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLED";
+export type StackSetOperationResultSummaries =
+  Array<StackSetOperationResultSummary>;
 export interface StackSetOperationResultSummary {
   Account?: string;
   Region?: string;
@@ -2374,7 +2512,13 @@ export interface StackSetOperationResultSummary {
   AccountGateResult?: AccountGateResult;
   OrganizationalUnitId?: string;
 }
-export type StackSetOperationStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "STOPPING" | "STOPPED" | "QUEUED";
+export type StackSetOperationStatus =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED"
+  | "QUEUED";
 export interface StackSetOperationStatusDetails {
   FailedStackInstancesCount?: number;
 }
@@ -2404,7 +2548,30 @@ export interface StackSetSummary {
   LastDriftCheckTimestamp?: Date | string;
   ManagedExecution?: ManagedExecution;
 }
-export type StackStatus = "CREATE_IN_PROGRESS" | "CREATE_FAILED" | "CREATE_COMPLETE" | "ROLLBACK_IN_PROGRESS" | "ROLLBACK_FAILED" | "ROLLBACK_COMPLETE" | "DELETE_IN_PROGRESS" | "DELETE_FAILED" | "DELETE_COMPLETE" | "UPDATE_IN_PROGRESS" | "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS" | "UPDATE_COMPLETE" | "UPDATE_FAILED" | "UPDATE_ROLLBACK_IN_PROGRESS" | "UPDATE_ROLLBACK_FAILED" | "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS" | "UPDATE_ROLLBACK_COMPLETE" | "REVIEW_IN_PROGRESS" | "IMPORT_IN_PROGRESS" | "IMPORT_COMPLETE" | "IMPORT_ROLLBACK_IN_PROGRESS" | "IMPORT_ROLLBACK_FAILED" | "IMPORT_ROLLBACK_COMPLETE";
+export type StackStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "CREATE_COMPLETE"
+  | "ROLLBACK_IN_PROGRESS"
+  | "ROLLBACK_FAILED"
+  | "ROLLBACK_COMPLETE"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_FAILED"
+  | "DELETE_COMPLETE"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"
+  | "UPDATE_COMPLETE"
+  | "UPDATE_FAILED"
+  | "UPDATE_ROLLBACK_IN_PROGRESS"
+  | "UPDATE_ROLLBACK_FAILED"
+  | "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"
+  | "UPDATE_ROLLBACK_COMPLETE"
+  | "REVIEW_IN_PROGRESS"
+  | "IMPORT_IN_PROGRESS"
+  | "IMPORT_COMPLETE"
+  | "IMPORT_ROLLBACK_IN_PROGRESS"
+  | "IMPORT_ROLLBACK_FAILED"
+  | "IMPORT_ROLLBACK_COMPLETE";
 export type StackStatusFilter = Array<StackStatus>;
 export type StackStatusReason = string;
 
@@ -2442,8 +2609,7 @@ export interface StopStackSetOperationInput {
   OperationId: string;
   CallAs?: CallAs;
 }
-export interface StopStackSetOperationOutput {
-}
+export interface StopStackSetOperationOutput {}
 export type SupportedMajorVersion = number;
 
 export type SupportedMajorVersions = Array<number>;
@@ -2594,7 +2760,11 @@ export interface TypeSummary {
   PublisherName?: string;
   IsActivated?: boolean;
 }
-export type TypeTestsStatus = "PASSED" | "FAILED" | "IN_PROGRESS" | "NOT_TESTED";
+export type TypeTestsStatus =
+  | "PASSED"
+  | "FAILED"
+  | "IN_PROGRESS"
+  | "NOT_TESTED";
 export type TypeTestsStatusDescription = string;
 
 export type TypeVersionId = string;
@@ -2726,7 +2896,11 @@ export interface WarningProperty {
 export interface Warnings {
   UnrecognizedResourceTypes?: Array<string>;
 }
-export type WarningType = "MUTUALLY_EXCLUSIVE_PROPERTIES" | "UNSUPPORTED_PROPERTIES" | "MUTUALLY_EXCLUSIVE_TYPES" | "EXCLUDED_PROPERTIES";
+export type WarningType =
+  | "MUTUALLY_EXCLUSIVE_PROPERTIES"
+  | "UNSUPPORTED_PROPERTIES"
+  | "MUTUALLY_EXCLUSIVE_TYPES"
+  | "EXCLUDED_PROPERTIES";
 export declare namespace ActivateOrganizationsAccess {
   export type Input = ActivateOrganizationsAccessInput;
   export type Output = ActivateOrganizationsAccessOutput;
@@ -2757,17 +2931,13 @@ export declare namespace BatchDescribeTypeConfigurations {
 export declare namespace CancelUpdateStack {
   export type Input = CancelUpdateStackInput;
   export type Output = {};
-  export type Error =
-    | TokenAlreadyExistsException
-    | CommonAwsError;
+  export type Error = TokenAlreadyExistsException | CommonAwsError;
 }
 
 export declare namespace ContinueUpdateRollback {
   export type Input = ContinueUpdateRollbackInput;
   export type Output = ContinueUpdateRollbackOutput;
-  export type Error =
-    | TokenAlreadyExistsException
-    | CommonAwsError;
+  export type Error = TokenAlreadyExistsException | CommonAwsError;
 }
 
 export declare namespace CreateChangeSet {
@@ -2817,8 +2987,7 @@ export declare namespace CreateStackInstances {
 export declare namespace CreateStackRefactor {
   export type Input = CreateStackRefactorInput;
   export type Output = CreateStackRefactorOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace CreateStackSet {
@@ -2852,9 +3021,7 @@ export declare namespace DeactivateType {
 export declare namespace DeleteChangeSet {
   export type Input = DeleteChangeSetInput;
   export type Output = DeleteChangeSetOutput;
-  export type Error =
-    | InvalidChangeSetStatusException
-    | CommonAwsError;
+  export type Error = InvalidChangeSetStatusException | CommonAwsError;
 }
 
 export declare namespace DeleteGeneratedTemplate {
@@ -2869,9 +3036,7 @@ export declare namespace DeleteGeneratedTemplate {
 export declare namespace DeleteStack {
   export type Input = DeleteStackInput;
   export type Output = {};
-  export type Error =
-    | TokenAlreadyExistsException
-    | CommonAwsError;
+  export type Error = TokenAlreadyExistsException | CommonAwsError;
 }
 
 export declare namespace DeleteStackInstances {
@@ -2907,32 +3072,25 @@ export declare namespace DeregisterType {
 export declare namespace DescribeAccountLimits {
   export type Input = DescribeAccountLimitsInput;
   export type Output = DescribeAccountLimitsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeChangeSet {
   export type Input = DescribeChangeSetInput;
   export type Output = DescribeChangeSetOutput;
-  export type Error =
-    | ChangeSetNotFoundException
-    | CommonAwsError;
+  export type Error = ChangeSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeChangeSetHooks {
   export type Input = DescribeChangeSetHooksInput;
   export type Output = DescribeChangeSetHooksOutput;
-  export type Error =
-    | ChangeSetNotFoundException
-    | CommonAwsError;
+  export type Error = ChangeSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeGeneratedTemplate {
   export type Input = DescribeGeneratedTemplateInput;
   export type Output = DescribeGeneratedTemplateOutput;
-  export type Error =
-    | GeneratedTemplateNotFoundException
-    | CommonAwsError;
+  export type Error = GeneratedTemplateNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeOrganizationsAccess {
@@ -2947,31 +3105,25 @@ export declare namespace DescribeOrganizationsAccess {
 export declare namespace DescribePublisher {
   export type Input = DescribePublisherInput;
   export type Output = DescribePublisherOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
+  export type Error = CFNRegistryException | CommonAwsError;
 }
 
 export declare namespace DescribeResourceScan {
   export type Input = DescribeResourceScanInput;
   export type Output = DescribeResourceScanOutput;
-  export type Error =
-    | ResourceScanNotFoundException
-    | CommonAwsError;
+  export type Error = ResourceScanNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeStackDriftDetectionStatus {
   export type Input = DescribeStackDriftDetectionStatusInput;
   export type Output = DescribeStackDriftDetectionStatusOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeStackEvents {
   export type Input = DescribeStackEventsInput;
   export type Output = DescribeStackEventsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeStackInstance {
@@ -2986,38 +3138,37 @@ export declare namespace DescribeStackInstance {
 export declare namespace DescribeStackRefactor {
   export type Input = DescribeStackRefactorInput;
   export type Output = DescribeStackRefactorOutput;
-  export type Error =
-    | StackRefactorNotFoundException
-    | CommonAwsError;
+  export type Error = StackRefactorNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeStackResource {
   export type Input = DescribeStackResourceInput;
   export type Output = DescribeStackResourceOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeStackResourceDrifts {
   export type Input = DescribeStackResourceDriftsInput;
   export type Output = DescribeStackResourceDriftsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeStackResources {
   export type Input = DescribeStackResourcesInput;
   export type Output = DescribeStackResourcesOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace DescribeStacks {
+  export type Input = DescribeStacksInput;
+  export type Output = DescribeStacksOutput;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DescribeStackSet {
   export type Input = DescribeStackSetInput;
   export type Output = DescribeStackSetOutput;
-  export type Error =
-    | StackSetNotFoundException
-    | CommonAwsError;
+  export type Error = StackSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace DescribeStackSetOperation {
@@ -3026,13 +3177,6 @@ export declare namespace DescribeStackSetOperation {
   export type Error =
     | OperationNotFoundException
     | StackSetNotFoundException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeStacks {
-  export type Input = DescribeStacksInput;
-  export type Output = DescribeStacksOutput;
-  export type Error =
     | CommonAwsError;
 }
 
@@ -3048,23 +3192,19 @@ export declare namespace DescribeType {
 export declare namespace DescribeTypeRegistration {
   export type Input = DescribeTypeRegistrationInput;
   export type Output = DescribeTypeRegistrationOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
+  export type Error = CFNRegistryException | CommonAwsError;
 }
 
 export declare namespace DetectStackDrift {
   export type Input = DetectStackDriftInput;
   export type Output = DetectStackDriftOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DetectStackResourceDrift {
   export type Input = DetectStackResourceDriftInput;
   export type Output = DetectStackResourceDriftOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace DetectStackSetDrift {
@@ -3080,8 +3220,7 @@ export declare namespace DetectStackSetDrift {
 export declare namespace EstimateTemplateCost {
   export type Input = EstimateTemplateCostInput;
   export type Output = EstimateTemplateCostOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ExecuteChangeSet {
@@ -3098,39 +3237,31 @@ export declare namespace ExecuteChangeSet {
 export declare namespace ExecuteStackRefactor {
   export type Input = ExecuteStackRefactorInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetGeneratedTemplate {
   export type Input = GetGeneratedTemplateInput;
   export type Output = GetGeneratedTemplateOutput;
-  export type Error =
-    | GeneratedTemplateNotFoundException
-    | CommonAwsError;
+  export type Error = GeneratedTemplateNotFoundException | CommonAwsError;
 }
 
 export declare namespace GetStackPolicy {
   export type Input = GetStackPolicyInput;
   export type Output = GetStackPolicyOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace GetTemplate {
   export type Input = GetTemplateInput;
   export type Output = GetTemplateOutput;
-  export type Error =
-    | ChangeSetNotFoundException
-    | CommonAwsError;
+  export type Error = ChangeSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace GetTemplateSummary {
   export type Input = GetTemplateSummaryInput;
   export type Output = GetTemplateSummaryOutput;
-  export type Error =
-    | StackSetNotFoundException
-    | CommonAwsError;
+  export type Error = StackSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace ImportStacksToStackSet {
@@ -3150,37 +3281,31 @@ export declare namespace ImportStacksToStackSet {
 export declare namespace ListChangeSets {
   export type Input = ListChangeSetsInput;
   export type Output = ListChangeSetsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListExports {
   export type Input = ListExportsInput;
   export type Output = ListExportsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListGeneratedTemplates {
   export type Input = ListGeneratedTemplatesInput;
   export type Output = ListGeneratedTemplatesOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListHookResults {
   export type Input = ListHookResultsInput;
   export type Output = ListHookResultsOutput;
-  export type Error =
-    | HookResultNotFoundException
-    | CommonAwsError;
+  export type Error = HookResultNotFoundException | CommonAwsError;
 }
 
 export declare namespace ListImports {
   export type Input = ListImportsInput;
   export type Output = ListImportsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListResourceScanRelatedResources {
@@ -3204,8 +3329,7 @@ export declare namespace ListResourceScanResources {
 export declare namespace ListResourceScans {
   export type Input = ListResourceScansInput;
   export type Output = ListResourceScansOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListStackInstanceResourceDrifts {
@@ -3221,38 +3345,37 @@ export declare namespace ListStackInstanceResourceDrifts {
 export declare namespace ListStackInstances {
   export type Input = ListStackInstancesInput;
   export type Output = ListStackInstancesOutput;
-  export type Error =
-    | StackSetNotFoundException
-    | CommonAwsError;
+  export type Error = StackSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace ListStackRefactorActions {
   export type Input = ListStackRefactorActionsInput;
   export type Output = ListStackRefactorActionsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListStackRefactors {
   export type Input = ListStackRefactorsInput;
   export type Output = ListStackRefactorsOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListStackResources {
   export type Input = ListStackResourcesInput;
   export type Output = ListStackResourcesOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListStacks {
+  export type Input = ListStacksInput;
+  export type Output = ListStacksOutput;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListStackSetAutoDeploymentTargets {
   export type Input = ListStackSetAutoDeploymentTargetsInput;
   export type Output = ListStackSetAutoDeploymentTargetsOutput;
-  export type Error =
-    | StackSetNotFoundException
-    | CommonAwsError;
+  export type Error = StackSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace ListStackSetOperationResults {
@@ -3267,47 +3390,31 @@ export declare namespace ListStackSetOperationResults {
 export declare namespace ListStackSetOperations {
   export type Input = ListStackSetOperationsInput;
   export type Output = ListStackSetOperationsOutput;
-  export type Error =
-    | StackSetNotFoundException
-    | CommonAwsError;
+  export type Error = StackSetNotFoundException | CommonAwsError;
 }
 
 export declare namespace ListStackSets {
   export type Input = ListStackSetsInput;
   export type Output = ListStackSetsOutput;
-  export type Error =
-    | CommonAwsError;
-}
-
-export declare namespace ListStacks {
-  export type Input = ListStacksInput;
-  export type Output = ListStacksOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ListTypeRegistrations {
   export type Input = ListTypeRegistrationsInput;
   export type Output = ListTypeRegistrationsOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
-}
-
-export declare namespace ListTypeVersions {
-  export type Input = ListTypeVersionsInput;
-  export type Output = ListTypeVersionsOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
+  export type Error = CFNRegistryException | CommonAwsError;
 }
 
 export declare namespace ListTypes {
   export type Input = ListTypesInput;
   export type Output = ListTypesOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
+  export type Error = CFNRegistryException | CommonAwsError;
+}
+
+export declare namespace ListTypeVersions {
+  export type Input = ListTypeVersionsInput;
+  export type Output = ListTypeVersionsOutput;
+  export type Error = CFNRegistryException | CommonAwsError;
 }
 
 export declare namespace PublishType {
@@ -3331,32 +3438,25 @@ export declare namespace RecordHandlerProgress {
 export declare namespace RegisterPublisher {
   export type Input = RegisterPublisherInput;
   export type Output = RegisterPublisherOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
+  export type Error = CFNRegistryException | CommonAwsError;
 }
 
 export declare namespace RegisterType {
   export type Input = RegisterTypeInput;
   export type Output = RegisterTypeOutput;
-  export type Error =
-    | CFNRegistryException
-    | CommonAwsError;
+  export type Error = CFNRegistryException | CommonAwsError;
 }
 
 export declare namespace RollbackStack {
   export type Input = RollbackStackInput;
   export type Output = RollbackStackOutput;
-  export type Error =
-    | TokenAlreadyExistsException
-    | CommonAwsError;
+  export type Error = TokenAlreadyExistsException | CommonAwsError;
 }
 
 export declare namespace SetStackPolicy {
   export type Input = SetStackPolicyInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace SetTypeConfiguration {
@@ -3380,8 +3480,7 @@ export declare namespace SetTypeDefaultVersion {
 export declare namespace SignalResource {
   export type Input = SignalResourceInput;
   export type Output = {};
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace StartResourceScan {
@@ -3460,14 +3559,11 @@ export declare namespace UpdateStackSet {
 export declare namespace UpdateTerminationProtection {
   export type Input = UpdateTerminationProtectionInput;
   export type Output = UpdateTerminationProtectionOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
 export declare namespace ValidateTemplate {
   export type Input = ValidateTemplateInput;
   export type Output = ValidateTemplateOutput;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
-

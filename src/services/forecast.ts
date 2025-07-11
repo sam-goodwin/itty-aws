@@ -1,174 +1,284 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonForecast {
   createAutoPredictor(
     input: CreateAutoPredictorRequest,
   ): Effect.Effect<
     CreateAutoPredictorResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createDataset(
     input: CreateDatasetRequest,
   ): Effect.Effect<
     CreateDatasetResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | CommonAwsError
   >;
   createDatasetGroup(
     input: CreateDatasetGroupRequest,
   ): Effect.Effect<
     CreateDatasetGroupResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createDatasetImportJob(
     input: CreateDatasetImportJobRequest,
   ): Effect.Effect<
     CreateDatasetImportJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createExplainability(
     input: CreateExplainabilityRequest,
   ): Effect.Effect<
     CreateExplainabilityResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createExplainabilityExport(
     input: CreateExplainabilityExportRequest,
   ): Effect.Effect<
     CreateExplainabilityExportResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createForecast(
     input: CreateForecastRequest,
   ): Effect.Effect<
     CreateForecastResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createForecastExportJob(
     input: CreateForecastExportJobRequest,
   ): Effect.Effect<
     CreateForecastExportJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createMonitor(
     input: CreateMonitorRequest,
   ): Effect.Effect<
     CreateMonitorResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createPredictor(
     input: CreatePredictorRequest,
   ): Effect.Effect<
     CreatePredictorResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createPredictorBacktestExportJob(
     input: CreatePredictorBacktestExportJobRequest,
   ): Effect.Effect<
     CreatePredictorBacktestExportJobResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createWhatIfAnalysis(
     input: CreateWhatIfAnalysisRequest,
   ): Effect.Effect<
     CreateWhatIfAnalysisResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createWhatIfForecast(
     input: CreateWhatIfForecastRequest,
   ): Effect.Effect<
     CreateWhatIfForecastResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   createWhatIfForecastExport(
     input: CreateWhatIfForecastExportRequest,
   ): Effect.Effect<
     CreateWhatIfForecastExportResponse,
-    InvalidInputException | LimitExceededException | ResourceAlreadyExistsException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceAlreadyExistsException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteDataset(
     input: DeleteDatasetRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteDatasetGroup(
     input: DeleteDatasetGroupRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteDatasetImportJob(
     input: DeleteDatasetImportJobRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteExplainability(
     input: DeleteExplainabilityRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteExplainabilityExport(
     input: DeleteExplainabilityExportRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteForecast(
     input: DeleteForecastRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteForecastExportJob(
     input: DeleteForecastExportJobRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteMonitor(
     input: DeleteMonitorRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deletePredictor(
     input: DeletePredictorRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deletePredictorBacktestExportJob(
     input: DeletePredictorBacktestExportJobRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteResourceTree(
     input: DeleteResourceTreeRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteWhatIfAnalysis(
     input: DeleteWhatIfAnalysisRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteWhatIfForecast(
     input: DeleteWhatIfForecastRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   deleteWhatIfForecastExport(
     input: DeleteWhatIfForecastExportRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   describeAutoPredictor(
     input: DescribeAutoPredictorRequest,
@@ -258,7 +368,10 @@ export interface AmazonForecast {
     input: GetAccuracyMetricsRequest,
   ): Effect.Effect<
     GetAccuracyMetricsResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listDatasetGroups(
     input: ListDatasetGroupsRequest,
@@ -306,7 +419,10 @@ export interface AmazonForecast {
     input: ListMonitorEvaluationsRequest,
   ): Effect.Effect<
     ListMonitorEvaluationsResponse,
-    InvalidInputException | InvalidNextTokenException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | InvalidNextTokenException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   listMonitors(
     input: ListMonitorsRequest,
@@ -354,19 +470,29 @@ export interface AmazonForecast {
     input: ResumeResourceRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | LimitExceededException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   stopResource(
     input: StopResourceRequest,
   ): Effect.Effect<
     {},
-    InvalidInputException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    InvalidInputException | LimitExceededException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | LimitExceededException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
@@ -378,7 +504,10 @@ export interface AmazonForecast {
     input: UpdateDatasetGroupRequest,
   ): Effect.Effect<
     UpdateDatasetGroupResponse,
-    InvalidInputException | ResourceInUseException | ResourceNotFoundException | CommonAwsError
+    | InvalidInputException
+    | ResourceInUseException
+    | ResourceNotFoundException
+    | CommonAwsError
   >;
 }
 
@@ -402,7 +531,12 @@ export interface AttributeConfig {
   Transformations: Record<string, string>;
 }
 export type AttributeConfigs = Array<AttributeConfig>;
-export type AttributeType = "STRING" | "INTEGER" | "FLOAT" | "TIMESTAMP" | "GEOLOCATION";
+export type AttributeType =
+  | "STRING"
+  | "INTEGER"
+  | "FLOAT"
+  | "TIMESTAMP"
+  | "GEOLOCATION";
 export type AttributeValue = string;
 
 export type AutoMLOverrideStrategy = "LatencyOptimized" | "AccuracyOptimized";
@@ -628,13 +762,23 @@ export interface DatasetSummary {
   CreationTime?: Date | string;
   LastModificationTime?: Date | string;
 }
-export type DatasetType = "TARGET_TIME_SERIES" | "RELATED_TIME_SERIES" | "ITEM_METADATA";
+export type DatasetType =
+  | "TARGET_TIME_SERIES"
+  | "RELATED_TIME_SERIES"
+  | "ITEM_METADATA";
 export interface DataSource {
   S3Config: S3Config;
 }
 export type DayOfMonth = number;
 
-export type DayOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type DayOfWeek =
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export interface DeleteDatasetGroupRequest {
   DatasetGroupArn: string;
 }
@@ -919,7 +1063,14 @@ export interface DescribeWhatIfForecastResponse {
 }
 export type Detail = string;
 
-export type Domain = "RETAIL" | "CUSTOM" | "INVENTORY_PLANNING" | "EC2_CAPACITY" | "WORK_FORCE" | "WEB_TRAFFIC" | "METRICS";
+export type Domain =
+  | "RETAIL"
+  | "CUSTOM"
+  | "INVENTORY_PLANNING"
+  | "EC2_CAPACITY"
+  | "WORK_FORCE"
+  | "WEB_TRAFFIC"
+  | "METRICS";
 export type Double = number;
 
 export interface EncryptionConfig {
@@ -1254,13 +1405,30 @@ export interface MonitorSummary {
   CreationTime?: Date | string;
   LastModificationTime?: Date | string;
 }
-export type Month = "JANUARY" | "FEBRUARY" | "MARCH" | "APRIL" | "MAY" | "JUNE" | "JULY" | "AUGUST" | "SEPTEMBER" | "OCTOBER" | "NOVEMBER" | "DECEMBER";
+export type Month =
+  | "JANUARY"
+  | "FEBRUARY"
+  | "MARCH"
+  | "APRIL"
+  | "MAY"
+  | "JUNE"
+  | "JULY"
+  | "AUGUST"
+  | "SEPTEMBER"
+  | "OCTOBER"
+  | "NOVEMBER"
+  | "DECEMBER";
 export type Name = string;
 
 export type NextToken = string;
 
 export type Operation = "ADD" | "SUBTRACT" | "MULTIPLY" | "DIVIDE";
-export type OptimizationMetric = "WAPE" | "RMSE" | "AverageWeightedQuantileLoss" | "MASE" | "MAPE";
+export type OptimizationMetric =
+  | "WAPE"
+  | "RMSE"
+  | "AverageWeightedQuantileLoss"
+  | "MASE"
+  | "MAPE";
 export type ParameterKey = string;
 
 export interface ParameterRanges {
@@ -1270,7 +1438,8 @@ export interface ParameterRanges {
 }
 export type ParameterValue = string;
 
-export type PredictorBacktestExportJobs = Array<PredictorBacktestExportJobSummary>;
+export type PredictorBacktestExportJobs =
+  Array<PredictorBacktestExportJobSummary>;
 export interface PredictorBacktestExportJobSummary {
   PredictorBacktestExportJobArn?: string;
   PredictorBacktestExportJobName?: string;
@@ -1351,7 +1520,11 @@ export interface S3Config {
 }
 export type S3Path = string;
 
-export type ScalingType = "Auto" | "Linear" | "Logarithmic" | "ReverseLogarithmic";
+export type ScalingType =
+  | "Auto"
+  | "Linear"
+  | "Logarithmic"
+  | "ReverseLogarithmic";
 export interface Schema {
   Attributes?: Array<SchemaAttribute>;
 }
@@ -1396,8 +1569,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
@@ -1454,14 +1626,12 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateDatasetGroupRequest {
   DatasetGroupArn: string;
   DatasetArns: Array<string>;
 }
-export interface UpdateDatasetGroupResponse {
-}
+export interface UpdateDatasetGroupResponse {}
 export type UseGeolocationForTimeZone = boolean;
 
 export type Value = string;
@@ -1956,9 +2126,7 @@ export declare namespace GetAccuracyMetrics {
 export declare namespace ListDatasetGroups {
   export type Input = ListDatasetGroupsRequest;
   export type Output = ListDatasetGroupsResponse;
-  export type Error =
-    | InvalidNextTokenException
-    | CommonAwsError;
+  export type Error = InvalidNextTokenException | CommonAwsError;
 }
 
 export declare namespace ListDatasetImportJobs {
@@ -1973,9 +2141,7 @@ export declare namespace ListDatasetImportJobs {
 export declare namespace ListDatasets {
   export type Input = ListDatasetsRequest;
   export type Output = ListDatasetsResponse;
-  export type Error =
-    | InvalidNextTokenException
-    | CommonAwsError;
+  export type Error = InvalidNextTokenException | CommonAwsError;
 }
 
 export declare namespace ListExplainabilities {
@@ -2136,4 +2302,3 @@ export declare namespace UpdateDatasetGroup {
     | ResourceNotFoundException
     | CommonAwsError;
 }
-

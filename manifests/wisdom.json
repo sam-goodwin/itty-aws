@@ -1,4 +1,5 @@
 {
+  "smithy": "2.0",
   "shapes": {
     "com.amazonaws.wisdom#AccessDeniedException": {
       "type": "structure",
@@ -6091,6 +6092,17 @@
     },
     "com.amazonaws.wisdom#WisdomService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.wisdom#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.wisdom#TagResource"
+        },
+        {
+          "target": "com.amazonaws.wisdom#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Wisdom",

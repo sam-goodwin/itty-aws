@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.outposts#AWSServiceName": {
       "type": "enum",
@@ -3993,6 +4022,107 @@
     },
     "com.amazonaws.outposts#OutpostsOlafService": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.outposts#CancelCapacityTask"
+        },
+        {
+          "target": "com.amazonaws.outposts#CancelOrder"
+        },
+        {
+          "target": "com.amazonaws.outposts#CreateOrder"
+        },
+        {
+          "target": "com.amazonaws.outposts#CreateOutpost"
+        },
+        {
+          "target": "com.amazonaws.outposts#CreateSite"
+        },
+        {
+          "target": "com.amazonaws.outposts#DeleteOutpost"
+        },
+        {
+          "target": "com.amazonaws.outposts#DeleteSite"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetCapacityTask"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetCatalogItem"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetConnection"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetOrder"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetOutpost"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetOutpostInstanceTypes"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetOutpostSupportedInstanceTypes"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetSite"
+        },
+        {
+          "target": "com.amazonaws.outposts#GetSiteAddress"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListAssetInstances"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListAssets"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListBlockingInstancesForCapacityTask"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListCapacityTasks"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListCatalogItems"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListOrders"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListOutposts"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListSites"
+        },
+        {
+          "target": "com.amazonaws.outposts#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.outposts#StartCapacityTask"
+        },
+        {
+          "target": "com.amazonaws.outposts#StartConnection"
+        },
+        {
+          "target": "com.amazonaws.outposts#TagResource"
+        },
+        {
+          "target": "com.amazonaws.outposts#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.outposts#UpdateOutpost"
+        },
+        {
+          "target": "com.amazonaws.outposts#UpdateSite"
+        },
+        {
+          "target": "com.amazonaws.outposts#UpdateSiteAddress"
+        },
+        {
+          "target": "com.amazonaws.outposts#UpdateSiteRackPhysicalProperties"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Outposts",

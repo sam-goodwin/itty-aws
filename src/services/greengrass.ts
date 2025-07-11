@@ -1,5 +1,5 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Greengrass {
   associateRoleToGroup(
@@ -70,10 +70,7 @@ export interface Greengrass {
   >;
   createGroup(
     input: CreateGroupRequest,
-  ): Effect.Effect<
-    CreateGroupResponse,
-    BadRequestException | CommonAwsError
-  >;
+  ): Effect.Effect<CreateGroupResponse, BadRequestException | CommonAwsError>;
   createGroupCertificateAuthority(
     input: CreateGroupCertificateAuthorityRequest,
   ): Effect.Effect<
@@ -154,10 +151,7 @@ export interface Greengrass {
   >;
   deleteGroup(
     input: DeleteGroupRequest,
-  ): Effect.Effect<
-    DeleteGroupResponse,
-    BadRequestException | CommonAwsError
-  >;
+  ): Effect.Effect<DeleteGroupResponse, BadRequestException | CommonAwsError>;
   deleteLoggerDefinition(
     input: DeleteLoggerDefinitionRequest,
   ): Effect.Effect<
@@ -262,10 +256,7 @@ export interface Greengrass {
   >;
   getGroup(
     input: GetGroupRequest,
-  ): Effect.Effect<
-    GetGroupResponse,
-    BadRequestException | CommonAwsError
-  >;
+  ): Effect.Effect<GetGroupResponse, BadRequestException | CommonAwsError>;
   getGroupCertificateAuthority(
     input: GetGroupCertificateAuthorityRequest,
   ): Effect.Effect<
@@ -344,29 +335,23 @@ export interface Greengrass {
     ListBulkDeploymentsResponse,
     BadRequestException | CommonAwsError
   >;
+  listConnectorDefinitions(
+    input: ListConnectorDefinitionsRequest,
+  ): Effect.Effect<ListConnectorDefinitionsResponse, CommonAwsError>;
   listConnectorDefinitionVersions(
     input: ListConnectorDefinitionVersionsRequest,
   ): Effect.Effect<
     ListConnectorDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
   >;
-  listConnectorDefinitions(
-    input: ListConnectorDefinitionsRequest,
-  ): Effect.Effect<
-    ListConnectorDefinitionsResponse,
-    CommonAwsError
-  >;
+  listCoreDefinitions(
+    input: ListCoreDefinitionsRequest,
+  ): Effect.Effect<ListCoreDefinitionsResponse, CommonAwsError>;
   listCoreDefinitionVersions(
     input: ListCoreDefinitionVersionsRequest,
   ): Effect.Effect<
     ListCoreDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
-  >;
-  listCoreDefinitions(
-    input: ListCoreDefinitionsRequest,
-  ): Effect.Effect<
-    ListCoreDefinitionsResponse,
-    CommonAwsError
   >;
   listDeployments(
     input: ListDeploymentsRequest,
@@ -374,29 +359,23 @@ export interface Greengrass {
     ListDeploymentsResponse,
     BadRequestException | CommonAwsError
   >;
+  listDeviceDefinitions(
+    input: ListDeviceDefinitionsRequest,
+  ): Effect.Effect<ListDeviceDefinitionsResponse, CommonAwsError>;
   listDeviceDefinitionVersions(
     input: ListDeviceDefinitionVersionsRequest,
   ): Effect.Effect<
     ListDeviceDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
   >;
-  listDeviceDefinitions(
-    input: ListDeviceDefinitionsRequest,
-  ): Effect.Effect<
-    ListDeviceDefinitionsResponse,
-    CommonAwsError
-  >;
+  listFunctionDefinitions(
+    input: ListFunctionDefinitionsRequest,
+  ): Effect.Effect<ListFunctionDefinitionsResponse, CommonAwsError>;
   listFunctionDefinitionVersions(
     input: ListFunctionDefinitionVersionsRequest,
   ): Effect.Effect<
     ListFunctionDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
-  >;
-  listFunctionDefinitions(
-    input: ListFunctionDefinitionsRequest,
-  ): Effect.Effect<
-    ListFunctionDefinitionsResponse,
-    CommonAwsError
   >;
   listGroupCertificateAuthorities(
     input: ListGroupCertificateAuthoritiesRequest,
@@ -404,53 +383,41 @@ export interface Greengrass {
     ListGroupCertificateAuthoritiesResponse,
     BadRequestException | InternalServerErrorException | CommonAwsError
   >;
+  listGroups(
+    input: ListGroupsRequest,
+  ): Effect.Effect<ListGroupsResponse, CommonAwsError>;
   listGroupVersions(
     input: ListGroupVersionsRequest,
   ): Effect.Effect<
     ListGroupVersionsResponse,
     BadRequestException | CommonAwsError
   >;
-  listGroups(
-    input: ListGroupsRequest,
-  ): Effect.Effect<
-    ListGroupsResponse,
-    CommonAwsError
-  >;
+  listLoggerDefinitions(
+    input: ListLoggerDefinitionsRequest,
+  ): Effect.Effect<ListLoggerDefinitionsResponse, CommonAwsError>;
   listLoggerDefinitionVersions(
     input: ListLoggerDefinitionVersionsRequest,
   ): Effect.Effect<
     ListLoggerDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
   >;
-  listLoggerDefinitions(
-    input: ListLoggerDefinitionsRequest,
-  ): Effect.Effect<
-    ListLoggerDefinitionsResponse,
-    CommonAwsError
-  >;
+  listResourceDefinitions(
+    input: ListResourceDefinitionsRequest,
+  ): Effect.Effect<ListResourceDefinitionsResponse, CommonAwsError>;
   listResourceDefinitionVersions(
     input: ListResourceDefinitionVersionsRequest,
   ): Effect.Effect<
     ListResourceDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
   >;
-  listResourceDefinitions(
-    input: ListResourceDefinitionsRequest,
-  ): Effect.Effect<
-    ListResourceDefinitionsResponse,
-    CommonAwsError
-  >;
+  listSubscriptionDefinitions(
+    input: ListSubscriptionDefinitionsRequest,
+  ): Effect.Effect<ListSubscriptionDefinitionsResponse, CommonAwsError>;
   listSubscriptionDefinitionVersions(
     input: ListSubscriptionDefinitionVersionsRequest,
   ): Effect.Effect<
     ListSubscriptionDefinitionVersionsResponse,
     BadRequestException | CommonAwsError
-  >;
-  listSubscriptionDefinitions(
-    input: ListSubscriptionDefinitionsRequest,
-  ): Effect.Effect<
-    ListSubscriptionDefinitionsResponse,
-    CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
@@ -478,16 +445,10 @@ export interface Greengrass {
   >;
   tagResource(
     input: TagResourceRequest,
-  ): Effect.Effect<
-    {},
-    BadRequestException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, BadRequestException | CommonAwsError>;
   untagResource(
     input: UntagResourceRequest,
-  ): Effect.Effect<
-    {},
-    BadRequestException | CommonAwsError
-  >;
+  ): Effect.Effect<{}, BadRequestException | CommonAwsError>;
   updateConnectivityInfo(
     input: UpdateConnectivityInfoRequest,
   ): Effect.Effect<
@@ -520,10 +481,7 @@ export interface Greengrass {
   >;
   updateGroup(
     input: UpdateGroupRequest,
-  ): Effect.Effect<
-    UpdateGroupResponse,
-    BadRequestException | CommonAwsError
-  >;
+  ): Effect.Effect<UpdateGroupResponse, BadRequestException | CommonAwsError>;
   updateGroupCertificateConfiguration(
     input: UpdateGroupCertificateConfigurationRequest,
   ): Effect.Effect<
@@ -567,7 +525,8 @@ export type __listOfCore = Array<Core>;
 export type __listOfDefinitionInformation = Array<DefinitionInformation>;
 export type __listOfDevice = Array<Device>;
 export type __listOfFunction = Array<Function>;
-export type __listOfGroupCertificateAuthorityProperties = Array<GroupCertificateAuthorityProperties>;
+export type __listOfGroupCertificateAuthorityProperties =
+  Array<GroupCertificateAuthorityProperties>;
 export type __listOfGroupInformation = Array<GroupInformation>;
 export type __listOfLogger = Array<Logger>;
 export type __listOfResource = Array<Resource>;
@@ -618,7 +577,13 @@ export interface BulkDeploymentResult {
 }
 export type BulkDeploymentResults = Array<BulkDeploymentResult>;
 export type BulkDeployments = Array<BulkDeployment>;
-export type BulkDeploymentStatus = "Initializing" | "Running" | "Completed" | "Stopping" | "Stopped" | "Failed";
+export type BulkDeploymentStatus =
+  | "Initializing"
+  | "Running"
+  | "Completed"
+  | "Stopping"
+  | "Stopped"
+  | "Failed";
 export type ConfigurationSyncStatus = "InSync" | "OutOfSync";
 export interface ConnectivityInfo {
   HostAddress?: string;
@@ -903,43 +868,35 @@ export interface DefinitionInformation {
 export interface DeleteConnectorDefinitionRequest {
   ConnectorDefinitionId: string;
 }
-export interface DeleteConnectorDefinitionResponse {
-}
+export interface DeleteConnectorDefinitionResponse {}
 export interface DeleteCoreDefinitionRequest {
   CoreDefinitionId: string;
 }
-export interface DeleteCoreDefinitionResponse {
-}
+export interface DeleteCoreDefinitionResponse {}
 export interface DeleteDeviceDefinitionRequest {
   DeviceDefinitionId: string;
 }
-export interface DeleteDeviceDefinitionResponse {
-}
+export interface DeleteDeviceDefinitionResponse {}
 export interface DeleteFunctionDefinitionRequest {
   FunctionDefinitionId: string;
 }
-export interface DeleteFunctionDefinitionResponse {
-}
+export interface DeleteFunctionDefinitionResponse {}
 export interface DeleteGroupRequest {
   GroupId: string;
 }
-export interface DeleteGroupResponse {
-}
+export interface DeleteGroupResponse {}
 export interface DeleteLoggerDefinitionRequest {
   LoggerDefinitionId: string;
 }
-export interface DeleteLoggerDefinitionResponse {
-}
+export interface DeleteLoggerDefinitionResponse {}
 export interface DeleteResourceDefinitionRequest {
   ResourceDefinitionId: string;
 }
-export interface DeleteResourceDefinitionResponse {
-}
+export interface DeleteResourceDefinitionResponse {}
 export interface DeleteSubscriptionDefinitionRequest {
   SubscriptionDefinitionId: string;
 }
-export interface DeleteSubscriptionDefinitionResponse {
-}
+export interface DeleteSubscriptionDefinitionResponse {}
 export interface Deployment {
   CreatedAt?: string;
   DeploymentArn?: string;
@@ -948,7 +905,11 @@ export interface Deployment {
   GroupArn?: string;
 }
 export type Deployments = Array<Deployment>;
-export type DeploymentType = "NewDeployment" | "Redeployment" | "ResetDeployment" | "ForceResetDeployment";
+export type DeploymentType =
+  | "NewDeployment"
+  | "Redeployment"
+  | "ResetDeployment"
+  | "ForceResetDeployment";
 export interface Device {
   CertificateArn: string;
   Id: string;
@@ -964,8 +925,7 @@ export interface DisassociateRoleFromGroupRequest {
 export interface DisassociateRoleFromGroupResponse {
   DisassociatedAt?: string;
 }
-export interface DisassociateServiceRoleFromAccountRequest {
-}
+export interface DisassociateServiceRoleFromAccountRequest {}
 export interface DisassociateServiceRoleFromAccountResponse {
   DisassociatedAt?: string;
 }
@@ -1245,8 +1205,7 @@ export interface GetResourceDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export interface GetServiceRoleForAccountRequest {
-}
+export interface GetServiceRoleForAccountRequest {}
 export interface GetServiceRoleForAccountResponse {
   AssociatedAt?: string;
   RoleArn?: string;
@@ -1577,8 +1536,7 @@ export interface StartBulkDeploymentResponse {
 export interface StopBulkDeploymentRequest {
   BulkDeploymentId: string;
 }
-export interface StopBulkDeploymentResponse {
-}
+export interface StopBulkDeploymentResponse {}
 export interface Subscription {
   Id: string;
   Source: string;
@@ -1605,7 +1563,15 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export type UpdateAgentLogLevel = "NONE" | "TRACE" | "DEBUG" | "VERBOSE" | "INFO" | "WARN" | "ERROR" | "FATAL";
+export type UpdateAgentLogLevel =
+  | "NONE"
+  | "TRACE"
+  | "DEBUG"
+  | "VERBOSE"
+  | "INFO"
+  | "WARN"
+  | "ERROR"
+  | "FATAL";
 export interface UpdateConnectivityInfoRequest {
   ConnectivityInfo?: Array<ConnectivityInfo>;
   ThingName: string;
@@ -1618,26 +1584,22 @@ export interface UpdateConnectorDefinitionRequest {
   ConnectorDefinitionId: string;
   Name?: string;
 }
-export interface UpdateConnectorDefinitionResponse {
-}
+export interface UpdateConnectorDefinitionResponse {}
 export interface UpdateCoreDefinitionRequest {
   CoreDefinitionId: string;
   Name?: string;
 }
-export interface UpdateCoreDefinitionResponse {
-}
+export interface UpdateCoreDefinitionResponse {}
 export interface UpdateDeviceDefinitionRequest {
   DeviceDefinitionId: string;
   Name?: string;
 }
-export interface UpdateDeviceDefinitionResponse {
-}
+export interface UpdateDeviceDefinitionResponse {}
 export interface UpdateFunctionDefinitionRequest {
   FunctionDefinitionId: string;
   Name?: string;
 }
-export interface UpdateFunctionDefinitionResponse {
-}
+export interface UpdateFunctionDefinitionResponse {}
 export interface UpdateGroupCertificateConfigurationRequest {
   CertificateExpiryInMilliseconds?: string;
   GroupId: string;
@@ -1651,35 +1613,38 @@ export interface UpdateGroupRequest {
   GroupId: string;
   Name?: string;
 }
-export interface UpdateGroupResponse {
-}
+export interface UpdateGroupResponse {}
 export interface UpdateLoggerDefinitionRequest {
   LoggerDefinitionId: string;
   Name?: string;
 }
-export interface UpdateLoggerDefinitionResponse {
-}
+export interface UpdateLoggerDefinitionResponse {}
 export interface UpdateResourceDefinitionRequest {
   Name?: string;
   ResourceDefinitionId: string;
 }
-export interface UpdateResourceDefinitionResponse {
-}
+export interface UpdateResourceDefinitionResponse {}
 export interface UpdateSubscriptionDefinitionRequest {
   Name?: string;
   SubscriptionDefinitionId: string;
 }
-export interface UpdateSubscriptionDefinitionResponse {
-}
+export interface UpdateSubscriptionDefinitionResponse {}
 export type UpdateTargets = Array<string>;
-export type UpdateTargetsArchitecture = "armv6l" | "armv7l" | "x86_64" | "aarch64";
-export type UpdateTargetsOperatingSystem = "ubuntu" | "raspbian" | "amazon_linux" | "openwrt";
+export type UpdateTargetsArchitecture =
+  | "armv6l"
+  | "armv7l"
+  | "x86_64"
+  | "aarch64";
+export type UpdateTargetsOperatingSystem =
+  | "ubuntu"
+  | "raspbian"
+  | "amazon_linux"
+  | "openwrt";
 export interface UpdateThingRuntimeConfigurationRequest {
   TelemetryConfiguration?: TelemetryConfigurationUpdate;
   ThingName: string;
 }
-export interface UpdateThingRuntimeConfigurationResponse {
-}
+export interface UpdateThingRuntimeConfigurationResponse {}
 export interface VersionInformation {
   Arn?: string;
   CreationTimestamp?: string;
@@ -1707,81 +1672,61 @@ export declare namespace AssociateServiceRoleToAccount {
 export declare namespace CreateConnectorDefinition {
   export type Input = CreateConnectorDefinitionRequest;
   export type Output = CreateConnectorDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateConnectorDefinitionVersion {
   export type Input = CreateConnectorDefinitionVersionRequest;
   export type Output = CreateConnectorDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateCoreDefinition {
   export type Input = CreateCoreDefinitionRequest;
   export type Output = CreateCoreDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateCoreDefinitionVersion {
   export type Input = CreateCoreDefinitionVersionRequest;
   export type Output = CreateCoreDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateDeployment {
   export type Input = CreateDeploymentRequest;
   export type Output = CreateDeploymentResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateDeviceDefinition {
   export type Input = CreateDeviceDefinitionRequest;
   export type Output = CreateDeviceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateDeviceDefinitionVersion {
   export type Input = CreateDeviceDefinitionVersionRequest;
   export type Output = CreateDeviceDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateFunctionDefinition {
   export type Input = CreateFunctionDefinitionRequest;
   export type Output = CreateFunctionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateFunctionDefinitionVersion {
   export type Input = CreateFunctionDefinitionVersionRequest;
   export type Output = CreateFunctionDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateGroup {
   export type Input = CreateGroupRequest;
   export type Output = CreateGroupResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateGroupCertificateAuthority {
@@ -1796,41 +1741,31 @@ export declare namespace CreateGroupCertificateAuthority {
 export declare namespace CreateGroupVersion {
   export type Input = CreateGroupVersionRequest;
   export type Output = CreateGroupVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateLoggerDefinition {
   export type Input = CreateLoggerDefinitionRequest;
   export type Output = CreateLoggerDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateLoggerDefinitionVersion {
   export type Input = CreateLoggerDefinitionVersionRequest;
   export type Output = CreateLoggerDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateResourceDefinition {
   export type Input = CreateResourceDefinitionRequest;
   export type Output = CreateResourceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateResourceDefinitionVersion {
   export type Input = CreateResourceDefinitionVersionRequest;
   export type Output = CreateResourceDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateSoftwareUpdateJob {
@@ -1845,81 +1780,61 @@ export declare namespace CreateSoftwareUpdateJob {
 export declare namespace CreateSubscriptionDefinition {
   export type Input = CreateSubscriptionDefinitionRequest;
   export type Output = CreateSubscriptionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace CreateSubscriptionDefinitionVersion {
   export type Input = CreateSubscriptionDefinitionVersionRequest;
   export type Output = CreateSubscriptionDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteConnectorDefinition {
   export type Input = DeleteConnectorDefinitionRequest;
   export type Output = DeleteConnectorDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteCoreDefinition {
   export type Input = DeleteCoreDefinitionRequest;
   export type Output = DeleteCoreDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteDeviceDefinition {
   export type Input = DeleteDeviceDefinitionRequest;
   export type Output = DeleteDeviceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteFunctionDefinition {
   export type Input = DeleteFunctionDefinitionRequest;
   export type Output = DeleteFunctionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteGroup {
   export type Input = DeleteGroupRequest;
   export type Output = DeleteGroupResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteLoggerDefinition {
   export type Input = DeleteLoggerDefinitionRequest;
   export type Output = DeleteLoggerDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteResourceDefinition {
   export type Input = DeleteResourceDefinitionRequest;
   export type Output = DeleteResourceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DeleteSubscriptionDefinition {
   export type Input = DeleteSubscriptionDefinitionRequest;
   export type Output = DeleteSubscriptionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace DisassociateRoleFromGroup {
@@ -1934,9 +1849,7 @@ export declare namespace DisassociateRoleFromGroup {
 export declare namespace DisassociateServiceRoleFromAccount {
   export type Input = DisassociateServiceRoleFromAccountRequest;
   export type Output = DisassociateServiceRoleFromAccountResponse;
-  export type Error =
-    | InternalServerErrorException
-    | CommonAwsError;
+  export type Error = InternalServerErrorException | CommonAwsError;
 }
 
 export declare namespace GetAssociatedRole {
@@ -1951,9 +1864,7 @@ export declare namespace GetAssociatedRole {
 export declare namespace GetBulkDeploymentStatus {
   export type Input = GetBulkDeploymentStatusRequest;
   export type Output = GetBulkDeploymentStatusResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetConnectivityInfo {
@@ -1968,81 +1879,61 @@ export declare namespace GetConnectivityInfo {
 export declare namespace GetConnectorDefinition {
   export type Input = GetConnectorDefinitionRequest;
   export type Output = GetConnectorDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetConnectorDefinitionVersion {
   export type Input = GetConnectorDefinitionVersionRequest;
   export type Output = GetConnectorDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetCoreDefinition {
   export type Input = GetCoreDefinitionRequest;
   export type Output = GetCoreDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetCoreDefinitionVersion {
   export type Input = GetCoreDefinitionVersionRequest;
   export type Output = GetCoreDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetDeploymentStatus {
   export type Input = GetDeploymentStatusRequest;
   export type Output = GetDeploymentStatusResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetDeviceDefinition {
   export type Input = GetDeviceDefinitionRequest;
   export type Output = GetDeviceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetDeviceDefinitionVersion {
   export type Input = GetDeviceDefinitionVersionRequest;
   export type Output = GetDeviceDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetFunctionDefinition {
   export type Input = GetFunctionDefinitionRequest;
   export type Output = GetFunctionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetFunctionDefinitionVersion {
   export type Input = GetFunctionDefinitionVersionRequest;
   export type Output = GetFunctionDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetGroup {
   export type Input = GetGroupRequest;
   export type Output = GetGroupResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetGroupCertificateAuthority {
@@ -2066,65 +1957,49 @@ export declare namespace GetGroupCertificateConfiguration {
 export declare namespace GetGroupVersion {
   export type Input = GetGroupVersionRequest;
   export type Output = GetGroupVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetLoggerDefinition {
   export type Input = GetLoggerDefinitionRequest;
   export type Output = GetLoggerDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetLoggerDefinitionVersion {
   export type Input = GetLoggerDefinitionVersionRequest;
   export type Output = GetLoggerDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetResourceDefinition {
   export type Input = GetResourceDefinitionRequest;
   export type Output = GetResourceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetResourceDefinitionVersion {
   export type Input = GetResourceDefinitionVersionRequest;
   export type Output = GetResourceDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetServiceRoleForAccount {
   export type Input = GetServiceRoleForAccountRequest;
   export type Output = GetServiceRoleForAccountResponse;
-  export type Error =
-    | InternalServerErrorException
-    | CommonAwsError;
+  export type Error = InternalServerErrorException | CommonAwsError;
 }
 
 export declare namespace GetSubscriptionDefinition {
   export type Input = GetSubscriptionDefinitionRequest;
   export type Output = GetSubscriptionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetSubscriptionDefinitionVersion {
   export type Input = GetSubscriptionDefinitionVersionRequest;
   export type Output = GetSubscriptionDefinitionVersionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace GetThingRuntimeConfiguration {
@@ -2139,85 +2014,67 @@ export declare namespace GetThingRuntimeConfiguration {
 export declare namespace ListBulkDeploymentDetailedReports {
   export type Input = ListBulkDeploymentDetailedReportsRequest;
   export type Output = ListBulkDeploymentDetailedReportsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListBulkDeployments {
   export type Input = ListBulkDeploymentsRequest;
   export type Output = ListBulkDeploymentsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
-}
-
-export declare namespace ListConnectorDefinitionVersions {
-  export type Input = ListConnectorDefinitionVersionsRequest;
-  export type Output = ListConnectorDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListConnectorDefinitions {
   export type Input = ListConnectorDefinitionsRequest;
   export type Output = ListConnectorDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
-export declare namespace ListCoreDefinitionVersions {
-  export type Input = ListCoreDefinitionVersionsRequest;
-  export type Output = ListCoreDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+export declare namespace ListConnectorDefinitionVersions {
+  export type Input = ListConnectorDefinitionVersionsRequest;
+  export type Output = ListConnectorDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListCoreDefinitions {
   export type Input = ListCoreDefinitionsRequest;
   export type Output = ListCoreDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListCoreDefinitionVersions {
+  export type Input = ListCoreDefinitionVersionsRequest;
+  export type Output = ListCoreDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListDeployments {
   export type Input = ListDeploymentsRequest;
   export type Output = ListDeploymentsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
-}
-
-export declare namespace ListDeviceDefinitionVersions {
-  export type Input = ListDeviceDefinitionVersionsRequest;
-  export type Output = ListDeviceDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListDeviceDefinitions {
   export type Input = ListDeviceDefinitionsRequest;
   export type Output = ListDeviceDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
-export declare namespace ListFunctionDefinitionVersions {
-  export type Input = ListFunctionDefinitionVersionsRequest;
-  export type Output = ListFunctionDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+export declare namespace ListDeviceDefinitionVersions {
+  export type Input = ListDeviceDefinitionVersionsRequest;
+  export type Output = ListDeviceDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListFunctionDefinitions {
   export type Input = ListFunctionDefinitionsRequest;
   export type Output = ListFunctionDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListFunctionDefinitionVersions {
+  export type Input = ListFunctionDefinitionVersionsRequest;
+  export type Output = ListFunctionDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListGroupCertificateAuthorities {
@@ -2229,112 +2086,88 @@ export declare namespace ListGroupCertificateAuthorities {
     | CommonAwsError;
 }
 
-export declare namespace ListGroupVersions {
-  export type Input = ListGroupVersionsRequest;
-  export type Output = ListGroupVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
-}
-
 export declare namespace ListGroups {
   export type Input = ListGroupsRequest;
   export type Output = ListGroupsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
-export declare namespace ListLoggerDefinitionVersions {
-  export type Input = ListLoggerDefinitionVersionsRequest;
-  export type Output = ListLoggerDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+export declare namespace ListGroupVersions {
+  export type Input = ListGroupVersionsRequest;
+  export type Output = ListGroupVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListLoggerDefinitions {
   export type Input = ListLoggerDefinitionsRequest;
   export type Output = ListLoggerDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
-export declare namespace ListResourceDefinitionVersions {
-  export type Input = ListResourceDefinitionVersionsRequest;
-  export type Output = ListResourceDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+export declare namespace ListLoggerDefinitionVersions {
+  export type Input = ListLoggerDefinitionVersionsRequest;
+  export type Output = ListLoggerDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListResourceDefinitions {
   export type Input = ListResourceDefinitionsRequest;
   export type Output = ListResourceDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
 }
 
-export declare namespace ListSubscriptionDefinitionVersions {
-  export type Input = ListSubscriptionDefinitionVersionsRequest;
-  export type Output = ListSubscriptionDefinitionVersionsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+export declare namespace ListResourceDefinitionVersions {
+  export type Input = ListResourceDefinitionVersionsRequest;
+  export type Output = ListResourceDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListSubscriptionDefinitions {
   export type Input = ListSubscriptionDefinitionsRequest;
   export type Output = ListSubscriptionDefinitionsResponse;
-  export type Error =
-    | CommonAwsError;
+  export type Error = CommonAwsError;
+}
+
+export declare namespace ListSubscriptionDefinitionVersions {
+  export type Input = ListSubscriptionDefinitionVersionsRequest;
+  export type Output = ListSubscriptionDefinitionVersionsResponse;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace ResetDeployments {
   export type Input = ResetDeploymentsRequest;
   export type Output = ResetDeploymentsResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace StartBulkDeployment {
   export type Input = StartBulkDeploymentRequest;
   export type Output = StartBulkDeploymentResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace StopBulkDeployment {
   export type Input = StopBulkDeploymentRequest;
   export type Output = StopBulkDeploymentResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace TagResource {
   export type Input = TagResourceRequest;
   export type Output = {};
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
   export type Output = {};
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateConnectivityInfo {
@@ -2349,41 +2182,31 @@ export declare namespace UpdateConnectivityInfo {
 export declare namespace UpdateConnectorDefinition {
   export type Input = UpdateConnectorDefinitionRequest;
   export type Output = UpdateConnectorDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateCoreDefinition {
   export type Input = UpdateCoreDefinitionRequest;
   export type Output = UpdateCoreDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateDeviceDefinition {
   export type Input = UpdateDeviceDefinitionRequest;
   export type Output = UpdateDeviceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateFunctionDefinition {
   export type Input = UpdateFunctionDefinitionRequest;
   export type Output = UpdateFunctionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateGroup {
   export type Input = UpdateGroupRequest;
   export type Output = UpdateGroupResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateGroupCertificateConfiguration {
@@ -2398,25 +2221,19 @@ export declare namespace UpdateGroupCertificateConfiguration {
 export declare namespace UpdateLoggerDefinition {
   export type Input = UpdateLoggerDefinitionRequest;
   export type Output = UpdateLoggerDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateResourceDefinition {
   export type Input = UpdateResourceDefinitionRequest;
   export type Output = UpdateResourceDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateSubscriptionDefinition {
   export type Input = UpdateSubscriptionDefinitionRequest;
   export type Output = UpdateSubscriptionDefinitionResponse;
-  export type Error =
-    | BadRequestException
-    | CommonAwsError;
+  export type Error = BadRequestException | CommonAwsError;
 }
 
 export declare namespace UpdateThingRuntimeConfiguration {
@@ -2427,4 +2244,3 @@ export declare namespace UpdateThingRuntimeConfiguration {
     | InternalServerErrorException
     | CommonAwsError;
 }
-

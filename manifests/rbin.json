@@ -1,7 +1,68 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.rbin#AmazonRecycleBin": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.rbin#CreateRule"
+        },
+        {
+          "target": "com.amazonaws.rbin#DeleteRule"
+        },
+        {
+          "target": "com.amazonaws.rbin#GetRule"
+        },
+        {
+          "target": "com.amazonaws.rbin#ListRules"
+        },
+        {
+          "target": "com.amazonaws.rbin#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.rbin#LockRule"
+        },
+        {
+          "target": "com.amazonaws.rbin#TagResource"
+        },
+        {
+          "target": "com.amazonaws.rbin#UnlockRule"
+        },
+        {
+          "target": "com.amazonaws.rbin#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.rbin#UpdateRule"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "rbin",

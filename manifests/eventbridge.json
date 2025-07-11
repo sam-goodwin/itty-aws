@@ -1,7 +1,209 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.eventbridge#AWSEvents": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.eventbridge#ActivateEventSource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CancelReplay"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CreateApiDestination"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CreateArchive"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CreateConnection"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CreateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CreateEventBus"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#CreatePartnerEventSource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeactivateEventSource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeauthorizeConnection"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeleteApiDestination"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeleteArchive"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeleteEndpoint"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeleteEventBus"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeletePartnerEventSource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DeleteRule"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeApiDestination"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeArchive"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeConnection"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeEndpoint"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeEventBus"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeEventSource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribePartnerEventSource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeReplay"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DescribeRule"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#DisableRule"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#EnableRule"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListApiDestinations"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListArchives"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListConnections"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListEndpoints"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListEventBuses"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListEventSources"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListPartnerEventSourceAccounts"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListPartnerEventSources"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListReplays"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListRuleNamesByTarget"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListRules"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#ListTargetsByRule"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#PutEvents"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#PutPartnerEvents"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#PutPermission"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#PutRule"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#PutTargets"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#RemovePermission"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#RemoveTargets"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#StartReplay"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#TagResource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#TestEventPattern"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#UpdateApiDestination"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#UpdateArchive"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#UpdateConnection"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#UpdateEndpoint"
+        },
+        {
+          "target": "com.amazonaws.eventbridge#UpdateEventBus"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "EventBridge",

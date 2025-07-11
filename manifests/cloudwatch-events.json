@@ -1,7 +1,191 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.cloudwatchevents#AWSEvents": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.cloudwatchevents#ActivateEventSource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#CancelReplay"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#CreateApiDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#CreateArchive"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#CreateConnection"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#CreateEventBus"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#CreatePartnerEventSource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeactivateEventSource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeauthorizeConnection"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeleteApiDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeleteArchive"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeleteConnection"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeleteEventBus"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeletePartnerEventSource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DeleteRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeApiDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeArchive"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeConnection"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeEventBus"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeEventSource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribePartnerEventSource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeReplay"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DescribeRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#DisableRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#EnableRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListApiDestinations"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListArchives"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListConnections"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListEventBuses"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListEventSources"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListPartnerEventSourceAccounts"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListPartnerEventSources"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListReplays"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListRuleNamesByTarget"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListRules"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#ListTargetsByRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#PutEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#PutPartnerEvents"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#PutPermission"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#PutRule"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#PutTargets"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#RemovePermission"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#RemoveTargets"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#StartReplay"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#TagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#TestEventPattern"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#UpdateApiDestination"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#UpdateArchive"
+        },
+        {
+          "target": "com.amazonaws.cloudwatchevents#UpdateConnection"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "CloudWatch Events",

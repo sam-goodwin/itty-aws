@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.dlm#Action": {
       "type": "structure",
@@ -2480,6 +2509,32 @@
     },
     "com.amazonaws.dlm#dlm_20180112": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.dlm#CreateLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.dlm#DeleteLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.dlm#GetLifecyclePolicies"
+        },
+        {
+          "target": "com.amazonaws.dlm#GetLifecyclePolicy"
+        },
+        {
+          "target": "com.amazonaws.dlm#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.dlm#TagResource"
+        },
+        {
+          "target": "com.amazonaws.dlm#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.dlm#UpdateLifecyclePolicy"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "DLM",

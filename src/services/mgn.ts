@@ -1,228 +1,12 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface ApplicationMigrationService {
-  archiveApplication(
-    input: ArchiveApplicationRequest,
-  ): Effect.Effect<
-    Application,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  archiveWave(
-    input: ArchiveWaveRequest,
-  ): Effect.Effect<
-    Wave,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  associateApplications(
-    input: AssociateApplicationsRequest,
-  ): Effect.Effect<
-    AssociateApplicationsResponse,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  associateSourceServers(
-    input: AssociateSourceServersRequest,
-  ): Effect.Effect<
-    AssociateSourceServersResponse,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  changeServerLifeCycleState(
-    input: ChangeServerLifeCycleStateRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  createApplication(
-    input: CreateApplicationRequest,
-  ): Effect.Effect<
-    Application,
-    ConflictException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  createConnector(
-    input: CreateConnectorRequest,
-  ): Effect.Effect<
-    Connector,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  createLaunchConfigurationTemplate(
-    input: CreateLaunchConfigurationTemplateRequest,
-  ): Effect.Effect<
-    LaunchConfigurationTemplate,
-    AccessDeniedException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  createReplicationConfigurationTemplate(
-    input: CreateReplicationConfigurationTemplateRequest,
-  ): Effect.Effect<
-    ReplicationConfigurationTemplate,
-    AccessDeniedException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  createWave(
-    input: CreateWaveRequest,
-  ): Effect.Effect<
-    Wave,
-    ConflictException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  deleteApplication(
-    input: DeleteApplicationRequest,
-  ): Effect.Effect<
-    DeleteApplicationResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  deleteConnector(
-    input: DeleteConnectorRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  deleteJob(
-    input: DeleteJobRequest,
-  ): Effect.Effect<
-    DeleteJobResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  deleteLaunchConfigurationTemplate(
-    input: DeleteLaunchConfigurationTemplateRequest,
-  ): Effect.Effect<
-    DeleteLaunchConfigurationTemplateResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  deleteReplicationConfigurationTemplate(
-    input: DeleteReplicationConfigurationTemplateRequest,
-  ): Effect.Effect<
-    DeleteReplicationConfigurationTemplateResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  deleteSourceServer(
-    input: DeleteSourceServerRequest,
-  ): Effect.Effect<
-    DeleteSourceServerResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  deleteVcenterClient(
-    input: DeleteVcenterClientRequest,
-  ): Effect.Effect<
-    {},
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  deleteWave(
-    input: DeleteWaveRequest,
-  ): Effect.Effect<
-    DeleteWaveResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  describeJobLogItems(
-    input: DescribeJobLogItemsRequest,
-  ): Effect.Effect<
-    DescribeJobLogItemsResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  describeJobs(
-    input: DescribeJobsRequest,
-  ): Effect.Effect<
-    DescribeJobsResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  describeLaunchConfigurationTemplates(
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ): Effect.Effect<
-    DescribeLaunchConfigurationTemplatesResponse,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  describeReplicationConfigurationTemplates(
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ): Effect.Effect<
-    DescribeReplicationConfigurationTemplatesResponse,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  describeSourceServers(
-    input: DescribeSourceServersRequest,
-  ): Effect.Effect<
-    DescribeSourceServersResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  describeVcenterClients(
-    input: DescribeVcenterClientsRequest,
-  ): Effect.Effect<
-    DescribeVcenterClientsResponse,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  disassociateApplications(
-    input: DisassociateApplicationsRequest,
-  ): Effect.Effect<
-    DisassociateApplicationsResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  disassociateSourceServers(
-    input: DisassociateSourceServersRequest,
-  ): Effect.Effect<
-    DisassociateSourceServersResponse,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  disconnectFromService(
-    input: DisconnectFromServiceRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  finalizeCutover(
-    input: FinalizeCutoverRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  getLaunchConfiguration(
-    input: GetLaunchConfigurationRequest,
-  ): Effect.Effect<
-    LaunchConfiguration,
-    ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  getReplicationConfiguration(
-    input: GetReplicationConfigurationRequest,
-  ): Effect.Effect<
-    ReplicationConfiguration,
-    ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
   initializeService(
     input: InitializeServiceRequest,
   ): Effect.Effect<
     InitializeServiceResponse,
     AccessDeniedException | ValidationException | CommonAwsError
-  >;
-  listApplications(
-    input: ListApplicationsRequest,
-  ): Effect.Effect<
-    ListApplicationsResponse,
-    UninitializedAccountException | CommonAwsError
-  >;
-  listConnectors(
-    input: ListConnectorsRequest,
-  ): Effect.Effect<
-    ListConnectorsResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  listExportErrors(
-    input: ListExportErrorsRequest,
-  ): Effect.Effect<
-    ListExportErrorsResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  listExports(
-    input: ListExportsRequest,
-  ): Effect.Effect<
-    ListExportsResponse,
-    UninitializedAccountException | CommonAwsError
-  >;
-  listImportErrors(
-    input: ListImportErrorsRequest,
-  ): Effect.Effect<
-    ListImportErrorsResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  listImports(
-    input: ListImportsRequest,
-  ): Effect.Effect<
-    ListImportsResponse,
-    UninitializedAccountException | ValidationException | CommonAwsError
   >;
   listManagedAccounts(
     input: ListManagedAccountsRequest,
@@ -230,197 +14,38 @@ export interface ApplicationMigrationService {
     ListManagedAccountsResponse,
     UninitializedAccountException | ValidationException | CommonAwsError
   >;
-  listSourceServerActions(
-    input: ListSourceServerActionsRequest,
-  ): Effect.Effect<
-    ListSourceServerActionsResponse,
-    ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listTemplateActions(
-    input: ListTemplateActionsRequest,
-  ): Effect.Effect<
-    ListTemplateActionsResponse,
-    ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  listWaves(
-    input: ListWavesRequest,
-  ): Effect.Effect<
-    ListWavesResponse,
-    UninitializedAccountException | CommonAwsError
-  >;
-  markAsArchived(
-    input: MarkAsArchivedRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  pauseReplication(
-    input: PauseReplicationRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  putSourceServerAction(
-    input: PutSourceServerActionRequest,
-  ): Effect.Effect<
-    SourceServerActionDocument,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  putTemplateAction(
-    input: PutTemplateActionRequest,
-  ): Effect.Effect<
-    TemplateActionDocument,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  removeSourceServerAction(
-    input: RemoveSourceServerActionRequest,
-  ): Effect.Effect<
-    RemoveSourceServerActionResponse,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  removeTemplateAction(
-    input: RemoveTemplateActionRequest,
-  ): Effect.Effect<
-    RemoveTemplateActionResponse,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  resumeReplication(
-    input: ResumeReplicationRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  retryDataReplication(
-    input: RetryDataReplicationRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  startCutover(
-    input: StartCutoverRequest,
-  ): Effect.Effect<
-    StartCutoverResponse,
-    ConflictException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  startExport(
-    input: StartExportRequest,
-  ): Effect.Effect<
-    StartExportResponse,
-    ServiceQuotaExceededException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  startImport(
-    input: StartImportRequest,
-  ): Effect.Effect<
-    StartImportResponse,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  startReplication(
-    input: StartReplicationRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  startTest(
-    input: StartTestRequest,
-  ): Effect.Effect<
-    StartTestResponse,
-    ConflictException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  stopReplication(
-    input: StopReplicationRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | ValidationException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  terminateTargetInstances(
-    input: TerminateTargetInstancesRequest,
-  ): Effect.Effect<
-    TerminateTargetInstancesResponse,
-    ConflictException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  unarchiveApplication(
-    input: UnarchiveApplicationRequest,
-  ): Effect.Effect<
-    Application,
-    ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
-  >;
-  unarchiveWave(
-    input: UnarchiveWaveRequest,
-  ): Effect.Effect<
-    Wave,
-    ResourceNotFoundException | ServiceQuotaExceededException | UninitializedAccountException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateApplication(
-    input: UpdateApplicationRequest,
-  ): Effect.Effect<
-    Application,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  updateConnector(
-    input: UpdateConnectorRequest,
-  ): Effect.Effect<
-    Connector,
-    ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  updateLaunchConfiguration(
-    input: UpdateLaunchConfigurationRequest,
-  ): Effect.Effect<
-    LaunchConfiguration,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  updateLaunchConfigurationTemplate(
-    input: UpdateLaunchConfigurationTemplateRequest,
-  ): Effect.Effect<
-    LaunchConfigurationTemplate,
-    AccessDeniedException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  updateReplicationConfiguration(
-    input: UpdateReplicationConfigurationRequest,
-  ): Effect.Effect<
-    ReplicationConfiguration,
-    AccessDeniedException | ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  updateReplicationConfigurationTemplate(
-    input: UpdateReplicationConfigurationTemplateRequest,
-  ): Effect.Effect<
-    ReplicationConfigurationTemplate,
-    AccessDeniedException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  updateSourceServer(
-    input: UpdateSourceServerRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
-  >;
-  updateSourceServerReplicationType(
-    input: UpdateSourceServerReplicationTypeRequest,
-  ): Effect.Effect<
-    SourceServer,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | ValidationException | CommonAwsError
-  >;
-  updateWave(
-    input: UpdateWaveRequest,
-  ): Effect.Effect<
-    Wave,
-    ConflictException | ResourceNotFoundException | UninitializedAccountException | CommonAwsError
+    | AccessDeniedException
+    | InternalServerException
+    | ResourceNotFoundException
+    | ThrottlingException
+    | ValidationException
+    | CommonAwsError
   >;
 }
 
@@ -491,16 +116,14 @@ export interface AssociateApplicationsRequest {
   applicationIDs: Array<string>;
   accountID?: string;
 }
-export interface AssociateApplicationsResponse {
-}
+export interface AssociateApplicationsResponse {}
 export interface AssociateSourceServersRequest {
   applicationID: string;
   sourceServerIDs: Array<string>;
   accountID?: string;
 }
 export type AssociateSourceServersRequestSourceServerIDs = Array<string>;
-export interface AssociateSourceServersResponse {
-}
+export interface AssociateSourceServersResponse {}
 export type BandwidthThrottling = number;
 
 export type BootMode = string;
@@ -630,7 +253,8 @@ export interface DataReplicationInfoReplicatedDisk {
   rescannedStorageBytes?: number;
   backloggedStorageBytes?: number;
 }
-export type DataReplicationInfoReplicatedDisks = Array<DataReplicationInfoReplicatedDisk>;
+export type DataReplicationInfoReplicatedDisks =
+  Array<DataReplicationInfoReplicatedDisk>;
 export interface DataReplicationInitiation {
   startDateTime?: string;
   nextAttemptDateTime?: string;
@@ -642,7 +266,8 @@ export interface DataReplicationInitiationStep {
 }
 export type DataReplicationInitiationStepName = string;
 
-export type DataReplicationInitiationSteps = Array<DataReplicationInitiationStep>;
+export type DataReplicationInitiationSteps =
+  Array<DataReplicationInitiationStep>;
 export type DataReplicationInitiationStepStatus = string;
 
 export type DataReplicationState = string;
@@ -651,8 +276,7 @@ export interface DeleteApplicationRequest {
   applicationID: string;
   accountID?: string;
 }
-export interface DeleteApplicationResponse {
-}
+export interface DeleteApplicationResponse {}
 export interface DeleteConnectorRequest {
   connectorID: string;
 }
@@ -660,24 +284,20 @@ export interface DeleteJobRequest {
   jobID: string;
   accountID?: string;
 }
-export interface DeleteJobResponse {
-}
+export interface DeleteJobResponse {}
 export interface DeleteLaunchConfigurationTemplateRequest {
   launchConfigurationTemplateID: string;
 }
-export interface DeleteLaunchConfigurationTemplateResponse {
-}
+export interface DeleteLaunchConfigurationTemplateResponse {}
 export interface DeleteReplicationConfigurationTemplateRequest {
   replicationConfigurationTemplateID: string;
 }
-export interface DeleteReplicationConfigurationTemplateResponse {
-}
+export interface DeleteReplicationConfigurationTemplateResponse {}
 export interface DeleteSourceServerRequest {
   sourceServerID: string;
   accountID?: string;
 }
-export interface DeleteSourceServerResponse {
-}
+export interface DeleteSourceServerResponse {}
 export interface DeleteVcenterClientRequest {
   vcenterClientID: string;
 }
@@ -685,8 +305,7 @@ export interface DeleteWaveRequest {
   waveID: string;
   accountID?: string;
 }
-export interface DeleteWaveResponse {
-}
+export interface DeleteWaveResponse {}
 export interface DescribeJobLogItemsRequest {
   jobID: string;
   maxResults?: number;
@@ -763,16 +382,14 @@ export interface DisassociateApplicationsRequest {
   applicationIDs: Array<string>;
   accountID?: string;
 }
-export interface DisassociateApplicationsResponse {
-}
+export interface DisassociateApplicationsResponse {}
 export interface DisassociateSourceServersRequest {
   applicationID: string;
   sourceServerIDs: Array<string>;
   accountID?: string;
 }
 export type DisassociateSourceServersRequestSourceServerIDs = Array<string>;
-export interface DisassociateSourceServersResponse {
-}
+export interface DisassociateSourceServersResponse {}
 export interface DisconnectFromServiceRequest {
   sourceServerID: string;
   accountID?: string;
@@ -895,10 +512,8 @@ export interface ImportTaskSummaryWaves {
   createdCount?: number;
   modifiedCount?: number;
 }
-export interface InitializeServiceRequest {
-}
-export interface InitializeServiceResponse {
-}
+export interface InitializeServiceRequest {}
+export interface InitializeServiceResponse {}
 export type InitiatedBy = string;
 
 export declare class InternalServerException extends Data.TaggedError(
@@ -1221,7 +836,8 @@ export interface PostLaunchActions {
 }
 export type PostLaunchActionsDeploymentType = string;
 
-export type PostLaunchActionsLaunchStatusList = Array<JobPostLaunchActionsLaunchStatus>;
+export type PostLaunchActionsLaunchStatusList =
+  Array<JobPostLaunchActionsLaunchStatus>;
 export interface PostLaunchActionsStatus {
   ssmAgentDiscoveryDatetime?: string;
   postLaunchActionsLaunchStatusList?: Array<JobPostLaunchActionsLaunchStatus>;
@@ -1263,14 +879,12 @@ export interface RemoveSourceServerActionRequest {
   actionID: string;
   accountID?: string;
 }
-export interface RemoveSourceServerActionResponse {
-}
+export interface RemoveSourceServerActionResponse {}
 export interface RemoveTemplateActionRequest {
   launchConfigurationTemplateID: string;
   actionID: string;
 }
-export interface RemoveTemplateActionResponse {
-}
+export interface RemoveTemplateActionResponse {}
 export interface ReplicationConfiguration {
   sourceServerID?: string;
   name?: string;
@@ -1302,7 +916,8 @@ export interface ReplicationConfigurationReplicatedDisk {
   iops?: number;
   throughput?: number;
 }
-export type ReplicationConfigurationReplicatedDisks = Array<ReplicationConfigurationReplicatedDisk>;
+export type ReplicationConfigurationReplicatedDisks =
+  Array<ReplicationConfigurationReplicatedDisk>;
 export type ReplicationConfigurationReplicatedDiskStagingDiskType = string;
 
 export interface ReplicationConfigurationTemplate {
@@ -1326,7 +941,8 @@ export interface ReplicationConfigurationTemplate {
 export type ReplicationConfigurationTemplateID = string;
 
 export type ReplicationConfigurationTemplateIDs = Array<string>;
-export type ReplicationConfigurationTemplates = Array<ReplicationConfigurationTemplate>;
+export type ReplicationConfigurationTemplates =
+  Array<ReplicationConfigurationTemplate>;
 export type ReplicationServersSecurityGroupsIDs = Array<string>;
 export type ReplicationType = string;
 
@@ -1434,12 +1050,18 @@ export interface SsmDocument {
   parameters?: Record<string, Array<SsmParameterStoreParameter>>;
   externalParameters?: Record<string, SsmExternalParameter>;
 }
-export type SsmDocumentExternalParameters = Record<string, SsmExternalParameter>;
+export type SsmDocumentExternalParameters = Record<
+  string,
+  SsmExternalParameter
+>;
 export type SsmDocumentName = string;
 
 export type SsmDocumentParameterName = string;
 
-export type SsmDocumentParameters = Record<string, Array<SsmParameterStoreParameter>>;
+export type SsmDocumentParameters = Record<
+  string,
+  Array<SsmParameterStoreParameter>
+>;
 export type SsmDocuments = Array<SsmDocument>;
 export type SsmDocumentType = string;
 
@@ -1721,363 +1343,11 @@ export type WaveName = string;
 export type WaveProgressStatus = string;
 
 export type WavesList = Array<Wave>;
-export declare namespace ArchiveApplication {
-  export type Input = ArchiveApplicationRequest;
-  export type Output = Application;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace ArchiveWave {
-  export type Input = ArchiveWaveRequest;
-  export type Output = Wave;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace AssociateApplications {
-  export type Input = AssociateApplicationsRequest;
-  export type Output = AssociateApplicationsResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace AssociateSourceServers {
-  export type Input = AssociateSourceServersRequest;
-  export type Output = AssociateSourceServersResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace ChangeServerLifeCycleState {
-  export type Input = ChangeServerLifeCycleStateRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateApplication {
-  export type Input = CreateApplicationRequest;
-  export type Output = Application;
-  export type Error =
-    | ConflictException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConnector {
-  export type Input = CreateConnectorRequest;
-  export type Output = Connector;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateLaunchConfigurationTemplate {
-  export type Input = CreateLaunchConfigurationTemplateRequest;
-  export type Output = LaunchConfigurationTemplate;
-  export type Error =
-    | AccessDeniedException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateReplicationConfigurationTemplate {
-  export type Input = CreateReplicationConfigurationTemplateRequest;
-  export type Output = ReplicationConfigurationTemplate;
-  export type Error =
-    | AccessDeniedException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateWave {
-  export type Input = CreateWaveRequest;
-  export type Output = Wave;
-  export type Error =
-    | ConflictException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteApplication {
-  export type Input = DeleteApplicationRequest;
-  export type Output = DeleteApplicationResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConnector {
-  export type Input = DeleteConnectorRequest;
-  export type Output = {};
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteJob {
-  export type Input = DeleteJobRequest;
-  export type Output = DeleteJobResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteLaunchConfigurationTemplate {
-  export type Input = DeleteLaunchConfigurationTemplateRequest;
-  export type Output = DeleteLaunchConfigurationTemplateResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteReplicationConfigurationTemplate {
-  export type Input = DeleteReplicationConfigurationTemplateRequest;
-  export type Output = DeleteReplicationConfigurationTemplateResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteSourceServer {
-  export type Input = DeleteSourceServerRequest;
-  export type Output = DeleteSourceServerResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteVcenterClient {
-  export type Input = DeleteVcenterClientRequest;
-  export type Output = {};
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteWave {
-  export type Input = DeleteWaveRequest;
-  export type Output = DeleteWaveResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeJobLogItems {
-  export type Input = DescribeJobLogItemsRequest;
-  export type Output = DescribeJobLogItemsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeJobs {
-  export type Input = DescribeJobsRequest;
-  export type Output = DescribeJobsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeLaunchConfigurationTemplates {
-  export type Input = DescribeLaunchConfigurationTemplatesRequest;
-  export type Output = DescribeLaunchConfigurationTemplatesResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeReplicationConfigurationTemplates {
-  export type Input = DescribeReplicationConfigurationTemplatesRequest;
-  export type Output = DescribeReplicationConfigurationTemplatesResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeSourceServers {
-  export type Input = DescribeSourceServersRequest;
-  export type Output = DescribeSourceServersResponse;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DescribeVcenterClients {
-  export type Input = DescribeVcenterClientsRequest;
-  export type Output = DescribeVcenterClientsResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DisassociateApplications {
-  export type Input = DisassociateApplicationsRequest;
-  export type Output = DisassociateApplicationsResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DisassociateSourceServers {
-  export type Input = DisassociateSourceServersRequest;
-  export type Output = DisassociateSourceServersResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace DisconnectFromService {
-  export type Input = DisconnectFromServiceRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace FinalizeCutover {
-  export type Input = FinalizeCutoverRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetLaunchConfiguration {
-  export type Input = GetLaunchConfigurationRequest;
-  export type Output = LaunchConfiguration;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace GetReplicationConfiguration {
-  export type Input = GetReplicationConfigurationRequest;
-  export type Output = ReplicationConfiguration;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
 export declare namespace InitializeService {
   export type Input = InitializeServiceRequest;
   export type Output = InitializeServiceResponse;
   export type Error =
     | AccessDeniedException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListApplications {
-  export type Input = ListApplicationsRequest;
-  export type Output = ListApplicationsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace ListConnectors {
-  export type Input = ListConnectorsRequest;
-  export type Output = ListConnectorsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListExportErrors {
-  export type Input = ListExportErrorsRequest;
-  export type Output = ListExportErrorsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListExports {
-  export type Input = ListExportsRequest;
-  export type Output = ListExportsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace ListImportErrors {
-  export type Input = ListImportErrorsRequest;
-  export type Output = ListImportErrorsResponse;
-  export type Error =
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListImports {
-  export type Input = ListImportsRequest;
-  export type Output = ListImportsResponse;
-  export type Error =
-    | UninitializedAccountException
     | ValidationException
     | CommonAwsError;
 }
@@ -2091,15 +1361,6 @@ export declare namespace ListManagedAccounts {
     | CommonAwsError;
 }
 
-export declare namespace ListSourceServerActions {
-  export type Input = ListSourceServerActionsRequest;
-  export type Output = ListSourceServerActionsResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceRequest;
   export type Output = ListTagsForResourceResponse;
@@ -2108,175 +1369,6 @@ export declare namespace ListTagsForResource {
     | InternalServerException
     | ResourceNotFoundException
     | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListTemplateActions {
-  export type Input = ListTemplateActionsRequest;
-  export type Output = ListTemplateActionsResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace ListWaves {
-  export type Input = ListWavesRequest;
-  export type Output = ListWavesResponse;
-  export type Error =
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace MarkAsArchived {
-  export type Input = MarkAsArchivedRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace PauseReplication {
-  export type Input = PauseReplicationRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PutSourceServerAction {
-  export type Input = PutSourceServerActionRequest;
-  export type Output = SourceServerActionDocument;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PutTemplateAction {
-  export type Input = PutTemplateActionRequest;
-  export type Output = TemplateActionDocument;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace RemoveSourceServerAction {
-  export type Input = RemoveSourceServerActionRequest;
-  export type Output = RemoveSourceServerActionResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace RemoveTemplateAction {
-  export type Input = RemoveTemplateActionRequest;
-  export type Output = RemoveTemplateActionResponse;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ResumeReplication {
-  export type Input = ResumeReplicationRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace RetryDataReplication {
-  export type Input = RetryDataReplicationRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartCutover {
-  export type Input = StartCutoverRequest;
-  export type Output = StartCutoverResponse;
-  export type Error =
-    | ConflictException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartExport {
-  export type Input = StartExportRequest;
-  export type Output = StartExportResponse;
-  export type Error =
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartImport {
-  export type Input = StartImportRequest;
-  export type Output = StartImportResponse;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartReplication {
-  export type Input = StartReplicationRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartTest {
-  export type Input = StartTestRequest;
-  export type Output = StartTestResponse;
-  export type Error =
-    | ConflictException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StopReplication {
-  export type Input = StopReplicationRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
     | ValidationException
     | CommonAwsError;
 }
@@ -2293,36 +1385,6 @@ export declare namespace TagResource {
     | CommonAwsError;
 }
 
-export declare namespace TerminateTargetInstances {
-  export type Input = TerminateTargetInstancesRequest;
-  export type Output = TerminateTargetInstancesResponse;
-  export type Error =
-    | ConflictException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UnarchiveApplication {
-  export type Input = UnarchiveApplicationRequest;
-  export type Output = Application;
-  export type Error =
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace UnarchiveWave {
-  export type Input = UnarchiveWaveRequest;
-  export type Output = Wave;
-  export type Error =
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
 export declare namespace UntagResource {
   export type Input = UntagResourceRequest;
   export type Output = {};
@@ -2334,100 +1396,3 @@ export declare namespace UntagResource {
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateApplication {
-  export type Input = UpdateApplicationRequest;
-  export type Output = Application;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConnector {
-  export type Input = UpdateConnectorRequest;
-  export type Output = Connector;
-  export type Error =
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateLaunchConfiguration {
-  export type Input = UpdateLaunchConfigurationRequest;
-  export type Output = LaunchConfiguration;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateLaunchConfigurationTemplate {
-  export type Input = UpdateLaunchConfigurationTemplateRequest;
-  export type Output = LaunchConfigurationTemplate;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateReplicationConfiguration {
-  export type Input = UpdateReplicationConfigurationRequest;
-  export type Output = ReplicationConfiguration;
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateReplicationConfigurationTemplate {
-  export type Input = UpdateReplicationConfigurationTemplateRequest;
-  export type Output = ReplicationConfigurationTemplate;
-  export type Error =
-    | AccessDeniedException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateSourceServer {
-  export type Input = UpdateSourceServerRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateSourceServerReplicationType {
-  export type Input = UpdateSourceServerReplicationTypeRequest;
-  export type Output = SourceServer;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateWave {
-  export type Input = UpdateWaveRequest;
-  export type Output = Wave;
-  export type Error =
-    | ConflictException
-    | ResourceNotFoundException
-    | UninitializedAccountException
-    | CommonAwsError;
-}
-

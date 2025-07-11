@@ -1,597 +1,205 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface AWSBastionControlPlaneServiceLambda {
-  batchGetCollaborationAnalysisTemplate(
-    input: BatchGetCollaborationAnalysisTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  batchGetSchema(
-    input: BatchGetSchemaInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  batchGetSchemaAnalysisRule(
-    input: BatchGetSchemaAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createAnalysisTemplate(
-    input: CreateAnalysisTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createCollaboration(
-    input: CreateCollaborationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createConfiguredAudienceModelAssociation(
-    input: CreateConfiguredAudienceModelAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createConfiguredTable(
-    input: CreateConfiguredTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createConfiguredTableAnalysisRule(
-    input: CreateConfiguredTableAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createConfiguredTableAssociation(
-    input: CreateConfiguredTableAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createConfiguredTableAssociationAnalysisRule(
-    input: CreateConfiguredTableAssociationAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createIdMappingTable(
-    input: CreateIdMappingTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createIdNamespaceAssociation(
-    input: CreateIdNamespaceAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createMembership(
-    input: CreateMembershipInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  createPrivacyBudgetTemplate(
-    input: CreatePrivacyBudgetTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteAnalysisTemplate(
-    input: DeleteAnalysisTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteCollaboration(
-    input: DeleteCollaborationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteConfiguredAudienceModelAssociation(
-    input: DeleteConfiguredAudienceModelAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteConfiguredTable(
-    input: DeleteConfiguredTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteConfiguredTableAnalysisRule(
-    input: DeleteConfiguredTableAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteConfiguredTableAssociation(
-    input: DeleteConfiguredTableAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteConfiguredTableAssociationAnalysisRule(
-    input: DeleteConfiguredTableAssociationAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteIdMappingTable(
-    input: DeleteIdMappingTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteIdNamespaceAssociation(
-    input: DeleteIdNamespaceAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteMember(
-    input: DeleteMemberInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deleteMembership(
-    input: DeleteMembershipInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  deletePrivacyBudgetTemplate(
-    input: DeletePrivacyBudgetTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getAnalysisTemplate(
-    input: GetAnalysisTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getCollaboration(
-    input: GetCollaborationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getCollaborationAnalysisTemplate(
-    input: GetCollaborationAnalysisTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getCollaborationConfiguredAudienceModelAssociation(
-    input: GetCollaborationConfiguredAudienceModelAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getCollaborationIdNamespaceAssociation(
-    input: GetCollaborationIdNamespaceAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getCollaborationPrivacyBudgetTemplate(
-    input: GetCollaborationPrivacyBudgetTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getConfiguredAudienceModelAssociation(
-    input: GetConfiguredAudienceModelAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getConfiguredTable(
-    input: GetConfiguredTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getConfiguredTableAnalysisRule(
-    input: GetConfiguredTableAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getConfiguredTableAssociation(
-    input: GetConfiguredTableAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getConfiguredTableAssociationAnalysisRule(
-    input: GetConfiguredTableAssociationAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getIdMappingTable(
-    input: GetIdMappingTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getIdNamespaceAssociation(
-    input: GetIdNamespaceAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getMembership(
-    input: GetMembershipInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getPrivacyBudgetTemplate(
-    input: GetPrivacyBudgetTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getProtectedJob(
-    input: GetProtectedJobInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getProtectedQuery(
-    input: GetProtectedQueryInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getSchema(
-    input: GetSchemaInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  getSchemaAnalysisRule(
-    input: GetSchemaAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listAnalysisTemplates(
-    input: ListAnalysisTemplatesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listCollaborationAnalysisTemplates(
-    input: ListCollaborationAnalysisTemplatesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listCollaborationConfiguredAudienceModelAssociations(
-    input: ListCollaborationConfiguredAudienceModelAssociationsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listCollaborationIdNamespaceAssociations(
-    input: ListCollaborationIdNamespaceAssociationsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listCollaborationPrivacyBudgetTemplates(
-    input: ListCollaborationPrivacyBudgetTemplatesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listCollaborationPrivacyBudgets(
-    input: ListCollaborationPrivacyBudgetsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listCollaborations(
-    input: ListCollaborationsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listConfiguredAudienceModelAssociations(
-    input: ListConfiguredAudienceModelAssociationsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listConfiguredTableAssociations(
-    input: ListConfiguredTableAssociationsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listConfiguredTables(
-    input: ListConfiguredTablesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listIdMappingTables(
-    input: ListIdMappingTablesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listIdNamespaceAssociations(
-    input: ListIdNamespaceAssociationsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listMembers(
-    input: ListMembersInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listMemberships(
-    input: ListMembershipsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listPrivacyBudgetTemplates(
-    input: ListPrivacyBudgetTemplatesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listPrivacyBudgets(
-    input: ListPrivacyBudgetsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listProtectedJobs(
-    input: ListProtectedJobsInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listProtectedQueries(
-    input: ListProtectedQueriesInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  listSchemas(
-    input: ListSchemasInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
   listTagsForResource(
     input: ListTagsForResourceInput,
   ): Effect.Effect<
-    {},
+    ListTagsForResourceOutput,
     ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  populateIdMappingTable(
-    input: PopulateIdMappingTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  previewPrivacyImpact(
-    input: PreviewPrivacyImpactInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  startProtectedJob(
-    input: StartProtectedJobInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  startProtectedQuery(
-    input: StartProtectedQueryInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ServiceQuotaExceededException | ThrottlingException | ValidationException | CommonAwsError
   >;
   tagResource(
     input: TagResourceInput,
   ): Effect.Effect<
-    {},
+    TagResourceOutput,
     ResourceNotFoundException | ValidationException | CommonAwsError
   >;
   untagResource(
     input: UntagResourceInput,
   ): Effect.Effect<
-    {},
+    UntagResourceOutput,
     ResourceNotFoundException | ValidationException | CommonAwsError
-  >;
-  updateAnalysisTemplate(
-    input: UpdateAnalysisTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateCollaboration(
-    input: UpdateCollaborationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateConfiguredAudienceModelAssociation(
-    input: UpdateConfiguredAudienceModelAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateConfiguredTable(
-    input: UpdateConfiguredTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateConfiguredTableAnalysisRule(
-    input: UpdateConfiguredTableAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateConfiguredTableAssociation(
-    input: UpdateConfiguredTableAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateConfiguredTableAssociationAnalysisRule(
-    input: UpdateConfiguredTableAssociationAnalysisRuleInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateIdMappingTable(
-    input: UpdateIdMappingTableInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateIdNamespaceAssociation(
-    input: UpdateIdNamespaceAssociationInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateMembership(
-    input: UpdateMembershipInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updatePrivacyBudgetTemplate(
-    input: UpdatePrivacyBudgetTemplateInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateProtectedJob(
-    input: UpdateProtectedJobInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
-  >;
-  updateProtectedQuery(
-    input: UpdateProtectedQueryInput,
-  ): Effect.Effect<
-    {},
-    AccessDeniedException | ConflictException | InternalServerException | ResourceNotFoundException | ThrottlingException | ValidationException | CommonAwsError
   >;
 }
 
 export type Cleanrooms = AWSBastionControlPlaneServiceLambda;
 
-export interface AccessDeniedException {
-}
+export declare class AccessDeniedException extends Data.TaggedError(
+  "AccessDeniedException",
+)<{
+  readonly message?: string;
+  readonly reason?: string;
+}> {}
 export type AccessDeniedExceptionReason = string;
 
 export type AccountId = string;
 
-export type AdditionalAnalyses = never;
+export type AdditionalAnalyses = "ALLOWED" | "REQUIRED" | "NOT_ALLOWED";
 export type AdditionalAnalysesResourceArn = string;
 
 export interface AggregateColumn {
+  columnNames: Array<string>;
+  function: string;
 }
-export type AggregateColumnList = Array<unknown>;
+export type AggregateColumnList = Array<AggregateColumn>;
 export type AggregateFunctionName = string;
 
 export interface AggregationConstraint {
+  columnName: string;
+  minimum: number;
+  type: string;
 }
-export type AggregationConstraints = Array<unknown>;
+export type AggregationConstraints = Array<AggregationConstraint>;
 export type AggregationType = string;
 
-export type AllowedAdditionalAnalyses = Array<unknown>;
-export type AllowedAnalysesList = Array<unknown>;
-export type AllowedAnalysisProviderList = Array<unknown>;
-export type AllowedColumnList = Array<unknown>;
-export type AllowedResultReceivers = Array<unknown>;
-export type AnalysisFormat = never;
-export type AnalysisMethod = never;
+export type AllowedAdditionalAnalyses = Array<string>;
+export type AllowedAnalysesList = Array<string>;
+export type AllowedAnalysisProviderList = Array<string>;
+export type AllowedColumnList = Array<string>;
+export type AllowedResultReceivers = Array<string>;
+export type AnalysisFormat = "SQL" | "PYSPARK_1_0";
+export type AnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB" | "MULTIPLE";
 export interface AnalysisParameter {
+  name: string;
+  type: ParameterType;
+  defaultValue?: string;
 }
-export type AnalysisParameterList = Array<unknown>;
+export type AnalysisParameterList = Array<AnalysisParameter>;
 export interface AnalysisRule {
+  collaborationId: string;
+  type: AnalysisRuleType;
+  name: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  policy: AnalysisRulePolicy;
+  collaborationPolicy?: ConfiguredTableAssociationAnalysisRulePolicy;
+  consolidatedPolicy?: ConsolidatedPolicy;
 }
 export interface AnalysisRuleAggregation {
+  aggregateColumns: Array<AggregateColumn>;
+  joinColumns: Array<string>;
+  joinRequired?: string;
+  allowedJoinOperators?: Array<string>;
+  dimensionColumns: Array<string>;
+  scalarFunctions: Array<string>;
+  outputConstraints: Array<AggregationConstraint>;
+  additionalAnalyses?: AdditionalAnalyses;
 }
-export type AnalysisRuleColumnList = Array<unknown>;
+export type AnalysisRuleColumnList = Array<string>;
 export type AnalysisRuleColumnName = string;
 
-export type AnalysisRuleColumnNameList = Array<unknown>;
+export type AnalysisRuleColumnNameList = Array<string>;
 export interface AnalysisRuleCustom {
+  allowedAnalyses: Array<string>;
+  allowedAnalysisProviders?: Array<string>;
+  additionalAnalyses?: AdditionalAnalyses;
+  disallowedOutputColumns?: Array<string>;
+  differentialPrivacy?: DifferentialPrivacyConfiguration;
 }
 export interface AnalysisRuleIdMappingTable {
+  joinColumns: Array<string>;
+  queryConstraints: Array<QueryConstraint>;
+  dimensionColumns?: Array<string>;
 }
 export interface AnalysisRuleList {
+  joinColumns: Array<string>;
+  allowedJoinOperators?: Array<string>;
+  listColumns: Array<string>;
+  additionalAnalyses?: AdditionalAnalyses;
 }
-export type AnalysisRulePolicy = never;
-export type AnalysisRulePolicyV1 = never;
-export type AnalysisRuleType = never;
-export type AnalysisRuleTypeList = Array<unknown>;
+export type AnalysisRulePolicy = { v1: AnalysisRulePolicyV1 };
+export type AnalysisRulePolicyV1 =
+  | { list: AnalysisRuleList }
+  | { aggregation: AnalysisRuleAggregation }
+  | { custom: AnalysisRuleCustom }
+  | { idMappingTable: AnalysisRuleIdMappingTable };
+export type AnalysisRuleType =
+  | "AGGREGATION"
+  | "LIST"
+  | "CUSTOM"
+  | "ID_MAPPING_TABLE";
+export type AnalysisRuleTypeList = Array<AnalysisRuleType>;
 export interface AnalysisSchema {
+  referencedTables?: Array<string>;
 }
-export type AnalysisSource = never;
-export type AnalysisSourceMetadata = never;
+export type AnalysisSource =
+  | { text: string }
+  | { artifacts: AnalysisTemplateArtifacts };
+export type AnalysisSourceMetadata = {
+  artifacts: AnalysisTemplateArtifactMetadata;
+};
 export interface AnalysisTemplate {
+  id: string;
+  arn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  membershipId: string;
+  membershipArn: string;
+  description?: string;
+  name: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  schema: AnalysisSchema;
+  format: AnalysisFormat;
+  source: AnalysisSource;
+  sourceMetadata?: AnalysisSourceMetadata;
+  analysisParameters?: Array<AnalysisParameter>;
+  validations?: Array<AnalysisTemplateValidationStatusDetail>;
 }
 export type AnalysisTemplateArn = string;
 
-export type AnalysisTemplateArnList = Array<unknown>;
+export type AnalysisTemplateArnList = Array<string>;
 export type AnalysisTemplateArnOrQueryWildcard = string;
 
 export interface AnalysisTemplateArtifact {
+  location: S3Location;
 }
-export type AnalysisTemplateArtifactList = Array<unknown>;
+export type AnalysisTemplateArtifactList = Array<AnalysisTemplateArtifact>;
 export interface AnalysisTemplateArtifactMetadata {
+  entryPointHash: Hash;
+  additionalArtifactHashes?: Array<Hash>;
 }
 export interface AnalysisTemplateArtifacts {
+  entryPoint: AnalysisTemplateArtifact;
+  additionalArtifacts?: Array<AnalysisTemplateArtifact>;
+  roleArn: string;
 }
 export type AnalysisTemplateIdentifier = string;
 
 export interface AnalysisTemplateSummary {
+  arn: string;
+  createTime: Date | string;
+  id: string;
+  name: string;
+  updateTime: Date | string;
+  membershipArn: string;
+  membershipId: string;
+  collaborationArn: string;
+  collaborationId: string;
+  description?: string;
 }
-export type AnalysisTemplateSummaryList = Array<unknown>;
+export type AnalysisTemplateSummaryList = Array<AnalysisTemplateSummary>;
 export type AnalysisTemplateText = string;
 
-export type AnalysisTemplateValidationStatus = never;
+export type AnalysisTemplateValidationStatus =
+  | "VALID"
+  | "INVALID"
+  | "UNABLE_TO_VALIDATE";
 export interface AnalysisTemplateValidationStatusDetail {
+  type: AnalysisTemplateValidationType;
+  status: AnalysisTemplateValidationStatus;
+  reasons?: Array<AnalysisTemplateValidationStatusReason>;
 }
-export type AnalysisTemplateValidationStatusDetailList = Array<unknown>;
+export type AnalysisTemplateValidationStatusDetailList =
+  Array<AnalysisTemplateValidationStatusDetail>;
 export interface AnalysisTemplateValidationStatusReason {
+  message: string;
 }
-export type AnalysisTemplateValidationStatusReasonList = Array<unknown>;
-export type AnalysisTemplateValidationType = never;
-export type AnalysisType = never;
-export type AnalyticsEngine = never;
+export type AnalysisTemplateValidationStatusReasonList =
+  Array<AnalysisTemplateValidationStatusReason>;
+export type AnalysisTemplateValidationType = "DIFFERENTIAL_PRIVACY";
+export type AnalysisType = "DIRECT_ANALYSIS" | "ADDITIONAL_ANALYSIS";
+export type AnalyticsEngine = "SPARK" | "CLEAN_ROOMS_SQL";
 export type AthenaDatabaseName = string;
 
 export type AthenaOutputLocation = string;
@@ -599,87 +207,259 @@ export type AthenaOutputLocation = string;
 export type AthenaTableName = string;
 
 export interface AthenaTableReference {
+  workGroup: string;
+  outputLocation?: string;
+  databaseName: string;
+  tableName: string;
 }
 export type AthenaWorkGroup = string;
 
 export interface BatchGetCollaborationAnalysisTemplateError {
+  arn: string;
+  code: string;
+  message: string;
 }
-export type BatchGetCollaborationAnalysisTemplateErrorList = Array<unknown>;
+export type BatchGetCollaborationAnalysisTemplateErrorList =
+  Array<BatchGetCollaborationAnalysisTemplateError>;
 export interface BatchGetCollaborationAnalysisTemplateInput {
+  collaborationIdentifier: string;
+  analysisTemplateArns: Array<string>;
 }
 export interface BatchGetCollaborationAnalysisTemplateOutput {
+  collaborationAnalysisTemplates: Array<CollaborationAnalysisTemplate>;
+  errors: Array<BatchGetCollaborationAnalysisTemplateError>;
 }
 export interface BatchGetSchemaAnalysisRuleError {
+  name: string;
+  type: AnalysisRuleType;
+  code: string;
+  message: string;
 }
-export type BatchGetSchemaAnalysisRuleErrorList = Array<unknown>;
+export type BatchGetSchemaAnalysisRuleErrorList =
+  Array<BatchGetSchemaAnalysisRuleError>;
 export interface BatchGetSchemaAnalysisRuleInput {
+  collaborationIdentifier: string;
+  schemaAnalysisRuleRequests: Array<SchemaAnalysisRuleRequest>;
 }
 export interface BatchGetSchemaAnalysisRuleOutput {
+  analysisRules: Array<AnalysisRule>;
+  errors: Array<BatchGetSchemaAnalysisRuleError>;
 }
 export interface BatchGetSchemaError {
+  name: string;
+  code: string;
+  message: string;
 }
-export type BatchGetSchemaErrorList = Array<unknown>;
+export type BatchGetSchemaErrorList = Array<BatchGetSchemaError>;
 export interface BatchGetSchemaInput {
+  collaborationIdentifier: string;
+  names: Array<string>;
 }
 export interface BatchGetSchemaOutput {
+  schemas: Array<Schema>;
+  errors: Array<BatchGetSchemaError>;
 }
 export interface BilledJobResourceUtilization {
+  units: number;
 }
 export interface BilledResourceUtilization {
+  units: number;
 }
 export type CleanroomsArn = string;
 
 export interface Collaboration {
+  id: string;
+  arn: string;
+  name: string;
+  description?: string;
+  creatorAccountId: string;
+  creatorDisplayName: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  memberStatus: string;
+  membershipId?: string;
+  membershipArn?: string;
+  dataEncryptionMetadata?: DataEncryptionMetadata;
+  queryLogStatus: CollaborationQueryLogStatus;
+  jobLogStatus?: CollaborationJobLogStatus;
+  analyticsEngine?: AnalyticsEngine;
 }
 export interface CollaborationAnalysisTemplate {
+  id: string;
+  arn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  description?: string;
+  creatorAccountId: string;
+  name: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  schema: AnalysisSchema;
+  format: AnalysisFormat;
+  source?: AnalysisSource;
+  sourceMetadata?: AnalysisSourceMetadata;
+  analysisParameters?: Array<AnalysisParameter>;
+  validations?: Array<AnalysisTemplateValidationStatusDetail>;
 }
-export type CollaborationAnalysisTemplateList = Array<unknown>;
+export type CollaborationAnalysisTemplateList =
+  Array<CollaborationAnalysisTemplate>;
 export interface CollaborationAnalysisTemplateSummary {
+  arn: string;
+  createTime: Date | string;
+  id: string;
+  name: string;
+  updateTime: Date | string;
+  collaborationArn: string;
+  collaborationId: string;
+  creatorAccountId: string;
+  description?: string;
 }
-export type CollaborationAnalysisTemplateSummaryList = Array<unknown>;
+export type CollaborationAnalysisTemplateSummaryList =
+  Array<CollaborationAnalysisTemplateSummary>;
 export type CollaborationArn = string;
 
 export interface CollaborationConfiguredAudienceModelAssociation {
+  id: string;
+  arn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  configuredAudienceModelArn: string;
+  name: string;
+  description?: string;
+  creatorAccountId: string;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
 export interface CollaborationConfiguredAudienceModelAssociationSummary {
+  arn: string;
+  createTime: Date | string;
+  id: string;
+  name: string;
+  updateTime: Date | string;
+  collaborationArn: string;
+  collaborationId: string;
+  creatorAccountId: string;
+  description?: string;
 }
-export type CollaborationConfiguredAudienceModelAssociationSummaryList = Array<unknown>;
+export type CollaborationConfiguredAudienceModelAssociationSummaryList =
+  Array<CollaborationConfiguredAudienceModelAssociationSummary>;
 export type CollaborationDescription = string;
 
 export type CollaborationIdentifier = string;
 
 export interface CollaborationIdNamespaceAssociation {
+  id: string;
+  arn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  name: string;
+  description?: string;
+  creatorAccountId: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  inputReferenceConfig: IdNamespaceAssociationInputReferenceConfig;
+  inputReferenceProperties: IdNamespaceAssociationInputReferenceProperties;
+  idMappingConfig?: IdMappingConfig;
 }
 export interface CollaborationIdNamespaceAssociationSummary {
+  arn: string;
+  createTime: Date | string;
+  id: string;
+  updateTime: Date | string;
+  collaborationArn: string;
+  collaborationId: string;
+  creatorAccountId: string;
+  inputReferenceConfig: IdNamespaceAssociationInputReferenceConfig;
+  name: string;
+  description?: string;
+  inputReferenceProperties: IdNamespaceAssociationInputReferencePropertiesSummary;
 }
-export type CollaborationIdNamespaceAssociationSummaryList = Array<unknown>;
-export type CollaborationJobLogStatus = never;
+export type CollaborationIdNamespaceAssociationSummaryList =
+  Array<CollaborationIdNamespaceAssociationSummary>;
+export type CollaborationJobLogStatus = "ENABLED" | "DISABLED";
 export type CollaborationName = string;
 
 export interface CollaborationPrivacyBudgetSummary {
+  id: string;
+  privacyBudgetTemplateId: string;
+  privacyBudgetTemplateArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  creatorAccountId: string;
+  type: PrivacyBudgetType;
+  createTime: Date | string;
+  updateTime: Date | string;
+  budget: PrivacyBudget;
 }
-export type CollaborationPrivacyBudgetSummaryList = Array<unknown>;
+export type CollaborationPrivacyBudgetSummaryList =
+  Array<CollaborationPrivacyBudgetSummary>;
 export interface CollaborationPrivacyBudgetTemplate {
+  id: string;
+  arn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  creatorAccountId: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  privacyBudgetType: PrivacyBudgetType;
+  autoRefresh: PrivacyBudgetTemplateAutoRefresh;
+  parameters: PrivacyBudgetTemplateParametersOutput;
 }
 export interface CollaborationPrivacyBudgetTemplateSummary {
+  id: string;
+  arn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  creatorAccountId: string;
+  privacyBudgetType: PrivacyBudgetType;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
-export type CollaborationPrivacyBudgetTemplateSummaryList = Array<unknown>;
-export type CollaborationQueryLogStatus = never;
+export type CollaborationPrivacyBudgetTemplateSummaryList =
+  Array<CollaborationPrivacyBudgetTemplateSummary>;
+export type CollaborationQueryLogStatus = "ENABLED" | "DISABLED";
 export interface CollaborationSummary {
+  id: string;
+  arn: string;
+  name: string;
+  creatorAccountId: string;
+  creatorDisplayName: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  memberStatus: string;
+  membershipId?: string;
+  membershipArn?: string;
+  analyticsEngine?: AnalyticsEngine;
 }
-export type CollaborationSummaryList = Array<unknown>;
+export type CollaborationSummaryList = Array<CollaborationSummary>;
 export interface Column {
+  name: string;
+  type: string;
 }
-export type ColumnList = Array<unknown>;
+export type ColumnList = Array<Column>;
 export type ColumnName = string;
 
 export type ColumnTypeString = string;
 
-export type ComputeConfiguration = never;
-export type ConfigurationDetails = never;
+export type ComputeConfiguration = { worker: WorkerComputeConfiguration };
+export type ConfigurationDetails = {
+  directAnalysisConfigurationDetails: DirectAnalysisConfigurationDetails;
+};
 export type ConfiguredAudienceModelArn = string;
 
 export interface ConfiguredAudienceModelAssociation {
+  id: string;
+  arn: string;
+  configuredAudienceModelArn: string;
+  membershipId: string;
+  membershipArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  name: string;
+  manageResourcePolicies: boolean;
+  description?: string;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
 export type ConfiguredAudienceModelAssociationArn = string;
 
@@ -688,184 +468,433 @@ export type ConfiguredAudienceModelAssociationIdentifier = string;
 export type ConfiguredAudienceModelAssociationName = string;
 
 export interface ConfiguredAudienceModelAssociationSummary {
+  membershipId: string;
+  membershipArn: string;
+  collaborationArn: string;
+  collaborationId: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  id: string;
+  arn: string;
+  name: string;
+  configuredAudienceModelArn: string;
+  description?: string;
 }
-export type ConfiguredAudienceModelAssociationSummaryList = Array<unknown>;
+export type ConfiguredAudienceModelAssociationSummaryList =
+  Array<ConfiguredAudienceModelAssociationSummary>;
 export interface ConfiguredTable {
+  id: string;
+  arn: string;
+  name: string;
+  description?: string;
+  tableReference: TableReference;
+  createTime: Date | string;
+  updateTime: Date | string;
+  analysisRuleTypes: Array<ConfiguredTableAnalysisRuleType>;
+  analysisMethod: AnalysisMethod;
+  allowedColumns: Array<string>;
+  selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
 }
 export interface ConfiguredTableAnalysisRule {
+  configuredTableId: string;
+  configuredTableArn: string;
+  policy: ConfiguredTableAnalysisRulePolicy;
+  type: ConfiguredTableAnalysisRuleType;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
-export type ConfiguredTableAnalysisRulePolicy = never;
-export type ConfiguredTableAnalysisRulePolicyV1 = never;
-export type ConfiguredTableAnalysisRuleType = never;
-export type ConfiguredTableAnalysisRuleTypeList = Array<unknown>;
+export type ConfiguredTableAnalysisRulePolicy = {
+  v1: ConfiguredTableAnalysisRulePolicyV1;
+};
+export type ConfiguredTableAnalysisRulePolicyV1 =
+  | { list: AnalysisRuleList }
+  | { aggregation: AnalysisRuleAggregation }
+  | { custom: AnalysisRuleCustom };
+export type ConfiguredTableAnalysisRuleType = "AGGREGATION" | "LIST" | "CUSTOM";
+export type ConfiguredTableAnalysisRuleTypeList =
+  Array<ConfiguredTableAnalysisRuleType>;
 export type ConfiguredTableArn = string;
 
 export interface ConfiguredTableAssociation {
+  arn: string;
+  id: string;
+  configuredTableId: string;
+  configuredTableArn: string;
+  membershipId: string;
+  membershipArn: string;
+  roleArn: string;
+  name: string;
+  description?: string;
+  analysisRuleTypes?: Array<ConfiguredTableAssociationAnalysisRuleType>;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
 export interface ConfiguredTableAssociationAnalysisRule {
+  membershipIdentifier: string;
+  configuredTableAssociationId: string;
+  configuredTableAssociationArn: string;
+  policy: ConfiguredTableAssociationAnalysisRulePolicy;
+  type: ConfiguredTableAssociationAnalysisRuleType;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
 export interface ConfiguredTableAssociationAnalysisRuleAggregation {
+  allowedResultReceivers?: Array<string>;
+  allowedAdditionalAnalyses?: Array<string>;
 }
 export interface ConfiguredTableAssociationAnalysisRuleCustom {
+  allowedResultReceivers?: Array<string>;
+  allowedAdditionalAnalyses?: Array<string>;
 }
 export interface ConfiguredTableAssociationAnalysisRuleList {
+  allowedResultReceivers?: Array<string>;
+  allowedAdditionalAnalyses?: Array<string>;
 }
-export type ConfiguredTableAssociationAnalysisRulePolicy = never;
-export type ConfiguredTableAssociationAnalysisRulePolicyV1 = never;
-export type ConfiguredTableAssociationAnalysisRuleType = never;
-export type ConfiguredTableAssociationAnalysisRuleTypeList = Array<unknown>;
+export type ConfiguredTableAssociationAnalysisRulePolicy = {
+  v1: ConfiguredTableAssociationAnalysisRulePolicyV1;
+};
+export type ConfiguredTableAssociationAnalysisRulePolicyV1 =
+  | { list: ConfiguredTableAssociationAnalysisRuleList }
+  | { aggregation: ConfiguredTableAssociationAnalysisRuleAggregation }
+  | { custom: ConfiguredTableAssociationAnalysisRuleCustom };
+export type ConfiguredTableAssociationAnalysisRuleType =
+  | "AGGREGATION"
+  | "LIST"
+  | "CUSTOM";
+export type ConfiguredTableAssociationAnalysisRuleTypeList =
+  Array<ConfiguredTableAssociationAnalysisRuleType>;
 export type ConfiguredTableAssociationArn = string;
 
 export type ConfiguredTableAssociationIdentifier = string;
 
 export interface ConfiguredTableAssociationSummary {
+  configuredTableId: string;
+  membershipId: string;
+  membershipArn: string;
+  name: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  id: string;
+  arn: string;
+  analysisRuleTypes?: Array<ConfiguredTableAssociationAnalysisRuleType>;
 }
-export type ConfiguredTableAssociationSummaryList = Array<unknown>;
+export type ConfiguredTableAssociationSummaryList =
+  Array<ConfiguredTableAssociationSummary>;
 export type ConfiguredTableIdentifier = string;
 
 export interface ConfiguredTableSummary {
+  id: string;
+  arn: string;
+  name: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  analysisRuleTypes: Array<ConfiguredTableAnalysisRuleType>;
+  analysisMethod: AnalysisMethod;
+  selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
 }
-export type ConfiguredTableSummaryList = Array<unknown>;
-export interface ConflictException {
-}
+export type ConfiguredTableSummaryList = Array<ConfiguredTableSummary>;
+export declare class ConflictException extends Data.TaggedError(
+  "ConflictException",
+)<{
+  readonly message?: string;
+  readonly resourceId?: string;
+  readonly resourceType?: string;
+  readonly reason?: string;
+}> {}
 export type ConflictExceptionReason = string;
 
-export type ConsolidatedPolicy = never;
+export type ConsolidatedPolicy = { v1: ConsolidatedPolicyV1 };
 export interface ConsolidatedPolicyAggregation {
+  aggregateColumns: Array<AggregateColumn>;
+  joinColumns: Array<string>;
+  joinRequired?: string;
+  allowedJoinOperators?: Array<string>;
+  dimensionColumns: Array<string>;
+  scalarFunctions: Array<string>;
+  outputConstraints: Array<AggregationConstraint>;
+  additionalAnalyses?: AdditionalAnalyses;
+  allowedResultReceivers?: Array<string>;
+  allowedAdditionalAnalyses?: Array<string>;
 }
 export interface ConsolidatedPolicyCustom {
+  allowedAnalyses: Array<string>;
+  allowedAnalysisProviders?: Array<string>;
+  additionalAnalyses?: AdditionalAnalyses;
+  disallowedOutputColumns?: Array<string>;
+  differentialPrivacy?: DifferentialPrivacyConfiguration;
+  allowedResultReceivers?: Array<string>;
+  allowedAdditionalAnalyses?: Array<string>;
 }
 export interface ConsolidatedPolicyList {
+  joinColumns: Array<string>;
+  allowedJoinOperators?: Array<string>;
+  listColumns: Array<string>;
+  additionalAnalyses?: AdditionalAnalyses;
+  allowedResultReceivers?: Array<string>;
+  allowedAdditionalAnalyses?: Array<string>;
 }
-export type ConsolidatedPolicyV1 = never;
+export type ConsolidatedPolicyV1 =
+  | { list: ConsolidatedPolicyList }
+  | { aggregation: ConsolidatedPolicyAggregation }
+  | { custom: ConsolidatedPolicyCustom };
 export interface CreateAnalysisTemplateInput {
+  description?: string;
+  membershipIdentifier: string;
+  name: string;
+  format: AnalysisFormat;
+  source: AnalysisSource;
+  tags?: Record<string, string>;
+  analysisParameters?: Array<AnalysisParameter>;
+  schema?: AnalysisSchema;
 }
 export interface CreateAnalysisTemplateOutput {
+  analysisTemplate: AnalysisTemplate;
 }
 export interface CreateCollaborationInput {
+  members: Array<MemberSpecification>;
+  name: string;
+  description: string;
+  creatorMemberAbilities: Array<MemberAbility>;
+  creatorMLMemberAbilities?: MLMemberAbilities;
+  creatorDisplayName: string;
+  dataEncryptionMetadata?: DataEncryptionMetadata;
+  queryLogStatus: CollaborationQueryLogStatus;
+  jobLogStatus?: CollaborationJobLogStatus;
+  tags?: Record<string, string>;
+  creatorPaymentConfiguration?: PaymentConfiguration;
+  analyticsEngine?: AnalyticsEngine;
 }
 export interface CreateCollaborationOutput {
+  collaboration: Collaboration;
 }
 export interface CreateConfiguredAudienceModelAssociationInput {
+  membershipIdentifier: string;
+  configuredAudienceModelArn: string;
+  configuredAudienceModelAssociationName: string;
+  manageResourcePolicies: boolean;
+  tags?: Record<string, string>;
+  description?: string;
 }
 export interface CreateConfiguredAudienceModelAssociationOutput {
+  configuredAudienceModelAssociation: ConfiguredAudienceModelAssociation;
 }
 export interface CreateConfiguredTableAnalysisRuleInput {
+  configuredTableIdentifier: string;
+  analysisRuleType: ConfiguredTableAnalysisRuleType;
+  analysisRulePolicy: ConfiguredTableAnalysisRulePolicy;
 }
 export interface CreateConfiguredTableAnalysisRuleOutput {
+  analysisRule: ConfiguredTableAnalysisRule;
 }
 export interface CreateConfiguredTableAssociationAnalysisRuleInput {
+  membershipIdentifier: string;
+  configuredTableAssociationIdentifier: string;
+  analysisRuleType: ConfiguredTableAssociationAnalysisRuleType;
+  analysisRulePolicy: ConfiguredTableAssociationAnalysisRulePolicy;
 }
 export interface CreateConfiguredTableAssociationAnalysisRuleOutput {
+  analysisRule: ConfiguredTableAssociationAnalysisRule;
 }
 export interface CreateConfiguredTableAssociationInput {
+  name: string;
+  description?: string;
+  membershipIdentifier: string;
+  configuredTableIdentifier: string;
+  roleArn: string;
+  tags?: Record<string, string>;
 }
 export interface CreateConfiguredTableAssociationOutput {
+  configuredTableAssociation: ConfiguredTableAssociation;
 }
 export interface CreateConfiguredTableInput {
+  name: string;
+  description?: string;
+  tableReference: TableReference;
+  allowedColumns: Array<string>;
+  analysisMethod: AnalysisMethod;
+  selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
+  tags?: Record<string, string>;
 }
 export interface CreateConfiguredTableOutput {
+  configuredTable: ConfiguredTable;
 }
 export interface CreateIdMappingTableInput {
+  membershipIdentifier: string;
+  name: string;
+  description?: string;
+  inputReferenceConfig: IdMappingTableInputReferenceConfig;
+  tags?: Record<string, string>;
+  kmsKeyArn?: string;
 }
 export interface CreateIdMappingTableOutput {
+  idMappingTable: IdMappingTable;
 }
 export interface CreateIdNamespaceAssociationInput {
+  membershipIdentifier: string;
+  inputReferenceConfig: IdNamespaceAssociationInputReferenceConfig;
+  tags?: Record<string, string>;
+  name: string;
+  description?: string;
+  idMappingConfig?: IdMappingConfig;
 }
 export interface CreateIdNamespaceAssociationOutput {
+  idNamespaceAssociation: IdNamespaceAssociation;
 }
 export interface CreateMembershipInput {
+  collaborationIdentifier: string;
+  queryLogStatus: MembershipQueryLogStatus;
+  jobLogStatus?: MembershipJobLogStatus;
+  tags?: Record<string, string>;
+  defaultResultConfiguration?: MembershipProtectedQueryResultConfiguration;
+  defaultJobResultConfiguration?: MembershipProtectedJobResultConfiguration;
+  paymentConfiguration?: MembershipPaymentConfiguration;
 }
 export interface CreateMembershipOutput {
+  membership: Membership;
 }
 export interface CreatePrivacyBudgetTemplateInput {
+  membershipIdentifier: string;
+  autoRefresh: PrivacyBudgetTemplateAutoRefresh;
+  privacyBudgetType: PrivacyBudgetType;
+  parameters: PrivacyBudgetTemplateParametersInput;
+  tags?: Record<string, string>;
 }
 export interface CreatePrivacyBudgetTemplateOutput {
+  privacyBudgetTemplate: PrivacyBudgetTemplate;
 }
-export type CustomMLMemberAbilities = Array<unknown>;
-export type CustomMLMemberAbility = never;
+export type CustomMLMemberAbilities = Array<CustomMLMemberAbility>;
+export type CustomMLMemberAbility =
+  | "CAN_RECEIVE_MODEL_OUTPUT"
+  | "CAN_RECEIVE_INFERENCE_OUTPUT";
 export interface DataEncryptionMetadata {
+  allowCleartext: boolean;
+  allowDuplicates: boolean;
+  allowJoinsOnColumnsWithDifferentNames: boolean;
+  preserveNulls: boolean;
 }
 export interface DeleteAnalysisTemplateInput {
+  membershipIdentifier: string;
+  analysisTemplateIdentifier: string;
 }
-export interface DeleteAnalysisTemplateOutput {
-}
+export interface DeleteAnalysisTemplateOutput {}
 export interface DeleteCollaborationInput {
+  collaborationIdentifier: string;
 }
-export interface DeleteCollaborationOutput {
-}
+export interface DeleteCollaborationOutput {}
 export interface DeleteConfiguredAudienceModelAssociationInput {
+  configuredAudienceModelAssociationIdentifier: string;
+  membershipIdentifier: string;
 }
-export interface DeleteConfiguredAudienceModelAssociationOutput {
-}
+export interface DeleteConfiguredAudienceModelAssociationOutput {}
 export interface DeleteConfiguredTableAnalysisRuleInput {
+  configuredTableIdentifier: string;
+  analysisRuleType: ConfiguredTableAnalysisRuleType;
 }
-export interface DeleteConfiguredTableAnalysisRuleOutput {
-}
+export interface DeleteConfiguredTableAnalysisRuleOutput {}
 export interface DeleteConfiguredTableAssociationAnalysisRuleInput {
+  membershipIdentifier: string;
+  configuredTableAssociationIdentifier: string;
+  analysisRuleType: ConfiguredTableAssociationAnalysisRuleType;
 }
-export interface DeleteConfiguredTableAssociationAnalysisRuleOutput {
-}
+export interface DeleteConfiguredTableAssociationAnalysisRuleOutput {}
 export interface DeleteConfiguredTableAssociationInput {
+  configuredTableAssociationIdentifier: string;
+  membershipIdentifier: string;
 }
-export interface DeleteConfiguredTableAssociationOutput {
-}
+export interface DeleteConfiguredTableAssociationOutput {}
 export interface DeleteConfiguredTableInput {
+  configuredTableIdentifier: string;
 }
-export interface DeleteConfiguredTableOutput {
-}
+export interface DeleteConfiguredTableOutput {}
 export interface DeleteIdMappingTableInput {
+  idMappingTableIdentifier: string;
+  membershipIdentifier: string;
 }
-export interface DeleteIdMappingTableOutput {
-}
+export interface DeleteIdMappingTableOutput {}
 export interface DeleteIdNamespaceAssociationInput {
+  idNamespaceAssociationIdentifier: string;
+  membershipIdentifier: string;
 }
-export interface DeleteIdNamespaceAssociationOutput {
-}
+export interface DeleteIdNamespaceAssociationOutput {}
 export interface DeleteMemberInput {
+  collaborationIdentifier: string;
+  accountId: string;
 }
-export interface DeleteMemberOutput {
-}
+export interface DeleteMemberOutput {}
 export interface DeleteMembershipInput {
+  membershipIdentifier: string;
 }
-export interface DeleteMembershipOutput {
-}
+export interface DeleteMembershipOutput {}
 export interface DeletePrivacyBudgetTemplateInput {
+  membershipIdentifier: string;
+  privacyBudgetTemplateIdentifier: string;
 }
-export interface DeletePrivacyBudgetTemplateOutput {
-}
+export interface DeletePrivacyBudgetTemplateOutput {}
 export type DifferentialPrivacyAggregationExpression = string;
 
-export type DifferentialPrivacyAggregationType = never;
+export type DifferentialPrivacyAggregationType =
+  | "AVG"
+  | "COUNT"
+  | "COUNT_DISTINCT"
+  | "SUM"
+  | "STDDEV";
 export interface DifferentialPrivacyColumn {
+  name: string;
 }
-export type DifferentialPrivacyColumnList = Array<unknown>;
+export type DifferentialPrivacyColumnList = Array<DifferentialPrivacyColumn>;
 export interface DifferentialPrivacyConfiguration {
+  columns: Array<DifferentialPrivacyColumn>;
 }
 export interface DifferentialPrivacyParameters {
+  sensitivityParameters: Array<DifferentialPrivacySensitivityParameters>;
 }
 export interface DifferentialPrivacyPreviewAggregation {
+  type: DifferentialPrivacyAggregationType;
+  maxCount: number;
 }
-export type DifferentialPrivacyPreviewAggregationList = Array<unknown>;
+export type DifferentialPrivacyPreviewAggregationList =
+  Array<DifferentialPrivacyPreviewAggregation>;
 export interface DifferentialPrivacyPreviewParametersInput {
+  epsilon: number;
+  usersNoisePerQuery: number;
 }
 export interface DifferentialPrivacyPrivacyBudget {
+  aggregations: Array<DifferentialPrivacyPrivacyBudgetAggregation>;
+  epsilon: number;
 }
 export interface DifferentialPrivacyPrivacyBudgetAggregation {
+  type: DifferentialPrivacyAggregationType;
+  maxCount: number;
+  remainingCount: number;
 }
-export type DifferentialPrivacyPrivacyBudgetAggregationList = Array<unknown>;
+export type DifferentialPrivacyPrivacyBudgetAggregationList =
+  Array<DifferentialPrivacyPrivacyBudgetAggregation>;
 export interface DifferentialPrivacyPrivacyImpact {
+  aggregations: Array<DifferentialPrivacyPreviewAggregation>;
 }
 export interface DifferentialPrivacySensitivityParameters {
+  aggregationType: DifferentialPrivacyAggregationType;
+  aggregationExpression: string;
+  userContributionLimit: number;
+  minColumnValue?: number;
+  maxColumnValue?: number;
 }
-export type DifferentialPrivacySensitivityParametersList = Array<unknown>;
+export type DifferentialPrivacySensitivityParametersList =
+  Array<DifferentialPrivacySensitivityParameters>;
 export interface DifferentialPrivacyTemplateParametersInput {
+  epsilon: number;
+  usersNoisePerQuery: number;
 }
 export interface DifferentialPrivacyTemplateParametersOutput {
+  epsilon: number;
+  usersNoisePerQuery: number;
 }
 export interface DifferentialPrivacyTemplateUpdateParameters {
+  epsilon?: number;
+  usersNoisePerQuery?: number;
 }
 export interface DirectAnalysisConfigurationDetails {
+  receiverAccountIds?: Array<string>;
 }
 export type DisplayName = string;
 
@@ -876,112 +905,215 @@ export type FilterableMemberStatus = string;
 export type GenericResourceName = string;
 
 export interface GetAnalysisTemplateInput {
+  membershipIdentifier: string;
+  analysisTemplateIdentifier: string;
 }
 export interface GetAnalysisTemplateOutput {
+  analysisTemplate: AnalysisTemplate;
 }
 export interface GetCollaborationAnalysisTemplateInput {
+  collaborationIdentifier: string;
+  analysisTemplateArn: string;
 }
 export interface GetCollaborationAnalysisTemplateOutput {
+  collaborationAnalysisTemplate: CollaborationAnalysisTemplate;
 }
 export interface GetCollaborationConfiguredAudienceModelAssociationInput {
+  collaborationIdentifier: string;
+  configuredAudienceModelAssociationIdentifier: string;
 }
 export interface GetCollaborationConfiguredAudienceModelAssociationOutput {
+  collaborationConfiguredAudienceModelAssociation: CollaborationConfiguredAudienceModelAssociation;
 }
 export interface GetCollaborationIdNamespaceAssociationInput {
+  collaborationIdentifier: string;
+  idNamespaceAssociationIdentifier: string;
 }
 export interface GetCollaborationIdNamespaceAssociationOutput {
+  collaborationIdNamespaceAssociation: CollaborationIdNamespaceAssociation;
 }
 export interface GetCollaborationInput {
+  collaborationIdentifier: string;
 }
 export interface GetCollaborationOutput {
+  collaboration: Collaboration;
 }
 export interface GetCollaborationPrivacyBudgetTemplateInput {
+  collaborationIdentifier: string;
+  privacyBudgetTemplateIdentifier: string;
 }
 export interface GetCollaborationPrivacyBudgetTemplateOutput {
+  collaborationPrivacyBudgetTemplate: CollaborationPrivacyBudgetTemplate;
 }
 export interface GetConfiguredAudienceModelAssociationInput {
+  configuredAudienceModelAssociationIdentifier: string;
+  membershipIdentifier: string;
 }
 export interface GetConfiguredAudienceModelAssociationOutput {
+  configuredAudienceModelAssociation: ConfiguredAudienceModelAssociation;
 }
 export interface GetConfiguredTableAnalysisRuleInput {
+  configuredTableIdentifier: string;
+  analysisRuleType: ConfiguredTableAnalysisRuleType;
 }
 export interface GetConfiguredTableAnalysisRuleOutput {
+  analysisRule: ConfiguredTableAnalysisRule;
 }
 export interface GetConfiguredTableAssociationAnalysisRuleInput {
+  membershipIdentifier: string;
+  configuredTableAssociationIdentifier: string;
+  analysisRuleType: ConfiguredTableAssociationAnalysisRuleType;
 }
 export interface GetConfiguredTableAssociationAnalysisRuleOutput {
+  analysisRule: ConfiguredTableAssociationAnalysisRule;
 }
 export interface GetConfiguredTableAssociationInput {
+  configuredTableAssociationIdentifier: string;
+  membershipIdentifier: string;
 }
 export interface GetConfiguredTableAssociationOutput {
+  configuredTableAssociation: ConfiguredTableAssociation;
 }
 export interface GetConfiguredTableInput {
+  configuredTableIdentifier: string;
 }
 export interface GetConfiguredTableOutput {
+  configuredTable: ConfiguredTable;
 }
 export interface GetIdMappingTableInput {
+  idMappingTableIdentifier: string;
+  membershipIdentifier: string;
 }
 export interface GetIdMappingTableOutput {
+  idMappingTable: IdMappingTable;
 }
 export interface GetIdNamespaceAssociationInput {
+  idNamespaceAssociationIdentifier: string;
+  membershipIdentifier: string;
 }
 export interface GetIdNamespaceAssociationOutput {
+  idNamespaceAssociation: IdNamespaceAssociation;
 }
 export interface GetMembershipInput {
+  membershipIdentifier: string;
 }
 export interface GetMembershipOutput {
+  membership: Membership;
 }
 export interface GetPrivacyBudgetTemplateInput {
+  membershipIdentifier: string;
+  privacyBudgetTemplateIdentifier: string;
 }
 export interface GetPrivacyBudgetTemplateOutput {
+  privacyBudgetTemplate: PrivacyBudgetTemplate;
 }
 export interface GetProtectedJobInput {
+  membershipIdentifier: string;
+  protectedJobIdentifier: string;
 }
 export interface GetProtectedJobOutput {
+  protectedJob: ProtectedJob;
 }
 export interface GetProtectedQueryInput {
+  membershipIdentifier: string;
+  protectedQueryIdentifier: string;
 }
 export interface GetProtectedQueryOutput {
+  protectedQuery: ProtectedQuery;
 }
 export interface GetSchemaAnalysisRuleInput {
+  collaborationIdentifier: string;
+  name: string;
+  type: AnalysisRuleType;
 }
 export interface GetSchemaAnalysisRuleOutput {
+  analysisRule: AnalysisRule;
 }
 export interface GetSchemaInput {
+  collaborationIdentifier: string;
+  name: string;
 }
 export interface GetSchemaOutput {
+  schema: Schema;
 }
 export type GlueDatabaseName = string;
 
 export type GlueTableName = string;
 
 export interface GlueTableReference {
+  tableName: string;
+  databaseName: string;
 }
 export interface Hash {
+  sha256?: string;
 }
-export type HashList = Array<unknown>;
+export type HashList = Array<Hash>;
 export interface IdMappingConfig {
+  allowUseAsDimensionColumn: boolean;
 }
 export interface IdMappingTable {
+  id: string;
+  arn: string;
+  inputReferenceConfig: IdMappingTableInputReferenceConfig;
+  membershipId: string;
+  membershipArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  description?: string;
+  name: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  inputReferenceProperties: IdMappingTableInputReferenceProperties;
+  kmsKeyArn?: string;
 }
 export type IdMappingTableArn = string;
 
 export type IdMappingTableInputReferenceArn = string;
 
 export interface IdMappingTableInputReferenceConfig {
+  inputReferenceArn: string;
+  manageResourcePolicies: boolean;
 }
 export interface IdMappingTableInputReferenceProperties {
+  idMappingTableInputSource: Array<IdMappingTableInputSource>;
 }
 export interface IdMappingTableInputSource {
+  idNamespaceAssociationId: string;
+  type: IdNamespaceType;
 }
-export type IdMappingTableInputSourceList = Array<unknown>;
+export type IdMappingTableInputSourceList = Array<IdMappingTableInputSource>;
 export interface IdMappingTableSchemaTypeProperties {
+  idMappingTableInputSource: Array<IdMappingTableInputSource>;
 }
 export interface IdMappingTableSummary {
+  collaborationArn: string;
+  collaborationId: string;
+  membershipId: string;
+  membershipArn: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  id: string;
+  arn: string;
+  description?: string;
+  inputReferenceConfig: IdMappingTableInputReferenceConfig;
+  name: string;
 }
-export type IdMappingTableSummaryList = Array<unknown>;
-export type IdMappingWorkflowsSupported = Array<unknown>;
+export type IdMappingTableSummaryList = Array<IdMappingTableSummary>;
+export type IdMappingWorkflowsSupported = Array<_opaque_Document>;
 export interface IdNamespaceAssociation {
+  id: string;
+  arn: string;
+  membershipId: string;
+  membershipArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  name: string;
+  description?: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  inputReferenceConfig: IdNamespaceAssociationInputReferenceConfig;
+  inputReferenceProperties: IdNamespaceAssociationInputReferenceProperties;
+  idMappingConfig?: IdMappingConfig;
 }
 export type IdNamespaceAssociationArn = string;
 
@@ -990,22 +1122,44 @@ export type IdNamespaceAssociationIdentifier = string;
 export type IdNamespaceAssociationInputReferenceArn = string;
 
 export interface IdNamespaceAssociationInputReferenceConfig {
+  inputReferenceArn: string;
+  manageResourcePolicies: boolean;
 }
 export interface IdNamespaceAssociationInputReferenceProperties {
+  idNamespaceType: IdNamespaceType;
+  idMappingWorkflowsSupported: Array<_opaque_Document>;
 }
 export interface IdNamespaceAssociationInputReferencePropertiesSummary {
+  idNamespaceType: IdNamespaceType;
 }
 export interface IdNamespaceAssociationSummary {
+  membershipId: string;
+  membershipArn: string;
+  collaborationArn: string;
+  collaborationId: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  id: string;
+  arn: string;
+  inputReferenceConfig: IdNamespaceAssociationInputReferenceConfig;
+  name: string;
+  description?: string;
+  inputReferenceProperties: IdNamespaceAssociationInputReferencePropertiesSummary;
 }
-export type IdNamespaceAssociationSummaryList = Array<unknown>;
-export type IdNamespaceType = never;
-export interface InternalServerException {
-}
+export type IdNamespaceAssociationSummaryList =
+  Array<IdNamespaceAssociationSummary>;
+export type IdNamespaceType = "SOURCE" | "TARGET";
+export declare class InternalServerException extends Data.TaggedError(
+  "InternalServerException",
+)<{
+  readonly message?: string;
+}> {}
 export interface JobComputePaymentConfig {
+  isResponsible: boolean;
 }
 export type JoinOperator = string;
 
-export type JoinOperatorsList = Array<unknown>;
+export type JoinOperatorsList = Array<string>;
 export type JoinRequiredOption = string;
 
 export type KeyPrefix = string;
@@ -1013,274 +1167,630 @@ export type KeyPrefix = string;
 export type KMSKeyArn = string;
 
 export interface ListAnalysisTemplatesInput {
+  membershipIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListAnalysisTemplatesOutput {
+  nextToken?: string;
+  analysisTemplateSummaries: Array<AnalysisTemplateSummary>;
 }
 export interface ListCollaborationAnalysisTemplatesInput {
+  collaborationIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListCollaborationAnalysisTemplatesOutput {
+  nextToken?: string;
+  collaborationAnalysisTemplateSummaries: Array<CollaborationAnalysisTemplateSummary>;
 }
 export interface ListCollaborationConfiguredAudienceModelAssociationsInput {
+  collaborationIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListCollaborationConfiguredAudienceModelAssociationsOutput {
+  collaborationConfiguredAudienceModelAssociationSummaries: Array<CollaborationConfiguredAudienceModelAssociationSummary>;
+  nextToken?: string;
 }
 export interface ListCollaborationIdNamespaceAssociationsInput {
+  collaborationIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListCollaborationIdNamespaceAssociationsOutput {
+  nextToken?: string;
+  collaborationIdNamespaceAssociationSummaries: Array<CollaborationIdNamespaceAssociationSummary>;
 }
 export interface ListCollaborationPrivacyBudgetsInput {
+  collaborationIdentifier: string;
+  privacyBudgetType: PrivacyBudgetType;
+  maxResults?: number;
+  nextToken?: string;
 }
 export interface ListCollaborationPrivacyBudgetsOutput {
+  collaborationPrivacyBudgetSummaries: Array<CollaborationPrivacyBudgetSummary>;
+  nextToken?: string;
 }
 export interface ListCollaborationPrivacyBudgetTemplatesInput {
+  collaborationIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListCollaborationPrivacyBudgetTemplatesOutput {
+  nextToken?: string;
+  collaborationPrivacyBudgetTemplateSummaries: Array<CollaborationPrivacyBudgetTemplateSummary>;
 }
 export interface ListCollaborationsInput {
+  nextToken?: string;
+  maxResults?: number;
+  memberStatus?: string;
 }
 export interface ListCollaborationsOutput {
+  nextToken?: string;
+  collaborationList: Array<CollaborationSummary>;
 }
 export interface ListConfiguredAudienceModelAssociationsInput {
+  membershipIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListConfiguredAudienceModelAssociationsOutput {
+  configuredAudienceModelAssociationSummaries: Array<ConfiguredAudienceModelAssociationSummary>;
+  nextToken?: string;
 }
 export interface ListConfiguredTableAssociationsInput {
+  membershipIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListConfiguredTableAssociationsOutput {
+  configuredTableAssociationSummaries: Array<ConfiguredTableAssociationSummary>;
+  nextToken?: string;
 }
 export interface ListConfiguredTablesInput {
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListConfiguredTablesOutput {
+  configuredTableSummaries: Array<ConfiguredTableSummary>;
+  nextToken?: string;
 }
 export interface ListIdMappingTablesInput {
+  membershipIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListIdMappingTablesOutput {
+  idMappingTableSummaries: Array<IdMappingTableSummary>;
+  nextToken?: string;
 }
 export interface ListIdNamespaceAssociationsInput {
+  membershipIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListIdNamespaceAssociationsOutput {
+  nextToken?: string;
+  idNamespaceAssociationSummaries: Array<IdNamespaceAssociationSummary>;
 }
 export interface ListMembershipsInput {
+  nextToken?: string;
+  maxResults?: number;
+  status?: string;
 }
 export interface ListMembershipsOutput {
+  nextToken?: string;
+  membershipSummaries: Array<MembershipSummary>;
 }
 export interface ListMembersInput {
+  collaborationIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListMembersOutput {
+  nextToken?: string;
+  memberSummaries: Array<MemberSummary>;
 }
 export interface ListPrivacyBudgetsInput {
+  membershipIdentifier: string;
+  privacyBudgetType: PrivacyBudgetType;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListPrivacyBudgetsOutput {
+  privacyBudgetSummaries: Array<PrivacyBudgetSummary>;
+  nextToken?: string;
 }
 export interface ListPrivacyBudgetTemplatesInput {
+  membershipIdentifier: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListPrivacyBudgetTemplatesOutput {
+  nextToken?: string;
+  privacyBudgetTemplateSummaries: Array<PrivacyBudgetTemplateSummary>;
 }
 export interface ListProtectedJobsInput {
+  membershipIdentifier: string;
+  status?: ProtectedJobStatus;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListProtectedJobsOutput {
+  nextToken?: string;
+  protectedJobs: Array<ProtectedJobSummary>;
 }
 export interface ListProtectedQueriesInput {
+  membershipIdentifier: string;
+  status?: string;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListProtectedQueriesOutput {
+  nextToken?: string;
+  protectedQueries: Array<ProtectedQuerySummary>;
 }
 export interface ListSchemasInput {
+  collaborationIdentifier: string;
+  schemaType?: SchemaType;
+  nextToken?: string;
+  maxResults?: number;
 }
 export interface ListSchemasOutput {
+  schemaSummaries: Array<SchemaSummary>;
+  nextToken?: string;
 }
 export interface ListTagsForResourceInput {
+  resourceArn: string;
 }
 export interface ListTagsForResourceOutput {
+  tags: Record<string, string>;
 }
 export type MaxResults = number;
 
-export type MemberAbilities = Array<unknown>;
-export type MemberAbility = never;
-export type MemberList = Array<unknown>;
+export type MemberAbilities = Array<MemberAbility>;
+export type MemberAbility = "CAN_QUERY" | "CAN_RECEIVE_RESULTS" | "CAN_RUN_JOB";
+export type MemberList = Array<MemberSpecification>;
 export interface Membership {
+  id: string;
+  arn: string;
+  collaborationArn: string;
+  collaborationId: string;
+  collaborationCreatorAccountId: string;
+  collaborationCreatorDisplayName: string;
+  collaborationName: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  status: string;
+  memberAbilities: Array<MemberAbility>;
+  mlMemberAbilities?: MLMemberAbilities;
+  queryLogStatus: MembershipQueryLogStatus;
+  jobLogStatus?: MembershipJobLogStatus;
+  defaultResultConfiguration?: MembershipProtectedQueryResultConfiguration;
+  defaultJobResultConfiguration?: MembershipProtectedJobResultConfiguration;
+  paymentConfiguration: MembershipPaymentConfiguration;
 }
 export type MembershipArn = string;
 
 export type MembershipIdentifier = string;
 
 export interface MembershipJobComputePaymentConfig {
+  isResponsible: boolean;
 }
-export type MembershipJobLogStatus = never;
+export type MembershipJobLogStatus = "ENABLED" | "DISABLED";
 export interface MembershipMLPaymentConfig {
+  modelTraining?: MembershipModelTrainingPaymentConfig;
+  modelInference?: MembershipModelInferencePaymentConfig;
 }
 export interface MembershipModelInferencePaymentConfig {
+  isResponsible: boolean;
 }
 export interface MembershipModelTrainingPaymentConfig {
+  isResponsible: boolean;
 }
 export interface MembershipPaymentConfiguration {
+  queryCompute: MembershipQueryComputePaymentConfig;
+  machineLearning?: MembershipMLPaymentConfig;
+  jobCompute?: MembershipJobComputePaymentConfig;
 }
-export type MembershipProtectedJobOutputConfiguration = never;
+export type MembershipProtectedJobOutputConfiguration = {
+  s3: ProtectedJobS3OutputConfigurationInput;
+};
 export interface MembershipProtectedJobResultConfiguration {
+  outputConfiguration: MembershipProtectedJobOutputConfiguration;
+  roleArn: string;
 }
-export type MembershipProtectedQueryOutputConfiguration = never;
+export type MembershipProtectedQueryOutputConfiguration = {
+  s3: ProtectedQueryS3OutputConfiguration;
+};
 export interface MembershipProtectedQueryResultConfiguration {
+  outputConfiguration: MembershipProtectedQueryOutputConfiguration;
+  roleArn?: string;
 }
 export interface MembershipQueryComputePaymentConfig {
+  isResponsible: boolean;
 }
-export type MembershipQueryLogStatus = never;
+export type MembershipQueryLogStatus = "ENABLED" | "DISABLED";
 export type MembershipStatus = string;
 
 export interface MembershipSummary {
+  id: string;
+  arn: string;
+  collaborationArn: string;
+  collaborationId: string;
+  collaborationCreatorAccountId: string;
+  collaborationCreatorDisplayName: string;
+  collaborationName: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  status: string;
+  memberAbilities: Array<MemberAbility>;
+  mlMemberAbilities?: MLMemberAbilities;
+  paymentConfiguration: MembershipPaymentConfiguration;
 }
-export type MembershipSummaryList = Array<unknown>;
+export type MembershipSummaryList = Array<MembershipSummary>;
 export interface MemberSpecification {
+  accountId: string;
+  memberAbilities: Array<MemberAbility>;
+  mlMemberAbilities?: MLMemberAbilities;
+  displayName: string;
+  paymentConfiguration?: PaymentConfiguration;
 }
 export type MemberStatus = string;
 
 export interface MemberSummary {
+  accountId: string;
+  status: string;
+  displayName: string;
+  abilities: Array<MemberAbility>;
+  mlAbilities?: MLMemberAbilities;
+  createTime: Date | string;
+  updateTime: Date | string;
+  membershipId?: string;
+  membershipArn?: string;
+  paymentConfiguration: PaymentConfiguration;
 }
-export type MemberSummaryList = Array<unknown>;
+export type MemberSummaryList = Array<MemberSummary>;
 export interface MLMemberAbilities {
+  customMLMemberAbilities: Array<CustomMLMemberAbility>;
 }
 export interface MLPaymentConfig {
+  modelTraining?: ModelTrainingPaymentConfig;
+  modelInference?: ModelInferencePaymentConfig;
 }
 export interface ModelInferencePaymentConfig {
+  isResponsible: boolean;
 }
 export interface ModelTrainingPaymentConfig {
+  isResponsible: boolean;
 }
 export type PaginationToken = string;
 
-export type ParameterMap = Record<string, unknown>;
+export type ParameterMap = Record<string, string>;
 export type ParameterName = string;
 
-export type ParameterType = never;
+export type ParameterType =
+  | "SMALLINT"
+  | "INTEGER"
+  | "BIGINT"
+  | "DECIMAL"
+  | "REAL"
+  | "DOUBLE_PRECISION"
+  | "BOOLEAN"
+  | "CHAR"
+  | "VARCHAR"
+  | "DATE"
+  | "TIMESTAMP"
+  | "TIMESTAMPTZ"
+  | "TIME"
+  | "TIMETZ"
+  | "VARBYTE"
+  | "BINARY"
+  | "BYTE"
+  | "CHARACTER"
+  | "DOUBLE"
+  | "FLOAT"
+  | "INT"
+  | "LONG"
+  | "NUMERIC"
+  | "SHORT"
+  | "STRING"
+  | "TIMESTAMP_LTZ"
+  | "TIMESTAMP_NTZ"
+  | "TINYINT";
 export type ParameterValue = string;
 
 export interface PaymentConfiguration {
+  queryCompute: QueryComputePaymentConfig;
+  machineLearning?: MLPaymentConfig;
+  jobCompute?: JobComputePaymentConfig;
 }
 export interface PopulateIdMappingTableInput {
+  idMappingTableIdentifier: string;
+  membershipIdentifier: string;
 }
 export interface PopulateIdMappingTableOutput {
+  idMappingJobId: string;
 }
 export interface PreviewPrivacyImpactInput {
+  membershipIdentifier: string;
+  parameters: PreviewPrivacyImpactParametersInput;
 }
 export interface PreviewPrivacyImpactOutput {
+  privacyImpact: PrivacyImpact;
 }
-export type PreviewPrivacyImpactParametersInput = never;
-export type PrivacyBudget = never;
+export type PreviewPrivacyImpactParametersInput = {
+  differentialPrivacy: DifferentialPrivacyPreviewParametersInput;
+};
+export type PrivacyBudget = {
+  differentialPrivacy: DifferentialPrivacyPrivacyBudget;
+};
 export interface PrivacyBudgetSummary {
+  id: string;
+  privacyBudgetTemplateId: string;
+  privacyBudgetTemplateArn: string;
+  membershipId: string;
+  membershipArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  type: PrivacyBudgetType;
+  createTime: Date | string;
+  updateTime: Date | string;
+  budget: PrivacyBudget;
 }
-export type PrivacyBudgetSummaryList = Array<unknown>;
+export type PrivacyBudgetSummaryList = Array<PrivacyBudgetSummary>;
 export interface PrivacyBudgetTemplate {
+  id: string;
+  arn: string;
+  membershipId: string;
+  membershipArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  privacyBudgetType: PrivacyBudgetType;
+  autoRefresh: PrivacyBudgetTemplateAutoRefresh;
+  parameters: PrivacyBudgetTemplateParametersOutput;
 }
 export type PrivacyBudgetTemplateArn = string;
 
-export type PrivacyBudgetTemplateAutoRefresh = never;
+export type PrivacyBudgetTemplateAutoRefresh = "CALENDAR_MONTH" | "NONE";
 export type PrivacyBudgetTemplateIdentifier = string;
 
-export type PrivacyBudgetTemplateParametersInput = never;
-export type PrivacyBudgetTemplateParametersOutput = never;
+export type PrivacyBudgetTemplateParametersInput = {
+  differentialPrivacy: DifferentialPrivacyTemplateParametersInput;
+};
+export type PrivacyBudgetTemplateParametersOutput = {
+  differentialPrivacy: DifferentialPrivacyTemplateParametersOutput;
+};
 export interface PrivacyBudgetTemplateSummary {
+  id: string;
+  arn: string;
+  membershipId: string;
+  membershipArn: string;
+  collaborationId: string;
+  collaborationArn: string;
+  privacyBudgetType: PrivacyBudgetType;
+  createTime: Date | string;
+  updateTime: Date | string;
 }
-export type PrivacyBudgetTemplateSummaryList = Array<unknown>;
-export type PrivacyBudgetTemplateUpdateParameters = never;
-export type PrivacyBudgetType = never;
-export type PrivacyImpact = never;
+export type PrivacyBudgetTemplateSummaryList =
+  Array<PrivacyBudgetTemplateSummary>;
+export type PrivacyBudgetTemplateUpdateParameters = {
+  differentialPrivacy: DifferentialPrivacyTemplateUpdateParameters;
+};
+export type PrivacyBudgetType = "DIFFERENTIAL_PRIVACY";
+export type PrivacyImpact = {
+  differentialPrivacy: DifferentialPrivacyPrivacyImpact;
+};
 export interface ProtectedJob {
+  id: string;
+  membershipId: string;
+  membershipArn: string;
+  createTime: Date | string;
+  jobParameters?: ProtectedJobParameters;
+  status: ProtectedJobStatus;
+  resultConfiguration?: ProtectedJobResultConfigurationOutput;
+  statistics?: ProtectedJobStatistics;
+  result?: ProtectedJobResult;
+  error?: ProtectedJobError;
 }
-export type ProtectedJobAnalysisType = never;
-export type ProtectedJobConfigurationDetails = never;
+export type ProtectedJobAnalysisType = "DIRECT_ANALYSIS";
+export type ProtectedJobConfigurationDetails = {
+  directAnalysisConfigurationDetails: ProtectedJobDirectAnalysisConfigurationDetails;
+};
 export interface ProtectedJobDirectAnalysisConfigurationDetails {
+  receiverAccountIds?: Array<string>;
 }
 export interface ProtectedJobError {
+  message: string;
+  code: string;
 }
 export type ProtectedJobIdentifier = string;
 
 export interface ProtectedJobMemberOutputConfigurationInput {
+  accountId: string;
 }
 export interface ProtectedJobMemberOutputConfigurationOutput {
+  accountId: string;
 }
-export type ProtectedJobMemberOutputList = Array<unknown>;
-export type ProtectedJobOutput = never;
-export type ProtectedJobOutputConfigurationInput = never;
-export type ProtectedJobOutputConfigurationOutput = never;
+export type ProtectedJobMemberOutputList =
+  Array<ProtectedJobSingleMemberOutput>;
+export type ProtectedJobOutput =
+  | { s3: ProtectedJobS3Output }
+  | { memberList: Array<ProtectedJobSingleMemberOutput> };
+export type ProtectedJobOutputConfigurationInput = {
+  member: ProtectedJobMemberOutputConfigurationInput;
+};
+export type ProtectedJobOutputConfigurationOutput =
+  | { s3: ProtectedJobS3OutputConfigurationOutput }
+  | { member: ProtectedJobMemberOutputConfigurationOutput };
 export interface ProtectedJobParameters {
+  analysisTemplateArn?: string;
 }
-export type ProtectedJobReceiverAccountIds = Array<unknown>;
+export type ProtectedJobReceiverAccountIds = Array<string>;
 export interface ProtectedJobReceiverConfiguration {
+  analysisType: ProtectedJobAnalysisType;
+  configurationDetails?: ProtectedJobConfigurationDetails;
 }
-export type ProtectedJobReceiverConfigurations = Array<unknown>;
+export type ProtectedJobReceiverConfigurations =
+  Array<ProtectedJobReceiverConfiguration>;
 export interface ProtectedJobResult {
+  output: ProtectedJobOutput;
 }
 export interface ProtectedJobResultConfigurationInput {
+  outputConfiguration: ProtectedJobOutputConfigurationInput;
 }
 export interface ProtectedJobResultConfigurationOutput {
+  outputConfiguration: ProtectedJobOutputConfigurationOutput;
 }
 export interface ProtectedJobS3Output {
+  location: string;
 }
 export interface ProtectedJobS3OutputConfigurationInput {
+  bucket: string;
+  keyPrefix?: string;
 }
 export interface ProtectedJobS3OutputConfigurationOutput {
+  bucket: string;
+  keyPrefix?: string;
 }
 export interface ProtectedJobSingleMemberOutput {
+  accountId: string;
 }
 export interface ProtectedJobStatistics {
+  totalDurationInMillis?: number;
+  billedResourceUtilization?: BilledJobResourceUtilization;
 }
-export type ProtectedJobStatus = never;
+export type ProtectedJobStatus =
+  | "SUBMITTED"
+  | "STARTED"
+  | "CANCELLED"
+  | "CANCELLING"
+  | "FAILED"
+  | "SUCCESS";
 export interface ProtectedJobSummary {
+  id: string;
+  membershipId: string;
+  membershipArn: string;
+  createTime: Date | string;
+  status: ProtectedJobStatus;
+  receiverConfigurations: Array<ProtectedJobReceiverConfiguration>;
 }
-export type ProtectedJobSummaryList = Array<unknown>;
-export type ProtectedJobType = never;
+export type ProtectedJobSummaryList = Array<ProtectedJobSummary>;
+export type ProtectedJobType = "PYSPARK";
 export interface ProtectedQuery {
+  id: string;
+  membershipId: string;
+  membershipArn: string;
+  createTime: Date | string;
+  sqlParameters?: ProtectedQuerySQLParameters;
+  status: string;
+  resultConfiguration?: ProtectedQueryResultConfiguration;
+  statistics?: ProtectedQueryStatistics;
+  result?: ProtectedQueryResult;
+  error?: ProtectedQueryError;
+  differentialPrivacy?: DifferentialPrivacyParameters;
+  computeConfiguration?: ComputeConfiguration;
 }
 export interface ProtectedQueryDistributeOutput {
+  s3?: ProtectedQueryS3Output;
+  memberList?: Array<ProtectedQuerySingleMemberOutput>;
 }
 export interface ProtectedQueryDistributeOutputConfiguration {
+  locations: Array<ProtectedQueryDistributeOutputConfigurationLocation>;
 }
-export type ProtectedQueryDistributeOutputConfigurationLocation = never;
-export type ProtectedQueryDistributeOutputConfigurationLocations = Array<unknown>;
+export type ProtectedQueryDistributeOutputConfigurationLocation =
+  | { s3: ProtectedQueryS3OutputConfiguration }
+  | { member: ProtectedQueryMemberOutputConfiguration };
+export type ProtectedQueryDistributeOutputConfigurationLocations =
+  Array<ProtectedQueryDistributeOutputConfigurationLocation>;
 export interface ProtectedQueryError {
+  message: string;
+  code: string;
 }
 export type ProtectedQueryIdentifier = string;
 
 export interface ProtectedQueryMemberOutputConfiguration {
+  accountId: string;
 }
-export type ProtectedQueryMemberOutputList = Array<unknown>;
-export type ProtectedQueryOutput = never;
-export type ProtectedQueryOutputConfiguration = never;
+export type ProtectedQueryMemberOutputList =
+  Array<ProtectedQuerySingleMemberOutput>;
+export type ProtectedQueryOutput =
+  | { s3: ProtectedQueryS3Output }
+  | { memberList: Array<ProtectedQuerySingleMemberOutput> }
+  | { distribute: ProtectedQueryDistributeOutput };
+export type ProtectedQueryOutputConfiguration =
+  | { s3: ProtectedQueryS3OutputConfiguration }
+  | { member: ProtectedQueryMemberOutputConfiguration }
+  | { distribute: ProtectedQueryDistributeOutputConfiguration };
 export interface ProtectedQueryResult {
+  output: ProtectedQueryOutput;
 }
 export interface ProtectedQueryResultConfiguration {
+  outputConfiguration: ProtectedQueryOutputConfiguration;
 }
 export interface ProtectedQueryS3Output {
+  location: string;
 }
 export interface ProtectedQueryS3OutputConfiguration {
+  resultFormat: string;
+  bucket: string;
+  keyPrefix?: string;
+  singleFileOutput?: boolean;
 }
 export interface ProtectedQuerySingleMemberOutput {
+  accountId: string;
 }
 export interface ProtectedQuerySQLParameters {
+  queryString?: string;
+  analysisTemplateArn?: string;
+  parameters?: Record<string, string>;
 }
 export interface ProtectedQueryStatistics {
+  totalDurationInMillis?: number;
+  billedResourceUtilization?: BilledResourceUtilization;
 }
 export type ProtectedQueryStatus = string;
 
 export interface ProtectedQuerySummary {
+  id: string;
+  membershipId: string;
+  membershipArn: string;
+  createTime: Date | string;
+  status: string;
+  receiverConfigurations: Array<ReceiverConfiguration>;
 }
-export type ProtectedQuerySummaryList = Array<unknown>;
+export type ProtectedQuerySummaryList = Array<ProtectedQuerySummary>;
 export type ProtectedQueryType = string;
 
 export interface QueryComputePaymentConfig {
+  isResponsible: boolean;
 }
-export type QueryConstraint = never;
-export type QueryConstraintList = Array<unknown>;
+export type QueryConstraint = { requireOverlap: QueryConstraintRequireOverlap };
+export type QueryConstraintList = Array<QueryConstraint>;
 export interface QueryConstraintRequireOverlap {
+  columns?: Array<string>;
 }
-export type QueryTables = Array<unknown>;
-export type ReceiverAccountIds = Array<unknown>;
+export type QueryTables = Array<string>;
+export type ReceiverAccountIds = Array<string>;
 export interface ReceiverConfiguration {
+  analysisType: AnalysisType;
+  configurationDetails?: ConfigurationDetails;
 }
-export type ReceiverConfigurationsList = Array<unknown>;
+export type ReceiverConfigurationsList = Array<ReceiverConfiguration>;
 export type ResourceAlias = string;
 
 export type ResourceDescription = string;
 
-export interface ResourceNotFoundException {
-}
+export declare class ResourceNotFoundException extends Data.TaggedError(
+  "ResourceNotFoundException",
+)<{
+  readonly message: string;
+  readonly resourceId: string;
+  readonly resourceType: string;
+}> {}
 export type ResourceType = string;
 
 export type ResultFormat = string;
@@ -1288,38 +1798,92 @@ export type ResultFormat = string;
 export type RoleArn = string;
 
 export interface S3Location {
+  bucket: string;
+  key: string;
 }
 export type ScalarFunctions = string;
 
-export type ScalarFunctionsList = Array<unknown>;
+export type ScalarFunctionsList = Array<string>;
 export interface Schema {
+  columns: Array<Column>;
+  partitionKeys: Array<Column>;
+  analysisRuleTypes: Array<AnalysisRuleType>;
+  analysisMethod?: AnalysisMethod;
+  selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
+  creatorAccountId: string;
+  name: string;
+  collaborationId: string;
+  collaborationArn: string;
+  description: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  type: SchemaType;
+  schemaStatusDetails: Array<SchemaStatusDetail>;
+  schemaTypeProperties?: SchemaTypeProperties;
 }
-export type SchemaAnalysisRuleList = Array<unknown>;
+export type SchemaAnalysisRuleList = Array<AnalysisRule>;
 export interface SchemaAnalysisRuleRequest {
+  name: string;
+  type: AnalysisRuleType;
 }
-export type SchemaAnalysisRuleRequestList = Array<unknown>;
-export type SchemaConfiguration = never;
-export type SchemaConfigurationList = Array<unknown>;
-export type SchemaList = Array<unknown>;
-export type SchemaStatus = never;
+export type SchemaAnalysisRuleRequestList = Array<SchemaAnalysisRuleRequest>;
+export type SchemaConfiguration = "DIFFERENTIAL_PRIVACY";
+export type SchemaConfigurationList = Array<SchemaConfiguration>;
+export type SchemaList = Array<Schema>;
+export type SchemaStatus = "READY" | "NOT_READY";
 export interface SchemaStatusDetail {
+  status: SchemaStatus;
+  reasons?: Array<SchemaStatusReason>;
+  analysisRuleType?: AnalysisRuleType;
+  configurations?: Array<SchemaConfiguration>;
+  analysisType: AnalysisType;
 }
-export type SchemaStatusDetailList = Array<unknown>;
+export type SchemaStatusDetailList = Array<SchemaStatusDetail>;
 export interface SchemaStatusReason {
+  code: SchemaStatusReasonCode;
+  message: string;
 }
-export type SchemaStatusReasonCode = never;
-export type SchemaStatusReasonList = Array<unknown>;
+export type SchemaStatusReasonCode =
+  | "ANALYSIS_RULE_MISSING"
+  | "ANALYSIS_TEMPLATES_NOT_CONFIGURED"
+  | "ANALYSIS_PROVIDERS_NOT_CONFIGURED"
+  | "DIFFERENTIAL_PRIVACY_POLICY_NOT_CONFIGURED"
+  | "ID_MAPPING_TABLE_NOT_POPULATED"
+  | "COLLABORATION_ANALYSIS_RULE_NOT_CONFIGURED"
+  | "ADDITIONAL_ANALYSES_NOT_CONFIGURED"
+  | "RESULT_RECEIVERS_NOT_CONFIGURED"
+  | "ADDITIONAL_ANALYSES_NOT_ALLOWED"
+  | "RESULT_RECEIVERS_NOT_ALLOWED"
+  | "ANALYSIS_RULE_TYPES_NOT_COMPATIBLE";
+export type SchemaStatusReasonList = Array<SchemaStatusReason>;
 export interface SchemaSummary {
+  name: string;
+  type: SchemaType;
+  creatorAccountId: string;
+  createTime: Date | string;
+  updateTime: Date | string;
+  collaborationId: string;
+  collaborationArn: string;
+  analysisRuleTypes: Array<AnalysisRuleType>;
+  analysisMethod?: AnalysisMethod;
+  selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
 }
-export type SchemaSummaryList = Array<unknown>;
-export type SchemaType = never;
-export type SchemaTypeProperties = never;
+export type SchemaSummaryList = Array<SchemaSummary>;
+export type SchemaType = "TABLE" | "ID_MAPPING_TABLE";
+export type SchemaTypeProperties = {
+  idMappingTable: IdMappingTableSchemaTypeProperties;
+};
 export type SecretsManagerArn = string;
 
-export type SelectedAnalysisMethod = never;
-export type SelectedAnalysisMethods = Array<unknown>;
-export interface ServiceQuotaExceededException {
-}
+export type SelectedAnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB";
+export type SelectedAnalysisMethods = Array<SelectedAnalysisMethod>;
+export declare class ServiceQuotaExceededException extends Data.TaggedError(
+  "ServiceQuotaExceededException",
+)<{
+  readonly message: string;
+  readonly quotaName: string;
+  readonly quotaValue: number;
+}> {}
 export type SnowflakeAccountIdentifier = string;
 
 export type SnowflakeDatabaseName = string;
@@ -1329,961 +1893,222 @@ export type SnowflakeSchemaName = string;
 export type SnowflakeTableName = string;
 
 export interface SnowflakeTableReference {
+  secretArn: string;
+  accountIdentifier: string;
+  databaseName: string;
+  tableName: string;
+  schemaName: string;
+  tableSchema: SnowflakeTableSchema;
 }
-export type SnowflakeTableSchema = never;
-export type SnowflakeTableSchemaList = Array<unknown>;
+export type SnowflakeTableSchema = { v1: Array<SnowflakeTableSchemaV1> };
+export type SnowflakeTableSchemaList = Array<SnowflakeTableSchemaV1>;
 export interface SnowflakeTableSchemaV1 {
+  columnName: string;
+  columnType: string;
 }
 export interface StartProtectedJobInput {
+  type: ProtectedJobType;
+  membershipIdentifier: string;
+  jobParameters: ProtectedJobParameters;
+  resultConfiguration?: ProtectedJobResultConfigurationInput;
 }
 export interface StartProtectedJobOutput {
+  protectedJob: ProtectedJob;
 }
 export interface StartProtectedQueryInput {
+  type: string;
+  membershipIdentifier: string;
+  sqlParameters: ProtectedQuerySQLParameters;
+  resultConfiguration?: ProtectedQueryResultConfiguration;
+  computeConfiguration?: ComputeConfiguration;
 }
 export interface StartProtectedQueryOutput {
+  protectedQuery: ProtectedQuery;
 }
 export type TableAlias = string;
 
-export type TableAliasList = Array<unknown>;
+export type TableAliasList = Array<string>;
 export type TableDescription = string;
 
-export type TableReference = never;
+export type TableReference =
+  | { glue: GlueTableReference }
+  | { snowflake: SnowflakeTableReference }
+  | { athena: AthenaTableReference };
 export type TagKey = string;
 
-export type TagKeys = Array<unknown>;
-export type TagMap = Record<string, unknown>;
+export type TagKeys = Array<string>;
+export type TagMap = Record<string, string>;
 export interface TagResourceInput {
+  resourceArn: string;
+  tags: Record<string, string>;
 }
-export interface TagResourceOutput {
-}
+export interface TagResourceOutput {}
 export type TagValue = string;
 
-export type TargetProtectedJobStatus = never;
+export type TargetProtectedJobStatus = "CANCELLED";
 export type TargetProtectedQueryStatus = string;
 
-export interface ThrottlingException {
-}
+export declare class ThrottlingException extends Data.TaggedError(
+  "ThrottlingException",
+)<{
+  readonly message?: string;
+}> {}
 export interface UntagResourceInput {
+  resourceArn: string;
+  tagKeys: Array<string>;
 }
-export interface UntagResourceOutput {
-}
+export interface UntagResourceOutput {}
 export interface UpdateAnalysisTemplateInput {
+  membershipIdentifier: string;
+  analysisTemplateIdentifier: string;
+  description?: string;
 }
 export interface UpdateAnalysisTemplateOutput {
+  analysisTemplate: AnalysisTemplate;
 }
 export interface UpdateCollaborationInput {
+  collaborationIdentifier: string;
+  name?: string;
+  description?: string;
+  analyticsEngine?: AnalyticsEngine;
 }
 export interface UpdateCollaborationOutput {
+  collaboration: Collaboration;
 }
 export interface UpdateConfiguredAudienceModelAssociationInput {
+  configuredAudienceModelAssociationIdentifier: string;
+  membershipIdentifier: string;
+  description?: string;
+  name?: string;
 }
 export interface UpdateConfiguredAudienceModelAssociationOutput {
+  configuredAudienceModelAssociation: ConfiguredAudienceModelAssociation;
 }
 export interface UpdateConfiguredTableAnalysisRuleInput {
+  configuredTableIdentifier: string;
+  analysisRuleType: ConfiguredTableAnalysisRuleType;
+  analysisRulePolicy: ConfiguredTableAnalysisRulePolicy;
 }
 export interface UpdateConfiguredTableAnalysisRuleOutput {
+  analysisRule: ConfiguredTableAnalysisRule;
 }
 export interface UpdateConfiguredTableAssociationAnalysisRuleInput {
+  membershipIdentifier: string;
+  configuredTableAssociationIdentifier: string;
+  analysisRuleType: ConfiguredTableAssociationAnalysisRuleType;
+  analysisRulePolicy: ConfiguredTableAssociationAnalysisRulePolicy;
 }
 export interface UpdateConfiguredTableAssociationAnalysisRuleOutput {
+  analysisRule: ConfiguredTableAssociationAnalysisRule;
 }
 export interface UpdateConfiguredTableAssociationInput {
+  configuredTableAssociationIdentifier: string;
+  membershipIdentifier: string;
+  description?: string;
+  roleArn?: string;
 }
 export interface UpdateConfiguredTableAssociationOutput {
+  configuredTableAssociation: ConfiguredTableAssociation;
 }
 export interface UpdateConfiguredTableInput {
+  configuredTableIdentifier: string;
+  name?: string;
+  description?: string;
+  analysisMethod?: AnalysisMethod;
+  selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
 }
 export interface UpdateConfiguredTableOutput {
+  configuredTable: ConfiguredTable;
 }
 export interface UpdateIdMappingTableInput {
+  idMappingTableIdentifier: string;
+  membershipIdentifier: string;
+  description?: string;
+  kmsKeyArn?: string;
 }
 export interface UpdateIdMappingTableOutput {
+  idMappingTable: IdMappingTable;
 }
 export interface UpdateIdNamespaceAssociationInput {
+  idNamespaceAssociationIdentifier: string;
+  membershipIdentifier: string;
+  name?: string;
+  description?: string;
+  idMappingConfig?: IdMappingConfig;
 }
 export interface UpdateIdNamespaceAssociationOutput {
+  idNamespaceAssociation: IdNamespaceAssociation;
 }
 export interface UpdateMembershipInput {
+  membershipIdentifier: string;
+  queryLogStatus?: MembershipQueryLogStatus;
+  jobLogStatus?: MembershipJobLogStatus;
+  defaultResultConfiguration?: MembershipProtectedQueryResultConfiguration;
+  defaultJobResultConfiguration?: MembershipProtectedJobResultConfiguration;
 }
 export interface UpdateMembershipOutput {
+  membership: Membership;
 }
 export interface UpdatePrivacyBudgetTemplateInput {
+  membershipIdentifier: string;
+  privacyBudgetTemplateIdentifier: string;
+  privacyBudgetType: PrivacyBudgetType;
+  parameters?: PrivacyBudgetTemplateUpdateParameters;
 }
 export interface UpdatePrivacyBudgetTemplateOutput {
+  privacyBudgetTemplate: PrivacyBudgetTemplate;
 }
 export interface UpdateProtectedJobInput {
+  membershipIdentifier: string;
+  protectedJobIdentifier: string;
+  targetStatus: TargetProtectedJobStatus;
 }
 export interface UpdateProtectedJobOutput {
+  protectedJob: ProtectedJob;
 }
 export interface UpdateProtectedQueryInput {
+  membershipIdentifier: string;
+  protectedQueryIdentifier: string;
+  targetStatus: string;
 }
 export interface UpdateProtectedQueryOutput {
+  protectedQuery: ProtectedQuery;
 }
 export type UsersNoisePerQuery = number;
 
 export type UUID = string;
 
-export interface ValidationException {
-}
+export declare class ValidationException extends Data.TaggedError(
+  "ValidationException",
+)<{
+  readonly message?: string;
+  readonly reason?: string;
+  readonly fieldList?: Array<ValidationExceptionField>;
+}> {}
 export interface ValidationExceptionField {
+  name: string;
+  message: string;
 }
-export type ValidationExceptionFieldList = Array<unknown>;
+export type ValidationExceptionFieldList = Array<ValidationExceptionField>;
 export type ValidationExceptionReason = string;
 
 export interface WorkerComputeConfiguration {
+  type?: WorkerComputeType;
+  number?: number;
 }
-export type WorkerComputeType = never;
-export declare namespace BatchGetCollaborationAnalysisTemplate {
-  export type Input = BatchGetCollaborationAnalysisTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace BatchGetSchema {
-  export type Input = BatchGetSchemaInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace BatchGetSchemaAnalysisRule {
-  export type Input = BatchGetSchemaAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateAnalysisTemplate {
-  export type Input = CreateAnalysisTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateCollaboration {
-  export type Input = CreateCollaborationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConfiguredAudienceModelAssociation {
-  export type Input = CreateConfiguredAudienceModelAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConfiguredTable {
-  export type Input = CreateConfiguredTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConfiguredTableAnalysisRule {
-  export type Input = CreateConfiguredTableAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConfiguredTableAssociation {
-  export type Input = CreateConfiguredTableAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateConfiguredTableAssociationAnalysisRule {
-  export type Input = CreateConfiguredTableAssociationAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateIdMappingTable {
-  export type Input = CreateIdMappingTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateIdNamespaceAssociation {
-  export type Input = CreateIdNamespaceAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreateMembership {
-  export type Input = CreateMembershipInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace CreatePrivacyBudgetTemplate {
-  export type Input = CreatePrivacyBudgetTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteAnalysisTemplate {
-  export type Input = DeleteAnalysisTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteCollaboration {
-  export type Input = DeleteCollaborationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConfiguredAudienceModelAssociation {
-  export type Input = DeleteConfiguredAudienceModelAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConfiguredTable {
-  export type Input = DeleteConfiguredTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConfiguredTableAnalysisRule {
-  export type Input = DeleteConfiguredTableAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConfiguredTableAssociation {
-  export type Input = DeleteConfiguredTableAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteConfiguredTableAssociationAnalysisRule {
-  export type Input = DeleteConfiguredTableAssociationAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteIdMappingTable {
-  export type Input = DeleteIdMappingTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteIdNamespaceAssociation {
-  export type Input = DeleteIdNamespaceAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteMember {
-  export type Input = DeleteMemberInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeleteMembership {
-  export type Input = DeleteMembershipInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace DeletePrivacyBudgetTemplate {
-  export type Input = DeletePrivacyBudgetTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetAnalysisTemplate {
-  export type Input = GetAnalysisTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetCollaboration {
-  export type Input = GetCollaborationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetCollaborationAnalysisTemplate {
-  export type Input = GetCollaborationAnalysisTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetCollaborationConfiguredAudienceModelAssociation {
-  export type Input = GetCollaborationConfiguredAudienceModelAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetCollaborationIdNamespaceAssociation {
-  export type Input = GetCollaborationIdNamespaceAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetCollaborationPrivacyBudgetTemplate {
-  export type Input = GetCollaborationPrivacyBudgetTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetConfiguredAudienceModelAssociation {
-  export type Input = GetConfiguredAudienceModelAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetConfiguredTable {
-  export type Input = GetConfiguredTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetConfiguredTableAnalysisRule {
-  export type Input = GetConfiguredTableAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetConfiguredTableAssociation {
-  export type Input = GetConfiguredTableAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetConfiguredTableAssociationAnalysisRule {
-  export type Input = GetConfiguredTableAssociationAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetIdMappingTable {
-  export type Input = GetIdMappingTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetIdNamespaceAssociation {
-  export type Input = GetIdNamespaceAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetMembership {
-  export type Input = GetMembershipInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetPrivacyBudgetTemplate {
-  export type Input = GetPrivacyBudgetTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetProtectedJob {
-  export type Input = GetProtectedJobInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetProtectedQuery {
-  export type Input = GetProtectedQueryInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetSchema {
-  export type Input = GetSchemaInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace GetSchemaAnalysisRule {
-  export type Input = GetSchemaAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListAnalysisTemplates {
-  export type Input = ListAnalysisTemplatesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollaborationAnalysisTemplates {
-  export type Input = ListCollaborationAnalysisTemplatesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollaborationConfiguredAudienceModelAssociations {
-  export type Input = ListCollaborationConfiguredAudienceModelAssociationsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollaborationIdNamespaceAssociations {
-  export type Input = ListCollaborationIdNamespaceAssociationsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollaborationPrivacyBudgetTemplates {
-  export type Input = ListCollaborationPrivacyBudgetTemplatesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollaborationPrivacyBudgets {
-  export type Input = ListCollaborationPrivacyBudgetsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListCollaborations {
-  export type Input = ListCollaborationsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListConfiguredAudienceModelAssociations {
-  export type Input = ListConfiguredAudienceModelAssociationsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListConfiguredTableAssociations {
-  export type Input = ListConfiguredTableAssociationsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListConfiguredTables {
-  export type Input = ListConfiguredTablesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListIdMappingTables {
-  export type Input = ListIdMappingTablesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListIdNamespaceAssociations {
-  export type Input = ListIdNamespaceAssociationsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListMembers {
-  export type Input = ListMembersInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListMemberships {
-  export type Input = ListMembershipsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListPrivacyBudgetTemplates {
-  export type Input = ListPrivacyBudgetTemplatesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListPrivacyBudgets {
-  export type Input = ListPrivacyBudgetsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListProtectedJobs {
-  export type Input = ListProtectedJobsInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListProtectedQueries {
-  export type Input = ListProtectedQueriesInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace ListSchemas {
-  export type Input = ListSchemasInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
+export type WorkerComputeType = "CR1X" | "CR4X";
 export declare namespace ListTagsForResource {
   export type Input = ListTagsForResourceInput;
-  export type Output = {};
+  export type Output = ListTagsForResourceOutput;
   export type Error =
     | ResourceNotFoundException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PopulateIdMappingTable {
-  export type Input = PopulateIdMappingTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace PreviewPrivacyImpact {
-  export type Input = PreviewPrivacyImpactInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartProtectedJob {
-  export type Input = StartProtectedJobInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace StartProtectedQuery {
-  export type Input = StartProtectedQueryInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ServiceQuotaExceededException
-    | ThrottlingException
     | ValidationException
     | CommonAwsError;
 }
 
 export declare namespace TagResource {
   export type Input = TagResourceInput;
-  export type Output = {};
+  export type Output = TagResourceOutput;
   export type Error =
     | ResourceNotFoundException
     | ValidationException
@@ -2292,173 +2117,9 @@ export declare namespace TagResource {
 
 export declare namespace UntagResource {
   export type Input = UntagResourceInput;
-  export type Output = {};
+  export type Output = UntagResourceOutput;
   export type Error =
     | ResourceNotFoundException
     | ValidationException
     | CommonAwsError;
 }
-
-export declare namespace UpdateAnalysisTemplate {
-  export type Input = UpdateAnalysisTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateCollaboration {
-  export type Input = UpdateCollaborationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConfiguredAudienceModelAssociation {
-  export type Input = UpdateConfiguredAudienceModelAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConfiguredTable {
-  export type Input = UpdateConfiguredTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConfiguredTableAnalysisRule {
-  export type Input = UpdateConfiguredTableAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConfiguredTableAssociation {
-  export type Input = UpdateConfiguredTableAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateConfiguredTableAssociationAnalysisRule {
-  export type Input = UpdateConfiguredTableAssociationAnalysisRuleInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateIdMappingTable {
-  export type Input = UpdateIdMappingTableInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateIdNamespaceAssociation {
-  export type Input = UpdateIdNamespaceAssociationInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateMembership {
-  export type Input = UpdateMembershipInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdatePrivacyBudgetTemplate {
-  export type Input = UpdatePrivacyBudgetTemplateInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateProtectedJob {
-  export type Input = UpdateProtectedJobInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-
-export declare namespace UpdateProtectedQuery {
-  export type Input = UpdateProtectedQueryInput;
-  export type Output = {};
-  export type Error =
-    | AccessDeniedException
-    | ConflictException
-    | InternalServerException
-    | ResourceNotFoundException
-    | ThrottlingException
-    | ValidationException
-    | CommonAwsError;
-}
-

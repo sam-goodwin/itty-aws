@@ -1,7 +1,269 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.waf#AWSWAF_20150824": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.waf#CreateByteMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateGeoMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateIPSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateRateBasedRule"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateRegexMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateRule"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateSizeConstraintSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateSqlInjectionMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateWebACL"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateWebACLMigrationStack"
+        },
+        {
+          "target": "com.amazonaws.waf#CreateXssMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteByteMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteGeoMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteIPSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.waf#DeletePermissionPolicy"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteRateBasedRule"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteRegexMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteRule"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteSizeConstraintSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteSqlInjectionMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteWebACL"
+        },
+        {
+          "target": "com.amazonaws.waf#DeleteXssMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetByteMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetChangeToken"
+        },
+        {
+          "target": "com.amazonaws.waf#GetChangeTokenStatus"
+        },
+        {
+          "target": "com.amazonaws.waf#GetGeoMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetIPSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.waf#GetPermissionPolicy"
+        },
+        {
+          "target": "com.amazonaws.waf#GetRateBasedRule"
+        },
+        {
+          "target": "com.amazonaws.waf#GetRateBasedRuleManagedKeys"
+        },
+        {
+          "target": "com.amazonaws.waf#GetRegexMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetRule"
+        },
+        {
+          "target": "com.amazonaws.waf#GetRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.waf#GetSampledRequests"
+        },
+        {
+          "target": "com.amazonaws.waf#GetSizeConstraintSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetSqlInjectionMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#GetWebACL"
+        },
+        {
+          "target": "com.amazonaws.waf#GetXssMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#ListActivatedRulesInRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.waf#ListByteMatchSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListGeoMatchSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListIPSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListLoggingConfigurations"
+        },
+        {
+          "target": "com.amazonaws.waf#ListRateBasedRules"
+        },
+        {
+          "target": "com.amazonaws.waf#ListRegexMatchSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListRegexPatternSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListRuleGroups"
+        },
+        {
+          "target": "com.amazonaws.waf#ListRules"
+        },
+        {
+          "target": "com.amazonaws.waf#ListSizeConstraintSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListSqlInjectionMatchSets"
+        },
+        {
+          "target": "com.amazonaws.waf#ListSubscribedRuleGroups"
+        },
+        {
+          "target": "com.amazonaws.waf#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.waf#ListWebACLs"
+        },
+        {
+          "target": "com.amazonaws.waf#ListXssMatchSets"
+        },
+        {
+          "target": "com.amazonaws.waf#PutLoggingConfiguration"
+        },
+        {
+          "target": "com.amazonaws.waf#PutPermissionPolicy"
+        },
+        {
+          "target": "com.amazonaws.waf#TagResource"
+        },
+        {
+          "target": "com.amazonaws.waf#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateByteMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateGeoMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateIPSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateRateBasedRule"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateRegexMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateRegexPatternSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateRule"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateRuleGroup"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateSizeConstraintSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateSqlInjectionMatchSet"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateWebACL"
+        },
+        {
+          "target": "com.amazonaws.waf#UpdateXssMatchSet"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "WAF",

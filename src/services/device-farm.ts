@@ -1,324 +1,534 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface DeviceFarm_20150623 {
   createDevicePool(
     input: CreateDevicePoolRequest,
   ): Effect.Effect<
     CreateDevicePoolResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   createInstanceProfile(
     input: CreateInstanceProfileRequest,
   ): Effect.Effect<
     CreateInstanceProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   createNetworkProfile(
     input: CreateNetworkProfileRequest,
   ): Effect.Effect<
     CreateNetworkProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   createProject(
     input: CreateProjectRequest,
   ): Effect.Effect<
     CreateProjectResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | TagOperationException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | TagOperationException
+    | CommonAwsError
   >;
   createRemoteAccessSession(
     input: CreateRemoteAccessSessionRequest,
   ): Effect.Effect<
     CreateRemoteAccessSessionResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   createTestGridProject(
     input: CreateTestGridProjectRequest,
   ): Effect.Effect<
     CreateTestGridProjectResult,
-    ArgumentException | InternalServiceException | LimitExceededException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | LimitExceededException
+    | CommonAwsError
   >;
   createTestGridUrl(
     input: CreateTestGridUrlRequest,
   ): Effect.Effect<
     CreateTestGridUrlResult,
-    ArgumentException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   createUpload(
     input: CreateUploadRequest,
   ): Effect.Effect<
     CreateUploadResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   createVPCEConfiguration(
     input: CreateVPCEConfigurationRequest,
   ): Effect.Effect<
     CreateVPCEConfigurationResult,
-    ArgumentException | LimitExceededException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteDevicePool(
     input: DeleteDevicePoolRequest,
   ): Effect.Effect<
     DeleteDevicePoolResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteInstanceProfile(
     input: DeleteInstanceProfileRequest,
   ): Effect.Effect<
     DeleteInstanceProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteNetworkProfile(
     input: DeleteNetworkProfileRequest,
   ): Effect.Effect<
     DeleteNetworkProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteProject(
     input: DeleteProjectRequest,
   ): Effect.Effect<
     DeleteProjectResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteRemoteAccessSession(
     input: DeleteRemoteAccessSessionRequest,
   ): Effect.Effect<
     DeleteRemoteAccessSessionResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteRun(
     input: DeleteRunRequest,
   ): Effect.Effect<
     DeleteRunResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteTestGridProject(
     input: DeleteTestGridProjectRequest,
   ): Effect.Effect<
     DeleteTestGridProjectResult,
-    ArgumentException | CannotDeleteException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | CannotDeleteException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   deleteUpload(
     input: DeleteUploadRequest,
   ): Effect.Effect<
     DeleteUploadResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   deleteVPCEConfiguration(
     input: DeleteVPCEConfigurationRequest,
   ): Effect.Effect<
     DeleteVPCEConfigurationResult,
-    ArgumentException | InvalidOperationException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | InvalidOperationException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getAccountSettings(
     input: GetAccountSettingsRequest,
   ): Effect.Effect<
     GetAccountSettingsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getDevice(
     input: GetDeviceRequest,
   ): Effect.Effect<
     GetDeviceResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getDeviceInstance(
     input: GetDeviceInstanceRequest,
   ): Effect.Effect<
     GetDeviceInstanceResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getDevicePool(
     input: GetDevicePoolRequest,
   ): Effect.Effect<
     GetDevicePoolResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getDevicePoolCompatibility(
     input: GetDevicePoolCompatibilityRequest,
   ): Effect.Effect<
     GetDevicePoolCompatibilityResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getInstanceProfile(
     input: GetInstanceProfileRequest,
   ): Effect.Effect<
     GetInstanceProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getJob(
     input: GetJobRequest,
   ): Effect.Effect<
     GetJobResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getNetworkProfile(
     input: GetNetworkProfileRequest,
   ): Effect.Effect<
     GetNetworkProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getOfferingStatus(
     input: GetOfferingStatusRequest,
   ): Effect.Effect<
     GetOfferingStatusResult,
-    ArgumentException | LimitExceededException | NotEligibleException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotEligibleException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getProject(
     input: GetProjectRequest,
   ): Effect.Effect<
     GetProjectResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getRemoteAccessSession(
     input: GetRemoteAccessSessionRequest,
   ): Effect.Effect<
     GetRemoteAccessSessionResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getRun(
     input: GetRunRequest,
   ): Effect.Effect<
     GetRunResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getSuite(
     input: GetSuiteRequest,
   ): Effect.Effect<
     GetSuiteResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getTest(
     input: GetTestRequest,
   ): Effect.Effect<
     GetTestResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getTestGridProject(
     input: GetTestGridProjectRequest,
   ): Effect.Effect<
     GetTestGridProjectResult,
-    ArgumentException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   getTestGridSession(
     input: GetTestGridSessionRequest,
   ): Effect.Effect<
     GetTestGridSessionResult,
-    ArgumentException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   getUpload(
     input: GetUploadRequest,
   ): Effect.Effect<
     GetUploadResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   getVPCEConfiguration(
     input: GetVPCEConfigurationRequest,
   ): Effect.Effect<
     GetVPCEConfigurationResult,
-    ArgumentException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   installToRemoteAccessSession(
     input: InstallToRemoteAccessSessionRequest,
   ): Effect.Effect<
     InstallToRemoteAccessSessionResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listArtifacts(
     input: ListArtifactsRequest,
   ): Effect.Effect<
     ListArtifactsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listDeviceInstances(
     input: ListDeviceInstancesRequest,
   ): Effect.Effect<
     ListDeviceInstancesResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listDevicePools(
     input: ListDevicePoolsRequest,
   ): Effect.Effect<
     ListDevicePoolsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listDevices(
     input: ListDevicesRequest,
   ): Effect.Effect<
     ListDevicesResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listInstanceProfiles(
     input: ListInstanceProfilesRequest,
   ): Effect.Effect<
     ListInstanceProfilesResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listJobs(
     input: ListJobsRequest,
   ): Effect.Effect<
     ListJobsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listNetworkProfiles(
     input: ListNetworkProfilesRequest,
   ): Effect.Effect<
     ListNetworkProfilesResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listOfferingPromotions(
     input: ListOfferingPromotionsRequest,
   ): Effect.Effect<
     ListOfferingPromotionsResult,
-    ArgumentException | LimitExceededException | NotEligibleException | NotFoundException | ServiceAccountException | CommonAwsError
-  >;
-  listOfferingTransactions(
-    input: ListOfferingTransactionsRequest,
-  ): Effect.Effect<
-    ListOfferingTransactionsResult,
-    ArgumentException | LimitExceededException | NotEligibleException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotEligibleException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listOfferings(
     input: ListOfferingsRequest,
   ): Effect.Effect<
     ListOfferingsResult,
-    ArgumentException | LimitExceededException | NotEligibleException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotEligibleException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
+  >;
+  listOfferingTransactions(
+    input: ListOfferingTransactionsRequest,
+  ): Effect.Effect<
+    ListOfferingTransactionsResult,
+    | ArgumentException
+    | LimitExceededException
+    | NotEligibleException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listProjects(
     input: ListProjectsRequest,
   ): Effect.Effect<
     ListProjectsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listRemoteAccessSessions(
     input: ListRemoteAccessSessionsRequest,
   ): Effect.Effect<
     ListRemoteAccessSessionsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listRuns(
     input: ListRunsRequest,
   ): Effect.Effect<
     ListRunsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listSamples(
     input: ListSamplesRequest,
   ): Effect.Effect<
     ListSamplesResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listSuites(
     input: ListSuitesRequest,
   ): Effect.Effect<
     ListSuitesResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    ArgumentException | NotFoundException | TagOperationException | CommonAwsError
+    | ArgumentException
+    | NotFoundException
+    | TagOperationException
+    | CommonAwsError
   >;
   listTestGridProjects(
     input: ListTestGridProjectsRequest,
@@ -330,37 +540,58 @@ export interface DeviceFarm_20150623 {
     input: ListTestGridSessionActionsRequest,
   ): Effect.Effect<
     ListTestGridSessionActionsResult,
-    ArgumentException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   listTestGridSessionArtifacts(
     input: ListTestGridSessionArtifactsRequest,
   ): Effect.Effect<
     ListTestGridSessionArtifactsResult,
-    ArgumentException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   listTestGridSessions(
     input: ListTestGridSessionsRequest,
   ): Effect.Effect<
     ListTestGridSessionsResult,
-    ArgumentException | InternalServiceException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | NotFoundException
+    | CommonAwsError
   >;
   listTests(
     input: ListTestsRequest,
   ): Effect.Effect<
     ListTestsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listUniqueProblems(
     input: ListUniqueProblemsRequest,
   ): Effect.Effect<
     ListUniqueProblemsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listUploads(
     input: ListUploadsRequest,
   ): Effect.Effect<
     ListUploadsResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   listVPCEConfigurations(
     input: ListVPCEConfigurationsRequest,
@@ -372,97 +603,164 @@ export interface DeviceFarm_20150623 {
     input: PurchaseOfferingRequest,
   ): Effect.Effect<
     PurchaseOfferingResult,
-    ArgumentException | LimitExceededException | NotEligibleException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotEligibleException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   renewOffering(
     input: RenewOfferingRequest,
   ): Effect.Effect<
     RenewOfferingResult,
-    ArgumentException | LimitExceededException | NotEligibleException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotEligibleException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   scheduleRun(
     input: ScheduleRunRequest,
   ): Effect.Effect<
     ScheduleRunResult,
-    ArgumentException | IdempotencyException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | IdempotencyException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   stopJob(
     input: StopJobRequest,
   ): Effect.Effect<
     StopJobResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   stopRemoteAccessSession(
     input: StopRemoteAccessSessionRequest,
   ): Effect.Effect<
     StopRemoteAccessSessionResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   stopRun(
     input: StopRunRequest,
   ): Effect.Effect<
     StopRunResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    ArgumentException | NotFoundException | TagOperationException | TagPolicyException | TooManyTagsException | CommonAwsError
+    | ArgumentException
+    | NotFoundException
+    | TagOperationException
+    | TagPolicyException
+    | TooManyTagsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    ArgumentException | NotFoundException | TagOperationException | CommonAwsError
+    | ArgumentException
+    | NotFoundException
+    | TagOperationException
+    | CommonAwsError
   >;
   updateDeviceInstance(
     input: UpdateDeviceInstanceRequest,
   ): Effect.Effect<
     UpdateDeviceInstanceResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   updateDevicePool(
     input: UpdateDevicePoolRequest,
   ): Effect.Effect<
     UpdateDevicePoolResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   updateInstanceProfile(
     input: UpdateInstanceProfileRequest,
   ): Effect.Effect<
     UpdateInstanceProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   updateNetworkProfile(
     input: UpdateNetworkProfileRequest,
   ): Effect.Effect<
     UpdateNetworkProfileResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   updateProject(
     input: UpdateProjectRequest,
   ): Effect.Effect<
     UpdateProjectResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   updateTestGridProject(
     input: UpdateTestGridProjectRequest,
   ): Effect.Effect<
     UpdateTestGridProjectResult,
-    ArgumentException | InternalServiceException | LimitExceededException | NotFoundException | CommonAwsError
+    | ArgumentException
+    | InternalServiceException
+    | LimitExceededException
+    | NotFoundException
+    | CommonAwsError
   >;
   updateUpload(
     input: UpdateUploadRequest,
   ): Effect.Effect<
     UpdateUploadResult,
-    ArgumentException | LimitExceededException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | LimitExceededException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
   updateVPCEConfiguration(
     input: UpdateVPCEConfigurationRequest,
   ): Effect.Effect<
     UpdateVPCEConfigurationResult,
-    ArgumentException | InvalidOperationException | NotFoundException | ServiceAccountException | CommonAwsError
+    | ArgumentException
+    | InvalidOperationException
+    | NotFoundException
+    | ServiceAccountException
+    | CommonAwsError
   >;
 }
 
@@ -500,7 +798,35 @@ export interface Artifact {
 }
 export type ArtifactCategory = "SCREENSHOT" | "FILE" | "LOG";
 export type Artifacts = Array<Artifact>;
-export type ArtifactType = "UNKNOWN" | "SCREENSHOT" | "DEVICE_LOG" | "MESSAGE_LOG" | "VIDEO_LOG" | "RESULT_LOG" | "SERVICE_LOG" | "WEBKIT_LOG" | "INSTRUMENTATION_OUTPUT" | "EXERCISER_MONKEY_OUTPUT" | "CALABASH_JSON_OUTPUT" | "CALABASH_PRETTY_OUTPUT" | "CALABASH_STANDARD_OUTPUT" | "CALABASH_JAVA_XML_OUTPUT" | "AUTOMATION_OUTPUT" | "APPIUM_SERVER_OUTPUT" | "APPIUM_JAVA_OUTPUT" | "APPIUM_JAVA_XML_OUTPUT" | "APPIUM_PYTHON_OUTPUT" | "APPIUM_PYTHON_XML_OUTPUT" | "EXPLORER_EVENT_LOG" | "EXPLORER_SUMMARY_LOG" | "APPLICATION_CRASH_REPORT" | "XCTEST_LOG" | "VIDEO" | "CUSTOMER_ARTIFACT" | "CUSTOMER_ARTIFACT_LOG" | "TESTSPEC_OUTPUT";
+export type ArtifactType =
+  | "UNKNOWN"
+  | "SCREENSHOT"
+  | "DEVICE_LOG"
+  | "MESSAGE_LOG"
+  | "VIDEO_LOG"
+  | "RESULT_LOG"
+  | "SERVICE_LOG"
+  | "WEBKIT_LOG"
+  | "INSTRUMENTATION_OUTPUT"
+  | "EXERCISER_MONKEY_OUTPUT"
+  | "CALABASH_JSON_OUTPUT"
+  | "CALABASH_PRETTY_OUTPUT"
+  | "CALABASH_STANDARD_OUTPUT"
+  | "CALABASH_JAVA_XML_OUTPUT"
+  | "AUTOMATION_OUTPUT"
+  | "APPIUM_SERVER_OUTPUT"
+  | "APPIUM_JAVA_OUTPUT"
+  | "APPIUM_JAVA_XML_OUTPUT"
+  | "APPIUM_PYTHON_OUTPUT"
+  | "APPIUM_PYTHON_XML_OUTPUT"
+  | "EXPLORER_EVENT_LOG"
+  | "EXPLORER_SUMMARY_LOG"
+  | "APPLICATION_CRASH_REPORT"
+  | "XCTEST_LOG"
+  | "VIDEO"
+  | "CUSTOMER_ARTIFACT"
+  | "CUSTOMER_ARTIFACT_LOG"
+  | "TESTSPEC_OUTPUT";
 export type AWSAccountNumber = string;
 
 export type BillingMethod = "METERED" | "UNMETERED";
@@ -639,48 +965,39 @@ export type DateTime = Date | string;
 export interface DeleteDevicePoolRequest {
   arn: string;
 }
-export interface DeleteDevicePoolResult {
-}
+export interface DeleteDevicePoolResult {}
 export interface DeleteInstanceProfileRequest {
   arn: string;
 }
-export interface DeleteInstanceProfileResult {
-}
+export interface DeleteInstanceProfileResult {}
 export interface DeleteNetworkProfileRequest {
   arn: string;
 }
-export interface DeleteNetworkProfileResult {
-}
+export interface DeleteNetworkProfileResult {}
 export interface DeleteProjectRequest {
   arn: string;
 }
-export interface DeleteProjectResult {
-}
+export interface DeleteProjectResult {}
 export interface DeleteRemoteAccessSessionRequest {
   arn: string;
 }
-export interface DeleteRemoteAccessSessionResult {
-}
+export interface DeleteRemoteAccessSessionResult {}
 export interface DeleteRunRequest {
   arn: string;
 }
-export interface DeleteRunResult {
-}
+export interface DeleteRunResult {}
 export interface DeleteTestGridProjectRequest {
   projectArn: string;
 }
-export interface DeleteTestGridProjectResult {
-}
+export interface DeleteTestGridProjectResult {}
 export interface DeleteUploadRequest {
   arn: string;
 }
-export interface DeleteUploadResult {
-}
+export interface DeleteUploadResult {}
 export interface DeleteVPCEConfigurationRequest {
   arn: string;
 }
-export interface DeleteVPCEConfigurationResult {
-}
+export interface DeleteVPCEConfigurationResult {}
 export interface Device {
   arn?: string;
   name?: string;
@@ -704,8 +1021,25 @@ export interface Device {
   instances?: Array<DeviceInstance>;
   availability?: DeviceAvailability;
 }
-export type DeviceAttribute = "ARN" | "PLATFORM" | "FORM_FACTOR" | "MANUFACTURER" | "REMOTE_ACCESS_ENABLED" | "REMOTE_DEBUG_ENABLED" | "APPIUM_VERSION" | "INSTANCE_ARN" | "INSTANCE_LABELS" | "FLEET_TYPE" | "OS_VERSION" | "MODEL" | "AVAILABILITY";
-export type DeviceAvailability = "TEMPORARY_NOT_AVAILABLE" | "BUSY" | "AVAILABLE" | "HIGHLY_AVAILABLE";
+export type DeviceAttribute =
+  | "ARN"
+  | "PLATFORM"
+  | "FORM_FACTOR"
+  | "MANUFACTURER"
+  | "REMOTE_ACCESS_ENABLED"
+  | "REMOTE_DEBUG_ENABLED"
+  | "APPIUM_VERSION"
+  | "INSTANCE_ARN"
+  | "INSTANCE_LABELS"
+  | "FLEET_TYPE"
+  | "OS_VERSION"
+  | "MODEL"
+  | "AVAILABILITY";
+export type DeviceAvailability =
+  | "TEMPORARY_NOT_AVAILABLE"
+  | "BUSY"
+  | "AVAILABLE"
+  | "HIGHLY_AVAILABLE";
 export type DeviceFarmArn = string;
 
 export interface DeviceFilter {
@@ -713,7 +1047,19 @@ export interface DeviceFilter {
   operator: RuleOperator;
   values: Array<string>;
 }
-export type DeviceFilterAttribute = "ARN" | "PLATFORM" | "OS_VERSION" | "MODEL" | "AVAILABILITY" | "FORM_FACTOR" | "MANUFACTURER" | "REMOTE_ACCESS_ENABLED" | "REMOTE_DEBUG_ENABLED" | "INSTANCE_ARN" | "INSTANCE_LABELS" | "FLEET_TYPE";
+export type DeviceFilterAttribute =
+  | "ARN"
+  | "PLATFORM"
+  | "OS_VERSION"
+  | "MODEL"
+  | "AVAILABILITY"
+  | "FORM_FACTOR"
+  | "MANUFACTURER"
+  | "REMOTE_ACCESS_ENABLED"
+  | "REMOTE_DEBUG_ENABLED"
+  | "INSTANCE_ARN"
+  | "INSTANCE_LABELS"
+  | "FLEET_TYPE";
 export type DeviceFilters = Array<DeviceFilter>;
 export type DeviceFilterValues = Array<string>;
 export type DeviceFormFactor = "PHONE" | "TABLET";
@@ -746,7 +1092,8 @@ export interface DevicePoolCompatibilityResult {
   compatible?: boolean;
   incompatibilityMessages?: Array<IncompatibilityMessage>;
 }
-export type DevicePoolCompatibilityResults = Array<DevicePoolCompatibilityResult>;
+export type DevicePoolCompatibilityResults =
+  Array<DevicePoolCompatibilityResult>;
 export type DevicePools = Array<DevicePool>;
 export type DevicePoolType = "CURATED" | "PRIVATE";
 export interface DeviceProxy {
@@ -778,13 +1125,30 @@ export interface ExecutionConfiguration {
   videoCapture?: boolean;
   skipAppResign?: boolean;
 }
-export type ExecutionResult = "PENDING" | "PASSED" | "WARNED" | "FAILED" | "SKIPPED" | "ERRORED" | "STOPPED";
-export type ExecutionResultCode = "PARSING_FAILED" | "VPC_ENDPOINT_SETUP_FAILED";
-export type ExecutionStatus = "PENDING" | "PENDING_CONCURRNECY" | "PENDING_DEVICE" | "PROCESSING" | "SCHEDULING" | "PREPARING" | "RUNNING" | "COMPLETED" | "STOPPING";
+export type ExecutionResult =
+  | "PENDING"
+  | "PASSED"
+  | "WARNED"
+  | "FAILED"
+  | "SKIPPED"
+  | "ERRORED"
+  | "STOPPED";
+export type ExecutionResultCode =
+  | "PARSING_FAILED"
+  | "VPC_ENDPOINT_SETUP_FAILED";
+export type ExecutionStatus =
+  | "PENDING"
+  | "PENDING_CONCURRNECY"
+  | "PENDING_DEVICE"
+  | "PROCESSING"
+  | "SCHEDULING"
+  | "PREPARING"
+  | "RUNNING"
+  | "COMPLETED"
+  | "STOPPING";
 export type Filter = string;
 
-export interface GetAccountSettingsRequest {
-}
+export interface GetAccountSettingsRequest {}
 export interface GetAccountSettingsResult {
   accountSettings?: AccountSettings;
 }
@@ -929,7 +1293,11 @@ export interface InstanceProfile {
   description?: string;
 }
 export type InstanceProfiles = Array<InstanceProfile>;
-export type InstanceStatus = "IN_USE" | "PREPARING" | "AVAILABLE" | "NOT_AVAILABLE";
+export type InstanceStatus =
+  | "IN_USE"
+  | "PREPARING"
+  | "AVAILABLE"
+  | "NOT_AVAILABLE";
 export type Integer = number;
 
 export type InteractionMode = "INTERACTIVE" | "NO_VIDEO" | "VIDEO_ONLY";
@@ -1347,7 +1715,15 @@ export interface Rule {
   operator?: RuleOperator;
   value?: string;
 }
-export type RuleOperator = "EQUALS" | "LESS_THAN" | "LESS_THAN_OR_EQUALS" | "GREATER_THAN" | "GREATER_THAN_OR_EQUALS" | "IN" | "NOT_IN" | "CONTAINS";
+export type RuleOperator =
+  | "EQUALS"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUALS"
+  | "GREATER_THAN"
+  | "GREATER_THAN_OR_EQUALS"
+  | "IN"
+  | "NOT_IN"
+  | "CONTAINS";
 export type Rules = Array<Rule>;
 export interface Run {
   arn?: string;
@@ -1391,7 +1767,24 @@ export interface Sample {
   url?: string;
 }
 export type Samples = Array<Sample>;
-export type SampleType = "CPU" | "MEMORY" | "THREADS" | "RX_RATE" | "TX_RATE" | "RX" | "TX" | "NATIVE_FRAMES" | "NATIVE_FPS" | "NATIVE_MIN_DRAWTIME" | "NATIVE_AVG_DRAWTIME" | "NATIVE_MAX_DRAWTIME" | "OPENGL_FRAMES" | "OPENGL_FPS" | "OPENGL_MIN_DRAWTIME" | "OPENGL_AVG_DRAWTIME" | "OPENGL_MAX_DRAWTIME";
+export type SampleType =
+  | "CPU"
+  | "MEMORY"
+  | "THREADS"
+  | "RX_RATE"
+  | "TX_RATE"
+  | "RX"
+  | "TX"
+  | "NATIVE_FRAMES"
+  | "NATIVE_FPS"
+  | "NATIVE_MIN_DRAWTIME"
+  | "NATIVE_AVG_DRAWTIME"
+  | "NATIVE_MAX_DRAWTIME"
+  | "OPENGL_FRAMES"
+  | "OPENGL_FPS"
+  | "OPENGL_MIN_DRAWTIME"
+  | "OPENGL_AVG_DRAWTIME"
+  | "OPENGL_MAX_DRAWTIME";
 export interface ScheduleRunConfiguration {
   extraDataPackageArn?: string;
   networkProfileArn?: string;
@@ -1501,8 +1894,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface Test {
@@ -1561,7 +1953,21 @@ export interface TestGridVpcConfig {
 }
 export type TestParameters = Record<string, string>;
 export type Tests = Array<Test>;
-export type TestType = "BUILTIN_FUZZ" | "APPIUM_JAVA_JUNIT" | "APPIUM_JAVA_TESTNG" | "APPIUM_PYTHON" | "APPIUM_NODE" | "APPIUM_RUBY" | "APPIUM_WEB_JAVA_JUNIT" | "APPIUM_WEB_JAVA_TESTNG" | "APPIUM_WEB_PYTHON" | "APPIUM_WEB_NODE" | "APPIUM_WEB_RUBY" | "INSTRUMENTATION" | "XCTEST" | "XCTEST_UI";
+export type TestType =
+  | "BUILTIN_FUZZ"
+  | "APPIUM_JAVA_JUNIT"
+  | "APPIUM_JAVA_TESTNG"
+  | "APPIUM_PYTHON"
+  | "APPIUM_NODE"
+  | "APPIUM_RUBY"
+  | "APPIUM_WEB_JAVA_JUNIT"
+  | "APPIUM_WEB_JAVA_TESTNG"
+  | "APPIUM_WEB_PYTHON"
+  | "APPIUM_WEB_NODE"
+  | "APPIUM_WEB_RUBY"
+  | "INSTRUMENTATION"
+  | "XCTEST"
+  | "XCTEST_UI";
 export declare class TooManyTagsException extends Data.TaggedError(
   "TooManyTagsException",
 )<{
@@ -1579,13 +1985,15 @@ export interface UniqueProblem {
   problems?: Array<Problem>;
 }
 export type UniqueProblems = Array<UniqueProblem>;
-export type UniqueProblemsByExecutionResultMap = Record<ExecutionResult, Array<UniqueProblem>>;
+export type UniqueProblemsByExecutionResultMap = Record<
+  ExecutionResult,
+  Array<UniqueProblem>
+>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateDeviceInstanceRequest {
   arn: string;
   profileArn?: string;
@@ -1684,8 +2092,44 @@ export interface Upload {
 }
 export type UploadCategory = "CURATED" | "PRIVATE";
 export type Uploads = Array<Upload>;
-export type UploadStatus = "INITIALIZED" | "PROCESSING" | "SUCCEEDED" | "FAILED";
-export type UploadType = "ANDROID_APP" | "IOS_APP" | "WEB_APP" | "EXTERNAL_DATA" | "APPIUM_JAVA_JUNIT_TEST_PACKAGE" | "APPIUM_JAVA_TESTNG_TEST_PACKAGE" | "APPIUM_PYTHON_TEST_PACKAGE" | "APPIUM_NODE_TEST_PACKAGE" | "APPIUM_RUBY_TEST_PACKAGE" | "APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE" | "APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE" | "APPIUM_WEB_PYTHON_TEST_PACKAGE" | "APPIUM_WEB_NODE_TEST_PACKAGE" | "APPIUM_WEB_RUBY_TEST_PACKAGE" | "CALABASH_TEST_PACKAGE" | "INSTRUMENTATION_TEST_PACKAGE" | "UIAUTOMATION_TEST_PACKAGE" | "UIAUTOMATOR_TEST_PACKAGE" | "XCTEST_TEST_PACKAGE" | "XCTEST_UI_TEST_PACKAGE" | "APPIUM_JAVA_JUNIT_TEST_SPEC" | "APPIUM_JAVA_TESTNG_TEST_SPEC" | "APPIUM_PYTHON_TEST_SPEC" | "APPIUM_NODE_TEST_SPEC" | "APPIUM_RUBY_TEST_SPEC" | "APPIUM_WEB_JAVA_JUNIT_TEST_SPEC" | "APPIUM_WEB_JAVA_TESTNG_TEST_SPEC" | "APPIUM_WEB_PYTHON_TEST_SPEC" | "APPIUM_WEB_NODE_TEST_SPEC" | "APPIUM_WEB_RUBY_TEST_SPEC" | "INSTRUMENTATION_TEST_SPEC" | "XCTEST_UI_TEST_SPEC";
+export type UploadStatus =
+  | "INITIALIZED"
+  | "PROCESSING"
+  | "SUCCEEDED"
+  | "FAILED";
+export type UploadType =
+  | "ANDROID_APP"
+  | "IOS_APP"
+  | "WEB_APP"
+  | "EXTERNAL_DATA"
+  | "APPIUM_JAVA_JUNIT_TEST_PACKAGE"
+  | "APPIUM_JAVA_TESTNG_TEST_PACKAGE"
+  | "APPIUM_PYTHON_TEST_PACKAGE"
+  | "APPIUM_NODE_TEST_PACKAGE"
+  | "APPIUM_RUBY_TEST_PACKAGE"
+  | "APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"
+  | "APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"
+  | "APPIUM_WEB_PYTHON_TEST_PACKAGE"
+  | "APPIUM_WEB_NODE_TEST_PACKAGE"
+  | "APPIUM_WEB_RUBY_TEST_PACKAGE"
+  | "CALABASH_TEST_PACKAGE"
+  | "INSTRUMENTATION_TEST_PACKAGE"
+  | "UIAUTOMATION_TEST_PACKAGE"
+  | "UIAUTOMATOR_TEST_PACKAGE"
+  | "XCTEST_TEST_PACKAGE"
+  | "XCTEST_UI_TEST_PACKAGE"
+  | "APPIUM_JAVA_JUNIT_TEST_SPEC"
+  | "APPIUM_JAVA_TESTNG_TEST_SPEC"
+  | "APPIUM_PYTHON_TEST_SPEC"
+  | "APPIUM_NODE_TEST_SPEC"
+  | "APPIUM_RUBY_TEST_SPEC"
+  | "APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"
+  | "APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"
+  | "APPIUM_WEB_PYTHON_TEST_SPEC"
+  | "APPIUM_WEB_NODE_TEST_SPEC"
+  | "APPIUM_WEB_RUBY_TEST_SPEC"
+  | "INSTRUMENTATION_TEST_SPEC"
+  | "XCTEST_UI_TEST_SPEC";
 export type URL = string;
 
 export type VideoCapture = boolean;
@@ -2203,9 +2647,9 @@ export declare namespace ListOfferingPromotions {
     | CommonAwsError;
 }
 
-export declare namespace ListOfferingTransactions {
-  export type Input = ListOfferingTransactionsRequest;
-  export type Output = ListOfferingTransactionsResult;
+export declare namespace ListOfferings {
+  export type Input = ListOfferingsRequest;
+  export type Output = ListOfferingsResult;
   export type Error =
     | ArgumentException
     | LimitExceededException
@@ -2215,9 +2659,9 @@ export declare namespace ListOfferingTransactions {
     | CommonAwsError;
 }
 
-export declare namespace ListOfferings {
-  export type Input = ListOfferingsRequest;
-  export type Output = ListOfferingsResult;
+export declare namespace ListOfferingTransactions {
+  export type Input = ListOfferingTransactionsRequest;
+  export type Output = ListOfferingTransactionsResult;
   export type Error =
     | ArgumentException
     | LimitExceededException
@@ -2551,4 +2995,3 @@ export declare namespace UpdateVPCEConfiguration {
     | ServiceAccountException
     | CommonAwsError;
 }
-

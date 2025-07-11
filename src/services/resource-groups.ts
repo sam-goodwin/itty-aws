@@ -1,144 +1,278 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface Ardi {
   cancelTagSyncTask(
     input: CancelTagSyncTaskInput,
   ): Effect.Effect<
     {},
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   createGroup(
     input: CreateGroupInput,
   ): Effect.Effect<
     CreateGroupOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteGroup(
     input: DeleteGroupInput,
   ): Effect.Effect<
     DeleteGroupOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
-  getAccountSettings(
-    input: {},
-  ): Effect.Effect<
+  getAccountSettings(input: {}): Effect.Effect<
     GetAccountSettingsOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getGroup(
     input: GetGroupInput,
   ): Effect.Effect<
     GetGroupOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getGroupConfiguration(
     input: GetGroupConfigurationInput,
   ): Effect.Effect<
     GetGroupConfigurationOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getGroupQuery(
     input: GetGroupQueryInput,
   ): Effect.Effect<
     GetGroupQueryOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
-  >;
-  getTagSyncTask(
-    input: GetTagSyncTaskInput,
-  ): Effect.Effect<
-    GetTagSyncTaskOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getTags(
     input: GetTagsInput,
   ): Effect.Effect<
     GetTagsOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  getTagSyncTask(
+    input: GetTagSyncTaskInput,
+  ): Effect.Effect<
+    GetTagSyncTaskOutput,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   groupResources(
     input: GroupResourcesInput,
   ): Effect.Effect<
     GroupResourcesOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
-  >;
-  listGroupResources(
-    input: ListGroupResourcesInput,
-  ): Effect.Effect<
-    ListGroupResourcesOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listGroupingStatuses(
     input: ListGroupingStatusesInput,
   ): Effect.Effect<
     ListGroupingStatusesOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
+  >;
+  listGroupResources(
+    input: ListGroupResourcesInput,
+  ): Effect.Effect<
+    ListGroupResourcesOutput,
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   listGroups(
     input: ListGroupsInput,
   ): Effect.Effect<
     ListGroupsOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagSyncTasks(
     input: ListTagSyncTasksInput,
   ): Effect.Effect<
     ListTagSyncTasksOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   putGroupConfiguration(
     input: PutGroupConfigurationInput,
   ): Effect.Effect<
     PutGroupConfigurationOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   searchResources(
     input: SearchResourcesInput,
   ): Effect.Effect<
     SearchResourcesOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   startTagSyncTask(
     input: StartTagSyncTaskInput,
   ): Effect.Effect<
     StartTagSyncTaskOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | UnauthorizedException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | UnauthorizedException
+    | CommonAwsError
   >;
   tag(
     input: TagInput,
   ): Effect.Effect<
     TagOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   ungroupResources(
     input: UngroupResourcesInput,
   ): Effect.Effect<
     UngroupResourcesOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untag(
     input: UntagInput,
   ): Effect.Effect<
     UntagOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateAccountSettings(
     input: UpdateAccountSettingsInput,
   ): Effect.Effect<
     UpdateAccountSettingsOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateGroup(
     input: UpdateGroupInput,
   ): Effect.Effect<
     UpdateGroupOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateGroupQuery(
     input: UpdateGroupQueryInput,
   ): Effect.Effect<
     UpdateGroupQueryOutput,
-    BadRequestException | ForbiddenException | InternalServerErrorException | MethodNotAllowedException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -288,7 +422,10 @@ export type GroupConfigurationParameterName = string;
 export type GroupConfigurationParameterValue = string;
 
 export type GroupConfigurationParameterValueList = Array<string>;
-export type GroupConfigurationStatus = "UPDATING" | "UPDATE_COMPLETE" | "UPDATE_FAILED";
+export type GroupConfigurationStatus =
+  | "UPDATING"
+  | "UPDATE_COMPLETE"
+  | "UPDATE_FAILED";
 export type GroupConfigurationType = string;
 
 export interface GroupFilter {
@@ -296,7 +433,12 @@ export interface GroupFilter {
   Values: Array<string>;
 }
 export type GroupFilterList = Array<GroupFilter>;
-export type GroupFilterName = "ResourceType" | "ConfigurationType" | "Owner" | "DisplayName" | "Criticality";
+export type GroupFilterName =
+  | "ResourceType"
+  | "ConfigurationType"
+  | "Owner"
+  | "DisplayName"
+  | "Criticality";
 export type GroupFilterValue = string;
 
 export type GroupFilterValues = Array<string>;
@@ -321,7 +463,11 @@ export interface GroupingStatusesItem {
 export type GroupingStatusesList = Array<GroupingStatusesItem>;
 export type GroupingType = "GROUP" | "UNGROUP";
 export type GroupLifecycleEventsDesiredStatus = "ACTIVE" | "INACTIVE";
-export type GroupLifecycleEventsStatus = "ACTIVE" | "INACTIVE" | "IN_PROGRESS" | "ERROR";
+export type GroupLifecycleEventsStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "IN_PROGRESS"
+  | "ERROR";
 export type GroupLifecycleEventsStatusMessage = string;
 
 export type GroupList = Array<Group>;
@@ -436,15 +582,18 @@ export interface PutGroupConfigurationInput {
   Group?: string;
   Configuration?: Array<GroupConfigurationItem>;
 }
-export interface PutGroupConfigurationOutput {
-}
+export interface PutGroupConfigurationOutput {}
 export type Query = string;
 
 export interface QueryError {
   ErrorCode?: QueryErrorCode;
   Message?: string;
 }
-export type QueryErrorCode = "CLOUDFORMATION_STACK_INACTIVE" | "CLOUDFORMATION_STACK_NOT_EXISTING" | "CLOUDFORMATION_STACK_UNASSUMABLE_ROLE" | "RESOURCE_TYPE_NOT_SUPPORTED";
+export type QueryErrorCode =
+  | "CLOUDFORMATION_STACK_INACTIVE"
+  | "CLOUDFORMATION_STACK_NOT_EXISTING"
+  | "CLOUDFORMATION_STACK_UNASSUMABLE_ROLE"
+  | "RESOURCE_TYPE_NOT_SUPPORTED";
 export type QueryErrorList = Array<QueryError>;
 export type QueryErrorMessage = string;
 
@@ -677,6 +826,19 @@ export declare namespace GetGroupQuery {
     | CommonAwsError;
 }
 
+export declare namespace GetTags {
+  export type Input = GetTagsInput;
+  export type Output = GetTagsOutput;
+  export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
 export declare namespace GetTagSyncTask {
   export type Input = GetTagSyncTaskInput;
   export type Output = GetTagSyncTaskOutput;
@@ -688,19 +850,6 @@ export declare namespace GetTagSyncTask {
     | NotFoundException
     | TooManyRequestsException
     | UnauthorizedException
-    | CommonAwsError;
-}
-
-export declare namespace GetTags {
-  export type Input = GetTagsInput;
-  export type Output = GetTagsOutput;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
-    | MethodNotAllowedException
-    | NotFoundException
-    | TooManyRequestsException
     | CommonAwsError;
 }
 
@@ -717,6 +866,18 @@ export declare namespace GroupResources {
     | CommonAwsError;
 }
 
+export declare namespace ListGroupingStatuses {
+  export type Input = ListGroupingStatusesInput;
+  export type Output = ListGroupingStatusesOutput;
+  export type Error =
+    | BadRequestException
+    | ForbiddenException
+    | InternalServerErrorException
+    | MethodNotAllowedException
+    | TooManyRequestsException
+    | CommonAwsError;
+}
+
 export declare namespace ListGroupResources {
   export type Input = ListGroupResourcesInput;
   export type Output = ListGroupResourcesOutput;
@@ -728,18 +889,6 @@ export declare namespace ListGroupResources {
     | NotFoundException
     | TooManyRequestsException
     | UnauthorizedException
-    | CommonAwsError;
-}
-
-export declare namespace ListGroupingStatuses {
-  export type Input = ListGroupingStatusesInput;
-  export type Output = ListGroupingStatusesOutput;
-  export type Error =
-    | BadRequestException
-    | ForbiddenException
-    | InternalServerErrorException
-    | MethodNotAllowedException
-    | TooManyRequestsException
     | CommonAwsError;
 }
 
@@ -884,4 +1033,3 @@ export declare namespace UpdateGroupQuery {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

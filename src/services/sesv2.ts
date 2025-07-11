@@ -1,162 +1,271 @@
 import type { Effect, Data } from "effect";
-import type { CommonAwsError } from "../client.ts";
+import type { CommonAwsError } from "../error.ts";
 
 export interface SimpleEmailService_v2 {
   batchGetMetricData(
     input: BatchGetMetricDataRequest,
   ): Effect.Effect<
     BatchGetMetricDataResponse,
-    BadRequestException | InternalServiceErrorException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | InternalServiceErrorException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   cancelExportJob(
     input: CancelExportJobRequest,
   ): Effect.Effect<
     CancelExportJobResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createConfigurationSet(
     input: CreateConfigurationSetRequest,
   ): Effect.Effect<
     CreateConfigurationSetResponse,
-    AlreadyExistsException | BadRequestException | ConcurrentModificationException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | ConcurrentModificationException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createConfigurationSetEventDestination(
     input: CreateConfigurationSetEventDestinationRequest,
   ): Effect.Effect<
     CreateConfigurationSetEventDestinationResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createContact(
     input: CreateContactRequest,
   ): Effect.Effect<
     CreateContactResponse,
-    AlreadyExistsException | BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createContactList(
     input: CreateContactListRequest,
   ): Effect.Effect<
     CreateContactListResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createCustomVerificationEmailTemplate(
     input: CreateCustomVerificationEmailTemplateRequest,
   ): Effect.Effect<
     CreateCustomVerificationEmailTemplateResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createDedicatedIpPool(
     input: CreateDedicatedIpPoolRequest,
   ): Effect.Effect<
     CreateDedicatedIpPoolResponse,
-    AlreadyExistsException | BadRequestException | ConcurrentModificationException | LimitExceededException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | ConcurrentModificationException
+    | LimitExceededException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createDeliverabilityTestReport(
     input: CreateDeliverabilityTestReportRequest,
   ): Effect.Effect<
     CreateDeliverabilityTestReportResponse,
-    AccountSuspendedException | BadRequestException | ConcurrentModificationException | LimitExceededException | MailFromDomainNotVerifiedException | MessageRejected | NotFoundException | SendingPausedException | TooManyRequestsException | CommonAwsError
+    | AccountSuspendedException
+    | BadRequestException
+    | ConcurrentModificationException
+    | LimitExceededException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | NotFoundException
+    | SendingPausedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createEmailIdentity(
     input: CreateEmailIdentityRequest,
   ): Effect.Effect<
     CreateEmailIdentityResponse,
-    AlreadyExistsException | BadRequestException | ConcurrentModificationException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | ConcurrentModificationException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createEmailIdentityPolicy(
     input: CreateEmailIdentityPolicyRequest,
   ): Effect.Effect<
     CreateEmailIdentityPolicyResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createEmailTemplate(
     input: CreateEmailTemplateRequest,
   ): Effect.Effect<
     CreateEmailTemplateResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createExportJob(
     input: CreateExportJobRequest,
   ): Effect.Effect<
     CreateExportJobResponse,
-    BadRequestException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createImportJob(
     input: CreateImportJobRequest,
   ): Effect.Effect<
     CreateImportJobResponse,
-    BadRequestException | LimitExceededException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | LimitExceededException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   createMultiRegionEndpoint(
     input: CreateMultiRegionEndpointRequest,
   ): Effect.Effect<
     CreateMultiRegionEndpointResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteConfigurationSet(
     input: DeleteConfigurationSetRequest,
   ): Effect.Effect<
     DeleteConfigurationSetResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteConfigurationSetEventDestination(
     input: DeleteConfigurationSetEventDestinationRequest,
   ): Effect.Effect<
     DeleteConfigurationSetEventDestinationResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteContact(
     input: DeleteContactRequest,
   ): Effect.Effect<
     DeleteContactResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteContactList(
     input: DeleteContactListRequest,
   ): Effect.Effect<
     DeleteContactListResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteCustomVerificationEmailTemplate(
     input: DeleteCustomVerificationEmailTemplateRequest,
   ): Effect.Effect<
     DeleteCustomVerificationEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteDedicatedIpPool(
     input: DeleteDedicatedIpPoolRequest,
   ): Effect.Effect<
     DeleteDedicatedIpPoolResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEmailIdentity(
     input: DeleteEmailIdentityRequest,
   ): Effect.Effect<
     DeleteEmailIdentityResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEmailIdentityPolicy(
     input: DeleteEmailIdentityPolicyRequest,
   ): Effect.Effect<
     DeleteEmailIdentityPolicyResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteEmailTemplate(
     input: DeleteEmailTemplateRequest,
   ): Effect.Effect<
     DeleteEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteMultiRegionEndpoint(
     input: DeleteMultiRegionEndpointRequest,
   ): Effect.Effect<
     DeleteMultiRegionEndpointResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   deleteSuppressedDestination(
     input: DeleteSuppressedDestinationRequest,
   ): Effect.Effect<
     DeleteSuppressedDestinationResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getAccount(
     input: GetAccountRequest,
@@ -168,127 +277,190 @@ export interface SimpleEmailService_v2 {
     input: GetBlacklistReportsRequest,
   ): Effect.Effect<
     GetBlacklistReportsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getConfigurationSet(
     input: GetConfigurationSetRequest,
   ): Effect.Effect<
     GetConfigurationSetResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getConfigurationSetEventDestinations(
     input: GetConfigurationSetEventDestinationsRequest,
   ): Effect.Effect<
     GetConfigurationSetEventDestinationsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getContact(
     input: GetContactRequest,
   ): Effect.Effect<
     GetContactResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getContactList(
     input: GetContactListRequest,
   ): Effect.Effect<
     GetContactListResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getCustomVerificationEmailTemplate(
     input: GetCustomVerificationEmailTemplateRequest,
   ): Effect.Effect<
     GetCustomVerificationEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDedicatedIp(
     input: GetDedicatedIpRequest,
   ): Effect.Effect<
     GetDedicatedIpResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDedicatedIpPool(
     input: GetDedicatedIpPoolRequest,
   ): Effect.Effect<
     GetDedicatedIpPoolResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDedicatedIps(
     input: GetDedicatedIpsRequest,
   ): Effect.Effect<
     GetDedicatedIpsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDeliverabilityDashboardOptions(
     input: GetDeliverabilityDashboardOptionsRequest,
   ): Effect.Effect<
     GetDeliverabilityDashboardOptionsResponse,
-    BadRequestException | LimitExceededException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | LimitExceededException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDeliverabilityTestReport(
     input: GetDeliverabilityTestReportRequest,
   ): Effect.Effect<
     GetDeliverabilityTestReportResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDomainDeliverabilityCampaign(
     input: GetDomainDeliverabilityCampaignRequest,
   ): Effect.Effect<
     GetDomainDeliverabilityCampaignResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getDomainStatisticsReport(
     input: GetDomainStatisticsReportRequest,
   ): Effect.Effect<
     GetDomainStatisticsReportResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEmailIdentity(
     input: GetEmailIdentityRequest,
   ): Effect.Effect<
     GetEmailIdentityResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEmailIdentityPolicies(
     input: GetEmailIdentityPoliciesRequest,
   ): Effect.Effect<
     GetEmailIdentityPoliciesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getEmailTemplate(
     input: GetEmailTemplateRequest,
   ): Effect.Effect<
     GetEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getExportJob(
     input: GetExportJobRequest,
   ): Effect.Effect<
     GetExportJobResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getImportJob(
     input: GetImportJobRequest,
   ): Effect.Effect<
     GetImportJobResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getMessageInsights(
     input: GetMessageInsightsRequest,
   ): Effect.Effect<
     GetMessageInsightsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getMultiRegionEndpoint(
     input: GetMultiRegionEndpointRequest,
   ): Effect.Effect<
     GetMultiRegionEndpointResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   getSuppressedDestination(
     input: GetSuppressedDestinationRequest,
   ): Effect.Effect<
     GetSuppressedDestinationResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listConfigurationSets(
     input: ListConfigurationSetsRequest,
@@ -306,7 +478,10 @@ export interface SimpleEmailService_v2 {
     input: ListContactsRequest,
   ): Effect.Effect<
     ListContactsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listCustomVerificationEmailTemplates(
     input: ListCustomVerificationEmailTemplatesRequest,
@@ -324,13 +499,19 @@ export interface SimpleEmailService_v2 {
     input: ListDeliverabilityTestReportsRequest,
   ): Effect.Effect<
     ListDeliverabilityTestReportsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listDomainDeliverabilityCampaigns(
     input: ListDomainDeliverabilityCampaignsRequest,
   ): Effect.Effect<
     ListDomainDeliverabilityCampaignsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listEmailIdentities(
     input: ListEmailIdentitiesRequest,
@@ -366,19 +547,28 @@ export interface SimpleEmailService_v2 {
     input: ListRecommendationsRequest,
   ): Effect.Effect<
     ListRecommendationsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listSuppressedDestinations(
     input: ListSuppressedDestinationsRequest,
   ): Effect.Effect<
     ListSuppressedDestinationsResponse,
-    BadRequestException | InvalidNextTokenException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | InvalidNextTokenException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   listTagsForResource(
     input: ListTagsForResourceRequest,
   ): Effect.Effect<
     ListTagsForResourceResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putAccountDedicatedIpWarmupAttributes(
     input: PutAccountDedicatedIpWarmupAttributesRequest,
@@ -390,7 +580,10 @@ export interface SimpleEmailService_v2 {
     input: PutAccountDetailsRequest,
   ): Effect.Effect<
     PutAccountDetailsResponse,
-    BadRequestException | ConflictException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConflictException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putAccountSendingAttributes(
     input: PutAccountSendingAttributesRequest,
@@ -414,97 +607,148 @@ export interface SimpleEmailService_v2 {
     input: PutConfigurationSetArchivingOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetArchivingOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putConfigurationSetDeliveryOptions(
     input: PutConfigurationSetDeliveryOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetDeliveryOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putConfigurationSetReputationOptions(
     input: PutConfigurationSetReputationOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetReputationOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putConfigurationSetSendingOptions(
     input: PutConfigurationSetSendingOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetSendingOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putConfigurationSetSuppressionOptions(
     input: PutConfigurationSetSuppressionOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetSuppressionOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putConfigurationSetTrackingOptions(
     input: PutConfigurationSetTrackingOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetTrackingOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putConfigurationSetVdmOptions(
     input: PutConfigurationSetVdmOptionsRequest,
   ): Effect.Effect<
     PutConfigurationSetVdmOptionsResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putDedicatedIpInPool(
     input: PutDedicatedIpInPoolRequest,
   ): Effect.Effect<
     PutDedicatedIpInPoolResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putDedicatedIpPoolScalingAttributes(
     input: PutDedicatedIpPoolScalingAttributesRequest,
   ): Effect.Effect<
     PutDedicatedIpPoolScalingAttributesResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putDedicatedIpWarmupAttributes(
     input: PutDedicatedIpWarmupAttributesRequest,
   ): Effect.Effect<
     PutDedicatedIpWarmupAttributesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putDeliverabilityDashboardOption(
     input: PutDeliverabilityDashboardOptionRequest,
   ): Effect.Effect<
     PutDeliverabilityDashboardOptionResponse,
-    AlreadyExistsException | BadRequestException | LimitExceededException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | AlreadyExistsException
+    | BadRequestException
+    | LimitExceededException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putEmailIdentityConfigurationSetAttributes(
     input: PutEmailIdentityConfigurationSetAttributesRequest,
   ): Effect.Effect<
     PutEmailIdentityConfigurationSetAttributesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putEmailIdentityDkimAttributes(
     input: PutEmailIdentityDkimAttributesRequest,
   ): Effect.Effect<
     PutEmailIdentityDkimAttributesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putEmailIdentityDkimSigningAttributes(
     input: PutEmailIdentityDkimSigningAttributesRequest,
   ): Effect.Effect<
     PutEmailIdentityDkimSigningAttributesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putEmailIdentityFeedbackAttributes(
     input: PutEmailIdentityFeedbackAttributesRequest,
   ): Effect.Effect<
     PutEmailIdentityFeedbackAttributesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putEmailIdentityMailFromAttributes(
     input: PutEmailIdentityMailFromAttributesRequest,
   ): Effect.Effect<
     PutEmailIdentityMailFromAttributesResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   putSuppressedDestination(
     input: PutSuppressedDestinationRequest,
@@ -516,73 +760,127 @@ export interface SimpleEmailService_v2 {
     input: SendBulkEmailRequest,
   ): Effect.Effect<
     SendBulkEmailResponse,
-    AccountSuspendedException | BadRequestException | LimitExceededException | MailFromDomainNotVerifiedException | MessageRejected | NotFoundException | SendingPausedException | TooManyRequestsException | CommonAwsError
+    | AccountSuspendedException
+    | BadRequestException
+    | LimitExceededException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | NotFoundException
+    | SendingPausedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   sendCustomVerificationEmail(
     input: SendCustomVerificationEmailRequest,
   ): Effect.Effect<
     SendCustomVerificationEmailResponse,
-    BadRequestException | LimitExceededException | MailFromDomainNotVerifiedException | MessageRejected | NotFoundException | SendingPausedException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | LimitExceededException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | NotFoundException
+    | SendingPausedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   sendEmail(
     input: SendEmailRequest,
   ): Effect.Effect<
     SendEmailResponse,
-    AccountSuspendedException | BadRequestException | LimitExceededException | MailFromDomainNotVerifiedException | MessageRejected | NotFoundException | SendingPausedException | TooManyRequestsException | CommonAwsError
+    | AccountSuspendedException
+    | BadRequestException
+    | LimitExceededException
+    | MailFromDomainNotVerifiedException
+    | MessageRejected
+    | NotFoundException
+    | SendingPausedException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   tagResource(
     input: TagResourceRequest,
   ): Effect.Effect<
     TagResourceResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   testRenderEmailTemplate(
     input: TestRenderEmailTemplateRequest,
   ): Effect.Effect<
     TestRenderEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   untagResource(
     input: UntagResourceRequest,
   ): Effect.Effect<
     UntagResourceResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateConfigurationSetEventDestination(
     input: UpdateConfigurationSetEventDestinationRequest,
   ): Effect.Effect<
     UpdateConfigurationSetEventDestinationResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateContact(
     input: UpdateContactRequest,
   ): Effect.Effect<
     UpdateContactResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateContactList(
     input: UpdateContactListRequest,
   ): Effect.Effect<
     UpdateContactListResponse,
-    BadRequestException | ConcurrentModificationException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | ConcurrentModificationException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateCustomVerificationEmailTemplate(
     input: UpdateCustomVerificationEmailTemplateRequest,
   ): Effect.Effect<
     UpdateCustomVerificationEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateEmailIdentityPolicy(
     input: UpdateEmailIdentityPolicyRequest,
   ): Effect.Effect<
     UpdateEmailIdentityPolicyResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
   updateEmailTemplate(
     input: UpdateEmailTemplateRequest,
   ): Effect.Effect<
     UpdateEmailTemplateResponse,
-    BadRequestException | NotFoundException | TooManyRequestsException | CommonAwsError
+    | BadRequestException
+    | NotFoundException
+    | TooManyRequestsException
+    | CommonAwsError
   >;
 }
 
@@ -632,7 +930,10 @@ export type AttachmentContentDescription = string;
 export type AttachmentContentDisposition = "ATTACHMENT" | "INLINE";
 export type AttachmentContentId = string;
 
-export type AttachmentContentTransferEncoding = "BASE64" | "QUOTED_PRINTABLE" | "SEVEN_BIT";
+export type AttachmentContentTransferEncoding =
+  | "BASE64"
+  | "QUOTED_PRINTABLE"
+  | "SEVEN_BIT";
 export type AttachmentContentType = string;
 
 export type AttachmentFileName = string;
@@ -702,14 +1003,27 @@ export interface BulkEmailEntryResult {
   MessageId?: string;
 }
 export type BulkEmailEntryResultList = Array<BulkEmailEntryResult>;
-export type BulkEmailStatus = "SUCCESS" | "MESSAGE_REJECTED" | "MAIL_FROM_DOMAIN_NOT_VERIFIED" | "CONFIGURATION_SET_NOT_FOUND" | "TEMPLATE_NOT_FOUND" | "ACCOUNT_SUSPENDED" | "ACCOUNT_THROTTLED" | "ACCOUNT_DAILY_QUOTA_EXCEEDED" | "INVALID_SENDING_POOL_NAME" | "ACCOUNT_SENDING_PAUSED" | "CONFIGURATION_SET_SENDING_PAUSED" | "INVALID_PARAMETER" | "TRANSIENT_FAILURE" | "FAILED";
+export type BulkEmailStatus =
+  | "SUCCESS"
+  | "MESSAGE_REJECTED"
+  | "MAIL_FROM_DOMAIN_NOT_VERIFIED"
+  | "CONFIGURATION_SET_NOT_FOUND"
+  | "TEMPLATE_NOT_FOUND"
+  | "ACCOUNT_SUSPENDED"
+  | "ACCOUNT_THROTTLED"
+  | "ACCOUNT_DAILY_QUOTA_EXCEEDED"
+  | "INVALID_SENDING_POOL_NAME"
+  | "ACCOUNT_SENDING_PAUSED"
+  | "CONFIGURATION_SET_SENDING_PAUSED"
+  | "INVALID_PARAMETER"
+  | "TRANSIENT_FAILURE"
+  | "FAILED";
 export type CampaignId = string;
 
 export interface CancelExportJobRequest {
   JobId: string;
 }
-export interface CancelExportJobResponse {
-}
+export interface CancelExportJobResponse {}
 export type CaseId = string;
 
 export type Charset = string;
@@ -722,7 +1036,8 @@ export interface CloudWatchDimensionConfiguration {
   DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
-export type CloudWatchDimensionConfigurations = Array<CloudWatchDimensionConfiguration>;
+export type CloudWatchDimensionConfigurations =
+  Array<CloudWatchDimensionConfiguration>;
 export interface Complaint {
   ComplaintSubType?: string;
   ComplaintFeedbackType?: string;
@@ -774,8 +1089,7 @@ export interface CreateConfigurationSetEventDestinationRequest {
   EventDestinationName: string;
   EventDestination: EventDestinationDefinition;
 }
-export interface CreateConfigurationSetEventDestinationResponse {
-}
+export interface CreateConfigurationSetEventDestinationResponse {}
 export interface CreateConfigurationSetRequest {
   ConfigurationSetName: string;
   TrackingOptions?: TrackingOptions;
@@ -787,16 +1101,14 @@ export interface CreateConfigurationSetRequest {
   VdmOptions?: VdmOptions;
   ArchivingOptions?: ArchivingOptions;
 }
-export interface CreateConfigurationSetResponse {
-}
+export interface CreateConfigurationSetResponse {}
 export interface CreateContactListRequest {
   ContactListName: string;
   Topics?: Array<Topic>;
   Description?: string;
   Tags?: Array<Tag>;
 }
-export interface CreateContactListResponse {
-}
+export interface CreateContactListResponse {}
 export interface CreateContactRequest {
   ContactListName: string;
   EmailAddress: string;
@@ -804,8 +1116,7 @@ export interface CreateContactRequest {
   UnsubscribeAll?: boolean;
   AttributesData?: string;
 }
-export interface CreateContactResponse {
-}
+export interface CreateContactResponse {}
 export interface CreateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress: string;
@@ -814,15 +1125,13 @@ export interface CreateCustomVerificationEmailTemplateRequest {
   SuccessRedirectionURL: string;
   FailureRedirectionURL: string;
 }
-export interface CreateCustomVerificationEmailTemplateResponse {
-}
+export interface CreateCustomVerificationEmailTemplateResponse {}
 export interface CreateDedicatedIpPoolRequest {
   PoolName: string;
   Tags?: Array<Tag>;
   ScalingMode?: ScalingMode;
 }
-export interface CreateDedicatedIpPoolResponse {
-}
+export interface CreateDedicatedIpPoolResponse {}
 export interface CreateDeliverabilityTestReportRequest {
   ReportName?: string;
   FromEmailAddress: string;
@@ -838,8 +1147,7 @@ export interface CreateEmailIdentityPolicyRequest {
   PolicyName: string;
   Policy: string;
 }
-export interface CreateEmailIdentityPolicyResponse {
-}
+export interface CreateEmailIdentityPolicyResponse {}
 export interface CreateEmailIdentityRequest {
   EmailIdentity: string;
   Tags?: Array<Tag>;
@@ -855,8 +1163,7 @@ export interface CreateEmailTemplateRequest {
   TemplateName: string;
   TemplateContent: EmailTemplateContent;
 }
-export interface CreateEmailTemplateResponse {
-}
+export interface CreateEmailTemplateResponse {}
 export interface CreateExportJobRequest {
   ExportDataSource: ExportDataSource;
   ExportDestination: ExportDestination;
@@ -889,7 +1196,8 @@ export interface CustomVerificationEmailTemplateMetadata {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-export type CustomVerificationEmailTemplatesList = Array<CustomVerificationEmailTemplateMetadata>;
+export type CustomVerificationEmailTemplatesList =
+  Array<CustomVerificationEmailTemplateMetadata>;
 export interface DailyVolume {
   StartDate?: Date | string;
   VolumeStatistics?: VolumeStatistics;
@@ -920,50 +1228,41 @@ export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
 }
-export interface DeleteConfigurationSetEventDestinationResponse {
-}
+export interface DeleteConfigurationSetEventDestinationResponse {}
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
-export interface DeleteConfigurationSetResponse {
-}
+export interface DeleteConfigurationSetResponse {}
 export interface DeleteContactListRequest {
   ContactListName: string;
 }
-export interface DeleteContactListResponse {
-}
+export interface DeleteContactListResponse {}
 export interface DeleteContactRequest {
   ContactListName: string;
   EmailAddress: string;
 }
-export interface DeleteContactResponse {
-}
+export interface DeleteContactResponse {}
 export interface DeleteCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
-export interface DeleteCustomVerificationEmailTemplateResponse {
-}
+export interface DeleteCustomVerificationEmailTemplateResponse {}
 export interface DeleteDedicatedIpPoolRequest {
   PoolName: string;
 }
-export interface DeleteDedicatedIpPoolResponse {
-}
+export interface DeleteDedicatedIpPoolResponse {}
 export interface DeleteEmailIdentityPolicyRequest {
   EmailIdentity: string;
   PolicyName: string;
 }
-export interface DeleteEmailIdentityPolicyResponse {
-}
+export interface DeleteEmailIdentityPolicyResponse {}
 export interface DeleteEmailIdentityRequest {
   EmailIdentity: string;
 }
-export interface DeleteEmailIdentityResponse {
-}
+export interface DeleteEmailIdentityResponse {}
 export interface DeleteEmailTemplateRequest {
   TemplateName: string;
 }
-export interface DeleteEmailTemplateResponse {
-}
+export interface DeleteEmailTemplateResponse {}
 export interface DeleteMultiRegionEndpointRequest {
   EndpointName: string;
 }
@@ -973,9 +1272,11 @@ export interface DeleteMultiRegionEndpointResponse {
 export interface DeleteSuppressedDestinationRequest {
   EmailAddress: string;
 }
-export interface DeleteSuppressedDestinationResponse {
-}
-export type DeliverabilityDashboardAccountStatus = "ACTIVE" | "PENDING_EXPIRATION" | "DISABLED";
+export interface DeleteSuppressedDestinationResponse {}
+export type DeliverabilityDashboardAccountStatus =
+  | "ACTIVE"
+  | "PENDING_EXPIRATION"
+  | "DISABLED";
 export interface DeliverabilityTestReport {
   ReportId?: string;
   ReportName?: string;
@@ -988,7 +1289,13 @@ export type DeliverabilityTestReports = Array<DeliverabilityTestReport>;
 export type DeliverabilityTestStatus = "IN_PROGRESS" | "COMPLETED";
 export type DeliverabilityTestSubject = string;
 
-export type DeliveryEventType = "SEND" | "DELIVERY" | "TRANSIENT_BOUNCE" | "PERMANENT_BOUNCE" | "UNDETERMINED_BOUNCE" | "COMPLAINT";
+export type DeliveryEventType =
+  | "SEND"
+  | "DELIVERY"
+  | "TRANSIENT_BOUNCE"
+  | "PERMANENT_BOUNCE"
+  | "UNDETERMINED_BOUNCE"
+  | "COMPLAINT";
 export interface DeliveryOptions {
   TlsPolicy?: TlsPolicy;
   SendingPoolName?: string;
@@ -1027,9 +1334,41 @@ export interface DkimSigningAttributes {
   NextSigningKeyLength?: DkimSigningKeyLength;
   DomainSigningAttributesOrigin?: DkimSigningAttributesOrigin;
 }
-export type DkimSigningAttributesOrigin = "AWS_SES" | "EXTERNAL" | "AWS_SES_AF_SOUTH_1" | "AWS_SES_EU_NORTH_1" | "AWS_SES_AP_SOUTH_1" | "AWS_SES_EU_WEST_3" | "AWS_SES_EU_WEST_2" | "AWS_SES_EU_SOUTH_1" | "AWS_SES_EU_WEST_1" | "AWS_SES_AP_NORTHEAST_3" | "AWS_SES_AP_NORTHEAST_2" | "AWS_SES_ME_SOUTH_1" | "AWS_SES_AP_NORTHEAST_1" | "AWS_SES_IL_CENTRAL_1" | "AWS_SES_SA_EAST_1" | "AWS_SES_CA_CENTRAL_1" | "AWS_SES_AP_SOUTHEAST_1" | "AWS_SES_AP_SOUTHEAST_2" | "AWS_SES_AP_SOUTHEAST_3" | "AWS_SES_EU_CENTRAL_1" | "AWS_SES_US_EAST_1" | "AWS_SES_US_EAST_2" | "AWS_SES_US_WEST_1" | "AWS_SES_US_WEST_2" | "AWS_SES_ME_CENTRAL_1" | "AWS_SES_AP_SOUTH_2" | "AWS_SES_EU_CENTRAL_2";
+export type DkimSigningAttributesOrigin =
+  | "AWS_SES"
+  | "EXTERNAL"
+  | "AWS_SES_AF_SOUTH_1"
+  | "AWS_SES_EU_NORTH_1"
+  | "AWS_SES_AP_SOUTH_1"
+  | "AWS_SES_EU_WEST_3"
+  | "AWS_SES_EU_WEST_2"
+  | "AWS_SES_EU_SOUTH_1"
+  | "AWS_SES_EU_WEST_1"
+  | "AWS_SES_AP_NORTHEAST_3"
+  | "AWS_SES_AP_NORTHEAST_2"
+  | "AWS_SES_ME_SOUTH_1"
+  | "AWS_SES_AP_NORTHEAST_1"
+  | "AWS_SES_IL_CENTRAL_1"
+  | "AWS_SES_SA_EAST_1"
+  | "AWS_SES_CA_CENTRAL_1"
+  | "AWS_SES_AP_SOUTHEAST_1"
+  | "AWS_SES_AP_SOUTHEAST_2"
+  | "AWS_SES_AP_SOUTHEAST_3"
+  | "AWS_SES_EU_CENTRAL_1"
+  | "AWS_SES_US_EAST_1"
+  | "AWS_SES_US_EAST_2"
+  | "AWS_SES_US_WEST_1"
+  | "AWS_SES_US_WEST_2"
+  | "AWS_SES_ME_CENTRAL_1"
+  | "AWS_SES_AP_SOUTH_2"
+  | "AWS_SES_EU_CENTRAL_2";
 export type DkimSigningKeyLength = "RSA_1024_BIT" | "RSA_2048_BIT";
-export type DkimStatus = "PENDING" | "SUCCESS" | "FAILED" | "TEMPORARY_FAILURE" | "NOT_STARTED";
+export type DkimStatus =
+  | "PENDING"
+  | "SUCCESS"
+  | "FAILED"
+  | "TEMPORARY_FAILURE"
+  | "NOT_STARTED";
 export type DnsToken = string;
 
 export type DnsTokenList = Array<string>;
@@ -1051,13 +1390,15 @@ export interface DomainDeliverabilityCampaign {
   ProjectedVolume?: number;
   Esps?: Array<string>;
 }
-export type DomainDeliverabilityCampaignList = Array<DomainDeliverabilityCampaign>;
+export type DomainDeliverabilityCampaignList =
+  Array<DomainDeliverabilityCampaign>;
 export interface DomainDeliverabilityTrackingOption {
   Domain?: string;
   SubscriptionStartDate?: Date | string;
   InboxPlacementTrackingOption?: InboxPlacementTrackingOption;
 }
-export type DomainDeliverabilityTrackingOptions = Array<DomainDeliverabilityTrackingOption>;
+export type DomainDeliverabilityTrackingOptions =
+  Array<DomainDeliverabilityTrackingOption>;
 export interface DomainIspPlacement {
   IspName?: string;
   InboxRawCount?: number;
@@ -1147,7 +1488,17 @@ export interface EventDetails {
   Bounce?: Bounce;
   Complaint?: Complaint;
 }
-export type EventType = "SEND" | "REJECT" | "BOUNCE" | "COMPLAINT" | "DELIVERY" | "OPEN" | "CLICK" | "RENDERING_FAILURE" | "DELIVERY_DELAY" | "SUBSCRIPTION";
+export type EventType =
+  | "SEND"
+  | "REJECT"
+  | "BOUNCE"
+  | "COMPLAINT"
+  | "DELIVERY"
+  | "OPEN"
+  | "CLICK"
+  | "RENDERING_FAILURE"
+  | "DELIVERY_DELAY"
+  | "SUBSCRIPTION";
 export type EventTypes = Array<EventType>;
 export interface ExportDataSource {
   MetricsDataSource?: MetricsDataSource;
@@ -1194,8 +1545,7 @@ export type FeedbackId = string;
 
 export type GeneralEnforcementStatus = string;
 
-export interface GetAccountRequest {
-}
+export interface GetAccountRequest {}
 export interface GetAccountResponse {
   DedicatedIpAutoWarmupEnabled?: boolean;
   EnforcementStatus?: string;
@@ -1289,8 +1639,7 @@ export interface GetDedicatedIpsResponse {
   DedicatedIps?: Array<DedicatedIp>;
   NextToken?: string;
 }
-export interface GetDeliverabilityDashboardOptionsRequest {
-}
+export interface GetDeliverabilityDashboardOptionsRequest {}
 export interface GetDeliverabilityDashboardOptionsResponse {
   DashboardEnabled: boolean;
   SubscriptionExpiryDate?: Date | string;
@@ -1481,7 +1830,12 @@ export interface IspPlacement {
 export type IspPlacements = Array<IspPlacement>;
 export type JobId = string;
 
-export type JobStatus = "CREATED" | "PROCESSING" | "COMPLETED" | "FAILED" | "CANCELLED";
+export type JobStatus =
+  | "CREATED"
+  | "PROCESSING"
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED";
 export interface KinesisFirehoseDestination {
   IamRoleArn: string;
   DeliveryStreamArn: string;
@@ -1612,8 +1966,15 @@ export type ListOfContacts = Array<Contact>;
 export type ListOfDedicatedIpPools = Array<string>;
 export type ListRecommendationFilterValue = string;
 
-export type ListRecommendationsFilter = Record<ListRecommendationsFilterKey, string>;
-export type ListRecommendationsFilterKey = "TYPE" | "IMPACT" | "STATUS" | "RESOURCE_ARN";
+export type ListRecommendationsFilter = Record<
+  ListRecommendationsFilterKey,
+  string
+>;
+export type ListRecommendationsFilterKey =
+  | "TYPE"
+  | "IMPACT"
+  | "STATUS"
+  | "RESOURCE_ARN";
 export interface ListRecommendationsRequest {
   Filter?: Record<ListRecommendationsFilterKey, string>;
   NextToken?: string;
@@ -1652,7 +2013,11 @@ export declare class MailFromDomainNotVerifiedException extends Data.TaggedError
 )<{
   readonly message?: string;
 }> {}
-export type MailFromDomainStatus = "PENDING" | "SUCCESS" | "FAILED" | "TEMPORARY_FAILURE";
+export type MailFromDomainStatus =
+  | "PENDING"
+  | "SUCCESS"
+  | "FAILED"
+  | "TEMPORARY_FAILURE";
 export type MailType = "MARKETING" | "TRANSACTIONAL";
 export type Max24HourSend = number;
 
@@ -1712,7 +2077,17 @@ export type MessageTagName = string;
 
 export type MessageTagValue = string;
 
-export type Metric = "SEND" | "COMPLAINT" | "PERMANENT_BOUNCE" | "TRANSIENT_BOUNCE" | "OPEN" | "CLICK" | "DELIVERY" | "DELIVERY_OPEN" | "DELIVERY_CLICK" | "DELIVERY_COMPLAINT";
+export type Metric =
+  | "SEND"
+  | "COMPLAINT"
+  | "PERMANENT_BOUNCE"
+  | "TRANSIENT_BOUNCE"
+  | "OPEN"
+  | "CLICK"
+  | "DELIVERY"
+  | "DELIVERY_OPEN"
+  | "DELIVERY_CLICK"
+  | "DELIVERY_COMPLAINT";
 export type MetricAggregation = "RATE" | "VOLUME";
 export interface MetricDataError {
   Id?: string;
@@ -1726,7 +2101,10 @@ export interface MetricDataResult {
   Values?: Array<number>;
 }
 export type MetricDataResultList = Array<MetricDataResult>;
-export type MetricDimensionName = "EMAIL_IDENTITY" | "CONFIGURATION_SET" | "ISP";
+export type MetricDimensionName =
+  | "EMAIL_IDENTITY"
+  | "CONFIGURATION_SET"
+  | "ISP";
 export type MetricDimensionValue = string;
 
 export type MetricNamespace = "VDM";
@@ -1795,8 +2173,7 @@ export type ProcessedRecordsCount = number;
 export interface PutAccountDedicatedIpWarmupAttributesRequest {
   AutoWarmupEnabled?: boolean;
 }
-export interface PutAccountDedicatedIpWarmupAttributesResponse {
-}
+export interface PutAccountDedicatedIpWarmupAttributesResponse {}
 export interface PutAccountDetailsRequest {
   MailType: MailType;
   WebsiteURL: string;
@@ -1805,104 +2182,87 @@ export interface PutAccountDetailsRequest {
   AdditionalContactEmailAddresses?: Array<string>;
   ProductionAccessEnabled?: boolean;
 }
-export interface PutAccountDetailsResponse {
-}
+export interface PutAccountDetailsResponse {}
 export interface PutAccountSendingAttributesRequest {
   SendingEnabled?: boolean;
 }
-export interface PutAccountSendingAttributesResponse {
-}
+export interface PutAccountSendingAttributesResponse {}
 export interface PutAccountSuppressionAttributesRequest {
   SuppressedReasons?: Array<SuppressionListReason>;
 }
-export interface PutAccountSuppressionAttributesResponse {
-}
+export interface PutAccountSuppressionAttributesResponse {}
 export interface PutAccountVdmAttributesRequest {
   VdmAttributes: VdmAttributes;
 }
-export interface PutAccountVdmAttributesResponse {
-}
+export interface PutAccountVdmAttributesResponse {}
 export interface PutConfigurationSetArchivingOptionsRequest {
   ConfigurationSetName: string;
   ArchiveArn?: string;
 }
-export interface PutConfigurationSetArchivingOptionsResponse {
-}
+export interface PutConfigurationSetArchivingOptionsResponse {}
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   TlsPolicy?: TlsPolicy;
   SendingPoolName?: string;
   MaxDeliverySeconds?: number;
 }
-export interface PutConfigurationSetDeliveryOptionsResponse {
-}
+export interface PutConfigurationSetDeliveryOptionsResponse {}
 export interface PutConfigurationSetReputationOptionsRequest {
   ConfigurationSetName: string;
   ReputationMetricsEnabled?: boolean;
 }
-export interface PutConfigurationSetReputationOptionsResponse {
-}
+export interface PutConfigurationSetReputationOptionsResponse {}
 export interface PutConfigurationSetSendingOptionsRequest {
   ConfigurationSetName: string;
   SendingEnabled?: boolean;
 }
-export interface PutConfigurationSetSendingOptionsResponse {
-}
+export interface PutConfigurationSetSendingOptionsResponse {}
 export interface PutConfigurationSetSuppressionOptionsRequest {
   ConfigurationSetName: string;
   SuppressedReasons?: Array<SuppressionListReason>;
 }
-export interface PutConfigurationSetSuppressionOptionsResponse {
-}
+export interface PutConfigurationSetSuppressionOptionsResponse {}
 export interface PutConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   CustomRedirectDomain?: string;
   HttpsPolicy?: HttpsPolicy;
 }
-export interface PutConfigurationSetTrackingOptionsResponse {
-}
+export interface PutConfigurationSetTrackingOptionsResponse {}
 export interface PutConfigurationSetVdmOptionsRequest {
   ConfigurationSetName: string;
   VdmOptions?: VdmOptions;
 }
-export interface PutConfigurationSetVdmOptionsResponse {
-}
+export interface PutConfigurationSetVdmOptionsResponse {}
 export interface PutDedicatedIpInPoolRequest {
   Ip: string;
   DestinationPoolName: string;
 }
-export interface PutDedicatedIpInPoolResponse {
-}
+export interface PutDedicatedIpInPoolResponse {}
 export interface PutDedicatedIpPoolScalingAttributesRequest {
   PoolName: string;
   ScalingMode: ScalingMode;
 }
-export interface PutDedicatedIpPoolScalingAttributesResponse {
-}
+export interface PutDedicatedIpPoolScalingAttributesResponse {}
 export interface PutDedicatedIpWarmupAttributesRequest {
   Ip: string;
   WarmupPercentage: number;
 }
-export interface PutDedicatedIpWarmupAttributesResponse {
-}
+export interface PutDedicatedIpWarmupAttributesResponse {}
 export interface PutDeliverabilityDashboardOptionRequest {
   DashboardEnabled: boolean;
   SubscribedDomains?: Array<DomainDeliverabilityTrackingOption>;
 }
-export interface PutDeliverabilityDashboardOptionResponse {
-}
+export interface PutDeliverabilityDashboardOptionResponse {}
 export interface PutEmailIdentityConfigurationSetAttributesRequest {
   EmailIdentity: string;
   ConfigurationSetName?: string;
 }
-export interface PutEmailIdentityConfigurationSetAttributesResponse {
-}
+export interface PutEmailIdentityConfigurationSetAttributesResponse {}
 export interface PutEmailIdentityDkimAttributesRequest {
   EmailIdentity: string;
   SigningEnabled?: boolean;
 }
-export interface PutEmailIdentityDkimAttributesResponse {
-}
+export interface PutEmailIdentityDkimAttributesResponse {}
 export interface PutEmailIdentityDkimSigningAttributesRequest {
   EmailIdentity: string;
   SigningAttributesOrigin: DkimSigningAttributesOrigin;
@@ -1916,21 +2276,18 @@ export interface PutEmailIdentityFeedbackAttributesRequest {
   EmailIdentity: string;
   EmailForwardingEnabled?: boolean;
 }
-export interface PutEmailIdentityFeedbackAttributesResponse {
-}
+export interface PutEmailIdentityFeedbackAttributesResponse {}
 export interface PutEmailIdentityMailFromAttributesRequest {
   EmailIdentity: string;
   MailFromDomain?: string;
   BehaviorOnMxFailure?: BehaviorOnMxFailure;
 }
-export interface PutEmailIdentityMailFromAttributesResponse {
-}
+export interface PutEmailIdentityMailFromAttributesResponse {}
 export interface PutSuppressedDestinationRequest {
   EmailAddress: string;
   Reason: SuppressionListReason;
 }
-export interface PutSuppressedDestinationResponse {
-}
+export interface PutSuppressedDestinationResponse {}
 export type QueryErrorCode = "INTERNAL_FAILURE" | "ACCESS_DENIED";
 export type QueryErrorMessage = string;
 
@@ -1959,7 +2316,12 @@ export type RecommendationDescription = string;
 export type RecommendationImpact = "LOW" | "HIGH";
 export type RecommendationsList = Array<Recommendation>;
 export type RecommendationStatus = "OPEN" | "FIXED";
-export type RecommendationType = "DKIM" | "DMARC" | "SPF" | "BIMI" | "COMPLAINT";
+export type RecommendationType =
+  | "DKIM"
+  | "DMARC"
+  | "SPF"
+  | "BIMI"
+  | "COMPLAINT";
 export type Region = string;
 
 export type Regions = Array<string>;
@@ -2079,7 +2441,8 @@ export interface SuppressedDestinationAttributes {
   MessageId?: string;
   FeedbackId?: string;
 }
-export type SuppressedDestinationSummaries = Array<SuppressedDestinationSummary>;
+export type SuppressedDestinationSummaries =
+  Array<SuppressedDestinationSummary>;
 export interface SuppressedDestinationSummary {
   EmailAddress: string;
   Reason: SuppressionListReason;
@@ -2109,8 +2472,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Array<Tag>;
 }
-export interface TagResourceResponse {
-}
+export interface TagResourceResponse {}
 export type TagValue = string;
 
 export interface Template {
@@ -2167,22 +2529,19 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: Array<string>;
 }
-export interface UntagResourceResponse {
-}
+export interface UntagResourceResponse {}
 export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
   EventDestination: EventDestinationDefinition;
 }
-export interface UpdateConfigurationSetEventDestinationResponse {
-}
+export interface UpdateConfigurationSetEventDestinationResponse {}
 export interface UpdateContactListRequest {
   ContactListName: string;
   Topics?: Array<Topic>;
   Description?: string;
 }
-export interface UpdateContactListResponse {
-}
+export interface UpdateContactListResponse {}
 export interface UpdateContactRequest {
   ContactListName: string;
   EmailAddress: string;
@@ -2190,8 +2549,7 @@ export interface UpdateContactRequest {
   UnsubscribeAll?: boolean;
   AttributesData?: string;
 }
-export interface UpdateContactResponse {
-}
+export interface UpdateContactResponse {}
 export interface UpdateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress: string;
@@ -2200,21 +2558,18 @@ export interface UpdateCustomVerificationEmailTemplateRequest {
   SuccessRedirectionURL: string;
   FailureRedirectionURL: string;
 }
-export interface UpdateCustomVerificationEmailTemplateResponse {
-}
+export interface UpdateCustomVerificationEmailTemplateResponse {}
 export interface UpdateEmailIdentityPolicyRequest {
   EmailIdentity: string;
   PolicyName: string;
   Policy: string;
 }
-export interface UpdateEmailIdentityPolicyResponse {
-}
+export interface UpdateEmailIdentityPolicyResponse {}
 export interface UpdateEmailTemplateRequest {
   TemplateName: string;
   TemplateContent: EmailTemplateContent;
 }
-export interface UpdateEmailTemplateResponse {
-}
+export interface UpdateEmailTemplateResponse {}
 export type UseCaseDescription = string;
 
 export type UseDefaultIfPreferenceUnavailable = boolean;
@@ -2228,14 +2583,29 @@ export interface VdmOptions {
   DashboardOptions?: DashboardOptions;
   GuardianOptions?: GuardianOptions;
 }
-export type VerificationError = "SERVICE_ERROR" | "DNS_SERVER_ERROR" | "HOST_NOT_FOUND" | "TYPE_NOT_FOUND" | "INVALID_VALUE" | "REPLICATION_ACCESS_DENIED" | "REPLICATION_PRIMARY_NOT_FOUND" | "REPLICATION_PRIMARY_BYO_DKIM_NOT_SUPPORTED" | "REPLICATION_REPLICA_AS_PRIMARY_NOT_SUPPORTED" | "REPLICATION_PRIMARY_INVALID_REGION";
+export type VerificationError =
+  | "SERVICE_ERROR"
+  | "DNS_SERVER_ERROR"
+  | "HOST_NOT_FOUND"
+  | "TYPE_NOT_FOUND"
+  | "INVALID_VALUE"
+  | "REPLICATION_ACCESS_DENIED"
+  | "REPLICATION_PRIMARY_NOT_FOUND"
+  | "REPLICATION_PRIMARY_BYO_DKIM_NOT_SUPPORTED"
+  | "REPLICATION_REPLICA_AS_PRIMARY_NOT_SUPPORTED"
+  | "REPLICATION_PRIMARY_INVALID_REGION";
 export interface VerificationInfo {
   LastCheckedTimestamp?: Date | string;
   LastSuccessTimestamp?: Date | string;
   ErrorType?: VerificationError;
   SOARecord?: SOARecord;
 }
-export type VerificationStatus = "PENDING" | "SUCCESS" | "FAILED" | "TEMPORARY_FAILURE" | "NOT_STARTED";
+export type VerificationStatus =
+  | "PENDING"
+  | "SUCCESS"
+  | "FAILED"
+  | "TEMPORARY_FAILURE"
+  | "NOT_STARTED";
 export type Volume = number;
 
 export interface VolumeStatistics {
@@ -3253,4 +3623,3 @@ export declare namespace UpdateEmailTemplate {
     | TooManyRequestsException
     | CommonAwsError;
 }
-

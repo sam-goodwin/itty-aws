@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.kinesis#AccessDeniedException": {
       "type": "structure",
@@ -1645,6 +1674,113 @@
     },
     "com.amazonaws.kinesis#Kinesis_20131202": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.kinesis#AddTagsToStream"
+        },
+        {
+          "target": "com.amazonaws.kinesis#CreateStream"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DecreaseStreamRetentionPeriod"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DeleteResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DeleteStream"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DeregisterStreamConsumer"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DescribeLimits"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DescribeStream"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DescribeStreamConsumer"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DescribeStreamSummary"
+        },
+        {
+          "target": "com.amazonaws.kinesis#DisableEnhancedMonitoring"
+        },
+        {
+          "target": "com.amazonaws.kinesis#EnableEnhancedMonitoring"
+        },
+        {
+          "target": "com.amazonaws.kinesis#GetRecords"
+        },
+        {
+          "target": "com.amazonaws.kinesis#GetResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.kinesis#GetShardIterator"
+        },
+        {
+          "target": "com.amazonaws.kinesis#IncreaseStreamRetentionPeriod"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ListShards"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ListStreamConsumers"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ListStreams"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.kinesis#ListTagsForStream"
+        },
+        {
+          "target": "com.amazonaws.kinesis#MergeShards"
+        },
+        {
+          "target": "com.amazonaws.kinesis#PutRecord"
+        },
+        {
+          "target": "com.amazonaws.kinesis#PutRecords"
+        },
+        {
+          "target": "com.amazonaws.kinesis#PutResourcePolicy"
+        },
+        {
+          "target": "com.amazonaws.kinesis#RegisterStreamConsumer"
+        },
+        {
+          "target": "com.amazonaws.kinesis#RemoveTagsFromStream"
+        },
+        {
+          "target": "com.amazonaws.kinesis#SplitShard"
+        },
+        {
+          "target": "com.amazonaws.kinesis#StartStreamEncryption"
+        },
+        {
+          "target": "com.amazonaws.kinesis#StopStreamEncryption"
+        },
+        {
+          "target": "com.amazonaws.kinesis#SubscribeToShard"
+        },
+        {
+          "target": "com.amazonaws.kinesis#TagResource"
+        },
+        {
+          "target": "com.amazonaws.kinesis#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.kinesis#UpdateShardCount"
+        },
+        {
+          "target": "com.amazonaws.kinesis#UpdateStreamMode"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "Kinesis",

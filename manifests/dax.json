@@ -1,7 +1,101 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.dax#AmazonDAXV3": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.dax#CreateCluster"
+        },
+        {
+          "target": "com.amazonaws.dax#CreateParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.dax#CreateSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.dax#DecreaseReplicationFactor"
+        },
+        {
+          "target": "com.amazonaws.dax#DeleteCluster"
+        },
+        {
+          "target": "com.amazonaws.dax#DeleteParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.dax#DeleteSubnetGroup"
+        },
+        {
+          "target": "com.amazonaws.dax#DescribeClusters"
+        },
+        {
+          "target": "com.amazonaws.dax#DescribeDefaultParameters"
+        },
+        {
+          "target": "com.amazonaws.dax#DescribeEvents"
+        },
+        {
+          "target": "com.amazonaws.dax#DescribeParameterGroups"
+        },
+        {
+          "target": "com.amazonaws.dax#DescribeParameters"
+        },
+        {
+          "target": "com.amazonaws.dax#DescribeSubnetGroups"
+        },
+        {
+          "target": "com.amazonaws.dax#IncreaseReplicationFactor"
+        },
+        {
+          "target": "com.amazonaws.dax#ListTags"
+        },
+        {
+          "target": "com.amazonaws.dax#RebootNode"
+        },
+        {
+          "target": "com.amazonaws.dax#TagResource"
+        },
+        {
+          "target": "com.amazonaws.dax#UntagResource"
+        },
+        {
+          "target": "com.amazonaws.dax#UpdateCluster"
+        },
+        {
+          "target": "com.amazonaws.dax#UpdateParameterGroup"
+        },
+        {
+          "target": "com.amazonaws.dax#UpdateSubnetGroup"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "DAX",

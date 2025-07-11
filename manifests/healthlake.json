@@ -1,4 +1,33 @@
 {
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpResponseCodeSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "PaginatedTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpHeaderTrait",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "Service",
+        "namespace": "*"
+      }
+    ]
+  },
   "shapes": {
     "com.amazonaws.healthlake#AccessDeniedException": {
       "type": "structure",
@@ -810,6 +839,47 @@
     },
     "com.amazonaws.healthlake#HealthLake": {
       "type": "service",
+      "operations": [
+        {
+          "target": "com.amazonaws.healthlake#CreateFHIRDatastore"
+        },
+        {
+          "target": "com.amazonaws.healthlake#DeleteFHIRDatastore"
+        },
+        {
+          "target": "com.amazonaws.healthlake#DescribeFHIRDatastore"
+        },
+        {
+          "target": "com.amazonaws.healthlake#DescribeFHIRExportJob"
+        },
+        {
+          "target": "com.amazonaws.healthlake#DescribeFHIRImportJob"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ListFHIRDatastores"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ListFHIRExportJobs"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ListFHIRImportJobs"
+        },
+        {
+          "target": "com.amazonaws.healthlake#ListTagsForResource"
+        },
+        {
+          "target": "com.amazonaws.healthlake#StartFHIRExportJob"
+        },
+        {
+          "target": "com.amazonaws.healthlake#StartFHIRImportJob"
+        },
+        {
+          "target": "com.amazonaws.healthlake#TagResource"
+        },
+        {
+          "target": "com.amazonaws.healthlake#UntagResource"
+        }
+      ],
       "traits": {
         "aws.api#service": {
           "sdkId": "HealthLake",
