@@ -265,12 +265,18 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     const cloudFormationName = serviceInfo.cloudFormationName || "";
     const endpointPrefix = serviceInfo.endpointPrefix || "";
     
-    const awsJson1_0 = (serviceTraits["aws.protocols#awsJson1_0"] as any) || {};
-    const awsJson1_1 = (serviceTraits["aws.protocols#awsJson1_1"] as any) || {};
-    const restJson1 = (serviceTraits["aws.protocols#restJson1"] as any) || {};
+    // Determine protocol
+    let protocol = "unknown";
+    if (serviceTraits["aws.protocols#awsJson1_0"]) {
+      protocol = "json";
+    } else if (serviceTraits["aws.protocols#awsJson1_1"]) {
+      protocol = "json";
+    } else if (serviceTraits["aws.protocols#restJson1"]) {
+      protocol = "rest-json";
+    }
     
-    const protocol = awsJson1_0.target || awsJson1_1.target || restJson1.name || "unknown";
-    const targetPrefix = awsJson1_0.targetPrefix || awsJson1_1.targetPrefix || "";
+    // For AWS JSON protocols, the targetPrefix is the service name itself
+    const targetPrefix = protocol === "json" ? serviceShapeName : "";
 
     // Find operations (they are separate shapes with type "operation")
     const operations = Object.entries(manifest.shapes)

@@ -3,7 +3,7 @@ export const serviceMetadata = {
   "dynamodb": {
     sdkId: "DynamoDB",
     endpointPrefix: "dynamodb",
-    protocol: "unknown",
-    targetPrefix: "",
+    protocol: "json",
+    targetPrefix: "DynamoDB_20120810",
   },
 } as const;

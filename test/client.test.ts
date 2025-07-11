@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "@effect/vitest";
-import { Console, Effect } from "effect";
+import { Effect } from "effect";
 import { AWSClient, aws } from "../src/client.ts";
 
 describe("AWS Client", () => {
@@ -66,60 +66,26 @@ describe("AWS Client", () => {
         Effect.gen(function* () {
           const aws = new AWSClient({ region: "us-east-1" });
 
-          const result = yield* aws.dynamodb.listTables({}).pipe(
-            Effect.tap((result) =>
-              Console.log("DynamoDB listTables result:", result),
-            ),
-            Effect.catchAll((error) =>
-              Effect.gen(function* () {
-                yield* Console.log("DynamoDB listTables error:", error);
-                // Just return a marker that we caught an error
-                return { errorCaught: true, errorType: error._tag };
-              }),
-            ),
-          );
+          const result = yield* aws.dynamodb.listTables({});
 
-          expect(result).toBeDefined();
-
-          if ("errorCaught" in result) {
-            console.log(`✅ Successfully handled error: ${result.errorType}`);
-            expect(result.errorCaught).toBe(true);
-          } else {
-            console.log(
-              `✅ Successfully retrieved ${result.TableNames?.length || 0} tables`,
-            );
-            expect(result).toHaveProperty("TableNames");
-          }
+          expect(result).toMatchObject({
+            TableNames: expect.any(Array),
+          });
         }),
       { timeout: 10000 },
     );
 
     it.effect(
-      "should handle specific error types",
+      "should successfully call listTables without errors",
       () =>
         Effect.gen(function* () {
           const aws = new AWSClient({ region: "us-east-1" });
 
-          let caughtError = false;
+          const result = yield* aws.dynamodb.listTables({});
 
-          yield* aws.dynamodb.listTables({}).pipe(
-            Effect.catchTag("ValidationException", () => {
-              caughtError = true;
-              return Effect.succeed("ValidationException caught");
-            }),
-            Effect.catchTag("UnknownError", () => {
-              caughtError = true;
-              return Effect.succeed("UnknownError caught");
-            }),
-            Effect.catchAll(() => {
-              caughtError = true;
-              return Effect.succeed("Some error caught");
-            }),
-          );
-
-          // We expect some kind of error to be caught (network, auth, etc.)
-          expect(caughtError).toBe(true);
-          console.log("✅ Error handling works as expected");
+          expect(result).toMatchObject({
+            TableNames: expect.any(Array),
+          });
         }),
       { timeout: 10000 },
     );
@@ -169,27 +135,15 @@ describe("AWS Client", () => {
       expect(typeof withErrorHandling.pipe).toBe("function");
     });
 
-    it.effect("should catch and handle errors gracefully", () =>
+    it.effect("should successfully connect to DynamoDB", () =>
       Effect.gen(function* () {
         const aws = new AWSClient({ region: "us-east-1" });
 
-        const result = yield* aws.dynamodb.listTables({}).pipe(
-          Effect.map((data) => ({ success: true as const, data })),
-          Effect.catchAll((error) =>
-            Effect.succeed({ success: false as const, error: error._tag }),
-          ),
-        );
+        const result = yield* aws.dynamodb.listTables({});
 
-        expect(result).toBeDefined();
-        expect(typeof result.success).toBe("boolean");
-
-        if (result.success) {
-          console.log("✅ Successfully connected to DynamoDB");
-          expect(result.data).toHaveProperty("TableNames");
-        } else {
-          console.log(`✅ Gracefully handled error: ${result.error}`);
-          expect(result.error).toBeDefined();
-        }
+        expect(result).toMatchObject({
+          TableNames: expect.any(Array),
+        });
       }),
     );
   });
