@@ -1,6 +1,7 @@
 # itty-aws
 
-A lightweight (34KB) AWS SDK implementation for TypeScript using [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and [Effect](https://effect.website) for functional programming.
+A lightweight (34KB) AWS SDK implementation for [Effect](https://effect.website) implemented with a single [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and types generated from the AWS API specifications. `itty-aws` captures the entire AWS API surface area, including each API's exact error codes, in ~34KB of bundled JS.
+
 
 ```ts
 import { AWS } from "itty-aws";
@@ -86,14 +87,6 @@ const program = Effect.gen(function* () {
 Effect.runPromise(program);
 ```
 
-## Features
-
-✅ **All AWS Services**: DynamoDB, Lambda, S3, SQS, EventBridge, and 200+ more  
-✅ **Type-safe errors**: All AWS errors are tagged and typed  
-✅ **Built-in retries**: Exponential backoff with configurable policies  
-✅ **Composable**: Chain operations with Effect's functional combinators  
-✅ **No exceptions**: All errors are values in the type system  
-
 ## Perfect Error Modeling
 
 Every AWS API operation has its errors perfectly modeled by error code. Each operation's `Effect.Effect` type specifies exactly which errors can occur:
@@ -160,23 +153,3 @@ const program = Effect.gen(function* () {
   return result.Item;
 });
 ```
-
-The TypeScript compiler ensures you can only catch errors that operation can actually throw. No more guessing or runtime surprises!
-
-## How it works
-
-Instead of generating heavy classes like the official AWS SDK, itty-aws:
-
-1. **Generates TypeScript type definitions** from AWS service specifications
-2. **Uses Proxy objects** to intercept method calls at runtime
-3. **Wraps everything in Effect** for functional programming benefits
-4. **Signs requests** using aws4fetch (lightweight AWS v4 signing)
-5. **Makes HTTP calls** directly to AWS APIs
-
-The result: A complete AWS SDK that's a fraction of the size with better error handling.
-
-## Resources
-
-- [Effect Documentation](https://effect.website)
-- [itty-router](https://github.com/kwhitley/itty-router) (inspiration)
-- [aws4fetch](https://github.com/mhart/aws4fetch) (request signing)

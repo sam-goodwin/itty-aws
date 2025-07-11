@@ -385,3 +385,26 @@ describe("DynamoDB Smoke Tests", () => {
     { timeout: 10000 },
   );
 });
+
+const ddb = new AWS.DynamoDB({ region: "us-east-1" });
+
+const program = Effect.gen(function* () {
+  const user = yield* ddb
+    .getItem({
+      TableName: "users",
+      Key: { id: { S: "123" } },
+    })
+    .pipe(
+      Effect.catchTag("ResourceNotFoundException", () =>
+        Effect.succeed({ Item: undefined }),
+      ),
+      Effect.retry({
+        times: 3,
+        schedule: Schedule.exponential("1 second"),
+      }),
+    );
+
+  return user.Item;
+});
+
+console.log(program);
