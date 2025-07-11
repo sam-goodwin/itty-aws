@@ -1,0 +1,96 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.5/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "includes": ["./src/**/*.ts", "./test/**/*.ts", "!node_modules"],
+    "maxSize": 10000000
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "useYield": "off",
+        "useImportExtensions": {
+          "level": "error",
+          "options": {
+            "forceJsExtensions": false
+          }
+        },
+        "noUnsafeFinally": "off",
+        "noChildrenProp": "off"
+      },
+      "a11y": {
+        "useButtonType": "off",
+        "useHtmlLang": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off"
+      },
+      "complexity": {
+        "noBannedTypes": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noImplicitAnyLet": "off",
+        "noAssignInExpressions": "off",
+        "noShadowRestrictedNames": "off",
+        "noEmptyInterface": "off",
+        "noRedeclare": "off"
+      },
+      "style": {
+        "useLiteralEnumMembers": "error",
+        "useNodejsImportProtocol": "error",
+        "useAsConstAssertion": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useConst": "off",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "useExponentiationOperator": "error",
+        "useTemplate": "error",
+        "noParameterAssign": "off",
+        "noNonNullAssertion": "off",
+        "useDefaultParameterLast": "error",
+        "useImportType": "error",
+        "useExportType": "error",
+        "noUselessElse": "off",
+        "useShorthandFunctionType": "error"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "lineEnding": "lf",
+    "includes": ["**", "!**/node_modules/**", "!**/*.d.ts", "!**/*.mdx"]
+  },
+  "javascript": {
+    "formatter": {
+      "indentWidth": 2,
+      "indentStyle": "space"
+    }
+  },
+  "json": {
+    "formatter": {
+      "indentWidth": 2,
+      "indentStyle": "space"
+    }
+  }
+}

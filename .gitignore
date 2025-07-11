@@ -1,10 +1,3 @@
-/dist/
-/benchmark/infra/lib/
 node_modules/
-sdk.generated.ts
-.bundle
-*.tgz
-cdk.out
-stats.html
-src/mappings.ts
+dist/
 *.tsbuildinfo

@@ -1,19 +1,35 @@
 {
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "lib": ["ESNext"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "types": ["bun-types", "@types/node"],
+    // Enable latest features
+    "lib": ["ESNext", "DOM"],
     "target": "ESNext",
-    "allowArbitraryExtensions": true,
-    "allowImportingTsExtensions": false,
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noEmit": false,
+    // Bundler mode
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
+
+    // Best practices
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noEmit": true,
-    "downlevelIteration": true,
-    "verbatimModuleSyntax": true
-  },
-  "files": ["scripts/*", "src/*"]
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Some stricter flags (disabled by default)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    "noImplicitThis": true
+  }
 }

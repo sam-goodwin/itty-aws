@@ -1,0 +1,6 @@
+```sh
+bun vitest run
+bun vitest run ./test/smoke.test.ts # specific test
+
+bun gen # re-generate the clients
+```
