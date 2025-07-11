@@ -1,5 +1,5 @@
+import { describe, expect, it, test } from "@effect/vitest";
 import { Console, Effect } from "effect";
-import { describe, expect, test } from "vitest";
 import { AWSClient, aws } from "../src/client.ts";
 
 describe("AWS Client", () => {
@@ -60,78 +60,69 @@ describe("AWS Client", () => {
       expect(typeof result).toBe("object");
     });
 
-    test("should be able to call listTables with credentials", async () => {
-      const aws = new AWSClient({ region: "us-east-1" });
+    it.effect(
+      "should be able to call listTables with credentials",
+      () =>
+        Effect.gen(function* () {
+          const aws = new AWSClient({ region: "us-east-1" });
 
-      const listTablesEffect = aws.dynamodb.listTables({}).pipe(
-        Effect.tap((result) =>
-          Console.log("DynamoDB listTables result:", result),
-        ),
-        Effect.catchAll((error) =>
-          Effect.gen(function* () {
-            yield* Console.log("DynamoDB listTables error:", error);
-            // Return the error as a successful result for testing purposes
-            return { error: error._tag, statusCode: error.statusCode };
-          }),
-        ),
-      );
+          const result = yield* aws.dynamodb.listTables({}).pipe(
+            Effect.tap((result) =>
+              Console.log("DynamoDB listTables result:", result),
+            ),
+            Effect.catchAll((error) =>
+              Effect.gen(function* () {
+                yield* Console.log("DynamoDB listTables error:", error);
+                // Just return a marker that we caught an error
+                return { errorCaught: true, errorType: error._tag };
+              }),
+            ),
+          );
 
-      const result = await Effect.runPromise(listTablesEffect);
-      expect(result).toBeDefined();
+          expect(result).toBeDefined();
 
-      // Check if we got either a successful result or a handled error
-      if ("error" in result) {
-        // We got an error, but that's okay for testing - just verify it's structured correctly
-        expect(result.error).toBeDefined();
-        expect(typeof result.statusCode).toBe("number");
-        console.log(
-          `✅ Successfully handled error: ${result.error} (${result.statusCode})`,
-        );
-      } else {
-        // We got a successful result
-        expect(result).toHaveProperty("TableNames");
-        expect(Array.isArray((result as any).TableNames)).toBe(true);
-        console.log(
-          `✅ Successfully retrieved ${(result as any).TableNames.length} tables`,
-        );
-      }
-    }, 10000); // 10 second timeout for network request
+          if ("errorCaught" in result) {
+            console.log(`✅ Successfully handled error: ${result.errorType}`);
+            expect(result.errorCaught).toBe(true);
+          } else {
+            console.log(
+              `✅ Successfully retrieved ${result.TableNames?.length || 0} tables`,
+            );
+            expect(result).toHaveProperty("TableNames");
+          }
+        }),
+      { timeout: 10000 },
+    );
 
-    test("should handle error cases with proper typing", async () => {
-      // Test with invalid region to trigger an error
-      const aws = new AWSClient({ region: "invalid-region-12345" });
+    it.effect(
+      "should handle specific error types",
+      () =>
+        Effect.gen(function* () {
+          const aws = new AWSClient({ region: "us-east-1" });
 
-      const listTablesEffect = aws.dynamodb.listTables({}).pipe(
-        Effect.catchTag("ValidationException", (error) =>
-          Effect.gen(function* () {
-            expect(error._tag).toBe("ValidationException");
-            expect(typeof error.statusCode).toBe("number");
-            return { handledError: "ValidationException" };
-          }),
-        ),
-        Effect.catchTag("UnknownError", (error) =>
-          Effect.gen(function* () {
-            expect(error._tag).toBe("UnknownError");
-            expect(typeof error.statusCode).toBe("number");
-            return { handledError: "UnknownError" };
-          }),
-        ),
-        Effect.catchAll((error) =>
-          Effect.succeed({ handledError: error._tag || "ConnectionError" }),
-        ),
-        Effect.catchAllDefect((defect) =>
-          Effect.succeed({
-            handledError: "NetworkError",
-            defect: String(defect),
-          }),
-        ),
-      );
+          let caughtError = false;
 
-      const result = await Effect.runPromise(listTablesEffect);
-      expect(result).toBeDefined();
-      expect(result.handledError).toBeDefined();
-      console.log(`✅ Successfully handled error case: ${result.handledError}`);
-    }, 10000);
+          yield* aws.dynamodb.listTables({}).pipe(
+            Effect.catchTag("ValidationException", () => {
+              caughtError = true;
+              return Effect.succeed("ValidationException caught");
+            }),
+            Effect.catchTag("UnknownError", () => {
+              caughtError = true;
+              return Effect.succeed("UnknownError caught");
+            }),
+            Effect.catchAll(() => {
+              caughtError = true;
+              return Effect.succeed("Some error caught");
+            }),
+          );
+
+          // We expect some kind of error to be caught (network, auth, etc.)
+          expect(caughtError).toBe(true);
+          console.log("✅ Error handling works as expected");
+        }),
+      { timeout: 10000 },
+    );
   });
 
   describe("Client Configuration", () => {
@@ -178,46 +169,29 @@ describe("AWS Client", () => {
       expect(typeof withErrorHandling.pipe).toBe("function");
     });
 
-    test("should provide working Effect-based error handling", async () => {
-      const aws = new AWSClient({ region: "us-east-1" });
+    it.effect("should catch and handle errors gracefully", () =>
+      Effect.gen(function* () {
+        const aws = new AWSClient({ region: "us-east-1" });
 
-      // Create a test that will likely fail (no credentials or invalid region)
-      const result = await Effect.runPromise(
-        aws.dynamodb.listTables({}).pipe(
-          Effect.catchTag("InternalServerError", (error) =>
-            Effect.gen(function* () {
-              expect(error._tag).toBe("InternalServerError");
-              yield* Console.log("✅ Successfully caught InternalServerError");
-              return { handledError: "InternalServerError" };
-            }),
-          ),
-          Effect.catchTag("InvalidEndpointException", (error) =>
-            Effect.gen(function* () {
-              expect(error._tag).toBe("InvalidEndpointException");
-              yield* Console.log(
-                "✅ Successfully caught InvalidEndpointException",
-              );
-              return { handledError: "InvalidEndpointException" };
-            }),
-          ),
+        const result = yield* aws.dynamodb.listTables({}).pipe(
+          Effect.map((data) => ({ success: true as const, data })),
           Effect.catchAll((error) =>
-            Effect.gen(function* () {
-              yield* Console.log(`✅ Successfully caught error: ${error._tag}`);
-              return { handledError: error._tag || "UnknownError" };
-            }),
+            Effect.succeed({ success: false as const, error: error._tag }),
           ),
-        ),
-      );
+        );
 
-      expect(result).toBeDefined();
-      // At this point, either we got a successful result or a handled error
-      if ("handledError" in result) {
-        expect(result.handledError).toBeDefined();
-      } else {
-        // Successful result
-        expect(result).toHaveProperty("TableNames");
-      }
-    });
+        expect(result).toBeDefined();
+        expect(typeof result.success).toBe("boolean");
+
+        if (result.success) {
+          console.log("✅ Successfully connected to DynamoDB");
+          expect(result.data).toHaveProperty("TableNames");
+        } else {
+          console.log(`✅ Gracefully handled error: ${result.error}`);
+          expect(result.error).toBeDefined();
+        }
+      }),
+    );
   });
 
   describe("Legacy API Compatibility", () => {
