@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ElasticLoadBalancing_v10 {
@@ -524,13 +524,13 @@ export interface AdministrativeOverride {
 export type AdvertiseTrustStoreCaNamesEnum = "on" | "off";
 export type AllocationId = string;
 
-export declare class AllocationIdNotFoundException extends Data.TaggedError(
+export declare class AllocationIdNotFoundException extends EffectData.TaggedError(
   "AllocationIdNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
 export type AlpnPolicyName = Array<string>;
-export declare class ALPNPolicyNotSupportedException extends Data.TaggedError(
+export declare class ALPNPolicyNotSupportedException extends EffectData.TaggedError(
   "ALPNPolicyNotSupportedException",
 )<{
   readonly Message?: string;
@@ -629,25 +629,25 @@ export interface AvailabilityZone {
   LoadBalancerAddresses?: Array<LoadBalancerAddress>;
   SourceNatIpv6Prefixes?: Array<string>;
 }
-export declare class AvailabilityZoneNotSupportedException extends Data.TaggedError(
+export declare class AvailabilityZoneNotSupportedException extends EffectData.TaggedError(
   "AvailabilityZoneNotSupportedException",
 )<{
   readonly Message?: string;
 }> {}
 export type AvailabilityZones = Array<AvailabilityZone>;
-export declare class CaCertificatesBundleNotFoundException extends Data.TaggedError(
+export declare class CaCertificatesBundleNotFoundException extends EffectData.TaggedError(
   "CaCertificatesBundleNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
 export type CanonicalHostedZoneId = string;
 
-export declare class CapacityDecreaseRequestsLimitExceededException extends Data.TaggedError(
+export declare class CapacityDecreaseRequestsLimitExceededException extends EffectData.TaggedError(
   "CapacityDecreaseRequestsLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class CapacityReservationPendingException extends Data.TaggedError(
+export declare class CapacityReservationPendingException extends EffectData.TaggedError(
   "CapacityReservationPendingException",
 )<{
   readonly Message?: string;
@@ -665,7 +665,7 @@ export type CapacityUnits = number;
 
 export type CapacityUnitsDouble = number;
 
-export declare class CapacityUnitsLimitExceededException extends Data.TaggedError(
+export declare class CapacityUnitsLimitExceededException extends EffectData.TaggedError(
   "CapacityUnitsLimitExceededException",
 )<{
   readonly Message?: string;
@@ -677,7 +677,7 @@ export interface Certificate {
 export type CertificateArn = string;
 
 export type CertificateList = Array<Certificate>;
-export declare class CertificateNotFoundException extends Data.TaggedError(
+export declare class CertificateNotFoundException extends EffectData.TaggedError(
   "CertificateNotFoundException",
 )<{
   readonly Message?: string;
@@ -773,7 +773,7 @@ export type DecreaseRequestsRemaining = number;
 
 export type Default = boolean;
 
-export declare class DeleteAssociationSameAccountException extends Data.TaggedError(
+export declare class DeleteAssociationSameAccountException extends EffectData.TaggedError(
   "DeleteAssociationSameAccountException",
 )<{
   readonly Message?: string;
@@ -959,27 +959,27 @@ export type Description = string;
 
 export type DNSName = string;
 
-export declare class DuplicateListenerException extends Data.TaggedError(
+export declare class DuplicateListenerException extends EffectData.TaggedError(
   "DuplicateListenerException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicateLoadBalancerNameException extends Data.TaggedError(
+export declare class DuplicateLoadBalancerNameException extends EffectData.TaggedError(
   "DuplicateLoadBalancerNameException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicateTagKeysException extends Data.TaggedError(
+export declare class DuplicateTagKeysException extends EffectData.TaggedError(
   "DuplicateTagKeysException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicateTargetGroupNameException extends Data.TaggedError(
+export declare class DuplicateTargetGroupNameException extends EffectData.TaggedError(
   "DuplicateTargetGroupNameException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicateTrustStoreNameException extends Data.TaggedError(
+export declare class DuplicateTrustStoreNameException extends EffectData.TaggedError(
   "DuplicateTrustStoreNameException",
 )<{
   readonly Message?: string;
@@ -1038,7 +1038,7 @@ export type HealthCheckThresholdCount = number;
 
 export type HealthCheckTimeoutSeconds = number;
 
-export declare class HealthUnavailableException extends Data.TaggedError(
+export declare class HealthUnavailableException extends EffectData.TaggedError(
   "HealthUnavailableException",
 )<{
   readonly Message?: string;
@@ -1059,52 +1059,52 @@ export interface HttpRequestMethodConditionConfig {
 }
 export type IgnoreClientCertificateExpiry = boolean;
 
-export declare class IncompatibleProtocolsException extends Data.TaggedError(
+export declare class IncompatibleProtocolsException extends EffectData.TaggedError(
   "IncompatibleProtocolsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InsufficientCapacityException extends Data.TaggedError(
+export declare class InsufficientCapacityException extends EffectData.TaggedError(
   "InsufficientCapacityException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidCaCertificatesBundleException extends Data.TaggedError(
+export declare class InvalidCaCertificatesBundleException extends EffectData.TaggedError(
   "InvalidCaCertificatesBundleException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidConfigurationRequestException extends Data.TaggedError(
+export declare class InvalidConfigurationRequestException extends EffectData.TaggedError(
   "InvalidConfigurationRequestException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidLoadBalancerActionException extends Data.TaggedError(
+export declare class InvalidLoadBalancerActionException extends EffectData.TaggedError(
   "InvalidLoadBalancerActionException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRevocationContentException extends Data.TaggedError(
+export declare class InvalidRevocationContentException extends EffectData.TaggedError(
   "InvalidRevocationContentException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidSchemeException extends Data.TaggedError(
+export declare class InvalidSchemeException extends EffectData.TaggedError(
   "InvalidSchemeException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidSecurityGroupException extends Data.TaggedError(
+export declare class InvalidSecurityGroupException extends EffectData.TaggedError(
   "InvalidSecurityGroupException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidSubnetException extends Data.TaggedError(
+export declare class InvalidSubnetException extends EffectData.TaggedError(
   "InvalidSubnetException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidTargetException extends Data.TaggedError(
+export declare class InvalidTargetException extends EffectData.TaggedError(
   "InvalidTargetException",
 )<{
   readonly Message?: string;
@@ -1154,7 +1154,7 @@ export type ListenerAttributeKey = string;
 export type ListenerAttributes = Array<ListenerAttribute>;
 export type ListenerAttributeValue = string;
 
-export declare class ListenerNotFoundException extends Data.TaggedError(
+export declare class ListenerNotFoundException extends EffectData.TaggedError(
   "ListenerNotFoundException",
 )<{
   readonly Message?: string;
@@ -1203,7 +1203,7 @@ export type LoadBalancerAttributeValue = string;
 export type LoadBalancerName = string;
 
 export type LoadBalancerNames = Array<string>;
-export declare class LoadBalancerNotFoundException extends Data.TaggedError(
+export declare class LoadBalancerNotFoundException extends EffectData.TaggedError(
   "LoadBalancerNotFoundException",
 )<{
   readonly Message?: string;
@@ -1334,7 +1334,7 @@ export type NumberOfCaCertificates = number;
 
 export type NumberOfRevokedEntries = number;
 
-export declare class OperationNotPermittedException extends Data.TaggedError(
+export declare class OperationNotPermittedException extends EffectData.TaggedError(
   "OperationNotPermittedException",
 )<{
   readonly Message?: string;
@@ -1352,12 +1352,12 @@ export type Policy = string;
 
 export type Port = number;
 
-export declare class PriorityInUseException extends Data.TaggedError(
+export declare class PriorityInUseException extends EffectData.TaggedError(
   "PriorityInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class PriorRequestNotCompleteException extends Data.TaggedError(
+export declare class PriorRequestNotCompleteException extends EffectData.TaggedError(
   "PriorRequestNotCompleteException",
 )<{
   readonly Message?: string;
@@ -1428,12 +1428,12 @@ export type ResetCapacityReservation = boolean;
 export type ResourceArn = string;
 
 export type ResourceArns = Array<string>;
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -1444,7 +1444,7 @@ export interface RevocationContent {
   S3ObjectVersion?: string;
   RevocationType?: RevocationType;
 }
-export declare class RevocationContentNotFoundException extends Data.TaggedError(
+export declare class RevocationContentNotFoundException extends EffectData.TaggedError(
   "RevocationContentNotFoundException",
 )<{
   readonly Message?: string;
@@ -1452,7 +1452,7 @@ export declare class RevocationContentNotFoundException extends Data.TaggedError
 export type RevocationContents = Array<RevocationContent>;
 export type RevocationId = number;
 
-export declare class RevocationIdNotFoundException extends Data.TaggedError(
+export declare class RevocationIdNotFoundException extends EffectData.TaggedError(
   "RevocationIdNotFoundException",
 )<{
   readonly Message?: string;
@@ -1480,7 +1480,7 @@ export interface RuleCondition {
   SourceIpConfig?: SourceIpConditionConfig;
 }
 export type RuleConditionList = Array<RuleCondition>;
-export declare class RuleNotFoundException extends Data.TaggedError(
+export declare class RuleNotFoundException extends EffectData.TaggedError(
   "RuleNotFoundException",
 )<{
   readonly Message?: string;
@@ -1552,7 +1552,7 @@ export interface SslPolicy {
 export type SslPolicyName = string;
 
 export type SslPolicyNames = Array<string>;
-export declare class SSLPolicyNotFoundException extends Data.TaggedError(
+export declare class SSLPolicyNotFoundException extends EffectData.TaggedError(
   "SSLPolicyNotFoundException",
 )<{
   readonly Message?: string;
@@ -1574,7 +1574,7 @@ export interface SubnetMapping {
   SourceNatIpv6Prefix?: string;
 }
 export type SubnetMappings = Array<SubnetMapping>;
-export declare class SubnetNotFoundException extends Data.TaggedError(
+export declare class SubnetNotFoundException extends EffectData.TaggedError(
   "SubnetNotFoundException",
 )<{
   readonly Message?: string;
@@ -1634,7 +1634,7 @@ export interface TargetGroup {
 export type TargetGroupArn = string;
 
 export type TargetGroupArns = Array<string>;
-export declare class TargetGroupAssociationLimitException extends Data.TaggedError(
+export declare class TargetGroupAssociationLimitException extends EffectData.TaggedError(
   "TargetGroupAssociationLimitException",
 )<{
   readonly Message?: string;
@@ -1653,7 +1653,7 @@ export type TargetGroupList = Array<TargetGroupTuple>;
 export type TargetGroupName = string;
 
 export type TargetGroupNames = Array<string>;
-export declare class TargetGroupNotFoundException extends Data.TaggedError(
+export declare class TargetGroupNotFoundException extends EffectData.TaggedError(
   "TargetGroupNotFoundException",
 )<{
   readonly Message?: string;
@@ -1710,62 +1710,62 @@ export type TargetHealthStateEnum =
 export type TargetId = string;
 
 export type TargetTypeEnum = "INSTANCE" | "IP" | "LAMBDA" | "ALB";
-export declare class TooManyActionsException extends Data.TaggedError(
+export declare class TooManyActionsException extends EffectData.TaggedError(
   "TooManyActionsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCertificatesException extends Data.TaggedError(
+export declare class TooManyCertificatesException extends EffectData.TaggedError(
   "TooManyCertificatesException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyListenersException extends Data.TaggedError(
+export declare class TooManyListenersException extends EffectData.TaggedError(
   "TooManyListenersException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyLoadBalancersException extends Data.TaggedError(
+export declare class TooManyLoadBalancersException extends EffectData.TaggedError(
   "TooManyLoadBalancersException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyRegistrationsForTargetIdException extends Data.TaggedError(
+export declare class TooManyRegistrationsForTargetIdException extends EffectData.TaggedError(
   "TooManyRegistrationsForTargetIdException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyRulesException extends Data.TaggedError(
+export declare class TooManyRulesException extends EffectData.TaggedError(
   "TooManyRulesException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTargetGroupsException extends Data.TaggedError(
+export declare class TooManyTargetGroupsException extends EffectData.TaggedError(
   "TooManyTargetGroupsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTargetsException extends Data.TaggedError(
+export declare class TooManyTargetsException extends EffectData.TaggedError(
   "TooManyTargetsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTrustStoreRevocationEntriesException extends Data.TaggedError(
+export declare class TooManyTrustStoreRevocationEntriesException extends EffectData.TaggedError(
   "TooManyTrustStoreRevocationEntriesException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTrustStoresException extends Data.TaggedError(
+export declare class TooManyTrustStoresException extends EffectData.TaggedError(
   "TooManyTrustStoresException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyUniqueTargetGroupsPerLoadBalancerException extends Data.TaggedError(
+export declare class TooManyUniqueTargetGroupsPerLoadBalancerException extends EffectData.TaggedError(
   "TooManyUniqueTargetGroupsPerLoadBalancerException",
 )<{
   readonly Message?: string;
@@ -1785,7 +1785,7 @@ export type TrustStoreArns = Array<string>;
 export interface TrustStoreAssociation {
   ResourceArn?: string;
 }
-export declare class TrustStoreAssociationNotFoundException extends Data.TaggedError(
+export declare class TrustStoreAssociationNotFoundException extends EffectData.TaggedError(
   "TrustStoreAssociationNotFoundException",
 )<{
   readonly Message?: string;
@@ -1794,7 +1794,7 @@ export type TrustStoreAssociationResourceArn = string;
 
 export type TrustStoreAssociations = Array<TrustStoreAssociation>;
 export type TrustStoreAssociationStatusEnum = "ACTIVE" | "REMOVED";
-export declare class TrustStoreInUseException extends Data.TaggedError(
+export declare class TrustStoreInUseException extends EffectData.TaggedError(
   "TrustStoreInUseException",
 )<{
   readonly Message?: string;
@@ -1802,12 +1802,12 @@ export declare class TrustStoreInUseException extends Data.TaggedError(
 export type TrustStoreName = string;
 
 export type TrustStoreNames = Array<string>;
-export declare class TrustStoreNotFoundException extends Data.TaggedError(
+export declare class TrustStoreNotFoundException extends EffectData.TaggedError(
   "TrustStoreNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TrustStoreNotReadyException extends Data.TaggedError(
+export declare class TrustStoreNotReadyException extends EffectData.TaggedError(
   "TrustStoreNotReadyException",
 )<{
   readonly Message?: string;
@@ -1821,7 +1821,7 @@ export interface TrustStoreRevocation {
 export type TrustStoreRevocations = Array<TrustStoreRevocation>;
 export type TrustStores = Array<TrustStore>;
 export type TrustStoreStatus = "ACTIVE" | "CREATING";
-export declare class UnsupportedProtocolException extends Data.TaggedError(
+export declare class UnsupportedProtocolException extends EffectData.TaggedError(
   "UnsupportedProtocolException",
 )<{
   readonly Message?: string;

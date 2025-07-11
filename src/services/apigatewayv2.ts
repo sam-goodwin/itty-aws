@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ApiGatewayV2 {
@@ -668,7 +668,7 @@ export type __string = string;
 
 export type __timestampIso8601 = Date | string;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -720,12 +720,12 @@ export interface Authorizer {
   Name: string;
 }
 export type AuthorizerType = "REQUEST" | "JWT";
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -1569,7 +1569,7 @@ export interface MutualTlsAuthenticationInput {
 }
 export type NextToken = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -1750,7 +1750,7 @@ export interface TlsConfig {
 export interface TlsConfigInput {
   ServerNameToVerify?: string;
 }
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly LimitType?: string;

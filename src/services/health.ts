@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSHealth_20160804 {
@@ -107,7 +107,7 @@ export type availabilityZone = string;
 
 export type availabilityZones = Array<string>;
 export type awsAccountIdsList = Array<string>;
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -360,7 +360,7 @@ export type EventTypeList = Array<EventType>;
 export type eventTypeList2 = Array<string>;
 export type healthServiceAccessStatusForOrganization = string;
 
-export declare class InvalidPaginationToken extends Data.TaggedError(
+export declare class InvalidPaginationToken extends EffectData.TaggedError(
   "InvalidPaginationToken",
 )<{
   readonly message?: string;
@@ -448,7 +448,7 @@ export type tagValue = string;
 
 export type timestamp = Date | string;
 
-export declare class UnsupportedLocale extends Data.TaggedError(
+export declare class UnsupportedLocale extends EffectData.TaggedError(
   "UnsupportedLocale",
 )<{
   readonly message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface SageMaker {
@@ -3248,7 +3248,7 @@ export type ConfigKey = string;
 
 export type ConfigValue = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -11248,10 +11248,12 @@ export type ResourceId = string;
 
 export type ResourceIdentifier = string;
 
-export declare class ResourceInUse extends Data.TaggedError("ResourceInUse")<{
+export declare class ResourceInUse extends EffectData.TaggedError(
+  "ResourceInUse",
+)<{
   readonly Message?: string;
 }> {}
-export declare class ResourceLimitExceeded extends Data.TaggedError(
+export declare class ResourceLimitExceeded extends EffectData.TaggedError(
   "ResourceLimitExceeded",
 )<{
   readonly Message?: string;
@@ -11261,7 +11263,7 @@ export interface ResourceLimits {
   MaxParallelTrainingJobs: number;
   MaxRuntimeInSeconds?: number;
 }
-export declare class ResourceNotFound extends Data.TaggedError(
+export declare class ResourceNotFound extends EffectData.TaggedError(
   "ResourceNotFound",
 )<{
   readonly Message?: string;

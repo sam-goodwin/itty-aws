@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CloudHsmFrontendService {
@@ -205,14 +205,14 @@ export type ClientList = Array<string>;
 export type ClientToken = string;
 
 export type ClientVersion = "FIVE_ONE" | "FIVE_THREE";
-export declare class CloudHsmInternalException extends Data.TaggedError(
+export declare class CloudHsmInternalException extends EffectData.TaggedError(
   "CloudHsmInternalException",
 )<{
   readonly message?: string;
   readonly retryable?: boolean;
 }> {}
 export type CloudHsmObjectState = "READY" | "UPDATING" | "DEGRADED";
-export declare class CloudHsmServiceException extends Data.TaggedError(
+export declare class CloudHsmServiceException extends EffectData.TaggedError(
   "CloudHsmServiceException",
 )<{
   readonly message?: string;
@@ -346,7 +346,7 @@ export type HsmStatus =
   | "DEGRADED";
 export type IamRoleArn = string;
 
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly message?: string;

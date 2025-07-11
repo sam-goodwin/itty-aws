@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface KafkaConnect {
@@ -305,7 +305,7 @@ export interface AutoScalingUpdate {
   scaleInPolicy: ScaleInPolicyUpdate;
   scaleOutPolicy: ScaleOutPolicyUpdate;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -330,7 +330,7 @@ export interface CloudWatchLogsLogDeliveryDescription {
   enabled?: boolean;
   logGroup?: string;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -551,12 +551,12 @@ export interface FirehoseLogDeliveryDescription {
   deliveryStream?: string;
   enabled?: boolean;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly message?: string;
@@ -633,7 +633,7 @@ export interface LogDeliveryDescription {
 }
 export type MaxResults = number;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -694,7 +694,7 @@ export interface ScaleOutPolicyDescription {
 export interface ScaleOutPolicyUpdate {
   cpuUtilizationPercentage: number;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
@@ -714,12 +714,12 @@ export interface TagResourceResponse {}
 export type Tags = Record<string, string>;
 export type TagValue = string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;

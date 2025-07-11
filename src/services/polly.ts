@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Parrot_v1 {
@@ -115,7 +115,7 @@ export interface DescribeVoicesOutput {
 }
 export type Engine = "STANDARD" | "NEURAL" | "LONG_FORM" | "GENERATIVE";
 export type EngineList = Array<Engine>;
-export declare class EngineNotSupportedException extends Data.TaggedError(
+export declare class EngineNotSupportedException extends EffectData.TaggedError(
   "EngineNotSupportedException",
 )<{
   readonly message?: string;
@@ -138,42 +138,42 @@ export interface GetSpeechSynthesisTaskOutput {
 }
 export type IncludeAdditionalLanguageCodes = boolean;
 
-export declare class InvalidLexiconException extends Data.TaggedError(
+export declare class InvalidLexiconException extends EffectData.TaggedError(
   "InvalidLexiconException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidS3BucketException extends Data.TaggedError(
+export declare class InvalidS3BucketException extends EffectData.TaggedError(
   "InvalidS3BucketException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidS3KeyException extends Data.TaggedError(
+export declare class InvalidS3KeyException extends EffectData.TaggedError(
   "InvalidS3KeyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSampleRateException extends Data.TaggedError(
+export declare class InvalidSampleRateException extends EffectData.TaggedError(
   "InvalidSampleRateException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSnsTopicArnException extends Data.TaggedError(
+export declare class InvalidSnsTopicArnException extends EffectData.TaggedError(
   "InvalidSnsTopicArnException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSsmlException extends Data.TaggedError(
+export declare class InvalidSsmlException extends EffectData.TaggedError(
   "InvalidSsmlException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidTaskIdException extends Data.TaggedError(
+export declare class InvalidTaskIdException extends EffectData.TaggedError(
   "InvalidTaskIdException",
 )<{
   readonly message?: string;
@@ -224,7 +224,7 @@ export type LanguageCode =
 export type LanguageCodeList = Array<LanguageCode>;
 export type LanguageName = string;
 
-export declare class LanguageNotSupportedException extends Data.TaggedError(
+export declare class LanguageNotSupportedException extends EffectData.TaggedError(
   "LanguageNotSupportedException",
 )<{
   readonly message?: string;
@@ -257,12 +257,12 @@ export type LexiconDescriptionList = Array<LexiconDescription>;
 export type LexiconName = string;
 
 export type LexiconNameList = Array<string>;
-export declare class LexiconNotFoundException extends Data.TaggedError(
+export declare class LexiconNotFoundException extends EffectData.TaggedError(
   "LexiconNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LexiconSizeExceededException extends Data.TaggedError(
+export declare class LexiconSizeExceededException extends EffectData.TaggedError(
   "LexiconSizeExceededException",
 )<{
   readonly message?: string;
@@ -283,17 +283,17 @@ export interface ListSpeechSynthesisTasksOutput {
   NextToken?: string;
   SynthesisTasks?: Array<SynthesisTask>;
 }
-export declare class MarksNotSupportedForFormatException extends Data.TaggedError(
+export declare class MarksNotSupportedForFormatException extends EffectData.TaggedError(
   "MarksNotSupportedForFormatException",
 )<{
   readonly message?: string;
 }> {}
-export declare class MaxLexemeLengthExceededException extends Data.TaggedError(
+export declare class MaxLexemeLengthExceededException extends EffectData.TaggedError(
   "MaxLexemeLengthExceededException",
 )<{
   readonly message?: string;
 }> {}
-export declare class MaxLexiconsNumberExceededException extends Data.TaggedError(
+export declare class MaxLexiconsNumberExceededException extends EffectData.TaggedError(
   "MaxLexiconsNumberExceededException",
 )<{
   readonly message?: string;
@@ -318,7 +318,7 @@ export type RequestCharacters = number;
 
 export type SampleRate = string;
 
-export declare class ServiceFailureException extends Data.TaggedError(
+export declare class ServiceFailureException extends EffectData.TaggedError(
   "ServiceFailureException",
 )<{
   readonly message?: string;
@@ -329,7 +329,7 @@ export type SnsTopicArn = string;
 
 export type SpeechMarkType = "SENTENCE" | "SSML" | "VISEME" | "WORD";
 export type SpeechMarkTypeList = Array<SpeechMarkType>;
-export declare class SsmlMarksNotSupportedForTextTypeException extends Data.TaggedError(
+export declare class SsmlMarksNotSupportedForTextTypeException extends EffectData.TaggedError(
   "SsmlMarksNotSupportedForTextTypeException",
 )<{
   readonly message?: string;
@@ -368,7 +368,7 @@ export interface SynthesisTask {
   VoiceId?: VoiceId;
   LanguageCode?: LanguageCode;
 }
-export declare class SynthesisTaskNotFoundException extends Data.TaggedError(
+export declare class SynthesisTaskNotFoundException extends EffectData.TaggedError(
   "SynthesisTaskNotFoundException",
 )<{
   readonly message?: string;
@@ -397,18 +397,18 @@ export type TaskStatusReason = string;
 
 export type Text = string;
 
-export declare class TextLengthExceededException extends Data.TaggedError(
+export declare class TextLengthExceededException extends EffectData.TaggedError(
   "TextLengthExceededException",
 )<{
   readonly message?: string;
 }> {}
 export type TextType = "SSML" | "TEXT";
-export declare class UnsupportedPlsAlphabetException extends Data.TaggedError(
+export declare class UnsupportedPlsAlphabetException extends EffectData.TaggedError(
   "UnsupportedPlsAlphabetException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedPlsLanguageException extends Data.TaggedError(
+export declare class UnsupportedPlsLanguageException extends EffectData.TaggedError(
   "UnsupportedPlsLanguageException",
 )<{
   readonly message?: string;

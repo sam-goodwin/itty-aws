@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ApiGatewayManagementApi {
@@ -37,7 +37,7 @@ export type Data = Uint8Array | string;
 export interface DeleteConnectionRequest {
   ConnectionId: string;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{}> {}
 export interface GetConnectionRequest {
@@ -48,17 +48,17 @@ export interface GetConnectionResponse {
   Identity?: Identity;
   LastActiveAt?: Date | string;
 }
-export declare class GoneException extends Data.TaggedError(
+export declare class GoneException extends EffectData.TaggedError(
   "GoneException",
 )<{}> {}
 export interface Identity {
   SourceIp: string;
   UserAgent: string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{}> {}
-export declare class PayloadTooLargeException extends Data.TaggedError(
+export declare class PayloadTooLargeException extends EffectData.TaggedError(
   "PayloadTooLargeException",
 )<{
   readonly Message?: string;

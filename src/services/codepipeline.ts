@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CodePipeline_20150709 {
@@ -521,7 +521,7 @@ export interface ActionExecutionInput {
   inputArtifacts?: Array<ArtifactDetail>;
   namespace?: string;
 }
-export declare class ActionExecutionNotFoundException extends Data.TaggedError(
+export declare class ActionExecutionNotFoundException extends EffectData.TaggedError(
   "ActionExecutionNotFoundException",
 )<{
   readonly message?: string;
@@ -549,7 +549,7 @@ export type ActionName = string;
 
 export type ActionNamespace = string;
 
-export declare class ActionNotFoundException extends Data.TaggedError(
+export declare class ActionNotFoundException extends EffectData.TaggedError(
   "ActionNotFoundException",
 )<{
   readonly message?: string;
@@ -616,7 +616,7 @@ export interface ActionTypeIdentifier {
   version: string;
 }
 export type ActionTypeList = Array<ActionType>;
-export declare class ActionTypeNotFoundException extends Data.TaggedError(
+export declare class ActionTypeNotFoundException extends EffectData.TaggedError(
   "ActionTypeNotFoundException",
 )<{
   readonly message?: string;
@@ -650,7 +650,7 @@ export interface ActionTypeUrls {
 export type AllowedAccount = string;
 
 export type AllowedAccounts = Array<string>;
-export declare class ApprovalAlreadyCompletedException extends Data.TaggedError(
+export declare class ApprovalAlreadyCompletedException extends EffectData.TaggedError(
   "ApprovalAlreadyCompletedException",
 )<{
   readonly message?: string;
@@ -732,12 +732,12 @@ export type Code = string;
 export type Command = string;
 
 export type CommandList = Array<string>;
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConcurrentPipelineExecutionsLimitExceededException extends Data.TaggedError(
+export declare class ConcurrentPipelineExecutionsLimitExceededException extends EffectData.TaggedError(
   "ConcurrentPipelineExecutionsLimitExceededException",
 )<{
   readonly message?: string;
@@ -760,7 +760,7 @@ export type ConditionExecutionStatus =
   | "Abandoned"
   | "Overridden";
 export type ConditionList = Array<Condition>;
-export declare class ConditionNotOverridableException extends Data.TaggedError(
+export declare class ConditionNotOverridableException extends EffectData.TaggedError(
   "ConditionNotOverridableException",
 )<{
   readonly message?: string;
@@ -771,7 +771,7 @@ export interface ConditionState {
 }
 export type ConditionStateList = Array<ConditionState>;
 export type ConditionType = "BEFORE_ENTRY" | "ON_SUCCESS";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -854,7 +854,7 @@ export interface DisableStageTransitionInput {
   transitionType: StageTransitionType;
   reason: string;
 }
-export declare class DuplicatedStopRequestException extends Data.TaggedError(
+export declare class DuplicatedStopRequestException extends EffectData.TaggedError(
   "DuplicatedStopRequestException",
 )<{
   readonly message?: string;
@@ -1023,72 +1023,72 @@ export interface InputArtifact {
   name: string;
 }
 export type InputArtifactList = Array<InputArtifact>;
-export declare class InvalidActionDeclarationException extends Data.TaggedError(
+export declare class InvalidActionDeclarationException extends EffectData.TaggedError(
   "InvalidActionDeclarationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidApprovalTokenException extends Data.TaggedError(
+export declare class InvalidApprovalTokenException extends EffectData.TaggedError(
   "InvalidApprovalTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidArnException extends Data.TaggedError(
+export declare class InvalidArnException extends EffectData.TaggedError(
   "InvalidArnException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidBlockerDeclarationException extends Data.TaggedError(
+export declare class InvalidBlockerDeclarationException extends EffectData.TaggedError(
   "InvalidBlockerDeclarationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidClientTokenException extends Data.TaggedError(
+export declare class InvalidClientTokenException extends EffectData.TaggedError(
   "InvalidClientTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidJobException extends Data.TaggedError(
+export declare class InvalidJobException extends EffectData.TaggedError(
   "InvalidJobException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidJobStateException extends Data.TaggedError(
+export declare class InvalidJobStateException extends EffectData.TaggedError(
   "InvalidJobStateException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidNonceException extends Data.TaggedError(
+export declare class InvalidNonceException extends EffectData.TaggedError(
   "InvalidNonceException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidStageDeclarationException extends Data.TaggedError(
+export declare class InvalidStageDeclarationException extends EffectData.TaggedError(
   "InvalidStageDeclarationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidStructureException extends Data.TaggedError(
+export declare class InvalidStructureException extends EffectData.TaggedError(
   "InvalidStructureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidTagsException extends Data.TaggedError(
+export declare class InvalidTagsException extends EffectData.TaggedError(
   "InvalidTagsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidWebhookAuthenticationParametersException extends Data.TaggedError(
+export declare class InvalidWebhookAuthenticationParametersException extends EffectData.TaggedError(
   "InvalidWebhookAuthenticationParametersException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidWebhookFilterPatternException extends Data.TaggedError(
+export declare class InvalidWebhookFilterPatternException extends EffectData.TaggedError(
   "InvalidWebhookFilterPatternException",
 )<{
   readonly message?: string;
@@ -1117,7 +1117,7 @@ export interface JobDetails {
 export type JobId = string;
 
 export type JobList = Array<Job>;
-export declare class JobNotFoundException extends Data.TaggedError(
+export declare class JobNotFoundException extends EffectData.TaggedError(
   "JobNotFoundException",
 )<{
   readonly message?: string;
@@ -1153,7 +1153,7 @@ export interface LatestInPipelineExecutionFilter {
   pipelineExecutionId: string;
   startTimeRange: StartTimeRange;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1273,7 +1273,7 @@ export type NextToken = string;
 
 export type Nonce = string;
 
-export declare class NotLatestPipelineExecutionException extends Data.TaggedError(
+export declare class NotLatestPipelineExecutionException extends EffectData.TaggedError(
   "NotLatestPipelineExecutionException",
 )<{
   readonly message?: string;
@@ -1289,7 +1289,7 @@ export type OutputVariableList = Array<string>;
 export type OutputVariablesKey = string;
 
 export type OutputVariablesMap = Record<string, string>;
-export declare class OutputVariablesSizeExceededException extends Data.TaggedError(
+export declare class OutputVariablesSizeExceededException extends EffectData.TaggedError(
   "OutputVariablesSizeExceededException",
 )<{
   readonly message?: string;
@@ -1343,17 +1343,17 @@ export interface PipelineExecutionFilter {
 }
 export type PipelineExecutionId = string;
 
-export declare class PipelineExecutionNotFoundException extends Data.TaggedError(
+export declare class PipelineExecutionNotFoundException extends EffectData.TaggedError(
   "PipelineExecutionNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class PipelineExecutionNotStoppableException extends Data.TaggedError(
+export declare class PipelineExecutionNotStoppableException extends EffectData.TaggedError(
   "PipelineExecutionNotStoppableException",
 )<{
   readonly message?: string;
 }> {}
-export declare class PipelineExecutionOutdatedException extends Data.TaggedError(
+export declare class PipelineExecutionOutdatedException extends EffectData.TaggedError(
   "PipelineExecutionOutdatedException",
 )<{
   readonly message?: string;
@@ -1391,12 +1391,12 @@ export interface PipelineMetadata {
 }
 export type PipelineName = string;
 
-export declare class PipelineNameInUseException extends Data.TaggedError(
+export declare class PipelineNameInUseException extends EffectData.TaggedError(
   "PipelineNameInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class PipelineNotFoundException extends Data.TaggedError(
+export declare class PipelineNotFoundException extends EffectData.TaggedError(
   "PipelineNotFoundException",
 )<{
   readonly message?: string;
@@ -1440,7 +1440,7 @@ export type PipelineVariableValue = string;
 
 export type PipelineVersion = number;
 
-export declare class PipelineVersionNotFoundException extends Data.TaggedError(
+export declare class PipelineVersionNotFoundException extends EffectData.TaggedError(
   "PipelineVersionNotFoundException",
 )<{
   readonly message?: string;
@@ -1521,7 +1521,7 @@ export interface RegisterWebhookWithThirdPartyInput {
   webhookName?: string;
 }
 export interface RegisterWebhookWithThirdPartyOutput {}
-export declare class RequestFailedException extends Data.TaggedError(
+export declare class RequestFailedException extends EffectData.TaggedError(
   "RequestFailedException",
 )<{
   readonly message?: string;
@@ -1535,7 +1535,7 @@ export type ResolvedPipelineVariableList = Array<ResolvedPipelineVariable>;
 export type ResolvedRuleConfigurationMap = Record<string, string>;
 export type ResourceArn = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1776,12 +1776,12 @@ export type StageExecutionStatus =
   | "Skipped";
 export type StageName = string;
 
-export declare class StageNotFoundException extends Data.TaggedError(
+export declare class StageNotFoundException extends EffectData.TaggedError(
   "StageNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class StageNotRetryableException extends Data.TaggedError(
+export declare class StageNotRetryableException extends EffectData.TaggedError(
   "StageNotRetryableException",
 )<{
   readonly message?: string;
@@ -1881,7 +1881,7 @@ export type Time = Date | string;
 
 export type Timestamp = Date | string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
@@ -1904,7 +1904,7 @@ export type TriggerType =
   | "WebhookV2"
   | "ManualRollback"
   | "AutomatedRollback";
-export declare class UnableToRollbackStageException extends Data.TaggedError(
+export declare class UnableToRollbackStageException extends EffectData.TaggedError(
   "UnableToRollbackStageException",
 )<{
   readonly message?: string;
@@ -1927,7 +1927,7 @@ export type Url = string;
 
 export type UrlTemplate = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;
@@ -1970,7 +1970,7 @@ export type WebhookLastTriggered = Date | string;
 export type WebhookList = Array<ListWebhookItem>;
 export type WebhookName = string;
 
-export declare class WebhookNotFoundException extends Data.TaggedError(
+export declare class WebhookNotFoundException extends EffectData.TaggedError(
   "WebhookNotFoundException",
 )<{}> {}
 export type WebhookUrl = string;

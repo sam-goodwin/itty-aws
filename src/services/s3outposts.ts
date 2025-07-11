@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface S3Outposts {
@@ -63,7 +63,7 @@ export interface S3Outposts {
 
 export type S3outposts = S3Outposts;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -74,7 +74,7 @@ export type CapacityInBytes = number;
 
 export type CidrBlock = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -131,7 +131,7 @@ export interface FailedReason {
   ErrorCode?: string;
   Message?: string;
 }
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -184,13 +184,13 @@ export type OutpostArn = string;
 
 export type OutpostId = string;
 
-export declare class OutpostOfflineException extends Data.TaggedError(
+export declare class OutpostOfflineException extends EffectData.TaggedError(
   "OutpostOfflineException",
 )<{
   readonly Message?: string;
 }> {}
 export type Outposts = Array<Outpost>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -201,12 +201,12 @@ export type SecurityGroupId = string;
 
 export type SubnetId = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

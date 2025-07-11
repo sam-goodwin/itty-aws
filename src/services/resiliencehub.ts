@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AwsResilienceHub {
@@ -745,7 +745,7 @@ export interface AcceptResourceGroupingRecommendationsResponse {
   appArn: string;
   failedEntries: Array<FailedGroupingRecommendationEntry>;
 }
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -1009,7 +1009,7 @@ export type ConfigRecommendationOptimizationType =
   | "LEAST_ERRORS"
   | "BEST_ATTAINABLE"
   | "BEST_REGION_RECOVERY";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -1416,7 +1416,7 @@ export type Integer = number;
 
 export type IntegerOptional = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -1868,7 +1868,7 @@ export type ResourceMappingType =
   | "RESOURCE_GROUP"
   | "TERRAFORM"
   | "EKS";
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1910,7 +1910,7 @@ export type ScoringComponentResiliencyScores = Record<
 >;
 export type Seconds = number;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -2008,7 +2008,7 @@ export interface TestRecommendation {
 export type TestRecommendationList = Array<TestRecommendation>;
 export type TestRisk = "SMALL" | "MEDIUM" | "HIGH";
 export type TestType = "SOFTWARE" | "HARDWARE" | "AZ" | "REGION";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -2106,7 +2106,7 @@ export interface UpdateResiliencyPolicyResponse {
 }
 export type Uuid = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

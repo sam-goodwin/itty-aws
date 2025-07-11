@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Lightsail_20161128 {
@@ -2002,7 +2002,7 @@ export interface Lightsail_20161128 {
 
 export type Lightsail = Lightsail_20161128;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly code?: string;
@@ -2041,7 +2041,7 @@ export type AccountLevelBpaSyncStatus =
   | "Failed"
   | "NeverSynced"
   | "Defaulted";
-export declare class AccountSetupInProgressException extends Data.TaggedError(
+export declare class AccountSetupInProgressException extends EffectData.TaggedError(
   "AccountSetupInProgressException",
 )<{
   readonly code?: string;
@@ -3816,7 +3816,7 @@ export type integer = number;
 
 export type InUseResourceCount = number;
 
-export declare class InvalidInputException extends Data.TaggedError(
+export declare class InvalidInputException extends EffectData.TaggedError(
   "InvalidInputException",
 )<{
   readonly code?: string;
@@ -4131,7 +4131,7 @@ export type NameServersUpdateStateCode =
 export type NetworkProtocol = "TCP" | "ALL" | "UDP" | "ICMP" | "ICMPV6";
 export type NonEmptyString = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly code?: string;
@@ -4161,7 +4161,7 @@ export interface Operation {
   errorCode?: string;
   errorDetails?: string;
 }
-export declare class OperationFailureException extends Data.TaggedError(
+export declare class OperationFailureException extends EffectData.TaggedError(
   "OperationFailureException",
 )<{
   readonly code?: string;
@@ -4597,7 +4597,7 @@ export type SensitiveString = string;
 
 export type SerialNumber = string;
 
-export declare class ServiceException extends Data.TaggedError(
+export declare class ServiceException extends EffectData.TaggedError(
   "ServiceException",
 )<{
   readonly code?: string;
@@ -4781,7 +4781,7 @@ export type TreatMissingData =
   | "NotBreaching"
   | "Ignore"
   | "Missing";
-export declare class UnauthenticatedException extends Data.TaggedError(
+export declare class UnauthenticatedException extends EffectData.TaggedError(
   "UnauthenticatedException",
 )<{
   readonly code?: string;

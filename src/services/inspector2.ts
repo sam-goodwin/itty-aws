@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Inspector2 {
@@ -802,7 +802,7 @@ export interface Inspector2 {
   >;
 }
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -1001,7 +1001,7 @@ export interface AwsLambdaFunctionDetails {
   architectures?: Array<string>;
   lastModifiedAt?: Date | string;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message: string;
@@ -1458,7 +1458,7 @@ export interface ComputePlatform {
   version?: string;
 }
 export type ConfigurationLevel = "ORGANIZATION" | "ACCOUNT";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -2242,7 +2242,7 @@ export type IntegrationStatus =
   | "DISABLING";
 export type IntegrationSummaries = Array<CodeSecurityIntegrationSummary>;
 export type IntegrationType = "GITLAB_SELF_MANAGED" | "GITHUB";
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -2759,7 +2759,7 @@ export interface ResourceMapFilter {
   value?: string;
 }
 export type ResourceMapFilterList = Array<ResourceMapFilter>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -2860,7 +2860,7 @@ export interface SendCisSessionTelemetryRequest {
 export interface SendCisSessionTelemetryResponse {}
 export type Service = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -3001,7 +3001,7 @@ export type TargetResourceTagsValue = string;
 export type Targets = Array<string>;
 export type TargetStatusFilterList = Array<CisTargetStatusFilter>;
 export type TargetStatusReasonFilterList = Array<CisTargetStatusReasonFilter>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -3145,7 +3145,7 @@ export type UsageValue = number;
 
 export type UUID = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

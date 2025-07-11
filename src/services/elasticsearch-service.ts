@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonElasticsearchService2015 {
@@ -523,7 +523,7 @@ export interface AcceptInboundCrossClusterSearchConnectionRequest {
 export interface AcceptInboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: InboundCrossClusterSearchConnection;
 }
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -643,7 +643,9 @@ export type AWSAccount = string;
 
 export type BackendRole = string;
 
-export declare class BaseException extends Data.TaggedError("BaseException")<{
+export declare class BaseException extends EffectData.TaggedError(
+  "BaseException",
+)<{
   readonly message?: string;
 }> {}
 export interface CancelDomainConfigChangeRequest {
@@ -731,7 +733,7 @@ export type ConfigChangeStatus =
   | "COMPLETED"
   | "PENDING_USER_INPUT"
   | "CANCELLED";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -942,7 +944,7 @@ export interface DescribeVpcEndpointsResponse {
 }
 export type Description = string;
 
-export declare class DisabledOperationException extends Data.TaggedError(
+export declare class DisabledOperationException extends EffectData.TaggedError(
   "DisabledOperationException",
 )<{
   readonly message?: string;
@@ -1270,17 +1272,17 @@ export type Integer = number;
 
 export type IntegerClass = number;
 
-export declare class InternalException extends Data.TaggedError(
+export declare class InternalException extends EffectData.TaggedError(
   "InternalException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidPaginationTokenException extends Data.TaggedError(
+export declare class InvalidPaginationTokenException extends EffectData.TaggedError(
   "InvalidPaginationTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidTypeException extends Data.TaggedError(
+export declare class InvalidTypeException extends EffectData.TaggedError(
   "InvalidTypeException",
 )<{
   readonly message?: string;
@@ -1292,7 +1294,7 @@ export type KmsKeyId = string;
 
 export type LastUpdated = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1570,12 +1572,12 @@ export type ReservedElasticsearchInstancePaymentOption =
   | "ALL_UPFRONT"
   | "PARTIAL_UPFRONT"
   | "NO_UPFRONT";
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1767,7 +1769,7 @@ export type Username = string;
 
 export type UserPoolId = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSGorillaBoyService {
@@ -655,12 +655,12 @@ export type CommentStatusType = "DRAFT" | "PUBLISHED" | "DELETED";
 export type CommentTextType = string;
 
 export type CommentVisibilityType = "PUBLIC" | "PRIVATE";
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConflictingOperationException extends Data.TaggedError(
+export declare class ConflictingOperationException extends EffectData.TaggedError(
   "ConflictingOperationException",
 )<{
   readonly Message?: string;
@@ -735,7 +735,7 @@ export interface CreateUserResponse {
 export type CustomMetadataKeyList = Array<string>;
 export type CustomMetadataKeyType = string;
 
-export declare class CustomMetadataLimitExceededException extends Data.TaggedError(
+export declare class CustomMetadataLimitExceededException extends EffectData.TaggedError(
   "CustomMetadataLimitExceededException",
 )<{
   readonly Message?: string;
@@ -751,7 +751,7 @@ export interface DeactivateUserRequest {
   UserId: string;
   AuthenticationToken?: string;
 }
-export declare class DeactivatingLastSystemUserException extends Data.TaggedError(
+export declare class DeactivatingLastSystemUserException extends EffectData.TaggedError(
   "DeactivatingLastSystemUserException",
 )<{
   readonly Message?: string;
@@ -917,7 +917,7 @@ export interface DescribeUsersResponse {
 }
 export type DocumentContentType = string;
 
-export declare class DocumentLockedForCommentsException extends Data.TaggedError(
+export declare class DocumentLockedForCommentsException extends EffectData.TaggedError(
   "DocumentLockedForCommentsException",
 )<{
   readonly Message?: string;
@@ -957,20 +957,20 @@ export interface DocumentVersionMetadata {
 }
 export type DocumentVersionMetadataList = Array<DocumentVersionMetadata>;
 export type DocumentVersionStatus = "ACTIVE";
-export declare class DraftUploadOutOfSyncException extends Data.TaggedError(
+export declare class DraftUploadOutOfSyncException extends EffectData.TaggedError(
   "DraftUploadOutOfSyncException",
 )<{
   readonly Message?: string;
 }> {}
 export type EmailAddressType = string;
 
-export declare class EntityAlreadyExistsException extends Data.TaggedError(
+export declare class EntityAlreadyExistsException extends EffectData.TaggedError(
   "EntityAlreadyExistsException",
 )<{
   readonly Message?: string;
 }> {}
 export type EntityIdList = Array<string>;
-export declare class EntityNotExistsException extends Data.TaggedError(
+export declare class EntityNotExistsException extends EffectData.TaggedError(
   "EntityNotExistsException",
 )<{
   readonly Message?: string;
@@ -980,7 +980,7 @@ export type ErrorMessageType = string;
 
 export type ExceptionCodeType = string;
 
-export declare class FailedDependencyException extends Data.TaggedError(
+export declare class FailedDependencyException extends EffectData.TaggedError(
   "FailedDependencyException",
 )<{
   readonly Message?: string;
@@ -1096,7 +1096,7 @@ export type HeaderValueType = string;
 
 export type IdType = string;
 
-export declare class IllegalUserStateException extends Data.TaggedError(
+export declare class IllegalUserStateException extends EffectData.TaggedError(
   "IllegalUserStateException",
 )<{
   readonly Message?: string;
@@ -1115,22 +1115,22 @@ export interface InitiateDocumentVersionUploadResponse {
   Metadata?: DocumentMetadata;
   UploadMetadata?: UploadMetadata;
 }
-export declare class InvalidArgumentException extends Data.TaggedError(
+export declare class InvalidArgumentException extends EffectData.TaggedError(
   "InvalidArgumentException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidCommentOperationException extends Data.TaggedError(
+export declare class InvalidCommentOperationException extends EffectData.TaggedError(
   "InvalidCommentOperationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOperationException extends Data.TaggedError(
+export declare class InvalidOperationException extends EffectData.TaggedError(
   "InvalidOperationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidPasswordException extends Data.TaggedError(
+export declare class InvalidPasswordException extends EffectData.TaggedError(
   "InvalidPasswordException",
 )<{
   readonly Message?: string;
@@ -1167,7 +1167,7 @@ export type LanguageCodeType =
   | "TR"
   | "ZH"
   | "DEFAULT";
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1240,7 +1240,7 @@ export type PrincipalType =
   | "INVITE"
   | "ANONYMOUS"
   | "ORGANIZATION";
-export declare class ProhibitedStateException extends Data.TaggedError(
+export declare class ProhibitedStateException extends EffectData.TaggedError(
   "ProhibitedStateException",
 )<{
   readonly Message?: string;
@@ -1255,12 +1255,12 @@ export interface RemoveResourcePermissionRequest {
   PrincipalId: string;
   PrincipalType?: PrincipalType;
 }
-export declare class RequestedEntityTooLargeException extends Data.TaggedError(
+export declare class RequestedEntityTooLargeException extends EffectData.TaggedError(
   "RequestedEntityTooLargeException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceAlreadyCheckedOutException extends Data.TaggedError(
+export declare class ResourceAlreadyCheckedOutException extends EffectData.TaggedError(
   "ResourceAlreadyCheckedOutException",
 )<{
   readonly Message?: string;
@@ -1365,7 +1365,7 @@ export interface SearchSortResult {
   Field?: OrderByFieldType;
   Order?: SortOrder;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Message?: string;
@@ -1393,12 +1393,12 @@ export type SignedHeaderMap = Record<string, string>;
 export type SizeType = number;
 
 export type SortOrder = "ASC" | "DESC";
-export declare class StorageLimitExceededException extends Data.TaggedError(
+export declare class StorageLimitExceededException extends EffectData.TaggedError(
   "StorageLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class StorageLimitWillExceedException extends Data.TaggedError(
+export declare class StorageLimitWillExceedException extends EffectData.TaggedError(
   "StorageLimitWillExceedException",
 )<{
   readonly Message?: string;
@@ -1423,23 +1423,23 @@ export type TimestampType = Date | string;
 
 export type TimeZoneIdType = string;
 
-export declare class TooManyLabelsException extends Data.TaggedError(
+export declare class TooManyLabelsException extends EffectData.TaggedError(
   "TooManyLabelsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManySubscriptionsException extends Data.TaggedError(
+export declare class TooManySubscriptionsException extends EffectData.TaggedError(
   "TooManySubscriptionsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class UnauthorizedOperationException extends Data.TaggedError(
+export declare class UnauthorizedOperationException extends EffectData.TaggedError(
   "UnauthorizedOperationException",
 )<{
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export declare class UnauthorizedResourceAccessException extends Data.TaggedError(
+export declare class UnauthorizedResourceAccessException extends EffectData.TaggedError(
   "UnauthorizedResourceAccessException",
 )<{
   readonly Message?: string;

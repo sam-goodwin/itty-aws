@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ServerlessApplicationRepository {
@@ -198,7 +198,7 @@ export interface ApplicationSummary {
   Name: string;
   SpdxLicenseId?: string;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly ErrorCode?: string;
@@ -209,7 +209,7 @@ export type Capability =
   | "CAPABILITY_NAMED_IAM"
   | "CAPABILITY_AUTO_EXPAND"
   | "CAPABILITY_RESOURCE_POLICY";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly ErrorCode?: string;
@@ -303,7 +303,7 @@ export interface CreateCloudFormationTemplateResponse {
 export interface DeleteApplicationRequest {
   ApplicationId: string;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly ErrorCode?: string;
@@ -347,7 +347,7 @@ export interface GetCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly ErrorCode?: string;
@@ -382,7 +382,7 @@ export interface ListApplicationVersionsResponse {
 }
 export type MaxItems = number;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly ErrorCode?: string;
@@ -427,7 +427,7 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly ErrorCode?: string;

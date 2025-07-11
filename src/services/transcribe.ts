@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Transcribe {
@@ -431,7 +431,7 @@ export interface AbsoluteTimeRange {
   First?: number;
   Last?: number;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
@@ -527,7 +527,7 @@ export type CLMLanguageCode =
   | "EN_AU"
   | "DE_DE"
   | "JA_JP";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -713,7 +713,7 @@ export interface InputDataConfig {
   DataAccessRoleArn: string;
 }
 export type InputType = "REAL_TIME" | "POST_CALL";
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly Message?: string;
@@ -861,7 +861,7 @@ export interface LanguageModel {
   InputDataConfig?: InputDataConfig;
 }
 export type LanguageOptions = Array<LanguageCode>;
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1112,7 +1112,7 @@ export interface NonTalkTimeFilter {
   RelativeTimeRange?: RelativeTimeRange;
   Negate?: boolean;
 }
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;

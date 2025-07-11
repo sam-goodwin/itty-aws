@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface RolesAnywhere {
@@ -52,7 +52,7 @@ export interface RolesAnywhere {
 
 export type Rolesanywhere = RolesAnywhere;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -230,7 +230,7 @@ export interface ResetNotificationSettingsResponse {
 }
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -297,7 +297,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
@@ -346,7 +346,7 @@ export interface UpdateTrustAnchorRequest {
 }
 export type Uuid = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

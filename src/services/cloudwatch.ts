@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface GraniteServiceVersion20100801 {
@@ -383,12 +383,12 @@ export interface CompositeAlarm {
   ActionsSuppressorExtensionPeriod?: number;
 }
 export type CompositeAlarms = Array<CompositeAlarm>;
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -407,7 +407,7 @@ export interface DashboardEntry {
 }
 export type DashboardErrorMessage = string;
 
-export declare class DashboardInvalidInputError extends Data.TaggedError(
+export declare class DashboardInvalidInputError extends EffectData.TaggedError(
   "DashboardInvalidInputError",
 )<{
   readonly message?: string;
@@ -418,7 +418,7 @@ export type DashboardName = string;
 export type DashboardNamePrefix = string;
 
 export type DashboardNames = Array<string>;
-export declare class DashboardNotFoundError extends Data.TaggedError(
+export declare class DashboardNotFoundError extends EffectData.TaggedError(
   "DashboardNotFoundError",
 )<{
   readonly message?: string;
@@ -763,27 +763,27 @@ export type InsightRuleUnboundInteger = number;
 
 export type InsightRuleUnboundLong = number;
 
-export declare class InternalServiceFault extends Data.TaggedError(
+export declare class InternalServiceFault extends EffectData.TaggedError(
   "InternalServiceFault",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidFormatFault extends Data.TaggedError(
+export declare class InvalidFormatFault extends EffectData.TaggedError(
   "InvalidFormatFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidNextToken extends Data.TaggedError(
+export declare class InvalidNextToken extends EffectData.TaggedError(
   "InvalidNextToken",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterCombinationException extends Data.TaggedError(
+export declare class InvalidParameterCombinationException extends EffectData.TaggedError(
   "InvalidParameterCombinationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterValueException extends Data.TaggedError(
+export declare class InvalidParameterValueException extends EffectData.TaggedError(
   "InvalidParameterValueException",
 )<{
   readonly message?: string;
@@ -793,12 +793,12 @@ export interface LabelOptions {
 }
 export type LastModified = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class LimitExceededFault extends Data.TaggedError(
+export declare class LimitExceededFault extends EffectData.TaggedError(
   "LimitExceededFault",
 )<{
   readonly message?: string;
@@ -1014,7 +1014,7 @@ export type MetricWidget = string;
 
 export type MetricWidgetImage = Uint8Array | string;
 
-export declare class MissingRequiredParameterException extends Data.TaggedError(
+export declare class MissingRequiredParameterException extends EffectData.TaggedError(
   "MissingRequiredParameterException",
 )<{
   readonly message?: string;
@@ -1135,12 +1135,12 @@ export type ResourceId = string;
 export type ResourceList = Array<string>;
 export type ResourceName = string;
 
-export declare class ResourceNotFound extends Data.TaggedError(
+export declare class ResourceNotFound extends EffectData.TaggedError(
   "ResourceNotFound",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly ResourceType?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface OmniCloudServiceLambda {
@@ -345,7 +345,7 @@ export interface OmniCloudServiceLambda {
 
 export type Panorama = OmniCloudServiceLambda;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message: string;
@@ -389,7 +389,7 @@ export type Certificates = Uint8Array | string;
 
 export type ClientToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message: string;
@@ -710,7 +710,7 @@ export type HwAddress = string;
 export type ImageVersion = string;
 
 export type InputPortList = Array<NodeInputPort>;
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message: string;
@@ -1082,7 +1082,7 @@ export interface ReportedRuntimeContextState {
 export type ReportedRuntimeContextStates = Array<ReportedRuntimeContextState>;
 export type ResourceArn = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message: string;
@@ -1100,7 +1100,7 @@ export interface S3Location {
   BucketName: string;
   ObjectKey: string;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message: string;
@@ -1171,7 +1171,7 @@ export interface UpdateDeviceMetadataResponse {
 }
 export type UpdateProgress = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message: string;

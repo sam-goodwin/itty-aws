@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface TaigaWebService {
@@ -315,7 +315,7 @@ export interface TaigaWebService {
 
 export type Managedblockchain = TaigaWebService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -477,7 +477,7 @@ export interface GetProposalInput {
 export interface GetProposalOutput {
   Proposal?: Proposal;
 }
-export declare class IllegalActionException extends Data.TaggedError(
+export declare class IllegalActionException extends EffectData.TaggedError(
   "IllegalActionException",
 )<{
   readonly Message?: string;
@@ -485,10 +485,10 @@ export declare class IllegalActionException extends Data.TaggedError(
 export type InputTagMap = Record<string, string>;
 export type InstanceTypeString = string;
 
-export declare class InternalServiceErrorException extends Data.TaggedError(
+export declare class InternalServiceErrorException extends EffectData.TaggedError(
   "InternalServiceErrorException",
 )<{}> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -829,25 +829,25 @@ export interface RemoveAction {
   MemberId: string;
 }
 export type RemoveActionList = Array<RemoveAction>;
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly Message?: string;
 }> {}
 export type ResourceIdString = string;
 
-export declare class ResourceLimitExceededException extends Data.TaggedError(
+export declare class ResourceLimitExceededException extends EffectData.TaggedError(
   "ResourceLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
   readonly ResourceName?: string;
 }> {}
-export declare class ResourceNotReadyException extends Data.TaggedError(
+export declare class ResourceNotReadyException extends EffectData.TaggedError(
   "ResourceNotReadyException",
 )<{
   readonly Message?: string;
@@ -866,12 +866,12 @@ export type TagValue = string;
 export type ThresholdComparator = "GREATER_THAN" | "GREATER_THAN_OR_EQUAL_TO";
 export type ThresholdPercentageInt = number;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{}> {}
 export type Timestamp = Date | string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly Message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonEC2ContainerRegistry_V20150921 {
@@ -809,7 +809,7 @@ export interface DescribeRepositoryCreationTemplatesResponse {
   repositoryCreationTemplates?: Array<RepositoryCreationTemplate>;
   nextToken?: string;
 }
-export declare class EmptyUploadException extends Data.TaggedError(
+export declare class EmptyUploadException extends EffectData.TaggedError(
   "EmptyUploadException",
 )<{
   readonly message?: string;
@@ -952,7 +952,7 @@ export interface Image {
   imageManifestMediaType?: string;
 }
 export type ImageActionType = "EXPIRE";
-export declare class ImageAlreadyExistsException extends Data.TaggedError(
+export declare class ImageAlreadyExistsException extends EffectData.TaggedError(
   "ImageAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -975,7 +975,7 @@ export interface ImageDetail {
 export type ImageDetailList = Array<ImageDetail>;
 export type ImageDigest = string;
 
-export declare class ImageDigestDoesNotMatchException extends Data.TaggedError(
+export declare class ImageDigestDoesNotMatchException extends EffectData.TaggedError(
   "ImageDigestDoesNotMatchException",
 )<{
   readonly message?: string;
@@ -1007,7 +1007,7 @@ export type ImageIdentifierList = Array<ImageIdentifier>;
 export type ImageList = Array<Image>;
 export type ImageManifest = string;
 
-export declare class ImageNotFoundException extends Data.TaggedError(
+export declare class ImageNotFoundException extends EffectData.TaggedError(
   "ImageNotFoundException",
 )<{
   readonly message?: string;
@@ -1050,7 +1050,7 @@ export type ImageSizeInBytes = number;
 
 export type ImageTag = string;
 
-export declare class ImageTagAlreadyExistsException extends Data.TaggedError(
+export declare class ImageTagAlreadyExistsException extends EffectData.TaggedError(
   "ImageTagAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -1068,12 +1068,12 @@ export interface InitiateLayerUploadResponse {
 }
 export type InUseCount = number;
 
-export declare class InvalidLayerException extends Data.TaggedError(
+export declare class InvalidLayerException extends EffectData.TaggedError(
   "InvalidLayerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidLayerPartException extends Data.TaggedError(
+export declare class InvalidLayerPartException extends EffectData.TaggedError(
   "InvalidLayerPartException",
 )<{
   readonly registryId?: string;
@@ -1082,12 +1082,12 @@ export declare class InvalidLayerPartException extends Data.TaggedError(
   readonly lastValidByteReceived?: number;
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidTagParameterException extends Data.TaggedError(
+export declare class InvalidTagParameterException extends EffectData.TaggedError(
   "InvalidTagParameterException",
 )<{
   readonly message?: string;
@@ -1096,7 +1096,9 @@ export type IsPTCRuleValid = boolean;
 
 export type KmsError = string;
 
-export declare class KmsException extends Data.TaggedError("KmsException")<{
+export declare class KmsException extends EffectData.TaggedError(
+  "KmsException",
+)<{
   readonly message?: string;
   readonly kmsError?: string;
 }> {}
@@ -1110,7 +1112,7 @@ export interface Layer {
   layerSize?: number;
   mediaType?: string;
 }
-export declare class LayerAlreadyExistsException extends Data.TaggedError(
+export declare class LayerAlreadyExistsException extends EffectData.TaggedError(
   "LayerAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -1128,7 +1130,7 @@ export type LayerFailureCode = "InvalidLayerDigest" | "MissingLayerDigest";
 export type LayerFailureList = Array<LayerFailure>;
 export type LayerFailureReason = string;
 
-export declare class LayerInaccessibleException extends Data.TaggedError(
+export declare class LayerInaccessibleException extends EffectData.TaggedError(
   "LayerInaccessibleException",
 )<{
   readonly message?: string;
@@ -1136,19 +1138,19 @@ export declare class LayerInaccessibleException extends Data.TaggedError(
 export type LayerList = Array<Layer>;
 export type LayerPartBlob = Uint8Array | string;
 
-export declare class LayerPartTooSmallException extends Data.TaggedError(
+export declare class LayerPartTooSmallException extends EffectData.TaggedError(
   "LayerPartTooSmallException",
 )<{
   readonly message?: string;
 }> {}
 export type LayerSizeInBytes = number;
 
-export declare class LayersNotFoundException extends Data.TaggedError(
+export declare class LayersNotFoundException extends EffectData.TaggedError(
   "LayersNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LifecyclePolicyNotFoundException extends Data.TaggedError(
+export declare class LifecyclePolicyNotFoundException extends EffectData.TaggedError(
   "LifecyclePolicyNotFoundException",
 )<{
   readonly message?: string;
@@ -1156,12 +1158,12 @@ export declare class LifecyclePolicyNotFoundException extends Data.TaggedError(
 export interface LifecyclePolicyPreviewFilter {
   tagStatus?: TagStatus;
 }
-export declare class LifecyclePolicyPreviewInProgressException extends Data.TaggedError(
+export declare class LifecyclePolicyPreviewInProgressException extends EffectData.TaggedError(
   "LifecyclePolicyPreviewInProgressException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LifecyclePolicyPreviewNotFoundException extends Data.TaggedError(
+export declare class LifecyclePolicyPreviewNotFoundException extends EffectData.TaggedError(
   "LifecyclePolicyPreviewNotFoundException",
 )<{
   readonly message?: string;
@@ -1194,7 +1196,7 @@ export type LifecyclePolicyTextForRepositoryCreationTemplate = string;
 
 export type LifecyclePreviewMaxResults = number;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1264,13 +1266,13 @@ export interface PullThroughCacheRule {
   upstreamRegistry?: UpstreamRegistry;
   updatedAt?: Date | string;
 }
-export declare class PullThroughCacheRuleAlreadyExistsException extends Data.TaggedError(
+export declare class PullThroughCacheRuleAlreadyExistsException extends EffectData.TaggedError(
   "PullThroughCacheRuleAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
 export type PullThroughCacheRuleList = Array<PullThroughCacheRule>;
-export declare class PullThroughCacheRuleNotFoundException extends Data.TaggedError(
+export declare class PullThroughCacheRuleNotFoundException extends EffectData.TaggedError(
   "PullThroughCacheRuleNotFoundException",
 )<{
   readonly message?: string;
@@ -1361,7 +1363,7 @@ export type RecommendationText = string;
 
 export type RecordedPullTimestamp = Date | string;
 
-export declare class ReferencedImagesNotFoundException extends Data.TaggedError(
+export declare class ReferencedImagesNotFoundException extends EffectData.TaggedError(
   "ReferencedImagesNotFoundException",
 )<{
   readonly message?: string;
@@ -1371,7 +1373,7 @@ export type Region = string;
 
 export type RegistryId = string;
 
-export declare class RegistryPolicyNotFoundException extends Data.TaggedError(
+export declare class RegistryPolicyNotFoundException extends EffectData.TaggedError(
   "RegistryPolicyNotFoundException",
 )<{
   readonly message?: string;
@@ -1421,7 +1423,7 @@ export interface Repository {
   imageScanningConfiguration?: ImageScanningConfiguration;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export declare class RepositoryAlreadyExistsException extends Data.TaggedError(
+export declare class RepositoryAlreadyExistsException extends EffectData.TaggedError(
   "RepositoryAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -1452,17 +1454,17 @@ export type RepositoryList = Array<Repository>;
 export type RepositoryName = string;
 
 export type RepositoryNameList = Array<string>;
-export declare class RepositoryNotEmptyException extends Data.TaggedError(
+export declare class RepositoryNotEmptyException extends EffectData.TaggedError(
   "RepositoryNotEmptyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class RepositoryNotFoundException extends Data.TaggedError(
+export declare class RepositoryNotFoundException extends EffectData.TaggedError(
   "RepositoryNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class RepositoryPolicyNotFoundException extends Data.TaggedError(
+export declare class RepositoryPolicyNotFoundException extends EffectData.TaggedError(
   "RepositoryPolicyNotFoundException",
 )<{
   readonly message?: string;
@@ -1512,7 +1514,7 @@ export type ScanningRepositoryFilterList = Array<ScanningRepositoryFilter>;
 export type ScanningRepositoryFilterType = "WILDCARD";
 export type ScanningRepositoryFilterValue = string;
 
-export declare class ScanNotFoundException extends Data.TaggedError(
+export declare class ScanNotFoundException extends EffectData.TaggedError(
   "ScanNotFoundException",
 )<{
   readonly message?: string;
@@ -1541,12 +1543,12 @@ export interface ScoreDetails {
 }
 export type ScoringVector = string;
 
-export declare class SecretNotFoundException extends Data.TaggedError(
+export declare class SecretNotFoundException extends EffectData.TaggedError(
   "SecretNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServerException extends Data.TaggedError(
+export declare class ServerException extends EffectData.TaggedError(
   "ServerException",
 )<{
   readonly message?: string;
@@ -1611,51 +1613,51 @@ export type Tags = Record<string, string>;
 export type TagStatus = "TAGGED" | "UNTAGGED" | "ANY";
 export type TagValue = string;
 
-export declare class TemplateAlreadyExistsException extends Data.TaggedError(
+export declare class TemplateAlreadyExistsException extends EffectData.TaggedError(
   "TemplateAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class TemplateNotFoundException extends Data.TaggedError(
+export declare class TemplateNotFoundException extends EffectData.TaggedError(
   "TemplateNotFoundException",
 )<{
   readonly message?: string;
 }> {}
 export type Title = string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
 }> {}
 export type Type = string;
 
-export declare class UnableToAccessSecretException extends Data.TaggedError(
+export declare class UnableToAccessSecretException extends EffectData.TaggedError(
   "UnableToAccessSecretException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnableToDecryptSecretValueException extends Data.TaggedError(
+export declare class UnableToDecryptSecretValueException extends EffectData.TaggedError(
   "UnableToDecryptSecretValueException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnableToGetUpstreamImageException extends Data.TaggedError(
+export declare class UnableToGetUpstreamImageException extends EffectData.TaggedError(
   "UnableToGetUpstreamImageException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnableToGetUpstreamLayerException extends Data.TaggedError(
+export declare class UnableToGetUpstreamLayerException extends EffectData.TaggedError(
   "UnableToGetUpstreamLayerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedImageTypeException extends Data.TaggedError(
+export declare class UnsupportedImageTypeException extends EffectData.TaggedError(
   "UnsupportedImageTypeException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedUpstreamRegistryException extends Data.TaggedError(
+export declare class UnsupportedUpstreamRegistryException extends EffectData.TaggedError(
   "UnsupportedUpstreamRegistryException",
 )<{
   readonly message?: string;
@@ -1712,7 +1714,7 @@ export interface UploadLayerPartResponse {
   uploadId?: string;
   lastByteReceived?: number;
 }
-export declare class UploadNotFoundException extends Data.TaggedError(
+export declare class UploadNotFoundException extends EffectData.TaggedError(
   "UploadNotFoundException",
 )<{
   readonly message?: string;
@@ -1742,7 +1744,7 @@ export interface ValidatePullThroughCacheRuleResponse {
   isValid?: boolean;
   failure?: string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

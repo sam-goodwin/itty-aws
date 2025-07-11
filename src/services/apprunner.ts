@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AppRunner {
@@ -671,17 +671,17 @@ export interface InstanceConfiguration {
 }
 export type Integer = number;
 
-export declare class InternalServiceErrorException extends Data.TaggedError(
+export declare class InternalServiceErrorException extends EffectData.TaggedError(
   "InternalServiceErrorException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidStateException extends Data.TaggedError(
+export declare class InvalidStateException extends EffectData.TaggedError(
   "InvalidStateException",
 )<{
   readonly Message?: string;
@@ -849,7 +849,7 @@ export interface PauseServiceResponse {
   OperationId?: string;
 }
 export type ProviderType = "GITHUB" | "BITBUCKET";
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -915,7 +915,7 @@ export interface ServiceObservabilityConfiguration {
   ObservabilityEnabled: boolean;
   ObservabilityConfigurationArn?: string;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;

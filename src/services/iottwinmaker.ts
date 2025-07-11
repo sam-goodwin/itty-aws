@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSIoTTwinMaker {
@@ -445,7 +445,7 @@ export interface AWSIoTTwinMaker {
 
 export type Iottwinmaker = AWSIoTTwinMaker;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -602,17 +602,17 @@ export type CompositeComponentUpdatesMapRequest = Record<
   CompositeComponentUpdateRequest
 >;
 export type Configuration = Record<string, string>;
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConnectorFailureException extends Data.TaggedError(
+export declare class ConnectorFailureException extends EffectData.TaggedError(
   "ConnectorFailureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConnectorTimeoutException extends Data.TaggedError(
+export declare class ConnectorTimeoutException extends EffectData.TaggedError(
   "ConnectorTimeoutException",
 )<{
   readonly message?: string;
@@ -1001,7 +1001,7 @@ export type IdOrArn = string;
 
 export type Integer = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -1318,7 +1318,7 @@ export type QueryServiceMaxResults = number;
 
 export type QueryStatement = string;
 
-export declare class QueryTimeoutException extends Data.TaggedError(
+export declare class QueryTimeoutException extends EffectData.TaggedError(
   "QueryTimeoutException",
 )<{
   readonly message?: string;
@@ -1332,7 +1332,7 @@ export interface RelationshipValue {
   targetComponentName?: string;
 }
 export type RequiredProperties = Array<string>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1382,7 +1382,7 @@ export interface SceneSummary {
 export type Scope = string;
 
 export type SelectedPropertyList = Array<string>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -1460,7 +1460,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -1469,7 +1469,7 @@ export type Time = string;
 
 export type Timestamp = Date | string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
@@ -1546,7 +1546,7 @@ export interface UpdateWorkspaceResponse {
 }
 export type Uuid = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

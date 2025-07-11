@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Ardi {
@@ -288,7 +288,7 @@ export type ApplicationArn = string;
 export type ApplicationTag = Record<string, string>;
 export type ApplicationTagKey = string;
 
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
@@ -337,7 +337,7 @@ export interface FailedResource {
   ErrorCode?: string;
 }
 export type FailedResourceList = Array<FailedResource>;
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Message?: string;
@@ -491,7 +491,7 @@ export type GroupString = string;
 
 export type GroupStringV2 = string;
 
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly Message?: string;
@@ -560,14 +560,14 @@ export interface ListTagSyncTasksOutput {
 }
 export type MaxResults = number;
 
-export declare class MethodNotAllowedException extends Data.TaggedError(
+export declare class MethodNotAllowedException extends EffectData.TaggedError(
   "MethodNotAllowedException",
 )<{
   readonly Message?: string;
 }> {}
 export type NextToken = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -685,12 +685,12 @@ export type TagValue = string;
 
 export type timestamp = Date | string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly Message?: string;

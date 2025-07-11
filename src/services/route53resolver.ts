@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Route53Resolver {
@@ -800,7 +800,7 @@ export interface Route53Resolver {
 
 export type Route53resolver = Route53Resolver;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -855,7 +855,7 @@ export type BlockOverrideTtl = number;
 
 export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE";
 export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -1253,33 +1253,33 @@ export interface ImportFirewallDomainsResponse {
 }
 export type InstanceCount = number;
 
-export declare class InternalServiceErrorException extends Data.TaggedError(
+export declare class InternalServiceErrorException extends EffectData.TaggedError(
   "InternalServiceErrorException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message: string;
   readonly FieldName?: string;
 }> {}
-export declare class InvalidPolicyDocument extends Data.TaggedError(
+export declare class InvalidPolicyDocument extends EffectData.TaggedError(
   "InvalidPolicyDocument",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidTagException extends Data.TaggedError(
+export declare class InvalidTagException extends EffectData.TaggedError(
   "InvalidTagException",
 )<{
   readonly Message?: string;
@@ -1327,7 +1327,7 @@ export interface IpAddressUpdate {
 }
 export type Ipv6 = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1712,7 +1712,7 @@ export type ResolverRuleStatus =
   | "Deleting"
   | "Updating"
   | "Failed";
-export declare class ResourceExistsException extends Data.TaggedError(
+export declare class ResourceExistsException extends EffectData.TaggedError(
   "ResourceExistsException",
 )<{
   readonly Message?: string;
@@ -1720,19 +1720,19 @@ export declare class ResourceExistsException extends Data.TaggedError(
 }> {}
 export type ResourceId = string;
 
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
   readonly ResourceType?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
   readonly ResourceType?: string;
 }> {}
-export declare class ResourceUnavailableException extends Data.TaggedError(
+export declare class ResourceUnavailableException extends EffectData.TaggedError(
   "ResourceUnavailableException",
 )<{
   readonly Message?: string;
@@ -1746,7 +1746,7 @@ export type ServerNameIndication = string;
 
 export type ServicePrinciple = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -1782,12 +1782,12 @@ export interface TargetAddress {
   ServerNameIndication?: string;
 }
 export type TargetList = Array<TargetAddress>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class UnknownResourceException extends Data.TaggedError(
+export declare class UnknownResourceException extends EffectData.TaggedError(
   "UnknownResourceException",
 )<{
   readonly Message?: string;
@@ -1891,7 +1891,7 @@ export interface UpdateResolverRuleResponse {
   ResolverRule?: ResolverRule;
 }
 export type Validation = "ENABLE" | "DISABLE" | "USE_LOCAL_RESOURCE_SETTING";
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface SWBPortalService {
@@ -73,7 +73,7 @@ export interface GetRoleCredentialsRequest {
 export interface GetRoleCredentialsResponse {
   roleCredentials?: RoleCredentials;
 }
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly message?: string;
@@ -104,7 +104,7 @@ export type MaxResultType = number;
 
 export type NextTokenType = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -126,12 +126,12 @@ export type SecretAccessKeyType = string;
 
 export type SessionTokenType = string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;

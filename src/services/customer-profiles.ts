@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CustomerProfiles_20200815 {
@@ -890,7 +890,7 @@ export interface CustomerProfiles_20200815 {
 
 export type CustomerProfiles = CustomerProfiles_20200815;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -1005,7 +1005,7 @@ export interface AutoMerging {
   ConflictResolution?: ConflictResolution;
   MinAllowedConfidenceScoreForMerging?: number;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
@@ -1917,7 +1917,7 @@ export interface IntegrationConfig {
   AppflowIntegration?: AppflowIntegration;
 }
 export type IntegrationList = Array<ListIntegrationItem>;
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -2508,7 +2508,7 @@ export type ReadinessStatus =
   | "COMPLETED"
   | "FAILED";
 export type requestValueList = Array<string>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -2822,7 +2822,7 @@ export interface Threshold {
   Value: string;
   Operator: Operator;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;

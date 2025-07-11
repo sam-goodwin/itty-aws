@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSBudgetServiceGateway {
@@ -319,7 +319,7 @@ export interface AWSBudgetServiceGateway {
 
 export type Budgets = AWSBudgetServiceGateway;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -489,7 +489,7 @@ export interface CreateSubscriberRequest {
   Subscriber: Subscriber;
 }
 export interface CreateSubscriberResponse {}
-export declare class CreationLimitExceededException extends Data.TaggedError(
+export declare class CreationLimitExceededException extends EffectData.TaggedError(
   "CreationLimitExceededException",
 )<{
   readonly Message?: string;
@@ -664,7 +664,7 @@ export type Dimension =
 export type DimensionValue = string;
 
 export type DimensionValues = Array<string>;
-export declare class DuplicateRecordException extends Data.TaggedError(
+export declare class DuplicateRecordException extends EffectData.TaggedError(
   "DuplicateRecordException",
 )<{
   readonly Message?: string;
@@ -694,7 +694,7 @@ export type ExecutionType =
   | "RetryBudgetAction"
   | "ReverseBudgetAction"
   | "ResetBudgetAction";
-export declare class ExpiredNextTokenException extends Data.TaggedError(
+export declare class ExpiredNextTokenException extends EffectData.TaggedError(
   "ExpiredNextTokenException",
 )<{
   readonly Message?: string;
@@ -733,17 +733,17 @@ export interface IamActionDefinition {
 export type InstanceId = string;
 
 export type InstanceIds = Array<string>;
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message?: string;
@@ -780,7 +780,7 @@ export type Metric =
   | "NORMALIZED_USAGE_AMOUNT"
   | "HOURS";
 export type Metrics = Array<Metric>;
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -814,7 +814,7 @@ export type PolicyId = string;
 
 export type Region = string;
 
-export declare class ResourceLockedException extends Data.TaggedError(
+export declare class ResourceLockedException extends EffectData.TaggedError(
   "ResourceLockedException",
 )<{
   readonly Message?: string;
@@ -838,7 +838,7 @@ export interface ScpActionDefinition {
   PolicyId: string;
   TargetIds: Array<string>;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -876,7 +876,7 @@ export type TargetId = string;
 
 export type TargetIds = Array<string>;
 export type ThresholdType = "PERCENTAGE" | "ABSOLUTE_VALUE";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;

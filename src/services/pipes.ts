@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Pipes {
@@ -91,7 +91,7 @@ export interface CloudwatchLogsLogDestination {
 export interface CloudwatchLogsLogDestinationParameters {
   LogGroupArn: string;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -266,7 +266,7 @@ export type IncludeExecutionDataOption = string;
 
 export type InputTemplate = string;
 
-export declare class InternalException extends Data.TaggedError(
+export declare class InternalException extends EffectData.TaggedError(
   "InternalException",
 )<{
   readonly message: string;
@@ -360,7 +360,7 @@ export interface NetworkConfiguration {
 }
 export type NextToken = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -657,7 +657,7 @@ export interface SelfManagedKafkaAccessConfigurationVpc {
 }
 export type SelfManagedKafkaStartPosition = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -722,7 +722,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -820,7 +820,7 @@ export interface UpdatePipeSourceSqsQueueParameters {
 }
 export type URI = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

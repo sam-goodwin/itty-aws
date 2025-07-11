@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmplifyUIBuilder {
@@ -593,12 +593,12 @@ export interface GraphQLRenderConfig {
   fragmentsFilePath: string;
 }
 export type IdentifierList = Array<string>;
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
@@ -708,12 +708,12 @@ export interface RefreshTokenResponse {
   expiresIn: number;
 }
 export type RelatedModelFieldsList = Array<string>;
-export declare class ResourceConflictException extends Data.TaggedError(
+export declare class ResourceConflictException extends EffectData.TaggedError(
   "ResourceConflictException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -729,7 +729,7 @@ export interface SectionalElement {
 export type SectionalElementMap = Record<string, SectionalElement>;
 export type SensitiveString = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -799,14 +799,14 @@ export interface ThemeValues {
   value?: ThemeValue;
 }
 export type ThemeValuesList = Array<ThemeValues>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
 }> {}
 export type TokenProviders = string;
 
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;

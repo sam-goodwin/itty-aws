@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Logs_20140328 {
@@ -879,7 +879,7 @@ export interface Logs_20140328 {
 
 export type CloudwatchLogs = Logs_20140328;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -1005,7 +1005,7 @@ export interface ConfigurationTemplateDeliveryConfigValues {
   s3DeliveryConfiguration?: S3DeliveryConfiguration;
 }
 export type ConfigurationTemplates = Array<ConfigurationTemplate>;
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -1073,7 +1073,7 @@ export interface CSV {
   source?: string;
 }
 export type DashboardViewerPrincipals = Array<string>;
-export declare class DataAlreadyAcceptedException extends Data.TaggedError(
+export declare class DataAlreadyAcceptedException extends EffectData.TaggedError(
   "DataAlreadyAcceptedException",
 )<{
   readonly expectedSequenceToken?: string;
@@ -1712,17 +1712,17 @@ export interface IntegrationSummary {
 export type IntegrationType = "OPENSEARCH";
 export type Interleaved = boolean;
 
-export declare class InvalidOperationException extends Data.TaggedError(
+export declare class InvalidOperationException extends EffectData.TaggedError(
   "InvalidOperationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSequenceTokenException extends Data.TaggedError(
+export declare class InvalidSequenceTokenException extends EffectData.TaggedError(
   "InvalidSequenceTokenException",
 )<{
   readonly expectedSequenceToken?: string;
@@ -1738,7 +1738,7 @@ export type KeyValueDelimiter = string;
 
 export type KmsKeyId = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1915,7 +1915,7 @@ export interface LowerCaseString {
   withKeys: Array<string>;
 }
 export type LowerCaseStringWithKeys = Array<string>;
-export declare class MalformedQueryException extends Data.TaggedError(
+export declare class MalformedQueryException extends EffectData.TaggedError(
   "MalformedQueryException",
 )<{
   readonly queryCompileError?: QueryCompileError;
@@ -2039,7 +2039,7 @@ export interface OpenSearchWorkspace {
 }
 export type OpenSearchWorkspaceId = string;
 
-export declare class OperationAbortedException extends Data.TaggedError(
+export declare class OperationAbortedException extends EffectData.TaggedError(
   "OperationAbortedException",
 )<{
   readonly message?: string;
@@ -2358,7 +2358,7 @@ export type RenameTo = string;
 
 export type RequestId = string;
 
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -2369,7 +2369,7 @@ export type ResourceConfig = {
 };
 export type ResourceIdentifier = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -2406,24 +2406,24 @@ export type SequenceToken = string;
 
 export type Service = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
 }> {}
 export type SessionId = string;
 
-export declare class SessionStreamingException extends Data.TaggedError(
+export declare class SessionStreamingException extends EffectData.TaggedError(
   "SessionStreamingException",
 )<{
   readonly message?: string;
 }> {}
-export declare class SessionTimeoutException extends Data.TaggedError(
+export declare class SessionTimeoutException extends EffectData.TaggedError(
   "SessionTimeoutException",
 )<{
   readonly message?: string;
@@ -2578,7 +2578,7 @@ export interface TestTransformerRequest {
 export interface TestTransformerResponse {
   transformedLogs?: Array<TransformedLogRecord>;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -2595,7 +2595,7 @@ export type TokenValue = number;
 
 export type ToKey = string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
@@ -2624,7 +2624,7 @@ export interface TypeConverterEntry {
 }
 export type Unmask = boolean;
 
-export declare class UnrecognizedClientException extends Data.TaggedError(
+export declare class UnrecognizedClientException extends EffectData.TaggedError(
   "UnrecognizedClientException",
 )<{
   readonly message?: string;
@@ -2663,7 +2663,7 @@ export interface UpperCaseString {
   withKeys: Array<string>;
 }
 export type UpperCaseStringWithKeys = Array<string>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

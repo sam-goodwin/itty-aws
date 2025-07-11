@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Kinesis_20131202 {
@@ -402,7 +402,7 @@ export interface Kinesis_20131202 {
 
 export type Kinesis = Kinesis_20131202;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -525,12 +525,12 @@ export type ErrorCode = string;
 
 export type ErrorMessage = string;
 
-export declare class ExpiredIteratorException extends Data.TaggedError(
+export declare class ExpiredIteratorException extends EffectData.TaggedError(
   "ExpiredIteratorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ExpiredNextTokenException extends Data.TaggedError(
+export declare class ExpiredNextTokenException extends EffectData.TaggedError(
   "ExpiredNextTokenException",
 )<{
   readonly message?: string;
@@ -576,49 +576,49 @@ export interface IncreaseStreamRetentionPeriodInput {
   RetentionPeriodHours: number;
   StreamARN?: string;
 }
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidArgumentException extends Data.TaggedError(
+export declare class InvalidArgumentException extends EffectData.TaggedError(
   "InvalidArgumentException",
 )<{
   readonly message?: string;
 }> {}
 export type KeyId = string;
 
-export declare class KMSAccessDeniedException extends Data.TaggedError(
+export declare class KMSAccessDeniedException extends EffectData.TaggedError(
   "KMSAccessDeniedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSDisabledException extends Data.TaggedError(
+export declare class KMSDisabledException extends EffectData.TaggedError(
   "KMSDisabledException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSInvalidStateException extends Data.TaggedError(
+export declare class KMSInvalidStateException extends EffectData.TaggedError(
   "KMSInvalidStateException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSNotFoundException extends Data.TaggedError(
+export declare class KMSNotFoundException extends EffectData.TaggedError(
   "KMSNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSOptInRequired extends Data.TaggedError(
+export declare class KMSOptInRequired extends EffectData.TaggedError(
   "KMSOptInRequired",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSThrottlingException extends Data.TaggedError(
+export declare class KMSThrottlingException extends EffectData.TaggedError(
   "KMSThrottlingException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -711,7 +711,7 @@ export type Policy = string;
 
 export type PositiveIntegerObject = number;
 
-export declare class ProvisionedThroughputExceededException extends Data.TaggedError(
+export declare class ProvisionedThroughputExceededException extends EffectData.TaggedError(
   "ProvisionedThroughputExceededException",
 )<{
   readonly message?: string;
@@ -779,12 +779,12 @@ export interface RemoveTagsFromStreamInput {
 }
 export type ResourceARN = string;
 
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -960,7 +960,7 @@ export interface UpdateStreamModeInput {
   StreamARN: string;
   StreamModeDetails: StreamModeDetails;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

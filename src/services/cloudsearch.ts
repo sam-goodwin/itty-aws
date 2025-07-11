@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface A9SearchCloudConfigService2013 {
@@ -338,7 +338,9 @@ export interface AvailabilityOptionsStatus {
   Options: boolean;
   Status: OptionStatus;
 }
-export declare class BaseException extends Data.TaggedError("BaseException")<{
+export declare class BaseException extends EffectData.TaggedError(
+  "BaseException",
+)<{
   readonly Code?: string;
   readonly Message?: string;
 }> {}
@@ -496,7 +498,7 @@ export interface DescribeSuggestersRequest {
 export interface DescribeSuggestersResponse {
   Suggesters: Array<SuggesterStatus>;
 }
-export declare class DisabledOperationException extends Data.TaggedError(
+export declare class DisabledOperationException extends EffectData.TaggedError(
   "DisabledOperationException",
 )<{
   readonly Code?: string;
@@ -626,7 +628,7 @@ export interface IntArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
-export declare class InternalException extends Data.TaggedError(
+export declare class InternalException extends EffectData.TaggedError(
   "InternalException",
 )<{
   readonly Code?: string;
@@ -640,7 +642,7 @@ export interface IntOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export declare class InvalidTypeException extends Data.TaggedError(
+export declare class InvalidTypeException extends EffectData.TaggedError(
   "InvalidTypeException",
 )<{
   readonly Code?: string;
@@ -654,7 +656,7 @@ export interface LatLonOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Code?: string;
@@ -724,13 +726,13 @@ export type PartitionInstanceType =
   | "search_previousgeneration_2xlarge";
 export type PolicyDocument = string;
 
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly Code?: string;
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Code?: string;
@@ -815,7 +817,7 @@ export interface UpdateServiceAccessPoliciesResponse {
 }
 export type UpdateTimestamp = Date | string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Code?: string;

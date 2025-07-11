@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSPriceListService {
@@ -68,7 +68,7 @@ export interface AWSPriceListService {
 
 export type Pricing = AWSPriceListService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -97,7 +97,7 @@ export type EffectiveDate = Date | string;
 
 export type errorMessage = string;
 
-export declare class ExpiredNextTokenException extends Data.TaggedError(
+export declare class ExpiredNextTokenException extends EffectData.TaggedError(
   "ExpiredNextTokenException",
 )<{
   readonly Message?: string;
@@ -145,17 +145,17 @@ export interface GetProductsResponse {
   PriceList?: Array<string>;
   NextToken?: string;
 }
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message?: string;
@@ -174,7 +174,7 @@ export interface ListPriceListsResponse {
 }
 export type MaxResults = number;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -191,7 +191,7 @@ export type PriceListJsonItems = Array<string>;
 export type PriceLists = Array<PriceList>;
 export type RegionCode = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -205,7 +205,7 @@ export type ServiceCode = string;
 export type ServiceList = Array<Service>;
 export type SynthesizedJsonPriceListJsonItem = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;

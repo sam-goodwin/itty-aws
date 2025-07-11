@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface IoTSecuredTunneling {
@@ -81,7 +81,7 @@ export interface DestinationConfig {
 }
 export type ErrorMessage = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -117,7 +117,7 @@ export interface OpenTunnelResponse {
   sourceAccessToken?: string;
   destinationAccessToken?: string;
 }
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;

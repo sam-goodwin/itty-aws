@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSCognitoSyncService {
@@ -199,7 +199,7 @@ export interface AWSCognitoSyncService {
 
 export type CognitoSync = AWSCognitoSyncService;
 
-export declare class AlreadyStreamedException extends Data.TaggedError(
+export declare class AlreadyStreamedException extends EffectData.TaggedError(
   "AlreadyStreamedException",
 )<{
   readonly message: string;
@@ -229,7 +229,7 @@ export interface CognitoStreams {
   RoleArn?: string;
   StreamingStatus?: StreamingStatus;
 }
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message: string;
@@ -277,7 +277,7 @@ export interface DescribeIdentityUsageResponse {
 }
 export type DeviceId = string;
 
-export declare class DuplicateRequestException extends Data.TaggedError(
+export declare class DuplicateRequestException extends EffectData.TaggedError(
   "DuplicateRequestException",
 )<{
   readonly message: string;
@@ -331,34 +331,34 @@ export type Integer = number;
 
 export type IntegerString = number;
 
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidConfigurationException extends Data.TaggedError(
+export declare class InvalidConfigurationException extends EffectData.TaggedError(
   "InvalidConfigurationException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidLambdaFunctionOutputException extends Data.TaggedError(
+export declare class InvalidLambdaFunctionOutputException extends EffectData.TaggedError(
   "InvalidLambdaFunctionOutputException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message: string;
 }> {}
 export type LambdaFunctionArn = string;
 
-export declare class LambdaThrottledException extends Data.TaggedError(
+export declare class LambdaThrottledException extends EffectData.TaggedError(
   "LambdaThrottledException",
 )<{
   readonly message: string;
 }> {}
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message: string;
@@ -407,7 +407,7 @@ export interface ListRecordsResponse {
 export type Long = number;
 
 export type MergedDatasetNameList = Array<string>;
-export declare class NotAuthorizedException extends Data.TaggedError(
+export declare class NotAuthorizedException extends EffectData.TaggedError(
   "NotAuthorizedException",
 )<{
   readonly message: string;
@@ -450,12 +450,12 @@ export interface RegisterDeviceRequest {
 export interface RegisterDeviceResponse {
   DeviceId?: string;
 }
-export declare class ResourceConflictException extends Data.TaggedError(
+export declare class ResourceConflictException extends EffectData.TaggedError(
   "ResourceConflictException",
 )<{
   readonly message: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -486,7 +486,7 @@ export interface SubscribeToDatasetRequest {
 export interface SubscribeToDatasetResponse {}
 export type SyncSessionToken = string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message: string;

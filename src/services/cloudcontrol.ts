@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CloudApiService {
@@ -144,7 +144,7 @@ export interface CloudApiService {
 
 export type Cloudcontrol = CloudApiService;
 
-export declare class AlreadyExistsException extends Data.TaggedError(
+export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",
 )<{
   readonly Message?: string;
@@ -157,17 +157,17 @@ export interface CancelResourceRequestOutput {
 }
 export type ClientToken = string;
 
-export declare class ClientTokenConflictException extends Data.TaggedError(
+export declare class ClientTokenConflictException extends EffectData.TaggedError(
   "ClientTokenConflictException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConcurrentOperationException extends Data.TaggedError(
+export declare class ConcurrentOperationException extends EffectData.TaggedError(
   "ConcurrentOperationException",
 )<{
   readonly Message?: string;
@@ -194,7 +194,7 @@ export interface DeleteResourceOutput {
 }
 export type ErrorMessage = string;
 
-export declare class GeneralServiceException extends Data.TaggedError(
+export declare class GeneralServiceException extends EffectData.TaggedError(
   "GeneralServiceException",
 )<{
   readonly Message?: string;
@@ -218,12 +218,12 @@ export interface GetResourceRequestStatusOutput {
 }
 export type HandlerErrorCode = string;
 
-export declare class HandlerFailureException extends Data.TaggedError(
+export declare class HandlerFailureException extends EffectData.TaggedError(
   "HandlerFailureException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class HandlerInternalFailureException extends Data.TaggedError(
+export declare class HandlerInternalFailureException extends EffectData.TaggedError(
   "HandlerInternalFailureException",
 )<{
   readonly Message?: string;
@@ -251,12 +251,12 @@ export type HookTypeArn = string;
 
 export type Identifier = string;
 
-export declare class InvalidCredentialsException extends Data.TaggedError(
+export declare class InvalidCredentialsException extends EffectData.TaggedError(
   "InvalidCredentialsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -285,19 +285,19 @@ export interface ListResourcesOutput {
 }
 export type MaxResults = number;
 
-export declare class NetworkFailureException extends Data.TaggedError(
+export declare class NetworkFailureException extends EffectData.TaggedError(
   "NetworkFailureException",
 )<{
   readonly Message?: string;
 }> {}
 export type NextToken = string;
 
-export declare class NotStabilizedException extends Data.TaggedError(
+export declare class NotStabilizedException extends EffectData.TaggedError(
   "NotStabilizedException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NotUpdatableException extends Data.TaggedError(
+export declare class NotUpdatableException extends EffectData.TaggedError(
   "NotUpdatableException",
 )<{
   readonly Message?: string;
@@ -310,7 +310,7 @@ export type OperationStatus = string;
 export type OperationStatuses = Array<string>;
 export type PatchDocument = string;
 
-export declare class PrivateTypeException extends Data.TaggedError(
+export declare class PrivateTypeException extends EffectData.TaggedError(
   "PrivateTypeException",
 )<{
   readonly Message?: string;
@@ -332,12 +332,12 @@ export type Properties = string;
 
 export type RequestToken = string;
 
-export declare class RequestTokenNotFoundException extends Data.TaggedError(
+export declare class RequestTokenNotFoundException extends EffectData.TaggedError(
   "RequestTokenNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceConflictException extends Data.TaggedError(
+export declare class ResourceConflictException extends EffectData.TaggedError(
   "ResourceConflictException",
 )<{
   readonly Message?: string;
@@ -347,7 +347,7 @@ export interface ResourceDescription {
   Properties?: string;
 }
 export type ResourceDescriptions = Array<ResourceDescription>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -359,19 +359,19 @@ export interface ResourceRequestStatusFilter {
 export type ResourceRequestStatusSummaries = Array<ProgressEvent>;
 export type RoleArn = string;
 
-export declare class ServiceInternalErrorException extends Data.TaggedError(
+export declare class ServiceInternalErrorException extends EffectData.TaggedError(
   "ServiceInternalErrorException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ServiceLimitExceededException extends Data.TaggedError(
+export declare class ServiceLimitExceededException extends EffectData.TaggedError(
   "ServiceLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
 export type StatusMessage = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -380,14 +380,14 @@ export type Timestamp = Date | string;
 
 export type TypeName = string;
 
-export declare class TypeNotFoundException extends Data.TaggedError(
+export declare class TypeNotFoundException extends EffectData.TaggedError(
   "TypeNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
 export type TypeVersionId = string;
 
-export declare class UnsupportedActionException extends Data.TaggedError(
+export declare class UnsupportedActionException extends EffectData.TaggedError(
   "UnsupportedActionException",
 )<{
   readonly Message?: string;

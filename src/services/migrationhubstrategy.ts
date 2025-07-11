@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSMigrationHubStrategyRecommendation {
@@ -230,7 +230,7 @@ export interface AWSMigrationHubStrategyRecommendation {
 
 export type Migrationhubstrategy = AWSMigrationHubStrategyRecommendation;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -395,7 +395,7 @@ export interface ConfigurationSummary {
   pipelineInfoList?: Array<PipelineInfo>;
   remoteSourceCodeAnalysisServerInfo?: RemoteSourceCodeAnalysisServerInfo;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -425,7 +425,7 @@ export interface DataCollectionDetails {
 }
 export type DataSourceType = string;
 
-export declare class DependencyException extends Data.TaggedError(
+export declare class DependencyException extends EffectData.TaggedError(
   "DependencyException",
 )<{
   readonly message?: string;
@@ -553,7 +553,7 @@ export type Integer = number;
 
 export type InterfaceName = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -711,7 +711,7 @@ export type ResourceId = string;
 
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -791,12 +791,12 @@ export interface ServerSummary {
   ServerOsType?: string;
   count?: number;
 }
-export declare class ServiceLinkedRoleLockClientException extends Data.TaggedError(
+export declare class ServiceLinkedRoleLockClientException extends EffectData.TaggedError(
   "ServiceLinkedRoleLockClientException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -883,7 +883,7 @@ export type TargetDatabaseEngine = string;
 export type TargetDatabaseEngines = Array<string>;
 export type TargetDestination = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -916,7 +916,7 @@ export interface UpdateServerConfigRequest {
   strategyOption?: StrategyOption;
 }
 export interface UpdateServerConfigResponse {}
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

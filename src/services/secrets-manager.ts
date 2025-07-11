@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface secretsmanager {
@@ -308,7 +308,7 @@ export interface CreateSecretResponse {
   VersionId?: string;
   ReplicationStatus?: Array<ReplicationStatusType>;
 }
-export declare class DecryptionFailure extends Data.TaggedError(
+export declare class DecryptionFailure extends EffectData.TaggedError(
   "DecryptionFailure",
 )<{
   readonly Message?: string;
@@ -361,7 +361,7 @@ export type DescriptionType = string;
 
 export type DurationType = string;
 
-export declare class EncryptionFailure extends Data.TaggedError(
+export declare class EncryptionFailure extends EffectData.TaggedError(
   "EncryptionFailure",
 )<{
   readonly Message?: string;
@@ -433,22 +433,22 @@ export interface GetSecretValueResponse {
 }
 export type IncludeSpaceType = boolean;
 
-export declare class InternalServiceError extends Data.TaggedError(
+export declare class InternalServiceError extends EffectData.TaggedError(
   "InternalServiceError",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -462,7 +462,7 @@ export type LastChangedDateType = Date | string;
 
 export type LastRotatedDateType = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -490,7 +490,7 @@ export interface ListSecretVersionIdsResponse {
   ARN?: string;
   Name?: string;
 }
-export declare class MalformedPolicyDocumentException extends Data.TaggedError(
+export declare class MalformedPolicyDocumentException extends EffectData.TaggedError(
   "MalformedPolicyDocumentException",
 )<{
   readonly Message?: string;
@@ -511,12 +511,12 @@ export type OwningServiceType = string;
 
 export type PasswordLengthType = number;
 
-export declare class PreconditionNotMetException extends Data.TaggedError(
+export declare class PreconditionNotMetException extends EffectData.TaggedError(
   "PreconditionNotMetException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class PublicPolicyException extends Data.TaggedError(
+export declare class PublicPolicyException extends EffectData.TaggedError(
   "PublicPolicyException",
 )<{
   readonly Message?: string;
@@ -582,12 +582,12 @@ export interface ReplicationStatusType {
 }
 export type RequireEachIncludedTypeType = boolean;
 
-export declare class ResourceExistsException extends Data.TaggedError(
+export declare class ResourceExistsException extends EffectData.TaggedError(
   "ResourceExistsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;

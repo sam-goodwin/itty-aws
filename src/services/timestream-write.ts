@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Timestream_20181101 {
@@ -231,7 +231,7 @@ export interface Timestream_20181101 {
 
 export type TimestreamWrite = Timestream_20181101;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message: string;
@@ -283,7 +283,7 @@ export type BatchLoadTaskId = string;
 export type BatchLoadTaskList = Array<BatchLoadTask>;
 export type ClientRequestToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message: string;
@@ -411,12 +411,12 @@ export type ErrorMessage = string;
 
 export type Integer = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message: string;
 }> {}
-export declare class InvalidEndpointException extends Data.TaggedError(
+export declare class InvalidEndpointException extends EffectData.TaggedError(
   "InvalidEndpointException",
 )<{
   readonly Message?: string;
@@ -536,7 +536,7 @@ export interface RejectedRecord {
   ExistingVersion?: number;
 }
 export type RejectedRecords = Array<RejectedRecord>;
-export declare class RejectedRecordsException extends Data.TaggedError(
+export declare class RejectedRecordsException extends EffectData.TaggedError(
   "RejectedRecordsException",
 )<{
   readonly Message?: string;
@@ -555,7 +555,7 @@ export type ResourceCreateAPIName = string;
 
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -594,7 +594,7 @@ export type SchemaName = string;
 
 export type SchemaValue = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -633,7 +633,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message: string;
@@ -665,7 +665,7 @@ export interface UpdateTableRequest {
 export interface UpdateTableResponse {
   Table?: Table;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSCognitoIdentityService {
@@ -304,7 +304,7 @@ export type CognitoIdentityProviderName = string;
 
 export type CognitoIdentityProviderTokenCheck = boolean;
 
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -345,7 +345,7 @@ export interface DescribeIdentityPoolInput {
 }
 export type DeveloperProviderName = string;
 
-export declare class DeveloperUserAlreadyRegisteredException extends Data.TaggedError(
+export declare class DeveloperUserAlreadyRegisteredException extends EffectData.TaggedError(
   "DeveloperUserAlreadyRegisteredException",
 )<{
   readonly message?: string;
@@ -354,7 +354,7 @@ export type DeveloperUserIdentifier = string;
 
 export type DeveloperUserIdentifierList = Array<string>;
 export type ErrorCode = "ACCESS_DENIED" | "INTERNAL_SERVER_ERROR";
-export declare class ExternalServiceException extends Data.TaggedError(
+export declare class ExternalServiceException extends EffectData.TaggedError(
   "ExternalServiceException",
 )<{
   readonly message?: string;
@@ -457,22 +457,22 @@ export type IdentityProviderName = string;
 export type IdentityProviders = Record<string, string>;
 export type IdentityProviderToken = string;
 
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidIdentityPoolConfigurationException extends Data.TaggedError(
+export declare class InvalidIdentityPoolConfigurationException extends EffectData.TaggedError(
   "InvalidIdentityPoolConfigurationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -537,7 +537,7 @@ export interface MergeDeveloperIdentitiesInput {
 export interface MergeDeveloperIdentitiesResponse {
   IdentityId?: string;
 }
-export declare class NotAuthorizedException extends Data.TaggedError(
+export declare class NotAuthorizedException extends EffectData.TaggedError(
   "NotAuthorizedException",
 )<{
   readonly message?: string;
@@ -554,12 +554,12 @@ export type PrincipalTagValue = string;
 
 export type QueryLimit = number;
 
-export declare class ResourceConflictException extends Data.TaggedError(
+export declare class ResourceConflictException extends EffectData.TaggedError(
   "ResourceConflictException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -610,7 +610,7 @@ export type TagValueType = string;
 
 export type TokenDuration = number;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;

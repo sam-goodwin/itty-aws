@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface TrentService {
@@ -728,7 +728,7 @@ export interface AliasListEntry {
 }
 export type AliasNameType = string;
 
-export declare class AlreadyExistsException extends Data.TaggedError(
+export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",
 )<{
   readonly message?: string;
@@ -755,32 +755,32 @@ export type CiphertextType = Uint8Array | string;
 
 export type CloudHsmClusterIdType = string;
 
-export declare class CloudHsmClusterInUseException extends Data.TaggedError(
+export declare class CloudHsmClusterInUseException extends EffectData.TaggedError(
   "CloudHsmClusterInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class CloudHsmClusterInvalidConfigurationException extends Data.TaggedError(
+export declare class CloudHsmClusterInvalidConfigurationException extends EffectData.TaggedError(
   "CloudHsmClusterInvalidConfigurationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class CloudHsmClusterNotActiveException extends Data.TaggedError(
+export declare class CloudHsmClusterNotActiveException extends EffectData.TaggedError(
   "CloudHsmClusterNotActiveException",
 )<{
   readonly message?: string;
 }> {}
-export declare class CloudHsmClusterNotFoundException extends Data.TaggedError(
+export declare class CloudHsmClusterNotFoundException extends EffectData.TaggedError(
   "CloudHsmClusterNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class CloudHsmClusterNotRelatedException extends Data.TaggedError(
+export declare class CloudHsmClusterNotRelatedException extends EffectData.TaggedError(
   "CloudHsmClusterNotRelatedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -877,26 +877,26 @@ export type CustomerMasterKeySpec =
   | "HMAC_384"
   | "HMAC_512"
   | "SM2";
-export declare class CustomKeyStoreHasCMKsException extends Data.TaggedError(
+export declare class CustomKeyStoreHasCMKsException extends EffectData.TaggedError(
   "CustomKeyStoreHasCMKsException",
 )<{
   readonly message?: string;
 }> {}
 export type CustomKeyStoreIdType = string;
 
-export declare class CustomKeyStoreInvalidStateException extends Data.TaggedError(
+export declare class CustomKeyStoreInvalidStateException extends EffectData.TaggedError(
   "CustomKeyStoreInvalidStateException",
 )<{
   readonly message?: string;
 }> {}
-export declare class CustomKeyStoreNameInUseException extends Data.TaggedError(
+export declare class CustomKeyStoreNameInUseException extends EffectData.TaggedError(
   "CustomKeyStoreNameInUseException",
 )<{
   readonly message?: string;
 }> {}
 export type CustomKeyStoreNameType = string;
 
-export declare class CustomKeyStoreNotFoundException extends Data.TaggedError(
+export declare class CustomKeyStoreNotFoundException extends EffectData.TaggedError(
   "CustomKeyStoreNotFoundException",
 )<{
   readonly message?: string;
@@ -957,7 +957,7 @@ export interface DeleteImportedKeyMaterialResponse {
   KeyId?: string;
   KeyMaterialId?: string;
 }
-export declare class DependencyTimeoutException extends Data.TaggedError(
+export declare class DependencyTimeoutException extends EffectData.TaggedError(
   "DependencyTimeoutException",
 )<{
   readonly message?: string;
@@ -997,7 +997,7 @@ export interface DescribeKeyResponse {
 }
 export type DescriptionType = string;
 
-export declare class DisabledException extends Data.TaggedError(
+export declare class DisabledException extends EffectData.TaggedError(
   "DisabledException",
 )<{
   readonly message?: string;
@@ -1012,7 +1012,7 @@ export interface DisconnectCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
 export interface DisconnectCustomKeyStoreResponse {}
-export declare class DryRunOperationException extends Data.TaggedError(
+export declare class DryRunOperationException extends EffectData.TaggedError(
   "DryRunOperationException",
 )<{
   readonly message?: string;
@@ -1053,7 +1053,7 @@ export type ErrorMessageType = string;
 export type ExpirationModelType =
   | "KEY_MATERIAL_EXPIRES"
   | "KEY_MATERIAL_DOES_NOT_EXPIRE";
-export declare class ExpiredImportTokenException extends Data.TaggedError(
+export declare class ExpiredImportTokenException extends EffectData.TaggedError(
   "ExpiredImportTokenException",
 )<{
   readonly message?: string;
@@ -1241,57 +1241,57 @@ export interface ImportKeyMaterialResponse {
 export type ImportState = "IMPORTED" | "PENDING_IMPORT";
 export type ImportType = "NEW_KEY_MATERIAL" | "EXISTING_KEY_MATERIAL";
 export type IncludeKeyMaterial = "ALL_KEY_MATERIAL" | "ROTATIONS_ONLY";
-export declare class IncorrectKeyException extends Data.TaggedError(
+export declare class IncorrectKeyException extends EffectData.TaggedError(
   "IncorrectKeyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class IncorrectKeyMaterialException extends Data.TaggedError(
+export declare class IncorrectKeyMaterialException extends EffectData.TaggedError(
   "IncorrectKeyMaterialException",
 )<{
   readonly message?: string;
 }> {}
-export declare class IncorrectTrustAnchorException extends Data.TaggedError(
+export declare class IncorrectTrustAnchorException extends EffectData.TaggedError(
   "IncorrectTrustAnchorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidAliasNameException extends Data.TaggedError(
+export declare class InvalidAliasNameException extends EffectData.TaggedError(
   "InvalidAliasNameException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidArnException extends Data.TaggedError(
+export declare class InvalidArnException extends EffectData.TaggedError(
   "InvalidArnException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidCiphertextException extends Data.TaggedError(
+export declare class InvalidCiphertextException extends EffectData.TaggedError(
   "InvalidCiphertextException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidGrantIdException extends Data.TaggedError(
+export declare class InvalidGrantIdException extends EffectData.TaggedError(
   "InvalidGrantIdException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidGrantTokenException extends Data.TaggedError(
+export declare class InvalidGrantTokenException extends EffectData.TaggedError(
   "InvalidGrantTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidImportTokenException extends Data.TaggedError(
+export declare class InvalidImportTokenException extends EffectData.TaggedError(
   "InvalidImportTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidKeyUsageException extends Data.TaggedError(
+export declare class InvalidKeyUsageException extends EffectData.TaggedError(
   "InvalidKeyUsageException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidMarkerException extends Data.TaggedError(
+export declare class InvalidMarkerException extends EffectData.TaggedError(
   "InvalidMarkerException",
 )<{
   readonly message?: string;
@@ -1366,7 +1366,7 @@ export type KeyState =
   | "Updating";
 export type KeyStorePasswordType = string;
 
-export declare class KeyUnavailableException extends Data.TaggedError(
+export declare class KeyUnavailableException extends EffectData.TaggedError(
   "KeyUnavailableException",
 )<{
   readonly message?: string;
@@ -1376,27 +1376,27 @@ export type KeyUsageType =
   | "ENCRYPT_DECRYPT"
   | "GENERATE_VERIFY_MAC"
   | "KEY_AGREEMENT";
-export declare class KMSInternalException extends Data.TaggedError(
+export declare class KMSInternalException extends EffectData.TaggedError(
   "KMSInternalException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSInvalidMacException extends Data.TaggedError(
+export declare class KMSInvalidMacException extends EffectData.TaggedError(
   "KMSInvalidMacException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSInvalidSignatureException extends Data.TaggedError(
+export declare class KMSInvalidSignatureException extends EffectData.TaggedError(
   "KMSInvalidSignatureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class KMSInvalidStateException extends Data.TaggedError(
+export declare class KMSInvalidStateException extends EffectData.TaggedError(
   "KMSInvalidStateException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1476,7 +1476,7 @@ export type MacAlgorithmSpec =
   | "HMAC_SHA_384"
   | "HMAC_SHA_512";
 export type MacAlgorithmSpecList = Array<MacAlgorithmSpec>;
-export declare class MalformedPolicyDocumentException extends Data.TaggedError(
+export declare class MalformedPolicyDocumentException extends EffectData.TaggedError(
   "MalformedPolicyDocumentException",
 )<{
   readonly message?: string;
@@ -1495,7 +1495,7 @@ export interface MultiRegionKey {
 }
 export type MultiRegionKeyList = Array<MultiRegionKey>;
 export type MultiRegionKeyType = "PRIMARY" | "REPLICA";
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -1639,7 +1639,9 @@ export interface Tag {
   TagKey: string;
   TagValue: string;
 }
-export declare class TagException extends Data.TaggedError("TagException")<{
+export declare class TagException extends EffectData.TaggedError(
+  "TagException",
+)<{
   readonly message?: string;
 }> {}
 export type TagKeyList = Array<string>;
@@ -1654,7 +1656,7 @@ export type TagValueType = string;
 
 export type TrustAnchorCertificateType = string;
 
-export declare class UnsupportedOperationException extends Data.TaggedError(
+export declare class UnsupportedOperationException extends EffectData.TaggedError(
   "UnsupportedOperationException",
 )<{
   readonly message?: string;
@@ -1715,7 +1717,7 @@ export interface VerifyResponse {
   SigningAlgorithm?: SigningAlgorithmSpec;
 }
 export type WrappingKeySpec = "RSA_2048" | "RSA_3072" | "RSA_4096" | "SM2";
-export declare class XksKeyAlreadyInUseException extends Data.TaggedError(
+export declare class XksKeyAlreadyInUseException extends EffectData.TaggedError(
   "XksKeyAlreadyInUseException",
 )<{
   readonly message?: string;
@@ -1725,12 +1727,12 @@ export interface XksKeyConfigurationType {
 }
 export type XksKeyIdType = string;
 
-export declare class XksKeyInvalidConfigurationException extends Data.TaggedError(
+export declare class XksKeyInvalidConfigurationException extends EffectData.TaggedError(
   "XksKeyInvalidConfigurationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class XksKeyNotFoundException extends Data.TaggedError(
+export declare class XksKeyNotFoundException extends EffectData.TaggedError(
   "XksKeyNotFoundException",
 )<{
   readonly message?: string;
@@ -1753,53 +1755,53 @@ export interface XksProxyConfigurationType {
 export type XksProxyConnectivityType =
   | "PUBLIC_ENDPOINT"
   | "VPC_ENDPOINT_SERVICE";
-export declare class XksProxyIncorrectAuthenticationCredentialException extends Data.TaggedError(
+export declare class XksProxyIncorrectAuthenticationCredentialException extends EffectData.TaggedError(
   "XksProxyIncorrectAuthenticationCredentialException",
 )<{
   readonly message?: string;
 }> {}
-export declare class XksProxyInvalidConfigurationException extends Data.TaggedError(
+export declare class XksProxyInvalidConfigurationException extends EffectData.TaggedError(
   "XksProxyInvalidConfigurationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class XksProxyInvalidResponseException extends Data.TaggedError(
+export declare class XksProxyInvalidResponseException extends EffectData.TaggedError(
   "XksProxyInvalidResponseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class XksProxyUriEndpointInUseException extends Data.TaggedError(
+export declare class XksProxyUriEndpointInUseException extends EffectData.TaggedError(
   "XksProxyUriEndpointInUseException",
 )<{
   readonly message?: string;
 }> {}
 export type XksProxyUriEndpointType = string;
 
-export declare class XksProxyUriInUseException extends Data.TaggedError(
+export declare class XksProxyUriInUseException extends EffectData.TaggedError(
   "XksProxyUriInUseException",
 )<{
   readonly message?: string;
 }> {}
 export type XksProxyUriPathType = string;
 
-export declare class XksProxyUriUnreachableException extends Data.TaggedError(
+export declare class XksProxyUriUnreachableException extends EffectData.TaggedError(
   "XksProxyUriUnreachableException",
 )<{
   readonly message?: string;
 }> {}
-export declare class XksProxyVpcEndpointServiceInUseException extends Data.TaggedError(
+export declare class XksProxyVpcEndpointServiceInUseException extends EffectData.TaggedError(
   "XksProxyVpcEndpointServiceInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class XksProxyVpcEndpointServiceInvalidConfigurationException extends Data.TaggedError(
+export declare class XksProxyVpcEndpointServiceInvalidConfigurationException extends EffectData.TaggedError(
   "XksProxyVpcEndpointServiceInvalidConfigurationException",
 )<{
   readonly message?: string;
 }> {}
 export type XksProxyVpcEndpointServiceNameType = string;
 
-export declare class XksProxyVpcEndpointServiceNotFoundException extends Data.TaggedError(
+export declare class XksProxyVpcEndpointServiceNotFoundException extends EffectData.TaggedError(
   "XksProxyVpcEndpointServiceNotFoundException",
 )<{
   readonly message?: string;

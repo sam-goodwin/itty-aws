@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSKendraFrontendService {
@@ -797,7 +797,7 @@ export type AccessControlConfigurationSummaryList =
 export interface AccessControlListConfiguration {
   KeyPath?: string;
 }
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -1018,7 +1018,7 @@ export type ConditionOperator =
   | "Exists"
   | "NotExists"
   | "BeginsWith";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -1861,7 +1861,7 @@ export interface FeaturedDocumentWithMetadata {
 }
 export type FeaturedDocumentWithMetadataList =
   Array<FeaturedDocumentWithMetadata>;
-export declare class FeaturedResultsConflictException extends Data.TaggedError(
+export declare class FeaturedResultsConflictException extends EffectData.TaggedError(
   "FeaturedResultsConflictException",
 )<{
   readonly Message?: string;
@@ -2078,7 +2078,7 @@ export type InlineCustomDocumentEnrichmentConfigurationList =
   Array<InlineCustomDocumentEnrichmentConfiguration>;
 export type Integer = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -2090,7 +2090,7 @@ export type Interval =
   | "TWO_WEEKS_AGO"
   | "ONE_MONTH_AGO"
   | "TWO_MONTHS_AGO";
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -2501,22 +2501,22 @@ export type RelevanceType = "RELEVANT" | "NOT_RELEVANT";
 export type RepositoryName = string;
 
 export type RepositoryNames = Array<string>;
-export declare class ResourceAlreadyExistException extends Data.TaggedError(
+export declare class ResourceAlreadyExistException extends EffectData.TaggedError(
   "ResourceAlreadyExistException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceUnavailableException extends Data.TaggedError(
+export declare class ResourceUnavailableException extends EffectData.TaggedError(
   "ResourceUnavailableException",
 )<{
   readonly Message?: string;
@@ -2708,7 +2708,7 @@ export interface ServiceNowServiceCatalogConfiguration {
   DocumentTitleFieldName?: string;
   FieldMappings?: Array<DataSourceToIndexFieldMapping>;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -2922,7 +2922,7 @@ export interface ThesaurusSummary {
   UpdatedAt?: Date | string;
 }
 export type ThesaurusSummaryItems = Array<ThesaurusSummary>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -3053,7 +3053,7 @@ export interface UserTokenConfiguration {
   JsonTokenTypeConfiguration?: JsonTokenTypeConfiguration;
 }
 export type UserTokenConfigurationList = Array<UserTokenConfiguration>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

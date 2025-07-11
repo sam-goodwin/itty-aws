@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonRecycleBin {
@@ -99,7 +99,7 @@ export interface AmazonRecycleBin {
 
 export type Rbin = AmazonRecycleBin;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -153,7 +153,7 @@ export interface GetRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: Array<ResourceTag>;
 }
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -200,7 +200,7 @@ export type MaxResults = number;
 
 export type NextToken = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -237,7 +237,7 @@ export interface RuleSummary {
   RuleArn?: string;
 }
 export type RuleSummaryList = Array<RuleSummary>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -309,7 +309,7 @@ export interface UpdateRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: Array<ResourceTag>;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

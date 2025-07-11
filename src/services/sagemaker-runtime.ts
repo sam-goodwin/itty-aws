@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonSageMakerRuntime {
@@ -54,17 +54,17 @@ export type InferenceId = string;
 
 export type InputLocationHeader = string;
 
-export declare class InternalDependencyException extends Data.TaggedError(
+export declare class InternalDependencyException extends EffectData.TaggedError(
   "InternalDependencyException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InternalFailure extends Data.TaggedError(
+export declare class InternalFailure extends EffectData.TaggedError(
   "InternalFailure",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InternalStreamFailure extends Data.TaggedError(
+export declare class InternalStreamFailure extends EffectData.TaggedError(
   "InternalStreamFailure",
 )<{
   readonly Message?: string;
@@ -130,18 +130,18 @@ export type LogStreamArn = string;
 
 export type Message = string;
 
-export declare class ModelError extends Data.TaggedError("ModelError")<{
+export declare class ModelError extends EffectData.TaggedError("ModelError")<{
   readonly Message?: string;
   readonly OriginalStatusCode?: number;
   readonly OriginalMessage?: string;
   readonly LogStreamArn?: string;
 }> {}
-export declare class ModelNotReadyException extends Data.TaggedError(
+export declare class ModelNotReadyException extends EffectData.TaggedError(
   "ModelNotReadyException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ModelStreamError extends Data.TaggedError(
+export declare class ModelStreamError extends EffectData.TaggedError(
   "ModelStreamError",
 )<{
   readonly Message?: string;
@@ -160,7 +160,7 @@ export type ResponseStream =
   | { PayloadPart: PayloadPart }
   | { ModelStreamError: ModelStreamError }
   | { InternalStreamFailure: InternalStreamFailure };
-export declare class ServiceUnavailable extends Data.TaggedError(
+export declare class ServiceUnavailable extends EffectData.TaggedError(
   "ServiceUnavailable",
 )<{
   readonly Message?: string;
@@ -177,7 +177,7 @@ export type TargetModelHeader = string;
 
 export type TargetVariantHeader = string;
 
-export declare class ValidationError extends Data.TaggedError(
+export declare class ValidationError extends EffectData.TaggedError(
   "ValidationError",
 )<{
   readonly Message?: string;

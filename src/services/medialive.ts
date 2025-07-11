@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface MediaLive {
@@ -2147,12 +2147,12 @@ export interface AvailSettings {
   Scte35SpliceInsert?: Scte35SpliceInsert;
   Scte35TimeSignalApos?: Scte35TimeSignalApos;
 }
-export declare class BadGatewayException extends Data.TaggedError(
+export declare class BadGatewayException extends EffectData.TaggedError(
   "BadGatewayException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
@@ -2529,7 +2529,7 @@ export interface ColorCorrectionSettings {
 }
 export type ColorSpace = "HDR10" | "HLG_2020" | "REC_601" | "REC_709";
 export interface ColorSpacePassthroughSettings {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -3606,7 +3606,7 @@ export interface FollowModeScheduleActionStartSettings {
   ReferenceActionName: string;
 }
 export type FollowPoint = "END" | "START";
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Message?: string;
@@ -3631,7 +3631,7 @@ export interface FrameCaptureSettings {
   CaptureIntervalUnits?: FrameCaptureIntervalUnit;
   TimecodeBurninSettings?: TimecodeBurninSettings;
 }
-export declare class GatewayTimeoutException extends Data.TaggedError(
+export declare class GatewayTimeoutException extends EffectData.TaggedError(
   "GatewayTimeoutException",
 )<{
   readonly Message?: string;
@@ -4413,7 +4413,7 @@ export interface InterfaceMappingUpdateRequest {
   LogicalInterfaceName?: string;
   NetworkId?: string;
 }
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly Message?: string;
@@ -5102,7 +5102,7 @@ export type NodeState =
   | "DRAINING"
   | "DEREGISTRATION_FAILED"
   | "DEREGISTERED";
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -5917,7 +5917,7 @@ export type TimecodeConfigSource = "EMBEDDED" | "SYSTEMCLOCK" | "ZEROBASED";
 export interface TimedMetadataScheduleActionSettings {
   Id3: string;
 }
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
@@ -5954,7 +5954,7 @@ export interface UdpOutputSettings {
   FecOutputSettings?: FecOutputSettings;
 }
 export type UdpTimedMetadataId3Frame = "NONE" | "PRIV" | "TDRL";
-export declare class UnprocessableEntityException extends Data.TaggedError(
+export declare class UnprocessableEntityException extends EffectData.TaggedError(
   "UnprocessableEntityException",
 )<{
   readonly Message?: string;

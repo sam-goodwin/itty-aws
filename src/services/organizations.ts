@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSOrganizationsV20161128 {
@@ -776,12 +776,12 @@ export interface AcceptHandshakeRequest {
 export interface AcceptHandshakeResponse {
   Handshake?: Handshake;
 }
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class AccessDeniedForDependencyException extends Data.TaggedError(
+export declare class AccessDeniedForDependencyException extends EffectData.TaggedError(
   "AccessDeniedForDependencyException",
 )<{
   readonly Message?: string;
@@ -798,12 +798,12 @@ export interface Account {
   JoinedMethod?: AccountJoinedMethod;
   JoinedTimestamp?: Date | string;
 }
-export declare class AccountAlreadyClosedException extends Data.TaggedError(
+export declare class AccountAlreadyClosedException extends EffectData.TaggedError(
   "AccountAlreadyClosedException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class AccountAlreadyRegisteredException extends Data.TaggedError(
+export declare class AccountAlreadyRegisteredException extends EffectData.TaggedError(
   "AccountAlreadyRegisteredException",
 )<{
   readonly Message?: string;
@@ -815,17 +815,17 @@ export type AccountId = string;
 export type AccountJoinedMethod = "INVITED" | "CREATED";
 export type AccountName = string;
 
-export declare class AccountNotFoundException extends Data.TaggedError(
+export declare class AccountNotFoundException extends EffectData.TaggedError(
   "AccountNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class AccountNotRegisteredException extends Data.TaggedError(
+export declare class AccountNotRegisteredException extends EffectData.TaggedError(
   "AccountNotRegisteredException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class AccountOwnerNotVerifiedException extends Data.TaggedError(
+export declare class AccountOwnerNotVerifiedException extends EffectData.TaggedError(
   "AccountOwnerNotVerifiedException",
 )<{
   readonly Message?: string;
@@ -837,7 +837,7 @@ export type ActionType =
   | "ENABLE_ALL_FEATURES"
   | "APPROVE_ALL_FEATURES"
   | "ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE";
-export declare class AlreadyInOrganizationException extends Data.TaggedError(
+export declare class AlreadyInOrganizationException extends EffectData.TaggedError(
   "AlreadyInOrganizationException",
 )<{
   readonly Message?: string;
@@ -848,7 +848,7 @@ export interface AttachPolicyRequest {
 }
 export type AwsManagedPolicy = boolean;
 
-export declare class AWSOrganizationsNotInUseException extends Data.TaggedError(
+export declare class AWSOrganizationsNotInUseException extends EffectData.TaggedError(
   "AWSOrganizationsNotInUseException",
 )<{
   readonly Message?: string;
@@ -865,7 +865,7 @@ export interface Child {
 }
 export type ChildId = string;
 
-export declare class ChildNotFoundException extends Data.TaggedError(
+export declare class ChildNotFoundException extends EffectData.TaggedError(
   "ChildNotFoundException",
 )<{
   readonly Message?: string;
@@ -875,17 +875,17 @@ export type ChildType = "ACCOUNT" | "ORGANIZATIONAL_UNIT";
 export interface CloseAccountRequest {
   AccountId: string;
 }
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ConstraintViolationException extends Data.TaggedError(
+export declare class ConstraintViolationException extends EffectData.TaggedError(
   "ConstraintViolationException",
 )<{
   readonly Message?: string;
@@ -972,7 +972,7 @@ export interface CreateAccountStatus {
   FailureReason?: CreateAccountFailureReason;
 }
 export type CreateAccountStatuses = Array<CreateAccountStatus>;
-export declare class CreateAccountStatusNotFoundException extends Data.TaggedError(
+export declare class CreateAccountStatusNotFoundException extends EffectData.TaggedError(
   "CreateAccountStatusNotFoundException",
 )<{
   readonly Message?: string;
@@ -1086,7 +1086,7 @@ export interface DescribePolicyResponse {
 export interface DescribeResourcePolicyResponse {
   ResourcePolicy?: ResourcePolicy;
 }
-export declare class DestinationParentNotFoundException extends Data.TaggedError(
+export declare class DestinationParentNotFoundException extends EffectData.TaggedError(
   "DestinationParentNotFoundException",
 )<{
   readonly Message?: string;
@@ -1105,27 +1105,27 @@ export interface DisablePolicyTypeRequest {
 export interface DisablePolicyTypeResponse {
   Root?: Root;
 }
-export declare class DuplicateAccountException extends Data.TaggedError(
+export declare class DuplicateAccountException extends EffectData.TaggedError(
   "DuplicateAccountException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicateHandshakeException extends Data.TaggedError(
+export declare class DuplicateHandshakeException extends EffectData.TaggedError(
   "DuplicateHandshakeException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicateOrganizationalUnitException extends Data.TaggedError(
+export declare class DuplicateOrganizationalUnitException extends EffectData.TaggedError(
   "DuplicateOrganizationalUnitException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicatePolicyAttachmentException extends Data.TaggedError(
+export declare class DuplicatePolicyAttachmentException extends EffectData.TaggedError(
   "DuplicatePolicyAttachmentException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DuplicatePolicyException extends Data.TaggedError(
+export declare class DuplicatePolicyException extends EffectData.TaggedError(
   "DuplicatePolicyException",
 )<{
   readonly Message?: string;
@@ -1136,7 +1136,7 @@ export interface EffectivePolicy {
   TargetId?: string;
   PolicyType?: EffectivePolicyType;
 }
-export declare class EffectivePolicyNotFoundException extends Data.TaggedError(
+export declare class EffectivePolicyNotFoundException extends EffectData.TaggedError(
   "EffectivePolicyNotFoundException",
 )<{
   readonly Message?: string;
@@ -1173,7 +1173,7 @@ export type ExceptionMessage = string;
 
 export type ExceptionType = string;
 
-export declare class FinalizingOrganizationException extends Data.TaggedError(
+export declare class FinalizingOrganizationException extends EffectData.TaggedError(
   "FinalizingOrganizationException",
 )<{
   readonly Message?: string;
@@ -1190,14 +1190,14 @@ export interface Handshake {
   Action?: ActionType;
   Resources?: Array<HandshakeResource>;
 }
-export declare class HandshakeAlreadyInStateException extends Data.TaggedError(
+export declare class HandshakeAlreadyInStateException extends EffectData.TaggedError(
   "HandshakeAlreadyInStateException",
 )<{
   readonly Message?: string;
 }> {}
 export type HandshakeArn = string;
 
-export declare class HandshakeConstraintViolationException extends Data.TaggedError(
+export declare class HandshakeConstraintViolationException extends EffectData.TaggedError(
   "HandshakeConstraintViolationException",
 )<{
   readonly Message?: string;
@@ -1222,7 +1222,7 @@ export type HandshakeId = string;
 
 export type HandshakeNotes = string;
 
-export declare class HandshakeNotFoundException extends Data.TaggedError(
+export declare class HandshakeNotFoundException extends EffectData.TaggedError(
   "HandshakeNotFoundException",
 )<{
   readonly Message?: string;
@@ -1261,12 +1261,12 @@ export type HandshakeState =
   | "DECLINED"
   | "EXPIRED";
 export type IAMUserAccessToBilling = "ALLOW" | "DENY";
-export declare class InvalidHandshakeTransitionException extends Data.TaggedError(
+export declare class InvalidHandshakeTransitionException extends EffectData.TaggedError(
   "InvalidHandshakeTransitionException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidInputException extends Data.TaggedError(
+export declare class InvalidInputException extends EffectData.TaggedError(
   "InvalidInputException",
 )<{
   readonly Message?: string;
@@ -1453,12 +1453,12 @@ export interface ListTargetsForPolicyResponse {
   Targets?: Array<PolicyTargetSummary>;
   NextToken?: string;
 }
-export declare class MalformedPolicyDocumentException extends Data.TaggedError(
+export declare class MalformedPolicyDocumentException extends EffectData.TaggedError(
   "MalformedPolicyDocumentException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class MasterCannotLeaveOrganizationException extends Data.TaggedError(
+export declare class MasterCannotLeaveOrganizationException extends EffectData.TaggedError(
   "MasterCannotLeaveOrganizationException",
 )<{
   readonly Message?: string;
@@ -1492,12 +1492,12 @@ export type OrganizationalUnitId = string;
 
 export type OrganizationalUnitName = string;
 
-export declare class OrganizationalUnitNotEmptyException extends Data.TaggedError(
+export declare class OrganizationalUnitNotEmptyException extends EffectData.TaggedError(
   "OrganizationalUnitNotEmptyException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class OrganizationalUnitNotFoundException extends Data.TaggedError(
+export declare class OrganizationalUnitNotFoundException extends EffectData.TaggedError(
   "OrganizationalUnitNotFoundException",
 )<{
   readonly Message?: string;
@@ -1508,7 +1508,7 @@ export type OrganizationArn = string;
 export type OrganizationFeatureSet = "ALL" | "CONSOLIDATED_BILLING";
 export type OrganizationId = string;
 
-export declare class OrganizationNotEmptyException extends Data.TaggedError(
+export declare class OrganizationNotEmptyException extends EffectData.TaggedError(
   "OrganizationNotEmptyException",
 )<{
   readonly Message?: string;
@@ -1519,7 +1519,7 @@ export interface Parent {
 }
 export type ParentId = string;
 
-export declare class ParentNotFoundException extends Data.TaggedError(
+export declare class ParentNotFoundException extends EffectData.TaggedError(
   "ParentNotFoundException",
 )<{
   readonly Message?: string;
@@ -1533,7 +1533,7 @@ export interface Policy {
 }
 export type PolicyArn = string;
 
-export declare class PolicyChangesInProgressException extends Data.TaggedError(
+export declare class PolicyChangesInProgressException extends EffectData.TaggedError(
   "PolicyChangesInProgressException",
 )<{
   readonly Message?: string;
@@ -1544,19 +1544,19 @@ export type PolicyDescription = string;
 
 export type PolicyId = string;
 
-export declare class PolicyInUseException extends Data.TaggedError(
+export declare class PolicyInUseException extends EffectData.TaggedError(
   "PolicyInUseException",
 )<{
   readonly Message?: string;
 }> {}
 export type PolicyName = string;
 
-export declare class PolicyNotAttachedException extends Data.TaggedError(
+export declare class PolicyNotAttachedException extends EffectData.TaggedError(
   "PolicyNotAttachedException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class PolicyNotFoundException extends Data.TaggedError(
+export declare class PolicyNotFoundException extends EffectData.TaggedError(
   "PolicyNotFoundException",
 )<{
   readonly Message?: string;
@@ -1587,17 +1587,17 @@ export type PolicyType =
   | "CHATBOT_POLICY"
   | "DECLARATIVE_POLICY_EC2"
   | "SECURITYHUB_POLICY";
-export declare class PolicyTypeAlreadyEnabledException extends Data.TaggedError(
+export declare class PolicyTypeAlreadyEnabledException extends EffectData.TaggedError(
   "PolicyTypeAlreadyEnabledException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class PolicyTypeNotAvailableForOrganizationException extends Data.TaggedError(
+export declare class PolicyTypeNotAvailableForOrganizationException extends EffectData.TaggedError(
   "PolicyTypeNotAvailableForOrganizationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class PolicyTypeNotEnabledException extends Data.TaggedError(
+export declare class PolicyTypeNotEnabledException extends EffectData.TaggedError(
   "PolicyTypeNotEnabledException",
 )<{
   readonly Message?: string;
@@ -1632,7 +1632,7 @@ export type ResourcePolicyContent = string;
 
 export type ResourcePolicyId = string;
 
-export declare class ResourcePolicyNotFoundException extends Data.TaggedError(
+export declare class ResourcePolicyNotFoundException extends EffectData.TaggedError(
   "ResourcePolicyNotFoundException",
 )<{
   readonly Message?: string;
@@ -1655,20 +1655,20 @@ export type RootId = string;
 
 export type RootName = string;
 
-export declare class RootNotFoundException extends Data.TaggedError(
+export declare class RootNotFoundException extends EffectData.TaggedError(
   "RootNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
 export type Roots = Array<Root>;
-export declare class ServiceException extends Data.TaggedError(
+export declare class ServiceException extends EffectData.TaggedError(
   "ServiceException",
 )<{
   readonly Message?: string;
 }> {}
 export type ServicePrincipal = string;
 
-export declare class SourceParentNotFoundException extends Data.TaggedError(
+export declare class SourceParentNotFoundException extends EffectData.TaggedError(
   "SourceParentNotFoundException",
 )<{
   readonly Message?: string;
@@ -1691,7 +1691,7 @@ export type TagValue = string;
 
 export type TargetName = string;
 
-export declare class TargetNotFoundException extends Data.TaggedError(
+export declare class TargetNotFoundException extends EffectData.TaggedError(
   "TargetNotFoundException",
 )<{
   readonly Message?: string;
@@ -1699,13 +1699,13 @@ export declare class TargetNotFoundException extends Data.TaggedError(
 export type TargetType = "ACCOUNT" | "ORGANIZATIONAL_UNIT" | "ROOT";
 export type Timestamp = Date | string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Type?: string;
   readonly Message?: string;
 }> {}
-export declare class UnsupportedAPIEndpointException extends Data.TaggedError(
+export declare class UnsupportedAPIEndpointException extends EffectData.TaggedError(
   "UnsupportedAPIEndpointException",
 )<{
   readonly Message?: string;

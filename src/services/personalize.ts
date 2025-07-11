@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonPersonalize {
@@ -1332,12 +1332,12 @@ export type IntegerMaxValue = number;
 
 export type IntegerMinValue = number;
 
-export declare class InvalidInputException extends Data.TaggedError(
+export declare class InvalidInputException extends EffectData.TaggedError(
   "InvalidInputException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly message?: string;
@@ -1346,7 +1346,7 @@ export type ItemAttribute = string;
 
 export type KmsKeyArn = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1631,18 +1631,18 @@ export interface RecommenderUpdateSummary {
   status?: string;
   failureReason?: string;
 }
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
 export type ResourceConfig = Record<string, string>;
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1771,12 +1771,12 @@ export type TagValue = string;
 export interface ThemeGenerationConfig {
   fieldsForThemeGeneration: FieldsForThemeGeneration;
 }
-export declare class TooManyTagKeysException extends Data.TaggedError(
+export declare class TooManyTagKeysException extends EffectData.TaggedError(
   "TooManyTagKeysException",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;

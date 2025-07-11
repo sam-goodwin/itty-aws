@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonPinpointEmailService {
@@ -392,19 +392,19 @@ export interface AmazonPinpointEmailService {
 
 export type PinpointEmail = AmazonPinpointEmailService;
 
-export declare class AccountSuspendedException extends Data.TaggedError(
+export declare class AccountSuspendedException extends EffectData.TaggedError(
   "AccountSuspendedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class AlreadyExistsException extends Data.TaggedError(
+export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
 export type AmazonResourceName = string;
 
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -440,7 +440,7 @@ export interface CloudWatchDimensionConfiguration {
 }
 export type CloudWatchDimensionConfigurations =
   Array<CloudWatchDimensionConfiguration>;
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -771,7 +771,7 @@ export interface KinesisFirehoseDestination {
 }
 export type LastFreshStart = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -833,7 +833,7 @@ export interface MailFromAttributes {
 }
 export type MailFromDomainName = string;
 
-export declare class MailFromDomainNotVerifiedException extends Data.TaggedError(
+export declare class MailFromDomainNotVerifiedException extends EffectData.TaggedError(
   "MailFromDomainNotVerifiedException",
 )<{
   readonly message?: string;
@@ -857,7 +857,7 @@ export type MessageContent = string;
 
 export type MessageData = string;
 
-export declare class MessageRejected extends Data.TaggedError(
+export declare class MessageRejected extends EffectData.TaggedError(
   "MessageRejected",
 )<{
   readonly message?: string;
@@ -873,7 +873,7 @@ export type MessageTagValue = string;
 
 export type NextToken = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -991,7 +991,7 @@ export interface SendEmailResponse {
 export interface SendingOptions {
   SendingEnabled?: boolean;
 }
-export declare class SendingPausedException extends Data.TaggedError(
+export declare class SendingPausedException extends EffectData.TaggedError(
   "SendingPausedException",
 )<{
   readonly message?: string;
@@ -1036,7 +1036,7 @@ export type TemplateData = string;
 export type Timestamp = Date | string;
 
 export type TlsPolicy = "REQUIRE" | "OPTIONAL";
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;

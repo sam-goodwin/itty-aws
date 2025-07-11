@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Textract {
@@ -375,7 +375,7 @@ export interface Textract {
   >;
 }
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -473,7 +473,7 @@ export interface AnalyzeIDResponse {
 export type Angle = number;
 
 export type AutoUpdate = "ENABLED" | "DISABLED";
-export declare class BadDocumentException extends Data.TaggedError(
+export declare class BadDocumentException extends EffectData.TaggedError(
   "BadDocumentException",
 )<{
   readonly Message?: string;
@@ -530,7 +530,7 @@ export interface BoundingBox {
 }
 export type ClientRequestToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -604,7 +604,7 @@ export interface DocumentMetadata {
   Pages?: number;
 }
 export type DocumentPages = Array<Document>;
-export declare class DocumentTooLargeException extends Data.TaggedError(
+export declare class DocumentTooLargeException extends EffectData.TaggedError(
   "DocumentTooLargeException",
 )<{
   readonly Message?: string;
@@ -800,7 +800,7 @@ export interface HumanLoopDataAttributes {
 }
 export type HumanLoopName = string;
 
-export declare class HumanLoopQuotaExceededException extends Data.TaggedError(
+export declare class HumanLoopQuotaExceededException extends EffectData.TaggedError(
   "HumanLoopQuotaExceededException",
 )<{
   readonly ResourceType?: string;
@@ -809,7 +809,7 @@ export declare class HumanLoopQuotaExceededException extends Data.TaggedError(
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export declare class IdempotentParameterMismatchException extends Data.TaggedError(
+export declare class IdempotentParameterMismatchException extends EffectData.TaggedError(
   "IdempotentParameterMismatchException",
 )<{
   readonly Message?: string;
@@ -829,31 +829,31 @@ export type IdentityDocumentList = Array<IdentityDocument>;
 export type IdList = Array<string>;
 export type ImageBlob = Uint8Array | string;
 
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export declare class InvalidJobIdException extends Data.TaggedError(
+export declare class InvalidJobIdException extends EffectData.TaggedError(
   "InvalidJobIdException",
 )<{
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export declare class InvalidKMSKeyException extends Data.TaggedError(
+export declare class InvalidKMSKeyException extends EffectData.TaggedError(
   "InvalidKMSKeyException",
 )<{
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message?: string;
   readonly Code?: string;
 }> {}
-export declare class InvalidS3ObjectException extends Data.TaggedError(
+export declare class InvalidS3ObjectException extends EffectData.TaggedError(
   "InvalidS3ObjectException",
 )<{
   readonly Message?: string;
@@ -897,7 +897,7 @@ export interface LendingSummary {
   DocumentGroups?: Array<DocumentGroup>;
   UndetectedDocumentTypes?: Array<string>;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -975,7 +975,7 @@ export interface Prediction {
   Confidence?: number;
 }
 export type PredictionList = Array<Prediction>;
-export declare class ProvisionedThroughputExceededException extends Data.TaggedError(
+export declare class ProvisionedThroughputExceededException extends EffectData.TaggedError(
   "ProvisionedThroughputExceededException",
 )<{
   readonly Message?: string;
@@ -1010,7 +1010,7 @@ export type RelationshipType =
   | "TABLE"
   | "TABLE_TITLE"
   | "TABLE_FOOTER";
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -1030,7 +1030,7 @@ export type S3ObjectName = string;
 export type S3ObjectVersion = string;
 
 export type SelectionStatus = "SELECTED" | "NOT_SELECTED";
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -1113,7 +1113,7 @@ export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TextType = "HANDWRITING" | "PRINTED";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -1126,7 +1126,7 @@ export interface UndetectedSignature {
   Page?: number;
 }
 export type UndetectedSignatureList = Array<UndetectedSignature>;
-export declare class UnsupportedDocumentException extends Data.TaggedError(
+export declare class UnsupportedDocumentException extends EffectData.TaggedError(
   "UnsupportedDocumentException",
 )<{
   readonly Message?: string;
@@ -1151,7 +1151,7 @@ export interface UpdateAdapterResponse {
   FeatureTypes?: Array<FeatureType>;
   AutoUpdate?: AutoUpdate;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

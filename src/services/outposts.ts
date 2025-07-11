@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface OutpostsOlafService {
@@ -342,7 +342,7 @@ export interface OutpostsOlafService {
 
 export type Outposts = OutpostsOlafService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -497,7 +497,7 @@ export interface ComputeAttributes {
   InstanceTypeCapacities?: Array<AssetInstanceTypeCapacity>;
   MaxVcpus?: number;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -690,7 +690,7 @@ export interface InstanceTypeItem {
 export type InstanceTypeListDefinition = Array<InstanceTypeItem>;
 export type InstanceTypeName = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -845,7 +845,7 @@ export type Municipality = string;
 
 export type NetworkInterfaceDeviceIndex = number;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -970,7 +970,7 @@ export type RequestedInstancePools = Array<InstanceTypeCapacity>;
 export type ResourceType = "OUTPOST" | "ORDER";
 export type ServerEndpoint = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -1131,7 +1131,7 @@ export type UplinkGbps =
   | "UPLINK_10G"
   | "UPLINK_40G"
   | "UPLINK_100G";
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface RUM {
@@ -44,7 +44,7 @@ export interface RUM {
 
 export type Rum = RUM;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -143,7 +143,7 @@ export interface BatchGetRumMetricDefinitionsResponse {
   MetricDefinitions?: Array<MetricDefinition>;
   NextToken?: string;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -240,13 +240,13 @@ export type IamRoleArn = string;
 
 export type IdentityPoolId = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
   readonly retryAfterSeconds?: number;
 }> {}
-export declare class InvalidPolicyRevisionIdException extends Data.TaggedError(
+export declare class InvalidPolicyRevisionIdException extends EffectData.TaggedError(
   "InvalidPolicyRevisionIdException",
 )<{
   readonly message: string;
@@ -283,7 +283,7 @@ export interface ListTagsForResourceResponse {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export declare class MalformedPolicyDocumentException extends Data.TaggedError(
+export declare class MalformedPolicyDocumentException extends EffectData.TaggedError(
   "MalformedPolicyDocumentException",
 )<{
   readonly message: string;
@@ -327,14 +327,14 @@ export type MetricName = string;
 export type Namespace = string;
 
 export type Pages = Array<string>;
-export declare class PolicyNotFoundException extends Data.TaggedError(
+export declare class PolicyNotFoundException extends EffectData.TaggedError(
   "PolicyNotFoundException",
 )<{
   readonly message: string;
 }> {}
 export type PolicyRevisionId = string;
 
-export declare class PolicySizeLimitExceededException extends Data.TaggedError(
+export declare class PolicySizeLimitExceededException extends EffectData.TaggedError(
   "PolicySizeLimitExceededException",
 )<{
   readonly message: string;
@@ -376,7 +376,7 @@ export type QueryFilterValue = string;
 export type QueryFilterValueList = Array<string>;
 export type QueryTimestamp = number;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -391,7 +391,7 @@ export interface RumEvent {
   details: string;
 }
 export type RumEventList = Array<RumEvent>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -414,7 +414,7 @@ export type TagValue = string;
 export type Telemetries = Array<string>;
 export type Telemetry = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -459,7 +459,7 @@ export interface UserDetails {
   userId?: string;
   sessionId?: string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

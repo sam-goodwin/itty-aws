@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface SimSpaceWeaver {
@@ -27,7 +27,7 @@ export interface SimSpaceWeaver {
 
 export type Simspaceweaver = SimSpaceWeaver;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -44,7 +44,7 @@ export type ClockTargetStatus = string;
 export interface CloudWatchLogsLogGroup {
   LogGroupArn?: string;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -106,7 +106,7 @@ export interface Domain {
   Lifecycle?: string;
 }
 export type DomainList = Array<Domain>;
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -166,7 +166,7 @@ export type PortNumber = number;
 
 export type PositiveInteger = number;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -181,7 +181,7 @@ export interface S3Location {
   BucketName: string;
   ObjectKey: string;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -290,7 +290,7 @@ export type Timestamp = Date | string;
 
 export type TimeToLiveString = string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly Message?: string;
@@ -302,7 +302,7 @@ export interface UntagResourceInput {
 export interface UntagResourceOutput {}
 export type UUID = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

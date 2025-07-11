@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface WorkMailService {
@@ -1380,17 +1380,17 @@ export type DeviceUserAgent = string;
 export type DeviceUserAgentList = Array<string>;
 export type DirectoryId = string;
 
-export declare class DirectoryInUseException extends Data.TaggedError(
+export declare class DirectoryInUseException extends EffectData.TaggedError(
   "DirectoryInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DirectoryServiceAuthenticationFailedException extends Data.TaggedError(
+export declare class DirectoryServiceAuthenticationFailedException extends EffectData.TaggedError(
   "DirectoryServiceAuthenticationFailedException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DirectoryUnavailableException extends Data.TaggedError(
+export declare class DirectoryUnavailableException extends EffectData.TaggedError(
   "DirectoryUnavailableException",
 )<{
   readonly Message?: string;
@@ -1423,25 +1423,25 @@ export type DomainName = string;
 export type Domains = Array<Domain>;
 export type EmailAddress = string;
 
-export declare class EmailAddressInUseException extends Data.TaggedError(
+export declare class EmailAddressInUseException extends EffectData.TaggedError(
   "EmailAddressInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class EntityAlreadyRegisteredException extends Data.TaggedError(
+export declare class EntityAlreadyRegisteredException extends EffectData.TaggedError(
   "EntityAlreadyRegisteredException",
 )<{
   readonly Message?: string;
 }> {}
 export type EntityIdentifier = string;
 
-export declare class EntityNotFoundException extends Data.TaggedError(
+export declare class EntityNotFoundException extends EffectData.TaggedError(
   "EntityNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
 export type EntityState = "ENABLED" | "DISABLED" | "DELETED";
-export declare class EntityStateException extends Data.TaggedError(
+export declare class EntityStateException extends EffectData.TaggedError(
   "EntityStateException",
 )<{
   readonly Message?: string;
@@ -1644,22 +1644,22 @@ export type ImpersonationToken = string;
 
 export type InstanceArn = string;
 
-export declare class InvalidConfigurationException extends Data.TaggedError(
+export declare class InvalidConfigurationException extends EffectData.TaggedError(
   "InvalidConfigurationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidCustomSesConfigurationException extends Data.TaggedError(
+export declare class InvalidCustomSesConfigurationException extends EffectData.TaggedError(
   "InvalidCustomSesConfigurationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidPasswordException extends Data.TaggedError(
+export declare class InvalidPasswordException extends EffectData.TaggedError(
   "InvalidPasswordException",
 )<{
   readonly Message?: string;
@@ -1677,7 +1677,7 @@ export type LambdaArn = string;
 export interface LambdaAvailabilityProvider {
   LambdaArn: string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1892,18 +1892,18 @@ export type MailboxQuota = number;
 
 export type MailboxSize = number;
 
-export declare class MailDomainInUseException extends Data.TaggedError(
+export declare class MailDomainInUseException extends EffectData.TaggedError(
   "MailDomainInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class MailDomainNotFoundException extends Data.TaggedError(
+export declare class MailDomainNotFoundException extends EffectData.TaggedError(
   "MailDomainNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
 export type MailDomains = Array<MailDomainSummary>;
-export declare class MailDomainStateException extends Data.TaggedError(
+export declare class MailDomainStateException extends EffectData.TaggedError(
   "MailDomainStateException",
 )<{
   readonly Message?: string;
@@ -1963,7 +1963,7 @@ export type MobileDeviceAccessRuleId = string;
 export type MobileDeviceAccessRuleName = string;
 
 export type MobileDeviceAccessRulesList = Array<MobileDeviceAccessRule>;
-export declare class NameAvailabilityException extends Data.TaggedError(
+export declare class NameAvailabilityException extends EffectData.TaggedError(
   "NameAvailabilityException",
 )<{
   readonly Message?: string;
@@ -1976,12 +1976,12 @@ export type OrganizationId = string;
 
 export type OrganizationName = string;
 
-export declare class OrganizationNotFoundException extends Data.TaggedError(
+export declare class OrganizationNotFoundException extends EffectData.TaggedError(
   "OrganizationNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class OrganizationStateException extends Data.TaggedError(
+export declare class OrganizationStateException extends EffectData.TaggedError(
   "OrganizationStateException",
 )<{
   readonly Message?: string;
@@ -2104,7 +2104,7 @@ export interface RegisterToWorkMailRequest {
   Email: string;
 }
 export interface RegisterToWorkMailResponse {}
-export declare class ReservedNameException extends Data.TaggedError(
+export declare class ReservedNameException extends EffectData.TaggedError(
   "ReservedNameException",
 )<{
   readonly Message?: string;
@@ -2132,7 +2132,7 @@ export type ResourceId = string;
 
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -2191,12 +2191,12 @@ export interface TestAvailabilityConfigurationResponse {
 }
 export type Timestamp = Date | string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class UnsupportedOperationException extends Data.TaggedError(
+export declare class UnsupportedOperationException extends EffectData.TaggedError(
   "UnsupportedOperationException",
 )<{
   readonly Message?: string;

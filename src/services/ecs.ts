@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonEC2ContainerServiceV20141113 {
@@ -657,7 +657,7 @@ export interface AmazonEC2ContainerServiceV20141113 {
 
 export type Ecs = AmazonEC2ContainerServiceV20141113;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -690,7 +690,7 @@ export interface Attribute {
   targetType?: TargetType;
   targetId?: string;
 }
-export declare class AttributeLimitExceededException extends Data.TaggedError(
+export declare class AttributeLimitExceededException extends EffectData.TaggedError(
   "AttributeLimitExceededException",
 )<{
   readonly message?: string;
@@ -713,7 +713,7 @@ export interface AwsVpcConfiguration {
   securityGroups?: Array<string>;
   assignPublicIp?: AssignPublicIp;
 }
-export declare class BlockedException extends Data.TaggedError(
+export declare class BlockedException extends EffectData.TaggedError(
   "BlockedException",
 )<{
   readonly message?: string;
@@ -752,7 +752,7 @@ export type CapacityProviderUpdateStatus =
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_COMPLETE"
   | "UPDATE_FAILED";
-export declare class ClientException extends Data.TaggedError(
+export declare class ClientException extends EffectData.TaggedError(
   "ClientException",
 )<{
   readonly message?: string;
@@ -779,17 +779,17 @@ export interface ClusterConfiguration {
   executeCommandConfiguration?: ExecuteCommandConfiguration;
   managedStorageConfiguration?: ManagedStorageConfiguration;
 }
-export declare class ClusterContainsContainerInstancesException extends Data.TaggedError(
+export declare class ClusterContainsContainerInstancesException extends EffectData.TaggedError(
   "ClusterContainsContainerInstancesException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ClusterContainsServicesException extends Data.TaggedError(
+export declare class ClusterContainsServicesException extends EffectData.TaggedError(
   "ClusterContainsServicesException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ClusterContainsTasksException extends Data.TaggedError(
+export declare class ClusterContainsTasksException extends EffectData.TaggedError(
   "ClusterContainsTasksException",
 )<{
   readonly message?: string;
@@ -801,7 +801,7 @@ export type ClusterField =
   | "STATISTICS"
   | "TAGS";
 export type ClusterFieldList = Array<ClusterField>;
-export declare class ClusterNotFoundException extends Data.TaggedError(
+export declare class ClusterNotFoundException extends EffectData.TaggedError(
   "ClusterNotFoundException",
 )<{
   readonly message?: string;
@@ -821,7 +821,7 @@ export type ClusterSettingName = "CONTAINER_INSIGHTS";
 export type ClusterSettings = Array<ClusterSetting>;
 export type Compatibility = "EC2" | "FARGATE" | "EXTERNAL";
 export type CompatibilityList = Array<Compatibility>;
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly resourceIds?: Array<string>;
@@ -1397,7 +1397,7 @@ export type InstanceHealthCheckType = "CONTAINER_RUNTIME";
 export type Integer = number;
 
 export type IntegerList = Array<number>;
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
@@ -1412,7 +1412,7 @@ export interface KeyValuePair {
   value?: string;
 }
 export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL";
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1602,7 +1602,7 @@ export interface ManagedStorageConfiguration {
   fargateEphemeralStorageKmsKeyId?: string;
 }
 export type ManagedTerminationProtection = "ENABLED" | "DISABLED";
-export declare class MissingVersionException extends Data.TaggedError(
+export declare class MissingVersionException extends EffectData.TaggedError(
   "MissingVersionException",
 )<{
   readonly message?: string;
@@ -1613,7 +1613,7 @@ export interface MountPoint {
   readOnly?: boolean;
 }
 export type MountPointList = Array<MountPoint>;
-export declare class NamespaceNotFoundException extends Data.TaggedError(
+export declare class NamespaceNotFoundException extends EffectData.TaggedError(
   "NamespaceNotFoundException",
 )<{
   readonly message?: string;
@@ -1637,7 +1637,7 @@ export interface NetworkInterface {
 }
 export type NetworkInterfaces = Array<NetworkInterface>;
 export type NetworkMode = "BRIDGE" | "HOST" | "AWSVPC" | "NONE";
-export declare class NoUpdateAvailableException extends Data.TaggedError(
+export declare class NoUpdateAvailableException extends EffectData.TaggedError(
   "NoUpdateAvailableException",
 )<{
   readonly message?: string;
@@ -1672,12 +1672,12 @@ export interface PlatformDevice {
 }
 export type PlatformDevices = Array<PlatformDevice>;
 export type PlatformDeviceType = "GPU";
-export declare class PlatformTaskDefinitionIncompatibilityException extends Data.TaggedError(
+export declare class PlatformTaskDefinitionIncompatibilityException extends EffectData.TaggedError(
   "PlatformTaskDefinitionIncompatibilityException",
 )<{
   readonly message?: string;
 }> {}
-export declare class PlatformUnknownException extends Data.TaggedError(
+export declare class PlatformUnknownException extends EffectData.TaggedError(
   "PlatformUnknownException",
 )<{
   readonly message?: string;
@@ -1788,12 +1788,12 @@ export interface Resource {
   stringSetValue?: Array<string>;
 }
 export type ResourceIds = Array<string>;
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1853,7 +1853,7 @@ export interface Secret {
 export type SecretList = Array<Secret>;
 export type SensitiveString = string;
 
-export declare class ServerException extends Data.TaggedError(
+export declare class ServerException extends EffectData.TaggedError(
   "ServerException",
 )<{
   readonly message?: string;
@@ -1965,7 +1965,7 @@ export interface ServiceDeploymentCircuitBreaker {
   failureCount?: number;
   threshold?: number;
 }
-export declare class ServiceDeploymentNotFoundException extends Data.TaggedError(
+export declare class ServiceDeploymentNotFoundException extends EffectData.TaggedError(
   "ServiceDeploymentNotFoundException",
 )<{
   readonly message?: string;
@@ -2009,12 +2009,12 @@ export interface ServiceManagedEBSVolumeConfiguration {
   roleArn: string;
   filesystemType?: TaskFilesystemType;
 }
-export declare class ServiceNotActiveException extends Data.TaggedError(
+export declare class ServiceNotActiveException extends EffectData.TaggedError(
   "ServiceNotActiveException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServiceNotFoundException extends Data.TaggedError(
+export declare class ServiceNotFoundException extends EffectData.TaggedError(
   "ServiceNotFoundException",
 )<{
   readonly message?: string;
@@ -2179,12 +2179,12 @@ export interface TagResourceResponse {}
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
-export declare class TargetNotConnectedException extends Data.TaggedError(
+export declare class TargetNotConnectedException extends EffectData.TaggedError(
   "TargetNotConnectedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class TargetNotFoundException extends Data.TaggedError(
+export declare class TargetNotFoundException extends EffectData.TaggedError(
   "TargetNotFoundException",
 )<{
   readonly message?: string;
@@ -2331,7 +2331,7 @@ export interface TaskSet {
 }
 export type TaskSetField = "TAGS";
 export type TaskSetFieldList = Array<TaskSetField>;
-export declare class TaskSetNotFoundException extends Data.TaggedError(
+export declare class TaskSetNotFoundException extends EffectData.TaggedError(
   "TaskSetNotFoundException",
 )<{
   readonly message?: string;
@@ -2384,7 +2384,7 @@ export type UlimitName =
   | "RTTIME"
   | "SIGPENDING"
   | "STACK";
-export declare class UnsupportedFeatureException extends Data.TaggedError(
+export declare class UnsupportedFeatureException extends EffectData.TaggedError(
   "UnsupportedFeatureException",
 )<{
   readonly message?: string;
@@ -2433,7 +2433,7 @@ export interface UpdateContainerInstancesStateResponse {
   containerInstances?: Array<ContainerInstance>;
   failures?: Array<Failure>;
 }
-export declare class UpdateInProgressException extends Data.TaggedError(
+export declare class UpdateInProgressException extends EffectData.TaggedError(
   "UpdateInProgressException",
 )<{
   readonly message?: string;

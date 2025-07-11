@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonInteractiveVideoServiceChat {
@@ -175,7 +175,7 @@ export interface AmazonInteractiveVideoServiceChat {
 
 export type Ivschat = AmazonInteractiveVideoServiceChat;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -191,7 +191,7 @@ export type ChatTokenCapability = string;
 export interface CloudWatchLogsDestinationConfiguration {
   logGroupName: string;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -315,7 +315,7 @@ export interface GetRoomResponse {
 }
 export type ID = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -385,7 +385,7 @@ export interface MessageReviewHandler {
 }
 export type PaginationToken = string;
 
-export declare class PendingVerification extends Data.TaggedError(
+export declare class PendingVerification extends EffectData.TaggedError(
   "PendingVerification",
 )<{
   readonly message: string;
@@ -396,7 +396,7 @@ export type ResourceArn = string;
 
 export type ResourceId = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -439,7 +439,7 @@ export interface SendEventRequest {
 export interface SendEventResponse {
   id?: string;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -460,7 +460,7 @@ export interface TagResourceResponse {}
 export type Tags = Record<string, string>;
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -514,7 +514,7 @@ export interface UpdateRoomResponse {
 }
 export type UserID = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSDnsV20130401 {
@@ -679,7 +679,7 @@ export type CheckerIpRanges = Array<string>;
 export type ChildHealthCheckList = Array<string>;
 export type Cidr = string;
 
-export declare class CidrBlockInUseException extends Data.TaggedError(
+export declare class CidrBlockInUseException extends EffectData.TaggedError(
   "CidrBlockInUseException",
 )<{
   readonly Message?: string;
@@ -695,7 +695,7 @@ export interface CidrCollection {
   Name?: string;
   Version?: number;
 }
-export declare class CidrCollectionAlreadyExistsException extends Data.TaggedError(
+export declare class CidrCollectionAlreadyExistsException extends EffectData.TaggedError(
   "CidrCollectionAlreadyExistsException",
 )<{
   readonly Message?: string;
@@ -707,12 +707,12 @@ export interface CidrCollectionChange {
 }
 export type CidrCollectionChangeAction = "PUT" | "DELETE_IF_EXISTS";
 export type CidrCollectionChanges = Array<CidrCollectionChange>;
-export declare class CidrCollectionInUseException extends Data.TaggedError(
+export declare class CidrCollectionInUseException extends EffectData.TaggedError(
   "CidrCollectionInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class CidrCollectionVersionMismatchException extends Data.TaggedError(
+export declare class CidrCollectionVersionMismatchException extends EffectData.TaggedError(
   "CidrCollectionVersionMismatchException",
 )<{
   readonly Message?: string;
@@ -800,17 +800,17 @@ export type ComparisonOperator =
   | "GreaterThanThreshold"
   | "LessThanThreshold"
   | "LessThanOrEqualToThreshold";
-export declare class ConcurrentModification extends Data.TaggedError(
+export declare class ConcurrentModification extends EffectData.TaggedError(
   "ConcurrentModification",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConflictingDomainExists extends Data.TaggedError(
+export declare class ConflictingDomainExists extends EffectData.TaggedError(
   "ConflictingDomainExists",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConflictingTypes extends Data.TaggedError(
+export declare class ConflictingTypes extends EffectData.TaggedError(
   "ConflictingTypes",
 )<{
   readonly message?: string;
@@ -926,28 +926,28 @@ export interface DelegationSet {
   CallerReference?: string;
   NameServers: Array<string>;
 }
-export declare class DelegationSetAlreadyCreated extends Data.TaggedError(
+export declare class DelegationSetAlreadyCreated extends EffectData.TaggedError(
   "DelegationSetAlreadyCreated",
 )<{
   readonly message?: string;
 }> {}
-export declare class DelegationSetAlreadyReusable extends Data.TaggedError(
+export declare class DelegationSetAlreadyReusable extends EffectData.TaggedError(
   "DelegationSetAlreadyReusable",
 )<{
   readonly message?: string;
 }> {}
-export declare class DelegationSetInUse extends Data.TaggedError(
+export declare class DelegationSetInUse extends EffectData.TaggedError(
   "DelegationSetInUse",
 )<{
   readonly message?: string;
 }> {}
 export type DelegationSetNameServers = Array<string>;
-export declare class DelegationSetNotAvailable extends Data.TaggedError(
+export declare class DelegationSetNotAvailable extends EffectData.TaggedError(
   "DelegationSetNotAvailable",
 )<{
   readonly message?: string;
 }> {}
-export declare class DelegationSetNotReusable extends Data.TaggedError(
+export declare class DelegationSetNotReusable extends EffectData.TaggedError(
   "DelegationSetNotReusable",
 )<{
   readonly message?: string;
@@ -1025,7 +1025,9 @@ export type DNSName = string;
 
 export type DNSRCode = string;
 
-export declare class DNSSECNotFound extends Data.TaggedError("DNSSECNotFound")<{
+export declare class DNSSECNotFound extends EffectData.TaggedError(
+  "DNSSECNotFound",
+)<{
   readonly message?: string;
 }> {}
 export interface DNSSECStatus {
@@ -1200,7 +1202,7 @@ export interface HealthCheck {
   HealthCheckVersion: number;
   CloudWatchAlarmConfiguration?: CloudWatchAlarmConfiguration;
 }
-export declare class HealthCheckAlreadyExists extends Data.TaggedError(
+export declare class HealthCheckAlreadyExists extends EffectData.TaggedError(
   "HealthCheckAlreadyExists",
 )<{
   readonly message?: string;
@@ -1229,7 +1231,7 @@ export type HealthCheckCount = number;
 
 export type HealthCheckId = string;
 
-export declare class HealthCheckInUse extends Data.TaggedError(
+export declare class HealthCheckInUse extends EffectData.TaggedError(
   "HealthCheckInUse",
 )<{
   readonly message?: string;
@@ -1264,7 +1266,7 @@ export type HealthCheckType =
   | "RECOVERY_CONTROL";
 export type HealthCheckVersion = number;
 
-export declare class HealthCheckVersionMismatch extends Data.TaggedError(
+export declare class HealthCheckVersionMismatch extends EffectData.TaggedError(
   "HealthCheckVersionMismatch",
 )<{
   readonly message?: string;
@@ -1279,7 +1281,7 @@ export interface HostedZone {
   ResourceRecordSetCount?: number;
   LinkedService?: LinkedService;
 }
-export declare class HostedZoneAlreadyExists extends Data.TaggedError(
+export declare class HostedZoneAlreadyExists extends EffectData.TaggedError(
   "HostedZoneAlreadyExists",
 )<{
   readonly message?: string;
@@ -1297,17 +1299,17 @@ export interface HostedZoneLimit {
 export type HostedZoneLimitType =
   | "MAX_RRSETS_BY_ZONE"
   | "MAX_VPCS_ASSOCIATED_BY_ZONE";
-export declare class HostedZoneNotEmpty extends Data.TaggedError(
+export declare class HostedZoneNotEmpty extends EffectData.TaggedError(
   "HostedZoneNotEmpty",
 )<{
   readonly message?: string;
 }> {}
-export declare class HostedZoneNotFound extends Data.TaggedError(
+export declare class HostedZoneNotFound extends EffectData.TaggedError(
   "HostedZoneNotFound",
 )<{
   readonly message?: string;
 }> {}
-export declare class HostedZoneNotPrivate extends Data.TaggedError(
+export declare class HostedZoneNotPrivate extends EffectData.TaggedError(
   "HostedZoneNotPrivate",
 )<{
   readonly message?: string;
@@ -1318,7 +1320,7 @@ export interface HostedZoneOwner {
 }
 export type HostedZoneOwningService = string;
 
-export declare class HostedZonePartiallyDelegated extends Data.TaggedError(
+export declare class HostedZonePartiallyDelegated extends EffectData.TaggedError(
   "HostedZonePartiallyDelegated",
 )<{
   readonly message?: string;
@@ -1333,12 +1335,12 @@ export interface HostedZoneSummary {
   Owner: HostedZoneOwner;
 }
 export type HostedZoneType = "PRIVATE_HOSTED_ZONE";
-export declare class IncompatibleVersion extends Data.TaggedError(
+export declare class IncompatibleVersion extends EffectData.TaggedError(
   "IncompatibleVersion",
 )<{
   readonly message?: string;
 }> {}
-export declare class InsufficientCloudWatchLogsResourcePolicy extends Data.TaggedError(
+export declare class InsufficientCloudWatchLogsResourcePolicy extends EffectData.TaggedError(
   "InsufficientCloudWatchLogsResourcePolicy",
 )<{
   readonly message?: string;
@@ -1347,54 +1349,60 @@ export type InsufficientDataHealthStatus =
   | "Healthy"
   | "Unhealthy"
   | "LastKnownStatus";
-export declare class InvalidArgument extends Data.TaggedError(
+export declare class InvalidArgument extends EffectData.TaggedError(
   "InvalidArgument",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidChangeBatch extends Data.TaggedError(
+export declare class InvalidChangeBatch extends EffectData.TaggedError(
   "InvalidChangeBatch",
 )<{
   readonly messages?: Array<string>;
   readonly message?: string;
 }> {}
-export declare class InvalidDomainName extends Data.TaggedError(
+export declare class InvalidDomainName extends EffectData.TaggedError(
   "InvalidDomainName",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidInput extends Data.TaggedError("InvalidInput")<{
+export declare class InvalidInput extends EffectData.TaggedError(
+  "InvalidInput",
+)<{
   readonly message?: string;
 }> {}
-export declare class InvalidKeySigningKeyName extends Data.TaggedError(
+export declare class InvalidKeySigningKeyName extends EffectData.TaggedError(
   "InvalidKeySigningKeyName",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidKeySigningKeyStatus extends Data.TaggedError(
+export declare class InvalidKeySigningKeyStatus extends EffectData.TaggedError(
   "InvalidKeySigningKeyStatus",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidKMSArn extends Data.TaggedError("InvalidKMSArn")<{
+export declare class InvalidKMSArn extends EffectData.TaggedError(
+  "InvalidKMSArn",
+)<{
   readonly message?: string;
 }> {}
-export declare class InvalidPaginationToken extends Data.TaggedError(
+export declare class InvalidPaginationToken extends EffectData.TaggedError(
   "InvalidPaginationToken",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSigningStatus extends Data.TaggedError(
+export declare class InvalidSigningStatus extends EffectData.TaggedError(
   "InvalidSigningStatus",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidTrafficPolicyDocument extends Data.TaggedError(
+export declare class InvalidTrafficPolicyDocument extends EffectData.TaggedError(
   "InvalidTrafficPolicyDocument",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidVPCId extends Data.TaggedError("InvalidVPCId")<{
+export declare class InvalidVPCId extends EffectData.TaggedError(
+  "InvalidVPCId",
+)<{
   readonly message?: string;
 }> {}
 export type Inverted = boolean;
@@ -1423,35 +1431,37 @@ export interface KeySigningKey {
   CreatedDate?: Date | string;
   LastModifiedDate?: Date | string;
 }
-export declare class KeySigningKeyAlreadyExists extends Data.TaggedError(
+export declare class KeySigningKeyAlreadyExists extends EffectData.TaggedError(
   "KeySigningKeyAlreadyExists",
 )<{
   readonly message?: string;
 }> {}
-export declare class KeySigningKeyInParentDSRecord extends Data.TaggedError(
+export declare class KeySigningKeyInParentDSRecord extends EffectData.TaggedError(
   "KeySigningKeyInParentDSRecord",
 )<{
   readonly message?: string;
 }> {}
-export declare class KeySigningKeyInUse extends Data.TaggedError(
+export declare class KeySigningKeyInUse extends EffectData.TaggedError(
   "KeySigningKeyInUse",
 )<{
   readonly message?: string;
 }> {}
 export type KeySigningKeys = Array<KeySigningKey>;
-export declare class KeySigningKeyWithActiveStatusNotFound extends Data.TaggedError(
+export declare class KeySigningKeyWithActiveStatusNotFound extends EffectData.TaggedError(
   "KeySigningKeyWithActiveStatusNotFound",
 )<{
   readonly message?: string;
 }> {}
-export declare class LastVPCAssociation extends Data.TaggedError(
+export declare class LastVPCAssociation extends EffectData.TaggedError(
   "LastVPCAssociation",
 )<{
   readonly message?: string;
 }> {}
 export type Latitude = string;
 
-export declare class LimitsExceeded extends Data.TaggedError("LimitsExceeded")<{
+export declare class LimitsExceeded extends EffectData.TaggedError(
+  "LimitsExceeded",
+)<{
   readonly message?: string;
 }> {}
 export type LimitValue = number;
@@ -1693,65 +1703,67 @@ export type Namespace = string;
 
 export type Nonce = string;
 
-export declare class NoSuchChange extends Data.TaggedError("NoSuchChange")<{
+export declare class NoSuchChange extends EffectData.TaggedError(
+  "NoSuchChange",
+)<{
   readonly message?: string;
 }> {}
-export declare class NoSuchCidrCollectionException extends Data.TaggedError(
+export declare class NoSuchCidrCollectionException extends EffectData.TaggedError(
   "NoSuchCidrCollectionException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchCidrLocationException extends Data.TaggedError(
+export declare class NoSuchCidrLocationException extends EffectData.TaggedError(
   "NoSuchCidrLocationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchCloudWatchLogsLogGroup extends Data.TaggedError(
+export declare class NoSuchCloudWatchLogsLogGroup extends EffectData.TaggedError(
   "NoSuchCloudWatchLogsLogGroup",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchDelegationSet extends Data.TaggedError(
+export declare class NoSuchDelegationSet extends EffectData.TaggedError(
   "NoSuchDelegationSet",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchGeoLocation extends Data.TaggedError(
+export declare class NoSuchGeoLocation extends EffectData.TaggedError(
   "NoSuchGeoLocation",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchHealthCheck extends Data.TaggedError(
+export declare class NoSuchHealthCheck extends EffectData.TaggedError(
   "NoSuchHealthCheck",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchHostedZone extends Data.TaggedError(
+export declare class NoSuchHostedZone extends EffectData.TaggedError(
   "NoSuchHostedZone",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchKeySigningKey extends Data.TaggedError(
+export declare class NoSuchKeySigningKey extends EffectData.TaggedError(
   "NoSuchKeySigningKey",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchQueryLoggingConfig extends Data.TaggedError(
+export declare class NoSuchQueryLoggingConfig extends EffectData.TaggedError(
   "NoSuchQueryLoggingConfig",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchTrafficPolicy extends Data.TaggedError(
+export declare class NoSuchTrafficPolicy extends EffectData.TaggedError(
   "NoSuchTrafficPolicy",
 )<{
   readonly message?: string;
 }> {}
-export declare class NoSuchTrafficPolicyInstance extends Data.TaggedError(
+export declare class NoSuchTrafficPolicyInstance extends EffectData.TaggedError(
   "NoSuchTrafficPolicyInstance",
 )<{
   readonly message?: string;
 }> {}
-export declare class NotAuthorizedException extends Data.TaggedError(
+export declare class NotAuthorizedException extends EffectData.TaggedError(
   "NotAuthorizedException",
 )<{
   readonly message?: string;
@@ -1766,12 +1778,12 @@ export type Period = number;
 
 export type Port = number;
 
-export declare class PriorRequestNotComplete extends Data.TaggedError(
+export declare class PriorRequestNotComplete extends EffectData.TaggedError(
   "PriorRequestNotComplete",
 )<{
   readonly message?: string;
 }> {}
-export declare class PublicZoneVPCAssociation extends Data.TaggedError(
+export declare class PublicZoneVPCAssociation extends EffectData.TaggedError(
   "PublicZoneVPCAssociation",
 )<{
   readonly message?: string;
@@ -1781,7 +1793,7 @@ export interface QueryLoggingConfig {
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-export declare class QueryLoggingConfigAlreadyExists extends Data.TaggedError(
+export declare class QueryLoggingConfigAlreadyExists extends EffectData.TaggedError(
   "QueryLoggingConfigAlreadyExists",
 )<{
   readonly message?: string;
@@ -1973,44 +1985,44 @@ export interface TestDNSAnswerResponse {
 }
 export type Threshold = number;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
 }> {}
 export type TimeStamp = Date | string;
 
-export declare class TooManyHealthChecks extends Data.TaggedError(
+export declare class TooManyHealthChecks extends EffectData.TaggedError(
   "TooManyHealthChecks",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyHostedZones extends Data.TaggedError(
+export declare class TooManyHostedZones extends EffectData.TaggedError(
   "TooManyHostedZones",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyKeySigningKeys extends Data.TaggedError(
+export declare class TooManyKeySigningKeys extends EffectData.TaggedError(
   "TooManyKeySigningKeys",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyTrafficPolicies extends Data.TaggedError(
+export declare class TooManyTrafficPolicies extends EffectData.TaggedError(
   "TooManyTrafficPolicies",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyTrafficPolicyInstances extends Data.TaggedError(
+export declare class TooManyTrafficPolicyInstances extends EffectData.TaggedError(
   "TooManyTrafficPolicyInstances",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyTrafficPolicyVersionsForCurrentPolicy extends Data.TaggedError(
+export declare class TooManyTrafficPolicyVersionsForCurrentPolicy extends EffectData.TaggedError(
   "TooManyTrafficPolicyVersionsForCurrentPolicy",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyVPCAssociationAuthorizations extends Data.TaggedError(
+export declare class TooManyVPCAssociationAuthorizations extends EffectData.TaggedError(
   "TooManyVPCAssociationAuthorizations",
 )<{
   readonly message?: string;
@@ -2024,7 +2036,7 @@ export interface TrafficPolicy {
   Document: string;
   Comment?: string;
 }
-export declare class TrafficPolicyAlreadyExists extends Data.TaggedError(
+export declare class TrafficPolicyAlreadyExists extends EffectData.TaggedError(
   "TrafficPolicyAlreadyExists",
 )<{
   readonly message?: string;
@@ -2046,7 +2058,7 @@ export interface TrafficPolicyInstance {
   TrafficPolicyVersion: number;
   TrafficPolicyType: RRType;
 }
-export declare class TrafficPolicyInstanceAlreadyExists extends Data.TaggedError(
+export declare class TrafficPolicyInstanceAlreadyExists extends EffectData.TaggedError(
   "TrafficPolicyInstanceAlreadyExists",
 )<{
   readonly message?: string;
@@ -2058,7 +2070,7 @@ export type TrafficPolicyInstanceId = string;
 export type TrafficPolicyInstances = Array<TrafficPolicyInstance>;
 export type TrafficPolicyInstanceState = string;
 
-export declare class TrafficPolicyInUse extends Data.TaggedError(
+export declare class TrafficPolicyInUse extends EffectData.TaggedError(
   "TrafficPolicyInUse",
 )<{
   readonly message?: string;
@@ -2135,12 +2147,12 @@ export interface VPC {
   VPCRegion?: VPCRegion;
   VPCId?: string;
 }
-export declare class VPCAssociationAuthorizationNotFound extends Data.TaggedError(
+export declare class VPCAssociationAuthorizationNotFound extends EffectData.TaggedError(
   "VPCAssociationAuthorizationNotFound",
 )<{
   readonly message?: string;
 }> {}
-export declare class VPCAssociationNotFound extends Data.TaggedError(
+export declare class VPCAssociationNotFound extends EffectData.TaggedError(
   "VPCAssociationNotFound",
 )<{
   readonly message?: string;

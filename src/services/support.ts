@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSSupport_20130415 {
@@ -147,31 +147,31 @@ export interface AttachmentDetails {
 }
 export type AttachmentId = string;
 
-export declare class AttachmentIdNotFound extends Data.TaggedError(
+export declare class AttachmentIdNotFound extends EffectData.TaggedError(
   "AttachmentIdNotFound",
 )<{
   readonly message?: string;
 }> {}
-export declare class AttachmentLimitExceeded extends Data.TaggedError(
+export declare class AttachmentLimitExceeded extends EffectData.TaggedError(
   "AttachmentLimitExceeded",
 )<{
   readonly message?: string;
 }> {}
 export type Attachments = Array<Attachment>;
 export type AttachmentSet = Array<AttachmentDetails>;
-export declare class AttachmentSetExpired extends Data.TaggedError(
+export declare class AttachmentSetExpired extends EffectData.TaggedError(
   "AttachmentSetExpired",
 )<{
   readonly message?: string;
 }> {}
 export type AttachmentSetId = string;
 
-export declare class AttachmentSetIdNotFound extends Data.TaggedError(
+export declare class AttachmentSetIdNotFound extends EffectData.TaggedError(
   "AttachmentSetIdNotFound",
 )<{
   readonly message?: string;
 }> {}
-export declare class AttachmentSetSizeLimitExceeded extends Data.TaggedError(
+export declare class AttachmentSetSizeLimitExceeded extends EffectData.TaggedError(
   "AttachmentSetSizeLimitExceeded",
 )<{
   readonly message?: string;
@@ -180,7 +180,7 @@ export type AvailabilityErrorMessage = string;
 
 export type BeforeTime = string;
 
-export declare class CaseCreationLimitExceeded extends Data.TaggedError(
+export declare class CaseCreationLimitExceeded extends EffectData.TaggedError(
   "CaseCreationLimitExceeded",
 )<{
   readonly message?: string;
@@ -202,7 +202,9 @@ export interface CaseDetails {
 export type CaseId = string;
 
 export type CaseIdList = Array<string>;
-export declare class CaseIdNotFound extends Data.TaggedError("CaseIdNotFound")<{
+export declare class CaseIdNotFound extends EffectData.TaggedError(
+  "CaseIdNotFound",
+)<{
   readonly message?: string;
 }> {}
 export type CaseList = Array<CaseDetails>;
@@ -259,7 +261,7 @@ export interface DateInterval {
   endDateTime?: string;
 }
 export type DatesWithoutSupportList = Array<DateInterval>;
-export declare class DescribeAttachmentLimitExceeded extends Data.TaggedError(
+export declare class DescribeAttachmentLimitExceeded extends EffectData.TaggedError(
   "DescribeAttachmentLimitExceeded",
 )<{
   readonly message?: string;
@@ -370,7 +372,7 @@ export type IncludeCommunications = boolean;
 
 export type IncludeResolvedCases = boolean;
 
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly message?: string;
@@ -448,7 +450,7 @@ export interface SupportedLanguage {
   display?: string;
 }
 export type SupportedLanguagesList = Array<SupportedLanguage>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonQLDB {
@@ -248,7 +248,7 @@ export interface GetRevisionResponse {
   Proof?: ValueHolder;
   Revision: ValueHolder;
 }
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly Message?: string;
@@ -303,7 +303,7 @@ export interface LedgerSummary {
   State?: LedgerState;
   CreationDateTime?: Date | string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -357,14 +357,14 @@ export type OutputFormat = "ION_BINARY" | "ION_TEXT" | "JSON";
 export type ParameterName = string;
 
 export type PermissionsMode = "ALLOW_ALL" | "STANDARD";
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly Message?: string;
   readonly ResourceType?: string;
   readonly ResourceName?: string;
 }> {}
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
@@ -373,14 +373,14 @@ export declare class ResourceInUseException extends Data.TaggedError(
 }> {}
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
   readonly ResourceType?: string;
   readonly ResourceName?: string;
 }> {}
-export declare class ResourcePreconditionNotMetException extends Data.TaggedError(
+export declare class ResourcePreconditionNotMetException extends EffectData.TaggedError(
   "ResourcePreconditionNotMetException",
 )<{
   readonly Message?: string;

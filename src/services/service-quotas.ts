@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ServiceQuotasV20190624 {
@@ -264,7 +264,7 @@ export interface ServiceQuotasV20190624 {
 
 export type ServiceQuotas = ServiceQuotasV20190624;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -276,7 +276,7 @@ export interface AssociateServiceQuotaTemplateRequest {}
 export interface AssociateServiceQuotaTemplateResponse {}
 export type AwsRegion = string;
 
-export declare class AWSServiceAccessNotEnabledException extends Data.TaggedError(
+export declare class AWSServiceAccessNotEnabledException extends EffectData.TaggedError(
   "AWSServiceAccessNotEnabledException",
 )<{
   readonly Message?: string;
@@ -295,7 +295,7 @@ export interface DeleteServiceQuotaIncreaseRequestFromTemplateRequest {
   AwsRegion: string;
 }
 export interface DeleteServiceQuotaIncreaseRequestFromTemplateResponse {}
-export declare class DependencyAccessDeniedException extends Data.TaggedError(
+export declare class DependencyAccessDeniedException extends EffectData.TaggedError(
   "DependencyAccessDeniedException",
 )<{
   readonly Message?: string;
@@ -350,19 +350,19 @@ export interface GetServiceQuotaResponse {
 }
 export type GlobalQuota = boolean;
 
-export declare class IllegalArgumentException extends Data.TaggedError(
+export declare class IllegalArgumentException extends EffectData.TaggedError(
   "IllegalArgumentException",
 )<{
   readonly Message?: string;
 }> {}
 export type InputTagKeys = Array<string>;
 export type InputTags = Array<Tag>;
-export declare class InvalidPaginationTokenException extends Data.TaggedError(
+export declare class InvalidPaginationTokenException extends EffectData.TaggedError(
   "InvalidPaginationTokenException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidResourceStateException extends Data.TaggedError(
+export declare class InvalidResourceStateException extends EffectData.TaggedError(
   "InvalidResourceStateException",
 )<{
   readonly Message?: string;
@@ -449,17 +449,17 @@ export interface MetricInfo {
 }
 export type NextToken = string;
 
-export declare class NoAvailableOrganizationException extends Data.TaggedError(
+export declare class NoAvailableOrganizationException extends EffectData.TaggedError(
   "NoAvailableOrganizationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchResourceException extends Data.TaggedError(
+export declare class NoSuchResourceException extends EffectData.TaggedError(
   "NoSuchResourceException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class OrganizationNotInAllFeaturesModeException extends Data.TaggedError(
+export declare class OrganizationNotInAllFeaturesModeException extends EffectData.TaggedError(
   "OrganizationNotInAllFeaturesModeException",
 )<{
   readonly Message?: string;
@@ -502,7 +502,7 @@ export type QuotaContextScopeType = string;
 
 export type QuotaDescription = string;
 
-export declare class QuotaExceededException extends Data.TaggedError(
+export declare class QuotaExceededException extends EffectData.TaggedError(
   "QuotaExceededException",
 )<{
   readonly Message?: string;
@@ -563,14 +563,14 @@ export type RequestStatus =
   | "CASE_CLOSED"
   | "NOT_APPROVED"
   | "INVALID_REQUEST";
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly Message?: string;
 }> {}
 export type ServiceCode = string;
 
-export declare class ServiceException extends Data.TaggedError(
+export declare class ServiceException extends EffectData.TaggedError(
   "ServiceException",
 )<{
   readonly Message?: string;
@@ -615,7 +615,7 @@ export type ServiceQuotaListDefinition = Array<ServiceQuota>;
 export type ServiceQuotaTemplateAssociationStatus =
   | "ASSOCIATED"
   | "DISASSOCIATED";
-export declare class ServiceQuotaTemplateNotInUseException extends Data.TaggedError(
+export declare class ServiceQuotaTemplateNotInUseException extends EffectData.TaggedError(
   "ServiceQuotaTemplateNotInUseException",
 )<{
   readonly Message?: string;
@@ -630,7 +630,7 @@ export interface Tag {
 }
 export type TagKey = string;
 
-export declare class TagPolicyViolationException extends Data.TaggedError(
+export declare class TagPolicyViolationException extends EffectData.TaggedError(
   "TagPolicyViolationException",
 )<{
   readonly Message?: string;
@@ -642,17 +642,17 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class TemplatesNotAvailableInRegionException extends Data.TaggedError(
+export declare class TemplatesNotAvailableInRegionException extends EffectData.TaggedError(
   "TemplatesNotAvailableInRegionException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly Message?: string;

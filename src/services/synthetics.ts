@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Synthetics {
@@ -208,7 +208,7 @@ export interface Synthetics {
   >;
 }
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -224,7 +224,7 @@ export interface AssociateResourceRequest {
   ResourceArn: string;
 }
 export interface AssociateResourceResponse {}
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
@@ -368,7 +368,7 @@ export interface CanaryTimeline {
 }
 export type CodeHandler = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -501,12 +501,12 @@ export interface GroupSummary {
   Arn?: string;
 }
 export type GroupSummaryList = Array<GroupSummary>;
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -561,7 +561,7 @@ export type MaxSize1024 = number;
 
 export type MaxSize3008 = number;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -571,7 +571,7 @@ export type NullableBoolean = boolean;
 export type PaginationToken = string;
 
 export type ProvisionedResourceCleanupSetting = "AUTOMATIC" | "OFF";
-export declare class RequestEntityTooLargeException extends Data.TaggedError(
+export declare class RequestEntityTooLargeException extends EffectData.TaggedError(
   "RequestEntityTooLargeException",
 )<{
   readonly Message?: string;
@@ -579,7 +579,7 @@ export declare class RequestEntityTooLargeException extends Data.TaggedError(
 export type ResourceArn = string;
 
 export type ResourceList = Array<ResourceToTag>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -610,7 +610,7 @@ export interface S3EncryptionConfig {
 export type SecurityGroupId = string;
 
 export type SecurityGroupIds = Array<string>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -659,7 +659,7 @@ export type Timestamp = Date | string;
 
 export type Token = string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
@@ -688,7 +688,7 @@ export interface UpdateCanaryRequest {
 export interface UpdateCanaryResponse {}
 export type UUID = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface OpsWorks_20130218 {
@@ -1336,7 +1336,7 @@ export interface ReportedOs {
 }
 export type ResourceArn = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1576,7 +1576,7 @@ export interface UserProfile {
   AllowSelfManagement?: boolean;
 }
 export type UserProfiles = Array<UserProfile>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

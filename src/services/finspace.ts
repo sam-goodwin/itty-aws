@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSHabaneroManagementService {
@@ -602,7 +602,7 @@ export interface AWSHabaneroManagementService {
 
 export type Finspace = AWSHabaneroManagementService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -654,7 +654,7 @@ export interface CodeConfiguration {
   s3Key?: string;
   s3ObjectVersion?: string;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -1181,12 +1181,12 @@ export type IdType = string;
 
 export type InitializationScriptFilePath = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly message?: string;
@@ -1461,7 +1461,7 @@ export type KxVolumeStatus =
 export type KxVolumeStatusReason = string;
 
 export type KxVolumeType = "NAS_1";
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1602,12 +1602,12 @@ export type Protocol = string;
 
 export type ReleaseLabel = string;
 
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1633,7 +1633,7 @@ export type SecurityGroupIdList = Array<string>;
 export type SecurityGroupIdString = string;
 
 export type SegmentConfigurationDbPathList = Array<string>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -1669,7 +1669,7 @@ export type tgwStatus =
   | "UPDATING"
   | "FAILED_UPDATE"
   | "SUCCESSFULLY_UPDATED";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -1843,7 +1843,7 @@ export type url = string;
 
 export type urn = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

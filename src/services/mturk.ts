@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface MTurkRequesterServiceV20170117 {
@@ -706,7 +706,9 @@ export interface RejectQualificationRequestRequest {
   Reason?: string;
 }
 export interface RejectQualificationRequestResponse {}
-export declare class RequestError extends Data.TaggedError("RequestError")<{
+export declare class RequestError extends EffectData.TaggedError(
+  "RequestError",
+)<{
   readonly Message?: string;
   readonly TurkErrorCode?: string;
 }> {}
@@ -761,7 +763,9 @@ export interface SendTestEventNotificationRequest {
   TestEventType: EventType;
 }
 export interface SendTestEventNotificationResponse {}
-export declare class ServiceFault extends Data.TaggedError("ServiceFault")<{
+export declare class ServiceFault extends EffectData.TaggedError(
+  "ServiceFault",
+)<{
   readonly Message?: string;
   readonly TurkErrorCode?: string;
 }> {}

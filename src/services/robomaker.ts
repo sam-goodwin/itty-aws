@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface robomaker {
@@ -648,7 +648,7 @@ export interface ComputeResponse {
   gpuUnitLimit?: number;
 }
 export type ComputeType = "CPU" | "GPU_AND_CPU";
-export declare class ConcurrentDeploymentException extends Data.TaggedError(
+export declare class ConcurrentDeploymentException extends EffectData.TaggedError(
   "ConcurrentDeploymentException",
 )<{
   readonly message?: string;
@@ -1208,7 +1208,7 @@ export type IamRole = string;
 
 export type Id = string;
 
-export declare class IdempotentParameterMismatchException extends Data.TaggedError(
+export declare class IdempotentParameterMismatchException extends EffectData.TaggedError(
   "IdempotentParameterMismatchException",
 )<{
   readonly message?: string;
@@ -1219,12 +1219,12 @@ export type Integer = number;
 
 export type InteriorCountPerFloorplan = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
@@ -1245,7 +1245,7 @@ export interface LaunchConfig {
   streamUI?: boolean;
   command?: Array<string>;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1420,12 +1420,12 @@ export type RenderingEngineVersionType = string;
 
 export type RepositoryUrl = string;
 
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1524,7 +1524,7 @@ export interface S3Object {
   etag?: string;
 }
 export type SecurityGroups = Array<string>;
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
@@ -1750,7 +1750,7 @@ export interface TemplateSummary {
   name?: string;
   version?: string;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;

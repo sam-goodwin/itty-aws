@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface DynamoDBStreams_20120810 {
@@ -67,7 +67,7 @@ export interface DescribeStreamOutput {
 }
 export type ErrorMessage = string;
 
-export declare class ExpiredIteratorException extends Data.TaggedError(
+export declare class ExpiredIteratorException extends EffectData.TaggedError(
   "ExpiredIteratorException",
 )<{
   readonly message?: string;
@@ -93,7 +93,7 @@ export interface Identity {
   PrincipalId?: string;
   Type?: string;
 }
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly message?: string;
@@ -106,7 +106,7 @@ export interface KeySchemaElement {
   KeyType: KeyType;
 }
 export type KeyType = "HASH" | "RANGE";
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -142,7 +142,7 @@ export interface Record {
   userIdentity?: Identity;
 }
 export type RecordList = Array<Record>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -207,7 +207,7 @@ export type StringAttributeValue = string;
 export type StringSetAttributeValue = Array<string>;
 export type TableName = string;
 
-export declare class TrimmedDataAccessException extends Data.TaggedError(
+export declare class TrimmedDataAccessException extends EffectData.TaggedError(
   "TrimmedDataAccessException",
 )<{
   readonly message?: string;

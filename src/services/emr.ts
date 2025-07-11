@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ElasticMapReduce {
@@ -1056,15 +1056,15 @@ export interface InstanceTypeSpecification {
 export type InstanceTypeSpecificationList = Array<InstanceTypeSpecification>;
 export type Integer = number;
 
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{}> {}
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly ErrorCode?: string;

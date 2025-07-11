@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Timestream_20181101 {
@@ -174,7 +174,7 @@ export interface Timestream_20181101 {
 
 export type TimestreamQuery = Timestream_20181101;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -201,7 +201,7 @@ export interface ColumnInfo {
 }
 export type ColumnInfoList = Array<ColumnInfo>;
 export type ComputeMode = "ON_DEMAND" | "PROVISIONED";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -283,12 +283,12 @@ export interface ExecutionStats {
   RecordsIngested?: number;
   QueryResultRows?: number;
 }
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidEndpointException extends Data.TaggedError(
+export declare class InvalidEndpointException extends EffectData.TaggedError(
   "InvalidEndpointException",
 )<{
   readonly Message?: string;
@@ -396,7 +396,7 @@ export interface QueryComputeResponse {
   ComputeMode?: ComputeMode;
   ProvisionedCapacity?: ProvisionedCapacityResponse;
 }
-export declare class QueryExecutionException extends Data.TaggedError(
+export declare class QueryExecutionException extends EffectData.TaggedError(
   "QueryExecutionException",
 )<{
   readonly Message?: string;
@@ -459,7 +459,7 @@ export interface QueryTemporalRangeMax {
 }
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -582,7 +582,7 @@ export interface SelectColumn {
 export type SelectColumnList = Array<SelectColumn>;
 export type ServiceErrorMessage = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -613,7 +613,7 @@ export interface TargetConfiguration {
 export interface TargetDestination {
   TimestreamDestination?: TimestreamDestination;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -665,7 +665,7 @@ export interface UpdateScheduledQueryRequest {
   ScheduledQueryArn: string;
   State: ScheduledQueryState;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

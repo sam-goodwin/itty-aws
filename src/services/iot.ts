@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSIotService {
@@ -3592,7 +3592,7 @@ export interface Certificate {
 }
 export type CertificateArn = string;
 
-export declare class CertificateConflictException extends Data.TaggedError(
+export declare class CertificateConflictException extends EffectData.TaggedError(
   "CertificateConflictException",
 )<{
   readonly message?: string;
@@ -3639,7 +3639,7 @@ export interface CertificateProviderSummary {
 export type Certificates = Array<Certificate>;
 export type CertificateSigningRequest = string;
 
-export declare class CertificateStateException extends Data.TaggedError(
+export declare class CertificateStateException extends EffectData.TaggedError(
   "CertificateStateException",
 )<{
   readonly message?: string;
@@ -3651,7 +3651,7 @@ export type CertificateStatus =
   | "PENDING_TRANSFER"
   | "REGISTER_INACTIVE"
   | "PENDING_ACTIVATION";
-export declare class CertificateValidationException extends Data.TaggedError(
+export declare class CertificateValidationException extends EffectData.TaggedError(
   "CertificateValidationException",
 )<{
   readonly message?: string;
@@ -3825,13 +3825,13 @@ export interface ConfirmTopicRuleDestinationRequest {
   confirmationToken: string;
 }
 export interface ConfirmTopicRuleDestinationResponse {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
   readonly resourceId?: string;
 }> {}
-export declare class ConflictingResourceUpdateException extends Data.TaggedError(
+export declare class ConflictingResourceUpdateException extends EffectData.TaggedError(
   "ConflictingResourceUpdateException",
 )<{
   readonly message?: string;
@@ -4332,7 +4332,7 @@ export interface DeleteCommandRequest {
 export interface DeleteCommandResponse {
   statusCode?: number;
 }
-export declare class DeleteConflictException extends Data.TaggedError(
+export declare class DeleteConflictException extends EffectData.TaggedError(
   "DeleteConflictException",
 )<{
   readonly message?: string;
@@ -5462,7 +5462,7 @@ export interface IndexingFilter {
 export type IndexName = string;
 
 export type IndexNamesList = Array<string>;
-export declare class IndexNotReadyException extends Data.TaggedError(
+export declare class IndexNotReadyException extends EffectData.TaggedError(
   "IndexNotReadyException",
 )<{
   readonly message?: string;
@@ -5482,42 +5482,42 @@ export type InputName = string;
 
 export type IntegerParameterValue = number;
 
-export declare class InternalException extends Data.TaggedError(
+export declare class InternalException extends EffectData.TaggedError(
   "InternalException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidAggregationException extends Data.TaggedError(
+export declare class InvalidAggregationException extends EffectData.TaggedError(
   "InvalidAggregationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidQueryException extends Data.TaggedError(
+export declare class InvalidQueryException extends EffectData.TaggedError(
   "InvalidQueryException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidResponseException extends Data.TaggedError(
+export declare class InvalidResponseException extends EffectData.TaggedError(
   "InvalidResponseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidStateTransitionException extends Data.TaggedError(
+export declare class InvalidStateTransitionException extends EffectData.TaggedError(
   "InvalidStateTransitionException",
 )<{
   readonly message?: string;
@@ -5735,7 +5735,7 @@ export type LastModifiedDate = Date | string;
 
 export type LastUpdatedAtDate = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -6435,7 +6435,7 @@ export interface MaintenanceWindow {
   durationInMinutes: number;
 }
 export type MaintenanceWindows = Array<MaintenanceWindow>;
-export declare class MalformedPolicyException extends Data.TaggedError(
+export declare class MalformedPolicyException extends EffectData.TaggedError(
   "MalformedPolicyException",
 )<{
   readonly message?: string;
@@ -6586,7 +6586,7 @@ export interface NonCompliantResource {
 }
 export type NonCompliantResourcesCount = number;
 
-export declare class NotConfiguredException extends Data.TaggedError(
+export declare class NotConfiguredException extends EffectData.TaggedError(
   "NotConfiguredException",
 )<{
   readonly message?: string;
@@ -6919,7 +6919,7 @@ export interface RegisterThingResponse {
 }
 export type RegistrationCode = string;
 
-export declare class RegistrationCodeValidationException extends Data.TaggedError(
+export declare class RegistrationCodeValidationException extends EffectData.TaggedError(
   "RegistrationCodeValidationException",
 )<{
   readonly message?: string;
@@ -6989,7 +6989,7 @@ export type ReservedDomainConfigurationName = string;
 
 export type Resource = string;
 
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -7022,12 +7022,12 @@ export interface ResourceIdentifier {
 }
 export type ResourceLogicalId = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceRegistrationFailureException extends Data.TaggedError(
+export declare class ResourceRegistrationFailureException extends EffectData.TaggedError(
   "ResourceRegistrationFailureException",
 )<{
   readonly message?: string;
@@ -7210,13 +7210,13 @@ export type ServerName = string;
 
 export type ServiceName = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
 }> {}
 export type ServiceType = "DATA" | "CREDENTIAL_PROVIDER" | "JOBS";
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
@@ -7286,7 +7286,7 @@ export type SnsTopicArn = string;
 export type SortOrder = "Ascending" | "Descending";
 export type SQL = string;
 
-export declare class SqlParseException extends Data.TaggedError(
+export declare class SqlParseException extends EffectData.TaggedError(
   "SqlParseException",
 )<{
   readonly message?: string;
@@ -7475,7 +7475,7 @@ export type TargetFieldOrder = "LatLon" | "LonLat";
 export type Targets = Array<string>;
 export type TargetSelection = "CONTINUOUS" | "SNAPSHOT";
 export type TargetViolationIdsForDetectMitigationActions = Array<string>;
-export declare class TaskAlreadyExistsException extends Data.TaggedError(
+export declare class TaskAlreadyExistsException extends EffectData.TaggedError(
   "TaskAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -7647,7 +7647,7 @@ export interface ThingTypeProperties {
   searchableAttributes?: Array<string>;
   mqtt5Configuration?: Mqtt5Configuration;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -7774,7 +7774,7 @@ export type TotalFindingsCount = number;
 
 export type TotalResourcesCount = number;
 
-export declare class TransferAlreadyCompletedException extends Data.TaggedError(
+export declare class TransferAlreadyCompletedException extends EffectData.TaggedError(
   "TransferAlreadyCompletedException",
 )<{
   readonly message?: string;
@@ -7787,7 +7787,7 @@ export interface TransferCertificateRequest {
 export interface TransferCertificateResponse {
   transferredCertificateArn?: string;
 }
-export declare class TransferConflictException extends Data.TaggedError(
+export declare class TransferConflictException extends EffectData.TaggedError(
   "TransferConflictException",
 )<{
   readonly message?: string;
@@ -7799,7 +7799,7 @@ export interface TransferData {
   acceptDate?: Date | string;
   rejectDate?: Date | string;
 }
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;
@@ -8138,7 +8138,7 @@ export interface ValidationError {
   errorMessage?: string;
 }
 export type ValidationErrors = Array<ValidationError>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;
@@ -8156,7 +8156,7 @@ export type VerificationStateDescription = string;
 
 export type Version = number;
 
-export declare class VersionConflictException extends Data.TaggedError(
+export declare class VersionConflictException extends EffectData.TaggedError(
   "VersionConflictException",
 )<{
   readonly message?: string;
@@ -8165,7 +8165,7 @@ export type VersionName = string;
 
 export type VersionNumber = number;
 
-export declare class VersionsLimitExceededException extends Data.TaggedError(
+export declare class VersionsLimitExceededException extends EffectData.TaggedError(
   "VersionsLimitExceededException",
 )<{
   readonly message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSCloud9WorkspaceManagementService {
@@ -167,7 +167,7 @@ export type Cloud9 = AWSCloud9WorkspaceManagementService;
 
 export type AutomaticStopTimeMinutes = number;
 
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -177,14 +177,14 @@ export declare class BadRequestException extends Data.TaggedError(
 export type BoundedEnvironmentIdList = Array<string>;
 export type ClientRequestToken = string;
 
-export declare class ConcurrentAccessException extends Data.TaggedError(
+export declare class ConcurrentAccessException extends EffectData.TaggedError(
   "ConcurrentAccessException",
 )<{
   readonly message?: string;
   readonly className?: string;
   readonly code?: number;
 }> {}
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -298,7 +298,7 @@ export type EnvironmentStatus =
   | "STOPPED"
   | "DELETING";
 export type EnvironmentType = "SSH" | "EC2";
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly message?: string;
@@ -311,14 +311,14 @@ export type InstanceType = string;
 
 export type Integer = number;
 
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly message?: string;
   readonly className?: string;
   readonly code?: number;
 }> {}
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -355,7 +355,7 @@ export type ManagedCredentialsStatus =
 export type MaxResults = number;
 
 export type MemberPermissions = "READ_WRITE" | "READ_ONLY";
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -385,7 +385,7 @@ export type TagValue = string;
 
 export type Timestamp = Date | string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;

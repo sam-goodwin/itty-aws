@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface SimpleEmailService_v2 {
@@ -894,7 +894,7 @@ export interface AccountDetails {
   AdditionalContactEmailAddresses?: Array<string>;
   ReviewDetails?: ReviewDetails;
 }
-export declare class AccountSuspendedException extends Data.TaggedError(
+export declare class AccountSuspendedException extends EffectData.TaggedError(
   "AccountSuspendedException",
 )<{
   readonly message?: string;
@@ -904,7 +904,7 @@ export type AdditionalContactEmailAddress = string;
 export type AdditionalContactEmailAddresses = Array<string>;
 export type AdminEmail = string;
 
-export declare class AlreadyExistsException extends Data.TaggedError(
+export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",
 )<{
   readonly message?: string;
@@ -941,7 +941,7 @@ export type AttachmentFileName = string;
 export type AttachmentList = Array<Attachment>;
 export type AttributesData = string;
 
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -1046,7 +1046,7 @@ export type ComplaintFeedbackType = string;
 
 export type ComplaintSubType = string;
 
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -1054,7 +1054,7 @@ export declare class ConcurrentModificationException extends Data.TaggedError(
 export type ConfigurationSetName = string;
 
 export type ConfigurationSetNameList = Array<string>;
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -1804,12 +1804,12 @@ export interface InsightsEvent {
   Details?: EventDetails;
 }
 export type InsightsEvents = Array<InsightsEvent>;
-export declare class InternalServiceErrorException extends Data.TaggedError(
+export declare class InternalServiceErrorException extends EffectData.TaggedError(
   "InternalServiceErrorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly message?: string;
@@ -1844,7 +1844,7 @@ export type LastDeliveryEventList = Array<DeliveryEventType>;
 export type LastEngagementEventList = Array<EngagementEventType>;
 export type LastFreshStart = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -2008,7 +2008,7 @@ export interface MailFromAttributes {
 }
 export type MailFromDomainName = string;
 
-export declare class MailFromDomainNotVerifiedException extends Data.TaggedError(
+export declare class MailFromDomainNotVerifiedException extends EffectData.TaggedError(
   "MailFromDomainNotVerifiedException",
 )<{
   readonly message?: string;
@@ -2063,7 +2063,7 @@ export interface MessageInsightsFilters {
   LastDeliveryEvent?: Array<DeliveryEventType>;
   LastEngagementEvent?: Array<EngagementEventType>;
 }
-export declare class MessageRejected extends Data.TaggedError(
+export declare class MessageRejected extends EffectData.TaggedError(
   "MessageRejected",
 )<{
   readonly message?: string;
@@ -2129,7 +2129,7 @@ export type NextToken = string;
 
 export type NextTokenV2 = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -2401,7 +2401,7 @@ export interface SendEmailResponse {
 export interface SendingOptions {
   SendingEnabled?: boolean;
 }
-export declare class SendingPausedException extends Data.TaggedError(
+export declare class SendingPausedException extends EffectData.TaggedError(
   "SendingPausedException",
 )<{
   readonly message?: string;
@@ -2496,7 +2496,7 @@ export type Timestamp = Date | string;
 
 export type TimestampList = Array<Date | string>;
 export type TlsPolicy = "REQUIRE" | "OPTIONAL";
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;

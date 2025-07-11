@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSBastionControlPlaneServiceLambda {
@@ -24,7 +24,7 @@ export interface AWSBastionControlPlaneServiceLambda {
 
 export type Cleanrooms = AWSBastionControlPlaneServiceLambda;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -593,7 +593,7 @@ export interface ConfiguredTableSummary {
   selectedAnalysisMethods?: Array<SelectedAnalysisMethod>;
 }
 export type ConfiguredTableSummaryList = Array<ConfiguredTableSummary>;
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -1149,7 +1149,7 @@ export interface IdNamespaceAssociationSummary {
 export type IdNamespaceAssociationSummaryList =
   Array<IdNamespaceAssociationSummary>;
 export type IdNamespaceType = "SOURCE" | "TARGET";
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -1784,7 +1784,7 @@ export type ResourceAlias = string;
 
 export type ResourceDescription = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -1877,7 +1877,7 @@ export type SecretsManagerArn = string;
 
 export type SelectedAnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB";
 export type SelectedAnalysisMethods = Array<SelectedAnalysisMethod>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -1948,7 +1948,7 @@ export type TagValue = string;
 export type TargetProtectedJobStatus = "CANCELLED";
 export type TargetProtectedQueryStatus = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -2078,7 +2078,7 @@ export type UsersNoisePerQuery = number;
 
 export type UUID = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

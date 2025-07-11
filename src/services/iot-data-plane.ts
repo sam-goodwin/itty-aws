@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface IotMoonrakerService {
@@ -98,7 +98,7 @@ export interface IotMoonrakerService {
 
 export type IotDataPlane = IotMoonrakerService;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -133,12 +133,12 @@ export interface GetThingShadowRequest {
 export interface GetThingShadowResponse {
   payload?: Uint8Array | string;
 }
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly message?: string;
@@ -167,7 +167,7 @@ export type MaxResults = number;
 
 export type MessageExpiry = number;
 
-export declare class MethodNotAllowedException extends Data.TaggedError(
+export declare class MethodNotAllowedException extends EffectData.TaggedError(
   "MethodNotAllowedException",
 )<{
   readonly message?: string;
@@ -196,12 +196,12 @@ export interface PublishRequest {
 }
 export type Qos = number;
 
-export declare class RequestEntityTooLargeException extends Data.TaggedError(
+export declare class RequestEntityTooLargeException extends EffectData.TaggedError(
   "RequestEntityTooLargeException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -217,7 +217,7 @@ export interface RetainedMessageSummary {
   qos?: number;
   lastModifiedTime?: number;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
@@ -228,7 +228,7 @@ export type SynthesizedJsonUserProperties = string;
 
 export type ThingName = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -237,12 +237,12 @@ export type Timestamp = number;
 
 export type Topic = string;
 
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedDocumentEncodingException extends Data.TaggedError(
+export declare class UnsupportedDocumentEncodingException extends EffectData.TaggedError(
   "UnsupportedDocumentEncodingException",
 )<{
   readonly message?: string;

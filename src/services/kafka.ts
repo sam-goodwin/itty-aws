@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Kafka {
@@ -669,7 +669,7 @@ export type __timestampIso8601 = Date | string;
 export interface AmazonMskCluster {
   MskClusterArn: string;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly InvalidParameter?: string;
@@ -864,7 +864,7 @@ export interface ConfigurationRevision {
   Revision: number;
 }
 export type ConfigurationState = "ACTIVE" | "DELETING" | "DELETE_FAILED";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly InvalidParameter?: string;
@@ -1109,7 +1109,7 @@ export interface Firehose {
   DeliveryStream?: string;
   Enabled: boolean;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly InvalidParameter?: string;
@@ -1146,7 +1146,7 @@ export interface GetCompatibleKafkaVersionsResponse {
 export interface Iam {
   Enabled?: boolean;
 }
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly InvalidParameter?: string;
@@ -1328,7 +1328,7 @@ export interface NodeInfo {
   ZookeeperNodeInfo?: ZookeeperNodeInfo;
 }
 export type NodeType = "BROKER";
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly InvalidParameter?: string;
@@ -1477,7 +1477,7 @@ export interface ServerlessRequest {
 export interface ServerlessSasl {
   Iam?: Iam;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly InvalidParameter?: string;
@@ -1500,7 +1500,7 @@ export interface Tls {
   CertificateAuthorityArnList?: Array<string>;
   Enabled?: boolean;
 }
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly InvalidParameter?: string;
@@ -1525,7 +1525,7 @@ export interface TopicReplicationUpdate {
 export interface Unauthenticated {
   Enabled?: boolean;
 }
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly InvalidParameter?: string;

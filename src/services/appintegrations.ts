@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonAppIntegrationService {
@@ -259,7 +259,7 @@ export interface AmazonAppIntegrationService {
 
 export type Appintegrations = AmazonAppIntegrationService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -391,7 +391,7 @@ export type Description = string;
 
 export type DestinationURI = string;
 
-export declare class DuplicateResourceException extends Data.TaggedError(
+export declare class DuplicateResourceException extends EffectData.TaggedError(
   "DuplicateResourceException",
 )<{
   readonly Message?: string;
@@ -493,12 +493,12 @@ export type IdempotencyToken = string;
 
 export type Identifier = string;
 
-export declare class InternalServiceError extends Data.TaggedError(
+export declare class InternalServiceError extends EffectData.TaggedError(
   "InternalServiceError",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -592,12 +592,12 @@ export interface Publication {
   Description?: string;
 }
 export type PublicationList = Array<Publication>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceQuotaExceededException extends Data.TaggedError(
+export declare class ResourceQuotaExceededException extends EffectData.TaggedError(
   "ResourceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -627,14 +627,14 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
 }> {}
 export type Timestamp = Date | string;
 
-export declare class UnsupportedOperationException extends Data.TaggedError(
+export declare class UnsupportedOperationException extends EffectData.TaggedError(
   "UnsupportedOperationException",
 )<{
   readonly Message?: string;

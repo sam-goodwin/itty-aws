@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonResourceSharing {
@@ -649,44 +649,44 @@ export interface GetResourceSharesResponse {
   resourceShares?: Array<ResourceShare>;
   nextToken?: string;
 }
-export declare class IdempotentParameterMismatchException extends Data.TaggedError(
+export declare class IdempotentParameterMismatchException extends EffectData.TaggedError(
   "IdempotentParameterMismatchException",
 )<{
   readonly message: string;
 }> {}
 export type Integer = number;
 
-export declare class InvalidClientTokenException extends Data.TaggedError(
+export declare class InvalidClientTokenException extends EffectData.TaggedError(
   "InvalidClientTokenException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidMaxResultsException extends Data.TaggedError(
+export declare class InvalidMaxResultsException extends EffectData.TaggedError(
   "InvalidMaxResultsException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidNextTokenException extends Data.TaggedError(
+export declare class InvalidNextTokenException extends EffectData.TaggedError(
   "InvalidNextTokenException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidPolicyException extends Data.TaggedError(
+export declare class InvalidPolicyException extends EffectData.TaggedError(
   "InvalidPolicyException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidResourceTypeException extends Data.TaggedError(
+export declare class InvalidResourceTypeException extends EffectData.TaggedError(
   "InvalidResourceTypeException",
 )<{
   readonly message: string;
 }> {}
-export declare class InvalidStateTransitionException extends Data.TaggedError(
+export declare class InvalidStateTransitionException extends EffectData.TaggedError(
   "InvalidStateTransitionException",
 )<{
   readonly message: string;
@@ -789,29 +789,29 @@ export interface ListResourceTypesResponse {
   resourceTypes?: Array<ServiceNameAndResourceType>;
   nextToken?: string;
 }
-export declare class MalformedArnException extends Data.TaggedError(
+export declare class MalformedArnException extends EffectData.TaggedError(
   "MalformedArnException",
 )<{
   readonly message: string;
 }> {}
-export declare class MalformedPolicyTemplateException extends Data.TaggedError(
+export declare class MalformedPolicyTemplateException extends EffectData.TaggedError(
   "MalformedPolicyTemplateException",
 )<{
   readonly message: string;
 }> {}
 export type MaxResults = number;
 
-export declare class MissingRequiredParameterException extends Data.TaggedError(
+export declare class MissingRequiredParameterException extends EffectData.TaggedError(
   "MissingRequiredParameterException",
 )<{
   readonly message: string;
 }> {}
-export declare class OperationNotPermittedException extends Data.TaggedError(
+export declare class OperationNotPermittedException extends EffectData.TaggedError(
   "OperationNotPermittedException",
 )<{
   readonly message: string;
 }> {}
-export declare class PermissionAlreadyExistsException extends Data.TaggedError(
+export declare class PermissionAlreadyExistsException extends EffectData.TaggedError(
   "PermissionAlreadyExistsException",
 )<{
   readonly message: string;
@@ -821,7 +821,7 @@ export type PermissionFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD";
-export declare class PermissionLimitExceededException extends Data.TaggedError(
+export declare class PermissionLimitExceededException extends EffectData.TaggedError(
   "PermissionLimitExceededException",
 )<{
   readonly message: string;
@@ -835,7 +835,7 @@ export type PermissionStatus =
   | "DELETED";
 export type PermissionType = "CUSTOMER_MANAGED" | "AWS_MANAGED";
 export type PermissionTypeFilter = "ALL" | "AWS_MANAGED" | "CUSTOMER_MANAGED";
-export declare class PermissionVersionsLimitExceededException extends Data.TaggedError(
+export declare class PermissionVersionsLimitExceededException extends EffectData.TaggedError(
   "PermissionVersionsLimitExceededException",
 )<{
   readonly message: string;
@@ -915,7 +915,7 @@ export interface Resource {
   resourceRegionScope?: ResourceRegionScope;
 }
 export type ResourceArnList = Array<string>;
-export declare class ResourceArnNotFoundException extends Data.TaggedError(
+export declare class ResourceArnNotFoundException extends EffectData.TaggedError(
   "ResourceArnNotFoundException",
 )<{
   readonly message: string;
@@ -971,23 +971,23 @@ export interface ResourceShareInvitation {
   resourceShareAssociations?: Array<ResourceShareAssociation>;
   receiverArn?: string;
 }
-export declare class ResourceShareInvitationAlreadyAcceptedException extends Data.TaggedError(
+export declare class ResourceShareInvitationAlreadyAcceptedException extends EffectData.TaggedError(
   "ResourceShareInvitationAlreadyAcceptedException",
 )<{
   readonly message: string;
 }> {}
-export declare class ResourceShareInvitationAlreadyRejectedException extends Data.TaggedError(
+export declare class ResourceShareInvitationAlreadyRejectedException extends EffectData.TaggedError(
   "ResourceShareInvitationAlreadyRejectedException",
 )<{
   readonly message: string;
 }> {}
 export type ResourceShareInvitationArnList = Array<string>;
-export declare class ResourceShareInvitationArnNotFoundException extends Data.TaggedError(
+export declare class ResourceShareInvitationArnNotFoundException extends EffectData.TaggedError(
   "ResourceShareInvitationArnNotFoundException",
 )<{
   readonly message: string;
 }> {}
-export declare class ResourceShareInvitationExpiredException extends Data.TaggedError(
+export declare class ResourceShareInvitationExpiredException extends EffectData.TaggedError(
   "ResourceShareInvitationExpiredException",
 )<{
   readonly message: string;
@@ -998,7 +998,7 @@ export type ResourceShareInvitationStatus =
   | "ACCEPTED"
   | "REJECTED"
   | "EXPIRED";
-export declare class ResourceShareLimitExceededException extends Data.TaggedError(
+export declare class ResourceShareLimitExceededException extends EffectData.TaggedError(
   "ResourceShareLimitExceededException",
 )<{
   readonly message: string;
@@ -1046,7 +1046,7 @@ export type ResourceStatus =
   | "LIMIT_EXCEEDED"
   | "UNAVAILABLE"
   | "PENDING";
-export declare class ServerInternalException extends Data.TaggedError(
+export declare class ServerInternalException extends EffectData.TaggedError(
   "ServerInternalException",
 )<{
   readonly message: string;
@@ -1057,7 +1057,7 @@ export interface ServiceNameAndResourceType {
   resourceRegionScope?: ResourceRegionScope;
 }
 export type ServiceNameAndResourceTypeList = Array<ServiceNameAndResourceType>;
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message: string;
@@ -1084,13 +1084,13 @@ export type TagFilters = Array<TagFilter>;
 export type TagKey = string;
 
 export type TagKeyList = Array<string>;
-export declare class TagLimitExceededException extends Data.TaggedError(
+export declare class TagLimitExceededException extends EffectData.TaggedError(
   "TagLimitExceededException",
 )<{
   readonly message: string;
 }> {}
 export type TagList = Array<Tag>;
-export declare class TagPolicyViolationException extends Data.TaggedError(
+export declare class TagPolicyViolationException extends EffectData.TaggedError(
   "TagPolicyViolationException",
 )<{
   readonly message: string;
@@ -1104,17 +1104,17 @@ export interface TagResourceResponse {}
 export type TagValue = string;
 
 export type TagValueList = Array<string>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
 }> {}
-export declare class UnknownResourceException extends Data.TaggedError(
+export declare class UnknownResourceException extends EffectData.TaggedError(
   "UnknownResourceException",
 )<{
   readonly message: string;
 }> {}
-export declare class UnmatchedPolicyPermissionException extends Data.TaggedError(
+export declare class UnmatchedPolicyPermissionException extends EffectData.TaggedError(
   "UnmatchedPolicyPermissionException",
 )<{
   readonly message: string;

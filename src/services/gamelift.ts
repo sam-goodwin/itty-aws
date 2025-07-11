@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface GameLift {
@@ -1406,7 +1406,7 @@ export type ComputeNameOrArn = string;
 
 export type ComputeStatus = "PENDING" | "ACTIVE" | "TERMINATING" | "IMPAIRED";
 export type ComputeType = "EC2" | "ANYWHERE";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -2796,7 +2796,7 @@ export interface FleetCapacity {
   Location?: string;
   GameServerContainerGroupCounts?: GameServerContainerGroupCounts;
 }
-export declare class FleetCapacityExceededException extends Data.TaggedError(
+export declare class FleetCapacityExceededException extends EffectData.TaggedError(
   "FleetCapacityExceededException",
 )<{
   readonly Message?: string;
@@ -3094,7 +3094,7 @@ export interface GameSessionDetail {
   ProtectionPolicy?: ProtectionPolicy;
 }
 export type GameSessionDetailList = Array<GameSessionDetail>;
-export declare class GameSessionFullException extends Data.TaggedError(
+export declare class GameSessionFullException extends EffectData.TaggedError(
   "GameSessionFullException",
 )<{
   readonly Message?: string;
@@ -3201,7 +3201,7 @@ export interface GetInstanceAccessOutput {
 }
 export type IamRoleArn = string;
 
-export declare class IdempotentParameterMismatchException extends Data.TaggedError(
+export declare class IdempotentParameterMismatchException extends EffectData.TaggedError(
   "IdempotentParameterMismatchException",
 )<{
   readonly Message?: string;
@@ -3247,22 +3247,22 @@ export type InstanceRoleCredentialsProvider = "SHARED_CREDENTIAL_FILE";
 export type InstanceStatus = "PENDING" | "ACTIVE" | "TERMINATING";
 export type Integer = number;
 
-export declare class InternalServiceException extends Data.TaggedError(
+export declare class InternalServiceException extends EffectData.TaggedError(
   "InternalServiceException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidFleetStatusException extends Data.TaggedError(
+export declare class InvalidFleetStatusException extends EffectData.TaggedError(
   "InvalidFleetStatusException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidGameSessionStatusException extends Data.TaggedError(
+export declare class InvalidGameSessionStatusException extends EffectData.TaggedError(
   "InvalidGameSessionStatusException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -3297,7 +3297,7 @@ export interface LaunchTemplateSpecification {
 }
 export type LaunchTemplateVersion = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -3579,12 +3579,12 @@ export type NonZeroAnd255MaxString = string;
 
 export type NonZeroAndMaxString = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NotReadyException extends Data.TaggedError(
+export declare class NotReadyException extends EffectData.TaggedError(
   "NotReadyException",
 )<{
   readonly Message?: string;
@@ -3595,7 +3595,7 @@ export type OperatingSystem =
   | "AMAZON_LINUX_2"
   | "WINDOWS_2016"
   | "AMAZON_LINUX_2023";
-export declare class OutOfCapacityException extends Data.TaggedError(
+export declare class OutOfCapacityException extends EffectData.TaggedError(
   "OutOfCapacityException",
 )<{
   readonly Message?: string;
@@ -3941,7 +3941,7 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export declare class TaggingFailedException extends Data.TaggedError(
+export declare class TaggingFailedException extends EffectData.TaggedError(
   "TaggingFailedException",
 )<{
   readonly Message?: string;
@@ -3963,7 +3963,7 @@ export interface TargetConfiguration {
 export interface TargetTrackingConfiguration {
   TargetValue: number;
 }
-export declare class TerminalRoutingStrategyException extends Data.TaggedError(
+export declare class TerminalRoutingStrategyException extends EffectData.TaggedError(
   "TerminalRoutingStrategyException",
 )<{
   readonly Message?: string;
@@ -3984,12 +3984,12 @@ export interface UDPEndpoint {
   Domain?: string;
   Port?: number;
 }
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class UnsupportedRegionException extends Data.TaggedError(
+export declare class UnsupportedRegionException extends EffectData.TaggedError(
   "UnsupportedRegionException",
 )<{
   readonly Message?: string;

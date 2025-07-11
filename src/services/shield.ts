@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSShield_20160616 {
@@ -350,12 +350,12 @@ export interface AWSShield_20160616 {
 
 export type Shield = AWSShield_20160616;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class AccessDeniedForDependencyException extends Data.TaggedError(
+export declare class AccessDeniedForDependencyException extends EffectData.TaggedError(
   "AccessDeniedForDependencyException",
 )<{
   readonly message?: string;
@@ -574,29 +574,29 @@ export interface InclusionProtectionGroupFilters {
 }
 export type Integer = number;
 
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidOperationException extends Data.TaggedError(
+export declare class InvalidOperationException extends EffectData.TaggedError(
   "InvalidOperationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidPaginationTokenException extends Data.TaggedError(
+export declare class InvalidPaginationTokenException extends EffectData.TaggedError(
   "InvalidPaginationTokenException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
   readonly reason?: ValidationExceptionReason;
   readonly fields?: Array<ValidationExceptionField>;
 }> {}
-export declare class InvalidResourceException extends Data.TaggedError(
+export declare class InvalidResourceException extends EffectData.TaggedError(
   "InvalidResourceException",
 )<{
   readonly message?: string;
@@ -608,7 +608,7 @@ export interface Limit {
 export type LimitNumber = number;
 
 export type Limits = Array<Limit>;
-export declare class LimitsExceededException extends Data.TaggedError(
+export declare class LimitsExceededException extends EffectData.TaggedError(
   "LimitsExceededException",
 )<{
   readonly message?: string;
@@ -661,7 +661,7 @@ export interface ListTagsForResourceRequest {
 export interface ListTagsForResourceResponse {
   Tags?: Array<Tag>;
 }
-export declare class LockedSubscriptionException extends Data.TaggedError(
+export declare class LockedSubscriptionException extends EffectData.TaggedError(
   "LockedSubscriptionException",
 )<{
   readonly message?: string;
@@ -677,12 +677,12 @@ export interface Mitigation {
   MitigationName?: string;
 }
 export type MitigationList = Array<Mitigation>;
-export declare class NoAssociatedRoleException extends Data.TaggedError(
+export declare class NoAssociatedRoleException extends EffectData.TaggedError(
   "NoAssociatedRoleException",
 )<{
   readonly message?: string;
 }> {}
-export declare class OptimisticLockException extends Data.TaggedError(
+export declare class OptimisticLockException extends EffectData.TaggedError(
   "OptimisticLockException",
 )<{
   readonly message?: string;
@@ -743,7 +743,7 @@ export type ProtectionName = string;
 
 export type ProtectionNameFilters = Array<string>;
 export type Protections = Array<Protection>;
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -754,7 +754,7 @@ export type ResourceArn = string;
 export type ResourceArnFilterList = Array<string>;
 export type ResourceArnFilters = Array<string>;
 export type ResourceArnList = Array<string>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;

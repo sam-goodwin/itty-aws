@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSIdentityStore {
@@ -36,7 +36,7 @@ export interface AWSIdentityStore {
 
 export type Identitystore = AWSIdentityStore;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -63,7 +63,7 @@ export interface AttributeOperation {
 export type AttributeOperations = Array<AttributeOperation>;
 export type AttributePath = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -242,7 +242,7 @@ export type GroupMemberships = Array<GroupMembership>;
 export type Groups = Array<Group>;
 export type IdentityStoreId = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -320,7 +320,7 @@ export type RequestId = string;
 
 export type ResourceId = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly ResourceType?: string;
@@ -336,13 +336,13 @@ export type SensitiveBooleanType = boolean;
 
 export type SensitiveStringType = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
   readonly RequestId?: string;
 }> {}
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -386,7 +386,7 @@ export interface User {
 export type UserName = string;
 
 export type Users = Array<User>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSSimbaAPIService_v20180301 {
@@ -507,7 +507,7 @@ export interface AWSSimbaAPIService_v20180301 {
 
 export type Fsx = AWSSimbaAPIService_v20180301;
 
-export declare class AccessPointAlreadyOwnedByYou extends Data.TaggedError(
+export declare class AccessPointAlreadyOwnedByYou extends EffectData.TaggedError(
   "AccessPointAlreadyOwnedByYou",
 )<{
   readonly ErrorCode?: string;
@@ -520,7 +520,7 @@ export interface ActiveDirectoryBackupAttributes {
   ActiveDirectoryId?: string;
   ResourceARN?: string;
 }
-export declare class ActiveDirectoryError extends Data.TaggedError(
+export declare class ActiveDirectoryError extends EffectData.TaggedError(
   "ActiveDirectoryError",
 )<{
   readonly ActiveDirectoryId: string;
@@ -648,7 +648,7 @@ export interface Backup {
   Volume?: Volume;
   SizeInBytes?: number;
 }
-export declare class BackupBeingCopied extends Data.TaggedError(
+export declare class BackupBeingCopied extends EffectData.TaggedError(
   "BackupBeingCopied",
 )<{
   readonly Message?: string;
@@ -660,7 +660,7 @@ export interface BackupFailureDetails {
 export type BackupId = string;
 
 export type BackupIds = Array<string>;
-export declare class BackupInProgress extends Data.TaggedError(
+export declare class BackupInProgress extends EffectData.TaggedError(
   "BackupInProgress",
 )<{
   readonly Message?: string;
@@ -673,10 +673,12 @@ export type BackupLifecycle =
   | "FAILED"
   | "PENDING"
   | "COPYING";
-export declare class BackupNotFound extends Data.TaggedError("BackupNotFound")<{
+export declare class BackupNotFound extends EffectData.TaggedError(
+  "BackupNotFound",
+)<{
   readonly Message?: string;
 }> {}
-export declare class BackupRestoring extends Data.TaggedError(
+export declare class BackupRestoring extends EffectData.TaggedError(
   "BackupRestoring",
 )<{
   readonly Message?: string;
@@ -684,7 +686,7 @@ export declare class BackupRestoring extends Data.TaggedError(
 }> {}
 export type Backups = Array<Backup>;
 export type BackupType = "AUTOMATIC" | "USER_INITIATED" | "AWS_BACKUP";
-export declare class BadRequest extends Data.TaggedError("BadRequest")<{
+export declare class BadRequest extends EffectData.TaggedError("BadRequest")<{
   readonly Message?: string;
 }> {}
 export type BatchImportMetaDataOnCreate = boolean;
@@ -1027,7 +1029,7 @@ export interface DataRepositoryAssociation {
 export type DataRepositoryAssociationId = string;
 
 export type DataRepositoryAssociationIds = Array<string>;
-export declare class DataRepositoryAssociationNotFound extends Data.TaggedError(
+export declare class DataRepositoryAssociationNotFound extends EffectData.TaggedError(
   "DataRepositoryAssociationNotFound",
 )<{
   readonly Message?: string;
@@ -1069,12 +1071,12 @@ export interface DataRepositoryTask {
   FileCacheId?: string;
   ReleaseConfiguration?: ReleaseConfiguration;
 }
-export declare class DataRepositoryTaskEnded extends Data.TaggedError(
+export declare class DataRepositoryTaskEnded extends EffectData.TaggedError(
   "DataRepositoryTaskEnded",
 )<{
   readonly Message?: string;
 }> {}
-export declare class DataRepositoryTaskExecuting extends Data.TaggedError(
+export declare class DataRepositoryTaskExecuting extends EffectData.TaggedError(
   "DataRepositoryTaskExecuting",
 )<{
   readonly Message?: string;
@@ -1102,7 +1104,7 @@ export type DataRepositoryTaskLifecycle =
   | "SUCCEEDED"
   | "CANCELED"
   | "CANCELING";
-export declare class DataRepositoryTaskNotFound extends Data.TaggedError(
+export declare class DataRepositoryTaskNotFound extends EffectData.TaggedError(
   "DataRepositoryTaskNotFound",
 )<{
   readonly Message?: string;
@@ -1455,7 +1457,7 @@ export interface FileCacheNFSConfiguration {
   Version: NfsVersion;
   DnsIps?: Array<string>;
 }
-export declare class FileCacheNotFound extends Data.TaggedError(
+export declare class FileCacheNotFound extends EffectData.TaggedError(
   "FileCacheNotFound",
 )<{
   readonly Message?: string;
@@ -1518,7 +1520,7 @@ export interface FileSystemLustreMetadataConfiguration {
 export type FileSystemMaintenanceOperation = "PATCHING" | "BACKING_UP";
 export type FileSystemMaintenanceOperations =
   Array<FileSystemMaintenanceOperation>;
-export declare class FileSystemNotFound extends Data.TaggedError(
+export declare class FileSystemNotFound extends EffectData.TaggedError(
   "FileSystemNotFound",
 )<{
   readonly Message?: string;
@@ -1555,13 +1557,13 @@ export type HAPairs = number;
 
 export type IncludeShared = boolean;
 
-export declare class IncompatibleParameterError extends Data.TaggedError(
+export declare class IncompatibleParameterError extends EffectData.TaggedError(
   "IncompatibleParameterError",
 )<{
   readonly Parameter: string;
   readonly Message?: string;
 }> {}
-export declare class IncompatibleRegionForMultiAZ extends Data.TaggedError(
+export declare class IncompatibleRegionForMultiAZ extends EffectData.TaggedError(
   "IncompatibleRegionForMultiAZ",
 )<{
   readonly Message?: string;
@@ -1573,38 +1575,38 @@ export type IntegerNoMaxFromNegativeOne = number;
 
 export type IntegerRecordSizeKiB = number;
 
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidAccessPoint extends Data.TaggedError(
+export declare class InvalidAccessPoint extends EffectData.TaggedError(
   "InvalidAccessPoint",
 )<{
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
-export declare class InvalidDataRepositoryType extends Data.TaggedError(
+export declare class InvalidDataRepositoryType extends EffectData.TaggedError(
   "InvalidDataRepositoryType",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidDestinationKmsKey extends Data.TaggedError(
+export declare class InvalidDestinationKmsKey extends EffectData.TaggedError(
   "InvalidDestinationKmsKey",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidExportPath extends Data.TaggedError(
+export declare class InvalidExportPath extends EffectData.TaggedError(
   "InvalidExportPath",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidImportPath extends Data.TaggedError(
+export declare class InvalidImportPath extends EffectData.TaggedError(
   "InvalidImportPath",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidNetworkSettings extends Data.TaggedError(
+export declare class InvalidNetworkSettings extends EffectData.TaggedError(
   "InvalidNetworkSettings",
 )<{
   readonly Message?: string;
@@ -1612,19 +1614,23 @@ export declare class InvalidNetworkSettings extends Data.TaggedError(
   readonly InvalidSecurityGroupId?: string;
   readonly InvalidRouteTableId?: string;
 }> {}
-export declare class InvalidPerUnitStorageThroughput extends Data.TaggedError(
+export declare class InvalidPerUnitStorageThroughput extends EffectData.TaggedError(
   "InvalidPerUnitStorageThroughput",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRegion extends Data.TaggedError("InvalidRegion")<{
+export declare class InvalidRegion extends EffectData.TaggedError(
+  "InvalidRegion",
+)<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequest extends Data.TaggedError("InvalidRequest")<{
+export declare class InvalidRequest extends EffectData.TaggedError(
+  "InvalidRequest",
+)<{
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
-export declare class InvalidSourceKmsKey extends Data.TaggedError(
+export declare class InvalidSourceKmsKey extends EffectData.TaggedError(
   "InvalidSourceKmsKey",
 )<{
   readonly Message?: string;
@@ -1721,17 +1727,17 @@ export type MetadataIops = number;
 
 export type MetadataStorageCapacity = number;
 
-export declare class MissingFileCacheConfiguration extends Data.TaggedError(
+export declare class MissingFileCacheConfiguration extends EffectData.TaggedError(
   "MissingFileCacheConfiguration",
 )<{
   readonly Message?: string;
 }> {}
-export declare class MissingFileSystemConfiguration extends Data.TaggedError(
+export declare class MissingFileSystemConfiguration extends EffectData.TaggedError(
   "MissingFileSystemConfiguration",
 )<{
   readonly Message?: string;
 }> {}
-export declare class MissingVolumeConfiguration extends Data.TaggedError(
+export declare class MissingVolumeConfiguration extends EffectData.TaggedError(
   "MissingVolumeConfiguration",
 )<{
   readonly Message?: string;
@@ -1751,7 +1757,7 @@ export interface NFSDataRepositoryConfiguration {
   AutoExportPolicy?: AutoExportPolicy;
 }
 export type NfsVersion = "NFS3";
-export declare class NotServiceResourceError extends Data.TaggedError(
+export declare class NotServiceResourceError extends EffectData.TaggedError(
   "NotServiceResourceError",
 )<{
   readonly ResourceARN: string;
@@ -1926,13 +1932,13 @@ export type RequestTime = Date | string;
 
 export type ResourceARN = string;
 
-export declare class ResourceDoesNotSupportTagging extends Data.TaggedError(
+export declare class ResourceDoesNotSupportTagging extends EffectData.TaggedError(
   "ResourceDoesNotSupportTagging",
 )<{
   readonly ResourceARN: string;
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFound extends Data.TaggedError(
+export declare class ResourceNotFound extends EffectData.TaggedError(
   "ResourceNotFound",
 )<{
   readonly ResourceARN: string;
@@ -1997,7 +2003,7 @@ export type S3AccessPointAttachmentLifecycle =
 export type S3AccessPointAttachmentName = string;
 
 export type S3AccessPointAttachmentNames = Array<string>;
-export declare class S3AccessPointAttachmentNotFound extends Data.TaggedError(
+export declare class S3AccessPointAttachmentNotFound extends EffectData.TaggedError(
   "S3AccessPointAttachmentNotFound",
 )<{
   readonly Message?: string;
@@ -2066,7 +2072,7 @@ export type ServiceLimit =
   | "VOLUMES_PER_FILE_SYSTEM"
   | "TOTAL_SSD_IOPS"
   | "FILE_CACHE_COUNT";
-export declare class ServiceLimitExceeded extends Data.TaggedError(
+export declare class ServiceLimitExceeded extends EffectData.TaggedError(
   "ServiceLimitExceeded",
 )<{
   readonly Limit: ServiceLimit;
@@ -2118,7 +2124,7 @@ export type SnapshotLifecycle =
   | "AVAILABLE";
 export type SnapshotName = string;
 
-export declare class SnapshotNotFound extends Data.TaggedError(
+export declare class SnapshotNotFound extends EffectData.TaggedError(
   "SnapshotNotFound",
 )<{
   readonly Message?: string;
@@ -2128,7 +2134,7 @@ export type SnapshotPolicy = string;
 export type Snapshots = Array<Snapshot>;
 export type SourceBackupId = string;
 
-export declare class SourceBackupUnavailable extends Data.TaggedError(
+export declare class SourceBackupUnavailable extends EffectData.TaggedError(
   "SourceBackupUnavailable",
 )<{
   readonly Message?: string;
@@ -2189,7 +2195,7 @@ export type StorageVirtualMachineLifecycle =
   | "PENDING";
 export type StorageVirtualMachineName = string;
 
-export declare class StorageVirtualMachineNotFound extends Data.TaggedError(
+export declare class StorageVirtualMachineNotFound extends EffectData.TaggedError(
   "StorageVirtualMachineNotFound",
 )<{
   readonly Message?: string;
@@ -2251,7 +2257,7 @@ export interface TieringPolicy {
   Name?: TieringPolicyName;
 }
 export type TieringPolicyName = "SNAPSHOT_ONLY" | "AUTO" | "ALL" | "NONE";
-export declare class TooManyAccessPoints extends Data.TaggedError(
+export declare class TooManyAccessPoints extends EffectData.TaggedError(
   "TooManyAccessPoints",
 )<{
   readonly ErrorCode?: string;
@@ -2263,7 +2269,7 @@ export type TotalCount = number;
 
 export type TotalTransferBytes = number;
 
-export declare class UnsupportedOperation extends Data.TaggedError(
+export declare class UnsupportedOperation extends EffectData.TaggedError(
   "UnsupportedOperation",
 )<{
   readonly Message?: string;
@@ -2473,7 +2479,9 @@ export type VolumeLifecycle =
   | "AVAILABLE";
 export type VolumeName = string;
 
-export declare class VolumeNotFound extends Data.TaggedError("VolumeNotFound")<{
+export declare class VolumeNotFound extends EffectData.TaggedError(
+  "VolumeNotFound",
+)<{
   readonly Message?: string;
 }> {}
 export type VolumePath = string;

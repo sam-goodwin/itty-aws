@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ChimeMessagingService {
@@ -665,7 +665,7 @@ export interface AssociateChannelFlowRequest {
   ChannelFlowArn: string;
   ChimeBearer: string;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Code?: ErrorCode;
@@ -863,7 +863,7 @@ export type ChimeArn = string;
 
 export type ClientRequestToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Code?: ErrorCode;
@@ -1055,7 +1055,7 @@ export interface ExpirationSettings {
 export type FallbackAction = "CONTINUE" | "ABORT";
 export type FilterRule = string;
 
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Code?: ErrorCode;
@@ -1262,7 +1262,7 @@ export type NonEmptyResourceName = string;
 
 export type NonNullableBoolean = boolean;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Code?: ErrorCode;
@@ -1330,7 +1330,7 @@ export interface RedactChannelMessageResponse {
   MessageId?: string;
   SubChannelId?: string;
 }
-export declare class ResourceLimitExceededException extends Data.TaggedError(
+export declare class ResourceLimitExceededException extends EffectData.TaggedError(
   "ResourceLimitExceededException",
 )<{
   readonly Code?: ErrorCode;
@@ -1379,13 +1379,13 @@ export interface SendChannelMessageResponse {
   Status?: ChannelMessageStatusStructure;
   SubChannelId?: string;
 }
-export declare class ServiceFailureException extends Data.TaggedError(
+export declare class ServiceFailureException extends EffectData.TaggedError(
   "ServiceFailureException",
 )<{
   readonly Code?: ErrorCode;
   readonly Message?: string;
 }> {}
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Code?: ErrorCode;
@@ -1426,7 +1426,7 @@ export interface Target {
 export type TargetList = Array<Target>;
 export type TargetMembershipsPerSubChannel = number;
 
-export declare class ThrottledClientException extends Data.TaggedError(
+export declare class ThrottledClientException extends EffectData.TaggedError(
   "ThrottledClientException",
 )<{
   readonly Code?: ErrorCode;
@@ -1434,7 +1434,7 @@ export declare class ThrottledClientException extends Data.TaggedError(
 }> {}
 export type Timestamp = Date | string;
 
-export declare class UnauthorizedClientException extends Data.TaggedError(
+export declare class UnauthorizedClientException extends EffectData.TaggedError(
   "UnauthorizedClientException",
 )<{
   readonly Code?: ErrorCode;

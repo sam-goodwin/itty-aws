@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface PerformanceInsightsv20180227 {
@@ -316,12 +316,12 @@ export interface Insight {
 export type InsightList = Array<Insight>;
 export type Integer = number;
 
-export declare class InternalServiceError extends Data.TaggedError(
+export declare class InternalServiceError extends EffectData.TaggedError(
   "InternalServiceError",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidArgumentException extends Data.TaggedError(
+export declare class InvalidArgumentException extends EffectData.TaggedError(
   "InvalidArgumentException",
 )<{
   readonly Message?: string;
@@ -396,7 +396,7 @@ export type MetricTypeList = Array<string>;
 export type MetricValuesList = Array<number>;
 export type NextToken = string;
 
-export declare class NotAuthorizedException extends Data.TaggedError(
+export declare class NotAuthorizedException extends EffectData.TaggedError(
   "NotAuthorizedException",
 )<{
   readonly Message?: string;

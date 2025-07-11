@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface WisdomService {
@@ -24,7 +24,7 @@ export interface WisdomService {
 
 export type Wisdom = WisdomService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -97,7 +97,7 @@ export type Channels = Array<string>;
 export type ClientToken = string;
 
 export type Configuration = { connectConfiguration: ConnectConfiguration };
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -520,7 +520,7 @@ export interface NotifyRecommendationsReceivedResponse {
 export type ObjectFieldsList = Array<string>;
 export type Order = string;
 
-export declare class PreconditionFailedException extends Data.TaggedError(
+export declare class PreconditionFailedException extends EffectData.TaggedError(
   "PreconditionFailedException",
 )<{
   readonly message?: string;
@@ -691,12 +691,12 @@ export interface RemoveKnowledgeBaseTemplateUriResponse {}
 export interface RenderingConfiguration {
   templateUri?: string;
 }
-export declare class RequestTimeoutException extends Data.TaggedError(
+export declare class RequestTimeoutException extends EffectData.TaggedError(
   "RequestTimeoutException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -746,7 +746,7 @@ export type SensitiveString = string;
 export interface ServerSideEncryptionConfiguration {
   kmsKeyId?: string;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -809,7 +809,7 @@ export type TagValue = string;
 
 export type TimeToLive = number;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
@@ -869,7 +869,7 @@ export type Uuid = string;
 
 export type UuidOrArn = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

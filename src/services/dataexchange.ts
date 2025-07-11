@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface DataExchange {
@@ -422,7 +422,7 @@ export interface AcceptDataGrantResponse {
   CreatedAt: Date | string;
   UpdatedAt: Date | string;
 }
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message: string;
@@ -494,7 +494,7 @@ export type ClientToken = string;
 
 export type Code = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message: string;
@@ -925,7 +925,7 @@ export interface ImportAssetsFromS3ResponseDetails {
   DataSetId: string;
   RevisionId: string;
 }
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message: string;
@@ -1150,7 +1150,7 @@ export interface RequestDetails {
   CreateS3DataAccessFromS3Bucket?: CreateS3DataAccessFromS3BucketRequestDetails;
   ImportAssetsFromLakeFormationTagPolicy?: ImportAssetsFromLakeFormationTagPolicyRequestDetails;
 }
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message: string;
@@ -1275,7 +1275,7 @@ export type SenderPrincipal = string;
 
 export type ServerSideEncryptionTypes = string;
 
-export declare class ServiceLimitExceededException extends Data.TaggedError(
+export declare class ServiceLimitExceededException extends EffectData.TaggedError(
   "ServiceLimitExceededException",
 )<{
   readonly LimitName?: string;
@@ -1301,7 +1301,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Record<string, string>;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message: string;
@@ -1380,7 +1380,7 @@ export interface UpdateRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date | string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message: string;

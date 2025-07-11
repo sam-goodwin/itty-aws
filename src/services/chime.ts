@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface UCBuzzConsoleService {
@@ -815,7 +815,7 @@ export interface UCBuzzConsoleService {
 
 export type Chime = UCBuzzConsoleService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Code?: ErrorCode;
@@ -862,7 +862,7 @@ export interface AssociateSigninDelegateGroupsWithAccountRequest {
   SigninDelegateGroups: Array<SigninDelegateGroup>;
 }
 export interface AssociateSigninDelegateGroupsWithAccountResponse {}
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Code?: ErrorCode;
@@ -934,7 +934,7 @@ export type CallingNameStatus =
   | "UpdateFailed";
 export type ClientRequestToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Code?: ErrorCode;
@@ -1056,7 +1056,7 @@ export interface EventsConfiguration {
   OutboundEventsHTTPSEndpoint?: string;
   LambdaFunctionArn?: string;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Code?: ErrorCode;
@@ -1263,7 +1263,7 @@ export type MemberType = "User" | "Bot" | "Webhook";
 export type NonEmptyString = string;
 
 export type NonEmptyStringList = Array<string>;
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Code?: ErrorCode;
@@ -1401,7 +1401,7 @@ export interface ResetPersonalPINRequest {
 export interface ResetPersonalPINResponse {
   User?: User;
 }
-export declare class ResourceLimitExceededException extends Data.TaggedError(
+export declare class ResourceLimitExceededException extends EffectData.TaggedError(
   "ResourceLimitExceededException",
 )<{
   readonly Code?: ErrorCode;
@@ -1458,13 +1458,13 @@ export interface SearchAvailablePhoneNumbersResponse {
 }
 export type SensitiveString = string;
 
-export declare class ServiceFailureException extends Data.TaggedError(
+export declare class ServiceFailureException extends EffectData.TaggedError(
   "ServiceFailureException",
 )<{
   readonly Code?: ErrorCode;
   readonly Message?: string;
 }> {}
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Code?: ErrorCode;
@@ -1479,7 +1479,7 @@ export interface TelephonySettings {
   OutboundCalling: boolean;
   SMS: boolean;
 }
-export declare class ThrottledClientException extends Data.TaggedError(
+export declare class ThrottledClientException extends EffectData.TaggedError(
   "ThrottledClientException",
 )<{
   readonly Code?: ErrorCode;
@@ -1487,13 +1487,13 @@ export declare class ThrottledClientException extends Data.TaggedError(
 }> {}
 export type TollFreePrefix = string;
 
-export declare class UnauthorizedClientException extends Data.TaggedError(
+export declare class UnauthorizedClientException extends EffectData.TaggedError(
   "UnauthorizedClientException",
 )<{
   readonly Code?: ErrorCode;
   readonly Message?: string;
 }> {}
-export declare class UnprocessableEntityException extends Data.TaggedError(
+export declare class UnprocessableEntityException extends EffectData.TaggedError(
   "UnprocessableEntityException",
 )<{
   readonly Code?: ErrorCode;

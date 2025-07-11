@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonMWAA {
@@ -106,7 +106,7 @@ export interface AmazonMWAA {
 
 export type Mwaa = AmazonMWAA;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -244,7 +244,7 @@ export type IamIdentity = string;
 
 export type IamRoleArn = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -340,12 +340,12 @@ export interface PublishMetricsInput {
 export interface PublishMetricsOutput {}
 export type RelativePath = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class RestApiClientException extends Data.TaggedError(
+export declare class RestApiClientException extends EffectData.TaggedError(
   "RestApiClientException",
 )<{
   readonly RestApiStatusCode?: number;
@@ -355,7 +355,7 @@ export type RestApiMethod = string;
 
 export type RestApiPath = string;
 
-export declare class RestApiServerException extends Data.TaggedError(
+export declare class RestApiServerException extends EffectData.TaggedError(
   "RestApiServerException",
 )<{
   readonly RestApiStatusCode?: number;
@@ -438,7 +438,7 @@ export type UpdateSource = string;
 
 export type UpdateStatus = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

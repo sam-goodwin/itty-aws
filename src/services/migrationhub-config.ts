@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSMigrationHubMultiAccountService {
@@ -51,7 +51,7 @@ export interface AWSMigrationHubMultiAccountService {
 
 export type MigrationhubConfig = AWSMigrationHubMultiAccountService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -85,7 +85,7 @@ export interface DescribeHomeRegionControlsResult {
 }
 export type DryRun = boolean;
 
-export declare class DryRunOperation extends Data.TaggedError(
+export declare class DryRunOperation extends EffectData.TaggedError(
   "DryRunOperation",
 )<{
   readonly Message?: string;
@@ -105,12 +105,12 @@ export interface HomeRegionControl {
   RequestedTime?: Date | string;
 }
 export type HomeRegionControls = Array<HomeRegionControl>;
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidInputException extends Data.TaggedError(
+export declare class InvalidInputException extends EffectData.TaggedError(
   "InvalidInputException",
 )<{
   readonly Message?: string;
@@ -119,7 +119,7 @@ export type RequestedTime = Date | string;
 
 export type RetryAfterSeconds = number;
 
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Message?: string;
@@ -131,7 +131,7 @@ export interface Target {
 export type TargetId = string;
 
 export type TargetType = "ACCOUNT";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message: string;

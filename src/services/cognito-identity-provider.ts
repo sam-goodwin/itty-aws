@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSCognitoIdentityProviderService {
@@ -1867,7 +1867,7 @@ export type AliasAttributeType =
   | "PHONE_NUMBER"
   | "EMAIL"
   | "PREFERRED_USERNAME";
-export declare class AliasExistsException extends Data.TaggedError(
+export declare class AliasExistsException extends EffectData.TaggedError(
   "AliasExistsException",
 )<{
   readonly message?: string;
@@ -2026,12 +2026,12 @@ export interface CodeDeliveryDetailsType {
   DeliveryMedium?: DeliveryMediumType;
   AttributeName?: string;
 }
-export declare class CodeDeliveryFailureException extends Data.TaggedError(
+export declare class CodeDeliveryFailureException extends EffectData.TaggedError(
   "CodeDeliveryFailureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class CodeMismatchException extends Data.TaggedError(
+export declare class CodeMismatchException extends EffectData.TaggedError(
   "CodeMismatchException",
 )<{
   readonly message?: string;
@@ -2052,7 +2052,7 @@ export interface CompromisedCredentialsRiskConfigurationType {
   EventFilter?: Array<EventFilterType>;
   Actions: CompromisedCredentialsActionsType;
 }
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -2352,7 +2352,7 @@ export interface DeviceConfigurationType {
   ChallengeRequiredOnNewDevice?: boolean;
   DeviceOnlyRememberedOnUserPrompt?: boolean;
 }
-export declare class DeviceKeyExistsException extends Data.TaggedError(
+export declare class DeviceKeyExistsException extends EffectData.TaggedError(
   "DeviceKeyExistsException",
 )<{
   readonly message?: string;
@@ -2395,7 +2395,7 @@ export type DomainType = string;
 
 export type DomainVersionType = string;
 
-export declare class DuplicateProviderException extends Data.TaggedError(
+export declare class DuplicateProviderException extends EffectData.TaggedError(
   "DuplicateProviderException",
 )<{
   readonly message?: string;
@@ -2436,7 +2436,7 @@ export type EmailVerificationSubjectByLinkType = string;
 
 export type EmailVerificationSubjectType = string;
 
-export declare class EnableSoftwareTokenMFAException extends Data.TaggedError(
+export declare class EnableSoftwareTokenMFAException extends EffectData.TaggedError(
   "EnableSoftwareTokenMFAException",
 )<{
   readonly message?: string;
@@ -2470,7 +2470,7 @@ export type EventType =
   | "ForgotPassword"
   | "PasswordChange"
   | "ResendCode";
-export declare class ExpiredCodeException extends Data.TaggedError(
+export declare class ExpiredCodeException extends EffectData.TaggedError(
   "ExpiredCodeException",
 )<{
   readonly message?: string;
@@ -2487,7 +2487,7 @@ export type ExplicitAuthFlowsType =
   | "ALLOW_REFRESH_TOKEN_AUTH"
   | "ALLOW_USER_AUTH";
 export type FeatureType = "ENABLED" | "DISABLED";
-export declare class FeatureUnavailableInTierException extends Data.TaggedError(
+export declare class FeatureUnavailableInTierException extends EffectData.TaggedError(
   "FeatureUnavailableInTierException",
 )<{
   readonly message?: string;
@@ -2496,7 +2496,7 @@ export type FeedbackValueType = "VALID" | "INVALID";
 export interface FirehoseConfigurationType {
   StreamArn?: string;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly message?: string;
@@ -2618,7 +2618,7 @@ export interface GlobalSignOutRequest {
   AccessToken: string;
 }
 export interface GlobalSignOutResponse {}
-export declare class GroupExistsException extends Data.TaggedError(
+export declare class GroupExistsException extends EffectData.TaggedError(
   "GroupExistsException",
 )<{
   readonly message?: string;
@@ -2686,27 +2686,27 @@ export interface InitiateAuthResponse {
 }
 export type IntegerType = number;
 
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidEmailRoleAccessPolicyException extends Data.TaggedError(
+export declare class InvalidEmailRoleAccessPolicyException extends EffectData.TaggedError(
   "InvalidEmailRoleAccessPolicyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidLambdaResponseException extends Data.TaggedError(
+export declare class InvalidLambdaResponseException extends EffectData.TaggedError(
   "InvalidLambdaResponseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidOAuthFlowException extends Data.TaggedError(
+export declare class InvalidOAuthFlowException extends EffectData.TaggedError(
   "InvalidOAuthFlowException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
@@ -2714,22 +2714,22 @@ export declare class InvalidParameterException extends Data.TaggedError(
 }> {}
 export type InvalidParameterExceptionReasonCodeType = string;
 
-export declare class InvalidPasswordException extends Data.TaggedError(
+export declare class InvalidPasswordException extends EffectData.TaggedError(
   "InvalidPasswordException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSmsRoleAccessPolicyException extends Data.TaggedError(
+export declare class InvalidSmsRoleAccessPolicyException extends EffectData.TaggedError(
   "InvalidSmsRoleAccessPolicyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSmsRoleTrustRelationshipException extends Data.TaggedError(
+export declare class InvalidSmsRoleTrustRelationshipException extends EffectData.TaggedError(
   "InvalidSmsRoleTrustRelationshipException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidUserPoolConfigurationException extends Data.TaggedError(
+export declare class InvalidUserPoolConfigurationException extends EffectData.TaggedError(
   "InvalidUserPoolConfigurationException",
 )<{
   readonly message?: string;
@@ -2750,7 +2750,7 @@ export interface LambdaConfigType {
   CustomEmailSender?: CustomEmailLambdaVersionConfigType;
   KMSKeyID?: string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -2874,7 +2874,7 @@ export type LogLevel = "ERROR" | "INFO";
 export type LogoutURLsListType = Array<string>;
 export type LongType = number;
 
-export declare class ManagedLoginBrandingExistsException extends Data.TaggedError(
+export declare class ManagedLoginBrandingExistsException extends EffectData.TaggedError(
   "ManagedLoginBrandingExistsException",
 )<{
   readonly message?: string;
@@ -2898,7 +2898,7 @@ export interface MessageTemplateType {
 }
 export type MessageType = string;
 
-export declare class MFAMethodNotFoundException extends Data.TaggedError(
+export declare class MFAMethodNotFoundException extends EffectData.TaggedError(
   "MFAMethodNotFoundException",
 )<{
   readonly message?: string;
@@ -2912,7 +2912,7 @@ export interface NewDeviceMetadataType {
   DeviceKey?: string;
   DeviceGroupKey?: string;
 }
-export declare class NotAuthorizedException extends Data.TaggedError(
+export declare class NotAuthorizedException extends EffectData.TaggedError(
   "NotAuthorizedException",
 )<{
   readonly message?: string;
@@ -2940,7 +2940,7 @@ export type PaginationKey = string;
 
 export type PaginationKeyType = string;
 
-export declare class PasswordHistoryPolicyViolationException extends Data.TaggedError(
+export declare class PasswordHistoryPolicyViolationException extends EffectData.TaggedError(
   "PasswordHistoryPolicyViolationException",
 )<{
   readonly message?: string;
@@ -2958,7 +2958,7 @@ export interface PasswordPolicyType {
   PasswordHistorySize?: number;
   TemporaryPasswordValidityDays?: number;
 }
-export declare class PasswordResetRequiredException extends Data.TaggedError(
+export declare class PasswordResetRequiredException extends EffectData.TaggedError(
   "PasswordResetRequiredException",
 )<{
   readonly message?: string;
@@ -2969,7 +2969,7 @@ export type PoolQueryLimitType = number;
 
 export type PrecedenceType = number;
 
-export declare class PreconditionNotMetException extends Data.TaggedError(
+export declare class PreconditionNotMetException extends EffectData.TaggedError(
   "PreconditionNotMetException",
 )<{
   readonly message?: string;
@@ -3016,7 +3016,7 @@ export interface RecoveryOptionType {
 }
 export type RedirectUrlType = string;
 
-export declare class RefreshTokenReuseException extends Data.TaggedError(
+export declare class RefreshTokenReuseException extends EffectData.TaggedError(
   "RefreshTokenReuseException",
 )<{
   readonly message?: string;
@@ -3044,7 +3044,7 @@ export interface ResendConfirmationCodeResponse {
 }
 export type ResourceIdType = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -3123,7 +3123,7 @@ export interface SchemaAttributeType {
   NumberAttributeConstraints?: NumberAttributeConstraintsType;
   StringAttributeConstraints?: StringAttributeConstraintsType;
 }
-export declare class ScopeDoesNotExistException extends Data.TaggedError(
+export declare class ScopeDoesNotExistException extends EffectData.TaggedError(
   "ScopeDoesNotExistException",
 )<{
   readonly message?: string;
@@ -3236,7 +3236,7 @@ export type SmsVerificationMessageType = string;
 export interface SoftwareTokenMfaConfigType {
   Enabled?: boolean;
 }
-export declare class SoftwareTokenMFANotFoundException extends Data.TaggedError(
+export declare class SoftwareTokenMFANotFoundException extends EffectData.TaggedError(
   "SoftwareTokenMFANotFoundException",
 )<{
   readonly message?: string;
@@ -3286,7 +3286,7 @@ export type TagValueType = string;
 
 export type TemporaryPasswordValidityDaysType = number;
 
-export declare class TierChangeNotAllowedException extends Data.TaggedError(
+export declare class TierChangeNotAllowedException extends EffectData.TaggedError(
   "TierChangeNotAllowedException",
 )<{
   readonly message?: string;
@@ -3299,12 +3299,12 @@ export interface TokenValidityUnitsType {
   IdToken?: TimeUnitsType;
   RefreshToken?: TimeUnitsType;
 }
-export declare class TooManyFailedAttemptsException extends Data.TaggedError(
+export declare class TooManyFailedAttemptsException extends EffectData.TaggedError(
   "TooManyFailedAttemptsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;
@@ -3318,32 +3318,32 @@ export interface UICustomizationType {
   LastModifiedDate?: Date | string;
   CreationDate?: Date | string;
 }
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnexpectedLambdaException extends Data.TaggedError(
+export declare class UnexpectedLambdaException extends EffectData.TaggedError(
   "UnexpectedLambdaException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedIdentityProviderException extends Data.TaggedError(
+export declare class UnsupportedIdentityProviderException extends EffectData.TaggedError(
   "UnsupportedIdentityProviderException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedOperationException extends Data.TaggedError(
+export declare class UnsupportedOperationException extends EffectData.TaggedError(
   "UnsupportedOperationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedTokenTypeException extends Data.TaggedError(
+export declare class UnsupportedTokenTypeException extends EffectData.TaggedError(
   "UnsupportedTokenTypeException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnsupportedUserStateException extends Data.TaggedError(
+export declare class UnsupportedUserStateException extends EffectData.TaggedError(
   "UnsupportedUserStateException",
 )<{
   readonly message?: string;
@@ -3485,7 +3485,7 @@ export interface UserContextDataType {
 }
 export type UserFilterType = string;
 
-export declare class UserImportInProgressException extends Data.TaggedError(
+export declare class UserImportInProgressException extends EffectData.TaggedError(
   "UserImportInProgressException",
 )<{
   readonly message?: string;
@@ -3519,7 +3519,7 @@ export interface UserImportJobType {
   FailedUsers?: number;
   CompletionMessage?: string;
 }
-export declare class UserLambdaValidationException extends Data.TaggedError(
+export declare class UserLambdaValidationException extends EffectData.TaggedError(
   "UserLambdaValidationException",
 )<{
   readonly message?: string;
@@ -3530,24 +3530,24 @@ export type UsernameAttributeType = "PHONE_NUMBER" | "EMAIL";
 export interface UsernameConfigurationType {
   CaseSensitive: boolean;
 }
-export declare class UsernameExistsException extends Data.TaggedError(
+export declare class UsernameExistsException extends EffectData.TaggedError(
   "UsernameExistsException",
 )<{
   readonly message?: string;
 }> {}
 export type UsernameType = string;
 
-export declare class UserNotConfirmedException extends Data.TaggedError(
+export declare class UserNotConfirmedException extends EffectData.TaggedError(
   "UserNotConfirmedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UserNotFoundException extends Data.TaggedError(
+export declare class UserNotFoundException extends EffectData.TaggedError(
   "UserNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UserPoolAddOnNotEnabledException extends Data.TaggedError(
+export declare class UserPoolAddOnNotEnabledException extends EffectData.TaggedError(
   "UserPoolAddOnNotEnabledException",
 )<{
   readonly message?: string;
@@ -3608,7 +3608,7 @@ export interface UserPoolPolicyType {
   PasswordPolicy?: PasswordPolicyType;
   SignInPolicy?: SignInPolicyType;
 }
-export declare class UserPoolTaggingException extends Data.TaggedError(
+export declare class UserPoolTaggingException extends EffectData.TaggedError(
   "UserPoolTaggingException",
 )<{
   readonly message?: string;
@@ -3704,17 +3704,17 @@ export type WebAuthnAuthenticatorAttachmentType = string;
 export type WebAuthnAuthenticatorTransportsList = Array<string>;
 export type WebAuthnAuthenticatorTransportType = string;
 
-export declare class WebAuthnChallengeNotFoundException extends Data.TaggedError(
+export declare class WebAuthnChallengeNotFoundException extends EffectData.TaggedError(
   "WebAuthnChallengeNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WebAuthnClientMismatchException extends Data.TaggedError(
+export declare class WebAuthnClientMismatchException extends EffectData.TaggedError(
   "WebAuthnClientMismatchException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WebAuthnConfigurationMissingException extends Data.TaggedError(
+export declare class WebAuthnConfigurationMissingException extends EffectData.TaggedError(
   "WebAuthnConfigurationMissingException",
 )<{
   readonly message?: string;
@@ -3733,24 +3733,24 @@ export interface WebAuthnCredentialDescription {
 }
 export type WebAuthnCredentialDescriptionListType =
   Array<WebAuthnCredentialDescription>;
-export declare class WebAuthnCredentialNotSupportedException extends Data.TaggedError(
+export declare class WebAuthnCredentialNotSupportedException extends EffectData.TaggedError(
   "WebAuthnCredentialNotSupportedException",
 )<{
   readonly message?: string;
 }> {}
 export type WebAuthnCredentialsQueryLimitType = number;
 
-export declare class WebAuthnNotEnabledException extends Data.TaggedError(
+export declare class WebAuthnNotEnabledException extends EffectData.TaggedError(
   "WebAuthnNotEnabledException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WebAuthnOriginNotAllowedException extends Data.TaggedError(
+export declare class WebAuthnOriginNotAllowedException extends EffectData.TaggedError(
   "WebAuthnOriginNotAllowedException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WebAuthnRelyingPartyMismatchException extends Data.TaggedError(
+export declare class WebAuthnRelyingPartyMismatchException extends EffectData.TaggedError(
   "WebAuthnRelyingPartyMismatchException",
 )<{
   readonly message?: string;

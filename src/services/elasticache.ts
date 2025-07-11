@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonElastiCacheV9 {
@@ -887,7 +887,7 @@ export interface AllowedNodeTypeModificationsMessage {
   ScaleUpModifications?: Array<string>;
   ScaleDownModifications?: Array<string>;
 }
-export declare class APICallRateForCustomerExceededFault extends Data.TaggedError(
+export declare class APICallRateForCustomerExceededFault extends EffectData.TaggedError(
   "APICallRateForCustomerExceededFault",
 )<{
   readonly message?: string;
@@ -901,12 +901,12 @@ export interface AuthenticationMode {
   Passwords?: Array<string>;
 }
 export type AuthenticationType = "PASSWORD" | "NO_PASSWORD" | "IAM";
-export declare class AuthorizationAlreadyExistsFault extends Data.TaggedError(
+export declare class AuthorizationAlreadyExistsFault extends EffectData.TaggedError(
   "AuthorizationAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class AuthorizationNotFoundFault extends Data.TaggedError(
+export declare class AuthorizationNotFoundFault extends EffectData.TaggedError(
   "AuthorizationNotFoundFault",
 )<{
   readonly message?: string;
@@ -980,7 +980,7 @@ export interface CacheCluster {
   IpDiscovery?: IpDiscovery;
   TransitEncryptionMode?: TransitEncryptionMode;
 }
-export declare class CacheClusterAlreadyExistsFault extends Data.TaggedError(
+export declare class CacheClusterAlreadyExistsFault extends EffectData.TaggedError(
   "CacheClusterAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -991,7 +991,7 @@ export interface CacheClusterMessage {
   Marker?: string;
   CacheClusters?: Array<CacheCluster>;
 }
-export declare class CacheClusterNotFoundFault extends Data.TaggedError(
+export declare class CacheClusterNotFoundFault extends EffectData.TaggedError(
   "CacheClusterNotFoundFault",
 )<{
   readonly message?: string;
@@ -1056,7 +1056,7 @@ export interface CacheParameterGroup {
   IsGlobal?: boolean;
   ARN?: string;
 }
-export declare class CacheParameterGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class CacheParameterGroupAlreadyExistsFault extends EffectData.TaggedError(
   "CacheParameterGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -1070,12 +1070,12 @@ export type CacheParameterGroupList = Array<CacheParameterGroup>;
 export interface CacheParameterGroupNameMessage {
   CacheParameterGroupName?: string;
 }
-export declare class CacheParameterGroupNotFoundFault extends Data.TaggedError(
+export declare class CacheParameterGroupNotFoundFault extends EffectData.TaggedError(
   "CacheParameterGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class CacheParameterGroupQuotaExceededFault extends Data.TaggedError(
+export declare class CacheParameterGroupQuotaExceededFault extends EffectData.TaggedError(
   "CacheParameterGroupQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -1096,7 +1096,7 @@ export interface CacheSecurityGroup {
   EC2SecurityGroups?: Array<EC2SecurityGroup>;
   ARN?: string;
 }
-export declare class CacheSecurityGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class CacheSecurityGroupAlreadyExistsFault extends EffectData.TaggedError(
   "CacheSecurityGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -1112,12 +1112,12 @@ export interface CacheSecurityGroupMessage {
   CacheSecurityGroups?: Array<CacheSecurityGroup>;
 }
 export type CacheSecurityGroupNameList = Array<string>;
-export declare class CacheSecurityGroupNotFoundFault extends Data.TaggedError(
+export declare class CacheSecurityGroupNotFoundFault extends EffectData.TaggedError(
   "CacheSecurityGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class CacheSecurityGroupQuotaExceededFault extends Data.TaggedError(
+export declare class CacheSecurityGroupQuotaExceededFault extends EffectData.TaggedError(
   "CacheSecurityGroupQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -1131,12 +1131,12 @@ export interface CacheSubnetGroup {
   ARN?: string;
   SupportedNetworkTypes?: Array<NetworkType>;
 }
-export declare class CacheSubnetGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class CacheSubnetGroupAlreadyExistsFault extends EffectData.TaggedError(
   "CacheSubnetGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class CacheSubnetGroupInUse extends Data.TaggedError(
+export declare class CacheSubnetGroupInUse extends EffectData.TaggedError(
   "CacheSubnetGroupInUse",
 )<{
   readonly message?: string;
@@ -1145,18 +1145,18 @@ export interface CacheSubnetGroupMessage {
   Marker?: string;
   CacheSubnetGroups?: Array<CacheSubnetGroup>;
 }
-export declare class CacheSubnetGroupNotFoundFault extends Data.TaggedError(
+export declare class CacheSubnetGroupNotFoundFault extends EffectData.TaggedError(
   "CacheSubnetGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class CacheSubnetGroupQuotaExceededFault extends Data.TaggedError(
+export declare class CacheSubnetGroupQuotaExceededFault extends EffectData.TaggedError(
   "CacheSubnetGroupQuotaExceededFault",
 )<{
   readonly message?: string;
 }> {}
 export type CacheSubnetGroups = Array<CacheSubnetGroup>;
-export declare class CacheSubnetQuotaExceededFault extends Data.TaggedError(
+export declare class CacheSubnetQuotaExceededFault extends EffectData.TaggedError(
   "CacheSubnetQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -1171,7 +1171,7 @@ export interface CloudWatchLogsDestinationDetails {
 }
 export type ClusterIdList = Array<string>;
 export type ClusterMode = "ENABLED" | "DISABLED" | "COMPATIBLE";
-export declare class ClusterQuotaForCustomerExceededFault extends Data.TaggedError(
+export declare class ClusterQuotaForCustomerExceededFault extends EffectData.TaggedError(
   "ClusterQuotaForCustomerExceededFault",
 )<{
   readonly message?: string;
@@ -1406,12 +1406,12 @@ export interface DecreaseReplicaCountMessage {
 export interface DecreaseReplicaCountResult {
   ReplicationGroup?: ReplicationGroup;
 }
-export declare class DefaultUserAssociatedToUserGroupFault extends Data.TaggedError(
+export declare class DefaultUserAssociatedToUserGroupFault extends EffectData.TaggedError(
   "DefaultUserAssociatedToUserGroupFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class DefaultUserRequired extends Data.TaggedError(
+export declare class DefaultUserRequired extends EffectData.TaggedError(
   "DefaultUserRequired",
 )<{
   readonly message?: string;
@@ -1645,7 +1645,7 @@ export interface DisassociateGlobalReplicationGroupResult {
 }
 export type Double = number;
 
-export declare class DuplicateUserNameFault extends Data.TaggedError(
+export declare class DuplicateUserNameFault extends EffectData.TaggedError(
   "DuplicateUserNameFault",
 )<{
   readonly message?: string;
@@ -1731,7 +1731,7 @@ export interface GlobalReplicationGroup {
   AtRestEncryptionEnabled?: boolean;
   ARN?: string;
 }
-export declare class GlobalReplicationGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class GlobalReplicationGroupAlreadyExistsFault extends EffectData.TaggedError(
   "GlobalReplicationGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -1750,7 +1750,7 @@ export interface GlobalReplicationGroupMember {
 }
 export type GlobalReplicationGroupMemberList =
   Array<GlobalReplicationGroupMember>;
-export declare class GlobalReplicationGroupNotFoundFault extends Data.TaggedError(
+export declare class GlobalReplicationGroupNotFoundFault extends EffectData.TaggedError(
   "GlobalReplicationGroupNotFoundFault",
 )<{
   readonly message?: string;
@@ -1774,7 +1774,7 @@ export interface IncreaseReplicaCountResult {
   ReplicationGroup?: ReplicationGroup;
 }
 export type InputAuthenticationType = "PASSWORD" | "NO_PASSWORD" | "IAM";
-export declare class InsufficientCacheClusterCapacityFault extends Data.TaggedError(
+export declare class InsufficientCacheClusterCapacityFault extends EffectData.TaggedError(
   "InsufficientCacheClusterCapacityFault",
 )<{
   readonly message?: string;
@@ -1783,85 +1783,87 @@ export type Integer = number;
 
 export type IntegerOptional = number;
 
-export declare class InvalidARNFault extends Data.TaggedError(
+export declare class InvalidARNFault extends EffectData.TaggedError(
   "InvalidARNFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidCacheClusterStateFault extends Data.TaggedError(
+export declare class InvalidCacheClusterStateFault extends EffectData.TaggedError(
   "InvalidCacheClusterStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidCacheParameterGroupStateFault extends Data.TaggedError(
+export declare class InvalidCacheParameterGroupStateFault extends EffectData.TaggedError(
   "InvalidCacheParameterGroupStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidCacheSecurityGroupStateFault extends Data.TaggedError(
+export declare class InvalidCacheSecurityGroupStateFault extends EffectData.TaggedError(
   "InvalidCacheSecurityGroupStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidCredentialsException extends Data.TaggedError(
+export declare class InvalidCredentialsException extends EffectData.TaggedError(
   "InvalidCredentialsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidGlobalReplicationGroupStateFault extends Data.TaggedError(
+export declare class InvalidGlobalReplicationGroupStateFault extends EffectData.TaggedError(
   "InvalidGlobalReplicationGroupStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidKMSKeyFault extends Data.TaggedError(
+export declare class InvalidKMSKeyFault extends EffectData.TaggedError(
   "InvalidKMSKeyFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterCombinationException extends Data.TaggedError(
+export declare class InvalidParameterCombinationException extends EffectData.TaggedError(
   "InvalidParameterCombinationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterValueException extends Data.TaggedError(
+export declare class InvalidParameterValueException extends EffectData.TaggedError(
   "InvalidParameterValueException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidReplicationGroupStateFault extends Data.TaggedError(
+export declare class InvalidReplicationGroupStateFault extends EffectData.TaggedError(
   "InvalidReplicationGroupStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidServerlessCacheSnapshotStateFault extends Data.TaggedError(
+export declare class InvalidServerlessCacheSnapshotStateFault extends EffectData.TaggedError(
   "InvalidServerlessCacheSnapshotStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidServerlessCacheStateFault extends Data.TaggedError(
+export declare class InvalidServerlessCacheStateFault extends EffectData.TaggedError(
   "InvalidServerlessCacheStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSnapshotStateFault extends Data.TaggedError(
+export declare class InvalidSnapshotStateFault extends EffectData.TaggedError(
   "InvalidSnapshotStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSubnet extends Data.TaggedError("InvalidSubnet")<{
+export declare class InvalidSubnet extends EffectData.TaggedError(
+  "InvalidSubnet",
+)<{
   readonly message?: string;
 }> {}
-export declare class InvalidUserGroupStateFault extends Data.TaggedError(
+export declare class InvalidUserGroupStateFault extends EffectData.TaggedError(
   "InvalidUserGroupStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidUserStateFault extends Data.TaggedError(
+export declare class InvalidUserStateFault extends EffectData.TaggedError(
   "InvalidUserStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidVPCNetworkStateFault extends Data.TaggedError(
+export declare class InvalidVPCNetworkStateFault extends EffectData.TaggedError(
   "InvalidVPCNetworkStateFault",
 )<{
   readonly message?: string;
@@ -2077,12 +2079,12 @@ export interface NodeGroupMemberUpdateStatus {
 }
 export type NodeGroupMemberUpdateStatusList =
   Array<NodeGroupMemberUpdateStatus>;
-export declare class NodeGroupNotFoundFault extends Data.TaggedError(
+export declare class NodeGroupNotFoundFault extends EffectData.TaggedError(
   "NodeGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class NodeGroupsPerReplicationGroupQuotaExceededFault extends Data.TaggedError(
+export declare class NodeGroupsPerReplicationGroupQuotaExceededFault extends EffectData.TaggedError(
   "NodeGroupsPerReplicationGroupQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -2094,12 +2096,12 @@ export interface NodeGroupUpdateStatus {
   NodeGroupMemberUpdateStatus?: Array<NodeGroupMemberUpdateStatus>;
 }
 export type NodeGroupUpdateStatusList = Array<NodeGroupUpdateStatus>;
-export declare class NodeQuotaForClusterExceededFault extends Data.TaggedError(
+export declare class NodeQuotaForClusterExceededFault extends EffectData.TaggedError(
   "NodeQuotaForClusterExceededFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class NodeQuotaForCustomerExceededFault extends Data.TaggedError(
+export declare class NodeQuotaForCustomerExceededFault extends EffectData.TaggedError(
   "NodeQuotaForCustomerExceededFault",
 )<{
   readonly message?: string;
@@ -2123,7 +2125,7 @@ export type NodeUpdateStatus =
   | "STOPPING"
   | "STOPPED"
   | "COMPLETE";
-export declare class NoOperationFault extends Data.TaggedError(
+export declare class NoOperationFault extends EffectData.TaggedError(
   "NoOperationFault",
 )<{
   readonly message?: string;
@@ -2255,12 +2257,12 @@ export interface ReplicationGroup {
   ClusterMode?: ClusterMode;
   Engine?: string;
 }
-export declare class ReplicationGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class ReplicationGroupAlreadyExistsFault extends EffectData.TaggedError(
   "ReplicationGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ReplicationGroupAlreadyUnderMigrationFault extends Data.TaggedError(
+export declare class ReplicationGroupAlreadyUnderMigrationFault extends EffectData.TaggedError(
   "ReplicationGroupAlreadyUnderMigrationFault",
 )<{
   readonly message?: string;
@@ -2271,12 +2273,12 @@ export interface ReplicationGroupMessage {
   Marker?: string;
   ReplicationGroups?: Array<ReplicationGroup>;
 }
-export declare class ReplicationGroupNotFoundFault extends Data.TaggedError(
+export declare class ReplicationGroupNotFoundFault extends EffectData.TaggedError(
   "ReplicationGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ReplicationGroupNotUnderMigrationFault extends Data.TaggedError(
+export declare class ReplicationGroupNotUnderMigrationFault extends EffectData.TaggedError(
   "ReplicationGroupNotUnderMigrationFault",
 )<{
   readonly message?: string;
@@ -2308,7 +2310,7 @@ export interface ReservedCacheNode {
   RecurringCharges?: Array<RecurringCharge>;
   ReservationARN?: string;
 }
-export declare class ReservedCacheNodeAlreadyExistsFault extends Data.TaggedError(
+export declare class ReservedCacheNodeAlreadyExistsFault extends EffectData.TaggedError(
   "ReservedCacheNodeAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -2318,12 +2320,12 @@ export interface ReservedCacheNodeMessage {
   Marker?: string;
   ReservedCacheNodes?: Array<ReservedCacheNode>;
 }
-export declare class ReservedCacheNodeNotFoundFault extends Data.TaggedError(
+export declare class ReservedCacheNodeNotFoundFault extends EffectData.TaggedError(
   "ReservedCacheNodeNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ReservedCacheNodeQuotaExceededFault extends Data.TaggedError(
+export declare class ReservedCacheNodeQuotaExceededFault extends EffectData.TaggedError(
   "ReservedCacheNodeQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -2343,7 +2345,7 @@ export interface ReservedCacheNodesOfferingMessage {
   Marker?: string;
   ReservedCacheNodesOfferings?: Array<ReservedCacheNodesOffering>;
 }
-export declare class ReservedCacheNodesOfferingNotFoundFault extends Data.TaggedError(
+export declare class ReservedCacheNodesOfferingNotFoundFault extends EffectData.TaggedError(
   "ReservedCacheNodesOfferingNotFoundFault",
 )<{
   readonly message?: string;
@@ -2398,7 +2400,7 @@ export interface ServerlessCache {
   SnapshotRetentionLimit?: number;
   DailySnapshotTime?: string;
 }
-export declare class ServerlessCacheAlreadyExistsFault extends Data.TaggedError(
+export declare class ServerlessCacheAlreadyExistsFault extends EffectData.TaggedError(
   "ServerlessCacheAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -2409,12 +2411,12 @@ export interface ServerlessCacheConfiguration {
   MajorEngineVersion?: string;
 }
 export type ServerlessCacheList = Array<ServerlessCache>;
-export declare class ServerlessCacheNotFoundFault extends Data.TaggedError(
+export declare class ServerlessCacheNotFoundFault extends EffectData.TaggedError(
   "ServerlessCacheNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServerlessCacheQuotaForCustomerExceededFault extends Data.TaggedError(
+export declare class ServerlessCacheQuotaForCustomerExceededFault extends EffectData.TaggedError(
   "ServerlessCacheQuotaForCustomerExceededFault",
 )<{
   readonly message?: string;
@@ -2430,23 +2432,23 @@ export interface ServerlessCacheSnapshot {
   BytesUsedForCache?: string;
   ServerlessCacheConfiguration?: ServerlessCacheConfiguration;
 }
-export declare class ServerlessCacheSnapshotAlreadyExistsFault extends Data.TaggedError(
+export declare class ServerlessCacheSnapshotAlreadyExistsFault extends EffectData.TaggedError(
   "ServerlessCacheSnapshotAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
 export type ServerlessCacheSnapshotList = Array<ServerlessCacheSnapshot>;
-export declare class ServerlessCacheSnapshotNotFoundFault extends Data.TaggedError(
+export declare class ServerlessCacheSnapshotNotFoundFault extends EffectData.TaggedError(
   "ServerlessCacheSnapshotNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServerlessCacheSnapshotQuotaExceededFault extends Data.TaggedError(
+export declare class ServerlessCacheSnapshotQuotaExceededFault extends EffectData.TaggedError(
   "ServerlessCacheSnapshotQuotaExceededFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServiceLinkedRoleNotFoundFault extends Data.TaggedError(
+export declare class ServiceLinkedRoleNotFoundFault extends EffectData.TaggedError(
   "ServiceLinkedRoleNotFoundFault",
 )<{
   readonly message?: string;
@@ -2466,7 +2468,7 @@ export interface ServiceUpdate {
   EstimatedUpdateTime?: string;
 }
 export type ServiceUpdateList = Array<ServiceUpdate>;
-export declare class ServiceUpdateNotFoundFault extends Data.TaggedError(
+export declare class ServiceUpdateNotFoundFault extends EffectData.TaggedError(
   "ServiceUpdateNotFoundFault",
 )<{
   readonly message?: string;
@@ -2513,24 +2515,24 @@ export interface Snapshot {
   ARN?: string;
   DataTiering?: DataTieringStatus;
 }
-export declare class SnapshotAlreadyExistsFault extends Data.TaggedError(
+export declare class SnapshotAlreadyExistsFault extends EffectData.TaggedError(
   "SnapshotAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
 export type SnapshotArnsList = Array<string>;
-export declare class SnapshotFeatureNotSupportedFault extends Data.TaggedError(
+export declare class SnapshotFeatureNotSupportedFault extends EffectData.TaggedError(
   "SnapshotFeatureNotSupportedFault",
 )<{
   readonly message?: string;
 }> {}
 export type SnapshotList = Array<Snapshot>;
-export declare class SnapshotNotFoundFault extends Data.TaggedError(
+export declare class SnapshotNotFoundFault extends EffectData.TaggedError(
   "SnapshotNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class SnapshotQuotaExceededFault extends Data.TaggedError(
+export declare class SnapshotQuotaExceededFault extends EffectData.TaggedError(
   "SnapshotQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -2560,11 +2562,11 @@ export interface Subnet {
 }
 export type SubnetIdentifierList = Array<string>;
 export type SubnetIdsList = Array<string>;
-export declare class SubnetInUse extends Data.TaggedError("SubnetInUse")<{
+export declare class SubnetInUse extends EffectData.TaggedError("SubnetInUse")<{
   readonly message?: string;
 }> {}
 export type SubnetList = Array<Subnet>;
-export declare class SubnetNotAllowedFault extends Data.TaggedError(
+export declare class SubnetNotAllowedFault extends EffectData.TaggedError(
   "SubnetNotAllowedFault",
 )<{
   readonly message?: string;
@@ -2580,12 +2582,12 @@ export type TagList = Array<Tag>;
 export interface TagListMessage {
   TagList?: Array<Tag>;
 }
-export declare class TagNotFoundFault extends Data.TaggedError(
+export declare class TagNotFoundFault extends EffectData.TaggedError(
   "TagNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class TagQuotaPerResourceExceeded extends Data.TaggedError(
+export declare class TagQuotaPerResourceExceeded extends EffectData.TaggedError(
   "TagQuotaPerResourceExceeded",
 )<{
   readonly message?: string;
@@ -2594,7 +2596,7 @@ export interface TestFailoverMessage {
   ReplicationGroupId: string;
   NodeGroupId: string;
 }
-export declare class TestFailoverNotAvailableFault extends Data.TaggedError(
+export declare class TestFailoverNotAvailableFault extends EffectData.TaggedError(
   "TestFailoverNotAvailableFault",
 )<{
   readonly message?: string;
@@ -2676,7 +2678,7 @@ export interface User {
   Authentication?: Authentication;
   ARN?: string;
 }
-export declare class UserAlreadyExistsFault extends Data.TaggedError(
+export declare class UserAlreadyExistsFault extends EffectData.TaggedError(
   "UserAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -2692,7 +2694,7 @@ export interface UserGroup {
   ServerlessCaches?: Array<string>;
   ARN?: string;
 }
-export declare class UserGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class UserGroupAlreadyExistsFault extends EffectData.TaggedError(
   "UserGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -2702,7 +2704,7 @@ export type UserGroupId = string;
 export type UserGroupIdList = Array<string>;
 export type UserGroupIdListInput = Array<string>;
 export type UserGroupList = Array<UserGroup>;
-export declare class UserGroupNotFoundFault extends Data.TaggedError(
+export declare class UserGroupNotFoundFault extends EffectData.TaggedError(
   "UserGroupNotFoundFault",
 )<{
   readonly message?: string;
@@ -2711,7 +2713,7 @@ export interface UserGroupPendingChanges {
   UserIdsToRemove?: Array<string>;
   UserIdsToAdd?: Array<string>;
 }
-export declare class UserGroupQuotaExceededFault extends Data.TaggedError(
+export declare class UserGroupQuotaExceededFault extends EffectData.TaggedError(
   "UserGroupQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -2727,12 +2729,12 @@ export type UserIdListInput = Array<string>;
 export type UserList = Array<User>;
 export type UserName = string;
 
-export declare class UserNotFoundFault extends Data.TaggedError(
+export declare class UserNotFoundFault extends EffectData.TaggedError(
   "UserNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class UserQuotaExceededFault extends Data.TaggedError(
+export declare class UserQuotaExceededFault extends EffectData.TaggedError(
   "UserQuotaExceededFault",
 )<{
   readonly message?: string;

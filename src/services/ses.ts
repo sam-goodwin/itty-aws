@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface SimpleEmailService {
@@ -416,7 +416,7 @@ export interface SimpleEmailService {
 
 export type Ses = SimpleEmailService;
 
-export declare class AccountSendingPausedException extends Data.TaggedError(
+export declare class AccountSendingPausedException extends EffectData.TaggedError(
   "AccountSendingPausedException",
 )<{
   readonly message?: string;
@@ -428,7 +428,7 @@ export interface AddHeaderAction {
 export type Address = string;
 
 export type AddressList = Array<string>;
-export declare class AlreadyExistsException extends Data.TaggedError(
+export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",
 )<{
   readonly Name?: string;
@@ -497,7 +497,7 @@ export type BulkEmailStatus =
   | "InvalidParameterValue"
   | "TransientFailure"
   | "Failed";
-export declare class CannotDeleteException extends Data.TaggedError(
+export declare class CannotDeleteException extends EffectData.TaggedError(
   "CannotDeleteException",
 )<{
   readonly Name?: string;
@@ -525,7 +525,7 @@ export type CloudWatchDimensionConfigurations =
 export interface ConfigurationSet {
   Name: string;
 }
-export declare class ConfigurationSetAlreadyExistsException extends Data.TaggedError(
+export declare class ConfigurationSetAlreadyExistsException extends EffectData.TaggedError(
   "ConfigurationSetAlreadyExistsException",
 )<{
   readonly ConfigurationSetName?: string;
@@ -537,7 +537,7 @@ export type ConfigurationSetAttribute =
   | "DELIVERY_OPTIONS"
   | "REPUTATION_OPTIONS";
 export type ConfigurationSetAttributeList = Array<ConfigurationSetAttribute>;
-export declare class ConfigurationSetDoesNotExistException extends Data.TaggedError(
+export declare class ConfigurationSetDoesNotExistException extends EffectData.TaggedError(
   "ConfigurationSetDoesNotExistException",
 )<{
   readonly ConfigurationSetName?: string;
@@ -546,7 +546,7 @@ export declare class ConfigurationSetDoesNotExistException extends Data.TaggedEr
 export type ConfigurationSetName = string;
 
 export type ConfigurationSets = Array<ConfigurationSet>;
-export declare class ConfigurationSetSendingPausedException extends Data.TaggedError(
+export declare class ConfigurationSetSendingPausedException extends EffectData.TaggedError(
   "ConfigurationSetSendingPausedException",
 )<{
   readonly ConfigurationSetName?: string;
@@ -611,7 +611,7 @@ export type CustomMailFromStatus =
   | "TemporaryFailure";
 export type CustomRedirectDomain = string;
 
-export declare class CustomVerificationEmailInvalidContentException extends Data.TaggedError(
+export declare class CustomVerificationEmailInvalidContentException extends EffectData.TaggedError(
   "CustomVerificationEmailInvalidContentException",
 )<{
   readonly message?: string;
@@ -623,13 +623,13 @@ export interface CustomVerificationEmailTemplate {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-export declare class CustomVerificationEmailTemplateAlreadyExistsException extends Data.TaggedError(
+export declare class CustomVerificationEmailTemplateAlreadyExistsException extends EffectData.TaggedError(
   "CustomVerificationEmailTemplateAlreadyExistsException",
 )<{
   readonly CustomVerificationEmailTemplateName?: string;
   readonly message?: string;
 }> {}
-export declare class CustomVerificationEmailTemplateDoesNotExistException extends Data.TaggedError(
+export declare class CustomVerificationEmailTemplateDoesNotExistException extends EffectData.TaggedError(
   "CustomVerificationEmailTemplateDoesNotExistException",
 )<{
   readonly CustomVerificationEmailTemplateName?: string;
@@ -752,14 +752,14 @@ export interface EventDestination {
   CloudWatchDestination?: CloudWatchDestination;
   SNSDestination?: SNSDestination;
 }
-export declare class EventDestinationAlreadyExistsException extends Data.TaggedError(
+export declare class EventDestinationAlreadyExistsException extends EffectData.TaggedError(
   "EventDestinationAlreadyExistsException",
 )<{
   readonly ConfigurationSetName?: string;
   readonly EventDestinationName?: string;
   readonly message?: string;
 }> {}
-export declare class EventDestinationDoesNotExistException extends Data.TaggedError(
+export declare class EventDestinationDoesNotExistException extends EffectData.TaggedError(
   "EventDestinationDoesNotExistException",
 )<{
   readonly ConfigurationSetName?: string;
@@ -794,7 +794,7 @@ export type FailureRedirectionURL = string;
 
 export type FromAddress = string;
 
-export declare class FromEmailAddressNotVerifiedException extends Data.TaggedError(
+export declare class FromEmailAddressNotVerifiedException extends EffectData.TaggedError(
   "FromEmailAddressNotVerifiedException",
 )<{
   readonly FromEmailAddress?: string;
@@ -894,73 +894,73 @@ export interface IdentityVerificationAttributes {
   VerificationStatus: VerificationStatus;
   VerificationToken?: string;
 }
-export declare class InvalidCloudWatchDestinationException extends Data.TaggedError(
+export declare class InvalidCloudWatchDestinationException extends EffectData.TaggedError(
   "InvalidCloudWatchDestinationException",
 )<{
   readonly ConfigurationSetName?: string;
   readonly EventDestinationName?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidConfigurationSetException extends Data.TaggedError(
+export declare class InvalidConfigurationSetException extends EffectData.TaggedError(
   "InvalidConfigurationSetException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidDeliveryOptionsException extends Data.TaggedError(
+export declare class InvalidDeliveryOptionsException extends EffectData.TaggedError(
   "InvalidDeliveryOptionsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidFirehoseDestinationException extends Data.TaggedError(
+export declare class InvalidFirehoseDestinationException extends EffectData.TaggedError(
   "InvalidFirehoseDestinationException",
 )<{
   readonly ConfigurationSetName?: string;
   readonly EventDestinationName?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidLambdaFunctionException extends Data.TaggedError(
+export declare class InvalidLambdaFunctionException extends EffectData.TaggedError(
   "InvalidLambdaFunctionException",
 )<{
   readonly FunctionArn?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidPolicyException extends Data.TaggedError(
+export declare class InvalidPolicyException extends EffectData.TaggedError(
   "InvalidPolicyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidRenderingParameterException extends Data.TaggedError(
+export declare class InvalidRenderingParameterException extends EffectData.TaggedError(
   "InvalidRenderingParameterException",
 )<{
   readonly TemplateName?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidS3ConfigurationException extends Data.TaggedError(
+export declare class InvalidS3ConfigurationException extends EffectData.TaggedError(
   "InvalidS3ConfigurationException",
 )<{
   readonly Bucket?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidSNSDestinationException extends Data.TaggedError(
+export declare class InvalidSNSDestinationException extends EffectData.TaggedError(
   "InvalidSNSDestinationException",
 )<{
   readonly ConfigurationSetName?: string;
   readonly EventDestinationName?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidSnsTopicException extends Data.TaggedError(
+export declare class InvalidSnsTopicException extends EffectData.TaggedError(
   "InvalidSnsTopicException",
 )<{
   readonly Topic?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidTemplateException extends Data.TaggedError(
+export declare class InvalidTemplateException extends EffectData.TaggedError(
   "InvalidTemplateException",
 )<{
   readonly TemplateName?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidTrackingOptionsException extends Data.TaggedError(
+export declare class InvalidTrackingOptionsException extends EffectData.TaggedError(
   "InvalidTrackingOptionsException",
 )<{
   readonly message?: string;
@@ -979,7 +979,7 @@ export type LastAttemptDate = Date | string;
 
 export type LastFreshStart = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1043,7 +1043,7 @@ export type MailFromDomainAttributes = Record<
 >;
 export type MailFromDomainName = string;
 
-export declare class MailFromDomainNotVerifiedException extends Data.TaggedError(
+export declare class MailFromDomainNotVerifiedException extends EffectData.TaggedError(
   "MailFromDomainNotVerifiedException",
 )<{
   readonly message?: string;
@@ -1069,7 +1069,7 @@ export interface MessageDsn {
 }
 export type MessageId = string;
 
-export declare class MessageRejected extends Data.TaggedError(
+export declare class MessageRejected extends EffectData.TaggedError(
   "MessageRejected",
 )<{
   readonly message?: string;
@@ -1083,7 +1083,7 @@ export type MessageTagName = string;
 
 export type MessageTagValue = string;
 
-export declare class MissingRenderingAttributeException extends Data.TaggedError(
+export declare class MissingRenderingAttributeException extends EffectData.TaggedError(
   "MissingRenderingAttributeException",
 )<{
   readonly TemplateName?: string;
@@ -1104,7 +1104,7 @@ export type PolicyMap = Record<string, string>;
 export type PolicyName = string;
 
 export type PolicyNameList = Array<string>;
-export declare class ProductionAccessNotGrantedException extends Data.TaggedError(
+export declare class ProductionAccessNotGrantedException extends EffectData.TaggedError(
   "ProductionAccessNotGrantedException",
 )<{
   readonly message?: string;
@@ -1195,7 +1195,7 @@ export interface ReputationOptions {
   ReputationMetricsEnabled?: boolean;
   LastFreshStart?: Date | string;
 }
-export declare class RuleDoesNotExistException extends Data.TaggedError(
+export declare class RuleDoesNotExistException extends EffectData.TaggedError(
   "RuleDoesNotExistException",
 )<{
   readonly Name?: string;
@@ -1203,7 +1203,7 @@ export declare class RuleDoesNotExistException extends Data.TaggedError(
 }> {}
 export type RuleOrRuleSetName = string;
 
-export declare class RuleSetDoesNotExistException extends Data.TaggedError(
+export declare class RuleSetDoesNotExistException extends EffectData.TaggedError(
   "RuleSetDoesNotExistException",
 )<{
   readonly Name?: string;
@@ -1375,7 +1375,7 @@ export type TemplateContent = string;
 
 export type TemplateData = string;
 
-export declare class TemplateDoesNotExistException extends Data.TaggedError(
+export declare class TemplateDoesNotExistException extends EffectData.TaggedError(
   "TemplateDoesNotExistException",
 )<{
   readonly TemplateName?: string;
@@ -1403,13 +1403,13 @@ export type TlsPolicy = "Require" | "Optional";
 export interface TrackingOptions {
   CustomRedirectDomain?: string;
 }
-export declare class TrackingOptionsAlreadyExistsException extends Data.TaggedError(
+export declare class TrackingOptionsAlreadyExistsException extends EffectData.TaggedError(
   "TrackingOptionsAlreadyExistsException",
 )<{
   readonly ConfigurationSetName?: string;
   readonly message?: string;
 }> {}
-export declare class TrackingOptionsDoesNotExistException extends Data.TaggedError(
+export declare class TrackingOptionsDoesNotExistException extends EffectData.TaggedError(
   "TrackingOptionsDoesNotExistException",
 )<{
   readonly ConfigurationSetName?: string;

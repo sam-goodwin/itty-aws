@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface WallabyService {
@@ -207,7 +207,7 @@ export interface WallabyService {
 
 export type Signer = WallabyService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -228,7 +228,7 @@ export interface AddProfilePermissionResponse {
 }
 export type Arn = string;
 
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -249,7 +249,7 @@ export type CertificateArn = string;
 export type CertificateHashes = Array<string>;
 export type ClientRequestToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -348,7 +348,7 @@ export type ImageFormat = "JSON" | "JSONEmbedded" | "JSONDetached";
 export type ImageFormats = Array<ImageFormat>;
 export type Integer = number;
 
-export declare class InternalServiceErrorException extends Data.TaggedError(
+export declare class InternalServiceErrorException extends EffectData.TaggedError(
   "InternalServiceErrorException",
 )<{
   readonly message?: string;
@@ -418,7 +418,7 @@ export type MaxSizeInMB = number;
 export type Metadata = Record<string, string>;
 export type NextToken = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -467,7 +467,7 @@ export interface RemoveProfilePermissionResponse {
 }
 export type RequestedBy = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -500,7 +500,7 @@ export interface S3Source {
   key: string;
   version: string;
 }
-export declare class ServiceLimitExceededException extends Data.TaggedError(
+export declare class ServiceLimitExceededException extends EffectData.TaggedError(
   "ServiceLimitExceededException",
 )<{
   readonly message?: string;
@@ -632,7 +632,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -640,7 +640,7 @@ export declare class ThrottlingException extends Data.TaggedError(
 }> {}
 export type Timestamp = Date | string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly message?: string;
@@ -651,7 +651,7 @@ export interface UntagResourceRequest {
   tagKeys: Array<string>;
 }
 export interface UntagResourceResponse {}
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

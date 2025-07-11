@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Firehose_20150804 {
@@ -277,7 +277,7 @@ export type CompressionFormat =
   | "ZIP"
   | "SNAPPY"
   | "HADOOP_SNAPPY";
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -804,18 +804,18 @@ export interface InputFormatConfiguration {
 }
 export type IntervalInSeconds = number;
 
-export declare class InvalidArgumentException extends Data.TaggedError(
+export declare class InvalidArgumentException extends EffectData.TaggedError(
   "InvalidArgumentException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidKMSResourceException extends Data.TaggedError(
+export declare class InvalidKMSResourceException extends EffectData.TaggedError(
   "InvalidKMSResourceException",
 )<{
   readonly code?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidSourceException extends Data.TaggedError(
+export declare class InvalidSourceException extends EffectData.TaggedError(
   "InvalidSourceException",
 )<{
   readonly code?: string;
@@ -836,7 +836,7 @@ export interface KinesisStreamSourceDescription {
 export interface KMSEncryptionConfig {
   AWSKMSKeyARN: string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1057,12 +1057,12 @@ export interface RedshiftRetryOptions {
   DurationInSeconds?: number;
 }
 export type RedshiftS3BackupMode = "Disabled" | "Enabled";
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1128,7 +1128,7 @@ export interface Serializer {
   ParquetSerDe?: ParquetSerDe;
   OrcSerDe?: OrcSerDe;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;

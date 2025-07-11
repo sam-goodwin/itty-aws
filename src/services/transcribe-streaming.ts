@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Transcribe {
@@ -74,7 +74,7 @@ export interface AudioEvent {
 export type AudioStream =
   | { AudioEvent: AudioEvent }
   | { ConfigurationEvent: ConfigurationEvent };
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message?: string;
@@ -153,7 +153,7 @@ export interface ConfigurationEvent {
   ChannelDefinitions?: Array<ChannelDefinition>;
   PostCallAnalyticsSettings?: PostCallAnalyticsSettings;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -184,7 +184,7 @@ export type IamRoleArn = string;
 
 export type Integer = number;
 
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly Message?: string;
@@ -270,7 +270,7 @@ export interface LanguageWithScore {
   LanguageCode?: LanguageCode;
   Score?: number;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -454,7 +454,7 @@ export interface PostCallAnalyticsSettings {
 }
 export type RequestId = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -471,7 +471,7 @@ export interface Result {
 }
 export type ResultList = Array<Result>;
 export type Sentiment = "POSITIVE" | "NEGATIVE" | "MIXED" | "NEUTRAL";
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Message?: string;

@@ -135,7 +135,7 @@ const getDocumentation = (traits: Record<string, any> | undefined): string | und
   return `/**\n * ${cleanDoc.split('\n').join('\n * ')}\n */`;
 };
 
-// Helper to generate error class (declare class extending Data.TaggedError)
+// Helper to generate error class (declare class extending EffectData.TaggedError)
 const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifest): string => {
   const doc = getDocumentation(shape.traits);
   let code = "";
@@ -144,7 +144,7 @@ const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifes
     code += `${doc}\n`;
   }
   
-  code += `export declare class ${shapeName} extends Data.TaggedError(\n`;
+  code += `export declare class ${shapeName} extends EffectData.TaggedError(\n`;
   code += `  "${shapeName}",\n`;
   code += `)<{\n`;
   
@@ -331,7 +331,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     }
 
     // Generate imports
-    let code = `import type { Effect${needsDataImport ? ", Data" : ""} } from "effect";\n`;
+    let code = `import type { Effect${needsDataImport ? ", Data as EffectData" : ""} } from "effect";\n`;
     code += `import type { CommonAwsError } from "../error.ts";\n\n`;
 
     // Generate service interface first at the top
@@ -435,6 +435,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
             // Skip generating these to avoid conflicts with global types
             break;
           }
+          
           const baseType = mapSmithyTypeToTypeScript(shape, shapeName);
           const doc = getDocumentation(shape.traits);
           if (doc) {

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ComprehendMedical_20181030 {
@@ -547,17 +547,17 @@ export interface InputDataConfig {
 }
 export type Integer = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidEncodingException extends Data.TaggedError(
+export declare class InvalidEncodingException extends EffectData.TaggedError(
   "InvalidEncodingException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -657,7 +657,7 @@ export type RelationshipType =
   | "AMOUNT"
   | "USAGE"
   | "QUALITY";
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -712,7 +712,7 @@ export type S3Bucket = string;
 
 export type S3Key = string;
 
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Message?: string;
@@ -884,14 +884,14 @@ export interface StopSNOMEDCTInferenceJobRequest {
 export interface StopSNOMEDCTInferenceJobResponse {
   JobId?: string;
 }
-export declare class TextSizeLimitExceededException extends Data.TaggedError(
+export declare class TextSizeLimitExceededException extends EffectData.TaggedError(
   "TextSizeLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
 export type Timestamp = Date | string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
@@ -906,7 +906,7 @@ export interface UnmappedAttribute {
   Attribute?: Attribute;
 }
 export type UnmappedAttributeList = Array<UnmappedAttribute>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

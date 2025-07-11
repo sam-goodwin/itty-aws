@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Braket {
@@ -31,7 +31,7 @@ export interface Braket {
   >;
 }
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -68,7 +68,7 @@ export interface CancelQuantumTaskResponse {
 }
 export type CompressionType = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -117,7 +117,7 @@ export type DeviceArn = string;
 export interface DeviceConfig {
   device: string;
 }
-export declare class DeviceOfflineException extends Data.TaggedError(
+export declare class DeviceOfflineException extends EffectData.TaggedError(
   "DeviceOfflineException",
 )<{
   readonly message?: string;
@@ -128,7 +128,7 @@ export interface DeviceQueueInfo {
   queuePriority?: string;
 }
 export type DeviceQueueInfoList = Array<DeviceQueueInfo>;
-export declare class DeviceRetiredException extends Data.TaggedError(
+export declare class DeviceRetiredException extends EffectData.TaggedError(
   "DeviceRetiredException",
 )<{
   readonly message?: string;
@@ -226,7 +226,7 @@ export interface InstanceConfig {
 }
 export type InstanceType = string;
 
-export declare class InternalServiceException extends Data.TaggedError(
+export declare class InternalServiceException extends EffectData.TaggedError(
   "InternalServiceException",
 )<{
   readonly message?: string;
@@ -304,7 +304,7 @@ export type QueueName = string;
 
 export type QueuePriority = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -369,7 +369,7 @@ export interface SearchQuantumTasksResponse {
   quantumTasks: Array<QuantumTaskSummary>;
   nextToken?: string;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -392,7 +392,7 @@ export interface TagResourceRequest {
 }
 export interface TagResourceResponse {}
 export type TagsMap = Record<string, string>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -404,7 +404,7 @@ export interface UntagResourceRequest {
 export interface UntagResourceResponse {}
 export type Uri = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

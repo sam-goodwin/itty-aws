@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSEvents {
@@ -479,7 +479,7 @@ export interface AWSEvents {
 
 export type Eventbridge = AWSEvents;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -593,7 +593,7 @@ export type CapacityProviderStrategyItemBase = number;
 
 export type CapacityProviderStrategyItemWeight = number;
 
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -1124,7 +1124,7 @@ export type HttpsEndpoint = string;
 
 export type IamRoleArn = string;
 
-export declare class IllegalStatusException extends Data.TaggedError(
+export declare class IllegalStatusException extends EffectData.TaggedError(
   "IllegalStatusException",
 )<{
   readonly message?: string;
@@ -1137,17 +1137,17 @@ export type InputTransformerPathKey = string;
 
 export type Integer = number;
 
-export declare class InternalException extends Data.TaggedError(
+export declare class InternalException extends EffectData.TaggedError(
   "InternalException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidEventPatternException extends Data.TaggedError(
+export declare class InvalidEventPatternException extends EffectData.TaggedError(
   "InvalidEventPatternException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidStateException extends Data.TaggedError(
+export declare class InvalidStateException extends EffectData.TaggedError(
   "InvalidStateException",
 )<{
   readonly message?: string;
@@ -1158,7 +1158,7 @@ export interface KinesisParameters {
 export type KmsKeyIdentifier = string;
 
 export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL";
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -1295,7 +1295,7 @@ export type Long = number;
 
 export type ManagedBy = string;
 
-export declare class ManagedRuleException extends Data.TaggedError(
+export declare class ManagedRuleException extends EffectData.TaggedError(
   "ManagedRuleException",
 )<{
   readonly message?: string;
@@ -1317,7 +1317,7 @@ export type NonPartnerEventBusName = string;
 
 export type NonPartnerEventBusNameOrArn = string;
 
-export declare class OperationDisabledException extends Data.TaggedError(
+export declare class OperationDisabledException extends EffectData.TaggedError(
   "OperationDisabledException",
 )<{
   readonly message?: string;
@@ -1355,7 +1355,7 @@ export interface PlacementStrategy {
 export type PlacementStrategyField = string;
 
 export type PlacementStrategyType = "RANDOM" | "SPREAD" | "BINPACK";
-export declare class PolicyLengthExceededException extends Data.TaggedError(
+export declare class PolicyLengthExceededException extends EffectData.TaggedError(
   "PolicyLengthExceededException",
 )<{
   readonly message?: string;
@@ -1526,7 +1526,7 @@ export interface ReplicationConfig {
   State?: ReplicationState;
 }
 export type ReplicationState = "ENABLED" | "DISABLED";
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -1537,7 +1537,7 @@ export type ResourceAssociationArn = string;
 
 export type ResourceConfigurationArn = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -1690,7 +1690,7 @@ export interface TestEventPatternRequest {
 export interface TestEventPatternResponse {
   Result?: boolean;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;

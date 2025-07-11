@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface SWBExternalService {
@@ -722,7 +722,7 @@ export interface AccessControlAttributeValue {
 export type AccessControlAttributeValueSource = string;
 
 export type AccessControlAttributeValueSourceList = Array<string>;
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -845,7 +845,7 @@ export type ClaimAttributePath = string;
 
 export type ClientToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -1184,7 +1184,7 @@ export type InstanceStatus =
   | "ACTIVE";
 export type InternalFailureMessage = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -1519,7 +1519,7 @@ export type RedirectUris = Array<string>;
 export interface RefreshTokenGrant {}
 export type RelayState = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -1546,7 +1546,7 @@ export type Scopes = Array<ScopeDetails>;
 export type ScopeTarget = string;
 
 export type ScopeTargets = Array<string>;
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -1580,7 +1580,7 @@ export type TagValue = string;
 export type TargetId = string;
 
 export type TargetType = "AWS_ACCOUNT";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -1657,7 +1657,7 @@ export type URI = string;
 
 export type UUId = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

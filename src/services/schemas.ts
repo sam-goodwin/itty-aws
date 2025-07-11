@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface schemas {
@@ -394,7 +394,7 @@ export type __stringMin20Max1600 = string;
 
 export type __timestampIso8601 = Date | string;
 
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Code: string;
@@ -406,7 +406,7 @@ export type CodeGenerationStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_COMPLETE"
   | "CREATE_FAILED";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Code: string;
@@ -545,7 +545,7 @@ export interface ExportSchemaResponse {
   SchemaVersion?: string;
   Type?: string;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Code: string;
@@ -576,11 +576,13 @@ export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export declare class GoneException extends Data.TaggedError("GoneException")<{
+export declare class GoneException extends EffectData.TaggedError(
+  "GoneException",
+)<{
   readonly Code: string;
   readonly Message: string;
 }> {}
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly Code: string;
@@ -632,13 +634,13 @@ export interface ListTagsForResourceRequest {
 export interface ListTagsForResourceResponse {
   Tags?: Record<string, string>;
 }
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Code: string;
   readonly Message: string;
 }> {}
-export declare class PreconditionFailedException extends Data.TaggedError(
+export declare class PreconditionFailedException extends EffectData.TaggedError(
   "PreconditionFailedException",
 )<{
   readonly Code: string;
@@ -704,7 +706,7 @@ export interface SearchSchemaVersionSummary {
   SchemaVersion?: string;
   Type?: Type;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Code: string;
@@ -731,14 +733,14 @@ export interface TagResourceRequest {
   Tags: Record<string, string>;
 }
 export type Tags = Record<string, string>;
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Code: string;
   readonly Message: string;
 }> {}
 export type Type = "OpenApi3" | "JSONSchemaDraft4";
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly Code: string;

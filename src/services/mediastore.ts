@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface MediaStore_20170901 {
@@ -209,7 +209,7 @@ export type ContainerAccessLoggingEnabled = boolean;
 
 export type ContainerARN = string;
 
-export declare class ContainerInUseException extends Data.TaggedError(
+export declare class ContainerInUseException extends EffectData.TaggedError(
   "ContainerInUseException",
 )<{
   readonly Message?: string;
@@ -220,7 +220,7 @@ export type ContainerListLimit = number;
 
 export type ContainerName = string;
 
-export declare class ContainerNotFoundException extends Data.TaggedError(
+export declare class ContainerNotFoundException extends EffectData.TaggedError(
   "ContainerNotFoundException",
 )<{
   readonly Message?: string;
@@ -229,7 +229,7 @@ export type ContainerPolicy = string;
 
 export type ContainerStatus = "ACTIVE" | "CREATING" | "DELETING";
 export type CorsPolicy = Array<CorsRule>;
-export declare class CorsPolicyNotFoundException extends Data.TaggedError(
+export declare class CorsPolicyNotFoundException extends EffectData.TaggedError(
   "CorsPolicyNotFoundException",
 )<{
   readonly Message?: string;
@@ -305,14 +305,14 @@ export interface GetMetricPolicyOutput {
 }
 export type Header = string;
 
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly Message?: string;
 }> {}
 export type LifecyclePolicy = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -351,7 +351,7 @@ export type Origin = string;
 
 export type PaginationToken = string;
 
-export declare class PolicyNotFoundException extends Data.TaggedError(
+export declare class PolicyNotFoundException extends EffectData.TaggedError(
   "PolicyNotFoundException",
 )<{
   readonly Message?: string;

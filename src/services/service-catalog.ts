@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWS242ServiceCatalogService {
@@ -1159,7 +1159,7 @@ export interface DisassociateTagOptionFromResourceInput {
   TagOptionId: string;
 }
 export interface DisassociateTagOptionFromResourceOutput {}
-export declare class DuplicateResourceException extends Data.TaggedError(
+export declare class DuplicateResourceException extends EffectData.TaggedError(
   "DuplicateResourceException",
 )<{
   readonly Message?: string;
@@ -1263,12 +1263,12 @@ export type InstructionType = string;
 
 export type InstructionValue = string;
 
-export declare class InvalidParametersException extends Data.TaggedError(
+export declare class InvalidParametersException extends EffectData.TaggedError(
   "InvalidParametersException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidStateException extends Data.TaggedError(
+export declare class InvalidStateException extends EffectData.TaggedError(
   "InvalidStateException",
 )<{
   readonly Message?: string;
@@ -1301,7 +1301,7 @@ export interface LaunchPathSummary {
   Tags?: Array<Tag>;
   Name?: string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1535,7 +1535,7 @@ export interface NotifyUpdateProvisionedProductEngineWorkflowResultInput {
 export interface NotifyUpdateProvisionedProductEngineWorkflowResultOutput {}
 export type NullableBoolean = boolean;
 
-export declare class OperationNotSupportedException extends Data.TaggedError(
+export declare class OperationNotSupportedException extends EffectData.TaggedError(
   "OperationNotSupportedException",
 )<{
   readonly Message?: string;
@@ -2010,12 +2010,12 @@ export type ResourceDetailName = string;
 export type ResourceDetails = Array<ResourceDetail>;
 export type ResourceId = string;
 
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -2223,7 +2223,7 @@ export type TagOptionId = string;
 
 export type TagOptionKey = string;
 
-export declare class TagOptionNotMigratedException extends Data.TaggedError(
+export declare class TagOptionNotMigratedException extends EffectData.TaggedError(
   "TagOptionNotMigratedException",
 )<{
   readonly Message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Greengrass {
@@ -549,7 +549,7 @@ export interface AssociateServiceRoleToAccountRequest {
 export interface AssociateServiceRoleToAccountResponse {
   AssociatedAt?: string;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly ErrorDetails?: Array<ErrorDetail>;
@@ -1268,7 +1268,7 @@ export interface GroupVersion {
   ResourceDefinitionVersionArn?: string;
   SubscriptionDefinitionVersionArn?: string;
 }
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly ErrorDetails?: Array<ErrorDetail>;

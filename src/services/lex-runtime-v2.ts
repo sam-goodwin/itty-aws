@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSDeepSenseRunTimeServiceApi2_0 {
@@ -81,7 +81,7 @@ export interface AWSDeepSenseRunTimeServiceApi2_0 {
 
 export type LexRuntimeV2 = AWSDeepSenseRunTimeServiceApi2_0;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -120,7 +120,7 @@ export interface AudioResponseEvent {
   contentType?: string;
   eventId?: string;
 }
-export declare class BadGatewayException extends Data.TaggedError(
+export declare class BadGatewayException extends EffectData.TaggedError(
   "BadGatewayException",
 )<{
   readonly message: string;
@@ -153,7 +153,7 @@ export interface ConfigurationEvent {
   clientTimestampMillis?: number;
 }
 export type ConfirmationState = "CONFIRMED" | "DENIED" | "NONE";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -171,7 +171,7 @@ export interface DeleteSessionResponse {
   localeId?: string;
   sessionId?: string;
 }
-export declare class DependencyFailedException extends Data.TaggedError(
+export declare class DependencyFailedException extends EffectData.TaggedError(
   "DependencyFailedException",
 )<{
   readonly message: string;
@@ -254,7 +254,7 @@ export type IntentState =
   | "READY_FOR_FULFILLMENT"
   | "WAITING"
   | "FULFILLMENT_IN_PROGRESS";
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -361,7 +361,7 @@ export interface RecognizeUtteranceResponse {
   audioStream?: Uint8Array | string;
   recognizedBotMember?: string;
 }
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -462,7 +462,7 @@ export interface TextResponseEvent {
   messages?: Array<Message>;
   eventId?: string;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -471,7 +471,7 @@ export interface TranscriptEvent {
   transcript?: string;
   eventId?: string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

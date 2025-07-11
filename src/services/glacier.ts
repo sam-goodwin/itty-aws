@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Glacier {
@@ -564,14 +564,14 @@ export interface InitiateVaultLockOutput {
 export interface InputSerialization {
   csv?: CSVInput;
 }
-export declare class InsufficientCapacityException extends Data.TaggedError(
+export declare class InsufficientCapacityException extends EffectData.TaggedError(
   "InsufficientCapacityException",
 )<{
   readonly type?: string;
   readonly code?: string;
   readonly message?: string;
 }> {}
-export declare class InvalidParameterValueException extends Data.TaggedError(
+export declare class InvalidParameterValueException extends EffectData.TaggedError(
   "InvalidParameterValueException",
 )<{
   readonly type?: string;
@@ -604,7 +604,7 @@ export interface JobParameters {
   SelectParameters?: SelectParameters;
   OutputLocation?: OutputLocation;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly type?: string;
@@ -673,7 +673,7 @@ export interface ListVaultsOutput {
 }
 export type long = number;
 
-export declare class MissingParameterValueException extends Data.TaggedError(
+export declare class MissingParameterValueException extends EffectData.TaggedError(
   "MissingParameterValueException",
 )<{
   readonly type?: string;
@@ -700,7 +700,7 @@ export type Permission =
   | "WRITE_ACP"
   | "READ"
   | "READ_ACP";
-export declare class PolicyEnforcedException extends Data.TaggedError(
+export declare class PolicyEnforcedException extends EffectData.TaggedError(
   "PolicyEnforcedException",
 )<{
   readonly type?: string;
@@ -725,14 +725,14 @@ export interface RemoveTagsFromVaultInput {
   vaultName: string;
   TagKeys?: Array<string>;
 }
-export declare class RequestTimeoutException extends Data.TaggedError(
+export declare class RequestTimeoutException extends EffectData.TaggedError(
   "RequestTimeoutException",
 )<{
   readonly type?: string;
   readonly code?: string;
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly type?: string;
@@ -755,7 +755,7 @@ export interface SelectParameters {
   Expression?: string;
   OutputSerialization?: OutputSerialization;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly type?: string;

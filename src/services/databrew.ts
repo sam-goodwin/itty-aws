@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSGlueDataBrew {
@@ -335,7 +335,7 @@ export interface AWSGlueDataBrew {
 
 export type Databrew = AWSGlueDataBrew;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -407,7 +407,7 @@ export interface ConditionExpression {
 export type ConditionExpressionList = Array<ConditionExpression>;
 export type ConditionValue = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message?: string;
@@ -809,7 +809,7 @@ export interface Input {
   Metadata?: Metadata;
 }
 export type InputFormat = "CSV" | "JSON" | "PARQUET" | "EXCEL" | "ORC";
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -1118,7 +1118,7 @@ export interface RecipeVersionErrorDetail {
   RecipeVersion?: string;
 }
 export type RecipeVersionList = Array<string>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
@@ -1202,7 +1202,7 @@ export interface SendProjectSessionActionResponse {
   Name: string;
   ActionId?: number;
 }
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -1384,7 +1384,7 @@ export interface ValidationConfiguration {
   ValidationMode?: ValidationMode;
 }
 export type ValidationConfigurationList = Array<ValidationConfiguration>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;

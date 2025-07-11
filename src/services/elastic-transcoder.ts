@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface EtsCustomerService {
@@ -201,7 +201,7 @@ export type ElasticTranscoder = EtsCustomerService;
 export type AccessControl = string;
 
 export type AccessControls = Array<string>;
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -411,7 +411,7 @@ export type HorizontalAlign = string;
 
 export type Id = string;
 
-export declare class IncompatibleVersionException extends Data.TaggedError(
+export declare class IncompatibleVersionException extends EffectData.TaggedError(
   "IncompatibleVersionException",
 )<{
   readonly message: string;
@@ -422,7 +422,7 @@ export interface InputCaptions {
 }
 export type Interlaced = string;
 
-export declare class InternalServiceException extends Data.TaggedError(
+export declare class InternalServiceException extends EffectData.TaggedError(
   "InternalServiceException",
 )<{
   readonly message: string;
@@ -505,7 +505,7 @@ export type KeyIdGuid = string;
 
 export type KeyStoragePolicy = string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message: string;
@@ -674,12 +674,12 @@ export interface ReadPresetResponse {
 }
 export type Resolution = string;
 
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly message: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -765,7 +765,7 @@ export interface UpdatePipelineStatusResponse {
   Pipeline?: Pipeline;
 }
 export type UserMetadata = Record<string, string>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

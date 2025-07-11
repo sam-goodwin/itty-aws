@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSWAF_20150824 {
@@ -2024,69 +2024,69 @@ export interface WafAction {
   Type: WafActionType;
 }
 export type WafActionType = "BLOCK" | "ALLOW" | "COUNT";
-export declare class WAFBadRequestException extends Data.TaggedError(
+export declare class WAFBadRequestException extends EffectData.TaggedError(
   "WAFBadRequestException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFDisallowedNameException extends Data.TaggedError(
+export declare class WAFDisallowedNameException extends EffectData.TaggedError(
   "WAFDisallowedNameException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFEntityMigrationException extends Data.TaggedError(
+export declare class WAFEntityMigrationException extends EffectData.TaggedError(
   "WAFEntityMigrationException",
 )<{
   readonly message?: string;
   readonly MigrationErrorType?: MigrationErrorType;
   readonly MigrationErrorReason?: string;
 }> {}
-export declare class WAFInternalErrorException extends Data.TaggedError(
+export declare class WAFInternalErrorException extends EffectData.TaggedError(
   "WAFInternalErrorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFInvalidAccountException extends Data.TaggedError(
+export declare class WAFInvalidAccountException extends EffectData.TaggedError(
   "WAFInvalidAccountException",
 )<{}> {}
-export declare class WAFInvalidOperationException extends Data.TaggedError(
+export declare class WAFInvalidOperationException extends EffectData.TaggedError(
   "WAFInvalidOperationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFInvalidParameterException extends Data.TaggedError(
+export declare class WAFInvalidParameterException extends EffectData.TaggedError(
   "WAFInvalidParameterException",
 )<{
   readonly field?: ParameterExceptionField;
   readonly parameter?: string;
   readonly reason?: ParameterExceptionReason;
 }> {}
-export declare class WAFInvalidPermissionPolicyException extends Data.TaggedError(
+export declare class WAFInvalidPermissionPolicyException extends EffectData.TaggedError(
   "WAFInvalidPermissionPolicyException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFInvalidRegexPatternException extends Data.TaggedError(
+export declare class WAFInvalidRegexPatternException extends EffectData.TaggedError(
   "WAFInvalidRegexPatternException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFLimitsExceededException extends Data.TaggedError(
+export declare class WAFLimitsExceededException extends EffectData.TaggedError(
   "WAFLimitsExceededException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFNonEmptyEntityException extends Data.TaggedError(
+export declare class WAFNonEmptyEntityException extends EffectData.TaggedError(
   "WAFNonEmptyEntityException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFNonexistentContainerException extends Data.TaggedError(
+export declare class WAFNonexistentContainerException extends EffectData.TaggedError(
   "WAFNonexistentContainerException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFNonexistentItemException extends Data.TaggedError(
+export declare class WAFNonexistentItemException extends EffectData.TaggedError(
   "WAFNonexistentItemException",
 )<{
   readonly message?: string;
@@ -2095,33 +2095,33 @@ export interface WafOverrideAction {
   Type: WafOverrideActionType;
 }
 export type WafOverrideActionType = "NONE" | "COUNT";
-export declare class WAFReferencedItemException extends Data.TaggedError(
+export declare class WAFReferencedItemException extends EffectData.TaggedError(
   "WAFReferencedItemException",
 )<{
   readonly message?: string;
 }> {}
 export type WafRuleType = "REGULAR" | "RATE_BASED" | "GROUP";
-export declare class WAFServiceLinkedRoleErrorException extends Data.TaggedError(
+export declare class WAFServiceLinkedRoleErrorException extends EffectData.TaggedError(
   "WAFServiceLinkedRoleErrorException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFStaleDataException extends Data.TaggedError(
+export declare class WAFStaleDataException extends EffectData.TaggedError(
   "WAFStaleDataException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFSubscriptionNotFoundException extends Data.TaggedError(
+export declare class WAFSubscriptionNotFoundException extends EffectData.TaggedError(
   "WAFSubscriptionNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFTagOperationException extends Data.TaggedError(
+export declare class WAFTagOperationException extends EffectData.TaggedError(
   "WAFTagOperationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class WAFTagOperationInternalErrorException extends Data.TaggedError(
+export declare class WAFTagOperationInternalErrorException extends EffectData.TaggedError(
   "WAFTagOperationInternalErrorException",
 )<{
   readonly message?: string;

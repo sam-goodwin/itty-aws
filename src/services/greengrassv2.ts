@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface GreengrassV2 {
@@ -301,7 +301,7 @@ export interface GreengrassV2 {
 
 export type Greengrassv2 = GreengrassV2;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -437,7 +437,7 @@ export type ComponentVersionRequirementMap = Record<string, string>;
 export type ComponentVersionString = string;
 
 export type ComponentVisibilityScope = "PRIVATE" | "PUBLIC";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -715,7 +715,7 @@ export type InstalledComponentLifecycleStatusCode = string;
 export type InstalledComponentLifecycleStatusCodeList = Array<string>;
 export type InstalledComponentList = Array<InstalledComponent>;
 export type InstalledComponentTopologyFilter = "ALL" | "ROOT";
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -933,7 +933,7 @@ export type Reason = string;
 export type RecipeBlob = Uint8Array | string;
 
 export type RecipeOutputFormat = "JSON" | "YAML";
-export declare class RequestAlreadyInProgressException extends Data.TaggedError(
+export declare class RequestAlreadyInProgressException extends EffectData.TaggedError(
   "RequestAlreadyInProgressException",
 )<{
   readonly message: string;
@@ -954,7 +954,7 @@ export interface ResolvedComponentVersion {
   message?: string;
 }
 export type ResolvedComponentVersionsList = Array<ResolvedComponentVersion>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -964,7 +964,7 @@ export declare class ResourceNotFoundException extends Data.TaggedError(
 export type RetryAfterSeconds = number;
 
 export type S3EndpointType = "REGIONAL" | "GLOBAL";
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -993,7 +993,7 @@ export type TargetARN = string;
 
 export type ThingGroupARN = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -1018,7 +1018,7 @@ export interface UpdateConnectivityInfoResponse {
   version?: string;
   message?: string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

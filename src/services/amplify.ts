@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Amplify {
@@ -480,7 +480,7 @@ export interface BackendEnvironment {
 export type BackendEnvironmentArn = string;
 
 export type BackendEnvironments = Array<BackendEnvironment>;
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -708,7 +708,7 @@ export interface DeleteWebhookRequest {
 export interface DeleteWebhookResult {
   webhook: Webhook;
 }
-export declare class DependentServiceFailureException extends Data.TaggedError(
+export declare class DependentServiceFailureException extends EffectData.TaggedError(
   "DependentServiceFailureException",
 )<{
   readonly message?: string;
@@ -846,7 +846,7 @@ export interface GetWebhookRequest {
 export interface GetWebhookResult {
   webhook: Webhook;
 }
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly message?: string;
@@ -890,7 +890,7 @@ export interface JobSummary {
 export type JobType = "RELEASE" | "RETRY" | "MANUAL" | "WEB_HOOK";
 export type LastDeployTime = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -979,7 +979,7 @@ export type Name = string;
 
 export type NextToken = string;
 
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -1000,7 +1000,7 @@ export type Repository = string;
 export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4";
 export type ResourceArn = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly code: string;
@@ -1113,7 +1113,7 @@ export type TotalNumberOfJobs = string;
 
 export type TTL = string;
 
-export declare class UnauthorizedException extends Data.TaggedError(
+export declare class UnauthorizedException extends EffectData.TaggedError(
   "UnauthorizedException",
 )<{
   readonly message?: string;

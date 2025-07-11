@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CloudFormation {
@@ -556,7 +556,7 @@ export type AfterValue = string;
 export type AllowedValue = string;
 
 export type AllowedValues = Array<string>;
-export declare class AlreadyExistsException extends Data.TaggedError(
+export declare class AlreadyExistsException extends EffectData.TaggedError(
   "AlreadyExistsException",
 )<{
   readonly Message?: string;
@@ -610,7 +610,7 @@ export type Capability =
 export type Category = "REGISTERED" | "ACTIVATED" | "THIRD_PARTY" | "AWS_TYPES";
 export type CausingEntity = string;
 
-export declare class CFNRegistryException extends Data.TaggedError(
+export declare class CFNRegistryException extends EffectData.TaggedError(
   "CFNRegistryException",
 )<{
   readonly Message?: string;
@@ -647,7 +647,7 @@ export type ChangeSetName = string;
 
 export type ChangeSetNameOrId = string;
 
-export declare class ChangeSetNotFoundException extends Data.TaggedError(
+export declare class ChangeSetNotFoundException extends EffectData.TaggedError(
   "ChangeSetNotFoundException",
 )<{
   readonly Message?: string;
@@ -694,7 +694,7 @@ export type ClientToken = string;
 export type ConcurrencyMode =
   | "STRICT_FAILURE_TOLERANCE"
   | "SOFT_FAILURE_TOLERANCE";
-export declare class ConcurrentResourcesLimitExceededException extends Data.TaggedError(
+export declare class ConcurrentResourcesLimitExceededException extends EffectData.TaggedError(
   "ConcurrentResourcesLimitExceededException",
 )<{
   readonly Message?: string;
@@ -735,7 +735,7 @@ export interface CreateChangeSetOutput {
   Id?: string;
   StackId?: string;
 }
-export declare class CreatedButModifiedException extends Data.TaggedError(
+export declare class CreatedButModifiedException extends EffectData.TaggedError(
   "CreatedButModifiedException",
 )<{
   readonly Message?: string;
@@ -1201,7 +1201,7 @@ export type GeneratedTemplateId = string;
 
 export type GeneratedTemplateName = string;
 
-export declare class GeneratedTemplateNotFoundException extends Data.TaggedError(
+export declare class GeneratedTemplateNotFoundException extends EffectData.TaggedError(
   "GeneratedTemplateNotFoundException",
 )<{
   readonly Message?: string;
@@ -1290,7 +1290,7 @@ export type HookInvocationCount = number;
 export type HookInvocationPoint = "PRE_PROVISION";
 export type HookResultId = string;
 
-export declare class HookResultNotFoundException extends Data.TaggedError(
+export declare class HookResultNotFoundException extends EffectData.TaggedError(
   "HookResultNotFoundException",
 )<{
   readonly Message?: string;
@@ -1345,24 +1345,24 @@ export type IncludePropertyValues = boolean;
 
 export type InProgressStackInstancesCount = number;
 
-export declare class InsufficientCapabilitiesException extends Data.TaggedError(
+export declare class InsufficientCapabilitiesException extends EffectData.TaggedError(
   "InsufficientCapabilitiesException",
 )<{
   readonly Message?: string;
 }> {}
 export type InSyncStackInstancesCount = number;
 
-export declare class InvalidChangeSetStatusException extends Data.TaggedError(
+export declare class InvalidChangeSetStatusException extends EffectData.TaggedError(
   "InvalidChangeSetStatusException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOperationException extends Data.TaggedError(
+export declare class InvalidOperationException extends EffectData.TaggedError(
   "InvalidOperationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidStateTransitionException extends Data.TaggedError(
+export declare class InvalidStateTransitionException extends EffectData.TaggedError(
   "InvalidStateTransitionException",
 )<{
   readonly Message?: string;
@@ -1383,7 +1383,7 @@ export type Key = string;
 
 export type LastUpdatedTime = Date | string;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1646,7 +1646,7 @@ export interface ModuleInfo {
 }
 export type MonitoringTimeInMinutes = number;
 
-export declare class NameAlreadyExistsException extends Data.TaggedError(
+export declare class NameAlreadyExistsException extends EffectData.TaggedError(
   "NameAlreadyExistsException",
 )<{
   readonly Message?: string;
@@ -1662,17 +1662,17 @@ export type NumberOfResources = number;
 
 export type OnFailure = "DO_NOTHING" | "ROLLBACK" | "DELETE";
 export type OnStackFailure = "DO_NOTHING" | "ROLLBACK" | "DELETE";
-export declare class OperationIdAlreadyExistsException extends Data.TaggedError(
+export declare class OperationIdAlreadyExistsException extends EffectData.TaggedError(
   "OperationIdAlreadyExistsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class OperationInProgressException extends Data.TaggedError(
+export declare class OperationInProgressException extends EffectData.TaggedError(
   "OperationInProgressException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class OperationNotFoundException extends Data.TaggedError(
+export declare class OperationNotFoundException extends EffectData.TaggedError(
   "OperationNotFoundException",
 )<{
   readonly Message?: string;
@@ -1686,7 +1686,7 @@ export type OperationResultFilters = Array<OperationResultFilter>;
 export type OperationResultFilterValues = string;
 
 export type OperationStatus = "PENDING" | "IN_PROGRESS" | "SUCCESS" | "FAILED";
-export declare class OperationStatusCheckFailedException extends Data.TaggedError(
+export declare class OperationStatusCheckFailedException extends EffectData.TaggedError(
   "OperationStatusCheckFailedException",
 )<{
   readonly Message?: string;
@@ -1925,19 +1925,19 @@ export type ResourcePropertyPath = string;
 
 export type ResourceScanId = string;
 
-export declare class ResourceScanInProgressException extends Data.TaggedError(
+export declare class ResourceScanInProgressException extends EffectData.TaggedError(
   "ResourceScanInProgressException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceScanLimitExceededException extends Data.TaggedError(
+export declare class ResourceScanLimitExceededException extends EffectData.TaggedError(
   "ResourceScanLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
 export type ResourceScannerMaxResults = number;
 
-export declare class ResourceScanNotFoundException extends Data.TaggedError(
+export declare class ResourceScanNotFoundException extends EffectData.TaggedError(
   "ResourceScanNotFoundException",
 )<{
   readonly Message?: string;
@@ -2228,7 +2228,7 @@ export type StackInstanceFilterName =
 export type StackInstanceFilters = Array<StackInstanceFilter>;
 export type StackInstanceFilterValues = string;
 
-export declare class StackInstanceNotFoundException extends Data.TaggedError(
+export declare class StackInstanceNotFoundException extends EffectData.TaggedError(
   "StackInstanceNotFoundException",
 )<{
   readonly Message?: string;
@@ -2264,7 +2264,7 @@ export type StackName = string;
 
 export type StackNameOrId = string;
 
-export declare class StackNotFoundException extends Data.TaggedError(
+export declare class StackNotFoundException extends EffectData.TaggedError(
   "StackNotFoundException",
 )<{
   readonly Message?: string;
@@ -2307,7 +2307,7 @@ export type StackRefactorExecutionStatusFilter =
   Array<StackRefactorExecutionStatus>;
 export type StackRefactorId = string;
 
-export declare class StackRefactorNotFoundException extends Data.TaggedError(
+export declare class StackRefactorNotFoundException extends EffectData.TaggedError(
   "StackRefactorNotFoundException",
 )<{
   readonly Message?: string;
@@ -2456,12 +2456,12 @@ export type StackSetName = string;
 
 export type StackSetNameOrId = string;
 
-export declare class StackSetNotEmptyException extends Data.TaggedError(
+export declare class StackSetNotEmptyException extends EffectData.TaggedError(
   "StackSetNotEmptyException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class StackSetNotFoundException extends Data.TaggedError(
+export declare class StackSetNotFoundException extends EffectData.TaggedError(
   "StackSetNotFoundException",
 )<{
   readonly Message?: string;
@@ -2590,7 +2590,7 @@ export interface StackSummary {
   DriftInformation?: StackDriftInformationSummary;
 }
 export type StageList = Array<TemplateStage>;
-export declare class StaleRequestException extends Data.TaggedError(
+export declare class StaleRequestException extends EffectData.TaggedError(
   "StaleRequestException",
 )<{
   readonly Message?: string;
@@ -2679,7 +2679,7 @@ export type TimeoutMinutes = number;
 
 export type Timestamp = Date | string;
 
-export declare class TokenAlreadyExistsException extends Data.TaggedError(
+export declare class TokenAlreadyExistsException extends EffectData.TaggedError(
   "TokenAlreadyExistsException",
 )<{
   readonly Message?: string;
@@ -2721,7 +2721,7 @@ export interface TypeConfigurationIdentifier {
   TypeName?: string;
 }
 export type TypeConfigurationIdentifiers = Array<TypeConfigurationIdentifier>;
-export declare class TypeConfigurationNotFoundException extends Data.TaggedError(
+export declare class TypeConfigurationNotFoundException extends EffectData.TaggedError(
   "TypeConfigurationNotFoundException",
 )<{
   readonly Message?: string;
@@ -2737,7 +2737,7 @@ export type TypeName = string;
 
 export type TypeNamePrefix = string;
 
-export declare class TypeNotFoundException extends Data.TaggedError(
+export declare class TypeNotFoundException extends EffectData.TaggedError(
   "TypeNotFoundException",
 )<{
   readonly Message?: string;

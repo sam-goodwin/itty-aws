@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface IoTAutobahnControlPlane {
@@ -134,7 +134,7 @@ export interface IoTAutobahnControlPlane {
 
 export type Iotfleetwise = IoTAutobahnControlPlane;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message: string;
@@ -270,7 +270,7 @@ export interface ConditionBasedSignalFetchConfig {
   conditionExpression: string;
   triggerMode: TriggerMode;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -457,7 +457,7 @@ export interface DecoderManifestSummary {
   lastModificationTime: Date | string;
   message?: string;
 }
-export declare class DecoderManifestValidationException extends Data.TaggedError(
+export declare class DecoderManifestValidationException extends EffectData.TaggedError(
   "DecoderManifestValidationException",
 )<{
   readonly invalidSignals?: Array<InvalidSignalDecoder>;
@@ -715,7 +715,7 @@ export interface ImportSignalCatalogResponse {
 export type InterfaceId = string;
 
 export type InterfaceIds = Array<string>;
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -726,7 +726,7 @@ export interface InvalidNetworkInterface {
   reason?: NetworkInterfaceFailureReason;
 }
 export type InvalidNetworkInterfaces = Array<InvalidNetworkInterface>;
-export declare class InvalidNodeException extends Data.TaggedError(
+export declare class InvalidNodeException extends EffectData.TaggedError(
   "InvalidNodeException",
 )<{
   readonly invalidNodes?: Array<Node>;
@@ -744,7 +744,7 @@ export interface InvalidSignalDecoder {
 }
 export type InvalidSignalDecoders = Array<InvalidSignalDecoder>;
 export type InvalidSignals = Array<InvalidSignal>;
-export declare class InvalidSignalsException extends Data.TaggedError(
+export declare class InvalidSignalsException extends EffectData.TaggedError(
   "InvalidSignalsException",
 )<{
   readonly message?: string;
@@ -752,7 +752,7 @@ export declare class InvalidSignalsException extends Data.TaggedError(
 }> {}
 export type languageVersion = number;
 
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message: string;
@@ -1087,7 +1087,7 @@ export type ResourceIdentifier = string;
 
 export type resourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
@@ -1285,7 +1285,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -1446,7 +1446,7 @@ export interface UpdateVehicleResponseItem {
   arn?: string;
 }
 export type updateVehicleResponseItems = Array<UpdateVehicleResponseItem>;
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

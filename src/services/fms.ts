@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSFMS_20180101 {
@@ -819,12 +819,12 @@ export type IntegerObject = number;
 
 export type IntegerObjectMinimum0 = number;
 
-export declare class InternalErrorException extends Data.TaggedError(
+export declare class InternalErrorException extends EffectData.TaggedError(
   "InternalErrorException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidInputException extends Data.TaggedError(
+export declare class InvalidInputException extends EffectData.TaggedError(
   "InvalidInputException",
 )<{
   readonly Message?: string;
@@ -836,12 +836,12 @@ export interface InvalidNetworkAclEntriesViolation {
   CurrentAssociatedNetworkAcl?: string;
   EntryViolations?: Array<EntryViolation>;
 }
-export declare class InvalidOperationException extends Data.TaggedError(
+export declare class InvalidOperationException extends EffectData.TaggedError(
   "InvalidOperationException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidTypeException extends Data.TaggedError(
+export declare class InvalidTypeException extends EffectData.TaggedError(
   "InvalidTypeException",
 )<{
   readonly Message?: string;
@@ -856,7 +856,7 @@ export type LengthBoundedNonEmptyString = string;
 export type LengthBoundedString = string;
 
 export type LengthBoundedStringList = Array<string>;
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -1318,7 +1318,7 @@ export type ResourceIdList = Array<string>;
 export type ResourceList = Array<Resource>;
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;

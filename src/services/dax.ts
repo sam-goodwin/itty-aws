@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonDAXV3 {
@@ -271,7 +271,7 @@ export interface Cluster {
   SSEDescription?: SSEDescription;
   ClusterEndpointEncryptionType?: ClusterEndpointEncryptionType;
 }
-export declare class ClusterAlreadyExistsFault extends Data.TaggedError(
+export declare class ClusterAlreadyExistsFault extends EffectData.TaggedError(
   "ClusterAlreadyExistsFault",
 )<{
   readonly message?: string;
@@ -279,12 +279,12 @@ export declare class ClusterAlreadyExistsFault extends Data.TaggedError(
 export type ClusterEndpointEncryptionType = "NONE" | "TLS";
 export type ClusterList = Array<Cluster>;
 export type ClusterNameList = Array<string>;
-export declare class ClusterNotFoundFault extends Data.TaggedError(
+export declare class ClusterNotFoundFault extends EffectData.TaggedError(
   "ClusterNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ClusterQuotaForCustomerExceededFault extends Data.TaggedError(
+export declare class ClusterQuotaForCustomerExceededFault extends EffectData.TaggedError(
   "ClusterQuotaForCustomerExceededFault",
 )<{
   readonly message?: string;
@@ -430,7 +430,7 @@ export interface IncreaseReplicationFactorRequest {
 export interface IncreaseReplicationFactorResponse {
   Cluster?: Cluster;
 }
-export declare class InsufficientClusterCapacityFault extends Data.TaggedError(
+export declare class InsufficientClusterCapacityFault extends EffectData.TaggedError(
   "InsufficientClusterCapacityFault",
 )<{
   readonly message?: string;
@@ -439,35 +439,37 @@ export type Integer = number;
 
 export type IntegerOptional = number;
 
-export declare class InvalidARNFault extends Data.TaggedError(
+export declare class InvalidARNFault extends EffectData.TaggedError(
   "InvalidARNFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidClusterStateFault extends Data.TaggedError(
+export declare class InvalidClusterStateFault extends EffectData.TaggedError(
   "InvalidClusterStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterCombinationException extends Data.TaggedError(
+export declare class InvalidParameterCombinationException extends EffectData.TaggedError(
   "InvalidParameterCombinationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterGroupStateFault extends Data.TaggedError(
+export declare class InvalidParameterGroupStateFault extends EffectData.TaggedError(
   "InvalidParameterGroupStateFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterValueException extends Data.TaggedError(
+export declare class InvalidParameterValueException extends EffectData.TaggedError(
   "InvalidParameterValueException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidSubnet extends Data.TaggedError("InvalidSubnet")<{
+export declare class InvalidSubnet extends EffectData.TaggedError(
+  "InvalidSubnet",
+)<{
   readonly message?: string;
 }> {}
-export declare class InvalidVPCNetworkStateFault extends Data.TaggedError(
+export declare class InvalidVPCNetworkStateFault extends EffectData.TaggedError(
   "InvalidVPCNetworkStateFault",
 )<{
   readonly message?: string;
@@ -492,17 +494,17 @@ export interface Node {
 }
 export type NodeIdentifierList = Array<string>;
 export type NodeList = Array<Node>;
-export declare class NodeNotFoundFault extends Data.TaggedError(
+export declare class NodeNotFoundFault extends EffectData.TaggedError(
   "NodeNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class NodeQuotaForClusterExceededFault extends Data.TaggedError(
+export declare class NodeQuotaForClusterExceededFault extends EffectData.TaggedError(
   "NodeQuotaForClusterExceededFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class NodeQuotaForCustomerExceededFault extends Data.TaggedError(
+export declare class NodeQuotaForCustomerExceededFault extends EffectData.TaggedError(
   "NodeQuotaForCustomerExceededFault",
 )<{
   readonly message?: string;
@@ -532,19 +534,19 @@ export interface ParameterGroup {
   ParameterGroupName?: string;
   Description?: string;
 }
-export declare class ParameterGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class ParameterGroupAlreadyExistsFault extends EffectData.TaggedError(
   "ParameterGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
 export type ParameterGroupList = Array<ParameterGroup>;
 export type ParameterGroupNameList = Array<string>;
-export declare class ParameterGroupNotFoundFault extends Data.TaggedError(
+export declare class ParameterGroupNotFoundFault extends EffectData.TaggedError(
   "ParameterGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ParameterGroupQuotaExceededFault extends Data.TaggedError(
+export declare class ParameterGroupQuotaExceededFault extends EffectData.TaggedError(
   "ParameterGroupQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -574,12 +576,12 @@ export interface SecurityGroupMembership {
   Status?: string;
 }
 export type SecurityGroupMembershipList = Array<SecurityGroupMembership>;
-export declare class ServiceLinkedRoleNotFoundFault extends Data.TaggedError(
+export declare class ServiceLinkedRoleNotFoundFault extends EffectData.TaggedError(
   "ServiceLinkedRoleNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{}> {}
 export type SourceType = "CLUSTER" | "PARAMETER_GROUP" | "SUBNET_GROUP";
@@ -602,34 +604,34 @@ export interface SubnetGroup {
   VpcId?: string;
   Subnets?: Array<Subnet>;
 }
-export declare class SubnetGroupAlreadyExistsFault extends Data.TaggedError(
+export declare class SubnetGroupAlreadyExistsFault extends EffectData.TaggedError(
   "SubnetGroupAlreadyExistsFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class SubnetGroupInUseFault extends Data.TaggedError(
+export declare class SubnetGroupInUseFault extends EffectData.TaggedError(
   "SubnetGroupInUseFault",
 )<{
   readonly message?: string;
 }> {}
 export type SubnetGroupList = Array<SubnetGroup>;
 export type SubnetGroupNameList = Array<string>;
-export declare class SubnetGroupNotFoundFault extends Data.TaggedError(
+export declare class SubnetGroupNotFoundFault extends EffectData.TaggedError(
   "SubnetGroupNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class SubnetGroupQuotaExceededFault extends Data.TaggedError(
+export declare class SubnetGroupQuotaExceededFault extends EffectData.TaggedError(
   "SubnetGroupQuotaExceededFault",
 )<{
   readonly message?: string;
 }> {}
 export type SubnetIdentifierList = Array<string>;
-export declare class SubnetInUse extends Data.TaggedError("SubnetInUse")<{
+export declare class SubnetInUse extends EffectData.TaggedError("SubnetInUse")<{
   readonly message?: string;
 }> {}
 export type SubnetList = Array<Subnet>;
-export declare class SubnetQuotaExceededFault extends Data.TaggedError(
+export declare class SubnetQuotaExceededFault extends EffectData.TaggedError(
   "SubnetQuotaExceededFault",
 )<{
   readonly message?: string;
@@ -639,12 +641,12 @@ export interface Tag {
   Value?: string;
 }
 export type TagList = Array<Tag>;
-export declare class TagNotFoundFault extends Data.TaggedError(
+export declare class TagNotFoundFault extends EffectData.TaggedError(
   "TagNotFoundFault",
 )<{
   readonly message?: string;
 }> {}
-export declare class TagQuotaPerResourceExceeded extends Data.TaggedError(
+export declare class TagQuotaPerResourceExceeded extends EffectData.TaggedError(
   "TagQuotaPerResourceExceeded",
 )<{
   readonly message?: string;

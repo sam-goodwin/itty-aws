@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSServerMigrationService_V2016_10_24 {
@@ -572,7 +572,7 @@ export interface DisassociateConnectorRequest {
   connectorId: string;
 }
 export interface DisassociateConnectorResponse {}
-export declare class DryRunOperationException extends Data.TaggedError(
+export declare class DryRunOperationException extends EffectData.TaggedError(
   "DryRunOperationException",
 )<{
   readonly message?: string;
@@ -691,10 +691,12 @@ export type InstanceId = string;
 
 export type InstanceType = string;
 
-export declare class InternalError extends Data.TaggedError("InternalError")<{
+export declare class InternalError extends EffectData.TaggedError(
+  "InternalError",
+)<{
   readonly message?: string;
 }> {}
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
@@ -730,14 +732,14 @@ export type MacAddress = string;
 
 export type MaxResults = number;
 
-export declare class MissingRequiredParameterException extends Data.TaggedError(
+export declare class MissingRequiredParameterException extends EffectData.TaggedError(
   "MissingRequiredParameterException",
 )<{
   readonly message?: string;
 }> {}
 export type NextToken = string;
 
-export declare class NoConnectorsAvailableException extends Data.TaggedError(
+export declare class NoConnectorsAvailableException extends EffectData.TaggedError(
   "NoConnectorsAvailableException",
 )<{
   readonly message?: string;
@@ -756,7 +758,7 @@ export interface NotifyAppValidationOutputRequest {
 export interface NotifyAppValidationOutputResponse {}
 export type NumberOfRecentAmisToKeep = number;
 
-export declare class OperationNotPermittedException extends Data.TaggedError(
+export declare class OperationNotPermittedException extends EffectData.TaggedError(
   "OperationNotPermittedException",
 )<{
   readonly message?: string;
@@ -800,7 +802,7 @@ export interface ReplicationJob {
   kmsKeyId?: string;
   replicationRunList?: Array<ReplicationRun>;
 }
-export declare class ReplicationJobAlreadyExistsException extends Data.TaggedError(
+export declare class ReplicationJobAlreadyExistsException extends EffectData.TaggedError(
   "ReplicationJobAlreadyExistsException",
 )<{
   readonly message?: string;
@@ -808,7 +810,7 @@ export declare class ReplicationJobAlreadyExistsException extends Data.TaggedErr
 export type ReplicationJobId = string;
 
 export type ReplicationJobList = Array<ReplicationJob>;
-export declare class ReplicationJobNotFoundException extends Data.TaggedError(
+export declare class ReplicationJobNotFoundException extends EffectData.TaggedError(
   "ReplicationJobNotFoundException",
 )<{
   readonly message?: string;
@@ -841,7 +843,7 @@ export interface ReplicationRun {
 }
 export type ReplicationRunId = string;
 
-export declare class ReplicationRunLimitExceededException extends Data.TaggedError(
+export declare class ReplicationRunLimitExceededException extends EffectData.TaggedError(
   "ReplicationRunLimitExceededException",
 )<{
   readonly message?: string;
@@ -888,7 +890,7 @@ export interface Server {
   replicationJobId?: string;
   replicationJobTerminated?: boolean;
 }
-export declare class ServerCannotBeReplicatedException extends Data.TaggedError(
+export declare class ServerCannotBeReplicatedException extends EffectData.TaggedError(
   "ServerCannotBeReplicatedException",
 )<{
   readonly message?: string;
@@ -1024,7 +1026,7 @@ export type TagKey = string;
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
-export declare class TemporarilyUnavailableException extends Data.TaggedError(
+export declare class TemporarilyUnavailableException extends EffectData.TaggedError(
   "TemporarilyUnavailableException",
 )<{}> {}
 export interface TerminateAppRequest {
@@ -1037,7 +1039,7 @@ export type TotalServerGroups = number;
 
 export type TotalServers = number;
 
-export declare class UnauthorizedOperationException extends Data.TaggedError(
+export declare class UnauthorizedOperationException extends EffectData.TaggedError(
   "UnauthorizedOperationException",
 )<{
   readonly message?: string;

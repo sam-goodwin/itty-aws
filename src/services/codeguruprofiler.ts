@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CodeGuruProfiler {
@@ -125,7 +125,7 @@ export interface ConfigureAgentRequest {
 export interface ConfigureAgentResponse {
   configuration: AgentConfiguration;
 }
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message: string;
@@ -229,7 +229,7 @@ export interface GetRecommendationsResponse {
   recommendations: Array<Recommendation>;
   anomalies: Array<Anomaly>;
 }
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -388,14 +388,14 @@ export interface RemovePermissionResponse {
   policy: string;
   revisionId: string;
 }
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message: string;
 }> {}
 export type RevisionId = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -418,7 +418,7 @@ export type TagsMap = Record<string, string>;
 export type TargetFrame = Array<string>;
 export type TargetFrames = Array<Array<string>>;
 export type ThreadStates = Array<string>;
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -444,7 +444,7 @@ export interface UpdateProfilingGroupResponse {
 export interface UserFeedback {
   type: string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message: string;

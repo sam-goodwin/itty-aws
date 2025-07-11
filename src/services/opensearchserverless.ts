@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface OpenSearchServerless {
@@ -219,7 +219,7 @@ export type ConfigDescription = string;
 
 export type ConfigName = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -423,7 +423,7 @@ export type IamIdentityCenterUserAttribute = string;
 
 export type IndexingCapacityValue = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -536,7 +536,7 @@ export interface ListVpcEndpointsResponse {
   vpcEndpointSummaries?: Array<VpcEndpointSummary>;
   nextToken?: string;
 }
-export declare class OcuLimitExceededException extends Data.TaggedError(
+export declare class OcuLimitExceededException extends EffectData.TaggedError(
   "OcuLimitExceededException",
 )<{
   readonly message: string;
@@ -556,7 +556,7 @@ export type Resource = string;
 export type ResourceFilter = Array<string>;
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -631,7 +631,7 @@ export interface SecurityPolicySummary {
 }
 export type SecurityPolicyType = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message: string;
@@ -756,7 +756,7 @@ export interface UpdateVpcEndpointRequest {
 export interface UpdateVpcEndpointResponse {
   UpdateVpcEndpointDetail?: UpdateVpcEndpointDetail;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

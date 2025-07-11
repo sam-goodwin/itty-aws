@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface MagnolioAPIService_v20150201 {
@@ -320,7 +320,7 @@ export interface MagnolioAPIService_v20150201 {
 
 export type Efs = MagnolioAPIService_v20150201;
 
-export declare class AccessPointAlreadyExists extends Data.TaggedError(
+export declare class AccessPointAlreadyExists extends EffectData.TaggedError(
   "AccessPointAlreadyExists",
 )<{
   readonly ErrorCode: string;
@@ -344,13 +344,13 @@ export interface AccessPointDescription {
 export type AccessPointDescriptions = Array<AccessPointDescription>;
 export type AccessPointId = string;
 
-export declare class AccessPointLimitExceeded extends Data.TaggedError(
+export declare class AccessPointLimitExceeded extends EffectData.TaggedError(
   "AccessPointLimitExceeded",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class AccessPointNotFound extends Data.TaggedError(
+export declare class AccessPointNotFound extends EffectData.TaggedError(
   "AccessPointNotFound",
 )<{
   readonly ErrorCode: string;
@@ -360,7 +360,7 @@ export type AvailabilityZoneId = string;
 
 export type AvailabilityZoneName = string;
 
-export declare class AvailabilityZonesMismatch extends Data.TaggedError(
+export declare class AvailabilityZonesMismatch extends EffectData.TaggedError(
   "AvailabilityZonesMismatch",
 )<{
   readonly ErrorCode?: string;
@@ -376,7 +376,7 @@ export interface BackupPolicy {
 export interface BackupPolicyDescription {
   BackupPolicy?: BackupPolicy;
 }
-export declare class BadRequest extends Data.TaggedError("BadRequest")<{
+export declare class BadRequest extends EffectData.TaggedError("BadRequest")<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
@@ -384,7 +384,7 @@ export type BypassPolicyLockoutSafetyCheck = boolean;
 
 export type ClientToken = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly ErrorCode?: string;
@@ -452,7 +452,7 @@ export interface DeleteTagsRequest {
   TagKeys: Array<string>;
 }
 export type DeletionMode = "ALL_CONFIGURATIONS" | "LOCAL_CONFIGURATION_ONLY";
-export declare class DependencyTimeout extends Data.TaggedError(
+export declare class DependencyTimeout extends EffectData.TaggedError(
   "DependencyTimeout",
 )<{
   readonly ErrorCode: string;
@@ -557,7 +557,7 @@ export type ErrorCode = string;
 
 export type ErrorMessage = string;
 
-export declare class FileSystemAlreadyExists extends Data.TaggedError(
+export declare class FileSystemAlreadyExists extends EffectData.TaggedError(
   "FileSystemAlreadyExists",
 )<{
   readonly ErrorCode: string;
@@ -589,19 +589,19 @@ export interface FileSystemDescription {
 export type FileSystemDescriptions = Array<FileSystemDescription>;
 export type FileSystemId = string;
 
-export declare class FileSystemInUse extends Data.TaggedError(
+export declare class FileSystemInUse extends EffectData.TaggedError(
   "FileSystemInUse",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class FileSystemLimitExceeded extends Data.TaggedError(
+export declare class FileSystemLimitExceeded extends EffectData.TaggedError(
   "FileSystemLimitExceeded",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class FileSystemNotFound extends Data.TaggedError(
+export declare class FileSystemNotFound extends EffectData.TaggedError(
   "FileSystemNotFound",
 )<{
   readonly ErrorCode: string;
@@ -627,31 +627,31 @@ export type FileSystemSizeValue = number;
 
 export type Gid = number;
 
-export declare class IncorrectFileSystemLifeCycleState extends Data.TaggedError(
+export declare class IncorrectFileSystemLifeCycleState extends EffectData.TaggedError(
   "IncorrectFileSystemLifeCycleState",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class IncorrectMountTargetState extends Data.TaggedError(
+export declare class IncorrectMountTargetState extends EffectData.TaggedError(
   "IncorrectMountTargetState",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class InsufficientThroughputCapacity extends Data.TaggedError(
+export declare class InsufficientThroughputCapacity extends EffectData.TaggedError(
   "InsufficientThroughputCapacity",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class InternalServerError extends Data.TaggedError(
+export declare class InternalServerError extends EffectData.TaggedError(
   "InternalServerError",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class InvalidPolicyException extends Data.TaggedError(
+export declare class InvalidPolicyException extends EffectData.TaggedError(
   "InvalidPolicyException",
 )<{
   readonly ErrorCode?: string;
@@ -659,7 +659,9 @@ export declare class InvalidPolicyException extends Data.TaggedError(
 }> {}
 export type IpAddress = string;
 
-export declare class IpAddressInUse extends Data.TaggedError("IpAddressInUse")<{
+export declare class IpAddressInUse extends EffectData.TaggedError(
+  "IpAddressInUse",
+)<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
@@ -703,7 +705,7 @@ export interface ModifyMountTargetSecurityGroupsRequest {
   MountTargetId: string;
   SecurityGroups?: Array<string>;
 }
-export declare class MountTargetConflict extends Data.TaggedError(
+export declare class MountTargetConflict extends EffectData.TaggedError(
   "MountTargetConflict",
 )<{
   readonly ErrorCode: string;
@@ -727,7 +729,7 @@ export interface MountTargetDescription {
 export type MountTargetDescriptions = Array<MountTargetDescription>;
 export type MountTargetId = string;
 
-export declare class MountTargetNotFound extends Data.TaggedError(
+export declare class MountTargetNotFound extends EffectData.TaggedError(
   "MountTargetNotFound",
 )<{
   readonly ErrorCode: string;
@@ -737,13 +739,13 @@ export type Name = string;
 
 export type NetworkInterfaceId = string;
 
-export declare class NetworkInterfaceLimitExceeded extends Data.TaggedError(
+export declare class NetworkInterfaceLimitExceeded extends EffectData.TaggedError(
   "NetworkInterfaceLimitExceeded",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class NoFreeAddressesInSubnet extends Data.TaggedError(
+export declare class NoFreeAddressesInSubnet extends EffectData.TaggedError(
   "NoFreeAddressesInSubnet",
 )<{
   readonly ErrorCode: string;
@@ -760,7 +762,9 @@ export type Permissions = string;
 
 export type Policy = string;
 
-export declare class PolicyNotFound extends Data.TaggedError("PolicyNotFound")<{
+export declare class PolicyNotFound extends EffectData.TaggedError(
+  "PolicyNotFound",
+)<{
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
@@ -792,7 +796,7 @@ export interface PutLifecycleConfigurationRequest {
 }
 export type RegionName = string;
 
-export declare class ReplicationAlreadyExists extends Data.TaggedError(
+export declare class ReplicationAlreadyExists extends EffectData.TaggedError(
   "ReplicationAlreadyExists",
 )<{
   readonly ErrorCode?: string;
@@ -809,7 +813,7 @@ export interface ReplicationConfigurationDescription {
 }
 export type ReplicationConfigurationDescriptions =
   Array<ReplicationConfigurationDescription>;
-export declare class ReplicationNotFound extends Data.TaggedError(
+export declare class ReplicationNotFound extends EffectData.TaggedError(
   "ReplicationNotFound",
 )<{
   readonly ErrorCode?: string;
@@ -844,13 +848,13 @@ export interface RootDirectory {
 export type SecondaryGids = Array<number>;
 export type SecurityGroup = string;
 
-export declare class SecurityGroupLimitExceeded extends Data.TaggedError(
+export declare class SecurityGroupLimitExceeded extends EffectData.TaggedError(
   "SecurityGroupLimitExceeded",
 )<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
-export declare class SecurityGroupNotFound extends Data.TaggedError(
+export declare class SecurityGroupNotFound extends EffectData.TaggedError(
   "SecurityGroupNotFound",
 )<{
   readonly ErrorCode: string;
@@ -862,7 +866,9 @@ export type StatusMessage = string;
 
 export type SubnetId = string;
 
-export declare class SubnetNotFound extends Data.TaggedError("SubnetNotFound")<{
+export declare class SubnetNotFound extends EffectData.TaggedError(
+  "SubnetNotFound",
+)<{
   readonly ErrorCode: string;
   readonly Message?: string;
 }> {}
@@ -880,13 +886,13 @@ export interface TagResourceRequest {
 export type Tags = Array<Tag>;
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly ErrorCode?: string;
   readonly Message?: string;
 }> {}
-export declare class ThroughputLimitExceeded extends Data.TaggedError(
+export declare class ThroughputLimitExceeded extends EffectData.TaggedError(
   "ThroughputLimitExceeded",
 )<{
   readonly ErrorCode: string;
@@ -897,7 +903,7 @@ export type Timestamp = Date | string;
 
 export type Token = string;
 
-export declare class TooManyRequests extends Data.TaggedError(
+export declare class TooManyRequests extends EffectData.TaggedError(
   "TooManyRequests",
 )<{
   readonly ErrorCode: string;
@@ -926,7 +932,7 @@ export type TransitionToIARules =
 export type TransitionToPrimaryStorageClassRules = "AFTER_1_ACCESS";
 export type Uid = number;
 
-export declare class UnsupportedAvailabilityZone extends Data.TaggedError(
+export declare class UnsupportedAvailabilityZone extends EffectData.TaggedError(
   "UnsupportedAvailabilityZone",
 )<{
   readonly ErrorCode: string;
@@ -945,7 +951,7 @@ export interface UpdateFileSystemRequest {
   ThroughputMode?: ThroughputMode;
   ProvisionedThroughputInMibps?: number;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly ErrorCode: string;

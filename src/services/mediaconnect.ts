@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface MediaConnect {
@@ -143,7 +143,7 @@ export interface AddFlowMediaStreamsResponse {
   FlowArn?: string;
   MediaStreams?: Array<MediaStream>;
 }
-export declare class AddFlowOutputs420Exception extends Data.TaggedError(
+export declare class AddFlowOutputs420Exception extends EffectData.TaggedError(
   "AddFlowOutputs420Exception",
 )<{
   readonly Message: string;
@@ -213,7 +213,7 @@ export type Algorithm = "aes128" | "aes192" | "aes256";
 export interface AudioMonitoringSetting {
   SilentAudio?: SilentAudio;
 }
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly Message: string;
@@ -293,14 +293,14 @@ export type Colorimetry =
   | "ST2065_1"
   | "ST2065_3"
   | "XYZ";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message: string;
 }> {}
 export type ConnectionStatus = "CONNECTED" | "DISCONNECTED";
 export type ContentQualityAnalysisState = "ENABLED" | "DISABLED";
-export declare class CreateBridge420Exception extends Data.TaggedError(
+export declare class CreateBridge420Exception extends EffectData.TaggedError(
   "CreateBridge420Exception",
 )<{
   readonly Message: string;
@@ -317,7 +317,7 @@ export interface CreateBridgeRequest {
 export interface CreateBridgeResponse {
   Bridge?: Bridge;
 }
-export declare class CreateFlow420Exception extends Data.TaggedError(
+export declare class CreateFlow420Exception extends EffectData.TaggedError(
   "CreateFlow420Exception",
 )<{
   readonly Message: string;
@@ -340,7 +340,7 @@ export interface CreateFlowRequest {
 export interface CreateFlowResponse {
   Flow?: Flow;
 }
-export declare class CreateGateway420Exception extends Data.TaggedError(
+export declare class CreateGateway420Exception extends EffectData.TaggedError(
   "CreateGateway420Exception",
 )<{
   readonly Message: string;
@@ -527,7 +527,7 @@ export interface FmtpRequest {
   ScanMode?: ScanMode;
   Tcs?: Tcs;
 }
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Message: string;
@@ -585,7 +585,7 @@ export interface GrantEntitlementRequest {
   Name?: string;
   Subscribers: Array<string>;
 }
-export declare class GrantFlowEntitlements420Exception extends Data.TaggedError(
+export declare class GrantFlowEntitlements420Exception extends EffectData.TaggedError(
   "GrantFlowEntitlements420Exception",
 )<{
   readonly Message: string;
@@ -625,7 +625,7 @@ export interface Interface {
 export interface InterfaceRequest {
   Name: string;
 }
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly Message: string;
@@ -813,7 +813,7 @@ export interface NdiDiscoveryServerConfig {
 }
 export type NdiState = "ENABLED" | "DISABLED";
 export type NetworkInterfaceType = "ena" | "efa";
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message: string;
@@ -957,7 +957,7 @@ export type ScanMode =
   | "progressive"
   | "interlace"
   | "progressive_segmented_frame";
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Message: string;
@@ -1058,7 +1058,7 @@ export interface ThumbnailDetails {
   Timestamp?: Date | string;
 }
 export type ThumbnailState = "ENABLED" | "DISABLED";
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message: string;

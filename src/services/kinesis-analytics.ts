@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface KinesisAnalytics_20150814 {
@@ -306,12 +306,12 @@ export interface CloudWatchLoggingOptionUpdate {
 }
 export type CloudWatchLoggingOptionUpdates =
   Array<CloudWatchLoggingOptionUpdate>;
-export declare class CodeValidationException extends Data.TaggedError(
+export declare class CodeValidationException extends EffectData.TaggedError(
   "CodeValidationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly message?: string;
@@ -471,12 +471,12 @@ export interface InputUpdate {
   InputParallelismUpdate?: InputParallelismUpdate;
 }
 export type InputUpdates = Array<InputUpdate>;
-export declare class InvalidApplicationConfigurationException extends Data.TaggedError(
+export declare class InvalidApplicationConfigurationException extends EffectData.TaggedError(
   "InvalidApplicationConfigurationException",
 )<{
   readonly message?: string;
 }> {}
-export declare class InvalidArgumentException extends Data.TaggedError(
+export declare class InvalidArgumentException extends EffectData.TaggedError(
   "InvalidArgumentException",
 )<{
   readonly message?: string;
@@ -546,7 +546,7 @@ export interface LambdaOutputUpdate {
   ResourceARNUpdate?: string;
   RoleARNUpdate?: string;
 }
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly message?: string;
@@ -656,17 +656,17 @@ export interface ReferenceDataSourceUpdate {
 export type ReferenceDataSourceUpdates = Array<ReferenceDataSourceUpdate>;
 export type ResourceARN = string;
 
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceProvisionedThroughputExceededException extends Data.TaggedError(
+export declare class ResourceProvisionedThroughputExceededException extends EffectData.TaggedError(
   "ResourceProvisionedThroughputExceededException",
 )<{
   readonly message?: string;
@@ -693,7 +693,7 @@ export interface S3ReferenceDataSourceUpdate {
   FileKeyUpdate?: string;
   ReferenceRoleARNUpdate?: string;
 }
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
@@ -729,19 +729,19 @@ export type TagValue = string;
 
 export type Timestamp = Date | string;
 
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class UnableToDetectSchemaException extends Data.TaggedError(
+export declare class UnableToDetectSchemaException extends EffectData.TaggedError(
   "UnableToDetectSchemaException",
 )<{
   readonly message?: string;
   readonly RawInputRecords?: Array<string>;
   readonly ProcessedInputRecords?: Array<string>;
 }> {}
-export declare class UnsupportedOperationException extends Data.TaggedError(
+export declare class UnsupportedOperationException extends EffectData.TaggedError(
   "UnsupportedOperationException",
 )<{
   readonly message?: string;

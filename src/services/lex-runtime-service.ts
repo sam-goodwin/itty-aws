@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSDeepSenseRunTimeService {
@@ -91,12 +91,12 @@ export type ActiveContextTimeToLiveInSeconds = number;
 
 export type ActiveContextTurnsToLive = number;
 
-export declare class BadGatewayException extends Data.TaggedError(
+export declare class BadGatewayException extends EffectData.TaggedError(
   "BadGatewayException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class BadRequestException extends Data.TaggedError(
+export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
   readonly message?: string;
@@ -118,7 +118,7 @@ export type ButtonTextStringWithLength = string;
 export type ButtonValueStringWithLength = string;
 
 export type ConfirmationStatus = "NONE" | "CONFIRMED" | "DENIED";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -135,7 +135,7 @@ export interface DeleteSessionResponse {
   userId?: string;
   sessionId?: string;
 }
-export declare class DependencyFailedException extends Data.TaggedError(
+export declare class DependencyFailedException extends EffectData.TaggedError(
   "DependencyFailedException",
 )<{
   readonly Message?: string;
@@ -208,19 +208,19 @@ export interface IntentSummary {
 export type IntentSummaryCheckpointLabel = string;
 
 export type IntentSummaryList = Array<IntentSummary>;
-export declare class InternalFailureException extends Data.TaggedError(
+export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
 )<{
   readonly message?: string;
 }> {}
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly retryAfterSeconds?: string;
   readonly message?: string;
 }> {}
 export type listOfButtons = Array<Button>;
-export declare class LoopDetectedException extends Data.TaggedError(
+export declare class LoopDetectedException extends EffectData.TaggedError(
   "LoopDetectedException",
 )<{
   readonly Message?: string;
@@ -230,12 +230,12 @@ export type MessageFormatType =
   | "CUSTOM_PAYLOAD"
   | "SSML"
   | "COMPOSITE";
-export declare class NotAcceptableException extends Data.TaggedError(
+export declare class NotAcceptableException extends EffectData.TaggedError(
   "NotAcceptableException",
 )<{
   readonly message?: string;
 }> {}
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly message?: string;
@@ -327,7 +327,7 @@ export interface PutSessionResponse {
   sessionId?: string;
   activeContexts?: string;
 }
-export declare class RequestTimeoutException extends Data.TaggedError(
+export declare class RequestTimeoutException extends EffectData.TaggedError(
   "RequestTimeoutException",
 )<{
   readonly message?: string;
@@ -362,7 +362,7 @@ export type SynthesizedJsonString = string;
 
 export type Text = string;
 
-export declare class UnsupportedMediaTypeException extends Data.TaggedError(
+export declare class UnsupportedMediaTypeException extends EffectData.TaggedError(
   "UnsupportedMediaTypeException",
 )<{
   readonly message?: string;

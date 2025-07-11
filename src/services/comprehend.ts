@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Comprehend_20171127 {
@@ -1005,7 +1005,7 @@ export interface BatchItemError {
   ErrorMessage?: string;
 }
 export type BatchItemErrorList = Array<BatchItemError>;
-export declare class BatchSizeLimitExceededException extends Data.TaggedError(
+export declare class BatchSizeLimitExceededException extends EffectData.TaggedError(
   "BatchSizeLimitExceededException",
 )<{
   readonly Message?: string;
@@ -1082,7 +1082,7 @@ export type ComprehendFlywheelArn = string;
 
 export type ComprehendModelArn = string;
 
-export declare class ConcurrentModificationException extends Data.TaggedError(
+export declare class ConcurrentModificationException extends EffectData.TaggedError(
   "ConcurrentModificationException",
 )<{
   readonly Message?: string;
@@ -1888,12 +1888,12 @@ export interface InputDataConfig {
 export type InputFormat = "ONE_DOC_PER_FILE" | "ONE_DOC_PER_LINE";
 export type Integer = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidFilterException extends Data.TaggedError(
+export declare class InvalidFilterException extends EffectData.TaggedError(
   "InvalidFilterException",
 )<{
   readonly Message?: string;
@@ -1906,7 +1906,7 @@ export type InvalidRequestDetailReason =
   | "UNSUPPORTED_DOC_TYPE"
   | "PAGE_LIMIT_EXCEEDED"
   | "TEXTRACT_ACCESS_DENIED";
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -1918,7 +1918,7 @@ export type JobId = string;
 
 export type JobName = string;
 
-export declare class JobNotFoundException extends Data.TaggedError(
+export declare class JobNotFoundException extends EffectData.TaggedError(
   "JobNotFoundException",
 )<{
   readonly Message?: string;
@@ -1961,7 +1961,7 @@ export type KeyPhrasesDetectionJobPropertiesList =
   Array<KeyPhrasesDetectionJobProperties>;
 export type KmsKeyId = string;
 
-export declare class KmsKeyValidationException extends Data.TaggedError(
+export declare class KmsKeyValidationException extends EffectData.TaggedError(
   "KmsKeyValidationException",
 )<{
   readonly Message?: string;
@@ -2337,22 +2337,22 @@ export interface RelationshipsListItem {
   Type?: RelationshipType;
 }
 export type RelationshipType = "CHILD";
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceLimitExceededException extends Data.TaggedError(
+export declare class ResourceLimitExceededException extends EffectData.TaggedError(
   "ResourceLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceUnavailableException extends Data.TaggedError(
+export declare class ResourceUnavailableException extends EffectData.TaggedError(
   "ResourceUnavailableException",
 )<{
   readonly Message?: string;
@@ -2697,24 +2697,24 @@ export interface TaskConfig {
 export interface TextSegment {
   Text: string;
 }
-export declare class TextSizeLimitExceededException extends Data.TaggedError(
+export declare class TextSizeLimitExceededException extends EffectData.TaggedError(
   "TextSizeLimitExceededException",
 )<{
   readonly Message?: string;
 }> {}
 export type Timestamp = Date | string;
 
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTagKeysException extends Data.TaggedError(
+export declare class TooManyTagKeysException extends EffectData.TaggedError(
   "TooManyTagKeysException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTagsException extends Data.TaggedError(
+export declare class TooManyTagsException extends EffectData.TaggedError(
   "TooManyTagsException",
 )<{
   readonly Message?: string;
@@ -2758,7 +2758,7 @@ export interface ToxicLabels {
   Labels?: Array<ToxicContent>;
   Toxicity?: number;
 }
-export declare class UnsupportedLanguageException extends Data.TaggedError(
+export declare class UnsupportedLanguageException extends EffectData.TaggedError(
   "UnsupportedLanguageException",
 )<{
   readonly Message?: string;

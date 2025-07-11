@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonS3 {
@@ -410,10 +410,10 @@ export interface Bucket {
   BucketArn?: string;
 }
 export type BucketAccelerateStatus = "Enabled" | "Suspended";
-export declare class BucketAlreadyExists extends Data.TaggedError(
+export declare class BucketAlreadyExists extends EffectData.TaggedError(
   "BucketAlreadyExists",
 )<{}> {}
-export declare class BucketAlreadyOwnedByYou extends Data.TaggedError(
+export declare class BucketAlreadyOwnedByYou extends EffectData.TaggedError(
   "BucketAlreadyOwnedByYou",
 )<{}> {}
 export type BucketCannedACL =
@@ -986,7 +986,7 @@ export interface Encryption {
 export interface EncryptionConfiguration {
   ReplicaKmsKeyID?: string;
 }
-export declare class EncryptionTypeMismatch extends Data.TaggedError(
+export declare class EncryptionTypeMismatch extends EffectData.TaggedError(
   "EncryptionTypeMismatch",
 )<{}> {}
 export type End = number;
@@ -1504,7 +1504,7 @@ export type HttpRedirectCode = string;
 
 export type ID = string;
 
-export declare class IdempotencyParameterMismatch extends Data.TaggedError(
+export declare class IdempotencyParameterMismatch extends EffectData.TaggedError(
   "IdempotencyParameterMismatch",
 )<{}> {}
 export type IfMatch = string;
@@ -1561,16 +1561,16 @@ export interface IntelligentTieringFilter {
 export type IntelligentTieringId = string;
 
 export type IntelligentTieringStatus = "Enabled" | "Disabled";
-export declare class InvalidObjectState extends Data.TaggedError(
+export declare class InvalidObjectState extends EffectData.TaggedError(
   "InvalidObjectState",
 )<{
   readonly StorageClass?: StorageClass;
   readonly AccessTier?: IntelligentTieringAccessTier;
 }> {}
-export declare class InvalidRequest extends Data.TaggedError(
+export declare class InvalidRequest extends EffectData.TaggedError(
   "InvalidRequest",
 )<{}> {}
-export declare class InvalidWriteOffset extends Data.TaggedError(
+export declare class InvalidWriteOffset extends EffectData.TaggedError(
   "InvalidWriteOffset",
 )<{}> {}
 export interface InventoryConfiguration {
@@ -2013,14 +2013,16 @@ export interface NoncurrentVersionTransition {
 }
 export type NoncurrentVersionTransitionList =
   Array<NoncurrentVersionTransition>;
-export declare class NoSuchBucket extends Data.TaggedError(
+export declare class NoSuchBucket extends EffectData.TaggedError(
   "NoSuchBucket",
 )<{}> {}
-export declare class NoSuchKey extends Data.TaggedError("NoSuchKey")<{}> {}
-export declare class NoSuchUpload extends Data.TaggedError(
+export declare class NoSuchKey extends EffectData.TaggedError(
+  "NoSuchKey",
+)<{}> {}
+export declare class NoSuchUpload extends EffectData.TaggedError(
   "NoSuchUpload",
 )<{}> {}
-export declare class NotFound extends Data.TaggedError("NotFound")<{}> {}
+export declare class NotFound extends EffectData.TaggedError("NotFound")<{}> {}
 export interface NotificationConfiguration {
   TopicConfigurations?: Array<TopicConfiguration>;
   QueueConfigurations?: Array<QueueConfiguration>;
@@ -2043,7 +2045,7 @@ export interface Object {
   Owner?: Owner;
   RestoreStatus?: RestoreStatus;
 }
-export declare class ObjectAlreadyInActiveTierError extends Data.TaggedError(
+export declare class ObjectAlreadyInActiveTierError extends EffectData.TaggedError(
   "ObjectAlreadyInActiveTierError",
 )<{}> {}
 export type ObjectAttributes =
@@ -2096,7 +2098,7 @@ export interface ObjectLockRule {
 }
 export type ObjectLockToken = string;
 
-export declare class ObjectNotInActiveTierError extends Data.TaggedError(
+export declare class ObjectNotInActiveTierError extends EffectData.TaggedError(
   "ObjectNotInActiveTierError",
 )<{}> {}
 export type ObjectOwnership =
@@ -2865,7 +2867,7 @@ export interface Tiering {
 export type TieringList = Array<Tiering>;
 export type Token = string;
 
-export declare class TooManyParts extends Data.TaggedError(
+export declare class TooManyParts extends EffectData.TaggedError(
   "TooManyParts",
 )<{}> {}
 export type TopicArn = string;

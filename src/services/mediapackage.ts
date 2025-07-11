@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface MediaPackage {
@@ -445,7 +445,7 @@ export interface EncryptionContractConfiguration {
   PresetSpeke20Video: PresetSpeke20Video;
 }
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES";
-export declare class ForbiddenException extends Data.TaggedError(
+export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
 )<{
   readonly Message?: string;
@@ -517,7 +517,7 @@ export interface IngestEndpoint {
 export interface IngressAccessLogs {
   LogGroupName?: string;
 }
-export declare class InternalServerErrorException extends Data.TaggedError(
+export declare class InternalServerErrorException extends EffectData.TaggedError(
   "InternalServerErrorException",
 )<{
   readonly Message?: string;
@@ -567,7 +567,7 @@ export interface MssPackage {
   SegmentDurationSeconds?: number;
   StreamSelection?: StreamSelection;
 }
-export declare class NotFoundException extends Data.TaggedError(
+export declare class NotFoundException extends EffectData.TaggedError(
   "NotFoundException",
 )<{
   readonly Message?: string;
@@ -649,7 +649,7 @@ export type SegmentTemplateFormat =
   | "NUMBER_WITH_DURATION";
 export type SensitiveString = string;
 
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly Message?: string;
@@ -677,12 +677,12 @@ export interface TagResourceRequest {
   Tags: Record<string, string>;
 }
 export type Tags = Record<string, string>;
-export declare class TooManyRequestsException extends Data.TaggedError(
+export declare class TooManyRequestsException extends EffectData.TaggedError(
   "TooManyRequestsException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class UnprocessableEntityException extends Data.TaggedError(
+export declare class UnprocessableEntityException extends EffectData.TaggedError(
   "UnprocessableEntityException",
 )<{
   readonly Message?: string;

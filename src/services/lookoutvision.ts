@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface LookoutVisionService {
@@ -274,7 +274,7 @@ export interface LookoutVisionService {
 
 export type Lookoutvision = LookoutVisionService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message: string;
@@ -304,7 +304,7 @@ export type ComponentVersion = string;
 
 export type ComponentVersionArn = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly Message: string;
@@ -487,7 +487,7 @@ export interface InputS3Object {
 }
 export type Integer = number;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message: string;
@@ -678,7 +678,7 @@ export type ProjectName = string;
 
 export type QueryString = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message: string;
@@ -705,7 +705,7 @@ export type S3ObjectKey = string;
 
 export type S3ObjectVersion = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message: string;
@@ -771,7 +771,7 @@ export interface TargetPlatform {
 export type TargetPlatformAccelerator = "NVIDIA";
 export type TargetPlatformArch = "ARM64" | "X86_64";
 export type TargetPlatformOs = "LINUX";
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message: string;
@@ -793,7 +793,7 @@ export interface UpdateDatasetEntriesRequest {
 export interface UpdateDatasetEntriesResponse {
   Status?: DatasetStatus;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message: string;

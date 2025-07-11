@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface ApplicationMigrationService {
@@ -51,7 +51,7 @@ export interface ApplicationMigrationService {
 
 export type Mgn = ApplicationMigrationService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -144,7 +144,7 @@ export type ClientIdempotencyToken = string;
 
 export type CloudWatchLogGroupName = string;
 
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -516,7 +516,7 @@ export interface InitializeServiceRequest {}
 export interface InitializeServiceResponse {}
 export type InitiatedBy = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message: string;
@@ -947,7 +947,7 @@ export type ReplicationServersSecurityGroupsIDs = Array<string>;
 export type ReplicationType = string;
 
 export type ReplicationTypes = Array<string>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -978,7 +978,7 @@ export type SecretArn = string;
 
 export type SecurityGroupID = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -1162,7 +1162,7 @@ export type TerminateTargetInstancesRequestSourceServerIDs = Array<string>;
 export interface TerminateTargetInstancesResponse {
   job?: Job;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message: string;
@@ -1180,7 +1180,7 @@ export interface UnarchiveWaveRequest {
   waveID: string;
   accountID?: string;
 }
-export declare class UninitializedAccountException extends Data.TaggedError(
+export declare class UninitializedAccountException extends EffectData.TaggedError(
   "UninitializedAccountException",
 )<{
   readonly message?: string;
@@ -1283,7 +1283,7 @@ export interface UpdateWaveRequest {
   description?: string;
   accountID?: string;
 }
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

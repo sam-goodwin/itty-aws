@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface dlm_20180112 {
@@ -244,7 +244,7 @@ export interface GetLifecyclePolicyResponse {
   Policy?: LifecyclePolicy;
 }
 export type GettablePolicyStateValues = "ENABLED" | "DISABLED" | "ERROR";
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly Message?: string;
@@ -253,7 +253,7 @@ export declare class InternalServerException extends Data.TaggedError(
 export type Interval = number;
 
 export type IntervalUnitValues = "HOURS";
-export declare class InvalidRequestException extends Data.TaggedError(
+export declare class InvalidRequestException extends EffectData.TaggedError(
   "InvalidRequestException",
 )<{
   readonly Message?: string;
@@ -283,7 +283,7 @@ export interface LifecyclePolicySummary {
   DefaultPolicy?: boolean;
 }
 export type LifecyclePolicySummaryList = Array<LifecyclePolicySummary>;
-export declare class LimitExceededException extends Data.TaggedError(
+export declare class LimitExceededException extends EffectData.TaggedError(
   "LimitExceededException",
 )<{
   readonly Message?: string;
@@ -339,7 +339,7 @@ export type PolicyTypeValues =
   | "EVENT_BASED_POLICY";
 export type ResourceLocationList = Array<ResourceLocationValues>;
 export type ResourceLocationValues = "CLOUD" | "OUTPOST" | "LOCAL_ZONE";
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;

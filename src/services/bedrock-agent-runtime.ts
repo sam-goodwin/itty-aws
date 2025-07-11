@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonBedrockAgentRunTimeService {
@@ -404,7 +404,7 @@ export interface AmazonBedrockAgentRunTimeService {
 
 export type BedrockAgentRuntime = AmazonBedrockAgentRunTimeService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -534,7 +534,7 @@ export interface Attribution {
 }
 export type AWSResourceARN = string;
 
-export declare class BadGatewayException extends Data.TaggedError(
+export declare class BadGatewayException extends EffectData.TaggedError(
   "BadGatewayException",
 )<{
   readonly message?: string;
@@ -627,7 +627,7 @@ export interface ConditionResultEvent {
   satisfiedConditions: Array<SatisfiedCondition>;
 }
 export type ConfirmationState = "CONFIRM" | "DENY";
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -691,7 +691,7 @@ export interface DeleteSessionRequest {
   sessionIdentifier: string;
 }
 export interface DeleteSessionResponse {}
-export declare class DependencyFailedException extends Data.TaggedError(
+export declare class DependencyFailedException extends EffectData.TaggedError(
   "DependencyFailedException",
 )<{
   readonly message?: string;
@@ -1263,7 +1263,7 @@ export type InputText = string;
 
 export type Instruction = string;
 
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -1546,7 +1546,7 @@ export interface ModelInvocationInput {
   parserMode?: CreationMode;
   foundationModel?: string;
 }
-export declare class ModelNotReadyException extends Data.TaggedError(
+export declare class ModelNotReadyException extends EffectData.TaggedError(
   "ModelNotReadyException",
 )<{
   readonly message?: string;
@@ -1861,7 +1861,7 @@ export type ResourceDescription = string;
 
 export type ResourceName = string;
 
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -2082,7 +2082,7 @@ export interface SatisfiedCondition {
 }
 export type SatisfiedConditions = Array<SatisfiedCondition>;
 export type SearchType = "HYBRID" | "SEMANTIC";
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
@@ -2188,7 +2188,7 @@ export type TextToSqlConfigurationType = "KNOWLEDGE_BASE";
 export interface TextToSqlKnowledgeBaseConfiguration {
   knowledgeBaseArn: string;
 }
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -2252,7 +2252,7 @@ export interface Usage {
 }
 export type Uuid = string;
 
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

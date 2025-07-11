@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface GroundStation {
@@ -278,7 +278,7 @@ export interface DeleteMissionProfileRequest {
 export interface DemodulationConfig {
   unvalidatedJSON: string;
 }
-export declare class DependencyException extends Data.TaggedError(
+export declare class DependencyException extends EffectData.TaggedError(
   "DependencyException",
 )<{
   readonly message?: string;
@@ -494,7 +494,7 @@ export interface IntegerRange {
   minimum: number;
   maximum: number;
 }
-export declare class InvalidParameterException extends Data.TaggedError(
+export declare class InvalidParameterException extends EffectData.TaggedError(
   "InvalidParameterException",
 )<{
   readonly message?: string;
@@ -639,13 +639,13 @@ export interface ReserveContactRequest {
   groundStation: string;
   tags?: Record<string, string>;
 }
-export declare class ResourceLimitExceededException extends Data.TaggedError(
+export declare class ResourceLimitExceededException extends EffectData.TaggedError(
   "ResourceLimitExceededException",
 )<{
   readonly message?: string;
   readonly parameterName?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;

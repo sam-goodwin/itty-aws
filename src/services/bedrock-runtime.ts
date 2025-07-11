@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AmazonBedrockFrontendService {
@@ -132,7 +132,7 @@ export interface AmazonBedrockFrontendService {
 
 export type BedrockRuntime = AmazonBedrockFrontendService;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly message?: string;
@@ -228,7 +228,7 @@ export interface CitationSourceContentDelta {
 }
 export type CitationSourceContentList = Array<CitationSourceContent>;
 export type CitationSourceContentListDelta = Array<CitationSourceContentDelta>;
-export declare class ConflictException extends Data.TaggedError(
+export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
   readonly message?: string;
@@ -658,7 +658,7 @@ export interface InferenceConfiguration {
   topP?: number;
   stopSequences?: Array<string>;
 }
-export declare class InternalServerException extends Data.TaggedError(
+export declare class InternalServerException extends EffectData.TaggedError(
   "InternalServerException",
 )<{
   readonly message?: string;
@@ -748,27 +748,27 @@ export interface MessageStopEvent {
 }
 export type MimeType = string;
 
-export declare class ModelErrorException extends Data.TaggedError(
+export declare class ModelErrorException extends EffectData.TaggedError(
   "ModelErrorException",
 )<{
   readonly message?: string;
   readonly originalStatusCode?: number;
   readonly resourceName?: string;
 }> {}
-export declare class ModelNotReadyException extends Data.TaggedError(
+export declare class ModelNotReadyException extends EffectData.TaggedError(
   "ModelNotReadyException",
 )<{
   readonly message?: string;
 }> {}
 export type ModelOutputs = Array<string>;
-export declare class ModelStreamErrorException extends Data.TaggedError(
+export declare class ModelStreamErrorException extends EffectData.TaggedError(
   "ModelStreamErrorException",
 )<{
   readonly message?: string;
   readonly originalStatusCode?: number;
   readonly originalMessage?: string;
 }> {}
-export declare class ModelTimeoutException extends Data.TaggedError(
+export declare class ModelTimeoutException extends EffectData.TaggedError(
   "ModelTimeoutException",
 )<{
   readonly message?: string;
@@ -808,7 +808,7 @@ export interface ReasoningTextBlock {
   signature?: string;
 }
 export type RequestMetadata = Record<string, string>;
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
@@ -827,12 +827,12 @@ export interface S3Location {
 }
 export type S3Uri = string;
 
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ServiceUnavailableException extends Data.TaggedError(
+export declare class ServiceUnavailableException extends EffectData.TaggedError(
   "ServiceUnavailableException",
 )<{
   readonly message?: string;
@@ -879,7 +879,7 @@ export type TextCharactersGuarded = number;
 
 export type TextCharactersTotal = number;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly message?: string;
@@ -941,7 +941,7 @@ export interface ToolUseBlockStart {
 export type ToolUseId = string;
 
 export type Trace = "ENABLED" | "DISABLED" | "ENABLED_FULL";
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface Cloudfront2020_05_31 {
@@ -1702,7 +1702,9 @@ export type AccessControlAllowMethodsList =
   Array<ResponseHeadersPolicyAccessControlAllowMethodsValues>;
 export type AccessControlAllowOriginsList = Array<string>;
 export type AccessControlExposeHeadersList = Array<string>;
-export declare class AccessDenied extends Data.TaggedError("AccessDenied")<{
+export declare class AccessDenied extends EffectData.TaggedError(
+  "AccessDenied",
+)<{
   readonly Message?: string;
 }> {}
 export interface ActiveTrustedKeyGroups {
@@ -1786,7 +1788,9 @@ export interface AssociateDistributionWebACLResult {
   ETag?: string;
 }
 export type AwsAccountNumberList = Array<string>;
-export declare class BatchTooLarge extends Data.TaggedError("BatchTooLarge")<{
+export declare class BatchTooLarge extends EffectData.TaggedError(
+  "BatchTooLarge",
+)<{
   readonly Message?: string;
 }> {}
 export interface CacheBehavior {
@@ -1825,7 +1829,7 @@ export interface CachePolicy {
   LastModifiedTime: Date | string;
   CachePolicyConfig: CachePolicyConfig;
 }
-export declare class CachePolicyAlreadyExists extends Data.TaggedError(
+export declare class CachePolicyAlreadyExists extends EffectData.TaggedError(
   "CachePolicyAlreadyExists",
 )<{
   readonly Message?: string;
@@ -1852,7 +1856,7 @@ export interface CachePolicyHeadersConfig {
   HeaderBehavior: CachePolicyHeaderBehavior;
   Headers?: Headers;
 }
-export declare class CachePolicyInUse extends Data.TaggedError(
+export declare class CachePolicyInUse extends EffectData.TaggedError(
   "CachePolicyInUse",
 )<{
   readonly Message?: string;
@@ -1878,17 +1882,17 @@ export interface CachePolicySummary {
 }
 export type CachePolicySummaryList = Array<CachePolicySummary>;
 export type CachePolicyType = "managed" | "custom";
-export declare class CannotChangeImmutablePublicKeyFields extends Data.TaggedError(
+export declare class CannotChangeImmutablePublicKeyFields extends EffectData.TaggedError(
   "CannotChangeImmutablePublicKeyFields",
 )<{
   readonly Message?: string;
 }> {}
-export declare class CannotDeleteEntityWhileInUse extends Data.TaggedError(
+export declare class CannotDeleteEntityWhileInUse extends EffectData.TaggedError(
   "CannotDeleteEntityWhileInUse",
 )<{
   readonly Message?: string;
 }> {}
-export declare class CannotUpdateEntityWhileInUse extends Data.TaggedError(
+export declare class CannotUpdateEntityWhileInUse extends EffectData.TaggedError(
   "CannotUpdateEntityWhileInUse",
 )<{
   readonly Message?: string;
@@ -1903,7 +1907,7 @@ export interface CloudFrontOriginAccessIdentity {
   S3CanonicalUserId: string;
   CloudFrontOriginAccessIdentityConfig?: CloudFrontOriginAccessIdentityConfig;
 }
-export declare class CloudFrontOriginAccessIdentityAlreadyExists extends Data.TaggedError(
+export declare class CloudFrontOriginAccessIdentityAlreadyExists extends EffectData.TaggedError(
   "CloudFrontOriginAccessIdentityAlreadyExists",
 )<{
   readonly Message?: string;
@@ -1912,7 +1916,7 @@ export interface CloudFrontOriginAccessIdentityConfig {
   CallerReference: string;
   Comment: string;
 }
-export declare class CloudFrontOriginAccessIdentityInUse extends Data.TaggedError(
+export declare class CloudFrontOriginAccessIdentityInUse extends EffectData.TaggedError(
   "CloudFrontOriginAccessIdentityInUse",
 )<{
   readonly Message?: string;
@@ -1932,7 +1936,7 @@ export interface CloudFrontOriginAccessIdentitySummary {
 }
 export type CloudFrontOriginAccessIdentitySummaryList =
   Array<CloudFrontOriginAccessIdentitySummary>;
-export declare class CNAMEAlreadyExists extends Data.TaggedError(
+export declare class CNAMEAlreadyExists extends EffectData.TaggedError(
   "CNAMEAlreadyExists",
 )<{
   readonly Message?: string;
@@ -2002,7 +2006,7 @@ export interface ContinuousDeploymentPolicy {
   LastModifiedTime: Date | string;
   ContinuousDeploymentPolicyConfig: ContinuousDeploymentPolicyConfig;
 }
-export declare class ContinuousDeploymentPolicyAlreadyExists extends Data.TaggedError(
+export declare class ContinuousDeploymentPolicyAlreadyExists extends EffectData.TaggedError(
   "ContinuousDeploymentPolicyAlreadyExists",
 )<{
   readonly Message?: string;
@@ -2012,7 +2016,7 @@ export interface ContinuousDeploymentPolicyConfig {
   Enabled: boolean;
   TrafficConfig?: TrafficConfig;
 }
-export declare class ContinuousDeploymentPolicyInUse extends Data.TaggedError(
+export declare class ContinuousDeploymentPolicyInUse extends EffectData.TaggedError(
   "ContinuousDeploymentPolicyInUse",
 )<{
   readonly Message?: string;
@@ -2443,7 +2447,7 @@ export interface Distribution {
   DistributionConfig: DistributionConfig;
   AliasICPRecordals?: Array<AliasICPRecordal>;
 }
-export declare class DistributionAlreadyExists extends Data.TaggedError(
+export declare class DistributionAlreadyExists extends EffectData.TaggedError(
   "DistributionAlreadyExists",
 )<{
   readonly Message?: string;
@@ -2495,7 +2499,7 @@ export interface DistributionList {
   Quantity: number;
   Items?: Array<DistributionSummary>;
 }
-export declare class DistributionNotDisabled extends Data.TaggedError(
+export declare class DistributionNotDisabled extends EffectData.TaggedError(
   "DistributionNotDisabled",
 )<{
   readonly Message?: string;
@@ -2605,20 +2609,22 @@ export interface EndPoint {
   KinesisStreamConfig?: KinesisStreamConfig;
 }
 export type EndPointList = Array<EndPoint>;
-export declare class EntityAlreadyExists extends Data.TaggedError(
+export declare class EntityAlreadyExists extends EffectData.TaggedError(
   "EntityAlreadyExists",
 )<{
   readonly Message?: string;
 }> {}
-export declare class EntityLimitExceeded extends Data.TaggedError(
+export declare class EntityLimitExceeded extends EffectData.TaggedError(
   "EntityLimitExceeded",
 )<{
   readonly Message?: string;
 }> {}
-export declare class EntityNotFound extends Data.TaggedError("EntityNotFound")<{
+export declare class EntityNotFound extends EffectData.TaggedError(
+  "EntityNotFound",
+)<{
   readonly Message?: string;
 }> {}
-export declare class EntitySizeLimitExceeded extends Data.TaggedError(
+export declare class EntitySizeLimitExceeded extends EffectData.TaggedError(
   "EntitySizeLimitExceeded",
 )<{
   readonly Message?: string;
@@ -2639,12 +2645,12 @@ export interface FieldLevelEncryptionConfig {
   QueryArgProfileConfig?: QueryArgProfileConfig;
   ContentTypeProfileConfig?: ContentTypeProfileConfig;
 }
-export declare class FieldLevelEncryptionConfigAlreadyExists extends Data.TaggedError(
+export declare class FieldLevelEncryptionConfigAlreadyExists extends EffectData.TaggedError(
   "FieldLevelEncryptionConfigAlreadyExists",
 )<{
   readonly Message?: string;
 }> {}
-export declare class FieldLevelEncryptionConfigInUse extends Data.TaggedError(
+export declare class FieldLevelEncryptionConfigInUse extends EffectData.TaggedError(
   "FieldLevelEncryptionConfigInUse",
 )<{
   readonly Message?: string;
@@ -2660,7 +2666,7 @@ export interface FieldLevelEncryptionProfile {
   LastModifiedTime: Date | string;
   FieldLevelEncryptionProfileConfig: FieldLevelEncryptionProfileConfig;
 }
-export declare class FieldLevelEncryptionProfileAlreadyExists extends Data.TaggedError(
+export declare class FieldLevelEncryptionProfileAlreadyExists extends EffectData.TaggedError(
   "FieldLevelEncryptionProfileAlreadyExists",
 )<{
   readonly Message?: string;
@@ -2671,7 +2677,7 @@ export interface FieldLevelEncryptionProfileConfig {
   Comment?: string;
   EncryptionEntities: EncryptionEntities;
 }
-export declare class FieldLevelEncryptionProfileInUse extends Data.TaggedError(
+export declare class FieldLevelEncryptionProfileInUse extends EffectData.TaggedError(
   "FieldLevelEncryptionProfileInUse",
 )<{
   readonly Message?: string;
@@ -2682,7 +2688,7 @@ export interface FieldLevelEncryptionProfileList {
   Quantity: number;
   Items?: Array<FieldLevelEncryptionProfileSummary>;
 }
-export declare class FieldLevelEncryptionProfileSizeExceeded extends Data.TaggedError(
+export declare class FieldLevelEncryptionProfileSizeExceeded extends EffectData.TaggedError(
   "FieldLevelEncryptionProfileSizeExceeded",
 )<{
   readonly Message?: string;
@@ -2721,7 +2727,7 @@ export interface ForwardedValues {
   QueryStringCacheKeys?: QueryStringCacheKeys;
 }
 export type FrameOptionsList = "DENY" | "SAMEORIGIN";
-export declare class FunctionAlreadyExists extends Data.TaggedError(
+export declare class FunctionAlreadyExists extends EffectData.TaggedError(
   "FunctionAlreadyExists",
 )<{
   readonly Message?: string;
@@ -2747,7 +2753,9 @@ export interface FunctionConfig {
 export type FunctionEventObject = Uint8Array | string;
 
 export type FunctionExecutionLogList = Array<string>;
-export declare class FunctionInUse extends Data.TaggedError("FunctionInUse")<{
+export declare class FunctionInUse extends EffectData.TaggedError(
+  "FunctionInUse",
+)<{
   readonly Message?: string;
 }> {}
 export interface FunctionList {
@@ -2765,7 +2773,7 @@ export interface FunctionMetadata {
 export type FunctionName = string;
 
 export type FunctionRuntime = "cloudfront_js_1_0" | "cloudfront_js_2_0";
-export declare class FunctionSizeLimitExceeded extends Data.TaggedError(
+export declare class FunctionSizeLimitExceeded extends EffectData.TaggedError(
   "FunctionSizeLimitExceeded",
 )<{
   readonly Message?: string;
@@ -3050,20 +3058,24 @@ export interface Headers {
 }
 export type HttpVersion = "http1_1" | "http2" | "http3" | "http2and3";
 export type ICPRecordalStatus = "APPROVED" | "SUSPENDED" | "PENDING";
-export declare class IllegalDelete extends Data.TaggedError("IllegalDelete")<{
+export declare class IllegalDelete extends EffectData.TaggedError(
+  "IllegalDelete",
+)<{
   readonly Message?: string;
 }> {}
-export declare class IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior extends Data.TaggedError(
+export declare class IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior extends EffectData.TaggedError(
   "IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior",
 )<{
   readonly Message?: string;
 }> {}
-export declare class IllegalOriginAccessConfiguration extends Data.TaggedError(
+export declare class IllegalOriginAccessConfiguration extends EffectData.TaggedError(
   "IllegalOriginAccessConfiguration",
 )<{
   readonly Message?: string;
 }> {}
-export declare class IllegalUpdate extends Data.TaggedError("IllegalUpdate")<{
+export declare class IllegalUpdate extends EffectData.TaggedError(
+  "IllegalUpdate",
+)<{
   readonly Message?: string;
 }> {}
 export interface ImportSource {
@@ -3071,19 +3083,19 @@ export interface ImportSource {
   SourceARN: string;
 }
 export type ImportSourceType = "S3";
-export declare class InconsistentQuantities extends Data.TaggedError(
+export declare class InconsistentQuantities extends EffectData.TaggedError(
   "InconsistentQuantities",
 )<{
   readonly Message?: string;
 }> {}
 export type integer = number;
 
-export declare class InvalidArgument extends Data.TaggedError(
+export declare class InvalidArgument extends EffectData.TaggedError(
   "InvalidArgument",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidAssociation extends Data.TaggedError(
+export declare class InvalidAssociation extends EffectData.TaggedError(
   "InvalidAssociation",
 )<{
   readonly Message?: string;
@@ -3112,123 +3124,127 @@ export interface InvalidationSummary {
   Status: string;
 }
 export type InvalidationSummaryList = Array<InvalidationSummary>;
-export declare class InvalidDefaultRootObject extends Data.TaggedError(
+export declare class InvalidDefaultRootObject extends EffectData.TaggedError(
   "InvalidDefaultRootObject",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidDomainNameForOriginAccessControl extends Data.TaggedError(
+export declare class InvalidDomainNameForOriginAccessControl extends EffectData.TaggedError(
   "InvalidDomainNameForOriginAccessControl",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidErrorCode extends Data.TaggedError(
+export declare class InvalidErrorCode extends EffectData.TaggedError(
   "InvalidErrorCode",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidForwardCookies extends Data.TaggedError(
+export declare class InvalidForwardCookies extends EffectData.TaggedError(
   "InvalidForwardCookies",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidFunctionAssociation extends Data.TaggedError(
+export declare class InvalidFunctionAssociation extends EffectData.TaggedError(
   "InvalidFunctionAssociation",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidGeoRestrictionParameter extends Data.TaggedError(
+export declare class InvalidGeoRestrictionParameter extends EffectData.TaggedError(
   "InvalidGeoRestrictionParameter",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidHeadersForS3Origin extends Data.TaggedError(
+export declare class InvalidHeadersForS3Origin extends EffectData.TaggedError(
   "InvalidHeadersForS3Origin",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidIfMatchVersion extends Data.TaggedError(
+export declare class InvalidIfMatchVersion extends EffectData.TaggedError(
   "InvalidIfMatchVersion",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidLambdaFunctionAssociation extends Data.TaggedError(
+export declare class InvalidLambdaFunctionAssociation extends EffectData.TaggedError(
   "InvalidLambdaFunctionAssociation",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidLocationCode extends Data.TaggedError(
+export declare class InvalidLocationCode extends EffectData.TaggedError(
   "InvalidLocationCode",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidMinimumProtocolVersion extends Data.TaggedError(
+export declare class InvalidMinimumProtocolVersion extends EffectData.TaggedError(
   "InvalidMinimumProtocolVersion",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOrigin extends Data.TaggedError("InvalidOrigin")<{
+export declare class InvalidOrigin extends EffectData.TaggedError(
+  "InvalidOrigin",
+)<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOriginAccessControl extends Data.TaggedError(
+export declare class InvalidOriginAccessControl extends EffectData.TaggedError(
   "InvalidOriginAccessControl",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOriginAccessIdentity extends Data.TaggedError(
+export declare class InvalidOriginAccessIdentity extends EffectData.TaggedError(
   "InvalidOriginAccessIdentity",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOriginKeepaliveTimeout extends Data.TaggedError(
+export declare class InvalidOriginKeepaliveTimeout extends EffectData.TaggedError(
   "InvalidOriginKeepaliveTimeout",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidOriginReadTimeout extends Data.TaggedError(
+export declare class InvalidOriginReadTimeout extends EffectData.TaggedError(
   "InvalidOriginReadTimeout",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidProtocolSettings extends Data.TaggedError(
+export declare class InvalidProtocolSettings extends EffectData.TaggedError(
   "InvalidProtocolSettings",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidQueryStringParameters extends Data.TaggedError(
+export declare class InvalidQueryStringParameters extends EffectData.TaggedError(
   "InvalidQueryStringParameters",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRelativePath extends Data.TaggedError(
+export declare class InvalidRelativePath extends EffectData.TaggedError(
   "InvalidRelativePath",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidRequiredProtocol extends Data.TaggedError(
+export declare class InvalidRequiredProtocol extends EffectData.TaggedError(
   "InvalidRequiredProtocol",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidResponseCode extends Data.TaggedError(
+export declare class InvalidResponseCode extends EffectData.TaggedError(
   "InvalidResponseCode",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidTagging extends Data.TaggedError("InvalidTagging")<{
+export declare class InvalidTagging extends EffectData.TaggedError(
+  "InvalidTagging",
+)<{
   readonly Message?: string;
 }> {}
-export declare class InvalidTTLOrder extends Data.TaggedError(
+export declare class InvalidTTLOrder extends EffectData.TaggedError(
   "InvalidTTLOrder",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidViewerCertificate extends Data.TaggedError(
+export declare class InvalidViewerCertificate extends EffectData.TaggedError(
   "InvalidViewerCertificate",
 )<{
   readonly Message?: string;
 }> {}
-export declare class InvalidWebACLId extends Data.TaggedError(
+export declare class InvalidWebACLId extends EffectData.TaggedError(
   "InvalidWebACLId",
 )<{
   readonly Message?: string;
@@ -3239,7 +3255,7 @@ export interface KeyGroup {
   LastModifiedTime: Date | string;
   KeyGroupConfig: KeyGroupConfig;
 }
-export declare class KeyGroupAlreadyExists extends Data.TaggedError(
+export declare class KeyGroupAlreadyExists extends EffectData.TaggedError(
   "KeyGroupAlreadyExists",
 )<{
   readonly Message?: string;
@@ -3627,94 +3643,98 @@ export type MinimumProtocolVersion =
   | "TLSv1_2_2018"
   | "TLSv1_2_2019"
   | "TLSv1_2_2021";
-export declare class MissingBody extends Data.TaggedError("MissingBody")<{
+export declare class MissingBody extends EffectData.TaggedError("MissingBody")<{
   readonly Message?: string;
 }> {}
 export interface MonitoringSubscription {
   RealtimeMetricsSubscriptionConfig?: RealtimeMetricsSubscriptionConfig;
 }
-export declare class MonitoringSubscriptionAlreadyExists extends Data.TaggedError(
+export declare class MonitoringSubscriptionAlreadyExists extends EffectData.TaggedError(
   "MonitoringSubscriptionAlreadyExists",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchCachePolicy extends Data.TaggedError(
+export declare class NoSuchCachePolicy extends EffectData.TaggedError(
   "NoSuchCachePolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchCloudFrontOriginAccessIdentity extends Data.TaggedError(
+export declare class NoSuchCloudFrontOriginAccessIdentity extends EffectData.TaggedError(
   "NoSuchCloudFrontOriginAccessIdentity",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchContinuousDeploymentPolicy extends Data.TaggedError(
+export declare class NoSuchContinuousDeploymentPolicy extends EffectData.TaggedError(
   "NoSuchContinuousDeploymentPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchDistribution extends Data.TaggedError(
+export declare class NoSuchDistribution extends EffectData.TaggedError(
   "NoSuchDistribution",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchFieldLevelEncryptionConfig extends Data.TaggedError(
+export declare class NoSuchFieldLevelEncryptionConfig extends EffectData.TaggedError(
   "NoSuchFieldLevelEncryptionConfig",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchFieldLevelEncryptionProfile extends Data.TaggedError(
+export declare class NoSuchFieldLevelEncryptionProfile extends EffectData.TaggedError(
   "NoSuchFieldLevelEncryptionProfile",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchFunctionExists extends Data.TaggedError(
+export declare class NoSuchFunctionExists extends EffectData.TaggedError(
   "NoSuchFunctionExists",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchInvalidation extends Data.TaggedError(
+export declare class NoSuchInvalidation extends EffectData.TaggedError(
   "NoSuchInvalidation",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchMonitoringSubscription extends Data.TaggedError(
+export declare class NoSuchMonitoringSubscription extends EffectData.TaggedError(
   "NoSuchMonitoringSubscription",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchOrigin extends Data.TaggedError("NoSuchOrigin")<{
+export declare class NoSuchOrigin extends EffectData.TaggedError(
+  "NoSuchOrigin",
+)<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchOriginAccessControl extends Data.TaggedError(
+export declare class NoSuchOriginAccessControl extends EffectData.TaggedError(
   "NoSuchOriginAccessControl",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchOriginRequestPolicy extends Data.TaggedError(
+export declare class NoSuchOriginRequestPolicy extends EffectData.TaggedError(
   "NoSuchOriginRequestPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchPublicKey extends Data.TaggedError(
+export declare class NoSuchPublicKey extends EffectData.TaggedError(
   "NoSuchPublicKey",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchRealtimeLogConfig extends Data.TaggedError(
+export declare class NoSuchRealtimeLogConfig extends EffectData.TaggedError(
   "NoSuchRealtimeLogConfig",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchResource extends Data.TaggedError("NoSuchResource")<{
+export declare class NoSuchResource extends EffectData.TaggedError(
+  "NoSuchResource",
+)<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchResponseHeadersPolicy extends Data.TaggedError(
+export declare class NoSuchResponseHeadersPolicy extends EffectData.TaggedError(
   "NoSuchResponseHeadersPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class NoSuchStreamingDistribution extends Data.TaggedError(
+export declare class NoSuchStreamingDistribution extends EffectData.TaggedError(
   "NoSuchStreamingDistribution",
 )<{
   readonly Message?: string;
@@ -3736,7 +3756,7 @@ export interface OriginAccessControl {
   Id: string;
   OriginAccessControlConfig?: OriginAccessControlConfig;
 }
-export declare class OriginAccessControlAlreadyExists extends Data.TaggedError(
+export declare class OriginAccessControlAlreadyExists extends EffectData.TaggedError(
   "OriginAccessControlAlreadyExists",
 )<{
   readonly Message?: string;
@@ -3748,7 +3768,7 @@ export interface OriginAccessControlConfig {
   SigningBehavior: OriginAccessControlSigningBehaviors;
   OriginAccessControlOriginType: OriginAccessControlOriginTypes;
 }
-export declare class OriginAccessControlInUse extends Data.TaggedError(
+export declare class OriginAccessControlInUse extends EffectData.TaggedError(
   "OriginAccessControlInUse",
 )<{
   readonly Message?: string;
@@ -3815,7 +3835,7 @@ export interface OriginRequestPolicy {
   LastModifiedTime: Date | string;
   OriginRequestPolicyConfig: OriginRequestPolicyConfig;
 }
-export declare class OriginRequestPolicyAlreadyExists extends Data.TaggedError(
+export declare class OriginRequestPolicyAlreadyExists extends EffectData.TaggedError(
   "OriginRequestPolicyAlreadyExists",
 )<{
   readonly Message?: string;
@@ -3846,7 +3866,7 @@ export interface OriginRequestPolicyHeadersConfig {
   HeaderBehavior: OriginRequestPolicyHeaderBehavior;
   Headers?: Headers;
 }
-export declare class OriginRequestPolicyInUse extends Data.TaggedError(
+export declare class OriginRequestPolicyInUse extends EffectData.TaggedError(
   "OriginRequestPolicyInUse",
 )<{
   readonly Message?: string;
@@ -3915,7 +3935,7 @@ export interface Paths {
   Quantity: number;
   Items?: Array<string>;
 }
-export declare class PreconditionFailed extends Data.TaggedError(
+export declare class PreconditionFailed extends EffectData.TaggedError(
   "PreconditionFailed",
 )<{
   readonly Message?: string;
@@ -3930,7 +3950,7 @@ export interface PublicKey {
   CreatedTime: Date | string;
   PublicKeyConfig: PublicKeyConfig;
 }
-export declare class PublicKeyAlreadyExists extends Data.TaggedError(
+export declare class PublicKeyAlreadyExists extends EffectData.TaggedError(
   "PublicKeyAlreadyExists",
 )<{
   readonly Message?: string;
@@ -3942,7 +3962,9 @@ export interface PublicKeyConfig {
   Comment?: string;
 }
 export type PublicKeyIdList = Array<string>;
-export declare class PublicKeyInUse extends Data.TaggedError("PublicKeyInUse")<{
+export declare class PublicKeyInUse extends EffectData.TaggedError(
+  "PublicKeyInUse",
+)<{
   readonly Message?: string;
 }> {}
 export interface PublicKeyList {
@@ -3974,7 +3996,7 @@ export interface QueryArgProfileConfig {
   ForwardWhenQueryArgProfileIsUnknown: boolean;
   QueryArgProfiles?: QueryArgProfiles;
 }
-export declare class QueryArgProfileEmpty extends Data.TaggedError(
+export declare class QueryArgProfileEmpty extends EffectData.TaggedError(
   "QueryArgProfileEmpty",
 )<{
   readonly Message?: string;
@@ -4001,18 +4023,18 @@ export interface RealtimeLogConfig {
   EndPoints: Array<EndPoint>;
   Fields: Array<string>;
 }
-export declare class RealtimeLogConfigAlreadyExists extends Data.TaggedError(
+export declare class RealtimeLogConfigAlreadyExists extends EffectData.TaggedError(
   "RealtimeLogConfigAlreadyExists",
 )<{
   readonly Message?: string;
 }> {}
-export declare class RealtimeLogConfigInUse extends Data.TaggedError(
+export declare class RealtimeLogConfigInUse extends EffectData.TaggedError(
   "RealtimeLogConfigInUse",
 )<{
   readonly Message?: string;
 }> {}
 export type RealtimeLogConfigList = Array<RealtimeLogConfig>;
-export declare class RealtimeLogConfigOwnerMismatch extends Data.TaggedError(
+export declare class RealtimeLogConfigOwnerMismatch extends EffectData.TaggedError(
   "RealtimeLogConfigOwnerMismatch",
 )<{
   readonly Message?: string;
@@ -4039,10 +4061,12 @@ export type ReferrerPolicyList =
   | "unsafe_url";
 export type ResourceARN = string;
 
-export declare class ResourceInUse extends Data.TaggedError("ResourceInUse")<{
+export declare class ResourceInUse extends EffectData.TaggedError(
+  "ResourceInUse",
+)<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotDisabled extends Data.TaggedError(
+export declare class ResourceNotDisabled extends EffectData.TaggedError(
   "ResourceNotDisabled",
 )<{
   readonly Message?: string;
@@ -4077,7 +4101,7 @@ export interface ResponseHeadersPolicyAccessControlExposeHeaders {
   Quantity: number;
   Items?: Array<string>;
 }
-export declare class ResponseHeadersPolicyAlreadyExists extends Data.TaggedError(
+export declare class ResponseHeadersPolicyAlreadyExists extends EffectData.TaggedError(
   "ResponseHeadersPolicyAlreadyExists",
 )<{
   readonly Message?: string;
@@ -4122,7 +4146,7 @@ export interface ResponseHeadersPolicyFrameOptions {
   Override: boolean;
   FrameOption: FrameOptionsList;
 }
-export declare class ResponseHeadersPolicyInUse extends Data.TaggedError(
+export declare class ResponseHeadersPolicyInUse extends EffectData.TaggedError(
   "ResponseHeadersPolicyInUse",
 )<{
   readonly Message?: string;
@@ -4208,7 +4232,7 @@ export interface StagingDistributionDnsNames {
   Quantity: number;
   Items?: Array<string>;
 }
-export declare class StagingDistributionInUse extends Data.TaggedError(
+export declare class StagingDistributionInUse extends EffectData.TaggedError(
   "StagingDistributionInUse",
 )<{
   readonly Message?: string;
@@ -4227,7 +4251,7 @@ export interface StreamingDistribution {
   ActiveTrustedSigners: ActiveTrustedSigners;
   StreamingDistributionConfig: StreamingDistributionConfig;
 }
-export declare class StreamingDistributionAlreadyExists extends Data.TaggedError(
+export declare class StreamingDistributionAlreadyExists extends EffectData.TaggedError(
   "StreamingDistributionAlreadyExists",
 )<{
   readonly Message?: string;
@@ -4254,7 +4278,7 @@ export interface StreamingDistributionList {
   Quantity: number;
   Items?: Array<StreamingDistributionSummary>;
 }
-export declare class StreamingDistributionNotDisabled extends Data.TaggedError(
+export declare class StreamingDistributionNotDisabled extends EffectData.TaggedError(
   "StreamingDistributionNotDisabled",
 )<{
   readonly Message?: string;
@@ -4307,7 +4331,7 @@ export type TagValue = string;
 export interface TenantConfig {
   ParameterDefinitions?: Array<ParameterDefinition>;
 }
-export declare class TestFunctionFailed extends Data.TaggedError(
+export declare class TestFunctionFailed extends EffectData.TaggedError(
   "TestFunctionFailed",
 )<{
   readonly Message?: string;
@@ -4330,260 +4354,262 @@ export interface TestResult {
 }
 export type timestamp = Date | string;
 
-export declare class TooLongCSPInResponseHeadersPolicy extends Data.TaggedError(
+export declare class TooLongCSPInResponseHeadersPolicy extends EffectData.TaggedError(
   "TooLongCSPInResponseHeadersPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCacheBehaviors extends Data.TaggedError(
+export declare class TooManyCacheBehaviors extends EffectData.TaggedError(
   "TooManyCacheBehaviors",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCachePolicies extends Data.TaggedError(
+export declare class TooManyCachePolicies extends EffectData.TaggedError(
   "TooManyCachePolicies",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCertificates extends Data.TaggedError(
+export declare class TooManyCertificates extends EffectData.TaggedError(
   "TooManyCertificates",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCloudFrontOriginAccessIdentities extends Data.TaggedError(
+export declare class TooManyCloudFrontOriginAccessIdentities extends EffectData.TaggedError(
   "TooManyCloudFrontOriginAccessIdentities",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyContinuousDeploymentPolicies extends Data.TaggedError(
+export declare class TooManyContinuousDeploymentPolicies extends EffectData.TaggedError(
   "TooManyContinuousDeploymentPolicies",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCookieNamesInWhiteList extends Data.TaggedError(
+export declare class TooManyCookieNamesInWhiteList extends EffectData.TaggedError(
   "TooManyCookieNamesInWhiteList",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCookiesInCachePolicy extends Data.TaggedError(
+export declare class TooManyCookiesInCachePolicy extends EffectData.TaggedError(
   "TooManyCookiesInCachePolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCookiesInOriginRequestPolicy extends Data.TaggedError(
+export declare class TooManyCookiesInOriginRequestPolicy extends EffectData.TaggedError(
   "TooManyCookiesInOriginRequestPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyCustomHeadersInResponseHeadersPolicy extends Data.TaggedError(
+export declare class TooManyCustomHeadersInResponseHeadersPolicy extends EffectData.TaggedError(
   "TooManyCustomHeadersInResponseHeadersPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionCNAMEs extends Data.TaggedError(
+export declare class TooManyDistributionCNAMEs extends EffectData.TaggedError(
   "TooManyDistributionCNAMEs",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributions extends Data.TaggedError(
+export declare class TooManyDistributions extends EffectData.TaggedError(
   "TooManyDistributions",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsAssociatedToCachePolicy extends Data.TaggedError(
+export declare class TooManyDistributionsAssociatedToCachePolicy extends EffectData.TaggedError(
   "TooManyDistributionsAssociatedToCachePolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsAssociatedToFieldLevelEncryptionConfig extends Data.TaggedError(
+export declare class TooManyDistributionsAssociatedToFieldLevelEncryptionConfig extends EffectData.TaggedError(
   "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsAssociatedToKeyGroup extends Data.TaggedError(
+export declare class TooManyDistributionsAssociatedToKeyGroup extends EffectData.TaggedError(
   "TooManyDistributionsAssociatedToKeyGroup",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsAssociatedToOriginAccessControl extends Data.TaggedError(
+export declare class TooManyDistributionsAssociatedToOriginAccessControl extends EffectData.TaggedError(
   "TooManyDistributionsAssociatedToOriginAccessControl",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsAssociatedToOriginRequestPolicy extends Data.TaggedError(
+export declare class TooManyDistributionsAssociatedToOriginRequestPolicy extends EffectData.TaggedError(
   "TooManyDistributionsAssociatedToOriginRequestPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsAssociatedToResponseHeadersPolicy extends Data.TaggedError(
+export declare class TooManyDistributionsAssociatedToResponseHeadersPolicy extends EffectData.TaggedError(
   "TooManyDistributionsAssociatedToResponseHeadersPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsWithFunctionAssociations extends Data.TaggedError(
+export declare class TooManyDistributionsWithFunctionAssociations extends EffectData.TaggedError(
   "TooManyDistributionsWithFunctionAssociations",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsWithLambdaAssociations extends Data.TaggedError(
+export declare class TooManyDistributionsWithLambdaAssociations extends EffectData.TaggedError(
   "TooManyDistributionsWithLambdaAssociations",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyDistributionsWithSingleFunctionARN extends Data.TaggedError(
+export declare class TooManyDistributionsWithSingleFunctionARN extends EffectData.TaggedError(
   "TooManyDistributionsWithSingleFunctionARN",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFieldLevelEncryptionConfigs extends Data.TaggedError(
+export declare class TooManyFieldLevelEncryptionConfigs extends EffectData.TaggedError(
   "TooManyFieldLevelEncryptionConfigs",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFieldLevelEncryptionContentTypeProfiles extends Data.TaggedError(
+export declare class TooManyFieldLevelEncryptionContentTypeProfiles extends EffectData.TaggedError(
   "TooManyFieldLevelEncryptionContentTypeProfiles",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFieldLevelEncryptionEncryptionEntities extends Data.TaggedError(
+export declare class TooManyFieldLevelEncryptionEncryptionEntities extends EffectData.TaggedError(
   "TooManyFieldLevelEncryptionEncryptionEntities",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFieldLevelEncryptionFieldPatterns extends Data.TaggedError(
+export declare class TooManyFieldLevelEncryptionFieldPatterns extends EffectData.TaggedError(
   "TooManyFieldLevelEncryptionFieldPatterns",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFieldLevelEncryptionProfiles extends Data.TaggedError(
+export declare class TooManyFieldLevelEncryptionProfiles extends EffectData.TaggedError(
   "TooManyFieldLevelEncryptionProfiles",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFieldLevelEncryptionQueryArgProfiles extends Data.TaggedError(
+export declare class TooManyFieldLevelEncryptionQueryArgProfiles extends EffectData.TaggedError(
   "TooManyFieldLevelEncryptionQueryArgProfiles",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFunctionAssociations extends Data.TaggedError(
+export declare class TooManyFunctionAssociations extends EffectData.TaggedError(
   "TooManyFunctionAssociations",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyFunctions extends Data.TaggedError(
+export declare class TooManyFunctions extends EffectData.TaggedError(
   "TooManyFunctions",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyHeadersInCachePolicy extends Data.TaggedError(
+export declare class TooManyHeadersInCachePolicy extends EffectData.TaggedError(
   "TooManyHeadersInCachePolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyHeadersInForwardedValues extends Data.TaggedError(
+export declare class TooManyHeadersInForwardedValues extends EffectData.TaggedError(
   "TooManyHeadersInForwardedValues",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyHeadersInOriginRequestPolicy extends Data.TaggedError(
+export declare class TooManyHeadersInOriginRequestPolicy extends EffectData.TaggedError(
   "TooManyHeadersInOriginRequestPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyInvalidationsInProgress extends Data.TaggedError(
+export declare class TooManyInvalidationsInProgress extends EffectData.TaggedError(
   "TooManyInvalidationsInProgress",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyKeyGroups extends Data.TaggedError(
+export declare class TooManyKeyGroups extends EffectData.TaggedError(
   "TooManyKeyGroups",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyKeyGroupsAssociatedToDistribution extends Data.TaggedError(
+export declare class TooManyKeyGroupsAssociatedToDistribution extends EffectData.TaggedError(
   "TooManyKeyGroupsAssociatedToDistribution",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyLambdaFunctionAssociations extends Data.TaggedError(
+export declare class TooManyLambdaFunctionAssociations extends EffectData.TaggedError(
   "TooManyLambdaFunctionAssociations",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyOriginAccessControls extends Data.TaggedError(
+export declare class TooManyOriginAccessControls extends EffectData.TaggedError(
   "TooManyOriginAccessControls",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyOriginCustomHeaders extends Data.TaggedError(
+export declare class TooManyOriginCustomHeaders extends EffectData.TaggedError(
   "TooManyOriginCustomHeaders",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyOriginGroupsPerDistribution extends Data.TaggedError(
+export declare class TooManyOriginGroupsPerDistribution extends EffectData.TaggedError(
   "TooManyOriginGroupsPerDistribution",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyOriginRequestPolicies extends Data.TaggedError(
+export declare class TooManyOriginRequestPolicies extends EffectData.TaggedError(
   "TooManyOriginRequestPolicies",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyOrigins extends Data.TaggedError("TooManyOrigins")<{
+export declare class TooManyOrigins extends EffectData.TaggedError(
+  "TooManyOrigins",
+)<{
   readonly Message?: string;
 }> {}
-export declare class TooManyPublicKeys extends Data.TaggedError(
+export declare class TooManyPublicKeys extends EffectData.TaggedError(
   "TooManyPublicKeys",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyPublicKeysInKeyGroup extends Data.TaggedError(
+export declare class TooManyPublicKeysInKeyGroup extends EffectData.TaggedError(
   "TooManyPublicKeysInKeyGroup",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyQueryStringParameters extends Data.TaggedError(
+export declare class TooManyQueryStringParameters extends EffectData.TaggedError(
   "TooManyQueryStringParameters",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyQueryStringsInCachePolicy extends Data.TaggedError(
+export declare class TooManyQueryStringsInCachePolicy extends EffectData.TaggedError(
   "TooManyQueryStringsInCachePolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyQueryStringsInOriginRequestPolicy extends Data.TaggedError(
+export declare class TooManyQueryStringsInOriginRequestPolicy extends EffectData.TaggedError(
   "TooManyQueryStringsInOriginRequestPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyRealtimeLogConfigs extends Data.TaggedError(
+export declare class TooManyRealtimeLogConfigs extends EffectData.TaggedError(
   "TooManyRealtimeLogConfigs",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyRemoveHeadersInResponseHeadersPolicy extends Data.TaggedError(
+export declare class TooManyRemoveHeadersInResponseHeadersPolicy extends EffectData.TaggedError(
   "TooManyRemoveHeadersInResponseHeadersPolicy",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyResponseHeadersPolicies extends Data.TaggedError(
+export declare class TooManyResponseHeadersPolicies extends EffectData.TaggedError(
   "TooManyResponseHeadersPolicies",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyStreamingDistributionCNAMEs extends Data.TaggedError(
+export declare class TooManyStreamingDistributionCNAMEs extends EffectData.TaggedError(
   "TooManyStreamingDistributionCNAMEs",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyStreamingDistributions extends Data.TaggedError(
+export declare class TooManyStreamingDistributions extends EffectData.TaggedError(
   "TooManyStreamingDistributions",
 )<{
   readonly Message?: string;
 }> {}
-export declare class TooManyTrustedSigners extends Data.TaggedError(
+export declare class TooManyTrustedSigners extends EffectData.TaggedError(
   "TooManyTrustedSigners",
 )<{
   readonly Message?: string;
@@ -4593,7 +4619,7 @@ export interface TrafficConfig {
   SingleHeaderConfig?: ContinuousDeploymentSingleHeaderConfig;
   Type: ContinuousDeploymentPolicyType;
 }
-export declare class TrustedKeyGroupDoesNotExist extends Data.TaggedError(
+export declare class TrustedKeyGroupDoesNotExist extends EffectData.TaggedError(
   "TrustedKeyGroupDoesNotExist",
 )<{
   readonly Message?: string;
@@ -4604,7 +4630,7 @@ export interface TrustedKeyGroups {
   Quantity: number;
   Items?: Array<string>;
 }
-export declare class TrustedSignerDoesNotExist extends Data.TaggedError(
+export declare class TrustedSignerDoesNotExist extends EffectData.TaggedError(
   "TrustedSignerDoesNotExist",
 )<{
   readonly Message?: string;
@@ -4614,7 +4640,7 @@ export interface TrustedSigners {
   Quantity: number;
   Items?: Array<string>;
 }
-export declare class UnsupportedOperation extends Data.TaggedError(
+export declare class UnsupportedOperation extends EffectData.TaggedError(
   "UnsupportedOperation",
 )<{
   readonly Message?: string;

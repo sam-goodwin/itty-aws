@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSBatchV20160810 {
@@ -249,7 +249,7 @@ export type CEStatus =
   | "VALID"
   | "INVALID";
 export type CEType = "MANAGED" | "UNMANAGED";
-export declare class ClientException extends Data.TaggedError(
+export declare class ClientException extends EffectData.TaggedError(
   "ClientException",
 )<{
   readonly message?: string;
@@ -1162,7 +1162,7 @@ export interface Secret {
   valueFrom: string;
 }
 export type SecretList = Array<Secret>;
-export declare class ServerException extends Data.TaggedError(
+export declare class ServerException extends EffectData.TaggedError(
   "ServerException",
 )<{
   readonly message?: string;

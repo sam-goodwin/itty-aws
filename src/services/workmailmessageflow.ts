@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface GiraffeMessageInTransitService {
@@ -30,19 +30,21 @@ export interface GetRawMessageContentRequest {
 export interface GetRawMessageContentResponse {
   messageContent: Uint8Array | string;
 }
-export declare class InvalidContentLocation extends Data.TaggedError(
+export declare class InvalidContentLocation extends EffectData.TaggedError(
   "InvalidContentLocation",
 )<{
   readonly message?: string;
 }> {}
 export type messageContentBlob = Uint8Array | string;
 
-export declare class MessageFrozen extends Data.TaggedError("MessageFrozen")<{
+export declare class MessageFrozen extends EffectData.TaggedError(
+  "MessageFrozen",
+)<{
   readonly message?: string;
 }> {}
 export type messageIdType = string;
 
-export declare class MessageRejected extends Data.TaggedError(
+export declare class MessageRejected extends EffectData.TaggedError(
   "MessageRejected",
 )<{
   readonly message?: string;
@@ -55,7 +57,7 @@ export interface PutRawMessageContentResponse {}
 export interface RawMessageContent {
   s3Reference: S3Reference;
 }
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;

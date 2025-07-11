@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface CodeBuild_20161006 {
@@ -367,12 +367,12 @@ export interface CodeBuild_20161006 {
 
 export type Codebuild = CodeBuild_20161006;
 
-export declare class AccountLimitExceededException extends Data.TaggedError(
+export declare class AccountLimitExceededException extends EffectData.TaggedError(
   "AccountLimitExceededException",
 )<{
   readonly message?: string;
 }> {}
-export declare class AccountSuspendedException extends Data.TaggedError(
+export declare class AccountSuspendedException extends EffectData.TaggedError(
   "AccountSuspendedException",
 )<{
   readonly message?: string;
@@ -971,7 +971,7 @@ export interface InvalidateProjectCacheInput {
   projectName: string;
 }
 export interface InvalidateProjectCacheOutput {}
-export declare class InvalidInputException extends Data.TaggedError(
+export declare class InvalidInputException extends EffectData.TaggedError(
   "InvalidInputException",
 )<{
   readonly message?: string;
@@ -1158,7 +1158,7 @@ export type NonEmptyString = string;
 
 export type NonNegativeInt = number;
 
-export declare class OAuthProviderException extends Data.TaggedError(
+export declare class OAuthProviderException extends EffectData.TaggedError(
   "OAuthProviderException",
 )<{
   readonly message?: string;
@@ -1386,12 +1386,12 @@ export interface ResolvedArtifact {
   identifier?: string;
 }
 export type ResolvedSecondaryArtifacts = Array<ResolvedArtifact>;
-export declare class ResourceAlreadyExistsException extends Data.TaggedError(
+export declare class ResourceAlreadyExistsException extends EffectData.TaggedError(
   "ResourceAlreadyExistsException",
 )<{
   readonly message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;

@@ -1,4 +1,4 @@
-import type { Effect, Data } from "effect";
+import type { Effect, Data as EffectData } from "effect";
 import type { CommonAwsError } from "../error.ts";
 
 export interface AWSMPSeymour {
@@ -151,7 +151,7 @@ export interface AWSMPSeymour {
 
 export type MarketplaceCatalog = AWSMPSeymour;
 
-export declare class AccessDeniedException extends Data.TaggedError(
+export declare class AccessDeniedException extends EffectData.TaggedError(
   "AccessDeniedException",
 )<{
   readonly Message?: string;
@@ -491,7 +491,7 @@ export interface GetResourcePolicyResponse {
 export type Identifier = string;
 
 export type Intent = "VALIDATE" | "APPLY";
-export declare class InternalServiceException extends Data.TaggedError(
+export declare class InternalServiceException extends EffectData.TaggedError(
   "InternalServiceException",
 )<{
   readonly Message?: string;
@@ -860,17 +860,17 @@ export type ResourceARN = string;
 export type ResourceId = string;
 
 export type ResourceIdList = Array<string>;
-export declare class ResourceInUseException extends Data.TaggedError(
+export declare class ResourceInUseException extends EffectData.TaggedError(
   "ResourceInUseException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotFoundException extends Data.TaggedError(
+export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly Message?: string;
 }> {}
-export declare class ResourceNotSupportedException extends Data.TaggedError(
+export declare class ResourceNotSupportedException extends EffectData.TaggedError(
   "ResourceNotSupportedException",
 )<{
   readonly Message?: string;
@@ -926,7 +926,7 @@ export type SaaSProductVisibilityString =
   | "Public"
   | "Restricted"
   | "Draft";
-export declare class ServiceQuotaExceededException extends Data.TaggedError(
+export declare class ServiceQuotaExceededException extends EffectData.TaggedError(
   "ServiceQuotaExceededException",
 )<{
   readonly Message?: string;
@@ -965,7 +965,7 @@ export interface TagResourceRequest {
 export interface TagResourceResponse {}
 export type TagValue = string;
 
-export declare class ThrottlingException extends Data.TaggedError(
+export declare class ThrottlingException extends EffectData.TaggedError(
   "ThrottlingException",
 )<{
   readonly Message?: string;
@@ -975,7 +975,7 @@ export interface UntagResourceRequest {
   TagKeys: Array<string>;
 }
 export interface UntagResourceResponse {}
-export declare class ValidationException extends Data.TaggedError(
+export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{
   readonly Message?: string;
