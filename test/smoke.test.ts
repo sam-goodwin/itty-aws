@@ -3,7 +3,7 @@ import { Console, Effect } from "effect";
 import { AWSClient } from "../src/client.ts";
 
 describe("DynamoDB Smoke Tests", () => {
-  const testTableName = `itty-aws-test-${Date.now()}`;
+  const testTableName = "itty-aws-test";
   const aws = new AWSClient({ region: "us-east-1" });
 
   it.effect(
@@ -12,78 +12,99 @@ describe("DynamoDB Smoke Tests", () => {
       Effect.gen(function* () {
         yield* Console.log(`Starting smoke test with table: ${testTableName}`);
 
-        // Step 1: Check if table exists and delete if it does
-        yield* Console.log("Step 1: Checking if table exists...");
-        const tableExists = yield* aws.dynamodb
-          .describeTable({ TableName: testTableName })
-          .pipe(
-            Effect.map(() => true),
-            Effect.catchTag("ResourceNotFoundException", () =>
-              Effect.succeed(false),
+        // Step 1: Always try to delete the table first to ensure clean state
+        yield* Console.log(
+          "Step 1: Ensuring clean state by deleting table if it exists...",
+        );
+        yield* aws.dynamodb.deleteTable({ TableName: testTableName }).pipe(
+          Effect.catchTag("ResourceNotFoundException", () =>
+            Effect.succeed({}),
+          ),
+          Effect.tap(() => Console.log("Delete table request sent")),
+        );
+
+        // Step 2: Wait for table to be deleted (poll until table is gone)
+        yield* Console.log("Step 2: Waiting for table deletion to complete...");
+
+        yield* aws.dynamodb.describeTable({ TableName: testTableName }).pipe(
+          Effect.retry({
+            times: 100,
+            until: (error) => error._tag === "ResourceNotFoundException",
+          }),
+          Effect.timeout("2 minutes"),
+          Effect.catchTag("ResourceNotFoundException", () =>
+            Console.log("Table successfully deleted").pipe(
+              Effect.flatMap(() => Effect.succeed("deleted")),
             ),
+          ),
+        );
+
+        // Step 3: Create a new table
+        yield* Console.log("Step 3: Creating table...");
+
+        const createResult = yield* aws.dynamodb
+          .createTable({
+            TableName: testTableName,
+            AttributeDefinitions: [
+              {
+                AttributeName: "pk",
+                AttributeType: "S",
+              },
+              {
+                AttributeName: "sk",
+                AttributeType: "S",
+              },
+            ],
+            KeySchema: [
+              {
+                AttributeName: "pk",
+                KeyType: "HASH",
+              },
+              {
+                AttributeName: "sk",
+                KeyType: "RANGE",
+              },
+            ],
+            BillingMode: "PAY_PER_REQUEST",
+          })
+          .pipe(
+            Effect.retry({
+              times: 30,
+              while: (error) => error._tag !== "ResourceInUseException",
+            }),
           );
-
-        if (tableExists) {
-          yield* Console.log("Table exists, deleting...");
-          yield* aws.dynamodb.deleteTable({ TableName: testTableName });
-
-          // Wait for table to be deleted
-          yield* Console.log("Waiting for table deletion...");
-          yield* Effect.sleep("5 seconds");
-        }
-
-        // Step 2: Create a new table
-        yield* Console.log("Step 2: Creating table...");
-        const createResult = yield* aws.dynamodb.createTable({
-          TableName: testTableName,
-          AttributeDefinitions: [
-            {
-              AttributeName: "pk",
-              AttributeType: "S",
-            },
-            {
-              AttributeName: "sk",
-              AttributeType: "S",
-            },
-          ],
-          KeySchema: [
-            {
-              AttributeName: "pk",
-              KeyType: "HASH",
-            },
-            {
-              AttributeName: "sk",
-              KeyType: "RANGE",
-            },
-          ],
-          BillingMode: "PAY_PER_REQUEST",
-        });
 
         expect(createResult.TableDescription?.TableName).toBe(testTableName);
         expect(createResult.TableDescription?.TableStatus).toBe("CREATING");
 
-        // Step 3: Wait for table to be active
-        yield* Console.log("Step 3: Waiting for table to become active...");
-        let tableStatus = "CREATING";
-        let attempts = 0;
-        const maxAttempts = 30;
+        // Step 4: Wait for table to be active using Effect.retry
+        yield* Console.log("Step 4: Waiting for table to become active...");
 
-        while (tableStatus !== "ACTIVE" && attempts < maxAttempts) {
-          yield* Effect.sleep("2 seconds");
-          const description = yield* aws.dynamodb.describeTable({
-            TableName: testTableName,
-          });
-          tableStatus = description.Table?.TableStatus || "UNKNOWN";
-          attempts++;
-          yield* Console.log(
-            `Table status: ${tableStatus} (attempt ${attempts})`,
-          );
-        }
+        yield* aws.dynamodb.describeTable({ TableName: testTableName }).pipe(
+          Effect.flatMap((description) => {
+            const status = description.Table?.TableStatus || "UNKNOWN";
 
-        expect(tableStatus).toBe("ACTIVE");
+            if (status === "ACTIVE") {
+              return Console.log(
+                `Table status: ${status} - Table is ready!`,
+              ).pipe(Effect.flatMap(() => Effect.succeed(description)));
+            } else {
+              return Console.log(`Table status: ${status} - waiting...`).pipe(
+                Effect.flatMap(() =>
+                  Effect.fail("Table not ready yet" as const),
+                ),
+              );
+            }
+          }),
+          Effect.retry({
+            times: 30,
+            while: (error) => error === "Table not ready yet",
+          }),
+          Effect.timeout("5 minutes"),
+        );
 
-        // Step 4: Put some test items
-        yield* Console.log("Step 4: Writing test data...");
+        // Step 5: Put some test items
+        yield* Console.log("Step 5: Writing test data...");
 
         // Put first item
         yield* aws.dynamodb.putItem({
@@ -125,8 +146,8 @@ describe("DynamoDB Smoke Tests", () => {
 
         yield* Console.log("Successfully wrote 3 items to table");
 
-        // Step 5: Read items back
-        yield* Console.log("Step 5: Reading data back...");
+        // Step 6: Read items back
+        yield* Console.log("Step 6: Reading data back...");
 
         const user1Profile = yield* aws.dynamodb.getItem({
           TableName: testTableName,
@@ -161,8 +182,8 @@ describe("DynamoDB Smoke Tests", () => {
           tags: { SS: ["developer", "early-adopter"] },
         });
 
-        // Step 6: Scan all items
-        yield* Console.log("Step 6: Scanning all items...");
+        // Step 7: Scan all items
+        yield* Console.log("Step 7: Scanning all items...");
 
         const scanResult = yield* aws.dynamodb.scan({
           TableName: testTableName,
@@ -180,8 +201,8 @@ describe("DynamoDB Smoke Tests", () => {
         expect(profileItems.length).toBe(2);
         expect(prefItems.length).toBe(1);
 
-        // Step 7: Test query operation
-        yield* Console.log("Step 7: Querying user#1 items...");
+        // Step 8: Test query operation
+        yield* Console.log("Step 8: Querying user#1 items...");
 
         const queryResult = yield* aws.dynamodb.query({
           TableName: testTableName,
@@ -195,8 +216,8 @@ describe("DynamoDB Smoke Tests", () => {
         expect(queryResult.Items?.length).toBe(2);
         expect(queryResult.Count).toBe(2);
 
-        // Step 8: Test error handling - try to get non-existent item
-        yield* Console.log("Step 8: Testing error handling...");
+        // Step 9: Test error handling - try to get non-existent item
+        yield* Console.log("Step 9: Testing error handling...");
 
         const nonExistentItem = yield* aws.dynamodb.getItem({
           TableName: testTableName,
@@ -208,8 +229,8 @@ describe("DynamoDB Smoke Tests", () => {
 
         expect(nonExistentItem.Item).toBeUndefined();
 
-        // Step 9: Test conditional write failure
-        yield* Console.log("Step 9: Testing conditional write failure...");
+        // Step 10: Test conditional write failure
+        yield* Console.log("Step 10: Testing conditional write failure...");
 
         const conditionalWriteResult = yield* aws.dynamodb
           .putItem({
@@ -233,8 +254,8 @@ describe("DynamoDB Smoke Tests", () => {
           "ConditionalCheckFailedException",
         );
 
-        // Step 10: Update an item
-        yield* Console.log("Step 10: Updating an item...");
+        // Step 11: Update an item
+        yield* Console.log("Step 11: Updating an item...");
 
         const updateResult = yield* aws.dynamodb.updateItem({
           TableName: testTableName,
@@ -260,8 +281,8 @@ describe("DynamoDB Smoke Tests", () => {
           name: { S: "John Doe Updated" },
         });
 
-        // Step 11: Delete an item
-        yield* Console.log("Step 11: Deleting an item...");
+        // Step 12: Delete an item
+        yield* Console.log("Step 12: Deleting an item...");
 
         yield* aws.dynamodb.deleteItem({
           TableName: testTableName,
@@ -282,8 +303,8 @@ describe("DynamoDB Smoke Tests", () => {
 
         expect(deletedItemCheck.Item).toBeUndefined();
 
-        // Step 12: Cleanup - Delete the test table
-        yield* Console.log("Step 12: Cleaning up - deleting test table...");
+        // Step 13: Cleanup - Delete the test table
+        yield* Console.log("Step 13: Cleaning up - deleting test table...");
 
         yield* aws.dynamodb.deleteTable({
           TableName: testTableName,

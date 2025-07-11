@@ -1,6 +1,6 @@
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import { AwsClient } from "aws4fetch";
-import { Effect } from "effect";
+import { Data, Effect } from "effect";
 import {
   AccessDeniedException,
   RequestTimeout,
@@ -14,6 +14,26 @@ import {
 } from "./error.ts";
 import type { DynamoDB } from "./services/dynamodb.ts";
 import { serviceMetadata } from "./services/metadata.ts";
+
+// Helper function to extract simple error name from AWS namespaced error type
+function extractErrorName(awsErrorType: string): string {
+  // AWS returns errors like "com.amazonaws.dynamodb.v20120810#ResourceNotFoundException"
+  // We need to extract "ResourceNotFoundException"
+  const parts = awsErrorType.split("#");
+  return parts.length > 1 ? parts[1] : awsErrorType;
+}
+
+// Helper to create service-specific error dynamically
+function createServiceError(
+  errorName: string,
+  errorMeta: AwsErrorMeta & { message?: string },
+) {
+  // Create a tagged error dynamically with the correct error name
+  const ErrorClass = Data.TaggedError(errorName)<
+    AwsErrorMeta & { message?: string }
+  >;
+  return new ErrorClass(errorMeta);
+}
 
 // Types
 export type AwsRegion = string;
@@ -121,7 +141,7 @@ export class AWSClient {
                     headers,
                     body: JSON.stringify(input),
                   }),
-                );
+                ).pipe(Effect.timeout("30 seconds"));
 
                 const responseText = yield* Effect.promise(() =>
                   response.text(),
@@ -130,7 +150,8 @@ export class AWSClient {
 
                 if (statusCode >= 200 && statusCode < 300) {
                   // Success
-                  return responseText ? JSON.parse(responseText) : {};
+                  const data = responseText ? JSON.parse(responseText) : {};
+                  return data;
                 } else {
                   // Error handling
                   let errorData;
@@ -153,8 +174,11 @@ export class AWSClient {
                     requestId: requestId || undefined,
                   };
 
+                  // Extract simple error name from AWS namespaced error type
+                  const simpleErrorName = extractErrorName(errorType);
+
                   // Map to specific error types
-                  switch (errorType) {
+                  switch (simpleErrorName) {
                     case "ThrottlingException":
                     case "TooManyRequestsException":
                       yield* Effect.fail(new ThrottlingException(errorMeta));
@@ -175,8 +199,9 @@ export class AWSClient {
                       yield* Effect.fail(new ValidationException(errorMeta));
                       break;
                     default:
+                      // All service-specific errors - create dynamically with correct _tag
                       yield* Effect.fail(
-                        new UnknownError({
+                        createServiceError(simpleErrorName, {
                           ...errorMeta,
                           message: errorMessage,
                         }),
