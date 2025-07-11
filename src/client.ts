@@ -1,6 +1,7 @@
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import { AwsClient } from "aws4fetch";
-import { Data, Effect } from "effect";
+import * as Data from "effect/Data";
+import * as Effect from "effect/Effect";
 import {
   AccessDeniedException,
   RequestTimeout,

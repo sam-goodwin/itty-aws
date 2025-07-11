@@ -41,7 +41,7 @@ const program = Effect.gen(function* () {
 
 The official AWS SDK v3 is a massive 200+ NPM package monorepo with an awkward `client.send(new Command())` syntax that is a heavy dependency in your bundle. The `@effect-aws/*` project adapts the AWS SDK v3 to Effect, but at the cost of an additional 200+ NPM packages. 
 
-`itty-aws` achieves the same goal with a single NPM package, a `Proxy` and types generated from the Smith spec. It has a fixed-cost bundle size, meaning that no matter how many services you use, the bundle size will never grow:
+`itty-aws` implements a standlone AWS SDK with a single 34KV NPM package containing a `Proxy` and types generated from the Smithy spec. It has a fixed-cost bundle size, meaning that no matter how many services you use, the bundle size will never grow:
 
 - **Core bundle size**: `34.0 KB` (minified, excluding Effect.js)
 - **Full bundle size**: `228.1 KB` (minified, with Effect.js)
